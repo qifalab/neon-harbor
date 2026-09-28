@@ -2,6 +2,10 @@
  * Deterministic, renderer-independent game rules. Positions are metres in X/Z;
  * yaw 0 faces +Z. The renderer owns input, sound and localStorage.
  */
+import { vehicleGroundSupport } from './ground-support.js';
+import { SpatialIndex, CHARACTER_RADIUS, vehicleContacts, circleContacts, circleOBB, moveVehicle, moveCircle } from './collision.js';
+import { PLAYER_DIMENSIONS } from './world-config.js';
+
 const TAU = Math.PI * 2;
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
@@ -65,7 +69,7 @@ export function serializeProgress(progress) {
 
 function parkedCars() {
   return [
-    { id: 'starter', x: 4, z: 160, yaw: Math.PI, type: 'sport', color: 0x19e5e1 },
+    { id: 'starter', x: 4, z: 160, yaw: Math.PI, type: 'sport', color: 0x386875 },
     { id: 'sunset', x: -4, z: 80, yaw: 0, type: 'sport', color: 0xff805c },
     { id: 'violet', x: 160, z: 4, yaw: Math.PI / 2, type: 'sedan', color: 0xa28aff },
     { id: 'taxi', x: -160, z: -4, yaw: -Math.PI / 2, type: 'sedan', color: 0xffd05d },
@@ -90,17 +94,35 @@ function trafficCars() {
 }
 
 export class GameSimulation {
-  constructor({ colliders = [], bounds = 290, save = null } = {}) {
+  constructor({ colliders = [], bounds = 290, save = null, groundHeightAt = () => 0 } = {}) {
     this.colliders = colliders;
     this.bounds = bounds;
+    this.groundHeightAt = groundHeightAt;
+    this.teleportRevision = 0;
     this.missionDefs = MISSION_DEFS;
     this._initialize(loadProgress(save));
   }
 
   _initialize(progress) {
     this.player = { ...progress.player, y: 0, health: 100, stamina: 100, vy: 0 };
-    if (this._blocked(this.player.x, this.player.z, 0.65)) Object.assign(this.player, SPAWN);
     this.cars = [...parkedCars(), ...trafficCars()];
+    this._contactCooldowns = new Map();
+    this._supportCache = new Map();
+    for (const car of this.cars) {
+      this._groundCar(car);
+      if (vehicleContacts(car, this._collisionOptions(car)).length) {
+        const safe = this._safePosition(car, true);
+        if (safe) { Object.assign(car, safe); this._groundCar(car); }
+        else car.health = 0;
+      }
+    }
+    if (circleContacts(this.player, CHARACTER_RADIUS, this._collisionOptions()).length) {
+      const safeSpawn = this._safePosition(SPAWN, false);
+      if (!safeSpawn) throw new Error('The world has no safe player spawn.');
+      Object.assign(this.player, safeSpawn);
+    }
+    this.player.groundY = this.groundHeightAt(this.player.x, this.player.z);
+    this.teleportRevision += 1;
     this.inCar = null;
     this.cash = progress.cash;
     this.completed = new Set(progress.completed);
@@ -118,6 +140,7 @@ export class GameSimulation {
     this._escapeTime = 0;
     this._crimeAge = 999;
     this._jumpHeld = false;
+    this._grounded = true;
     this._policeSerial = 0;
     this.saveRevision = 0;
   }
@@ -136,32 +159,99 @@ export class GameSimulation {
     if (this.messages.length > 20) this.messages.shift();
   }
 
-  _blocked(x, z, radius) {
-    if (Math.abs(x) + radius > this.bounds || Math.abs(z) + radius > this.bounds) return true;
-    return this.colliders.some(box => {
-      const dx = x - clamp(x, box.x - box.hx, box.x + box.hx);
-      const dz = z - clamp(z, box.z - box.hz, box.z + box.hz);
-      return dx * dx + dz * dz < radius * radius;
-    });
+  _collisionOptions(ignore = null) {
+    if (this._indexedColliders !== this.colliders) {
+      this._indexedColliders = this.colliders;
+      this._spatialIndex = new SpatialIndex(this.colliders);
+    }
+    return { index: this._spatialIndex, bounds: this.bounds, vehicles: this.cars || [], ignore,
+      groundHeightAt: this.groundHeightAt, supportAt: pose => this._supportAt(pose) };
   }
 
-  /** Small swept steps stop fast cars tunnelling through narrow walls. */
-  _move(entity, dx, dz, radius) {
-    const steps = Math.max(1, Math.ceil(Math.hypot(dx, dz) / 0.45));
-    let hit = false;
-    for (let n = 0; n < steps; n++) {
-      if (!this._blocked(entity.x + dx / steps, entity.z, radius)) entity.x += dx / steps;
-      else hit = true;
-      if (!this._blocked(entity.x, entity.z + dz / steps, radius)) entity.z += dz / steps;
-      else hit = true;
+  _blocked(x, z, radius) {
+    return circleContacts({ x, z }, radius, { ...this._collisionOptions(), vehicles: [] }).length > 0;
+  }
+
+  _safePosition(preferred, vehicle, ignore = null) {
+    const options = this._collisionOptions(ignore);
+    const candidates = [{ ...preferred }];
+    for (let radius = 4; radius <= 24; radius += 4) {
+      for (let i = 0; i < 16; i++) candidates.push({ ...preferred,
+        x: preferred.x + Math.cos(i * TAU / 16) * radius,
+        z: preferred.z + Math.sin(i * TAU / 16) * radius });
     }
-    return hit;
+    for (const z of ROADS) for (const x of ROADS) candidates.push({ x, z, yaw: preferred.yaw || 0 });
+    return candidates.find(pose => !(vehicle ? vehicleContacts(pose, options) : circleContacts(pose, CHARACTER_RADIUS, options)).length) || null;
+  }
+
+  _supportAt(pose) {
+    if (!this._supportCache) this._supportCache = new Map();
+    const key = `${pose.x}:${pose.z}:${pose.yaw || 0}`;
+    if (!this._supportCache.has(key)) this._supportCache.set(key, vehicleGroundSupport(pose, this.groundHeightAt));
+    return this._supportCache.get(key);
+  }
+
+  _groundCar(car) {
+    Object.assign(car, this._supportAt(car));
+  }
+
+  _move(entity, dx, dz, radius) {
+    entity.jumpY = entity.y || 0;
+    return moveCircle(entity, dx, dz, radius, this._collisionOptions()).contacts.length > 0;
+  }
+
+  _moveCar(car, dx, dz, dyaw = 0) {
+    const vx = car.vx || 0, vz = car.vz || 0;
+    const options = this._collisionOptions(car);
+    if (!this.inCar) options.circles = [{ ...this.player, radius: CHARACTER_RADIUS, id: 'player' }];
+    const result = moveVehicle(car, dx, dz, dyaw, options);
+    for (const contact of result.contacts) {
+      const { normal, obstacle, kind } = contact;
+      const ovx = kind === 'vehicle' ? obstacle.vx || 0 : 0;
+      const ovz = kind === 'vehicle' ? obstacle.vz || 0 : 0;
+      const impact = Math.max(0, -((vx - ovx) * normal.x + (vz - ovz) * normal.z));
+      const inward = (car.vx || 0) * normal.x + (car.vz || 0) * normal.z;
+      if (inward < 0) { car.vx -= inward * normal.x; car.vz -= inward * normal.z; }
+      const key = [car.id, obstacle.id ?? `wall:${this.colliders.indexOf(obstacle)}`].sort().join('|');
+      const cooled = !this._contactCooldowns.has(key) || this.elapsed - this._contactCooldowns.get(key) > 1.2;
+      if (kind === 'character') {
+        if (impact > 5 && this._hitCooldown <= 0) {
+          this.player.health = Math.max(0, this.player.health - (car.police ? 18 : 12));
+          this._hitCooldown = 1.5;
+          this._message('注意来车 · 按 E 进入停靠车辆', 'warning');
+        }
+        car.pause = Math.max(car.pause || 0, 0.4);
+      } else if (kind === 'vehicle') {
+        if (car.id !== this.inCar) car.pause = Math.max(car.pause || 0, 0.35);
+        if (impact > 6 && cooled && (car.id === this.inCar || obstacle.id === this.inCar)) {
+          this._contactCooldowns.set(key, this.elapsed);
+          const damage = Math.min(27, impact * 0.65);
+          car.health = Math.max(0, car.health - damage);
+          obstacle.health = Math.max(0, obstacle.health - damage);
+          const other = car.id === this.inCar ? obstacle : car;
+          other.pause = Math.max(other.pause || 0, 0.8);
+          if ((!other.police || this.wanted === 0) && this._crimeCooldown <= 0) { this._crime(1); this._crimeCooldown = 3; }
+          if (other.police) this.player.health = Math.max(0, this.player.health - 9);
+        }
+      } else if (car.id === this.inCar && impact > 12 && cooled) {
+        this._contactCooldowns.set(key, this.elapsed);
+        car.health = Math.max(0, car.health - Math.ceil(impact * 0.5));
+        this.player.health = Math.max(0, this.player.health - Math.ceil(impact * 0.08));
+      }
+    }
+    if (result.contacts.length) {
+      car.speed = (car.vx || 0) * Math.sin(car.yaw) + (car.vz || 0) * Math.cos(car.yaw);
+      if (Math.abs(car.speed) < 0.08) car.speed = 0;
+    }
+    this._groundCar(car);
+    return result;
   }
 
   update(dt, input = {}) {
     dt = clamp(finite(dt, 0), 0, 0.1);
     if (!dt) return;
     this.elapsed += dt;
+    this._supportCache.clear();
     this._fireCooldown = Math.max(0, this._fireCooldown - dt);
     this._hitCooldown = Math.max(0, this._hitCooldown - dt);
     this._crimeCooldown = Math.max(0, this._crimeCooldown - dt);
@@ -177,7 +267,8 @@ export class GameSimulation {
       if (car.police) this._updatePolice(car, dt);
       else if (car.traffic) this._updateTraffic(car, dt);
     }
-    this._checkVehicleContacts();
+    if (this.activeVehicle) Object.assign(this.player, { x: this.activeVehicle.x, z: this.activeVehicle.z,
+      groundY: this.activeVehicle.y, yaw: this.activeVehicle.yaw });
     if (input.fire) this.fire();
     this._updateWanted(dt);
     this._updateMission(dt);
@@ -196,20 +287,52 @@ export class GameSimulation {
     const sprinting = input.sprint && this.player.stamina > 1 && magnitude > 0.01;
     const speed = sprinting ? 10.5 : 5.6;
     this.player.stamina = clamp(this.player.stamina + (sprinting ? -22 : 15) * dt, 0, 100);
-    this._move(this.player, dx * speed * dt, dz * speed * dt, 0.65);
+    this._move(this.player, dx * speed * dt, dz * speed * dt, CHARACTER_RADIUS);
+    this.player.groundY = this.groundHeightAt(this.player.x, this.player.z);
     if (magnitude > 0.01) this.player.yaw = Math.atan2(dx, dz);
-    if (input.jump && !this._jumpHeld && this.player.y <= 0.001) this.player.vy = 7.3;
+    if (input.jump && !this._jumpHeld && (this._grounded || this.player.y <= 0.001)) {
+      this.player.vy = 7.3;
+      this._grounded = false;
+    }
     this._jumpHeld = !!input.jump;
     this.player.vy -= 20 * dt;
-    this.player.y = Math.max(0, this.player.y + this.player.vy * dt);
-    if (this.player.y === 0) this.player.vy = 0;
+    let nextY = Math.max(0, this.player.y + this.player.vy * dt);
+    const footprint = { x: this.player.x, z: this.player.z, hx: CHARACTER_RADIUS, hz: CHARACTER_RADIUS };
+    const obstacles = this._spatialIndex.query(footprint).filter(box => box.physics !== false);
+    for (const vehicle of this.cars) {
+      if (vehicle.health > 0 && distance(vehicle, this.player) < 6) obstacles.push({ ...vehicle, ...this._supportAt(vehicle) });
+    }
+    const overlapsFootprint = box => circleOBB({ ...this.player, radius: CHARACTER_RADIUS }, box);
+    if (nextY > this.player.y) {
+      const oldHead = this.player.groundY + this.player.y + PLAYER_DIMENSIONS.height;
+      const nextHead = this.player.groundY + nextY + PLAYER_DIMENSIONS.height;
+      for (const box of obstacles) {
+        if (!Number.isFinite(box.minY) || box.minY < oldHead - 0.001 || box.minY >= nextHead || !overlapsFootprint(box)) continue;
+        nextY = Math.min(nextY, Math.max(0, box.minY - this.player.groundY - PLAYER_DIMENSIONS.height - 0.001));
+        this.player.vy = 0;
+      }
+    } else {
+      const oldFeet = this.player.groundY + this.player.y;
+      const nextFeet = this.player.groundY + nextY;
+      let floor = this.player.groundY;
+      for (const box of obstacles) {
+        if (!Number.isFinite(box.maxY) || box.maxY > oldFeet + 0.001 || box.maxY < nextFeet - 0.001 || !overlapsFootprint(box)) continue;
+        floor = Math.max(floor, box.maxY);
+      }
+      if (nextFeet <= floor + 0.001) {
+        nextY = Math.max(0, floor - this.player.groundY);
+        this.player.vy = 0;
+        this._grounded = true;
+      } else this._grounded = false;
+    }
+    this.player.y = nextY;
+    if (this.player.y === 0) { this.player.vy = 0; this._grounded = true; }
   }
 
   _drive(dt, input) {
     const car = this.activeVehicle;
     const throttle = clamp(finite(input.forward, 0), -1, 1);
     const turn = clamp(finite(input.turn, 0), -1, 1);
-    const previousSpeed = Math.abs(car.speed);
     const maxSpeed = car.type === 'sport' ? 43 : car.police ? 40 : 34;
     if (input.brake) car.speed *= Math.max(0, 1 - 3.5 * dt);
     else if (throttle) car.speed += throttle * (car.type === 'sport' ? 23 : 18) * dt;
@@ -217,31 +340,34 @@ export class GameSimulation {
     car.speed = clamp(car.speed, -12, maxSpeed);
     if (Math.abs(car.speed) < 0.04) car.speed = 0;
     const steering = (0.45 + clamp(Math.abs(car.speed) / 11, 0, 1)) * (input.brake ? 1.5 : 1);
-    if (Math.abs(car.speed) > 0.2) car.yaw += turn * steering * Math.sign(car.speed) * dt;
+    const dyaw = Math.abs(car.speed) > 0.2 ? turn * steering * Math.sign(car.speed) * dt : 0;
     const grip = Math.min(1, dt * (input.brake ? 3.5 : 11));
     car.vx = finite(car.vx, 0) + (Math.sin(car.yaw) * car.speed - finite(car.vx, 0)) * grip;
     car.vz = finite(car.vz, 0) + (Math.cos(car.yaw) * car.speed - finite(car.vz, 0)) * grip;
-    if (this._move(car, car.vx * dt, car.vz * dt, 1.55)) {
-      car.speed *= -0.15; car.vx = 0; car.vz = 0;
-      if (previousSpeed > 12 && this._hitCooldown <= 0) {
-        car.health = Math.max(0, car.health - Math.ceil(previousSpeed * 0.5));
-        this.player.health = Math.max(0, this.player.health - Math.ceil(previousSpeed * 0.08));
-        this._hitCooldown = 0.8;
-      }
-    }
+    this._moveCar(car, car.vx * dt, car.vz * dt, dyaw);
     Object.assign(this.player, { x: car.x, z: car.z, y: 0, yaw: car.yaw, vy: 0 });
     this.player.stamina = Math.min(100, this.player.stamina + dt * 15);
   }
 
-  _updateTraffic(car, dt) {
-    if (car.pause > 0) { car.pause -= dt; car.speed = 0; return; }
-    const target = car.route[car.waypoint];
+  _driveNPC(car, target, speed, dt) {
     const gap = distance(car, target);
-    if (gap < 0.5) { car.waypoint = (car.waypoint + 1) % car.route.length; return; }
-    car.yaw = Math.atan2(target.x - car.x, target.z - car.z);
-    car.speed = car.cruise;
-    const amount = Math.min(gap, car.speed * dt);
-    if (this._move(car, Math.sin(car.yaw) * amount, Math.cos(car.yaw) * amount, 1.45)) car.speed = 0;
+    const desiredYaw = Math.atan2(target.x - car.x, target.z - car.z);
+    const error = angleDelta(desiredYaw, car.yaw);
+    const dyaw = clamp(error, -2.5 * dt, 2.5 * dt);
+    const amount = Math.min(gap, speed * dt);
+    // Slow at turns; motion follows the continuously swept heading.
+    const movement = amount * Math.max(0, Math.cos(error));
+    car.vx = Math.sin(car.yaw + dyaw) * movement / dt;
+    car.vz = Math.cos(car.yaw + dyaw) * movement / dt;
+    car.speed = movement / dt;
+    return this._moveCar(car, car.vx * dt, car.vz * dt, dyaw);
+  }
+
+  _updateTraffic(car, dt) {
+    if (car.pause > 0) { car.pause -= dt; car.speed = 0; car.vx = 0; car.vz = 0; return; }
+    const target = car.route[car.waypoint];
+    if (distance(car, target) < 1) { car.waypoint = (car.waypoint + 1) % car.route.length; return; }
+    this._driveNPC(car, target, car.cruise, dt);
   }
 
   _crime(amount = 1) {
@@ -259,7 +385,8 @@ export class GameSimulation {
     for (let i = active.length; i < desired; i++) {
       // All arrival points are road intersections outside the immediate view.
       const candidates = ROADS.flatMap(x => ROADS.map(z => ({ x, z })))
-        .filter(p => distance(p, this.position) > 100 && distance(p, this.position) < 220 && !this._blocked(p.x, p.z, 1.55));
+        .filter(p => distance(p, this.position) > 100 && distance(p, this.position) < 220 &&
+          !vehicleContacts({ ...p, yaw: 0 }, this._collisionOptions()).length);
       if (!candidates.length) return;
       const point = candidates[(this._policeSerial * 13 + 7) % candidates.length];
       this.cars.push({ id: `police-${++this._policeSerial}`, ...point, yaw: 0, speed: 0,
@@ -283,8 +410,8 @@ export class GameSimulation {
   }
 
   _updatePolice(car, dt) {
-    if (car.pause > 0) { car.pause -= dt; car.speed = 0; return; }
-    if (!this.wanted) { car.speed *= Math.max(0, 1 - dt * 2); return; }
+    if (car.pause > 0) { car.pause -= dt; car.speed = 0; car.vx = 0; car.vz = 0; return; }
+    if (!this.wanted) { car.speed = 0; car.vx = 0; car.vz = 0; return; }
     car.reroute -= dt;
     // Only recalculate at a waypoint; replanning mid-block would cut diagonally.
     if (!car.path.length || (car.reroute <= 0 && distance(car, car.path[0]) < 0.5)) {
@@ -295,11 +422,9 @@ export class GameSimulation {
     if (!target) { car.speed = 0; return; }
     const gap = distance(car, target);
     if (gap < 0.6) { car.path.shift(); return; }
-    car.yaw = Math.atan2(target.x - car.x, target.z - car.z);
-    car.speed = 17 + this.wanted * 2.5;
-    const step = Math.min(gap, car.speed * dt);
-    if (this._move(car, Math.sin(car.yaw) * step, Math.cos(car.yaw) * step, 1.5)) {
-      car.speed = 0; car.path = []; car.reroute = 0;
+    const result = this._driveNPC(car, target, 17 + this.wanted * 2.5, dt);
+    if (result.contacts.some(contact => contact.kind === 'static' || contact.kind === 'bounds')) {
+      car.path = []; car.reroute = 0;
     }
   }
 
@@ -310,32 +435,6 @@ export class GameSimulation {
       if (this._blocked(a.x + (b.x - a.x) * t, a.z + (b.z - a.z) * t, 0.08)) return false;
     }
     return true;
-  }
-
-  _checkVehicleContacts() {
-    if (this._hitCooldown > 0) return;
-    const current = this.activeVehicle;
-    for (const car of this.cars) {
-      if (car.id === this.inCar || car.health <= 0) continue;
-      const proximity = distance(car, this.position);
-      if (current && proximity < 3.3 && Math.abs(current.speed) + Math.abs(car.speed) > 6) {
-        const impact = Math.max(6, Math.min(27, Math.abs(current.speed - car.speed) * 0.7 + 5));
-        current.health = Math.max(0, current.health - impact);
-        car.health = Math.max(0, car.health - impact);
-        current.speed *= -0.22; current.vx = 0; current.vz = 0;
-        car.pause = 2; car.speed = 0;
-        this._hitCooldown = 1.2;
-        if (!car.police && this._crimeCooldown <= 0) { this._crime(1); this._crimeCooldown = 3; }
-        if (car.police) this.player.health = Math.max(0, this.player.health - 9);
-        break;
-      }
-      if (!current && proximity < 1.9 && Math.abs(car.speed) > 5 && this.player.y < 1.7) {
-        this.player.health = Math.max(0, this.player.health - (car.police ? 18 : 12));
-        car.pause = 1.5; car.speed = 0; this._hitCooldown = 1.5;
-        this._message('注意来车 · 按 E 进入停靠车辆', 'warning');
-        break;
-      }
-    }
   }
 
   _updateWanted(dt) {
@@ -369,19 +468,32 @@ export class GameSimulation {
         { x: car.x - front.x * 4.5, z: car.z - front.z * 4.5 },
         { x: car.x + front.x * 4.5, z: car.z + front.z * 4.5 },
       ];
-      const exit = options.find(point => !this._blocked(point.x, point.z, 0.65) &&
-        !this.cars.some(other => other.id !== car.id && distance(other, point) < 2.2));
+      const exit = options.find(point => {
+        if (circleContacts(point, CHARACTER_RADIUS, this._collisionOptions()).length) return false;
+        // Sweep from the door sill, excluding only the car being exited.
+        const length = distance(point, car), nx = (point.x - car.x) / length, nz = (point.z - car.z) / length;
+        const start = { x: car.x + nx * 1.25, z: car.z + nz * 1.25, y: 0 };
+        const others = this.cars.filter(other => other.id !== car.id);
+        const result = moveCircle(start, point.x - start.x, point.z - start.z, CHARACTER_RADIUS,
+          { ...this._collisionOptions(), vehicles: others });
+        return !result.contacts.length && distance(start, point) < 0.02;
+      });
       if (!exit) { this._message('车门被挡住了，请把车开到空旷处', 'warning'); return false; }
       Object.assign(this.player, exit, { y: 0, vy: 0 });
       car.speed = 0; car.vx = 0; car.vz = 0;
-      this.inCar = null;
+      this.inCar = null; this.teleportRevision += 1;
+      this.player.groundY = this.groundHeightAt(this.player.x, this.player.z);
       this._message('已下车 · WASD 移动，Shift 冲刺');
       return true;
     }
     const nearest = this.nearestCar;
     if (!nearest) { this._message('靠近停靠车辆，按 E 上车'); return false; }
+    const path = { ...this.player };
+    const approach = moveCircle(path, nearest.x - path.x, nearest.z - path.z, CHARACTER_RADIUS,
+      { ...this._collisionOptions(), vehicles: this.cars.filter(other => other.id !== nearest.id) });
+    if (approach.contacts.length) { this._message('车辆入口被挡住，请绕到车门旁', 'warning'); return false; }
     nearest.traffic = false; nearest.police = false;
-    this.inCar = nearest.id;
+    this.inCar = nearest.id; this.teleportRevision += 1;
     nearest.speed = 0; nearest.vx = 0; nearest.vz = 0;
     Object.assign(this.player, { x: nearest.x, z: nearest.z, y: 0, vy: 0, yaw: nearest.yaw });
     this._message('已上车 · WASD 驾驶，空格刹车，E 下车');
@@ -492,12 +604,19 @@ export class GameSimulation {
   _recover() {
     const car = this.activeVehicle;
     if (car) {
-      Object.assign(car, car.home || { x: 4, z: 160, yaw: Math.PI });
-      car.health = 100; car.speed = 0; car.vx = 0; car.vz = 0;
+      const safe = this._safePosition(car.home || { x: 4, z: 160, yaw: Math.PI }, true, car);
+      if (safe) Object.assign(car, safe);
+      this._groundCar(car);
+      car.health = safe ? 100 : 0; car.speed = 0; car.vx = 0; car.vz = 0;
     }
     const cost = Math.min(200, this.cash);
     this.cash -= cost;
-    this.player = { ...SPAWN, y: 0, vy: 0, health: 100, stamina: 100 };
+    const safeSpawn = this._safePosition(SPAWN, false);
+    if (!safeSpawn) throw new Error('The world has no safe recovery spawn.');
+    this.player = { ...safeSpawn, y: 0, vy: 0, health: 100, stamina: 100 };
+    this.player.groundY = this.groundHeightAt(this.player.x, this.player.z);
+    this.teleportRevision += 1;
+    this._grounded = true;
     this.inCar = null; this.wanted = 0; this._escapeTime = 0; this._crimeAge = 999;
     this.mission = null;
     this._hitCooldown = 4;

@@ -1,12 +1,13 @@
 {
   "name": "neon-harbor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "An original open-world coastal city game for the browser.",
   "type": "module",
   "license": "MIT",
   "engines": { "node": ">=22" },
   "scripts": {
+    "prestart": "node tools/build-city.mjs",
     "start": "node tools/server.mjs",
     "build": "node tools/build.mjs",
     "preview": "node tools/server.mjs --dir dist",

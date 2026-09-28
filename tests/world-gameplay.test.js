@@ -12,7 +12,7 @@ const delta = (a, b) => Math.atan2(Math.sin(a - b), Math.cos(a - b));
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 function begin(id) {
-  const game = new GameSimulation({ colliders: world.colliders, bounds: world.bounds });
+  const game = new GameSimulation({ colliders: world.colliders, bounds: world.bounds, groundHeightAt: world.groundHeightAt });
   // Walk from the public spawn to the starter. There are no position mutations.
   for (let n = 0; n < 180 && !game.nearestCar; n++) game.update(dt, { forward: 1, cameraYaw: Math.PI });
   assert.equal(game.interact(), true, 'starter must be reachable on foot');
@@ -48,7 +48,7 @@ function drive(game, route, { deadline = 150, stop = () => !game.mission } = {})
 }
 
 const courierRoute = [{ x: 84, z: 164 }, { x: 84, z: 84 }, { x: 164, z: 84 }];
-const raceRoute = [{ x: 4, z: 84 }, { x: -156, z: 84 }, { x: -156, z: -76 }, { x: 84, z: -76 }, { x: 84, z: 164 }];
+const raceRoute = [{ x: 4, z: 90 }, { x: -152, z: 88 }, { x: -152, z: -76 }, { x: 84, z: -76 }, { x: 84, z: 164 }];
 
 test('generated-city courier is completable with walking and real driving before its deadline', t => {
   const game = begin('harbor-run');
