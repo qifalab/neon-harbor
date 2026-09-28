@@ -1,0 +1,31 @@
+name: Live smoke
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: Expected deployed commit SHA
+        required: true
+        default: fe690c8cfca9674b28f9bc6c6a19b62640c01770
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Verify deployed revision and gameplay
+        env:
+          EXPECTED_REVISION: ${{ inputs.revision }}
+        run: node tools/check-live.mjs https://qifalab.github.io/neon-harbor/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-deployment-smoke
+          path: test-results/live-smoke/
