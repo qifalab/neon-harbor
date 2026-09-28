@@ -11,6 +11,9 @@ if (!['http:', 'https:'].includes(target.protocol) || target.username || target.
 }
 // Relative module URLs must keep the Pages project directory, including its slash.
 if (!target.pathname.endsWith('/')) target.pathname += '/';
+// Evidence encoding can be slow on shared software-rendering runners.
+// Keep interaction deadlines at 20 seconds and give screenshots their own budget.
+const screenshotTimeout = process.env.CI ? 60000 : 20000;
 const output = resolve('test-results/live-smoke');
 await mkdir(output, { recursive: true });
 const report = { url: target.href, success: false, checks: [], errors: [], assets: [] };
@@ -98,7 +101,7 @@ try {
   expect(initial.streaming?.ready, 'Nearby districts are fully streamed before entry').toBe(true);
   expect(initial.streaming?.loaded).toBeGreaterThan(0);
   report.initialStreaming = initial.streaming;
-  await page.screenshot({ path: resolve(output, 'live-high-quality-menu.png'), timeout: 20000 });
+  await page.screenshot({ path: resolve(output, 'live-high-quality-menu.png'), timeout: screenshotTimeout });
   report.checks.push('Default high quality and nearby streamed city data are ready');
 
   // CI uses software rendering. Select the shipped quality control through the
@@ -125,14 +128,14 @@ try {
   await page.locator('#map-button').click();
   await expect(page.locator('#city-map')).toBeVisible();
   expect((await page.evaluate(() => window.__NEON__.snapshot())).paused).toBe(true);
-  await page.screenshot({ path: resolve(output, 'live-city-map.png'), timeout: 15000 });
+  await page.screenshot({ path: resolve(output, 'live-city-map.png'), timeout: screenshotTimeout });
   await page.keyboard.press('Escape');
   await expect(page.locator('#panel')).toBeHidden();
   await expect(page.locator('#game')).toBeFocused();
   expect((await page.evaluate(() => window.__NEON__.snapshot())).paused).toBe(false);
   report.checks.push('Opened the city map and resumed using Escape');
 
-  await page.screenshot({ path: resolve(output, 'live-game.png'), timeout: 15000 });
+  await page.screenshot({ path: resolve(output, 'live-game.png'), timeout: screenshotTimeout });
   await page.keyboard.press('Escape');
   await page.locator('[data-tab="settings"]').click();
   await page.locator('#quality').selectOption('high');
@@ -140,7 +143,7 @@ try {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.waitForFunction(() => window.__NEON__.snapshot().settings.quality === 'high');
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-  await page.screenshot({ path: resolve(output, 'live-high-quality-game.png'), timeout: 20000 });
+  await page.screenshot({ path: resolve(output, 'live-high-quality-game.png'), timeout: screenshotTimeout });
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
   report.success = true;
 } catch (error) {
@@ -148,7 +151,7 @@ try {
   report.errors.push(error.message);
   if (page && !page.isClosed()) {
     try {
-      await page.screenshot({ path: resolve(output, 'live-failure.png'), timeout: 15000 });
+      await page.screenshot({ path: resolve(output, 'live-failure.png'), timeout: screenshotTimeout });
     } catch (captureError) {
       report.errors.push(`Failure screenshot unavailable: ${captureError.message}`);
     }
