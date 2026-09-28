@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10212b"><meta name="description" content="霓港 Neon Harbor：原创 3D 开放城市驾驶游戏。探索海滨城市，完成委托，甩开追捕。"><title>霓港 · NEON HARBOR</title><link rel="icon" href="./favicon.svg"><link rel="stylesheet" href="./styles.css"></head>
+<body>
+<canvas id="game" aria-label="霓港三维游戏画面" tabindex="0"></canvas><div class="vignette" aria-hidden="true"></div>
+<div id="loading" class="loading"><span class="brand-mark">N<span>H</span></span><p>正在点亮霓港…</p></div>
+<section id="welcome" class="welcome hidden" aria-label="游戏主菜单">
+ <header class="menu-top"><a class="wordmark" href="./" aria-label="霓港主页"><span class="brand-mark small">N<span>H</span></span><span>QIFALAB <b>ORIGINALS</b></span></a><span class="build-tag"><i></i> OPEN WORLD / VOL. 01</span></header>
+ <div class="hero-copy"><div class="eyebrow"><span></span> YOUR CITY. YOUR NEXT MOVE.</div><h1>霓<span>港</span><em>NEON HARBOR</em></h1><p class="hero-description">日落之后，城市属于你。<br>踩下油门，去寻找下一段故事。</p><div class="hero-actions"><button id="start" class="primary-button" disabled>进入霓港 <span>↗</span></button><button id="welcome-settings" class="icon-button" aria-label="打开设置">⚙</button></div><p class="intro-note">原创 3D 城市 · 单人自由探索 · 进度自动保存</p></div>
+ <div class="title-location"><span>01 / THE WATERFRONT</span><strong>海风、霓虹与未完的夜</strong><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+ <footer class="welcome-footer"><span>霓港市 · 东湾海岸 <b>22° 34′ N</b></span><button id="welcome-help">操作指南 <span>↗</span></button><span>WEBGL 2 / ORIGINAL WORLD</span></footer>
+</section>
+<main id="hud" class="hud hidden" aria-label="游戏界面">
+ <div class="hud-top"><div class="city-brand"><b>霓港<span>NEON HARBOR</span></b><div class="city-divider"></div><div><span id="district">海风影城</span><small id="clock">18:42 · 晴</small></div></div><div class="hud-account"><div id="wanted" aria-label="追捕等级">☆☆☆☆☆</div><span id="money">$ 1,200</span><button id="pause" class="hud-button" aria-label="暂停游戏">Ⅱ</button></div></div>
+ <aside class="mission-card"><div class="mission-kicker"><span class="status-dot"></span><span id="mission-label">自由探索</span><span id="mission-time"></span></div><h2 id="mission-title">这座城市，等你出发。</h2><p id="mission-objective">前方停着你的第一辆车。靠近后按 E 上车。</p><div class="mission-card-footer"><button id="jobs">委托中心 <span>↗</span></button><span id="mission-distance">TAB</span></div></aside>
+ <div class="map-wrap"><button id="map-button" aria-label="打开城市地图"><canvas id="minimap" width="270" height="220"></canvas><span class="map-north">N</span><span class="map-expand">↗</span></button><div class="vitals"><div><span>HP</span><i><b id="health-fill"></b></i></div><div><span>ST</span><i><b id="stamina-fill"></b></i></div></div><p><span class="tiny-dot"></span><span id="map-location">霓港市</span><kbd>M</kbd></p></div>
+ <div id="interaction" class="interaction"><kbd>E</kbd><span>靠近车辆以驾驶</span></div>
+ <div class="driving-info"><div class="speed-label" id="mode-label">ON FOOT</div><div class="speed-display"><span id="speed">00</span><small id="speed-unit">KM/H</small></div><div class="speed-meter"><i id="speed-fill"></i></div><div class="vehicle-stats"><span id="vehicle-name">城市漫游者</span><span id="ammo">18 / ∞</span></div><div class="controls-mini"><span><kbd>WASD</kbd> 移动</span><span><kbd>J</kbd> 射击</span><span><kbd>ESC</kbd> 暂停</span></div></div>
+ <div id="crosshair" class="crosshair hidden" aria-hidden="true">+</div>
+</main>
+<div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+<div id="touch-controls" class="touch-controls hidden" aria-label="触屏控制"><div class="touch-pad"><button data-hold="forward" aria-label="向前">▲</button><button data-hold="left" aria-label="向左">◀</button><button data-hold="backward" aria-label="后退">▼</button><button data-hold="right" aria-label="向右">▶</button></div><div class="touch-actions"><button data-action="interact">上下车</button><button data-hold="brake">刹车 / 跳</button><button data-action="fire">射击</button><button data-hold="sprint">奔跑</button></div></div>
+<dialog id="panel" aria-labelledby="panel-title"><div class="panel-head"><div><span class="eyebrow">NEON HARBOR / CITY SERVICES</span><h2 id="panel-title">城市菜单</h2></div><button id="close-panel" class="icon-button" aria-label="关闭菜单">×</button></div><nav class="panel-tabs" aria-label="菜单分类"><button data-tab="jobs">城市委托</button><button data-tab="map">城市地图</button><button data-tab="garage">车库与补给</button><button data-tab="settings">设置</button><button data-tab="help">操作指南</button></nav><div id="panel-content"></div><footer class="panel-footer"><span id="save-status">进度保存在当前浏览器</span><button id="resume" class="primary-button compact">继续游戏 →</button></footer></dialog>
+<noscript>请启用 JavaScript 以运行霓港。</noscript><script type="module" src="./src/main.js"></script>
+</body></html>
