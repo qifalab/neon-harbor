@@ -2,7 +2,9 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/e2e',
-  timeout: 90000,
+  // Shared CI CPUs render and encode evidence more slowly than local runs.
+  // Keep per-interaction deadlines unchanged; allow the whole scenario to finish.
+  timeout: process.env.CI ? 180000 : 90000,
   expect: { timeout: 20000 },
   workers: 1,
   reporter: [['list'], ['html', { open: 'never' }]],
