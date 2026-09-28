@@ -1,8 +1,7 @@
 name: GitHub Pages
 
 on:
-  # This private repository does not publish automatically.
-  # A repository owner must enable Pages and explicitly run this workflow.
+  # Publish the selected revision only after the full verification pipeline.
   workflow_dispatch:
 
 permissions:

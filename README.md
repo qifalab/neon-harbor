@@ -23,7 +23,7 @@
 
 ## 本地运行
 
-需要 Node.js 22 或更高版本。仓库为私有仓库，克隆时需使用具有访问权限的 GitHub 账号。游戏运行不需要安装 npm 依赖、后端服务或外部 CDN：
+需要 Node.js 22 或更高版本。项目以 MIT 许可证公开开源。游戏运行不需要安装 npm 依赖、后端服务或外部 CDN：
 
 ```sh
 git clone https://github.com/qifalab/neon-harbor.git
@@ -48,7 +48,9 @@ npm run preview
 
 构建结果在 `dist/`。把整个目录交给 Nginx 或任意静态托管即可，无需长期运行 Node.js。页面和模块使用相对路径，可部署到域名根目录或项目子路径。
 
-仓库当前为私有仓库，CI 会自动运行，**不会自动发布站点**。同时提供可选的 GitHub Pages 手动工作流：仓库所有者确认发布方式、账号支持和访问权限后，在 **Settings → Pages → Source** 选择 **GitHub Actions**，再手动运行 **GitHub Pages** 工作流。该工作流会先完成测试再发布；启用私有仓库的 Pages 并不自动保证站点内容私有。
+仓库已公开开源。单机试玩通过 GitHub Pages 发布，发布源为 **GitHub Actions**。在 Actions 中手动运行 **GitHub Pages** 工作流，即可在规则测试、构建与浏览器验收通过后发布 `dist/`。每次手动发布对应选中的分支版本；普通提交只运行 CI。
+
+GitHub Pages 承载静态客户端。未来多人版仍可复用此客户端托管方式，房间服务器、实时同步与数据库需部署在独立后端。
 
 ## 操作
 
