@@ -180,7 +180,7 @@ function lighting(dt){
   const p=started?sim.position:{x:0,z:0};sun.position.set(p.x-100,95+daylight*100,p.z-65);sunTarget.position.set(p.x,0,p.z);sunTarget.updateMatrixWorld();world.update(dt,settings.hour/24);
 }
 function frame(time){
-  requestAnimationFrame(frame);const dt=Math.min((time-lastTime)/1000||0,0.08);lastTime=time;sceneTime+=dt;fpsClock+=dt;frameCount++;if(fpsClock>1){fps=frameCount/fpsClock;frameCount=0;fpsClock=0;}
+  requestAnimationFrame(frame);const wallDt=(time-lastTime)/1000||0,dt=Math.min(wallDt,0.08);lastTime=time;sceneTime+=dt;fpsClock+=wallDt;frameCount++;if(fpsClock>1){fps=frameCount/fpsClock;frameCount=0;fpsClock=0;}
   if(started&&!paused&&!document.hidden){accumulator+=dt;const input=inputState();while(accumulator>=1/60){sim.update(1/60,input);accumulator-=1/60;}saveElapsed+=dt;if(saveElapsed>8||lastRevision!==sim.saveRevision){save();saveElapsed=0;lastRevision=sim.saveRevision;}drainMessages();}else accumulator=0;
   updateVisuals(paused?0:dt);updateCamera(dt);lighting(dt);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);renderer.render(scene,camera);
 }
