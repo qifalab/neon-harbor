@@ -9,15 +9,35 @@ async function boot(page) {
   expect(await page.locator('#loading').isVisible()).toBe(false);
   return errors;
 }
+async function useSoftwareRenderingQuality(page) {
+  // Keep startup coverage at the default quality, then use the real low-quality
+  // option for interaction tests: SwiftShader has no hardware GPU in CI.
+  await page.locator('#welcome-settings').click();
+  await page.locator('#quality').selectOption('low');
+  expect((await snapshot(page)).settings.quality).toBe('low');
+  await page.locator('#resume').click();
+}
 async function travel(page, key, predicate) {
+  await expect(page.locator('#game')).toBeFocused();
+  expect((await snapshot(page)).paused).toBe(false);
   await page.keyboard.down(key);
-  try { await expect.poll(async () => predicate(await snapshot(page))).toBe(true); }
+  // Observe after each browser animation frame instead of progressively slower
+  // Node polls. This releases held input promptly on fast GPUs and still checks
+  // actual game state on software renderers. No game state is modified here.
+  try {
+    await page.waitForFunction(
+      `(${predicate.toString()})(window.__NEON__.snapshot())`,
+      null,
+      { polling: 'raf', timeout: 20000 },
+    );
+  }
   finally { await page.keyboard.up(key); }
 }
 
 test('real keyboard gameplay, menus, wanted level and saved settings', async ({ page }) => {
   const errors = await boot(page);
   await page.screenshot({ path: 'test-results/screenshots/01-welcome.png' });
+  await useSoftwareRenderingQuality(page);
   await page.locator('#start').click();
   await expect(page.locator('#hud')).toBeVisible();
   const initial = await snapshot(page);
