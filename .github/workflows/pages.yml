@@ -38,3 +38,14 @@ jobs:
       - name: Deploy the verified revision
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify the live deployed game
+        env:
+          DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node tools/check-live.mjs "$DEPLOYED_URL"
+      - name: Retain live deployment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-deployment-smoke
+          path: test-results/live-smoke/
+          if-no-files-found: ignore
