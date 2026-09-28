@@ -1,6 +1,7 @@
 import { chromium, expect } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const rawURL = process.argv[2];
 if (!rawURL) throw new Error('Usage: node tools/check-live.mjs <deployed-site-url>');
@@ -14,6 +15,7 @@ const output = resolve('test-results/live-smoke');
 await mkdir(output, { recursive: true });
 const report = { url: target.href, success: false, checks: [], errors: [], assets: [] };
 const loadedAssets = new Set();
+const browserAssetBodies = new Map();
 let browser;
 let page;
 let failure;
@@ -42,7 +44,13 @@ try {
     const item = { url: response.url(), status: response.status() };
     report.assets.push(item);
     if (response.status() >= 400) report.errors.push(`HTTP ${response.status()}: ${response.url()}`);
-    if (response.ok()) loadedAssets.add(new URL(response.url()).pathname);
+    if (response.ok()) {
+      const pathname = new URL(response.url()).pathname;
+      loadedAssets.add(pathname);
+      // Read the bytes this browser actually rendered, rather than independently
+      // fetching a potentially different cached copy of each runtime module.
+      browserAssetBodies.set(pathname, response.body().then(body => ({ body }), error => ({ error: error.message })));
+    }
   });
 
   const response = await page.goto(target.href, { waitUntil: 'load', timeout: 30000 });
@@ -60,6 +68,21 @@ try {
   }
   report.checks.push('Entry page and all required CSS/ES-module assets loaded');
 
+  const manifestResponse = await context.request.get(new URL('build-info.json', target).href);
+  expect(manifestResponse.ok(), 'The deployment has a build manifest').toBe(true);
+  const manifest = await manifestResponse.json();
+  report.build = { version: manifest.version, revision: manifest.revision };
+  if (process.env.EXPECTED_REVISION) expect(manifest.revision, 'The public site serves this release').toBe(process.env.EXPECTED_REVISION);
+  for (const [pathname, result] of browserAssetBodies) {
+    const relative = pathname === target.pathname ? 'index.html' : pathname.slice(target.pathname.length);
+    if (!pathname.startsWith(target.pathname)) continue;
+    expect(manifest.assets[relative], `Loaded asset is included in the release manifest: ${relative}`).toMatch(/^[a-f0-9]{64}$/);
+    const { body, error } = await result;
+    expect(error, `Read loaded asset ${relative}`).toBeUndefined();
+    expect(createHash('sha256').update(body).digest('hex'), `Deployed bytes match ${relative}`).toBe(manifest.assets[relative]);
+  }
+  report.checks.push('Public revision and browser-loaded asset hashes match the release manifest');
+
   const initial = await page.evaluate(() => window.__NEON__.snapshot());
   expect(initial.renderer.calls).toBeGreaterThan(0);
   expect(initial.renderer.triangles).toBeGreaterThan(0);
@@ -71,8 +94,16 @@ try {
   expect(report.renderer?.lost).toBe(false);
   report.checks.push('Actual WebGL 2 context and nonempty Three.js draw calls');
 
+  expect(initial.settings.quality, 'A fresh browser defaults to high quality').toBe('high');
+  expect(initial.streaming?.ready, 'Nearby districts are fully streamed before entry').toBe(true);
+  expect(initial.streaming?.loaded).toBeGreaterThan(0);
+  report.initialStreaming = initial.streaming;
+  await page.screenshot({ path: resolve(output, 'live-high-quality-menu.png'), timeout: 20000 });
+  report.checks.push('Default high quality and nearby streamed city data are ready');
+
   // CI uses software rendering. Select the shipped quality control through the
   // UI; do not bypass startup, mutate the game or fake the renderer.
+  await page.setViewportSize({ width: 960, height: 600 });
   await page.locator('#welcome-settings').click();
   await page.locator('#quality').selectOption('low');
   await page.locator('#resume').click();
@@ -102,6 +133,14 @@ try {
   report.checks.push('Opened the city map and resumed using Escape');
 
   await page.screenshot({ path: resolve(output, 'live-game.png'), timeout: 15000 });
+  await page.keyboard.press('Escape');
+  await page.locator('[data-tab="settings"]').click();
+  await page.locator('#quality').selectOption('high');
+  await page.locator('#resume').click();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.waitForFunction(() => window.__NEON__.snapshot().settings.quality === 'high');
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  await page.screenshot({ path: resolve(output, 'live-high-quality-game.png'), timeout: 20000 });
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
   report.success = true;
 } catch (error) {

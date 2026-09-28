@@ -41,6 +41,7 @@ jobs:
       - name: Verify the live deployed game
         env:
           DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_REVISION: ${{ github.sha }}
         run: node tools/check-live.mjs "$DEPLOYED_URL"
       - name: Retain live deployment evidence
         if: always()

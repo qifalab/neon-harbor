@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+// CI has no hardware GPU. Keep interaction coverage at a modest viewport;
+// default-HIGH desktop visual review is captured separately at full resolution.
+test.use({ viewport: { width: 960, height: 600 } });
+
 const snapshot = page => page.evaluate(() => window.__NEON__.snapshot());
 async function boot(page) {
   const errors = [];
@@ -34,7 +38,7 @@ async function travel(page, key, predicate) {
   finally { await page.keyboard.up(key); }
 }
 
-test('real keyboard gameplay, menus, wanted level and saved settings', async ({ page }) => {
+test('real keyboard gameplay, menus and wanted level', async ({ page }) => {
   const errors = await boot(page);
   await page.screenshot({ path: 'test-results/screenshots/01-welcome.png' });
   await useSoftwareRenderingQuality(page);
@@ -65,6 +69,17 @@ test('real keyboard gameplay, menus, wanted level and saved settings', async ({ 
   await page.keyboard.press('Escape');
   await page.locator('#cancel-job').click();
   expect((await snapshot(page)).mission).toBeNull();
+  expect(errors).toEqual([]);
+});
+
+test('settings and export persist after reload while active pursuit resets', async ({ page }) => {
+  const errors = await boot(page);
+  await useSoftwareRenderingQuality(page);
+  await page.locator('#start').click();
+  await expect(page.locator('#hud')).toBeVisible();
+  // Establish unsaved transient state through real gameplay before reloading.
+  await travel(page, 'j', state => state.wanted > 0);
+  await page.keyboard.press('Escape');
   await page.locator('[data-tab="settings"]').click();
   await page.locator('#quality').selectOption('low');
   await page.locator('#cycle').uncheck();

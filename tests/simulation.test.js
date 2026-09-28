@@ -295,3 +295,108 @@ test('reset restores a fresh game and discarded runtime state is absent from sav
   assert.equal(game.mission, null);
   assert.equal(game.wanted, 0);
 });
+
+test('vehicle bumpers remain solid during a damage cooldown without oscillating while throttle is held', async () => {
+  const { overlapOBB } = await import('../src/collision.js');
+  const game = isolated();
+  const car = board(game), parked = game.cars[1];
+  Object.assign(car, { yaw: 0, speed: 0, vx: 0, vz: 0 });
+  Object.assign(parked, { x: car.x, z: car.z + 12, yaw: 0 });
+  game._hitCooldown = 999;
+  const positions = [];
+  for (let i = 0; i < 360; i++) {
+    game.update(1 / 60, { forward: 1 });
+    assert.equal(overlapOBB(car, parked), null, 'damage cooldown must never disable solidity');
+    if (i > 300) positions.push(car.z);
+  }
+  assert.ok(Math.max(...positions) - Math.min(...positions) < 0.005, 'held throttle should rest at contact without bounce');
+  assert.ok(car.speed >= 0, 'a collision must not reverse the vehicle velocity');
+});
+
+test('parked cars block a walking character with their full bumper footprint', () => {
+  const game = isolated();
+  const parked = game.cars[0];
+  Object.assign(game.player, { x: parked.x, z: parked.z + 6 });
+  tick(game, 3, { forward: 1, cameraYaw: Math.PI });
+  assert.ok(game.player.z >= parked.z + 2.32 + 0.65 - 0.001);
+});
+
+test('walking ignores a destroyed invisible vehicle', () => {
+  const game = isolated();
+  const parked = game.cars[0];
+  parked.health = 0;
+  Object.assign(game.player, { x: parked.x, z: parked.z + 6 });
+  tick(game, 2, { forward: 1, cameraYaw: Math.PI });
+  assert.ok(game.player.z < parked.z - 2.32);
+});
+
+test('entering a nearby car cannot teleport through a thin wall', () => {
+  const game = isolated();
+  const parked = game.cars[0];
+  Object.assign(game.player, { x: parked.x, z: parked.z + 4 });
+  game.colliders = [{ x: parked.x, z: parked.z + 2.5, hx: 3, hz: 0.05 }];
+  assert.equal(game.nearestCar.id, parked.id);
+  assert.equal(game.interact(), false);
+  assert.equal(game.inCar, null);
+});
+
+test('an exit destination beyond a thin wall is rejected even if the destination itself is clear', () => {
+  const game = isolated();
+  const car = board(game);
+  game.colliders = [{ x: car.x - 2, z: car.z, hx: 0.05, hz: 4 }];
+  assert.equal(game.interact(), true);
+  assert.ok(game.player.x > car.x, 'exit must use the clear right side instead of crossing the left wall');
+});
+
+test('unsafe saved positions use a validated fallback, including when the default spawn is blocked', async () => {
+  const { circleContacts, SpatialIndex, CHARACTER_RADIUS } = await import('../src/collision.js');
+  const colliders = [{ x: 8, z: 174, hx: 8, hz: 8 }, { x: 80, z: 80, hx: 12, hz: 12 }];
+  const game = isolated({ colliders, save: { version: 1, cash: 777, completed: [], player: { x: 80, z: 80, yaw: 0 } } });
+  assert.equal(circleContacts(game.player, CHARACTER_RADIUS, { index: new SpatialIndex(colliders), bounds: game.bounds, vehicles: game.cars }).length, 0);
+  assert.equal(game.cash, 777);
+});
+
+test('oncoming NPC traffic stops at contact instead of passing through other traffic', async () => {
+  const { overlapOBB } = await import('../src/collision.js');
+  const game = isolated();
+  const route = [{ x: -20, z: 0 }, { x: 20, z: 0 }];
+  const common = { z: 0, health: 100, speed: 12, cruise: 12, traffic: true, type: 'sedan', route, pause: 0 };
+  game.cars = [{ ...common, id: 'east', x: -12, yaw: Math.PI / 2, waypoint: 1 },
+    { ...common, id: 'west', x: 12, yaw: -Math.PI / 2, waypoint: 0 }];
+  for (let i = 0; i < 600; i++) {
+    game.update(1 / 60);
+    assert.equal(overlapOBB(game.cars[0], game.cars[1]), null);
+  }
+  assert.ok(game.cars[0].x < game.cars[1].x);
+});
+
+test('jumping beneath a canopy clamps upward motion without horizontal ejection', () => {
+  const game = isolated({ colliders: [{ x: 8, z: 174, hx: 5, hz: 5, minY: 2.24, maxY: 2.52 }] });
+  const x = game.player.x, z = game.player.z;
+  for (let i = 0; i < 120; i++) {
+    game.update(1 / 60, { jump: true });
+    assert.ok(game.player.y + game.player.groundY + 1.8 <= 2.24 + 1e-6, 'head must stay below canopy');
+    assert.equal(game.player.x, x);
+    assert.equal(game.player.z, z);
+  }
+  assert.equal(game.player.y, 0);
+});
+
+test('a jump can land on a low solid, remain supported and jump again without being ejected', () => {
+  const game = isolated({ colliders: [{ x: 8, z: 171.5, hx: 2, hz: 0.8, minY: 0, maxY: 0.5 }] });
+  const x = game.player.x;
+  // Rise above the bench before moving over it.
+  for (let i = 0; i < 14; i++) game.update(1 / 60, { jump: true });
+  for (let i = 0; i < 24; i++) game.update(1 / 60, { forward: 1, cameraYaw: Math.PI });
+  const z = game.player.z;
+  for (let i = 0; i < 100; i++) game.update(1 / 60);
+  assert.equal(game.player.x, x);
+  assert.ok(Math.abs(game.player.z - z) < 0.001, 'falling onto a seat must not eject the player sideways');
+  assert.ok(Math.abs(game.player.y - 0.5) < 0.001, `bench support lost at ${game.player.y}`);
+  game.update(1 / 60, { jump: true });
+  assert.ok(game.player.y > 0.5, 'supported player must be able to jump off the bench');
+});
+
+test('an entirely obstructed world fails explicitly instead of placing the player inside a wall', () => {
+  assert.throws(() => new GameSimulation({ colliders: [{ x: 0, z: 0, hx: 400, hz: 400 }], bounds: 290 }), /safe player spawn/);
+});
