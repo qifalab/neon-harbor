@@ -1,5 +1,7 @@
 # 霓港 · Neon Harbor
 
+[在线试玩单机版](https://qifalab.github.io/neon-harbor/) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
+
 一款可直接在浏览器运行的原创 3D 海滨城市游戏。步行探索街区、驾驶车辆、接取委托、躲避警车追捕，在一座紧凑的开放城市里完成自己的游玩循环。
 
 当前版本为 **v0.1 可玩首版**。本项目借鉴开放世界城市游戏的玩法形式，独立设计城市、任务、美术与音效，与 Rockstar Games 或 GTA 系列没有关联，也不代表已经实现 GTA 5/6 的完整内容与规模。首版范围与后续路线图见 [完整实施计划](docs/PLAN.md)。

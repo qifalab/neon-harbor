@@ -1,0 +1,128 @@
+import { chromium, expect } from '@playwright/test';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+
+const rawURL = process.argv[2];
+if (!rawURL) throw new Error('Usage: node tools/check-live.mjs <deployed-site-url>');
+const target = new URL(rawURL);
+if (!['http:', 'https:'].includes(target.protocol) || target.username || target.password) {
+  throw new Error('The deployed site must be an HTTP(S) URL without embedded credentials');
+}
+// Relative module URLs must keep the Pages project directory, including its slash.
+if (!target.pathname.endsWith('/')) target.pathname += '/';
+const output = resolve('test-results/live-smoke');
+await mkdir(output, { recursive: true });
+const report = { url: target.href, success: false, checks: [], errors: [], assets: [] };
+const loadedAssets = new Set();
+let browser;
+let page;
+let failure;
+
+try {
+  browser = await chromium.launch({
+    headless: true,
+    ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}),
+    args: ['--enable-webgl', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
+  });
+  report.browser = browser.version();
+  const context = await browser.newContext({
+    viewport: { width: 1280, height: 800 },
+    extraHTTPHeaders: { 'Cache-Control': 'no-cache' },
+  });
+  page = await context.newPage();
+  page.setDefaultTimeout(20000);
+  page.on('pageerror', error => report.errors.push(`Page error: ${error.message}`));
+  page.on('console', message => {
+    if (message.type() === 'error') report.errors.push(`Console error: ${message.text()}`);
+  });
+  page.on('requestfailed', request => {
+    report.errors.push(`Request failed: ${request.url()} (${request.failure()?.errorText})`);
+  });
+  page.on('response', response => {
+    const item = { url: response.url(), status: response.status() };
+    report.assets.push(item);
+    if (response.status() >= 400) report.errors.push(`HTTP ${response.status()}: ${response.url()}`);
+    if (response.ok()) loadedAssets.add(new URL(response.url()).pathname);
+  });
+
+  const response = await page.goto(target.href, { waitUntil: 'load', timeout: 30000 });
+  expect(response?.ok(), 'The deployed entry page responds successfully').toBe(true);
+  await expect(page.locator('#start')).toBeEnabled({ timeout: 20000 });
+  await expect(page.locator('#loading')).toBeHidden();
+  await page.waitForFunction(() => window.__NEON__?.snapshot().ready, null, { timeout: 20000 });
+
+  // Validate the actual subpath asset requests made by the browser. Successful
+  // HTML alone would miss a Pages base-path, MIME or ES-module deployment error.
+  for (const asset of ['styles.css', 'src/main.js', 'src/world.js', 'src/simulation.js',
+    'src/audio.js', 'vendor/three/three.module.js', 'vendor/three/three.core.min.js']) {
+    const pathname = new URL(asset, target).pathname;
+    expect(loadedAssets.has(pathname), `Loaded deployed asset ${pathname}`).toBe(true);
+  }
+  report.checks.push('Entry page and all required CSS/ES-module assets loaded');
+
+  const initial = await page.evaluate(() => window.__NEON__.snapshot());
+  expect(initial.renderer.calls).toBeGreaterThan(0);
+  expect(initial.renderer.triangles).toBeGreaterThan(0);
+  report.renderer = await page.evaluate(() => {
+    const gl = document.querySelector('#game').getContext('webgl2');
+    return gl ? { version: gl.getParameter(gl.VERSION), lost: gl.isContextLost() } : null;
+  });
+  expect(report.renderer?.version).toContain('WebGL 2');
+  expect(report.renderer?.lost).toBe(false);
+  report.checks.push('Actual WebGL 2 context and nonempty Three.js draw calls');
+
+  // CI uses software rendering. Select the shipped quality control through the
+  // UI; do not bypass startup, mutate the game or fake the renderer.
+  await page.locator('#welcome-settings').click();
+  await page.locator('#quality').selectOption('low');
+  await page.locator('#resume').click();
+  await page.locator('#start').click();
+  await expect(page.locator('#hud')).toBeVisible();
+  await expect(page.locator('#game')).toBeFocused();
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).started).toBe(true);
+  report.checks.push('Entered the deployed game through its start button');
+
+  await page.locator('#jobs').click();
+  await expect(page.locator('#panel')).toBeVisible();
+  await expect(page.locator('[data-mission]')).toHaveCount(3);
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).paused).toBe(true);
+  await page.locator('#close-panel').click();
+  await expect(page.locator('#panel')).toBeHidden();
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).paused).toBe(false);
+  report.checks.push('Opened and closed the mission menu with three missions');
+
+  await page.locator('#map-button').click();
+  await expect(page.locator('#city-map')).toBeVisible();
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).paused).toBe(true);
+  await page.screenshot({ path: resolve(output, 'live-city-map.png'), timeout: 15000 });
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#panel')).toBeHidden();
+  await expect(page.locator('#game')).toBeFocused();
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).paused).toBe(false);
+  report.checks.push('Opened the city map and resumed using Escape');
+
+  await page.screenshot({ path: resolve(output, 'live-game.png'), timeout: 15000 });
+  expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
+  report.success = true;
+} catch (error) {
+  failure = error;
+  report.errors.push(error.message);
+  if (page && !page.isClosed()) {
+    try {
+      await page.screenshot({ path: resolve(output, 'live-failure.png'), timeout: 15000 });
+    } catch (captureError) {
+      report.errors.push(`Failure screenshot unavailable: ${captureError.message}`);
+    }
+  }
+} finally {
+  await writeFile(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
+  await browser?.close();
+}
+
+if (failure) {
+  console.error(`Live deployment smoke failed: ${failure.message}`);
+  process.exitCode = 1;
+} else {
+  console.log(`Live deployment smoke passed: ${target.href}`);
+  console.log(`${report.checks.length} checks; screenshots and report: ${output}`);
+}
