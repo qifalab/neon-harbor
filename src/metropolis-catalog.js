@@ -1,5 +1,12 @@
 /** Hand-authored north-shore addresses. Stable IDs also identify interior scenes. */
 import { getRoomDesign } from './metropolis-room-designs.js';
+/** Exact slab footprint shared by interior floors and the exterior paving cut. */
+export function publicInteriorFootprint(building) {
+  const width = building.width - 0.7, depth = building.depth - 0.7;
+  return { width, depth, minX: building.x - width / 2, maxX: building.x + width / 2,
+    minZ: building.z - depth / 2, maxZ: building.z + depth / 2 };
+}
+
 export const METROPOLIS_BOUNDS = 1450;
 export const METROPOLIS_ROADS = Object.freeze({
   vertical: [-640, -480, -320, -160, 0, 160, 320, 480, 640],

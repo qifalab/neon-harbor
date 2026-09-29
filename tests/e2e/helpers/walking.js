@@ -39,7 +39,7 @@ export async function walkAxis(page, axis, target, { timeout = 60000, tolerance 
     // before sending a move, rather than spending all corrections on stale data.
     if (Math.abs(target - initial) >= tolerance) current = await afterPhysicsFrame(before.simulationTime);
     // Keep a two-metre braking zone for protocol/render latency. Final approach
-    // consists of short complete key presses, so no held key survives a read.
+    // holds each input through its first physical movement, then releases it.
     if (Math.abs(target - initial) > 3.2) {
       const positive = target > initial, key = axisKey(current.yaw, axis, positive);
       await page.keyboard.down(key);
@@ -55,14 +55,18 @@ export async function walkAxis(page, axis, target, { timeout = 60000, tolerance 
     for (let attempt = 0; Math.abs(current.position[axis] - target) >= tolerance && attempt < 24; attempt++) {
       expect(Date.now(), 'endpoint adjustment keeps the original wall-clock limit').toBeLessThan(deadline);
       const error = target - current.position[axis], key = axisKey(current.yaw, axis, error > 0);
-      // Vary short pulse lengths: a single long hold can overshoot repeatedly
-      // on a software GPU, while fixed tiny taps can all fall between frames.
-      const delay = Math.min(110, Math.max(16, Math.abs(error) / 5.6 * 180)) + (attempt % 3) * 7;
-      const pulseTime = current.simulationTime;
-      await page.keyboard.press(key, { delay });
-      // One completed input attempt must observe at least one actual simulation
-      // frame. Rapid key presses and reads alone do not establish progress.
-      current = await afterPhysicsFrame(pulseTime);
+      const start = current.position[axis], sign = Math.sign(error);
+      await page.keyboard.down(key);
+      try {
+        // Short wall-clock taps can fall entirely between slow rendered frames.
+        // A clock comparison alone could also pass on a frame before keydown.
+        // Observe movement in the requested direction, then release immediately
+        // before any extra snapshot round trip can consume another held frame.
+        await page.waitForFunction(({ axis, start, sign }) =>
+          sign * (window.__NEON__.snapshot().position[axis] - start) > .01,
+        { axis, start, sign }, { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) });
+      } finally { await page.keyboard.up(key); }
+      current = await motion(page);
       samples.push({ value: current.position[axis], simulationTime: current.simulationTime });
       expect(current.teleportRevision, 'walking must not replace the player position').toBe(before.teleportRevision);
     }
