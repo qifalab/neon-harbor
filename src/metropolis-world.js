@@ -1,5 +1,5 @@
 import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
-import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS } from './metropolis-catalog.js';
+import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS, publicInteriorFootprint } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
 import { architectureDesignFor, architectureSignLayout, architectureStalls } from './metropolis-architecture-designs.js';
 import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
@@ -102,7 +102,19 @@ export function createMetropolisWorld(THREE, scene, {
   // never overlap roads, eliminating coplanar intersection flicker.
   for(const p of subtractGroundRect({minX:-740,maxX:740,minZ:-1380,maxZ:-390},METRO_STAIR_OPENINGS))
     box('asphalt',(p.minX+p.maxX)/2,-.16,(p.minZ+p.maxZ)/2,p.maxX-p.minX,.3,p.maxZ-p.minZ);
-  for (const b of METROPOLIS_BUILDINGS) box('sidewalk',b.x,-0.045,b.z,134,0.09,114);
+  for (const b of METROPOLIS_BUILDINGS) {
+    const footprint = publicInteriorFootprint(b);
+    const block = { minX: b.x - 67, maxX: b.x + 67, minZ: b.z - 57, maxZ: b.z + 57 };
+    // Public paving ends exactly at the occupied floor, so two y=0 surfaces
+    // cannot fight through one another after entering. Keep a tagged infill
+    // while outdoors: the existing shell switch removes it only when the real
+    // lobby slab is resident, including before detailed entrance doors load.
+    for (const piece of subtractGroundRect(block, [footprint])) {
+      box('sidewalk', (piece.minX + piece.maxX) / 2, -0.045, (piece.minZ + piece.maxZ) / 2,
+        piece.maxX - piece.minX, 0.09, piece.maxZ - piece.minZ);
+    }
+    box('sidewalk', b.x, -0.045, b.z, footprint.width, 0.09, footprint.depth, { building: b.id });
+  }
   box('sidewalk',0,-0.04,-1333,1450,0.08,116);
   box('sidewalk',-704,-0.04,-878,68,0.08,960);
   box('sidewalk',704,-0.04,-878,68,0.08,960);

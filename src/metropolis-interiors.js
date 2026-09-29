@@ -1,4 +1,4 @@
-import { METROPOLIS_BUILDINGS } from './metropolis-catalog.js';
+import { METROPOLIS_BUILDINGS, publicInteriorFootprint } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
 import { getRoomDesign } from './metropolis-room-designs.js';
 
@@ -38,7 +38,7 @@ export function createInteriorStairs(building) {
  * Positions remain in city coordinates, including the actual elevation of each floor. */
 export function createInteriorLayout(building, floor) {
   if (!building || !floor) throw new Error('An interior requires a building and a floor.');
-  const width = building.width - 0.7, depth = building.depth - 0.7;
+  const { width, depth } = publicInteriorFootprint(building);
   const next = building.floors.find(candidate => candidate.y > floor.y);
   // Keep the painted soffit BELOW the next storey's 0.32 m stone slab.
   // At 4.2 m floor spacing, 3.95 m exposed the upper slab's dark underside.
