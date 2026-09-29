@@ -91,9 +91,15 @@ test('small window bays use metre UVs and sparse office lights follow the world 
   assert.ok(shader.fragmentShader.includes('fwidth(harborGrid)'));
   assert.ok(shader.fragmentShader.includes('vec2(7.2, 15.6)'), 'structural modules must survive distant anti-aliasing');
   assert.ok(shader.fragmentShader.includes('mix(harborCoarse,'), 'distant facades must not become a flat color');
-  assert.ok(shader.fragmentShader.includes('step(.70, harborVariation)'));
   assert.ok(shader.fragmentShader.includes('harborFilteredAperture'), 'subpixel emitted area must survive distance filtering');
-  assert.ok(shader.fragmentShader.includes('step(.57, harborNightVariation)'), 'unoccupied night window groups must remain dark');
+  assert.ok(shader.fragmentShader.includes('harborLitFloors * harborOccupiedWings'), 'offices must light connected storeys and wings');
+  assert.ok(!shader.fragmentShader.includes('harborNightVariation'), 'never scatter independent bright random cells over a whole office tower');
+  const home = harbor.root.children.find(m => m.userData.harborTowerId === 'quarry-residence'), homeShader = {
+    uniforms: {}, vertexShader: THREE.ShaderLib.standard.vertexShader, fragmentShader: THREE.ShaderLib.standard.fragmentShader,
+  };
+  home.material.onBeforeCompile(homeShader);
+  assert.ok(homeShader.fragmentShader.includes('vec2(16.8, 20.1)'), 'sparse residential occupancy must form broad neighbouring groups');
+  assert.ok(homeShader.fragmentShader.includes('vec3(.93, .59, .28)'), 'residential light must remain restrained and warm');
   assert.ok(!shader.fragmentShader.includes('mix(.28, 1.0, harborDistant)'), 'never dim already-subpixel night lights a second time');
   const crownMaterials = new Set();
   harbor.root.traverse(mesh => { if (mesh.material?.name?.startsWith('harbor-crown-')) crownMaterials.add(mesh.material); });
