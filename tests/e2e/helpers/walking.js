@@ -27,17 +27,15 @@ export async function walkAxis(page, axis, target, { timeout = 60000, tolerance 
   const before = await motion(page), initial = before.position[axis], deadline = Date.now() + timeout;
   let current = before;
   const samples = [{ value: initial, simulationTime: before.simulationTime }];
-  const afterPhysicsFrame = async since => {
-    expect(Date.now(), 'waiting for a physics frame keeps the original wall-clock limit').toBeLessThan(deadline);
-    await page.waitForFunction(since => window.__NEON__.snapshot().simulationTime > since, since,
-      { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) });
-    return motion(page);
-  };
   try {
-    // Resuming settings suspends the frame clock; shader compilation may also
-    // leave many protocol reads on that same paused frame. Await actual physics
-    // before sending a move, rather than spending all corrections on stale data.
-    if (Math.abs(target - initial) >= tolerance) current = await afterPhysicsFrame(before.simulationTime);
+    // Travel can clear the camera until its first rendered pose. Only that
+    // initial orientation needs a wait: every input below already waits for
+    // physical movement, so another idle frame before each axis is redundant.
+    if (Math.abs(target - initial) >= tolerance && !Number.isFinite(current.yaw)) {
+      await page.waitForFunction(() => Number.isFinite(window.__NEON__.snapshot().camera?.yaw), null,
+        { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) });
+      current = await motion(page);
+    }
     // Keep a two-metre braking zone for protocol/render latency. Final approach
     // holds each input through its first physical movement, then releases it.
     if (Math.abs(target - initial) > 3.2) {
@@ -77,7 +75,7 @@ export async function walkAxis(page, axis, target, { timeout = 60000, tolerance 
     error.message += `\nWalking diagnostics: ${JSON.stringify({ axis, target, before, current, samples })}`;
     throw error;
   }
-  return snapshot(page);
+  return current;
 }
 
 /** Choose the open landing's interior, clear of a guard's rounded end.
@@ -94,16 +92,16 @@ export function stairWalkingRoute(flight, corridorX) {
 
 /** An explicit route preserves the landing turns; it is never a teleport path. */
 export async function walkRoute(page, waypoints, { heightTolerance = .75, onPoint } = {}) {
-  const initial = await snapshot(page), samples = [];
+  const initial = await motion(page), samples = [];
   for (const [index, point] of waypoints.entries()) {
     const before = await motion(page);
     const axes = ['x', 'z'].sort((a, b) => Math.abs(before.position[b] - point[b]) - Math.abs(before.position[a] - point[a]));
     for (const axis of axes) await walkAxis(page, axis, point[axis]);
     await expect.poll(async () => Math.abs((await motion(page)).position.y - point.y), { timeout: 10000 }).toBeLessThan(heightTolerance);
-    const arrived = await snapshot(page);
+    const arrived = await motion(page);
     expect(arrived.teleportRevision).toBe(initial.teleportRevision);
     samples.push({ index, position: arrived.position, simulationTime: arrived.simulationTime });
-    if (onPoint) await onPoint(arrived, index);
+    if (onPoint) await onPoint(await snapshot(page), index);
   }
   return samples;
 }
