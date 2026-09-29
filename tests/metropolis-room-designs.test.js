@@ -89,3 +89,55 @@ test('domestic room dimensions reflect furnished homes rather than unused public
   assert.ok(layout.parts.some(part => part.kind === 'historic-anchor'));
   assert.ok(layout.parts.filter(part => part.kind === 'ship-hull').length >= 2);
 });
+
+test('eight hospital rooms have clean bounded interiors and medical furniture within real walls', () => {
+  const hospital = METROPOLIS_BUILDINGS.find(building => building.id === 'garden-hospital');
+  let total = 0;
+  for (const floor of hospital.floors.slice(0, 2)) {
+    const layout = createInteriorLayout(hospital, floor);
+    for (const room of layout.rooms) {
+      total++;
+      const expected = { reception: [14, 12], waiting: [16, 14], pharmacy: [12, 10], consult: [10, 10], ward: [14, 12], rehab: [14, 12], office: [12, 10] }[room.type];
+      assert.deepEqual([room.width, room.depth], expected); assert.equal(room.ceilingHeight, 3.18); assert.equal(room.enclosed, true);
+      const parts = layout.parts.filter(part => part.roomId === room.id);
+      const walls = parts.filter(part => part.kind === 'partition');
+      assert.equal(walls.length, 5, `${room.name}: four sides and a split door wall`);
+      assert.ok(walls.every(part => part.material === 'clinicPaint'));
+      const ceiling = parts.find(part => part.kind === 'ceiling');
+      assert.equal(ceiling.sx, room.width); assert.equal(ceiling.sz, room.depth);
+      assert.ok(Math.abs(ceiling.y - ceiling.sy / 2 - floor.y - room.ceilingHeight) < 1e-8);
+      assert.ok(parts.some(part => part.material === 'clinicalFloor' && part.sx > room.width - 0.3));
+      for (const part of parts) {
+        assert.ok(part.x - part.sx / 2 >= room.bounds.minX - 0.15 && part.x + part.sx / 2 <= room.bounds.maxX + 0.15, `${room.name}/${part.kind} spills through a side wall`);
+        assert.ok(part.z - part.sz / 2 >= room.bounds.minZ - 0.15 && part.z + part.sz / 2 <= room.bounds.maxZ + 0.15, `${room.name}/${part.kind} spills through an end wall`);
+      }
+      if (room.type === 'consult') {
+        assert.ok(parts.some(part => part.kind === 'examination-bed' && part.material === 'steel' && part.sz < 2.3));
+        assert.ok(parts.some(part => part.kind === 'privacy-screen' && part.material === 'fabric'));
+        assert.ok(parts.some(part => part.kind === 'basin')); assert.ok(parts.filter(part => part.kind === 'chair').length >= 4);
+        assert.ok(!parts.some(part => part.kind === 'bed'), 'a domestic wooden bed is not a medical examination bed');
+      }
+      if (room.type === 'waiting') assert.equal(parts.filter(part => part.kind === 'chair').length, 36, '18 individually modeled waiting seats');
+    }
+  }
+  assert.equal(total, 8);
+});
+
+test('hospital visitors can reach counters, seats, beds, handwashing and rehabilitation equipment and return', () => {
+  const hospital = METROPOLIS_BUILDINGS.find(building => building.id === 'garden-hospital');
+  let visited = 0;
+  for (const floor of hospital.floors.slice(0, 2)) {
+    const layout = createInteriorLayout(hospital, floor);
+    const physics = { index: new SpatialIndex(layout.colliders), groundHeightAt: () => floor.y, bounds: 1450 };
+    for (const room of layout.rooms) for (const point of room.accessPoints) {
+      const player = { ...room.arrival, y: 0, groundY: floor.y };
+      for (const target of [point.via, point, point.via, room.arrival]) {
+        moveCircle(player, target.x - player.x, target.z - player.z, 0.42, physics);
+        assert.ok(Math.hypot(player.x - target.x, player.z - target.z) < 0.015, `${room.name}/${point.name} has blocked access`);
+        assert.equal(circleContacts(player, 0.42, physics).length, 0, `${room.name}/${point.name} overlaps furniture`);
+      }
+      visited++;
+    }
+  }
+  assert.equal(visited, 20);
+});
