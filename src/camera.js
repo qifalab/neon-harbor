@@ -12,7 +12,7 @@ const pointInside = (point, box, radius) => box.camera !== false &&
   point.y > (box.minY ?? 0) - radius && point.y < (box.maxY ?? Infinity) + radius;
 
 /** Player focus can be inside nonphysical foliage or an overhead canopy. */
-export function resolveCameraPoint(point, colliders, radius = CAMERA_RADIUS) {
+export function resolveCameraPoint(point, colliders, radius = CAMERA_RADIUS, minimumY = radius) {
   let result = { ...point };
   for (let attempt = 0; attempt < 12; attempt++) {
     const overlaps = colliders.filter(box => pointInside(result, box, radius));
@@ -24,7 +24,7 @@ export function resolveCameraPoint(point, colliders, radius = CAMERA_RADIUS) {
       { ...result, z: box.z + box.hz + radius + 0.025 },
       { ...result, y: (box.minY ?? 0) - radius - 0.025 },
       { ...result, y: (box.maxY ?? Infinity) + radius + 0.025 },
-    ]).filter(p => Number.isFinite(p.y) && p.y >= radius)
+    ]).filter(p => Number.isFinite(p.y) && p.y >= minimumY)
       .sort((a, b) => distance(a, point) - distance(b, point));
     const clear = exits.find(exit => !colliders.some(box => pointInside(exit, box, radius)));
     if (clear) return clear;
@@ -91,6 +91,19 @@ export class ChaseCamera {
 
   update(subject, controls, dt, colliders = []) {
     dt = clamp(Number.isFinite(dt) ? dt : 0, 0, MAX_FRAME_TIME);
+    if (controls.firstPerson) {
+      // Rail passengers sit inside the carriage. A six-metre chase boom would
+      // cut through its roof; interpolate the same passenger pose as rendering.
+      const requestedYaw = controls.yaw;
+      this.yaw = !this.initialized ? requestedYaw : this.yaw + angleDelta(requestedYaw, this.yaw) * -Math.expm1(-12 * dt);
+      this.pitch = controls.pitch; this.fov = 65; this.clearanceRadius = CAMERA_RADIUS;
+      this.position = { x: subject.x, y: subject.y + 1.62, z: subject.z };
+      this.focus = { ...this.position };
+      this.target = { x: this.position.x + Math.sin(this.yaw) * 10, y: this.position.y - Math.sin(controls.pitch - 0.15) * 10,
+        z: this.position.z + Math.cos(this.yaw) * 10 };
+      this.boomLength = this.desiredBoomLength = 0; this.obstructed = false; this.overheadFallback = false; this.colliderId = null;
+      this.initialized = true; return this.snapshot();
+    }
     const focus = { x: subject.x, y: subject.y + 1.35, z: subject.z };
     const requestedYaw = controls.yaw;
     const pitchTarget = clamp(controls.pitch, 0.08, 0.85);
@@ -126,7 +139,8 @@ export class ChaseCamera {
     }
 
     // A smoothed target can otherwise cut a building corner behind the subject.
-    const safeFocus = resolveCameraPoint(focus, colliders, this.clearanceRadius);
+    const safeFocus = resolveCameraPoint(focus, colliders, this.clearanceRadius,
+      (controls.floorY ?? 0) + this.clearanceRadius);
     const safeTarget = clipCameraSegment(safeFocus, this.target, colliders, this.clearanceRadius);
     this.target = safeTarget.position;
     let desired = {
