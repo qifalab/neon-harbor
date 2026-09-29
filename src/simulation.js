@@ -149,7 +149,8 @@ export class GameSimulation {
   get position() { return this.activeVehicle || this.player; }
   get speed() { return Math.abs(this.activeVehicle?.speed || 0); }
   get nearestCar() {
-    return this.cars.filter(c => c.health > 0 && Math.abs(c.speed) < 9 && distance(c, this.player) <= 6)
+    const feet = (this.player.groundY || 0) + (this.player.y || 0);
+    return this.cars.filter(c => c.health > 0 && Math.abs(c.speed) < 9 && distance(c, this.player) <= 6 && Math.abs((c.y || 0) - feet) < 1.2)
       .sort((a, b) => distance(a, this.player) - distance(b, this.player))[0] || null;
   }
   get escapeProgress() { return clamp(this._escapeTime / 14, 0, 1); }
@@ -186,7 +187,7 @@ export class GameSimulation {
 
   _supportAt(pose) {
     if (!this._supportCache) this._supportCache = new Map();
-    const key = `${pose.x}:${pose.z}:${pose.yaw || 0}`;
+    const key = `${pose.x}:${pose.z}:${pose.yaw || 0}:${pose.y || 0}`;
     if (!this._supportCache.has(key)) this._supportCache.set(key, vehicleGroundSupport(pose, this.groundHeightAt));
     return this._supportCache.get(key);
   }
@@ -289,7 +290,7 @@ export class GameSimulation {
     const speed = sprinting ? 10.5 : 5.6;
     this.player.stamina = clamp(this.player.stamina + (sprinting ? -22 : 15) * dt, 0, 100);
     this._move(this.player, dx * speed * dt, dz * speed * dt, CHARACTER_RADIUS);
-    this.player.groundY = this.groundHeightAt(this.player.x, this.player.z);
+    this.player.groundY = this.groundHeightAt(this.player.x, this.player.z, this.player.groundY || 0);
     if (magnitude > 0.01) this.player.yaw = Math.atan2(dx, dz);
     if (input.jump && !this._jumpHeld && (this._grounded || this.player.y <= 0.001)) {
       this.player.vy = 7.3;
@@ -470,10 +471,13 @@ export class GameSimulation {
         { x: car.x + front.x * 4.5, z: car.z + front.z * 4.5 },
       ];
       const exit = options.find(point => {
+        point.groundY = this.groundHeightAt(point.x, point.z, car.y || 0);
+        point.y = 0;
+        if (Math.abs(point.groundY - (car.y || 0)) > .8) return false;
         if (circleContacts(point, CHARACTER_RADIUS, this._collisionOptions()).length) return false;
         // Sweep from the door sill, excluding only the car being exited.
         const length = distance(point, car), nx = (point.x - car.x) / length, nz = (point.z - car.z) / length;
-        const start = { x: car.x + nx * 1.25, z: car.z + nz * 1.25, y: 0 };
+        const start = { x: car.x + nx * 1.25, z: car.z + nz * 1.25, y: 0, groundY: car.y || 0 };
         const others = this.cars.filter(other => other.id !== car.id);
         const result = moveCircle(start, point.x - start.x, point.z - start.z, CHARACTER_RADIUS,
           { ...this._collisionOptions(), vehicles: others });
@@ -483,7 +487,7 @@ export class GameSimulation {
       Object.assign(this.player, exit, { y: 0, vy: 0 });
       car.speed = 0; car.vx = 0; car.vz = 0;
       this.inCar = null; this.teleportRevision += 1;
-      this.player.groundY = this.groundHeightAt(this.player.x, this.player.z);
+      this.player.groundY = this.groundHeightAt(this.player.x, this.player.z, car.y || 0);
       this._message('已下车 · WASD 移动，Shift 冲刺');
       return true;
     }
@@ -606,7 +610,7 @@ export class GameSimulation {
     const car = this.activeVehicle;
     if (car) {
       const safe = this._safePosition(car.home || { x: 4, z: 160, yaw: Math.PI }, true, car);
-      if (safe) Object.assign(car, safe);
+      if (safe) Object.assign(car, safe, { y: safe.y || 0 });
       this._groundCar(car);
       car.health = safe ? 100 : 0; car.speed = 0; car.vx = 0; car.vz = 0;
     }
