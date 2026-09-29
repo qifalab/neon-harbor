@@ -3,6 +3,8 @@
  * here rather than in the street simulation: a metro platform is below street
  * level and must never inherit the surface world's ground-height sampler.
  */
+import { createMetropolisMaterials } from './metropolis-materials.js';
+
 const TAU = Math.PI * 2;
 const point = (x, z, y = 0) => ({ x, y, z });
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
@@ -21,6 +23,38 @@ export const TRANSIT_STOPS = Object.freeze([
   { id: 'ferry-south', routeId: 'ferry', name: '旧城 · 天星码头', entrance: point(-160, -282), platform: point(-160, -307, 0.7), berth: point(-160, -320, -0.15), kind: 'ferry' },
   { id: 'ferry-north', routeId: 'ferry', name: '北岸 · 维湾码头', entrance: point(-160, -402), platform: point(-160, -389, 0.7), berth: point(-160, -377, -0.15), kind: 'ferry' },
 ].map(stop => Object.freeze(stop)));
+
+/** Physical cutouts required in the street slabs; only the first flight is open to the sky. */
+export const METRO_STAIR_OPENINGS = Object.freeze(TRANSIT_STOPS.filter(s => s.kind === 'metro').map(s => Object.freeze({
+  stopId: s.id, minX: s.entrance.x - 2.3, maxX: s.entrance.x + 2.3,
+  minZ: s.entrance.z + 2, maxZ: s.entrance.z + 18.3,
+})));
+
+/** Two 40-riser flights, a generous turning landing and a furnished concourse. */
+export function metroAccessLayout(stop) {
+  if (stop.kind !== 'metro') return null;
+  const { x, z } = stop.entrance;
+  return { kind: 'walkable-stairs', width: 4.6, risersPerFlight: 40, riserHeight: .175, treadDepth: .4,
+    opening: { ...METRO_STAIR_OPENINGS.find(o => o.stopId === stop.id) },
+    waypoints: [point(x, z), point(x, z + 2), point(x, z + 10, -3.5), point(x, z + 20.5, -7),
+      point(x - 7, z + 20.5, -7), point(x - 7, z + 10, -10.5), point(x - 7, z, -14), point(x, z, -14)],
+    landings: [point(x, z + 1), point(x - 3.5, z + 20.5, -7), point(x - 7, z, -14)],
+    concourse: { x: x - 7, z: z - 4, width: 4.6, depth: 8, y: -14 },
+  };
+}
+
+/** Pick the adjacent walkable layer, preserving the street/platform overlap. */
+export function metroGroundHeightAt(stop, x, z, currentY = 0) {
+  const px = x - stop.entrance.x, pz = z - stop.entrance.z, candidates = [];
+  const inRect = (left, right, near, far) => px >= left - 1e-6 && px <= right + 1e-6 && pz >= near - 1e-6 && pz <= far + 1e-6;
+  if (inRect(-2.3, 2.3, -2, 2)) candidates.push(0);
+  if (inRect(-2.3, 2.3, 2, 18)) candidates.push(-7 * Math.max(0, Math.min(1, (pz - 2) / 16)));
+  if (inRect(-9.3, 2.3, 18, 23)) candidates.push(-7);
+  if (inRect(-9.3, -4.7, 2, 18)) candidates.push(-14 + 7 * Math.max(0, Math.min(1, (pz - 2) / 16)));
+  if (inRect(-9.3, -4.7, -8, 2) || inRect(-9.3, 4, -2.5, 2) || inRect(-4, 4, -27, 27)) candidates.push(-14);
+  if (!candidates.length) return currentY;
+  return candidates.reduce((a, b) => Math.abs(a - currentY) <= Math.abs(b - currentY) ? a : b);
+}
 
 const stopById = new Map(TRANSIT_STOPS.map(stop => [stop.id, stop]));
 const atStop = id => ({ ...stopById.get(id).berth, stopId: id });
@@ -119,19 +153,47 @@ export class TransitService {
       ];
       const cameraOnly = (id, x, z, width, depth, low, high) => ({ ...collider(id, x, z, width, depth, low, high, 'transit-camera'), physics: false });
       if (stop.kind === 'metro') {
-        walls.push(cameraOnly(`${stop.id}-roof`, p.x + 2, p.z, 11, hz + 4, p.y + 4.175, p.y + 4.825));
-        walls.push(cameraOnly(`${stop.id}-back-wall`, p.x - 7.5, p.z, 0.35, hz + 4, p.y, p.y + 4.2));
-        walls.push(cameraOnly(`${stop.id}-track-wall`, p.x + 12, p.z, 0.35, hz + 4, p.y, p.y + 4.2));
+        // The west edge has a real 5 m opening into the lower concourse.
+        walls.splice(walls.findIndex(w => w.id === `${stop.id}-edge-west`), 1);
+        for (const side of [-1, 1]) walls.push(collider(`${stop.id}-edge-west-${side}`, p.x - hx, p.z + side * 14.75, .18, 12.25, p.y, p.y + 1.35));
+        walls.push(cameraOnly(`${stop.id}-roof`, p.x + 4.1, p.z, 8.2, hz + 4, p.y + 4.175, p.y + 4.825));
+        walls.push(cameraOnly(`${stop.id}-roof-concourse`, p.x - 7.1, p.z - 15.5, 3.05, 15.5, p.y + 4.175, p.y + 4.825));
+        walls.push(collider(`${stop.id}-back-wall`, p.x - 9.65, p.z, .25, hz + 4, p.y, p.y + 4.2));
+        walls.push(cameraOnly(`${stop.id}-track-wall`, p.x + 12, p.z, .35, hz + 4, p.y, p.y + 4.2));
+        for (let i = 0; i < 16; i++) {
+          const dz = 2 + i + .5, high = -7 * i / 16, low = -7 * (i + 1) / 16;
+          for (const side of [-1, 1]) {
+            walls.push(collider(`${stop.id}-upper-stair-wall-${side}-${i}`, p.x + side * 2.3, p.z + dz, .12, .5, low - .3, .95));
+            walls.push(collider(`${stop.id}-lower-stair-wall-${side}-${i}`, p.x - 7 + side * 2.3, p.z + dz, .12, .5, -14 - low - .3, -14 - high + 3.3));
+          }
+          walls.push(cameraOnly(`${stop.id}-lower-stair-ceiling-${i}`, p.x - 7, p.z + dz, 2.3, .5, -14 - high + 3.2, -14 - low + 3.4));
+        }
+        walls.push(collider(`${stop.id}-landing-south`, p.x - 3.5, p.z + 23, 5.92, .12, -7.3, 0));
+        walls.push(collider(`${stop.id}-landing-west`, p.x - 9.3, p.z + 20.5, .12, 2.5, -7.3, 0));
+        walls.push(collider(`${stop.id}-landing-east`, p.x + 2.3, p.z + 20.5, .12, 2.5, -7.3, 0));
+        // The landing is covered by real soil-retaining structure up to street
+        // level. A thin suspended ceiling left the underside of the world
+        // visible from the upper flight. Preserve 3.4 m clearance beneath.
+        walls.push(collider(`${stop.id}-landing-roof`, p.x - 3.5, p.z + 20.5, 5.925, 2.6, -3.6, 0));
+        walls.push(collider(`${stop.id}-street-end-guard`, p.x, p.z + 18.4, 2.42, .12, -3.6, 1.1));
+        // Closed perimeter of the below-ground concourse; the east side opens into the platform.
+        walls.push(collider(`${stop.id}-concourse-west`, p.x - 9.3, p.z - 3, .12, 5, -14, -10));
+        walls.push(collider(`${stop.id}-concourse-north`, p.x - 7, p.z - 8, 2.4, .12, -14, -10));
+        walls.push(collider(`${stop.id}-concourse-east`, p.x - 4.7, p.z - 5.25, .12, 2.75, -14, -10));
+        // Ticket machines have the same physical bounds in the state machine and renderer.
+        for (const dx of [-8.35, -6.95]) walls.push(collider(`${stop.id}-ticket-${dx}`, p.x + dx, p.z - 7.4, .48, .4, -14, -12.1, 'transit-furniture'));
+        for (const dz of [-1.8, 1.5]) walls.push(collider(`${stop.id}-gate-${dz}`, p.x - 3.5, p.z + dz, .45, .14, -14, -12.9, 'transit-furniture'));
       } else if (!isFerry) {
         walls.push(cameraOnly(`${stop.id}-canopy`, p.x, p.z, 5, hz + 2, p.y + 4.4, p.y + 4.75));
       } else {
         const side = northFerry ? 1 : -1;
         walls.push(cameraOnly(`${stop.id}-canopy`, p.x, p.z - side * 3, 8.5, 4, p.y + 3.15, p.y + 3.35));
       }
-      return { ...stop, board, exit, streetExit, halfWidth: hx, halfLength: hz, colliders: walls };
+      return { ...stop, board, exit, streetExit: stop.kind === 'metro' ? { ...stop.entrance, z: stop.entrance.z - 1.5, yaw: Math.PI } : streetExit, halfWidth: hx, halfLength: hz, access: metroAccessLayout(stop), colliders: walls };
     });
     this.vehicles = this.routes.flatMap(route => route.offsets.map((offset, index) => ({ id: `${route.id}-${index + 1}`, routeId: route.id, offset, pose: poseAt(route, offset) })));
     this.activeStopId = null;
+    this.walkingY = null;
     this.ridingVehicleId = null;
     this.boardedStopId = null;
     this.ridingColliders = this.stops.flatMap(stop => stop.colliders.filter(c => c.physics === false));
@@ -160,7 +222,7 @@ export class TransitService {
     const stop = this.stop(this.activeStopId);
     if (!stop) return null;
     const groundY = stop.platform.y;
-    return { id: stop.id, groundY, colliders: stop.colliders, groundHeightAt: () => groundY };
+    return { id: stop.id, groundY, colliders: stop.colliders, groundHeightAt: stop.kind === 'metro' ? (x, z, currentY = groundY) => metroGroundHeightAt(stop, x, z, currentY) : () => groundY };
   }
   platformTransition(stop, position = stop.exit) {
     const context = this.collisionContext();
@@ -185,14 +247,15 @@ export class TransitService {
     }
     const stop = this.stop(this.activeStopId);
     if (stop) {
-      if (distance(position, stop.exit) < 3.7) return `E 离开${stop.kind === 'ferry' ? '码头' : '站台'} · 返回 ${stop.name}`;
+      if (stop.kind === 'metro' && (position.y ?? 0) > -13.4) return `${stop.name} · 沿楼梯步行下站 / 原路上楼返回街道`;
+      if (stop.kind !== 'metro' && distance(position, stop.exit) < 3.7) return `E 离开${stop.kind === 'ferry' ? '码头' : '站台'} · 返回 ${stop.name}`;
       const away = distance(position, stop.board);
       if (away > 6) return `前往${stop.kind === 'ferry' ? '登船' : '候车'}区 ${Math.ceil(away)} 米 · ${this.route(stop.routeId).name}`;
       const vehicle = this.vehicles.find(v => v.pose.stopId === stop.id && v.routeId === stop.routeId);
       return vehicle ? `E ${stop.kind === 'ferry' ? '登船' : '上车'} · ${this.route(stop.routeId).name}（${Math.ceil(vehicle.pose.remaining)} 秒后出发）` : `${this.route(stop.routeId).name} · 下一班 ${Math.ceil(this.nextArrival(stop.id))} 秒`;
     }
     const entrance = this.stops.find(s => distance(position, s.entrance) < 5.3 && Math.abs((position.y || 0) - s.entrance.y) < 3);
-    return entrance ? `E 进入 ${entrance.name} · ${this.route(entrance.routeId).name}` : null;
+    return entrance ? entrance.kind === 'metro' ? `步行下楼 · ${entrance.name} · ${this.route(entrance.routeId).name}` : `E 进入 ${entrance.name} · ${this.route(entrance.routeId).name}` : null;
   }
   interact(player) {
     const position = cleanPosition(player);
@@ -202,11 +265,13 @@ export class TransitService {
       const stop = this.stop(vehicle.pose.stopId);
       this.ridingVehicleId = null;
       this.activeStopId = stop.id;
+      this.walkingY = stop.platform.y;
       return { handled: true, transition: this.platformTransition(stop, stop.board), message: `已到达 ${stop.name}。前往出口返回街道。` };
     }
     const active = this.stop(this.activeStopId);
     if (active) {
-      if (distance(position, active.exit) < 3.7) {
+      if (active.kind === 'metro' && Math.abs((position.y ?? 0) - active.platform.y) > 1.5) return { handled: true, message: '沿扶手步行下楼，穿过站厅抵达站台；原路步行返回街道。' };
+      if (active.kind !== 'metro' && distance(position, active.exit) < 3.7) {
         this.activeStopId = null;
         const exit = { ...active.streetExit };
         return { handled: true, transition: { position: exit, groundY: 0, colliders: null, groundHeightAt: null, id: 'street' }, message: `${active.name} · 已返回街道` };
@@ -221,16 +286,30 @@ export class TransitService {
     }
     const entrance = this.stops.find(s => distance(position, s.entrance) < 5.3 && Math.abs((position.y || 0) - s.entrance.y) < 3);
     if (!entrance) return { handled: false };
+    if (entrance.kind === 'metro') return { handled: true, message: '从入口直接步行下楼，无需按 E。' };
     this.activeStopId = entrance.id;
     // Arrival is offset from the exit button, making the boarding path the
     // first visible action and preventing an accidental double-E exit.
     const spawn = { ...entrance.board, z: entrance.board.z + (entrance.kind === 'ferry' ? 0 : 10) };
     return { handled: true, transition: this.platformTransition(entrance, spawn), message: `${entrance.name} · 按站台箭头前往候车区` };
   }
-  update(dt) {
+  update(dt, viewer = null) {
+    if (viewer && !this.riding) this.updateWalkingContext(cleanPosition(viewer));
     if (Number.isFinite(dt) && dt > 0) this.time += dt;
     for (const vehicle of this.vehicles) vehicle.pose = poseAt(this.route(vehicle.routeId), this.time + vehicle.offset);
     return {}; // Riding updates are continuous poses, never teleport transitions.
+  }
+  updateWalkingContext(position) {
+    this.walkingY = position.y ?? 0;
+    const stop = this.stop(this.activeStopId);
+    if (stop?.kind === 'metro') {
+      if ((position.y ?? 0) > -.4 && (position.z < stop.entrance.z + .5 || (Math.abs(position.x - stop.entrance.x) > 2.3 && position.z < stop.entrance.z + 2.2))) this.activeStopId = null;
+      return;
+    }
+    if (stop) return;
+    const entry = this.stops.find(s => s.kind === 'metro' && Math.abs(position.x - s.entrance.x) < 2.15 &&
+      position.z >= s.entrance.z + .6 && position.z <= s.entrance.z + 2.8 && Math.abs(position.y ?? 0) < .8);
+    if (entry) this.activeStopId = entry.id;
   }
   /** Exit hooks let fast travel/load/reset restore street collision safely. */
   leave() {
@@ -249,12 +328,13 @@ export class TransitService {
       const upcoming = route.arrivals.map(a => ({ id: a.stopId, seconds: wrap(a.time - this.time - vehicle.offset, route.duration) })).sort((a, b) => a.seconds - b.seconds)[0];
       secondsToArrival = upcoming.seconds; nextStopId = upcoming.id;
     } else if (this.activeStopId) secondsToArrival = this.nextArrival(this.activeStopId);
-    const phase = vehicle ? vehicle.pose.stopId ? 'docked' : 'moving' : this.activeStopId ? 'waiting' : 'street';
+    const accessing = this.stop(this.activeStopId)?.kind === 'metro' && (this.walkingY ?? 0) > -13.4;
+    const phase = vehicle ? vehicle.pose.stopId ? 'docked' : 'moving' : this.activeStopId ? accessing ? 'access' : 'waiting' : 'street';
     return { activeStation: stopId ? this.stop(stopId) : null, currentStopId: stopId, stationId: stopId, vehicleId: this.ridingVehicleId,
-      boardedStopId: this.boardedStopId, phase, status: ({ docked: '到站停靠', moving: '行驶中', waiting: '站台候车', street: '街道' })[phase],
+      boardedStopId: this.boardedStopId, phase, status: ({ docked: '到站停靠', moving: '行驶中', waiting: '站台候车', access: '步行进站', street: '街道' })[phase],
       label: route?.name || '', secondsToArrival, nextStopId, time: this.time, riding: this.riding, ridingVehicleId: this.ridingVehicleId, currentStop: this.activeStopId, boardingState: this.boardingState,
       passengerPose: this.passengerPose, routes: this.routes.map(route => ({ id: route.id, name: route.name, duration: route.duration, fleet: route.offsets.length })),
-      stops: this.stops.map(stop => ({ id: stop.id, name: stop.name, routeId: stop.routeId, kind: stop.kind, entrance: { ...stop.entrance }, entry: { ...stop.entrance }, platform: { ...stop.platform }, board: { ...stop.board }, exit: { ...stop.exit }, streetExit: { ...stop.streetExit }, nextArrival: this.nextArrival(stop.id) })),
+      stops: this.stops.map(stop => ({ id: stop.id, name: stop.name, routeId: stop.routeId, kind: stop.kind, entrance: { ...stop.entrance }, entry: { ...stop.entrance }, platform: { ...stop.platform }, board: { ...stop.board }, exit: { ...stop.exit }, streetExit: { ...stop.streetExit }, walkable: stop.kind === 'metro', access: stop.access, nextArrival: this.nextArrival(stop.id) })),
       vehicles: this.vehicles.map(vehicle => ({ id: vehicle.id, routeId: vehicle.routeId, ...vehicle.pose })) };
   }
 }
@@ -263,18 +343,27 @@ export class TransitService {
 export function createTransitSystem(THREE, scene, options = {}) {
   const service = new TransitService(options), root = new THREE.Group(), staticRoot = new THREE.Group();
   root.name = 'Metropolis · public transport'; staticRoot.name = 'Stations, viaducts and rails'; root.add(staticRoot); scene.add(root);
+  const surfaceMaterials = createMetropolisMaterials(THREE), stationLights = [];
   const colliders = [], materials = new Map(), batches = new Map(), boxGeometry = new THREE.BoxGeometry(1, 1, 1), dummy = new THREE.Object3D();
   const palette = { concrete: '#a29f94', floor: '#c8c9bd', dark: '#2f414b', glass: '#658794', silver: '#c9d2cf', brass: '#b99a63', stripe: '#e9c16c', white: '#e0e5dd', seat: '#426f72', wood: '#98785b', water: '#5d918d', rubber: '#212c31', red: '#f1756b', light: '#f8e6b3' };
   function material(key) {
-    if (!materials.has(key)) materials.set(key, new THREE.MeshStandardMaterial({ color: palette[key] || key,
-      roughness: key === 'glass' ? 0.2 : key === 'silver' ? 0.35 : 0.8, metalness: ['silver', 'brass'].includes(key) ? 0.65 : 0.08,
-      ...(key === 'light' ? { emissive: '#ffdc9c', emissiveIntensity: 0.75 } : {}),
-      ...(key === 'glass' ? { transparent: true, opacity: 0.38, depthWrite: false } : {}) }));
+    if (!materials.has(key)) {
+      const source = ({ concrete: 'concrete', floor: 'stone', white: 'ceramic', silver: 'steel', wood: 'wood', seat: 'upholstery' })[key];
+      const value = source ? surfaceMaterials[source].clone() : new THREE.MeshStandardMaterial({
+        roughness: key === 'glass' ? .2 : .8, metalness: key === 'brass' ? .65 : 0,
+        ...(key === 'light' ? { emissive: '#ffe9cb', emissiveIntensity: .65 } : {}),
+        ...(key === 'glass' ? { transparent: true, opacity: .3, depthWrite: false } : {}),
+      });
+      value.color.set(palette[key] || key);
+      if (key === 'white') value.roughness = .58;
+      if (key === 'floor') value.roughness = .92;
+      materials.set(key, value);
+    }
     return materials.get(key);
   }
-  function stamp(key, x, y, z, sx, sy, sz, yaw = 0) {
+  function stamp(key, x, y, z, sx, sy, sz, yaw = 0, pitch = 0) {
     if (!batches.has(key)) batches.set(key, []);
-    batches.get(key).push([x, y, z, sx, sy, sz, yaw]);
+    batches.get(key).push([x, y, z, sx, sy, sz, yaw, pitch]);
   }
   function obstacle(key, x, y, z, sx, sy, sz, id) {
     stamp(key, x, y, z, sx, sy, sz);
@@ -296,8 +385,10 @@ export function createTransitSystem(THREE, scene, options = {}) {
     ctx.fillStyle = '#132b35'; ctx.fillRect(0, 0, 1024, 160); ctx.fillStyle = color || '#78cfca'; ctx.fillRect(0, 0, 12, 160);
     ctx.fillStyle = '#f1f5ef'; ctx.font = '600 55px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 512, 80, 980);
     const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace;
-    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, width * 160 / 1024), new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide }));
-    mesh.position.set(x, y, z); mesh.rotation.y = yaw; mesh.name = text; parent.add(mesh);
+    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, width * 160 / 1024), new THREE.MeshBasicMaterial({ map: texture, side: THREE.FrontSide }));
+    mesh.position.set(x, y, z); mesh.rotation.y = yaw; mesh.name = text;
+    const back = new THREE.Mesh(boxGeometry, material('dark'));
+    back.scale.set(width, height, .04); back.position.z = -.026; mesh.add(back); parent.add(mesh);
   }
   function railEdge(x, z, width, depth, y, key = 'silver') {
     // Open railings preserve the city/harbor views from raised platforms.
@@ -305,6 +396,90 @@ export function createTransitSystem(THREE, scene, options = {}) {
     const length = Math.max(width, depth), alongX = width >= depth;
     for (let t = -length / 2; t <= length / 2 + 0.01; t += 2.3)
       stamp(key, x + (alongX ? t : 0), y + 0.52, z + (alongX ? 0 : t), 0.055, 1.04, 0.055);
+  }
+  function metroStairs(stop, color) {
+    const { x, z } = stop.entrance, slope = Math.atan2(7, 16);
+    // Each flight is a real forty-tread stair. Collision uses a smooth support
+    // plane, keeping walking animation stable while every riser remains visible.
+    for (let i = 0; i < 40; i++) {
+      const dz = 2 + (i + .5) * .4, top = -(i + 1) * .175;
+      stamp('floor', x, top - .13, z + dz, 4.36, .26, .4);
+      stamp('stripe', x, top + .007, z + dz - .175, 4.22, .014, .05);
+      const bottom = -14 + i * .175;
+      stamp('floor', x - 7, bottom - .13, z + dz, 4.36, .26, .4);
+      stamp('stripe', x - 7, bottom + .007, z + dz + .175, 4.22, .014, .05);
+    }
+    stamp('floor', x - 3.5, -7.14, z + 20.5, 11.6, .28, 5);
+    stamp('floor', x - 7, -14.14, z - 3, 4.6, .28, 10);
+    stamp('floor', x - 2.7, -14.14, z - .25, 5.6, .28, 4.5);
+    for (let dx = -9; dx <= 2; dx += .8) stamp('concrete', x + dx, -6.995, z + 20.5, .012, .006, 4.8);
+    for (let dz = 18.4; dz <= 22.7; dz += .8) stamp('concrete', x - 3.5, -6.995, z + dz, 11.4, .006, .012);
+    for (let dz = -7.8; dz < 1.9; dz += .8) stamp('concrete', x - 7, -13.995, z + dz, 4.4, .006, .012);
+    // Concrete stair soffits and brushed continuous handrails, all dimensioned
+    // from the support function instead of a second decorative staircase.
+    for (const lower of [false, true]) {
+      const cx = lower ? x - 7 : x, cy = lower ? -10.5 : -3.5, pitch = lower ? -slope : slope;
+      stamp('concrete', cx, cy - .32, z + 10, 4.5, .3, Math.hypot(7, 16), 0, pitch);
+      if (lower) stamp('white', cx, cy + 3.25, z + 10, 4.6, .2, Math.hypot(7, 16), 0, pitch);
+      for (const side of [-1, 1]) {
+        stamp('silver', cx + side * 2.05, cy + .98, z + 10, .065, .065, Math.hypot(7, 16), 0, pitch);
+        for (let i = 0; i <= 8; i++) {
+          const dz = 2 + i * 2, y = lower ? -14 + i * .875 : -i * .875;
+          stamp('silver', cx + side * 2.05, y + .5, z + dz, .055, .96, .055);
+        }
+      }
+      for (let i = 0; i < 5; i++) {
+        const dz = 3.8 + i * 3.1, y = lower ? -14 + (dz - 2) * 7 / 16 : -(dz - 2) * 7 / 16;
+        stamp('light', cx - 2.11, y + 1.8, z + dz, .04, .1, 1.5);
+      }
+    }
+    for (const c of stop.colliders.filter(c => /stair-wall|landing-south|landing-west|landing-east|concourse-west|concourse-north|concourse-east/.test(c.id))) {
+      stamp('white', c.x, (c.minY + c.maxY) / 2, c.z, c.hx * 2, c.maxY - c.minY, c.hz * 2);
+      if (c.id.includes('upper-stair-wall')) colliders.push(c);
+    }
+    // The first tread starts at z+2; neither saved arrivals nor footpath users
+    // are placed in the opening. Guard the long edges at street height.
+    for (const side of [-1, 1]) {
+      stamp('silver', x + side * 2.3, 1.04, z + 10, .08, .08, 16.2);
+      for (let dz = 2; dz <= 18; dz += 2) stamp('silver', x + side * 2.3, .52, z + dz, .06, 1.04, .06);
+    }
+    const endGuard = stop.colliders.find(c => c.id === `${stop.id}-street-end-guard`);
+    const cover = stop.colliders.find(c => c.id === `${stop.id}-landing-roof`);
+    colliders.push(endGuard, cover);
+    // This tiled lintel joins the open-air shaft to the covered landing.
+    // Rendered extents exactly match collision, including the retaining face
+    // which closes the former -3.4..0 m view of the ocean/world underside.
+    for (const [key, c] of [['white', endGuard], ['concrete', cover]])
+      stamp(key, c.x, (c.minY + c.maxY) / 2, c.z, c.hx * 2, c.maxY - c.minY, c.hz * 2);
+    railEdge(x, z + 18.4, 4.8, .06, 0);
+    stamp('light', x - 3.5, -3.63, z + 20.5, 5.7, .055, .16);
+    // Street portal has a human-scaled route marker and a transparent canopy.
+    for (const side of [-1, 1]) obstacle('dark', x + side * 2.55, 1.8, z + .9, .14, 3.6, .14, `${stop.id}-portal-${side}`);
+    stamp('glass', x, 3.55, z + 2.5, 5.4, .1, 6.2);
+    stamp('silver', x, 3.47, z + .1, 5.45, .09, .11);
+    sign(`${stop.name}  M1 ↓`, x, 3.18, z + .15, 5.3, color, staticRoot, Math.PI);
+    sign('站台 ↓ / PLATFORM', x - 3.5, -4.3, z + 22.83, 5.4, color, staticRoot, Math.PI);
+    sign('出口 ↑ / STREET', x - 7, -11.2, z + 1.5, 4.2, '#e9c16c');
+    sign('往北岸 / NORTHBOUND  →', x - 5, -11.35, z - 2.6, 4.2, color);
+    for (const dx of [-8.35, -6.95]) {
+      stamp('silver', x + dx, -13.05, z - 7.4, .96, 1.9, .8);
+      stamp('dark', x + dx, -12.65, z - 6.985, .68, .53, .035);
+      stamp(color, x + dx, -12.65, z - 6.96, .5, .29, .02);
+      stamp('rubber', x + dx, -13.39, z - 6.955, .52, .08, .025);
+    }
+    sign('车票 / TICKETS', x - 7.6, -11.65, z - 7.78, 2.8, color);
+    // A wide staffed-style gate passage accommodates the player's capsule;
+    // purchasing fares is not simulated, so no fake payment interaction appears.
+    for (const dz of [-1.8, 1.5]) {
+      stamp('silver', x - 3.5, -13.5, z + dz, .9, 1, .28);
+      stamp('dark', x - 3.5, -12.98, z + dz, .65, .05, .26);
+      stamp(color, x - 3.69, -12.94, z + dz, .14, .025, .11);
+    }
+    for (const dz of [-6, -.5]) stamp('light', x - 7, -9.9, z + dz, .22, .06, 2.5);
+    for (const pose of [point(x, z + 9, -1.7), point(x - 3.5, z + 20.5, -4.1), point(x - 7, z + 3, -10.5)]) {
+      const light = new THREE.PointLight('#e9f3eb', 18, 19, 1.4);
+      light.position.set(pose.x, pose.y, pose.z); root.add(light); stationLights.push({ light, stop });
+    }
   }
   const roadBelow = (x, z) => z < -390 && x > -710 && x < 710 && [-420, -560, -700, -840, -980, -1120, -1260].some(road => Math.abs(z - road) < 15);
   function station(stop) {
@@ -335,9 +510,11 @@ export function createTransitSystem(THREE, scene, options = {}) {
       sign('E 出口 / EXIT', stop.exit.x, p.y + 1.8, stop.exit.z + 0.3, 4.5, '#e9c16c');
       return;
     }
+    const vestibuleX = e.x + 4.2;
+    if (stop.kind === 'metro') metroStairs(stop, color);
+    else {
     // Compact street vestibules stay outside the road lanes. The elevator is
     // the explicit transition between street collision and platform collision.
-    const vestibuleX = e.x + 4.2;
     obstacle('concrete', vestibuleX, 0.13, e.z, 5.2, 0.26, 7);
     obstacle('glass', vestibuleX - 2.5, 1.8, e.z, 0.14, 3.3, 7);
     obstacle('glass', vestibuleX + 2.5, 1.8, e.z, 0.14, 3.3, 7);
@@ -346,6 +523,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
     stamp(color, vestibuleX, 2.8, e.z - 3.54, 4.8, 0.12, 0.06);
     sign(`${route.name} · E 进入`, e.x, 3.9, e.z + 0.2, 11.5, color);
     sign('LIFT / 无障碍电梯', vestibuleX, 2.85, e.z + 3.58, 4.6, color);
+    }
     const hx = stop.halfWidth, hz = stop.halfLength;
     stamp('floor', p.x, p.y - 0.32, p.z, hx * 2, 0.64, hz * 2);
     for (const dx of [-hx + 0.5, hx - 0.5]) stamp('stripe', p.x + dx, p.y + 0.025, p.z, 0.42, 0.05, hz * 2 - 2);
@@ -353,7 +531,8 @@ export function createTransitSystem(THREE, scene, options = {}) {
       stamp('brass', p.x + dx, p.y + 0.052, p.z + z, 0.44, 0.025, 0.08);
     for (const dz of [-hz, hz]) railEdge(p.x, p.z + dz, hx * 2, 0.05, p.y);
     const trainSide = Math.sign(stop.berth.x - p.x);
-    railEdge(p.x - trainSide * hx, p.z, 0.05, hz * 2, p.y);
+    if (stop.kind === 'metro') for (const side of [-1, 1]) railEdge(p.x - hx, p.z + side * 14.75, .05, 24.5, p.y);
+    else railEdge(p.x - trainSide * hx, p.z, 0.05, hz * 2, p.y);
     // Platform screen doors have a clear opening at the boarding zone. The
     // invisible safety collider at that edge remains until E boards the train.
     for (const dz of [-hz / 2 - 3, hz / 2 + 3]) {
@@ -361,14 +540,15 @@ export function createTransitSystem(THREE, scene, options = {}) {
       stamp('silver', p.x + trainSide * hx, p.y + 1.85, p.z + dz, 0.12, 0.1, hz - 6);
     }
     if (stop.kind === 'metro') {
-      stamp('concrete', p.x + 2, p.y + 4.5, p.z, 22, 0.65, hz * 2 + 8);
-      stamp('concrete', p.x - 7.5, p.y + 2.1, p.z, 0.7, 4.2, hz * 2 + 8);
+      stamp('concrete', p.x + 4.1, p.y + 4.5, p.z, 16.4, .65, hz * 2 + 8);
+      stamp('concrete', p.x - 7.1, p.y + 4.5, p.z - 15.5, 6.1, .65, 31);
+      stamp('concrete', p.x - 9.65, p.y + 2.1, p.z, .5, 4.2, hz * 2 + 8);
       stamp('dark', p.x + 12, p.y + 2.1, p.z, 0.7, 4.2, hz * 2 + 8);
       for (let dz = -hz + 4; dz <= hz - 4; dz += 9) {
         stamp('light', p.x, p.y + 4.08, p.z + dz, 0.3, 0.06, 6);
-        stamp(color, p.x - 7.1, p.y + 1.4, p.z + dz, 0.08, 0.22, 7);
+        stamp(color, p.x - 9.37, p.y + 1.4, p.z + dz, 0.08, 0.22, 7);
       }
-      const light = new THREE.PointLight('#c8f0ee', 32, 52, 1.2); light.position.set(p.x, p.y + 3.5, p.z); root.add(light);
+      const light = new THREE.PointLight('#c8f0ee', 32, 52, 1.2); light.position.set(p.x, p.y + 3.5, p.z); root.add(light); stationLights.push({ light, stop });
     } else {
       stamp('white', p.x, p.y + 4.5, p.z, 10, 0.2, hz * 2 + 4);
       stamp('glass', p.x, p.y + 4.64, p.z, 5, 0.08, hz * 2);
@@ -389,7 +569,8 @@ export function createTransitSystem(THREE, scene, options = {}) {
     }
     sign(`${stop.name}   ${route.name}`, p.x - trainSide * 2.2, p.y + 2.8, p.z - 8, 9, color);
     sign('E 上车 / BOARD', p.x, p.y + 2.65, p.z, 4.8, color);
-    sign('E 出口 / EXIT ↑', stop.exit.x, p.y + 2.7, stop.exit.z, 5, '#e9c16c');
+    if (stop.kind === 'metro') sign('楼梯出口 ← / STREET', p.x, p.y + 2.7, p.z + 2.3, 4.8, '#e9c16c');
+    else sign('E 出口 / EXIT ↑', stop.exit.x, p.y + 2.7, stop.exit.z, 5, '#e9c16c');
     for (let dz = 3; dz <= 18; dz += 3) stamp(color, p.x, p.y + 0.04, p.z + dz, 0.4, 0.03, 0.9);
   }
   for (const stop of service.stops) station(stop);
@@ -436,7 +617,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
   }
   for (const [key, rows] of batches) {
     const mesh = new THREE.InstancedMesh(boxGeometry, material(key), rows.length); mesh.name = `Transit static · ${key}`;
-    rows.forEach(([x, y, z, sx, sy, sz, yaw], index) => { dummy.position.set(x, y, z); dummy.rotation.set(0, yaw, 0); dummy.scale.set(sx, sy, sz); dummy.updateMatrix(); mesh.setMatrixAt(index, dummy.matrix); });
+    rows.forEach(([x, y, z, sx, sy, sz, yaw, pitch], index) => { dummy.position.set(x, y, z); dummy.rotation.set(pitch, yaw, 0); dummy.scale.set(sx, sy, sz); dummy.updateMatrix(); mesh.setMatrixAt(index, dummy.matrix); });
     mesh.castShadow = !['glass', 'light'].includes(key); mesh.receiveShadow = true; mesh.computeBoundingSphere(); staticRoot.add(mesh);
   }
   const fleet = new Map();
@@ -555,8 +736,9 @@ export function createTransitSystem(THREE, scene, options = {}) {
   const doorMatrix = new THREE.Matrix4();
   service.setViewer = viewer => { service.viewer = viewer; };
   service.update = (dt, viewer = service.viewer) => {
-    const result = updateService(dt);
+    const result = updateService(dt, viewer);
     const view = viewer ? cleanPosition(viewer) : null;
+    for (const { light, stop } of stationLights) light.visible = !!view && distance(view, stop.entrance) < 65 && view.y < 2;
     for (const vehicle of service.vehicles) {
       const mesh = fleet.get(vehicle.id), pose = vehicle.pose;
       mesh.position.set(pose.x, pose.y, pose.z); mesh.rotation.y = pose.yaw;

@@ -24,7 +24,7 @@ const frameClock=new FixedStepClock(FIXED_STEP);
 let frameTiming={wallDt:0,dt:0,steps:0,alpha:0,simulationDelta:0,droppedSeconds:0,droppedTotal:0};
 let cameraYaw=Math.PI,cameraOrbitYaw=Math.PI,cameraPitch=.28,cameraDragAge=99,drag=null,frameCount=0,fps=60,fpsClock=0;
 let presentation,renderFrame,renderCollisionIndex,cameraCollisionIndex;
-let menuFocus={x:8,y:0,z:174};
+let menuFocus={x:283,y:.18,z:42};
 let prepareRevision=0,worldPreparing=false,lastStreamFailures=0,startupPhase='graphics',bootCompleted=false;
 const cameraRig=new ChaseCamera();
 const carMeshes=new Map(),keys=new Set(),touchHeld=new Set(),walkers=[],audio=new CityAudio();
@@ -52,10 +52,10 @@ function resetPresentation(){
   renderFrame=presentation.sample(1);frameClock.suspend(true);cameraRig.reset();
   cameraYaw=cameraOrbitYaw=sim.position.yaw;cameraDragAge=99;
 }
-async function prepareLocation(retry=false){
-  const revision=++prepareRevision;worldPreparing=true;$('start').disabled=true;
+async function prepareLocation(retry=false,position=sim.position){
+  const revision=++prepareRevision;worldPreparing=true;$('start').disabled=true;$('harbor-start').disabled=true;
   try{
-    const result=retry&&world.retry?await world.retry(sim.position):world.prepare?await world.prepare(sim.position):{ready:true,failed:[]};
+    const result=retry&&world.retry?await world.retry(position):world.prepare?await world.prepare(position):{ready:true,failed:[]};
     if(revision===prepareRevision&&!result.ready){
       lastStreamFailures=Array.isArray(result.failed)?result.failed.length:Number(result.failed)||1;
       toast('部分街区暂未载入，可继续探索，或在设置中重新加载附近街区。','warning');
@@ -66,7 +66,7 @@ async function prepareLocation(retry=false){
     if(revision===prepareRevision)toast('附近街区加载失败，可在设置中重新加载。','warning');
     return {ready:false,failed:['network']};
   }finally{
-    if(revision===prepareRevision){worldPreparing=false;$('start').disabled=!bootCompleted;}
+    if(revision===prepareRevision){worldPreparing=false;$('start').disabled=!bootCompleted;$('harbor-start').disabled=!bootCompleted;}
   }
 }
 function openPanel(tab='jobs'){
@@ -125,6 +125,12 @@ for(const button of document.querySelectorAll('[data-hold]')){
   for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,()=>{touchHeld.delete(button.dataset.hold);button.classList.remove('pressed');});
 }
 for(const button of document.querySelectorAll('[data-action]'))button.addEventListener('click',()=>action(button.dataset.action));
+$('harbor-start').addEventListener('click',async()=>{
+  $('harbor-start').disabled=true;
+  try{if(!started)await enterCity();settings.firstPerson=true;cameraPitch=-.06;
+    if(await world.travelTo(world.harbor.viewpoints[0])){resetPresentation();updateCamera(0);updateHUD();save();toast('海港长廊 · 拖动画面看两岸，沿海滨散步。城市导览可前往北岸建筑和地铁入口。');}
+  }finally{$('harbor-start').disabled=false;}
+});
 $('start').addEventListener('click',enterCity);$('welcome-settings').addEventListener('click',()=>openPanel('settings'));$('welcome-help').addEventListener('click',()=>openPanel('help'));
 $('view-toggle').addEventListener('click',toggleView);
 $('pause').addEventListener('click',()=>openPanel('jobs'));$('jobs').addEventListener('click',()=>openPanel('jobs'));$('map-button').addEventListener('click',()=>openPanel('map'));$('explore-city').addEventListener('click',()=>openPanel('explore'));$('welcome-explore').addEventListener('click',()=>openPanel('explore'));
@@ -137,7 +143,7 @@ function renderPanel(){
   document.querySelectorAll('[data-tab]').forEach(n=>n.classList.toggle('active',n.dataset.tab===activeTab));
   const content=$('panel-content');
   if(activeTab==='explore'){
-    renderCityGuide(content,world,async(destination)=>{const buttons=[...content.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);try{if(!started)await enterCity();paused=true;cleanInput();if(await world.travelTo(destination)){resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}finally{buttons.forEach(b=>b.disabled=false);}drainMessages();});
+    renderCityGuide(content,world,async(destination)=>{const buttons=[...content.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);try{if(!started)await enterCity();paused=true;cleanInput();if(await world.travelTo(destination)){if(destination.kind==='metro')cameraPitch=.4;else if(destination.kind==='viewpoint')cameraPitch=-.06;else cameraPitch=settings.firstPerson?.15:.28;resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}finally{buttons.forEach(b=>b.disabled=false);}drainMessages();});
   }else if(activeTab==='elevator'){
     renderElevatorPanel(content,world,id=>{if(world.selectFloor(id)){closePanel();resetPresentation();}});
   }else if(activeTab==='jobs'){
@@ -225,11 +231,11 @@ function updateHUD(){
   $('health-fill').style.width=sim.player.health+'%';$('stamina-fill').style.width=sim.player.stamina+'%';$('speed').textContent=String(Math.round(sim.speed*3.6)).padStart(2,'0');$('speed-fill').style.width=clamp(sim.speed/43*100,0,100)+'%';$('mode-label').textContent=car?'DRIVING / '+(car.type==='sport'?'SPORT':'STREET'):'ON FOOT';$('vehicle-name').textContent=car?`${car.police?'巡逻车':car.type==='sport'?'海风 GT':'城市轿车'} · ${Math.round(car.health)}%`:'城市漫游者';$('ammo').textContent=sim.reloadRemaining?'装填中…':`${sim.ammo} / ∞`;
   $('mission-label').textContent=m?'正在进行':sim.wanted?'追捕中':'自由探索';$('mission-title').textContent=m?m.title:sim.wanted?'甩开身后的追捕。':'这座城市，等你出发。';$('mission-objective').textContent=m?m.objective:sim.wanted?`离开警车视线并保持距离。脱离进度 ${Math.round(sim.escapeProgress*100)}%。`:'M 查看全城地图，城市导览可寻找建筑与站点。跨海桥通往北岸六区。';$('mission-time').textContent=m?`${Math.ceil(m.remaining)}s`:'';$('mission-distance').textContent=m?.phase==='escape'?`${Math.round(sim.escapeProgress*100)}%`:m?.target?`${Math.round(Math.hypot(m.target.x-pos.x,m.target.z-pos.z))} m`:'TAB';
   const interior=world.interiors.snapshot(),transport=world.transit.snapshot();
-  $('hud').classList.toggle('indoor',!!interior.buildingId);
+  $('hud').classList.toggle('indoor',!!interior.buildingId);$('hud').classList.toggle('walking',!car&&!m&&!sim.wanted);
   $('view-toggle').disabled=!!car||!!world.riding;$('view-toggle').textContent=settings.firstPerson?'跟随视角':'步行视角';$('view-toggle').setAttribute('aria-pressed',String(settings.firstPerson));
-  if(interior.buildingId&&!m){$('mission-label').textContent=interior.moving?'电梯运行中':'室内探索';$('mission-title').textContent=interior.currentRoomName||interior.floorName||interior.buildingName;$('mission-objective').textContent=interior.moving?`正在前往 ${world.buildings.find(b=>b.id===interior.buildingId)?.floors.find(f=>f.id===interior.elevator.targetFloorId)?.label||'目的楼层'}。到层后开门。`: `${getRoomDesign(interior.buildingId,interior.floorId).name} · ${getRoomDesign(interior.buildingId,interior.floorId).rooms.map(r=>r.name).join('、')}。V 切换步行视角，沿中廊前往电梯。`;$('mission-distance').textContent=Math.round(sim.player.groundY)+' m';}
+  if(interior.buildingId&&!m){$('mission-label').textContent=interior.moving?'电梯运行中':'室内探索';$('mission-title').textContent=interior.currentRoomName||interior.floorName||interior.buildingName;$('mission-objective').textContent=interior.moving?`正在前往 ${world.buildings.find(b=>b.id===interior.buildingId)?.floors.find(f=>f.id===interior.elevator.targetFloorId)?.label||'目的楼层'}。到层后开门。`: `${getRoomDesign(interior.buildingId,interior.floorId).name} · ${getRoomDesign(interior.buildingId,interior.floorId).rooms.map(r=>r.name).join('、')}。沿楼梯步行到二、三层，或在中廊尽头按 E 乘电梯。`;$('mission-distance').textContent=Math.round(sim.player.groundY)+' m';}
   if(transport.boardingState!=='street'&&!m){$('mission-label').textContent=transport.riding?'公共交通 · 乘坐中':'公共交通 · 站台';$('mission-title').textContent=transport.label||transport.status||'港湾交通';$('mission-objective').textContent=world.getPrompt()?.label||'沿站台指示候车，停靠时按 E 上车。';$('mode-label').textContent=transport.riding?'ON BOARD':'PLATFORM';$('vehicle-name').textContent=transport.activeStation?.name||'港湾公共交通';$('mission-distance').textContent=transport.secondsToArrival?Math.ceil(transport.secondsToArrival)+' s':'';}
-  const cityPrompt=world.getPrompt();$('interaction').querySelector('span').textContent=cityPrompt?.label?.replace(/^E /,'')|| (world.isInside?(interior.moving?'电梯运行中 · 请稍候':'沿大厅中轴前往电梯'):car?(Math.abs(car.speed)>5?'先停车，再下车':'离开车辆'):sim.nearestCar?'驾驶这辆车':'靠近车辆以驾驶');$('crosshair').classList.toggle('hidden',!keys.has('KeyJ'));
+  const cityPrompt=world.getPrompt();$('interaction').querySelector('kbd').textContent=cityPrompt?(cityPrompt.kind!=='transit'||/^E /.test(cityPrompt.label)?'E':'WASD'):car||sim.nearestCar?'E':'V';$('interaction').querySelector('span').textContent=cityPrompt?.label?.replace(/^E /,'')|| (world.isInside?(interior.moving?'电梯运行中 · 请稍候':'沿大厅中轴前往电梯'):car?(Math.abs(car.speed)>5?'先停车，再下车':'离开车辆'):sim.nearestCar?'驾驶这辆车':'切换步行 / 跟随视角 · 拖动画面环顾');$('crosshair').classList.toggle('hidden',!keys.has('KeyJ'));
   drawMap(mapCanvas);if(panel.open&&activeTab==='map')drawMap($('city-map'),true);
 }
 
@@ -271,20 +277,11 @@ function updateModelDetail(){
 }
 function updateCamera(dt){
   if(!started){
-    // A street-level three-quarter shot shows the actual nearby assets, not
-    // distant streaming proxies. Resume saves choose a nearby vehicle/player.
-    const player=renderFrame.player;
-    const parked=sim.cars.filter(car=>!car.traffic&&!car.police&&car.health>0&&Math.hypot(car.x-player.x,car.z-player.z)<45)
-      .sort((a,b)=>Math.hypot(a.x-player.x,a.z-player.z)-Math.hypot(b.x-player.x,b.z-player.z))[0];
-    const anchor=parked?(renderFrame.cars.get(parked.id)||parked):player;
-    menuFocus={x:anchor.x,y:anchor.y||0,z:anchor.z};
-    const yaw=anchor.yaw,side=-10+Math.sin(sceneTime*.08)*.8,front=8+Math.cos(sceneTime*.07)*.6;
-    const target={x:anchor.x-Math.cos(yaw)*3-Math.sin(yaw)*4.5,y:menuFocus.y+1.4,z:anchor.z+Math.sin(yaw)*3-Math.cos(yaw)*4.5};
-    const eye={x:anchor.x+Math.cos(yaw)*side+Math.sin(yaw)*front,y:menuFocus.y+4.6,
-      z:anchor.z-Math.sin(yaw)*side+Math.cos(yaw)*front};
-    const nearby=cameraCollisionIndex.query({x:anchor.x,z:anchor.z,hx:24,hz:24});
-    const pivot=resolveCameraPoint(target,nearby,.45),safe=clipCameraSegment(pivot,eye,nearby,.45).position;
-    camera.position.set(safe.x,safe.y,safe.z);camera.lookAt(pivot.x,pivot.y,pivot.z);return;
+    // The menu is a camera on the actual playable promenade, aimed across
+    // the same harbor seen by a walking player. No pre-rendered backdrop.
+    menuFocus={x:283,y:.18,z:42};
+    camera.position.set(283,4.8,42+Math.sin(sceneTime*.04)*2);
+    camera.lookAt(1180,128,-125);camera.fov=58;camera.updateProjectionMatrix();return;
   }
   if(paused)return;
   cameraDragAge+=dt;
@@ -316,7 +313,7 @@ function lighting(dt){
     sunTarget.position.addScaledVector(sunRight,Math.round(right/texel)*texel-right);
     sunTarget.position.addScaledVector(sunUp,Math.round(up/texel)*texel-up);
   }
-  sun.position.copy(sunTarget.position).add(sunOffset);sunTarget.updateMatrixWorld();world.update(dt,settings.hour/24,{position:renderFrame.subject,velocity:{x:sim.activeVehicle?.vx||0,z:sim.activeVehicle?.vz||0}});
+  sun.position.copy(sunTarget.position).add(sunOffset);sunTarget.updateMatrixWorld();world.update(dt,settings.hour/24,{position:started?renderFrame.subject:menuFocus,velocity:{x:sim.activeVehicle?.vx||0,z:sim.activeVehicle?.vz||0}});
 }
 function frame(time){
   requestAnimationFrame(frame);const active=started&&!paused&&!document.hidden;
@@ -341,13 +338,13 @@ try{
   hemi=new THREE.HemisphereLight('#d0e1ff','#67525d',1.5);scene.add(hemi);sun=new THREE.DirectionalLight('#ffd3a0',1.4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-90;sun.shadow.camera.right=90;sun.shadow.camera.top=90;sun.shadow.camera.bottom=-90;sun.shadow.camera.far=400;sun.shadow.normalBias=.12;scene.add(sunTarget);sun.target=sunTarget;scene.add(sun);
   atmosphere=createAtmosphere(THREE,renderer,scene);
   startupPhase='city';
-  world=createCityExploration(THREE,scene,{quality:settings.quality,onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim);resetPresentation();await prepareLocation();
+  world=createCityExploration(THREE,scene,{quality:settings.quality,onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim);resetPresentation();await prepareLocation(false,menuFocus);
   character=createCharacter(THREE);scene.add(character);
   for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
   marker=new THREE.Group();markerRing=new THREE.Mesh(new THREE.TorusGeometry(5,.12,6,48),new THREE.MeshBasicMaterial({color:'#e4ff9d'}));markerRing.rotation.x=Math.PI/2;marker.add(markerRing);const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.8),new THREE.MeshBasicMaterial({color:'#d5ff9a'}));diamond.position.y=4;marker.add(diamond);const beam=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,18,8),new THREE.MeshBasicMaterial({color:'#dcffa5',transparent:true,opacity:.38,depthWrite:false}));beam.position.y=9;marker.add(beam);scene.add(marker);
   tracer=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineBasicMaterial({color:'#ffeab1',transparent:true,opacity:.8}));tracer.visible=false;scene.add(tracer);
   mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);renderer.render(scene,camera);
-  bootCompleted=true;$('loading').classList.add('hidden');$('welcome').classList.remove('hidden');$('start').disabled=false;$('start').firstChild.textContent=saved?'继续旅程 ':'进入霓港 ';
+  bootCompleted=true;$('loading').classList.add('hidden');$('welcome').classList.remove('hidden');$('start').disabled=false;$('harbor-start').disabled=false;$('start').firstChild.textContent=saved?'继续上次旅程 ':'从旧城出发 ';
   if(!storageOK)toast('浏览器无法读取存储，可继续游玩并手动导出进度。','warning');
   // Diagnostics read actual mesh transforms, not just presentation bookkeeping.
   const presentationSnapshot=()=>{

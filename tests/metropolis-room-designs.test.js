@@ -6,7 +6,7 @@ import { ROOM_DESIGNS, getRoomDesign } from '../src/metropolis-room-designs.js';
 import { createInteriorLayout, createInteriorSystem } from '../src/metropolis-interiors.js';
 import { SpatialIndex, moveCircle, circleContacts, CHARACTER_RADIUS } from '../src/collision.js';
 
-test('144 authored public floors name 576 functional areas without substituting furniture for rooms', () => {
+test('192 authored public floors name 768 functional areas without substituting furniture for rooms', () => {
   assert.deepEqual(Object.keys(ROOM_DESIGNS).sort(), METROPOLIS_BUILDINGS.map(building => building.id).sort());
   const floorNames = new Set(), roomIds = new Set(), uses = new Set();
   for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors) {
@@ -17,11 +17,11 @@ test('144 authored public floors name 576 functional areas without substituting 
     assert.equal(new Set(design.rooms.map(room => room.name)).size, 4);
     for (const room of design.rooms) { roomIds.add(room.id); uses.add(room.type); assert.ok(room.name.length > 3); }
   }
-  assert.equal(floorNames.size, 144); assert.equal(roomIds.size, 576); assert.ok(uses.size >= 45);
+  assert.equal(floorNames.size, 192); assert.equal(roomIds.size, 768); assert.ok(uses.size >= 45);
   assert.throws(() => getRoomDesign('missing-address', 'lobby'), /Missing authored interior/);
 });
 
-test('all 576 room thresholds remain reachable through the central aisle and real door openings', () => {
+test('all 768 room thresholds remain reachable through the central aisle and real door openings', () => {
   for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors) {
     const layout = createInteriorLayout(building, floor);
     const physics = { index: new SpatialIndex(layout.colliders), groundHeightAt: () => floor.y, bounds: 1450 };
@@ -64,7 +64,7 @@ test('soft furniture batches share geometry and materials while snapshot exposes
   assert.equal(snapshot.floorName, '山茶邻里客厅'); assert.equal(snapshot.roomCount, 4);
   assert.equal(snapshot.rooms[0].name, '邻里会客室');
   const batches = []; system.root.traverse(object => { if (object.isInstancedMesh) batches.push(object); });
-  assert.ok(batches.length < 80, 'hundreds of pieces must remain in shared material/shape batches');
+  assert.ok(batches.length / snapshot.activeFloors < 80, 'each resident floor batches its furnishings by shared material/shape so hidden floors can be culled');
   for (const geometry of ['rounded', 'cylinder', 'sphere']) assert.ok(batches.some(batch => batch.name.endsWith(`:${geometry}`)), `render ${geometry} rather than its box proxy`);
   assert.ok(batches.some(batch => batch.material.userData.metropolisWorldMetres), 'occupied surfaces retain physical-scale textures');
   system.exit({ force: true }); assert.deepEqual(system.snapshot().rooms, []); system.dispose();
@@ -140,4 +140,41 @@ test('hospital visitors can reach counters, seats, beds, handwashing and rehabil
     }
   }
   assert.equal(visited, 20);
+});
+
+test('all 576 occupied lower-floor rooms have human-scale enclosures and furnishings within their walls', () => {
+  let occupied = 0;
+  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.filter(item => item.stairs)) {
+    const layout = createInteriorLayout(building, floor);
+    for (const room of layout.rooms) {
+      occupied++;
+      assert.ok(room.enclosed && room.width <= 19 && room.depth <= 18 && room.ceilingHeight <= 3.7, `${building.id}/${room.name} must not be an empty full-width hall`);
+      const parts = layout.parts.filter(part => part.roomId === room.id);
+      assert.equal(parts.filter(part => part.kind === 'partition').length, 5, 'four walls include a real split door opening');
+      assert.ok(parts.some(part => part.kind === 'ceiling'));
+      assert.ok(parts.filter(part => !['partition', 'ceiling', 'detail'].includes(part.kind)).length >= 8, `${room.name} lacks modeled furnishings`);
+      for (const part of parts) {
+        assert.ok(part.x - part.sx / 2 >= room.bounds.minX - 0.16 && part.x + part.sx / 2 <= room.bounds.maxX + 0.16, `${room.name}/${part.kind} crosses a side wall`);
+        assert.ok(part.z - part.sz / 2 >= room.bounds.minZ - 0.16 && part.z + part.sz / 2 <= room.bounds.maxZ + 0.16, `${room.name}/${part.kind} crosses an end wall`);
+      }
+    }
+  }
+  assert.equal(occupied, 576);
+});
+
+test('public arrival and corridor spaces contain legible orientation, seating and programme-specific displays', () => {
+  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.filter(item => item.stairs)) {
+    const layout = createInteriorLayout(building, floor);
+    assert.ok(layout.parts.some(part => part.kind === 'welcome-counter'));
+    assert.ok(layout.parts.filter(part => part.kind === 'bench' && !part.roomId).length >= 4);
+    assert.ok(layout.labels.some(label => label.graphic === 'directory' && label.rooms.length === 4));
+    assert.equal(layout.labels.filter(label => label.graphic === 'harbour').length, 2);
+    for (const label of layout.labels.filter(label => label.text?.startsWith('楼梯'))) {
+      assert.ok(Math.abs(label.x - building.x) >= 5.2 && label.height <= 0.3, 'stair labels must be wall-mounted rather than hanging over the camera');
+    }
+    const counter = layout.parts.find(part => part.kind === 'welcome-counter');
+    assert.ok(counter.sx <= 2.4 && counter.sy <= 0.96, 'arrival furnishings retain human dimensions');
+  }
+  const museum = METROPOLIS_BUILDINGS[0], layout = createInteriorLayout(museum, museum.floors[0]);
+  assert.ok(layout.parts.some(part => part.kind === 'welcome-ship-hull'));
 });
