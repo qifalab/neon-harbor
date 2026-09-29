@@ -1,6 +1,6 @@
 /**
- * Public interiors are authored address by address. Each row names all three
- * public floors and their four connected rooms; stable floor IDs keep saves and
+ * Public interiors are authored address by address. Each address names four
+ * public floors and their four connected rooms; stable legacy floor IDs keep saves and
  * elevator journeys compatible. Room types select furnishing craft, not names.
  */
 const FLOORS = {
@@ -246,10 +246,63 @@ const FLOORS = {
   ],
 };
 
+// A separate occupied third-floor programme at each address. These are public
+// uses, not a claim that every private floor in a 70-storey tower is accessible.
+const WORKPLACES = {
+  'tide-museum': ['海洋公众研习层', 'library', 'library:海洋科普阅读室,workshop:船模修复工坊,conference:海员故事圆桌室,archive:灯塔摄影资料室'],
+  'harbor-market': ['鱼市商户协作层', 'office', 'office:渔商记账室,conference:海产商户议事室,changing:清洁工作服更衣间,lounge:清晨渔工休息室'],
+  'ferry-house': ['渡海旅行阅览层', 'library', 'library:岛屿旅行书室,archive:老航线资料室,study:临窗旅记书写室,lounge:候潮慢读客厅'],
+  'meridian-hotel': ['子午线旅居公寓层', 'hotel', 'bedroom:长住旅客卧室,living:子午线公寓客厅,kitchen:长住套房餐厨,bath:公寓石材浴室'],
+  'pearl-convention': ['明珠展务工作层', 'office', 'office:展览策划办公室,conference:展商协调会议室,workshop:展陈样本工作室,archive:展会图录资料室'],
+  'sail-club': ['帆影航海阅览层', 'library', 'archive:风浪与潮汐图室,library:船艺技术书室,study:航线研习间,lounge:船员交流客厅'],
+  'wave-theatre': ['浪潮演出工作层', 'theatre', 'changing:巡演戏服化妆间,control:舞台监看工作室,strings:演出配乐排练室,archive:戏剧脚本文库'],
+  'east-quay-hotel': ['东堤长住套房层', 'hotel', 'living:临海旅行起居室,bedroom:东堤双人客房,kitchen:旅居小型餐厨,bath:东堤套房浴室'],
+  'jade-bank': ['翡翠银行研习层', 'office', 'office:金融分析办公室,conference:研究讨论会议室,library:财务参考书室,study:账务安静研习室'],
+  'exchange-hall': ['港城金融史研究层', 'library', 'archive:历史股券档案室,library:财经刊物阅览室,study:市场史研习室,conference:经济史圆桌厅'],
+  'apex-tower': ['天际建筑工作层', 'office', 'drafting:结构设计绘图室,model:高层风洞模型室,conference:城市工程会议室,library:建筑技术资料室'],
+  'twin-pines': ['双松设计工坊层', 'office', 'drafting:双松图稿工作室,workshop:材料拼样工作间,cowork:协同设计办公室,conference:项目评审圆桌室'],
+  'crown-plaza': ['冠环手作工作层', 'retail', 'tailor:服饰定制工作室,ceramics:陶器釉色展示室,bookshop:独立出版选书室,workshop:纸艺装订工坊'],
+  'axis-house': ['经纬城市研究层', 'office', 'drafting:街区测绘工作室,model:街道比例模型室,archive:城市图纸档案室,study:建筑研究书桌间'],
+  'silver-terrace': ['银台团队工作层', 'office', 'cowork:项目协作工作室,conference:银台团队讨论室,library:企业技术书室,office:安静专注办公室'],
+  'lantern-tower': ['灯笼艺术研习层', 'gallery', 'workshop:纸灯装配工坊,tailor:灯罩织物裁制室,archive:传统灯谱资料室,study:灯彩设计研习间'],
+  'banyan-teahouse': ['榕荫茶艺学堂层', 'library', 'tea:闻香品茗课堂,library:茶艺文献书室,workshop:茶具修护工坊,conference:茶友小型圆桌室'],
+  'red-brick-post': ['红砖邮路研习层', 'library', 'archive:邮路路线档案室,study:书信史研究间,workshop:纸张修补工坊,library:邮政文献阅览室'],
+  'kowloon-arcade': ['九龙邻里家庭层', 'residential', 'living:骑楼二代家庭客厅,bedroom:临巷百叶卧室,kitchen:街坊家庭餐厨,bath:骑楼家用浴室'],
+  'golden-cinema': ['金声电影工作层', 'theatre', 'projection:放映机维修间,archive:电影剧照资料室,control:影片声音监听室,changing:活动嘉宾化妆间'],
+  'lotus-market': ['莲花邻里服务层', 'office', 'office:街市自治办公室,conference:商贩议事圆桌室,changing:街市员工更衣间,library:生活服务小书室'],
+  'blue-house': ['蓝屋街坊生活层', 'residential', 'living:蓝屋家常起居室,bedroom:蓝屋百叶卧室,kitchen:蓝屋日常餐厨,bath:旧屋更新浴室'],
+  'temple-court': ['天后地方研习层', 'library', 'archive:渔村族谱档案室,library:地方历史阅览室,study:民俗图志研习间,workshop:拓片整理工坊'],
+  'victoria-library': ['维多利亚研习书层', 'library', 'study:安静写作研习室,archive:珍本书目档案室,library:文学专题阅览室,conference:读者讨论圆桌室'],
+  'westbank-gallery': ['西岸艺术修复层', 'gallery', 'workshop:版画整理工坊,archive:艺术展览图录室,study:艺术史研究室,ceramics:陶器修复展示室'],
+  'music-conservatory': ['海风独立练习层', 'theatre', 'piano:海风琴房练习室,strings:弦乐合奏教室,drums:节奏训练教室,archive:演奏乐谱资料室'],
+  'cloud-library': ['云阶安静研读层', 'library', 'study:个人安静研读室,library:自然科学阅览室,archive:专题地图收藏室,conference:小组读书讨论室'],
+  'science-forum': ['未来科学研习层', 'lab', 'lab:公众化学演示室,robot:开源机器人工作室,control:实验数据整理室,archive:实验记录档案室'],
+  'design-foundry': ['铸造厂创作工作层', 'office', 'drafting:工业造型绘图室,tailor:软装面料工作室,workshop:样机装配工坊,conference:设计评审会议室'],
+  'jade-opera': ['翠玉戏曲传习层', 'theatre', 'changing:戏服梳妆工作室,strings:文场排练教室,drums:武场打击练习室,archive:戏曲曲谱档案室'],
+  'city-archive': ['港城档案研究层', 'library', 'study:城市文献研习室,archive:口述历史资料室,workshop:档案装订工作室,control:录音数字化工作室'],
+  'observatory-house': ['星港观测研习层', 'lab', 'lab:光学仪器工作室,control:星图处理工作室,archive:天文观测日志室,study:恒星目录研习间'],
+  'camellia-court': ['山茶家庭居住层', 'residential', 'living:山茶小家庭客厅,bedroom:木窗儿童卧室,kitchen:山茶家庭餐厨,bath:山茶家用浴室'],
+  'pine-residence': ['松岭家庭居住层', 'residential', 'living:松木家庭会客室,bedroom:山景安静卧室,kitchen:松岭家庭餐厨,bath:松岭家庭浴室'],
+  'sky-garden': ['云庭邻里居住层', 'residential', 'living:云庭亲子起居室,bedroom:双窗儿童卧室,kitchen:云庭家常餐厨,bath:云庭家用浴室'],
+  'garden-hospital': ['花园医护研习层', 'library', 'library:护理参考书室,study:医护安静研习室,conference:康复病例讨论室,archive:社区健康资料室'],
+  'hill-school': ['半山开放学习层', 'library', 'study:课后独立学习室,library:校园科学阅览室,archive:校史照片资料室,conference:教师教研圆桌室'],
+  'cedar-villa': ['杉木家庭起居层', 'residential', 'living:杉木亲友起居室,bedroom:杉木客用卧室,kitchen:杉木家庭餐厨,bath:杉木家用浴室'],
+  'terrace-gardens': ['叠翠家庭居住层', 'residential', 'living:叠翠亲子客厅,bedroom:花影安静卧室,kitchen:叠翠家庭餐厨,bath:叠翠家用浴室'],
+  'lighthouse-residence': ['灯塔家庭起居层', 'residential', 'living:灯塔暖木起居室,bedroom:临海小型卧室,kitchen:灯塔家常餐厨,bath:灯塔家用浴室'],
+  'gateway-station': ['北门联运研习层', 'office', 'office:旅运调度办公室,control:铁路客流研究室,archive:交通路线档案室,conference:服务协调会议室'],
+  'innovation-hub': ['启航研发工作层', 'lab', 'lab:电子测量实验室,robot:移动机器人工作室,office:研发小队工作室,conference:测试评审会议室'],
+  'freight-exchange': ['货运港务工作层', 'office', 'office:港务协调办公室,control:物流信息工作室,archive:海运账册档案室,conference:货代业务会议室'],
+  'north-star': ['北辰城市工作层', 'office', 'cowork:北辰共享工作室,conference:北部业务会议室,office:山口项目办公室,library:行业专题资料室'],
+  'civic-hall': ['港城市民研习层', 'library', 'library:公共事务阅览室,study:市民自习研读室,conference:居民议事圆桌室,archive:社区行动资料室'],
+  'sports-pavilion': ['跃动运动研习层', 'office', 'office:社区教练办公室,conference:训练复盘会议室,library:运动健康书室,changing:教练员更衣室'],
+  'mountain-hotel': ['望山长住套房层', 'hotel', 'living:望山旅居起居室,bedroom:山景长住卧室,kitchen:望山套房餐厨,bath:望山套房浴室'],
+  'harbour-labs': ['海港科研工作层', 'lab', 'lab:海洋样品处理室,control:潮位数据工作室,archive:海域观测档案室,office:研究小队办公室'],
+};
+
 const ACCENTS = ['teal', 'red', 'navy', 'upholstery', 'blue', 'brass'];
 export const ROOM_DESIGNS = Object.freeze(Object.fromEntries(Object.entries(FLOORS).map(([id, floors], address) => [id,
-  Object.freeze(floors.map(([name, category, encoded], index) => Object.freeze({
-    id: ['lobby', 'gallery', 'observation'][index], name, category,
+  Object.freeze([floors[0], floors[1], WORKPLACES[id], floors[2]].map(([name, category, encoded], index) => Object.freeze({
+    id: ['lobby', 'gallery', 'workplace', 'observation'][index], name, category,
     accent: ACCENTS[(address + index) % ACCENTS.length],
     floorFinish: /residential|hotel|library|office/.test(category) ? 'timber' : /observation|gallery|theatre|station|bank/.test(category) ? 'limestone' : 'ceramic',
     rooms: Object.freeze(encoded.split(',').map((entry, roomIndex) => {

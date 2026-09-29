@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { walkRoute } from './helpers/walking.js';
 
 // Software-GPU CI still exercises the shipped renderer and real controls.
 // State reads are diagnostic only; travel uses the player-facing city atlas.
@@ -46,9 +47,14 @@ async function walk(page, keys, predicate, timeout = 45000) {
 
 async function waitForLift(page) {
   const start = await snapshot(page);
-  // The 116 m gallery ride takes 15.48 simulated seconds including both doors.
-  // At 1 FPS the clock's 0.25 s catch-up cap makes that over 60 wall seconds.
-  await expect.poll(async () => (await snapshot(page)).city.interior.moving, { timeout: 90000 }).toBe(false);
+  // The highest destination is the 260 m observation floor, not the new
+  // 4.2 m gallery. Its ~30 simulated seconds can take 120 wall seconds on
+  // a 1 FPS software GPU with the shipped 0.25 s catch-up cap.
+  const timeout = Math.max(90000, (start.city.interior.elevator.duration + 3) * 4500);
+  // Keep the waiting predicate in the browser; transferring the complete city
+  // catalog for every poll adds work while a slow GPU is presenting the lift.
+  await page.waitForFunction(() => window.__NEON__.snapshot().city.interior.moving === false, null,
+    { polling: 'raf', timeout });
   const finish = await snapshot(page);
   expect(finish.simulationTime - start.simulationTime).toBeLessThan(start.city.interior.elevator.duration + 3);
 }
@@ -97,6 +103,7 @@ test('city atlas exposes all 48 addresses and fetches and evicts real north-shor
 
 for (const id of ['tide-museum', 'apex-tower', 'camellia-court']) {
   test(`${id}: ${id === 'apex-tower' ? 'ride to a high floor and travel back to the street' : 'walk through the lobby, ride the elevator, return to the street'}`, async ({ page }) => {
+    if (id === 'apex-tower') test.setTimeout(300000);
     const errors = await boot(page);
     await visit(page, 'building', id);
     await page.keyboard.press('e');
@@ -104,11 +111,11 @@ for (const id of ['tide-museum', 'apex-tower', 'camellia-court']) {
     const lobby = (await snapshot(page)).city.interior;
     expect(lobby.floorId).toBe('lobby');
     expect(lobby.furnitureCount).toBeGreaterThan(12);
-    expect(lobby.activeFloors).toBe(1);
+    expect(lobby.activeFloors).toBe(3);
     await walk(page, ['w', 'Shift'], s => Math.abs(s.position.z - s.city.interior.cabin.z) < 1.2);
     await page.keyboard.press('e');
-    await expect(page.locator('[data-floor-id]')).toHaveCount(3);
-    const floor = id === 'tide-museum' ? 'observation' : 'gallery';
+    await expect(page.locator('[data-floor-id]')).toHaveCount(4);
+    const floor = id === 'camellia-court' ? 'gallery' : 'observation';
     await page.locator(`[data-floor-id="${floor}"]`).click();
     await expect.poll(async () => (await snapshot(page)).city.interior.moving).toBe(true);
     const startY = lobby.elevator.y;
@@ -121,7 +128,8 @@ for (const id of ['tide-museum', 'apex-tower', 'camellia-court']) {
     const arrived = (await snapshot(page)).city.interior;
     expect(arrived.floorId).toBe(floor);
     expect(arrived.elevator.doorOpen).toBe(1);
-    expect(arrived.activeFloors).toBe(1);
+    expect(arrived.activeFloors).toBe(floor === 'observation' ? 1 : 3);
+    if (id === 'apex-tower') expect((await snapshot(page)).position.y).toBeGreaterThan(250);
     // Leave the cabin into the furnished destination, then walk back to return.
     await walk(page, ['s'], s => s.position.z > s.city.interior.cabin.z + 10);
     await page.screenshot({ path: `test-results/screenshots/10-${id}-interior.png` });
@@ -155,14 +163,22 @@ for (const journey of [
   { route: 'ferry', from: 'ferry-south', to: 'ferry-north', boardZ: -310, exitZ: -394 },
 ]) {
   test(`${journey.route}: wait, board, travel and alight using public controls`, async ({ page }) => {
-    // A complete transit journey includes a timetable wait, dwell and travel.
-    // Keep service limits in simulation seconds, with a bounded software-GPU budget.
-    test.setTimeout(360000);
+    // v0.4's teleport entrances left about 25 m of platform walking. The real
+    // metro stair routes now cover 110 m, about 85 m more plus landing checks.
+    // Allocate that added route 120 s; all independent service and walking
+    // limits stay unchanged, and the ferry retains its original total budget.
+    test.setTimeout(journey.route === 'metro' ? 480000 : 360000);
     const errors = await boot(page);
     await visit(page, 'stop', journey.from);
-    await page.keyboard.press('e');
+    if (journey.route === 'metro') {
+      const station = (await snapshot(page)).city.transit.stops.find(stop => stop.id === journey.from);
+      expect(station.walkable).toBe(true);
+      expect(station.access.kind).toBe('walkable-stairs');
+      const samples = await walkRoute(page, station.access.waypoints);
+      expect(samples.some(sample => sample.position.y < -2.75 && sample.position.y > -4.25)).toBe(true);
+      expect(samples.some(sample => sample.position.y < -9.75 && sample.position.y > -11.25)).toBe(true);
+    } else await page.keyboard.press('e');
     await expect.poll(async () => (await snapshot(page)).city.transit.currentStop).toBe(journey.from);
-    if (journey.route === 'metro') await walk(page, ['w'], s => s.position.z < 254);
     const waiting = await snapshot(page);
     await page.waitForFunction(({ from, route }) => window.__NEON__.snapshot().city.transit.vehicles.some(v => v.routeId === route && v.stopId === from && v.remaining > 4), journey, { polling: 'raf', timeout: 90000 });
     expect((await snapshot(page)).simulationTime - waiting.simulationTime).toBeLessThan(17);
@@ -188,9 +204,16 @@ for (const journey of [
     await expect.poll(async () => (await snapshot(page)).city.transit.riding).toBe(false);
     expect((await snapshot(page)).city.transit.currentStop).toBe(journey.to);
     await page.screenshot({ path: `test-results/screenshots/11-${journey.route}-arrival.png` });
-    if (journey.route === 'metro') await walk(page, ['s'], s => s.position.z > -411);
-    else await walk(page, ['w'], s => s.position.z < -392);
-    await page.keyboard.press('e');
+    if (journey.route === 'metro') {
+      const station = (await snapshot(page)).city.transit.stops.find(stop => stop.id === journey.to);
+      // Clear the physical entrance's activation band, not just its center:
+      // the bounded walking tolerance can legitimately stop inside that band.
+      await walkRoute(page, [...station.access.waypoints].reverse().concat(station.streetExit));
+      expect((await snapshot(page)).position.y).toBeCloseTo(0, 1);
+    } else {
+      await walk(page, ['w'], s => s.position.z < -392);
+      await page.keyboard.press('e');
+    }
     await expect.poll(async () => (await snapshot(page)).city.transit.currentStop).toBeNull();
     expect((await snapshot(page)).city.transit.boardingState).toBe('street');
     expect(errors).toEqual([]);

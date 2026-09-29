@@ -242,11 +242,14 @@ export function createMetropolisMaterials(THREE) {
   }
 
   const solidDefinitions = {
-    brass: { color: '#9d7948', roughness: 0.38, metalness: 0.75 },
+    brass: { color: '#9d7948', roughness: 0.44, metalness: 0.75 },
     // Opaque glazing avoids the sorting artifacts of thousands of transparent
     // facade panes. Interior windows may opt into transparency on a clone.
-    glass: { color: '#577b83', roughness: 0.18, metalness: 0.42 },
-    glassDark: { color: '#233b46', roughness: 0.22, metalness: 0.46 },
+    // Glass is a dielectric. Highly metallic teal panes read as enamelled toy
+    // blocks; a neutral tint plus the actual sky environment keeps the facade
+    // response distinct from its stone frames and brushed metal mullions.
+    glass: { color: '#71848b', roughness: 0.24, metalness: 0.06, envMapIntensity: 1.15 },
+    glassDark: { color: '#303e48', roughness: 0.27, metalness: 0.04, envMapIntensity: 1.05 },
     light: { color: '#ffe5ad', emissive: '#ffd397', emissiveIntensity: 0.6, roughness: 0.5 },
     leaves: { color: '#426647', roughness: 0.93, metalness: 0, side: THREE.DoubleSide },
   };

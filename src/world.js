@@ -1,5 +1,8 @@
 import { WORLD_BOUNDS, ROAD_CENTERS, VEHICLE_DIMENSIONS, PLAYER_DIMENSIONS } from './world-config.js';
 import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
+import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
+import { subtractGroundRect, cutGroundGeometry } from './terrain-openings.js';
+import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
 
 /**
  * The city is entirely original procedural art. Static details are batched by
@@ -133,9 +136,10 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
       for (let cz = Math.floor((z - depth / 2) / terrainCell); cz <= Math.floor((z + depth / 2) / terrainCell); cz++) {
         const key = `${cx},${cz}`; if (!terrainBuckets.has(key)) terrainBuckets.set(key, []); terrainBuckets.get(key).push(data);
       }
-    const geometryKey = `surface-${width}-${depth}-${y}-${baseY}-${rampWidth}`;
+    const hasOpening = METRO_STAIR_OPENINGS.some(h => h.minX < x+width/2 && h.maxX > x-width/2 && h.minZ < z+depth/2 && h.maxZ > z-depth/2);
+    const geometryKey = `surface-${width}-${depth}-${y}-${baseY}-${rampWidth}${hasOpening?`-opening-${x}-${z}`:''}`;
     if (!surfaceGeometries.has(geometryKey)) surfaceGeometries.set(geometryKey,
-      makeSurfaceGeometry(THREE, width, depth, y, baseY, rampWidth));
+      cutGroundGeometry(THREE, makeSurfaceGeometry(THREE, width, depth, y, baseY, rampWidth), x, z, METRO_STAIR_OPENINGS));
     stamp(geometryKey, key, x, 0, z, 1, 1, 1);
     return data;
   }
@@ -149,7 +153,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
 
   // Asphalt rectangles share a single height and never overlap. Layering two
   // crossing strips only millimetres apart caused distant intersections to shimmer.
-  box('sand', 0, -0.28, 0, 598, 0.5, 598);
+  for (const p of subtractGroundRect({minX:-299,maxX:299,minZ:-299,maxZ:299},METRO_STAIR_OPENINGS))
+    box('sand',(p.minX+p.maxX)/2,-0.28,(p.minZ+p.maxZ)/2,p.maxX-p.minX,.5,p.maxZ-p.minZ);
   const roads = ROAD_CENTERS;
   for (const lane of roads) roadSurfaces.push(surface('asphalt', lane, 0, 22, 590, 0, { kind: 'road' }));
   const gaps = [];
@@ -440,8 +445,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     }
   }
 
-  const oceanMaterial = new THREE.MeshStandardMaterial({ color: '#287f8d', roughness: 0.32, metalness: 0.18 });
-  const ocean = mesh(new THREE.PlaneGeometry(2200, 2600, 1, 1), oceanMaterial, 1397, -0.3, 0);
+  const oceanMaterial = createHarborWaterMaterial(THREE);
+  const ocean = mesh(new THREE.PlaneGeometry(2200, 3200, 1, 1), oceanMaterial, 1397, -0.3, 0);
   ocean.rotation.x = -Math.PI / 2;
   box('sand', 304, -0.05, 0, 17, 0.25, 640);
   const waveMaterial = new THREE.MeshBasicMaterial({ color: '#a6d3c7', transparent: true, opacity: 0.28, depthWrite: false });
@@ -617,8 +622,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
       const hour = Number.isFinite(timeOfDay) ? (timeOfDay <= 1 ? timeOfDay * 24 : timeOfDay) % 24 : 18;
       const daylight = Math.max(0, Math.sin((hour - 6) / 12 * Math.PI));
       for (const material of sharedEmissive) material.emissiveIntensity = 0.06 + (1 - daylight) * 0.65;
-      for (const { wave, x, phase } of waves) wave.position.x = x + Math.sin(elapsed * 0.24 + phase) * 2.2;
-      waveMaterial.opacity = 0.18 + daylight * 0.14;
+      updateHarborWaterMaterial(oceanMaterial,elapsed,hour);
+      for (const { wave } of waves) wave.visible=false;
     },
   };
 }
