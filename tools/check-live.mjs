@@ -14,6 +14,10 @@ if (!target.pathname.endsWith('/')) target.pathname += '/';
 // Evidence encoding can be slow on shared software-rendering runners.
 // Keep interaction deadlines at 20 seconds and give screenshots their own budget.
 const screenshotTimeout = process.env.CI ? 60000 : 20000;
+// Keep the shipped high-quality renderer; reduce only screenshot pixel work
+// on CI's software GPU. Local visual review retains the original resolution.
+const highViewport = process.env.CI ? { width: 800, height: 500 } : { width: 1280, height: 800 };
+const interactionViewport = process.env.CI ? highViewport : { width: 960, height: 600 };
 const output = resolve('test-results/live-smoke');
 await mkdir(output, { recursive: true });
 const report = { url: target.href, success: false, checks: [], errors: [], assets: [] };
@@ -30,12 +34,13 @@ async function capture(name) {
   report.captures ??= [];
   for (let attempt = 1; attempt <= 2; attempt++) {
     const started = Date.now();
+    const viewport = page.viewportSize();
     try {
       await page.screenshot({ path: resolve(output, name), timeout: screenshotTimeout });
-      report.captures.push({ name, attempt, durationMs: Date.now() - started, success: true });
+      report.captures.push({ name, attempt, viewport, durationMs: Date.now() - started, success: true });
       return;
     } catch (error) {
-      report.captures.push({ name, attempt, durationMs: Date.now() - started, success: false, error: error.message });
+      report.captures.push({ name, attempt, viewport, durationMs: Date.now() - started, success: false, error: error.message });
       if (attempt === 2 || error.name !== 'TimeoutError') throw error;
     }
   }
@@ -49,10 +54,11 @@ try {
   });
   report.browser = browser.version();
   const context = await browser.newContext({
-    viewport: { width: 1280, height: 800 },
+    viewport: highViewport,
     extraHTTPHeaders: { 'Cache-Control': 'no-cache' },
   });
   page = await context.newPage();
+  report.viewport = page.viewportSize();
   page.setDefaultTimeout(20000);
   page.on('pageerror', error => report.errors.push(`Page error: ${error.message}`));
   page.on('console', message => {
@@ -124,7 +130,7 @@ try {
 
   // CI uses software rendering. Select the shipped quality control through the
   // UI; do not bypass startup, mutate the game or fake the renderer.
-  await page.setViewportSize({ width: 960, height: 600 });
+  await page.setViewportSize(interactionViewport);
   await page.locator('#welcome-settings').click();
   await page.locator('#quality').selectOption('low');
   await page.locator('#resume').click();
@@ -154,11 +160,32 @@ try {
   report.checks.push('Opened the city map and resumed using Escape');
 
   await capture('live-game.png');
+
+  // Visit the north shore with the public guide, then enter a real furnished
+  // lobby using the normal interaction key. Snapshot access is read-only.
+  await page.locator('#explore-city').click();
+  await expect(page.locator('#atlas-results')).toBeVisible();
+  await expect(page.locator('[data-building-id]')).toHaveCount(48);
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).city.buildings).toHaveLength(48);
+  report.checks.push('Opened the city guide with all 48 north-shore addresses');
+  await page.locator('[data-visit-building="tide-museum"]').click();
+  await expect(page.locator('#panel')).toBeHidden();
+  await expect(page.locator('#game')).toBeFocused();
+  await page.keyboard.press('e');
+  await page.waitForFunction(() => window.__NEON__.snapshot().city.interior.buildingId === 'tide-museum');
+  const museum = (await page.evaluate(() => window.__NEON__.snapshot())).city.interior;
+  expect(museum.buildingId).toBe('tide-museum');
+  expect(museum.floorId).toBe('lobby');
+  expect(museum.furnitureCount).toBeGreaterThan(12);
+  report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, furnitureCount: museum.furnitureCount };
+  await capture('live-north-museum.png');
+  report.checks.push('Visited the north-shore museum through the guide and entered its furnished lobby using E');
+
   await page.keyboard.press('Escape');
   await page.locator('[data-tab="settings"]').click();
   await page.locator('#quality').selectOption('high');
   await page.locator('#resume').click();
-  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.setViewportSize(highViewport);
   await page.waitForFunction(() => window.__NEON__.snapshot().settings.quality === 'high');
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await capture('live-high-quality-game.png');
