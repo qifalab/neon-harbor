@@ -128,7 +128,7 @@ function renderPanel(){
   document.querySelectorAll('[data-tab]').forEach(n=>n.classList.toggle('active',n.dataset.tab===activeTab));
   const content=$('panel-content');
   if(activeTab==='explore'){
-    renderCityGuide(content,world,async(destination)=>{if(!started)await enterCity();paused=true;cleanInput();try{if(await world.travelTo(destination)){resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}drainMessages();});
+    renderCityGuide(content,world,async(destination)=>{const buttons=[...content.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);try{if(!started)await enterCity();paused=true;cleanInput();if(await world.travelTo(destination)){resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}finally{buttons.forEach(b=>b.disabled=false);}drainMessages();});
   }else if(activeTab==='elevator'){
     renderElevatorPanel(content,world,id=>{if(world.selectFloor(id)){closePanel();resetPresentation();}});
   }else if(activeTab==='jobs'){

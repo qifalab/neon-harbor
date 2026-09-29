@@ -36,6 +36,7 @@ export function renderElevatorPanel(container, city, onSelect) {
     const button = document.createElement('button'); button.className = 'floor-button'; button.dataset.floorId = floor.id;
     const current = state.floor === floor.id || state.floor?.id === floor.id;
     button.innerHTML = `<span>${floor.label}</span><small>${Math.round(floor.y)} m${current ? ' · 当前层' : ''}</small><b>↗</b>`;
+    button.disabled = current;
     button.addEventListener('click', () => onSelect(floor.id)); container.querySelector('.floor-list').append(button);
   }
 }

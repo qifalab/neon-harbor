@@ -169,8 +169,14 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     streamAt(position, velocity, dt) { south.streamAt?.(position, velocity, dt); north.update(position, velocity, dt); },
     get streamingStats() {
       const a = south.streamingStats, b = north.streamingStats;
-      return { ...a, ready: a.ready && b.ready, failed: (a.failed || 0) + (b.failed || 0), loaded: a.loaded + b.loaded,
-        pending: (a.pending || 0) + (b.pending || 0), south: a, north: b };
+      const stats = { ...a, ready: a.ready && b.ready, south: a, north: b };
+      for (const key of ['failed', 'loaded', 'pending', 'requested', 'unloaded', 'disposedInstances', 'residentInstances', 'residentMeshes', 'bytes', 'residentBytes', 'maxResidentChunks'])
+        stats[key] = (a[key] || 0) + (b[key] || 0);
+      // Preserve old-island IDs while making north-shore counters and membership
+      // agree; two independent caches must not masquerade as a single old cache.
+      for (const key of ['activeChunks', 'targetChunks', 'failedChunks', 'historicalFailedChunks'])
+        stats[key] = [...(a[key] || []), ...(b[key] || []).map(id => `north:${id}`)];
+      return stats;
     },
     districtAt(x, z) {
       if (inside()) return `${METROPOLIS_BUILDINGS.find(b => b.id === interiors.state.buildingId)?.name || ''} · 室内`;

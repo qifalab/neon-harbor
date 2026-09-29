@@ -40,6 +40,9 @@ export function createPeopleSystem(THREE, scene, {
 } = {}) {
   const root = new THREE.Group(); root.name = 'Metropolis street life'; scene.add(root);
   const routes = createPedestrianRoutes(buildings), residents = [], models = new Map(), pool = [];
+  const residentsByBlock = routes.map(() => []), candidates = [], near = [], active = new Set();
+  const collisionGrid = new Map(), collisionBucketPool = [], collisionCellSize = 16;
+  let collisionIndexReady = false;
   const index = new SpatialIndex(colliders.filter(box => box.physics !== false &&
     (box.minY ?? 0) < 1.8 && (box.maxY ?? 4) > .22));
   const blocked = (point, vehicles = [], clearance = RADIUS) => {
@@ -47,8 +50,8 @@ export function createPeopleSystem(THREE, scene, {
       if (circleOBB({ ...point, radius: clearance }, box)) return true;
     }
     for (const vehicle of vehicles) {
-      if (vehicle.health <= 0 || Math.abs((vehicle.groundY ?? vehicle.y ?? 0) - groundHeightAt(point.x, point.z)) > 2) continue;
-      if (Math.abs(point.x - vehicle.x) > 5 || Math.abs(point.z - vehicle.z) > 5) continue;
+      if (vehicle.health <= 0 || Math.abs(point.x - vehicle.x) > 5 || Math.abs(point.z - vehicle.z) > 5) continue;
+      if (Math.abs((vehicle.groundY ?? vehicle.y ?? 0) - groundHeightAt(point.x, point.z)) > 2) continue;
       if (circleOBB({ ...point, radius: clearance + .5 }, vehicle)) return true;
     }
     return false;
@@ -67,12 +70,15 @@ export function createPeopleSystem(THREE, scene, {
         travel = wrap(travel + 3, route.length); point = samplePedestrianRoute(route, travel, direction);
       }
       if (blocked(point)) continue;
-      residents.push({ id: `resident-${building.id}-${person}`, block, building, route,
+      const resident = { id: `resident-${building.id}-${person}`, block, building, route,
         x: point.x, z: point.z, yaw: point.yaw, homeYaw: point.yaw, travel, direction, social,
         style: (block + person * 3) % CHARACTER_STYLES.length, height: .91 + (seed % 8) * .012,
         speed: .86 + (seed % 9) * .058, phase: seed * .67, state: social ? 'talking' : 'walking',
         gait: 0, pause: social ? Infinity : 0, nextPause: 14 + seed % 23, blockedFor: 0,
-        groupId: social ? `conversation-${building.id}` : null, interactionUntil: 0 });
+        groupId: social ? `conversation-${building.id}` : null, interactionUntil: 0 };
+      resident.view = { resident, distance: Infinity };
+      resident.collisionBody = { id: resident.id, x: resident.x, z: resident.z, y: 0, groundY: 0, radius: .48 };
+      residents.push(resident); residentsByBlock[block].push(resident);
     }
   }
   const farGeometry = makeDistantGeometry(THREE);
@@ -119,15 +125,13 @@ export function createPeopleSystem(THREE, scene, {
     if (released) return;
     dt = paused ? 0 : Math.max(0, Math.min(.1, Number.isFinite(dt) ? dt : 0));
     lastPosition = position; lastHour = hour; time += dt;
-    const neighbors = new Map();
-    for (const resident of residents) {
-      const key = `${Math.floor(resident.x / 4)}:${Math.floor(resident.z / 4)}`;
-      if (!neighbors.has(key)) neighbors.set(key, []); neighbors.get(key).push(resident);
-    }
+    // A pavement route never leaves its block. Its only possible neighbours
+    // are the other four local residents, avoiding a city-wide map every frame.
     const crowded = (resident, point) => {
-      const bx = Math.floor(point.x / 4), bz = Math.floor(point.z / 4);
-      for (let x = bx - 1; x <= bx + 1; x++) for (let z = bz - 1; z <= bz + 1; z++) {
-        for (const other of neighbors.get(`${x}:${z}`) || []) if (other !== resident && distance(point, other) < .85) return true;
+      for (const other of residentsByBlock[resident.block]) {
+        if (other === resident) continue;
+        const dx = point.x - other.x, dz = point.z - other.z;
+        if (dx * dx + dz * dz < .85 * .85) return true;
       }
       return false;
     };
@@ -161,10 +165,18 @@ export function createPeopleSystem(THREE, scene, {
       resident.yaw = turn(resident.yaw, point.yaw, 1 - Math.exp(-dt * 6));
       resident.phase += dt * pace * 6.8;
     }
-    const candidates = residents.map(resident => ({ resident, distance: distance(resident, position) }))
-      .filter(item => item.distance <= PEOPLE_BUDGET.distantDistance).sort((a, b) => a.distance - b.distance);
-    const near = candidates.filter(item => item.distance < PEOPLE_BUDGET.detailedDistance).slice(0, PEOPLE_BUDGET.detailed);
-    const active = new Set(near.map(item => item.resident.id));
+    if (dt > 0 || !collisionIndexReady) rebuildCollisionIndex();
+    candidates.length = 0; near.length = 0; active.clear();
+    for (const resident of residents) {
+      const dx = resident.x - position.x, dz = resident.z - position.z, d2 = dx * dx + dz * dz;
+      if (d2 > PEOPLE_BUDGET.distantDistance ** 2) continue;
+      resident.view.distance = Math.sqrt(d2); candidates.push(resident.view);
+    }
+    candidates.sort((a, b) => a.distance - b.distance);
+    for (const item of candidates) {
+      if (item.distance >= PEOPLE_BUDGET.detailedDistance || near.length >= PEOPLE_BUDGET.detailed) break;
+      near.push(item); active.add(item.resident.id);
+    }
     for (const id of models.keys()) if (!active.has(id)) release(id);
     let spawned = 0;
     for (const item of near) {
@@ -220,15 +232,40 @@ export function createPeopleSystem(THREE, scene, {
         state: person.state, style: CHARACTER_STYLES[person.style].id, groupId: person.groupId, buildingId: person.building.id,
         materialized: models.has(person.id) })) };
   }
+  function rebuildCollisionIndex() {
+    for (const bucket of collisionGrid.values()) { bucket.length = 0; collisionBucketPool.push(bucket); }
+    collisionGrid.clear();
+    for (const resident of residents) {
+      const body = resident.collisionBody;
+      body.x = resident.x; body.z = resident.z; body.groundY = groundHeightAt(resident.x, resident.z);
+      const key = `${Math.floor(body.x / collisionCellSize)}:${Math.floor(body.z / collisionCellSize)}`;
+      let bucket = collisionGrid.get(key);
+      if (!bucket) { bucket = collisionBucketPool.pop() || []; collisionGrid.set(key, bucket); }
+      bucket.push(body);
+    }
+    collisionIndexReady = true;
+  }
   function getCollisionBodies(position = lastPosition, radius = 100) {
-    return residents.filter(person => distance(person, position) < radius).map(person => ({
-      id: person.id, x: person.x, z: person.z, y: 0, groundY: groundHeightAt(person.x, person.z), radius: .48,
-    }));
+    if (released) return [];
+    if (!collisionIndexReady) rebuildCollisionIndex();
+    // Each car requests a small local region on every physics step. Reusing
+    // body records and querying 16 m cells avoids 33 × 240 full-city scans.
+    const bodies = [], x0 = Math.floor((position.x - radius) / collisionCellSize), x1 = Math.floor((position.x + radius) / collisionCellSize);
+    const z0 = Math.floor((position.z - radius) / collisionCellSize), z1 = Math.floor((position.z + radius) / collisionCellSize);
+    for (let x = x0; x <= x1; x++) for (let z = z0; z <= z1; z++) {
+      const bucket = collisionGrid.get(`${x}:${z}`); if (!bucket) continue;
+      for (const body of bucket) {
+        const dx = body.x - position.x, dz = body.z - position.z;
+        if (dx * dx + dz * dz < radius * radius) bodies.push(body);
+      }
+    }
+    return bodies;
   }
   function dispose() {
     if (released) return;
     released = true; scene.remove(root); root.clear(); models.clear(); pool.length = 0;
-    farGeometry.dispose(); farMaterial.dispose();
+    distant.dispose(); farGeometry.dispose(); farMaterial.dispose();
+    collisionGrid.clear(); collisionBucketPool.length = 0; candidates.length = 0; near.length = 0; active.clear();
   }
   return { root, routes, update, snapshot, getPrompt, interact, getCollisionBodies, dispose };
 }
