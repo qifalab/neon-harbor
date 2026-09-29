@@ -79,7 +79,7 @@ export class SpatialIndex {
 
 function supported(body, options, radius) {
   if (radius === undefined && options.supportAt) return { ...body, ...options.supportAt(body) };
-  const ground = options.groundHeightAt ? options.groundHeightAt(body.x, body.z) : body.y || 0;
+  const ground = options.groundHeightAt ? options.groundHeightAt(body.x, body.z, body.groundY ?? body.y ?? 0) : body.y || 0;
   const minY = ground + (body.jumpY || 0);
   return { ...body, minY, maxY: minY + (radius === undefined ? VEHICLE_SHAPE.height : PLAYER_DIMENSIONS.height) };
 }
