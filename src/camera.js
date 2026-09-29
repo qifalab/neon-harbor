@@ -92,8 +92,7 @@ export class ChaseCamera {
   update(subject, controls, dt, colliders = []) {
     dt = clamp(Number.isFinite(dt) ? dt : 0, 0, MAX_FRAME_TIME);
     if (controls.firstPerson) {
-      // Rail passengers sit inside the carriage. A six-metre chase boom would
-      // cut through its roof; interpolate the same passenger pose as rendering.
+      // Walking inspection and seated passengers share eye-level viewing.
       const requestedYaw = controls.yaw;
       this.yaw = !this.initialized ? requestedYaw : this.yaw + angleDelta(requestedYaw, this.yaw) * -Math.expm1(-12 * dt);
       this.pitch = controls.pitch; this.fov = 65; this.clearanceRadius = CAMERA_RADIUS;
@@ -108,7 +107,7 @@ export class ChaseCamera {
     const requestedYaw = controls.yaw;
     const pitchTarget = clamp(controls.pitch, 0.08, 0.85);
     const speed = controls.driving ? Math.abs(subject.speed) : 0;
-    const distanceTarget = controls.driving ? 10.5 + Math.min(speed, 43) * 0.07 : 6.8;
+    const distanceTarget = controls.driving ? 10.5 + Math.min(speed, 43) * 0.07 : controls.indoor ? 3.5 : 6.8;
     const fovTarget = controls.driving ? 57 + Math.min(speed, 43) * 0.28 : 55;
     // FOV contracts gradually after braking, so retain the larger current cone.
     const collisionFov = Math.max(this.fov || fovTarget, fovTarget);

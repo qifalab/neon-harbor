@@ -400,3 +400,31 @@ test('a jump can land on a low solid, remain supported and jump again without be
 test('an entirely obstructed world fails explicitly instead of placing the player inside a wall', () => {
   assert.throws(() => new GameSimulation({ colliders: [{ x: 0, z: 0, hx: 400, hz: 400 }], bounds: 290 }), /safe player spawn/);
 });
+
+test('boarding respects the road level when a vehicle is directly below the player', () => {
+  const game = isolated(), car = game.cars[0];
+  game.cars = [car];
+  Object.assign(game.player, { x: car.x + 3, z: car.z, y: 0, groundY: 8 });
+  car.y = 0;
+  assert.equal(game.nearestCar, null);
+  assert.equal(game.interact(), false);
+  assert.equal(game.inCar, null);
+});
+
+test('exiting an elevated vehicle sweeps the door at deck height and stays on the deck', () => {
+  const game = isolated(), car = board(game);
+  car.y = 8;
+  game.groundHeightAt = (x, z, previous = 0) => previous > 4 ? 8 : 0;
+  game.colliders = [{ x: car.x - 2, z: car.z, hx: .05, hz: 4, minY: 8, maxY: 10 }];
+  assert.equal(game.interact(), true);
+  assert.ok(game.player.x > car.x, 'the upper-level railing blocks the first exit');
+  assert.equal(game.player.groundY, 8);
+});
+
+test('a driver cannot exit onto a different road level beyond the bridge edge', () => {
+  const game = isolated(), car = board(game);
+  car.y = 8;
+  game.groundHeightAt = () => 0;
+  assert.equal(game.interact(), false);
+  assert.equal(game.inCar, car.id);
+});

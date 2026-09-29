@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three/three.module.js';
 import { METROPOLIS_BUILDINGS } from '../src/metropolis-catalog.js';
 import { createInteriorLayout, createInteriorSystem } from '../src/metropolis-interiors.js';
-import { SpatialIndex, moveCircle, circleContacts } from '../src/collision.js';
+import { SpatialIndex, moveCircle, circleContacts, CHARACTER_RADIUS } from '../src/collision.js';
 
 const create = () => createInteriorSystem(THREE, new THREE.Scene());
 const physics = system => ({ index: new SpatialIndex(system.collisionContext().colliders),
@@ -12,9 +12,9 @@ const walkToCabin = (system, entry) => {
   const player = { ...entry.position, y: 0, groundY: entry.groundY };
   const cabin = system.snapshot().cabin;
   const collision = physics(system);
-  moveCircle(player, 0, cabin.z - player.z, 0.42, collision);
+  moveCircle(player, 0, cabin.z - player.z, CHARACTER_RADIUS, collision);
   assert.ok(Math.abs(player.z - cabin.z) < 0.01, `central aisle obstructed in ${system.snapshot().buildingId}`);
-  assert.equal(circleContacts(player, 0.42, collision).length, 0, 'cabin boarding point must be clear');
+  assert.equal(circleContacts(player, CHARACTER_RADIUS, collision).length, 0, 'cabin boarding point must be clear');
   return player;
 };
 const completeRide = (system, player) => {
@@ -41,12 +41,12 @@ test('every one of 48 addresses has distinct furnished programmes, open entrance
     categories.add(system.snapshot().floorType);
     assert.ok(system.snapshot().furnitureCount >= 20, `${building.id} requires furnished spaces`);
     const outside = { x: building.x, z: building.z + (building.depth - 0.7) / 2 + 0.7, y: 0 };
-    moveCircle(outside, 0, entry.position.z - outside.z, 0.42, physics(system));
+    moveCircle(outside, 0, entry.position.z - outside.z, CHARACTER_RADIUS, physics(system));
     assert.ok(Math.abs(outside.z - entry.position.z) < 0.01, `${building.id} main doorway has no solid wall`);
     const player = walkToCabin(system, entry);
     assert.equal(system.getPrompt(player).kind, 'elevator');
     assert.equal(system.interact(player).elevator.floors.length, 3);
-    moveCircle(player, 0, entry.position.z - player.z, 0.42, physics(system));
+    moveCircle(player, 0, entry.position.z - player.z, CHARACTER_RADIUS, physics(system));
     assert.equal(system.getPrompt(player).kind, 'exit');
     const leave = system.exit();
     assert.equal(leave.outside, true);
@@ -72,7 +72,7 @@ test('all 144 floor plans keep furniture collision aligned with visible geometry
     }
     if (floor.id !== building.floors[0].id) {
       const player = { x: building.x, z: building.z + layout.depth / 2 - 1.4, y: 0 };
-      moveCircle(player, 0, 6, 0.42, { index: new SpatialIndex(layout.colliders), groundHeightAt: () => floor.y, bounds: 1450 });
+      moveCircle(player, 0, 6, CHARACTER_RADIUS, { index: new SpatialIndex(layout.colliders), groundHeightAt: () => floor.y, bounds: 1450 });
       assert.ok(player.z < building.z + layout.depth / 2, 'upper facade must prevent falling through the entrance gap');
     }
   }
@@ -91,7 +91,7 @@ test('the tallest lift carries a boarded passenger continuously, closes its door
   assert.equal(system.exit(), null, 'cannot walk out of the city during a lift ride');
   assert.equal(system.selectFloor('gallery'), null, 'a running cabin cannot be redirected midway');
   const blocked = { ...player };
-  moveCircle(blocked, 0, 12, 0.42, physics(system));
+  moveCircle(blocked, 0, 12, CHARACTER_RADIUS, physics(system));
   assert.ok(blocked.z < system.snapshot().cabin.doorZ, 'safety door must retain passenger during motion');
   const up = completeRide(system, player), top = building.floors.at(-1);
   assert.equal(system.state.floor.id, top.id);
@@ -102,9 +102,9 @@ test('the tallest lift carries a boarded passenger continuously, closes its door
   }
   assert.equal(up.transition.groundY, top.y);
   assert.equal(system.snapshot().activeFloors, 1, 'inactive floors must not accumulate in memory');
-  assert.equal(circleContacts(player, 0.42, physics(system)).length, 0);
+  assert.equal(circleContacts(player, CHARACTER_RADIUS, physics(system)).length, 0);
   const doorway = { ...player };
-  moveCircle(doorway, 0, 5, 0.42, physics(system));
+  moveCircle(doorway, 0, 5, CHARACTER_RADIUS, physics(system));
   assert.ok(doorway.z > system.snapshot().cabin.doorZ + 1, 'doors reopen into the destination floor');
   assert.equal(system.exit(), null, 'a high-floor exit cannot teleport through a window');
   system.interact(player); system.selectFloor('lobby');
