@@ -88,3 +88,13 @@ test('runtime fetches nearby JSON and actually disposes detail after moving away
     assert.ok(streamed.streamingStats.loaded<=7);
   }finally{streamed.dispose();globalThis.fetch=originalFetch;}
 });
+
+test('streaming startup retains no authored detail transforms before any fetch',()=>{
+  const streamed=createMetropolisWorld(THREE,new THREE.Scene(),{streaming:true});
+  const payloads=streamed.exportCity().payloads;
+  assert.equal(payloads.length,12);assert.equal(payloads.reduce((n,p)=>n+p.batches.length,0),0);
+  assert.equal(streamed.streamingStats.requested,0);
+  assert.equal(streamed.streamingStats.residentInstances,0);
+  assert.equal(streamed.colliders.length,world.colliders.length);
+  streamed.dispose();
+});

@@ -98,3 +98,22 @@ test('wardrobe variants share cached geometry while retaining compatible animate
   const again = createCharacter(THREE, { style: 3 });
   assert.equal(again.userData.leftKnee.children[0].geometry, versions[3].userData.leftKnee.children[0].geometry);
 });
+
+test('local collision queries match a full-population reference after movement and reuse stable body records', () => {
+  const people = create();
+  for (let frame = 0; frame < 35; frame++) people.update(.1, { position: { x: -320, z: -850 } });
+  const all = people.snapshot().people;
+  for (let query = 0; query < 72; query++) {
+    const position = { x: -650 + (query * 127 % 1300), z: -1270 + (query * 83 % 900) };
+    const radius = query % 2 ? 12 : 95;
+    const expected = all.filter(person => Math.hypot(person.x - position.x, person.z - position.z) < radius).map(person => person.id).sort();
+    assert.deepEqual(people.getCollisionBodies(position, radius).map(body => body.id).sort(), expected);
+  }
+  const point = all[0], first = people.getCollisionBodies(point, 1).find(body => body.id === point.id);
+  assert.equal(people.getCollisionBodies(point, 1).find(body => body.id === point.id), first);
+  const distant = people.root.getObjectByName('Distant citizens · one draw call');
+  let disposed = 0; distant.addEventListener('dispose', () => disposed++);
+  people.dispose(); people.dispose();
+  assert.equal(disposed, 1, 'instance buffers must be released exactly once');
+  assert.deepEqual(people.getCollisionBodies(point, 12), []);
+});

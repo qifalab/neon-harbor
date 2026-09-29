@@ -27,12 +27,12 @@ export function createMetropolisWorld(THREE, scene, {
     stone: '#bfbba8', sidewalk: '#bdb6a5', plaster: '#c9bca6', concrete: '#999d94', roof: '#6a746e',
     asphalt: '#46504f', line: '#dfd4a9', metal: '#536767', brass: '#b49d6b', glass: '#6d959d', glassDark: '#344c56',
     light: '#e4c696', wood: '#9e7b56', brick: '#af8468', dark: '#354344', leaves: '#526e59', trunk: '#79634d',
-    water: '#366c73', sand: '#b4a886', red: '#a87257', awning: '#b79b76', white: '#d6d5c5',
+    water: '#287f8d', sand: '#b4a886', red: '#a87257', awning: '#b79b76', white: '#d6d5c5',
   };
   function material(key) {
     if (materials.has(key)) return materials.get(key);
     const b = key.startsWith('facade:') ? METROPOLIS_BUILDINGS.find(b => b.id === key.slice(7)) : null;
-    const base = b ? 'plaster' : ['line','white','sand','sidewalk'].includes(key) ? 'stone' : ['brick','red','awning'].includes(key) ? 'plaster' : key === 'trunk' ? 'wood' : key === 'dark' ? 'metal' : key;
+    const base = b ? 'plaster' : key === 'water' ? 'glass' : ['line','white','sand','sidewalk'].includes(key) ? 'stone' : ['brick','red','awning'].includes(key) ? 'plaster' : key === 'trunk' ? 'wood' : key === 'dark' ? 'metal' : key;
     const m = (baseMaterials[base] || baseMaterials.stone).clone();
     if (b) m.color.set(b.color); else if (palette[key]) m.color.set(palette[key]);
     if (key === 'line') { m.polygonOffset = true; m.polygonOffsetFactor = -1; m.polygonOffsetUnits = -1; }
@@ -111,11 +111,15 @@ export function createMetropolisWorld(THREE, scene, {
     }
   }
 
+  // The old harbor sea starts east of x=297; this connects the two shores
+  // beneath the actual bridge and ferry route, including the western channel.
+  box('water',0,-.38,-347,1480,.12,114);
+
   // Water margins and cliffs define a coherent island boundary. They have
   // collision independent of the detail chunks, so unloading never opens holes.
   for(const side of [-1,1]) {
     box('stone',side*737,0.8,-885,6,2,990); solid('seawall',side*739,-885,3,495,-5,5);
-    box('water',side*922,-0.35,-885,360,0.12,1160);
+    box('water',side*922,-0.38,-885,360,0.12,1160);
     for(let i=0;i<10;i++) stamp('cone','leaves',side*(860+i%3*55),35+i%4*12,-580-i*86,70+i%3*18,95+i%4*28,85);
   }
   box('stone',0,0.8,-1378,1480,2,6); solid('mountain-boundary',0,-1382,744,4,-4,35);
@@ -265,66 +269,71 @@ export function createMetropolisWorld(THREE, scene, {
       }
     }
 
-    // Differentiated street fronts: individual bays, inset windows, sills,
-    // floor bands and balcony railings all unload with this address's chunk.
-    const floorSpacing=h>120?5.2:['shophouse','arcade','residential'].includes(style)?4.5:5.8;
-    const levels=Math.max(2,Math.floor((facadeTop-7)/floorSpacing));
-    for(let level=0;level<levels;level++) {
-      const y=8+level*floorSpacing,bh=Math.min(3.1,floorSpacing*.64);
-      const active=shells.filter(part=>y-bh/2>part.bottom&&y+bh/2<part.top);
-      // Fenestration follows the authored solid at this exact elevation. This
-      // keeps glazing attached on shifted terraces, double towers and museums.
-      for(const part of active) {
-        const covered=(px,pz)=>active.some(other=>other!==part&&px>other.x-other.w/2-.01&&px<other.x+other.w/2+.01&&pz>other.z-other.d/2-.01&&pz<other.z+other.d/2+.01);
-        const count=Math.max(2,Math.floor(part.w/6.8));
-        for(let bay=0;bay<count;bay++) {
-          const dx=part.x-part.w/2+part.w*(bay+.5)/count,bw=part.w/count*.64;
-          const pane=((bay*7+level*11+b.index)%9<2)?'light':(bay+level)%3?'glassDark':'glass';
-          for(const side of [-1,1]) {
-            const front=part.z+side*(part.d/2+.13);
-            if(covered(dx,front))continue;
-            B(pane,dx,y,front,bw,bh,.16,true);
-            B('stone',dx,y-bh/2-.22,front+side*.2,bw+.45,.3,.65,true);
-            if(['residential','shophouse'].includes(style)) {
-              B('stone',dx,y-bh/2-.3,front+side*.87,bw+1.4,.24,2.4,true);
-              B('metal',dx,y-bh/2+.5,front+side*1.97,bw+1.2,.14,.12,true);
-              for(const edge of [-1,1])B('metal',dx+edge*(bw/2+.55),y-bh/2+.1,front+side*1.97,.1,1,.1,true);
-              if((bay+level)%3===0)B('leaves',dx,y-bh/2+.02,front+side*1.37,bw*.6,.5,.7,true);
+    // The browser never authors all of the detailed facades up front. Only the
+    // build pipeline executes this block; runtime obtains its transforms from
+    // the requested district JSON. Persistent silhouettes/physics stay above.
+    if(!streaming) {
+      // Differentiated street fronts: individual bays, inset windows, sills,
+      // floor bands and balcony railings all unload with this address's chunk.
+      const floorSpacing=h>120?5.2:['shophouse','arcade','residential'].includes(style)?4.5:5.8;
+      const levels=Math.max(2,Math.floor((facadeTop-7)/floorSpacing));
+      for(let level=0;level<levels;level++) {
+        const y=8+level*floorSpacing,bh=Math.min(3.1,floorSpacing*.64);
+        const active=shells.filter(part=>y-bh/2>part.bottom&&y+bh/2<part.top);
+        // Fenestration follows the authored solid at this exact elevation. This
+        // keeps glazing attached on shifted terraces, double towers and museums.
+        for(const part of active) {
+          const covered=(px,pz)=>active.some(other=>other!==part&&px>other.x-other.w/2-.01&&px<other.x+other.w/2+.01&&pz>other.z-other.d/2-.01&&pz<other.z+other.d/2+.01);
+          const count=Math.max(2,Math.floor(part.w/6.8));
+          for(let bay=0;bay<count;bay++) {
+            const dx=part.x-part.w/2+part.w*(bay+.5)/count,bw=part.w/count*.64;
+            const pane=((bay*7+level*11+b.index)%9<2)?'light':(bay+level)%3?'glassDark':'glass';
+            for(const side of [-1,1]) {
+              const front=part.z+side*(part.d/2+.13);
+              if(covered(dx,front))continue;
+              B(pane,dx,y,front,bw,bh,.16,true);
+              B('stone',dx,y-bh/2-.22,front+side*.2,bw+.45,.3,.65,true);
+              if(['residential','shophouse'].includes(style)) {
+                B('stone',dx,y-bh/2-.3,front+side*.87,bw+1.4,.24,2.4,true);
+                B('metal',dx,y-bh/2+.5,front+side*1.97,bw+1.2,.14,.12,true);
+                for(const edge of [-1,1])B('metal',dx+edge*(bw/2+.55),y-bh/2+.1,front+side*1.97,.1,1,.1,true);
+                if((bay+level)%3===0)B('leaves',dx,y-bh/2+.02,front+side*1.37,bw*.6,.5,.7,true);
+              }
             }
           }
+          const sideCount=Math.max(2,Math.floor(part.d/8));
+          for(const side of [-1,1])for(let bay=0;bay<sideCount;bay++) {
+            const dx=part.x+side*(part.w/2+.14),dz=part.z-part.d/2+part.d*(bay+.5)/sideCount;
+            if(!covered(dx,dz))B((bay+level+b.index)%8===0?'light':'glassDark',dx,y,dz,.18,3,Math.min(4,part.d/sideCount*.62),true);
+          }
+          if(['artdeco','colonial','clock','arcade','exchange'].includes(style))B('stone',part.x,y+2,part.z,part.w+.5,.32,part.d+.5,true);
         }
-        const sideCount=Math.max(2,Math.floor(part.d/8));
-        for(const side of [-1,1])for(let bay=0;bay<sideCount;bay++) {
-          const dx=part.x+side*(part.w/2+.14),dz=part.z-part.d/2+part.d*(bay+.5)/sideCount;
-          if(!covered(dx,dz))B((bay+level+b.index)%8===0?'light':'glassDark',dx,y,dz,.18,3,Math.min(4,part.d/sideCount*.62),true);
+      }
+      if(['fins','diagrid','civic','exchange','artdeco'].includes(style))for(let i=-4;i<=4;i++) {
+        const dx=i*w/10;
+        B(style==='fins'?'brass':'stone',dx,h*.5,d/2+.7,style==='civic'?2:.8,h-7,1.2,true);
+      }
+      if(style==='diagrid')for(let i=0;i<5;i++)for(const side of [-1,1]) {
+        const yy=7+i*(h-9)/5;
+        beam(b,'metal',[x-w/2,yy,z+side*(d/2+1)],[x+w/2,yy+(h-9)/5,z+side*(d/2+1)],.65);
+        beam(b,'metal',[x+w/2,yy,z+side*(d/2+1)],[x-w/2,yy+(h-9)/5,z+side*(d/2+1)],.65);
+      }
+      if(['colonial','arcade','clock','exchange','shophouse'].includes(style))for(let i=-3;i<=3;i++) {
+        const dx=i*w/8;
+        if(Math.abs(dx)<7)continue;
+        B('stone',dx,2.8,d/2+2.1,.8,5.6,.8,true);
+        S('arch','stone',dx+w/16,4.5,d/2+2.1,w/16-.3,2.1,.7,{detail:true});
+      }
+      // Rooftop plant reads as a serviced building rather than a blank toy block.
+      if(!['convention','theatre','stadium','dome','temple'].includes(style)) {
+        for(const dx of [-w*.12,w*.12]) {
+          B('metal',dx,h+1,-d*.12,5,2,6,true);
+          S('cylinder','dark',dx,h+2.3,-d*.12,1.65,.5,1.65,{detail:true});
         }
-        if(['artdeco','colonial','clock','arcade','exchange'].includes(style))B('stone',part.x,y+2,part.z,part.w+.5,.32,part.d+.5,true);
       }
+      entrance(b);
+      streetscape(b);
     }
-    if(['fins','diagrid','civic','exchange','artdeco'].includes(style))for(let i=-4;i<=4;i++) {
-      const dx=i*w/10;
-      B(style==='fins'?'brass':'stone',dx,h*.5,d/2+.7,style==='civic'?2:.8,h-7,1.2,true);
-    }
-    if(style==='diagrid')for(let i=0;i<5;i++)for(const side of [-1,1]) {
-      const yy=7+i*(h-9)/5;
-      beam(b,'metal',[x-w/2,yy,z+side*(d/2+1)],[x+w/2,yy+(h-9)/5,z+side*(d/2+1)],.65);
-      beam(b,'metal',[x+w/2,yy,z+side*(d/2+1)],[x-w/2,yy+(h-9)/5,z+side*(d/2+1)],.65);
-    }
-    if(['colonial','arcade','clock','exchange','shophouse'].includes(style))for(let i=-3;i<=3;i++) {
-      const dx=i*w/8;
-      if(Math.abs(dx)<7)continue;
-      B('stone',dx,2.8,d/2+2.1,.8,5.6,.8,true);
-      S('arch','stone',dx+w/16,4.5,d/2+2.1,w/16-.3,2.1,.7,{detail:true});
-    }
-    // Rooftop plant reads as a serviced building rather than a blank toy block.
-    if(!['convention','theatre','stadium','dome','temple'].includes(style)) {
-      for(const dx of [-w*.12,w*.12]) {
-        B('metal',dx,h+1,-d*.12,5,2,6,true);
-        S('cylinder','dark',dx,h+2.3,-d*.12,1.65,.5,1.65,{detail:true});
-      }
-    }
-    entrance(b);
-    streetscape(b);
     // Collision shells leave the doorway channel open to the interaction point.
     solid('building',x-(w+12)/4,z,(w-12)/4,d/2,0,h,b.id);
     solid('building',x+(w+12)/4,z,(w-12)/4,d/2,0,h,b.id);
