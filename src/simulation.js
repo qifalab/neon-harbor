@@ -38,7 +38,7 @@ export function freshProgress() {
 }
 
 /** Treat saved data as untrusted: damaged/old saves cannot inject invalid physics. */
-export function loadProgress(raw) {
+export function loadProgress(raw, { bounds = 290 } = {}) {
   const fallback = freshProgress();
   try {
     const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
@@ -55,8 +55,8 @@ export function loadProgress(raw) {
       cash: Math.round(clamp(finite(parsed.cash, fallback.cash), 0, 9999999)),
       completed, bestTimes,
       player: {
-        x: clamp(finite(parsed.player?.x, SPAWN.x), -285, 285),
-        z: clamp(finite(parsed.player?.z, SPAWN.z), -285, 285),
+        x: clamp(finite(parsed.player?.x, SPAWN.x), -bounds + 5, bounds - 5),
+        z: clamp(finite(parsed.player?.z, SPAWN.z), -bounds + 5, bounds - 5),
         yaw: finite(parsed.player?.yaw, SPAWN.yaw) % TAU,
       },
     };
@@ -100,7 +100,7 @@ export class GameSimulation {
     this.groundHeightAt = groundHeightAt;
     this.teleportRevision = 0;
     this.missionDefs = MISSION_DEFS;
-    this._initialize(loadProgress(save));
+    this._initialize(loadProgress(save, { bounds }));
   }
 
   _initialize(progress) {
@@ -203,7 +203,8 @@ export class GameSimulation {
   _moveCar(car, dx, dz, dyaw = 0) {
     const vx = car.vx || 0, vz = car.vz || 0;
     const options = this._collisionOptions(car);
-    if (!this.inCar) options.circles = [{ ...this.player, radius: CHARACTER_RADIUS, id: 'player' }];
+    options.circles = [...(!this.inCar ? [{ ...this.player, radius: CHARACTER_RADIUS, id: 'player' }] : []),
+      ...(this.pedestriansAt?.(car) || [])];
     const result = moveVehicle(car, dx, dz, dyaw, options);
     for (const contact of result.contacts) {
       const { normal, obstacle, kind } = contact;
@@ -215,7 +216,7 @@ export class GameSimulation {
       const key = [car.id, obstacle.id ?? `wall:${this.colliders.indexOf(obstacle)}`].sort().join('|');
       const cooled = !this._contactCooldowns.has(key) || this.elapsed - this._contactCooldowns.get(key) > 1.2;
       if (kind === 'character') {
-        if (impact > 5 && this._hitCooldown <= 0) {
+        if (obstacle.id === 'player' && impact > 5 && this._hitCooldown <= 0) {
           this.player.health = Math.max(0, this.player.health - (car.police ? 18 : 12));
           this._hitCooldown = 1.5;
           this._message('注意来车 · 按 E 进入停靠车辆', 'warning');
