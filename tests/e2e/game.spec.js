@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 
 // CI has no hardware GPU. Keep interaction coverage at a modest viewport;
 // default-HIGH desktop visual review is captured separately at full resolution.
-test.use({ viewport: { width: 960, height: 600 } });
+test.use({ viewport: { width: 800, height: 500 } });
+test.setTimeout(240000);
 
 const snapshot = page => page.evaluate(() => window.__NEON__.snapshot());
 async function boot(page) {
@@ -24,16 +25,26 @@ async function useSoftwareRenderingQuality(page) {
 async function travel(page, key, predicate) {
   await expect(page.locator('#game')).toBeFocused();
   expect((await snapshot(page)).paused).toBe(false);
+  const started = (await snapshot(page)).simulationTime;
   await page.keyboard.down(key);
   // Observe after each browser animation frame instead of progressively slower
   // Node polls. This releases held input promptly on fast GPUs and still checks
   // actual game state on software renderers. No game state is modified here.
   try {
     await page.waitForFunction(
-      `(${predicate.toString()})(window.__NEON__.snapshot())`,
+      `(() => {
+        const state = window.__NEON__.snapshot();
+        if (state.simulationTime - ${started} > 12) throw new Error('Movement exceeded its simulated-time budget');
+        return (${predicate.toString()})(state);
+      })()`,
       null,
-      { polling: 'raf', timeout: 20000 },
+      { polling: 'raf', timeout: 45000 },
     );
+  }
+  catch (error) {
+    const state = await snapshot(page);
+    error.message += `\nMovement diagnostics: ${JSON.stringify({ position: state.position, simulationTime: state.simulationTime, fps: state.fps, paused: state.paused })}`;
+    throw error;
   }
   finally { await page.keyboard.up(key); }
 }
