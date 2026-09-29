@@ -27,7 +27,7 @@ test('integrated building travel, continuous elevator and forced departure resto
   assert.ok(city.interact().elevator);
   assert.equal(city.selectFloor('observation'), true);
   advance(city, 3);
-  assert.ok(sim.player.groundY > 0 && sim.player.groundY < building.floors[2].y);
+  assert.ok(sim.player.groundY > 0 && sim.player.groundY < building.floors.find(f => f.id === 'observation').y);
   const save = city.safeSave();
   assert.equal(save.player.z, building.entrance.z, 'in-flight saves restore at this building entrance');
   const loaded = loadProgress(save, { bounds: city.bounds });
@@ -42,16 +42,29 @@ test('integrated building travel, continuous elevator and forced departure resto
 
 test('underground platform remains below street and transit motion does not trigger teleports or reindex every tick', async () => {
   const { city, sim, switches } = fixture();
-  await city.travelTo(city.transit.stops.find(s => s.id === 'metro-old'));
+  const stop = city.transit.stops.find(s => s.id === 'metro-old');
+  await city.travelTo(stop);
+  const walkingRevision = sim.teleportRevision;
   assert.equal(city.interact().handled, true);
-  advance(city, 1.5, { forward: 1, cameraYaw: Math.PI });
+  assert.equal(city.transit.activeStopId, null, 'E only explains the physical stairs');
+  for (const target of stop.access.waypoints.slice(1)) {
+    for (let i = 0; i < 1500 && Math.hypot(target.x - sim.player.x, target.z - sim.player.z) > .03; i++) {
+      const dx = target.x - sim.player.x, dz = target.z - sim.player.z;
+      city.step(Math.min(1 / 60, Math.hypot(dx, dz) / 5.6), { forward: 1, cameraYaw: Math.atan2(dx, dz) });
+    }
+    assert.ok(Math.hypot(target.x - sim.player.x, target.z - sim.player.z) < .03, `walking path blocked before ${JSON.stringify(target)}`);
+    assert.ok(Math.abs(sim.player.groundY - target.y) < .03);
+  }
+  assert.equal(sim.teleportRevision, walkingRevision, 'the street-to-platform journey never teleports');
   assert.equal(sim.player.groundY, -14);
   assert.equal(sim.colliders, city.transit.collisionContext().colliders);
   assert.equal(sim.cars.length, 0);
+  for (let i = 0; i < 1800 && !city.transit.vehicles.some(v => v.pose.stopId === stop.id && v.pose.remaining > .7); i++) city.step(1 / 60, {});
   assert.equal(city.interact().handled, true);
   assert.equal(city.transit.riding, true);
+  const departureDelay = city.transit.vehicles.find(v => v.id === city.transit.ridingVehicleId).pose.remaining;
   const revision = sim.teleportRevision, switchCount = switches();
-  advance(city, 12);
+  advance(city, departureDelay + 5);
   assert.equal(sim.teleportRevision, revision, 'a moving train is not a succession of scene teleports');
   assert.equal(switches(), switchCount, 'the riding collision context is stable');
   assert.ok(sim.player.z < 200, 'the train actually leaves the starting station');

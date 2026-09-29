@@ -111,7 +111,7 @@ test('a resident rides to a furnished bedroom, walks through its doorway, and re
   const targetFloor = inside.city.buildings.find(building => building.id === 'camellia-court').floors.find(floor => floor.id === 'gallery');
   expect(inside.position.y).toBeCloseTo(targetFloor.y, 1);
   expect(inside.city.interior.currentRoomId).toBe(room.id);
-  expect(inside.city.interior.activeFloors).toBe(1);
+  expect(inside.city.interior.activeFloors).toBe(3);
   await capture(page, testInfo, 'living-city-camellia-bedroom');
 
   await moveAxis(page, 'z', room.entrance.z);

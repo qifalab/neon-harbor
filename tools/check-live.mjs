@@ -134,11 +134,16 @@ try {
   await page.locator('#welcome-settings').click();
   await page.locator('#quality').selectOption('low');
   await page.locator('#resume').click();
-  await page.locator('#start').click();
+  await page.locator('#harbor-start').click();
   await expect(page.locator('#hud')).toBeVisible();
   await expect(page.locator('#game')).toBeFocused();
   expect((await page.evaluate(() => window.__NEON__.snapshot())).started).toBe(true);
-  report.checks.push('Entered the deployed game through its start button');
+  const harborStart=await page.evaluate(()=>window.__NEON__.snapshot());
+  expect(harborStart.city.harbor.permanentTowers).toBeGreaterThanOrEqual(40);
+  expect(Math.abs(harborStart.position.x-285.5)).toBeLessThan(1);
+  expect(harborStart.settings.firstPerson).toBe(true);
+  report.harbor=harborStart.city.harbor;
+  report.checks.push('Entered the playable promenade through the primary harbor button with the rendered opposite-shore skyline');
 
   await page.locator('#jobs').click();
   await expect(page.locator('#panel')).toBeVisible();
@@ -179,6 +184,10 @@ try {
   expect(museum.floorId).toBe('lobby');
   expect(museum.furnitureCount).toBeGreaterThan(12);
   expect(museum.roomCount).toBe(4);
+  expect(museum.activeFloors).toBe(3);
+  expect(museum.stairs).toHaveLength(2);
+  const publicFloors=(await page.evaluate(()=>window.__NEON__.snapshot())).city.buildings;
+  expect(publicFloors.every(b=>b.floors.length===4&&b.floors[1].y===4.2&&b.floors[2].y===8.4)).toBe(true);
   expect(museum.rooms.some(room => room.type === 'maritime')).toBe(true);
   report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, floorName: museum.floorName, rooms: museum.rooms.map(room => room.name), furnitureCount: museum.furnitureCount };
   await capture('live-north-museum.png');
@@ -190,11 +199,17 @@ try {
   await page.locator('#resume').click();
   await page.setViewportSize(highViewport);
   await page.waitForFunction(() => window.__NEON__.snapshot().settings.quality === 'high');
-  await page.keyboard.press('v');
+  if(!(await page.evaluate(()=>window.__NEON__.snapshot())).settings.firstPerson)await page.keyboard.press('v');
   await page.waitForFunction(() => window.__NEON__.snapshot().settings.firstPerson && window.__NEON__.snapshot().camera?.boomLength === 0);
   report.checks.push('Verified authored maritime rooms, three infrastructure entrances and eye-level walking view');
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await capture('live-high-quality-game.png');
+  await page.locator('#explore-city').click();
+  await page.locator('[data-visit-viewpoint="victoria-panorama"]').click();
+  await expect(page.locator('#panel')).toBeHidden();
+  await page.waitForFunction(()=>Math.abs(window.__NEON__.snapshot().position.x-285.5)<1);
+  await capture('live-high-quality-harbor.png');
+  report.checks.push('Returned to the actual harbor promenade at High quality; four public floors and two physical stair flights per north-shore building are present');
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
   report.success = true;
 } catch (error) {

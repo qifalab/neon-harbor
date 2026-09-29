@@ -1,4 +1,5 @@
 /** Hand-authored north-shore addresses. Stable IDs also identify interior scenes. */
+import { getRoomDesign } from './metropolis-room-designs.js';
 export const METROPOLIS_BOUNDS = 1450;
 export const METROPOLIS_ROADS = Object.freeze({
   vertical: [-640, -480, -320, -160, 0, 160, 320, 480, 640],
@@ -70,14 +71,17 @@ export const METROPOLIS_BUILDINGS = Object.freeze(addresses.map((row, index) => 
   const [id, name, englishName, width, depth, height, style, color, description] = row;
   const district = METROPOLIS_DISTRICTS[Math.floor(index / 8)];
   const x = xPositions[index % 8], z = district.z;
-  const publicY = Math.min(height - 8, Math.max(8, height * 0.42));
   const topY = height - (height > 100 ? 16 : 7);
   return Object.freeze({ id, name, englishName, district: district.id, x, z, width, depth, height, style, color,
     entrance: Object.freeze({ x, z: z + depth / 2 + 3, y: 0, yaw: Math.PI }),
+    // Three occupied lower floors share real stairs. Upper private/technical
+    // floors remain outside the public programme; the roof has a working lift.
     floors: Object.freeze([
-      Object.freeze({ id: 'lobby', label: '1F · 公共大厅', y: 0, type: 'lobby' }),
-      Object.freeze({ id: 'gallery', label: `${Math.max(2, Math.round(publicY / 4))}F · ${['market','shophouse','arcade'].includes(style) ? '社区客厅' : '展厅 / 会客层'}`, y: publicY, type: 'gallery' }),
-      Object.freeze({ id: 'observation', label: `${Math.round(topY / 4) + 1}F · 观景露台`, y: topY, type: 'observation' }),
+      ...['lobby', 'gallery', 'workplace'].map((floorId, level) => Object.freeze({
+        id: floorId, label: `${level + 1}F · ${getRoomDesign(id, floorId).name}`,
+        y: level * 4.2, type: floorId, stairs: true,
+      })),
+      Object.freeze({ id: 'observation', label: `${Math.round(topY / 4) + 1}F · ${getRoomDesign(id, 'observation').name}`, y: topY, type: 'observation' }),
     ]), description, index,
   });
 }));
