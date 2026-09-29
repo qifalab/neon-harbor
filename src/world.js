@@ -6,7 +6,7 @@ import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
  * material, so thousands of windows/road marks cost a few dozen draw calls.
  * Every solid inside the driving area also emits an axis-aligned collider.
  */
-export function createWorld(THREE, scene, { quality = 'high', streaming = typeof window !== 'undefined', assetBase = new URL('../assets/city/chunks/', import.meta.url).href } = {}) {
+export function createWorld(THREE, scene, { quality = 'high', streaming = typeof window !== 'undefined', openNorth = false, assetBase = new URL('../assets/city/chunks/', import.meta.url).href } = {}) {
   const root = new THREE.Group();
   root.name = 'Neon Harbor · city';
   scene.add(root);
@@ -421,7 +421,12 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   surface('boardwalk', 283, 0, 20, 589, 0.18, { rampWidth: 0.75 });
   block('curbs', 294, 0.4, 0, 1.2, 0.8, 594, { kind: 'seawall' });
   block('curbs', -290, 0.42, 0, 0.6, 0.9, 580, { kind: 'boundary' });
-  for (const z of [-290, 290]) block('curbs', 0, 0.42, z, 580, 0.9, 0.6, { kind: 'boundary' });
+  block('curbs', 0, 0.42, 290, 580, 0.9, 0.6, { kind: 'boundary' });
+  if (openNorth) {
+    // The bridge and ferry are real openings, shared by visuals and collision.
+    for (const [left, right] of [[-290, -169], [-151, -18], [18, 290]])
+      block('curbs', (left + right) / 2, 0.42, -290, right - left, 0.9, 0.6, { kind: 'boundary' });
+  } else block('curbs', 0, 0.42, -290, 580, 0.9, 0.6, { kind: 'boundary' });
   for (let z = -278; z <= 278; z += 28) {
     palm(282, z, 9 + rng() * 2);
     block('metal', 290, 0.93, z, 0.2, 1.5, 0.2, { kind: 'railing-post' });

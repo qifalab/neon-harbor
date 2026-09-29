@@ -46,33 +46,57 @@ export function createCar(THREE, color = '#375b68', type = 'sport') {
   return group;
 }
 
-export function createCharacter(THREE) {
-  const library = getLibrary(THREE);
-  if (!library.character) library.character = [0, 1, 2].map(detail => buildCharacter(THREE, detail));
-  const group = new THREE.Group(), lod = new THREE.LOD(); group.add(lod); lod.autoUpdate = false;
-  group.name = library.character[0].name;
+/** Original civilian wardrobe: geometry/materials are shared by each outfit. */
+export const CHARACTER_STYLES = Object.freeze([
+  { id: 'courier', label: '海港信使', jacket: '#555f60', shirt: '#d0c7b1', pants: '#27323c', skin: '#aa785b', hair: '#211e1c', bag: 'sling', cut: 'jacket', hairCut: 'short' },
+  { id: 'architect', label: '建筑师', jacket: '#c6b69b', shirt: '#ebdfca', pants: '#373a39', skin: '#cf9b76', hair: '#35271f', bag: 'tote', cut: 'coat', hairCut: 'bob' },
+  { id: 'office', label: '通勤上班族', jacket: '#354653', shirt: '#d5dfda', pants: '#29333e', skin: '#ab8068', hair: '#181b1b', bag: 'none', cut: 'jacket', hairCut: 'short' },
+  { id: 'student', label: '大学生', jacket: '#71836c', shirt: '#e6dfcb', pants: '#486071', skin: '#e1b397', hair: '#493226', bag: 'backpack', cut: 'knit', hairCut: 'tied' },
+  { id: 'artist', label: '独立设计师', jacket: '#a45b44', shirt: '#e5caa5', pants: '#3d4041', skin: '#865b45', hair: '#1e1916', bag: 'sling', cut: 'knit', hairCut: 'curly' },
+  { id: 'visitor', label: '访客', jacket: '#62758a', shirt: '#eee2cf', pants: '#aa9a7e', skin: '#d9ae89', hair: '#594934', bag: 'backpack', cut: 'jacket', hairCut: 'bob' },
+  { id: 'retired', label: '老街坊', jacket: '#736676', shirt: '#d7c9b2', pants: '#49423a', skin: '#be8c68', hair: '#9b9890', bag: 'none', cut: 'knit', hairCut: 'short' },
+  { id: 'chef', label: '茶餐厅店员', jacket: '#dedacb', shirt: '#657977', pants: '#364041', skin: '#986b52', hair: '#292321', bag: 'tote', cut: 'coat', hairCut: 'tied' },
+].map(style => Object.freeze(style)));
+
+export function createCharacter(THREE, options = {}) {
+  const requested = typeof options === 'number' ? options : options.style ?? 0;
+  const styleIndex = typeof requested === 'string' ? Math.max(0, CHARACTER_STYLES.findIndex(style => style.id === requested))
+    : ((Math.floor(requested) % CHARACTER_STYLES.length) + CHARACTER_STYLES.length) % CHARACTER_STYLES.length;
+  const style = CHARACTER_STYLES[styleIndex], library = getLibrary(THREE);
+  if (!library.characters.has(styleIndex)) library.characters.set(styleIndex, [0, 1, 2].map(detail => buildCharacter(THREE, detail, style)));
+  const templates = library.characters.get(styleIndex), group = new THREE.Group(), lod = new THREE.LOD();
+  group.add(lod); lod.autoUpdate = false; group.name = templates[0].name;
   for (const [tier, distance] of [0, 15, 45].entries()) {
-    const model = library.character[tier].clone(true); model.visible = tier === 0; lod.addLevel(model, distance, .12);
+    const model = templates[tier].clone(true); model.visible = tier === 0; lod.addLevel(model, distance, .12);
   }
   group.userData.dimensions = PLAYER_DIMENSIONS;
+  group.userData.style = style.id;
   const joints = ['leftLeg', 'rightLeg', 'leftKnee', 'rightKnee', 'leftArm', 'rightArm', 'leftElbow', 'rightElbow'];
   for (const name of joints) group.userData[name] = lod.levels[0].object.getObjectByName(name);
-  // The near skeleton remains the stable animation API. Synchronize only the
-  // visible distant skeleton before rendering; no far limb gets frozen mid-walk.
-  group.userData.updateLOD = camera => {
-    group.updateWorldMatrix(true, false); lod.updateWorldMatrix(false, false); lod.update(camera);
-    const tier = lod.getCurrentLevel();
+  const syncJoints = tier => {
     if (!tier) return;
     const active = lod.levels[tier].object;
     for (const name of joints) active.getObjectByName(name).rotation.copy(group.userData[name].rotation);
     active.updateMatrixWorld(true);
   };
+  // NPC streaming uses observer distance even when no camera is available; both
+  // paths preserve the same stable near-skeleton animation API used by the hero.
+  group.userData.setDetail = tier => {
+    const selected = Math.max(0, Math.min(2, tier));
+    for (const [index, level] of lod.levels.entries()) level.object.visible = index === selected;
+    syncJoints(selected);
+  };
+  group.userData.updateLOD = camera => {
+    group.updateWorldMatrix(true, false); lod.updateWorldMatrix(false, false); lod.update(camera);
+    syncJoints(lod.getCurrentLevel());
+  };
+  group.userData.disposeInstance = () => {}; // All meshes belong to the wardrobe cache.
   group.userData.lod = lod;
   return group;
 }
 
 function getLibrary(THREE) {
-  if (!libraries.has(THREE)) libraries.set(THREE, { cars: new Map(), character: null });
+  if (!libraries.has(THREE)) libraries.set(THREE, { cars: new Map(), characters: new Map() });
   return libraries.get(THREE);
 }
 
@@ -282,10 +306,13 @@ function buildWheel(THREE, detail = 0) {
   return wheel;
 }
 
-function buildCharacter(THREE, detail = 0) {
-  const root = new THREE.Group(); root.name = 'Harbor courier · original anatomical model';
+function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
+  const root = new THREE.Group(); root.name = `${style.label} · original anatomical model`;
   const colors = { skin: '#aa785b', skinLight: '#bf8f70', hair: '#211e1c', jacket: '#545e60',
-    seam: '#353f40', shirt: '#c2b8a5', pants: '#202b35', stitch: '#54616a', shoe: '#343a3b', sole: '#a4a59b', eyes: '#282725' };
+    seam: '#353f40', shirt: '#c2b8a5', pants: '#202b35', stitch: '#54616a', shoe: '#343a3b', sole: '#a4a59b', eyes: '#282725', ...style };
+  colors.skinLight = '#' + new THREE.Color(style.skin).lerp(new THREE.Color('#f5dcc4'), .12).getHexString();
+  colors.seam = '#' + new THREE.Color(style.jacket).multiplyScalar(.72).getHexString();
+  colors.stitch = '#' + new THREE.Color(style.pants).lerp(new THREE.Color('#c3b8a0'), .14).getHexString();
   const collection = new Map();
   const density = [1, .4, .2][detail];
   const loft = (profile, rows, columns) => loftY(THREE, profile,
@@ -307,7 +334,7 @@ function buildCharacter(THREE, detail = 0) {
     put(parent, tube(THREE, points, radius, density, detail ? 4 : 6), color);
   };
   const joint = (parent, name, x, y, z) => { const node = new THREE.Group(); node.name = name; node.position.set(x, y, z); parent.add(node); return node; };
-  const torso = loft([[.90, .15, .102], [.98, .17, .11], [1.13, .175, .123],
+  const torso = loft([[style.cut === 'coat' ? .81 : .90, style.cut === 'coat' ? .192 : .15, .102], [.98, .17, .11], [1.13, .175, .123],
     [1.26, .205, .128], [1.35, .224, .112], [1.40, .155, .088]], 32, 24);
   put(root, torso, 'jacket');
   oval(root, 'pants', 0, .915, 0, .177, .107, .117);
@@ -318,7 +345,11 @@ function buildCharacter(THREE, detail = 0) {
     [1.62, .112, .104], [1.69, .109, .098], [1.735, .077, .073], [1.764, .018, .024]], 28, 28), 'skin');
   for (const sign of [-1, 1]) {
     oval(root, 'skin', sign * .116, 1.599, -.004, .022, .039, .022);
-    oval(root, '#b8b6aa', sign * .042, 1.631, .096, .016, .005, .005, 12);
+    oval(root, '#b8b6aa', sign * .042, 1.631, .096, .013, .004, .004, 12);
+    if (detail === 0) {
+      stroke(root, 'skinLight', [[sign * .028, 1.636, .097], [sign * .042, 1.639, .099], [sign * .057, 1.636, .094]], .0025);
+      oval(root, 'skinLight', sign * .065, 1.594, .078, .029, .017, .011, 12);
+    }
     oval(root, 'eyes', sign * .042, 1.631, .101, .005, .0045, .0025, 12);
     stroke(root, 'hair', [[sign * .025, 1.651, .101], [sign * .045, 1.655, .100], [sign * .061, 1.651, .089]], .004);
   }
@@ -328,24 +359,48 @@ function buildCharacter(THREE, detail = 0) {
   // Cropped, swept-back hair cap, leaving the forehead and ears exposed.
   const hair = gridGeometry(THREE, detail ? 6 : 16, detail ? 12 : 32, (r, c) => {
     const phi = c * Math.PI * 2, front = Math.sin(phi);
-    const theta = r * (1.68 - .30 * Math.max(0, front) + .12 * Math.max(0, -front));
+    const theta = r * (1.68 - .30 * Math.max(0, front) + (style.hairCut === 'bob' ? .65 : .12) * Math.max(0, -front));
     return [Math.cos(phi) * Math.sin(theta) * .122, 1.667 + Math.cos(theta) * .123,
       -.008 + Math.sin(phi) * Math.sin(theta) * .114];
   });
   put(root, hair, 'hair');
-  for (let i = -3; i <= 3; i++) stroke(root, '#302a25', [[i * .027, 1.77, .005], [i * .03, 1.752, -.055], [i * .025, 1.716, -.1]], .006);
-
-  rounded(root, 'shirt', 0, 1.31, .113, .095, .17, .019, .012);
-  for (const sign of [-1, 1]) {
-    stroke(root, 'seam', [[sign * .055, 1.407, .043], [sign * .081, 1.36, .12], [sign * .025, 1.20, .13]], .018);
-    stroke(root, 'seam', [[sign * .162, 1.33, .082], [sign * .142, 1.20, .089], [sign * .145, 1.04, .084]], .005);
-    stroke(root, 'stitch', [[sign * .111, 1.14, .112], [sign * .119, 1.073, .110]], .003);
+  if (style.hairCut === 'tied') {
+    oval(root, 'hair', 0, 1.646, -.135, .065, .070, .063);
+    oval(root, 'hair', 0, 1.558, -.136, .036, .094, .030);
   }
-  stroke(root, '#727c7d', [[0, .962, .114], [0, 1.09, .129], [0, 1.29, .13]], .003);
+  if (style.hairCut === 'curly' && detail < 2) for (let i = 0; i < 12; i++) {
+    const angle = i * Math.PI / 6;
+    oval(root, 'hair', Math.cos(angle) * .098, 1.711 + (i % 2) * .019, Math.sin(angle) * .081 - .008, .030, .044, .031, 8);
+  }
+  for (let i = -3; i <= 3; i++) stroke(root, 'hair', [[i * .027, 1.77, .005], [i * .03, 1.752, -.055], [i * .025, 1.716, -.1]], .006);
+
+  if (style.cut !== 'knit') {
+    rounded(root, 'shirt', 0, 1.31, .113, .095, .17, .019, .012);
+    for (const sign of [-1, 1]) {
+      stroke(root, 'seam', [[sign * .055, 1.407, .043], [sign * .081, 1.36, .12], [sign * .025, 1.20, .13]], .018);
+      stroke(root, 'seam', [[sign * .162, 1.33, .082], [sign * .142, 1.20, .089], [sign * .145, 1.04, .084]], .005);
+      stroke(root, 'stitch', [[sign * .111, 1.14, .112], [sign * .119, 1.073, .110]], .003);
+    }
+    stroke(root, '#727c7d', [[0, .962, .114], [0, 1.09, .129], [0, 1.29, .13]], .003);
+    if (style.cut === 'coat' && detail < 2) for (const y of [.98, 1.09, 1.20]) oval(root, 'seam', .04, y, .124, .008, .008, .003, 8);
+  } else {
+    // Rounded crewneck, ribbed hem and shoulder seams distinguish knitwear.
+    stroke(root, 'shirt', [[-.074, 1.401, .067], [0, 1.375, .095], [.074, 1.401, .067]], .013);
+    stroke(root, 'seam', [[-.17, 1.31, .073], [-.195, 1.34, .051], [-.204, 1.367, .007]], .004);
+    if (detail === 0) for (let i = -5; i <= 5; i++) stroke(root, 'seam', [[i * .026, .933, .106], [i * .026, .965, .111]], .002);
+  }
   rounded(root, 'seam', 0, .947, 0, .306, .043, .215, .021);
-  // Slim sling bag follows the back; its strap crosses the shoulder naturally.
-  oval(root, '#4a4540', .025, 1.14, -.126, .142, .187, .067);
-  stroke(root, '#685d51', [[-.145, 1.36, -.05], [-.13, 1.38, .045], [-.025, 1.20, .141], [.15, .985, .056]], .012);
+  if (style.bag === 'sling') {
+    oval(root, '#4a4540', .025, 1.14, -.126, .142, .187, .067);
+    stroke(root, '#685d51', [[-.145, 1.36, -.05], [-.13, 1.38, .045], [-.025, 1.20, .141], [.15, .985, .056]], .012);
+  } else if (style.bag === 'backpack') {
+    rounded(root, '#534e42', 0, 1.13, -.167, .26, .34, .13, .055);
+    rounded(root, '#736b57', 0, 1.067, -.241, .21, .15, .035, .024);
+    for (const sign of [-1, 1]) stroke(root, '#6e6654', [[sign * .11, 1.00, -.14], [sign * .144, 1.34, -.05], [sign * .142, 1.36, .07], [sign * .145, 1.07, .099]], .012);
+  } else if (style.bag === 'tote') {
+    rounded(root, '#b2a58b', .20, .91, -.095, .10, .30, .25, .037);
+    stroke(root, '#897b62', [[.20, 1.025, -.17], [.196, 1.36, -.02], [.20, 1.025, .01]], .009);
+  }
 
   for (const [side, sign] of [['left', -1], ['right', 1]]) {
     const leg = joint(root, `${side}Leg`, sign * .103, .91, 0);
