@@ -280,7 +280,15 @@ export function createTransitSystem(THREE, scene, options = {}) {
     stamp(key, x, y, z, sx, sy, sz);
     colliders.push(collider(id || `transit-static-${colliders.length}`, x, z, sx / 2, sz / 2, y - sy / 2, y + sy / 2, 'transit-station'));
   }
-  function sign(text, x, y, z, width, color, parent = staticRoot, yaw = 0) {
+  function sign(text, x, y, z, width, color, parent = staticRoot, yaw = 0, cameraId = null) {
+    const height = width * 160 / 1024;
+    if (cameraId) {
+      // A sign is a real surface: raising it can still place it across the
+      // chase-camera boom. Register its rendered extent before canvas setup
+      // so browser and headless collision geometry remain identical.
+      const c = Math.abs(Math.cos(yaw)), q = Math.abs(Math.sin(yaw));
+      colliders.push({ ...collider(cameraId, x, z, width * c / 2 + 0.04 * q, width * q / 2 + 0.04 * c, y - height / 2, y + height / 2, 'transit-sign'), physics: false });
+    }
     if (typeof document === 'undefined') return;
     const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 160;
     const ctx = canvas.getContext('2d');
@@ -321,7 +329,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
       stamp('white', p.x, p.y + 3.25, p.z - side * 3, 17, 0.2, 8);
       for (const dx of [-7.5, 7.5]) for (const dz of [-3, 3]) stamp('dark', p.x + dx, p.y + 1.6, p.z - side * 3 + dz, 0.16, 3.2, 0.16);
       sign(`${stop.name}  F4 / FERRY`, p.x, p.y + 2.8, p.z - side * 6.8, 12, color);
-      sign('E · 渡轮候船厅 / PIER', e.x, 4.2, e.z, 10, color);
+      sign('E · 渡轮候船厅 / PIER', e.x, 4.2, e.z, 10, color, staticRoot, 0, `${stop.id}-entrance-sign`);
       for (const dx of [-4.6, 4.6]) obstacle('dark', e.x + dx, 2.1, e.z, 0.18, 4.2, 0.18, `${stop.id}-entrance-post-${dx}`);
       sign('E 登船 · BOARD', p.x, p.y + 1.7, p.z + side * 8, 5, color);
       sign('E 出口 / EXIT', stop.exit.x, p.y + 1.8, stop.exit.z + 0.3, 4.5, '#e9c16c');
