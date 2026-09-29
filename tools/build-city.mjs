@@ -6,7 +6,7 @@ import { createWorld } from '../src/world.js';
 
 /** Compile procedural authoring data into actual independently fetchable districts. */
 export async function buildCity({ output = fileURLToPath(new URL('../assets/city/chunks/', import.meta.url)) } = {}) {
-  const world = createWorld(THREE, new THREE.Scene(), { quality: 'high', streaming: false });
+  const world = createWorld(THREE, new THREE.Scene(), { quality: 'high', streaming: false, openNorth: true });
   const blueprint = world.exportCity();
   await rm(output, { recursive: true, force: true }); await mkdir(output, { recursive: true });
   const entries = [];

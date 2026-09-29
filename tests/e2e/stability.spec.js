@@ -6,7 +6,8 @@ import { VEHICLE_DIMENSIONS, PLAYER_DIMENSIONS } from '../../src/world-config.js
 
 // Input/geometry regressions use a modest viewport on CI's software GPU.
 // Default-HIGH visual review is captured separately at desktop resolution.
-test.use({ viewport: { width: 960, height: 600 }, video: { mode: 'on', size: { width: 960, height: 600 } } });
+test.use({ viewport: { width: 800, height: 500 }, video: { mode: 'on', size: { width: 640, height: 400 } } });
+test.setTimeout(240000);
 
 // Check the browser against the shipped geometry, independently of the runtime's
 // collision helpers. Input always comes through the public keyboard/mouse/UI.
@@ -38,10 +39,14 @@ async function boot(page, player, onReady) {
 }
 
 async function travel(page, keys, predicate) {
+  const started = (await snapshot(page)).simulationTime;
   for (const key of keys) await page.keyboard.down(key);
   try {
-    await page.waitForFunction(`(${predicate.toString()})(window.__NEON__.snapshot())`, null,
-      { polling: 'raf', timeout: 20000 });
+    await page.waitForFunction(`(() => {
+      const state = window.__NEON__.snapshot();
+      if (state.simulationTime - ${started} > 12) throw new Error('Movement exceeded its simulated-time budget');
+      return (${predicate.toString()})(state);
+    })()`, null, { polling: 'raf', timeout: 45000 });
   } catch (error) {
     const state = await snapshot(page);
     error.message += `\nReal input diagnostics: ${JSON.stringify({ position: state.position,
@@ -55,7 +60,7 @@ async function travel(page, keys, predicate) {
 async function record(page, { seconds = 0, frames = 0, untilVehicleDamaged = null } = {}) {
   return page.evaluate(({ seconds, frames, untilVehicleDamaged }) => new Promise((resolve, reject) => {
     const samples = [], start = window.__NEON__.snapshot().simulationTime;
-    const deadline = setTimeout(() => reject(new Error('Simulation did not advance during real input')), 20000);
+    const deadline = setTimeout(() => reject(new Error('Simulation did not advance during real input')), 45000);
     function capture() {
       const s = window.__NEON__.snapshot();
       samples.push({ time: s.simulationTime, position: s.position, speed: s.speed,
@@ -288,7 +293,9 @@ test('driving streams real city resources and evicts distant detail within the c
     expect(streaming.activeChunks, `Near street detail missing in ${currentDistrict}`).toContain(currentDistrict);
   }
   expect(final.disposedInstances).toBeGreaterThan(0);
-  expect(chunkResponses.length).toBeGreaterThan(initial.loaded);
+  // These responses are south-shore files; the aggregate also includes the
+  // independent north-shore cache retained for distant silhouettes.
+  expect(chunkResponses.length).toBeGreaterThan(initial.south.loaded);
   // Reading the actual response bodies proves these are fetched detail assets,
   // rather than visibility toggles over a fully preconstructed city.
   const payloadSizes = await Promise.all(chunkResponses.map(async response => {

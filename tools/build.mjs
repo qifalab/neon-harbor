@@ -3,12 +3,14 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { buildCity } from './build-city.mjs';
+import { buildMetropolis } from './build-metropolis.mjs';
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url));
 const output = resolve(projectRoot, 'dist');
 const entries = ['index.html', 'styles.css', 'favicon.svg', 'src', 'vendor', 'assets'];
 
 await buildCity();
+await buildMetropolis();
 
 // Validate source files before replacing an existing deployment artifact.
 await Promise.all(entries.map((entry) => stat(resolve(projectRoot, entry))));
