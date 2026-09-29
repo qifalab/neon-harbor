@@ -3,7 +3,19 @@ import { getRoomDesign } from './metropolis-room-designs.js';
 import { architectureDesignFor } from './metropolis-architecture-designs.js';
 
 export function renderCityGuide(container, city, onTravel) {
-  container.innerHTML = `<div class="atlas-intro"><div><span class="eyebrow">TWO SHORES · ONE CITY</span><h3>从一间茶楼，到整座海港。</h3><p>48 处可进入建筑，6 个北岸街区。选择一个地址，步行与驾驶探索，或使用快速旅行抵达门口。</p></div><div class="atlas-number">48<small>城市地址</small></div></div><div class="atlas-tools"><label>寻找地点<input id="atlas-search" type="search" placeholder="建筑、街区或英文名称"></label><label>街区<select id="atlas-district"><option value="">全部街区</option>${city.districts.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}</select></label></div><div id="atlas-results" class="atlas-grid"></div><section class="transit-directory"><span class="eyebrow">HARBOUR CONNECTIONS</span><h3>乘一班车，去另一岸。</h3><p class="panel-intro">到站后按 E 进入站厅或码头。列车和渡轮按班次运行，到站停靠时才可上下客。</p><div id="transit-stops" class="stop-grid"></div></section>`;
+  container.innerHTML = `<div class="atlas-intro"><div><span class="eyebrow">TWO SHORES · ONE CITY</span><h3>从一间茶楼，到整座海港。</h3><p>48 处可进入建筑，6 个北岸街区。选择一个地址，步行与驾驶探索，或使用快速旅行抵达门口。</p></div><div class="atlas-number">48<small>城市地址</small></div></div><div class="atlas-tools"><label>寻找地点<input id="atlas-search" type="search" placeholder="建筑、街区或英文名称"></label><label>街区<select id="atlas-district"><option value="">全部街区</option>${city.districts.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}</select></label></div><div id="atlas-results" class="atlas-grid"></div><section class="transit-directory"><span class="eyebrow">HARBOUR CONNECTIONS</span><h3>乘一班车，去另一岸。</h3><p class="panel-intro">地铁站沿入口楼梯步行下行，经站厅前往站台；轻轨、高铁及码头目前通过 E 进入。车辆按班次运行，停靠时按 E 上下客。</p><div id="transit-stops" class="stop-grid"></div></section>`;
+  const journey=document.createElement('section');journey.className='harbor-route';
+  journey.innerHTML='<span class="eyebrow">START BY THE WATER</span><h3>先去看海，再走进城市。</h3><p>海滨长廊望向对岸高楼群。北岸目录中的建筑开放大厅、二层、三层与观景层；低层之间可以走楼梯，高层乘电梯。对岸天际线和南岸旧城的背景楼宇暂未开放室内。</p><div class="stop-grid"></div><div class="route-steps"></div>';
+  for(const viewpoint of city.harbor?.viewpoints||[]) {
+    const card=document.createElement('article');card.className='stop-card';
+    card.innerHTML=`<div><small>海滨步行 · 全景</small><h4>${viewpoint.name}</h4></div><button data-visit-viewpoint="${viewpoint.id}">去看海 ↗</button>`;
+    card.querySelector('button').addEventListener('click',()=>onTravel({...viewpoint,walkable:true}));journey.querySelector('.stop-grid').append(card);
+  }
+  for(const [title,id,kind] of [['走进海事博物馆','tide-museum','building'],['上楼看看一间住宅','camellia-court','building'],['沿楼梯下到地铁','metro-quay','stop']]) {
+    const button=document.createElement('button');button.textContent=title+' ↗';button.dataset.journey=id;
+    button.addEventListener('click',()=>onTravel(kind==='building'?city.buildings.find(b=>b.id===id):{...city.transit.stops.find(s=>s.id===id),walkable:true}));journey.querySelector('.route-steps').append(button);
+  }
+  container.querySelector('.atlas-intro').after(journey);
   const grid = container.querySelector('#atlas-results');
   const search = container.querySelector('#atlas-search'), district = container.querySelector('#atlas-district');
   const paint = () => {
@@ -43,11 +55,11 @@ export function renderCityGuide(container, city, onTravel) {
 export function renderElevatorPanel(container, city, onSelect) {
   const state = city.interiors.state;
   const building = city.buildings.find(b => b.id === state.buildingId);
-  container.innerHTML = `<div class="elevator-header"><span class="eyebrow">${building?.englishName || 'ELEVATOR'}</span><h3>${building?.name || '电梯'}</h3><p>选择开放楼层。轿厢会连续升降，到层开门后可步行离开。</p></div><div class="floor-list"></div>`;
+  container.innerHTML = `<div class="elevator-header"><span class="eyebrow">${building?.englishName || 'ELEVATOR'}</span><h3>${building?.name || '电梯'}</h3><p>选择开放楼层。轿厢连续升降，到层开门后可步行离开。大厅、二层、三层之间也有步行楼梯。</p></div><div class="floor-list"></div>`;
   for (const floor of building?.floors || []) {
     const design = getRoomDesign(building.id, floor.id);
     const button = document.createElement('button'); button.className = 'floor-button'; button.dataset.floorId = floor.id;
-    const current = state.floor === floor.id || state.floor?.id === floor.id;
+    const current = state.floorId === floor.id || state.floor === floor.id || state.floor?.id === floor.id;
     button.innerHTML = `<span><strong>${design.name}</strong><em>${design.rooms.map(r => r.name).join(' · ')}</em></span><small>${Math.round(floor.y)} m${current ? ' · 当前层' : ''}</small><b>↗</b>`;
     button.disabled = current;
     button.addEventListener('click', () => onSelect(floor.id)); container.querySelector('.floor-list').append(button);

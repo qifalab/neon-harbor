@@ -5,15 +5,50 @@ import { createMetropolisWorld } from '../src/metropolis-world.js';
 import { PLAYER_DIMENSIONS } from '../src/world-config.js';
 import { ChaseCamera, segmentBoxEntry } from '../src/camera.js';
 import * as THREE from '../vendor/three/three.module.js';
-import { TransitService, createTransitSystem, TRANSIT_STOPS } from '../src/metropolis-transit.js';
+import { TransitService, createTransitSystem, TRANSIT_STOPS, METRO_STAIR_OPENINGS, metroGroundHeightAt } from '../src/metropolis-transit.js';
+
+import { GameSimulation, freshProgress } from '../src/simulation.js';
+import { CHARACTER_RADIUS, circleOBB } from '../src/collision.js';
 
 const near = (actual, expected, epsilon = 1e-6) => assert.ok(Math.abs(actual - expected) <= epsilon, `${actual} != ${expected}`);
+
+function activateStation(transit, stop) {
+  if (stop.kind !== 'metro') return transit.interact(stop.entrance);
+  transit.update(0, { ...stop.entrance, z: stop.entrance.z + 1 });
+  return { handled: true, transition: { ...transit.collisionContext() } };
+}
+
+function walkMetro(transit, stop, reverse = false) {
+  const path = reverse ? [...stop.access.waypoints].reverse().concat(stop.streetExit) : stop.access.waypoints;
+  const start = path[0];
+  const sim = new GameSimulation({ bounds: 2000, colliders: transit.colliders || [], save: { ...freshProgress(), player: start }, groundHeightAt: () => start.y });
+  sim.cars = [];
+  const initialTeleportRevision = sim.teleportRevision;
+  let previousY = start.y, largestHeightStep = 0, frames = 0;
+  for (const target of path.slice(1)) {
+    for (let frame = 0; frame < 1500 && Math.hypot(target.x - sim.player.x, target.z - sim.player.z) > .015; frame++) {
+      const viewer = { ...sim.player, y: sim.player.groundY + sim.player.y };
+      transit.update(0, viewer);
+      const context = transit.collisionContext();
+      sim.colliders = context?.colliders || transit.colliders || [];
+      sim.groundHeightAt = context?.groundHeightAt || (() => 0);
+      const dx = target.x - sim.player.x, dz = target.z - sim.player.z;
+      sim.update(Math.min(.05, Math.hypot(dx, dz) / 5.6), { forward: 1, cameraYaw: Math.atan2(dx, dz) });
+      largestHeightStep = Math.max(largestHeightStep, Math.abs(sim.player.groundY - previousY));
+      previousY = sim.player.groundY; frames++;
+    }
+    assert.ok(Math.hypot(target.x - sim.player.x, target.z - sim.player.z) < .02, `${stop.id} blocked toward ${JSON.stringify(target)} from ${JSON.stringify(sim.player)}`);
+    near(sim.player.groundY, target.y, .015);
+  }
+  transit.update(0, { ...sim.player, y: sim.player.groundY + sim.player.y });
+  return { sim, largestHeightStep, frames, initialTeleportRevision };
+}
 
 for (const routeId of ['metro', 'light-rail', 'high-speed', 'ferry']) {
   test(`${routeId}: enter, wait, board, travel and disembark at the next station`, () => {
     const transit = new TransitService();
     const first = transit.stops.find(stop => stop.routeId === routeId);
-    const entry = transit.interact(first.entrance);
+    const entry = first.kind === 'metro' ? (walkMetro(transit, first), { handled: true, transition: transit.collisionContext() }) : transit.interact(first.entrance);
     assert.equal(entry.handled, true);
     assert.equal(transit.boardingState, 'platform');
     assert.equal(entry.transition.groundY, first.platform.y);
@@ -45,7 +80,7 @@ for (const routeId of ['metro', 'light-rail', 'high-speed', 'ferry']) {
     assert.equal(transit.activeStopId, destination.id);
     assert.deepEqual(disembarking.transition.position, { ...destination.board, yaw: Math.PI });
     assert.equal(disembarking.transition.groundY, destination.platform.y);
-    const exit = transit.interact(destination.exit);
+    const exit = destination.kind === 'metro' ? (walkMetro(transit, destination, true), { transition: { id: 'street', groundHeightAt: null, position: destination.streetExit } }) : transit.interact(destination.exit);
     assert.equal(transit.collisionContext(), null);
     assert.equal(exit.transition.id, 'street');
     assert.equal(exit.transition.groundHeightAt, null);
@@ -69,11 +104,13 @@ test('all ten stations have an initial visible service and maximum waiting time 
 
 test('underground platforms preserve their own floor height and cannot activate from the street', () => {
   const transit = new TransitService(), stop = transit.stop('metro-old');
-  transit.interact(stop.entrance);
+  activateStation(transit, stop);
   const context = transit.collisionContext();
   near(context.groundHeightAt(stop.platform.x, stop.platform.z), -14);
   near(context.groundHeightAt(stop.platform.x + 2, stop.platform.z + 20), -14);
-  assert.ok(context.colliders.filter(c => c.physics).every(c => c.minY === -14));
+  assert.ok(context.colliders.some(c => c.id.includes('upper-stair-wall')));
+  near(context.groundHeightAt(stop.entrance.x, stop.entrance.z + 10, -3), -3.5);
+  assert.equal(transit.interact(stop.entrance).transition, undefined, 'E does not teleport to a metro platform');
   const other = new TransitService();
   assert.equal(other.interact({ ...stop.entrance, y: -14 }).handled, false);
 });
@@ -81,7 +118,7 @@ test('underground platforms preserve their own floor height and cannot activate 
 test('leave and reset return a platform or moving passenger to a safe street entrance', () => {
   for (const riding of [false, true]) {
     const transit = new TransitService(), stop = transit.stop('ferry-south');
-    transit.interact(stop.entrance);
+    activateStation(transit, stop);
     if (riding) { transit.interact(stop.board); transit.update(12); }
     const result = transit.reset();
     assert.equal(result.handled, true);
@@ -111,7 +148,7 @@ test('large or invalid frame increments preserve deterministic finite vehicle po
 
 test('boarding requires reaching the marked platform area and an open stationary vehicle', () => {
   const transit = new TransitService(), stop = transit.stop('metro-old');
-  transit.interact(stop.entrance);
+  activateStation(transit, stop);
   const result = transit.interact({ ...stop.platform, z: stop.platform.z + 12 });
   assert.equal(result.handled, true);
   assert.equal(transit.riding, false);
@@ -144,7 +181,7 @@ test('station architecture and fleet share instanced resources and cull remote u
 test('underground and elevated station roofs clip a steep camera boom without altering walking collision', () => {
   for (const id of ['metro-old', 'light-quay', 'hsr-north']) {
     const transit = new TransitService(), stop = transit.stop(id);
-    transit.interact(stop.entrance);
+    activateStation(transit, stop);
     const context = transit.collisionContext();
     const roof = context.colliders.find(c => /roof|canopy/.test(c.id));
     assert.ok(roof, id);
@@ -183,8 +220,8 @@ test('every station returns the player to rendered street ground clear of all wo
   scene.updateMatrixWorld(true);
   const ray = new THREE.Raycaster();
   for (const stop of transit.stops) {
-    transit.interact(stop.entrance);
-    const exit = transit.interact(stop.exit).transition;
+    activateStation(transit, stop);
+    const exit = (stop.kind === 'metro' ? transit.leave() : transit.interact(stop.exit)).transition;
     const p = exit.position, ground = groundAt(p.x, p.z);
     assert.equal(transit.collisionContext(), null, stop.id);
     assert.ok(Math.abs(exit.groundY - ground) <= 0.031, `${stop.id} exit did not restore street height`);
@@ -207,7 +244,7 @@ test('every station returns the player to rendered street ground clear of all wo
     ray.set(new THREE.Vector3(stop.entrance.x, entranceGround + 2, stop.entrance.z), new THREE.Vector3(0, -1, 0));
     const entrySurface = ray.intersectObjects([south.root, north.root, transit.root], true)[0];
     assert.ok(entrySurface && Math.abs(entrySurface.point.y - entranceGround) <= 0.035, `${stop.id} saved entrance is underneath a raised deck`);
-    transit.interact(stop.entrance);
+    activateStation(transit, stop);
     assert.deepEqual(transit.leave().transition.position, p, `${stop.id} reset and public exit disagree`);
   }
   assert.equal(transit.stop('ferry-north').streetExit.z, -405.5);
@@ -217,7 +254,7 @@ test('every station returns the player to rendered street ground clear of all wo
 
 test('the ferry passenger stands on the forward deck clear of furniture with an unobstructed forward view', () => {
   const transit = createTransitSystem(THREE, new THREE.Scene()), stop = transit.stop('ferry-south');
-  transit.interact(stop.entrance); transit.interact(stop.board); transit.update(0);
+  activateStation(transit, stop); transit.interact(stop.board); transit.update(0);
   transit.root.updateMatrixWorld(true);
   const passenger = transit.passengerPose, ferry = transit.fleet.get(transit.ridingVehicleId);
   const local = ferry.worldToLocal(new THREE.Vector3(passenger.x, passenger.y, passenger.z));
@@ -272,4 +309,154 @@ test('ferry entrance sign planes retract the default chase boom on both landward
     }
     assert.ok(clipped, `${id} sign never clipped the boom`);
   }
+});
+
+
+test('all three metro stations can be walked down and back up with the real player capsule and no teleport', () => {
+  const transit = createTransitSystem(THREE, new THREE.Scene());
+  assert.equal(CHARACTER_RADIUS, .65);
+  for (const stop of transit.stops.filter(s => s.kind === 'metro')) {
+    assert.match(transit.getPrompt(stop.entrance), /步行下楼/);
+    assert.equal(transit.interact(stop.entrance).transition, undefined);
+    assert.equal(transit.activeStopId, null, 'pressing E at street level does not activate underground collision');
+    const down = walkMetro(transit, stop);
+    assert.equal(transit.activeStopId, stop.id);
+    near(down.sim.player.groundY, -14);
+    assert.equal(down.sim.teleportRevision, down.initialTeleportRevision);
+    assert.ok(down.largestHeightStep <= .124, `${stop.id}: descent snaps vertically ${down.largestHeightStep}`);
+    assert.ok(down.frames >= 190, 'must traverse a real distance');
+    assert.equal(transit.interact({ ...stop.exit }).transition, undefined, 'the old exit button cannot teleport out');
+    const up = walkMetro(transit, stop, true);
+    assert.equal(transit.activeStopId, null);
+    near(up.sim.player.groundY, 0);
+    assert.equal(up.sim.teleportRevision, up.initialTeleportRevision);
+    assert.ok(up.largestHeightStep <= .124, `${stop.id}: ascent snaps vertically ${up.largestHeightStep}`);
+  }
+});
+
+test('metro upper streets, lower platforms and switchback stairs keep their independent heights', () => {
+  for (const stop of TRANSIT_STOPS.filter(s => s.kind === 'metro')) {
+    const x = stop.entrance.x, z = stop.entrance.z;
+    near(metroGroundHeightAt(stop, x, z, 0), 0);
+    near(metroGroundHeightAt(stop, x, z, -14), -14);
+    near(metroGroundHeightAt(stop, x, z + 10, -3.5), -3.5);
+    near(metroGroundHeightAt(stop, x, z + 10, -14), -14);
+    near(metroGroundHeightAt(stop, x - 7, z + 10, -10.5), -10.5);
+  }
+  assert.equal(METRO_STAIR_OPENINGS.length, 3);
+});
+
+test('rendered metro treads match the physical walking slope within one riser, with clear headroom', () => {
+  const scene = new THREE.Scene(), transit = createTransitSystem(THREE, scene);
+  scene.updateMatrixWorld(true);
+  const ray = new THREE.Raycaster();
+  for (const stop of transit.stops.filter(s => s.kind === 'metro')) {
+    for (const lower of [false, true]) for (let i = 0; i < 40; i++) {
+      const x = stop.entrance.x - (lower ? 7 : 0), z = stop.entrance.z + 2 + (i + .5) * .4;
+      const y = lower ? -14 + (i + .5) * .175 : -(i + .5) * .175;
+      ray.set(new THREE.Vector3(x, y + .3, z), new THREE.Vector3(0, -1, 0));
+      const hit = ray.intersectObject(transit.root.children[0], true)[0];
+      assert.ok(hit && Math.abs(hit.point.y - y) < .175, `${stop.id} flight${lower} step${i} rendered floor mismatch`);
+      const blockers = stop.colliders.filter(c => c.physics !== false && y + PLAYER_DIMENSIONS.height > c.minY && y < c.maxY && circleOBB({ x, z, radius: CHARACTER_RADIUS }, c));
+      assert.deepEqual(blockers.map(c => c.id), [], `${stop.id} stair capsule intersects architecture`);
+      ray.far = PLAYER_DIMENSIONS.height + .1;
+      ray.set(new THREE.Vector3(x, y + .18, z), new THREE.Vector3(0, 1, 0));
+      assert.equal(ray.intersectObject(transit.root.children[0], true).length, 0, `${stop.id} flight${lower} step${i} insufficient headroom`);
+      ray.far = Infinity;
+    }
+  }
+});
+
+
+test('upper metro stairs see a solid retaining wall above the covered landing instead of the world underside', () => {
+  const scene = new THREE.Scene(), transit = createTransitSystem(THREE, scene);
+  scene.updateMatrixWorld(true);
+  const ray = new THREE.Raycaster();
+  for (const stop of transit.stops.filter(s => s.kind === 'metro')) {
+    const x = stop.entrance.x, z = stop.entrance.z;
+    const earth = stop.colliders.filter(c => /landing-roof|street-end-guard/.test(c.id));
+    assert.ok(earth.every(c => c.physics && c.camera), 'the soil cover must be a physical retaining structure');
+    // Reproduce the High first-person screenshot: eye height at the middle of
+    // the upper flight, looking through the old gap toward the ocean/road base.
+    // Sweep the entire former ceiling-to-street void, including oblique views.
+    for (const dz of [8, 10, 12]) for (const side of [-1.2, 0, 1.2]) for (const targetY of [-3.3, -2.2, -.8, -.1]) {
+      const floorY = metroGroundHeightAt(stop, x, z + dz, -(dz - 2) * 7 / 16);
+      const eye = new THREE.Vector3(x + side, floorY + 1.62, z + dz);
+      const target = new THREE.Vector3(x - side, targetY, z + 26);
+      const length = eye.distanceTo(target);
+      ray.set(eye, target.clone().sub(eye).normalize()); ray.far = length;
+      const rendered = ray.intersectObject(transit.root.children[0], true)[0];
+      assert.ok(rendered && rendered.distance < length, `${stop.id}: exposed world underside from stair ${dz} to ${targetY}`);
+      assert.ok(earth.some(c => segmentBoxEntry(eye, target, c, 0) !== null), `${stop.id}: only decorative concealment, no physical earth cover`);
+    }
+    // The fix closes only the soil above the landing: the actual pedestrian
+    // route retains 3.4 m overhead clearance at and around the turn.
+    for (const px of [x, x - 3.5, x - 7]) {
+      ray.set(new THREE.Vector3(px, -6.9, z + 20.5), new THREE.Vector3(0, 1, 0)); ray.far = 4;
+      const roof = ray.intersectObject(transit.root.children[0], true)[0];
+      assert.ok(roof && roof.point.y >= -3.68 && roof.point.y <= -3.59, `${stop.id}: covered landing has wrong headroom (${roof?.point.y})`);
+    }
+  }
+});
+
+
+test('every animated train-door batch has a stable conservative envelope for both open and closed poses', () => {
+  const transit = createTransitSystem(THREE, new THREE.Scene());
+  let doorsChecked = 0;
+  const envelopes = [];
+  for (const [id, train] of transit.fleet) {
+    const descriptors = new Map(train.userData.doors.map(door => [door.mesh, door]));
+    for (const { mesh, entries } of train.userData.doorBatches) {
+      assert.equal(mesh.frustumCulled, true, `${id}: doors bypass normal view-frustum culling`);
+      assert.ok(mesh.boundingBox && mesh.boundingSphere && mesh.boundingSphere.radius > 0, `${id}: empty pre-animation bounds`);
+      envelopes.push({ mesh, box: mesh.boundingBox, sphere: mesh.boundingSphere, radius: mesh.boundingSphere.radius });
+      mesh.geometry.computeBoundingBox();
+      const geometryBox = mesh.geometry.boundingBox;
+      for (const { door, node } of entries) for (const open of [false, true]) {
+        const descriptor = descriptors.get(door), position = door.position.clone();
+        position.z = descriptor.z + (open ? .9 * descriptor.side : 0);
+        const transform = new THREE.Matrix4().compose(position, door.quaternion, door.scale);
+        if (node !== door) { node.updateMatrix(); transform.multiply(node.matrix); }
+        for (const x of [geometryBox.min.x, geometryBox.max.x]) for (const y of [geometryBox.min.y, geometryBox.max.y]) for (const z of [geometryBox.min.z, geometryBox.max.z]) {
+          const corner = new THREE.Vector3(x, y, z).applyMatrix4(transform);
+          assert.ok(mesh.boundingBox.clone().expandByScalar(1e-5).containsPoint(corner), `${id}: ${open ? 'open' : 'closed'} door outside its local box`);
+          assert.ok(mesh.boundingSphere.distanceToPoint(corner) <= 1e-5, `${id}: door outside its culling sphere`);
+        }
+        doorsChecked++;
+      }
+    }
+  }
+  assert.ok(doorsChecked > 400, 'cover all thirteen trains including three-car high-speed services');
+  transit.update(13);
+  for (const saved of envelopes) {
+    assert.strictEqual(saved.mesh.boundingBox, saved.box, 'door motion should not rebuild bounds every frame');
+    assert.strictEqual(saved.mesh.boundingSphere, saved.sphere);
+    assert.equal(saved.mesh.boundingSphere.radius, saved.radius);
+  }
+});
+
+test('offscreen above-ground train doors cull for a metro viewer while doors inside the view remain', () => {
+  const scene = new THREE.Scene(), transit = createTransitSystem(THREE, scene);
+  const stop = transit.stop('hsr-old');
+  const viewer = { x: stop.berth.x, y: -12.3, z: stop.berth.z + 100 };
+  transit.update(0, viewer); scene.updateMatrixWorld(true);
+  const vehicle = transit.vehicles.find(v => v.pose.stopId === stop.id), train = transit.fleet.get(vehicle.id);
+  assert.equal(train.visible, true, 'distance visibility alone keeps this surface train for an underground user');
+  assert.equal(train.userData.doorBatches.length, 2);
+  const camera = new THREE.PerspectiveCamera(55, 1.6, .15, 3200);
+  camera.position.set(viewer.x, viewer.y, viewer.z);
+  const frustum = new THREE.Frustum();
+  const aim = (x, y, z) => {
+    camera.lookAt(x, y, z); camera.updateMatrixWorld(true);
+    frustum.setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
+  };
+  for (const direction of [{ x: 0, z: 1 }, { x: 1, z: 0 }, { x: -1, z: 0 }]) {
+    aim(viewer.x + direction.x, viewer.y, viewer.z + direction.z);
+    for (const { mesh } of train.userData.doorBatches) {
+      assert.ok(mesh.frustumCulled && !frustum.intersectsObject(mesh), 'back/side-facing underground views still submit surface train doors');
+    }
+  }
+  aim(vehicle.pose.x, vehicle.pose.y + 1.7, vehicle.pose.z);
+  for (const { mesh } of train.userData.doorBatches)
+    assert.ok(frustum.intersectsObject(mesh), 'doors in the actual view must remain available to the renderer');
 });

@@ -45,7 +45,7 @@ test('every one of 48 addresses has distinct furnished programmes, open entrance
     assert.ok(Math.abs(outside.z - entry.position.z) < 0.01, `${building.id} main doorway has no solid wall`);
     const player = walkToCabin(system, entry);
     assert.equal(system.getPrompt(player).kind, 'elevator');
-    assert.equal(system.interact(player).elevator.floors.length, 3);
+    assert.equal(system.interact(player).elevator.floors.length, 4);
     moveCircle(player, 0, entry.position.z - player.z, CHARACTER_RADIUS, physics(system));
     assert.equal(system.getPrompt(player).kind, 'exit');
     const leave = system.exit();
@@ -58,7 +58,7 @@ test('every one of 48 addresses has distinct furnished programmes, open entrance
   system.dispose();
 });
 
-test('all 144 floor plans keep furniture collision aligned with visible geometry and guard upper-floor edges', () => {
+test('all 192 floor plans keep furniture collision aligned with visible geometry and guard upper-floor edges', () => {
   const categories = new Set();
   for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors) {
     const layout = createInteriorLayout(building, floor); categories.add(layout.category);
@@ -162,4 +162,126 @@ test('entering and leaving rooms preserves the global point-light shader budget 
   }
   system.dispose();
   assert.equal(scene.children.filter(object => object.isPointLight).length, 0);
+});
+
+test('all 96 stair flights carry ordinary walking up and down three occupied floors without teleporting', async () => {
+  const { GameSimulation } = await import('../src/simulation.js');
+  const system = create();
+  for (const building of METROPOLIS_BUILDINGS) {
+    const entry = system.enter(building.id), context = system.collisionContext();
+    const sim = new GameSimulation({ colliders: context.colliders, groundHeightAt: context.groundHeightAt, bounds: 1450 });
+    sim.cars = []; Object.assign(sim.player, entry.position, { groundY: 0, y: 0 });
+    const revision = sim.teleportRevision, stairs = system.snapshot().stairs;
+    assert.equal(stairs.length, 2); assert.equal(system.snapshot().activeFloors, 3);
+    const visited = new Set([0]); let largestStep = 0, previous = 0;
+    const walk = target => {
+      let frames = 0;
+      while (Math.hypot(sim.player.x - target.x, sim.player.z - target.z) > 0.09 && frames++ < 1200) {
+        const change = system.update(1 / 60, sim.player);
+        assert.ok(!change?.position && !change?.transition, 'stairs never emit a position reset');
+        const physics = system.collisionContext(); sim.colliders = physics.colliders; sim.groundHeightAt = physics.groundHeightAt;
+        sim.update(1 / 60, { forward: 1, cameraYaw: Math.atan2(target.x - sim.player.x, target.z - sim.player.z) });
+        largestStep = Math.max(largestStep, Math.abs(sim.player.groundY - previous)); previous = sim.player.groundY;
+        visited.add(Math.round(sim.player.groundY * 1000));
+        assert.equal(sim.player.y, 0, 'walking stairs requires no jumping');
+      }
+      system.update(1 / 60, sim.player);
+      assert.ok(Math.hypot(sim.player.x - target.x, sim.player.z - target.z) <= 0.09, `${building.id}: stair route blocked at ${JSON.stringify(sim.player)} before ${JSON.stringify(target)}`);
+      assert.equal(sim.teleportRevision, revision);
+    };
+    walk({ x: building.x, z: stairs[0].bottom.z }); walk(stairs[0].bottom); walk(stairs[0].top);
+    assert.equal(system.state.floor.id, 'gallery'); assert.equal(sim.player.groundY, 4.2);
+    for (const point of stairs[0].bypass) walk(point);
+    walk(stairs[1].bottom); walk(stairs[1].top);
+    assert.equal(system.state.floor.id, 'workplace'); assert.equal(sim.player.groundY, 8.4);
+    assert.ok(system.snapshot().rooms.every(room => room.enclosed), 'new third floor is physically furnished and enclosed');
+    walk(stairs[1].bottom);
+    for (const point of [...stairs[0].bypass].reverse()) walk(point);
+    walk(stairs[0].top); walk(stairs[0].bottom);
+    walk({ x: building.x, z: stairs[0].bottom.z }); walk(entry.position);
+    assert.equal(system.state.floor.id, 'lobby'); assert.equal(sim.player.groundY, 0);
+    assert.ok(visited.size >= 49, 'both flights expose their real intermediate tread elevations');
+    assert.ok(largestStep <= 0.17500001, `a normal walking frame may climb one real riser, received ${largestStep}`);
+    assert.ok(system.exit()?.outside);
+  }
+  system.dispose();
+});
+
+test('stair treads, nosings, landings and cutouts agree with continuous-world support geometry', () => {
+  for (const building of METROPOLIS_BUILDINGS) {
+    const system = create(); system.enter(building.id);
+    for (const flight of system.snapshot().stairs) {
+      const floor = building.floors.find(item => item.id === flight.fromFloorId), layout = createInteriorLayout(building, floor);
+      assert.equal(layout.parts.filter(part => part.kind === 'stair-tread').length, 24);
+      assert.equal(layout.parts.filter(part => part.kind === 'stair-nosing').length, 24);
+      assert.equal(layout.parts.filter(part => part.kind === 'stair-landing').length, 1);
+      assert.equal(layout.parts.filter(part => part.kind === 'stair-handrail').length, 2);
+      assert.ok(flight.width >= 2.8);
+      let height = flight.fromY;
+      for (let index = 0; index < flight.treadCount; index++) {
+        const position = { x: flight.x, z: flight.startZ - (index + 0.5) * flight.run / flight.treadCount, groundY: height };
+        height = system.collisionContext().groundHeightAt(position.x, position.z, height);
+        assert.ok(Math.abs(height - (flight.fromY + (index + 1) * flight.rise / flight.treadCount)) < 1e-8);
+        position.groundY = height;
+        assert.equal(circleContacts(position, CHARACTER_RADIUS, physics(system)).length, 0, 'cutout must clear the whole standing player, including the ceiling edge');
+      }
+    }
+    system.dispose();
+  }
+});
+
+test('the upper stair opening guards its wrong end without a four-metre ground-height snap', () => {
+  const system = create(); const entry = system.enter('tide-museum'), player = walkToCabin(system, entry);
+  system.interact(player); system.selectFloor('workplace'); completeRide(system, player);
+  const flight = system.snapshot().stairs[1];
+  const standing = { x: flight.bottom.x, z: flight.bottom.z, groundY: flight.toY, y: 0 };
+  const collision = physics(system);
+  moveCircle(standing, 0, -3, CHARACTER_RADIUS, collision);
+  assert.ok(standing.z >= flight.startZ + 0.99, 'the guarded bottom-side lip must stop a visitor on 3F');
+  assert.equal(collision.groundHeightAt(standing.x, standing.z, flight.toY), flight.toY);
+  assert.equal(system.snapshot().floorId, 'workplace');
+  system.dispose();
+});
+
+test('hidden enclosed floors keep their collision and furnishings resident while the stair opening reveals adjacent floors', () => {
+  const system = create(), building = METROPOLIS_BUILDINGS[0]; system.enter(building.id);
+  const resident = system.collisionContext().colliders;
+  system.update(1 / 60, { x: building.x, z: building.z - 16, groundY: 0 });
+  assert.deepEqual(system.snapshot().visibleFloors, ['lobby']);
+  assert.equal(system.snapshot().activeFloors, 3);
+  assert.equal(system.collisionContext().colliders, resident, 'visibility optimization cannot alter physical collision');
+  const flight = system.snapshot().stairs[0];
+  system.update(1 / 60, { x: flight.x, z: (flight.startZ + flight.endZ) / 2, groundY: flight.rise / 2 });
+  assert.deepEqual(system.snapshot().visibleFloors, ['lobby', 'gallery']);
+  assert.equal(system.collisionContext().colliders, resident);
+  system.exit({ force: true }); assert.deepEqual(system.snapshot().visibleFloors, []); system.dispose();
+});
+
+test('painted corridor ceilings sit below the stone slab above instead of exposing its underside', () => {
+  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.slice(0, 2)) {
+    const layout = createInteriorLayout(building, floor), upper = building.floors.find(item => item.y > floor.y);
+    const ceiling = layout.parts.filter(part => part.kind === 'ceiling' && !part.roomId);
+    assert.ok(ceiling.length >= 1);
+    for (const part of ceiling) {
+      assert.equal(part.material, 'interiorCeiling');
+      assert.ok(part.y - part.sy / 2 < upper.y - 0.32 - 0.05, 'warm painted soffit must be the lowest visible surface, clear of the upper stone slab');
+      assert.ok(part.y - part.sy / 2 - floor.y >= 3.2, 'retain comfortable public-corridor headroom');
+    }
+  }
+});
+
+test('occupied finishes retain matte microtexture and modest indirect light with the same two-point-light budget', () => {
+  const scene = new THREE.Scene(), system = createInteriorSystem(THREE, scene); const entry = system.enter('tide-museum');
+  const finishMaterials = new Map(); system.root.traverse(node => { if (node.isMesh && node.material?.userData.interiorBounce) finishMaterials.set(node.material.name, node.material); });
+  for (const key of ['interiorCeiling', 'galleryPaint', 'interiorStone']) {
+    const material = finishMaterials.get(`Occupied interior · ${key}`);
+    assert.ok(material?.map?.isDataTexture && material.userData.metropolisWorldMetres, 'clean indoor surfaces retain original subtle texture at world scale');
+    assert.ok(material.roughness >= 0.75 && material.metalness === 0);
+    assert.ok(material.emissiveIntensity > 0 && material.emissiveIntensity <= 0.2, 'indirect fill cannot replace orientation and shading with full brightness');
+  }
+  const lights = scene.children.filter(node => node.isPointLight);
+  assert.equal(lights.length, 2);
+  assert.ok(lights.every(light => !light.castShadow));
+  assert.ok(Math.hypot(lights[0].position.x - entry.position.x, lights[0].position.z - entry.position.z) < 8, 'the arrival display receives a local light rather than one hidden twenty metres away in a side room');
+  system.dispose();
 });

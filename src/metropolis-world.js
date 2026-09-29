@@ -1,7 +1,10 @@
 import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
-import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS } from './metropolis-catalog.js';
+import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS, publicInteriorFootprint } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
 import { architectureDesignFor, architectureSignLayout, architectureStalls } from './metropolis-architecture-designs.js';
+import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
+import { subtractGroundRect } from './terrain-openings.js';
+import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
 
 /** North shore: permanent terrain/collision/silhouettes, independently fetched detail. */
 export function createMetropolisWorld(THREE, scene, {
@@ -18,7 +21,7 @@ export function createMetropolisWorld(THREE, scene, {
     disc: new THREE.CylinderGeometry(1, 1, 1, 24),
   };
   const chunks = [], chunkByBuilding = new Map(), dummy = new THREE.Object3D();
-  let interiorId = null, currentQuality = quality;
+  let interiorId = null, currentQuality = quality, waterTime = 0;
   for (let row = 0; row < 3; row++) for (let column = 0; column < 4; column++) {
     const id = `north-${column}-${row}`;
     const metadata = { id, x: -480 + column * 320, z: -560 - row * 280, hx: 160, hz: 140, file: `${id}.json` };
@@ -34,6 +37,7 @@ export function createMetropolisWorld(THREE, scene, {
   };
   function material(key) {
     if (materials.has(key)) return materials.get(key);
+    if(key==='water'){const m=createHarborWaterMaterial(THREE);materials.set(key,m);return m;}
     if (key.startsWith('shop:')) {
       const [, id, index] = key.split(':'), design = architectureDesignFor(id);
       const m = new THREE.MeshStandardMaterial({ color: '#dad1bd', roughness: .86, metalness: 0 });
@@ -66,8 +70,13 @@ export function createMetropolisWorld(THREE, scene, {
   }
   // Payload transforms share the existing validated nine-number chunk schema.
   // Building IDs travel beside transforms so a single interior can hide its shell.
-  function stamp(kind, key, x, y, z, sx, sy, sz, { rx = 0, ry = 0, rz = 0, building = null, detail = false } = {}) {
+  function stamp(kind, key, x, y, z, sx, sy, sz, { rx = 0, ry = 0, rz = 0, building = null, detail = false, terrainCut = false } = {}) {
     if (detail && streaming) return;
+    if(!terrainCut&&kind==='box'&&y<.08&&['white','line'].includes(key)&&!rx&&!ry&&!rz&&METRO_STAIR_OPENINGS.some(h=>h.minX<x+sx/2&&h.maxX>x-sx/2&&h.minZ<z+sz/2&&h.maxZ>z-sz/2)) {
+      for(const p of subtractGroundRect({minX:x-sx/2,maxX:x+sx/2,minZ:z-sz/2,maxZ:z+sz/2},METRO_STAIR_OPENINGS))
+        stamp(kind,key,(p.minX+p.maxX)/2,y,(p.minZ+p.maxZ)/2,p.maxX-p.minX,sy,p.maxZ-p.minZ,{building,detail,terrainCut:true});
+      return;
+    }
     const pool = detail ? detailPools.get(chunkByBuilding.get(building)) : staticPool;
     const batchKey = `${kind}|${key}`;
     if (!pool.has(batchKey)) pool.set(batchKey, { kind, material: key, transforms: [], buildings: [] });
@@ -91,8 +100,21 @@ export function createMetropolisWorld(THREE, scene, {
 
   // A single dark ground plane is the road surface. Separate block pavements
   // never overlap roads, eliminating coplanar intersection flicker.
-  box('asphalt',0,-0.16,-885,1480,0.3,990);
-  for (const b of METROPOLIS_BUILDINGS) box('sidewalk',b.x,-0.045,b.z,134,0.09,114);
+  for(const p of subtractGroundRect({minX:-740,maxX:740,minZ:-1380,maxZ:-390},METRO_STAIR_OPENINGS))
+    box('asphalt',(p.minX+p.maxX)/2,-.16,(p.minZ+p.maxZ)/2,p.maxX-p.minX,.3,p.maxZ-p.minZ);
+  for (const b of METROPOLIS_BUILDINGS) {
+    const footprint = publicInteriorFootprint(b);
+    const block = { minX: b.x - 67, maxX: b.x + 67, minZ: b.z - 57, maxZ: b.z + 57 };
+    // Public paving ends exactly at the occupied floor, so two y=0 surfaces
+    // cannot fight through one another after entering. Keep a tagged infill
+    // while outdoors: the existing shell switch removes it only when the real
+    // lobby slab is resident, including before detailed entrance doors load.
+    for (const piece of subtractGroundRect(block, [footprint])) {
+      box('sidewalk', (piece.minX + piece.maxX) / 2, -0.045, (piece.minZ + piece.maxZ) / 2,
+        piece.maxX - piece.minX, 0.09, piece.maxZ - piece.minZ);
+    }
+    box('sidewalk', b.x, -0.045, b.z, footprint.width, 0.09, footprint.depth, { building: b.id });
+  }
   box('sidewalk',0,-0.04,-1333,1450,0.08,116);
   box('sidewalk',-704,-0.04,-878,68,0.08,960);
   box('sidewalk',704,-0.04,-878,68,0.08,960);
@@ -138,14 +160,14 @@ export function createMetropolisWorld(THREE, scene, {
 
   // The old harbor sea starts east of x=297; this connects the two shores
   // beneath the actual bridge and ferry route, including the western channel.
-  box('water',0,-.38,-347,1480,.12,114);
+  box('water',-221.5,-.38,-347,1037,.12,114);
 
   // Water margins and cliffs define a coherent island boundary. They have
   // collision independent of the detail chunks, so unloading never opens holes.
   for(const side of [-1,1]) {
     box('stone',side*737,0.8,-885,6,2,990); solid('seawall',side*739,-885,3,495,-5,5);
-    box('water',side*922,-0.38,-885,360,0.12,1160);
-    for(let i=0;i<10;i++) stamp('cone','leaves',side*(860+i%3*55),35+i%4*12,-580-i*86,70+i%3*18,95+i%4*28,85);
+    if(side<0)box('water',side*922,-0.38,-885,360,0.12,1160);
+    if(side<0)for(let i=0;i<10;i++) stamp('cone','leaves',side*(860+i%3*55),35+i%4*12,-580-i*86,70+i%3*18,95+i%4*28,85);
   }
   box('stone',0,0.8,-1378,1480,2,6); solid('mountain-boundary',0,-1382,744,4,-4,35);
   for(let i=0;i<12;i++) stamp('cone','leaves',-780+i*142,30+(i%3)*14,-1490-(i%2)*35,132,140+(i%4)*30,148);
@@ -813,6 +835,7 @@ export function createMetropolisWorld(THREE, scene, {
   return {
     root,colliders,buildings:METROPOLIS_BUILDINGS,districts:METROPOLIS_DISTRICTS,
     landmarks:METROPOLIS_BUILDINGS.map(b=>({id:b.id,name:b.name,x:b.entrance.x,z:b.entrance.z,y:0,type:'building'})),
+    updateWater(dt,hour){waterTime+=Math.max(0,dt||0);const m=materials.get('water');if(m)updateHarborWaterMaterial(m,waterTime,hour);},
     groundHeightAt(x,z) {
       if(Math.abs(x)<=14&&z>=bridgeMin&&z<=bridgeMax)return bridgeHeight(z);
       if(x>=-740&&x<=740&&z>=-1380&&z<=-390)return 0;
