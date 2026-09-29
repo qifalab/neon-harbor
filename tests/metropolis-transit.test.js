@@ -398,3 +398,65 @@ test('upper metro stairs see a solid retaining wall above the covered landing in
     }
   }
 });
+
+
+test('every animated train-door batch has a stable conservative envelope for both open and closed poses', () => {
+  const transit = createTransitSystem(THREE, new THREE.Scene());
+  let doorsChecked = 0;
+  const envelopes = [];
+  for (const [id, train] of transit.fleet) {
+    const descriptors = new Map(train.userData.doors.map(door => [door.mesh, door]));
+    for (const { mesh, entries } of train.userData.doorBatches) {
+      assert.equal(mesh.frustumCulled, true, `${id}: doors bypass normal view-frustum culling`);
+      assert.ok(mesh.boundingBox && mesh.boundingSphere && mesh.boundingSphere.radius > 0, `${id}: empty pre-animation bounds`);
+      envelopes.push({ mesh, box: mesh.boundingBox, sphere: mesh.boundingSphere, radius: mesh.boundingSphere.radius });
+      mesh.geometry.computeBoundingBox();
+      const geometryBox = mesh.geometry.boundingBox;
+      for (const { door, node } of entries) for (const open of [false, true]) {
+        const descriptor = descriptors.get(door), position = door.position.clone();
+        position.z = descriptor.z + (open ? .9 * descriptor.side : 0);
+        const transform = new THREE.Matrix4().compose(position, door.quaternion, door.scale);
+        if (node !== door) { node.updateMatrix(); transform.multiply(node.matrix); }
+        for (const x of [geometryBox.min.x, geometryBox.max.x]) for (const y of [geometryBox.min.y, geometryBox.max.y]) for (const z of [geometryBox.min.z, geometryBox.max.z]) {
+          const corner = new THREE.Vector3(x, y, z).applyMatrix4(transform);
+          assert.ok(mesh.boundingBox.clone().expandByScalar(1e-5).containsPoint(corner), `${id}: ${open ? 'open' : 'closed'} door outside its local box`);
+          assert.ok(mesh.boundingSphere.distanceToPoint(corner) <= 1e-5, `${id}: door outside its culling sphere`);
+        }
+        doorsChecked++;
+      }
+    }
+  }
+  assert.ok(doorsChecked > 400, 'cover all thirteen trains including three-car high-speed services');
+  transit.update(13);
+  for (const saved of envelopes) {
+    assert.strictEqual(saved.mesh.boundingBox, saved.box, 'door motion should not rebuild bounds every frame');
+    assert.strictEqual(saved.mesh.boundingSphere, saved.sphere);
+    assert.equal(saved.mesh.boundingSphere.radius, saved.radius);
+  }
+});
+
+test('offscreen above-ground train doors cull for a metro viewer while doors inside the view remain', () => {
+  const scene = new THREE.Scene(), transit = createTransitSystem(THREE, scene);
+  const stop = transit.stop('hsr-old');
+  const viewer = { x: stop.berth.x, y: -12.3, z: stop.berth.z + 100 };
+  transit.update(0, viewer); scene.updateMatrixWorld(true);
+  const vehicle = transit.vehicles.find(v => v.pose.stopId === stop.id), train = transit.fleet.get(vehicle.id);
+  assert.equal(train.visible, true, 'distance visibility alone keeps this surface train for an underground user');
+  assert.equal(train.userData.doorBatches.length, 2);
+  const camera = new THREE.PerspectiveCamera(55, 1.6, .15, 3200);
+  camera.position.set(viewer.x, viewer.y, viewer.z);
+  const frustum = new THREE.Frustum();
+  const aim = (x, y, z) => {
+    camera.lookAt(x, y, z); camera.updateMatrixWorld(true);
+    frustum.setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
+  };
+  for (const direction of [{ x: 0, z: 1 }, { x: 1, z: 0 }, { x: -1, z: 0 }]) {
+    aim(viewer.x + direction.x, viewer.y, viewer.z + direction.z);
+    for (const { mesh } of train.userData.doorBatches) {
+      assert.ok(mesh.frustumCulled && !frustum.intersectsObject(mesh), 'back/side-facing underground views still submit surface train doors');
+    }
+  }
+  aim(vehicle.pose.x, vehicle.pose.y + 1.7, vehicle.pose.z);
+  for (const { mesh } of train.userData.doorBatches)
+    assert.ok(frustum.intersectsObject(mesh), 'doors in the actual view must remain available to the renderer');
+});

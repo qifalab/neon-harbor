@@ -87,10 +87,20 @@ export function clipCameraSegment(start, end, colliders, radius = CAMERA_RADIUS)
 
 export class ChaseCamera {
   constructor() { this.reset(); }
-  reset() { this.initialized = false; this.position = null; this.focus = null; }
+  reset() { this.initialized = false; this.position = null; this.focus = null; this.platformY = null; }
 
   update(subject, controls, dt, colliders = []) {
     dt = clamp(Number.isFinite(dt) ? dt : 0, 0, MAX_FRAME_TIME);
+    const platformY = Number.isFinite(controls.platformY) ? controls.platformY : null;
+    if (this.initialized && !controls.firstPerson && platformY !== null && this.platformY !== null) {
+      // Move the complete damping history with the support, so an elevator's
+      // acceleration cannot leave a third-person camera behind at floor level.
+      // Relative look/boom damping is unchanged. Ordinary cameras opt out.
+      const delta = platformY - this.platformY;
+      for (const point of new Set([this.position, this.target, this.focus, this.previousGoal]))
+        if (point) point.y += delta;
+    }
+    this.platformY = platformY;
     if (controls.firstPerson) {
       // Walking inspection and seated passengers share eye-level viewing.
       const requestedYaw = controls.yaw;
