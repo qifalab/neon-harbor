@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { snapshot, walkAxis, walkRoute } from './helpers/walking.js';
+import { snapshot, walkAxis, walkRoute, stairWalkingRoute } from './helpers/walking.js';
 
 // The default-quality panorama and the physical stair route are separate gates.
 // Every relocation uses visible product controls; diagnostics never write state.
@@ -35,7 +35,6 @@ async function visit(page, kind, id) {
   await expect(page.locator('#game')).toBeFocused();
 }
 
-const middle = flight => ({ x: flight.x, z: (flight.startZ + flight.endZ) / 2, y: (flight.fromY + flight.toY) / 2 });
 
 test('the primary start reaches a walkable harbor panorama in default high quality, with day and night views', async ({ page }, testInfo) => {
   const errors = await boot(page);
@@ -103,12 +102,13 @@ test('a visitor walks both physical stair flights into a furnished third-floor w
   expect(upper.fromFloorId).toBe('gallery');
   expect(upper.toFloorId).toBe('workplace');
   expect(lower.width).toBeGreaterThanOrEqual(2.8);
+  const lowerWalk = stairWalkingRoute(lower, lobby.entrance.x), upperWalk = stairWalkingRoute(upper, lobby.entrance.x);
 
-  await walkRoute(page, [{ ...lower.bottom, x: lobby.entrance.x }, lower.bottom, middle(lower), lower.top]);
+  await walkRoute(page, [{ ...lowerWalk.bottom, x: lobby.entrance.x }, lowerWalk.bottom, lowerWalk.middle, lowerWalk.top]);
   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('gallery');
   expect((await snapshot(page)).city.interior.moving).toBe(false);
   await capture(page, testInfo, 'harbor-realism-second-floor-stair');
-  await walkRoute(page, [...lower.bypass, upper.bottom, middle(upper), upper.top]);
+  await walkRoute(page, [...lowerWalk.bypass, upperWalk.bottom, upperWalk.middle, upperWalk.top]);
   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('workplace');
   const third = (await snapshot(page)).city.interior;
   expect(third.floorName).toContain('研习');
@@ -121,7 +121,7 @@ test('a visitor walks both physical stair flights into a furnished third-floor w
   expect(room.arrival).toBeTruthy();
   // Leave the stair opening via its landing, then use the actual central aisle
   // and room doorway. A valid room record alone cannot pass this route.
-  await walkRoute(page, [upper.bypass[0]]);
+  await walkRoute(page, [upperWalk.bypass[0]]);
   await walkAxis(page, 'z', room.entrance.z);
   await walkAxis(page, 'x', room.arrival.x);
   await walkAxis(page, 'z', room.arrival.z);
@@ -133,9 +133,9 @@ test('a visitor walks both physical stair flights into a furnished third-floor w
 
   await walkAxis(page, 'z', room.entrance.z);
   await walkAxis(page, 'x', lobby.entrance.x);
-  await walkRoute(page, [upper.bypass[0], upper.top, middle(upper), upper.bottom]);
+  await walkRoute(page, [upperWalk.bypass[0], upperWalk.top, upperWalk.middle, upperWalk.bottom]);
   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('gallery');
-  await walkRoute(page, [...lower.bypass].reverse().concat([lower.top, middle(lower), lower.bottom]));
+  await walkRoute(page, [...lowerWalk.bypass].reverse().concat([lowerWalk.top, lowerWalk.middle, lowerWalk.bottom]));
   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('lobby');
   const returned = await snapshot(page);
   expect(returned.teleportRevision).toBe(entered.teleportRevision);

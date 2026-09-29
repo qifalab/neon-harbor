@@ -40,7 +40,9 @@ export function createInteriorLayout(building, floor) {
   if (!building || !floor) throw new Error('An interior requires a building and a floor.');
   const width = building.width - 0.7, depth = building.depth - 0.7;
   const next = building.floors.find(candidate => candidate.y > floor.y);
-  const height = next ? clamp(next.y - floor.y - 0.25, 3.2, 5.2) : 4.6;
+  // Keep the painted soffit BELOW the next storey's 0.32 m stone slab.
+  // At 4.2 m floor spacing, 3.95 m exposed the upper slab's dark underside.
+  const height = next ? clamp(next.y - floor.y - 0.42, 3.2, 5.2) : 4.6;
   const parts = [], colliders = [], labels = [], lights = [], rooms = [];
   const stairs = createInteriorStairs(building), outgoing = stairs.find(flight => flight.fromFloorId === floor.id), incoming = stairs.find(flight => flight.toFloorId === floor.id);
   const opening = (incoming || outgoing)?.hole;
@@ -69,7 +71,8 @@ export function createInteriorLayout(building, floor) {
   const elevator = { x: origin.x, z: origin.z - depth / 2 + 3.7, y: floor.y,
     width: CABIN.width, depth: CABIN.depth, doorZ: origin.z - depth / 2 + 3.7 + CABIN.depth / 2 };
   const entrance = { x: origin.x, z: origin.z + depth / 2 - 2.8, yaw: Math.PI };
-  const floorMaterial = design.floorFinish;
+  const wallFinish = /residential|hotel/.test(design.category) ? 'domesticPaint' : /clinic|lab|office|bank/.test(design.category) ? 'civicPaint' : /restaurant|retail/.test(design.category) ? 'heritagePaint' : building.style === 'industrial' ? 'workshopPaint' : 'galleryPaint';
+  const floorMaterial = observation ? design.floorFinish : design.floorFinish === 'limestone' ? 'interiorStone' : design.floorFinish === 'ceramic' ? 'interiorTerrazzo' : design.floorFinish;
   const slab = (finish, y, thickness, kind, hole, collision = false) => {
     const add = collision ? solid : box;
     if (!hole) { add(finish, 0, y, 0, width, thickness, depth, kind); return; }
@@ -83,15 +86,15 @@ export function createInteriorLayout(building, floor) {
   };
   slab(floorMaterial, -0.16, 0.32, 'floor', incoming?.hole);
   // Inlaid joints and perimeter bands give floors scale without texture shimmer.
-  const jointSpacing = floorMaterial === 'limestone' ? 4.8 : 2.4;
+  const jointSpacing = ['limestone', 'interiorStone'].includes(floorMaterial) ? 4.8 : 2.4;
   for (let x = -width / 2 + 2; x < width / 2; x += jointSpacing) if (!incoming || x + origin.x < opening.minX || x + origin.x > opening.maxX) box('limestone', x, 0.006, 0, 0.016, 0.009, depth - 0.3);
   for (let z = -depth / 2 + 2; z < depth / 2; z += jointSpacing) if (!incoming || z + origin.z < opening.minZ || z + origin.z > opening.maxZ) box('limestone', 0, 0.006, z, width - 0.3, 0.009, 0.016);
   box('brass', 0, 0.017, 0, 0.09, 0.015, depth - 5);
   if (!observation) {
-    slab('plaster', height + 0.12, 0.24, 'ceiling', outgoing?.hole, true);
+    slab('interiorCeiling', height + 0.12, 0.24, 'ceiling', outgoing?.hole, true);
     // Shallow coffers and warm strips frame the ceiling and central route.
     for (const x of [-width / 2 + 0.7, -4.6, ...(outgoing ? [] : [4.6]), width / 2 - 0.7]) {
-      box('walnut', x, height - 0.12, 0, 0.18, 0.25, depth - 0.5);
+      box('interiorCeiling', x, height - 0.12, 0, 0.18, 0.25, depth - 0.5);
       box('light', x + 0.13, height - 0.18, 0, 0.045, 0.07, depth - 1);
     }
   }
@@ -99,20 +102,20 @@ export function createInteriorLayout(building, floor) {
   // consistent while allowing the original city to remain visible outside.
   for (const side of [-1, 1]) {
     const x = side * width / 2;
-    solid(observation ? 'metal' : 'plaster', x, 0.5, 0, WALL, 1, depth, 'wall');
+    solid(observation ? 'metal' : wallFinish, x, 0.5, 0, WALL, 1, depth, 'wall');
     solid('glass', x, 1.75, 0, 0.12, 1.5, depth - 0.4, 'window');
-    if (!observation) solid('plaster', x, (height + 2.5) / 2, 0, WALL, height - 2.5, depth, 'wall');
+    if (!observation) solid(wallFinish, x, (height + 2.5) / 2, 0, WALL, height - 2.5, depth, 'wall');
     for (let z = -depth / 2 + 1; z < depth / 2; z += 4.8) box('metal', x - side * 0.09, observation ? 1.2 : height / 2, z, 0.22, observation ? 1.4 : height, 0.15);
     box('walnut', x - side * 0.16, 0.15, 0, 0.1, 0.22, depth - 0.3);
   }
-  solid(observation ? 'metal' : 'plaster', 0, observation ? 0.65 : height / 2, -depth / 2,
+  solid(observation ? 'metal' : wallFinish, 0, observation ? 0.65 : height / 2, -depth / 2,
     width, observation ? 1.3 : height, WALL, 'wall');
   const frontSegment = (width - 4.4) / 2;
   for (const side of [-1, 1]) {
     const x = side * (2.2 + frontSegment / 2);
-    solid('plaster', x, 0.5, depth / 2, frontSegment, 1, WALL, 'wall');
+    solid(wallFinish, x, 0.5, depth / 2, frontSegment, 1, WALL, 'wall');
     solid('glass', x, 1.75, depth / 2, frontSegment, 1.5, 0.12, 'window');
-    if (!observation) solid('plaster', x, (height + 2.5) / 2, depth / 2, frontSegment, height - 2.5, WALL, 'wall');
+    if (!observation) solid(wallFinish, x, (height + 2.5) / 2, depth / 2, frontSegment, height - 2.5, WALL, 'wall');
     box('metal', side * 2.25, 1.7, depth / 2, 0.12, 3.4, 0.3);
   }
   if (!ground) solid('glass', 0, 1.3, depth / 2, 4.4, 2.6, 0.12, 'window');
@@ -131,13 +134,13 @@ export function createInteriorLayout(building, floor) {
   if (outgoing) {
     const cx = outgoing.x - origin.x, start = outgoing.startZ - origin.z;
     const tread = outgoing.run / outgoing.treadCount, rise = outgoing.rise / outgoing.treadCount;
-    box('limestone', cx, outgoing.rise - 0.12, start - outgoing.run - 0.55, outgoing.width, 0.24, 1.1, 'stair-landing');
+    box('interiorStone', cx, outgoing.rise - 0.12, start - outgoing.run - 0.55, outgoing.width, 0.24, 1.1, 'stair-landing');
     for (let index = 0; index < outgoing.treadCount; index++) {
       const top = (index + 1) * rise, z = start - (index + 0.5) * tread;
-      box('limestone', cx, top - 0.1, z, outgoing.width, 0.2, tread + 0.012, 'stair-tread');
+      box('interiorStone', cx, top - 0.1, z, outgoing.width, 0.2, tread + 0.012, 'stair-tread');
       box('brass', cx, top + 0.006, z + tread / 2 - 0.025, outgoing.width, 0.012, 0.045, 'stair-nosing');
       for (const side of [-1, 1]) {
-        solid('limestone', cx + side * 1.56, top / 2, z, 0.08, top, tread + 0.01, 'stair-stringer');
+        solid('interiorStone', cx + side * 1.56, top / 2, z, 0.08, top, tread + 0.01, 'stair-stringer');
         solid('glass', cx + side * 1.56, top + 0.55, z, 0.08, 1.1, tread + 0.01, 'stair-guard');
       }
       if (index % 3 === 0) for (const side of [-1, 1]) {
@@ -383,16 +386,16 @@ export function createInteriorLayout(building, floor) {
     box(clinical ? 'clinicalFloor' : ['kitchen', 'bath', 'fish', 'lab', 'pharmacy'].includes(type) ? 'ceramic' : compact ? 'timber' : observation ? 'limestone' : 'carpet', roomX, 0.024, z, roomWidth - 0.2, 0.026, roomDepth - 0.2);
     if (enclosed) {
       const innerX = side * 5.5, segment = (roomDepth - 3.2) / 2;
-      const wallMaterial = clinical ? 'clinicPaint' : 'plaster', wallHeight = ceilingHeight;
+      const wallMaterial = clinical ? 'clinicPaint' : wallFinish, wallHeight = ceilingHeight;
       for (const dz of [-1, 1]) solid(wallMaterial, innerX, wallHeight / 2, z + dz * (1.6 + segment / 2), 0.2, wallHeight, segment, 'partition');
       if (enclosedSize) {
         for (const dz of [-1, 1]) solid(wallMaterial, roomX, wallHeight / 2, z + dz * roomDepth / 2, roomWidth, wallHeight, 0.18, 'partition');
         solid(wallMaterial, side * (5.5 + roomWidth), wallHeight / 2, z, 0.18, wallHeight, roomDepth, 'partition');
-        solid(wallMaterial, roomX, ceilingHeight + 0.08, z, roomWidth, 0.16, roomDepth, 'ceiling');
+        solid(clinical ? wallMaterial : 'interiorCeiling', roomX, ceilingHeight + 0.08, z, roomWidth, 0.16, roomDepth, 'ceiling');
         // The occupied apartment stops at these walls. Unopened perimeter areas
         // are not counted as extra rooms or left visible as empty public halls.
         for (const dz of [-1, 1]) box(clinical ? 'teal' : 'timber', roomX, 0.13, z + dz * (roomDepth / 2 - 0.11), roomWidth - 0.2, 0.18, 0.055);
-      } else solid('plaster', room.x, 1.48, end * 1.4, zoneWidth + 2, 2.96, 0.2, 'partition');
+      } else solid(wallFinish, room.x, 1.48, end * 1.4, zoneWidth + 2, 2.96, 0.2, 'partition');
       box(clinical ? 'teal' : 'timber', innerX, clinical ? ceilingHeight - 0.1 : 2.99, z, 0.25, 0.2, 3.6, 'door-lintel');
       for (const dz of [-1.66, 1.66]) box(clinical ? 'teal' : 'timber', innerX, wallHeight / 2, z + dz, 0.28, wallHeight, 0.13, 'door-jamb');
     }
@@ -706,12 +709,30 @@ export function createInteriorLayout(building, floor) {
       const first = sideRooms.reduce((best, room) => room.bounds.minZ < best.bounds.minZ ? room : best);
       const last = sideRooms.reduce((best, room) => room.bounds.maxZ > best.bounds.maxZ ? room : best);
       for (const [fromZ, toZ] of [[-depth / 2, first.bounds.minZ - origin.z], [last.bounds.maxZ - origin.z, depth / 2]]) {
-        if (toZ - fromZ > 0.05) solid('plaster', side * inner, height / 2, (fromZ + toZ) / 2, 0.18, height, toZ - fromZ, 'service-partition');
+        if (toZ - fromZ > 0.05) solid(wallFinish, side * inner, height / 2, (fromZ + toZ) / 2, 0.18, height, toZ - fromZ, 'service-partition');
       }
       const rear = first.bounds.maxZ - origin.z, front = last.bounds.minZ - origin.z;
-      if (front > rear) solid('plaster', side * inner, height / 2, (rear + front) / 2, 0.18, height, front - rear, 'service-partition');
+      if (front > rear) solid(wallFinish, side * inner, height / 2, (rear + front) / 2, 0.18, height, front - rear, 'service-partition');
       // Upper windows remain visible only from the actual occupied rooms.
-      if (outer < width / 2 - 0.2) solid('plaster', side * outer, height / 2, 0, 0.18, height, depth, 'service-partition');
+      if (outer < width / 2 - 0.2) solid(wallFinish, side * outer, height / 2, 0, 0.18, height, depth, 'service-partition');
+    }
+  }
+  if (!observation) {
+    // A quiet lower wall band, gallery track lights and route inlay break the
+    // long corridor into human-scaled bays without adding any realtime lights.
+    const dado = /residential|hotel|restaurant/.test(category) ? 'timber' : 'interiorDado';
+    for (const wall of parts.filter(part => /partition/.test(part.kind) && Math.abs(Math.abs(part.x - origin.x) - 5.5) < 0.01 && part.sx < 0.4)) {
+      const side = Math.sign(wall.x - origin.x);
+      box(dado, wall.x - origin.x - side * 0.12, 0.46, wall.z - origin.z, 0.035, 0.86, wall.sz, 'corridor-dado');
+      box('brass', wall.x - origin.x - side * 0.145, 0.9, wall.z - origin.z, 0.035, 0.025, wall.sz, 'dado-cap');
+    }
+    for (const side of [-1, 1]) box('teal', side * 1.55, 0.019, 0, 0.04, 0.013, depth - 6, 'route-inlay');
+    for (const z of [-depth * 0.24, 0, depth * 0.24]) {
+      box('metal', -1.7, height - 0.065, z, 2.6, 0.06, 0.11, 'lighting-track');
+      for (const dx of [-0.9, 0, 0.9]) {
+        cylinder('white', -1.7 + dx, height - 0.19, z, 0.19, 0.21, 0.19, 'gallery-downlight');
+        cylinder('light', -1.7 + dx, height - 0.302, z, 0.15, 0.025, 0.15, 'downlight-lens');
+      }
     }
   }
   if (!observation) {
@@ -807,7 +828,57 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     elevator: { phase: 'idle', y: 0, targetFloorId: null, elapsed: 0, duration: 0, doorOpen: 1 } };
   let layout = null, residentLayouts = [], floorColliders = [], cabinColliders = [], colliders = [], playerRef = null, journey = null;
   let leftDoor = null, rightDoor = null, doorCollider = null;
+  const indoorFinishes = {
+    interiorCeiling: { color: '#f4f0e6', emissive: '#f4ead7', bounce: 0.2, roughness: 0.92 },
+    galleryPaint: { color: '#e7e2d5', emissive: '#e7d9c0', bounce: 0.14, roughness: 0.9 },
+    domesticPaint: { color: '#e5d6bc', emissive: '#e6ccab', bounce: 0.13, roughness: 0.91 },
+    civicPaint: { color: '#dee5df', emissive: '#d8e5df', bounce: 0.13, roughness: 0.89 },
+    heritagePaint: { color: '#e4d3bc', emissive: '#e5c9a4', bounce: 0.13, roughness: 0.9 },
+    workshopPaint: { color: '#d5d2c4', emissive: '#d8cfba', bounce: 0.12, roughness: 0.94 },
+    interiorStone: { color: '#d6d1be', emissive: '#d9d0b7', bounce: 0.08, roughness: 0.79, aggregate: true },
+    interiorTerrazzo: { color: '#cbd6c8', emissive: '#ced9c9', bounce: 0.08, roughness: 0.78, aggregate: true },
+    interiorDado: { color: '#c5c6b5', emissive: '#d1cbb5', bounce: 0.1, roughness: 0.84, aggregate: true },
+    clinicPaint: { color: '#e5e9df', emissive: '#e2eadf', bounce: 0.14, roughness: 0.89 },
+    clinicalFloor: { color: '#bdcdc3', emissive: '#cad9cf', bounce: 0.08, roughness: 0.83, aggregate: true },
+  };
+  const finishTextures = new Map();
+  const finishTexture = aggregate => {
+    const key = aggregate ? 'aggregate' : 'paint';
+    if (finishTextures.has(key)) return finishTextures.get(key);
+    const size = 128, pixels = new Uint8Array(size * size * 4);
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const index = (y * size + x) * 4, hash = ((x * 73856093) ^ (y * 19349663)) >>> 0;
+      const grain = aggregate ? (hash % 37 === 0 ? -25 : hash % 13 - 6) : hash % 7 - 3;
+      const tone = (aggregate ? 234 : 248) + grain;
+      pixels.set([tone, tone, tone, 255], index);
+    }
+    const texture = new THREE.DataTexture(pixels, size, size, THREE.RGBAFormat);
+    texture.name = `interior-${key}-subtle-surface`; texture.colorSpace = THREE.SRGBColorSpace;
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.generateMipmaps = true;
+    texture.minFilter = THREE.LinearMipmapLinearFilter; texture.magFilter = THREE.LinearFilter; texture.needsUpdate = true;
+    finishTextures.set(key, texture); ownedTextures.add(texture); return texture;
+  };
   const material = key => {
+    if (indoorFinishes[key]) {
+      if (!localMaterials.has(key)) {
+        const finish = indoorFinishes[key], instance = new THREE.MeshStandardMaterial({ color: finish.color,
+          map: finishTexture(finish.aggregate), emissive: finish.emissive, emissiveIntensity: finish.bounce,
+          roughness: finish.roughness, metalness: 0, envMapIntensity: 0.9 });
+        // Reuse the existing world-metre shader, with much gentler clean indoor
+        // relief. The small emissive term approximates bounced architectural
+        // light; it adds no shadow pass or extra scene light.
+        const sharedProjection = materials.plaster.onBeforeCompile;
+        instance.onBeforeCompile = shader => { sharedProjection(shader); shader.uniforms.metropolisTextureScale.value = finish.aggregate ? 0.5 : 1;
+          shader.uniforms.metropolisRelief.value = finish.aggregate ? 0.001 : 0.00045;
+          shader.uniforms.metropolisRoughnessVariation.value = finish.aggregate ? 0.035 : 0.018;
+          shader.uniforms.metropolisSurfaceStyle.value = 0; };
+        instance.customProgramCacheKey = materials.plaster.customProgramCacheKey;
+        instance.userData.metropolisWorldMetres = finish.aggregate ? 2 : 1;
+        instance.userData.interiorBounce = finish.bounce; instance.name = `Occupied interior · ${key}`;
+        localMaterials.set(key, instance);
+      }
+      return localMaterials.get(key);
+    }
     // Exterior glazing is opaque for stable instancing. Occupied windows need a
     // transparent clone so observation floors retain their actual city views.
     if (key === 'glass' && materials.glass?.isMaterial && !localMaterials.has(key)) {
@@ -897,13 +968,17 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       occupied.labels.forEach(data => sign(data, group));
     }
     updateFloorVisibility({ ...layout.entrance, groundY: floor.y });
-    interiorLights.forEach((light, index) => {
-      light.position.set(state.activeBuilding.x + (index ? 1 : -1) * layout.width * 0.23,
-        floor.y + layout.height - 0.7, state.activeBuilding.z);
-      light.distance = Math.max(layout.width, layout.depth) * 1.25;
-      light.intensity = layout.observation ? 0 : 28;
-    });
+    positionInteriorLights();
     floorColliders = residentLayouts.flatMap(item => item.colliders); state.version++; combineColliders(); floorRoot.visible = true;
+  }
+  function positionInteriorLights() {
+    interiorLights.forEach((light, index) => {
+      light.position.set(state.activeBuilding.x + (index ? 1.4 : -1.4),
+        state.floor.y + Math.min(layout.height - 0.45, 3.3), state.activeBuilding.z + layout.depth * (index ? -0.22 : 0.38));
+      light.color.set(/clinic|lab|office|bank/.test(layout.category) ? '#e7f0e9' : '#ffe8c8');
+      light.distance = Math.max(layout.width, layout.depth) * 0.8;
+      light.intensity = layout.observation ? 0 : 48;
+    });
   }
   function updateFloorVisibility(player) {
     if (!layout) return;
@@ -1043,7 +1118,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
         layout = destination; state.floor = state.activeBuilding.floors.find(item => item.id === destination.floorId);
         state.elevator.y = state.floor.y; state.elevator.targetFloorId = state.floor.id;
         cabin(); state.version++; updateFloorVisibility(player);
-        interiorLights.forEach((light, index) => { light.position.set(state.activeBuilding.x + (index ? 1 : -1) * layout.width * 0.23, state.floor.y + layout.height - 0.7, state.activeBuilding.z); light.intensity = 28; });
+        positionInteriorLights();
         return { floorChanged: true, message: `${state.floor.label} · 沿楼梯步行抵达` };
       }
     }

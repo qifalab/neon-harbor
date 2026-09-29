@@ -199,27 +199,44 @@ function facadeMaterial(THREE, palette, nightUniform) {
       float harborRecess = harborModuleInset.x * harborModuleInset.y;
       vec3 harborCoarse = mix(diffuseColor.rgb * ${palette < 3 ? '.94' : '1.02'}, diffuseColor.rgb * ${palette < 3 ? '.45' : '.51'}, harborRecess);
       diffuseColor.rgb = mix(harborCoarse, mix(harborWall, harborGlass, harborWindow), harborDistant);
-      float harborOffice = step(.70, harborVariation) * harborWindow;
-      // At harbor distance the light of two adjacent bays/two storeys is
-      // filtered together. Empty groups remain genuinely dark; no uniformly
-      // emissive facade or extra fade of the already-subpixel windows.
-      vec2 harborNightGrid = vHarborMeters / vec2(${palette < 3 ? '3.6, 7.8' : '5.6, 6.7'});
-      vec2 harborNightAA = max(fwidth(harborNightGrid), vec2(.001));
-      float harborLitArea = harborFilteredAperture(harborNightGrid.x + .06, .69, harborNightAA.x)
-        * harborFilteredAperture(harborNightGrid.y + .08, .60, harborNightAA.y);
-      float harborNightVariation = harborHash(floor(harborNightGrid) + vec2(vHarborSeed * 1.7, vHarborSeed));
-      float harborClusterLit = step(.57, harborNightVariation) * harborLitArea;
-      float harborFineLight = 1.0 - smoothstep(.18, .65, max(harborAA.x, harborAA.y));
-      float harborWindowLight = mix(harborClusterLit, harborOffice, harborFineLight);
-      vec3 harborInteriorLight = mix(vec3(1.0, .68, .34), vec3(.65, .82, 1.0),
-        step(${palette < 3 ? '.52' : '.84'}, harborNightVariation));
+      // Occupancy is organised at building scale, never randomly switched per
+      // tiny pane. This prevents an entire skyline becoming white pixel noise.
+      // The area-filtered small panes remain inside these coherent lit areas.
+      float harborPaneArea = harborFilteredAperture(harborGrid.x + .07, .72, harborAA.x)
+        * harborFilteredAperture(harborGrid.y + .08, .60, harborAA.y);
+      float harborBuildingPhase = fract(vHarborSeed * .071);
+      ${palette < 3 ? `
+      // About three occupied storeys out of each twelve form one continuous
+      // office zone, with large unlit wings and long runs of dark floors.
+      vec2 harborOfficeZones = vHarborMeters / vec2(21.6, 46.8)
+        + vec2(harborBuildingPhase * .41, harborBuildingPhase);
+      vec2 harborOfficeAA = max(fwidth(harborOfficeZones), vec2(.001));
+      float harborLitFloors = harborFilteredAperture(harborOfficeZones.y, .265, harborOfficeAA.y);
+      float harborOccupiedWings = harborFilteredAperture(harborOfficeZones.x, .74, harborOfficeAA.x);
+      float harborOccupancy = harborLitFloors * harborOccupiedWings;
+      vec3 harborInteriorLight = mix(vec3(.90, .70, .45), vec3(.70, .78, .81), harborBuildingPhase * .42);
+      ` : `
+      // Only selected six-bay/six-storey residential zones are occupied. Their
+      // neighbouring warm windows read as homes, rather than isolated stars.
+      vec2 harborResidenceZones = vHarborMeters / vec2(16.8, 20.1);
+      float harborOccupiedHomes = step(.76, harborHash(floor(harborResidenceZones)
+        + vec2(vHarborSeed * 1.7, vHarborSeed)));
+      vec2 harborHomeWindows = vHarborMeters / vec2(8.4, 6.7)
+        + vec2(harborBuildingPhase, harborBuildingPhase * .3);
+      vec2 harborHomeAA = max(fwidth(harborHomeWindows), vec2(.001));
+      float harborHomeArea = harborFilteredAperture(harborHomeWindows.x, .66, harborHomeAA.x)
+        * harborFilteredAperture(harborHomeWindows.y, .62, harborHomeAA.y);
+      float harborOccupancy = harborOccupiedHomes * harborHomeArea;
+      vec3 harborInteriorLight = vec3(.93, .59, .28);
+      `}
+      float harborWindowLight = harborOccupancy * harborPaneArea;
       float harborBand = .5 + .5 * sin(vHarborMeters.y * .028 + vHarborMeters.x * .012);
       diffuseColor.rgb += vec3(.03, .045, .055) * harborWindow * harborBand;
     `).replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-      totalEmissiveRadiance += harborInteriorLight * harborWindowLight * harborNight * 2.3;
+      totalEmissiveRadiance += harborInteriorLight * harborWindowLight * harborNight * ${palette < 3 ? '.78' : '.68'};
     `);
   };
-  material.customProgramCacheKey = () => `harbor-meter-facade-v3-${palette < 3 ? 'office' : 'domestic'}`;
+  material.customProgramCacheKey = () => `harbor-meter-facade-v4-${palette < 3 ? 'office' : 'domestic'}`;
   return material;
 }
 

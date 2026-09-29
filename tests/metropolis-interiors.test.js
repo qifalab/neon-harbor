@@ -256,3 +256,32 @@ test('hidden enclosed floors keep their collision and furnishings resident while
   assert.equal(system.collisionContext().colliders, resident);
   system.exit({ force: true }); assert.deepEqual(system.snapshot().visibleFloors, []); system.dispose();
 });
+
+test('painted corridor ceilings sit below the stone slab above instead of exposing its underside', () => {
+  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.slice(0, 2)) {
+    const layout = createInteriorLayout(building, floor), upper = building.floors.find(item => item.y > floor.y);
+    const ceiling = layout.parts.filter(part => part.kind === 'ceiling' && !part.roomId);
+    assert.ok(ceiling.length >= 1);
+    for (const part of ceiling) {
+      assert.equal(part.material, 'interiorCeiling');
+      assert.ok(part.y - part.sy / 2 < upper.y - 0.32 - 0.05, 'warm painted soffit must be the lowest visible surface, clear of the upper stone slab');
+      assert.ok(part.y - part.sy / 2 - floor.y >= 3.2, 'retain comfortable public-corridor headroom');
+    }
+  }
+});
+
+test('occupied finishes retain matte microtexture and modest indirect light with the same two-point-light budget', () => {
+  const scene = new THREE.Scene(), system = createInteriorSystem(THREE, scene); const entry = system.enter('tide-museum');
+  const finishMaterials = new Map(); system.root.traverse(node => { if (node.isMesh && node.material?.userData.interiorBounce) finishMaterials.set(node.material.name, node.material); });
+  for (const key of ['interiorCeiling', 'galleryPaint', 'interiorStone']) {
+    const material = finishMaterials.get(`Occupied interior · ${key}`);
+    assert.ok(material?.map?.isDataTexture && material.userData.metropolisWorldMetres, 'clean indoor surfaces retain original subtle texture at world scale');
+    assert.ok(material.roughness >= 0.75 && material.metalness === 0);
+    assert.ok(material.emissiveIntensity > 0 && material.emissiveIntensity <= 0.2, 'indirect fill cannot replace orientation and shading with full brightness');
+  }
+  const lights = scene.children.filter(node => node.isPointLight);
+  assert.equal(lights.length, 2);
+  assert.ok(lights.every(light => !light.castShadow));
+  assert.ok(Math.hypot(lights[0].position.x - entry.position.x, lights[0].position.z - entry.position.z) < 8, 'the arrival display receives a local light rather than one hidden twenty metres away in a side room');
+  system.dispose();
+});
