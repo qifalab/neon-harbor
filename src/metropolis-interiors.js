@@ -347,7 +347,7 @@ export function createInteriorLayout(building, floor) {
         book(px(6.25), z + 2.9, 0.95, 'paper'); washbasin(px(2), z - 4.2, 'clinicPaint');
         cabinet(px(7.6), z - 4.45, 2.8, 1.6, 'clinicPaint');
         cylinder('steel', px(9), 1.08, z - 2.8, 0.045, 2.16); sphere('clinicPaint', px(9), 1.8, z - 2.8, 0.23, 0.38, 0.12);
-        access('医生与患者座席', 5.2, 1.6); access('检查床足侧', 7.6, 0.25); access('洗手盆前', 2, -3.2);
+        access('医生与患者座席', 5.2, 1.6); access('检查床足侧', 7.6, 0.35); access('洗手盆前', 2, -2.95);
       } else if (type === 'waiting') {
         for (const u of [6, 7.1, 8.2, 11, 12.1, 13.2]) for (const dz of [-3.7, -1, 2]) chair(px(u), z + dz, 1, 'teal');
         box('navy', px(9.5), 2.15, z - 6.81, 6.1, 0.95, 0.1);
@@ -356,7 +356,7 @@ export function createInteriorLayout(building, floor) {
         solid('clinicPaint', px(2), 0.7, z - 5.8, 0.7, 1.4, 0.65, 'water-dispenser'); cylinder('glass', px(2), 1.66, z - 5.8, 0.36, 0.5);
         box('teal', px(2), 0.05, z + 4.5, 2.4, 0.015, 2.1, 'wheelchair-space');
         label('轮椅候诊位', px(2), 1.1, z + 5.7, 2.1, 0.28);
-        access('候诊座席', 7.1, 0.1); access('饮水处', 2, -4.8); access('轮椅候诊位', 2, 4.5);
+        access('候诊座席', 7.1, 0.25); access('饮水处', 2, -4.8); access('轮椅候诊位', 2, 4.5);
       } else if (type === 'reception') {
         round('clinicPaint', px(7), 0.6, z - 2, 6, 1.2, 1.2, 'reception');
         for (const u of [5.2, 8.8]) { screen(px(u), z - 2.05, 1.53); chair(px(u), z - 3.4, 1, 'navy'); }
@@ -364,22 +364,22 @@ export function createInteriorLayout(building, floor) {
         table(px(11.7), z + 2.6, 2.4, 1.1, 'clinicPaint'); chair(px(11.7), z + 3.65, -1, 'teal');
         bench(px(7.2), z + 4.9, 4.2);
         label('挂号 · 分诊 · 无障碍咨询', px(7), 2.6, z - 5.72, 5.5, 0.4);
-        access('挂号柜台', 7, -0.7); access('咨询书写台', 10, 2.6);
+        access('挂号柜台', 7, -0.5); access('咨询书写台', 9.7, 2.6);
       } else if (type === 'pharmacy') {
         shelf(px(7), z - 4.3, 7, 'medicine', 'clinicPaint'); cabinet(px(8.6), z - 1.8, 4, 1.9, 'clinicPaint');
         round('clinicPaint', px(7), 0.57, z + 2, 7, 1.14, 1.1, 'dispensing-counter'); screen(px(9.4), z + 2, 1.43);
         for (const u of [5.4, 6.1, 6.8]) box('paper', px(u), 1.22, z + 2, 0.37, 0.15, 0.29, 'medicine-pack');
         washbasin(px(1.8), z - 4.2, 'clinicPaint'); label('药房 · 处方配药窗口', px(7), 2.62, z - 4.76, 5, 0.37);
-        access('配药柜台', 7, 0.9); access('药房洗手处', 1.8, -3.2);
+        access('配药柜台', 7, 0.65); access('药房洗手处', 1.8, -2.95);
       } else if (type === 'ward') {
         for (const u of [7, 11]) {
           clinicBed(px(u), z - 1.4); cabinet(px(u + 1.25), z - 2.1, 0.9, 0.9, 'clinicPaint');
           cylinder('steel', px(u - 1), 1.15, z - 2.4, 0.045, 2.3); sphere('clinicPaint', px(u - 1), 1.95, z - 2.4, 0.24, 0.42, 0.12);
-          chair(px(u), z + 3.4, -1, 'teal'); access('观察病床足侧', u, 0.6);
+          chair(px(u), z + 3.4, -1, 'teal'); access('观察病床足侧', u, 0.85);
         }
         solid('fabric', px(9), 1.1, z - 1.9, 0.1, 2.2, 3.8, 'privacy-screen');
         washbasin(px(2), z - 5.1, 'clinicPaint'); cabinet(px(7.5), z - 5.25, 4.8, 1.7, 'clinicPaint');
-        access('病房洗手处', 2, -4.1);
+        access('病房洗手处', 2, -3.85);
       } else if (type === 'rehab') {
         rail(px(8), z - 1.3, 5.5); rail(px(8), z + 1.3, 5.5);
         box('teal', px(8), 0.045, z, 5.9, 0.025, 2.15, 'walking-mat');
@@ -392,7 +392,7 @@ export function createInteriorLayout(building, floor) {
         for (const u of [6, 9]) { table(px(u), z - 2.2, 2, 0.9, 'clinicPaint'); screen(px(u + 0.3), z - 2.35); chair(px(u), z - 1.3, -1, 'navy'); }
         cabinet(px(7.5), z - 4.3, 6, 2.2, 'clinicPaint'); table(px(7), z + 2.4, 3.4, 1.2, 'clinicPaint');
         for (const u of [6, 8]) { chair(px(u), z + 3.7, -1, 'teal'); chair(px(u), z + 1.2, 1, 'teal'); }
-        book(px(7), z + 2.4, 0.96, 'paper'); access('医护工作桌', 6, 0); access('交班会议桌', 7, 0.3);
+        book(px(7), z + 2.4, 0.96, 'paper'); access('医护工作桌', 6, 0); access('交班会议座席前', 7, 0);
       }
       for (const dz of [-2.4, 2.4]) {
         box('clinicPaint', x, ceilingHeight - 0.12, z + dz, Math.min(roomWidth - 3, 6), 0.1, 0.54);
