@@ -24,7 +24,9 @@ export function transformVehiclePoint(point, pose) {
 
 export function vehicleGroundSupport(pose, groundHeightAt = () => 0) {
   const s = Math.sin(pose.yaw || 0), c = Math.cos(pose.yaw || 0);
-  const sample = (x, z) => groundHeightAt(pose.x + c * x + s * z, pose.z - s * x + c * z);
+  // A city can have a road above another road. Preserve the support layer while
+  // sampling every wheel; a ground-level car must not snap onto a flyover.
+  const sample = (x, z) => groundHeightAt(pose.x + c * x + s * z, pose.z - s * x + c * z, pose.y || 0);
   const heights = WHEELS.map(([x, z]) => sample(x, z));
   const base = heights.reduce((sum, y) => sum + y, 0) / 4;
   const footprintHeights = [sample(0, 0)];
@@ -43,7 +45,7 @@ export function vehicleGroundSupport(pose, groundHeightAt = () => 0) {
   // Lift only by the maximum actual tire/underside penetration residual.
   const supportPoint = point => {
     const world = transformVehiclePoint(point, attitude);
-    y = Math.max(y, groundHeightAt(world.x, world.z) - world.y);
+    y = Math.max(y, groundHeightAt(world.x, world.z, pose.y || 0) - world.y);
   };
   const cp = Math.cos(pitch), sp = Math.sin(pitch), cr = Math.cos(roll);
   const radialY = cp * cr, radialZ = -sp, radialLength = Math.hypot(radialY, radialZ);

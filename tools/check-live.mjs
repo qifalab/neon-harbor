@@ -166,6 +166,7 @@ try {
   await page.locator('#explore-city').click();
   await expect(page.locator('#atlas-results')).toBeVisible();
   await expect(page.locator('[data-building-id]')).toHaveCount(48);
+  await expect(page.locator('[data-visit-landmark]')).toHaveCount(3);
   expect((await page.evaluate(() => window.__NEON__.snapshot())).city.buildings).toHaveLength(48);
   report.checks.push('Opened the city guide with all 48 north-shore addresses');
   await page.locator('[data-visit-building="tide-museum"]').click();
@@ -177,7 +178,9 @@ try {
   expect(museum.buildingId).toBe('tide-museum');
   expect(museum.floorId).toBe('lobby');
   expect(museum.furnitureCount).toBeGreaterThan(12);
-  report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, furnitureCount: museum.furnitureCount };
+  expect(museum.roomCount).toBe(4);
+  expect(museum.rooms.some(room => room.type === 'maritime')).toBe(true);
+  report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, floorName: museum.floorName, rooms: museum.rooms.map(room => room.name), furnitureCount: museum.furnitureCount };
   await capture('live-north-museum.png');
   report.checks.push('Visited the north-shore museum through the guide and entered its furnished lobby using E');
 
@@ -187,6 +190,9 @@ try {
   await page.locator('#resume').click();
   await page.setViewportSize(highViewport);
   await page.waitForFunction(() => window.__NEON__.snapshot().settings.quality === 'high');
+  await page.keyboard.press('v');
+  await page.waitForFunction(() => window.__NEON__.snapshot().settings.firstPerson && window.__NEON__.snapshot().camera?.boomLength === 0);
+  report.checks.push('Verified authored maritime rooms, three infrastructure entrances and eye-level walking view');
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await capture('live-high-quality-game.png');
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);

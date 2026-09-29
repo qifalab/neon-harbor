@@ -5,12 +5,13 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -27,6 +28,7 @@ jobs:
           - { id: metropolis-1, suite: metropolis, shard: '1/3' }
           - { id: metropolis-2, suite: metropolis, shard: '2/3' }
           - { id: metropolis-3, suite: metropolis, shard: '3/3' }
+          - { id: living-city, suite: living-city, shard: '1/1' }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -20,6 +20,7 @@ for (const entry of entries) {
   await cp(resolve(projectRoot, entry), resolve(output, entry), {
     recursive: true,
     dereference: false,
+    filter: path => !path.endsWith('-source.webp'),
   });
 }
 // The public smoke check verifies these exact bytes, including newly split

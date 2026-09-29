@@ -4,6 +4,7 @@ import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS, METROPOLI
 import { createInteriorSystem } from './metropolis-interiors.js';
 import { createTransitSystem } from './metropolis-transit.js';
 import { createPeopleSystem } from './metropolis-people.js';
+import { createMetropolisInfrastructure } from './metropolis-infrastructure.js';
 
 /** Owns scene transitions so rendering, collision, saving and input agree.
  * The original driving district remains usable without the expansion module.
@@ -14,11 +15,12 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   const north = createMetropolisWorld(THREE, scene, { quality, streaming });
   const interiors = createInteriorSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS });
   const transit = createTransitSystem(THREE, scene);
-  const colliders = [...south.colliders, ...north.colliders, ...transit.colliders];
-  const groundHeightAt = (x, z) => north.groundHeightAt(x, z) ?? south.groundHeightAt(x, z);
-  const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders });
+  const infrastructure = createMetropolisInfrastructure(THREE, scene, { quality });
+  const colliders = [...south.colliders, ...north.colliders, ...transit.colliders, ...infrastructure.colliders];
+  const groundHeightAt = (x, z, currentY = 0) => infrastructure.groundHeightAt(x, z, currentY) ?? north.groundHeightAt(x, z) ?? south.groundHeightAt(x, z);
+  const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, streetStops: infrastructure.metadata.streetLifeStops || [] });
   const root = new THREE.Group(); root.name = 'Neon Harbor · two shores'; scene.add(root);
-  root.add(south.root, north.root);
+  root.add(south.root, north.root, infrastructure.root);
   let simulation = null, context = null, contextVersion = null, outdoorCars = null, elevatorAnchor = null;
 
   const person = () => ({ ...simulation.player, y: simulation.player.groundY + simulation.player.y });
@@ -76,7 +78,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     if (transport) return typeof transport === 'string' ? { kind: 'transit', label: transport } : transport;
     const entrance = interiors.getPrompt(person());
     if (entrance) return entrance;
-    const npc = people.getPrompt?.(person());
+    const npc = people.getPrompt?.(simulation.player);
     return typeof npc === 'string' ? { kind: 'person', label: npc } : npc;
   }
   function interact() {
@@ -85,7 +87,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     if (inside()) result = interiors.interact(person());
     else if (transit.getPrompt(person())) result = transit.interact(person());
     else if (interiors.getPrompt(person())) result = interiors.interact(person());
-    else result = people.interact?.(person());
+    else result = people.interact?.(simulation.player);
     if (!result) return { handled: false };
     if (typeof result === 'string') result = { handled: true, message: result };
     if(result.type==='conversation')result.handled=true;
@@ -116,7 +118,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     const position = destination.entrance || destination.entry || destination.position || destination;
     applyTransition({ position, groundY: groundHeightAt(position.x, position.z) });
     await prepare(position);
-    simulation._message(`已抵达${destination.name || '目的地'}。按 E 使用入口。`);
+    simulation._message(`已抵达${destination.name || '目的地'}。${destination.walkable ? '沿指示步行或驾车探索。' : '按 E 使用入口。'}`);
     return true;
   }
   async function prepare(position, retry = false) {
@@ -151,12 +153,17 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       const entry = stop?.entry || stop?.entrance || stop?.surface;
       save.player = entry ? { x: entry.x, z: entry.z, yaw: entry.yaw || Math.PI } : { x: 16, z: 250, yaw: Math.PI };
     }
+    if (!building && !state.riding && !transit.collisionContext()) {
+      const pose = simulation.activeVehicle || { ...simulation.player, y: simulation.player.groundY };
+      const deck = infrastructure.supportAt(pose.x, pose.z, pose.y);
+      if (deck?.height > .5 && deck.entrance) save.player = { ...deck.entrance };
+    }
     return save;
   }
   return {
-    root, south, north, interiors, transit, people, colliders, groundHeightAt, bounds: METROPOLIS_BOUNDS,
+    root, south, north, interiors, transit, infrastructure, people, colliders, groundHeightAt, bounds: METROPOLIS_BOUNDS,
     buildings: METROPOLIS_BUILDINGS, districts: METROPOLIS_DISTRICTS, roads: METROPOLIS_ROADS,
-    walkerRoutes: south.walkerRoutes, landmarks: [...south.landmarks, ...north.landmarks], spawn: south.spawn,
+    walkerRoutes: south.walkerRoutes, landmarks: [...south.landmarks, ...north.landmarks, ...infrastructure.landmarks], spawn: south.spawn,
     bind(sim) {
       if(simulation)leaveSpecialLocation(); simulation = sim; addNorthernTraffic();
       simulation.pedestriansAt = p => !inside() && !transit.collisionContext() ? people.getCollisionBodies?.(p, 12) || [] : [];
@@ -180,16 +187,19 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     },
     districtAt(x, z) {
       if (inside()) return `${METROPOLIS_BUILDINGS.find(b => b.id === interiors.state.buildingId)?.name || ''} · 室内`;
+      const deck = infrastructure.supportAt(x, z, simulation?.activeVehicle?.y ?? simulation?.player.groundY ?? 0);
+      if (deck?.height > .5) return infrastructure.landmarks.find(l => l.id === deck.id)?.name || '高架道路';
       if (z < -390) return METROPOLIS_DISTRICTS.reduce((a, b) => Math.abs(b.z - z) < Math.abs(a.z - z) ? b : a).name;
       if (z < -290) return '维澜海峡';
       return south.districtAt(x, z);
     },
     update(dt, time, view) {
       south.update(dt, time, view); north.update(view?.position || south.spawn, view?.velocity || {x:0,z:0}, dt);
+      infrastructure.update(view?.position || south.spawn, dt);
       people.update(dt, { position: view?.position || south.spawn, hour: time * 24, vehicles: outdoorCars || simulation?.cars || [], paused: dt === 0 });
       if (people.root) people.root.visible = !inside() && !transit.collisionContext();
     },
-    setQuality(value) { south.setQuality(value); north.setQuality(value); },
-    snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), people: people.snapshot(), buildings: METROPOLIS_BUILDINGS, streaming: north.streamingStats }; },
+    setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); },
+    snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), infrastructure: infrastructure.metadata, people: people.snapshot(), buildings: METROPOLIS_BUILDINGS, streaming: north.streamingStats }; },
   };
 }
