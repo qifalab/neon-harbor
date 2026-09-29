@@ -186,14 +186,26 @@ test('a fast steering approach stops the full car body outside the generated bui
   let approach;
   // Keep the throttle held through the turn so control/renderer latency does not
   // insert a coast before this route reaches the clear section of the façade.
+  const accelerationStarted = (await snapshot(page)).simulationTime;
   await page.keyboard.down('w');
   try {
-    await page.waitForFunction(() => window.__NEON__.snapshot().position.z < 142,
-      null, { polling: 'raf', timeout: 20000 });
-    expect((await snapshot(page)).speed).toBeGreaterThan(25);
+    await page.waitForFunction(started => {
+      const state = window.__NEON__.snapshot();
+      if (state.simulationTime - started > 12) throw new Error('Movement exceeded its simulated-time budget');
+      return state.position.z < 142;
+    }, accelerationStarted, { polling: 'raf', timeout: 45000 });
+    const accelerated = await snapshot(page);
+    expect(accelerated.simulationTime - accelerationStarted).toBeLessThan(12);
+    expect(accelerated.speed).toBeGreaterThan(25);
     await page.keyboard.down('d');
     try { approach = await record(page, { untilVehicleDamaged: 'starter' }); }
     finally { await page.keyboard.up('d'); }
+  } catch (error) {
+    const state = await snapshot(page);
+    error.message += `\nFast approach diagnostics: ${JSON.stringify({ position: state.position, speed: state.speed,
+      inCar: state.inCar, paused: state.paused, fps: state.fps, accelerationStarted,
+      simulationTime: state.simulationTime, renderer: state.renderer, streaming: state.streaming })}`;
+    throw error;
   } finally { await page.keyboard.up('w'); }
   const car = approach.at(-1).cars.find(car => car.id === 'starter');
   expect(car.health).toBeLessThan(100);
