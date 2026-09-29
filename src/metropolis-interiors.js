@@ -1006,7 +1006,11 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
         minY: state.elevator.y + y - sy / 2, maxY: state.elevator.y + y + sy / 2, physics: true, camera: true });
       return object;
     };
-    add('walnut', 0, -0.1, 0, CABIN.width, 0.2, CABIN.depth, 'floor', false);
+    add('walnut', 0, -0.1, 0, CABIN.width, 0.2, CABIN.depth, 'floor');
+    // Ground support already moves the rider with the cabin. The same opaque
+    // floor must constrain only the camera, whose world-space damping can lag
+    // behind a rising lift and otherwise pass its near plane through the floor.
+    cabinColliders.at(-1).physics = false;
     add('metal', 0, CABIN.height, 0, CABIN.width, 0.18, CABIN.depth, 'ceiling');
     for (const side of [-1, 1]) {
       add('metal', side * CABIN.width / 2, CABIN.height / 2, 0, 0.18, CABIN.height, CABIN.depth, 'wall');
@@ -1017,6 +1021,11 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     add('glass', 0, 1.9, -CABIN.depth / 2 + 0.12, CABIN.width - 0.55, 1.8, 0.05, 'mirror', false);
     leftDoor = add('metal', -CABIN.width / 4, 1.55, CABIN.depth / 2, CABIN.width / 2, 3.1, 0.13, 'door', false);
     rightDoor = add('metal', CABIN.width / 4, 1.55, CABIN.depth / 2, CABIN.width / 2, 3.1, 0.13, 'door', false);
+    // The door leaves stop at 3.10 m; close the former 6 cm sight-line between
+    // them and the ceiling underside with a real opaque cabin door header.
+    const lintel = add('metal', 0, (3.1 + CABIN.height) / 2, CABIN.depth / 2,
+      CABIN.width, CABIN.height - 3.1, 0.18, 'door-lintel');
+    lintel.name = 'Elevator · opaque door lintel';
     doorCollider = { id: 'elevator-safety-door', kind: 'interior-elevator-door', x, z: z + CABIN.depth / 2,
       hx: CABIN.width / 2, hz: 0.09, relativeMinY: 0, relativeMaxY: 3.1, minY: state.elevator.y,
       maxY: state.elevator.y + 3.1, physics: false, camera: false };
@@ -1035,10 +1044,30 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     for (const obstacle of cabinColliders) { obstacle.minY = state.elevator.y + obstacle.relativeMinY; obstacle.maxY = state.elevator.y + obstacle.relativeMaxY; }
     if (leftDoor) leftDoor.position.x = -CABIN.width / 4 - state.elevator.doorOpen * CABIN.width / 2;
     if (rightDoor) rightDoor.position.x = CABIN.width / 4 + state.elevator.doorOpen * CABIN.width / 2;
-    if (doorCollider) doorCollider.physics = state.elevator.phase !== 'idle';
+    if (doorCollider) {
+      // The safety door constrains the follow camera as well as the rider.
+      // selectFloor calls this before the transition rebuilds the camera index;
+      // when idle, clipCameraSegment ignores this same indexed collider again.
+      // Otherwise the canopy fallback sends the camera through the closed door.
+      doorCollider.physics = doorCollider.camera = state.elevator.phase !== 'idle';
+    }
   }
   function inCabin(player, margin = 0.48) {
     return layout && player && Math.abs(player.x - layout.elevator.x) < CABIN.width / 2 - margin && Math.abs(player.z - layout.elevator.z) < CABIN.depth / 2 - margin;
+  }
+  function cameraInClosedCabin(camera) {
+    if (!layout || state.elevator.phase !== 'moving' || state.elevator.doorOpen !== 0) return false;
+    const p = camera?.position;
+    if (!p || ![p.x, p.y, p.z].every(Number.isFinite)) return false;
+    // The full near plane must remain behind all six opaque cabin faces. This
+    // also rejects a follow camera still outside while its target rides inside.
+    const near = camera.near ?? .15, fov = camera.fov ?? 65, aspect = camera.aspect ?? 2;
+    const halfHeight = near * Math.tan(fov * Math.PI / 360);
+    const margin = Math.max(.2, Math.hypot(near, halfHeight, halfHeight * aspect) + .02);
+    return Math.abs(p.x - layout.elevator.x) < CABIN.width / 2 - .09 - margin &&
+      p.z > layout.elevator.z - CABIN.depth / 2 + .09 + margin &&
+      p.z < layout.elevator.z + CABIN.depth / 2 - .09 - margin &&
+      p.y > state.elevator.y + margin && p.y < state.elevator.y + CABIN.height - .09 - margin;
   }
   const groundHeightAt = (x, z, currentY = state.floor?.y || 0) => {
     if (!layout) return 0;
@@ -1161,5 +1190,10 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     activeFloors: residentLayouts.length, visibleFloors: [...floorGroups].filter(([, group]) => group.visible).map(([id]) => id), version: state.version }; }
   function dispose() { clearFloor(); cabinRoot.clear(); root.removeFromParent(); for (const light of interiorLights) light.removeFromParent(); for (const shape of Object.values(geometries)) shape.dispose();
     signGeometry.dispose(); for (const item of localMaterials.values()) item.dispose(); for (const texture of ownedTextures) texture.dispose(); ownedTextures.clear(); }
-  return { root, state, getPrompt, enter, exit, interact, selectFloor, update, snapshot, collisionContext, dispose };
+  return { root, state, getPrompt, enter, exit, interact, selectFloor, update, snapshot, collisionContext, cameraInClosedCabin,
+    // The previous public floors are not rendered during the enclosed ride.
+    // Their ceilings must not push the camera as the cabin passes their height;
+    // keep every real cabin face and leave the physics context untouched.
+    get cameraColliders() { return state.elevator.phase === 'moving' ? cabinColliders : null; },
+    dispose };
 }

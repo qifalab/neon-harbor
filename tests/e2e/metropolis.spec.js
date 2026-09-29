@@ -51,7 +51,10 @@ async function waitForLift(page) {
   // 4.2 m gallery. Its ~30 simulated seconds can take 120 wall seconds on
   // a 1 FPS software GPU with the shipped 0.25 s catch-up cap.
   const timeout = Math.max(90000, (start.city.interior.elevator.duration + 3) * 4500);
-  await expect.poll(async () => (await snapshot(page)).city.interior.moving, { timeout }).toBe(false);
+  // Keep the waiting predicate in the browser; transferring the complete city
+  // catalog for every poll adds work while a slow GPU is presenting the lift.
+  await page.waitForFunction(() => window.__NEON__.snapshot().city.interior.moving === false, null,
+    { polling: 'raf', timeout });
   const finish = await snapshot(page);
   expect(finish.simulationTime - start.simulationTime).toBeLessThan(start.city.interior.elevator.duration + 3);
 }
@@ -160,9 +163,11 @@ for (const journey of [
   { route: 'ferry', from: 'ferry-south', to: 'ferry-north', boardZ: -310, exitZ: -394 },
 ]) {
   test(`${journey.route}: wait, board, travel and alight using public controls`, async ({ page }) => {
-    // A complete transit journey includes a timetable wait, dwell and travel.
-    // Keep service limits in simulation seconds, with a bounded software-GPU budget.
-    test.setTimeout(360000);
+    // v0.4's teleport entrances left about 25 m of platform walking. The real
+    // metro stair routes now cover 110 m, about 85 m more plus landing checks.
+    // Allocate that added route 120 s; all independent service and walking
+    // limits stay unchanged, and the ferry retains its original total budget.
+    test.setTimeout(journey.route === 'metro' ? 480000 : 360000);
     const errors = await boot(page);
     await visit(page, 'stop', journey.from);
     if (journey.route === 'metro') {

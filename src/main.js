@@ -287,11 +287,11 @@ function updateCamera(dt){
   cameraDragAge+=dt;
   const manual=!!drag||cameraDragAge<2;
   const subject=renderFrame.subject,previous=cameraRig.position||subject;
-  const cameraColliders=cameraCollisionIndex.query({x:(subject.x+previous.x)/2,z:(subject.z+previous.z)/2,
+  const cameraColliders=world.interiors.cameraColliders||cameraCollisionIndex.query({x:(subject.x+previous.x)/2,z:(subject.z+previous.z)/2,
     hx:Math.abs(subject.x-previous.x)/2+20,hz:Math.abs(subject.z-previous.z)/2+20});
   const state=cameraRig.update(renderFrame.subject,{
     yaw:(sim.inCar||world.riding)&&!manual?renderFrame.subject.yaw:cameraOrbitYaw,
-    pitch:cameraPitch,driving:!!sim.inCar,firstPerson:!!world.riding||settings.firstPerson&&!sim.inCar,indoor:world.isInside||!!world.transit.collisionContext(),floorY:sim.activeVehicle?.y??sim.player.groundY,manual,aspect:camera.aspect,near:camera.near,
+    pitch:cameraPitch,driving:!!sim.inCar,firstPerson:!!world.riding||settings.firstPerson&&!sim.inCar,indoor:world.isInside||!!world.transit.collisionContext(),floorY:sim.activeVehicle?.y??sim.player.groundY,platformY:world.interiors.state.moving?renderFrame.subject.y:undefined,manual,aspect:camera.aspect,near:camera.near,
   },dt,cameraColliders);
   cameraYaw=state.yaw;
   camera.position.set(state.position.x,state.position.y,state.position.z);
@@ -329,7 +329,7 @@ function frame(time){
     renderFrame=presentation.sample(alpha);
     saveElapsed+=dt;if(saveElapsed>8||lastRevision!==sim.saveRevision){save();saveElapsed=0;lastRevision=sim.saveRevision;}drainMessages();
   }
-  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);renderer.render(scene,camera);
+  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);renderer.render(scene,camera);
 }
 
 try{
@@ -343,7 +343,7 @@ try{
   for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
   marker=new THREE.Group();markerRing=new THREE.Mesh(new THREE.TorusGeometry(5,.12,6,48),new THREE.MeshBasicMaterial({color:'#e4ff9d'}));markerRing.rotation.x=Math.PI/2;marker.add(markerRing);const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.8),new THREE.MeshBasicMaterial({color:'#d5ff9a'}));diamond.position.y=4;marker.add(diamond);const beam=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,18,8),new THREE.MeshBasicMaterial({color:'#dcffa5',transparent:true,opacity:.38,depthWrite:false}));beam.position.y=9;marker.add(beam);scene.add(marker);
   tracer=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineBasicMaterial({color:'#ffeab1',transparent:true,opacity:.8}));tracer.visible=false;scene.add(tracer);
-  mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);renderer.render(scene,camera);
+  mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);world.updateRenderVisibility(camera);renderer.render(scene,camera);
   bootCompleted=true;$('loading').classList.add('hidden');$('welcome').classList.remove('hidden');$('start').disabled=false;$('harbor-start').disabled=false;$('start').firstChild.textContent=saved?'继续上次旅程 ':'从旧城出发 ';
   if(!storageOK)toast('浏览器无法读取存储，可继续游玩并手动导出进度。','warning');
   // Diagnostics read actual mesh transforms, not just presentation bookkeeping.

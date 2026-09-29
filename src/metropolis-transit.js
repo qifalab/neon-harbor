@@ -6,6 +6,7 @@
 import { createMetropolisMaterials } from './metropolis-materials.js';
 
 const TAU = Math.PI * 2;
+const DOOR_TRAVEL = .9;
 const point = (x, z, y = 0) => ({ x, y, z });
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const wrap = (n, limit) => ((n % limit) + limit) % limit;
@@ -724,7 +725,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
     group.userData.doorBatches = [];
     for (const batch of moving.values()) {
       const mesh = new THREE.InstancedMesh(batch.geometry, batch.material, batch.entries.length);
-      mesh.frustumCulled = false; mesh.castShadow = true; group.add(mesh);
+      mesh.castShadow = true; group.add(mesh);
       group.userData.doorBatches.push({ mesh, entries: batch.entries });
     }
   }
@@ -745,7 +746,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
       mesh.visible = !view || vehicle.id === service.ridingVehicleId || distance(view, pose) < 700;
       if (view && vehicle.routeId === 'metro' && view.y > -5) mesh.visible = false;
       for (const door of mesh.userData.doors) {
-        door.mesh.position.z = door.z + (pose.doorsOpen ? 0.9 * door.side : 0); door.mesh.updateMatrix();
+        door.mesh.position.z = door.z + (pose.doorsOpen ? DOOR_TRAVEL * door.side : 0); door.mesh.updateMatrix();
       }
       for (const batch of mesh.userData.doorBatches || []) {
         batch.entries.forEach(({ door, node }, index) => {
@@ -755,6 +756,16 @@ export function createTransitSystem(THREE, scene, options = {}) {
           batch.mesh.setMatrixAt(index, doorMatrix);
         });
         batch.mesh.instanceMatrix.needsUpdate = true;
+        if (!batch.mesh.boundingBox) {
+          // Door transforms are now populated. Both open/closed poses differ
+          // only by at most one travel along local Z, so this fixed envelope
+          // conservatively covers every animation pose and vehicle rotation.
+          // Let the normal camera/shadow frusta reject offscreen door batches.
+          batch.mesh.computeBoundingBox();
+          batch.mesh.boundingBox.min.z -= DOOR_TRAVEL;
+          batch.mesh.boundingBox.max.z += DOOR_TRAVEL;
+          batch.mesh.boundingSphere = batch.mesh.boundingBox.getBoundingSphere(new THREE.Sphere());
+        }
       }
     }
     return result;

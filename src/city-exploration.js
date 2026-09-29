@@ -205,7 +205,16 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       people.update(dt, { position: view?.position || south.spawn, hour: time * 24, vehicles: outdoorCars || simulation?.cars || [], paused: dt === 0 });
       if (people.root) people.root.visible = !inside() && !transit.collisionContext();
     },
+    updateRenderVisibility(camera) {
+      // Physics, streaming, clocks, lighting and material quality keep running.
+      // Only a camera wholly enclosed by the closed opaque cabin can skip the
+      // city behind it. Re-evaluate every frame, including opening and travel.
+      const enclosed = interiors.cameraInClosedCabin(camera);
+      root.visible = !enclosed; transit.root.visible = !enclosed;
+      return enclosed;
+    },
     setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); harbor.setQuality(value); },
-    snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings: METROPOLIS_BUILDINGS, streaming: north.streamingStats }; },
+    snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings: METROPOLIS_BUILDINGS, streaming: north.streamingStats,
+      renderVisibility: { outdoor: root.visible, transit: transit.root.visible } }; },
   };
 }
