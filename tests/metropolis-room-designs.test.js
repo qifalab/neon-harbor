@@ -4,7 +4,7 @@ import * as THREE from '../vendor/three/three.module.js';
 import { METROPOLIS_BUILDINGS } from '../src/metropolis-catalog.js';
 import { ROOM_DESIGNS, getRoomDesign } from '../src/metropolis-room-designs.js';
 import { createInteriorLayout, createInteriorSystem } from '../src/metropolis-interiors.js';
-import { SpatialIndex, moveCircle, circleContacts } from '../src/collision.js';
+import { SpatialIndex, moveCircle, circleContacts, CHARACTER_RADIUS } from '../src/collision.js';
 
 test('144 authored public floors name 576 functional areas without substituting furniture for rooms', () => {
   assert.deepEqual(Object.keys(ROOM_DESIGNS).sort(), METROPOLIS_BUILDINGS.map(building => building.id).sort());
@@ -27,12 +27,12 @@ test('all 576 room thresholds remain reachable through the central aisle and rea
     const physics = { index: new SpatialIndex(layout.colliders), groundHeightAt: () => floor.y, bounds: 1450 };
     for (const room of layout.rooms) {
       const player = { x: building.x, z: layout.entrance.z, y: 0, groundY: floor.y };
-      moveCircle(player, 0, room.entrance.z - player.z, 0.42, physics);
-      moveCircle(player, room.arrival.x - player.x, 0, 0.42, physics);
+      moveCircle(player, 0, room.entrance.z - player.z, CHARACTER_RADIUS, physics);
+      moveCircle(player, room.arrival.x - player.x, 0, CHARACTER_RADIUS, physics);
       assert.ok(Math.hypot(player.x - room.arrival.x, player.z - room.arrival.z) < 0.015, `${building.id}/${floor.id}/${room.name} entrance obstructed`);
-      assert.equal(circleContacts(player, 0.42, physics).length, 0, `${room.name} arrival must not overlap furniture`);
-      moveCircle(player, building.x - player.x, 0, 0.42, physics);
-      moveCircle(player, 0, layout.entrance.z - player.z, 0.42, physics);
+      assert.equal(circleContacts(player, CHARACTER_RADIUS, physics).length, 0, `${room.name} arrival must not overlap furniture`);
+      moveCircle(player, building.x - player.x, 0, CHARACTER_RADIUS, physics);
+      moveCircle(player, 0, layout.entrance.z - player.z, CHARACTER_RADIUS, physics);
       assert.ok(Math.hypot(player.x - building.x, player.z - layout.entrance.z) < 0.015, `${room.name} cannot return to elevator/exit aisle`);
     }
     for (const part of layout.parts) {
@@ -132,9 +132,9 @@ test('hospital visitors can reach counters, seats, beds, handwashing and rehabil
     for (const room of layout.rooms) for (const point of room.accessPoints) {
       const player = { ...room.arrival, y: 0, groundY: floor.y };
       for (const target of [point.via, point, point.via, room.arrival]) {
-        moveCircle(player, target.x - player.x, target.z - player.z, 0.42, physics);
+        moveCircle(player, target.x - player.x, target.z - player.z, CHARACTER_RADIUS, physics);
         assert.ok(Math.hypot(player.x - target.x, player.z - target.z) < 0.015, `${room.name}/${point.name} has blocked access`);
-        assert.equal(circleContacts(player, 0.42, physics).length, 0, `${room.name}/${point.name} overlaps furniture`);
+        assert.equal(circleContacts(player, CHARACTER_RADIUS, physics).length, 0, `${room.name}/${point.name} overlaps furniture`);
       }
       visited++;
     }
