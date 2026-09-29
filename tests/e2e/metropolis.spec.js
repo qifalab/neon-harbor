@@ -155,12 +155,17 @@ for (const journey of [
   { route: 'ferry', from: 'ferry-south', to: 'ferry-north', boardZ: -310, exitZ: -394 },
 ]) {
   test(`${journey.route}: wait, board, travel and alight using public controls`, async ({ page }) => {
+    // A complete transit journey includes a timetable wait, dwell and travel.
+    // Keep service limits in simulation seconds, with a bounded software-GPU budget.
+    test.setTimeout(360000);
     const errors = await boot(page);
     await visit(page, 'stop', journey.from);
     await page.keyboard.press('e');
     await expect.poll(async () => (await snapshot(page)).city.transit.currentStop).toBe(journey.from);
     if (journey.route === 'metro') await walk(page, ['w'], s => s.position.z < 254);
-    await page.waitForFunction(({ from, route }) => window.__NEON__.snapshot().city.transit.vehicles.some(v => v.routeId === route && v.stopId === from && v.remaining > 4), journey, { polling: 'raf', timeout: 60000 });
+    const waiting = await snapshot(page);
+    await page.waitForFunction(({ from, route }) => window.__NEON__.snapshot().city.transit.vehicles.some(v => v.routeId === route && v.stopId === from && v.remaining > 4), journey, { polling: 'raf', timeout: 90000 });
+    expect((await snapshot(page)).simulationTime - waiting.simulationTime).toBeLessThan(17);
     await page.keyboard.press('e');
     await expect.poll(async () => (await snapshot(page)).city.transit.riding).toBe(true);
     const boarded = await snapshot(page);

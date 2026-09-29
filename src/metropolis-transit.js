@@ -108,6 +108,8 @@ export class TransitService {
       const isFerry = stop.kind === 'ferry', northFerry = stop.id === 'ferry-north';
       const board = isFerry ? point(stop.platform.x, stop.platform.z + (northFerry ? 3 : -3), stop.platform.y) : { ...stop.platform };
       const exit = isFerry ? point(stop.platform.x, stop.platform.z + (northFerry ? -5 : 8), stop.platform.y) : point(stop.platform.x, stop.platform.z + 21, stop.platform.y);
+      const exitDirection = northFerry ? -1 : 1;
+      const streetExit = { ...stop.entrance, z: stop.entrance.z + 3.5 * exitDirection, yaw: northFerry ? Math.PI : 0 };
       const p = stop.platform, hx = isFerry ? 13 : 4, hz = isFerry ? 10 : (stop.kind === 'high-speed' ? 33 : 27);
       const walls = [
         collider(`${stop.id}-end-north`, p.x, p.z - hz, hx, 0.18, p.y, p.y + 1.35),
@@ -126,7 +128,7 @@ export class TransitService {
         const side = northFerry ? 1 : -1;
         walls.push(cameraOnly(`${stop.id}-canopy`, p.x, p.z - side * 3, 8.5, 4, p.y + 3.15, p.y + 3.35));
       }
-      return { ...stop, board, exit, halfWidth: hx, halfLength: hz, colliders: walls };
+      return { ...stop, board, exit, streetExit, halfWidth: hx, halfLength: hz, colliders: walls };
     });
     this.vehicles = this.routes.flatMap(route => route.offsets.map((offset, index) => ({ id: `${route.id}-${index + 1}`, routeId: route.id, offset, pose: poseAt(route, offset) })));
     this.activeStopId = null;
@@ -143,10 +145,10 @@ export class TransitService {
     const vehicle = this.vehicles.find(v => v.id === this.ridingVehicleId);
     if (!vehicle) return null;
     const deck = this.route(vehicle.routeId).deckHeight;
-    // Stand on the open upper deck of ferries and beside the main carriage
+    // Stand on the open forward deck of ferries and beside the main carriage
     // window on rail services; the camera can see the city through the glass.
     const offset = vehicle.routeId === 'ferry' ? 0 : -0.65;
-    const longitudinal = vehicle.routeId === 'ferry' ? -6.7 : vehicle.routeId === 'high-speed' ? 0 : 3;
+    const longitudinal = vehicle.routeId === 'ferry' ? 7.2 : vehicle.routeId === 'high-speed' ? 0 : 3;
     return { x: vehicle.pose.x + Math.cos(vehicle.pose.yaw) * offset + Math.sin(vehicle.pose.yaw) * longitudinal, y: vehicle.pose.y + deck,
       z: vehicle.pose.z - Math.sin(vehicle.pose.yaw) * offset + Math.cos(vehicle.pose.yaw) * longitudinal, yaw: vehicle.pose.yaw };
   }
@@ -206,7 +208,7 @@ export class TransitService {
     if (active) {
       if (distance(position, active.exit) < 3.7) {
         this.activeStopId = null;
-        const exit = { ...active.entrance, z: active.entrance.z + 3.5, yaw: 0 };
+        const exit = { ...active.streetExit };
         return { handled: true, transition: { position: exit, groundY: 0, colliders: null, groundHeightAt: null, id: 'street' }, message: `${active.name} · 已返回街道` };
       }
       if (distance(position, active.board) > 6) return { handled: true, message: '沿地面标记前往候车区。' };
@@ -235,7 +237,7 @@ export class TransitService {
     const vehicle = this.vehicles.find(v => v.id === this.ridingVehicleId);
     const stop = this.stop(this.activeStopId || vehicle?.pose.stopId || this.boardedStopId);
     this.activeStopId = null; this.ridingVehicleId = null; this.boardedStopId = null;
-    return stop ? { handled: true, transition: { id: 'street', position: { ...stop.entrance, z: stop.entrance.z + 3.5, yaw: 0 }, groundY: 0, colliders: null, groundHeightAt: null } } : { handled: false };
+    return stop ? { handled: true, transition: { id: 'street', position: { ...stop.streetExit }, groundY: 0, colliders: null, groundHeightAt: null } } : { handled: false };
   }
   reset() { return this.leave(); }
   snapshot() {
@@ -252,7 +254,7 @@ export class TransitService {
       boardedStopId: this.boardedStopId, phase, status: ({ docked: '到站停靠', moving: '行驶中', waiting: '站台候车', street: '街道' })[phase],
       label: route?.name || '', secondsToArrival, nextStopId, time: this.time, riding: this.riding, ridingVehicleId: this.ridingVehicleId, currentStop: this.activeStopId, boardingState: this.boardingState,
       passengerPose: this.passengerPose, routes: this.routes.map(route => ({ id: route.id, name: route.name, duration: route.duration, fleet: route.offsets.length })),
-      stops: this.stops.map(stop => ({ id: stop.id, name: stop.name, routeId: stop.routeId, kind: stop.kind, entrance: { ...stop.entrance }, entry: { ...stop.entrance }, platform: { ...stop.platform }, board: { ...stop.board }, exit: { ...stop.exit }, nextArrival: this.nextArrival(stop.id) })),
+      stops: this.stops.map(stop => ({ id: stop.id, name: stop.name, routeId: stop.routeId, kind: stop.kind, entrance: { ...stop.entrance }, entry: { ...stop.entrance }, platform: { ...stop.platform }, board: { ...stop.board }, exit: { ...stop.exit }, streetExit: { ...stop.streetExit }, nextArrival: this.nextArrival(stop.id) })),
       vehicles: this.vehicles.map(vehicle => ({ id: vehicle.id, routeId: vehicle.routeId, ...vehicle.pose })) };
   }
 }
@@ -301,10 +303,14 @@ export function createTransitSystem(THREE, scene, options = {}) {
     const p = stop.platform, e = stop.entrance, route = service.route(stop.routeId), color = route.color;
     if (stop.kind === 'ferry') {
       const north = stop.id === 'ferry-north', side = north ? 1 : -1;
-      stamp('wood', p.x, p.y - 0.25, p.z, 26, 0.5, 20);
+      obstacle('wood', p.x, p.y - 0.25, p.z, 26, 0.5, 20, `${stop.id}-pier-deck`);
       for (let x = -12; x <= 12; x += 0.6) stamp('dark', p.x + x, p.y + 0.012, p.z, 0.027, 0.024, 19.8);
-      const mid = (e.z + p.z) / 2;
-      stamp('wood', p.x, 0.3, mid, 7, 0.5, Math.abs(e.z - p.z) + 2);
+      // Keep the atlas/save entrance on an actual street landing. Extending
+      // the raised gangway past this point would embed arriving feet in wood.
+      const towardPier = Math.sign(p.z - e.z);
+      const streetEnd = e.z + towardPier * 1.5, pierEnd = p.z + towardPier;
+      const mid = (streetEnd + pierEnd) / 2;
+      obstacle('wood', p.x, 0.3, mid, 7, 0.5, Math.abs(pierEnd - streetEnd), `${stop.id}-access-walkway`);
       for (const dx of [-13, 13]) railEdge(p.x + dx, p.z, 0.06, 20, p.y);
       // A bright gangway identifies the exact boarding position.
       stamp('silver', p.x, p.y + 0.03, p.z + side * 10, 3.7, 0.1, 6);
@@ -315,8 +321,8 @@ export function createTransitSystem(THREE, scene, options = {}) {
       stamp('white', p.x, p.y + 3.25, p.z - side * 3, 17, 0.2, 8);
       for (const dx of [-7.5, 7.5]) for (const dz of [-3, 3]) stamp('dark', p.x + dx, p.y + 1.6, p.z - side * 3 + dz, 0.16, 3.2, 0.16);
       sign(`${stop.name}  F4 / FERRY`, p.x, p.y + 2.8, p.z - side * 6.8, 12, color);
-      sign('E · 渡轮候船厅 / PIER', e.x, 2.7, e.z, 10, color);
-      for (const dx of [-4.6, 4.6]) obstacle('dark', e.x + dx, 1.35, e.z, 0.18, 2.7, 0.18);
+      sign('E · 渡轮候船厅 / PIER', e.x, 4.2, e.z, 10, color);
+      for (const dx of [-4.6, 4.6]) obstacle('dark', e.x + dx, 2.1, e.z, 0.18, 4.2, 0.18, `${stop.id}-entrance-post-${dx}`);
       sign('E 登船 · BOARD', p.x, p.y + 1.7, p.z + side * 8, 5, color);
       sign('E 出口 / EXIT', stop.exit.x, p.y + 1.8, stop.exit.z + 0.3, 4.5, '#e9c16c');
       return;
@@ -498,7 +504,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
     meshBox(group, 'light', 0, 4.7, 2.5, 0.3, 0.18, 0.18);
     meshBox(group, 'light', -3.35, 2.0, 4.8, 0.08, 0.15, 0.15);
     meshBox(group, 'red', 3.35, 2.0, 4.8, 0.08, 0.15, 0.15);
-    // Leave the aft outer deck open for the passenger and orbit camera.
+    // The forward outer deck remains open for the passenger and forward view.
     group.userData.doors = [];
     return group;
   }
