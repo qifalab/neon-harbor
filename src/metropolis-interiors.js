@@ -10,6 +10,7 @@ const COLORS = {
   brass: '#b09b6e', white: '#ede6d7', dark: '#27373d', glass: '#9dc1c5',
   ceramic: '#d7c6ad', leaves: '#486d52', paper: '#d8bf96', teal: '#548f89',
   light: '#f6dfb1', red: '#965a4e', blue: '#62829a', food: '#bd9464',
+  clinicPaint: '#e5e9df', clinicalFloor: '#b9c6c0',
 };
 const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 const isObservation = floor => /observation|observatory|terrace|rooftop|skydeck|观景|天台/i.test(`${floor.type} ${floor.label}`);
@@ -120,10 +121,10 @@ export function createInteriorLayout(building, floor) {
     for (const dx of [-sx / 2 + 0.36, sx / 2 - 0.36]) for (const dz of [-0.42, 0.42]) cylinder('walnut', x + dx, 0.13, z + dz, 0.1, 0.22);
     for (let i = -sx / 2 + 0.55; i < sx / 2; i += 0.85) round('fabric', x + i, 0.78, z - facing * 0.28, 0.55, 0.36, 0.18, 'cushion', false);
   };
-  const shelf = (x, z, sx = 3.4, type = 'books') => {
-    solid('walnut', x, 1.25, z, sx, 2.5, 0.55, 'shelf');
+  const shelf = (x, z, sx = 3.4, type = 'books', finish = 'walnut') => {
+    solid(finish, x, 1.25, z, sx, 2.5, 0.55, 'shelf');
     for (let row = 0; row < 4; row++) {
-      box('timber', x, 0.35 + row * 0.55, z + 0.3, sx, 0.07, 0.68);
+      box(finish === 'clinicPaint' ? finish : 'timber', x, 0.35 + row * 0.55, z + 0.3, sx, 0.07, 0.68);
       for (let col = 0; col < 6; col++) {
         const color = ['teal', 'paper', 'red', 'blue'][(row + col) % 4];
         box(type === 'books' ? color : 'white', x - sx / 2 + 0.35 + col * (sx - 0.5) / 6,
@@ -204,16 +205,16 @@ export function createInteriorLayout(building, floor) {
   const cabinet = (x, z, sx = 3, height = 2.2, m = 'timber', kind = 'cabinet') => {
     round(m, x, height / 2, z, sx, height, 0.7, kind);
     for (let dx = -sx / 2 + 0.3; dx < sx / 2; dx += 0.62) {
-      box('walnut', x + dx, height / 2, z + 0.36, 0.025, height - 0.14, 0.018);
+      box(m === 'clinicPaint' ? 'teal' : 'walnut', x + dx, height / 2, z + 0.36, 0.025, height - 0.14, 0.018);
       cylinder('brass', x + dx + 0.11, height * 0.55, z + 0.39, 0.07, 0.07, 0.07);
     }
   };
-  const washbasin = (x, z) => {
-    round('white', x, 0.75, z, 1.4, 0.24, 0.75, 'basin');
+  const washbasin = (x, z, finish = 'white') => {
+    round(finish, x, 0.75, z, 1.4, 0.24, 0.75, 'basin');
     round('steel', x, 0.882, z, 0.92, 0.035, 0.47, 'basin-bowl', false);
     cylinder('steel', x, 1.1, z - 0.25, 0.07, 0.45);
     round('steel', x, 1.32, z - 0.12, 0.07, 0.07, 0.33, 'tap', false);
-    solid('timber', x, 0.34, z, 1.25, 0.68, 0.63, 'vanity');
+    solid(finish === 'clinicPaint' ? finish : 'timber', x, 0.34, z, 1.25, 0.68, 0.63, 'vanity');
     box('glass', x, 1.86, z - 0.42, 1.25, 1.18, 0.055);
     round('fabric', x + 0.5, 0.92, z + 0.16, 0.22, 0.06, 0.25, 'towel', false);
   };
@@ -269,11 +270,26 @@ export function createInteriorLayout(building, floor) {
     }
   };
   const rail = (x, z, sx = 5) => { cylinder('steel', x - sx / 2, 0.58, z, 0.07, 1.16); cylinder('steel', x + sx / 2, 0.58, z, 0.07, 1.16); round('steel', x, 1.14, z, sx, 0.07, 0.07, 'handrail'); };
+  const clinicBed = (x, z, examination = false) => {
+    solid('steel', x, 0.39, z, 1.04, 0.2, 2.22, examination ? 'examination-bed' : 'clinical-bed');
+    round('fabric', x, 0.59, z, 0.96, 0.22, 2.12, 'clinical-mattress', false);
+    for (const dx of [-0.4, 0.4]) for (const dz of [-0.88, 0.88]) {
+      cylinder('steel', x + dx, 0.19, z + dz, 0.06, 0.38);
+      sphere('dark', x + dx, 0.065, z + dz, 0.12);
+    }
+    round('fabric', x, 0.75, z - 0.69, 0.65, 0.14, 0.4, 'clinical-pillow', false);
+    if (!examination) {
+      round('teal', x, 0.73, z + 0.4, 0.94, 0.05, 1.05, 'clinical-blanket', false);
+      for (const dx of [-0.53, 0.53]) round('steel', x + dx, 0.84, z, 0.06, 0.06, 1.5, 'bed-rail');
+      solid('clinicPaint', x, 0.72, z - 1.15, 1.1, 0.65, 0.09, 'clinical-headboard');
+    }
+  };
   const closedTypes = new Set(['living', 'bedroom', 'kitchen', 'bath', 'consult', 'ward', 'lab', 'pharmacy', 'changing', 'projection', 'control', 'study', 'classroom', 'strings', 'drums', 'office', 'archive', 'tailor']);
   const roomCenters = [-1, 1].flatMap(side => [-1, 1].map(end => ({
     x: side * (6.5 + zoneWidth / 2), z: end * (2.7 + zoneDepth / 2), side, end,
   })));
   roomCenters.forEach((room, index) => {
+    const roomPartStart = parts.length;
     const specification = design.rooms[index], { side, end, z } = room;
     const type = specification.type;
     // Primary furnishings stay near the entrance at human scale. Secondary wall
@@ -281,35 +297,108 @@ export function createInteriorLayout(building, floor) {
     const community = floor.id === 'lobby' && type === 'living';
     const compact = !observation && ['living', 'bedroom', 'kitchen', 'bath'].includes(type) && (/residential|hotel/.test(category) || type === 'bedroom' || type === 'bath');
     const domesticSize = community ? [14, 14] : { living: [9, 10], bedroom: [8, 8], kitchen: [7, 8], bath: [5, 6] }[type];
-    const roomWidth = compact ? domesticSize[0] : zoneWidth, roomDepth = compact ? domesticSize[1] : zoneDepth;
-    const roomX = compact ? side * (5.5 + roomWidth / 2) : room.x;
-    const x = compact ? roomX : side * (7.8 + Math.min(zoneWidth, 21) / 2);
+    const clinical = !observation && category === 'clinic';
+    const clinicSize = { reception: [14, 12], waiting: [16, 14], pharmacy: [12, 10], consult: [10, 10], ward: [14, 12], rehab: [14, 12], office: [12, 10] }[type];
+    const enclosedSize = clinical ? clinicSize : compact ? domesticSize : null;
+    const roomWidth = enclosedSize ? enclosedSize[0] : zoneWidth, roomDepth = enclosedSize ? enclosedSize[1] : zoneDepth;
+    const roomX = enclosedSize ? side * (5.5 + roomWidth / 2) : room.x;
+    const x = enclosedSize ? roomX : side * (7.8 + Math.min(zoneWidth, 21) / 2);
+    const ceilingHeight = clinical ? 3.18 : compact ? 2.98 : height;
+    const enclosed = !observation && (clinical || closedTypes.has(type));
+    const accessPoints = [];
     const span = Math.min(roomWidth - 3.5, 10.8), reach = Math.min(roomDepth / 2 - 2.4, 7.2);
     const entrance = { x: origin.x + side * 5.5, z: origin.z + z };
     rooms.push({ ...specification, x: origin.x + roomX, z: origin.z + z, width: roomWidth,
-      depth: roomDepth, ceilingHeight: compact ? 2.98 : height, enclosed: !observation && closedTypes.has(type), entrance,
+      depth: roomDepth, ceilingHeight, enclosed, ...(clinical ? { accessPoints } : {}), entrance,
       arrival: { x: origin.x + side * 8.8, z: origin.z + z },
       bounds: { minX: origin.x + Math.min(side * 5.5, side * (5.5 + roomWidth)), maxX: origin.x + Math.max(side * 5.5, side * (5.5 + roomWidth)), minZ: origin.z + z - roomDepth / 2, maxZ: origin.z + z + roomDepth / 2 } });
-    box(['kitchen', 'bath', 'fish', 'lab', 'pharmacy'].includes(type) ? 'ceramic' : compact ? 'timber' : observation ? 'limestone' : 'carpet', roomX, 0.024, z, roomWidth - 0.2, 0.026, roomDepth - 0.2);
-    if (!observation && closedTypes.has(type)) {
+    box(clinical ? 'clinicalFloor' : ['kitchen', 'bath', 'fish', 'lab', 'pharmacy'].includes(type) ? 'ceramic' : compact ? 'timber' : observation ? 'limestone' : 'carpet', roomX, 0.024, z, roomWidth - 0.2, 0.026, roomDepth - 0.2);
+    if (enclosed) {
       const innerX = side * 5.5, segment = (roomDepth - 3.2) / 2;
-      for (const dz of [-1, 1]) solid('plaster', innerX, 1.48, z + dz * (1.6 + segment / 2), 0.2, 2.96, segment, 'partition');
-      if (compact) {
-        for (const dz of [-1, 1]) solid('plaster', roomX, 1.48, z + dz * roomDepth / 2, roomWidth, 2.96, 0.18, 'partition');
-        solid('plaster', side * (5.5 + roomWidth), 1.48, z, 0.18, 2.96, roomDepth, 'partition');
-        solid('plaster', roomX, 3.06, z, roomWidth, 0.16, roomDepth, 'ceiling');
+      const wallMaterial = clinical ? 'clinicPaint' : 'plaster', wallHeight = clinical ? ceilingHeight : 2.96;
+      for (const dz of [-1, 1]) solid(wallMaterial, innerX, wallHeight / 2, z + dz * (1.6 + segment / 2), 0.2, wallHeight, segment, 'partition');
+      if (enclosedSize) {
+        for (const dz of [-1, 1]) solid(wallMaterial, roomX, wallHeight / 2, z + dz * roomDepth / 2, roomWidth, wallHeight, 0.18, 'partition');
+        solid(wallMaterial, side * (5.5 + roomWidth), wallHeight / 2, z, 0.18, wallHeight, roomDepth, 'partition');
+        solid(wallMaterial, roomX, ceilingHeight + 0.08, z, roomWidth, 0.16, roomDepth, 'ceiling');
         // The occupied apartment stops at these walls. Unopened perimeter areas
         // are not counted as extra rooms or left visible as empty public halls.
-        for (const dz of [-1, 1]) box('timber', roomX, 0.13, z + dz * (roomDepth / 2 - 0.11), roomWidth - 0.2, 0.18, 0.055);
+        for (const dz of [-1, 1]) box(clinical ? 'teal' : 'timber', roomX, 0.13, z + dz * (roomDepth / 2 - 0.11), roomWidth - 0.2, 0.18, 0.055);
       } else solid('plaster', room.x, 1.48, end * 1.4, zoneWidth + 2, 2.96, 0.2, 'partition');
-      box('timber', innerX, 2.99, z, 0.25, 0.2, 3.6, 'door-lintel');
-      for (const dz of [-1.66, 1.66]) box('timber', innerX, 1.48, z + dz, 0.28, 2.96, 0.13, 'door-jamb');
+      box(clinical ? 'teal' : 'timber', innerX, clinical ? ceilingHeight - 0.1 : 2.99, z, 0.25, 0.2, 3.6, 'door-lintel');
+      for (const dz of [-1.66, 1.66]) box(clinical ? 'teal' : 'timber', innerX, wallHeight / 2, z + dz, 0.28, wallHeight, 0.13, 'door-jamb');
     }
     // Signs sit beside doorways, not across the player's third-person camera.
     label(specification.name, side * 5.26, 2.18, z - 2.5, 2.75, 0.43, '#e9dfc7', -side * Math.PI / 2);
-    if (!compact) label(specification.name, x, 2.86, z - reach - 2, Math.min(span, 7), 0.45);
+    if (!enclosedSize) label(specification.name, x, 2.86, z - reach - 2, Math.min(span, 7), 0.45);
     const v = specification.furnishingVariant;
-    if (compact) {
+    if (clinical) {
+      // All eight medical rooms have their own wall, floor and ceiling bounds.
+      // The first 3.3 m and a spine at u=3.3 remain clear for returning visitors.
+      const px = u => side * (5.5 + u);
+      const access = (name, u, dz) => accessPoints.push({ name, x: origin.x + px(u), z: origin.z + z + dz,
+        via: { x: origin.x + px(3.3), z: origin.z + z + dz } });
+      if (type === 'consult') {
+        clinicBed(px(7.6), z - 2, true);
+        solid('fabric', px(5.65), 1.05, z - 2.1, 0.1, 2.1, 3.2, 'privacy-screen');
+        for (const dz of [-3.62, -0.58]) cylinder('steel', px(5.65), 1.08, z + dz, 0.05, 2.16);
+        table(px(6.8), z + 2.9, 2.2, 1, 'clinicPaint'); screen(px(7.3), z + 2.85);
+        chair(px(6.8), z + 3.95, -1, 'navy'); chair(px(6.8), z + 1.6, 1, 'teal');
+        book(px(6.25), z + 2.9, 0.95, 'paper'); washbasin(px(2), z - 4.2, 'clinicPaint');
+        cabinet(px(7.6), z - 4.45, 2.8, 1.6, 'clinicPaint');
+        cylinder('steel', px(9), 1.08, z - 2.8, 0.045, 2.16); sphere('clinicPaint', px(9), 1.8, z - 2.8, 0.23, 0.38, 0.12);
+        access('医生与患者座席', 5.2, 1.6); access('检查床足侧', 7.6, 0.25); access('洗手盆前', 2, -3.2);
+      } else if (type === 'waiting') {
+        for (const u of [6, 7.1, 8.2, 11, 12.1, 13.2]) for (const dz of [-3.7, -1, 2]) chair(px(u), z + dz, 1, 'teal');
+        box('navy', px(9.5), 2.15, z - 6.81, 6.1, 0.95, 0.1);
+        label('门诊等候 · 按叫号顺序就诊', px(9.5), 2.18, z - 6.74, 5.6, 0.37);
+        cabinet(px(12), z + 6.4, 4, 1, 'clinicPaint'); book(px(11.4), z + 6.4, 1.07); book(px(12.4), z + 6.4, 1.07, 'blue');
+        solid('clinicPaint', px(2), 0.7, z - 5.8, 0.7, 1.4, 0.65, 'water-dispenser'); cylinder('glass', px(2), 1.66, z - 5.8, 0.36, 0.5);
+        box('teal', px(2), 0.05, z + 4.5, 2.4, 0.015, 2.1, 'wheelchair-space');
+        label('轮椅候诊位', px(2), 1.1, z + 5.7, 2.1, 0.28);
+        access('候诊座席', 7.1, 0.1); access('饮水处', 2, -4.8); access('轮椅候诊位', 2, 4.5);
+      } else if (type === 'reception') {
+        round('clinicPaint', px(7), 0.6, z - 2, 6, 1.2, 1.2, 'reception');
+        for (const u of [5.2, 8.8]) { screen(px(u), z - 2.05, 1.53); chair(px(u), z - 3.4, 1, 'navy'); }
+        cabinet(px(7), z - 5.3, 6, 2.1, 'clinicPaint');
+        table(px(11.7), z + 2.6, 2.4, 1.1, 'clinicPaint'); chair(px(11.7), z + 3.65, -1, 'teal');
+        bench(px(7.2), z + 4.9, 4.2);
+        label('挂号 · 分诊 · 无障碍咨询', px(7), 2.6, z - 5.72, 5.5, 0.4);
+        access('挂号柜台', 7, -0.7); access('咨询书写台', 10, 2.6);
+      } else if (type === 'pharmacy') {
+        shelf(px(7), z - 4.3, 7, 'medicine', 'clinicPaint'); cabinet(px(8.6), z - 1.8, 4, 1.9, 'clinicPaint');
+        round('clinicPaint', px(7), 0.57, z + 2, 7, 1.14, 1.1, 'dispensing-counter'); screen(px(9.4), z + 2, 1.43);
+        for (const u of [5.4, 6.1, 6.8]) box('paper', px(u), 1.22, z + 2, 0.37, 0.15, 0.29, 'medicine-pack');
+        washbasin(px(1.8), z - 4.2, 'clinicPaint'); label('药房 · 处方配药窗口', px(7), 2.62, z - 4.76, 5, 0.37);
+        access('配药柜台', 7, 0.9); access('药房洗手处', 1.8, -3.2);
+      } else if (type === 'ward') {
+        for (const u of [7, 11]) {
+          clinicBed(px(u), z - 1.4); cabinet(px(u + 1.25), z - 2.1, 0.9, 0.9, 'clinicPaint');
+          cylinder('steel', px(u - 1), 1.15, z - 2.4, 0.045, 2.3); sphere('clinicPaint', px(u - 1), 1.95, z - 2.4, 0.24, 0.42, 0.12);
+          chair(px(u), z + 3.4, -1, 'teal'); access('观察病床足侧', u, 0.6);
+        }
+        solid('fabric', px(9), 1.1, z - 1.9, 0.1, 2.2, 3.8, 'privacy-screen');
+        washbasin(px(2), z - 5.1, 'clinicPaint'); cabinet(px(7.5), z - 5.25, 4.8, 1.7, 'clinicPaint');
+        access('病房洗手处', 2, -4.1);
+      } else if (type === 'rehab') {
+        rail(px(8), z - 1.3, 5.5); rail(px(8), z + 1.3, 5.5);
+        box('teal', px(8), 0.045, z, 5.9, 0.025, 2.15, 'walking-mat');
+        round('fabric', px(11), 0.7, z - 3.6, 1.2, 0.3, 2.2, 'therapy-table');
+        cabinet(px(7), z - 5.25, 5.2, 1.4, 'clinicPaint'); bench(px(10), z + 4.9, 4.3);
+        box('carpet', px(5.4), 0.043, z + 3.7, 2, 0.02, 2.8, 'exercise-mat');
+        for (const u of [8.6, 9.8, 11]) sphere('teal', px(u), 0.42, z + 3.6, 0.8);
+        access('平行扶手训练道', 8, 0); access('治疗床侧', 9.6, -3.4);
+      } else if (type === 'office') {
+        for (const u of [6, 9]) { table(px(u), z - 2.2, 2, 0.9, 'clinicPaint'); screen(px(u + 0.3), z - 2.35); chair(px(u), z - 1.3, -1, 'navy'); }
+        cabinet(px(7.5), z - 4.3, 6, 2.2, 'clinicPaint'); table(px(7), z + 2.4, 3.4, 1.2, 'clinicPaint');
+        for (const u of [6, 8]) { chair(px(u), z + 3.7, -1, 'teal'); chair(px(u), z + 1.2, 1, 'teal'); }
+        book(px(7), z + 2.4, 0.96, 'paper'); access('医护工作桌', 6, 0); access('交班会议桌', 7, 0.3);
+      }
+      for (const dz of [-2.4, 2.4]) {
+        box('clinicPaint', x, ceilingHeight - 0.12, z + dz, Math.min(roomWidth - 3, 6), 0.1, 0.54);
+        box('light', x, ceilingHeight - 0.18, z + dz, Math.min(roomWidth - 3.2, 5.8), 0.03, 0.42);
+      }
+    } else if (compact) {
       // Domestic rooms use real apartment dimensions, with usable furniture
       // against their own walls. u is distance inward from the corridor door.
       const px = u => side * (5.5 + u);
@@ -531,13 +620,14 @@ export function createInteriorLayout(building, floor) {
     // Door-side coat hooks, a room directory and a planted threshold establish
     // scale immediately on entry. They remain outside the 3.2 m doorway.
     if (!observation) {
-      if (!compact) plant(side * 8.1, z - 3, 0.9);
-      if (!compact) { box('timber', side * 8.05, 1.8, z + 3.2, 1.35, 0.11, 0.11);
+      if (!enclosedSize) plant(side * 8.1, z - 3, 0.9);
+      if (!enclosedSize) { box('timber', side * 8.05, 1.8, z + 3.2, 1.35, 0.11, 0.11);
         for (const dx of [-0.4, 0, 0.4]) cylinder('brass', side * 8.05 + dx, 1.76, z + 3.24, 0.055, 0.13); }
-      const lightY = compact ? 2.88 : height - 0.37;
-      box('metal', x, lightY, z, compact ? 1.7 : 4.8, 0.1, 0.75); box('light', x, lightY - 0.07, z, compact ? 1.55 : 4.65, 0.06, 0.6);
-      lights.push({ x: origin.x + x, y: origin.y + height - 0.6, z: origin.z + z, intensity: 10, distance: Math.max(zoneWidth, zoneDepth) * 1.4 });
+      const lightY = ceilingHeight - (compact ? 0.1 : 0.37);
+      if (!clinical) { box('metal', x, lightY, z, compact ? 1.7 : 4.8, 0.1, 0.75); box('light', x, lightY - 0.07, z, compact ? 1.55 : 4.65, 0.06, 0.6); }
+      lights.push({ x: origin.x + x, y: origin.y + (clinical ? ceilingHeight : height) - 0.6, z: origin.z + z, intensity: 10, distance: Math.max(clinical ? roomWidth : zoneWidth, clinical ? roomDepth : zoneDepth) * 1.4 });
     }
+    if (clinical) for (const part of parts.slice(roomPartStart)) part.roomId = specification.id;
   });
   if (building.id === 'tide-museum' && ground) {
     // Museum orientation begins at the door. The paired maritime objects sit
