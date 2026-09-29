@@ -106,13 +106,18 @@ export function createMetropolisInfrastructure(THREE, scene, { quality = 'high' 
     ctx.fillStyle = '#f4efda'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '500 55px system-ui';
     const lines = text.split('\n'); lines.forEach((line, i) => ctx.fillText(line, 518, lines.length === 1 ? 99 : 62 + i * 75, 960));
     const map = new THREE.CanvasTexture(canvas); map.colorSpace = THREE.SRGBColorSpace;
-    const mat = new THREE.MeshBasicMaterial({ map, side: THREE.DoubleSide });
+    // Text is printed on the front only. A real blank back plate prevents the
+    // mirrored lettering that DoubleSide shows when approaching from behind.
+    const mat = new THREE.MeshBasicMaterial({ map, side: THREE.FrontSide });
     const geo = new THREE.PlaneGeometry(width, width * 192 / 1024), mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(x, y, z); mesh.rotation.y = yaw; mesh.name = text; c.group.add(mesh);
+    const backing = new THREE.Mesh(boxGeometry, material('dark'));
+    backing.name = `${text} · blank backing`; backing.position.z = -.065;
+    backing.scale.set(width + .12, width * 192 / 1024 + .12, .1); mesh.add(backing);
     geometries.add(geo); disposable.add(map); disposable.add(mat);
     const q = Math.abs(Math.cos(yaw)), s = Math.abs(Math.sin(yaw)), height = width * 192 / 1024;
-    collider(`${c.name}-sign-${colliders.length}`, 'infrastructure-sign', x, z, width * q / 2 + .025 * s,
-      width * s / 2 + .025 * q, y - height / 2, y + height / 2, false);
+    collider(`${c.name}-sign-${colliders.length}`, 'infrastructure-sign', x, z, (width + .12) * q / 2 + .115 * s,
+      (width + .12) * s / 2 + .115 * q, y - height / 2 - .06, y + height / 2 + .06, false);
   }
   function slattedBench(c, x, y, z, id) {
     collider(id, 'infrastructure-bench', x, z, 1.65, .42, y, y + 1.05);
@@ -186,7 +191,7 @@ export function createMetropolisInfrastructure(THREE, scene, { quality = 'high' 
     }
     const entry = roadPoint(road, road.start + 9, road.width / 2 + 1.1, 0);
     box(c, 'metal', entry.x, 2.2, entry.z, .13, 4.4, .13);
-    sign(c, `${road.name}\n双向通行 · 40`, entry.x, 3.7, entry.z, 5, longitudinalZ ? 0 : Math.PI / 2);
+    sign(c, `${road.name}\n双向通行 · 40`, entry.x, 3.7, entry.z, 5, longitudinalZ ? Math.PI : -Math.PI / 2);
   }
 
   const p = FREIGHT_PORT, port = cluster(p.name, p.x, p.z, 1100, 280), r = p.ramp;
@@ -257,7 +262,7 @@ export function createMetropolisInfrastructure(THREE, scene, { quality = 'high' 
   for (let z = -374; z < -315; z += 8) box(port, 'yellow', -619, p.y + .02, z, .2, .025, 4.5);
   box(port, 'concrete', p.x, .4, -302, 180, 1.6, 5);
   for (let x = west; x <= east; x += 6) box(port, 'stone', x, -.05, -297, 4.8, 2.5, 4.8, { ry: .6 + x % 3 });
-  sign(port, '维湾货运码头 / VICTORIA FREIGHT\n公共步道 ←   装卸区域 →', -605, 6.1, -380.5, 18);
+  sign(port, '维湾货运码头 / VICTORIA FREIGHT\n公共步道 ←   装卸区域 →', -605, 6.1, -380.5, 18, Math.PI);
 
   // Station equipment stays outside the entrance interaction radius and does
   // not alter any original platform, ferry berth or timetable coordinates.
