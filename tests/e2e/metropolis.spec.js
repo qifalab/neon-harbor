@@ -206,7 +206,9 @@ for (const journey of [
     await page.screenshot({ path: `test-results/screenshots/11-${journey.route}-arrival.png` });
     if (journey.route === 'metro') {
       const station = (await snapshot(page)).city.transit.stops.find(stop => stop.id === journey.to);
-      await walkRoute(page, [...station.access.waypoints].reverse());
+      // Clear the physical entrance's activation band, not just its center:
+      // the bounded walking tolerance can legitimately stop inside that band.
+      await walkRoute(page, [...station.access.waypoints].reverse().concat(station.streetExit));
       expect((await snapshot(page)).position.y).toBeCloseTo(0, 1);
     } else {
       await walk(page, ['w'], s => s.position.z < -392);

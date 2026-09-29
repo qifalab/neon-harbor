@@ -23,8 +23,9 @@ function axisKey(yaw, axis, positive) {
  * A renderer can finish more than one simulation frame between a successful
  * RAF predicate and the protocol key-up. Never assume that first stop is exact.
  */
-export async function walkAxis(page, axis, target, { timeout = 60000, tolerance = .75 } = {}) {
+export async function walkAxis(page, axis, target, { timeout = 60000, tolerance = .75, sprint = false } = {}) {
   const before = await motion(page), initial = before.position[axis], deadline = Date.now() + timeout;
+  const sprinting = sprint && Math.abs(target - initial) > 8;
   let current = before;
   const samples = [{ value: initial, simulationTime: before.simulationTime }];
   try {
@@ -40,13 +41,17 @@ export async function walkAxis(page, axis, target, { timeout = 60000, tolerance 
     // holds each input through its first physical movement, then releases it.
     if (Math.abs(target - initial) > 3.2) {
       const positive = target > initial, key = axisKey(current.yaw, axis, positive);
-      await page.keyboard.down(key);
       try {
+        if (sprinting) await page.keyboard.down('Shift');
+        await page.keyboard.down(key);
         await page.waitForFunction(({ axis, target, positive }) => {
           const value = window.__NEON__.snapshot().position[axis];
           return positive ? value >= target - 2.2 : value <= target + 2.2;
         }, { axis, target, positive }, { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) });
-      } finally { await page.keyboard.up(key); }
+      } finally {
+        try { await page.keyboard.up(key); }
+        finally { if (sprinting) await page.keyboard.up('Shift'); }
+      }
       current = await motion(page);
       samples.push({ value: current.position[axis], simulationTime: current.simulationTime });
     }
@@ -72,6 +77,9 @@ export async function walkAxis(page, axis, target, { timeout = 60000, tolerance 
     expect(current.simulationTime - before.simulationTime, 'the route is not stalled against a wall').toBeLessThan(Math.abs(target - initial) / 5.6 + 3);
     expect(current.teleportRevision, 'walking must not replace the player position').toBe(before.teleportRevision);
   } catch (error) {
+    // A coarse hold can time out before current is refreshed. Read the actual
+    // final pose if the page survives; a closed page must not replace the cause.
+    try { current = await motion(page); } catch {}
     error.message += `\nWalking diagnostics: ${JSON.stringify({ axis, target, before, current, samples })}`;
     throw error;
   }
