@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { walkAxis } from './helpers/walking.js';
 
 // Player-facing menus, keys and walking provide every transition. Diagnostics
 // are read-only: room entrances never become teleport targets in this suite.
@@ -34,33 +35,10 @@ async function visit(page, kind, id) {
   await expect(page.locator('#game')).toBeFocused();
 }
 
-async function moveAxis(page, axis, target, { sprint = false } = {}) {
-  const before = await snapshot(page), start = before.position[axis];
-  if (Math.abs(start - target) < .4) return;
-  sprint = sprint && Math.abs(start - target) > 8;
-  // Building entrances reset the camera to face north. Strafe keeps that view
-  // fixed, allowing a real L-shaped route via the clear central aisle.
-  const positive = target > start;
-  const key = axis === 'z' ? positive ? 's' : 'w' : positive ? 'd' : 'a';
-  if (sprint) await page.keyboard.down('Shift');
-  await page.keyboard.down(key);
-  try {
-    await page.waitForFunction(({ axis, target, positive, margin }) => {
-      const value = window.__NEON__.snapshot().position[axis];
-      return positive ? value >= target - margin : value <= target + margin;
-    }, { axis, target, positive, margin: sprint ? 3 : .35 }, { polling: 'raf', timeout: 90000 });
-  } catch (error) {
-    error.message += `\nRoom walk diagnostics: ${JSON.stringify(await snapshot(page))}`;
-    throw error;
-  } finally { await page.keyboard.up(key); if (sprint) await page.keyboard.up('Shift'); }
-  // Finish door/elevator approaches at walking pace, even when a software-GPU
-  // frame contains several fixed simulation steps of sprinting.
-  if (sprint) await moveAxis(page, axis, target);
-  const after = await snapshot(page);
-  expect(after.simulationTime - before.simulationTime).toBeLessThan(Math.abs(start - target) / 5.6 + 3);
-  expect(Math.abs(after.position[axis] - target)).toBeLessThan(1.2);
-  expect(after.teleportRevision).toBe(before.teleportRevision);
-}
+// The bedroom's real doorway needs the shared closed-loop endpoint correction.
+// Preserve this suite's per-axis deadline while tightening its old 1.2 m margin
+// to the helper's .75 m. Original long-aisle sprints end before the door approach.
+const moveAxis = (page, axis, target, options = {}) => walkAxis(page, axis, target, { ...options, timeout: 90000 });
 
 async function takeLift(page, floorId) {
   await page.keyboard.press('e');
