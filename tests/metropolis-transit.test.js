@@ -346,6 +346,37 @@ test('metro upper streets, lower platforms and switchback stairs keep their inde
   assert.equal(METRO_STAIR_OPENINGS.length, 3);
 });
 
+test('metro gate turns remain walkable in both directions throughout the bounded endpoint margin', () => {
+  const transit = new TransitService();
+  for (const stop of transit.stops.filter(s => s.kind === 'metro')) {
+    const gatePath = stop.access.waypoints.slice(-2);
+    // CI reached the former z=0 target at +.7467 m: inside the allowed
+    // endpoint margin, but against the southern gate cabinet. Cover the
+    // entire .75 m margin with the real capsule, not just a perfect centerline.
+    for (const reverse of [false, true]) for (const offset of [-.75, -.375, 0, .375, .75]) {
+      const [from, to] = reverse ? [...gatePath].reverse() : gatePath;
+      for (const startOffset of [-.75, .75]) {
+        const start = { x: from.x + startOffset, y: -14, z: from.z + offset };
+        const sim = new GameSimulation({ bounds: 2000, colliders: stop.colliders,
+          save: { ...freshProgress(), player: start }, groundHeightAt: () => -14 });
+        sim.cars = [];
+        const revision = sim.teleportRevision;
+        for (let frame = 0; frame < 300 && Math.abs(sim.player.x - to.x) > .01; frame++) {
+          const dx = to.x - sim.player.x;
+          sim.update(Math.min(1 / 60, Math.abs(dx) / 5.6), { forward: 1, cameraYaw: Math.sign(dx) * Math.PI / 2 });
+        }
+        const label = `${stop.id}, reverse=${reverse}, z offset=${offset}, x offset=${startOffset}`;
+        near(sim.player.x, to.x, .015);
+        near(sim.player.z, start.z, 1e-5);
+        near(sim.player.groundY, -14);
+        assert.equal(sim.teleportRevision, revision, label);
+        assert.deepEqual(stop.colliders.filter(c => c.physics !== false && c.minY < -14 + PLAYER_DIMENSIONS.height && c.maxY > -14 &&
+          circleOBB({ x: sim.player.x, z: sim.player.z, radius: CHARACTER_RADIUS }, c)).map(c => c.id), [], label);
+      }
+    }
+  }
+});
+
 test('rendered metro treads match the physical walking slope within one riser, with clear headroom', () => {
   const scene = new THREE.Scene(), transit = createTransitSystem(THREE, scene);
   scene.updateMatrixWorld(true);

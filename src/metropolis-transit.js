@@ -7,6 +7,7 @@ import { createMetropolisMaterials } from './metropolis-materials.js';
 
 const TAU = Math.PI * 2;
 const DOOR_TRAVEL = .9;
+const METRO_GATE_OFFSETS = Object.freeze([-1.8, 1.5]);
 const point = (x, z, y = 0) => ({ x, y, z });
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const wrap = (n, limit) => ((n % limit) + limit) % limit;
@@ -35,10 +36,13 @@ export const METRO_STAIR_OPENINGS = Object.freeze(TRANSIT_STOPS.filter(s => s.ki
 export function metroAccessLayout(stop) {
   if (stop.kind !== 'metro') return null;
   const { x, z } = stop.entrance;
+  // The two gate cabinets are asymmetric about the station origin. Route the
+  // lower turn through their actual midpoint, with clearance on both sides.
+  const gateZ = z + (METRO_GATE_OFFSETS[0] + METRO_GATE_OFFSETS[1]) / 2;
   return { kind: 'walkable-stairs', width: 4.6, risersPerFlight: 40, riserHeight: .175, treadDepth: .4,
     opening: { ...METRO_STAIR_OPENINGS.find(o => o.stopId === stop.id) },
     waypoints: [point(x, z), point(x, z + 2), point(x, z + 10, -3.5), point(x, z + 20.5, -7),
-      point(x - 7, z + 20.5, -7), point(x - 7, z + 10, -10.5), point(x - 7, z, -14), point(x, z, -14)],
+      point(x - 7, z + 20.5, -7), point(x - 7, z + 10, -10.5), point(x - 7, gateZ, -14), point(x, gateZ, -14)],
     landings: [point(x, z + 1), point(x - 3.5, z + 20.5, -7), point(x - 7, z, -14)],
     concourse: { x: x - 7, z: z - 4, width: 4.6, depth: 8, y: -14 },
   };
@@ -183,7 +187,7 @@ export class TransitService {
         walls.push(collider(`${stop.id}-concourse-east`, p.x - 4.7, p.z - 5.25, .12, 2.75, -14, -10));
         // Ticket machines have the same physical bounds in the state machine and renderer.
         for (const dx of [-8.35, -6.95]) walls.push(collider(`${stop.id}-ticket-${dx}`, p.x + dx, p.z - 7.4, .48, .4, -14, -12.1, 'transit-furniture'));
-        for (const dz of [-1.8, 1.5]) walls.push(collider(`${stop.id}-gate-${dz}`, p.x - 3.5, p.z + dz, .45, .14, -14, -12.9, 'transit-furniture'));
+        for (const dz of METRO_GATE_OFFSETS) walls.push(collider(`${stop.id}-gate-${dz}`, p.x - 3.5, p.z + dz, .45, .14, -14, -12.9, 'transit-furniture'));
       } else if (!isFerry) {
         walls.push(cameraOnly(`${stop.id}-canopy`, p.x, p.z, 5, hz + 2, p.y + 4.4, p.y + 4.75));
       } else {
@@ -471,7 +475,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
     sign('车票 / TICKETS', x - 7.6, -11.65, z - 7.78, 2.8, color);
     // A wide staffed-style gate passage accommodates the player's capsule;
     // purchasing fares is not simulated, so no fake payment interaction appears.
-    for (const dz of [-1.8, 1.5]) {
+    for (const dz of METRO_GATE_OFFSETS) {
       stamp('silver', x - 3.5, -13.5, z + dz, .9, 1, .28);
       stamp('dark', x - 3.5, -12.98, z + dz, .65, .05, .26);
       stamp(color, x - 3.69, -12.94, z + dz, .14, .025, .11);
