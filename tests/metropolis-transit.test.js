@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createWorld } from '../src/world.js';
 import { createMetropolisWorld } from '../src/metropolis-world.js';
 import { PLAYER_DIMENSIONS } from '../src/world-config.js';
-import { ChaseCamera } from '../src/camera.js';
+import { ChaseCamera, segmentBoxEntry } from '../src/camera.js';
 import * as THREE from '../vendor/three/three.module.js';
 import { TransitService, createTransitSystem, TRANSIT_STOPS } from '../src/metropolis-transit.js';
 
@@ -242,5 +242,34 @@ test('the ferry passenger stands on the forward deck clear of furniture with an 
     ray.set(new THREE.Vector3(passenger.x, passenger.y + 1.62, passenger.z),
       new THREE.Vector3(Math.sin(passenger.yaw + turn), pitch, Math.cos(passenger.yaw + turn)).normalize());
     assert.equal(ray.intersectObject(ferry, true).length, 0, 'forward passenger view is blocked by ferry geometry');
+  }
+});
+
+
+test('ferry entrance sign planes retract the default chase boom on both landward exits', () => {
+  const transit = createTransitSystem(THREE, new THREE.Scene());
+  for (const id of ['ferry-south', 'ferry-north']) {
+    const stop = transit.stop(id), sign = transit.colliders.find(c => c.id === `${id}-entrance-sign`);
+    assert.ok(sign, id);
+    assert.equal(sign.physics, false);
+    assert.equal(sign.camera, true);
+    near(sign.hx, 5); near(sign.hz, 0.04);
+    near(sign.maxY - sign.minY, 10 * 160 / 1024);
+    const direction = id === 'ferry-north' ? -1 : 1;
+    let clipped = false;
+    // Cover the exact exit and subsequent walk that previously placed the
+    // camera behind the sign. Each pose uses the game's default .28 pitch.
+    for (const steps of [0, 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 5.6]) {
+      const pose = { ...stop.streetExit, z: stop.streetExit.z + direction * steps, speed: 0 };
+      const view = new ChaseCamera().update(pose, { yaw: pose.yaw, pitch: 0.28, driving: false, floorY: 0 }, 1 / 60, transit.colliders);
+      assert.equal(segmentBoxEntry(view.target, view.position, sign, 0), null, `${id} camera ray crosses the rendered sign at walk ${steps}`);
+      if (steps === 2.8) {
+        assert.equal(view.obstructed, true, `${id} did not reproduce and resolve the photographed obstruction`);
+        assert.equal(view.colliderId, sign.id);
+        assert.ok(direction * (view.position.z - sign.z) > sign.hz + view.clearanceRadius);
+      }
+      clipped ||= view.colliderId === sign.id;
+    }
+    assert.ok(clipped, `${id} sign never clipped the boom`);
   }
 });
