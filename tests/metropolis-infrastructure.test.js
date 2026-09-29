@@ -143,4 +143,41 @@ test('district culling hides distant detail while keeping local geometry and per
   infrastructure.update({ x: -540, z: -345 });
 });
 
+test('entry signs face their approach routes and every sign has an opaque blank reverse', () => {
+  const originalDocument = globalThis.document;
+  const context = { fillRect() {}, fillText() {} };
+  globalThis.document = { createElement: () => ({ width: 0, height: 0, getContext: () => context }) };
+  let signed;
+  try {
+    signed = createMetropolisInfrastructure(THREE, new THREE.Scene());
+    signed.root.updateMatrixWorld(true);
+    const signs = [];
+    signed.root.traverse(mesh => { if (mesh.isMesh && mesh.material.map?.isCanvasTexture) signs.push(mesh); });
+    assert.ok(signs.length >= 16, 'all infrastructure signs are covered');
+    const normal = new THREE.Vector3(), centre = new THREE.Vector3(), ray = new THREE.Raycaster();
+    for (const sign of signs) {
+      normal.set(0, 0, 1).transformDirection(sign.matrixWorld);
+      sign.getWorldPosition(centre);
+      ray.set(centre.clone().addScaledVector(normal, 5), normal.clone().negate());
+      assert.equal(ray.intersectObject(sign, true)[0]?.object, sign, 'front lettering must be visible');
+      ray.set(centre.clone().addScaledVector(normal, -5), normal);
+      const reverse = ray.intersectObject(sign, true);
+      assert.ok(reverse.length > 0, 'reverse must remain a solid sign plate');
+      assert.equal(reverse.some(hit => hit.object === sign), false, 'text must never appear mirrored on the reverse');
+      assert.equal(reverse[0].object.material.map?.isCanvasTexture, undefined, 'reverse plate contains no lettering');
+    }
+    for (const landmark of INFRASTRUCTURE_LANDMARKS) {
+      const sign = signs.find(mesh => mesh.name.startsWith(landmark.name));
+      assert.ok(sign, landmark.id);
+      normal.set(0, 0, 1).transformDirection(sign.matrixWorld); sign.getWorldPosition(centre);
+      const approach = new THREE.Vector3(landmark.entrance.x, centre.y, landmark.entrance.z).sub(centre).normalize();
+      assert.ok(normal.dot(approach) > .75, `${landmark.id}: approach must see the printed front`);
+    }
+  } finally {
+    signed?.dispose();
+    if (originalDocument === undefined) delete globalThis.document;
+    else globalThis.document = originalDocument;
+  }
+});
+
 test.after(() => { north.dispose(); infrastructure.dispose(); });

@@ -1,7 +1,7 @@
 import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
 import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
-import { architectureDesignFor } from './metropolis-architecture-designs.js';
+import { architectureDesignFor, architectureSignLayout, architectureStalls } from './metropolis-architecture-designs.js';
 
 /** North shore: permanent terrain/collision/silhouettes, independently fetched detail. */
 export function createMetropolisWorld(THREE, scene, {
@@ -41,13 +41,17 @@ export function createMetropolisWorld(THREE, scene, {
       // Address-specific typography is a real facade sign, loaded only when
       // its chunk arrives. Node export needs only the stable material key.
       if (typeof document !== 'undefined') {
-        const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 128;
+        const building=METROPOLIS_BUILDINGS.find(b=>b.id===id),layout=architectureSignLayout(building);
+        const canvas = document.createElement('canvas'); canvas.width = layout.pixelWidth; canvas.height = layout.pixelHeight;
         const ctx = canvas.getContext('2d');
-        ctx.fillStyle = ['#294746', '#593e32', '#4f5546', '#3e4650'][Number(index)]; ctx.fillRect(0, 0, 512, 128);
-        ctx.strokeStyle = '#b9a07b'; ctx.lineWidth = 5; ctx.strokeRect(9, 9, 494, 110);
+        ctx.fillStyle = ['#294746', '#593e32', '#4f5546', '#3e4650'][Number(index)]; ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#b9a07b'; ctx.lineWidth = 4; ctx.strokeRect(7, 7, canvas.width-14, canvas.height-14);
         ctx.fillStyle = '#ede5ce'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.font = '500 55px system-ui, sans-serif'; ctx.fillText(design.shopfronts[Number(index)], 256, 65, 468);
+        ctx.font = '500 42px system-ui, sans-serif'; ctx.fillText(design.shopfronts[Number(index)], canvas.width/2, 49, canvas.width-42);
         const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace;
+        texture.anisotropy=4;
+        // This material deliberately uses ordinary mesh UVs. Applying the
+        // world-projected stone/plaster shader would repeat and distort text.
         m.map = texture; m.color.set('#ffffff'); signTextures.add(texture);
       }
       materials.set(key, m); return m;
@@ -364,7 +368,9 @@ export function createMetropolisWorld(THREE, scene, {
       }
       if(['fins','diagrid','civic','exchange','artdeco'].includes(style))for(let i=-4;i<=4;i++) {
         const dx=i*w/10;
-        B(style==='fins'?'brass':'stone',dx,h*.5,d/2+.7,style==='civic'?2:.8,h-7,1.2,true);
+        // Upper-story ribs finish above the retail fascia and the lobby canopy.
+        // Their former 3.5m bottom cut directly through the new 4.15m shop text.
+        B(style==='fins'?'brass':'stone',dx,(h+3.3)/2,d/2+.7,style==='civic'?2:.8,h-10.3,1.2,true);
       }
       if(style==='diagrid')for(let i=0;i<5;i++)for(const side of [-1,1]) {
         const yy=7+i*(h-9)/5;
@@ -393,6 +399,7 @@ export function createMetropolisWorld(THREE, scene, {
     solid('building',x+(w+12)/4,z,(w-12)/4,d/2,0,h,b.id);
     solid('building-back',x,z-d/2+1,6,1,0,h,b.id);
     solid('building-upper',x,z,w/2,d/2,6,h,b.id);
+    for(const stall of architectureStalls(b))solid('market-stall',x+stall.dx,z+stall.dz,stall.width/2,stall.depth/2,0,stall.height,b.id);
   }
 
   function addressArchitecture(b) {
@@ -501,7 +508,6 @@ export function createMetropolisWorld(THREE, scene, {
       case 'fish-crates':
         for(const side of [-1,1]) {
           awning(side*w*.3,5.1,front+2.5,21,'awning');
-          for(let n=0;n<4;n++) {B('wood',side*w*.3-4.5+n*3,.8,front+2.2,2.4,1.6,1.5);B('glass',side*w*.3-4.5+n*3,1.66,front+2.2,2.1,.1,1.2);}
           finScreen(side*w*.27,10,front+.45,14,3.4,14,'metal');
         }break;
       case 'ferry-clock':
@@ -582,7 +588,7 @@ export function createMetropolisWorld(THREE, scene, {
         for(let n=-8;n<=8;n++)S('sphere','light',n*1.65,6.04,front+6.1,.12,.12,.12);
         B('red',w*.37,12.5,front+1.5,2.8,12,.55);finScreen(w*.37,12.5,front+1.87,2,10,4,'light');break;
       case 'lotus-stalls':
-        for(const side of [-1,1]) {awning(side*w*.3,4.6,front+2.3,23,side<0?'red':'leaves');for(let n=0;n<5;n++) {B('wood',side*w*.3-6+n*3,1,front+2.5,2.5,1.8,1.6);for(let q=0;q<3;q++)S('sphere',q===1?'red':'leaves',side*w*.3-6+n*3+(q-1)*.6,2.04,front+2.5,.35,.27,.35);}}
+        for(const side of [-1,1])awning(side*w*.3,4.6,front+2.3,23,side<0?'red':'leaves');
         break;
       case 'blue-balconies':
         for(const side of [-1,1]) {livingBay(side*w*.3,14,front+.9,0);for(let n=0;n<4;n++)B('metal',side*w*.3-2+n*1.35,13.9,front+2.2,.08,.95,.08);}
@@ -713,10 +719,29 @@ export function createMetropolisWorld(THREE, scene, {
       box('wood',bx,.55,bz,1.1,.14,3.4,opts);box('wood',bx+side*.5,1,bz,.14,.9,3.4,opts);
       for(const dz of [-1.25,1.25])box('metal',bx,.25,bz+dz,.7,.5,.12,opts);
     }
-    if(['market','arcade','shophouse','industrial'].includes(b.style))for(const dx of [-w*.3,w*.3]) {
+    if(['arcade','shophouse','industrial'].includes(b.style))for(const dx of [-w*.3,w*.3]) {
       box(b.index%2?'red':'awning',x+dx,3.5,z+d/2+2.8,9,.25,5,opts);
-      box('wood',x+dx,1.1,z+d/2+2.5,7.5,2,1.5,opts);
-      for(let n=-2;n<=2;n++)stamp('sphere',n%2?'leaves':'red',x+dx+n*1.1,2.3,z+d/2+2.5,.4,.4,.4,opts);
+    }
+    for(const stall of architectureStalls(b)) {
+      const sx=x+stall.dx,sz=z+stall.dz,top=stall.height;
+      box('wood',sx,top/2,sz,stall.width,top,stall.depth,opts);
+      if(stall.goods==='fish') {
+        box('white',sx,top+.018,sz,stall.width-.15,.036,stall.depth-.16,opts);
+        for(let n=-1;n<=1;n++)stamp('sphere','metal',sx+n*.53,top+.095,sz,.21,.06,.09,opts);
+      } else if(stall.goods==='tea') {
+        for(let n=-2;n<=2;n++) {
+          stamp('disc','white',sx+n*.68,top+.016,sz,.14,.032,.14,opts);
+          stamp('cylinder','stone',sx+n*.68,top+.10,sz,.085,.16,.085,opts);
+          stamp('disc','dark',sx+n*.68,top+.183,sz,.067,.012,.067,opts);
+        }
+      } else if(stall.goods==='goods') {
+        for(let n=-2;n<=2;n++)box(n%2?'metal':'wood',sx+n*.65,top+.09,sz,.25,.18,.22,opts);
+      } else {
+        for(let n=-2;n<=2;n++)for(const row of [-1,1]) {
+          const radius=.09+((n+2)%3)*.012;
+          stamp('sphere',n%2?'leaves':'red',sx+n*.29,top+radius,sz+row*.17,radius,radius,radius,opts);
+        }
+      }
     }
     // Twin kiosks and waste bins are visual only outside the vehicle lane.
     box('metal',x-w/2-5,0.7,z-d/2-3,1.2,1.4,1.1,opts);

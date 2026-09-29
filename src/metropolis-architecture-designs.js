@@ -68,3 +68,24 @@ export function architectureDesignFor(building) {
   if (!design) throw new Error(`No architecture design for ${typeof building === 'string' ? building : building.id}`);
   return design;
 }
+
+/** Match a shop-sign canvas to its metre-based facade rectangle. Fixed 4:1
+ * canvases stretch CJK lettering across long retail fascias at close range. */
+export function architectureSignLayout(building) {
+  const worldWidth=building.width*.145+1,worldHeight=.98,pixelHeight=96;
+  return {worldWidth,worldHeight,pixelWidth:Math.round(worldWidth/worldHeight*pixelHeight),pixelHeight};
+}
+
+/** One physical source for retail counters, their goods and permanent collision.
+ * A 1.05m top is reachable by an adult instead of the former 2.1m toy-scale box. */
+export function architectureStalls(building) {
+  const front=building.depth/2,stalls=[];
+  const add=(dx,dz,width,depth,goods)=>stalls.push({dx,dz,width,depth,height:1.05,goods});
+  for(const side of [-1,1]) {
+    if(building.id==='harbor-market')for(let n=0;n<4;n++)add(side*building.width*.3-4.5+n*3,front+2.2,2.4,1.5,'fish');
+    else if(building.id==='lotus-market')for(let n=0;n<5;n++)add(side*building.width*.3-6+n*3,front+2.5,2.5,1.6,'produce');
+    else if(['arcade','shophouse','industrial'].includes(building.style))
+      add(side*building.width*.3,front+2.5,7.5,1.5,building.id==='banyan-teahouse'?'tea':building.style==='industrial'?'goods':'produce');
+  }
+  return stalls;
+}

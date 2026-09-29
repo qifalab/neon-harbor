@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three/three.module.js';
 import { METROPOLIS_BUILDINGS } from '../src/metropolis-catalog.js';
-import { METROPOLIS_ARCHITECTURE, architectureDesignFor } from '../src/metropolis-architecture-designs.js';
+import { METROPOLIS_ARCHITECTURE, architectureDesignFor, architectureSignLayout, architectureStalls } from '../src/metropolis-architecture-designs.js';
 import { createMetropolisWorld } from '../src/metropolis-world.js';
 
 const authored=createMetropolisWorld(THREE,new THREE.Scene(),{streaming:false});
@@ -37,6 +37,49 @@ test('all 192 authored display fronts are visible chunk geometry and clear the c
       assert.ok(z>b.z+b.depth/2,`${b.id}: sign hidden inside building`);
     }
   }
+});
+
+test('shop lettering preserves its physical aspect ratio and uses ordinary UV projection',()=>{
+  for(const b of METROPOLIS_BUILDINGS) {
+    const layout=architectureSignLayout(b),sign=records.find(r=>r.material===`shop:${b.id}:0`);
+    const worldAspect=sign.transform[3]/sign.transform[4],canvasAspect=layout.pixelWidth/layout.pixelHeight;
+    assert.ok(Math.abs(canvasAspect/worldAspect-1)<.002,`${b.id}: lettering would be stretched`);
+    assert.ok(layout.pixelHeight>=96);
+  }
+  authored.root.traverse(mesh=>{
+    if(mesh.material?.userData.streamedSignKey)assert.equal(mesh.material.userData.metropolisWorldMetres,undefined,'typographic signs must not use world-space texture projection');
+  });
+});
+
+test('upper facade ribs do not obscure retail signs or the entrance canopy',()=>{
+  for(const b of METROPOLIS_BUILDINGS.filter(b=>['fins','diagrid','civic','exchange','artdeco'].includes(b.style))) {
+    const ribs=records.filter(r=>r.building===b.id&&r.kind==='box'&&r.transform[3]===(b.style==='civic'?2:.8)&&r.transform[5]===1.2&&r.transform[4]>b.height-11);
+    assert.equal(ribs.length,9,`${b.id}: facade rib coverage changed`);
+    for(const rib of ribs)assert.ok(rib.transform[1]-rib.transform[4]/2>=6.79,`${b.id}: upper facade rib cuts through shop fascia`);
+  }
+});
+
+test('retail counters and collision agree at adult scale, with small goods resting on top',()=>{
+  let counterCount=0;
+  for(const b of METROPOLIS_BUILDINGS)for(const stall of architectureStalls(b)) {
+    counterCount++;assert.equal(stall.height,1.05);
+    const x=b.x+stall.dx,z=b.z+stall.dz,near=(a,c)=>Math.abs(a-c)<1e-7;
+    const counter=records.find(r=>r.building===b.id&&r.kind==='box'&&r.material==='wood'&&near(r.transform[0],x)&&near(r.transform[2],z)&&near(r.transform[3],stall.width)&&near(r.transform[5],stall.depth));
+    assert.ok(counter,`${b.id}: visual retail counter missing`);
+    assert.ok(near(counter.transform[1]+counter.transform[4]/2,stall.height));
+    const collision=authored.colliders.find(c=>c.kind==='market-stall'&&c.buildingId===b.id&&near(c.x,x)&&near(c.z,z));
+    assert.ok(collision,`${b.id}: counter collision missing`);assert.equal(collision.maxY,stall.height);
+    assert.equal(collision.hx,stall.width/2);assert.equal(collision.hz,stall.depth/2);
+    if(stall.goods==='produce') {
+      const fruit=records.filter(r=>r.building===b.id&&r.kind==='sphere'&&Math.abs(r.transform[0]-x)<.7&&Math.abs(r.transform[2]-z)<.4&&r.transform[1]<1.5);
+      assert.equal(fruit.length,10);
+      for(const item of fruit) {
+        assert.ok(item.transform[3]*2>=.18&&item.transform[3]*2<=.24,`${b.id}: oversized produce`);
+        assert.ok(near(item.transform[1]-item.transform[4],stall.height),`${b.id}: produce floats above the counter`);
+      }
+    }
+  }
+  assert.equal(counterCount,28);
 });
 
 test('human-scale motifs and curved components survive actual chunk export',()=>{
