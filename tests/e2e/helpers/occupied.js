@@ -65,14 +65,18 @@ export async function faceRoom(page, yaw) {
   }, yaw, { polling: 'raf', timeout: 15000 });
 }
 
-export async function enterRoom(page, room, corridorX) {
+export async function enterRoom(page, room, corridorX, { doorwayView = false } = {}) {
   await faceRoom(page, Math.PI);
   await walkAxis(page, 'x', corridorX, { timeout: 120000 });
   await walkAxis(page, 'z', room.entrance.z, { sprint: true, timeout: 120000 });
-  await walkAxis(page, 'x', room.arrival.x, { timeout: 120000 });
+  // A small kitchen's chairs can require a turn after entry. Photograph from
+  // the clear doorway instead of demanding a straight walk through furniture.
+  const arrivalX = doorwayView && room.enclosed && room.width <= 10
+    ? room.entrance.x + Math.sign(room.x - corridorX) * 1.6 : room.arrival.x;
+  await walkAxis(page, 'x', arrivalX, { timeout: 120000 });
   await walkAxis(page, 'z', room.arrival.z, { timeout: 120000 });
   expect((await snapshot(page)).city.interior.currentRoomId).toBe(room.id);
-  await faceRoom(page, Math.sign(room.x - corridorX) * (Math.PI / 2 - .28));
+  if (!doorwayView) await faceRoom(page, Math.sign(room.x - corridorX) * (Math.PI / 2 - .28));
 }
 
 export async function leaveRoom(page, room, corridorX) {
