@@ -185,9 +185,9 @@ try {
   expect(museum.furnitureCount).toBeGreaterThan(12);
   expect(museum.roomCount).toBe(4);
   expect(museum.activeFloors).toBe(3);
-  expect(museum.stairs).toHaveLength(2);
+  expect(museum.stairs).toHaveLength(museum.totalFloors - 1);
   const publicFloors=(await page.evaluate(()=>window.__NEON__.snapshot())).city.buildings;
-  expect(publicFloors.every(b=>b.floors.length===4&&b.floors[1].y===4.2&&b.floors[2].y===8.4)).toBe(true);
+  expect(publicFloors.every(b=>b.floors.length>=5&&b.floors[1].y===4.2&&b.floors[2].y===8.4)).toBe(true);
   expect(museum.rooms.some(room => room.type === 'maritime')).toBe(true);
   report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, floorName: museum.floorName, rooms: museum.rooms.map(room => room.name), furnitureCount: museum.furnitureCount };
   await capture('live-north-museum.png');
@@ -209,7 +209,7 @@ try {
   await expect(page.locator('#panel')).toBeHidden();
   await page.waitForFunction(()=>Math.abs(window.__NEON__.snapshot().position.x-285.5)<1);
   await capture('live-high-quality-harbor.png');
-  report.checks.push('Returned to the actual harbor promenade at High quality; four public floors and two physical stair flights per north-shore building are present');
+  report.checks.push('Returned to the actual harbor promenade at High quality; all north-shore storey schedules and the museum stair count match the shipped catalog');
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
   report.success = true;
 } catch (error) {

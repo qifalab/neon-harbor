@@ -12,6 +12,14 @@ const point = (x, z, y = 0) => ({ x, y, z });
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const wrap = (n, limit) => ((n % limit) + limit) % limit;
 const cleanPosition = player => player.position || player;
+const pathLength = path => path.slice(1).reduce((sum, point, index) => sum + Math.hypot(point.x - path[index].x, point.y - path[index].y, point.z - path[index].z), 0);
+function citizenPlacement(route, slot) {
+  if (route.id === 'ferry') return { across: (slot % 3 - 1) * 1.15, along: 6.95 + Math.floor(slot / 3) * .7, doorZ: 6.9 };
+  const cars = route.id === 'high-speed' ? 3 : 2, length = route.vehicleLength / cars - .8, perCar = 12 / cars;
+  const car = Math.floor(slot / perCar), center = (car - (cars - 1) / 2) * (length + .8);
+  const spacing = Math.min(1.8, (length - 2.8) / (perCar - 1)), along = center + (slot % perCar - (perCar - 1) / 2) * spacing;
+  return { across: 0, along, doorZ: center + Math.sign(along - center || 1) * (length / 2 - 2.8) };
+}
 
 export const TRANSIT_STOPS = Object.freeze([
   { id: 'metro-old', routeId: 'metro', name: '旧城 · 海港广场', entrance: point(16, 250), platform: point(16, 250, -14), berth: point(23, 250, -14.7), kind: 'metro' },
@@ -46,6 +54,30 @@ export function metroAccessLayout(stop) {
     landings: [point(x, z + 1), point(x - 3.5, z + 20.5, -7), point(x - 7, z, -14)],
     concourse: { x: x - 7, z: z - 4, width: 4.6, depth: 8, y: -14 },
   };
+}
+
+/** Rail vestibules now have a physical shaft, bridge and clock-driven cabin.
+ * NPCs use this access route without changing the player's legacy E shortcut. */
+export function stationLiftPose(stop, time) {
+  if (stop.kind === 'metro' || stop.kind === 'ferry') return null;
+  const phase = ((time % 26) + 26) % 26, height = stop.platform.y;
+  const eased = t => t * t * (3 - 2 * t);
+  if (phase < 5) return { y: 0, open: true, level: 'street', remaining: 5 - phase };
+  if (phase < 13) return { y: height * eased((phase - 5) / 8), open: false, level: null, remaining: 13 - phase };
+  if (phase < 18) return { y: height, open: true, level: 'platform', remaining: 18 - phase };
+  return { y: height * (1 - eased((phase - 18) / 8)), open: false, level: null, remaining: 26 - phase };
+}
+
+export function citizenStationAccess(stop) {
+  if (stop.kind === 'metro') return [...stop.access.waypoints, { ...stop.board }];
+  if (stop.kind === 'ferry') {
+    const direction = Math.sign(stop.platform.z - stop.entrance.z);
+    return [{ ...stop.entrance }, point(stop.entrance.x, stop.entrance.z + direction * 1.5),
+      point(stop.platform.x, stop.platform.z - direction * 10, stop.platform.y), { ...stop.board }];
+  }
+  const liftX = stop.entrance.x + 4.2, z = stop.entrance.z, y = stop.platform.y;
+  return { street: [point(stop.entrance.x, z + 4.3), point(liftX, z + 4.3), point(liftX, z + 1.6)],
+    cabin: point(liftX, z), platform: [point(liftX, z + 4.3, y), point(liftX, z + 10, y), point(stop.platform.x, z + 10, y), { ...stop.board }] };
 }
 
 /** Pick the adjacent walkable layer, preserving the street/platform overlap. */
@@ -127,11 +159,16 @@ function poseAt(route, time) {
   const segment = route.pieces.find(piece => t < piece.end) || route.pieces[route.pieces.length - 1];
   let f = Math.max(0, Math.min(1, (t - segment.start) / (segment.end - segment.start)));
   if (segment.ease) f = (1 - Math.cos(f * Math.PI)) / 2;
+  const index = route.pieces.indexOf(segment), previous = route.pieces[wrap(index - 1, route.pieces.length)], next = route.pieces[(index + 1) % route.pieces.length];
+  const angle = (a, b) => Math.atan2(Math.sin(b - a), Math.cos(b - a));
+  const fromYaw = segment.stopId || previous.stopId ? segment.yaw : segment.yaw - angle(previous.yaw, segment.yaw) / 2;
+  const toYaw = segment.stopId || next.stopId ? segment.yaw : segment.yaw + angle(segment.yaw, next.yaw) / 2;
+  const yaw = fromYaw + angle(fromYaw, toYaw) * f;
   return {
     x: segment.from.x + (segment.to.x - segment.from.x) * f,
     y: segment.from.y + (segment.to.y - segment.from.y) * f,
     z: segment.from.z + (segment.to.z - segment.from.z) * f,
-    yaw: segment.yaw, stopId: segment.stopId || null, doorsOpen: !!segment.stopId,
+    yaw, stopId: segment.stopId || null, doorsOpen: !!segment.stopId,
     remaining: segment.end - t,
   };
 }
@@ -203,9 +240,50 @@ export class TransitService {
     this.boardedStopId = null;
     this.ridingColliders = this.stops.flatMap(stop => stop.colliders.filter(c => c.physics === false));
     this.onMessage = onMessage;
+    this.citizenPassengers = new Map();
+    this.citizenBoardings = 0;
   }
   route(id) { return this.routes.find(route => route.id === id); }
   stop(id) { return this.stops.find(stop => stop.id === id); }
+  citizenPose(vehicleId, slot = 0) {
+    const vehicle = this.vehicles.find(item => item.id === vehicleId); if (!vehicle) return null;
+    const { across, along } = citizenPlacement(this.route(vehicle.routeId), slot);
+    return { x: vehicle.pose.x + Math.cos(vehicle.pose.yaw) * across + Math.sin(vehicle.pose.yaw) * along,
+      y: vehicle.pose.y + this.route(vehicle.routeId).deckHeight,
+      z: vehicle.pose.z - Math.sin(vehicle.pose.yaw) * across + Math.cos(vehicle.pose.yaw) * along, yaw: vehicle.pose.yaw };
+  }
+  citizenBoardingPath(stopId, vehicleId, slot) {
+    const stop = this.stop(stopId), vehicle = this.vehicles.find(item => item.id === vehicleId);
+    if (!stop || !vehicle) return null;
+    const route = this.route(vehicle.routeId), { doorZ } = citizenPlacement(route, slot), p = vehicle.pose;
+    const across = (stop.board.x - p.x) * Math.cos(p.yaw) - (stop.board.z - p.z) * Math.sin(p.yaw);
+    const side = Math.sign(across) || 1, deck = p.y + route.deckHeight;
+    const world = (x, z, y = deck) => ({ x: p.x + Math.cos(p.yaw) * x + Math.sin(p.yaw) * z,
+      z: p.z - Math.sin(p.yaw) * x + Math.cos(p.yaw) * z, y });
+    const path = [{ ...stop.board }, world(across, doorZ, stop.platform.y)];
+    if (route.id !== 'ferry') path.push(world(side * Math.max(1.7, Math.abs(across) - stop.halfWidth + .15), doorZ, stop.platform.y));
+    path.push(world(side * 1.62, doorZ), world(0, doorZ), this.citizenPose(vehicleId, slot));
+    return path;
+  }
+  reserveCitizen(id, stopId, walkingSpeed = 2.3) {
+    if (this.citizenPassengers.has(id)) return this.citizenPassengers.get(id);
+    const stop = this.stop(stopId); if (!stop) return null;
+    for (const vehicle of this.vehicles) {
+      if (vehicle.routeId !== stop.routeId || vehicle.pose.stopId !== stopId) continue;
+      const occupied = new Set([...this.citizenPassengers.values()].filter(item => item.vehicleId === vehicle.id).map(item => item.slot));
+      const capacity = vehicle.routeId === 'ferry' ? 9 : 12;
+      for (let slot = 0; slot < capacity; slot++) {
+        if (occupied.has(slot)) continue;
+        const path = this.citizenBoardingPath(stopId, vehicle.id, slot);
+        if (vehicle.pose.remaining < pathLength(path) / walkingSpeed + .75) continue;
+        const ticket = { vehicleId: vehicle.id, slot, boardedAt: stopId, phase: 'boarding' };
+        this.citizenPassengers.set(id, ticket); return ticket;
+      }
+    }
+    return null;
+  }
+  confirmCitizen(id) { const ticket = this.citizenPassengers.get(id); if (ticket) { ticket.phase = 'riding'; this.citizenBoardings++; } }
+  releaseCitizen(id) { this.citizenPassengers.delete(id); }
   get riding() { return !!this.ridingVehicleId; }
   get boardingState() { return this.riding ? 'riding' : this.activeStopId ? 'platform' : 'street'; }
   get passengerPose() {
@@ -340,7 +418,8 @@ export class TransitService {
       label: route?.name || '', secondsToArrival, nextStopId, time: this.time, riding: this.riding, ridingVehicleId: this.ridingVehicleId, currentStop: this.activeStopId, boardingState: this.boardingState,
       passengerPose: this.passengerPose, routes: this.routes.map(route => ({ id: route.id, name: route.name, duration: route.duration, fleet: route.offsets.length })),
       stops: this.stops.map(stop => ({ id: stop.id, name: stop.name, routeId: stop.routeId, kind: stop.kind, entrance: { ...stop.entrance }, entry: { ...stop.entrance }, platform: { ...stop.platform }, board: { ...stop.board }, exit: { ...stop.exit }, streetExit: { ...stop.streetExit }, walkable: stop.kind === 'metro', access: stop.access, nextArrival: this.nextArrival(stop.id) })),
-      vehicles: this.vehicles.map(vehicle => ({ id: vehicle.id, routeId: vehicle.routeId, ...vehicle.pose })) };
+      vehicles: this.vehicles.map(vehicle => ({ id: vehicle.id, routeId: vehicle.routeId, ...vehicle.pose })),
+      citizenPassengers: [...this.citizenPassengers].map(([id, ticket]) => ({ id, ...ticket })), citizenBoardings: this.citizenBoardings };
   }
 }
 
@@ -348,7 +427,7 @@ export class TransitService {
 export function createTransitSystem(THREE, scene, options = {}) {
   const service = new TransitService(options), root = new THREE.Group(), staticRoot = new THREE.Group();
   root.name = 'Metropolis · public transport'; staticRoot.name = 'Stations, viaducts and rails'; root.add(staticRoot); scene.add(root);
-  const surfaceMaterials = createMetropolisMaterials(THREE), stationLights = [];
+  const surfaceMaterials = createMetropolisMaterials(THREE), stationLights = [], accessLifts = new Map();
   const colliders = [], materials = new Map(), batches = new Map(), boxGeometry = new THREE.BoxGeometry(1, 1, 1), dummy = new THREE.Object3D();
   const palette = { concrete: '#a29f94', floor: '#c8c9bd', dark: '#2f414b', glass: '#658794', silver: '#c9d2cf', brass: '#b99a63', stripe: '#e9c16c', white: '#e0e5dd', seat: '#426f72', wood: '#98785b', water: '#5d918d', rubber: '#212c31', red: '#f1756b', light: '#f8e6b3' };
   function material(key) {
@@ -496,9 +575,11 @@ export function createTransitSystem(THREE, scene, options = {}) {
       // Keep the atlas/save entrance on an actual street landing. Extending
       // the raised gangway past this point would embed arriving feet in wood.
       const towardPier = Math.sign(p.z - e.z);
-      const streetEnd = e.z + towardPier * 1.5, pierEnd = p.z + towardPier;
+      const streetEnd = e.z + towardPier * 1.5, pierEnd = p.z - towardPier * 10;
       const mid = (streetEnd + pierEnd) / 2;
-      obstacle('wood', p.x, 0.3, mid, 7, 0.5, Math.abs(pierEnd - streetEnd), `${stop.id}-access-walkway`);
+      const run = Math.abs(pierEnd - streetEnd), pitch = -towardPier * Math.atan2(p.y, run);
+      stamp('wood', p.x, p.y / 2 - .1, mid, 7, .2, Math.hypot(run, p.y), 0, pitch);
+      colliders.push({ ...collider(`${stop.id}-access-walkway`, p.x, mid, 3.5, run / 2, -.2, p.y, 'transit-gangway'), physics: false });
       for (const dx of [-13, 13]) railEdge(p.x + dx, p.z, 0.06, 20, p.y);
       // A bright gangway identifies the exact boarding position.
       stamp('silver', p.x, p.y + 0.03, p.z + side * 10, 3.7, 0.1, 6);
@@ -520,14 +601,33 @@ export function createTransitSystem(THREE, scene, options = {}) {
     else {
     // Compact street vestibules stay outside the road lanes. The elevator is
     // the explicit transition between street collision and platform collision.
-    obstacle('concrete', vestibuleX, 0.13, e.z, 5.2, 0.26, 7);
+    obstacle('concrete', vestibuleX, -0.05, e.z, 5.2, 0.1, 7);
     obstacle('glass', vestibuleX - 2.5, 1.8, e.z, 0.14, 3.3, 7);
     obstacle('glass', vestibuleX + 2.5, 1.8, e.z, 0.14, 3.3, 7);
-    obstacle('dark', vestibuleX, 3.55, e.z, 5.4, 0.25, 7.2);
+    for (const side of [-1, 1]) obstacle('dark', vestibuleX + side * 2.38, 3.55, e.z, .64, .25, 7.2);
     for (const dz of [-3.4, 3.4]) obstacle('silver', vestibuleX + 2.3, 1.75, e.z + dz, 0.2, 3.5, 0.2);
     stamp(color, vestibuleX, 2.8, e.z - 3.54, 4.8, 0.12, 0.06);
     sign(`${route.name} · E 进入`, e.x, 3.9, e.z + 0.2, 11.5, color);
     sign('LIFT / 无障碍电梯', vestibuleX, 2.85, e.z + 3.58, 4.6, color);
+    // Real transparent shaft and elevated access bridge for resident journeys.
+    for (const side of [-1, 1]) {
+      stamp('glass', vestibuleX + side * 2.05, (p.y + 3.25) / 2, e.z, .1, p.y + 3.25, 3.7);
+      stamp('silver', vestibuleX + side * 2.1, (p.y + 3.3) / 2, e.z - 1.85, .12, p.y + 3.3, .12);
+      stamp('silver', vestibuleX + side * 2.1, (p.y + 3.3) / 2, e.z + 1.85, .12, p.y + 3.3, .12);
+    }
+    stamp('glass', vestibuleX, (p.y + 3.25) / 2, e.z - 1.9, 4.1, p.y + 3.25, .08);
+    stamp('silver', vestibuleX, p.y + 3.25, e.z, 4.3, .16, 4);
+    stamp('floor', vestibuleX, p.y - .09, e.z + 6, 4.5, .18, 8);
+    stamp('floor', (vestibuleX + p.x) / 2, p.y - .09, e.z + 10, Math.abs(vestibuleX - p.x) + 4.5, .18, 4.5);
+    for (const side of [-1, 1]) railEdge(vestibuleX + side * 2.15, e.z + 5, .055, 6, p.y);
+    for (const side of [-1, 1]) railEdge((vestibuleX + p.x) / 2, e.z + 10 + side * 2.15, Math.abs(vestibuleX - p.x), .06, p.y);
+    const accessCabin = new THREE.Group(); accessCabin.name = `Station access lift · ${stop.id}`; accessCabin.position.set(vestibuleX, 0, e.z);
+    meshBox(accessCabin, 'floor', 0, -.07, 0, 3.7, .14, 3.4);
+    meshBox(accessCabin, 'silver', 0, 3.05, 0, 3.8, .14, 3.5);
+    meshBox(accessCabin, 'glass', 0, 1.5, -1.7, 3.7, 2.9, .08);
+    for (const side of [-1, 1]) meshBox(accessCabin, 'glass', side * 1.85, 1.5, 0, .08, 2.9, 3.4);
+    const doors = [-1, 1].map(side => ({ side, mesh: meshBox(accessCabin, 'glass', side * .92, 1.5, 1.7, 1.82, 2.9, .08) }));
+    root.add(accessCabin); accessLifts.set(stop.id, { stop, cabin: accessCabin, doors });
     }
     const hx = stop.halfWidth, hz = stop.halfLength;
     stamp('floor', p.x, p.y - 0.32, p.z, hx * 2, 0.64, hz * 2);
@@ -560,11 +660,11 @@ export function createTransitSystem(THREE, scene, options = {}) {
       for (let dz = -hz + 5; dz <= hz - 4; dz += 11) {
         stamp('dark', p.x - trainSide * 3.4, p.y + 2.2, p.z + dz, 0.18, 4.4, 0.18);
         stamp('light', p.x, p.y + 4.35, p.z + dz, 6, 0.06, 0.14);
-        if (!roadBelow(p.x, p.z + dz)) obstacle('concrete', p.x, (p.y - 0.6) / 2, p.z + dz, 1.2, p.y - 0.6, 1.2);
+        // A former support at dz=0 occupied two light-rail street entrances.
+        // Move it along the platform; access stays a real walking route.
+        const supportZ = p.z + (Math.abs(dz) < 3 ? dz + 8 : dz);
+        if (!roadBelow(p.x, supportZ)) obstacle('concrete', p.x, (p.y - 0.6) / 2, supportZ, 1.2, p.y - 0.6, 1.2);
       }
-      // Transparent lift shaft makes the elevated station connection legible.
-      stamp('glass', vestibuleX, p.y / 2, e.z, 4.5, p.y, 5.4);
-      stamp('silver', (vestibuleX + p.x) / 2, p.y - 0.2, e.z + 20, Math.abs(vestibuleX - p.x) + 3, 0.35, 4);
     }
     for (const dz of [-14, 12]) {
       stop.colliders.push(collider(`${stop.id}-bench-${dz}`, p.x - trainSide * 1.7, p.z + dz, 0.63, 1.7, p.y, p.y + 1.45, 'transit-bench'));
@@ -652,7 +752,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
           const door = meshBox(group, 'silver', side * 1.62, 1.74, cz + dz, 0.065, 2.05, 1.05);
           const window = meshBox(door, 'glass', 0, 0.13, 0, 1.08, 0.46, 0.76);
           window.castShadow = false;
-          doors.push({ mesh: door, z: cz + dz, side: Math.sign(dz) });
+          doors.push({ mesh: door, z: cz + dz, side: Math.sign(dz), boardSide: side });
           meshBox(group, 'brass', side * 0.6, 1.92, cz + dz, 0.035, 2.15, 0.035);
         }
       }
@@ -670,23 +770,29 @@ export function createTransitSystem(THREE, scene, options = {}) {
       meshBox(group, 'brass', 0, 2.6, cz, 0.035, 0.035, carLength - 1);
     }
     group.userData.doors = doors;
+    const plates = new THREE.InstancedMesh(boxGeometry, material('silver'), cars * 4);
+    plates.name = 'Retractable boarding plates'; plates.frustumCulled = false; group.add(plates);
+    group.userData.boardingPlates = { mesh: plates, entries: doors.map(door => ({ side: door.boardSide, z: door.z })) };
     return group;
   }
   function buildFerry() {
-    const group = new THREE.Group();
+    const group = new THREE.Group(), gates = [];
     meshBox(group, '#395b65', 0, 0.26, 0, 6.6, 1.5, 17.5);
     meshBox(group, 'white', 0, 0.95, 0, 7.0, 0.32, 18.2);
     meshBox(group, 'wood', 0, 1.31, 0, 6.7, 0.15, 17.6);
     meshBox(group, '#77bda2', 0, 2.2, 0, 4.6, 1.7, 9.8);
     for (const side of [-1, 1]) {
       for (let z = -4; z <= 4; z += 1.5) meshBox(group, 'glass', side * 2.34, 2.35, z, 0.06, 1.1, 1.3);
-      meshBox(group, 'silver', side * 3.2, 2.1, 0, 0.065, 0.065, 17.3);
-      for (let z = -8; z <= 8; z += 1.6) meshBox(group, 'silver', side * 3.2, 1.71, z, 0.045, 0.8, 0.045);
+      meshBox(group, 'silver', side * 3.2, 2.1, -1.425, .065, .065, 14.45);
+      meshBox(group, 'silver', side * 3.2, 2.1, 8.325, .065, .065, .65);
+      const gate = meshBox(group, 'silver', side * 3.2, 2.1, 6.9, .065, .065, 2.2);
+      gates.push({ mesh: gate, z: 6.9, side: -1, travel: 2.3, boardSide: side });
+      for (let z = -8; z <= 8; z += 1.6) if (z < 5.8 || z > 8) meshBox(group, 'silver', side * 3.2, 1.71, z, 0.045, 0.8, 0.045);
       for (const z of [-6, 6]) {
         meshBox(group, 'wood', side * 1.55, 1.85, z, 2.3, 0.16, 0.7);
         meshBox(group, 'wood', side * 1.55, 2.13, z - 0.3, 2.3, 0.55, 0.09);
       }
-      for (const z of [-6.7, 0, 6.7]) {
+      for (const z of [-6.7, 0, 4.5]) {
         const buoy = new THREE.Mesh(buoyGeometry, material('red'));
         buoy.rotation.y = Math.PI / 2; buoy.position.set(side * 3.3, 1.72, z); group.add(buoy);
       }
@@ -699,13 +805,16 @@ export function createTransitSystem(THREE, scene, options = {}) {
     meshBox(group, 'light', -3.35, 2.0, 4.8, 0.08, 0.15, 0.15);
     meshBox(group, 'red', 3.35, 2.0, 4.8, 0.08, 0.15, 0.15);
     // The forward outer deck remains open for the passenger and forward view.
-    group.userData.doors = [];
+    group.userData.doors = gates;
+    const plates = new THREE.InstancedMesh(boxGeometry, material('wood'), 1);
+    plates.name = 'Ferry boarding gangway'; plates.frustumCulled = false; group.add(plates);
+    group.userData.boardingPlates = { mesh: plates, entries: [{ side: -1, z: 6.9 }] };
     return group;
   }
   function batchVehicle(group) {
     const animated = new Set(group.userData.doors.map(door => door.mesh)), buckets = new Map();
     for (const child of [...group.children]) {
-      if (!child.isMesh || animated.has(child)) continue;
+      if (!child.isMesh || animated.has(child) || child === group.userData.boardingPlates?.mesh) continue;
       child.updateMatrix();
       const key = `${child.geometry.uuid}:${child.material.uuid}`;
       if (!buckets.has(key)) buckets.set(key, { geometry: child.geometry, material: child.material, matrices: [], shadow: child.castShadow });
@@ -743,14 +852,39 @@ export function createTransitSystem(THREE, scene, options = {}) {
   service.update = (dt, viewer = service.viewer) => {
     const result = updateService(dt, viewer);
     const view = viewer ? cleanPosition(viewer) : null;
+    for (const { stop, cabin, doors } of accessLifts.values()) {
+      const pose = stationLiftPose(stop, service.time); cabin.position.y = pose.y;
+      cabin.visible = !view || distance(view, stop.entrance) < 200;
+      for (const door of doors) door.mesh.position.x = door.side * (.92 + (pose.open ? 1.8 : 0));
+    }
     for (const { light, stop } of stationLights) light.visible = !!view && distance(view, stop.entrance) < 65 && view.y < 2;
     for (const vehicle of service.vehicles) {
       const mesh = fleet.get(vehicle.id), pose = vehicle.pose;
       mesh.position.set(pose.x, pose.y, pose.z); mesh.rotation.y = pose.yaw;
       mesh.visible = !view || vehicle.id === service.ridingVehicleId || distance(view, pose) < 700;
       if (view && vehicle.routeId === 'metro' && view.y > -5) mesh.visible = false;
+      const stop = pose.stopId && service.stop(pose.stopId);
+      const localAcross = stop ? (stop.board.x - pose.x) * Math.cos(pose.yaw) - (stop.board.z - pose.z) * Math.sin(pose.yaw) : 0;
+      const boardSide = Math.sign(localAcross) || 1;
       for (const door of mesh.userData.doors) {
-        door.mesh.position.z = door.z + (pose.doorsOpen ? DOOR_TRAVEL * door.side : 0); door.mesh.updateMatrix();
+        const open = pose.doorsOpen && door.boardSide === boardSide;
+        door.mesh.position.z = door.z + (open ? (door.travel || DOOR_TRAVEL) * door.side : 0); door.mesh.updateMatrix();
+      }
+      const plates = mesh.userData.boardingPlates;
+      if (plates) {
+        plates.mesh.visible = !!stop;
+        if (stop) {
+          const ferry = vehicle.routeId === 'ferry', inside = ferry ? 3.2 : 1.55;
+          const outside = ferry ? Math.abs(localAcross) : Math.abs(localAcross) - stop.halfWidth + .2;
+          const deck = service.route(vehicle.routeId).deckHeight, platformY = stop.platform.y - pose.y;
+          plates.entries.forEach((entry, index) => {
+            const width = Math.max(.4, outside - inside), dy = platformY - deck;
+            dummy.position.set(entry.side * (inside + outside) / 2, (deck + platformY) / 2 - .04, entry.z);
+            dummy.rotation.set(0, 0, entry.side * Math.atan2(dy, width));
+            dummy.scale.set(entry.side === boardSide ? Math.hypot(width, dy) : .0001, .07, 1.2); dummy.updateMatrix(); plates.mesh.setMatrixAt(index, dummy.matrix);
+          });
+          plates.mesh.instanceMatrix.needsUpdate = true;
+        }
       }
       for (const batch of mesh.userData.doorBatches || []) {
         batch.entries.forEach(({ door, node }, index) => {
@@ -766,8 +900,9 @@ export function createTransitSystem(THREE, scene, options = {}) {
           // conservatively covers every animation pose and vehicle rotation.
           // Let the normal camera/shadow frusta reject offscreen door batches.
           batch.mesh.computeBoundingBox();
-          batch.mesh.boundingBox.min.z -= DOOR_TRAVEL;
-          batch.mesh.boundingBox.max.z += DOOR_TRAVEL;
+          const travel = Math.max(DOOR_TRAVEL, ...mesh.userData.doors.map(door => door.travel || DOOR_TRAVEL));
+          batch.mesh.boundingBox.min.z -= travel;
+          batch.mesh.boundingBox.max.z += travel;
           batch.mesh.boundingSphere = batch.mesh.boundingBox.getBoundingSphere(new THREE.Sphere());
         }
       }
@@ -777,6 +912,7 @@ export function createTransitSystem(THREE, scene, options = {}) {
   service.root = root;
   service.colliders = colliders;
   service.fleet = fleet;
+  service.accessLifts = accessLifts;
   service.staticBatchCount = batches.size;
   service.update(0);
   return service;

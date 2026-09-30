@@ -2,6 +2,7 @@ import { CHARACTER_STYLES } from './models.js';
 import { circleOBB, SpatialIndex } from './collision.js';
 import { createCitizenCharacter } from './citizen-appearance.js';
 import { createCitizenIdentity, citizenRoutine, citizenDayPeriod, citizenDialogue, CITIZEN_ACTIVITY_LABELS } from './citizen-life.js';
+import { CitizenJourneys } from './citizen-journeys.js';
 
 const RADIUS = .37;
 export const PEOPLE_BUDGET = Object.freeze({ logicalPerAddress: 5, detailed: 32, distant: 112,
@@ -48,7 +49,7 @@ export function createTransitWaitingRoute(stop) {
 /** Stateful logical residents are independent of render instances. Returning to
  * a district resumes its people, while only a bounded nearby set owns skeletons. */
 export function createPeopleSystem(THREE, scene, {
-  buildings = [], groundHeightAt = () => 0, colliders = [], streetStops = [],
+  buildings = [], groundHeightAt = () => 0, colliders = [], streetStops = [], transit = null,
 } = {}) {
   const root = new THREE.Group(); root.name = 'Metropolis street life'; scene.add(root);
   const routes = createPedestrianRoutes(buildings), residents = [], models = new Map(), pool = [];
@@ -109,6 +110,8 @@ export function createPeopleSystem(THREE, scene, {
   const marker = new THREE.Object3D(), color = new THREE.Color(), distantTint = new THREE.Color('#d6cbbd');
   let time = 0, lastPosition = { x: 0, z: 0 }, lastHour = 12, released = false, visibleFar = 0;
   for (const resident of residents) if (resident.state === 'walking') chooseDestination(resident, 12);
+  const journeys = transit ? new CitizenJourneys({ residents, buildings, transit, colliders }) : null;
+  let journeyClock = transit?.time || 0, lastInterior = null;
 
   function release(id) {
     const model = models.get(id); if (!model) return;
@@ -153,7 +156,7 @@ export function createPeopleSystem(THREE, scene, {
     } else if (walking && ['book', 'parcel'].includes(resident.identity.prop)) {
       joints.leftArm.rotation.x = -.12; joints.leftElbow.rotation.x = -.72;
     }
-    model.position.set(resident.x, groundHeightAt(resident.x, resident.z) + Math.sin(resident.phase * 2) * resident.gait * .012, resident.z);
+    model.position.set(resident.x, (journeys ? resident.y : groundHeightAt(resident.x, resident.z)) + Math.sin(resident.phase * 2) * resident.gait * .012, resident.z);
     model.rotation.set(resident.identity.age === 'elder' ? .025 : 0, resident.yaw,
       Math.sin(walking ? resident.phase : time * 1.7 + resident.phase) * (walking ? .012 : .0025));
     model.userData.setDetail(nearDistance < 18 ? 0 : nearDistance < 52 ? 1 : 2);
@@ -191,10 +194,15 @@ export function createPeopleSystem(THREE, scene, {
     resident.pause = 0;
   }
 
-  function update(dt, { position = lastPosition, hour = lastHour, paused = false, vehicles = [] } = {}) {
+  function update(dt, { position = lastPosition, hour = lastHour, paused = false, vehicles = [], interior = null } = {}) {
     if (released) return;
     dt = paused ? 0 : Math.max(0, Math.min(.1, Number.isFinite(dt) ? dt : 0));
-    lastPosition = position; lastHour = hour; time += dt;
+    lastPosition = position; lastHour = hour; lastInterior = interior; time += dt;
+    if (journeys && !paused) {
+      let elapsed = Math.max(0, Math.min(.25, transit.time - journeyClock));
+      while (elapsed > 1e-7) { const step = Math.min(.05, elapsed); journeys.update(step, { hour, vehicles }); elapsed -= step; }
+      journeyClock = transit.time;
+    }
     // A pavement route never leaves its block. Its only possible neighbours
     // are the other four local residents, avoiding a city-wide map every frame.
     const crowded = (resident, point) => {
@@ -206,7 +214,7 @@ export function createPeopleSystem(THREE, scene, {
       return false;
     };
     for (const resident of residents) {
-      if (dt === 0) continue;
+      if (dt === 0 || journeys) continue;
       if (resident.routine.period !== citizenDayPeriod(hour)) chooseDestination(resident, hour);
       if (resident.interactionUntil > time) {
         resident.state = 'greeting';
@@ -254,6 +262,9 @@ export function createPeopleSystem(THREE, scene, {
     if (dt > 0 || !collisionIndexReady) rebuildCollisionIndex();
     candidates.length = 0; near.length = 0; active.clear();
     for (const resident of residents) {
+      if (journeys && (interior?.moving || (interior?.buildingId ? resident.insideBuildingId !== interior.buildingId ||
+        (!interior.visibleFloors.includes(resident.floorId) && Math.abs(resident.y - (position.y || 0)) > 2.4) : !!resident.insideBuildingId))) continue;
+      if (journeys && Math.abs(resident.y - (position.y || 0)) > 9) continue;
       const dx = resident.x - position.x, dz = resident.z - position.z, d2 = dx * dx + dz * dz;
       if (d2 > PEOPLE_BUDGET.distantDistance ** 2) continue;
       resident.view.distance = Math.sqrt(d2); candidates.push(resident.view);
@@ -273,7 +284,7 @@ export function createPeopleSystem(THREE, scene, {
     visibleFar = 0;
     for (const { resident } of candidates) {
       if (models.has(resident.id) || visibleFar === PEOPLE_BUDGET.distant) continue;
-      marker.position.set(resident.x, groundHeightAt(resident.x, resident.z), resident.z);
+      marker.position.set(resident.x, journeys ? resident.y : groundHeightAt(resident.x, resident.z), resident.z);
       marker.rotation.set(0, resident.yaw, resident.state === 'walking' ? Math.sin(resident.phase) * .02 : 0);
       marker.scale.set(resident.height * resident.identity.build, resident.height, resident.height); marker.updateMatrix(); distant.setMatrixAt(visibleFar, marker.matrix);
       color.set(CHARACTER_STYLES[resident.style].jacket).lerp(distantTint, .55);
@@ -284,9 +295,12 @@ export function createPeopleSystem(THREE, scene, {
   }
 
   function nearest(player) {
-    if (!player || Math.abs((player.y || 0) + (player.groundY || 0) - groundHeightAt(player.x, player.z)) > 2.5) return null;
+    if (!player) return null;
+    if (!journeys && Math.abs((player.y || 0) + (player.groundY || 0) - groundHeightAt(player.x, player.z)) > 2.5) return null;
     let result = null, range = 3.2;
     for (const resident of residents) {
+      if (journeys && (Math.abs((player.groundY || 0) + (player.y || 0) - resident.y) > 2.3 ||
+        (lastInterior?.buildingId ? resident.insideBuildingId !== lastInterior.buildingId : !!resident.insideBuildingId))) continue;
       const d = distance(resident, player);
       if (d < range) { result = resident; range = d; }
     }
@@ -298,10 +312,10 @@ export function createPeopleSystem(THREE, scene, {
   }
   function interact(player) {
     const resident = nearest(player); if (!resident) return null;
-    resident.interactionUntil = time + 7;
+    resident.interactionUntil = (journeys ? transit.time : time) + 7;
     const building = resident.building;
     return { type: 'conversation', id: resident.id, name: `${resident.identity.name} · ${resident.identity.role}`,
-      message: citizenDialogue(resident, lastHour, resident.dialogue++), buildingId: building.id,
+      message: journeys && resident.journey.goal ? journeyDialogue(resident, resident.dialogue++) : citizenDialogue(resident, lastHour, resident.dialogue++), buildingId: building.id,
       role: resident.identity.role, district: resident.identity.districtName, purpose: resident.routine.purpose,
       target: { x: building.entrance?.x ?? building.x, z: building.entrance?.z ?? building.z } };
   }
@@ -311,12 +325,18 @@ export function createPeopleSystem(THREE, scene, {
       styles: new Set(residents.map(person => CHARACTER_STYLES[person.style].id)).size,
       identities: new Set(residents.map(person => person.identity.name)).size,
       activities: Object.fromEntries(Object.keys(CITIZEN_ACTIVITY_LABELS).map(state => [state, residents.filter(person => person.state === state).length])),
-      time, people: residents.map(person => ({ id: person.id, x: person.x, z: person.z, yaw: person.yaw,
+      time, journeys: journeys?.snapshot() || null, people: residents.map(person => ({ id: person.id, x: person.x, y: journeys ? person.y : groundHeightAt(person.x, person.z), z: person.z, yaw: person.yaw,
         state: person.state, style: CHARACTER_STYLES[person.style].id, groupId: person.groupId, buildingId: person.building.id,
         name: person.identity.name, role: person.identity.role, district: person.identity.districtName,
         purpose: person.routine.purpose, event: person.routine.event, period: person.routine.period,
         activity: CITIZEN_ACTIVITY_LABELS[person.state], cycle: person.cycle, destination: person.destination,
         streetStop: person.stop?.id || null,
+        insideBuildingId: person.insideBuildingId || null, floorId: person.floorId || null, roomId: person.roomId || null,
+        journey: person.journey ? { phase: person.journey.phase, home: person.journey.home, work: person.journey.work,
+          destinationBuildingId: person.journey.goal?.buildingId || null, destinationFloorId: person.journey.goal?.floorId || null,
+          destinationRoomId: person.journey.goal?.roomId || null, stationId: person.journey.stationId,
+          vehicleId: person.journey.ticket?.vehicleId || null, routeId: person.journey.routeId,
+          crossingId: person.journey.crossingId, visits: person.journey.visits, history: person.journey.history } : null,
         materialized: models.has(person.id) })) };
   }
   function rebuildCollisionIndex() {
@@ -324,7 +344,8 @@ export function createPeopleSystem(THREE, scene, {
     collisionGrid.clear();
     for (const resident of residents) {
       const body = resident.collisionBody;
-      body.x = resident.x; body.z = resident.z; body.groundY = groundHeightAt(resident.x, resident.z);
+      body.x = resident.x; body.z = resident.z; body.groundY = journeys ? resident.y : groundHeightAt(resident.x, resident.z);
+      if (journeys && (resident.journey.ticket || resident.insideBuildingId)) continue;
       const key = `${Math.floor(body.x / collisionCellSize)}:${Math.floor(body.z / collisionCellSize)}`;
       let bucket = collisionGrid.get(key);
       if (!bucket) { bucket = collisionBucketPool.pop() || []; collisionGrid.set(key, bucket); }
@@ -350,11 +371,23 @@ export function createPeopleSystem(THREE, scene, {
   }
   function dispose() {
     if (released) return;
-    released = true; scene.remove(root); root.clear(); models.clear(); pool.length = 0;
+    released = true; journeys?.dispose(); scene.remove(root); root.clear(); models.clear(); pool.length = 0;
     distant.dispose(); farGeometry.dispose(); farMaterial.dispose();
     collisionGrid.clear(); collisionBucketPool.length = 0; candidates.length = 0; near.length = 0; active.clear();
   }
-  return { root, routes, update, snapshot, getPrompt, interact, getCollisionBodies, dispose };
+  return { root, routes, update, snapshot, getPrompt, interact, getCollisionBodies, dispose,
+    trafficYieldAt: car => journeys?.trafficYieldAt(car) || false, journeys };
+}
+
+function journeyDialogue(resident, sequence) {
+  const j = resident.journey, goal = j.goal;
+  const lines = [
+    `我叫${resident.identity.name}，在${resident.building.name}做${resident.identity.role}。现在${resident.routine.purpose}。`,
+    `我的目的地是${goal.building.name}，${goal.floor.label}的${goal.roomName}；进门后沿走廊和楼梯就能到。`,
+    j.ticket ? `我正在乘坐${j.routeId}线路，到目的站后下车，再步行去${goal.building.name}。` : `过街等人行灯，站台等车辆停稳开门；然后继续去${goal.building.name}。`,
+    `今天已经到访${j.visits}处房间。做完这里的事，就继续去下一处，晚上返回住处。`,
+  ];
+  return lines[sequence % lines.length];
 }
 
 /** Low-polygon, properly proportioned silhouettes are merged once, then drawn

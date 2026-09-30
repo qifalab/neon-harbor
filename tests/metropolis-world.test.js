@@ -8,12 +8,15 @@ import { validateCityChunk } from '../src/city-streaming.js';
 const world = createMetropolisWorld(THREE,new THREE.Scene(),{streaming:false});
 const inside = (collider,x,z,y=1) => x>collider.x-collider.hx && x<collider.x+collider.hx && z>collider.z-collider.hz && z<collider.z+collider.hz && y>=collider.minY && y<=collider.maxY;
 
-test('48 permanent addresses have unique identity, four reachable public floors, and distinct programmes',()=>{
+test('48 permanent addresses have unique identity, continuous natural storeys, and distinct programmes',()=>{
   assert.equal(METROPOLIS_BUILDINGS.length,48);assert.equal(new Set(METROPOLIS_BUILDINGS.map(b=>b.id)).size,48);
   assert.equal(METROPOLIS_DISTRICTS.length,6);assert.ok(new Set(METROPOLIS_BUILDINGS.map(b=>b.style)).size>=18);
   for(const b of METROPOLIS_BUILDINGS) {
     assert.ok(b.description.length>15);assert.equal(b.entrance.z,b.z+b.depth/2+3);
-    assert.deepEqual(b.floors.map(f=>f.type),['lobby','gallery','workplace','observation']);
+    assert.deepEqual(b.floors.slice(0,3).map(f=>f.id),['lobby','gallery','workplace']);
+    assert.equal(b.floors.at(-1).id,'observation');
+    assert.deepEqual(b.floors.map(f=>f.level),Array.from({length:b.floors.length},(_,i)=>i+1));
+    for(let i=1;i<b.floors.length;i++)assert.ok(b.floors[i].y-b.floors[i-1].y>=3.8&&b.floors[i].y-b.floors[i-1].y<4.9);
     assert.deepEqual(b.floors.slice(0,3).map(f=>f.y),[0,4.2,8.4]);
     assert.ok(b.floors.slice(0,3).every(f=>f.stairs));
     assert.ok(b.floors[3].y>b.floors[2].y);
