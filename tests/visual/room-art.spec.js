@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { METROPOLIS_BUILDINGS } from '../../src/metropolis-catalog.js';
 import { snapshot } from '../e2e/helpers/walking.js';
-import { bootOccupied, enterAddress, chooseStorey, enterRoom, leaveRoom } from '../e2e/helpers/occupied.js';
+import { bootOccupied, enterAddress, chooseStorey, enterRoom, leaveRoom, faceRoom } from '../e2e/helpers/occupied.js';
 
 // This captures actual rendered rooms using the atlas, lift, walk controls and
 // camera drag. Geometry/count assertions are never labelled pixel approval.
@@ -20,6 +20,9 @@ for (const building of METROPOLIS_BUILDINGS) {
       for (const [index, room] of ordered) {
         await enterRoom(page, room, building.x);
         const state = await snapshot(page);
+        // Compact rooms have offset doors. Aim from the real arrival point
+        // toward this room's centre so bathrooms show fixtures, not a wall.
+        await faceRoom(page, Math.atan2(room.x - state.position.x, room.z - state.position.z));
         expect(state.position.y).toBeCloseTo(building.floors.find(item => item.id === id).y, 1);
         expect(room.number).toBeTruthy(); expect(room.art.subject).toBeTruthy();
         const name = `${building.id}-${id}-room-${index + 1}.jpg`;
