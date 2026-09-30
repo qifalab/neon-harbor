@@ -1,6 +1,6 @@
 # v0.5 验收记录
 
-日期：2026-09-29。起点为已发布的 v0.4.0 / `5266fae9133c37254569dda65ab5b3c9798f15b6`。本轮由用户的实际体验反馈触发，制作计划见 [REAL_CITY_V05_PLAN.md](REAL_CITY_V05_PLAN.md)。下文保留本轮各次实拍、失败与修订的阶段证据；最新工作树的完整本地规则与 High 电梯镜头复核已完成，最终提交的完整浏览器 CI 和公开部署仍待完成，不能用本地单项结果替代。
+编制日期：2026-09-29；发布验收收尾于 2026-09-30。起点为已发布的 v0.4.0 / `5266fae9133c37254569dda65ab5b3c9798f15b6`。本轮由用户的实际体验反馈触发，制作计划见 [REAL_CITY_V05_PLAN.md](REAL_CITY_V05_PLAN.md)。最终游戏修订 `1796b811e0b33c88c0e830f023483a9dbd6ba71d` 的完整 CI、同修订 Pages 发布和 11 项原网址线上检查均已通过。下文保留失败与修订的阶段证据；早期的“待完成”描述属于当时状态，最终结论见文末发布验收收尾。新域名绑定后的复验单独记录，不与绑定前证据混算。
 
 ## 验收原则
 
@@ -169,3 +169,32 @@ PR #5 随后合并为 `21b04acf6d736328438bb3ba4293df86cb5d34fd`，树仍为同�
 最小修订让末两处站厅路径点使用两闸机的真实中线 **入口 z−0.15 米**，物理和渲染共用闸机偏移定义，闸机尺寸、位置、角色、速度、楼梯与碰撞均不改变。旧城中线及其正负 0.75 米边界已用普通模拟输入双向通过，传送版本不变；新回归进一步覆盖三站、双向、五档纵向误差和两档横向起点，共 **60 条真实角色路线**。本地针对性 **22/22** 与完整 **204/204 规则通过，完整回归 22.87 秒**，静态构建通过；新提交完整浏览器、线上门槛仍须分别记录，不能记为已发布修复。
 
 同一合并版本的 [Pages7 run 36602228968](https://github.com/qifalab/neon-harbor/actions/runs/36602228968) 七个发布前验证组实际为 **203/203 规则、18/18 浏览器全通过**，其中地铁 4.8 分钟、渡轮 2.9 分钟。但因独立 CI31 已确认边界故障，工作流随后被主动取消。部署 job `109525948243` 的正式记录明确显示：**17:13:40 UTC 部署步骤报告成功**，线上检查的预期 revision 为 `21b04ac…`；取消实际发生于下一步 `Verify the live deployed game`，时间 **17:14:16 UTC**。因此不能声称旧 v0.4 仍未被替换，也不能把这次部署当作最终验收完成。保留的 live artifact `11049937790` 只有 `live-high-quality-menu.png`，没有完成报告、11 项线上检查结果或空错误数组证明。修订后的新主分支与 Pages 流程仍须独立全部完成。
+
+
+## 发布验收收尾 · 2026-09-30
+
+本次恢复工作核对了 GitHub 的正式 run、七组 job 日志和已完成的线上 artifact，而非只沿用上一段对话的结论。
+
+| 门槛 | 实际修订与正式记录 | 结果 |
+| --- | --- | --- |
+| 最终主分支 CI | `1796b811e0b33c88c0e830f023483a9dbd6ba71d`，[CI32 / 36604188104](https://github.com/qifalab/neon-harbor/actions/runs/36604188104) | 完成，success |
+| 同修订发布前矩阵 | [Pages8 / 36604289048，attempt 1](https://github.com/qifalab/neon-harbor/actions/runs/36604289048/attempts/1) | 七组构建和规则均通过，各组为 204/204；18/18 浏览器场景通过 |
+| 公开部署 | 同一 Pages8 attempt 1，deploy job `109534032326` | 部署成功；后续 Verify the live deployed game 成功 |
+| 线上版本与资源 | artifact `11051720851`，`live-deployment-smoke/report.json` | success=true；11 项检查，errors=[]；浏览器实际加载字节的哈希符合 manifest，版本 0.5.0，revision 与上述提交完全相同 |
+| 原网址线上画面 | 同一 artifact 的 `live-high-quality-harbor.png`、`live-high-quality-game.png` | 800×500、High，真实 WebGL2 渲染；海港和博物馆入口代表画面已复审 |
+
+七组正式日志的浏览器结果依次为 game 4、stability 4、metropolis 2+2+2、living-city 2、harbor-realism 2。完整地铁下站、候车、乘车、下车、双梯上返、走越街口及渡轮流程均通过；实际地铁场景 6.5 分钟、渡轮 4.0 分钟。博物馆双梯到三层工坊并返回 2.5 分钟，260 米高塔往返 2.5 分钟，住宅卧室穿门并返回 2.4 分钟。这里的秒数来自共享软件 GPU，只用于证明路线在既定验收预算内完成。
+
+线上 11 项包含入口与 CSS/模块、发布修订及浏览器加载哈希、真实 WebGL2、默认 High 与资源流式准备、主按钮海港入口、委托、地图、48 地址导览、博物馆进入、海事房间与基础设施入口、恢复 High 海滨。线上没有把整段地铁或全部 48 地址重复跑完；其完整路线证据来自同修订的发布前浏览器矩阵。
+
+### 自定义域名后的再次验证与重跑修订
+
+已绑定 `https://neon-harbor.qifalab.cd.mba`。当前云浏览器可以取得游戏页面，但启动屏明确报 WebGL2 不可用；这条观测只证明页面可达，不用作游戏渲染通过证据。
+
+对已成功的 Pages8 deploy job 做单项重跑，attempt 2 在部署前失败。正式日志为 `Multiple artifacts named "github-pages" were unexpectedly found ... Artifact count is 2`；Verify the live deployed game 被跳过，没有覆盖此前已成功发布的游戏。失败原因是同一个 run 的前后两次上传共用产物名，不是游戏路线或新域名内容错误。
+
+发布工作流现将上传名和 `artifact_name` 同时设为 `github-pages-${{ github.run_id }}-${{ github.run_attempt }}`，线上证据也按 attempt 独立命名。采用官方 [upload-pages-artifact name](https://github.com/actions/upload-pages-artifact#inputs-) 与 [deploy-pages artifact_name](https://github.com/actions/deploy-pages#inputs-) 输入，不删除早期证据、不放宽测试门槛。此修订的实际部署与新域名 WebGL 检查完成后，在本节追加对应 run 和报告。
+
+### 本轮结项边界
+
+A–D 的发布门槛已按最终游戏修订验收；E 只有港湾、博物馆与代表生活房间画面，全部 48 地址 × 4 公共层逐址艺术复核继续保留未完成状态。全部自然楼层、南岸与背景楼室内、其他交通连续入口、居民日常链路与骨骼动作，以及真实硬件性能仍见前述“尚未完成”，不由此次发布成功推定完成。

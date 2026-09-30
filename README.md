@@ -1,6 +1,6 @@
 # 霓港 · Neon Harbor
 
-[在线试玩单机版](https://qifalab.github.io/neon-harbor/) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
+[在线试玩单机版](https://neon-harbor.qifalab.cd.mba) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
 
 一款可直接在浏览器运行的原创 3D 海滨城市游戏。步行探索街区、驾驶车辆、接取委托、躲避警车追捕，穿过跨海桥，乘地铁与渡轮，走进北岸的公共建筑与观景层。
 
