@@ -1,3 +1,4 @@
+import { northernVehicles } from './traffic.js';
 import { createWorld } from './world.js';
 import { createMetropolisWorld } from './metropolis-world.js';
 import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS, METROPOLIS_BOUNDS } from './metropolis-catalog.js';
@@ -31,20 +32,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   const inside = () => !!interiors.state?.buildingId;
   function addNorthernTraffic() {
     if (simulation.cars.some(c => c.id === 'north-parked-0')) return;
-    const colors = [0xa3b5b0, 0xaa7253, 0x417d84, 0xcfba8a, 0x93a2b4, 0xc18d87];
-    const makeCar = (id, x, z, extra = {}) => ({ id, x, z, yaw: Math.PI, type: 'sedan', color: colors[Math.abs(Math.round(z)) % colors.length],
-      home: { x, z, yaw: Math.PI }, speed: 0, vx: 0, vz: 0, health: 100, traffic: false, ...extra });
-    for (let i = 0; i < 6; i++) simulation.cars.push(makeCar(`north-parked-${i}`, 6, -455 - i * 140, { color: colors[i] }));
-    for (let row = 0; row < 3; row++) {
-      const top = -420 - row * 280, bottom = top - 140;
-      const route = [{ x: -640, z: top }, { x: 640, z: top }, { x: 640, z: bottom }, { x: -640, z: bottom }];
-      for (let i = 0; i < 4; i++) {
-        const from = route[i], to = route[(i + 1) % 4];
-        const x = (from.x + to.x) / 2, z = (from.z + to.z) / 2;
-        simulation.cars.push(makeCar(`north-traffic-${row}-${i}`, x, z, { yaw: Math.atan2(to.x - from.x, to.z - from.z),
-          traffic: true, cruise: 9 + row * 2, speed: 9, route, waypoint: (i + 1) % 4, pause: 0 }));
-      }
-    }
+    simulation.cars.push(...northernVehicles());
     for (const car of simulation.cars) if (car.id.startsWith('north-')) simulation._groundCar(car);
   }
   function syncContext(force = false) {
@@ -168,12 +156,14 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   }
   return {
     root, south, north, interiors, transit, infrastructure, harbor, people, colliders, groundHeightAt, bounds: METROPOLIS_BOUNDS,
+    get vehicles() { return outdoorCars || simulation?.cars || []; },
     buildings: METROPOLIS_BUILDINGS, districts: METROPOLIS_DISTRICTS, roads: METROPOLIS_ROADS,
     walkerRoutes: south.walkerRoutes, landmarks: [...south.landmarks, ...north.landmarks, ...infrastructure.landmarks, ...harbor.landmarks], spawn: south.spawn,
     bind(sim) {
       if(simulation)leaveSpecialLocation(); simulation = sim; addNorthernTraffic();
       simulation.pedestriansAt = p => !inside() && !transit.collisionContext() ? people.getCollisionBodies?.(p, 12) || [] : [];
       simulation.trafficYieldAt = car => people.trafficYieldAt(car);
+      simulation.trafficStopDistanceAt = car => people.journeys.trafficStopDistanceAt(car);
       syncContext(true);
     },
     get activeContext() { return context; }, get isInside() { return inside(); },
@@ -194,7 +184,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     },
     districtAt(x, z) {
       if (inside()) return `${METROPOLIS_BUILDINGS.find(b => b.id === interiors.state.buildingId)?.name || ''} · 室内`;
-      if(x>272&&x<295&&z>-280&&z<285)return '维湾全景海滨';
+      if(x>272&&x<295&&z>-280&&z<285)return '星湾全景海滨';
       const deck = infrastructure.supportAt(x, z, simulation?.activeVehicle?.y ?? simulation?.player.groundY ?? 0);
       if (deck?.height > .5) return infrastructure.landmarks.find(l => l.id === deck.id)?.name || '高架道路';
       if (z < -390) return METROPOLIS_DISTRICTS.reduce((a, b) => Math.abs(b.z - z) < Math.abs(a.z - z) ? b : a).name;

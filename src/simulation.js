@@ -4,6 +4,7 @@
  */
 import { vehicleGroundSupport } from './ground-support.js';
 import { SpatialIndex, CHARACTER_RADIUS, vehicleContacts, circleContacts, circleOBB, moveVehicle, moveCircle } from './collision.js';
+import { trafficFleet, trafficTargetSpeed } from './traffic.js';
 import { PLAYER_DIMENSIONS } from './world-config.js';
 
 const TAU = Math.PI * 2;
@@ -78,19 +79,8 @@ function parkedCars() {
 }
 
 function trafficCars() {
-  const route = [{ x: -160, z: 160 }, { x: 160, z: 160 }, { x: 160, z: -160 }, { x: -160, z: -160 }];
-  const colors = [0xe7edf7, 0xfaa75a, 0x8095d4, 0xd484af, 0x5cd7bd];
-  return Array.from({ length: 10 }, (_, index) => {
-    const segment = Math.floor(index / 2.5);
-    const progress = (index / 2.5) % 1;
-    const from = route[segment], to = route[(segment + 1) % route.length];
-    return {
-      id: `traffic-${index}`, x: from.x + (to.x - from.x) * progress,
-      z: from.z + (to.z - from.z) * progress, yaw: Math.atan2(to.x - from.x, to.z - from.z),
-      speed: 10 + index % 4, cruise: 10 + index % 4, type: 'sedan', color: colors[index % colors.length],
-      health: 100, traffic: true, route, waypoint: (segment + 1) % route.length, pause: 0,
-    };
-  });
+  return [...trafficFleet('traffic', [{x:-160,z:160},{x:160,z:160},{x:160,z:-160},{x:-160,z:-160}],6),
+    ...trafficFleet('inner-traffic', [{x:-80,z:80},{x:80,z:80},{x:80,z:-80},{x:-80,z:-80}],4,10,true)];
 }
 
 export class GameSimulation {
@@ -265,7 +255,7 @@ export class GameSimulation {
     if (this.activeVehicle) this._drive(dt, input);
     else this._walk(dt, input);
     for (const car of this.cars) {
-      if (car.id === this.inCar || car.health <= 0) continue;
+      if (car.id === this.inCar || car.health <= 0 || this.networkControlled?.has(car.id)) continue;
       if (car.police) this._updatePolice(car, dt);
       else if (car.traffic) this._updateTraffic(car, dt);
     }
@@ -366,12 +356,22 @@ export class GameSimulation {
   }
 
   _updateTraffic(car, dt) {
-    if (car.pause > 0) { car.pause -= dt; car.speed = 0; car.vx = 0; car.vz = 0; return; }
-    const target = car.route[car.waypoint];
-    if (distance(car, target) < 1) { car.waypoint = (car.waypoint + 1) % car.route.length; return; }
-    const yielding = this.trafficYieldAt?.(car);
-    const speed = yielding ? Math.max(0, car.speed - 4 * dt) : Math.min(car.cruise, car.speed + 3 * dt);
-    this._driveNPC(car, target, speed, dt);
+    if (car.pause > 0) { car.pause = Math.max(0,car.pause-dt); car.speed = 0; car.vx = 0; car.vz = 0; return; }
+    // Pass short curve samples by a plane as well as distance. A missed corner
+    // must not make the driver circle forever around a waypoint behind it.
+    for(let count=0;count<car.route.length;count++){
+      const target=car.route[car.waypoint],previous=car.route[(car.waypoint+car.route.length-1)%car.route.length];
+      const dx=target.x-previous.x,dz=target.z-previous.z;
+      if(distance(car,target)>.9&&(car.x-target.x)*dx+(car.z-target.z)*dz<0)break;
+      car.waypoint=(car.waypoint+1)%car.route.length;
+    }
+    const target=car.route[car.waypoint],gap=distance(car,target);
+    const control=trafficTargetSpeed(car,this.cars,this.elapsed,{pedestrian:this.trafficStopDistanceAt?false:this.trafficYieldAt?.(car),pedestrianDistance:this.trafficStopDistanceAt?.(car)});
+    const turn=car.route[car.waypoint].turn&&gap<12;
+    const desired=Math.min(control.speed,turn?4.5:car.cruise);
+    const speed=car.speed+clamp(desired-car.speed,-6*dt,2.6*dt);
+    car.trafficState=control.reason;
+    this._driveNPC(car,target,Math.max(0,speed),dt);
   }
 
   _crime(amount = 1) {

@@ -1,3 +1,4 @@
+import { intersectionSignal } from './traffic.js';
 import { WORLD_BOUNDS, ROAD_CENTERS, VEHICLE_DIMENSIONS, PLAYER_DIMENSIONS } from './world-config.js';
 import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
 import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
@@ -410,14 +411,14 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     block('frame', x + 23.5, streetY + 1.9, z - 6, 0.38, 0.58, 0.25, { kind: 'parking-meter' });
   }
 
+  const signalHeads=[];
   for (const [ix, rx] of roads.entries()) for (const [iz, rz] of roads.entries()) {
     if (Math.abs(rx) > 160 || Math.abs(rz) > 160) continue;
     const px = rx + 15.5, pz = rz + 18, base = groundHeightAt(px, pz);
     cylinder('metal', px, base + 2.3, pz, 0.1, 4.6, { kind: 'traffic-post' });
     block('metal', px - 4, base + 4.5, pz, 8, 0.11, 0.11, { kind: 'traffic-arm' });
     block('frame', px - 7.8, base + 4.06, pz, 0.48, 1.3, 0.37, { kind: 'traffic-signal' });
-    for (const [n, color] of ['signalRed', 'signalAmber', 'signalGreen'].entries())
-      box(color, px - 7.8, base + 4.45 - n * 0.39, pz + 0.2, 0.23, 0.24, 0.045);
+    signalHeads.push({x:rx,z:rz,px:px-7.8,pz:pz+.2,y:base+4.45,axis:'z'});
     block(`street-sign-${ix}`, px + 0.7, base + 2.8, pz, 1.6, 0.28, 0.07, { kind: 'street-sign' });
   }
 
@@ -584,6 +585,19 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     return [{ x: 13 + dx, z: 93 + dz }, { x: 67 + dx, z: 93 + dz },
       { x: 67 + dx, z: 147 + dz }, { x: 13 + dx, z: 147 + dz }];
   });
+  const signalGeometry=new THREE.BoxGeometry(.23,.24,.045),signalMaterial=new THREE.MeshBasicMaterial({color:'#ffffff'});
+  const signalMesh=new THREE.InstancedMesh(signalGeometry,signalMaterial,signalHeads.length*3),signalTransform=new THREE.Object3D();
+  signalMesh.userData.noShadow=true;signalMesh.name='Traffic signals · live phases';
+  for(const [i,head] of signalHeads.entries())for(let bulb=0;bulb<3;bulb++){signalTransform.position.set(head.px,head.y-bulb*.39,head.pz);signalTransform.updateMatrix();signalMesh.setMatrixAt(i*3+bulb,signalTransform.matrix);signalMesh.setColorAt(i*3+bulb,new THREE.Color('#19302f'));}
+  signalMesh.computeBoundingSphere();root.add(signalMesh);
+  let signalClock=-1;
+  function updateSignals(time){
+    const tick=Math.floor(time*5);if(tick===signalClock)return;signalClock=tick;
+    const colors={red:'#ed695c',amber:'#e6b65d',green:'#7bd8a7'};
+    for(const [i,head] of signalHeads.entries()){const phase=intersectionSignal(time,head.x,head.z,head.axis);for(const [bulb,label] of ['red','amber','green'].entries())signalMesh.setColorAt(i*3+bulb,new THREE.Color(phase===label?colors[label]:'#152723'));}
+    signalMesh.instanceColor.needsUpdate=true;
+  }
+  updateSignals(0);
   let elapsed = 0, detailClock = 0;
   return {
     root, colliders, surfaces, roadSurfaces, renderObstacles, groundHeightAt, walkerRoutes, landmarks,
@@ -603,7 +617,7 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
       return '中央城区';
     },
     update(dt, timeOfDay, view = null) {
-      elapsed += dt;
+      elapsed += dt;updateSignals(view?.trafficTime??elapsed);
       if (view?.position) {
         streamer?.update(view.position, view.velocity, dt);
         detailClock += dt;

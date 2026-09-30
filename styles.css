@@ -24,3 +24,8 @@ dialog{width:min(920px,94vw);max-height:88vh;overflow:auto;padding:32px;border:1
 @media(max-height:560px){.hero-copy{padding:12px 0}.hero-copy h1{font-size:76px;margin:15px 0}.hero-description{font-size:13px;line-height:1.6}.hero-actions{margin-top:14px}.resume-link{margin-top:10px}.intro-note{margin-top:8px}.welcome-footer{padding-top:12px}.hero-copy>.eyebrow{font-size:8px}}
 
 .floor-search{display:grid;gap:8px;color:#b9cfc4;font-size:12px}.floor-search input{border:1px solid #ffffff28;border-radius:4px;background:#12282b;color:#edf2e8;padding:12px 14px;font:inherit}.floor-button[hidden]{display:none}
+
+/* Room controls share the existing city-services palette. */
+.setting input[type="url"],.setting input:not([type]),.room-chat-form input{width:100%;box-sizing:border-box;padding:12px;color:#e0e7de;background:#10282c;border:1px solid #365459;border-radius:5px;font:inherit}
+.room-players{display:flex;gap:12px;flex-wrap:wrap;padding:0;list-style:none}.room-players li{padding:8px 12px;border:1px solid #365459;border-radius:5px}
+.room-chat{max-height:180px;overflow:auto;padding:8px 0}.room-chat p{font-size:14px;overflow-wrap:anywhere}.room-chat-form{display:flex;gap:12px}.room-chat-form input{flex:1;min-width:0}

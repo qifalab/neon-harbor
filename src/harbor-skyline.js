@@ -18,10 +18,10 @@ const towers = [
   ['harbor-oval', '海湾椭圆', 1172, -603, 206, 54, 45, 'oval', 1],
   ['stone-ribbon', '石带大厦', 1139, -494, 144, 42, 60, 'terrace', 3],
   ['triangular-exchange', '三棱金融中心', 1211, -429, 328, 59, 56, 'blade', 2],
-  ['admiralty-east', '金钟东座', 1126, -314, 172, 48, 54, 'chamfer', 0],
+  ['admiralty-east', '晨钟东座', 1126, -314, 172, 48, 54, 'chamfer', 0],
   ['pearl-spire', '明珠国际中心', 1192, -193, 386, 63, 57, 'crown', 1],
-  ['victoria-west', '维湾西座', 1101, -79, 182, 43, 50, 'taper', 2],
-  ['victoria-east', '维湾东座', 1162, -15, 226, 46, 53, 'taper', 0],
+  ['victoria-west', '星湾西座', 1101, -79, 182, 43, 50, 'taper', 2],
+  ['victoria-east', '星湾东座', 1162, -15, 226, 46, 53, 'taper', 0],
   ['cloud-sail', '云帆中心', 1111, 118, 296, 64, 51, 'sail', 1],
   ['port-light', '港灯大厦', 1143, 257, 151, 42, 53, 'lantern', 3],
   ['water-gardens', '水岸花园', 1072, 350, 99, 47, 53, 'residential', 4],
@@ -33,8 +33,8 @@ const towers = [
   ['ridge-two', '岭上二号', 1391, -1018, 222, 44, 45, 'residential', 3],
   ['granite-square', '花岗广场', 1321, -879, 173, 64, 71, 'terrace', 3],
   ['flying-bridge', '飞桥中心', 1380, -687, 274, 45, 48, 'blade', 2],
-  ['midlevel-twins-a', '半山双庭南座', 1311, -529, 197, 38, 48, 'residential', 4],
-  ['midlevel-twins-b', '半山双庭北座', 1348, -447, 212, 41, 43, 'residential', 3],
+  ['midlevel-twins-a', '松岭双庭南座', 1311, -529, 197, 38, 48, 'residential', 4],
+  ['midlevel-twins-b', '松岭双庭北座', 1348, -447, 212, 41, 43, 'residential', 3],
   ['mountain-exchange', '望山金融汇', 1387, -272, 306, 53, 61, 'taper', 0],
   ['upper-garden', '上环花园', 1289, -116, 156, 39, 44, 'residential', 4],
   ['coastal-court', '滨海雅苑', 1320, 43, 179, 44, 50, 'terrace', 3],
@@ -68,12 +68,12 @@ export const HARBOR_TOWERS = Object.freeze([...towers, ...neighborhood].map(([id
   Object.freeze({ id, name, x, z, height, width, depth, style, palette, index, scenic: true, baseY: 4, neighborhood: index >= towers.length })));
 
 export const HARBOR_VIEWPOINTS = Object.freeze([
-  Object.freeze({ id: 'victoria-panorama', name: '维湾全景海滨', kind: 'viewpoint', walkable: true,
+  Object.freeze({ id: 'victoria-panorama', name: '星湾全景海滨', kind: 'viewpoint', walkable: true,
     description: '从旧城海滨步道望向宽阔海湾。明珠国际中心、云帆中心与三棱金融中心在山前形成多层天际线。',
     entrance: Object.freeze({ x: 285.5, z: 42, y: .18, yaw: Math.PI / 2 }),
     lookAt: Object.freeze({ x: 1175, y: 135, z: -105 }) }),
   Object.freeze({ id: 'victoria-north-promenade', name: '东岸观港长廊', kind: 'viewpoint', walkable: true,
-    description: '沿维澜海滨东侧长廊步行，隔水观看前排滨水楼群、后排高楼与连续山脊。',
+    description: '沿潮光海滨东侧长廊步行，隔水观看前排滨水楼群、后排高楼与连续山脊。',
     entrance: Object.freeze({ x: 727, z: -463, y: 0, yaw: Math.PI / 2 }),
     lookAt: Object.freeze({ x: 1200, y: 100, z: -325 }) }),
   Object.freeze({ id: 'victoria-channel-view', name: '航道眺望台', kind: 'viewpoint', walkable: true,
@@ -262,7 +262,7 @@ function mountainGeometry(THREE) {
  * furniture are recreated near the viewer, then actually disposed on leaving.
  * No quality mode substitutes fewer or shorter skyline buildings. */
 export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
-  const root = new THREE.Group(); root.name = 'Victoria Harbour · authored eastern skyline'; scene.add(root);
+  const root = new THREE.Group(); root.name = 'Star Bay · authored eastern skyline'; scene.add(root);
   const colliders = [], geometries = new Set(), materials = new Set(), towerMeshes = [], detailResidents = new Map();
   const nightUniform = { value: 0 }, boxGeometry = new THREE.BoxGeometry(1, 1, 1), cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 12);
   const sphereGeometry = new THREE.SphereGeometry(1, 12, 7), temp = new THREE.Object3D();

@@ -1,11 +1,11 @@
 /** Authored daily life for six neighbourhoods. All destinations are expressed
  * as distances on an address's legal pavement loop, never as a teleport. */
 export const DISTRICT_LIFE = Object.freeze({
-  waterfront: { name: '维澜海滨', roles: ['海事讲解员', '鱼市场采购员', '轮渡通勤客', '船舶修复师', '海滨摄影师'],
+  waterfront: { name: '潮光海滨', roles: ['海事讲解员', '鱼市场采购员', '轮渡通勤客', '船舶修复师', '海滨摄影师'],
     styles: [1, 7, 2, 0, 5], props: ['book', 'parcel', 'phone', 'toolbag', 'camera'],
     events: ['鱼市开档，海滨开始有人晨跑', '午间轮渡通勤与海事展厅参观', '码头交班，摄影师等着海面侧光', '剧院散场，街坊沿着海滨慢走'],
     places: ['看船经过', '整理海事笔记', '查看轮渡班次', '与修船同伴碰面'] },
-  central: { name: '中环金融区', roles: ['建筑测绘师', '银行职员', '证券研究员', '咖啡师', '楼宇工程师'],
+  central: { name: '星汇金融区', roles: ['建筑测绘师', '银行职员', '证券研究员', '咖啡师', '楼宇工程师'],
     styles: [1, 2, 2, 7, 0], props: ['book', 'phone', 'book', 'cup', 'toolbag'],
     events: ['上班人流经过银行与交易所', '职员出来买咖啡、吃午饭', '办公楼陆续下班，访客寻找观景入口', '夜班工程师巡查楼宇，街道逐渐安静'],
     places: ['核对建筑测绘笔记', '等同事一起去吃饭', '阅读公司简报', '休息喝杯咖啡'] },
@@ -17,11 +17,11 @@ export const DISTRICT_LIFE = Object.freeze({
     styles: [4, 3, 1, 4, 5], props: ['book', 'toolbag', 'book', 'book', 'camera'],
     events: ['学生去排练，策展人准备开馆', '读者和观展的人在广场短暂停留', '设计师讨论手稿，学生结束排练', '天文爱好者查看星图，剧院门厅亮起灯'],
     places: ['在街边画建筑速写', '看下一次排练的谱子', '翻阅刚借到的书', '讨论展览布置'] },
-  garden: { name: '半山花园', roles: ['社区园艺师', '书院教师', '医院职员', '晨练街坊', '社区志愿者'],
+  garden: { name: '松岭花园', roles: ['社区园艺师', '书院教师', '医院职员', '晨练街坊', '社区志愿者'],
     styles: [0, 1, 2, 6, 3], props: ['toolbag', 'book', 'phone', 'cup', 'book'],
     events: ['街坊晨练，园艺师检查沿街绿植', '医院职员换班，居民在社区散步', '放学的人流和买菜的居民相遇', '住户饭后散步，社区逐渐进入夜间节奏'],
     places: ['观察树木的新叶', '准备明天的课堂笔记', '查看换班消息', '做一组舒展动作'] },
-  gateway: { name: '九龙门户', roles: ['旅客服务员', '软件工程师', '货运调度员', '体育馆教练', '城市研究员'],
+  gateway: { name: '榕荫门户', roles: ['旅客服务员', '软件工程师', '货运调度员', '体育馆教练', '城市研究员'],
     styles: [5, 2, 0, 3, 1], props: ['phone', 'book', 'phone', 'cup', 'camera'],
     events: ['通勤旅客进入门户区，货运人员开始交班', '旅客查看换乘路线，办公人群出来休息', '体育馆迎来锻炼者，列车旅客开始返程', '调度员值夜班，晚归的人查看路线'],
     places: ['查看高铁与地铁换乘路线', '整理今天的工作记录', '查看交班信息', '做运动前的热身'] },
