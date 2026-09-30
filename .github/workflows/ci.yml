@@ -88,3 +88,33 @@ jobs:
             art-test-results/
             art-playwright-report/
           if-no-files-found: ignore
+
+
+  room-detail:
+    if: github.event_name == 'pull_request'
+    name: Native High room detail (${{ matrix.shard }}/6)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test --config=playwright.detail.config.js --fully-parallel --shard=${{ matrix.shard }}/6
+      - name: Retain native High detail photographs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: room-detail-${{ matrix.shard }}
+          path: |
+            detail-test-results/
+            detail-playwright-report/
+          if-no-files-found: ignore
