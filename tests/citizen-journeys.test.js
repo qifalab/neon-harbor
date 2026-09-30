@@ -64,7 +64,7 @@ test('all 240 residents finish real work visits, use all four shared routes, ret
   life.dispose();
 });
 
-test('citizens enter a crossing only with enough green time, and traffic yields until its actual walker has left', () => {
+test('citizens enter a crossing only with enough green time, and traffic yields for the occupied lane and releases it after the walker leaves', () => {
   const { residents, life, transit } = fixture(), person = residents[0];
   const crossing = life.navigation.crossings.find(item => item.axis === 'x' && item.x === -320 && item.z === -700);
   Object.assign(person, { x: crossing.x - 20, z: crossing.lane, y: 0, speed: 1.2 });
@@ -76,7 +76,10 @@ test('citizens enter a crossing only with enough green time, and traffic yields 
   let green = red; while (!crossingSignal(crossing, green).green || crossingSignal(crossing, green).remaining < 40) green++;
   life.time = green; life.walk(person, .1, []);
   assert.ok(person.x > crossing.x - 20);
-  assert.equal(life.trafficYieldAt({ x: crossing.x, z: crossing.z - 30, y: 0, yaw: 0, speed: 10 }), true);
+  const car={ x: crossing.x, z: crossing.lane-20, y: 0, yaw: 0, speed: 10 };
+  assert.equal(life.trafficYieldAt(car),false,'the distant walker does not hold the entire road');
+  person.x=crossing.x-2;
+  assert.equal(life.trafficYieldAt(car),true,'the actual occupied lane is protected');
   for (let frame = 0; frame < 400 && person.journey.path.length; frame++) life.walk(person, .1, []);
   assert.equal(life.crossingClaims.size, 0); assert.equal(life.statistics.crossings, 1);
   assert.equal(life.trafficYieldAt({ x: crossing.x, z: crossing.z - 30, y: 0, yaw: 0, speed: 10 }), false);

@@ -13,12 +13,12 @@ export const METROPOLIS_ROADS = Object.freeze({
   horizontal: [-420, -560, -700, -840, -980, -1120, -1260], width: 26,
 });
 export const METROPOLIS_DISTRICTS = Object.freeze([
-  { id: 'waterfront', name: '维澜海滨', englishName: 'Victoria Waterfront', z: -490, color: '#d9c7ab' },
-  { id: 'central', name: '中环金融区', englishName: 'Central Exchange', z: -630, color: '#829b9f' },
+  { id: 'waterfront', name: '潮光海滨', englishName: 'Tideglow Waterfront', z: -490, color: '#d9c7ab' },
+  { id: 'central', name: '星汇金融区', englishName: 'Central Exchange', z: -630, color: '#829b9f' },
   { id: 'oldtown', name: '榕树老城', englishName: 'Banyan Old Town', z: -770, color: '#c6ad8b' },
   { id: 'arts', name: '西岸文化区', englishName: 'Westbank Arts', z: -910, color: '#bdb8a9' },
-  { id: 'garden', name: '半山花园', englishName: 'Mid-Levels Gardens', z: -1050, color: '#b8c3ad' },
-  { id: 'gateway', name: '九龙门户', englishName: 'Kowloon Gateway', z: -1190, color: '#a7b0aa' },
+  { id: 'garden', name: '松岭花园', englishName: 'Pine Ridge Gardens', z: -1050, color: '#b8c3ad' },
+  { id: 'gateway', name: '榕荫门户', englishName: 'Banyan Gateway', z: -1190, color: '#a7b0aa' },
 ]);
 
 // Each address has its own dimensions, silhouette and programme. Rows follow
@@ -42,12 +42,12 @@ const addresses = [
   ['lantern-tower','灯笼大厦','Lantern Tower',64,64,204,'lantern','#c7b793','暖金竖线包围发光塔冠，裙楼嵌入展览与咖啡空间。'],
   ['banyan-teahouse','榕荫茶楼','Banyan Tea House',72,58,27,'shophouse','#b8bd9b','绿色百叶、木框阳台与深檐茶座，延续老城骑楼的步行尺度。'],
   ['red-brick-post','红砖邮政局','Redbrick Post Office',90,68,42,'clock','#ad7965','砖墙拱窗与方形钟楼，旧邮政大厅改为城市书信展厅。'],
-  ['kowloon-arcade','九龙骑楼','Kowloon Arcade',106,66,38,'arcade','#c4b896','首层连续拱券贯穿沿街店面，楼上保留老式外挂空调与阳台。'],
+  ['kowloon-arcade','榕荫骑楼','Banyan Arcade',106,66,38,'arcade','#c4b896','首层连续拱券贯穿沿街店面，楼上保留老式外挂空调与阳台。'],
   ['golden-cinema','金声电影院','Golden Sound Cinema',84,70,33,'artdeco','#d5b68f','竖向装饰柱、霓虹招牌与阶梯塔头，还原港城电影文化。'],
   ['lotus-market','莲花街市','Lotus Street Market',108,72,22,'market','#c19f83','多跨采光屋架、摊棚与内街，日常市集连接社区餐厅。'],
-  ['blue-house','蓝屋公馆','Blue House',68,58,32,'shophouse','#73949c','蓝灰抹灰墙面与铁艺阳台，老屋内部是社区生活展览。'],
-  ['temple-court','天后文化馆','Tin Hau Heritage Court',92,68,28,'temple','#b18368','双重深檐、红柱与低矮院墙围合安静庭院。'],
-  ['victoria-library','维多利亚书楼','Victoria Library',88,66,48,'colonial','#d5c9ae','石砌拱廊与中央山花，阅览室和屋顶花园向市民开放。'],
+  ['blue-house','靛庭公馆','Indigo Court',68,58,32,'shophouse','#73949c','蓝灰抹灰墙面与铁艺阳台，老屋内部是社区生活展览。'],
+  ['temple-court','海棠文化馆','Begonia Heritage Court',92,68,28,'temple','#b18368','双重深檐、红柱与低矮院墙围合安静庭院。'],
+  ['victoria-library','星澜书楼','Starlane Library',88,66,48,'colonial','#d5c9ae','石砌拱廊与中央山花，阅览室和屋顶花园向市民开放。'],
   ['westbank-gallery','西岸美术馆','Westbank Gallery',102,76,46,'museum','#c4c0b4','相互错动的石材体块间嵌入采光缝，入口处设置雕塑。'],
   ['music-conservatory','海风音乐学院','Sea Breeze Conservatory',86,70,64,'fins','#b8b7a2','节奏化竖向鳍片围合排练室，裙楼内设公开演奏厅。'],
   ['cloud-library','云阶图书馆','Cloudstep Library',106,78,56,'terrace','#d4ccba','五层台阶式书库叠成城市客厅，露台与阅览层相连。'],
@@ -60,7 +60,7 @@ const addresses = [
   ['pine-residence','松岭居','Pine Ridge Residence',72,66,112,'residential','#b5bea9','浅绿墙面和错层阳台，屋顶花园与山景相连。'],
   ['sky-garden','云庭花园','Sky Garden',98,74,134,'twin','#bdc6b5','两座住宅塔楼在高空花园相接，裙楼容纳社区商业。'],
   ['garden-hospital','花园医院','Garden Hospital',106,78,72,'hospital','#d0d0bd','明亮的条形病房与退台疗愈花园，主入口雨棚方便步行抵达。'],
-  ['hill-school','半山书院','Mid-Levels Academy',102,72,38,'campus','#cbb69b','砖石教学楼围绕钟塔展开，宽阔外廊连接公共阅览空间。'],
+  ['hill-school','松岭书院','Pine Ridge Academy',102,72,38,'campus','#cbb69b','砖石教学楼围绕钟塔展开，宽阔外廊连接公共阅览空间。'],
   ['cedar-villa','杉木公馆','Cedar Mansion',86,70,62,'artdeco','#bdad98','几何装饰与成组窗洞构成宁静住宅，入口两侧设有花坛。'],
   ['terrace-gardens','叠翠花园','Terrace Gardens',104,76,90,'terrace','#b0bda5','每层后退的绿色露台形成山坡般轮廓，公共大厅连接社区咖啡馆。'],
   ['lighthouse-residence','灯塔居','Lighthouse Residence',72,66,124,'lantern','#d0c09d','细长暖色塔楼与灯室般的公共屋顶，沿街设置雨棚与商铺。'],

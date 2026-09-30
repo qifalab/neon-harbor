@@ -294,15 +294,27 @@ export class CitizenJourneys {
       }
     }
   }
-  trafficYieldAt(car) {
-    if (Math.abs(car.y || 0) > 2) return false;
-    for (const crossing of this.crossingClaims.values()) {
-      const dx = crossing.x - car.x, dz = crossing.z - car.z;
-      const forward = dx * Math.sin(car.yaw) + dz * Math.cos(car.yaw), across = dx * Math.cos(car.yaw) - dz * Math.sin(car.yaw);
-      if (forward > -12 && forward < Math.max(38, car.speed * car.speed / 8 + 20) && Math.abs(across) < 25) return true;
+  trafficStopDistanceAt(car) {
+    if(Math.abs(car.y||0)>2)return Infinity;
+    let stop=Infinity;
+    for(const [residentId,crossing] of this.crossingClaims){
+      const person=this.residents.find(person=>person.id===residentId);
+      if(!person)continue;
+      const perpendicular=crossing.axis==='x'?Math.abs(Math.cos(car.yaw))>.85:Math.abs(Math.sin(car.yaw))>.85;
+      if(!perpendicular)continue;
+      const point=crossing.axis==='x'?{x:car.x,z:crossing.lane}:{x:crossing.lane,z:car.z};
+      const forward=(point.x-car.x)*Math.sin(car.yaw)+(point.z-car.z)*Math.cos(car.yaw);
+      if(forward< -3||forward>Math.max(24,car.speed*car.speed/10+12))continue;
+      const lateral=crossing.axis==='x'?Math.abs(person.x-car.x):Math.abs(person.z-car.z);
+      const arrival=Math.max(0,forward)/Math.max(2,car.speed);
+      // Reserve the lane the pedestrian can reach before this car has passed,
+      // rather than stopping both carriageways for the full 40m walk.
+      if(lateral>4+(person.speed||1.2)*(arrival+2))continue;
+      stop=Math.min(stop,Math.max(0,forward-4));
     }
-    return false;
+    return stop;
   }
+  trafficYieldAt(car) { return Number.isFinite(this.trafficStopDistanceAt(car)); }
   snapshot() { return { ...this.statistics, navigation: this.navigation.snapshot(), navigationFloors: this.navigationCache.size,
     phases: Object.fromEntries([...new Set(this.residents.map(person => person.journey.phase))].map(phase => [phase, this.residents.filter(person => person.journey.phase === phase).length])) }; }
   dispose() { for (const resident of this.residents) this.transit.releaseCitizen(resident.id); this.navigationCache.clear(); this.crossingClaims.clear(); }

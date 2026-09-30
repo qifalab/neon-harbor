@@ -35,7 +35,7 @@ function drive(game, route, { deadline = 150, stop = () => !game.mission } = {})
     const heading = Math.atan2(point.x - car.x, point.z - car.z);
     const error = delta(heading, car.yaw);
     // Decelerate before intersections and turn at realistic road-safe speeds.
-    // Lane offsets avoid the oncoming NPC traffic on the centre line.
+    // Lane offsets avoid the oncoming traffic in the opposite lane.
     const cornerSpeed = gap < 23 ? 6 : 27;
     const desiredSpeed = Math.min(cornerSpeed, Math.max(4, 27 * (1 - Math.abs(error) / 1.2)));
     const throttle = car.speed > desiredSpeed + 0.25 ? -1 : car.speed < desiredSpeed - 0.25 ? 1 : 0;
@@ -48,7 +48,7 @@ function drive(game, route, { deadline = 150, stop = () => !game.mission } = {})
 }
 
 const courierRoute = [{ x: 84, z: 164 }, { x: 84, z: 84 }, { x: 164, z: 84 }];
-const raceRoute = [{ x: 4, z: 90 }, { x: -152, z: 88 }, { x: -152, z: -76 }, { x: 84, z: -76 }, { x: 84, z: 164 }];
+const raceRoute = [{ x: 4, z: 90 }, { x: -164, z: 88 }, { x: -164, z: -88 }, { x: 84, z: -88 }, { x: 84, z: 164 }];
 
 test('generated-city courier is completable with walking and real driving before its deadline', t => {
   const game = begin('harbor-run');

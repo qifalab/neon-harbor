@@ -10,14 +10,14 @@ const REACH = 0.7;
  * pass the previous supporting height, never the highest surface at x/z.
  * This also keeps a car's four wheels on the same road at an underpass. */
 export const FLYOVERS = Object.freeze([
-  Object.freeze({ id: 'west-link', name: '西环高架路', axis: 'z', cross: -480,
+  Object.freeze({ id: 'west-link', name: '西堤高架路', axis: 'z', cross: -480,
     start: -1080, end: -600, ramp: 110, height: 8, width: 14,
-    description: '双向双车道高架连接半山与中环，缓坡、伸缩缝、泄水口与桥墩沿线展开。' }),
-  Object.freeze({ id: 'east-link', name: '九龙东连接路', axis: 'x', cross: -980,
+    description: '双向双车道高架连接松岭与星汇，缓坡、伸缩缝、泄水口与桥墩沿线展开。' }),
+  Object.freeze({ id: 'east-link', name: '榕荫东连接路', axis: 'x', cross: -980,
     start: -100, end: 620, ramp: 120, height: 9, width: 14,
     description: '东西向高架跨过三条城区大道，桥下道路保留独立通行净空。' }),
 ]);
-export const FREIGHT_PORT = Object.freeze({ id: 'victoria-freight', name: '维湾货运码头',
+export const FREIGHT_PORT = Object.freeze({ id: 'victoria-freight', name: '星湾货运码头',
   x: -540, z: -345, width: 180, depth: 74, y: 2.4,
   ramp: Object.freeze({ x: -620, start: -412, end: -377, riseEnd: -393, width: 12 }),
   description: '抬高的公共码头越过海堤连接货柜堆场，两座岸桥、装卸通道与防波堤围成港区。' });
@@ -262,7 +262,7 @@ export function createMetropolisInfrastructure(THREE, scene, { quality = 'high' 
   for (let z = -374; z < -315; z += 8) box(port, 'yellow', -619, p.y + .02, z, .2, .025, 4.5);
   box(port, 'concrete', p.x, .4, -302, 180, 1.6, 5);
   for (let x = west; x <= east; x += 6) box(port, 'stone', x, -.05, -297, 4.8, 2.5, 4.8, { ry: .6 + x % 3 });
-  sign(port, '维湾货运码头 / VICTORIA FREIGHT\n公共步道 ←   装卸区域 →', -605, 6.1, -380.5, 18, Math.PI);
+  sign(port, '星湾货运码头 / STAR BAY FREIGHT\n公共步道 ←   装卸区域 →', -605, 6.1, -380.5, 18, Math.PI);
 
   // Station equipment stays outside the entrance interaction radius and does
   // not alter any original platform, ferry berth or timetable coordinates.
@@ -287,9 +287,9 @@ export function createMetropolisInfrastructure(THREE, scene, { quality = 'high' 
 
   // Bus bays are explicitly parked street furniture in this release. Rail and
   // ferry are the four playable scheduled services; no fake boarding prompt.
-  const busBays = [ { x: 645, z: -645, name: '2A 海滨 · 中环', color: 'red' },
+  const busBays = [ { x: 645, z: -645, name: '2A 海滨 · 星汇', color: 'red' },
     { x: -645, z: -790, name: '8 榕树 · 文化馆', color: 'green' },
-    { x: 645, z: -1045, name: '21 半山 · 九龙门', color: 'yellow' } ];
+    { x: 645, z: -1045, name: '21 松岭 · 榕荫门', color: 'yellow' } ];
   for (const [index, bus] of busBays.entries()) {
     const side = Math.sign(bus.x), c = cluster(`巴士停靠湾 ${index + 1}`, bus.x, bus.z, 340, 120), x = bus.x, z = bus.z;
     solid(c, bus.color, x, 1.95, z, 2.6, 3.55, 10.8, `bus-${index}`, 'parked-bus');

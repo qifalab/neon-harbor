@@ -31,7 +31,7 @@ export const TRANSIT_STOPS = Object.freeze([
   { id: 'hsr-north', routeId: 'high-speed', name: '北岸 · 城际总站', entrance: point(-672, -1160), platform: point(-690, -1160, 13), berth: point(-699, -1160, 12.3), kind: 'high-speed' },
   { id: 'hsr-old', routeId: 'high-speed', name: '旧城 · 西港站', entrance: point(-276, 180), platform: point(-317, 180, 13), berth: point(-308, 180, 12.3), kind: 'high-speed' },
   { id: 'ferry-south', routeId: 'ferry', name: '旧城 · 天星码头', entrance: point(-160, -282), platform: point(-160, -307, 0.7), berth: point(-160, -320, -0.15), kind: 'ferry' },
-  { id: 'ferry-north', routeId: 'ferry', name: '北岸 · 维湾码头', entrance: point(-160, -402), platform: point(-160, -389, 0.7), berth: point(-160, -377, -0.15), kind: 'ferry' },
+  { id: 'ferry-north', routeId: 'ferry', name: '北岸 · 星湾码头', entrance: point(-160, -402), platform: point(-160, -389, 0.7), berth: point(-160, -377, -0.15), kind: 'ferry' },
 ].map(stop => Object.freeze(stop)));
 
 /** Physical cutouts required in the street slabs; only the first flight is open to the sky. */
@@ -102,7 +102,7 @@ export const TRANSIT_ROUTES = Object.freeze([
     stops: ['light-quay', 'light-central', 'light-hills'], nodes: [atStop('light-quay'), atStop('light-central'), atStop('light-hills'), point(667, -1290, 8.3), point(687, -1310, 8.3), point(707, -1290, 8.3), point(707, -475, 8.3), point(687, -455, 8.3), point(667, -475, 8.3)] },
   { id: 'high-speed', name: 'H3 · 山海城际', color: '#96b8ed', speed: 90, dwell: 10, vehicleLength: 44, deckHeight: 0.8,
     stops: ['hsr-north', 'hsr-old'], nodes: [atStop('hsr-north'), point(-699, -440, 12.3), point(-308, -340, 12.3), atStop('hsr-old'), point(-308, 225, 12.3), point(-350, 250, 12.3), point(-730, 250, 12.3), point(-752, 220, 12.3), point(-752, -1255, 12.3), point(-726, -1280, 12.3), point(-699, -1255, 12.3)] },
-  { id: 'ferry', name: 'F4 · 维湾渡轮', color: '#77bda2', speed: 8.5, dwell: 10, vehicleLength: 18, deckHeight: 1.43,
+  { id: 'ferry', name: 'F4 · 星湾渡轮', color: '#77bda2', speed: 8.5, dwell: 10, vehicleLength: 18, deckHeight: 1.43,
     stops: ['ferry-south', 'ferry-north'], nodes: [atStop('ferry-south'), point(-130, -320, -0.15), point(-110, -335, -0.15), point(-110, -363, -0.15), point(-130, -377, -0.15), atStop('ferry-north'), point(-198, -377, -0.15), point(-218, -363, -0.15), point(-218, -335, -0.15), point(-198, -320, -0.15)] },
 ].map(route => Object.freeze(route)));
 

@@ -52,6 +52,28 @@ jobs:
             test-results/
           if-no-files-found: ignore
 
+  multiplayer:
+    name: Multiplayer rooms in two browsers
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test --config=playwright.multiplayer.config.js
+      - name: Retain multiplayer verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiplayer-browser-test-results
+          path: multiplayer-test-results/
+          if-no-files-found: ignore
+
   room-art:
     # Capture once on the PR. The Pages gate repeats functional checks; the
     # reviewed room evidence belongs to this exact proposed runtime tree.
