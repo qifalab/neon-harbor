@@ -80,3 +80,19 @@ export async function leaveRoom(page, room, corridorX) {
   await walkAxis(page, 'z', room.entrance.z, { timeout: 120000 });
   await walkAxis(page, 'x', corridorX, { timeout: 120000 });
 }
+
+
+/** Frame narrow rooms from a real doorway viewpoint. Their usual arrival
+ * point can lie beyond the centre, so looking back at it faces the corridor. */
+export async function frameOccupiedRoom(page, room, corridorX) {
+  const side = Math.sign(room.x - corridorX);
+  if (room.enclosed && room.width <= 10) {
+    await faceRoom(page, Math.PI);
+    await walkAxis(page, 'x', room.entrance.x + side * 1.6, { timeout: 120000 });
+  }
+  const state = await snapshot(page), pose = state.position;
+  expect(state.city.interior.currentRoomId).toBe(room.id);
+  const depth = side * (pose.x - room.entrance.x);
+  const targetX = room.entrance.x + side * Math.max(room.width / 2, depth + 1.5);
+  await faceRoom(page, Math.atan2(targetX - pose.x, room.z - pose.z));
+}

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { bootOccupied, enterAddress, chooseStorey, enterRoom, faceRoom } from '../e2e/helpers/occupied.js';
+import { bootOccupied, enterAddress, chooseStorey, enterRoom, frameOccupiedRoom } from '../e2e/helpers/occupied.js';
 import { snapshot } from '../e2e/helpers/walking.js';
 
 for (const [building, floorId, roomIndex] of [
@@ -12,8 +12,7 @@ for (const [building, floorId, roomIndex] of [
     await enterAddress(page, building);
     const floor = await chooseStorey(page, floorId), room = floor.rooms[roomIndex];
     await enterRoom(page, room, floor.cabin.x);
-    const pose = (await snapshot(page)).position;
-    await faceRoom(page, Math.atan2(room.x - pose.x, room.z - pose.z));
+    await frameOccupiedRoom(page, room, floor.cabin.x);
     await page.keyboard.press('Escape');
     await page.locator('[data-tab="settings"]').click();
     await page.locator('#quality').selectOption('high');
