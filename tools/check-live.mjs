@@ -209,7 +209,7 @@ try {
   await expect(page.locator('#panel')).toBeHidden();
   await page.waitForFunction(()=>Math.abs(window.__NEON__.snapshot().position.x-285.5)<1);
   await capture('live-high-quality-harbor.png');
-  report.checks.push('Returned to the actual harbor promenade at High quality; four public floors and two physical stair flights per north-shore building are present');
+  report.checks.push('Returned to the actual harbor promenade at High quality; all north-shore storey schedules and the museum stair count match the shipped catalog');
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
   report.success = true;
 } catch (error) {
