@@ -23,7 +23,10 @@ test('all storeys are selectable and a visitor walks an upper stair flight witho
   const flight = floor.stairs.find(item => item.fromFloorId === 'level-16');
   expect(flight.toFloorId).toBe('level-17');
   const route = stairWalkingRoute(flight, building.x);
-  await walkRoute(page, [{ x: building.x, z: route.bottom.z, y: flight.fromY }, route.bottom, route.middle, route.top]);
+  // This upper landing is beside a closed façade. Use the actual authored
+  // bottom point; the old +1.6 m helper offset leaves too little room for its
+  // .75 m endpoint tolerance near the window frame.
+  await walkRoute(page, [{ x: building.x, z: flight.bottom.z, y: flight.fromY }, flight.bottom, route.middle, route.top]);
   const walked = await snapshot(page);
   expect(walked.city.interior.floorId).toBe('level-17');
   expect(walked.teleportRevision).toBe(upper.teleportRevision);
