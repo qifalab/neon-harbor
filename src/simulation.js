@@ -369,7 +369,9 @@ export class GameSimulation {
     if (car.pause > 0) { car.pause -= dt; car.speed = 0; car.vx = 0; car.vz = 0; return; }
     const target = car.route[car.waypoint];
     if (distance(car, target) < 1) { car.waypoint = (car.waypoint + 1) % car.route.length; return; }
-    this._driveNPC(car, target, car.cruise, dt);
+    const yielding = this.trafficYieldAt?.(car);
+    const speed = yielding ? Math.max(0, car.speed - 4 * dt) : Math.min(car.cruise, car.speed + 3 * dt);
+    this._driveNPC(car, target, speed, dt);
   }
 
   _crime(amount = 1) {

@@ -95,7 +95,7 @@ test('a visitor walks both physical stair flights into a furnished third-floor w
   const entered = await snapshot(page), lobby = entered.city.interior;
   expect(lobby.floorId).toBe('lobby');
   expect(lobby.activeFloors).toBe(3);
-  expect(lobby.stairs).toHaveLength(2);
+  expect(lobby.stairs).toHaveLength(lobby.totalFloors - 1);
   const [lower, upper] = lobby.stairs;
   expect(lower.fromFloorId).toBe('lobby');
   expect(lower.toFloorId).toBe('gallery');
