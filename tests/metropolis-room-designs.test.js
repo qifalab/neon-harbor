@@ -15,7 +15,10 @@ test('all natural floors name distinct functional areas without substituting fur
     assert.ok(!floorNames.has(design.name), `floor title must identify an actual programme: ${design.name}`);
     floorNames.add(design.name);
     assert.equal(new Set(design.rooms.map(room => room.name)).size, 4);
-    for (const room of design.rooms) { roomIds.add(room.id); uses.add(room.type); assert.ok(room.name.length > 3); }
+    for (const room of design.rooms) {
+      roomIds.add(room.id); uses.add(room.type); assert.ok(room.name.length > 3);
+      if (room.number) assert.ok(room.name.endsWith(room.number), 'upper room titles and door numbers use the same floor/room code');
+    }
   }
   const count = METROPOLIS_BUILDINGS.reduce((n, building) => n + building.floors.length, 0);
   assert.equal(floorNames.size, count); assert.equal(roomIds.size, count * 4); assert.ok(uses.size >= 45);

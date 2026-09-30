@@ -6,6 +6,8 @@ import { CitizenJourneys } from '../src/citizen-journeys.js';
 import { TransitService, stationLiftPose, citizenStationAccess } from '../src/metropolis-transit.js';
 import { crossingSignal } from '../src/citizen-navigation.js';
 import { getRoomDesign } from '../src/metropolis-room-designs.js';
+import { createInteriorLayout } from '../src/metropolis-interiors.js';
+import { circleOBB, SpatialIndex } from '../src/collision.js';
 
 const city = createCityExploration(THREE, new THREE.Scene(), { streaming: false });
 function fixture() {
@@ -90,6 +92,30 @@ test('working periods keep residents at their real posts and the night change st
   transit.update(.25); life.update(.25, { hour: 23 });
   assert.ok(residents.every(person => person.journey.goal.kind === 'home' && person.journey.phase === 'leaving-building'));
   assert.deepEqual(residents.map(person => ({ x: person.x, y: person.y, z: person.z })), atWork.map(({ x, y, z }) => ({ x, y, z })));
+  life.dispose();
+});
+
+test('every assigned home and workplace has a clear arrival and departure through its actual room door', () => {
+  const { residents, life } = fixture();
+  for (const person of residents) for (const kind of ['home', 'work']) {
+    const goal = life.roomGoal(person.journey[kind], person), room = goal.room;
+    const layout = createInteriorLayout(goal.building, goal.floor), index = new SpatialIndex(layout.colliders);
+    Object.assign(person, { x: room.anchor.x, y: goal.floor.y, z: room.anchor.z,
+      insideBuildingId: goal.buildingId, floorId: goal.floorId, roomId: goal.roomId });
+    life.leaveBuilding(person);
+    const corridor = person.journey.path.findIndex(point => Math.abs(point.x - goal.building.x) < .001 && Math.abs(point.y - goal.floor.y) < .001);
+    assert.ok(corridor >= 0, 'departure reaches the real central corridor');
+    const path = [room.arrival, room.anchor, ...person.journey.path.slice(0, corridor + 1)];
+    for (let segment = 1; segment < path.length; segment++) {
+      const a = path[segment - 1], b = path[segment], steps = Math.max(1, Math.ceil(Math.hypot(a.x - b.x, a.z - b.z) / .15));
+      for (let step = 0; step <= steps; step++) {
+        const position = { x: a.x + (b.x - a.x) * step / steps, z: a.z + (b.z - a.z) * step / steps, radius: .37 };
+        const obstruction = index.query({ ...position, hx: .5, hz: .5 }).find(box => box.physics !== false &&
+          box.minY < goal.floor.y + 1.8 && box.maxY > goal.floor.y + .05 && circleOBB(position, box));
+        assert.equal(obstruction, undefined, `${person.id}/${kind}/${room.type}: ${obstruction?.kind} blocks the real door route`);
+      }
+    }
+  }
   life.dispose();
 });
 

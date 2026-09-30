@@ -13,8 +13,8 @@ Continuation of the unfinished work in REAL_CITY_V05_PLAN.md. The v0.5 release a
 
 ## Acceptance ledger
 
-- Implementation: pending.
-- All-floor continuity and room access: pending.
-- Resident journey completion, crossing safety, boarding and occupancy: pending.
+- Implementation: all-storey schedules, 48 upper programmes, streamed detailing, persistent residents, marked crossings, shared transit and station access are implemented. Room-title numbers now match actual door numbers.
+- All-floor continuity and room access: 920 floors / 3,680 rooms / 872 stair flights pass rule verification, including bidirectional physical walking. Actual 16F–17F walking, room entry and repeated floor eviction pass local browser verification. Upper front stair landings now keep 3.6 m clearance from the façade.
+- Resident journey completion, crossing safety, boarding and occupancy: 240 residents complete work and home visits during a 9,000-second test, using all four shared routes. Seven resident checks also cover working-period retention and all 480 assigned home/work room approaches and departures. A rendered resident has been observed arriving at the real museum workplace.
 - Visual review: pending; no claim that every room has been individually reviewed.
 - Full regression and live revision: pending.

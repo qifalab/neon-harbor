@@ -61,7 +61,7 @@ export function upperRoomDesign(buildingId, level) {
     collection: { subject, ink, paper, edition: level },
     rooms: Object.freeze(encoded.split(',').map((entry, index) => {
       const [type, title] = entry.split(':');
-      return Object.freeze({ id: `${buildingId}-${level}-${index}`, type, name: `${title} ${level}${index + 1}`,
+      return Object.freeze({ id: `${buildingId}-${level}-${index}`, type, name: `${title} ${level}${String(index + 1).padStart(2, '0')}`,
         furnishingVariant: (level + index) % 4, number: `${level}${String(index + 1).padStart(2, '0')}` });
     })),
   });
