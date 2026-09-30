@@ -18,7 +18,7 @@ for (const building of METROPOLIS_BUILDINGS) {
       // entire corridor adds travel without improving room evidence.
       const ordered = [...floor.rooms.entries()].sort((a, b) => b[1].entrance.z - a[1].entrance.z || a[0] - b[0]);
       for (const [index, room] of ordered) {
-        await enterRoom(page, room, building.x);
+        await enterRoom(page, room, building.x, { doorwayView: true });
         await frameOccupiedRoom(page, room, building.x);
         const state = await snapshot(page);
         expect(state.position.y).toBeCloseTo(building.floors.find(item => item.id === id).y, 1);

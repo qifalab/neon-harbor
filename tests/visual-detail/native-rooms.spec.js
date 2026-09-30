@@ -11,7 +11,7 @@ for (const [building, floorId, roomIndex] of [
     const errors = await bootOccupied(page);
     await enterAddress(page, building);
     const floor = await chooseStorey(page, floorId), room = floor.rooms[roomIndex];
-    await enterRoom(page, room, floor.cabin.x);
+    await enterRoom(page, room, floor.cabin.x, { doorwayView: true });
     await frameOccupiedRoom(page, room, floor.cabin.x);
     await page.keyboard.press('Escape');
     await page.locator('[data-tab="settings"]').click();
