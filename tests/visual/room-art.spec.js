@@ -20,7 +20,11 @@ for (const building of METROPOLIS_BUILDINGS) {
         expect(state.position.y).toBeCloseTo(building.floors.find(item => item.id === id).y, 1);
         expect(room.number).toBeTruthy(); expect(room.art.subject).toBeTruthy();
         const name = `${building.id}-${id}-room-${index + 1}.jpg`;
+        // Travel at the functional-suite viewport, then render the actual
+        // photograph at 960×600. No upscaling or geometry replacement.
+        await page.setViewportSize({ width: 960, height: 600 });
         await page.screenshot({ path: testInfo.outputPath(name), type: 'jpeg', quality: 83, timeout: 90000 });
+        await page.setViewportSize({ width: 640, height: 400 });
         evidence.push({ building: building.id, floor: id, room: room.id, name: room.name, type: room.type,
           number: room.number, artwork: room.art, file: name, position: state.position, residentFloors: state.city.interior.residentFloors });
         await leaveRoom(page, room, building.x);
