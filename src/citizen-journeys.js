@@ -107,7 +107,9 @@ export class CitizenJourneys {
     const data = this.floorNavigation(building, floor.id), room = data.rooms.find(item => item.id === resident.roomId);
     const path = [];
     resident.journey.traversingBuildingId = building.id;
-    if (room) { path.push(point(room.arrival.x, resident.z, floor.y), point(building.x, resident.z, floor.y)); }
+    // A clinical workstation may stand away from the doorway's centre line.
+    // Return to the actual arrival point before crossing the partition door.
+    if (room) { path.push(point(room.arrival.x, room.arrival.z, floor.y), point(building.x, room.arrival.z, floor.y)); }
     const flights = createInteriorStairs(building).filter(flight => flight.toY <= floor.y + .001).reverse();
     for (const flight of flights) path.push(point(building.x, flight.top.z, flight.toY), flight.top, { ...flight.bottom, stair: flight }, point(building.x, flight.bottom.z, flight.fromY));
     path.push({ ...this.floorNavigation(building, 'lobby').entrance }, groundDoor(building));

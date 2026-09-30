@@ -49,12 +49,16 @@ export async function chooseStorey(page, id) {
 export async function faceRoom(page, yaw) {
   await page.waitForFunction(() => Number.isFinite(window.__NEON__.snapshot().camera?.yaw), null,
     { polling: 'raf', timeout: 30000 });
-  const current = (await snapshot(page)).camera.yaw;
+  const current = await page.evaluate(() => window.__NEON__.snapshot().camera.yaw);
   const delta = Math.atan2(Math.sin(yaw - current), Math.cos(yaw - current));
+  if (Math.abs(delta) < .003) return;
   const canvas = await page.locator('#game').boundingBox();
   const x = canvas.x + canvas.width * .86, y = canvas.y + canvas.height * .3;
   await page.mouse.move(x, y); await page.mouse.down();
-  await page.mouse.move(x - delta / .005, y, { steps: 12 }); await page.mouse.up();
+  // One ordinary pointer drag supplies the target. The shipped camera still
+  // eases to it; many redundant protocol moves make software-GPU photography
+  // spend seconds on identical intermediate cursor events.
+  await page.mouse.move(x - delta / .005, y); await page.mouse.up();
   await page.waitForFunction(yaw => {
     const actual = window.__NEON__.snapshot().camera.yaw;
     return Math.abs(Math.atan2(Math.sin(actual - yaw), Math.cos(actual - yaw))) < .003;
