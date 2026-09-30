@@ -1,12 +1,12 @@
 # v0.5 验收记录
 
-编制日期：2026-09-29；发布验收收尾于 2026-09-30。起点为已发布的 v0.4.0 / `5266fae9133c37254569dda65ab5b3c9798f15b6`。本轮由用户的实际体验反馈触发，制作计划见 [REAL_CITY_V05_PLAN.md](REAL_CITY_V05_PLAN.md)。最终游戏修订 `1796b811e0b33c88c0e830f023483a9dbd6ba71d` 的完整 CI、同修订 Pages 发布和 11 项原网址线上检查均已通过。下文保留失败与修订的阶段证据；早期的“待完成”描述属于当时状态，最终结论见文末发布验收收尾。新域名绑定后的复验单独记录，不与绑定前证据混算。
+编制日期：2026-09-29；发布验收收尾于 2026-09-30。起点为已发布的 v0.4.0 / `5266fae9133c37254569dda65ab5b3c9798f15b6`。本轮由用户的实际体验反馈触发，制作计划见 [REAL_CITY_V05_PLAN.md](REAL_CITY_V05_PLAN.md)。首发游戏修订 `1796b811e0b33c88c0e830f023483a9dbd6ba71d` 的完整 CI、同修订 Pages 发布和 11 项原网址线上检查均已通过；发布收尾修订 `eab0d66b8eb45f656fb67613e056ffe44cd53b78` 又完成完整矩阵及新域名 11 项线上检查，游戏运行源码和资源未改变。下文保留失败与修订的阶段证据；早期的“待完成”描述属于当时状态，最终结论见文末发布验收收尾。新域名绑定后的复验单独记录，不与绑定前证据混算。
 
 ## 验收原则
 
 功能规则、普通玩家操作和画面审查分别记录。实际从主菜单、导览、键盘及鼠标操作进入场景；`window.__NEON__.snapshot()` 只读诊断，不用脚本设置人物坐标或游戏状态。产品默认 High 保留；使用 Low 的软件 GPU 功能测试明确标记。几何数量、用例数量和成功生成资源不作为美术完成度或实机帧率证明。
 
-## 当前检查结果
+## 制作期间检查记录（最终结果见发布收尾）
 
 | 检查 | 范围 | 结果及边界 |
 | --- | --- | --- |
@@ -193,8 +193,26 @@ PR #5 随后合并为 `21b04acf6d736328438bb3ba4293df86cb5d34fd`，树仍为同�
 
 对已成功的 Pages8 deploy job 做单项重跑，attempt 2 在部署前失败。正式日志为 `Multiple artifacts named "github-pages" were unexpectedly found ... Artifact count is 2`；Verify the live deployed game 被跳过，没有覆盖此前已成功发布的游戏。失败原因是同一个 run 的前后两次上传共用产物名，不是游戏路线或新域名内容错误。
 
-发布工作流现将上传名和 `artifact_name` 同时设为 `github-pages-${{ github.run_id }}-${{ github.run_attempt }}`，线上证据也按 attempt 独立命名。采用官方 [upload-pages-artifact name](https://github.com/actions/upload-pages-artifact#inputs-) 与 [deploy-pages artifact_name](https://github.com/actions/deploy-pages#inputs-) 输入，不删除早期证据、不放宽测试门槛。此修订的实际部署与新域名 WebGL 检查完成后，在本节追加对应 run 和报告。
+发布工作流现将上传名和 `artifact_name` 同时设为 `github-pages-${{ github.run_id }}-${{ github.run_attempt }}`，线上证据也按 attempt 独立命名。采用官方 [upload-pages-artifact name](https://github.com/actions/upload-pages-artifact#inputs-) 与 [deploy-pages artifact_name](https://github.com/actions/deploy-pages#inputs-) 输入，不删除早期证据、不放宽测试门槛。此修订的实际部署及新域名 WebGL 检查已通过，正式记录见下节。
 
 ### 本轮结项边界
 
 A–D 的发布门槛已按最终游戏修订验收；E 只有港湾、博物馆与代表生活房间画面，全部 48 地址 × 4 公共层逐址艺术复核继续保留未完成状态。全部自然楼层、南岸与背景楼室内、其他交通连续入口、居民日常链路与骨骼动作，以及真实硬件性能仍见前述“尚未完成”，不由此次发布成功推定完成。
+
+
+### 新域名发布收尾 · `eab0d66`
+
+[主分支 CI33 / 36664829254](https://github.com/qifalab/neon-harbor/actions/runs/36664829254) 完整成功。[Pages9 / 36664882000，attempt 1](https://github.com/qifalab/neon-harbor/actions/runs/36664882000/attempts/1) 独立完成七组构建、各组 204/204 规则及 18/18 浏览器场景，然后上传独立的 `github-pages-36664882000-1` 并部署成功。真实地铁完整行程为 4.8 分钟，渡轮为 2.9 分钟，双梯工坊往返为 4.1 分钟。
+
+部署后返回的 URL 已是 `https://neon-harbor.qifalab.cd.mba/`。deploy job `109729335703` 的正式日志及 artifact `11075648482`（`live-deployment-smoke-1`）确认：11 项全部通过、errors=[]、80 条资源响应记录，version=0.5.0、revision=`eab0d66b8eb45f656fb67613e056ffe44cd53b78`，实际 WebGL2 上下文未丢失，浏览器加载的资源哈希吻合本修订。完整原始报告保存为 [v05-domain-report-20260930.json](qa/v05-domain-report-20260930.json)，公开检查索引为 [v05-release-20260930.json](qa/v05-release-20260930.json)。
+
+High / 800×500 的当前海港与博物馆入口截图已审；发布前 artifact `11075128630` 的白昼和夜景 High 代表视点也已审。该 artifact 的三层工坊为 Low / 640×400，接受其普通输入、真实楼梯、房门及返回路线证据，不扩展成 High 全址艺术验收。
+
+独立 Live smoke 工作流同步改为直接检测新域名，移除过时的固定提交默认值，运行时明确填写实际待检查的发布 SHA；其证据产物同样按 attempt 分开保存。工作流 YAML 与原有验证门槛均保持有效。
+
+
+### 部署重跑的实际验收 · Pages9 attempt 2
+
+仅重跑 deploy job，复用 attempt 1 的七组发布前验证；没有把继承的成功状态算成重新运行 18 个场景。[Pages9 attempt 2](https://github.com/qifalab/neon-harbor/actions/runs/36664882000/attempts/2) 的 deploy job `109730592188` 完整成功。该 run 同时保留 `github-pages-36664882000-1` 和 `github-pages-36664882000-2` 两个产物，正式日志确认选择 `artifact_name=github-pages-36664882000-2`，没有出现多产物选择错误。
+
+随后再次对新域名执行完整 11 项线上检查：success=true、errors=[]、实际 WebGL2 上下文有效、revision 仍为 `eab0d66b8eb45f656fb67613e056ffe44cd53b78`。独立证据 artifact `11075733514`（`live-deployment-smoke-2`）与原始 [重跑线上报告](qa/v05-domain-retry-report-20260930.json) 已保留。本次恢复的“最终发布复验、线上检查、重跑故障与结项记录”完成；前述长期内容边界继续保留。

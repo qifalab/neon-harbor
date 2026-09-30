@@ -1,0 +1,296 @@
+{
+  "compiled_at": "2026-09-30",
+  "release": {
+    "version": "0.5.0",
+    "revision": "1796b811e0b33c88c0e830f023483a9dbd6ba71d",
+    "ci_run": 36604188104,
+    "pages_run": 36604289048,
+    "pages_attempt": 1
+  },
+  "matrix": [
+    {
+      "job": 109529237185,
+      "name": "verify / Build and gameplay tests (metropolis-1)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all 48 addresses and fetches and evicts real north-shore detail (1.3m)",
+        "  ✓  2 tests/e2e/metropolis.spec.js:105:3 › tide-museum: walk through the lobby, ride the elevator, return to the street (2.9m)",
+        "  2 passed (4.3m)"
+      ]
+    },
+    {
+      "job": 109529237322,
+      "name": "verify / Build and gameplay tests (harbor-realism)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views (53.6s)",
+        "  ✓  2 tests/e2e/harbor-realism.spec.js:86:1 › a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street (2.5m)",
+        "  2 passed (3.5m)"
+      ]
+    },
+    {
+      "job": 109529237350,
+      "name": "verify / Build and gameplay tests (metropolis-2)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/metropolis.spec.js:105:3 › apex-tower: ride to a high floor and travel back to the street (2.5m)",
+        "  ✓  2 tests/e2e/metropolis.spec.js:105:3 › camellia-court: walk through the lobby, ride the elevator, return to the street (2.3m)",
+        "  2 passed (5.0m)"
+      ]
+    },
+    {
+      "job": 109529237398,
+      "name": "verify / Build and gameplay tests (living-city)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/living-city.spec.js:62:1 › a resident rides to a furnished bedroom, walks through its doorway, and returns to the street (2.4m)",
+        "  ✓  2 tests/e2e/living-city.spec.js:106:1 › default high quality loads crafted materials and exposes walk-in viewing and real infrastructure entrances (51.7s)",
+        "  2 passed (3.6m)"
+      ]
+    },
+    {
+      "job": 109529237462,
+      "name": "verify / Build and gameplay tests (game)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (2.4m)",
+        "  ✓  2 tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets (1.3m)",
+        "  ✓  3 tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress (30.2s)",
+        "  ✓  4 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (50.6s)",
+        "  4 passed (5.5m)"
+      ]
+    },
+    {
+      "job": 109529237522,
+      "name": "verify / Build and gameplay tests (stability)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.3m)",
+        "  ✓  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (39.1s)",
+        "  ✓  3 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.2m)",
+        "  ✓  4 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (1.6m)",
+        "  4 passed (5.1m)"
+      ]
+    },
+    {
+      "job": 109529237493,
+      "name": "verify / Build and gameplay tests (metropolis-3)",
+      "rule_summary": [
+        "tests 204",
+        "pass 204",
+        "fail 0"
+      ],
+      "browser_summary": [
+        "  ✓  1 tests/e2e/metropolis.spec.js:165:3 › metro: wait, board, travel and alight using public controls (6.5m)",
+        "  ✓  2 tests/e2e/metropolis.spec.js:165:3 › ferry: wait, board, travel and alight using public controls (4.0m)",
+        "  2 passed (10.7m)"
+      ]
+    }
+  ],
+  "online": {
+    "report_artifact": 11051720851,
+    "checked_url": "https://qifalab.github.io/neon-harbor/",
+    "checks": 11,
+    "errors": [],
+    "high_screenshots": [
+      "live-high-quality-harbor.png",
+      "live-high-quality-game.png"
+    ],
+    "renderer": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "viewport": {
+      "width": 800,
+      "height": 500
+    }
+  },
+  "domain_http_check": {
+    "url": "https://neon-harbor.qifalab.cd.mba/",
+    "status": 200,
+    "tls_verification": true,
+    "manifest_revision": "1796b811e0b33c88c0e830f023483a9dbd6ba71d",
+    "asset_hashes_matched": [
+      "index.html",
+      "styles.css",
+      "src/main.js",
+      "src/metropolis-world.js",
+      "src/metropolis-interiors.js",
+      "src/metropolis-transit.js",
+      "vendor/three/three.module.js",
+      "assets/materials/v04/weathered-plaster.webp"
+    ],
+    "old_pages_redirect": "https://neon-harbor.qifalab.cd.mba/"
+  },
+  "domain_publication": {
+    "workflow_revision": "eab0d66b8eb45f656fb67613e056ffe44cd53b78",
+    "pages_run": 36664882000,
+    "status": "success",
+    "predeploy_matrix": [
+      {
+        "job": 109727319290,
+        "name": "verify / Build and gameplay tests (game)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (1.8m)",
+          "  ✓  2 tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets (1.0m)",
+          "  ✓  3 tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress (22.2s)",
+          "  ✓  4 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (41.2s)",
+          "  4 passed (4.2m)"
+        ]
+      },
+      {
+        "job": 109727319480,
+        "name": "verify / Build and gameplay tests (metropolis-2)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/metropolis.spec.js:105:3 › apex-tower: ride to a high floor and travel back to the street (2.3m)",
+          "  ✓  2 tests/e2e/metropolis.spec.js:105:3 › camellia-court: walk through the lobby, ride the elevator, return to the street (2.3m)",
+          "  2 passed (4.8m)"
+        ]
+      },
+      {
+        "job": 109727319509,
+        "name": "verify / Build and gameplay tests (living-city)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/living-city.spec.js:62:1 › a resident rides to a furnished bedroom, walks through its doorway, and returns to the street (2.9m)",
+          "  ✓  2 tests/e2e/living-city.spec.js:106:1 › default high quality loads crafted materials and exposes walk-in viewing and real infrastructure entrances (1.2m)",
+          "  2 passed (4.4m)"
+        ]
+      },
+      {
+        "job": 109727319551,
+        "name": "verify / Build and gameplay tests (metropolis-1)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all 48 addresses and fetches and evicts real north-shore detail (1.2m)",
+          "  ✓  2 tests/e2e/metropolis.spec.js:105:3 › tide-museum: walk through the lobby, ride the elevator, return to the street (2.7m)",
+          "  2 passed (4.1m)"
+        ]
+      },
+      {
+        "job": 109727319450,
+        "name": "verify / Build and gameplay tests (harbor-realism)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views (1.2m)",
+          "  ✓  2 tests/e2e/harbor-realism.spec.js:86:1 › a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street (4.1m)",
+          "  2 passed (5.5m)"
+        ]
+      },
+      {
+        "job": 109727319524,
+        "name": "verify / Build and gameplay tests (stability)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.7m)",
+          "  ✓  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (58.6s)",
+          "  ✓  3 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.7m)",
+          "  ✓  4 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (2.1m)",
+          "  4 passed (6.9m)"
+        ]
+      },
+      {
+        "job": 109727319489,
+        "name": "verify / Build and gameplay tests (metropolis-3)",
+        "rule_summary": [
+          "tests 204",
+          "pass 204",
+          "fail 0"
+        ],
+        "browser_summary": [
+          "  ✓  1 tests/e2e/metropolis.spec.js:165:3 › metro: wait, board, travel and alight using public controls (4.8m)",
+          "  ✓  2 tests/e2e/metropolis.spec.js:165:3 › ferry: wait, board, travel and alight using public controls (2.9m)",
+          "  2 passed (8.0m)"
+        ]
+      }
+    ],
+    "high_visual_review": {
+      "artifact": 11075128630,
+      "day_and_night": "reviewed 800x500 High",
+      "workshop": "reviewed 640x400 Low, route evidence only"
+    },
+    "attempt": 1,
+    "ci_run": 36664829254,
+    "report_artifact": 11075648482,
+    "report_file": "v05-domain-report-20260930.json",
+    "checks": 11,
+    "errors": [],
+    "renderer": {
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "lost": false
+    },
+    "retry_verification": {
+      "attempt": 2,
+      "status": "success",
+      "deploy_job": 109730592188,
+      "selected_artifact": "github-pages-36664882000-2",
+      "report_artifact": 11075733514,
+      "report_file": "v05-domain-retry-report-20260930.json",
+      "checks": 11,
+      "errors": [],
+      "revision": "eab0d66b8eb45f656fb67613e056ffe44cd53b78",
+      "predeploy_matrix": "inherited from successful attempt 1; no duplicated gameplay count"
+    }
+  },
+  "limits": [
+    "CI uses software WebGL2; no hardware performance claim",
+    "The full metro and ferry routes belong to the same-revision predeployment matrix; the online smoke covers 11 separate checks",
+    "Only representative High harbor and museum images have been reviewed; full 48-address artwork review is unfinished",
+    "All natural floors, south-shore and background interiors, other continuous transit entrances and full citizen routines remain unfinished"
+  ],
+  "recovered_rerun_failure": {
+    "pages_run": 36604289048,
+    "attempt": 2,
+    "job": 109725498876,
+    "error": "Multiple artifacts named github-pages; count 2",
+    "online_check": "skipped",
+    "correction": "Upload and deploy select github-pages-${{ github.run_id }}-${{ github.run_attempt }}"
+  }
+}
