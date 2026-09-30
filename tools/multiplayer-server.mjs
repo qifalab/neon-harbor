@@ -34,7 +34,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
   }
   function snapshot(room){return {protocol:ROOM_PROTOCOL,world:ROOM_WORLD,code:room.code,seq:++room.seq,time:room.sim.elapsed,
     players:[...room.players.values()].map(s=>({id:s.id,name:s.name,...s.pose,scene:s.scene,carId:s.carId})),
-    cars:room.sim.cars.filter(c=>c.health>0).map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,pitch:c.pitch||0,roll:c.roll||0,owner:room.owners.get(c.id)||null})),chat:room.chat};}
+    cars:room.sim.cars.filter(c=>c.health>0).map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,pitch:c.pitch||0,roll:c.roll||0,owner:room.owners.get(c.id)||null,traffic:!!c.traffic,waypoint:c.waypoint})),chat:room.chat};}
   server.on('request',async(req,res)=>{
     const url=new URL(req.url,'http://localhost');
     if(!url.pathname.startsWith('/api/'))return staticHandler(req,res);
