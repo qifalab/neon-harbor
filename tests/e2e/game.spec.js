@@ -74,7 +74,7 @@ test('real keyboard gameplay, menus and wanted level', async ({ page }) => {
   await page.screenshot({ path: 'test-results/screenshots/04-missions.png' });
   await page.locator('[data-mission="harbor-run"]').click();
   await expect.poll(async () => (await snapshot(page)).mission?.id).toBe('harbor-run');
-  await travel(page, 'j', state => state.wanted > 0);
+  await travel(page, 'j', state => state.wanted > 0 && state.ammo < 18);
   expect((await snapshot(page)).ammo).toBeLessThan(18);
   await expect.poll(async () => (await snapshot(page)).cars.some(car => car.police)).toBe(true);
   await page.keyboard.press('Escape');

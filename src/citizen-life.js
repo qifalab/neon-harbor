@@ -28,6 +28,7 @@ export const DISTRICT_LIFE = Object.freeze({
 });
 
 export const CITIZEN_ACTIVITY_LABELS = Object.freeze({
+  commuting: '乘坐公共交通',
   walking: '步行', talking: '邻里聊天', reading: '翻阅手册', refreshments: '喝茶休息',
   photographing: '观察与摄影', 'waiting-transit': '查看交通时刻', stretching: '舒展身体',
   shopping: '检查采购物品', working: '整理工作记录', resting: '稍作休息', greeting: '与访客交谈', waiting: '让行',
