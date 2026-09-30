@@ -120,16 +120,16 @@ export function createMetropolisWorld(THREE, scene, {
   box('sidewalk',704,-0.04,-878,68,0.08,960);
   for (const x of METROPOLIS_ROADS.vertical) {
     for (let z=-1286; z<-406; z+=17) if (METROPOLIS_ROADS.horizontal.every(r=>Math.abs(r-z)>21)) box('line',x,0.014,z,0.18,0.012,6.5);
-    for (const z of METROPOLIS_ROADS.horizontal) for(let i=-4;i<=4;i++) {
-      box('white',x+i*1.15,0.02,z+19,0.55,0.012,5);
-      box('white',x+i*1.15,0.02,z-19,0.55,0.012,5);
+    for (const z of METROPOLIS_ROADS.horizontal) for(let i=-9;i<=9;i++) {
+      box('white',x+i*1.3,0.02,z+19,0.6,0.012,5);
+      box('white',x+i*1.3,0.02,z-19,0.6,0.012,5);
     }
   }
   for(const z of METROPOLIS_ROADS.horizontal) {
     for(let x=-706;x<720;x+=17) if(METROPOLIS_ROADS.vertical.every(r=>Math.abs(r-x)>21)) box('line',x,0.015,z,6.5,0.012,0.18);
-    for(const x of METROPOLIS_ROADS.vertical) for(let i=-4;i<=4;i++) {
-      box('white',x+20,0.022,z+i*1.15,5,0.012,0.55);
-      box('white',x-20,0.022,z+i*1.15,5,0.012,0.55);
+    for(const x of METROPOLIS_ROADS.vertical) for(let i=-9;i<=9;i++) {
+      box('white',x+20,0.022,z+i*1.3,5,0.012,0.6);
+      box('white',x-20,0.022,z+i*1.3,5,0.012,0.6);
     }
   }
 

@@ -4,6 +4,7 @@ import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS, METROPOLI
 import { createInteriorSystem } from './metropolis-interiors.js';
 import { createTransitSystem } from './metropolis-transit.js';
 import { createPeopleSystem } from './metropolis-people.js';
+import { createCitizenCrossings } from './citizen-crossings.js';
 import { createMetropolisInfrastructure } from './metropolis-infrastructure.js';
 import { createHarborSkyline } from './harbor-skyline.js';
 
@@ -20,9 +21,10 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   const harbor = createHarborSkyline(THREE, scene, { quality });
   const colliders = [...south.colliders, ...north.colliders, ...transit.colliders, ...infrastructure.colliders, ...harbor.colliders];
   const groundHeightAt = (x, z, currentY = 0) => infrastructure.groundHeightAt(x, z, currentY) ?? north.groundHeightAt(x, z) ?? south.groundHeightAt(x, z);
-  const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, streetStops: infrastructure.metadata.streetLifeStops || [] });
+  const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, transit, streetStops: infrastructure.metadata.streetLifeStops || [] });
+  const crossings = createCitizenCrossings(THREE, scene, people.journeys.navigation.crossings, colliders);
   const root = new THREE.Group(); root.name = 'Neon Harbor · two shores'; scene.add(root);
-  root.add(south.root, north.root, infrastructure.root, harbor.root);
+  root.add(south.root, north.root, infrastructure.root, harbor.root, crossings.root);
   let simulation = null, context = null, contextVersion = null, outdoorCars = null, elevatorAnchor = null;
 
   const person = () => ({ ...simulation.player, y: simulation.player.groundY + simulation.player.y });
@@ -75,7 +77,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   function message(result) { if (result?.message) simulation._message(result.message); }
   function getPrompt() {
     if (!simulation || simulation.inCar) return null;
-    if (inside()) return interiors.getPrompt(person());
+    if (inside()) return interiors.getPrompt(person()) || (people.getPrompt?.(simulation.player) ? { kind: 'person', label: people.getPrompt(simulation.player) } : null);
     const transport = transit.getPrompt(person());
     if (transport) return typeof transport === 'string' ? { kind: 'transit', label: transport } : transport;
     const entrance = interiors.getPrompt(person());
@@ -86,7 +88,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   function interact() {
     if (simulation.inCar) return { handled: false };
     let result;
-    if (inside()) result = interiors.interact(person());
+    if (inside()) { result = interiors.interact(person()); if (!result.handled) result = people.interact?.(simulation.player); }
     else if (transit.getPrompt(person())) result = transit.interact(person());
     else if (interiors.getPrompt(person())) result = interiors.interact(person());
     else result = people.interact?.(simulation.player);
@@ -171,6 +173,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     bind(sim) {
       if(simulation)leaveSpecialLocation(); simulation = sim; addNorthernTraffic();
       simulation.pedestriansAt = p => !inside() && !transit.collisionContext() ? people.getCollisionBodies?.(p, 12) || [] : [];
+      simulation.trafficYieldAt = car => people.trafficYieldAt(car);
       syncContext(true);
     },
     get activeContext() { return context; }, get isInside() { return inside(); },
@@ -202,8 +205,9 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       south.update(dt, time, view); north.update(view?.position || south.spawn, view?.velocity || {x:0,z:0}, dt);
       north.updateWater(dt,time*24);harbor.update(view?.position || south.spawn,dt,time);
       infrastructure.update(view?.position || south.spawn, dt);
-      people.update(dt, { position: view?.position || south.spawn, hour: time * 24, vehicles: outdoorCars || simulation?.cars || [], paused: dt === 0 });
-      if (people.root) people.root.visible = !inside() && !transit.collisionContext();
+      crossings.update(transit.time, view?.position || south.spawn);
+      people.update(dt, { position: view?.position || south.spawn, hour: time * 24, vehicles: outdoorCars || simulation?.cars || [], paused: dt === 0, interior: interiors.snapshot() });
+      if (people.root) people.root.visible = !interiors.state.moving;
     },
     updateRenderVisibility(camera) {
       // Physics, streaming, clocks, lighting and material quality keep running.

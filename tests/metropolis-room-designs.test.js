@@ -6,7 +6,7 @@ import { ROOM_DESIGNS, getRoomDesign } from '../src/metropolis-room-designs.js';
 import { createInteriorLayout, createInteriorSystem } from '../src/metropolis-interiors.js';
 import { SpatialIndex, moveCircle, circleContacts, CHARACTER_RADIUS } from '../src/collision.js';
 
-test('192 authored public floors name 768 functional areas without substituting furniture for rooms', () => {
+test('all natural floors name distinct functional areas without substituting furniture for rooms', () => {
   assert.deepEqual(Object.keys(ROOM_DESIGNS).sort(), METROPOLIS_BUILDINGS.map(building => building.id).sort());
   const floorNames = new Set(), roomIds = new Set(), uses = new Set();
   for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors) {
@@ -17,11 +17,12 @@ test('192 authored public floors name 768 functional areas without substituting 
     assert.equal(new Set(design.rooms.map(room => room.name)).size, 4);
     for (const room of design.rooms) { roomIds.add(room.id); uses.add(room.type); assert.ok(room.name.length > 3); }
   }
-  assert.equal(floorNames.size, 192); assert.equal(roomIds.size, 768); assert.ok(uses.size >= 45);
+  const count = METROPOLIS_BUILDINGS.reduce((n, building) => n + building.floors.length, 0);
+  assert.equal(floorNames.size, count); assert.equal(roomIds.size, count * 4); assert.ok(uses.size >= 45);
   assert.throws(() => getRoomDesign('missing-address', 'lobby'), /Missing authored interior/);
 });
 
-test('all 768 room thresholds remain reachable through the central aisle and real door openings', () => {
+test('every natural-floor room threshold remain reachable through the central aisle and real door openings', () => {
   for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors) {
     const layout = createInteriorLayout(building, floor);
     const physics = { index: new SpatialIndex(layout.colliders), groundHeightAt: () => floor.y, bounds: 1450 };
@@ -142,9 +143,9 @@ test('hospital visitors can reach counters, seats, beds, handwashing and rehabil
   assert.equal(visited, 20);
 });
 
-test('all 576 occupied lower-floor rooms have human-scale enclosures and furnishings within their walls', () => {
+test('all enclosed occupied rooms have human-scale enclosures and furnishings within their walls', () => {
   let occupied = 0;
-  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.filter(item => item.stairs)) {
+  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.filter(item => item.id !== 'observation')) {
     const layout = createInteriorLayout(building, floor);
     for (const room of layout.rooms) {
       occupied++;
@@ -159,11 +160,11 @@ test('all 576 occupied lower-floor rooms have human-scale enclosures and furnish
       }
     }
   }
-  assert.equal(occupied, 576);
+  assert.equal(occupied, METROPOLIS_BUILDINGS.reduce((n, building) => n + (building.floors.length - 1) * 4, 0));
 });
 
 test('public arrival and corridor spaces contain legible orientation, seating and programme-specific displays', () => {
-  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.filter(item => item.stairs)) {
+  for (const building of METROPOLIS_BUILDINGS) for (const floor of building.floors.filter(item => item.id !== 'observation')) {
     const layout = createInteriorLayout(building, floor);
     assert.ok(layout.parts.some(part => part.kind === 'welcome-counter'));
     assert.ok(layout.parts.filter(part => part.kind === 'bench' && !part.roomId).length >= 4);

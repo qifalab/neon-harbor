@@ -185,9 +185,9 @@ try {
   expect(museum.furnitureCount).toBeGreaterThan(12);
   expect(museum.roomCount).toBe(4);
   expect(museum.activeFloors).toBe(3);
-  expect(museum.stairs).toHaveLength(2);
+  expect(museum.stairs).toHaveLength(museum.totalFloors - 1);
   const publicFloors=(await page.evaluate(()=>window.__NEON__.snapshot())).city.buildings;
-  expect(publicFloors.every(b=>b.floors.length===4&&b.floors[1].y===4.2&&b.floors[2].y===8.4)).toBe(true);
+  expect(publicFloors.every(b=>b.floors.length>=5&&b.floors[1].y===4.2&&b.floors[2].y===8.4)).toBe(true);
   expect(museum.rooms.some(room => room.type === 'maritime')).toBe(true);
   report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, floorName: museum.floorName, rooms: museum.rooms.map(room => room.name), furnitureCount: museum.furnitureCount };
   await capture('live-north-museum.png');

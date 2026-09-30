@@ -114,7 +114,7 @@ for (const id of ['tide-museum', 'apex-tower', 'camellia-court']) {
     expect(lobby.activeFloors).toBe(3);
     await walk(page, ['w', 'Shift'], s => Math.abs(s.position.z - s.city.interior.cabin.z) < 1.2);
     await page.keyboard.press('e');
-    await expect(page.locator('[data-floor-id]')).toHaveCount(4);
+    await expect(page.locator('[data-floor-id]')).toHaveCount(lobby.totalFloors);
     const floor = id === 'camellia-court' ? 'gallery' : 'observation';
     await page.locator(`[data-floor-id="${floor}"]`).click();
     await expect.poll(async () => (await snapshot(page)).city.interior.moving).toBe(true);
@@ -128,7 +128,7 @@ for (const id of ['tide-museum', 'apex-tower', 'camellia-court']) {
     const arrived = (await snapshot(page)).city.interior;
     expect(arrived.floorId).toBe(floor);
     expect(arrived.elevator.doorOpen).toBe(1);
-    expect(arrived.activeFloors).toBe(floor === 'observation' ? 1 : 3);
+    expect(arrived.activeFloors).toBe(3);
     if (id === 'apex-tower') expect((await snapshot(page)).position.y).toBeGreaterThan(250);
     // Leave the cabin into the furnished destination, then walk back to return.
     await walk(page, ['s'], s => s.position.z > s.city.interior.cabin.z + 10);

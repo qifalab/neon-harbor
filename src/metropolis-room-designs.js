@@ -3,6 +3,8 @@
  * public floors and their four connected rooms; stable legacy floor IDs keep saves and
  * elevator journeys compatible. Room types select furnishing craft, not names.
  */
+import { upperRoomDesign } from './occupied-programmes.js';
+
 const FLOORS = {
   'tide-museum': [
     ['潮间带序厅', 'gallery', 'maritime:木帆船与船锚馆,archive:航道图与灯塔档案,gallery:潮水刻度展廊,lounge:海员口述历史厅'],
@@ -314,7 +316,8 @@ export const ROOM_DESIGNS = Object.freeze(Object.fromEntries(Object.entries(FLOO
 ])));
 
 export function getRoomDesign(buildingId, floorId) {
-  const result = ROOM_DESIGNS[buildingId]?.find(floor => floor.id === floorId);
+  const result = ROOM_DESIGNS[buildingId]?.find(floor => floor.id === floorId) ||
+    (/^level-\d{2,3}$/.test(floorId) ? upperRoomDesign(buildingId, Number(floorId.slice(6))) : null);
   if (!result) throw new Error(`Missing authored interior: ${buildingId}/${floorId}`);
   return result;
 }

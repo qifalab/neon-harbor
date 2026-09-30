@@ -445,7 +445,7 @@ test('every animated train-door batch has a stable conservative envelope for bot
       const geometryBox = mesh.geometry.boundingBox;
       for (const { door, node } of entries) for (const open of [false, true]) {
         const descriptor = descriptors.get(door), position = door.position.clone();
-        position.z = descriptor.z + (open ? .9 * descriptor.side : 0);
+        position.z = descriptor.z + (open ? (descriptor.travel || .9) * descriptor.side : 0);
         const transform = new THREE.Matrix4().compose(position, door.quaternion, door.scale);
         if (node !== door) { node.updateMatrix(); transform.multiply(node.matrix); }
         for (const x of [geometryBox.min.x, geometryBox.max.x]) for (const y of [geometryBox.min.y, geometryBox.max.y]) for (const z of [geometryBox.min.z, geometryBox.max.z]) {

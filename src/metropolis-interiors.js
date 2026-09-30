@@ -1,9 +1,16 @@
 import { METROPOLIS_BUILDINGS, publicInteriorFootprint } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
 import { getRoomDesign } from './metropolis-room-designs.js';
+import { roomArtDirection } from './occupied-programmes.js';
 
 const WALL = 0.3;
 const CABIN = { width: 4.4, depth: 4.6, height: 3.25 };
+export const INTERIOR_FLOOR_BUDGET = 3;
+export function residentFloorWindow(building, floor) {
+  const index = building.floors.findIndex(item => item.id === floor.id);
+  const start = clamp(index - 1, 0, Math.max(0, building.floors.length - INTERIOR_FLOOR_BUDGET));
+  return building.floors.slice(start, start + INTERIOR_FLOOR_BUDGET);
+}
 const COLORS = {
   limestone: '#d1c8b7', plaster: '#e0dbcf', timber: '#896548', walnut: '#493b30',
   carpet: '#546b68', upholstery: '#ab7558', navy: '#334852', metal: '#627578',
@@ -42,7 +49,7 @@ export function createInteriorLayout(building, floor) {
   const next = building.floors.find(candidate => candidate.y > floor.y);
   // Keep the painted soffit BELOW the next storey's 0.32 m stone slab.
   // At 4.2 m floor spacing, 3.95 m exposed the upper slab's dark underside.
-  const height = next ? clamp(next.y - floor.y - 0.42, 3.2, 5.2) : 4.6;
+  const height = next ? clamp(next.y - floor.y - 0.42, 2.8, 5.2) : 4.6;
   const parts = [], colliders = [], labels = [], lights = [], rooms = [];
   const stairs = createInteriorStairs(building), outgoing = stairs.find(flight => flight.fromFloorId === floor.id), incoming = stairs.find(flight => flight.toFloorId === floor.id);
   const opening = (incoming || outgoing)?.hole;
@@ -166,7 +173,7 @@ export function createInteriorLayout(building, floor) {
   }
   if (incoming) label(`楼梯 ↓ ${building.floors.find(item => item.id === incoming.fromFloorId).label.split(' · ')[0]}`, 5.26, 1.7,
     incoming.endZ - origin.z - 0.95, 1.65, 0.3, '#e9dfc7', -Math.PI / 2);
-  label('公共楼层 1F · 2F · 3F · 观景层', -5.26, 2.05, depth / 2 - 3.2, 2.5, 0.35, '#e9dfc7', Math.PI / 2);
+  label(`本楼 1F—${building.floors.length}F · 逐层可达`, -5.26, 2.05, depth / 2 - 3.2, 2.5, 0.35, '#e9dfc7', Math.PI / 2);
   label('前方电梯 ↑   对侧楼梯 →', -5.26, 1.55, depth / 2 - 3.2, 2.5, 0.35, '#e9dfc7', Math.PI / 2);
   const plant = (x, z, scale = 1) => {
     cylinder('ceramic', x, 0.38 * scale, z, 0.82 * scale, 0.76 * scale, 0.82 * scale, 'planter', true);
@@ -374,7 +381,7 @@ export function createInteriorLayout(building, floor) {
     const roomWidth = enclosedSize ? enclosedSize[0] : zoneWidth, roomDepth = enclosedSize ? enclosedSize[1] : zoneDepth;
     const roomX = enclosedSize ? side * (5.5 + roomWidth / 2) : room.x;
     const x = enclosedSize ? roomX : side * (7.8 + Math.min(zoneWidth, 21) / 2);
-    const ceilingHeight = clinical ? 3.18 : compact ? 2.98 : Math.min(height, 3.7);
+    const ceilingHeight = Math.min(height - 0.16, clinical ? 3.18 : compact ? 2.98 : 3.7);
     const enclosed = !observation;
     const accessPoints = [];
     const span = Math.min(roomWidth - 3.5, 10.8), reach = Math.min(roomDepth / 2 - 2.4, 7.2);
@@ -396,7 +403,7 @@ export function createInteriorLayout(building, floor) {
         // are not counted as extra rooms or left visible as empty public halls.
         for (const dz of [-1, 1]) box(clinical ? 'teal' : 'timber', roomX, 0.13, z + dz * (roomDepth / 2 - 0.11), roomWidth - 0.2, 0.18, 0.055);
       } else solid(wallFinish, room.x, 1.48, end * 1.4, zoneWidth + 2, 2.96, 0.2, 'partition');
-      box(clinical ? 'teal' : 'timber', innerX, clinical ? ceilingHeight - 0.1 : 2.99, z, 0.25, 0.2, 3.6, 'door-lintel');
+      box(clinical ? 'teal' : 'timber', innerX, Math.min(ceilingHeight - 0.1, 2.99), z, 0.25, 0.2, 3.6, 'door-lintel');
       for (const dz of [-1.66, 1.66]) box(clinical ? 'teal' : 'timber', innerX, wallHeight / 2, z + dz, 0.28, wallHeight, 0.13, 'door-jamb');
     }
     // Signs sit beside doorways, not across the player's third-person camera.
@@ -698,6 +705,35 @@ export function createInteriorLayout(building, floor) {
       if (!clinical) { box('metal', x, lightY, z, compact ? 1.7 : 4.8, 0.1, 0.75); box('light', x, lightY - 0.07, z, compact ? 1.55 : 4.65, 0.06, 0.6); }
       lights.push({ x: origin.x + x, y: origin.y + (clinical ? ceilingHeight : height) - 0.6, z: origin.z + z, intensity: 10, distance: Math.max(clinical ? roomWidth : zoneWidth, clinical ? roomDepth : zoneDepth) * 1.4 });
     }
+    const roomArt = roomArtDirection(building.id, floor.id, index);
+    const number = specification.number || `${floor.level || 1}${String(index + 1).padStart(2, '0')}`;
+    rooms.at(-1).number = number; rooms.at(-1).art = roomArt;
+    if (!observation) {
+      // Details attach to the room's real enclosing walls; the doorway and its
+      // 3.3 m arrival strip remain free. Each address has an original collection.
+      const artZ = z + roomDepth / 2 - 0.14, artWidth = Math.min(3.2, roomWidth - 2.2);
+      labels.push({ graphic: 'collection', text: roomArt.subject, ...roomArt,
+        x: origin.x + roomX, y: origin.y + Math.min(2.05, ceilingHeight - 0.8), z: origin.z + artZ,
+        width: artWidth, height: 1.42, rotation: Math.PI, roomId: specification.id });
+      label(`${number} · ${type === 'bedroom' ? '安静休息' : /office|lab|control|drafting/.test(type) ? '工作与研习' : '欢迎来访'}`,
+        side * 5.26, 1.53, z - 2.5, 1.65, 0.23, '#e3d8be', -side * Math.PI / 2);
+      if (!clinical) {
+        const trimZ = z + roomDepth / 2 - 0.12;
+        box('walnut', roomX, 0.11, trimZ, roomWidth - 0.28, 0.16, 0.035, 'room-skirting');
+        box('brass', roomX, ceilingHeight - 0.16, trimZ, roomWidth - 0.3, 0.035, 0.04, 'picture-rail');
+        for (const dx of [-artWidth / 2 + 0.22, artWidth / 2 - 0.22]) {
+          box('metal', roomX + dx, Math.min(2.96, ceilingHeight - 0.25), trimZ - 0.12, 0.26, 0.07, 0.34, 'picture-light');
+          box('light', roomX + dx, Math.min(2.91, ceilingHeight - 0.3), trimZ - 0.2, 0.2, 0.02, 0.2, 'picture-light-lens');
+        }
+        if (compact && ['living', 'bedroom'].includes(type)) {
+          // A narrow textile panel, visible stitching and brass curtain rings.
+          const panelX = roomX + side * (roomWidth / 2 - 0.25);
+          box('fabric', panelX, 1.36, z + roomDepth / 2 - 0.18, 0.28, 2.42, 0.13, 'linen-panel');
+          for (let stitch = 0; stitch < 9; stitch++) box('paper', panelX, 0.22 + stitch * 0.27, z + roomDepth / 2 - 0.255, 0.014, 0.055, 0.009, 'linen-stitch');
+          for (const dx of [-0.09, 0.09]) cylinder('brass', panelX + dx, 2.62, z + roomDepth / 2 - 0.18, 0.045, 0.08);
+        }
+      }
+    }
     for (const part of parts.slice(roomPartStart)) part.roomId = specification.id;
   });
   if (!observation) {
@@ -775,7 +811,7 @@ export function createInteriorLayout(building, floor) {
       rotation: -side * Math.PI / 2, color: '#314c50', variant: building.index + (side > 0 ? 3 : 0) });
     labels.push({ graphic: 'directory', text: design.name, floorLabel: floor.label.split(' · ')[0], rooms: design.rooms.map(room => room.name),
       x: origin.x - 5.26, y: origin.y + 1.8, z: origin.z + depth / 2 - 10.1,
-      width: 1.4, height: 1.8, rotation: Math.PI / 2, color: '#314c50' });
+      width: 1.4, height: 1.8, rotation: Math.PI / 2, color: '#314c50', storeys: building.floors.length });
   }
   if (building.id === 'tide-museum' && ground) {
     // The small second vessel and recovered anchor belong inside the maritime
@@ -799,12 +835,12 @@ export function createInteriorLayout(building, floor) {
     width, depth, height, elevator, entrance, stairs, groundY: floor.y, observation };
 }
 
-/** Stream the three connected lower floors together, or one observation floor.
+/** Stream an overlapping window of three neighbouring natural storeys.
  * The elevator cabin is retained while the
  * destination floor is assembled, so a ride has continuous world-space motion. */
 export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUILDINGS, materials = createMetropolisMaterials(THREE) } = {}) {
   const root = new THREE.Group(); root.name = 'Metropolis · occupied interior'; root.visible = false; scene.add(root);
-  const floorRoot = new THREE.Group(), cabinRoot = new THREE.Group(), floorGroups = new Map(); root.add(floorRoot, cabinRoot);
+  const floorRoot = new THREE.Group(), cabinRoot = new THREE.Group(), floorGroups = new Map(), layoutCache = new Map(); root.add(floorRoot, cabinRoot);
   // Three includes the number of visible point lights in every material's shader
   // key. Keep a fixed budget in the scene from startup: entering a room must not
   // recompile the entire streamed city. Zero intensity leaves daylight intact.
@@ -886,7 +922,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       instance.depthWrite = false; instance.color.set(COLORS.glass); localMaterials.set(key, instance);
     }
     if (key !== 'glass' && materials[key]?.isMaterial) return materials[key];
-    const alias = { limestone: 'stone', timber: 'wood', walnut: 'wood', ceramic: 'tile', white: 'plaster', carpet: 'plaster', upholstery: 'plaster' }[key];
+    const alias = { limestone: 'stone', timber: 'wood', walnut: 'wood', ceramic: 'tile', white: 'plaster', carpet: 'fabric', upholstery: 'fabric' }[key];
     if (!localMaterials.has(key) && alias && materials[alias]?.isMaterial) {
       const instance = materials[alias].clone(); instance.color.set(COLORS[key]); localMaterials.set(key, instance);
     }
@@ -903,16 +939,46 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
   }
   function clearFloor() {
     for (const light of interiorLights) light.intensity = 0;
-    floorRoot.traverse(object => { if (object.isInstancedMesh) object.dispose(); if (object.userData.ownedMaterial) { object.material.map?.dispose(); ownedTextures.delete(object.material.map); object.material.dispose(); } });
-    floorRoot.clear(); floorGroups.clear();
+    for (const group of floorGroups.values()) releaseFloor(group);
+    floorRoot.clear(); floorGroups.clear(); layoutCache.clear();
+  }
+  function releaseFloor(group) {
+    group.traverse(object => { if (object.isInstancedMesh) object.dispose(); if (object.userData.ownedMaterial) { object.material.map?.dispose(); ownedTextures.delete(object.material.map); object.material.dispose(); } });
+    group.removeFromParent();
   }
   function sign(data, target = floorRoot) {
     if (typeof document === 'undefined') return;
     const canvas = document.createElement('canvas');
-    canvas.width = data.graphic === 'directory' ? 560 : data.graphic === 'harbour' ? 768 : 1024;
-    canvas.height = data.graphic === 'directory' ? 720 : data.graphic === 'harbour' ? 512 : 192;
+    canvas.width = data.graphic === 'collection' ? 640 : data.graphic === 'directory' ? 560 : data.graphic === 'harbour' ? 768 : 1024;
+    canvas.height = data.graphic === 'collection' ? 384 : data.graphic === 'directory' ? 720 : data.graphic === 'harbour' ? 512 : 192;
     const context = canvas.getContext('2d'); if (!context) return;
-    if (data.graphic === 'directory') {
+    if (data.graphic === 'collection') {
+      context.fillStyle = data.paper; context.fillRect(0, 0, 640, 384);
+      context.fillStyle = '#efe8d7'; context.fillRect(22, 22, 596, 340);
+      context.save(); context.beginPath(); context.rect(40, 38, 560, 272); context.clip();
+      context.strokeStyle = data.ink; context.fillStyle = data.ink; context.lineWidth = 2.6;
+      for (let line = 0; line < 16; line++) {
+        context.beginPath();
+        for (let x = 0; x <= 560; x += 5) {
+          const phase = data.variant * .09 + line * .31;
+          const y = 52 + line * 14 + Math.sin(x * (.009 + data.composition * .002) + phase) * (8 + data.composition * 2);
+          if (!x) context.moveTo(x + 40, y); else context.lineTo(x + 40, y);
+        }
+        context.stroke();
+      }
+      context.globalAlpha = .92;
+      for (let motif = 0; motif < 5; motif++) {
+        const x = 84 + motif * 110, y = 125 + (motif + data.edition) % 3 * 36;
+        context.beginPath();
+        if (data.composition % 3 === 0) { context.moveTo(x - 23, y + 48); context.lineTo(x + 24, y - 44); context.lineTo(x + 24, y + 48); }
+        else if (data.composition % 3 === 1) context.ellipse(x, y, 25, 48, -.55 + motif * .12, 0, Math.PI * 2);
+        else { context.rect(x - 20, y - 36, 40, 80); context.rect(x - 10, y - 52, 20, 16); }
+        context.fill();
+      }
+      context.restore(); context.fillStyle = '#314e50'; context.font = '500 22px "Noto Sans SC", sans-serif';
+      context.fillText(data.text, 42, 342, 460); context.font = '400 15px sans-serif'; context.fillText(`${String(data.edition).padStart(2, '0')} / 港城印记`, 490, 342, 110);
+      context.strokeStyle = '#655747'; context.lineWidth = 12; context.strokeRect(6, 6, 628, 372);
+    } else if (data.graphic === 'directory') {
       context.fillStyle = '#e3dbc7'; context.fillRect(0, 0, 560, 720);
       context.fillStyle = '#28484b'; context.fillRect(0, 0, 560, 134);
       context.font = '600 50px "Noto Sans SC", sans-serif'; context.fillStyle = '#f2ecd9'; context.fillText(data.floorLabel, 35, 60);
@@ -920,7 +986,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       context.fillStyle = '#385a58'; context.font = '500 25px "Noto Sans SC", sans-serif';
       context.fillText('本层房间 · 沿中央走廊可达', 35, 184, 490);
       data.rooms.forEach((name, index) => { const y = 263 + index * 83; context.fillStyle = '#f2eee1'; context.fillRect(34, y - 34, 492, 66); context.fillStyle = '#31514f'; context.font = '500 25px "Noto Sans SC", sans-serif'; context.fillText(`${index < 2 ? '左侧' : '右侧'} · ${name}`, 50, y + 8, 460); });
-      context.fillStyle = '#31514f'; context.font = '500 26px "Noto Sans SC", sans-serif'; context.fillText('↑ 电梯在走廊尽头', 36, 623); context.fillText('楼梯连接 1F · 2F · 3F', 36, 673, 490);
+      context.fillStyle = '#31514f'; context.font = '500 26px "Noto Sans SC", sans-serif'; context.fillText('↑ 电梯在走廊尽头', 36, 623); context.fillText(`楼梯贯通 1F—${data.storeys}F`, 36, 673, 490);
       context.strokeStyle = '#9c835c'; context.lineWidth = 8; context.strokeRect(7, 7, 546, 706);
     } else if (data.graphic === 'harbour') {
       // Original restrained ink-and-wash harbour study, drawn for this city.
@@ -946,12 +1012,19 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     object.scale.set(data.width, data.height, 1); object.userData.ownedMaterial = true; target.add(object);
   }
   function assembleFloor(floor) {
-    clearFloor(); state.floor = floor; layout = createInteriorLayout(state.activeBuilding, floor);
-    residentLayouts = floor.stairs ? state.activeBuilding.floors.filter(item => item.stairs).map(item => item.id === floor.id ? layout : createInteriorLayout(state.activeBuilding, item)) : [layout];
+    state.floor = floor;
+    const selected = residentFloorWindow(state.activeBuilding, floor), keep = new Set(selected.map(item => item.id));
+    for (const [id, group] of floorGroups) if (!keep.has(id)) { releaseFloor(group); floorGroups.delete(id); layoutCache.delete(id); }
+    residentLayouts = selected.map(item => {
+      if (!layoutCache.has(item.id)) layoutCache.set(item.id, createInteriorLayout(state.activeBuilding, item));
+      return layoutCache.get(item.id);
+    });
+    layout = layoutCache.get(floor.id);
     // Independent floor batches let opaque slabs cull enclosed, unseen storeys
     // without lowering materials, detail density, or resident collision geometry.
     const matrix = new THREE.Object3D();
     for (const occupied of residentLayouts) {
+      if (floorGroups.has(occupied.floorId)) continue;
       const group = new THREE.Group(); group.name = `Occupied floor · ${occupied.floorId}`;
       floorGroups.set(occupied.floorId, group); floorRoot.add(group);
       const batches = new Map();
@@ -1092,6 +1165,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
   function enter(buildingId) {
     const building = buildings.find(candidate => candidate.id === buildingId);
     if (!building || !building.floors?.length || state.moving) return null;
+    clearFloor();
     state.activeBuilding = building; state.buildingId = building.id; state.floor = building.floors[0]; state.moving = false;
     state.elevator = { phase: 'idle', y: state.floor.y, targetFloorId: state.floor.id, elapsed: 0, duration: 0, doorOpen: 1 };
     journey = null; playerRef = null; assembleFloor(state.floor); cabin(); root.visible = true;
@@ -1144,7 +1218,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       const elevation = player.groundY ?? state.floor.y;
       const destination = residentLayouts.find(item => Math.abs(item.groundY - elevation) < 0.025);
       if (destination && destination.floorId !== state.floor.id) {
-        layout = destination; state.floor = state.activeBuilding.floors.find(item => item.id === destination.floorId);
+        assembleFloor(state.activeBuilding.floors.find(item => item.id === destination.floorId));
         state.elevator.y = state.floor.y; state.elevator.targetFloorId = state.floor.id;
         cabin(); state.version++; updateFloorVisibility(player);
         positionInteriorLights();
@@ -1187,7 +1261,9 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     furnitureCount: floorColliders.filter(c => !/wall|window|partition/.test(c.kind)).length,
     entrance: layout?.entrance || null, cabin: layout ? { ...layout.elevator, y: state.elevator.y } : null,
     stairs: layout?.stairs || [], navigation: layout ? { entrance: layout.entrance, lift: layout.elevator, stairs: layout.stairs } : null,
-    activeFloors: residentLayouts.length, visibleFloors: [...floorGroups].filter(([, group]) => group.visible).map(([id]) => id), version: state.version }; }
+    activeFloors: residentLayouts.length, totalFloors: state.activeBuilding?.floors.length || 0,
+    residentFloors: residentLayouts.map(item => item.floorId), ownedSignTextures: [...ownedTextures].filter(texture => texture.isCanvasTexture).length,
+    visibleFloors: [...floorGroups].filter(([, group]) => group.visible).map(([id]) => id), version: state.version }; }
   function dispose() { clearFloor(); cabinRoot.clear(); root.removeFromParent(); for (const light of interiorLights) light.removeFromParent(); for (const shape of Object.values(geometries)) shape.dispose();
     signGeometry.dispose(); for (const item of localMaterials.values()) item.dispose(); for (const texture of ownedTextures) texture.dispose(); ownedTextures.clear(); }
   return { root, state, getPrompt, enter, exit, interact, selectFloor, update, snapshot, collisionContext, cameraInClosedCabin,

@@ -74,21 +74,26 @@ const addresses = [
   ['harbour-labs','海港研究院','Harbour Research Labs',96,74,80,'campus','#a8b7b0','分翼研究楼、遮阳格栅与中央玻璃大厅组成科学园入口。'],
 ];
 const xPositions = [-560, -400, -240, -80, 80, 240, 400, 560];
+/** Preserve the existing first three levels and roof elevation. The remaining
+ * occupied height is divided into ordinary storeys, with no inaccessible gap. */
+export function naturalStoreys(buildingId, topY) {
+  const tail = Math.max(1, Math.round((topY - 8.4) / 4.2));
+  const floors = ['lobby', 'gallery', 'workplace'].map((id, index) => ({ id, y: index * 4.2 }));
+  for (let index = 1; index < tail; index++) floors.push({ id: `level-${String(index + 3).padStart(2, '0')}`, y: 8.4 + (topY - 8.4) * index / tail });
+  floors.push({ id: 'observation', y: topY });
+  return Object.freeze(floors.map((floor, index) => Object.freeze({ ...floor, level: index + 1,
+    label: `${index + 1}F · ${getRoomDesign(buildingId, floor.id).name}`, type: floor.id === 'observation' ? 'observation' : getRoomDesign(buildingId, floor.id).category,
+    stairs: true })));
+}
 export const METROPOLIS_BUILDINGS = Object.freeze(addresses.map((row, index) => {
   const [id, name, englishName, width, depth, height, style, color, description] = row;
   const district = METROPOLIS_DISTRICTS[Math.floor(index / 8)];
   const x = xPositions[index % 8], z = district.z;
-  const topY = height - (height > 100 ? 16 : 7);
+  // Lotus Market's former 15 m terrace left two 3.3 m storeys, too short for
+  // the existing 3.25 m cabin and slabs. Raise that terrace 1.2 m inside its roof.
+  const topY = Math.max(16.2, height - (height > 100 ? 16 : 7));
   return Object.freeze({ id, name, englishName, district: district.id, x, z, width, depth, height, style, color,
     entrance: Object.freeze({ x, z: z + depth / 2 + 3, y: 0, yaw: Math.PI }),
-    // Three occupied lower floors share real stairs. Upper private/technical
-    // floors remain outside the public programme; the roof has a working lift.
-    floors: Object.freeze([
-      ...['lobby', 'gallery', 'workplace'].map((floorId, level) => Object.freeze({
-        id: floorId, label: `${level + 1}F · ${getRoomDesign(id, floorId).name}`,
-        y: level * 4.2, type: floorId, stairs: true,
-      })),
-      Object.freeze({ id: 'observation', label: `${Math.round(topY / 4) + 1}F · ${getRoomDesign(id, 'observation').name}`, y: topY, type: 'observation' }),
-    ]), description, index,
+    floors: naturalStoreys(id, topY), description, index,
   });
 }));
