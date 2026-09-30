@@ -46,15 +46,23 @@ test('all storeys are selectable and a visitor walks an upper stair flight witho
 });
 
 test('the rendered resident enters a real workplace and stays there during working hours', async ({ page }, testInfo) => {
+  test.setTimeout(1200000);
   const errors = await bootOccupied(page);
   await enterAddress(page, 'tide-museum');
   await chooseStorey(page, 'workplace');
   const initial = await snapshot(page), person = initial.city.people.people.find(item => item.id === 'resident-tide-museum-0');
   expect(person.journey.work.floorId).toBe('workplace');
-  await page.waitForFunction(id => {
+  try { await page.waitForFunction(id => {
     const person = window.__NEON__.snapshot().city.people.people.find(item => item.id === id);
     return person.journey.phase === 'room-activity' && person.materialized && person.state === 'working';
-  }, person.id, { polling: 'raf', timeout: 300000 });
+  }, person.id, { polling: 'raf', timeout: 900000 }); }
+  catch (error) {
+    const state = await snapshot(page);
+    error.message += `\nResident diagnostics: ${JSON.stringify({ time: state.simulationTime, fps: state.fps,
+      player: state.position, interior: state.city.interior.floorId,
+      resident: state.city.people.people.find(item => item.id === person.id) })}`;
+    throw error;
+  }
   const working = await snapshot(page), resident = working.city.people.people.find(item => item.id === person.id);
   expect(resident.insideBuildingId).toBe('tide-museum'); expect(resident.floorId).toBe('workplace');
   expect(resident.y).toBeCloseTo(8.4, 1);

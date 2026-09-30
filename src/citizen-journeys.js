@@ -9,7 +9,11 @@ const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z, (a.y || 0) - (b.y ||
 const point = (x, z, y = 0) => ({ x, z, y });
 const groundDoor = building => point(building.x, building.entrance.z + 1.2);
 const homeTypes = new Set(['residential', 'hotel']);
-const workTypes = new Set(['office', 'cowork', 'drafting', 'consult', 'lab', 'control', 'workshop', 'archive', 'classroom', 'library', 'reception']);
+const workTypes = new Set(['office', 'cowork', 'drafting', 'consult', 'lab', 'control', 'workshop', 'archive', 'classroom', 'library', 'reception',
+  'trading', 'model', 'pharmacy', 'ward', 'rehab', 'produce', 'fish', 'market', 'fashion', 'tailor', 'ceramics', 'artroom',
+  'piano', 'strings', 'drums', 'projection', 'fitness', 'tabletennis', 'robot', 'aquarium', 'cafe', 'tea', 'dining', 'bookshop', 'maritime']);
+const workRooms = design => design.rooms.filter(room => workTypes.has(room.type) || (design.category === 'restaurant' && room.type === 'kitchen'));
+const meetingTypes = new Set(['living', 'reception', 'waiting', 'cafe', 'tea', 'dining', 'market', 'produce', 'fish', 'bookshop', 'library', 'maritime', 'exhibition']);
 
 /** Persistent door-to-room journeys. Render objects never own a resident's day.
  * Every transition follows a route, a real stair flight or an actual fleet pose.
@@ -26,14 +30,19 @@ export class CitizenJourneys {
       return homeTypes.has(design.category) && design.rooms.some(room => room.type === 'bedroom');
     });
     const homes = buildings.filter(building => homeFloors(building).length);
+    const workFloors = building => building.floors.filter(floor => floor.level <= 8 && floor.id !== 'observation' && workRooms(getRoomDesign(building.id, floor.id)).length)
+      .sort((a, b) => (a.id === 'workplace' ? -1 : b.id === 'workplace' ? 1 : a.level - b.level));
+    const workplaces = buildings.filter(building => workFloors(building).length);
     for (const resident of residents) {
       const seed = resident.identity.seed, home = homeTypes.has(getRoomDesign(resident.building.id, 'workplace').category) ? resident.building : homes[seed % homes.length];
       const available = homeFloors(home);
       const homeFloor = available[Math.floor(seed / homes.length) % Math.min(8, available.length)];
-      const workFloor = resident.building.floors[Math.min(resident.building.floors.length - 2, 2 + seed % Math.min(6, resident.building.floors.length - 3))];
+      const workAddress = workFloors(resident.building).length ? resident.building : workplaces.reduce((a, b) =>
+        distance(resident.building, b) < distance(resident.building, a) ? b : a);
+      const availableWork = workFloors(workAddress), workFloor = availableWork[seed % availableWork.length];
       resident.y = 0; resident.insideBuildingId = null; resident.floorId = null;
       resident.journey = { phase: 'street-activity', home: { buildingId: home.id, floorId: homeFloor.id, kind: 'home' },
-        work: { buildingId: resident.building.id, floorId: workFloor.id, kind: 'work' },
+        work: { buildingId: workAddress.id, floorId: workFloor.id, kind: 'work' },
         goal: null, path: [], pathIndex: 0, dwell: 14 + seed % 23, history: [], visits: 0, cycle: 0,
         ticket: null, stationId: null, routeId: null, originStopId: null, destinationStopId: null, crossingId: null, blockedFor: 0 };
     }
@@ -59,8 +68,11 @@ export class CitizenJourneys {
   }
   roomGoal(goal, resident) {
     const building = this.building(goal.buildingId), data = this.floorNavigation(building, goal.floorId);
-    const candidates = data.rooms.filter(room => goal.kind === 'home' ? ['living', 'bedroom'].includes(room.type) : workTypes.has(room.type));
-    const room = candidates[resident.person % Math.max(1, candidates.length)] || data.rooms[resident.person % 4];
+    const design = getRoomDesign(building.id, goal.floorId), eligibleWork = new Set(workRooms(design).map(room => room.id));
+    const candidates = data.rooms.filter(room => goal.kind === 'home' ? ['living', 'bedroom'].includes(room.type)
+      : goal.kind === 'work' ? eligibleWork.has(room.id) : meetingTypes.has(room.type));
+    if (!candidates.length && goal.kind !== 'errand') throw new Error(`No ${goal.kind} room at ${building.id}/${goal.floorId}`);
+    const room = candidates[resident.person % Math.max(1, candidates.length)] || data.rooms[0];
     return { ...goal, roomId: room.id, roomName: room.name, roomType: room.type, room, floor: data.floor, building };
   }
   setPath(resident, path, phase, next) {

@@ -35,6 +35,9 @@ test('all 240 residents finish real work visits, use all four shared routes, ret
   for (const person of residents) {
     const home = getRoomDesign(person.journey.home.buildingId, person.journey.home.floorId);
     assert.ok(home.rooms.some(room => room.type === 'bedroom'), `${person.id}: a home requires a real bedroom`);
+    const work = life.roomGoal(person.journey.work, person);
+    assert.ok(!['bedroom', 'bath', 'living'].includes(work.roomType), `${person.id}: work must have actual work facilities`);
+    if (work.roomType === 'kitchen') assert.equal(getRoomDesign(work.buildingId, work.floorId).category, 'restaurant');
   }
   for (let tick = 0; tick < 36000; tick++) {
     transit.update(.25); life.update(.25, { hour: tick < 12000 ? 12 : 23 });
@@ -75,6 +78,19 @@ test('citizens enter a crossing only with enough green time, and traffic yields 
   for (let frame = 0; frame < 400 && person.journey.path.length; frame++) life.walk(person, .1, []);
   assert.equal(life.crossingClaims.size, 0); assert.equal(life.statistics.crossings, 1);
   assert.equal(life.trafficYieldAt({ x: crossing.x, z: crossing.z - 30, y: 0, yaw: 0, speed: 10 }), false);
+});
+
+test('working periods keep residents at their real posts and the night change starts a walk home without resetting position', () => {
+  const { residents, life, transit } = fixture();
+  for (let tick = 0; tick < 4000; tick++) { transit.update(.25); life.update(.25, { hour: 8 }); }
+  const atWork = residents.map(person => ({ x: person.x, y: person.y, z: person.z, cycle: person.journey.cycle, room: person.roomId }));
+  assert.ok(residents.every(person => person.journey.phase === 'room-activity' && person.journey.goal.kind === 'work'));
+  for (let tick = 0; tick < 1200; tick++) { transit.update(.25); life.update(.25, { hour: 17 }); }
+  assert.deepEqual(residents.map(person => ({ x: person.x, y: person.y, z: person.z, cycle: person.journey.cycle, room: person.roomId })), atWork);
+  transit.update(.25); life.update(.25, { hour: 23 });
+  assert.ok(residents.every(person => person.journey.goal.kind === 'home' && person.journey.phase === 'leaving-building'));
+  assert.deepEqual(residents.map(person => ({ x: person.x, y: person.y, z: person.z })), atWork.map(({ x, y, z }) => ({ x, y, z })));
+  life.dispose();
 });
 
 test('boarding paths align with real carriage doors and keep passengers out of carriage gaps and the ferry cabin', () => {
