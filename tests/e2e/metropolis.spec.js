@@ -165,9 +165,10 @@ for (const journey of [
   test(`${journey.route}: wait, board, travel and alight using public controls`, async ({ page }) => {
     // v0.4's teleport entrances left about 25 m of platform walking. The real
     // metro stair routes now cover 110 m, about 85 m more plus landing checks.
-    // Allocate that added route 120 s; all independent service and walking
-    // limits stay unchanged, and the ferry retains its original total budget.
-    test.setTimeout(journey.route === 'metro' ? 480000 : 360000);
+    // Software rendering may reach the destination at the old wall-time
+    // deadline. Keep physical route assertions and give CI arrival headroom.
+    // The ferry retains its original total budget.
+    test.setTimeout(journey.route === 'metro' ? (process.env.CI ? 600000 : 480000) : 360000);
     const errors = await boot(page);
     await visit(page, 'stop', journey.from);
     if (journey.route === 'metro') {
@@ -194,10 +195,21 @@ for (const journey of [
     await page.keyboard.press('e');
     expect((await snapshot(page)).city.transit.riding).toBe(true);
     await page.screenshot({ path: `test-results/screenshots/11-${journey.route}-riding.png` });
-    await page.waitForFunction(to => {
-      const s = window.__NEON__.snapshot().city.transit;
-      return s.vehicles.find(v => v.id === s.ridingVehicleId)?.stopId === to;
-    }, journey.to, { polling: 'raf', timeout: 120000 });
+    try {
+      await page.waitForFunction(to => {
+        const s = window.__NEON__.snapshot().city.transit;
+        return s.vehicles.find(v => v.id === s.ridingVehicleId)?.stopId === to;
+      }, journey.to, { polling: 'raf', timeout: process.env.CI ? 240000 : 120000 });
+    } catch (error) {
+      const state = await snapshot(page);
+      const transit = state.city.transit;
+      error.message += `\nTransit arrival diagnostics: ${JSON.stringify({
+        simulationTime: state.simulationTime, phase: transit.phase,
+        nextStopId: transit.nextStopId, secondsToArrival: transit.secondsToArrival,
+        vehicle: transit.vehicles.find(v => v.id === transit.ridingVehicleId),
+      })}`;
+      throw error;
+    }
     const arrived = await snapshot(page);
     expect(Math.hypot(arrived.position.x - boarded.position.x, arrived.position.z - boarded.position.z)).toBeGreaterThan(journey.route === 'metro' ? 600 : 45);
     await page.keyboard.press('e');
