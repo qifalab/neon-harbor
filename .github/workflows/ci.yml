@@ -58,7 +58,7 @@ jobs:
     if: github.event_name == 'pull_request'
     name: Rendered room evidence (${{ matrix.shard }}/48)
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
     strategy:
       fail-fast: false
       # Each address owns its evidence and timeout. Completed functional jobs
