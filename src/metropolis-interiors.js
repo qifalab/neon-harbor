@@ -26,7 +26,9 @@ const isGround = (building, floor) => floor.id === building.floors[0].id;
 /** The stair route is ordinary walking geometry in world coordinates. */
 export function createInteriorStairs(building) {
   const lower = building.floors.filter(floor => floor.stairs);
-  const depth = building.depth - 0.7, x = building.x + 3.5, startZ = building.z + depth / 2 - 2.8;
+  // The front landing needs clearance from both the first guard and the
+  // closed upper-floor window frame, including the full walking radius.
+  const depth = building.depth - 0.7, x = building.x + 3.5, startZ = building.z + depth / 2 - 3.6;
   return lower.slice(0, -1).map((floor, index) => {
     const next = lower[index + 1], rise = next.y - floor.y, run = 8.4;
     const bottom = { x, z: startZ + 1.05, y: floor.y }, top = { x, z: startZ - run - 1.05, y: next.y };
