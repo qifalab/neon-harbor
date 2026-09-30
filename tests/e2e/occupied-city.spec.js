@@ -2,7 +2,10 @@ import { test, expect } from '@playwright/test';
 import { snapshot, walkAxis, walkRoute, stairWalkingRoute } from './helpers/walking.js';
 import { bootOccupied, enterAddress, chooseStorey, enterRoom, leaveRoom } from './helpers/occupied.js';
 
-test.use({ viewport: { width: 640, height: 400 } });
+// Software WebGL is much slower than a physical GPU. Keep the real inputs and
+// fixed simulation clock, but avoid recording every rendered frame for this
+// long resident journey; screenshots and diagnostic positions remain evidence.
+test.use({ viewport: { width: 512, height: 320 }, trace: 'off' });
 test.setTimeout(600000);
 
 test('all storeys are selectable and a visitor walks an upper stair flight without accumulating floors or sign textures', async ({ page }, testInfo) => {
@@ -46,7 +49,7 @@ test('all storeys are selectable and a visitor walks an upper stair flight witho
 });
 
 test('the rendered resident enters a real workplace and stays there during working hours', async ({ page }, testInfo) => {
-  test.setTimeout(1200000);
+  test.setTimeout(2400000);
   const errors = await bootOccupied(page);
   await enterAddress(page, 'tide-museum');
   await chooseStorey(page, 'workplace');
@@ -62,7 +65,7 @@ test('the rendered resident enters a real workplace and stays there during worki
   try { await page.waitForFunction(id => {
     const person = window.__NEON__.snapshot().city.people.people.find(item => item.id === id);
     return person.journey.phase === 'room-activity' && person.materialized && person.state === 'working';
-  }, person.id, { polling: 'raf', timeout: 900000 }); }
+  }, person.id, { polling: 'raf', timeout: 1800000 }); }
   catch (error) {
     const state = await snapshot(page);
     error.message += `\nResident diagnostics: ${JSON.stringify({ time: state.simulationTime, fps: state.fps,
