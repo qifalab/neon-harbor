@@ -23,10 +23,7 @@ test('all storeys are selectable and a visitor walks an upper stair flight witho
   const flight = floor.stairs.find(item => item.fromFloorId === 'level-16');
   expect(flight.toFloorId).toBe('level-17');
   const route = stairWalkingRoute(flight, building.x);
-  // This upper landing is beside a closed façade. Use the actual authored
-  // bottom point; the old +1.6 m helper offset leaves too little room for its
-  // .75 m endpoint tolerance near the window frame.
-  await walkRoute(page, [{ x: building.x, z: flight.bottom.z, y: flight.fromY }, flight.bottom, route.middle, route.top]);
+  await walkRoute(page, [{ x: building.x, z: route.bottom.z, y: flight.fromY }, route.bottom, route.middle, route.top]);
   const walked = await snapshot(page);
   expect(walked.city.interior.floorId).toBe('level-17');
   expect(walked.teleportRevision).toBe(upper.teleportRevision);
@@ -55,6 +52,13 @@ test('the rendered resident enters a real workplace and stays there during worki
   await chooseStorey(page, 'workplace');
   const initial = await snapshot(page), person = initial.city.people.people.find(item => item.id === 'resident-tide-museum-0');
   expect(person.journey.work.floorId).toBe('workplace');
+  const monitor = setInterval(async () => {
+    try {
+      const state = await snapshot(page), resident = state.city.people.people.find(item => item.id === person.id);
+      console.log(`Resident progress: ${JSON.stringify({ time: state.simulationTime, phase: resident.journey.phase,
+        x: resident.x, y: resident.y, z: resident.z, floor: resident.floorId, visible: resident.materialized })}`);
+    } catch {}
+  }, 30000);
   try { await page.waitForFunction(id => {
     const person = window.__NEON__.snapshot().city.people.people.find(item => item.id === id);
     return person.journey.phase === 'room-activity' && person.materialized && person.state === 'working';
@@ -66,6 +70,7 @@ test('the rendered resident enters a real workplace and stays there during worki
       resident: state.city.people.people.find(item => item.id === person.id) })}`;
     throw error;
   }
+  finally { clearInterval(monitor); }
   const working = await snapshot(page), resident = working.city.people.people.find(item => item.id === person.id);
   expect(resident.insideBuildingId).toBe('tide-museum'); expect(resident.floorId).toBe('workplace');
   expect(resident.y).toBeCloseTo(8.4, 1);
