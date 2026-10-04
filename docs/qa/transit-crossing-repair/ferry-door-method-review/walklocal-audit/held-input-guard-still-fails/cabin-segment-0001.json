@@ -1,0 +1,280 @@
+{
+  "schema": "neon-harbor-cabin-segment-v1",
+  "file": "cabin-segment-0001.json",
+  "status": "failed",
+  "context": {
+    "label": "held-input-guard-still-fails",
+    "kind": "bus",
+    "role": "cabin-waypoint"
+  },
+  "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "manifestSha256": "frozen-manifest",
+  "precision": true,
+  "target": {
+    "x": 0,
+    "y": 1.3,
+    "z": 0.1
+  },
+  "requestedAt": "2026-10-04T19:16:28.072Z",
+  "startedAt": "2026-10-04T19:16:28.072Z",
+  "deadlineAt": "2026-10-04T19:18:58.072Z",
+  "endedAt": "2026-10-04T19:16:28.072Z",
+  "wallBudgetMilliseconds": 150000,
+  "effectiveWallBudgetMilliseconds": 150000,
+  "elapsedWallMilliseconds": 0,
+  "initial": {
+    "local": {
+      "x": 0,
+      "y": 1.3,
+      "z": 0,
+      "yaw": 0
+    },
+    "vehicle": {
+      "yaw": 0
+    },
+    "cameraYaw": 0,
+    "sensitivity": 1,
+    "time": 0,
+    "revision": 11,
+    "deck": "lower"
+  },
+  "current": {
+    "local": {
+      "x": 0,
+      "y": 1.3,
+      "z": 0.1,
+      "yaw": 0
+    },
+    "vehicle": {
+      "yaw": 0
+    },
+    "cameraYaw": 0,
+    "sensitivity": 1,
+    "time": 10,
+    "revision": 11,
+    "deck": "lower"
+  },
+  "actualCurrent": {
+    "local": {
+      "x": 0,
+      "y": 1.3,
+      "z": 0.1,
+      "yaw": 0
+    },
+    "vehicle": {
+      "yaw": 0
+    },
+    "cameraYaw": 0,
+    "sensitivity": 1,
+    "time": 10,
+    "revision": 11,
+    "deck": "lower"
+  },
+  "actualCurrentObservedAt": "2026-10-04T19:16:28.072Z",
+  "snapshotError": null,
+  "samples": [
+    {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower",
+      "observedAt": "2026-10-04T19:16:28.072Z"
+    },
+    {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0.1,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 10,
+      "revision": 11,
+      "deck": "lower",
+      "key": "w",
+      "slow": true,
+      "observedAt": "2026-10-04T19:16:28.072Z",
+      "heldSeconds": 10,
+      "geometricMetres": 0.1
+    }
+  ],
+  "heldSeconds": 10,
+  "geometricMetres": 0.1,
+  "completedInputIterations": {
+    "count": 1,
+    "heldSeconds": 10,
+    "geometricMetres": 0.1
+  },
+  "firstInput": {
+    "iteration": 0,
+    "key": "w",
+    "slow": true,
+    "requestedAt": "2026-10-04T19:16:28.072Z",
+    "before": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "keydown": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "slowDownDispatched": true,
+    "keyDownDispatched": true,
+    "releaseCompleted": true,
+    "collected": true,
+    "guardsPassed": false,
+    "terminalHeldObservation": null,
+    "error": null,
+    "keydownObservedAt": "2026-10-04T19:16:28.072Z",
+    "releasedAt": "2026-10-04T19:16:28.072Z",
+    "after": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0.1,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 10,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "collectedAt": "2026-10-04T19:16:28.072Z"
+  },
+  "lastInput": {
+    "iteration": 0,
+    "key": "w",
+    "slow": true,
+    "requestedAt": "2026-10-04T19:16:28.072Z",
+    "before": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "keydown": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "slowDownDispatched": true,
+    "keyDownDispatched": true,
+    "releaseCompleted": true,
+    "collected": true,
+    "guardsPassed": false,
+    "terminalHeldObservation": null,
+    "error": null,
+    "keydownObservedAt": "2026-10-04T19:16:28.072Z",
+    "releasedAt": "2026-10-04T19:16:28.072Z",
+    "after": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0.1,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 10,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "collectedAt": "2026-10-04T19:16:28.072Z"
+  },
+  "lastCommand": {
+    "iteration": 0,
+    "key": "w",
+    "slow": true,
+    "desiredYaw": 0,
+    "before": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "pointerOrbitYaw": 0,
+    "requestedAt": "2026-10-04T19:16:28.072Z"
+  },
+  "cleanupErrors": [],
+  "errorCaughtAt": "2026-10-04T19:16:28.072Z",
+  "error": {
+    "message": "held cabin inputs do not stall against seats or walls",
+    "stack": "AssertionError [ERR_ASSERTION]: held cabin inputs do not stall against seats or walls\n    at walkLocal (eval at <anonymous> (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:60:15), <anonymous>:65:14)\n    at async run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:87:23)\n    at async file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:3"
+  }
+}

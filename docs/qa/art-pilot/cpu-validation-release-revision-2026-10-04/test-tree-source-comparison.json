@@ -1,0 +1,833 @@
+{
+  "status": "passed",
+  "rootFullTestDictionary": {
+    "tests/camera.test.js": {
+      "bytes": 10387,
+      "sha256": "14fe2c15b2c12ea55b33db96114391d61f500a5cf8e00e8ed5ff9186e082f57a"
+    },
+    "tests/citizen-journeys.test.js": {
+      "bytes": 10849,
+      "sha256": "4ff5d655bdc65988ab1969eb4accfc906f14d3a1114a1407822f9f70cb434814"
+    },
+    "tests/city-exploration.test.js": {
+      "bytes": 5871,
+      "sha256": "ac71dcfd3a68f0a4ccfd371fe431a98233c28475d839980403b53745158a0040"
+    },
+    "tests/city-guide.test.js": {
+      "bytes": 10457,
+      "sha256": "f7c5138aeefe2c9afa86fef80a0014361d6c212ccd68c98d13fb932f236117b9"
+    },
+    "tests/city-materials-v08.test.js": {
+      "bytes": 6957,
+      "sha256": "87f8f98a2e8a2f53a10662bf66e785b5dc92227c73762dc6f7bcf308c3d2ecbb"
+    },
+    "tests/city-streaming.test.js": {
+      "bytes": 5639,
+      "sha256": "11a4b7209327bd1cc699d9b8f7feff7b05abb83239f8f146655b2c724c5267fa"
+    },
+    "tests/collision-sweep.test.js": {
+      "bytes": 4695,
+      "sha256": "0374c99ae8cb44882fe92c42bc27985e0f59897f0b71fd2364b171baed3dbbdb"
+    },
+    "tests/collision.test.js": {
+      "bytes": 11010,
+      "sha256": "35222b59b20de62ee1d948032d83695c14c9c154387913377377a21949069149"
+    },
+    "tests/compact-interiors.test.js": {
+      "bytes": 8978,
+      "sha256": "d3eb2559047b652823baa12cb0b709a7cf6ceb3e4e3352f28992fc4468105a11"
+    },
+    "tests/compact-workplaces.test.js": {
+      "bytes": 4047,
+      "sha256": "378cbd56f21baba6013a18425faf66ffd7b85a5e94bfe4eaff916b57fa99a9db"
+    },
+    "tests/e2e/city-materials.spec.js": {
+      "bytes": 13601,
+      "sha256": "199694d890c1f23599d083e2eb32b04221efba70d9b3cc153f726e034aa75fee"
+    },
+    "tests/e2e/game.spec.js": {
+      "bytes": 7863,
+      "sha256": "329c460eb9e4da4b4cbfbe8e6c69e23799f40580750c9b4bfe355ade98d67cfd"
+    },
+    "tests/e2e/harbor-realism.spec.js": {
+      "bytes": 8702,
+      "sha256": "06cafb2ee868fcbfbbd9ac48eb20038a118537b7300fb4735e677316dbbccb31"
+    },
+    "tests/e2e/harbor-sample.spec.js": {
+      "bytes": 21597,
+      "sha256": "3df001c6b62c1db31a1da746999ed183048dc7e56aae836b8d4cad2fab771ec9"
+    },
+    "tests/e2e/helpers/occupied.js": {
+      "bytes": 5321,
+      "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+    },
+    "tests/e2e/helpers/walking.js": {
+      "bytes": 7277,
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+    },
+    "tests/e2e/living-city.spec.js": {
+      "bytes": 10224,
+      "sha256": "a1560c7e1bb479c5af6f57d2043536b332b3515ef6959488eb2f4b24c6079149"
+    },
+    "tests/e2e/metropolis.spec.js": {
+      "bytes": 14214,
+      "sha256": "8ee282b8f877e8d6447bb90be149fc0a303cae6b8119d77ffc331ac27a4f304a"
+    },
+    "tests/e2e/occupied-city.spec.js": {
+      "bytes": 5943,
+      "sha256": "3d841920afde318d3c34fdafebdbe66791e59ba1db5bddf17e1bb2820b7c5218"
+    },
+    "tests/e2e/stability.spec.js": {
+      "bytes": 18111,
+      "sha256": "ef6dbcc77a06010f8e030b65c84174c5725968a242b56bf1a8f5e65b6f37b875"
+    },
+    "tests/expansion-programmes.test.js": {
+      "bytes": 3548,
+      "sha256": "36215f6f07b550f4056629b81d688bdebafe9d17fe9f9cc21d4d90399227cbfc"
+    },
+    "tests/fixtures/harbor-life-pre-crossing-repair.json": {
+      "bytes": 42214,
+      "sha256": "0fbaf6098a6adcd529b422a8330fff28ebbe9f10eb1fce0e2242cf135030e913"
+    },
+    "tests/frame-clock.test.js": {
+      "bytes": 1921,
+      "sha256": "74bbb36d13f1fdd059d42f21981bee9c3515847d64a60b0aee7f4e02dfe1cdbc"
+    },
+    "tests/ground-support.test.js": {
+      "bytes": 3890,
+      "sha256": "409ca12af92ec197ab82878b4da8c384428cc199db8370b5b25f3cca692b4036"
+    },
+    "tests/harbor-district.test.js": {
+      "bytes": 7095,
+      "sha256": "23187a1df2bb3a0ef6134f66525bfc11ca1c4bc5f27833d1a034f6a1f85f8f61"
+    },
+    "tests/harbor-life-traffic.test.js": {
+      "bytes": 10432,
+      "sha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a"
+    },
+    "tests/harbor-life.test.js": {
+      "bytes": 18145,
+      "sha256": "c0d5aae4aeb3f81c13041689fa991eca975f4804344fad8ddfc54e0bf8fff41b"
+    },
+    "tests/harbor-rendering.test.js": {
+      "bytes": 3452,
+      "sha256": "58ee44d6fdc419618cca5533eb725328958872a0a78c7e6e3d77299c73f7b1bd"
+    },
+    "tests/harbor-sample-integration.test.js": {
+      "bytes": 17970,
+      "sha256": "5fe5fea80e7fc87df583b578d633e3aefb865cca36082d1d0ad61f186d069658"
+    },
+    "tests/harbor-skyline.test.js": {
+      "bytes": 10285,
+      "sha256": "9ba6861e37f58375aa026e00cfe6787e5c8f9b1579c5d6cd5549f263b302216e"
+    },
+    "tests/harbor-terrain.test.js": {
+      "bytes": 3456,
+      "sha256": "a7e5effe66ceb7c32c6daad19f7be0a8a4356240776ad6f90c74ba88c3285ce7"
+    },
+    "tests/harbor-transit.test.js": {
+      "bytes": 26094,
+      "sha256": "a597582770d0f833c30e7e31aa2446baa524e6b1e4ea4d119b6bf10ec07f4e01"
+    },
+    "tests/harbor-vehicle-models.test.js": {
+      "bytes": 11755,
+      "sha256": "125aea677af0003cbe2f7f213339275000ff61a9e36b695ad03fc904112cd3df"
+    },
+    "tests/interior-occlusion.test.js": {
+      "bytes": 10930,
+      "sha256": "a3dacab0b0b448b4c16eefbb3bb134d2ed493337abce41a7ec4814699268bda1"
+    },
+    "tests/layered-city.test.js": {
+      "bytes": 7910,
+      "sha256": "b653dab3bbc8db35d5bbadd2bf4d16e0230ade13f35f49f76cc6f6c56ac9e745"
+    },
+    "tests/metropolis-architecture.test.js": {
+      "bytes": 8070,
+      "sha256": "a7035518661616537bae31e48c1b51caedea300c589af8597f3af61ae76d63a6"
+    },
+    "tests/metropolis-infrastructure.test.js": {
+      "bytes": 10788,
+      "sha256": "deedc9f5c53eb2f51bc57b693f6f7159c88524268fd2f1d5bd5545c22980748a"
+    },
+    "tests/metropolis-interiors.test.js": {
+      "bytes": 19471,
+      "sha256": "8249f16f2c79d9eeb4112d968381226436db16461681d4976fba48df4808c608"
+    },
+    "tests/metropolis-people.test.js": {
+      "bytes": 14172,
+      "sha256": "f0e808b28209f4943bed9d4eacaf0c4b8493ca9b2dcb6cd298cb47476696f425"
+    },
+    "tests/metropolis-room-designs.test.js": {
+      "bytes": 12963,
+      "sha256": "2b1ece43896a71e5801d1e1aaac6d3dc92551e79aafabea1f84e6e45143aa74b"
+    },
+    "tests/metropolis-transit.test.js": {
+      "bytes": 29482,
+      "sha256": "5e230aff8f00ea9acce0de31f9052eab74d956cdd99a87d3c016ae6575b462fd"
+    },
+    "tests/metropolis-world.test.js": {
+      "bytes": 10299,
+      "sha256": "585d3d470404ea6e4250ba9d06633caa45a1b2cefe07eca775a5d2225691a912"
+    },
+    "tests/models.test.js": {
+      "bytes": 3752,
+      "sha256": "eb57eec99ba8c6aa73b3910d37a2d6e24daae8fa91485841ef28db8a83c436fa"
+    },
+    "tests/multiplayer-browser/rooms.spec.js": {
+      "bytes": 15604,
+      "sha256": "c3e382b6a86b2b0130a138e936817f35f5dc802c8ee586ffa7834433f89ad20f"
+    },
+    "tests/multiplayer.test.js": {
+      "bytes": 4253,
+      "sha256": "b7604433920cb670aa9282b7a354ff4c68bdcdd30de1a026dac128cca9ada36d"
+    },
+    "tests/persistent-street-traffic.test.js": {
+      "bytes": 1822,
+      "sha256": "db38f5a3ab4685883281a0f4fd9ce0c11d5a8a39cca5e31edf448181dbfafc6e"
+    },
+    "tests/precision-walking.test.js": {
+      "bytes": 1761,
+      "sha256": "ca4570111dc39265b9660d6f827a179888c5c6a52798b95988a42b166f69221f"
+    },
+    "tests/public-vehicle-collision.test.js": {
+      "bytes": 908,
+      "sha256": "01ae34341b5be45e859e62b57f847b7e3ebfc9516bc9188d91870c801564146e"
+    },
+    "tests/simulation.test.js": {
+      "bytes": 17463,
+      "sha256": "0f3859a547a39e03eee3e66898e82a33ba4fd1f241451460ae8584e3be646aec"
+    },
+    "tests/terrain-openings.test.js": {
+      "bytes": 2366,
+      "sha256": "9a69ed9b234b051ac5ce36d1d59ddb25384a5c4c3ee52417175ef367f96b1804"
+    },
+    "tests/traffic.test.js": {
+      "bytes": 3250,
+      "sha256": "b7b8deabcfbfd026eae825b7f87a2244199c0351740d3a274d117bfec5bb6ebc"
+    },
+    "tests/visual/room-art.spec.js": {
+      "bytes": 3286,
+      "sha256": "1c0dfcd4c7bafee8a41c7313595ddc61edaa4f348d2e0c3303f22411018a0ad9"
+    },
+    "tests/visual-detail/native-rooms.spec.js": {
+      "bytes": 2005,
+      "sha256": "d742b315237088f15976a83f404f1d51a8b7a05dbc7e2dfd6767f2e0eed2c803"
+    },
+    "tests/world-gameplay.test.js": {
+      "bytes": 4816,
+      "sha256": "480fbd3271d92c272e00841a12c4a2e4683469f5fbcce6f27b757eb12afdd94e"
+    },
+    "tests/world-geometry.test.js": {
+      "bytes": 6354,
+      "sha256": "54e7b9c83138e862dd5978139e35064ad4d2e21bc0498b1b6bfbecabd36574f6"
+    },
+    "tests/world-surface-finish.test.js": {
+      "bytes": 5204,
+      "sha256": "c10fe97bbf572aca3c6ba134c534210a73fa694c4ff1ef388254fecf78d0c1e3"
+    }
+  },
+  "pilotFullTestDictionary": {
+    "tests/camera.test.js": {
+      "bytes": 10387,
+      "sha256": "14fe2c15b2c12ea55b33db96114391d61f500a5cf8e00e8ed5ff9186e082f57a"
+    },
+    "tests/citizen-journeys.test.js": {
+      "bytes": 10849,
+      "sha256": "4ff5d655bdc65988ab1969eb4accfc906f14d3a1114a1407822f9f70cb434814"
+    },
+    "tests/city-exploration.test.js": {
+      "bytes": 5871,
+      "sha256": "ac71dcfd3a68f0a4ccfd371fe431a98233c28475d839980403b53745158a0040"
+    },
+    "tests/city-guide.test.js": {
+      "bytes": 10457,
+      "sha256": "f7c5138aeefe2c9afa86fef80a0014361d6c212ccd68c98d13fb932f236117b9"
+    },
+    "tests/city-materials-v08.test.js": {
+      "bytes": 6957,
+      "sha256": "87f8f98a2e8a2f53a10662bf66e785b5dc92227c73762dc6f7bcf308c3d2ecbb"
+    },
+    "tests/city-streaming.test.js": {
+      "bytes": 5639,
+      "sha256": "11a4b7209327bd1cc699d9b8f7feff7b05abb83239f8f146655b2c724c5267fa"
+    },
+    "tests/collision-sweep.test.js": {
+      "bytes": 4695,
+      "sha256": "0374c99ae8cb44882fe92c42bc27985e0f59897f0b71fd2364b171baed3dbbdb"
+    },
+    "tests/collision.test.js": {
+      "bytes": 11010,
+      "sha256": "35222b59b20de62ee1d948032d83695c14c9c154387913377377a21949069149"
+    },
+    "tests/compact-interiors.test.js": {
+      "bytes": 8978,
+      "sha256": "d3eb2559047b652823baa12cb0b709a7cf6ceb3e4e3352f28992fc4468105a11"
+    },
+    "tests/compact-workplaces.test.js": {
+      "bytes": 4047,
+      "sha256": "378cbd56f21baba6013a18425faf66ffd7b85a5e94bfe4eaff916b57fa99a9db"
+    },
+    "tests/e2e/city-materials.spec.js": {
+      "bytes": 13601,
+      "sha256": "199694d890c1f23599d083e2eb32b04221efba70d9b3cc153f726e034aa75fee"
+    },
+    "tests/e2e/game.spec.js": {
+      "bytes": 7863,
+      "sha256": "329c460eb9e4da4b4cbfbe8e6c69e23799f40580750c9b4bfe355ade98d67cfd"
+    },
+    "tests/e2e/harbor-realism.spec.js": {
+      "bytes": 8702,
+      "sha256": "06cafb2ee868fcbfbbd9ac48eb20038a118537b7300fb4735e677316dbbccb31"
+    },
+    "tests/e2e/harbor-sample.spec.js": {
+      "bytes": 21597,
+      "sha256": "3df001c6b62c1db31a1da746999ed183048dc7e56aae836b8d4cad2fab771ec9"
+    },
+    "tests/e2e/helpers/occupied.js": {
+      "bytes": 5321,
+      "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+    },
+    "tests/e2e/helpers/walking.js": {
+      "bytes": 7277,
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+    },
+    "tests/e2e/living-city.spec.js": {
+      "bytes": 10224,
+      "sha256": "a1560c7e1bb479c5af6f57d2043536b332b3515ef6959488eb2f4b24c6079149"
+    },
+    "tests/e2e/metropolis.spec.js": {
+      "bytes": 14214,
+      "sha256": "8ee282b8f877e8d6447bb90be149fc0a303cae6b8119d77ffc331ac27a4f304a"
+    },
+    "tests/e2e/occupied-city.spec.js": {
+      "bytes": 5943,
+      "sha256": "3d841920afde318d3c34fdafebdbe66791e59ba1db5bddf17e1bb2820b7c5218"
+    },
+    "tests/e2e/stability.spec.js": {
+      "bytes": 18111,
+      "sha256": "ef6dbcc77a06010f8e030b65c84174c5725968a242b56bf1a8f5e65b6f37b875"
+    },
+    "tests/expansion-programmes.test.js": {
+      "bytes": 3548,
+      "sha256": "36215f6f07b550f4056629b81d688bdebafe9d17fe9f9cc21d4d90399227cbfc"
+    },
+    "tests/fixtures/harbor-life-pre-crossing-repair.json": {
+      "bytes": 42214,
+      "sha256": "0fbaf6098a6adcd529b422a8330fff28ebbe9f10eb1fce0e2242cf135030e913"
+    },
+    "tests/frame-clock.test.js": {
+      "bytes": 1921,
+      "sha256": "74bbb36d13f1fdd059d42f21981bee9c3515847d64a60b0aee7f4e02dfe1cdbc"
+    },
+    "tests/ground-support.test.js": {
+      "bytes": 3890,
+      "sha256": "409ca12af92ec197ab82878b4da8c384428cc199db8370b5b25f3cca692b4036"
+    },
+    "tests/harbor-district.test.js": {
+      "bytes": 7095,
+      "sha256": "23187a1df2bb3a0ef6134f66525bfc11ca1c4bc5f27833d1a034f6a1f85f8f61"
+    },
+    "tests/harbor-life-traffic.test.js": {
+      "bytes": 10432,
+      "sha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a"
+    },
+    "tests/harbor-life.test.js": {
+      "bytes": 18145,
+      "sha256": "c0d5aae4aeb3f81c13041689fa991eca975f4804344fad8ddfc54e0bf8fff41b"
+    },
+    "tests/harbor-rendering.test.js": {
+      "bytes": 3452,
+      "sha256": "58ee44d6fdc419618cca5533eb725328958872a0a78c7e6e3d77299c73f7b1bd"
+    },
+    "tests/harbor-sample-integration.test.js": {
+      "bytes": 17970,
+      "sha256": "5fe5fea80e7fc87df583b578d633e3aefb865cca36082d1d0ad61f186d069658"
+    },
+    "tests/harbor-skyline.test.js": {
+      "bytes": 10285,
+      "sha256": "9ba6861e37f58375aa026e00cfe6787e5c8f9b1579c5d6cd5549f263b302216e"
+    },
+    "tests/harbor-terrain.test.js": {
+      "bytes": 3456,
+      "sha256": "a7e5effe66ceb7c32c6daad19f7be0a8a4356240776ad6f90c74ba88c3285ce7"
+    },
+    "tests/harbor-transit.test.js": {
+      "bytes": 26094,
+      "sha256": "a597582770d0f833c30e7e31aa2446baa524e6b1e4ea4d119b6bf10ec07f4e01"
+    },
+    "tests/harbor-vehicle-models.test.js": {
+      "bytes": 11755,
+      "sha256": "125aea677af0003cbe2f7f213339275000ff61a9e36b695ad03fc904112cd3df"
+    },
+    "tests/harbor-workshop-pilot.test.js": {
+      "bytes": 20471,
+      "sha256": "b4adc2365169fcad911e91d8efc74bb36bd32d794f6f1d2e10b916c1f93dc4be"
+    },
+    "tests/interior-occlusion.test.js": {
+      "bytes": 10930,
+      "sha256": "a3dacab0b0b448b4c16eefbb3bb134d2ed493337abce41a7ec4814699268bda1"
+    },
+    "tests/layered-city.test.js": {
+      "bytes": 7910,
+      "sha256": "b653dab3bbc8db35d5bbadd2bf4d16e0230ade13f35f49f76cc6f6c56ac9e745"
+    },
+    "tests/metropolis-architecture.test.js": {
+      "bytes": 8070,
+      "sha256": "a7035518661616537bae31e48c1b51caedea300c589af8597f3af61ae76d63a6"
+    },
+    "tests/metropolis-infrastructure.test.js": {
+      "bytes": 10788,
+      "sha256": "deedc9f5c53eb2f51bc57b693f6f7159c88524268fd2f1d5bd5545c22980748a"
+    },
+    "tests/metropolis-interiors.test.js": {
+      "bytes": 19471,
+      "sha256": "8249f16f2c79d9eeb4112d968381226436db16461681d4976fba48df4808c608"
+    },
+    "tests/metropolis-people.test.js": {
+      "bytes": 14172,
+      "sha256": "f0e808b28209f4943bed9d4eacaf0c4b8493ca9b2dcb6cd298cb47476696f425"
+    },
+    "tests/metropolis-room-designs.test.js": {
+      "bytes": 12963,
+      "sha256": "2b1ece43896a71e5801d1e1aaac6d3dc92551e79aafabea1f84e6e45143aa74b"
+    },
+    "tests/metropolis-transit.test.js": {
+      "bytes": 29482,
+      "sha256": "5e230aff8f00ea9acce0de31f9052eab74d956cdd99a87d3c016ae6575b462fd"
+    },
+    "tests/metropolis-world.test.js": {
+      "bytes": 10299,
+      "sha256": "585d3d470404ea6e4250ba9d06633caa45a1b2cefe07eca775a5d2225691a912"
+    },
+    "tests/models.test.js": {
+      "bytes": 3752,
+      "sha256": "eb57eec99ba8c6aa73b3910d37a2d6e24daae8fa91485841ef28db8a83c436fa"
+    },
+    "tests/multiplayer-browser/rooms.spec.js": {
+      "bytes": 15352,
+      "sha256": "637a650026e313e51aed7fa277afb9c10a15ee5e25891fd418682e1b0ff21bef"
+    },
+    "tests/multiplayer.test.js": {
+      "bytes": 4253,
+      "sha256": "b7604433920cb670aa9282b7a354ff4c68bdcdd30de1a026dac128cca9ada36d"
+    },
+    "tests/persistent-street-traffic.test.js": {
+      "bytes": 1822,
+      "sha256": "db38f5a3ab4685883281a0f4fd9ce0c11d5a8a39cca5e31edf448181dbfafc6e"
+    },
+    "tests/precision-walking.test.js": {
+      "bytes": 1761,
+      "sha256": "ca4570111dc39265b9660d6f827a179888c5c6a52798b95988a42b166f69221f"
+    },
+    "tests/public-vehicle-collision.test.js": {
+      "bytes": 908,
+      "sha256": "01ae34341b5be45e859e62b57f847b7e3ebfc9516bc9188d91870c801564146e"
+    },
+    "tests/simulation.test.js": {
+      "bytes": 17463,
+      "sha256": "0f3859a547a39e03eee3e66898e82a33ba4fd1f241451460ae8584e3be646aec"
+    },
+    "tests/terrain-openings.test.js": {
+      "bytes": 2366,
+      "sha256": "9a69ed9b234b051ac5ce36d1d59ddb25384a5c4c3ee52417175ef367f96b1804"
+    },
+    "tests/traffic.test.js": {
+      "bytes": 3250,
+      "sha256": "b7b8deabcfbfd026eae825b7f87a2244199c0351740d3a274d117bfec5bb6ebc"
+    },
+    "tests/visual/room-art.spec.js": {
+      "bytes": 3286,
+      "sha256": "1c0dfcd4c7bafee8a41c7313595ddc61edaa4f348d2e0c3303f22411018a0ad9"
+    },
+    "tests/visual-detail/native-rooms.spec.js": {
+      "bytes": 2005,
+      "sha256": "d742b315237088f15976a83f404f1d51a8b7a05dbc7e2dfd6767f2e0eed2c803"
+    },
+    "tests/world-gameplay.test.js": {
+      "bytes": 4816,
+      "sha256": "480fbd3271d92c272e00841a12c4a2e4683469f5fbcce6f27b757eb12afdd94e"
+    },
+    "tests/world-geometry.test.js": {
+      "bytes": 6354,
+      "sha256": "54e7b9c83138e862dd5978139e35064ad4d2e21bc0498b1b6bfbecabd36574f6"
+    },
+    "tests/world-surface-finish.test.js": {
+      "bytes": 5204,
+      "sha256": "c10fe97bbf572aca3c6ba134c534210a73fa694c4ff1ef388254fecf78d0c1e3"
+    }
+  },
+  "rootNodeTestDictionary": {
+    "tests/camera.test.js": {
+      "bytes": 10387,
+      "sha256": "14fe2c15b2c12ea55b33db96114391d61f500a5cf8e00e8ed5ff9186e082f57a"
+    },
+    "tests/citizen-journeys.test.js": {
+      "bytes": 10849,
+      "sha256": "4ff5d655bdc65988ab1969eb4accfc906f14d3a1114a1407822f9f70cb434814"
+    },
+    "tests/city-exploration.test.js": {
+      "bytes": 5871,
+      "sha256": "ac71dcfd3a68f0a4ccfd371fe431a98233c28475d839980403b53745158a0040"
+    },
+    "tests/city-guide.test.js": {
+      "bytes": 10457,
+      "sha256": "f7c5138aeefe2c9afa86fef80a0014361d6c212ccd68c98d13fb932f236117b9"
+    },
+    "tests/city-materials-v08.test.js": {
+      "bytes": 6957,
+      "sha256": "87f8f98a2e8a2f53a10662bf66e785b5dc92227c73762dc6f7bcf308c3d2ecbb"
+    },
+    "tests/city-streaming.test.js": {
+      "bytes": 5639,
+      "sha256": "11a4b7209327bd1cc699d9b8f7feff7b05abb83239f8f146655b2c724c5267fa"
+    },
+    "tests/collision-sweep.test.js": {
+      "bytes": 4695,
+      "sha256": "0374c99ae8cb44882fe92c42bc27985e0f59897f0b71fd2364b171baed3dbbdb"
+    },
+    "tests/collision.test.js": {
+      "bytes": 11010,
+      "sha256": "35222b59b20de62ee1d948032d83695c14c9c154387913377377a21949069149"
+    },
+    "tests/compact-interiors.test.js": {
+      "bytes": 8978,
+      "sha256": "d3eb2559047b652823baa12cb0b709a7cf6ceb3e4e3352f28992fc4468105a11"
+    },
+    "tests/compact-workplaces.test.js": {
+      "bytes": 4047,
+      "sha256": "378cbd56f21baba6013a18425faf66ffd7b85a5e94bfe4eaff916b57fa99a9db"
+    },
+    "tests/expansion-programmes.test.js": {
+      "bytes": 3548,
+      "sha256": "36215f6f07b550f4056629b81d688bdebafe9d17fe9f9cc21d4d90399227cbfc"
+    },
+    "tests/frame-clock.test.js": {
+      "bytes": 1921,
+      "sha256": "74bbb36d13f1fdd059d42f21981bee9c3515847d64a60b0aee7f4e02dfe1cdbc"
+    },
+    "tests/ground-support.test.js": {
+      "bytes": 3890,
+      "sha256": "409ca12af92ec197ab82878b4da8c384428cc199db8370b5b25f3cca692b4036"
+    },
+    "tests/harbor-district.test.js": {
+      "bytes": 7095,
+      "sha256": "23187a1df2bb3a0ef6134f66525bfc11ca1c4bc5f27833d1a034f6a1f85f8f61"
+    },
+    "tests/harbor-life-traffic.test.js": {
+      "bytes": 10432,
+      "sha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a"
+    },
+    "tests/harbor-life.test.js": {
+      "bytes": 18145,
+      "sha256": "c0d5aae4aeb3f81c13041689fa991eca975f4804344fad8ddfc54e0bf8fff41b"
+    },
+    "tests/harbor-rendering.test.js": {
+      "bytes": 3452,
+      "sha256": "58ee44d6fdc419618cca5533eb725328958872a0a78c7e6e3d77299c73f7b1bd"
+    },
+    "tests/harbor-sample-integration.test.js": {
+      "bytes": 17970,
+      "sha256": "5fe5fea80e7fc87df583b578d633e3aefb865cca36082d1d0ad61f186d069658"
+    },
+    "tests/harbor-skyline.test.js": {
+      "bytes": 10285,
+      "sha256": "9ba6861e37f58375aa026e00cfe6787e5c8f9b1579c5d6cd5549f263b302216e"
+    },
+    "tests/harbor-terrain.test.js": {
+      "bytes": 3456,
+      "sha256": "a7e5effe66ceb7c32c6daad19f7be0a8a4356240776ad6f90c74ba88c3285ce7"
+    },
+    "tests/harbor-transit.test.js": {
+      "bytes": 26094,
+      "sha256": "a597582770d0f833c30e7e31aa2446baa524e6b1e4ea4d119b6bf10ec07f4e01"
+    },
+    "tests/harbor-vehicle-models.test.js": {
+      "bytes": 11755,
+      "sha256": "125aea677af0003cbe2f7f213339275000ff61a9e36b695ad03fc904112cd3df"
+    },
+    "tests/interior-occlusion.test.js": {
+      "bytes": 10930,
+      "sha256": "a3dacab0b0b448b4c16eefbb3bb134d2ed493337abce41a7ec4814699268bda1"
+    },
+    "tests/layered-city.test.js": {
+      "bytes": 7910,
+      "sha256": "b653dab3bbc8db35d5bbadd2bf4d16e0230ade13f35f49f76cc6f6c56ac9e745"
+    },
+    "tests/metropolis-architecture.test.js": {
+      "bytes": 8070,
+      "sha256": "a7035518661616537bae31e48c1b51caedea300c589af8597f3af61ae76d63a6"
+    },
+    "tests/metropolis-infrastructure.test.js": {
+      "bytes": 10788,
+      "sha256": "deedc9f5c53eb2f51bc57b693f6f7159c88524268fd2f1d5bd5545c22980748a"
+    },
+    "tests/metropolis-interiors.test.js": {
+      "bytes": 19471,
+      "sha256": "8249f16f2c79d9eeb4112d968381226436db16461681d4976fba48df4808c608"
+    },
+    "tests/metropolis-people.test.js": {
+      "bytes": 14172,
+      "sha256": "f0e808b28209f4943bed9d4eacaf0c4b8493ca9b2dcb6cd298cb47476696f425"
+    },
+    "tests/metropolis-room-designs.test.js": {
+      "bytes": 12963,
+      "sha256": "2b1ece43896a71e5801d1e1aaac6d3dc92551e79aafabea1f84e6e45143aa74b"
+    },
+    "tests/metropolis-transit.test.js": {
+      "bytes": 29482,
+      "sha256": "5e230aff8f00ea9acce0de31f9052eab74d956cdd99a87d3c016ae6575b462fd"
+    },
+    "tests/metropolis-world.test.js": {
+      "bytes": 10299,
+      "sha256": "585d3d470404ea6e4250ba9d06633caa45a1b2cefe07eca775a5d2225691a912"
+    },
+    "tests/models.test.js": {
+      "bytes": 3752,
+      "sha256": "eb57eec99ba8c6aa73b3910d37a2d6e24daae8fa91485841ef28db8a83c436fa"
+    },
+    "tests/multiplayer.test.js": {
+      "bytes": 4253,
+      "sha256": "b7604433920cb670aa9282b7a354ff4c68bdcdd30de1a026dac128cca9ada36d"
+    },
+    "tests/persistent-street-traffic.test.js": {
+      "bytes": 1822,
+      "sha256": "db38f5a3ab4685883281a0f4fd9ce0c11d5a8a39cca5e31edf448181dbfafc6e"
+    },
+    "tests/precision-walking.test.js": {
+      "bytes": 1761,
+      "sha256": "ca4570111dc39265b9660d6f827a179888c5c6a52798b95988a42b166f69221f"
+    },
+    "tests/public-vehicle-collision.test.js": {
+      "bytes": 908,
+      "sha256": "01ae34341b5be45e859e62b57f847b7e3ebfc9516bc9188d91870c801564146e"
+    },
+    "tests/simulation.test.js": {
+      "bytes": 17463,
+      "sha256": "0f3859a547a39e03eee3e66898e82a33ba4fd1f241451460ae8584e3be646aec"
+    },
+    "tests/terrain-openings.test.js": {
+      "bytes": 2366,
+      "sha256": "9a69ed9b234b051ac5ce36d1d59ddb25384a5c4c3ee52417175ef367f96b1804"
+    },
+    "tests/traffic.test.js": {
+      "bytes": 3250,
+      "sha256": "b7b8deabcfbfd026eae825b7f87a2244199c0351740d3a274d117bfec5bb6ebc"
+    },
+    "tests/world-gameplay.test.js": {
+      "bytes": 4816,
+      "sha256": "480fbd3271d92c272e00841a12c4a2e4683469f5fbcce6f27b757eb12afdd94e"
+    },
+    "tests/world-geometry.test.js": {
+      "bytes": 6354,
+      "sha256": "54e7b9c83138e862dd5978139e35064ad4d2e21bc0498b1b6bfbecabd36574f6"
+    },
+    "tests/world-surface-finish.test.js": {
+      "bytes": 5204,
+      "sha256": "c10fe97bbf572aca3c6ba134c534210a73fa694c4ff1ef388254fecf78d0c1e3"
+    }
+  },
+  "pilotNodeTestDictionary": {
+    "tests/camera.test.js": {
+      "bytes": 10387,
+      "sha256": "14fe2c15b2c12ea55b33db96114391d61f500a5cf8e00e8ed5ff9186e082f57a"
+    },
+    "tests/citizen-journeys.test.js": {
+      "bytes": 10849,
+      "sha256": "4ff5d655bdc65988ab1969eb4accfc906f14d3a1114a1407822f9f70cb434814"
+    },
+    "tests/city-exploration.test.js": {
+      "bytes": 5871,
+      "sha256": "ac71dcfd3a68f0a4ccfd371fe431a98233c28475d839980403b53745158a0040"
+    },
+    "tests/city-guide.test.js": {
+      "bytes": 10457,
+      "sha256": "f7c5138aeefe2c9afa86fef80a0014361d6c212ccd68c98d13fb932f236117b9"
+    },
+    "tests/city-materials-v08.test.js": {
+      "bytes": 6957,
+      "sha256": "87f8f98a2e8a2f53a10662bf66e785b5dc92227c73762dc6f7bcf308c3d2ecbb"
+    },
+    "tests/city-streaming.test.js": {
+      "bytes": 5639,
+      "sha256": "11a4b7209327bd1cc699d9b8f7feff7b05abb83239f8f146655b2c724c5267fa"
+    },
+    "tests/collision-sweep.test.js": {
+      "bytes": 4695,
+      "sha256": "0374c99ae8cb44882fe92c42bc27985e0f59897f0b71fd2364b171baed3dbbdb"
+    },
+    "tests/collision.test.js": {
+      "bytes": 11010,
+      "sha256": "35222b59b20de62ee1d948032d83695c14c9c154387913377377a21949069149"
+    },
+    "tests/compact-interiors.test.js": {
+      "bytes": 8978,
+      "sha256": "d3eb2559047b652823baa12cb0b709a7cf6ceb3e4e3352f28992fc4468105a11"
+    },
+    "tests/compact-workplaces.test.js": {
+      "bytes": 4047,
+      "sha256": "378cbd56f21baba6013a18425faf66ffd7b85a5e94bfe4eaff916b57fa99a9db"
+    },
+    "tests/expansion-programmes.test.js": {
+      "bytes": 3548,
+      "sha256": "36215f6f07b550f4056629b81d688bdebafe9d17fe9f9cc21d4d90399227cbfc"
+    },
+    "tests/frame-clock.test.js": {
+      "bytes": 1921,
+      "sha256": "74bbb36d13f1fdd059d42f21981bee9c3515847d64a60b0aee7f4e02dfe1cdbc"
+    },
+    "tests/ground-support.test.js": {
+      "bytes": 3890,
+      "sha256": "409ca12af92ec197ab82878b4da8c384428cc199db8370b5b25f3cca692b4036"
+    },
+    "tests/harbor-district.test.js": {
+      "bytes": 7095,
+      "sha256": "23187a1df2bb3a0ef6134f66525bfc11ca1c4bc5f27833d1a034f6a1f85f8f61"
+    },
+    "tests/harbor-life-traffic.test.js": {
+      "bytes": 10432,
+      "sha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a"
+    },
+    "tests/harbor-life.test.js": {
+      "bytes": 18145,
+      "sha256": "c0d5aae4aeb3f81c13041689fa991eca975f4804344fad8ddfc54e0bf8fff41b"
+    },
+    "tests/harbor-rendering.test.js": {
+      "bytes": 3452,
+      "sha256": "58ee44d6fdc419618cca5533eb725328958872a0a78c7e6e3d77299c73f7b1bd"
+    },
+    "tests/harbor-sample-integration.test.js": {
+      "bytes": 17970,
+      "sha256": "5fe5fea80e7fc87df583b578d633e3aefb865cca36082d1d0ad61f186d069658"
+    },
+    "tests/harbor-skyline.test.js": {
+      "bytes": 10285,
+      "sha256": "9ba6861e37f58375aa026e00cfe6787e5c8f9b1579c5d6cd5549f263b302216e"
+    },
+    "tests/harbor-terrain.test.js": {
+      "bytes": 3456,
+      "sha256": "a7e5effe66ceb7c32c6daad19f7be0a8a4356240776ad6f90c74ba88c3285ce7"
+    },
+    "tests/harbor-transit.test.js": {
+      "bytes": 26094,
+      "sha256": "a597582770d0f833c30e7e31aa2446baa524e6b1e4ea4d119b6bf10ec07f4e01"
+    },
+    "tests/harbor-vehicle-models.test.js": {
+      "bytes": 11755,
+      "sha256": "125aea677af0003cbe2f7f213339275000ff61a9e36b695ad03fc904112cd3df"
+    },
+    "tests/harbor-workshop-pilot.test.js": {
+      "bytes": 20471,
+      "sha256": "b4adc2365169fcad911e91d8efc74bb36bd32d794f6f1d2e10b916c1f93dc4be"
+    },
+    "tests/interior-occlusion.test.js": {
+      "bytes": 10930,
+      "sha256": "a3dacab0b0b448b4c16eefbb3bb134d2ed493337abce41a7ec4814699268bda1"
+    },
+    "tests/layered-city.test.js": {
+      "bytes": 7910,
+      "sha256": "b653dab3bbc8db35d5bbadd2bf4d16e0230ade13f35f49f76cc6f6c56ac9e745"
+    },
+    "tests/metropolis-architecture.test.js": {
+      "bytes": 8070,
+      "sha256": "a7035518661616537bae31e48c1b51caedea300c589af8597f3af61ae76d63a6"
+    },
+    "tests/metropolis-infrastructure.test.js": {
+      "bytes": 10788,
+      "sha256": "deedc9f5c53eb2f51bc57b693f6f7159c88524268fd2f1d5bd5545c22980748a"
+    },
+    "tests/metropolis-interiors.test.js": {
+      "bytes": 19471,
+      "sha256": "8249f16f2c79d9eeb4112d968381226436db16461681d4976fba48df4808c608"
+    },
+    "tests/metropolis-people.test.js": {
+      "bytes": 14172,
+      "sha256": "f0e808b28209f4943bed9d4eacaf0c4b8493ca9b2dcb6cd298cb47476696f425"
+    },
+    "tests/metropolis-room-designs.test.js": {
+      "bytes": 12963,
+      "sha256": "2b1ece43896a71e5801d1e1aaac6d3dc92551e79aafabea1f84e6e45143aa74b"
+    },
+    "tests/metropolis-transit.test.js": {
+      "bytes": 29482,
+      "sha256": "5e230aff8f00ea9acce0de31f9052eab74d956cdd99a87d3c016ae6575b462fd"
+    },
+    "tests/metropolis-world.test.js": {
+      "bytes": 10299,
+      "sha256": "585d3d470404ea6e4250ba9d06633caa45a1b2cefe07eca775a5d2225691a912"
+    },
+    "tests/models.test.js": {
+      "bytes": 3752,
+      "sha256": "eb57eec99ba8c6aa73b3910d37a2d6e24daae8fa91485841ef28db8a83c436fa"
+    },
+    "tests/multiplayer.test.js": {
+      "bytes": 4253,
+      "sha256": "b7604433920cb670aa9282b7a354ff4c68bdcdd30de1a026dac128cca9ada36d"
+    },
+    "tests/persistent-street-traffic.test.js": {
+      "bytes": 1822,
+      "sha256": "db38f5a3ab4685883281a0f4fd9ce0c11d5a8a39cca5e31edf448181dbfafc6e"
+    },
+    "tests/precision-walking.test.js": {
+      "bytes": 1761,
+      "sha256": "ca4570111dc39265b9660d6f827a179888c5c6a52798b95988a42b166f69221f"
+    },
+    "tests/public-vehicle-collision.test.js": {
+      "bytes": 908,
+      "sha256": "01ae34341b5be45e859e62b57f847b7e3ebfc9516bc9188d91870c801564146e"
+    },
+    "tests/simulation.test.js": {
+      "bytes": 17463,
+      "sha256": "0f3859a547a39e03eee3e66898e82a33ba4fd1f241451460ae8584e3be646aec"
+    },
+    "tests/terrain-openings.test.js": {
+      "bytes": 2366,
+      "sha256": "9a69ed9b234b051ac5ce36d1d59ddb25384a5c4c3ee52417175ef367f96b1804"
+    },
+    "tests/traffic.test.js": {
+      "bytes": 3250,
+      "sha256": "b7b8deabcfbfd026eae825b7f87a2244199c0351740d3a274d117bfec5bb6ebc"
+    },
+    "tests/world-gameplay.test.js": {
+      "bytes": 4816,
+      "sha256": "480fbd3271d92c272e00841a12c4a2e4683469f5fbcce6f27b757eb12afdd94e"
+    },
+    "tests/world-geometry.test.js": {
+      "bytes": 6354,
+      "sha256": "54e7b9c83138e862dd5978139e35064ad4d2e21bc0498b1b6bfbecabd36574f6"
+    },
+    "tests/world-surface-finish.test.js": {
+      "bytes": 5204,
+      "sha256": "c10fe97bbf572aca3c6ba134c534210a73fa694c4ff1ef388254fecf78d0c1e3"
+    }
+  },
+  "intentionalBrowserDifference": [
+    "tests/multiplayer-browser/rooms.spec.js"
+  ],
+  "pilotOnlyNodeTest": [
+    "tests/harbor-workshop-pilot.test.js"
+  ],
+  "missing": [],
+  "package": {
+    "package.json": {
+      "root": {
+        "bytes": 652,
+        "sha256": "445222967a997007bd4b6d7bd8b2c22b88b0cf031fed4f2cefb08a6f04a7f028"
+      },
+      "pilot": {
+        "bytes": 652,
+        "sha256": "445222967a997007bd4b6d7bd8b2c22b88b0cf031fed4f2cefb08a6f04a7f028"
+      }
+    },
+    "package-lock.json": {
+      "root": {
+        "bytes": 2305,
+        "sha256": "163259fc64f19ce8fa5bba80359eb97befc847648bb7f6454c0569d4867fc87d"
+      },
+      "pilot": {
+        "bytes": 2305,
+        "sha256": "163259fc64f19ce8fa5bba80359eb97befc847648bb7f6454c0569d4867fc87d"
+      }
+    }
+  },
+  "note": "Browser rooms trace-off ROOT fix is retained by ROOT during selective integration and is not run by npm test; no test assertions copied or weakened in this run."
+}

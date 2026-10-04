@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Actual Three geometry/texture counts return to the identical warmed street baseline
++ actual - expected
+
+  {
++   geometries: 615,
+-   geometries: 580,
+    textures: 118
+  }
+
+    at file:///workspace/scratch/neon-harbor-art-pilot/tools/capture-workshop-pilot.mjs:285:18 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: { geometries: 615, textures: 118 },
+  expected: { geometries: 580, textures: 118 },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

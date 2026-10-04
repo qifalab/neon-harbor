@@ -1,0 +1,186 @@
+{
+  "verifiedAt": "2026-10-04T18:04:44.174Z",
+  "processExitCode": 1,
+  "result": "failed",
+  "failure": "page.waitForFunction: Timeout 600000ms exceeded.\n    at ride (/workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:417:14)\n    at async file:///workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:511:58",
+  "failureAt": "2026-10-04T18:03:10.752Z",
+  "metadataSha256": "97447ce4cc78750c201a85765a3455d8f5fca206fb35b2df0afca46ab3676fe0",
+  "manifestSha256": "7145fa443190896ff24050d518a54fea364ddb0547ddfa71756a33d64c515fb3",
+  "currentManifestSha256": "7145fa443190896ff24050d518a54fea364ddb0547ddfa71756a33d64c515fb3",
+  "methodSha256": "b73be2ca6a4e5008f71c51cef33312894cbeb5c41b441912a39c6e03d8c37d4b",
+  "currentMethodSha256": "b73be2ca6a4e5008f71c51cef33312894cbeb5c41b441912a39c6e03d8c37d4b",
+  "assetCount": 146,
+  "sourceCount": 52,
+  "methodDependencyCount": 4,
+  "assetMismatches": [],
+  "sourceMismatches": [],
+  "methodMismatches": [],
+  "firstAttemptRawFileCount": 11,
+  "firstAttemptRawFileMismatches": [],
+  "originalLog": {
+    "file": "capture-original.log",
+    "bytes": 10596,
+    "sha256": "779e468d5fcada1fb3eea9671c23fc5c5981db03db68330841ec92047bd06525"
+  },
+  "failureDiagnostics": {
+    "readOnly": true,
+    "files": [
+      {
+        "file": "failure-full-snapshot.json",
+        "sha256": "03c717161f57b8f00d3965ef563608b68030a8af7816dd1df86e1022b0de4b36",
+        "bytes": 1640591
+      },
+      {
+        "file": "failure-autosave-progress.json",
+        "sha256": "a02670b08232b1a68e0892c1c05776e46e6fd6c0be40ff8bc366bedeb6e2fb1b",
+        "bytes": 50046
+      }
+    ]
+  },
+  "liveFailure": {
+    "simulationTime": 353.5166666666738,
+    "position": {
+      "x": 152.07585407528038,
+      "y": 0.44,
+      "z": 161.34511723124297,
+      "yaw": -1.4118262501353782
+    },
+    "cash": 1200,
+    "revision": 7,
+    "scene": "harbor-vehicle:harbor-bus-2",
+    "passengerLocal": {
+      "x": -0.5263803109723278,
+      "y": 0.44,
+      "z": 3.7389891984473365,
+      "yaw": -1.5305328738159902
+    },
+    "passengerDeck": "lower",
+    "bus": {
+      "id": "harbor-bus-2",
+      "routeId": "harbor-bus",
+      "kind": "bus",
+      "x": 152.1557289239293,
+      "y": 0,
+      "z": 157.57010246750517,
+      "yaw": 0.11870662368061198,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 0.24073577181643024,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 7.312630634471901,
+      "speed": 3.747436523432566,
+      "delay": 75.27447306315014,
+      "serviceTime": 359.33038514404876,
+      "held": null,
+      "trafficState": "cruise",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    }
+  },
+  "autosaveAtFailure": {
+    "readOnly": true,
+    "simulationTime": 348.03333333334547,
+    "player": {
+      "x": 147.725,
+      "z": 123.74,
+      "yaw": 0
+    },
+    "cash": 1200,
+    "bus": {
+      "id": "harbor-bus-2",
+      "serviceTime": 355.5102710083081,
+      "delay": 73.611253865559,
+      "distanceTravelled": 1309.8573904890695,
+      "doorHoldUntil": 0,
+      "motionSpeed": 4.239360838867299,
+      "held": null,
+      "trafficState": "cruise",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": false
+      }
+    },
+    "notLiveSnapshot": true
+  },
+  "video": {
+    "file": "video/page@9b10f558e0c2fb2cda908907c928516a.webm",
+    "path": "/workspace/scratch/neon-harbor/docs/qa/transit-crossing-repair/continuous-tour/video/page@9b10f558e0c2fb2cda908907c928516a.webm",
+    "bytes": 29551227,
+    "sha256": "14c7d3e503c72069d1381c606b7d518e00cb9f6bf32ee855d5dbf1cbe7970311",
+    "durationSeconds": 1367.12,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 512,
+          "height": 320
+        }
+      ],
+      "format": {
+        "duration": "1367.120000"
+      }
+    },
+    "unedited": true,
+    "includesStartupAndSetup": true,
+    "published": false,
+    "publicationUrl": null,
+    "largeFilePolicy": "review artifact size before publication",
+    "independentSha256": "14c7d3e503c72069d1381c606b7d518e00cb9f6bf32ee855d5dbf1cbe7970311",
+    "independentBytes": 29551227
+  },
+  "wallClock": {
+    "caseStartedAt": "2026-10-04T17:40:39.944Z",
+    "videoStartedAt": "2026-10-04T17:40:40.033Z",
+    "routeStartedAt": "2026-10-04T17:42:47.322Z",
+    "failureAt": "2026-10-04T18:03:10.752Z",
+    "routeWallToFirstFailureMilliseconds": 1223430,
+    "recordingCloseRequestedAt": "2026-10-04T18:03:25.518Z",
+    "recordingWallMilliseconds": 1365485,
+    "videoStoppedAt": "2026-10-04T18:03:32.885Z",
+    "completedAt": "2026-10-04T18:03:33.020Z",
+    "caseWallMilliseconds": 1372941,
+    "elapsedCaseThroughCompletedAtMilliseconds": 1373076,
+    "observedRouteExceedsTwentyMinutes": true,
+    "wholeCaseWithinNinetyMinutes": true
+  },
+  "errors": [],
+  "cleanupErrors": [],
+  "coverage": {
+    "entireTourAndReloadCompleted": false,
+    "completedTwentyMinuteRoute": false,
+    "observedContinuousRouteElapsedAtLeastTwentyMinutes": true,
+    "lastSuccessfulPhase": "bus-upper-landing-E-keeps-rider-on-board",
+    "notReached": [
+      "bus destination berth/alight",
+      "player purchase",
+      "actual market room entry",
+      "outbound ferry deck/stairs",
+      "north-bank interior",
+      "return ferry",
+      "tram deck/stairs",
+      "home return",
+      "public export and reload equivalence",
+      "safe-door restore and physical return to 2F"
+    ]
+  },
+  "note": "The original 600000ms bus destination berth wait failed. Bus was moving toward market, held=null, next stop market. No retry, runtime/tool changes, padding, post-start Atlas travel or debug writes. Raw single video includes startup/setup and failed route; elapsed >=20min is not route completion.",
+  "independentVideoProbe": {
+    "checkedAt": "2026-10-04T18:05:43.178Z",
+    "codec": "vp8",
+    "width": 512,
+    "height": 320,
+    "durationSeconds": 1367.12,
+    "matchesOriginalMetadata": true
+  },
+  "documentationUpdatedAt": "2026-10-04T18:05:43.178Z"
+}

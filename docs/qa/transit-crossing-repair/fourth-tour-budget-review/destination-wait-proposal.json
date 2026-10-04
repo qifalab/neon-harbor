@@ -1,0 +1,32 @@
+{
+  "status": "proposed only; NOT applied to candidate or ROOT",
+  "constant": "metadata.destinationWaitWallMilliseconds",
+  "currentMilliseconds": 900000,
+  "proposedMilliseconds": 2400000,
+  "scope": "The existing common destination-door wait for bus/ferry/tram; no world or input change. A tram-only alternative would require a separate conditional scope, so this proposal explicitly uses the present shared constant.",
+  "derivedTramWaitSimulationSeconds": 148.53253333577197,
+  "observedLowestPreFailureWindowSimPerWall": 0.06613095039616984,
+  "requiredWallSecondsAtObservedLow": 2246.036575097742,
+  "headroomWallSeconds": 153.96342490225788,
+  "minimumSimPerWallFor900": 0.16503614815085774,
+  "minimumSimPerWallFor2400": 0.061888555556571655,
+  "unchanged": [
+    "boarding600000",
+    "upper-berth600000",
+    "ordinarycabin150000",
+    "finalferrydoor300000",
+    ".06endpoint/.15height",
+    "WASD/Z/mouse/E ordering",
+    "route.duration*2+120 and route.duration*3+180",
+    "realpositiondisplacement/revision/deckguards",
+    "heldSeconds < geometricMetres/.3+3",
+    "noAtlasafterroutestart/no state writes/no retry"
+  ],
+  "remainingLocalRisk": {
+    "boardingSimulationSeconds": 70.23642829386948,
+    "boarding600RequiredSimPerWall": 0.1170607138231158,
+    "upperSimulationSeconds": 59.3850208979758,
+    "upper600RequiredSimPerWall": 0.09897503482995966
+  },
+  "notAcceptance": "This extrapolated suffix was not completed in the third run. An additional missed tram cycle or different final-build throughput can exceed this proposal. A future failure remains a failure and cannot trigger an automatic retry."
+}

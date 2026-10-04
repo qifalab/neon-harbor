@@ -1,0 +1,30 @@
+--- archived-b73/capture-harbor-tour.mjs
++++ candidate-60436/capture-harbor-tour.mjs
+@@ -50,7 +50,8 @@
+ const metadata = { status: 'planning', startedAt: new Date().toISOString(), output, root,
+   url: `http://127.0.0.1:${port}/`, viewport, drawingBuffer, deviceScaleFactor: 1, requestedQuality: 'low', initialDefaultQuality: null,
+   browser: null, backend: 'Chromium WebGL / SwiftShader', minimumRouteWallMilliseconds: 20 * 60 * 1000,
+-  caseBudgetWallMilliseconds: 90 * 60 * 1000, manifestSha256, buildVersion: manifest.version,
++  caseBudgetWallMilliseconds: 90 * 60 * 1000, destinationWaitWallMilliseconds: 900000,
++  manifestSha256, buildVersion: manifest.version,
+   buildRevision: manifest.revision, gitHead: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: projectRoot, encoding: 'utf8' }).trim(),
+   sourceHashes, methodHashes, assetHashes: manifest.assets, plan: null, phases: [], screenshots: [], errors: [], resources: [], video: null,
+   method: 'One fresh browser keeps one unedited Playwright recording from startup through setup, the continuous route, final export and reload. Public Atlas/E/elevator controls set a real residential 2F starting room before the route starts. Subsequently only real WASD/Z, mouse look, E doors/boarding/purchase and the public save/settings controls are used. No Atlas/sample-menu travel occurs during the tour, no writes to __NEON__, localStorage, positions, clocks, dt or renderer state; no retry or video editing.',
+@@ -413,9 +414,16 @@
+     const pointer=await cabinPointer(); try{samples.push(...await walkLocal(door.inside,pointer));}finally{await page.mouse.up();}
+   }
+   assert.equal((await state()).transit.passengerDeck,'lower');
++  await phase(`${label}-lower-door-ready`,{destination:to.id,waitWallMilliseconds:metadata.destinationWaitWallMilliseconds});
+   await focusPlayable();
++  // The archived second run missed the first market berth while descending.
++  // Its 600 wall-second wait advanced only ~173-180 simulation seconds, and
++  // failed during normal cruise 7.3126 nominal simulation seconds from the
++  // next market berth. Allow a finite 900 wall seconds for this destination
++  // wait. Boarding/upper-berth budgets, the live route-time assertion below,
++  // all physical actions and the total 90-minute case budget stay intact.
+   await page.waitForFunction(({id,to})=>{const v=window.__NEON__.snapshot().city.sample.transit.vehicles.find(v=>v.id===id);
+-    return v.stopId===to&&v.doorsOpen&&v.remaining>2;},{id,to:to.id},{polling:'raf',timeout:remaining(600000)});
++    return v.stopId===to&&v.doorsOpen&&v.remaining>2;},{id,to:to.id},{polling:'raf',timeout:remaining(metadata.destinationWaitWallMilliseconds)});
+   const arrived=await phase(`${label}-arrived`,{destination:to.id}); assert.equal(arrived.teleportRevision,revision);
+   assert.ok(arrived.simulationTime>boarded.simulationTime); assert.ok(distance(arrived.position,boarded.position)>10);
+   assert.ok(arrived.simulationTime-boarded.simulationTime<route.duration*3+180,'a live route does not remain stalled indefinitely');

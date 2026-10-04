@@ -1,0 +1,129 @@
+{
+  "kind": "CPU-only placement, no browser, renderer, JPEG decode or visual judgement",
+  "threeRevision": "185",
+  "building": {
+    "id": "south-086",
+    "x": 200,
+    "z": -113,
+    "width": 42,
+    "depth": 29
+  },
+  "floor": {
+    "id": "lobby",
+    "y": 0.215
+  },
+  "room": {
+    "id": "south-086-lobby-0",
+    "type": "workshop",
+    "name": "港口修缮工坊 101",
+    "furnishingVariant": 3,
+    "x": 189.175,
+    "z": -115,
+    "width": 19.049999999999997,
+    "depth": 10.500000000000004,
+    "ceilingHeight": 2.98,
+    "enclosed": true,
+    "entrance": {
+      "x": 198.7,
+      "z": -115
+    },
+    "arrival": {
+      "x": 197.8,
+      "z": -115
+    },
+    "bounds": {
+      "minX": 179.65,
+      "maxX": 198.7,
+      "minZ": -120.25,
+      "maxZ": -109.75
+    }
+  },
+  "originalCollidersUnchanged": true,
+  "originalFloorColliderCount": 176,
+  "addedCollider": {
+    "id": "south-086:lobby:cc0-tool-chest",
+    "kind": "interior-workshop-asset",
+    "x": 180.45,
+    "z": -119.52000000000001,
+    "hx": 0.3084247872233391,
+    "hz": 0.18321896698325874,
+    "minY": 0.895,
+    "maxY": 1.4816520047187804,
+    "physics": true,
+    "camera": true
+  },
+  "placements": [
+    {
+      "id": "bench_vice_01",
+      "position": {
+        "x": 180.35,
+        "y": 1.175,
+        "z": -114.58000000000001
+      },
+      "scale": 1,
+      "rotationY": 1.5707963267948966,
+      "purpose": "Existing repair bench vise, jaws and handle facing the room",
+      "ownerPartId": "south-086:lobby:267"
+    },
+    {
+      "id": "metal_tool_chest",
+      "position": {
+        "x": 180.47406801301986,
+        "y": 0.8942718607187271,
+        "z": -119.52553873311729
+      },
+      "scale": 0.9,
+      "rotationY": 0,
+      "purpose": "Portable shared tool chest staged on the existing cargo crate for workshop repairs",
+      "ownerPartId": "south-086:lobby:285"
+    }
+  ],
+  "worldAABBs": [
+    {
+      "id": "bench_vice_01",
+      "min": [
+        180.16877265567263,
+        1.0894138837711236,
+        -114.6801245379448
+      ],
+      "max": [
+        180.56449435050558,
+        1.3745625650096913,
+        -114.47964216947557
+      ]
+    },
+    {
+      "id": "metal_tool_chest",
+      "min": [
+        180.14157521277667,
+        0.895,
+        -119.70321896698326
+      ],
+      "max": [
+        180.75842478722336,
+        1.4816520047187804,
+        -119.33678103301675
+      ]
+    }
+  ],
+  "modelBudget": {
+    "triangles": 16224,
+    "potentialMainColourDrawCalls": 11,
+    "uniqueMaterials": 2,
+    "uniqueEmbeddedTextures": 6,
+    "runtimeGlbBytes": 4788776,
+    "estimatedRgbaMipTextureBytes": 33554432,
+    "note": "Texture estimate excludes geometry, shadow/AO buffers, driver/decode overhead; total GPU budget unmeasured"
+  },
+  "sourceHashes": [
+    {
+      "id": "bench_vice_01",
+      "glbSha256": "4dc3378d2d63e16e18dafaa82bb16eb59d4bcd7b57c1543f450da22c18141c1e"
+    },
+    {
+      "id": "metal_tool_chest",
+      "glbSha256": "e1bcd07991c2c01df17bb628c5e621a0da170db2313b025aa2d918b156e27803"
+    }
+  ],
+  "rootStructuralCollisionHash": "5f5617a468270ded7384151b0a46cfab0835e4c3858169f27c131371b82058ce"
+}

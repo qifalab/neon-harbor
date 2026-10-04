@@ -1,0 +1,211 @@
+{
+  "checkedAt": "2026-10-04T20:13:50.624Z",
+  "scope": "Static read-only code and prior immutable CPU-reference JSON. No new scene construction, browser, WebGL, tests, build, source mutation or running-browser polls.",
+  "source": [
+    {
+      "file": "src/harbor-transit.js",
+      "bytes": 38246,
+      "sha256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "servedSha256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "src/harbor-transit-renderer.js",
+      "bytes": 11728,
+      "sha256": "4e5788540b754b1309614eb544a18a1d62cf5808c1cabd491befd81b81d67cf9",
+      "servedSha256": "4e5788540b754b1309614eb544a18a1d62cf5808c1cabd491befd81b81d67cf9",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "src/harbor-vehicle-models.js",
+      "bytes": 45167,
+      "sha256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "servedSha256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "src/city-exploration.js",
+      "bytes": 22089,
+      "sha256": "4bcee64c1fd0141a62ce7ca09f5511b6f648ea518e44f0201a622f6b83ffa28f",
+      "servedSha256": "4bcee64c1fd0141a62ce7ca09f5511b6f648ea518e44f0201a622f6b83ffa28f",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "src/main.js",
+      "bytes": 53113,
+      "sha256": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d",
+      "servedSha256": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "src/models.js",
+      "bytes": 36421,
+      "sha256": "cfc0a55d46a864acb9b8ca0206b7b841c1f6d6747bbda144dab60a24f96480db",
+      "servedSha256": "cfc0a55d46a864acb9b8ca0206b7b841c1f6d6747bbda144dab60a24f96480db",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "vendor/three/three.module.js",
+      "bytes": 365552,
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6",
+      "servedSha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6",
+      "sourceMatchesServed": true
+    },
+    {
+      "file": "vendor/three/three.core.min.js",
+      "bytes": 385386,
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90",
+      "servedSha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90",
+      "sourceMatchesServed": true
+    }
+  ],
+  "priorCpuProbe": {
+    "file": "/tmp/neon-art-geometry-growth-frozen-cpu-probe.json",
+    "sha256": "1e1ddb124549367e165531ef11cd169078222901be5e2309d50dc4cf99bc29e4",
+    "bytes": 396503,
+    "notNativeGpuUuidEvidence": true
+  },
+  "priorCounts": [
+    {
+      "kind": "bus",
+      "tiers": [
+        {
+          "tier": 0,
+          "uniqueGeometries": 35
+        },
+        {
+          "tier": 1,
+          "uniqueGeometries": 35
+        },
+        {
+          "tier": 2,
+          "uniqueGeometries": 32
+        }
+      ],
+      "uniqueAcrossTiers": 102,
+      "interLevelSharedUUIDs": [
+        [
+          35,
+          0,
+          0
+        ],
+        [
+          0,
+          35,
+          0
+        ],
+        [
+          0,
+          0,
+          32
+        ]
+      ]
+    },
+    {
+      "kind": "tram",
+      "tiers": [
+        {
+          "tier": 0,
+          "uniqueGeometries": 35
+        },
+        {
+          "tier": 1,
+          "uniqueGeometries": 35
+        },
+        {
+          "tier": 2,
+          "uniqueGeometries": 32
+        }
+      ],
+      "uniqueAcrossTiers": 102,
+      "interLevelSharedUUIDs": [
+        [
+          35,
+          0,
+          0
+        ],
+        [
+          0,
+          35,
+          0
+        ],
+        [
+          0,
+          0,
+          32
+        ]
+      ]
+    },
+    {
+      "kind": "ferry",
+      "tiers": [
+        {
+          "tier": 0,
+          "uniqueGeometries": 44
+        },
+        {
+          "tier": 1,
+          "uniqueGeometries": 44
+        },
+        {
+          "tier": 2,
+          "uniqueGeometries": 41
+        }
+      ],
+      "uniqueAcrossTiers": 129,
+      "interLevelSharedUUIDs": [
+        [
+          44,
+          0,
+          0
+        ],
+        [
+          0,
+          44,
+          0
+        ],
+        [
+          0,
+          0,
+          41
+        ]
+      ]
+    }
+  ],
+  "fleetTotalUniqueTemplateGeometries": 333,
+  "nativeRegistrationExcerpts": [
+    {
+      "kind": "per-renderergeometry-first-register",
+      "source": "vendor/three/three.module.js",
+      "offset": 200784,
+      "excerpt": "a,a,i)}}else{const e=r.array;o=r.version;for(let t=0,i=e.length/3-1;t<i;t+=3){const e=t+0,i=t+1,r=t+2;n.push(e,i,i,r,r,e)}}const s=new(r.count>=65535?z:k)(n,1);s.version=o;const l=a.get(e);l&&t.remove(l),a.set(e,s)}return{get:function(e,t){return!0===r[t.id]||(t.addEventListener(\"dispose\",o),r[t.id]=!0,n.memory.geometries++),t},update:function(n){const i=n.attributes;for(const n in i)t.update(i[n],e.ARRAY_BUFFER)},getWireframeAttribute:function(e){const t=a.get(e);if(t){const n=e.inde"
+    },
+    {
+      "kind": "per-renderergeometry-dispose",
+      "source": "vendor/three/three.module.js",
+      "offset": 200314,
+      "excerpt": "for(const e in s.attributes)t.remove(s.attributes[e]);s.removeEventListener(\"dispose\",o),delete r[s.id];const l=a.get(s);l&&(t.remove(l),a.delete(s)),i.releaseStatesOfGeometry(s),!0===s.isInstancedBufferGeometry&&delete s._maxInstanceCount,n.memory.geometries--}function s(e){const n=[],i=e.index,r=e.attributes.position;let o=0;if(void 0===r)return;if(null!==i){const e=i.array;o=i.version;for(let t=0,i=e.length;t<i;t+="
+    },
+    {
+      "kind": "Mesh.copy-geometry-alias",
+      "source": "vendor/three/three.core.min.js",
+      "offset": 144567,
+      "excerpt": "es&&(this.morphTargetInfluences=t.morphTargetInfluences.slice()),void 0!==t.morphTargetDictionary&&(this.morphTargetDictionary=Object.assign({},t.morphTargetDictionary)),this.material=Array.isArray(t.material)?t.material.slice():t.material,this.geometry=t.geometry,this}updateMorphTargets(){const t=this.geometry.morphAttributes,e=Object.keys(t);if(e.length>0){const s=t[e[0]];if(void 0!==s){this.morphTargetInfluences=[],th"
+    }
+  ],
+  "currentNativeObservations": {
+    "source": "Parent agent report only; running browser was not inspected.",
+    "warmStreetGeometries": 580,
+    "cycle1StreetGeometries": 615,
+    "cycle2ReportedPreloadAdditionalGeometries": 35,
+    "ownedViceRelease": {
+      "geometry": 4,
+      "texture": 4
+    },
+    "ownedChestRelease": {
+      "geometry": 7,
+      "texture": 3
+    }
+  },
+  "conclusion": "Finite first-use tier registration is a code-supported +35 candidate; repeated already-registered geometry identity cannot inflate this Three count. Actual +35 owner/tier/UUID attribution is missing; global leak status unresolved."
+}

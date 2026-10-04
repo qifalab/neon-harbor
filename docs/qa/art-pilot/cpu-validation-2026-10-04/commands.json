@@ -1,0 +1,149 @@
+[
+  {
+    "label": "node-version",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.008,
+    "exitCode": 0,
+    "stdout": "node-version.stdout.txt",
+    "stderr": "node-version.stderr.txt"
+  },
+  {
+    "label": "npm-version",
+    "command": [
+      "npm",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.13,
+    "exitCode": 0,
+    "stdout": "npm-version.stdout.txt",
+    "stderr": "npm-version.stderr.txt"
+  },
+  {
+    "label": "capture-syntax",
+    "command": [
+      "node",
+      "--check",
+      "tools/capture-workshop-pilot.mjs"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.041,
+    "exitCode": 0,
+    "stdout": "capture-syntax.stdout.txt",
+    "stderr": "capture-syntax.stderr.txt"
+  },
+  {
+    "label": "walking-syntax",
+    "command": [
+      "node",
+      "--check",
+      "tools/workshop-review-helpers/walking.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.033,
+    "exitCode": 0,
+    "stdout": "walking-syntax.stdout.txt",
+    "stderr": "walking-syntax.stderr.txt"
+  },
+  {
+    "label": "occupied-syntax",
+    "command": [
+      "node",
+      "--check",
+      "tools/workshop-review-helpers/occupied.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdout": "occupied-syntax.stdout.txt",
+    "stderr": "occupied-syntax.stderr.txt"
+  },
+  {
+    "label": "renderer-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/main.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.073,
+    "exitCode": 0,
+    "stdout": "renderer-syntax.stdout.txt",
+    "stderr": "renderer-syntax.stderr.txt"
+  },
+  {
+    "label": "pilot-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/harbor-workshop-pilot.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.072,
+    "exitCode": 0,
+    "stdout": "pilot-syntax.stdout.txt",
+    "stderr": "pilot-syntax.stderr.txt"
+  },
+  {
+    "label": "interiors-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/metropolis-interiors.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:52:07Z",
+    "elapsedSeconds": 0.064,
+    "exitCode": 0,
+    "stdout": "interiors-syntax.stdout.txt",
+    "stderr": "interiors-syntax.stderr.txt"
+  },
+  {
+    "label": "node-rules",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:52:07Z",
+    "endedAt": "2026-10-04T18:54:05Z",
+    "elapsedSeconds": 117.654,
+    "exitCode": 1,
+    "stdout": "node-rules.stdout.txt",
+    "stderr": "node-rules.stderr.txt"
+  },
+  {
+    "label": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T18:54:05Z",
+    "endedAt": "2026-10-04T18:54:06Z",
+    "elapsedSeconds": 1.044,
+    "exitCode": 0,
+    "stdout": "build.stdout.txt",
+    "stderr": "build.stderr.txt"
+  }
+]

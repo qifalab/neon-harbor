@@ -1,0 +1,372 @@
+--- a/src/main.js
++++ b/src/main.js
+@@ -403,7 +403,7 @@
+   atmosphere=createAtmosphere(THREE,renderer,scene);
+   contactOcclusion=createContactOcclusion(THREE,renderer);
+   startupPhase='city';
+-  world=createCityExploration(THREE,scene,{quality:settings.quality,onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim,{save:saved,hour:settings.hour});resetPresentation();await prepareLocation(false,menuFocus);
++  world=createCityExploration(THREE,scene,{quality:settings.quality,readRendererMemory:()=>({geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}),onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim,{save:saved,hour:settings.hour});resetPresentation();await prepareLocation(false,menuFocus);
+   atmosphere.setBuildings?.(world.buildings);
+   character=createCharacter(THREE);scene.add(character);
+   for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
+--- a/src/city-exploration.js
++++ b/src/city-exploration.js
+@@ -19,7 +19,7 @@
+  * The original driving district remains usable without the expansion module.
+  * Interior and station collision contexts never replace persistent city data.
+  */
+-export function createCityExploration(THREE, scene, { quality = 'high', streaming = true, onContextChange = () => {} } = {}) {
++export function createCityExploration(THREE, scene, { quality = 'high', streaming = true, onContextChange = () => {}, readRendererMemory } = {}) {
+   const south = createWorld(THREE, scene, { quality, streaming, openNorth: true });
+   const north = createMetropolisWorld(THREE, scene, { quality, streaming });
+   const transit = createTransitSystem(THREE, scene);
+@@ -33,7 +33,7 @@
+   const sampleDistrict = createHarborDistrict(THREE, scene, { buildings: south.buildings, groundHeightAt, quality });
+   const colliders = [...south.colliders, ...north.colliders, ...transit.colliders, ...infrastructure.colliders, ...harbor.colliders, ...sampleTransit.colliders, ...sampleDistrict.colliders];
+   for (const b of buildings.filter(b => b.shellId)) b.entrance = safeEntrance(b, colliders, groundHeightAt);
+-  const interiors = createInteriorSystem(THREE, scene, { buildings });
++  const interiors = createInteriorSystem(THREE, scene, { buildings, readRendererMemory });
+   const harborLife = new HarborLife({ buildings, colliders, transport: sampleTransit });
+   const lifeRenderer = createHarborLifeRenderer(THREE, scene, harborLife, { groundHeightAt });
+   const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, transit, streetStops: infrastructure.metadata.streetLifeStops || [] });
+--- a/src/metropolis-interiors.js
++++ b/src/metropolis-interiors.js
+@@ -901,7 +901,7 @@
+  * The elevator cabin is retained while the
+  * destination floor is assembled, so a ride has continuous world-space motion. */
+ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUILDINGS, materials = createMetropolisMaterials(THREE),
+-  harborWorkshopPilot = true, workshopAssetLoader } = {}) {
++  harborWorkshopPilot = true, workshopAssetLoader, readRendererMemory } = {}) {
+   const root = new THREE.Group(); root.name = 'Metropolis · occupied interior'; root.visible = false; scene.add(root);
+   const floorRoot = new THREE.Group(), cabinRoot = new THREE.Group(), floorGroups = new Map(), layoutCache = new Map(); root.add(floorRoot, cabinRoot);
+   // Three includes the number of visible point lights in every material's shader
+@@ -1142,7 +1142,7 @@
+           fallback.castShadow = true; fallback.receiveShadow = true; fallbackGroup.add(fallback);
+         }
+         const pilot = createHarborWorkshopPilot(THREE, { building: state.activeBuilding, floor: dressedFloor,
+-          layout: occupied, fallbackGroup, onAudit: recordWorkshopPilotEvent,
++          layout: occupied, fallbackGroup, onAudit: recordWorkshopPilotEvent, readRendererMemory,
+           ...(workshopAssetLoader ? { loadAsset: workshopAssetLoader, enabled: true } : {}) });
+         group.userData.workshopPilot = pilot; group.add(pilot.group);
+       }
+@@ -1380,7 +1380,12 @@
+     workshopPilot: [...floorGroups.values()].find(group => group.userData.workshopPilot)?.userData.workshopPilot.snapshot() || null,
+     workshopPilotEvents: workshopPilotEvents.map(event => ({ ...event,
+       ...(event.resources ? { resources: { ...event.resources, images: event.resources.images.map(image => ({ ...image })) } } : {}),
+-      ...(event.resourceRelease ? { resourceRelease: { ...event.resourceRelease } } : {}) })),
++      ...(event.resourceRelease ? { resourceRelease: { ...event.resourceRelease } } : {}),
++      ...(event.rendererRelease ? { rendererRelease: { ...event.rendererRelease,
++        readErrors: event.rendererRelease.readErrors.map(error => ({ ...error })),
++        before: event.rendererRelease.before ? { ...event.rendererRelease.before } : null,
++        after: event.rendererRelease.after ? { ...event.rendererRelease.after } : null,
++        difference: event.rendererRelease.difference ? { ...event.rendererRelease.difference } : null } } : {}) })),
+     version: state.version }; }
+   function dispose() { clearFloor(); cabinRoot.clear(); root.removeFromParent(); for (const light of interiorLights) light.removeFromParent(); for (const shape of Object.values(geometries)) shape.dispose();
+     signGeometry.dispose(); for (const item of localMaterials.values()) item.dispose(); for (const texture of ownedTextures) texture.dispose(); ownedTextures.clear(); }
+--- a/src/harbor-workshop-pilot.js
++++ b/src/harbor-workshop-pilot.js
+@@ -89,6 +89,7 @@
+       }
+     }
+   });
++  const boneTextures = [...skeletons].filter(skeleton => skeleton.boneTexture).length;
+   for (const skeleton of skeletons) skeleton.dispose();
+   for (const geometry of geometries) geometry.dispose();
+   for (const material of materials) material.dispose();
+@@ -96,11 +97,12 @@
+   for (const image of images) image.close();
+   for (const scene of scenes) scene.removeFromParent();
+   return { geometries: geometries.size, materials: materials.size, textures: textures.size,
+-    skeletons: skeletons.size, closedImages: images.size };
++    skeletons: skeletons.size, boneTextures, closedImages: images.size };
+ }
+ 
+ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fallbackGroup,
+-  loadAsset = loadWorkshopAsset, enabled = typeof document !== 'undefined', onAudit = () => {} } = {}) {
++  loadAsset = loadWorkshopAsset, enabled = typeof document !== 'undefined', onAudit = () => {},
++  readRendererMemory = () => null } = {}) {
+   const plan = planHarborWorkshopPilot(building, floor, layout);
+   const group = new THREE.Group(); group.name = 'CC0 workshop asset pilot · south-086';
+   if (fallbackGroup) group.add(fallbackGroup);
+@@ -110,8 +112,34 @@
+   let status = plan ? 'fallback' : 'inapplicable', releasedAssets = 0;
+   const audit = (kind, detail = {}) => onAudit({ kind, buildingId: building?.id, floorId: floor?.id,
+     generation, disposed, wanted, status, loadedAssets: loaded.length, releasedAssets, ...detail });
+-  const release = asset => { const resourceRelease = disposeWorkshopAsset(asset); releasedAssets++;
+-    audit('asset-released', { assetId: asset.scene?.userData.workshopAssetId, resourceRelease }); };
++  // Read exactly two scalar counter pairs in this synchronous release. No
++  // render/update, GL call, async yield or snapshot occurs between the reads.
++  // Unattached decoded assets may correctly report zero GPU objects released.
++  const memoryCounters = (stage, readErrors) => {
++    try {
++      const value = readRendererMemory();
++      if (value && Number.isInteger(value.geometries) && value.geometries >= 0 &&
++        Number.isInteger(value.textures) && value.textures >= 0)
++        return { geometries: value.geometries, textures: value.textures };
++      readErrors.push({ stage, message: 'Renderer memory counters unavailable or invalid' });
++    } catch (error) {
++      readErrors.push({ stage, message: String(error?.message || error) });
++    }
++    return null;
++  };
++  const release = asset => {
++    const attachedAtRelease = asset.scene?.parent === group;
++    const readErrors = [];
++    const before = memoryCounters('before', readErrors);
++    const resourceRelease = disposeWorkshopAsset(asset);
++    const after = memoryCounters('after', readErrors);
++    const rendererRelease = { scope: 'single synchronous asset disposal', attachedAtRelease,
++      available: !!(before && after), readErrors, before, after,
++      difference: before && after ? { geometries: before.geometries - after.geometries,
++        textures: before.textures - after.textures } : null };
++    releasedAssets++;
++    audit('asset-released', { assetId: asset.scene?.userData.workshopAssetId, resourceRelease, rendererRelease });
++  };
+   function unload() {
+     generation++; controller?.abort(); controller = null;
+     for (const asset of loaded.splice(0)) release(asset);
+--- a/tools/capture-workshop-pilot.mjs
++++ b/tools/capture-workshop-pilot.mjs
+@@ -51,6 +51,7 @@
+     'Atlas setup is not a continuous city route. No coordinate/clock/storage debug writes.',
+     'Normal, controlled404 and delayed-exit run sequentially in separate contexts; expected failure errors never enter normal zero-errors result.',
+     'renderer.info.memory counts Three GPU resource objects, not driver allocation bytes; FPS on SwiftShader is not hardware performance.',
++    'Each rendered asset must synchronously release its own uploaded geometry/PBR/bone objects. Street totals are observed across cycles; dynamic city LOD caches prevent using their equality as an ownership assertion. The original failed strict-baseline run remains archived separately.',
+     'Source mesh/texture counts and native screenshots do not establish AAA or complete-harbour art quality.',
+     'Delay-exit reports actual abort and disposed fulfilled vice. If chest fetch was aborted, it does not claim a late chest parse completed.'] };
+ const persist = () => writeFile(resolve(output, 'metadata.json'), JSON.stringify(record, null, 2) + '\n');
+@@ -177,6 +178,34 @@
+   assert.ok(stable >= 4, 'Memory must actually settle; do not invent or widen a tolerance');
+   const result = { label, samples, stableMemory: samples.at(-1).memory };
+   currentScenario.memory.push(result); await persist(); return result.stableMemory;
++}
++function assertAssetRelease(event, { rendered }) {
++  assert.equal(event.kind, 'asset-released');
++  const vice = event.assetId === 'bench_vice_01';
++  assert.ok(vice || event.assetId === 'metal_tool_chest');
++  assert.equal(event.resourceRelease.geometries, vice ? 4 : 7);
++  assert.equal(event.resourceRelease.textures, 3);
++  assert.equal(event.resourceRelease.boneTextures, rendered && vice ? 1 : 0);
++  assert.equal(event.resourceRelease.closedImages, 3);
++  const release = event.rendererRelease;
++  assert.equal(release.scope, 'single synchronous asset disposal');
++  assert.equal(release.attachedAtRelease, rendered);
++  assert.equal(release.available, true, 'Unavailable diagnostics must fail validation, never invent zero');
++  assert.deepEqual(release.readErrors, []);
++  for (const sample of [release.before, release.after]) {
++    assert.ok(Number.isInteger(sample?.geometries) && Number.isInteger(sample?.textures), 'Actual renderer counter copies required');
++  }
++  assert.deepEqual(release.difference, rendered
++    ? { geometries: vice ? 4 : 7, textures: vice ? 4 : 3 }
++    : { geometries: 0, textures: 0 }, rendered
++    ? 'Rendered owned model synchronously releases its actual uploaded geometry/PBR/bone texture objects'
++    : 'Decoded but never attached/rendered model releases CPU objects without inventing GPU allocations');
++}
++function assertRenderedVisitReleased(state, sequenceAfter = 0) {
++  const releases = state.city.interior.workshopPilotEvents.filter(event => event.kind === 'asset-released' && event.sequence > sequenceAfter);
++  assert.deepEqual(releases.map(event => event.assetId).sort(), ['bench_vice_01', 'metal_tool_chest']);
++  for (const release of releases) assertAssetRelease(release, { rendered: true });
++  return releases;
+ }
+ async function aim(page, target) {
+   const state = await snapshot(page), eye = state.camera.position;
+@@ -273,24 +302,35 @@
+     try {
+       await boot(page); await enterWorkshop(page);
+       if (name === 'normal') {
+-        // Warm the same real views once, then fix the true street baseline.
++        // Observe the warmed street total, and assert owned disposal in the
++        // synchronous release interval where no city render/update can mix in.
+         await nearViews(page, { photographs: true, cycle: 0 }); await exitStreet(page, { fromChest: true });
++        assertRenderedVisitReleased(await snapshot(page));
+         const baseline = await stableMemory(page, 'warm-outside-baseline');
+         currentScenario.baseline = baseline;
++        currentScenario.globalMemoryObservations = [];
+         for (let cycle = 1; cycle <= 3; cycle++) {
+-          const before = await snapshot(page); await enterWorkshop(page);
++          const before = await snapshot(page), sequenceAfter = before.city.interior.workshopPilotEvents.at(-1)?.sequence || 0;
++          await enterWorkshop(page);
+           await nearViews(page, { photographs: cycle === 3, cycle });
+           await exitStreet(page, { fromChest: true });
++          const state = await snapshot(page);
++          const releases = assertRenderedVisitReleased(state, sequenceAfter);
+           const after = await stableMemory(page, `actual-E-exit-reentry-cycle-${cycle}`);
+-          assert.deepEqual(after, baseline, 'Actual Three geometry/texture counts return to the identical warmed street baseline');
+-          const state = await snapshot(page), releases = state.city.interior.workshopPilotEvents.filter(e => e.kind === 'asset-released');
+-          assert.ok(releases.length >= (cycle + 1) * 2); assert.equal(state.teleportRevision - before.teleportRevision, 2, 'Only public E entry/exit context transitions');
++          currentScenario.globalMemoryObservations.push({ cycle, baseline, after,
++            difference: { geometries: after.geometries - baseline.geometries, textures: after.textures - baseline.textures },
++            ownedReleaseEvents: releases,
++            interpretation: 'Observed global Three object totals; dynamic LOD caches are outside this pilot ownership assertion. No city-wide leak or driver allocation conclusion.' });
++          assert.equal(state.teleportRevision - before.teleportRevision, 2, 'Only public E entry/exit context transitions');
++          await persist();
+         }
+       } else if (name === '404') {
+         await page.waitForFunction(() => window.__NEON__.snapshot().city.interior.workshopPilot?.status === 'failed', null, { timeout: remaining() });
+         const failed = (await snapshot(page)).city.interior.workshopPilot;
+         assert.equal(failed.assetCount, 0); assert.equal(failed.fallbackVisible, true);
+         assert.ok(failed.errors.some(error => error.includes('HTTP 404'))); assert.equal(failed.releasedAssets, 1, 'Fulfilled vice is disposed when other official asset fails');
++        const rejectedVisit = (await snapshot(page)).city.interior.workshopPilotEvents.filter(event => event.kind === 'asset-released');
++        assert.equal(rejectedVisit.length, 1); assertAssetRelease(rejectedVisit[0], { rendered: false });
+         await walk(page, 'x', 182.8); await walk(page, 'z', -114.58);
+         await aim(page, { x: 180.35, y: 1.275, z: -114.58 });
+         await capture(page, 'expected-primitive-fallback', { requireReady: false });
+@@ -321,6 +361,7 @@
+         assert.ok(released.sequence > disposed.sequence, 'Actual completed vice resources released after the floor was disposed');
+         assert.equal(released.resourceRelease.geometries, 4); assert.equal(released.resourceRelease.textures, 3);
+         assert.ok(released.resourceRelease.closedImages >= 3, 'Actual decoded ImageBitmaps closed after exit');
++        assertAssetRelease(released, { rendered: false });
+         currentScenario.abortVsLateParse = { fulfilledViceDecoded: true, fulfilledViceReleasedAfterDisposed: true,
+           delayedChestAbortEvidence: scenario.expectedErrors.filter(item => item.type === 'requestfailed' && /ERR_ABORTED|aborted/i.test(item.message)),
+           delayedChestDecodedAfterExit: after.city.interior.workshopPilotEvents.some(event => event.kind === 'asset-decoded' && event.assetId === 'metal_tool_chest' && event.disposed),
+@@ -330,6 +371,7 @@
+           assert.ok(chestRelease && chestRelease.sequence > disposed.sequence, 'A true late chest parse must also be released');
+           assert.equal(chestRelease.resourceRelease.geometries, 7); assert.equal(chestRelease.resourceRelease.textures, 3);
+           assert.ok(chestRelease.resourceRelease.closedImages >= 3);
++          assertAssetRelease(chestRelease, { rendered: false });
+           currentScenario.abortVsLateParse.lateChestReleased = true;
+         }
+         await event(page, 'delayed-exit-no-floor-resurrection');
+@@ -337,8 +379,24 @@
+       assert.deepEqual(currentScenario.errors, [], `${name}: unexpected page/shader/HTTP/request errors are forbidden`);
+     } catch (error) {
+       scenario.failure = error.stack;
+-      try { scenario.failureSnapshot = await snapshot(page); } catch {}
+-      try { const filename = `${name}-failure-original.png`; await page.screenshot({ path: resolve(output, filename), timeout: 30000 }); scenario.failureImage = filename; } catch {}
++      scenario.status = 'failed';
++      await persist(); // Preserve the first assertion before optional capture.
++      try { scenario.failureSnapshot = await snapshot(page); }
++      catch (captureError) { scenario.failureSnapshotError = captureError.stack || String(captureError); }
++      await persist();
++      const filename = `${name}-failure-original.png`;
++      scenario.failureImageAttempt = { file: filename, timeoutMs: 30000, startedAt: new Date().toISOString() };
++      await persist();
++      try { await page.screenshot({ path: resolve(output, filename), timeout: 30000 });
++        scenario.failureImage = filename;
++        scenario.failureImageAttempt.status = 'captured';
++        scenario.failureImageAttempt.sha256 = sha(await readFile(resolve(output, filename)));
++      } catch (captureError) {
++        scenario.failureImageAttempt.status = 'failed';
++        scenario.failureImageAttempt.error = captureError.stack || String(captureError);
++      }
++      scenario.failureImageAttempt.completedAt = new Date().toISOString();
++      await persist();
+       throw error;
+     } finally { closing = true; clearTimeout(phaseStop); await context.close(); currentPage = null; }
+     assert.deepEqual(scenario.errors, [], `${name}: include unexpected teardown errors before marking passed`);
+@@ -357,8 +415,25 @@
+ } catch (error) {
+   record.status = 'failed'; record.failure = error.stack;
+   if (currentScenario) currentScenario.status = 'failed';
+-  try { record.failureSnapshot = await snapshot(currentPage); } catch {}
+-  try { await currentPage?.screenshot({ path: resolve(output, 'failure-original.png'), timeout: 30000 }); } catch {}
++  // Scenario capture already ran before its context closed. Do not silently
++  // retry the screenshot or replace the first assertion with capture errors.
++  if (currentScenario?.failure) record.failureCapture = { scenario: currentScenario.name,
++    snapshotRecorded: !!currentScenario.failureSnapshot,
++    snapshotError: currentScenario.failureSnapshotError || null,
++    imageAttempt: currentScenario.failureImageAttempt || null };
++  else if (currentPage) {
++    try { record.failureSnapshot = await snapshot(currentPage); }
++    catch (captureError) { record.failureSnapshotError = captureError.stack || String(captureError); }
++    const filename = 'failure-original.png';
++    record.failureImageAttempt = { file: filename, timeoutMs: 30000, startedAt: new Date().toISOString() };
++    await persist();
++    try { await currentPage.screenshot({ path: resolve(output, filename), timeout: 30000 });
++      record.failureImageAttempt.status = 'captured';
++      record.failureImageAttempt.sha256 = sha(await readFile(resolve(output, filename)));
++    } catch (captureError) { record.failureImageAttempt.status = 'failed';
++      record.failureImageAttempt.error = captureError.stack || String(captureError); }
++    record.failureImageAttempt.completedAt = new Date().toISOString();
++  } else record.failureCaptureUnavailable = 'No live page remains; no capture was retried.';
+   await persist(); throw error;
+ } finally { clearTimeout(hardStop); await browser?.close(); if (server) await new Promise(done => server.close(done));
+   if (deadlineJobs.length) { await Promise.allSettled(deadlineJobs);
+--- a/tests/harbor-workshop-pilot.test.js
++++ b/tests/harbor-workshop-pilot.test.js
+@@ -200,3 +200,85 @@
+   assert.deepEqual(pilot.group.children.filter(child => child.userData.workshopAssetId), current);
+   pilot.dispose(); assert.equal(pilot.snapshot().releasedAssets, 4);
+ });
++
++test('cold synchronous disposal counters separate owned rendered objects from never-rendered decoded resources', async () => {
++  // CPU counter adapter emulates Three dispose listeners. It tests transaction
++  // order/diagnostic semantics; it is not evidence of a browser upload or JPEG decode.
++  const data = fixture(), memory = { geometries: 42, textures: 50 }, events = [];
++  let reads = 0;
++  const loadAsset = async id => {
++    const asset = await loadCPU(id), geometries = new Set(), textures = new Set(), skeletons = new Set();
++    asset.scene.traverse(object => {
++      if (object.geometry) geometries.add(object.geometry);
++      if (object.skeleton) skeletons.add(object.skeleton);
++      for (const value of Object.values(object.material || {})) if (value?.isTexture) textures.add(value);
++    });
++    for (const skeleton of skeletons) { skeleton.computeBoneTexture(); textures.add(skeleton.boneTexture); }
++    memory.geometries += geometries.size; memory.textures += textures.size;
++    for (const geometry of geometries) geometry.addEventListener('dispose', () => memory.geometries--);
++    for (const texture of textures) { texture.addEventListener('dispose', () => memory.textures--);
++      if (!texture.isDataTexture) texture.source.data = { close() {} }; }
++    return asset;
++  };
++  const pilot = createHarborWorkshopPilot(THREE, { ...data, enabled: true, loadAsset,
++    readRendererMemory: () => { reads++; return memory; }, onAudit: event => events.push(event) });
++  pilot.update(pilot.plan.centre); await pilot.whenSettled();
++  for (let i = 0; i < 20; i++) pilot.snapshot();
++  assert.equal(reads, 0, 'No renderer counter reads on update/load/snapshot hot paths');
++  pilot.dispose(); assert.equal(reads, 4);
++  const releases = events.filter(event => event.kind === 'asset-released');
++  assert.deepEqual(releases.map(event => event.rendererRelease.difference),
++    [{ geometries: 4, textures: 4 }, { geometries: 7, textures: 3 }]);
++  assert.deepEqual(releases.map(event => event.resourceRelease.boneTextures), [1, 0]);
++  assert.ok(releases.every(event => event.rendererRelease.available && event.rendererRelease.attachedAtRelease));
++  assert.deepEqual(memory, { geometries: 42, textures: 50 });
++  memory.geometries = 999;
++  assert.equal(releases[0].rendererRelease.before.geometries, 53, 'Captured counter values do not alias renderer state');
++  assert.equal(releases[1].rendererRelease.after.geometries, 42);
++
++  const neverRendered = [], zeroMemory = { geometries: 42, textures: 50 };
++  const failed = createHarborWorkshopPilot(THREE, { ...data, enabled: true,
++    loadAsset: async id => { if (id === 'metal_tool_chest') throw new Error('controlled404'); return loadCPU(id); },
++    readRendererMemory: () => zeroMemory, onAudit: event => neverRendered.push(event) });
++  failed.update(failed.plan.centre); await failed.whenSettled();
++  const unrendered = neverRendered.find(event => event.kind === 'asset-released');
++  assert.equal(unrendered.rendererRelease.attachedAtRelease, false);
++  assert.deepEqual(unrendered.rendererRelease.difference, { geometries: 0, textures: 0 });
++  assert.equal(unrendered.resourceRelease.geometries, 4);
++  assert.equal(unrendered.resourceRelease.textures, 3); assert.equal(unrendered.resourceRelease.boneTextures, 0);
++  failed.dispose();
++});
++
++test('throwing optional renderer diagnostics cannot prevent real GLB cleanup and snapshots do not alias read errors', async () => {
++  const data = fixture(), counts = { geometries: 0, textures: 0, closedImages: 0 }; let reads = 0;
++  const loadAsset = async id => {
++    const asset = await loadCPU(id), geometries = new Set(), textures = new Set();
++    asset.scene.traverse(object => {
++      if (object.geometry) geometries.add(object.geometry);
++      for (const value of Object.values(object.material || {})) if (value?.isTexture) textures.add(value);
++    });
++    for (const geometry of geometries) geometry.addEventListener('dispose', () => counts.geometries++);
++    for (const texture of textures) { texture.addEventListener('dispose', () => counts.textures++);
++      texture.source.data = { close: () => counts.closedImages++ }; }
++    return asset;
++  };
++  const system = createInteriorSystem(THREE, new THREE.Scene(), { buildings: [data.building], workshopAssetLoader: loadAsset,
++    readRendererMemory: () => { reads++; throw new Error('controlled reader failure'); } });
++  system.enter(data.building.id); system.update(1 / 60, { ...planHarborWorkshopPilot(data.building, data.floor, data.layout).centre, groundY: data.floor.y });
++  const live = system.root.children[0].children[0].userData.workshopPilot;
++  await live.whenSettled(); system.exit();
++  assert.deepEqual(counts, { geometries: 11, textures: 6, closedImages: 6 });
++  assert.equal(reads, 4); assert.equal(live.snapshot().assetCount, 0);
++  const released = system.snapshot().workshopPilotEvents.filter(event => event.kind === 'asset-released');
++  for (const event of released) {
++    assert.equal(event.rendererRelease.available, false);
++    assert.equal(event.rendererRelease.before, null); assert.equal(event.rendererRelease.after, null);
++    assert.equal(event.rendererRelease.difference, null, 'Unavailable is not a fabricated zero delta');
++    assert.deepEqual(event.rendererRelease.readErrors, [{ stage: 'before', message: 'controlled reader failure' },
++      { stage: 'after', message: 'controlled reader failure' }]);
++  }
++  released[0].rendererRelease.readErrors[0].message = 'mutated snapshot';
++  assert.equal(system.snapshot().workshopPilotEvents.find(event => event.kind === 'asset-released')
++    .rendererRelease.readErrors[0].message, 'controlled reader failure');
++  assert.equal(reads, 4, 'Repeated snapshots do not call the reader'); system.dispose();
++});

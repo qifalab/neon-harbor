@@ -1,0 +1,149 @@
+{
+  "marketArrivals": 1,
+  "overlapCount": 0,
+  "bufferOverlapCount": 0,
+  "bufferOverlaps": [],
+  "overlaps": [],
+  "final": {
+    "fleet": 200.0000000000513,
+    "life": {
+      "schema": "neon-harbor/daily-life",
+      "version": 1,
+      "seed": 749213,
+      "hour": 16.5,
+      "day": 0,
+      "residents": 20,
+      "activeDelivery": null,
+      "availableJobs": [],
+      "shops": [
+        {
+          "id": "harbor-produce",
+          "buildingId": "south-095",
+          "name": "潮叶果铺",
+          "product": "produce",
+          "productName": "时令果蔬",
+          "price": 6,
+          "wholesale": 2,
+          "frontage": "east",
+          "displayAnchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          },
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          },
+          "money": 214,
+          "stock": 12,
+          "sold": 0,
+          "received": 8,
+          "paidWages": 18,
+          "open": true,
+          "staff": 1,
+          "pending": []
+        },
+        {
+          "id": "harbor-tea",
+          "buildingId": "south-092",
+          "name": "静潮茶室",
+          "product": "tea",
+          "productName": "港湾茶饮",
+          "price": 4,
+          "wholesale": 1,
+          "frontage": "east",
+          "displayAnchor": {
+            "x": 225.3373617986217,
+            "z": 133,
+            "y": 0.18
+          },
+          "anchor": {
+            "x": 225.3373617986217,
+            "z": 133,
+            "y": 0.18
+          },
+          "money": 222,
+          "stock": 12,
+          "sold": 0,
+          "received": 8,
+          "paidWages": 18,
+          "open": true,
+          "staff": 1,
+          "pending": []
+        },
+        {
+          "id": "harbor-noodles",
+          "buildingId": "south-090",
+          "name": "双碗面家",
+          "product": "meal",
+          "productName": "热汤面",
+          "price": 7,
+          "wholesale": 3,
+          "frontage": "south",
+          "displayAnchor": {
+            "x": 187,
+            "z": 146.42007884336635,
+            "y": 0.18
+          },
+          "anchor": {
+            "x": 193,
+            "z": 146.42007884336635,
+            "y": 0.18
+          },
+          "money": 206,
+          "stock": 12,
+          "sold": 0,
+          "received": 8,
+          "paidWages": 18,
+          "open": true,
+          "staff": 1,
+          "pending": []
+        }
+      ],
+      "statistics": {
+        "purchases": 0,
+        "playerPurchases": 0,
+        "missedPurchases": 0,
+        "wages": 55,
+        "deliveries": 3,
+        "consumed": 0,
+        "boarded": 4,
+        "alighted": 4
+      },
+      "totalMoney": 2972,
+      "initialMoney": 2972,
+      "cashPaidToPlayer": 0,
+      "cashPaidByPlayer": 0,
+      "playerInventory": {
+        "produce": 0,
+        "tea": 0,
+        "meal": 0
+      },
+      "totalGoods": 300,
+      "initialGoods": 300,
+      "consumedByProduct": {
+        "produce": 0,
+        "tea": 0,
+        "meal": 0
+      },
+      "phases": {
+        "resting": 3,
+        "working": 12,
+        "walking": 5
+      }
+    },
+    "bus": {
+      "x": 248,
+      "y": 0,
+      "z": 20.581007205325285,
+      "yaw": 3.141592653589793,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 10.887092481648637,
+      "nextStopId": "harbor-bus-workshop",
+      "secondsToArrival": 10.887092481648637,
+      "speed": 0
+    }
+  }
+}

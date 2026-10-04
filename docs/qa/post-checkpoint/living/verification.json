@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "stats": {
+    "total": 1,
+    "expected": 1,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "retry": 0,
+  "testTitle": "a resident rides to a furnished bedroom, walks through its doorway, and returns to the street",
+  "testStartTime": "2026-10-04T15:22:59.472Z",
+  "testDurationMilliseconds": 139220,
+  "reportDurationMilliseconds": 149299.72,
+  "journeys": [
+    {
+      "name": "living-city-lift-gallery",
+      "sampleCount": 18,
+      "timedOut": false,
+      "startSimulationTime": 7.116666666666647,
+      "arrivedSimulationTime": 10.850000000000119,
+      "simulationElapsedSeconds": 3.733333333333472,
+      "originalMaximumSimulationSeconds": 5.2,
+      "wallElapsedSeconds": 11.719699999999255,
+      "phases": [
+        "closing",
+        "moving",
+        "opening",
+        "idle"
+      ],
+      "arrivalFloorId": "gallery",
+      "arrivalElevatorY": 4.2,
+      "arrivalDoorOpen": 1
+    },
+    {
+      "name": "living-city-lift-lobby",
+      "sampleCount": 18,
+      "timedOut": false,
+      "startSimulationTime": 27.88333333333303,
+      "arrivedSimulationTime": 31.633333333332818,
+      "simulationElapsedSeconds": 3.749999999999787,
+      "originalMaximumSimulationSeconds": 5.2,
+      "wallElapsedSeconds": 8.609700000001117,
+      "phases": [
+        "closing",
+        "moving",
+        "opening",
+        "idle"
+      ],
+      "arrivalFloorId": "lobby",
+      "arrivalElevatorY": 0,
+      "arrivalDoorOpen": 1
+    }
+  ],
+  "consoleOrPageErrors": [],
+  "diagnosticWrites": false,
+  "scope": "Only the original first living-city case was run; the default High case was not repeated. This explicitly Low 640x400 screenshot is functional evidence, not an art-quality acceptance."
+}

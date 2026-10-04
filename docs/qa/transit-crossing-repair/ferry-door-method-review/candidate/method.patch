@@ -1,0 +1,190 @@
+--- a/tools/capture-harbor-tour.mjs
++++ b/tools/capture-harbor-tour.mjs
+@@ -54,6 +54,7 @@
+   manifestSha256, buildVersion: manifest.version,
+   buildRevision: manifest.revision, gitHead: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: projectRoot, encoding: 'utf8' }).trim(),
+   sourceHashes, methodHashes, assetHashes: manifest.assets, plan: null, phases: [], screenshots: [], errors: [], resources: [], video: null,
++  cabinSegments: [], cabinRides: [], cabinEvidenceErrors: [], cabinCleanupErrors: [],
+   method: 'One fresh browser keeps one unedited Playwright recording from startup through setup, the continuous route, final export and reload. Public Atlas/E/elevator controls set a real residential 2F starting room before the route starts. Subsequently only real WASD/Z, mouse look, E doors/boarding/purchase and the public save/settings controls are used. No Atlas/sample-menu travel occurs during the tour, no writes to __NEON__, localStorage, positions, clocks, dt or renderer state; no retry or video editing.',
+   limits: ['Low uses a 512 × 320 browser/video viewport and the normal 409 × 256 GL drawing buffer. This explicitly selected software-WebGL functional check is not native art or hardware-FPS evidence.',
+     'The visible settings disable the day/night cycle before the route. The displayed afternoon remains fixed while the real simulation, fleet and monotonic economy clocks advance; this does not prove a full resident day.',
+@@ -342,38 +343,95 @@
+   const box=await page.locator('#game').boundingBox(), p={x:box.x+box.width*.86,y:box.y+box.height*.30};
+   await page.mouse.move(p.x,p.y); await page.mouse.down(); p.orbitYaw=(await cabinState()).cameraYaw; return p;
+ };
+-const walkLocal = async (target,pointer,{precision=true}={}) => {
+-  const initial=await cabinState(), localDeadline=Date.now()+remaining(150000); let current=initial;
+-  const samples=[initial]; let heldSeconds=0, geometricMetres=0;
++let cabinSegmentSequence=0;
++const writeCabinEvidence = async (file,record) => {
++  const bytes=JSON.stringify(record,null,2)+'\n';
++  await writeFile(resolve(output,file),bytes,{flag:'wx'});
++  return {file,status:record.status,sha256:sha256(Buffer.from(bytes)),bytes:Buffer.byteLength(bytes)};
++};
++const retainCabinCleanupError = (error,primary,context) => {
++  metadata.cabinCleanupErrors.push({at:new Date().toISOString(),context,
++    error:{message:error.message,stack:error.stack},
++    primary:primary?{message:primary.message,stack:primary.stack}:null,primaryPreserved:Boolean(primary)});
++  if(!primary)throw error;
++};
++const walkLocal = async (target,pointer,{precision=true,wallBudgetMilliseconds=150000,context=null}={}) => {
++  const file=`cabin-segment-${String(++cabinSegmentSequence).padStart(4,'0')}.json`,requestedAt=Date.now();
++  let initial=null,current=null,waypointStartedAt=null,localDeadline=null,effectiveWallBudgetMilliseconds=null,errorRecord=null,errorCaughtAt=null;
++  const samples=[]; let heldSeconds=0,geometricMetres=0,firstInput=null,lastInput=null,lastCommand=null;
+   try {
++    assert.ok(wallBudgetMilliseconds===150000 || (wallBudgetMilliseconds===300000 &&
++      context?.kind==='ferry' && context?.role==='lower-door-approach'),'only the actual ferry final door approach extends its wall budget');
++    initial=await cabinState();current=initial;samples.push({...initial,observedAt:new Date().toISOString()});
++    effectiveWallBudgetMilliseconds=remaining(wallBudgetMilliseconds);waypointStartedAt=Date.now();
++    localDeadline=waypointStartedAt+effectiveWallBudgetMilliseconds;
+     for(let n=0;distance(target,current.local)>=.06&&n<1800;n++) {
+-      assert.ok(Date.now()<localDeadline,'cabin waypoint retains its original wall budget');
++      assert.ok(Date.now()<localDeadline,'cabin waypoint retains its declared finite wall budget');
+       const dx=target.x-current.local.x,dz=target.z-current.local.z;
+       const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s';
+       const offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key], desired=current.vehicle.yaw+Math.atan2(dx,dz)-offset;
+       const delta=angle(desired-pointer.orbitYaw);
++      lastCommand={iteration:n,key,slow:precision||distance(target,current.local)<1.2,desiredYaw:desired,
++        before:current,pointerOrbitYaw:pointer.orbitYaw,requestedAt:new Date().toISOString()};
+       if(Math.abs(delta)>.002) { pointer.x-=delta/(.005*current.sensitivity); await page.mouse.move(pointer.x,pointer.y); pointer.orbitYaw=desired;
+         await page.waitForFunction(yaw=>Math.abs(Math.atan2(Math.sin(window.__NEON__.snapshot().camera.yaw-yaw),Math.cos(window.__NEON__.snapshot().camera.yaw-yaw)))<.025,
+           desired,{polling:'raf',timeout:Math.min(15000,Math.max(1,localDeadline-Date.now()))}); }
+       const slow=precision||distance(target,current.local)<1.2, start=current.local;
+-      if(slow)await page.keyboard.down('z'); await page.keyboard.down(key);
+-      const keydown=await cabinState();
+-      try { await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;
+-        return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},start,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())}); }
+-      finally {await page.keyboard.up(key);if(slow)await page.keyboard.up('z');}
++      let keydown=null,inputError=null;
++      lastInput={iteration:n,key,slow,requestedAt:new Date().toISOString(),before:current,keydown:null,
++        slowDownDispatched:false,keyDownDispatched:false,releaseCompleted:false,collected:false,guardsPassed:false,
++        terminalHeldObservation:null,error:null};firstInput??=lastInput;
++      try {
++        if(slow){await page.keyboard.down('z');lastInput.slowDownDispatched=true;}
++        await page.keyboard.down(key);lastInput.keyDownDispatched=true;
++        keydown=await cabinState();lastInput.keydown=keydown;lastInput.keydownObservedAt=new Date().toISOString();
++        await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;
++          return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},start,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});
++      }catch(error){inputError=error;lastInput.error={at:new Date().toISOString(),message:error.message,stack:error.stack};throw error;}
++      finally {
++        if(inputError && lastInput.keyDownDispatched)try{
++          const heldState=await cabinState();
++          lastInput.terminalHeldObservation={status:keydown?'observed-interval':'observed-state-start-unavailable',
++            observedAt:new Date().toISOString(),state:heldState,
++            elapsedSimulationSeconds:keydown?Math.max(0,heldState.time-keydown.time):null,
++            scope:'from actual keydown snapshot through this readonly snapshot before input release; not a complete terminal input duration'};
++        }catch(error){lastInput.terminalHeldObservation={status:'unavailable',error:{message:error.message,stack:error.stack}};}
++        try{await page.keyboard.up(key);if(slow)await page.keyboard.up('z');lastInput.releaseCompleted=true;lastInput.releasedAt=new Date().toISOString();}
++        catch(error){retainCabinCleanupError(error,inputError,{...context,segmentFile:file,scope:'keyboard-up',key,slow});}
++      }
+       current=await cabinState(); heldSeconds+=Math.max(0,current.time-keydown.time); geometricMetres+=distance(start,current.local);
+-      samples.push({...current,key,slow}); assert.equal(current.revision,initial.revision,'cabin walking preserves transition revision');
++      lastInput.collected=true;lastInput.after=current;lastInput.collectedAt=new Date().toISOString();
++      samples.push({...current,key,slow,observedAt:new Date().toISOString(),heldSeconds,geometricMetres}); assert.equal(current.revision,initial.revision,'cabin walking preserves transition revision');
+       // This is an additional real stall guard. Time used for mouse turning is
+       // not mistaken for a blocked walking input, and the original local clock
+       // and endpoint limits remain intact.
+-      assert.ok(heldSeconds<geometricMetres/.3+3,'held cabin inputs do not stall against seats or walls');
++      assert.ok(heldSeconds<geometricMetres/.3+3,'held cabin inputs do not stall against seats or walls');lastInput.guardsPassed=true;
+     }
+     assert.ok(distance(target,current.local)<.06,'the actual cabin waypoint is reached');
+     if(target.y!=null)assert.ok(Math.abs(current.local.y-target.y)<.15,'actual stair support height');
+-  }catch(error){error.message+=`\nCabin diagnostics: ${JSON.stringify({target,initial,current,samples})}`;throw error;}
++  }catch(error){errorRecord=error;errorCaughtAt=Date.now();throw error;}
++  finally {
++    const endedAt=Date.now();let actualCurrent=current,snapshotError=null,actualCurrentObservedAt=samples.at(-1)?.observedAt??null;
++    if(errorRecord)try{actualCurrent=await cabinState();actualCurrentObservedAt=new Date().toISOString();}catch(error){snapshotError={message:error.message,stack:error.stack};}
++    const record={schema:'neon-harbor-cabin-segment-v1',file,status:errorRecord?'failed':'passed',context,
++      methodSha256:methodHashes['tools/capture-harbor-tour.mjs'],manifestSha256,precision,target,
++      requestedAt:new Date(requestedAt).toISOString(),startedAt:waypointStartedAt==null?null:new Date(waypointStartedAt).toISOString(),
++      deadlineAt:localDeadline==null?null:new Date(localDeadline).toISOString(),endedAt:new Date(endedAt).toISOString(),
++      wallBudgetMilliseconds,effectiveWallBudgetMilliseconds,elapsedWallMilliseconds:waypointStartedAt==null?null:endedAt-waypointStartedAt,
++      initial,current,actualCurrent,actualCurrentObservedAt,snapshotError,samples,heldSeconds,geometricMetres,
++      completedInputIterations:{count:Math.max(0,samples.length-1),heldSeconds,geometricMetres},firstInput,lastInput,lastCommand,
++      cleanupErrors:metadata.cabinCleanupErrors.filter(e=>e.context?.segmentFile===file),
++      errorCaughtAt:errorCaughtAt==null?null:new Date(errorCaughtAt).toISOString(),
++      error:errorRecord?{message:errorRecord.message,stack:errorRecord.stack}:null};
++    try{metadata.cabinSegments.push(await writeCabinEvidence(file,record));}
++    catch(error){metadata.cabinEvidenceErrors.push({file,message:error.message,stack:error.stack});if(!errorRecord)throw error;}
++  }
+   return samples;
+ };
+ const ride = async (from,to,{stairs=true,label=from.kind}={}) => {
++  const attemptedAt=new Date().toISOString(),segmentStart=metadata.cabinSegments.length;
++  let rideError=null,id=null,rideStage='boarding-setup';
++  try {
+   const initial=await state(), route=city.sample.transit.route(from.routeId), waitStart=initial.simulationTime;
+   const before=await focusPlayable();
+   await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.vehicles.some(v=>v.stopId===id&&v.remaining>2),
+@@ -382,15 +440,21 @@
+   await page.keyboard.press('e');
+   await page.waitForFunction(()=>window.__NEON__.snapshot().city.sample.transit.riding,null,{timeout:remaining(30000)});
+   const boarded=await phase(`${label}-boarded`,{from:from.id,to:to.id,legalTransition:'public E boarding',beforeRevision:before.teleportRevision});
+-  const id=boarded.transit.ridingVehicleId, revision=boarded.teleportRevision, layout=createHarborVehicleLayout(from.kind), stair=layout.stairs[0];
++  id=boarded.transit.ridingVehicleId;rideStage='cabin';
++  const revision=boarded.teleportRevision, layout=createHarborVehicleLayout(from.kind), stair=layout.stairs[0];
+   const door=layout.doors.find(d=>d.id===to.doorId); assert.ok(door); assert.equal(boarded.transit.passengerDeck,'lower');
+   const samples=[];
++  const localOptions = target => ({precision:from.kind!=='ferry'||target.x!==0,
++    wallBudgetMilliseconds:from.kind==='ferry'&&target===door.inside?300000:150000,
++    context:{label,kind:from.kind,vehicleId:id,from:from.id,to:to.id,doorId:door.id,
++      role:target===door.inside?'lower-door-approach':'cabin-waypoint'}});
+   if(stairs) {
+-    let pointer=await cabinPointer();
++    let pointer=await cabinPointer(),pointerError=null;
+     try {for(const target of [{x:0,z:door.z},{x:0,z:stair.bottom.z},stair.bottom,
+       {x:stair.x,z:(stair.startZ+stair.endZ)/2,y:(stair.fromY+stair.toY)/2},stair.top,{x:0,z:stair.top.z,y:stair.toY}])
+-      samples.push(...await walkLocal(target,pointer,{precision:from.kind!=='ferry'||target.x!==0}));}
+-    finally{await page.mouse.up();}
++      samples.push(...await walkLocal(target,pointer,localOptions(target)));}
++    catch(error){pointerError=error;throw error;}
++    finally{try{await page.mouse.up();}catch(error){retainCabinCleanupError(error,pointerError,{label,kind:from.kind,vehicleId:id,scope:'mouse-up'});}}
+     const upper=await phase(`${label}-upper-deck`); assert.equal(upper.transit.passengerDeck,'upper');
+     assert.ok(samples.some(s=>s.local.y>stair.fromY+.25&&s.local.y<stair.toY-.25)); assert.equal(upper.teleportRevision,revision);
+     await shot(`${label}-upper-deck`);await focusPlayable();
+@@ -405,15 +469,20 @@
+     await page.keyboard.press('e');const denied=await phase(`${label}-upper-landing-E-keeps-rider-on-board`,{
+       checkedPosition:'real upper stair landing; combined deck-height and door-contact restrictions',openStopId:upperBerth.stopId});
+     assert.equal(denied.transit.ridingVehicleId,id,'E at this actual upper landing cannot alight at the open berth');assert.equal(denied.transit.passengerDeck,'upper');
+-    pointer=await cabinPointer();
++    pointer=await cabinPointer();pointerError=null;
+     try{for(const target of [stair.top,{x:stair.x,z:(stair.startZ+stair.endZ)/2,y:(stair.fromY+stair.toY)/2},stair.bottom,
+       {x:0,z:stair.bottom.z,y:stair.fromY},{x:0,z:door.z,y:stair.fromY},door.inside])
+-      samples.push(...await walkLocal(target,pointer,{precision:from.kind!=='ferry'||target.x!==0}));}
+-    finally{await page.mouse.up();}
++      samples.push(...await walkLocal(target,pointer,localOptions(target)));}
++    catch(error){pointerError=error;throw error;}
++    finally{try{await page.mouse.up();}catch(error){retainCabinCleanupError(error,pointerError,{label,kind:from.kind,vehicleId:id,scope:'mouse-up'});}}
+   }else {
+-    const pointer=await cabinPointer(); try{samples.push(...await walkLocal(door.inside,pointer));}finally{await page.mouse.up();}
++    const pointer=await cabinPointer();let pointerError=null;
++    try{samples.push(...await walkLocal(door.inside,pointer,localOptions(door.inside)));}
++    catch(error){pointerError=error;throw error;}
++    finally{try{await page.mouse.up();}catch(error){retainCabinCleanupError(error,pointerError,{label,kind:from.kind,vehicleId:id,scope:'mouse-up'});}}
+   }
+   assert.equal((await state()).transit.passengerDeck,'lower');
++  rideStage='destination-wait';
+   await phase(`${label}-lower-door-ready`,{destination:to.id,waitWallMilliseconds:metadata.destinationWaitWallMilliseconds});
+   await focusPlayable();
+   // The archived second run missed the first market berth while descending.
+@@ -428,9 +497,19 @@
+   assert.ok(arrived.simulationTime>boarded.simulationTime); assert.ok(distance(arrived.position,boarded.position)>10);
+   assert.ok(arrived.simulationTime-boarded.simulationTime<route.duration*3+180,'a live route does not remain stalled indefinitely');
+   await writeFile(resolve(output,`${label}-cabin-waypoints.json`),JSON.stringify({from:from.id,to:to.id,id,boarded,arrived,samples},null,2)+'\n');
++  rideStage='alighting';
+   await page.keyboard.press('e'); await page.waitForFunction(()=>!window.__NEON__.snapshot().city.sample.transit.riding,null,{timeout:remaining(30000)});
+   const outside=await phase(`${label}-alighted`,{destination:to.id,legalTransition:'public E lower-door alighting',beforeRevision:revision});
+-  assert.ok(distance(outside.position,to.board)<.1); assert.ok(Math.abs(outside.position.y-to.board.y)<.1); return outside;
++  assert.ok(distance(outside.position,to.board)<.1); assert.ok(Math.abs(outside.position.y-to.board.y)<.1);rideStage='completed'; return outside;
++  }catch(error){rideError=error;throw error;}
++  finally {
++    const file=`${label}-cabin-segments.json`;
++    const record={schema:'neon-harbor-cabin-ride-v1',status:rideError?'failed':'passed',label,from:from.id,to:to.id,vehicleId:id,attemptedAt,rideStage,
++      methodSha256:methodHashes['tools/capture-harbor-tour.mjs'],manifestSha256,endedAt:new Date().toISOString(),
++      segments:metadata.cabinSegments.slice(segmentStart),cleanupErrors:metadata.cabinCleanupErrors.filter(e=>e.context?.label===label),error:rideError?{message:rideError.message,stack:rideError.stack}:null};
++    try{metadata.cabinRides.push(await writeCabinEvidence(file,record));}
++    catch(error){metadata.cabinEvidenceErrors.push({file,message:error.message,stack:error.stack});if(!rideError)throw error;}
++  }
+ };
+ const savePublic = async (label,{resume=true,welcome=false}={}) => {
+   if(welcome){assert.equal((await state()).started,false);await page.locator('#welcome-settings').click();}

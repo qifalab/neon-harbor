@@ -1,0 +1,17 @@
+three.module.js character offset 200316 (memory.geometries--)
+n(e);return null===t&&W("WebGLRenderer: "+e+" extension not supported."),t}}}function pi(e,t,n,i){const r={},a=new WeakMap;function o(e){const s=e.target;null!==s.index&&t.remove(s.index);for(const e in s.attributes)t.remove(s.attributes[e]);s.removeEventListener("dispose",o),delete r[s.id];const l=a.get(s);l&&(t.remove(l),a.delete(s)),i.releaseStatesOfGeometry(s),!0===s.isInstancedBufferGeometry&&delete s._maxInstanceCount,n.memory.geometries--}function s(e){const n=[],i=e.index,r=e.attributes.position;let o=0;if(void 0===r
+
+three.module.js character offset 200850 (memory.geometries++)
+st s=new(r.count>=65535?z:k)(n,1);s.version=o;const l=a.get(e);l&&t.remove(l),a.set(e,s)}return{get:function(e,t){return!0===r[t.id]||(t.addEventListener("dispose",o),r[t.id]=!0,n.memory.geometries++),t},update:function(n){const i=n.attributes;for(co
+
+three.module.js character offset 275905 (function U(t))
+function U(e){const t=e.target;t.removeEventListener("dispose",U),function(e){const t=r.get(e);if(void 0===t.__webglInit)return;const n=e.source,i=_.get(n);if(i){const r=i[t.__cacheKey];r.usedTimes--,0===r.usedTimes&&I(e),0===Object.keys(i).length&&_.delete(n)}r.remove(e)}(t),t.isVideoTexture&&u.delete(t),t.isHTMLTexture&&m.delete(t)}function w(t){const n=t.target;n.removeEventListener("dispose",w),function(t){const n=r.get(t);t.depthTexture&&(t.depthTexture.dispose(),r.remove(t.depthTexture));if(t.isWebGLCubeRenderTarget)for(let t=0;t<6;t++){if(Array.isArray(n.__webglFramebuffer[t]))for(let i=0;i<n.__webglFramebuffer[t].length;i++)e.deleteFramebuffer(n.__webglFramebuffer[t][i]);else e.deleteFramebuffer(n.__webglFramebuffer[t]);n.__webglDepthbuffer&&e.deleteRenderbuffer(n.__webglDepthbuffer[t])}else{if(Array.isArray(n.__webglFramebuffer))
+
+three.module.js character offset 277464 (function I(t))
+function I(t){const n=r.get(t);e.deleteTexture(n.__webglTexture);const i=t.source;delete _.get(i)[n.__cacheKey],s.memory.textures--}let N=0;function F(t,n){const a=r.get(t);if(t.isVideoTexture&&function(e){const t=s.render.frame;u.get(e)!==t&&(u.set(e,t),e.upd
+
+three.core.min.js character offset 4050 (dispatchEvent(t))
+dispatchEvent(t){const e=this._listeners;if(void 0===e)return;const s=e[t.type];if(void 0!==s){t.target=this;const e=s.slice(0);for(let s=0,i=e.length;s<i;s++)e[s].call(this,t);t.target=null}}}const pi=["00","01","02","03","04","05","06","07","08","09","0a","0b","0c","0d","0e","0f","10","11","12","13","14","15","16","17","18","1
+
+three.core.min.js character offset 152669 (this.boneTexture.dispose())
+s.length;e<s;e++){const s=this.bones[e];if(s.name===t)return s}}dispose(){null!==this.boneTexture&&(this.boneTexture.dispose(),this.boneTexture=null)}fromJSON(t,e){this.uuid=t.uuid;for(let s=0,i=t.bones.length;

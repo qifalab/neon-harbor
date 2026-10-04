@@ -1,0 +1,32 @@
+--- a/tools/capture-harbor-tour.mjs
++++ b/tools/capture-harbor-tour.mjs
+@@ -435,7 +435,7 @@
+   const initial=await state(), route=city.sample.transit.route(from.routeId), waitStart=initial.simulationTime;
+   const before=await focusPlayable();
+   await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.vehicles.some(v=>v.stopId===id&&v.remaining>2),
+-    from.id,{polling:'raf',timeout:remaining(600000)});
++    from.id,{polling:'raf',timeout:remaining(2400000)});
+   assert.ok((await state()).simulationTime-waitStart<route.duration*2+120,'a real scheduled boarding eventually arrives');
+   await page.keyboard.press('e');
+   await page.waitForFunction(()=>window.__NEON__.snapshot().city.sample.transit.riding,null,{timeout:remaining(30000)});
+@@ -461,7 +461,7 @@
+     // E is also rejected in motion. Observe real open doors at a scheduled
+     // berth so this checks the upper-deck rule rather than that unrelated case.
+     await page.waitForFunction(id=>{const s=window.__NEON__.snapshot(),t=s.city.sample.transit,v=t.vehicles.find(v=>v.id===id);
+-      return t.passengerDeck==='upper'&&v.stopId&&v.doorsOpen&&v.remaining>2;},id,{polling:'raf',timeout:remaining(600000)});
++      return t.passengerDeck==='upper'&&v.stopId&&v.doorsOpen&&v.remaining>2;},id,{polling:'raf',timeout:remaining(2400000)});
+     const upperDocked=await phase(`${label}-upper-deck-at-real-open-berth`);
+     const upperBerth=upperDocked.transit.vehicles.find(v=>v.id===id);
+     assert.ok(upperBerth.stopId&&upperBerth.doorsOpen&&upperBerth.remaining>.6,'the observed upper landing really has an open berth before E');
+@@ -492,8 +492,9 @@
+   // estimates a tram destination wait of 148.5325 simulation seconds. At
+   // its lowest pre-failure 30-second ratio (0.06613095 sim/wall), this needs
+   // 2246.04 wall seconds. Allow a finite 2400 seconds; this is not acceptance
+-  // or a guarantee. Boarding/upper caps, route-time, geometry and input guards
+-  // stay unchanged. The separately reviewed whole-case budget is 240 minutes.
++  // or a guarantee. Scheduled boarding/upper waits separately allow 2400
++  // wall seconds; route-time, geometry and input guards stay unchanged.
++  // The separately reviewed whole-case budget is 240 minutes.
+   await page.waitForFunction(({id,to})=>{const v=window.__NEON__.snapshot().city.sample.transit.vehicles.find(v=>v.id===id);
+     return v.stopId===to&&v.doorsOpen&&v.remaining>2;},{id,to:to.id},{polling:'raf',timeout:remaining(metadata.destinationWaitWallMilliseconds)});
+   const arrived=await phase(`${label}-arrived`,{destination:to.id}); assert.equal(arrived.teleportRevision,revision);

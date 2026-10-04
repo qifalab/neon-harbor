@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "startedAtUtc": "2026-10-04T19:48:32Z",
+  "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+  "command": [
+    "node",
+    "tools/capture-workshop-pilot.mjs",
+    "--gpu-go",
+    "yes",
+    "--root",
+    "dist",
+    "--port",
+    "5208",
+    "--output",
+    "docs/qa/art-pilot/native-validation-owned-release-2026-10-04",
+    "--scenarios",
+    "normal,404,delay-exit"
+  ],
+  "stdout": "native-validation-owned-release-2026-10-04.stdout.txt",
+  "stderr": "native-validation-owned-release-2026-10-04.stderr.txt",
+  "gpuAuthorization": "Explicit parent GPU GO; single sequential suite; no retry; frozen method/products",
+  "sourceSha256": "6bb5b9b574e22b2be5ebec977d3b4f1e56faab64e3ed11d5fb9ef47bc426f714",
+  "buildInfoSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "pid": 52763,
+  "exitCode": 0,
+  "endedAtUtc": "2026-10-04T20:32:50Z",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "finalSourceSha256": "6bb5b9b574e22b2be5ebec977d3b4f1e56faab64e3ed11d5fb9ef47bc426f714",
+  "finalBuildInfoSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+}

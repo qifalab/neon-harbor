@@ -1,0 +1,29 @@
+{
+  "status": "failed",
+  "startedAtUtc": "2026-10-04T20:37:19Z",
+  "cwd": "/workspace/scratch/neon-harbor",
+  "command": [
+    "node",
+    "tools/capture-workshop-vice-detail.mjs",
+    "--gpu-go",
+    "yes",
+    "--root",
+    "dist",
+    "--port",
+    "5208",
+    "--output",
+    "docs/qa/art-pilot/vice-detail-native-2026-10-04"
+  ],
+  "stdout": "vice-detail-native-2026-10-04.stdout.txt",
+  "stderr": "vice-detail-native-2026-10-04.stderr.txt",
+  "gpuAuthorization": "Explicit parent independent GPU GO after 27a gate/selective/build; one fresh context, no retry, frozen f147/156 runtime",
+  "sourceSha256": "f147a2d783628e016b37f9ce48103901dada4e65e08759e1ede45f686ed5a993",
+  "buildInfoSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "pid": 54529,
+  "exitCode": 1,
+  "endedAtUtc": "2026-10-04T20:41:45Z",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "a7d88a6506d4335c0d68010564863591c1f9d30b5b6787a15e2cdee80d27967d",
+  "finalSourceSha256": "f147a2d783628e016b37f9ce48103901dada4e65e08759e1ede45f686ed5a993",
+  "finalBuildInfoSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+}

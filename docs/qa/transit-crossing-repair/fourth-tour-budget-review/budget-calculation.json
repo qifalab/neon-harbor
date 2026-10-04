@@ -1,0 +1,839 @@
+{
+  "generatedAt": "2026-10-04T19:41:00.581Z",
+  "scope": "Read-only CPU arithmetic on frozen third-run raw evidence and frozen 7145 layouts. No browser, source edit, rebuild, mocks or full tests.",
+  "reviewedCandidate": {
+    "path": "/tmp/neon-harbor-tour-first-error-candidate-2026-10-04T19-13-07-129Z/capture-harbor-tour.mjs",
+    "bytes": 59884,
+    "sha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db"
+  },
+  "rootMethod": {
+    "bytes": 53037,
+    "sha256": "60436d2fe8db8af646c1a02d93f9e70fc3e1ce34181d257a1c3ea39aae850702"
+  },
+  "manifest": {
+    "sha256": "7145fa443190896ff24050d518a54fea364ddb0547ddfa71756a33d64c515fb3",
+    "assetCount": 146,
+    "sourceCount": 52,
+    "mismatches": []
+  },
+  "dependencies": [
+    {
+      "file": "tools/server.mjs",
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+      "sameAsThird": true
+    },
+    {
+      "file": "tests/e2e/helpers/walking.js",
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969",
+      "sameAsThird": true
+    },
+    {
+      "file": "tests/e2e/helpers/occupied.js",
+      "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1",
+      "sameAsThird": true
+    }
+  ],
+  "ledgers": [
+    {
+      "directory": "docs/qa/transit-crossing-repair/ferry-door-method-review",
+      "listedFiles": 59,
+      "ledgerSha256": "19ac77dc7b70e873cc22c96abfab20835bc4ac33b837e9b1512573f99a8bdc4c",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/art-final/native-review",
+      "listedFiles": 16,
+      "ledgerSha256": "06fa99595842c8659a4b050f3ced1d6491677c410b84eb4392dea11d7e5cbeeb",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/art-final/continuous-tour",
+      "listedFiles": 13,
+      "ledgerSha256": "f650a77276af2a7b386a3e7eb809c0aaf0ae5f71eb352cfde4797b7b97f46364",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour",
+      "listedFiles": 15,
+      "ledgerSha256": "b5e6af022f617ad4da6be13fb56bd95e7e0c6601372d0f87cb2ea1d39a55ca70",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour-budget-review",
+      "listedFiles": 19,
+      "ledgerSha256": "5b922d928e28e4dbb528241e841cb9454f6868a4e54785a131ee9a696bc1a317",
+      "mismatches": []
+    }
+  ],
+  "thirdVideo": {
+    "file": "video/page@f3a37dcd9bfa366ae4707ebb074324d8.webm",
+    "path": "/workspace/scratch/neon-harbor/docs/qa/transit-crossing-repair/continuous-tour-budget-review/video/page@f3a37dcd9bfa366ae4707ebb074324d8.webm",
+    "bytes": 71548336,
+    "sha256": "69971a38c7d91c24192d793c30038a1665cef3105ba29c1bb2f48ce4b0c1cac9",
+    "durationSeconds": 2950.72,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 512,
+          "height": 320
+        }
+      ],
+      "format": {
+        "duration": "2950.720000"
+      }
+    },
+    "unedited": true,
+    "includesStartupAndSetup": true,
+    "published": false,
+    "publicationUrl": null,
+    "largeFilePolicy": "review artifact size before publication"
+  },
+  "thirdFailure": {
+    "caseStartedAt": "2026-10-04T18:08:57.473Z",
+    "routeStartedAt": "2026-10-04T18:11:02.447Z",
+    "failureAt": "2026-10-04T18:57:33.776Z",
+    "caseUsedSeconds": 2916.303,
+    "remaining90MinuteCaseSeconds": 2483.697,
+    "failedRouteWallMilliseconds": 2791329,
+    "routeComplete": false
+  },
+  "empirical": {
+    "street": {
+      "wallSeconds": 485.364,
+      "simulationSeconds": 116.24999999989427,
+      "geometryMetres": 501.5559554830194,
+      "metresPerSimulationSecond": 4.314459832115919,
+      "simPerWall": 0.23951096496628155
+    },
+    "pier": {
+      "wallSeconds": 39.448,
+      "simulationSeconds": 8.233333333325845,
+      "horizontalMetres": 24,
+      "metresPerSimulationSecond": 2.9149797570876714,
+      "simPerWall": 0.2087135807474611
+    },
+    "homeDown": {
+      "wallSeconds": 94.821,
+      "simulationSeconds": 21.416666666665453,
+      "nominalGeometryMetres": 20.123119296971737,
+      "idealHelperSeconds": 17.932699874459253,
+      "observedToIdealHelperRatio": 1.1942801037543855
+    },
+    "busUp": {
+      "wallSeconds": 97.248,
+      "simulationSeconds": 31.650000000011204
+    },
+    "busDown": {
+      "wallSeconds": 113.087,
+      "simulationSeconds": 33.00000000002626
+    },
+    "busCabin": {
+      "oneWayMetres": 6.779999999999999,
+      "minimumHeldSeconds": 22.599999999999998
+    },
+    "tramCabin": {
+      "oneWayMetres": 5.959999999999999,
+      "minimumHeldSeconds": 19.866666666666664
+    },
+    "lateProgressIntervals": [
+      {
+        "fromRouteWallMs": 2640110,
+        "toRouteWallMs": 2670125,
+        "simulationDelta": 6.499999999994088,
+        "wallSeconds": 30.015,
+        "simPerWall": 0.21655838747273323
+      },
+      {
+        "fromRouteWallMs": 2670125,
+        "toRouteWallMs": 2700124,
+        "simulationDelta": 3.7499999999965894,
+        "wallSeconds": 29.999,
+        "simPerWall": 0.1250041668054465
+      },
+      {
+        "fromRouteWallMs": 2700124,
+        "toRouteWallMs": 2730115,
+        "simulationDelta": 1.9833333333315295,
+        "wallSeconds": 29.991,
+        "simPerWall": 0.06613095039616984
+      },
+      {
+        "fromRouteWallMs": 2730115,
+        "toRouteWallMs": 2760116,
+        "simulationDelta": 1.999999999998181,
+        "wallSeconds": 30.001,
+        "simPerWall": 0.06666444451845542
+      },
+      {
+        "fromRouteWallMs": 2760116,
+        "toRouteWallMs": 2790126,
+        "simulationDelta": 2.6666666666642413,
+        "wallSeconds": 30.01,
+        "simPerWall": 0.08885926913243056
+      }
+    ],
+    "tramServiceRatios": [
+      {
+        "id": "harbor-tram-1",
+        "fromSimulation": 392.1833333333053,
+        "toSimulation": 687.4333333330368,
+        "serviceDelta": 203.46127115870513,
+        "simulationDelta": 295.2499999997315,
+        "servicePerSimulation": 0.6891152283112284,
+        "serviceTime": 478.57378336579967,
+        "delay": 208.85954996749152
+      },
+      {
+        "id": "harbor-tram-2",
+        "fromSimulation": 392.1833333333053,
+        "toSimulation": 687.4333333330368,
+        "serviceDelta": 198.83670349106666,
+        "simulationDelta": 295.2499999997315,
+        "servicePerSimulation": 0.6734520016638357,
+        "serviceTime": 501.9534403481981,
+        "delay": 215.7965596517417
+      }
+    ]
+  },
+  "remainingGeometry": {
+    "paths": [
+      {
+        "id": "northPierToAddress",
+        "metres": 77,
+        "waypointCount": 3,
+        "estimatedSimulationSeconds": 17.846961843711796
+      },
+      {
+        "id": "northAddressToPier",
+        "metres": 73.80000000000001,
+        "waypointCount": 3,
+        "estimatedSimulationSeconds": 17.105269922934166
+      },
+      {
+        "id": "southPierToTram",
+        "metres": 135.6,
+        "waypointCount": 5,
+        "estimatedSimulationSeconds": 31.4291951429522
+      },
+      {
+        "id": "tramToHome",
+        "metres": 134.64924771878867,
+        "waypointCount": 5,
+        "estimatedSimulationSeconds": 31.208830991191157
+      }
+    ],
+    "piers": {
+      "northExit": 19.5,
+      "northReturn": 19.5,
+      "southExit": 24,
+      "totalMetres": 63,
+      "estimatedSimulationSeconds": 21.612499999980344
+    },
+    "northRoom": {
+      "type": "maritime",
+      "enterLeaveMetres": 42.64999999999998,
+      "idealHelperSeconds": 17.044642857142854,
+      "estimatedActualSimulationSeconds": 20.356077839885014
+    },
+    "homeEachAscent": {
+      "horizontalMetres": 20.123119296971737,
+      "idealHelperSeconds": 17.932699874459253,
+      "estimatedActualSimulationSeconds": 21.416666666665453
+    },
+    "tramTwoStairPassages": {
+      "horizontalMetres": 11.919999999999998,
+      "estimatedUpSimulationSeconds": 28.916666666677866,
+      "estimatedDownSimulationSeconds": 30.266666666692924
+    },
+    "outdoorMetres": 484.04924771878865
+  },
+  "routes": [
+    {
+      "kind": "bus",
+      "durationSimulationSeconds": 171.83792154259038,
+      "arrivals": [
+        {
+          "stopId": "harbor-bus-courtyard",
+          "time": 0
+        },
+        {
+          "stopId": "harbor-bus-market",
+          "time": 22.967172693339897
+        },
+        {
+          "stopId": "harbor-bus-lantern",
+          "time": 53.180499232833654
+        },
+        {
+          "stopId": "harbor-bus-workshop",
+          "time": 81.08819154052597
+        },
+        {
+          "stopId": "harbor-bus-south",
+          "time": 108.8861334646351
+        },
+        {
+          "stopId": "harbor-bus-garden",
+          "time": 136.68407538874422
+        }
+      ],
+      "offsets": [
+        0,
+        81.08819154052597
+      ],
+      "pathMetres": 844.4079600247727
+    },
+    {
+      "kind": "tram",
+      "durationSimulationSeconds": 119.79546400165141,
+      "arrivals": [
+        {
+          "stopId": "harbor-tram-lantern",
+          "time": 0
+        },
+        {
+          "stopId": "harbor-tram-workshop",
+          "time": 30.316666666666666
+        },
+        {
+          "stopId": "harbor-tram-quay",
+          "time": 60.633333333333326
+        }
+      ],
+      "offsets": [
+        0,
+        30.316666666666666
+      ],
+      "pathMetres": 761.4693200082575
+    },
+    {
+      "kind": "ferry",
+      "durationSimulationSeconds": 81.28436496873556,
+      "arrivals": [
+        {
+          "stopId": "harbor-ferry-south",
+          "time": 0
+        },
+        {
+          "stopId": "harbor-ferry-north",
+          "time": 40.62933673897694
+        }
+      ],
+      "offsets": [
+        0
+      ],
+      "pathMetres": 275.63921762456977
+    }
+  ],
+  "models": [
+    {
+      "type": "Derived conditional scenario, not replay evidence",
+      "tramServicePerSimulation": 1,
+      "extraOutboundCycle": false,
+      "initialActualSimulation": 687.4333333330368,
+      "selectedTramId": "harbor-tram-2",
+      "totalSuffixSimulationSeconds": 410.6569719878838,
+      "routeSuffixSimulationSeconds": 389.24030532121844,
+      "phases": [
+        {
+          "label": "ferry-final-residual-held-minimum",
+          "simulationStart": 687.4333333330368,
+          "simulationEnd": 687.5824858380203,
+          "simulationSeconds": 0.14915250498352767
+        },
+        {
+          "label": "outbound-next-north-berth",
+          "simulationStart": 687.5824858380203,
+          "simulationEnd": 690.9042564888614,
+          "simulationSeconds": 3.321770650841131
+        },
+        {
+          "label": "north-pier-exit",
+          "simulationStart": 690.9042564888614,
+          "simulationEnd": 697.5938398221887,
+          "simulationSeconds": 6.689583333327249
+        },
+        {
+          "label": "north-street-to-address",
+          "simulationStart": 697.5938398221887,
+          "simulationEnd": 715.4408016659005,
+          "simulationSeconds": 17.846961843711796
+        },
+        {
+          "label": "north-real-room-enter-and-exit",
+          "simulationStart": 715.4408016659005,
+          "simulationEnd": 735.7968795057855,
+          "simulationSeconds": 20.356077839885014
+        },
+        {
+          "label": "north-street-to-pier",
+          "simulationStart": 735.7968795057855,
+          "simulationEnd": 752.9021494287197,
+          "simulationSeconds": 17.105269922934166
+        },
+        {
+          "label": "north-pier-return",
+          "simulationStart": 752.9021494287197,
+          "simulationEnd": 759.591732762047,
+          "simulationSeconds": 6.689583333327249
+        },
+        {
+          "label": "ferry-return-wait-for-boarding",
+          "simulationStart": 759.591732762047,
+          "simulationEnd": 772.1886214575969,
+          "simulationSeconds": 12.596888695549978
+        },
+        {
+          "label": "ferry-return-north-to-south",
+          "simulationStart": 772.1886214575969,
+          "simulationEnd": 812.8436496873555,
+          "simulationSeconds": 40.655028229758614
+        },
+        {
+          "label": "south-pier-exit",
+          "simulationStart": 812.8436496873555,
+          "simulationEnd": 821.0769830206814,
+          "simulationSeconds": 8.233333333325845
+        },
+        {
+          "label": "south-street-to-tram",
+          "simulationStart": 821.0769830206814,
+          "simulationEnd": 852.5061781636335,
+          "simulationSeconds": 31.4291951429522
+        },
+        {
+          "label": "tram-wait-for-quay-boarding",
+          "simulationStart": 852.5061781636335,
+          "simulationEnd": 852.5061781636335,
+          "simulationSeconds": 0
+        },
+        {
+          "label": "tram-physical-stairs-up",
+          "simulationStart": 852.5061781636335,
+          "simulationEnd": 881.4228448303114,
+          "simulationSeconds": 28.916666666677866
+        },
+        {
+          "label": "tram-upper-real-open-berth-wait",
+          "simulationStart": 881.4228448303114,
+          "simulationEnd": 904.2526769947472,
+          "simulationSeconds": 22.829832164435743
+        },
+        {
+          "label": "tram-physical-stairs-down-and-door",
+          "simulationStart": 904.2526769947472,
+          "simulationEnd": 934.5193436614401,
+          "simulationSeconds": 30.266666666692924
+        },
+        {
+          "label": "tram-lower-lantern-destination-wait",
+          "simulationStart": 934.5193436614401,
+          "simulationEnd": 1024.0481409963986,
+          "simulationSeconds": 89.52879733495854
+        },
+        {
+          "label": "tram-street-to-home",
+          "simulationStart": 1024.0481409963986,
+          "simulationEnd": 1055.2569719875898,
+          "simulationSeconds": 31.208830991191157
+        },
+        {
+          "label": "home-real-E-stairs-kitchen",
+          "simulationStart": 1055.2569719875898,
+          "simulationEnd": 1076.6736386542552,
+          "simulationSeconds": 21.416666666665453
+        },
+        {
+          "label": "after-reload-real-E-stairs-kitchen",
+          "simulationStart": 1076.6736386542552,
+          "simulationEnd": 1098.0903053209206,
+          "simulationSeconds": 21.416666666665453
+        }
+      ]
+    },
+    {
+      "type": "Derived conditional scenario, not replay evidence",
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": false,
+      "initialActualSimulation": 687.4333333330368,
+      "selectedTramId": "harbor-tram-2",
+      "totalSuffixSimulationSeconds": 576.4523250161068,
+      "routeSuffixSimulationSeconds": 555.0356583494414,
+      "phases": [
+        {
+          "label": "ferry-final-residual-held-minimum",
+          "simulationStart": 687.4333333330368,
+          "simulationEnd": 687.5824858380203,
+          "simulationSeconds": 0.14915250498352767
+        },
+        {
+          "label": "outbound-next-north-berth",
+          "simulationStart": 687.5824858380203,
+          "simulationEnd": 690.9042564888614,
+          "simulationSeconds": 3.321770650841131
+        },
+        {
+          "label": "north-pier-exit",
+          "simulationStart": 690.9042564888614,
+          "simulationEnd": 697.5938398221887,
+          "simulationSeconds": 6.689583333327249
+        },
+        {
+          "label": "north-street-to-address",
+          "simulationStart": 697.5938398221887,
+          "simulationEnd": 715.4408016659005,
+          "simulationSeconds": 17.846961843711796
+        },
+        {
+          "label": "north-real-room-enter-and-exit",
+          "simulationStart": 715.4408016659005,
+          "simulationEnd": 735.7968795057855,
+          "simulationSeconds": 20.356077839885014
+        },
+        {
+          "label": "north-street-to-pier",
+          "simulationStart": 735.7968795057855,
+          "simulationEnd": 752.9021494287197,
+          "simulationSeconds": 17.105269922934166
+        },
+        {
+          "label": "north-pier-return",
+          "simulationStart": 752.9021494287197,
+          "simulationEnd": 759.591732762047,
+          "simulationSeconds": 6.689583333327249
+        },
+        {
+          "label": "ferry-return-wait-for-boarding",
+          "simulationStart": 759.591732762047,
+          "simulationEnd": 772.1886214575969,
+          "simulationSeconds": 12.596888695549978
+        },
+        {
+          "label": "ferry-return-north-to-south",
+          "simulationStart": 772.1886214575969,
+          "simulationEnd": 812.8436496873555,
+          "simulationSeconds": 40.655028229758614
+        },
+        {
+          "label": "south-pier-exit",
+          "simulationStart": 812.8436496873555,
+          "simulationEnd": 821.0769830206814,
+          "simulationSeconds": 8.233333333325845
+        },
+        {
+          "label": "south-street-to-tram",
+          "simulationStart": 821.0769830206814,
+          "simulationEnd": 852.5061781636335,
+          "simulationSeconds": 31.4291951429522
+        },
+        {
+          "label": "tram-wait-for-quay-boarding",
+          "simulationStart": 852.5061781636335,
+          "simulationEnd": 922.742606457503,
+          "simulationSeconds": 70.23642829386948
+        },
+        {
+          "label": "tram-physical-stairs-up",
+          "simulationStart": 922.742606457503,
+          "simulationEnd": 951.6592731241809,
+          "simulationSeconds": 28.916666666677866
+        },
+        {
+          "label": "tram-upper-real-open-berth-wait",
+          "simulationStart": 951.6592731241809,
+          "simulationEnd": 1011.0442940221567,
+          "simulationSeconds": 59.3850208979758
+        },
+        {
+          "label": "tram-physical-stairs-down-and-door",
+          "simulationStart": 1011.0442940221567,
+          "simulationEnd": 1041.3109606888497,
+          "simulationSeconds": 30.266666666692924
+        },
+        {
+          "label": "tram-lower-lantern-destination-wait",
+          "simulationStart": 1041.3109606888497,
+          "simulationEnd": 1189.8434940246216,
+          "simulationSeconds": 148.53253333577197
+        },
+        {
+          "label": "tram-street-to-home",
+          "simulationStart": 1189.8434940246216,
+          "simulationEnd": 1221.0523250158128,
+          "simulationSeconds": 31.208830991191157
+        },
+        {
+          "label": "home-real-E-stairs-kitchen",
+          "simulationStart": 1221.0523250158128,
+          "simulationEnd": 1242.4689916824782,
+          "simulationSeconds": 21.416666666665453
+        },
+        {
+          "label": "after-reload-real-E-stairs-kitchen",
+          "simulationStart": 1242.4689916824782,
+          "simulationEnd": 1263.8856583491436,
+          "simulationSeconds": 21.416666666665453
+        }
+      ]
+    },
+    {
+      "type": "Derived conditional scenario, not replay evidence",
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": true,
+      "initialActualSimulation": 687.4333333330368,
+      "selectedTramId": "harbor-tram-2",
+      "totalSuffixSimulationSeconds": 576.4523250161068,
+      "routeSuffixSimulationSeconds": 555.0356583494414,
+      "phases": [
+        {
+          "label": "ferry-final-residual-held-minimum",
+          "simulationStart": 687.4333333330368,
+          "simulationEnd": 687.5824858380203,
+          "simulationSeconds": 0.14915250498352767
+        },
+        {
+          "label": "outbound-next-north-berth",
+          "simulationStart": 687.5824858380203,
+          "simulationEnd": 772.1886214575969,
+          "simulationSeconds": 84.60613561957666
+        },
+        {
+          "label": "north-pier-exit",
+          "simulationStart": 772.1886214575969,
+          "simulationEnd": 778.8782047909242,
+          "simulationSeconds": 6.689583333327249
+        },
+        {
+          "label": "north-street-to-address",
+          "simulationStart": 778.8782047909242,
+          "simulationEnd": 796.725166634636,
+          "simulationSeconds": 17.846961843711796
+        },
+        {
+          "label": "north-real-room-enter-and-exit",
+          "simulationStart": 796.725166634636,
+          "simulationEnd": 817.081244474521,
+          "simulationSeconds": 20.356077839885014
+        },
+        {
+          "label": "north-street-to-pier",
+          "simulationStart": 817.081244474521,
+          "simulationEnd": 834.1865143974552,
+          "simulationSeconds": 17.105269922934166
+        },
+        {
+          "label": "north-pier-return",
+          "simulationStart": 834.1865143974552,
+          "simulationEnd": 840.8760977307825,
+          "simulationSeconds": 6.689583333327249
+        },
+        {
+          "label": "ferry-return-wait-for-boarding",
+          "simulationStart": 840.8760977307825,
+          "simulationEnd": 853.4729864263325,
+          "simulationSeconds": 12.596888695549978
+        },
+        {
+          "label": "ferry-return-north-to-south",
+          "simulationStart": 853.4729864263325,
+          "simulationEnd": 894.1280146560911,
+          "simulationSeconds": 40.655028229758614
+        },
+        {
+          "label": "south-pier-exit",
+          "simulationStart": 894.1280146560911,
+          "simulationEnd": 902.3613479894169,
+          "simulationSeconds": 8.233333333325845
+        },
+        {
+          "label": "south-street-to-tram",
+          "simulationStart": 902.3613479894169,
+          "simulationEnd": 933.7905431323691,
+          "simulationSeconds": 31.4291951429522
+        },
+        {
+          "label": "tram-wait-for-quay-boarding",
+          "simulationStart": 933.7905431323691,
+          "simulationEnd": 933.7905431323691,
+          "simulationSeconds": 0
+        },
+        {
+          "label": "tram-physical-stairs-up",
+          "simulationStart": 933.7905431323691,
+          "simulationEnd": 962.707209799047,
+          "simulationSeconds": 28.916666666677866
+        },
+        {
+          "label": "tram-upper-real-open-berth-wait",
+          "simulationStart": 962.707209799047,
+          "simulationEnd": 1011.0442940221567,
+          "simulationSeconds": 48.337084223109755
+        },
+        {
+          "label": "tram-physical-stairs-down-and-door",
+          "simulationStart": 1011.0442940221567,
+          "simulationEnd": 1041.3109606888497,
+          "simulationSeconds": 30.266666666692924
+        },
+        {
+          "label": "tram-lower-lantern-destination-wait",
+          "simulationStart": 1041.3109606888497,
+          "simulationEnd": 1189.8434940246216,
+          "simulationSeconds": 148.53253333577197
+        },
+        {
+          "label": "tram-street-to-home",
+          "simulationStart": 1189.8434940246216,
+          "simulationEnd": 1221.0523250158128,
+          "simulationSeconds": 31.208830991191157
+        },
+        {
+          "label": "home-real-E-stairs-kitchen",
+          "simulationStart": 1221.0523250158128,
+          "simulationEnd": 1242.4689916824782,
+          "simulationSeconds": 21.416666666665453
+        },
+        {
+          "label": "after-reload-real-E-stairs-kitchen",
+          "simulationStart": 1242.4689916824782,
+          "simulationEnd": 1263.8856583491436,
+          "simulationSeconds": 21.416666666665453
+        }
+      ]
+    }
+  ],
+  "wallScenarios": [
+    {
+      "tramServicePerSimulation": 1,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.24,
+      "remainingSimulationSeconds": 410.6569719878838,
+      "suffixWallMinutes": 28.517845276936377,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 82.62289527693638
+    },
+    {
+      "tramServicePerSimulation": 1,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.2,
+      "remainingSimulationSeconds": 410.6569719878838,
+      "suffixWallMinutes": 34.22141433232365,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 88.32646433232364
+    },
+    {
+      "tramServicePerSimulation": 1,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.12,
+      "remainingSimulationSeconds": 410.6569719878838,
+      "suffixWallMinutes": 57.035690553872755,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 111.14074055387276
+    },
+    {
+      "tramServicePerSimulation": 1,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.089,
+      "remainingSimulationSeconds": 410.6569719878838,
+      "suffixWallMinutes": 76.90205467937899,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 131.00710467937898
+    },
+    {
+      "tramServicePerSimulation": 1,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.067,
+      "remainingSimulationSeconds": 410.6569719878838,
+      "suffixWallMinutes": 102.15347561887657,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 156.25852561887658
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.24,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 40.03141145945186,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 94.13646145945185
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.2,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 48.037693751342225,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 102.14274375134222
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.12,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 80.06282291890372,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 134.16787291890373
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.089,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 107.94987359852188,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 162.05492359852187
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": false,
+      "simPerWall": 0.067,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 143.3961007502753,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 197.50115075027531
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": true,
+      "simPerWall": 0.24,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 40.03141145945186,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 94.13646145945185
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": true,
+      "simPerWall": 0.2,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 48.037693751342225,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 102.14274375134222
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": true,
+      "simPerWall": 0.12,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 80.06282291890372,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 134.16787291890373
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": true,
+      "simPerWall": 0.089,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 107.94987359852188,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 162.05492359852187
+    },
+    {
+      "tramServicePerSimulation": 0.67,
+      "extraOutboundCycle": true,
+      "simPerWall": 0.067,
+      "remainingSimulationSeconds": 576.4523250161068,
+      "suffixWallMinutes": 143.3961007502753,
+      "caseMinutesIncludingObservedPrefixAndWallReserves": 197.50115075027531
+    }
+  ],
+  "wallReserves": {
+    "closureReserveWallSeconds": 180,
+    "possibleFerryExtraApproachWallSeconds": 150
+  },
+  "budgetRecommendation": {
+    "proposedWholeCaseMinutes": 180,
+    "scope": "Finite global deadline only; local caps, full geometry, endpoint/input/held/simulation guards stay unchanged.",
+    "notGuarantee": "Persistent late low ratio can still exceed the total and fixed local waiting limits. Traffic rate and renderer wall ratio are observational estimates, not a proved cause or prediction for final ART assets."
+  }
+}

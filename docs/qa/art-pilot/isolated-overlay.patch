@@ -1,0 +1,244 @@
+diff --git a/src/compact-interiors.js b/src/compact-interiors.js
+index 1664c73..1c71387 100644
+--- a/src/compact-interiors.js
++++ b/src/compact-interiors.js
+@@ -158,11 +158,16 @@ export function createCompactInteriorLayout(building, floor) {
+         round('navy', x + .18, .79, cz, .065, .58, .43, 'chair-back');
+       };
+       if (type === 'office') {
+-        solid('timber', furnitureX, .43, z, 1.6, .86, .76, 'office-desk');
+-        round('walnut', furnitureX, .90, z, 1.68, .08, .82, 'desktop', false);
++        // A thin load-bearing slab keeps the walking footprint while the open
++        // frame reveals the floor below. The finish meets, rather than overlaps, it.
++        solid('timber', furnitureX, .89, z, 1.6, .06, .76, 'office-desk');
++        round('walnut', furnitureX, .93, z, 1.68, .02, .82, 'desktop', false);
++        for (const dx of [-.67, .67]) for (const dz of [-.25, .25])
++          round('metal', furnitureX + dx, .43, z + dz, .055, .86, .055, 'desk-leg', false);
+         chair(furnitureX + 1.05, z);
++        round('metal', furnitureX - .12, .948, z - .16, .22, .016, .24, 'monitor-foot', false);
+         round('navy', furnitureX - .12, 1.15, z - .16, .07, .4, .48, 'office-monitor', false);
+-        box('paper', furnitureX + .26, .96, z + .15, .44, .025, .30, 'work-papers');
++        box('paper', furnitureX + .26, .9525, z + .15, .44, .025, .30, 'work-papers');
+         solid('walnut', furnitureX, .69, z - roomDepth / 2 + .38, 1.84, 1.38, .48, 'filing-cabinet');
+       } else {
+         solid('timber', furnitureX, .74, z, 1.65, .13, 1.9, 'conference-table');
+@@ -189,9 +194,14 @@ export function createCompactInteriorLayout(building, floor) {
+       box('paper', furnitureX, .83, z + .55, .53, .035, .35, 'reference-ledger');
+     } else if (type === 'workshop') {
+       const back = z - roomDepth / 2 + .22;
+-      solid('walnut', furnitureX, .43, z + .42, 1.75, .86, .76, 'workbench');
+-      round('timber', furnitureX, .91, z + .42, 1.83, .1, .84, 'workbench-top', false);
+-      box('metal', furnitureX - .55, 1.05, z + .42, .28, .20, .24, 'bench-vice');
++      solid('walnut', furnitureX, .88, z + .42, 1.75, .04, .76, 'workbench');
++      round('timber', furnitureX, .93, z + .42, 1.83, .06, .84, 'workbench-top', false);
++      for (const dx of [-.72, .72]) for (const dz of [-.27, .27])
++        round('walnut', furnitureX + dx, .43, z + .42 + dz, .09, .86, .09, 'workbench-leg', false);
++      for (const dz of [-.27, .27])
++        box('walnut', furnitureX, .24, z + .42 + dz, 1.44, .07, .06, 'workbench-stretcher');
++      box('timber', furnitureX, .30, z + .42, 1.4, .05, .52, 'workbench-shelf');
++      box('metal', furnitureX - .55, 1.06, z + .42, .28, .20, .24, 'bench-vice');
+       solid('timber', furnitureX, 1.7, back, 1.85, 1.12, .12, 'tool-board');
+       for (const dx of [-.60, -.20, .20, .60]) {
+         box('steel', furnitureX + dx, 1.74, back + .08, .045, .32, .035, 'workshop-tool');
+diff --git a/src/harbor-district.js b/src/harbor-district.js
+index 251633c..618b2fd 100644
+--- a/src/harbor-district.js
++++ b/src/harbor-district.js
+@@ -1,4 +1,5 @@
+ import { applySurfaceFinish } from './surface-finish.js';
++import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
+ 
+ /** Original small, walkable shopfronts fitted to the existing south-bank shells.
+  * This layer does not invent buildings or replace their entrance/interior IDs.
+@@ -56,22 +57,48 @@ function leafGeometry(THREE) {
+   g.setAttribute('uv',new THREE.Float32BufferAttribute([.5,0,0,.3,.5,1,1,.3,.5,.35],2));
+   g.setIndex([0,1,4,1,2,4,2,3,4,3,0,4]);g.computeVertexNormals();return g;
+ }
++// Uniform texel density matches the physical plaque on both axes. Keeping
++// these dimensions shared with PlaneGeometry prevents stretched letterforms.
++const HARBOR_SIGN_SIZES = Object.freeze({
++  shop: Object.freeze({ width: 6.74, height: .47, pixelsPerMeter: 300 }),
++  menu: Object.freeze({ width: .66, height: .83, pixelsPerMeter: 1600 }),
++});
+ function signTexture(THREE,spec,kind='shop') {
+   if(typeof document==='undefined')return null;
+-  const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=kind==='menu'?1024:256;
++  const size=HARBOR_SIGN_SIZES[kind];
++  const canvas=document.createElement('canvas');
++  canvas.width=Math.round(size.width*size.pixelsPerMeter);
++  canvas.height=Math.round(size.height*size.pixelsPerMeter);
+   const ctx=canvas.getContext('2d');if(!ctx)return null;
+   ctx.fillStyle=kind==='menu'?'#233b3b':'#e7dfcb';ctx.fillRect(0,0,canvas.width,canvas.height);
+-  ctx.strokeStyle=kind==='menu'?'#c4b68e':'#8f876f';ctx.lineWidth=7;ctx.strokeRect(18,18,canvas.width-36,canvas.height-36);
+-  ctx.textAlign='center';ctx.fillStyle=kind==='menu'?'#e1d5b9':'#293f40';
++  const sx=canvas.width/1024,sy=canvas.height/1024;
++  ctx.strokeStyle=kind==='menu'?'#c4b68e':'#8f876f';
++  ctx.lineWidth=kind==='menu'?7*sy:3;
++  const padX=kind==='menu'?18*sx:8,padY=kind==='menu'?18*sy:8;
++  ctx.strokeRect(padX,padY,canvas.width-padX*2,canvas.height-padY*2);
++  ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillStyle=kind==='menu'?'#e1d5b9':'#293f40';
++  // fitText changes font size uniformly; fillText's maxWidth would condense
++  // only the horizontal axis and reintroduce distortion on longer labels.
++  const fitText=(text,px,y,maxWidth,weight='400')=>{
++    ctx.font=weight+' '+px+'px system-ui,sans-serif';
++    const measured=ctx.measureText(text).width;
++    if(measured>maxWidth)ctx.font=weight+' '+(px*maxWidth/measured)+'px system-ui,sans-serif';
++    ctx.fillText(text,canvas.width/2,y);
++  };
+   if(kind==='menu') {
+-    ctx.font='500 78px system-ui,sans-serif';ctx.fillText(spec.name,512,145,920);
+-    ctx.font='32px system-ui,sans-serif';ctx.fillText('DAILY / 每日小食',512,214);
+-    const lines=spec.programme==='market'?['木瓜  PAPAYA  18','鲜橙  ORANGES  12','绿叶  GREENS  16']:spec.programme==='books'?['小刊  SMALL EDITIONS','旧书  SECONDHAND BOOKS','印章  LETTERPRESS']:['热茶  HOUSE TEA  24','面包  DAILY BAKE  18','小食  LIGHT LUNCH  38'];
+-    ctx.font='42px system-ui,sans-serif';lines.forEach((s,i)=>ctx.fillText(s,512,360+i*165,900));
+-    ctx.font='30px system-ui,sans-serif';ctx.fillText('邻里小店 · Made by the quay',512,930,900);
++    fitText(spec.name,78*sy,145*sy,920*sx,'500');
++    const shop=HARBOR_SHOP_DEFS.find(def=>def.buildingId===spec.shellId);
++    fitText(shop?'DAILY / 每日供应':'DISPLAY / 店内陈列',32*sy,214*sy,920*sx);
++    const lines=shop
++      ?[`${shop.productName}  $${shop.price} / 份`,'按份供应  DAILY PORTIONS','现货见柜台  SEE STOCK BOARD']
++      :spec.programme==='books'?['小刊  SMALL EDITIONS','旧书  SECONDHAND BOOKS','印章  LETTERPRESS']
++      :spec.programme==='gallery'?['陶器  CERAMICS','手作  HANDMADE OBJECTS','釉色  GLAZED PIECES']
++      :['面包  DAILY BREAD','饼干  HOUSE BISCUITS','烘焙  FRESH BAKES'];
++    lines.forEach((s,i)=>fitText(s,42*sy,(360+i*165)*sy,900*sx));
++    fitText(shop?'每日现货 · Served by the quay':'街坊陈列 · Neighborhood display',30*sy,930*sy,900*sx);
+   } else {
+-    ctx.font='500 110px system-ui,sans-serif';ctx.fillText(spec.name,512,127,920);
+-    ctx.font='600 42px system-ui,sans-serif';ctx.fillText(spec.english,512,202,920);
++    fitText(spec.name,72,81,canvas.width-48,'500');
++    fitText(spec.english,27,119,canvas.width-48,'600');
+   }
+   const t=new THREE.CanvasTexture(canvas);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t;
+ }
+@@ -194,9 +221,9 @@ export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()
+         b(baseMaterials.metal,u,3.82,.32,.085,.28,.18);
+       }
+       b(baseMaterials.dark,0,3.02,2.165,6.94,.52,.075);
+-      const tex=signTexture(THREE,site);if(tex){textureSet.add(tex);ownedTextures.push(tex);const sm=new THREE.MeshStandardMaterial({map:tex,roughness:.75,emissive:'#e2c693',emissiveIntensity:.08,color:'#fff'});ownedMaterials.push(sm);add(sm,new THREE.PlaneGeometry(6.74,.47),0,3.025,2.208);}
++      const tex=signTexture(THREE,site);if(tex){textureSet.add(tex);ownedTextures.push(tex);const sm=new THREE.MeshStandardMaterial({map:tex,roughness:.75,emissive:'#e2c693',emissiveIntensity:.08,color:'#fff'});ownedMaterials.push(sm);add(sm,new THREE.PlaneGeometry(HARBOR_SIGN_SIZES.shop.width,HARBOR_SIGN_SIZES.shop.height),0,3.025,2.208);}
+       // Quiet uppercase street numbers and a small menu beside the doorway.
+-      const menu=signTexture(THREE,site,'menu');if(menu){textureSet.add(menu);ownedTextures.push(menu);const mm=new THREE.MeshStandardMaterial({map:menu,roughness:.85,color:'#fff'});ownedMaterials.push(mm);add(mm,new THREE.PlaneGeometry(.66,.83),2.10,1.54,.79);}
++      const menu=signTexture(THREE,site,'menu');if(menu){textureSet.add(menu);ownedTextures.push(menu);const mm=new THREE.MeshStandardMaterial({map:menu,roughness:.85,color:'#fff'});ownedMaterials.push(mm);add(mm,new THREE.PlaneGeometry(HARBOR_SIGN_SIZES.menu.width,HARBOR_SIGN_SIZES.menu.height),2.10,1.54,.79);}
+       // A balcony, louvers and rainwater downpipe make the first occupied floor
+       // feel connected to the market frontage, rather than a repeated tower tile.
+       b(clay,0,5.43,.28,site.width,3.48,.10);
+diff --git a/src/harbor-life.js b/src/harbor-life.js
+index 484848e..f8f0b84 100644
+--- a/src/harbor-life.js
++++ b/src/harbor-life.js
+@@ -1,15 +1,13 @@
+-import { SpatialIndex, circleOBB } from './collision.js';
++import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
++import { SpatialIndex, circleOBB, VEHICLE_SHAPE, moveVehicle, moveCircle } from './collision.js';
+ import { createInteriorLayout } from './metropolis-interiors.js';
+ import { intersectionSignal } from './traffic.js';
++import { harborRoutePose } from './harbor-transit.js';
+ 
+ export const HARBOR_LIFE_SCHEMA = 'neon-harbor/daily-life';
+ export const HARBOR_LIFE_VERSION = 1;
+ export const HARBOR_LIFE_STEP = .1;
+-export const HARBOR_SHOP_DEFS = Object.freeze([
+-  Object.freeze({ id: 'harbor-produce', buildingId: 'south-095', name: '潮叶果铺', product: 'produce', productName: '时令果蔬', price: 6, wholesale: 2, frontage: 'east' }),
+-  Object.freeze({ id: 'harbor-tea', buildingId: 'south-092', name: '静潮茶室', product: 'tea', productName: '港湾茶饮', price: 4, wholesale: 1, frontage: 'east' }),
+-  Object.freeze({ id: 'harbor-noodles', buildingId: 'south-090', name: '双碗面家', product: 'meal', productName: '热汤面', price: 7, wholesale: 3, frontage: 'south' }),
+-]);
++export { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
+ const HOME_IDS = ['south-077', 'south-078', 'south-079', 'south-080', 'south-081', 'south-082', 'south-083', 'south-084', 'south-093', 'south-083', 'south-084', 'south-080'];
+ const NAMES = ['陈映川', '林安禾', '梁嘉宁', '周晴岚', '何书言', '苏晓棠', '杨远舟', '徐景和', '郑沐辰', '吴文澜', '许亦庭', '叶星野', '罗慕青', '沈知行', '顾子墨', '黄云舒', '陈秋实', '林听潮', '梁小满', '周予宁'];
+ const PRODUCTS = ['produce', 'tea', 'meal'];
+@@ -286,13 +284,43 @@ export class HarborLife {
+     }
+     if (agent.goal.kind === 'deliver') { const job = this.jobs.find(j => j.id === agent.goal.id); this._deliver(job, agent); agent.goal = null; this._chooseGoal(agent); }
+   }
++  _crossingRun(agent, crossing) {
++    const points = [point(agent)], edge = crossing.width / 2 - 2 + .6;
++    for (let i = agent.pathIndex; i < agent.path.length; i++) {
++      const p = agent.path[i]; points.push(point(p));
++      if (Math.abs(p[crossing.axis] - crossing.road) >= edge) break;
++    }
++    return points;
++  }
++  _crossingOccupied(points, vehicle) {
++    const body = { ...vehicle, hx: vehicle.hx ?? VEHICLE_SHAPE.hx, hz: vehicle.hz ?? VEHICLE_SHAPE.hz, externalBody: true,
++      minY: vehicle.minY ?? vehicle.y ?? 0, maxY: vehicle.maxY ?? (vehicle.y ?? 0) + VEHICLE_SHAPE.height };
++    const s = Math.abs(Math.sin(body.yaw)), c = Math.abs(Math.cos(body.yaw));
++    const hx = c * body.hx + s * body.hz, hz = s * body.hx + c * body.hz;
++    if (Math.max(...points.map(p => p.x)) + .6 < body.x - hx || Math.min(...points.map(p => p.x)) - .6 > body.x + hx ||
++        Math.max(...points.map(p => p.z)) + .6 < body.z - hz || Math.min(...points.map(p => p.z)) - .6 > body.z + hz) return false;
++    for (let i = 1; i < points.length; i++) {
++      const p = { ...points[i - 1] }, next = points[i];
++      if (moveCircle(p, next.x - p.x, next.z - p.z, .6, { bounds: 3000, vehicles: [body] }).contacts.length) return true;
++    }
++    return false;
++  }
+   _walk(agent, dt, vehicles) {
+     let remaining = agent.speed * dt;
+     while (remaining > 1e-8 && agent.pathIndex < agent.path.length) {
+       const target = agent.path[agent.pathIndex], gap = Math.hypot(target.x - agent.x, target.z - agent.z, (target.y ?? .18) - agent.y);
+-      if (target.crossingId && !agent.crossingId) {
++      const previous = this.navigation.crossings.find(c => c.id === agent.crossingId);
++      if (previous && target.crossingId !== previous.id && Math.abs(agent[previous.axis] - previous.road) >= previous.width / 2 - 2 + .6) agent.crossingId = null;
++      if (target.crossingId && target.crossingId !== agent.crossingId) {
+         const crossing = this.navigation.crossings.find(c => c.id === target.crossingId);
+-        if (intersectionSignal(this.trafficTime ?? this.time, crossing.x, crossing.z, crossing.axis) !== 'green') { agent.activity = '在斑马线前等灯'; return; }
++        // Older saves may retain the previous leg's claim after a turn.
++        // A person already inside this carriageway completes that crossing;
++        // an approach from pavement still waits for this leg's green light.
++        const admitted = agent.crossingId && Math.abs(agent[crossing.axis] - crossing.road) < crossing.width / 2 - 2 + .6;
++        if (!admitted && intersectionSignal(this.trafficTime ?? this.time, crossing.x, crossing.z, crossing.axis) !== 'green') { agent.activity = '在斑马线前等灯'; return; }
++        if (!admitted && vehicles.some(v => v.health !== 0 && Math.abs((v.y ?? 0) - agent.y) < 1.5 && this._crossingOccupied(this._crossingRun(agent, crossing), v))) {
++          agent.activity = '在路缘等占线车辆清空'; return;
++        }
+         agent.crossingId = target.crossingId;
+       }
+       const step = Math.min(remaining, gap), t = gap > 1e-9 ? step / gap : 1;
+@@ -300,7 +328,11 @@ export class HarborLife {
+       if (!agent.insideBuildingId && vehicles.some(v => v.health !== 0 && Math.abs((v.y ?? 0) - next.y) < 1.5 && distance(v, next) < 7 && circleOBB({ ...next, radius: .6 }, v))) { agent.blockedFor += dt; agent.activity = '给车辆让行'; return; }
+       if (gap > 1e-7) agent.yaw = Math.atan2(target.x - agent.x, target.z - agent.z);
+       Object.assign(agent, next); remaining -= step; agent.gait += step * 7; agent.blockedFor = 0;
+-      if (t === 1) { agent.pathIndex++; if (!target.crossingId) agent.crossingId = null; }
++      if (t === 1) {
++        agent.pathIndex++;
++        const claim = this.navigation.crossings.find(c => c.id === agent.crossingId);
++        if (claim && Math.abs(agent[claim.axis] - claim.road) >= claim.width / 2 - 2 + .6) agent.crossingId = null;
++      }
+     }
+     if (agent.pathIndex >= agent.path.length) this._arrive(agent);
+   }
+@@ -377,10 +409,34 @@ export class HarborLife {
+   trafficStopDistanceAt(car) {
+     if (Math.abs(car.y || 0) > 2) return Infinity;
+     let gap = Infinity;
++    const sine = Math.sin(car.yaw), cosine = Math.cos(car.yaw), radius = .6;
++    const padding = car.kind === 'bus' || car.kind === 'tram' ? .08 : 0;
++    const body = { ...car, hx: (car.hx ?? VEHICLE_SHAPE.hx) + padding, hz: (car.hz ?? VEHICLE_SHAPE.hz) + padding };
++    const vehicle = padding && this.transport?.vehicle(car.id);
++    const next = vehicle && harborRoutePose(this.transport.route(vehicle.routeId), vehicle.serviceTime + .05);
++    const sweep = a => next && moveVehicle({ ...body }, next.x - car.x, next.z - car.z,
++      Math.atan2(Math.sin(next.yaw - car.yaw), Math.cos(next.yaw - car.yaw)),
++      { bounds: 3000, circles: [{ x: a.x, z: a.z, groundY: a.y, y: 0, radius }] }).contacts.length;
+     for (const a of this.agents) if (a.crossingId) {
+-      const forward = (a.x - car.x) * Math.sin(car.yaw) + (a.z - car.z) * Math.cos(car.yaw);
+-      const side = Math.abs((a.x - car.x) * Math.cos(car.yaw) - (a.z - car.z) * Math.sin(car.yaw));
+-      if (forward > -3 && forward < 50 && side < 5) gap = Math.min(gap, Math.max(0, forward - 4));
++      // Check actual contact before path bounds: a turning long vehicle may
++      // sweep a person whose crossing plane is nearly parallel or behind it.
++      if (circleOBB({ ...a, radius }, body) || sweep(a)) { gap = 0; continue; }
++      const target = a.path[a.pathIndex];
++      const crossing = this.navigation.crossings.find(c => c.id === (target?.crossingId || a.crossingId));
++      if (!crossing) continue;
++      const points = this._crossingRun(a, crossing);
++      const projected = points.map(p => ({
++        forward: (p.x - car.x) * sine + (p.z - car.z) * cosine,
++        side: (p.x - car.x) * cosine - (p.z - car.z) * sine,
++      }));
++      const first = Math.min(...projected.map(p => p.forward)), last = Math.max(...projected.map(p => p.forward));
++      const left = Math.min(...projected.map(p => p.side)), right = Math.max(...projected.map(p => p.side));
++      if (last < -body.hz - radius || first >= 50 || left > body.hx + radius || right < -body.hx - radius) continue;
++      // A vehicle already occupying this actual polyline clears first while
++      // the person waits outside its side. New entrants wait at the curb.
++      const side = Math.abs((a.x - car.x) * cosine - (a.z - car.z) * sine);
++      if (side >= body.hx + radius && (!padding || vehicle) && this._crossingOccupied(points, body)) continue;
++      gap = Math.min(gap, Math.max(0, first - 4));
+     }
+     return gap;
+   }

@@ -1,0 +1,74 @@
+{
+  "schema": "neon-harbor-cabin-ride-v1",
+  "status": "failed",
+  "label": "derived-mock-descent-primary-and-mouse-failure",
+  "from": "mock-south",
+  "to": "mock-north",
+  "vehicleId": "mock-ferry-1",
+  "attemptedAt": "2026-10-04T19:16:37.208Z",
+  "rideStage": "cabin",
+  "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "manifestSha256": "DERIVED_MOCK_MANIFEST",
+  "endedAt": "2026-10-04T19:16:37.208Z",
+  "segments": [
+    {
+      "file": "mock-segment-0001.json",
+      "status": "passed",
+      "derivedMock": true
+    },
+    {
+      "file": "mock-segment-0002.json",
+      "status": "passed",
+      "derivedMock": true
+    },
+    {
+      "file": "mock-segment-0003.json",
+      "status": "passed",
+      "derivedMock": true
+    },
+    {
+      "file": "mock-segment-0004.json",
+      "status": "passed",
+      "derivedMock": true
+    },
+    {
+      "file": "mock-segment-0005.json",
+      "status": "passed",
+      "derivedMock": true
+    },
+    {
+      "file": "mock-segment-0006.json",
+      "status": "passed",
+      "derivedMock": true
+    },
+    {
+      "file": "mock-segment-0007.json",
+      "status": "failed",
+      "derivedMock": true
+    }
+  ],
+  "cleanupErrors": [
+    {
+      "at": "2026-10-04T19:16:37.208Z",
+      "context": {
+        "label": "derived-mock-descent-primary-and-mouse-failure",
+        "kind": "ferry",
+        "vehicleId": "mock-ferry-1",
+        "scope": "mouse-up"
+      },
+      "error": {
+        "message": "MOCK_MOUSE_RELEASE:descent-primary-and-mouse-failure",
+        "stack": "Error: MOCK_MOUSE_RELEASE:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+      },
+      "primary": {
+        "message": "MOCK_PRIMARY:descent-primary-and-mouse-failure",
+        "stack": "Error: MOCK_PRIMARY:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+      },
+      "primaryPreserved": true
+    }
+  ],
+  "error": {
+    "message": "MOCK_PRIMARY:descent-primary-and-mouse-failure",
+    "stack": "Error: MOCK_PRIMARY:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "verifiedAt": "2026-10-04T17:06:54.538Z",
+  "processExitCode": 1,
+  "result": "failed-first-attempt-no-retry",
+  "failure": "page.waitForFunction: Timeout 600000ms exceeded.\n    at ride (/workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:398:16)\n    at async file:///workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:511:58",
+  "metadataSha256": "b7460c894b11297fbc2919a2e81fa05791817f1d115d8273e53c660be78e3f6e",
+  "manifestSha256": "b9a52d3adf613cac85b6ae9fbe19136712ac66390400c6def41d113e1ae8378b",
+  "methodSha256": "b23e40572d86f3f228d3b5f8a788e7c813eb9a9ff5b2e100ca327d2f0889c114",
+  "assetCount": 146,
+  "sourceCount": 52,
+  "assetMismatches": [],
+  "sourceMismatches": [],
+  "gitHead": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+  "originalLog": {
+    "file": "capture-original.log",
+    "bytes": 9432,
+    "sha256": "b066d0e9bfa40bd68f25028c156e823d590919bed55599cd1fc89c683ef2757e"
+  },
+  "failureSnapshot": {
+    "position": {
+      "x": 151.96560473734834,
+      "y": 2.4,
+      "z": 139.79811345452103,
+      "yaw": 1.6627733659414399
+    },
+    "simulationTime": 318.10000000003936,
+    "teleportRevision": 7,
+    "scene": "harbor-vehicle:harbor-bus-2",
+    "paused": false,
+    "cash": 1200,
+    "errors": [],
+    "vehicle": {
+      "id": "harbor-bus-2",
+      "routeId": "harbor-bus",
+      "kind": "bus",
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 213.9849436442685,
+      "serviceTime": 185.20324789635595,
+      "held": "pedestrian",
+      "trafficState": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "passengerLocal": {
+      "x": -0.022200522914186803,
+      "y": 2.4,
+      "z": -0.94822507393579,
+      "yaw": 1.649910478254024
+    },
+    "passengerDeck": "upper"
+  },
+  "video": {
+    "file": "video/page@ba86a50f42d45bf55f12ac6d154937d9.webm",
+    "path": "/workspace/scratch/neon-harbor/docs/qa/art-final/continuous-tour/video/page@ba86a50f42d45bf55f12ac6d154937d9.webm",
+    "bytes": 20744648,
+    "sha256": "7fa9592c2aa01d65a25ef3f3d87aa480007cd85d4adbb8cbc81253160b575c7b",
+    "durationSeconds": 1258,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 512,
+          "height": 320
+        }
+      ],
+      "format": {
+        "duration": "1258.000000"
+      }
+    },
+    "unedited": true,
+    "includesStartupAndSetup": true,
+    "published": false,
+    "publicationUrl": null,
+    "largeFilePolicy": "review artifact size before publication",
+    "verifiedSha256": "7fa9592c2aa01d65a25ef3f3d87aa480007cd85d4adbb8cbc81253160b575c7b",
+    "publicationPolicy": "Root approved retaining the 20744648-byte raw WebM with the first failure evidence in Git. No commit/publication is performed by this documentation task; published stays false until an actual publication is recorded."
+  },
+  "recordingWallMilliseconds": 1256393,
+  "caseWallMilliseconds": 1262997,
+  "routeCompleted": false,
+  "note": "The raw video includes startup and initial Atlas/elevator setup. The continuous tour stopped during its first bus ride; this does not pass the >=20min completed route or the purchase, shop, ferry, tram and home-reload goals.",
+  "documentationUpdatedAt": "2026-10-04T17:11:27.554Z",
+  "originalRunProvenance": {
+    "executedMethod": "capture-harbor-tour-original.mjs",
+    "sha256": "b23e40572d86f3f228d3b5f8a788e7c813eb9a9ff5b2e100ca327d2f0889c114",
+    "verificationAt": "2026-10-04T17:06:54.538Z",
+    "currentToolMayDiffer": true,
+    "note": "Root added failure-only readonly diagnostics to the repository tool after this browser run ended. That later edit does not change the retained original method or its completed post-run freeze verification."
+  },
+  "wallClock": {
+    "caseStartedAt": "2026-10-04T16:44:57.296Z",
+    "recordingStartedAt": "2026-10-04T16:44:57.373Z",
+    "routeStartedAt": "2026-10-04T16:47:07.039Z",
+    "routeStartPhaseAt": "2026-10-04T16:47:07.049Z",
+    "upperDeckPhaseAt": "2026-10-04T16:55:28.591Z",
+    "failureExactAt": null,
+    "failureWindow": {
+      "earliestPossibleAt": "2026-10-04T17:05:43.557Z",
+      "latestObservedAt": "2026-10-04T17:05:53.766Z",
+      "reason": "The original method has no separate failureAt timestamp. Its berth wait starts after the upper-deck screenshot record and times out after 600000ms. Failure snapshot and screenshot are complete before the recorded close request."
+    },
+    "routeElapsedAtFailureBoundsMilliseconds": {
+      "minimum": 1116518,
+      "maximum": 1126727
+    },
+    "lastPeriodicProgress": {
+      "routeWallMilliseconds": 1110038,
+      "derivedUtcAt": "2026-10-04T17:05:37.077Z",
+      "simulationTime": 316.18333333337443,
+      "position": {
+        "x": 151.96560473734834,
+        "y": 2.4,
+        "z": 139.79811345452103,
+        "yaw": 1.6627733659414399
+      }
+    },
+    "recordingCloseRequestedAt": "2026-10-04T17:05:53.766Z",
+    "recordingStoppedAt": "2026-10-04T17:06:00.293Z",
+    "finalMetadataCompletedAt": "2026-10-04T17:06:00.873Z",
+    "setupBeforeRouteMilliseconds": 129666,
+    "recordingWallMilliseconds": 1256393,
+    "recordedVideoDurationSeconds": 1258,
+    "caseWallMilliseconds": 1262997
+  },
+  "coverage": {
+    "preparationCompleted": [
+      "fresh browser default High assertion",
+      "public Low/fixed-afternoon settings",
+      "one public Atlas visit to south-079",
+      "real E entry/elevator and kitchen room on 2F"
+    ],
+    "continuousReached": [
+      "real home room exit",
+      "actual residential stairs down to lobby",
+      "E exit with exterior restored",
+      "planned physical street walk to courtyard bus contact",
+      "real scheduled bus boarding on lower deck",
+      "real bus stairs to upper deck"
+    ],
+    "notReached": [
+      "upper-landing E at a real open berth",
+      "bus stairs down/arrival/lower-door alighting",
+      "street-counter stock/staff purchase and transaction verification",
+      "physical entry into south-095 market room",
+      "south pier access slopes",
+      "outbound ferry lower/upper stairs and north alighting",
+      "north pier and sail-club maritime room entry/exit",
+      "return ferry ride to south",
+      "tram boarding/both-deck stairs/arrival/alighting",
+      "physical walk to original home/real stairs back to 2F",
+      "final paused public save export",
+      "reload of full original progress and safe street-door recovery",
+      "real E/re-entry and stairs to original 2F after reload"
+    ],
+    "completedRoute": false,
+    "completedTwentyMinuteRoute": false,
+    "minimumRouteDurationCheckEvaluated": false,
+    "caseWithinNinetyMinuteBudget": true,
+    "entireTourAndReloadCompleted": false
+  },
+  "relatedOfflineReproduction": {
+    "path": "/tmp/harbor-life-bus-deadlock-world.json",
+    "sha256": "e338de7100b88f5e61f4c0bee16b5df18f3d100074dc978cde8b6ead7f6e6a0e",
+    "bytes": 86182,
+    "provenance": "separate offline Node world reproduction provided to root after this first browser failure; not browser-state evidence",
+    "includedInThisDirectory": false,
+    "samples": 30,
+    "matchingHeldSamples": 18,
+    "firstObservedSimulationTime": 129.9999999999956,
+    "lastObservedSimulationTime": 300.0000000000558,
+    "busPosition": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214
+    },
+    "held": "pedestrian",
+    "committed": true,
+    "trafficLightRed": false,
+    "agentId": "harbor-resident-18",
+    "fixAppliedToThisAttempt": false
+  }
+}

@@ -1,0 +1,27 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: walked to x=182.8
+
+expect(received).toBeLessThan(expected)
+
+Expected: < 0.04
+Received:   0.1599999999970123
+    at captureRawStack (/workspace/scratch/neon-harbor/node_modules/playwright-core/lib/coreBundle.js:9681:17)
+    at callMatcherAsStep (/workspace/scratch/neon-harbor/node_modules/playwright/lib/matchers/expect.js:13310:57)
+    at Object.toBeLessThan (/workspace/scratch/neon-harbor/node_modules/playwright/lib/matchers/expect.js:13300:23)
+    at walkAxis (/workspace/scratch/neon-harbor/tools/workshop-review-helpers/walking.js:80:86)
+    at async walk (/workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs:92:3)
+    at async file:///workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs:200:2 {
+  matcherResult: {
+    message: 'expect(received).toBeLessThan(expected)\n' +
+      '\n' +
+      'Expected: < 0.04\n' +
+      'Received:   0.1599999999970123',
+    pass: false,
+    name: 'toBeLessThan'
+  }
+}
+
+Node.js v24.19.0

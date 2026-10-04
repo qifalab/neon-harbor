@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-04T17:29:38.909507+00:00",
+  "kind": "Archive integrity and read-only assertions of existing JSON; no new simulation or browser run.",
+  "baseline": {
+    "records": 30,
+    "simulatedSeconds": 300.0000000000558,
+    "stoppedRecords": 18,
+    "firstStoppedRecordAt": 129.9999999999956,
+    "lastStoppedRecordAt": 300.0000000000558,
+    "exactBusPose": {
+      "x": 152,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945
+    },
+    "notBrowserResidentSnapshot": true
+  },
+  "candidateDependencyHashes": {
+    "modules": 52,
+    "b9HashesPresent": 52,
+    "changes": [
+      {
+        "path": "src/harbor-life.js",
+        "baselineSha256": "6122d6738f36ee281277c80c1c8e7f777a87498295571f568f18be30f10927f8",
+        "candidateSha256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d"
+      }
+    ]
+  },
+  "freshAllPhase": {
+    "fixedStepSeconds": 0.016666666666666666,
+    "steps": 12000,
+    "simulatedSeconds": 200.0000000000513,
+    "marketArrivals": 1,
+    "contactsRadius043": 0,
+    "contactsRadius06": 0,
+    "money": 2972,
+    "goods": 300,
+    "excluded": "insideBuildingId; phase boarding, riding, alighting",
+    "otherConditions": "health > 0, absolute ground y difference < 1.5m, centre XZ distance < 7m, circleOBB against actual sim.cars and transit.trafficBodies",
+    "includes": "approach/waiting/waiting-transit entities; unlike first filtered run, a.transit is not used as exclusion"
+  },
+  "publicSaveRecovery": {
+    "steps": 5400,
+    "simulatedSeconds": 90,
+    "marketAt": 13.866666666666667,
+    "distanceTravelled": 332.09973666345167,
+    "canonicalClaimAt": 11,
+    "money": 2972,
+    "goods": 300,
+    "moneyError": 0,
+    "goodsError": 0,
+    "metrics": {
+      "0.43": {
+        "totalContactFrames": 0,
+        "newContactEpisodes": 0,
+        "newContacts": [],
+        "maximumDepth": 0
+      },
+      "0.6": {
+        "totalContactFrames": 0,
+        "newContactEpisodes": 0,
+        "newContacts": [],
+        "maximumDepth": 0
+      }
+    },
+    "normalFreshAmbientCars": true,
+    "excluded": "insideBuildingId; phase riding, boarding, alighting",
+    "otherConditions": "health != 0, absolute ground y difference < 1.5m, centre XZ distance <= 12m"
+  },
+  "methodCases": {
+    "cases": 25,
+    "sourceSha256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+    "contains": "sedan/bus/tram forward, side, rear, oblique/parallel protection; new orthogonal-leg red/green; occupied full-body admission; null/zigzag claim continuity"
+  },
+  "limits": {
+    "firstFilteredRun": "The !a.transit check excluded approach/waiting commuters; do not use its 0 contacts as an all street-resident statement. Superseded by fresh-all-phase scan.",
+    "tramCorner": "The original standalone corner stdout was not saved; exact method is archived. Reported pass is distinct from preserved raw output and from future formal regression results.",
+    "wholeRoute": false,
+    "rendererCreated": false,
+    "webGLRun": false,
+    "AAAOrHardwareAcceptance": false
+  }
+}

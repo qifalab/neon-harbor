@@ -1,0 +1,40 @@
+{
+  "observedAtUtc": "2026-10-04T20:24:21.569459+00:00",
+  "viewer": "root directly viewed both original-resolution image outputs",
+  "status": "visual observation only; native suite still running",
+  "buildManifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "methodSha256": "6bb5b9b574e22b2be5ebec977d3b4f1e56faab64e3ed11d5fb9ef47bc426f714",
+  "images": [
+    {
+      "image": {
+        "file": "normal-cycle3-vice-near-high.png",
+        "bytes": 974199,
+        "sha256": "cb480706ff46c4f08432923361058f465842a3a586a20728dba4bc78ce9f8d51"
+      },
+      "pose": {
+        "file": "normal-cycle3-vice-near-pose.json",
+        "bytes": 3473680,
+        "sha256": "47fdfe50742bdf1d9b481d8821608f02e6f49427892579f16c4ac01475f2daba"
+      }
+    },
+    {
+      "image": {
+        "file": "normal-cycle3-chest-near-high.png",
+        "bytes": 1061857,
+        "sha256": "737b98e28a2de65b5e931a7b7c7de883f7bf0bedb69a3d2a3e445982471b12d1"
+      },
+      "pose": {
+        "file": "normal-cycle3-chest-near-pose.json",
+        "bytes": 3485370,
+        "sha256": "26dec8393c2fda9cbbdb80567ff7208a5211d048db36757b2b9a1b34bd6d090d"
+      }
+    }
+  ],
+  "findings": [
+    "Tool chest has readable open lid, drawer bars, handles and irregular paint wear. Its shape/material detail is substantially richer than adjacent primitive crates and wall-mounted tool silhouettes.",
+    "Vice is recognizably a real shaped mesh but remains small and dark in this camera frame. This image is insufficient for close material acceptance; the separately reviewed physical 1.28 m eye-distance capture is still unexecuted.",
+    "Worktable, wooden crate, tool-board shapes and large sparse room retain a simplified procedural appearance. Exterior towers have repetitive flat window grids, sparse trees and road surfaces. Neither these two actual GLBs nor ownership checks establish a high-quality complete harbour sample or AAA quality."
+  ],
+  "pixelManipulation": false,
+  "hardwareFpsOrDriverVramAcceptance": false
+}

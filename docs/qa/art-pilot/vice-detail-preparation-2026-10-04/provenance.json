@@ -1,0 +1,86 @@
+{
+  "preparedAtUtc": "2026-10-04T20:15:53.477230+00:00",
+  "status": "STATIC_PREPARATION_ONLY_NOT_NATIVE_PASS",
+  "nodeCheck": {
+    "command": [
+      "node",
+      "--check",
+      "tools/capture-workshop-vice-detail.mjs"
+    ],
+    "exitCode": 0,
+    "stdout": "node-check.stdout.txt",
+    "stderr": "node-check.stderr.txt"
+  },
+  "browserStarted": false,
+  "serverStarted": false,
+  "gpuUsed": false,
+  "methodSha256": "f147a2d783628e016b37f9ce48103901dada4e65e08759e1ede45f686ed5a993",
+  "copies": [
+    {
+      "originalPath": "/workspace/scratch/neon-harbor-art-pilot/tools/capture-workshop-vice-detail.mjs",
+      "copy": "frozen-method/tools/capture-workshop-vice-detail.mjs",
+      "bytes": 23960,
+      "sha256": "f147a2d783628e016b37f9ce48103901dada4e65e08759e1ede45f686ed5a993"
+    },
+    {
+      "originalPath": "/workspace/scratch/neon-harbor-art-pilot/tools/capture-workshop-pilot.mjs",
+      "copy": "frozen-method/tools/capture-workshop-pilot.mjs",
+      "bytes": 35572,
+      "sha256": "6bb5b9b574e22b2be5ebec977d3b4f1e56faab64e3ed11d5fb9ef47bc426f714"
+    },
+    {
+      "originalPath": "/workspace/scratch/neon-harbor-art-pilot/tools/server.mjs",
+      "copy": "frozen-method/tools/server.mjs",
+      "bytes": 4529,
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+    },
+    {
+      "originalPath": "/workspace/scratch/neon-harbor-art-pilot/tools/workshop-review-helpers/walking.js",
+      "copy": "frozen-method/tools/workshop-review-helpers/walking.js",
+      "bytes": 7277,
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+    },
+    {
+      "originalPath": "/workspace/scratch/neon-harbor-art-pilot/tools/workshop-review-helpers/occupied.js",
+      "copy": "frozen-method/tools/workshop-review-helpers/occupied.js",
+      "bytes": 5371,
+      "sha256": "7698eb877fcaf3f4a60136beb4a0a00a4310985f20437939ce99b9ecd1047bed"
+    },
+    {
+      "originalPath": "/tmp/neon-workshop-vice-close-pose-preparation.json",
+      "copy": "independent-pose/neon-workshop-vice-close-pose-preparation.json",
+      "bytes": 12291,
+      "sha256": "3f7c2c2caedc3d400772b45006a3a96abab7910c32e3fae2e82bcaa419972d04"
+    },
+    {
+      "originalPath": "/tmp/neon-workshop-vice-close-pose-probe.log",
+      "copy": "independent-pose/neon-workshop-vice-close-pose-probe.log",
+      "bytes": 1446,
+      "sha256": "c65a65712a5cf4c669738be8cca751b32d377f3e10fbb8f08d2032a9b4fdfa48"
+    },
+    {
+      "originalPath": "/tmp/neon-workshop-vice-close-pose-probe.mjs",
+      "copy": "independent-pose/neon-workshop-vice-close-pose-probe.mjs",
+      "bytes": 4732,
+      "sha256": "d7c7e6dae46ce82898dadc4c6be8668e5cd5a547352d6ba69b97952ea9202f95"
+    },
+    {
+      "originalPath": "/tmp/neon-workshop-vice-close-pose-review.md",
+      "copy": "independent-pose/neon-workshop-vice-close-pose-review.md",
+      "bytes": 3192,
+      "sha256": "fbc04d9ebf535891c66e6072791053e4635de72b1313fd6dbd83ed7c84aa7637"
+    },
+    {
+      "originalPath": "/tmp/neon-workshop-vice-close-pose.json",
+      "copy": "independent-pose/neon-workshop-vice-close-pose.json",
+      "bytes": 11662,
+      "sha256": "b27ec651ae48abbdc5a7d1c5aee803b5bde9611e194eff51356f50a6adf18e7d"
+    },
+    {
+      "originalPath": "/tmp/neon-workshop-vice-detail-f147-review.md",
+      "copy": "independent-review/neon-workshop-vice-detail-f147-review.md",
+      "bytes": 3292,
+      "sha256": "a1e8a8da41877ea92135e3ca20c4439c8f8144d49b0419ae47a07721ea666c63"
+    }
+  ]
+}

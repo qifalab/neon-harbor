@@ -1,0 +1,79 @@
+{
+  "kind": "Independent read-only final budget text reversal, 8-file ledger and scalar arithmetic; no tests/mocks/browser/GPU/build",
+  "parent": {
+    "file": "/tmp/neon-harbor-tour-budget-240m-2400s-2026-10-04T19-45/capture-harbor-tour.mjs",
+    "bytes": 60118,
+    "sha256": "7c1d299a91dfb738270f4d8a783dd39f67b7c9acbc381f50522dca1f78b8d802"
+  },
+  "candidate": {
+    "file": "/tmp/neon-harbor-tour-scheduled-2400-final-review-2026-10-04T20-08/capture-harbor-tour.mjs",
+    "bytes": 60171,
+    "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+  },
+  "reverseTwoCapsAndCommentRecoversParentBytes": true,
+  "executableChanges": 2,
+  "ledger": {
+    "file": "/tmp/neon-harbor-tour-scheduled-2400-final-review-2026-10-04T20-08/artifact-ledger.json",
+    "bytes": 1414,
+    "sha256": "19ea2205c92dd9a73dd3643fcc9104831622c4f4ebbd9fb9d9daf5e6ddbc5d6c"
+  },
+  "ledgerChecks": [
+    {
+      "file": "REVIEW.md",
+      "bytes": 3163,
+      "sha256": "deceae92cd186ddd0edf9e2cde7473a8044350c56817f0f99d053eb8bbb06a94",
+      "exact": true
+    },
+    {
+      "file": "capture-harbor-tour.mjs",
+      "bytes": 60171,
+      "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+      "exact": true
+    },
+    {
+      "file": "final-freeze-run-closure-checklist.md",
+      "bytes": 6523,
+      "sha256": "c5202b986c506d8bb7f1c73574bdbf105fddbbc465a043d9dc5a30e2882c7eed",
+      "exact": true
+    },
+    {
+      "file": "method.patch",
+      "bytes": 2647,
+      "sha256": "8f62f77f370b7375e5bb874bc202538acaa8f182d54b9ca62765047b5b2c3b30",
+      "exact": true
+    },
+    {
+      "file": "preservation-check.json",
+      "bytes": 1137,
+      "sha256": "362580114e65a602e6aa6888bda55eefa889c195c30fd5a0014820f7963fb0f8",
+      "exact": true
+    },
+    {
+      "file": "reviewed-parent-7c.mjs",
+      "bytes": 60118,
+      "sha256": "7c1d299a91dfb738270f4d8a783dd39f67b7c9acbc381f50522dca1f78b8d802",
+      "exact": true
+    },
+    {
+      "file": "scope-check.json",
+      "bytes": 3384,
+      "sha256": "140e335f54ef1006f08203abfbcfee159b109f052d07bb8c9859f2817fd3e565",
+      "exact": true
+    },
+    {
+      "file": "validation.json",
+      "bytes": 503,
+      "sha256": "f516fd73a8cd8e77ad6ed62a716750751e7dba6a5fb23fd6992388eb7729649a",
+      "exact": true
+    }
+  ],
+  "nominalTwoFleetBoardingWallSeconds": 1793.790501097977,
+  "nominalTwoFleetTimes1_2": 2152.5486013175723,
+  "capturedPhaseBoardingWallSeconds": 1950.354798683135,
+  "capturedPhaseTimes1_2": 2340.4257584197617,
+  "limitation": "Boarding is a two-fleet gap at the requested stop; upper is the own vehicle at any scheduled open stop. These finite conditional envelopes assume measured service ratio .67 and do not prove a future traffic lower bound or performance acceptance.",
+  "upperPredicate": "Selected own vehicle at ANY real scheduled open berth, not only the destination or one complete circuit",
+  "ownVehicleUpperMaximumAnyBerthInvalidServiceGap": 49.162130668318085,
+  "ownVehicleUpperMaximumAnyBerthConditionalWallSeconds": 1109.5608635707026,
+  "ownVehicleUpperMaximumAnyBerthTimes1_2": 1331.4730362848431
+}

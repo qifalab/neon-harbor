@@ -1,0 +1,11 @@
+# 方法准备：独立静态通过，非原生结果
+
+最终候选469da79377238d2a8d71077bd0270a1733e24bfa4d79fc9cc3f9d6651c869101，相对原f147精确diff20520a6b23ac86092c2f3acafa642f7cd675a4e81b3de32624be03e48a2ca717。独立scope报告0962463461d184385546a18a85a759ea720d10770570ce2de6ab870cacd81158，immutable reviewed source与provenance均保存。Nodecheck0，CPU诊断四项fixture通过；合法±.18矩形/.65body/221collider proof和原始log/provenance保存。CPU fixture不是首轮实际24samples或浏览器照片。
+
+North计划180.35/.215/−113.32；整个x180.17..180.53/z−113.50..−113.14最小净余量.05m，截图前后真实身体矩形/ground guard。名义eye1.396855733，静态CPU计划范围1.236839221..1.573388702；较宽实际camera观察guard1.18..1.62单独标记，源于前一fixedstep的render presentation插值，不称CPU exact，必须原样记录actual camera。
+
+walking12e原助手不改；每walk仍只调用相同helper一次，用.18；finally保存before/actualAfter或snapshotError/firsterror/effectiveBudget/result，Error.message+stack同时保存，Walking diagnostics原字符串/实际parsed对象保留，诊断IO不替换primary。无恢复、坐标写或隐蔽重试。所有High/FOV/光照/AO/MSAA/20min/asset/GL/退出/cleanupguards保持；不声称已解决原failure截图30秒及browser关闭10秒secondary超时。
+
+原f147真实FAIL178 ledger f3538418852d32ec664d1e393b789ad520b6b2c6565bc624778d3a07a9245bc3、原资源suite201 c4f759b3798010590381c45fa833ebffd13d66a4bf1fdc47498637836a12439b、CPU31192 ledger33ebad117d8057bd6a6f1939b168b15cb6e259e2b15a97b5d9760d1bae76a534保护不变。本准备记录不替代它们，也不是新的PASS照片。
+
+新wrapper ba7c8513784ffd7df8d6e28af8b05e1f3a7fc3a93e3f5b953c504e6738785f65只在ROOT新明确GPU GO之后ONE fresh vice-detail-region-native-2026-10-04运行，结果独立封存。

@@ -1,0 +1,73 @@
+{
+  "reviewedBy": "root",
+  "reviewedOriginalImages": true,
+  "status": "specific repairs visible; full art acceptance incomplete",
+  "manifestSha256": "b9a52d3adf613cac85b6ae9fbe19136712ac66390400c6def41d113e1ae8378b",
+  "gitHead": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+  "localRevision": null,
+  "sourceState": "0330 plus four explicitly hashed runtime module changes",
+  "captures": [
+    {
+      "label": "shop-street",
+      "image": "shop-street-high.png",
+      "sha256": "1e7247e6dacabb19abd08071c9f83d461426773d4396afe00e733b8de671ce1a",
+      "observation": "Root viewed the original native PNG. CJK sign glyphs have normal proportions after matching canvas and physical sign aspect ratios. The view remains procedural, with sparse street detail. The decorative transaction menus now share the actual $6/$4/$7 commodity definitions; the photograph alone does not prove purchase behavior.",
+      "actualTargetDistanceXZ": null
+    },
+    {
+      "label": "shop-dining",
+      "image": "shop-dining-high.png",
+      "sha256": "c44b73ce57de916d2b5b96049746101a9a0483807baee109610493d9eba7d570",
+      "observation": "Root viewed the original native PNG. Tables, teapots, chairs, room opening and street-facing window are visible. Shared furnishings and simple surfaces remain; this is not a fully authored restaurant.",
+      "actualTargetDistanceXZ": null
+    },
+    {
+      "label": "warehouse-workshop-near",
+      "image": "warehouse-workshop-near-high.png",
+      "sha256": "8366b76823a82533c431ff9d81b66a4a786a73cabced357712a23f3421330364",
+      "observation": "Root viewed the original native PNG. The former full wooden desk body is an open frame with thin top, legs, shelf and braces. The lower legs are partly obscured by the shipped HUD. The vice still has a simple primitive silhouette; the wider room remains sparsely dressed.",
+      "actualTargetDistanceXZ": 2.5028919896059234
+    },
+    {
+      "label": "warehouse-archive-near",
+      "image": "warehouse-archive-near-high.png",
+      "sha256": "f168e069a009e041cb54446a328777097951a32070653ff9c81696a204c15942",
+      "observation": "Root viewed the original native PNG. Shelf grain, labelled boxes and window are visible at the measured near distance. Boxes are simple primitives; the close framing does not show the sparse room as a complete authored interior.",
+      "actualTargetDistanceXZ": 2.764906965870861
+    },
+    {
+      "label": "south-office-office",
+      "image": "south-office-office-high.png",
+      "sha256": "fae867f15b176f81f9cb1ba9a4f8ee44b8eb7610665a6bfd1e06fec9225bc555",
+      "observation": "Root viewed the original native PNG. The thin desktop, metal legs and open space under the desk are visible after replacing the solid wooden body. The shared office remains a basic desk, monitor and cabinet layout.",
+      "actualTargetDistanceXZ": null
+    }
+  ],
+  "comparison": {
+    "before": "../../post-checkpoint/native-review/metadata.json",
+    "shopStreetPositionDeltaMetres": 0.18666666666555898,
+    "matched": [
+      "browser version",
+      "High preset",
+      "1280x800 CSS and drawing buffer",
+      "DPR 1",
+      "hour 16.5",
+      "day cycle disabled",
+      "camera FOV 65",
+      "view direction"
+    ],
+    "unmatched": [
+      "player position differs by the recorded delta",
+      "simulation timestamps",
+      "traffic and resident animation frames"
+    ],
+    "pixelExactComparison": false,
+    "warehouseViews": "New near-furniture viewpoints intentionally differ from the old doorway views."
+  },
+  "limitations": [
+    "Static PNGs show no black frame or obvious large occlusion stripe in these five views; they do not establish temporal stability or hardware performance.",
+    "Software-renderer scene counts are observations, not measured desktop FPS.",
+    "East office and day/night harbor were photographed on the earlier 0330 runtime and retain their own hashes.",
+    "Formal vehicle GLB assets, skinned actors, per-room art completion and AAA visual quality remain incomplete."
+  ]
+}

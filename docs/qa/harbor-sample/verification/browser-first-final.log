@@ -1,0 +1,80 @@
+[WebServer] (node:24230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:24242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"stage":"bus-boarded","vehicleId":"harbor-bus-1","stopId":"harbor-bus-courtyard","time":0.24999999999999997,"local":{"x":-0.55,"y":0.44,"z":3.74,"yaw":0}}
+{"stage":"bus-upper-waypoint","target":{"x":0,"z":3.74},"local":{"x":-0.024999999999999627,"y":0.44,"z":3.74,"yaw":1.5707963267948966},"time":2.966666666666661}
+{"stage":"bus-upper-waypoint","target":{"x":0,"z":3.07},"local":{"x":0.00017070402878052973,"y":0.44,"z":3.0654697464451166,"yaw":3.1023202838604655},"time":5.716666666666652}
+{"stage":"bus-upper-waypoint","target":{"x":-0.77,"y":0.44,"z":3.07},"local":{"x":-0.7498171764819653,"y":0.44,"z":3.069703476872655,"yaw":-1.5649142161991978},"time":8.466666666666667}
+{"stage":"bus-upper-waypoint","target":{"x":-0.77,"z":1.06,"y":1.42},"local":{"x":-0.7676416683058184,"y":1.3831460672434177,"z":1.119793625594863,"yaw":3.129005123945704},"time":17.466666666666956}
+{"stage":"bus-upper-waypoint","target":{"x":-0.77,"y":2.4,"z":-0.95},"local":{"x":-0.7667221640876384,"y":2.4,"z":-0.8935688356137539,"yaw":-3.0837454390048147},"time":29.21666666666629}
+{"stage":"bus-upper-waypoint","target":{"x":0,"z":-0.95,"y":2.4},"local":{"x":-0.018740859255090194,"y":2.4,"z":-0.9485591738923982,"yaw":1.6442644500732404},"time":31.966666666666132}
+{"stage":"bus-alighted","destination":"harbor-bus-lantern","time":67.11666666666414,"position":{"x":252.275,"y":-0.03,"z":56.26,"yaw":4.71238898038469}}
+  ✓  1 tests/e2e/harbor-sample.spec.js:136:3 › bus: public boarding, physical upper-deck stairs, travel and lower-door alighting (6.2m)
+{"stage":"tram-boarded","vehicleId":"harbor-tram-1","stopId":"harbor-tram-lantern","time":0.24999999999999997,"local":{"x":-0.55,"y":0.44,"z":-3.45,"yaw":0}}
+{"stage":"tram-upper-waypoint","target":{"x":0,"z":-3.45},"local":{"x":-0.024999999999999627,"y":0.44,"z":-3.45,"yaw":1.5707963267948966},"time":2.249999999999997}
+{"stage":"tram-upper-waypoint","target":{"x":0,"z":-3.52},"local":{"x":-0.0009846384806264693,"y":0.44,"z":-3.5210511253330594,"yaw":2.8156469704478195},"time":2.749999999999995}
+{"stage":"tram-upper-waypoint","target":{"x":-0.69,"y":0.44,"z":-3.52},"local":{"x":-0.6759716480981992,"y":0.44,"z":-3.520062266398976,"yaw":-1.5671807567266485},"time":5.499999999999986}
+{"stage":"tram-upper-waypoint","target":{"x":-0.69,"z":-1.54,"y":1.42},"local":{"x":-0.6897445638129718,"y":1.4010841678362926,"z":-1.5701109165054934,"yaw":-0.0070846557617190165},"time":12.250000000000188}
+{"stage":"tram-upper-waypoint","target":{"x":-0.69,"y":2.4,"z":0.44},"local":{"x":-0.6900292938056285,"y":2.4,"z":0.45488905915069533,"yaw":-0.0001271057128908737},"time":19.25000000000019}
+{"stage":"tram-upper-waypoint","target":{"x":0,"z":0.44,"y":2.4},"local":{"x":-0.015184578474716715,"y":2.4,"z":0.4404129333390848,"yaw":1.5923704234745428},"time":21.750000000000046}
+{"stage":"tram-alighted","destination":"harbor-tram-workshop","time":47.01666666666528,"position":{"x":252.15,"y":-0.03,"z":-36.55,"yaw":4.71238898038469}}
+  ✓  2 tests/e2e/harbor-sample.spec.js:136:3 › tram: public boarding, physical upper-deck stairs, travel and lower-door alighting (3.9m)
+{"stage":"ferry-boarded","vehicleId":"harbor-ferry-1","stopId":"harbor-ferry-south","time":6.249999999999983,"local":{"x":-2.7,"y":1.3,"z":-7.2,"yaw":0}}
+{"stage":"ferry-upper-waypoint","target":{"x":0,"z":-7.2},"local":{"x":-0.03749999999999558,"y":1.3,"z":-7.2,"yaw":1.5707963267948966},"time":10.516666666666769}
+{"stage":"ferry-upper-waypoint","target":{"x":0,"z":5.57},"local":{"x":-0.010008216749742671,"y":1.3,"z":5.511857999336748,"yaw":-0.16951329544305827},"time":20.76666666666677}
+{"stage":"ferry-upper-waypoint","target":{"x":1.78,"y":1.3,"z":5.57},"local":{"x":1.7791521815158888,"y":1.3,"z":5.577377959922611,"yaw":1.583944224677796},"time":32.76666666666609}
+{"stage":"ferry-upper-waypoint","target":{"x":1.78,"z":3.0900000000000003,"y":2.5},"local":{"x":1.7802898464323993,"y":2.4914666024361694,"z":3.1046489991512436,"yaw":-3.1225518676444257},"time":44.26666666666544}
+{"stage":"ferry-upper-waypoint","target":{"x":1.78,"y":3.7,"z":0.6100000000000001},"local":{"x":1.7799277238182312,"y":3.7,"z":0.6296490579203127,"yaw":-3.1414763990985315},"time":52.76666666666495}
+{"stage":"ferry-upper-waypoint","target":{"x":0,"z":0.6100000000000001,"y":3.7},"local":{"x":0.055031488204383916,"y":3.7,"z":0.6107558163877961,"yaw":-1.5842327297963001},"time":55.76666666666478}
+  ✘  3 tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting (10.1m)
+(node:26025) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"stage":"cargo-funded-and-saved","jobId":"harbor-order-1","quantity":8,"escrow":12,"time":0.24999999999999997}
+{"stage":"cargo-delivered-and-saved","jobId":"harbor-order-1","cash":1212,"time":24.749999999999876}
+  ✓  4 tests/e2e/harbor-sample.spec.js:201:1 › funded cargo and a real purchase persist across reload, with physical delivery and the actual High shop room (4.7m)
+
+
+  1) tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting 
+
+    Test timeout of 600000ms exceeded.
+
+    Error: mouse.up: Target page, context or browser has been closed
+
+      174 |         { x: 0, z: stair.bottom.z, y: stair.fromY }, { x: 0, z: door.z, y: stair.fromY }, door.inside])
+      175 |         samples.push(...await walkLocal(page, target, pointer, { precision: kind !== 'ferry' || target.x !== 0 }));
+    > 176 |     } finally { await page.mouse.up(); }
+          |                                  ^
+      177 |     expect((await snapshot(page)).city.sample.transit.passengerDeck).toBe('lower');
+      178 |     await page.waitForFunction(({ id, from }) => {
+      179 |       const v = window.__NEON__.snapshot().city.sample.transit.vehicles.find(v => v.id === id);
+        at /workspace/scratch/neon-harbor/tests/e2e/harbor-sample.spec.js:176:34
+
+    attachment #1: ferry-upper-deck-high (image/png) ───────────────────────────────────────────────
+    test-results/harbor-sample-first-browser/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/attachments/ferry-upper-deck-high-ef95a1503cd51bedd5fc3213227c0d0523364684.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: ferry-upper-deck-high-pose (application/json) ───────────────────────────────────
+    test-results/harbor-sample-first-browser/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/attachments/ferry-upper-deck-high-pose-d3077db13013d7ab54fc75ea72d6b57949b98470.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/harbor-sample-first-browser/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/harbor-sample-first-browser/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/harbor-sample-first-browser/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/harbor-sample-first-browser/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting 
+  3 passed (25.0m)

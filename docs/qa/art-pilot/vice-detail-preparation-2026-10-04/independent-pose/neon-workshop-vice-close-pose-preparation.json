@@ -1,0 +1,487 @@
+{
+  "kind": "Single-address CPU layout/capsule preparation only; no detail capture executed",
+  "poseSource": "/workspace/scratch/neon-harbor-art-pilot/docs/qa/art-pilot/native-validation-owned-release-2026-10-04/normal-cycle0-vice-near-pose.json",
+  "poseSourceSha256": "f41661c05cf3757a377876247485396a6040bd06f151e09e1e1e153003c9f61a",
+  "sourceManifest": null,
+  "capturedBuilding": {
+    "id": "south-086",
+    "x": 200,
+    "z": -113,
+    "width": 42,
+    "depth": 29,
+    "height": 10.162619955604896,
+    "baseY": 0.18,
+    "color": "#89908b",
+    "style": "residential",
+    "name": "\u98ce\u94c315\u53f7\u697c",
+    "englishName": "Old Quarter 86",
+    "district": "south-expansion",
+    "index": 133,
+    "exitOffset": 0.6,
+    "shellId": "south-086",
+    "programmeUse": "warehouse",
+    "compact": true,
+    "entrance": {
+      "x": 200,
+      "z": -95.5,
+      "yaw": -3.141592653589793,
+      "y": 0.18
+    },
+    "floors": [
+      {
+        "id": "lobby",
+        "y": 0.215,
+        "level": 1,
+        "label": "1F \u00b7 \u6e2f\u53e3\u5de5\u574a\u5c42",
+        "type": "gallery",
+        "stairs": true
+      },
+      {
+        "id": "observation",
+        "y": 6.177619955604896,
+        "level": 2,
+        "label": "2F \u00b7 \u6d77\u6e7e\u89c2\u666f\u5c42",
+        "type": "observation",
+        "stairs": true
+      }
+    ],
+    "description": "\u65e7\u57ce\u7d27\u51d1\u697c\u5b87\uff0c\u4e2d\u592e\u901a\u8def\u8fde\u63a5\u4e24\u95f4\u6309\u697c\u5b87\u7528\u9014\u914d\u7f6e\u7684\u623f\u95f4\u3001\u5b9e\u4f53\u697c\u68af\u548c\u540e\u90e8\u7535\u68af\u3002",
+    "entryPortal": {
+      "x": 200,
+      "z": -98.42,
+      "y": 0.18,
+      "yaw": 0
+    },
+    "exitPosition": {
+      "x": 200,
+      "z": -94.9,
+      "yaw": 0
+    }
+  },
+  "activeFloors": [
+    "lobby",
+    "observation"
+  ],
+  "colliderCount": 221,
+  "bodyHeight": 1.8,
+  "actualPlayerRadius": 0.65,
+  "layoutEntrance": {
+    "x": 200,
+    "z": -100.1,
+    "yaw": 3.141592653589793
+  },
+  "room": {
+    "id": "south-086-lobby-0",
+    "type": "workshop",
+    "name": "\u6e2f\u53e3\u4fee\u7f2e\u5de5\u574a 101",
+    "furnishingVariant": 3,
+    "x": 189.175,
+    "z": -115,
+    "width": 19.049999999999997,
+    "depth": 10.500000000000004,
+    "ceilingHeight": 2.98,
+    "enclosed": true,
+    "entrance": {
+      "x": 198.7,
+      "z": -115
+    },
+    "arrival": {
+      "x": 197.8,
+      "z": -115
+    },
+    "bounds": {
+      "minX": 179.65,
+      "maxX": 198.7,
+      "minZ": -120.25,
+      "maxZ": -109.75
+    }
+  },
+  "workbench": {
+    "id": "south-086:lobby:266",
+    "material": "walnut",
+    "x": 180.9,
+    "y": 1.095,
+    "z": -114.58000000000001,
+    "sx": 1.75,
+    "sy": 0.04,
+    "sz": 0.76,
+    "kind": "workbench",
+    "geometry": "box",
+    "roomId": "south-086-lobby-0"
+  },
+  "proposed": {
+    "x": 180.35,
+    "z": -113.45,
+    "y": 0.215
+  },
+  "eye": {
+    "x": 180.35,
+    "y": 1.8350000000000002,
+    "z": -113.45
+  },
+  "target": {
+    "x": 180.3666335030891,
+    "y": 1.2319882243904074,
+    "z": -114.57988335371019
+  },
+  "horizontalDistance": 1.1300057815853815,
+  "eyeDistance": 1.2808342078271577,
+  "ordinaryCameraDragAim": {
+    "yaw": 3.1268722830461946,
+    "pitch": 0.7128940978709041,
+    "fov": 65
+  },
+  "waypoints": [
+    {
+      "x": 200,
+      "z": -100.1,
+      "yaw": 3.141592653589793,
+      "y": 0.215
+    },
+    {
+      "x": 200,
+      "z": -115,
+      "y": 0.215
+    },
+    {
+      "x": 197.8,
+      "z": -115,
+      "y": 0.215
+    },
+    {
+      "x": 182.8,
+      "z": -115,
+      "y": 0.215
+    },
+    {
+      "x": 182.8,
+      "z": -113.45,
+      "y": 0.215
+    },
+    {
+      "x": 180.35,
+      "z": -113.45,
+      "y": 0.215
+    }
+  ],
+  "routes": [
+    {
+      "radius": 0.65,
+      "segments": [
+        {
+          "from": {
+            "x": 200,
+            "z": -100.1,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 200,
+            "z": -115,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 200,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 7.105427357601002e-14
+        },
+        {
+          "from": {
+            "x": 200,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 197.8,
+            "z": -115,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 197.79999999999987,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 1.5888218580782548e-13
+        },
+        {
+          "from": {
+            "x": 197.79999999999987,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 182.8,
+            "z": -115,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 182.8000000000009,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 8.839334407232391e-13
+        },
+        {
+          "from": {
+            "x": 182.8000000000009,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 182.8,
+            "z": -113.45,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 182.80000000000013,
+            "z": -113.44999999999997,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 1.1718571004216928e-13
+        },
+        {
+          "from": {
+            "x": 182.80000000000013,
+            "z": -113.44999999999997,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 180.35,
+            "z": -113.45,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 180.34999999999997,
+            "z": -113.44999999999997,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 4.0194366942304644e-14
+        }
+      ],
+      "reachable": true,
+      "endpointContacts": []
+    },
+    {
+      "radius": 0.43,
+      "segments": [
+        {
+          "from": {
+            "x": 200,
+            "z": -100.1,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 200,
+            "z": -115,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 200,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 7.105427357601002e-14
+        },
+        {
+          "from": {
+            "x": 200,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 197.8,
+            "z": -115,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 197.79999999999987,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 1.5888218580782548e-13
+        },
+        {
+          "from": {
+            "x": 197.79999999999987,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 182.8,
+            "z": -115,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 182.8000000000009,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 8.839334407232391e-13
+        },
+        {
+          "from": {
+            "x": 182.8000000000009,
+            "z": -114.99999999999993,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 182.8,
+            "z": -113.45,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 182.80000000000013,
+            "z": -113.44999999999997,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 1.1718571004216928e-13
+        },
+        {
+          "from": {
+            "x": 182.80000000000013,
+            "z": -113.44999999999997,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "to": {
+            "x": 180.35,
+            "z": -113.45,
+            "y": 0.215
+          },
+          "actualEnd": {
+            "x": 180.34999999999997,
+            "z": -113.44999999999997,
+            "yaw": 3.141592653589793,
+            "y": 0.215,
+            "groundY": 0.215
+          },
+          "contactIds": [],
+          "endpointError": 4.0194366942304644e-14
+        }
+      ],
+      "reachable": true,
+      "endpointContacts": []
+    }
+  ],
+  "nearest": [
+    {
+      "id": "south-086:lobby:266",
+      "kind": "interior-workbench",
+      "clearance": 0.10000000000000964,
+      "bounds": {
+        "minX": 180.025,
+        "maxX": 181.775,
+        "minZ": -114.96000000000001,
+        "maxZ": -114.20000000000002,
+        "minY": 1.075,
+        "maxY": 1.115
+      }
+    },
+    {
+      "id": "south-086:lobby:6",
+      "kind": "interior-wall",
+      "clearance": 0.22999999999999998,
+      "bounds": {
+        "minX": 179.23,
+        "maxX": 179.47,
+        "minZ": -127.15,
+        "maxZ": -98.85,
+        "minY": 0.21499999999999997,
+        "maxY": 1.1749999999999998
+      }
+    },
+    {
+      "id": "south-086:lobby:7",
+      "kind": "interior-window",
+      "clearance": 0.29999999999999993,
+      "bounds": {
+        "minX": 179.29999999999998,
+        "maxX": 179.4,
+        "minZ": -127,
+        "maxZ": -99,
+        "minY": 1.175,
+        "maxY": 2.7750000000000004
+      }
+    },
+    {
+      "id": "south-086:lobby:261",
+      "kind": "interior-partition",
+      "clearance": 2.970000000000003,
+      "bounds": {
+        "minX": 179.65,
+        "maxX": 198.70000000000002,
+        "minZ": -109.83,
+        "maxZ": -109.67,
+        "minY": 0.21500000000000008,
+        "maxY": 3.1950000000000003
+      }
+    },
+    {
+      "id": "south-086:lobby:290",
+      "kind": "interior-partition",
+      "clearance": 2.970000000000003,
+      "bounds": {
+        "minX": 179.65,
+        "maxX": 198.70000000000002,
+        "minZ": -109.83,
+        "maxZ": -109.67,
+        "minY": 0.21500000000000008,
+        "maxY": 3.1950000000000003
+      }
+    }
+  ],
+  "recommendation": "Use real E entry then these cardinal WASD/Z legs; keep position tolerance <=0.04m for the final two legs and verify actual snapshot. Camera aim numbers are targets for ordinary pointer drags, not debug writes.",
+  "oldCaptureHorizontalDistance": 2.4739439622542805,
+  "oldCaptureEyeDistance": 2.5463742713706172,
+  "elapsedMilliseconds": 80.08901,
+  "orientationDerivation": "Corrected by scalar arithmetic after the single geometry read to match existing aim(page,target): divide by actual horizontal eye-target distance, not the camera target ray length 10. No second layout read or gameplay was run.",
+  "sourceGeometryProbeSha256": "d7c7e6dae46ce82898dadc4c6be8668e5cd5a547352d6ba69b97952ea9202f95",
+  "sourceGeometryLogSha256": "c65a65712a5cf4c669738be8cca751b32d377f3e10fbb8f08d2032a9b4fdfa48"
+}

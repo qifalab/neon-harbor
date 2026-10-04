@@ -1,0 +1,19 @@
+{
+  "schema": "neon-harbor-cabin-ride-v1",
+  "status": "failed",
+  "label": "derived-mock-early-focus",
+  "from": "mock-south",
+  "to": "mock-north",
+  "vehicleId": null,
+  "attemptedAt": "2026-10-04T19:16:37.217Z",
+  "rideStage": "boarding-setup",
+  "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "manifestSha256": "DERIVED_MOCK_MANIFEST",
+  "endedAt": "2026-10-04T19:16:37.217Z",
+  "segments": [],
+  "cleanupErrors": [],
+  "error": {
+    "message": "MOCK_PRIMARY:early-focus",
+    "stack": "Error: MOCK_PRIMARY:early-focus\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+  }
+}

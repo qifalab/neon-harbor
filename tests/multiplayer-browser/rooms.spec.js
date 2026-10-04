@@ -3,6 +3,11 @@ import { writeFile } from 'node:fs/promises';
 import { snapshot } from '../e2e/helpers/walking.js';
 import { chooseStorey } from '../e2e/helpers/occupied.js';
 
+// These tests own two independent browser processes and retain each context's
+// actual trace themselves. Disable the fixture's automatic tracing so it does
+// not start a second recorder on the manually created contexts.
+test.use({ trace: 'off' });
+
 const motionEvidence = page => page.evaluate(() => {
   const state = window.__NEON__?.snapshot();
   if (!state) return { ready: false };

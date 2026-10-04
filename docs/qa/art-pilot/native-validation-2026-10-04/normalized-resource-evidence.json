@@ -1,0 +1,1791 @@
+{
+  "status": "FAILED",
+  "nativeExitCode": 1,
+  "baseline": {
+    "geometries": 580,
+    "textures": 118
+  },
+  "memory": [
+    {
+      "label": "warm-outside-baseline",
+      "samples": [
+        {
+          "at": "2026-10-04T19:14:49.211Z",
+          "memory": {
+            "geometries": 519,
+            "textures": 98
+          },
+          "programs": 57,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.34999999999882,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:14:56.416Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.34999999999882,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:14:57.886Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.59999999999881,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:14:59.367Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.84999999999879,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:15:00.848Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.84999999999879,
+          "pendingChunks": 0
+        }
+      ],
+      "stableMemory": {
+        "geometries": 580,
+        "textures": 118
+      }
+    },
+    {
+      "label": "actual-E-exit-reentry-cycle-1",
+      "samples": [
+        {
+          "at": "2026-10-04T19:22:23.284Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 59,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 78.83333333333015,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:22:29.043Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 78.83333333333015,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:22:30.663Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 79.33333333333012,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:22:32.144Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 79.33333333333012,
+          "pendingChunks": 0
+        }
+      ],
+      "stableMemory": {
+        "geometries": 615,
+        "textures": 118
+      }
+    }
+  ],
+  "eventTimeline": [
+    {
+      "kind": "independent-public-Atlas-location-setup",
+      "at": "2026-10-04T19:06:06.523Z",
+      "simulationTime": 0.8000000000000008,
+      "position": {
+        "x": 200,
+        "y": 0.18,
+        "z": -95.5,
+        "yaw": -3.141592653589793
+      },
+      "camera": {
+        "position": {
+          "x": 200,
+          "y": 1.8,
+          "z": -95.5
+        },
+        "target": {
+          "x": 200,
+          "y": 1.8,
+          "z": -105.5
+        },
+        "focus": {
+          "x": 200,
+          "y": 1.8,
+          "z": -95.5
+        },
+        "yaw": -3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 474,
+        "textures": 88
+      },
+      "buildingId": null
+    },
+    {
+      "kind": "real-E-entry",
+      "at": "2026-10-04T19:06:07.089Z",
+      "simulationTime": 0.8000000000000008,
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "camera": null,
+      "memory": {
+        "geometries": 473,
+        "textures": 87
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:06:11.179Z",
+      "simulationTime": 0.8166666666666675,
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "position": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -100.1
+        },
+        "target": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -110.1
+        },
+        "focus": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -100.1
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 479,
+        "textures": 99
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:06:53.056Z",
+      "simulationTime": 4.216666666666657,
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "position": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -114.8199733333335
+        },
+        "target": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -124.8199733333335
+        },
+        "focus": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -114.8199733333335
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 491,
+        "textures": 103
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:07:27.685Z",
+      "simulationTime": 6.966666666666647,
+      "position": {
+        "x": 197.800000000002,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": -1.5707963267948968
+      },
+      "camera": {
+        "position": {
+          "x": 197.80002666666866,
+          "y": 1.8350000000000002,
+          "z": -114.82000000000016
+        },
+        "target": {
+          "x": 197.80002666666866,
+          "y": 1.8350000000000002,
+          "z": -124.82000000000016
+        },
+        "focus": {
+          "x": 197.80002666666866,
+          "y": 1.8350000000000002,
+          "z": -114.82000000000016
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 491,
+        "textures": 103
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-real-room-door-entry",
+      "at": "2026-10-04T19:07:29.083Z",
+      "simulationTime": 6.966666666666647,
+      "position": {
+        "x": 197.800000000002,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": -1.5707963267948968
+      },
+      "camera": {
+        "position": {
+          "x": 197.80002666666866,
+          "y": 1.8350000000000002,
+          "z": -114.82000000000016
+        },
+        "target": {
+          "x": 197.80002666666866,
+          "y": 1.8350000000000002,
+          "z": -124.82000000000016
+        },
+        "focus": {
+          "x": 197.80002666666866,
+          "y": 1.8350000000000002,
+          "z": -114.82000000000016
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 491,
+        "textures": 103
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:08:11.520Z",
+      "simulationTime": 10.233333333333421,
+      "position": {
+        "x": 182.7866666666691,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": -1.5707963267948968
+      },
+      "camera": {
+        "position": {
+          "x": 182.78674666666913,
+          "y": 1.8350000000000002,
+          "z": -114.82000000000016
+        },
+        "target": {
+          "x": 182.78674666666913,
+          "y": 1.8350000000000002,
+          "z": -124.82000000000016
+        },
+        "focus": {
+          "x": 182.78674666666913,
+          "y": 1.8350000000000002,
+          "z": -114.82000000000016
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 491,
+        "textures": 105
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:08:13.245Z",
+      "simulationTime": 10.483333333333434,
+      "position": {
+        "x": 182.7866666666691,
+        "y": 0.215,
+        "z": -114.62000000000013,
+        "yaw": -1.2246467991473532e-16
+      },
+      "camera": {
+        "position": {
+          "x": 182.7866666666691,
+          "y": 1.8350000000000002,
+          "z": -114.62008000000016
+        },
+        "target": {
+          "x": 182.7866666666691,
+          "y": 1.8350000000000002,
+          "z": -124.62008000000016
+        },
+        "focus": {
+          "x": 182.7866666666691,
+          "y": 1.8350000000000002,
+          "z": -114.62008000000016
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 491,
+        "textures": 105
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:10:17.632Z",
+      "simulationTime": 21.11666666666675,
+      "position": {
+        "x": 182.78659067321672,
+        "y": 0.215,
+        "z": -117.61999998723407,
+        "yaw": -3.141592336142978
+      },
+      "camera": {
+        "position": {
+          "x": 182.78659067744087,
+          "y": 1.8350000000000002,
+          "z": -117.60669332056739
+        },
+        "target": {
+          "x": 182.7865875029727,
+          "y": -0.6564081990340662,
+          "z": -127.60669332056688
+        },
+        "focus": {
+          "x": 182.78659067744087,
+          "y": 1.8350000000000002,
+          "z": -117.60669332056739
+        },
+        "yaw": 3.1415929710366086,
+        "pitch": 0.40179299926757817,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:10:41.211Z",
+      "simulationTime": 23.116666666666635,
+      "position": {
+        "x": 181.18659067321818,
+        "y": 0.215,
+        "z": -117.61999947931993,
+        "yaw": -1.5707960093480813
+      },
+      "camera": {
+        "position": {
+          "x": 181.19989733988484,
+          "y": 1.8350000000000002,
+          "z": -117.61999948354408
+        },
+        "target": {
+          "x": 181.19989416541668,
+          "y": -0.6564081990340662,
+          "z": -127.61999948354358
+        },
+        "focus": {
+          "x": 181.19989733988484,
+          "y": 1.8350000000000002,
+          "z": -117.61999948354408
+        },
+        "yaw": 3.1415929710366086,
+        "pitch": 0.40179299926757817,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "actual-11mesh-6texture-near-verification",
+      "at": "2026-10-04T19:11:51.340Z",
+      "simulationTime": 28.499999999999662,
+      "position": {
+        "x": 181.18659067321818,
+        "y": 0.215,
+        "z": -117.61999947931993,
+        "yaw": -1.5707960093480813
+      },
+      "camera": {
+        "position": {
+          "x": 181.18659067321818,
+          "y": 1.8350000000000002,
+          "z": -117.61999947931993
+        },
+        "target": {
+          "x": 177.58047342660575,
+          "y": -1.338416262025152,
+          "z": -126.94715973331388
+        },
+        "focus": {
+          "x": 181.18659067321818,
+          "y": 1.8350000000000002,
+          "z": -117.61999947931993
+        },
+        "yaw": 3.510516317004356,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:12:25.064Z",
+      "simulationTime": 31.249999999999506,
+      "position": {
+        "x": 182.7865905893218,
+        "y": 0.215,
+        "z": -117.62019247376766,
+        "yaw": 1.5707966503664026
+      },
+      "camera": {
+        "position": {
+          "x": 182.77325725598848,
+          "y": 1.8350000000000002,
+          "z": -117.62019246945337
+        },
+        "target": {
+          "x": 182.77325402028,
+          "y": -1.338416262025152,
+          "z": -127.62019246945285
+        },
+        "focus": {
+          "x": 182.77325725598848,
+          "y": 1.8350000000000002,
+          "z": -117.62019246945337
+        },
+        "yaw": 3.1415929771606406,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:13:01.007Z",
+      "simulationTime": 34.616666666665985,
+      "position": {
+        "x": 182.78659142629084,
+        "y": 0.215,
+        "z": -115.03352580710059,
+        "yaw": 3.235708126877386e-07
+      },
+      "camera": {
+        "position": {
+          "x": 182.78659142625634,
+          "y": 1.8350000000000002,
+          "z": -115.0336324737672
+        },
+        "target": {
+          "x": 182.7865881905482,
+          "y": -1.338416262025152,
+          "z": -125.03363247376667
+        },
+        "focus": {
+          "x": 182.78659142625634,
+          "y": 1.8350000000000002,
+          "z": -115.0336324737672
+        },
+        "yaw": 3.141592977160606,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:14:00.091Z",
+      "simulationTime": 39.73333333333236,
+      "position": {
+        "x": 199.98659142628927,
+        "y": 0.215,
+        "z": -115.03353137251794,
+        "yaw": 1.5707966503657094
+      },
+      "camera": {
+        "position": {
+          "x": 199.98643142628936,
+          "y": 1.8350000000000002,
+          "z": -115.03353137246617
+        },
+        "target": {
+          "x": 199.98642819058122,
+          "y": -1.338416262025152,
+          "z": -125.03353137246565
+        },
+        "focus": {
+          "x": 199.98643142628936,
+          "y": 1.8350000000000002,
+          "z": -115.03353137246617
+        },
+        "yaw": 3.141592977160606,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 530,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:14:46.740Z",
+      "simulationTime": 43.34999999999882,
+      "position": {
+        "x": 199.9865962453369,
+        "y": 0.215,
+        "z": -100.14019803918441,
+        "yaw": 3.235708126877386e-07
+      },
+      "camera": {
+        "position": {
+          "x": 199.98659624526786,
+          "y": 1.8350000000000002,
+          "z": -100.14041137251768
+        },
+        "target": {
+          "x": 199.98659300955973,
+          "y": -1.338416262025152,
+          "z": -110.14041137251715
+        },
+        "focus": {
+          "x": 199.98659624526786,
+          "y": 1.8350000000000002,
+          "z": -100.14041137251768
+        },
+        "yaw": 3.141592977160606,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 530,
+        "textures": 115
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "real-E-street-exit",
+      "at": "2026-10-04T19:14:47.462Z",
+      "simulationTime": 43.34999999999882,
+      "position": {
+        "x": 200,
+        "y": 0.18,
+        "z": -94.9,
+        "yaw": 0
+      },
+      "camera": null,
+      "memory": {
+        "geometries": 519,
+        "textures": 98
+      },
+      "buildingId": null
+    },
+    {
+      "kind": "real-E-entry",
+      "at": "2026-10-04T19:15:21.546Z",
+      "simulationTime": 44.84999999999874,
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "camera": null,
+      "memory": {
+        "geometries": 580,
+        "textures": 118
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:15:25.417Z",
+      "simulationTime": 44.8666666666654,
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "position": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -100.1
+        },
+        "target": {
+          "x": 200,
+          "y": -1.338416262025152,
+          "z": -110.1
+        },
+        "focus": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -100.1
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 580,
+        "textures": 126
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:15:57.148Z",
+      "simulationTime": 48.34999999999854,
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "position": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -114.88661333333349
+        },
+        "target": {
+          "x": 200,
+          "y": -1.338416262025152,
+          "z": -124.88661333333349
+        },
+        "focus": {
+          "x": 200,
+          "y": 1.8350000000000002,
+          "z": -114.88661333333349
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 129
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:16:25.080Z",
+      "simulationTime": 51.049999999998384,
+      "position": {
+        "x": 197.84000000000196,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": -1.5707963267948968
+      },
+      "camera": {
+        "position": {
+          "x": 197.8400533333353,
+          "y": 1.8350000000000002,
+          "z": -114.88666666666684
+        },
+        "target": {
+          "x": 197.8400533333353,
+          "y": -1.338416262025152,
+          "z": -124.88666666666684
+        },
+        "focus": {
+          "x": 197.8400533333353,
+          "y": 1.8350000000000002,
+          "z": -114.88666666666684
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 129
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-real-room-door-entry",
+      "at": "2026-10-04T19:16:26.012Z",
+      "simulationTime": 51.049999999998384,
+      "position": {
+        "x": 197.84000000000196,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": -1.5707963267948968
+      },
+      "camera": {
+        "position": {
+          "x": 197.8400533333353,
+          "y": 1.8350000000000002,
+          "z": -114.88666666666684
+        },
+        "target": {
+          "x": 197.8400533333353,
+          "y": -1.338416262025152,
+          "z": -124.88666666666684
+        },
+        "focus": {
+          "x": 197.8400533333353,
+          "y": 1.8350000000000002,
+          "z": -114.88666666666684
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 129
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:17:13.318Z",
+      "simulationTime": 55.016666666664825,
+      "position": {
+        "x": 182.82666666666967,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": -1.5707963267948968
+      },
+      "camera": {
+        "position": {
+          "x": 182.8266933333363,
+          "y": 1.8350000000000002,
+          "z": -114.88666666666684
+        },
+        "target": {
+          "x": 182.8266933333363,
+          "y": -1.338416262025152,
+          "z": -124.88666666666684
+        },
+        "focus": {
+          "x": 182.8266933333363,
+          "y": 1.8350000000000002,
+          "z": -114.88666666666684
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 131
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:17:16.644Z",
+      "simulationTime": 55.26666666666481,
+      "position": {
+        "x": 182.82666666666967,
+        "y": 0.215,
+        "z": -114.68666666666681,
+        "yaw": -1.2246467991473532e-16
+      },
+      "camera": {
+        "position": {
+          "x": 182.82666666666967,
+          "y": 1.8350000000000002,
+          "z": -114.68669333333344
+        },
+        "target": {
+          "x": 182.82666666666967,
+          "y": -1.338416262025152,
+          "z": -124.68669333333344
+        },
+        "focus": {
+          "x": 182.82666666666967,
+          "y": 1.8350000000000002,
+          "z": -114.68669333333344
+        },
+        "yaw": 3.141592653589793,
+        "pitch": 0.4729248962402344,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 131
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:18:40.078Z",
+      "simulationTime": 61.2999999999978,
+      "position": {
+        "x": 182.82646248779042,
+        "y": 0.215,
+        "z": -117.60666656925096,
+        "yaw": -3.141592500698665
+      },
+      "camera": {
+        "position": {
+          "x": 182.82646248779858,
+          "y": 1.8350000000000002,
+          "z": -117.6066132359177
+        },
+        "target": {
+          "x": 182.82646095888728,
+          "y": -0.6139280936664229,
+          "z": -127.60661323591759
+        },
+        "focus": {
+          "x": 182.82646248779858,
+          "y": 1.8350000000000002,
+          "z": -117.6066132359177
+        },
+        "yaw": 3.1415928064809218,
+        "pitch": 0.39740913391113286,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:19:04.449Z",
+      "simulationTime": 63.16666666666436,
+      "position": {
+        "x": 181.33312915445845,
+        "y": 0.215,
+        "z": -117.60666634093369,
+        "yaw": -1.5707961739037681
+      },
+      "camera": {
+        "position": {
+          "x": 181.33315582112508,
+          "y": 1.8350000000000002,
+          "z": -117.60666634093776
+        },
+        "target": {
+          "x": 181.33315429221378,
+          "y": -0.6139280936664229,
+          "z": -127.60666634093765
+        },
+        "focus": {
+          "x": 181.33315582112508,
+          "y": 1.8350000000000002,
+          "z": -117.60666634093776
+        },
+        "yaw": 3.1415928064809218,
+        "pitch": 0.39740913391113286,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "actual-11mesh-6texture-near-verification",
+      "at": "2026-10-04T19:19:23.986Z",
+      "simulationTime": 64.4166666666643,
+      "position": {
+        "x": 181.33312915445845,
+        "y": 0.215,
+        "z": -117.60666634093369,
+        "yaw": -1.5707961739037681
+      },
+      "camera": {
+        "position": {
+          "x": 181.33312915445845,
+          "y": 1.8350000000000002,
+          "z": -117.60666634093369
+        },
+        "target": {
+          "x": 177.14272242429823,
+          "y": -1.2337154997418354,
+          "z": -126.68634097364095
+        },
+        "focus": {
+          "x": 181.33312915445845,
+          "y": 1.8350000000000002,
+          "z": -117.60666634093369
+        },
+        "yaw": 3.573981150359817,
+        "pitch": 0.4619042358398438,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 591,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:19:53.691Z",
+      "simulationTime": 67.08333333333081,
+      "position": {
+        "x": 182.7331290395364,
+        "y": 0.215,
+        "z": -117.60688281943793,
+        "yaw": 1.570796517903553
+      },
+      "camera": {
+        "position": {
+          "x": 182.71984903953654,
+          "y": 1.8350000000000002,
+          "z": -117.6068828169
+        },
+        "target": {
+          "x": 182.71984712847558,
+          "y": -1.2337154997418354,
+          "z": -127.60688281689981
+        },
+        "focus": {
+          "x": 182.71984903953654,
+          "y": 1.8350000000000002,
+          "z": -117.6068828169
+        },
+        "yaw": 3.1415928446958885,
+        "pitch": 0.4619042358398438,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:20:35.959Z",
+      "simulationTime": 70.33333333333063,
+      "position": {
+        "x": 182.73312953641425,
+        "y": 0.215,
+        "z": -115.00688281943752,
+        "yaw": 1.9110596115556169e-07
+      },
+      "camera": {
+        "position": {
+          "x": 182.73312953387637,
+          "y": 1.8350000000000002,
+          "z": -115.02016281943742
+        },
+        "target": {
+          "x": 182.73312762281677,
+          "y": -1.2337154997418354,
+          "z": -125.02016281943723
+        },
+        "focus": {
+          "x": 182.73312953387637,
+          "y": 1.8350000000000002,
+          "z": -115.02016281943742
+        },
+        "yaw": 3.1415928446957544,
+        "pitch": 0.4619042358398438,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:21:41.918Z",
+      "simulationTime": 75.33333333333034,
+      "position": {
+        "x": 199.93312953641268,
+        "y": 0.215,
+        "z": -115.00688610645959,
+        "yaw": 1.5707965179008578
+      },
+      "camera": {
+        "position": {
+          "x": 199.9198495364128,
+          "y": 1.8350000000000002,
+          "z": -115.0068861039217
+        },
+        "target": {
+          "x": 199.9198476253532,
+          "y": -1.2337154997418354,
+          "z": -125.00688610392152
+        },
+        "focus": {
+          "x": 199.9198495364128,
+          "y": 1.8350000000000002,
+          "z": -115.0068861039217
+        },
+        "yaw": 3.1415928446957544,
+        "pitch": 0.4619042358398438,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "physical-WASD-Z",
+      "at": "2026-10-04T19:22:20.818Z",
+      "simulationTime": 78.83333333333015,
+      "position": {
+        "x": 199.93313236478147,
+        "y": 0.215,
+        "z": -100.20688610645941,
+        "yaw": 1.9110596115556169e-07
+      },
+      "camera": {
+        "position": {
+          "x": 199.93313236224358,
+          "y": 1.8350000000000002,
+          "z": -100.2201661064593
+        },
+        "target": {
+          "x": 199.93313045118398,
+          "y": -1.2337154997418354,
+          "z": -110.22016610645912
+        },
+        "focus": {
+          "x": 199.93313236224358,
+          "y": 1.8350000000000002,
+          "z": -100.2201661064593
+        },
+        "yaw": 3.1415928446957544,
+        "pitch": 0.4619042358398438,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "buildingId": "south-086"
+    },
+    {
+      "kind": "real-E-street-exit",
+      "at": "2026-10-04T19:22:21.548Z",
+      "simulationTime": 78.83333333333015,
+      "position": {
+        "x": 200,
+        "y": 0.18,
+        "z": -94.9,
+        "yaw": 0
+      },
+      "camera": null,
+      "memory": {
+        "geometries": 615,
+        "textures": 118
+      },
+      "buildingId": null
+    }
+  ],
+  "actualPilotLifecycle": [
+    {
+      "kind": "load-requested",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "loading",
+      "loadedAssets": 0,
+      "releasedAssets": 0,
+      "sequence": 1
+    },
+    {
+      "kind": "asset-decoded",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "loading",
+      "loadedAssets": 0,
+      "releasedAssets": 0,
+      "assetId": "metal_tool_chest",
+      "requestGeneration": 1,
+      "resources": {
+        "meshes": 7,
+        "triangles": 13360,
+        "skinnedMeshes": 0,
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "decodedTextures": 3,
+        "images": [
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": "srgb"
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          }
+        ]
+      },
+      "sequence": 2
+    },
+    {
+      "kind": "asset-decoded",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "loading",
+      "loadedAssets": 0,
+      "releasedAssets": 0,
+      "assetId": "bench_vice_01",
+      "requestGeneration": 1,
+      "resources": {
+        "meshes": 4,
+        "triangles": 2864,
+        "skinnedMeshes": 4,
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "decodedTextures": 3,
+        "images": [
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": "srgb"
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          }
+        ]
+      },
+      "sequence": 3
+    },
+    {
+      "kind": "ready",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "ready",
+      "loadedAssets": 2,
+      "releasedAssets": 0,
+      "sequence": 4
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 1,
+      "assetId": "bench_vice_01",
+      "resourceRelease": {
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 1,
+        "closedImages": 3
+      },
+      "sequence": 5
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "assetId": "metal_tool_chest",
+      "resourceRelease": {
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 0,
+        "closedImages": 3
+      },
+      "sequence": 6
+    },
+    {
+      "kind": "unloaded",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "fallback",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "sequence": 7
+    },
+    {
+      "kind": "disposed",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "fallback",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "sequence": 8
+    },
+    {
+      "kind": "load-requested",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "loading",
+      "loadedAssets": 0,
+      "releasedAssets": 0,
+      "sequence": 9
+    },
+    {
+      "kind": "asset-decoded",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "loading",
+      "loadedAssets": 0,
+      "releasedAssets": 0,
+      "assetId": "bench_vice_01",
+      "requestGeneration": 1,
+      "resources": {
+        "meshes": 4,
+        "triangles": 2864,
+        "skinnedMeshes": 4,
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "decodedTextures": 3,
+        "images": [
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": "srgb"
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          }
+        ]
+      },
+      "sequence": 10
+    },
+    {
+      "kind": "asset-decoded",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "loading",
+      "loadedAssets": 0,
+      "releasedAssets": 0,
+      "assetId": "metal_tool_chest",
+      "requestGeneration": 1,
+      "resources": {
+        "meshes": 7,
+        "triangles": 13360,
+        "skinnedMeshes": 0,
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "decodedTextures": 3,
+        "images": [
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": "srgb"
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          },
+          {
+            "width": 1024,
+            "height": 1024,
+            "decoderObject": "ImageBitmap",
+            "closable": true,
+            "decoded": true,
+            "colourSpace": ""
+          }
+        ]
+      },
+      "sequence": 11
+    },
+    {
+      "kind": "ready",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 1,
+      "disposed": false,
+      "wanted": true,
+      "status": "ready",
+      "loadedAssets": 2,
+      "releasedAssets": 0,
+      "sequence": 12
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 1,
+      "assetId": "bench_vice_01",
+      "resourceRelease": {
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 1,
+        "closedImages": 3
+      },
+      "sequence": 13
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "assetId": "metal_tool_chest",
+      "resourceRelease": {
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 0,
+        "closedImages": 3
+      },
+      "sequence": 14
+    },
+    {
+      "kind": "unloaded",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "fallback",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "sequence": 15
+    },
+    {
+      "kind": "disposed",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "fallback",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "sequence": 16
+    }
+  ],
+  "originalImages": [
+    {
+      "file": "normal-cycle0-vice-near-high.png",
+      "size": [
+        1280,
+        800
+      ],
+      "format": "PNG",
+      "sha256": "3d1855c3b78496179300bb2953cdb00d4f98b03b389cbd6b2bcdccff1728d621"
+    },
+    {
+      "file": "normal-cycle0-chest-near-high.png",
+      "size": [
+        1280,
+        800
+      ],
+      "format": "PNG",
+      "sha256": "bc41a710f7837b605b213d506d074fc229bfa48b9404efcd48fa0fda9fee7c2c"
+    }
+  ],
+  "unexpectedErrors": [],
+  "failure": "AssertionError [ERR_ASSERTION]: Actual Three geometry/texture counts return to the identical warmed street baseline\n+ actual - expected\n\n  {\n+   geometries: 615,\n-   geometries: 580,\n    textures: 118\n  }\n\n    at file:///workspace/scratch/neon-harbor-art-pilot/tools/capture-workshop-pilot.mjs:285:18",
+  "failurePng": {
+    "present": false,
+    "reason": "Unknown: original method silently caught screenshot error; no error detail was recorded. No retry or reconstruction."
+  },
+  "notRun": [
+    "normal cycles 2 and 3",
+    "404 scenario",
+    "delay-exit scenario"
+  ],
+  "gpuClosure": {
+    "checkedAtUtc": "2026-10-04T19:24:43Z",
+    "methodPid49990Present": false,
+    "activeChromeProcesses": [],
+    "port5208ConnectEx": 111,
+    "serverClosed": true,
+    "gpuBrowserReleased": true,
+    "noProcessesKilledForThisCheck": true
+  },
+  "interpretation": "Global geometry mismatch is a real failure of original strict assertion. Release event counts are not proof that global city resources return to baseline or driver VRAM is reclaimed."
+}

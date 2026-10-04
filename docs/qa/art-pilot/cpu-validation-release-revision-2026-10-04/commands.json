@@ -1,0 +1,333 @@
+[
+  {
+    "label": "node-version",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "node-version.stdout.txt",
+    "stderr": "node-version.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.008,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 9,
+      "sha256": "b7677d3ec37ee1897ba07dc2cfe8292fe421c9ac93396cca5bbece486d1a2a41"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "npm-version",
+    "command": [
+      "npm",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "npm-version.stdout.txt",
+    "stderr": "npm-version.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.114,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 7,
+      "sha256": "d9f29f5aab43c8c1a8d6acc856e258b89735f541aa5e1f07b39a62f28bfa8d06"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "capture-syntax",
+    "command": [
+      "node",
+      "--check",
+      "tools/capture-workshop-pilot.mjs"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "capture-syntax.stdout.txt",
+    "stderr": "capture-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "walking-syntax",
+    "command": [
+      "node",
+      "--check",
+      "tools/workshop-review-helpers/walking.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "walking-syntax.stdout.txt",
+    "stderr": "walking-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "occupied-syntax",
+    "command": [
+      "node",
+      "--check",
+      "tools/workshop-review-helpers/occupied.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "occupied-syntax.stdout.txt",
+    "stderr": "occupied-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "renderer-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/main.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "renderer-syntax.stdout.txt",
+    "stderr": "renderer-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "city-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/city-exploration.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "city-syntax.stdout.txt",
+    "stderr": "city-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:54Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "pilot-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/harbor-workshop-pilot.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:54Z",
+    "status": "passed",
+    "stdout": "pilot-syntax.stdout.txt",
+    "stderr": "pilot-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:55Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "interiors-syntax",
+    "command": [
+      "node",
+      "--check",
+      "src/metropolis-interiors.js"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:55Z",
+    "status": "passed",
+    "stdout": "interiors-syntax.stdout.txt",
+    "stderr": "interiors-syntax.stderr.txt",
+    "endedAt": "2026-10-04T19:44:55Z",
+    "elapsedSeconds": 0.032,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "node-rules",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:44:55Z",
+    "status": "passed",
+    "stdout": "node-rules.stdout.txt",
+    "stderr": "node-rules.stderr.txt",
+    "endedAt": "2026-10-04T19:46:58Z",
+    "elapsedSeconds": 123.767,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 34183,
+      "sha256": "45f19c9defa8d9c785efbb7a2a431e245b2833e932e56583009854660a699129"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:46:58Z",
+    "status": "passed",
+    "stdout": "build.stdout.txt",
+    "stderr": "build.stderr.txt",
+    "endedAt": "2026-10-04T19:46:59Z",
+    "elapsedSeconds": 0.769,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 329,
+      "sha256": "b5a4e38c6b4834c3f1cdba33b35e24203bf0aa9fe6d6eed0b719edd30f3633da"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "built-assets-verification",
+    "command": [
+      "python3",
+      "docs/qa/art-pilot/cpu-validation-release-revision-2026-10-04/verify-built-assets.py"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:46:59Z",
+    "status": "passed",
+    "stdout": "built-assets-verification.stdout.txt",
+    "stderr": "built-assets-verification.stderr.txt",
+    "endedAt": "2026-10-04T19:46:59Z",
+    "elapsedSeconds": 0.164,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 511,
+      "sha256": "806da66c434ce4764efb47813b00c26e5c3a6b55f83d8e74211f0cc02e90da45"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "test-tree-comparison",
+    "command": [
+      "python3",
+      "docs/qa/art-pilot/cpu-validation-release-revision-2026-10-04/verify-test-tree.py"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:46:59Z",
+    "status": "passed",
+    "stdout": "test-tree-comparison.stdout.txt",
+    "stderr": "test-tree-comparison.stderr.txt",
+    "endedAt": "2026-10-04T19:46:59Z",
+    "elapsedSeconds": 0.064,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 247,
+      "sha256": "3130fc2422a4be40a30e6c1c271d53991e9a70e67bba6a9727b5b9217838ccfb"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "git-diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor-art-pilot",
+    "startedAt": "2026-10-04T19:46:59Z",
+    "status": "passed",
+    "stdout": "git-diff-check.stdout.txt",
+    "stderr": "git-diff-check.stderr.txt",
+    "endedAt": "2026-10-04T19:46:59Z",
+    "elapsedSeconds": 0.008,
+    "exitCode": 0,
+    "stdoutRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderrRecord": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

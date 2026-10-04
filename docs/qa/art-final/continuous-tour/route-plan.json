@@ -1,0 +1,843 @@
+{
+  "home": {
+    "id": "south-079",
+    "name": "苔巷14号楼",
+    "entrance": {
+      "x": 133,
+      "z": 118.94924771878868,
+      "yaw": -3.141592653589793,
+      "y": 0.18
+    },
+    "floor": {
+      "id": "gallery",
+      "y": 4.153408014029265,
+      "level": 2,
+      "label": "2F · 街坊生活层",
+      "type": "residential",
+      "stairs": true
+    }
+  },
+  "northernAddress": {
+    "id": "sail-club",
+    "name": "帆影游艇会",
+    "entrance": {
+      "x": 240,
+      "z": -457,
+      "y": 0,
+      "yaw": 3.141592653589793
+    }
+  },
+  "shop": {
+    "id": "harbor-produce",
+    "name": "潮叶果铺",
+    "product": "produce",
+    "price": 6,
+    "anchor": {
+      "x": 225.3058217712678,
+      "z": 187,
+      "y": 0.18
+    },
+    "buildingId": "south-095",
+    "shellId": "south-095",
+    "entrance": {
+      "x": 213,
+      "z": 199.95595548301935,
+      "yaw": -3.141592653589793,
+      "y": 0.18
+    },
+    "room": {
+      "id": "south-095-lobby-1",
+      "type": "market",
+      "name": "街坊杂货",
+      "furnishingVariant": 1,
+      "x": 207.7720891143661,
+      "z": 193.22797774150968,
+      "width": 7.855821771267801,
+      "depth": 5.955955483019349,
+      "ceilingHeight": 2.98,
+      "enclosed": true,
+      "entrance": {
+        "x": 211.7,
+        "z": 193.22797774150968
+      },
+      "arrival": {
+        "x": 210.8,
+        "z": 193.22797774150968
+      },
+      "bounds": {
+        "minX": 203.8441782287322,
+        "maxX": 211.7,
+        "minZ": 190.25,
+        "maxZ": 196.20595548301935
+      }
+    }
+  },
+  "northernRoomType": "maritime",
+  "stops": {
+    "busFrom": {
+      "id": "harbor-bus-courtyard",
+      "routeId": "harbor-bus",
+      "kind": "bus",
+      "name": "潮庭里",
+      "berth": {
+        "x": 152,
+        "y": 0,
+        "z": 120,
+        "yaw": 0,
+        "stopId": "harbor-bus-courtyard",
+        "doorsOpen": true,
+        "remaining": 11,
+        "nextStopId": "harbor-bus-courtyard",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "board": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "platform": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "portal": {
+        "x": 150.725,
+        "y": 0.44,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "entrance": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "entry": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "exit": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "streetExit": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "doorId": "bus-door-0-port",
+      "walkable": true
+    },
+    "busTo": {
+      "id": "harbor-bus-market",
+      "routeId": "harbor-bus",
+      "kind": "bus",
+      "name": "南街市集",
+      "berth": {
+        "x": 200,
+        "y": 0,
+        "z": 168,
+        "yaw": 1.5707963267948966,
+        "stopId": "harbor-bus-market",
+        "doorsOpen": true,
+        "remaining": 10.999999999999993,
+        "nextStopId": "harbor-bus-market",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "board": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 1.5707963267948966
+      },
+      "platform": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 1.5707963267948966
+      },
+      "portal": {
+        "x": 203.74,
+        "y": 0.44,
+        "z": 169.275,
+        "yaw": 1.5707963267948966
+      },
+      "entrance": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 1.5707963267948966
+      },
+      "entry": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 1.5707963267948966
+      },
+      "exit": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 1.5707963267948966
+      },
+      "streetExit": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 0
+      },
+      "doorId": "bus-door-0-port",
+      "walkable": true
+    },
+    "ferrySouth": {
+      "id": "harbor-ferry-south",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "name": "河口南码头",
+      "berth": {
+        "x": 227.2,
+        "y": 0,
+        "z": -309.5,
+        "yaw": 1.5707963267948966,
+        "stopId": "harbor-ferry-south",
+        "doorsOpen": true,
+        "remaining": 16,
+        "nextStopId": "harbor-ferry-south",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "board": {
+        "x": 220,
+        "y": 1.3,
+        "z": -304
+      },
+      "platform": {
+        "x": 220,
+        "y": 1.3,
+        "z": -304
+      },
+      "portal": {
+        "x": 220,
+        "y": 1.3,
+        "z": -306,
+        "yaw": 1.5707963267948966
+      },
+      "entrance": {
+        "x": 220,
+        "y": 0,
+        "z": -280
+      },
+      "entry": {
+        "x": 220,
+        "y": 0,
+        "z": -280
+      },
+      "exit": {
+        "x": 220,
+        "y": 1.3,
+        "z": -304
+      },
+      "streetExit": {
+        "x": 220,
+        "y": 0,
+        "z": -280,
+        "yaw": 0
+      },
+      "doorId": "ferry-door-0-port",
+      "walkable": true
+    },
+    "ferryNorth": {
+      "id": "harbor-ferry-north",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "name": "河口北码头",
+      "berth": {
+        "x": 212.8,
+        "y": 0,
+        "z": -375,
+        "yaw": -1.5707963267948966,
+        "stopId": "harbor-ferry-north",
+        "doorsOpen": true,
+        "remaining": 15.999999999999993,
+        "nextStopId": "harbor-ferry-north",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "board": {
+        "x": 220,
+        "y": 1.3,
+        "z": -380.5
+      },
+      "platform": {
+        "x": 220,
+        "y": 1.3,
+        "z": -380.5
+      },
+      "portal": {
+        "x": 220,
+        "y": 1.3,
+        "z": -378.5,
+        "yaw": -1.5707963267948966
+      },
+      "entrance": {
+        "x": 220,
+        "y": 0,
+        "z": -400
+      },
+      "entry": {
+        "x": 220,
+        "y": 0,
+        "z": -400
+      },
+      "exit": {
+        "x": 220,
+        "y": 1.3,
+        "z": -380.5
+      },
+      "streetExit": {
+        "x": 220,
+        "y": 0,
+        "z": -400,
+        "yaw": 3.141592653589793
+      },
+      "doorId": "ferry-door-0-port",
+      "walkable": true
+    },
+    "tramFrom": {
+      "id": "harbor-tram-quay",
+      "routeId": "harbor-tram",
+      "kind": "tram",
+      "name": "河口南堤",
+      "berth": {
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 1.4210854715202004e-14,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 1.4210854715202004e-14,
+        "speed": 2.812918905004442e-14
+      },
+      "board": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "platform": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "portal": {
+        "x": 249.15,
+        "y": 0.44,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "entrance": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "entry": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "exit": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "streetExit": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 0
+      },
+      "doorId": "tram-door-0-port",
+      "walkable": true
+    },
+    "tramTo": {
+      "id": "harbor-tram-lantern",
+      "routeId": "harbor-tram",
+      "kind": "tram",
+      "name": "灯湾书店",
+      "berth": {
+        "x": 248,
+        "y": 0,
+        "z": 100,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-lantern",
+        "doorsOpen": true,
+        "remaining": 12,
+        "nextStopId": "harbor-tram-lantern",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "board": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "platform": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "portal": {
+        "x": 249.15,
+        "y": 0.44,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "entrance": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "entry": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "exit": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "streetExit": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 0
+      },
+      "doorId": "tram-door-0-port",
+      "walkable": true
+    }
+  },
+  "staticColliderCount": 4178,
+  "staticColliderSha256": "7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30",
+  "pierSegments": [
+    {
+      "bank": "south",
+      "startZ": -280,
+      "endZ": -288,
+      "fromY": 0,
+      "toY": 1.3
+    },
+    {
+      "bank": "south",
+      "startZ": -288,
+      "endZ": -304.8,
+      "fromY": 1.3,
+      "toY": 1.3
+    },
+    {
+      "bank": "north",
+      "startZ": -400,
+      "endZ": -394,
+      "fromY": 0,
+      "toY": 2.1
+    },
+    {
+      "bank": "north",
+      "startZ": -394,
+      "endZ": -386,
+      "fromY": 2.1,
+      "toY": 2.1
+    },
+    {
+      "bank": "north",
+      "startZ": -386,
+      "endZ": -380.5,
+      "fromY": 2.1,
+      "toY": 1.3
+    },
+    {
+      "bank": "north",
+      "startZ": -380.5,
+      "endZ": -379.7,
+      "fromY": 1.3,
+      "toY": 1.3
+    }
+  ],
+  "paths": {
+    "homeToBus": {
+      "bank": "south",
+      "from": {
+        "x": 133,
+        "z": 119.54924771878868,
+        "yaw": 0
+      },
+      "to": {
+        "x": 147.725,
+        "y": 0.18,
+        "z": 123.74,
+        "yaw": 0
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 18.91575228121131,
+      "waypoints": [
+        {
+          "x": 147.725,
+          "z": 119.54924771878868,
+          "y": 0.18
+        },
+        {
+          "x": 147.725,
+          "z": 123.74,
+          "y": 0.18
+        }
+      ]
+    },
+    "busToProduce": {
+      "bank": "south",
+      "from": {
+        "x": 203.74,
+        "y": 0.18,
+        "z": 172.275,
+        "yaw": 1.5707963267948966
+      },
+      "to": {
+        "x": 225.3058217712678,
+        "z": 187,
+        "y": 0.18
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 36.29082177126779,
+      "waypoints": [
+        {
+          "x": 225.3058217712678,
+          "z": 172.275,
+          "y": 0.18
+        },
+        {
+          "x": 225.3058217712678,
+          "z": 187,
+          "y": 0.18
+        }
+      ]
+    },
+    "produceCounterToDoor": {
+      "bank": "south",
+      "from": {
+        "x": 225.3058217712678,
+        "z": 187,
+        "y": 0.18
+      },
+      "to": {
+        "x": 213,
+        "z": 199.95595548301935,
+        "yaw": -3.141592653589793,
+        "y": 0.18
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 25.261777254287153,
+      "waypoints": [
+        {
+          "x": 225.3058217712678,
+          "z": 199.95595548301935,
+          "y": 0.18
+        },
+        {
+          "x": 213,
+          "z": 199.95595548301935,
+          "y": 0.18
+        }
+      ]
+    },
+    "produceToPier": {
+      "bank": "south",
+      "from": {
+        "x": 213,
+        "z": 200.55595548301935,
+        "yaw": 0
+      },
+      "to": {
+        "x": 220,
+        "y": 0,
+        "z": -280
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 501.5559554830194,
+      "waypoints": [
+        {
+          "x": 227,
+          "z": 200.55595548301935,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": 166.32359589365396,
+          "y": 0
+        },
+        {
+          "x": 227,
+          "z": 132.09123630428854,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": 97.85887671492314,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": 63.62651712555777,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": 29.39415753619238,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -4.838202053173063,
+          "y": 0
+        },
+        {
+          "x": 227,
+          "z": -39.07056164253845,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -73.30292123190381,
+          "y": 0
+        },
+        {
+          "x": 227,
+          "z": -107.5352808212692,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -141.76764041063458,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -176.00000000000003,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -201,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -226,
+          "y": 0.18
+        },
+        {
+          "x": 227,
+          "z": -251,
+          "y": 0
+        },
+        {
+          "x": 220,
+          "z": -251,
+          "y": 0
+        },
+        {
+          "x": 220,
+          "z": -280,
+          "y": 0
+        }
+      ]
+    },
+    "northPierToAddress": {
+      "bank": "north",
+      "from": {
+        "x": 220,
+        "y": 0,
+        "z": -400
+      },
+      "to": {
+        "x": 240,
+        "z": -457,
+        "y": 0,
+        "yaw": 3.141592653589793
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 77,
+      "waypoints": [
+        {
+          "x": 220,
+          "z": -428.5,
+          "y": 0
+        },
+        {
+          "x": 220,
+          "z": -457,
+          "y": 0
+        },
+        {
+          "x": 240,
+          "z": -457,
+          "y": 0
+        }
+      ]
+    },
+    "northAddressToPier": {
+      "bank": "north",
+      "from": {
+        "x": 240,
+        "z": -453.8,
+        "y": 0,
+        "yaw": 0
+      },
+      "to": {
+        "x": 220,
+        "y": 0,
+        "z": -400
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 73.80000000000001,
+      "waypoints": [
+        {
+          "x": 220,
+          "z": -453.8,
+          "y": 0
+        },
+        {
+          "x": 220,
+          "z": -426.9,
+          "y": 0
+        },
+        {
+          "x": 220,
+          "z": -400,
+          "y": 0
+        }
+      ]
+    },
+    "southPierToTram": {
+      "bank": "south",
+      "from": {
+        "x": 220,
+        "y": 0,
+        "z": -280
+      },
+      "to": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": -176.55,
+        "yaw": 3.141592653589793
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 135.6,
+      "waypoints": [
+        {
+          "x": 221,
+          "z": -280,
+          "y": 0
+        },
+        {
+          "x": 221,
+          "z": -246,
+          "y": 0
+        },
+        {
+          "x": 221,
+          "z": -212,
+          "y": 0.18
+        },
+        {
+          "x": 252.15,
+          "z": -212,
+          "y": -0.03
+        },
+        {
+          "x": 252.15,
+          "z": -176.55,
+          "y": -0.03
+        }
+      ]
+    },
+    "tramToHome": {
+      "bank": "south",
+      "from": {
+        "x": 252.15,
+        "y": -0.03,
+        "z": 103.45,
+        "yaw": 3.141592653589793
+      },
+      "to": {
+        "x": 133,
+        "z": 118.94924771878868,
+        "yaw": -3.141592653589793,
+        "y": 0.18
+      },
+      "playerRadius": 0.65,
+      "collisionMargin": 0.2,
+      "sampleSpacing": 0.18,
+      "metres": 134.64924771878867,
+      "waypoints": [
+        {
+          "x": 252.15,
+          "z": 118.94924771878868,
+          "y": -0.03
+        },
+        {
+          "x": 222.3625,
+          "z": 118.94924771878868,
+          "y": 0.18
+        },
+        {
+          "x": 192.575,
+          "z": 118.94924771878868,
+          "y": 0.18
+        },
+        {
+          "x": 162.7875,
+          "z": 118.94924771878868,
+          "y": 0
+        },
+        {
+          "x": 133,
+          "z": 118.94924771878868,
+          "y": 0.18
+        }
+      ]
+    }
+  }
+}

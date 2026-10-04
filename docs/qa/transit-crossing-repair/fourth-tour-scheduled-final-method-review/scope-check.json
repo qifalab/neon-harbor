@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-10-04T20:18:08.850Z",
+  "scope": "Prepared final wall-budget-only method. ROOT unapplied; no browser/GPU/tests/build/mocks.",
+  "parent": {
+    "file": "/tmp/neon-harbor-tour-budget-240m-2400s-2026-10-04T19-45/capture-harbor-tour.mjs",
+    "sha256": "7c1d299a91dfb738270f4d8a783dd39f67b7c9acbc381f50522dca1f78b8d802",
+    "bytes": 60118
+  },
+  "candidate": {
+    "file": "capture-harbor-tour.mjs",
+    "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+    "bytes": 60171
+  },
+  "executableChanges": [
+    {
+      "context": "ride scheduled boarding",
+      "from": 600000,
+      "to": 2400000
+    },
+    {
+      "context": "ride upper real-open-berth",
+      "from": 600000,
+      "to": 2400000
+    }
+  ],
+  "correspondingCommentChange": true,
+  "exactReverseProof": "Undo only two ride remaining(2400000) calls and one literal comment replacement; resulting complete bytes are exactly reviewed7c.",
+  "reverse7cByteProofPassed": true,
+  "shop600000StillExact": true,
+  "outsideRideBytesUnchanged": true,
+  "allInputCommandsOrderPhysicalTargetsGeometryEndToleranceAndSimulationGuardsUnchanged": true,
+  "preservedBudgets": {
+    "wholeCaseMilliseconds": 14400000,
+    "destinationMilliseconds": 2400000,
+    "ordinaryCabinMilliseconds": 150000,
+    "finalFerryDoorMilliseconds": 300000,
+    "groundAxisMilliseconds": 180000,
+    "shopStaffStockOpenMilliseconds": 600000
+  },
+  "basis": {
+    "lowestPreFailure30SecondSimPerWall": 0.06613095039616984,
+    "observedTramServicePerSimulationRange": [
+      0.6891152283112284,
+      0.6734520016638357
+    ],
+    "assumedServicePerSimulation": 0.67,
+    "nominalTwoFleetBoardingInvalidServiceGap": 79.47879733498475,
+    "nominalWorstBoardingWall": 1793.790501097977,
+    "nominalWorstTimes1_2": 2152.5486013175723,
+    "capturedTwoFleetPhaseSeparation": 23.37965698239843,
+    "capturedPhaseBoardingInvalidServiceGap": 86.41580701925298,
+    "capturedPhaseWorstBoardingWall": 1950.354798683135,
+    "capturedPhaseWorstTimes1_2": 2340.4257584197617,
+    "chosenBoardingAndUpperWallSeconds": 2400,
+    "conditionalModelOperations": [
+      {
+        "label": "tram-wait-for-quay-boarding",
+        "conditionalSimSeconds": 70.23642829386948,
+        "wallAtObservedLowest": 1062.081035779843,
+        "old600Margin": -462.081035779843,
+        "new2400Margin": 1337.918964220157
+      },
+      {
+        "label": "tram-upper-real-open-berth-wait",
+        "conditionalSimSeconds": 59.3850208979758,
+        "wallAtObservedLowest": 897.9913420602413,
+        "old600Margin": -297.9913420602413,
+        "new2400Margin": 1502.0086579397587
+      }
+    ]
+  },
+  "parentArchiveEightFilesUnchanged": true,
+  "prior1200AlternativePreserved": true,
+  "limitations": [
+    "This is software-WebGL finite wall scheduling allowance, not a world speed/default quality change or hardware/game performance pass.",
+    "0.67 is an observed tram mean, not a guaranteed future lower bound. Fleet bunching and traffic stops can invalidate a nominal/captured phase bound.",
+    "Conditional inference from an incomplete third run is not completion evidence. All physical and simulation checks still must actually pass.",
+    "No retries, hidden recovery, clock/dt/state/position/storage injection or during-run cap edits."
+  ],
+  "rootApplied": false,
+  "browserStarted": false,
+  "mocksRerun": false
+}

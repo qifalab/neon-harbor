@@ -1,0 +1,197 @@
+{
+  "verifiedAt": "2026-10-04T18:59:47.649Z",
+  "processExitCode": 1,
+  "result": "failed",
+  "failure": "page.waitForFunction: Timeout 1ms exceeded.\n    at walkLocal (/workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:356:20)\n    at async ride (/workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:411:23)\n    at async file:///workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs:539:3",
+  "failureAt": "2026-10-04T18:57:33.776Z",
+  "metadataSha256": "3e2808bbd3b4e708bd2cc1953a16711e51060eb4f20f36c2c65815c8f44de887",
+  "manifestSha256": "7145fa443190896ff24050d518a54fea364ddb0547ddfa71756a33d64c515fb3",
+  "currentManifestSha256": "7145fa443190896ff24050d518a54fea364ddb0547ddfa71756a33d64c515fb3",
+  "methodSha256": "60436d2fe8db8af646c1a02d93f9e70fc3e1ce34181d257a1c3ea39aae850702",
+  "currentMethodSha256": "60436d2fe8db8af646c1a02d93f9e70fc3e1ce34181d257a1c3ea39aae850702",
+  "assetCount": 146,
+  "sourceCount": 52,
+  "methodDependencyCount": 4,
+  "assetMismatches": [],
+  "sourceMismatches": [],
+  "methodMismatches": [],
+  "previousTours": [
+    {
+      "directory": "docs/qa/art-final/continuous-tour",
+      "listedFileCount": 13,
+      "ledgerSha256": "f650a77276af2a7b386a3e7eb809c0aaf0ae5f71eb352cfde4797b7b97f46364",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour",
+      "listedFileCount": 15,
+      "ledgerSha256": "b5e6af022f617ad4da6be13fb56bd95e7e0c6601372d0f87cb2ea1d39a55ca70",
+      "mismatches": []
+    }
+  ],
+  "originalLog": {
+    "file": "capture-original.log",
+    "bytes": 28295,
+    "sha256": "2df123a0a0e3474db1af8f0210d06ce4726c78001b3a0fd9899dd097a09f6976"
+  },
+  "failureDiagnostics": {
+    "readOnly": true,
+    "files": [
+      {
+        "file": "failure-full-snapshot.json",
+        "sha256": "9561d648a5b8ccfeb021bc59414ccb469da6db7500397d89bea756a4ca2d4a44",
+        "bytes": 1647631
+      },
+      {
+        "file": "failure-autosave-progress.json",
+        "sha256": "057fefe2fe5a5ca23cc4b137907f7fd940b9c57a32beebd903ad452b74138145",
+        "bytes": 49954
+      }
+    ]
+  },
+  "liveFailure": {
+    "simulationTime": 687.4333333330368,
+    "position": {
+      "x": 236.87125195265958,
+      "y": 1.3,
+      "z": -377.52803741512116,
+      "yaw": -3.028034945755896
+    },
+    "cash": 1194,
+    "revision": 11,
+    "scene": "harbor-vehicle:harbor-ferry-1",
+    "passengerLocal": {
+      "x": -2.5961293047241165,
+      "y": 1.3,
+      "z": -7.213511147958965,
+      "yaw": -1.4478149665589677
+    },
+    "passengerDeck": "lower",
+    "ferry": {
+      "id": "harbor-ferry-1",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "x": 229.63359644301264,
+      "y": 0,
+      "z": -375,
+      "yaw": -1.5802199791969285,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 3.4709231558246287,
+      "nextStopId": "harbor-ferry-north",
+      "secondsToArrival": 3.470923155824636,
+      "speed": 6.681457582232042,
+      "delay": 0,
+      "serviceTime": 687.4333333330368,
+      "held": null,
+      "trafficState": "cruise",
+      "junction": null
+    }
+  },
+  "autosaveAtFailure": {
+    "readOnly": true,
+    "simulationTime": 683.2666666663739,
+    "player": {
+      "x": 220,
+      "z": -280,
+      "yaw": 0
+    },
+    "cash": 1194,
+    "notLiveSnapshot": true
+  },
+  "video": {
+    "file": "video/page@f3a37dcd9bfa366ae4707ebb074324d8.webm",
+    "path": "/workspace/scratch/neon-harbor/docs/qa/transit-crossing-repair/continuous-tour-budget-review/video/page@f3a37dcd9bfa366ae4707ebb074324d8.webm",
+    "bytes": 71548336,
+    "sha256": "69971a38c7d91c24192d793c30038a1665cef3105ba29c1bb2f48ce4b0c1cac9",
+    "durationSeconds": 2950.72,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 512,
+          "height": 320
+        }
+      ],
+      "format": {
+        "duration": "2950.720000"
+      }
+    },
+    "unedited": true,
+    "includesStartupAndSetup": true,
+    "published": false,
+    "publicationUrl": null,
+    "largeFilePolicy": "review artifact size before publication",
+    "independentSha256": "69971a38c7d91c24192d793c30038a1665cef3105ba29c1bb2f48ce4b0c1cac9",
+    "independentBytes": 71548336
+  },
+  "wallClock": {
+    "caseStartedAt": "2026-10-04T18:08:57.473Z",
+    "videoStartedAt": "2026-10-04T18:08:57.555Z",
+    "routeStartedAt": "2026-10-04T18:11:02.447Z",
+    "failureAt": "2026-10-04T18:57:33.776Z",
+    "routeWallToFirstFailureMilliseconds": 2791329,
+    "recordingCloseRequestedAt": "2026-10-04T18:58:05.674Z",
+    "recordingWallMilliseconds": 2948119,
+    "videoStoppedAt": "2026-10-04T18:58:15.707Z",
+    "completedAt": "2026-10-04T18:58:15.878Z",
+    "caseWallMilliseconds": 2958234,
+    "elapsedCaseThroughCompletedAtMilliseconds": 2958405,
+    "observedRouteExceedsTwentyMinutes": true,
+    "wholeCaseWithinNinetyMinutes": true
+  },
+  "coverage": {
+    "entireTourAndReloadCompleted": false,
+    "completedTwentyMinuteRoute": false,
+    "lastSuccessfulPhase": "ferry-outbound-upper-landing-E-keeps-rider-on-board",
+    "completed": [
+      "real residential 2F start",
+      "physical residential stairs and E exit",
+      "street bus stop approach",
+      "real double-decker bus lower/upper stairs and market alighting",
+      "real produce purchase with public export",
+      "actual south-095 grocery room and E exit",
+      "street south-pier approach and ramp",
+      "real outbound ferry lower-to-upper stairs and upper-landing E",
+      "outbound ferry stair descent to lower height"
+    ],
+    "notReached": [
+      "outbound ferry lower-door-ready",
+      "north-bank ferry alighting",
+      "north-bank interior",
+      "return ferry",
+      "tram deck/stairs",
+      "home return",
+      "public export and reload equivalence",
+      "safe-door restore and physical return to 2F"
+    ]
+  },
+  "diagnosticLimits": {
+    "ferryCabinWaypointsFileExists": false,
+    "fullFerryInputLoopSamplesArchived": false,
+    "note": "ride writes cabin-waypoint samples only after arrived; failure occurred before that write. The retained fullsnapshot/phase/periodic poses are actual but do not substitute for a complete input-step stream."
+  },
+  "environmentConcurrency": {
+    "reportedByRoot": true,
+    "isolatedPilotFullNpmTestStoppedAt": "2026-10-04T18:58:10.000Z",
+    "stoppedAfterFirstFailure": true,
+    "rootSourceAndDistUnchanged": true,
+    "causalAttributionEstablished": false,
+    "note": "Root reported an isolated offline test concurrent with tour; host CPU observations and periodic simulation slowdown do not establish causation. Test was stopped after the first failure.",
+    "reportedTimestampPrecision": "seconds"
+  },
+  "errors": [],
+  "cleanupErrors": [],
+  "note": "Single fresh browser failed within unchanged 150000ms cabin waypoint budget. Timeout1ms is the last remaining waitForFunction budget, not a 1ms route budget. Never retried or changed during run; elapsed>=20min is not full route completion.",
+  "independentVideoProbe": {
+    "checkedAt": "2026-10-04T19:00:57.219Z",
+    "codec": "vp8",
+    "width": 512,
+    "height": 320,
+    "durationSeconds": 2950.72,
+    "matchesOriginalMetadata": true
+  },
+  "documentationUpdatedAt": "2026-10-04T19:00:57.219Z"
+}

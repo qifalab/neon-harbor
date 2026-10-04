@@ -1,0 +1,50 @@
+{
+  "authorization": "Parent explicitly authorized these three exact ROOT test bytes after preserving initial old-tree failure; no weakened assertions",
+  "records": [
+    {
+      "path": "tests/harbor-sample-integration.test.js",
+      "sourceWorktree": "/workspace/scratch/neon-harbor",
+      "before": {
+        "bytes": 16579,
+        "sha256": "a0d88ddd857a4c17cc4969410cd434314fe946329f7c723577612afb909d1a89"
+      },
+      "root": {
+        "bytes": 17970,
+        "sha256": "5fe5fea80e7fc87df583b578d633e3aefb865cca36082d1d0ad61f186d069658"
+      },
+      "copied": {
+        "bytes": 17970,
+        "sha256": "5fe5fea80e7fc87df583b578d633e3aefb865cca36082d1d0ad61f186d069658"
+      },
+      "exactBytes": true
+    },
+    {
+      "path": "tests/harbor-life-traffic.test.js",
+      "sourceWorktree": "/workspace/scratch/neon-harbor",
+      "before": null,
+      "root": {
+        "bytes": 10432,
+        "sha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a"
+      },
+      "copied": {
+        "bytes": 10432,
+        "sha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a"
+      },
+      "exactBytes": true
+    },
+    {
+      "path": "tests/fixtures/harbor-life-pre-crossing-repair.json",
+      "sourceWorktree": "/workspace/scratch/neon-harbor",
+      "before": null,
+      "root": {
+        "bytes": 42214,
+        "sha256": "0fbaf6098a6adcd529b422a8330fff28ebbe9f10eb1fce0e2242cf135030e913"
+      },
+      "copied": {
+        "bytes": 42214,
+        "sha256": "0fbaf6098a6adcd529b422a8330fff28ebbe9f10eb1fce0e2242cf135030e913"
+      },
+      "exactBytes": true
+    }
+  ]
+}

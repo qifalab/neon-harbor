@@ -1,0 +1,167 @@
+[WebServer] (node:8464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 20 tests using 1 worker
+
+(node:8486) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (2.3m)
+  ✓   2 tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets (55.5s)
+  ✓   3 tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress (27.7s)
+  ✓   4 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (49.9s)
+  ✘   5 tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views (39.6s)
+(node:9919) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 tests/e2e/harbor-realism.spec.js:89:1 › a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street (4.5m)
+  ✓   7 tests/e2e/living-city.spec.js:62:1 › a resident rides to a furnished bedroom, walks through its doorway, and returns to the street (2.7m)
+  ✓   8 tests/e2e/living-city.spec.js:106:1 › default high quality loads crafted materials and exposes walk-in viewing and real infrastructure entrances (1.1m)
+  ✘   9 tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail (28.9s)
+(node:11608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 tests/e2e/metropolis.spec.js:113:3 › tide-museum: walk through the lobby, ride the elevator, return to the street (2.8m)
+  ✓  11 tests/e2e/metropolis.spec.js:113:3 › apex-tower: ride to a high floor and travel back to the street (3.1m)
+  ✓  12 tests/e2e/metropolis.spec.js:113:3 › camellia-court: walk through the lobby, ride the elevator, return to the street (1.6m)
+  ✓  13 tests/e2e/metropolis.spec.js:173:3 › metro: wait, board, travel and alight using public controls (7.3m)
+  ✘  14 tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls (2.0m)
+(node:15179) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  15 tests/e2e/occupied-city.spec.js:11:1 › all storeys are selectable and a visitor walks an upper stair flight without accumulating floors or sign textures (5.2m)
+Resident progress: {"time":16.716666666667,"phase":"walking-to-building","x":-619.3744690582653,"y":0,"z":-439.1542976322944,"floor":null,"visible":false}
+Resident progress: {"time":21.46666666666673,"phase":"walking-to-building","x":-614.4223491028654,"y":0,"z":-440.3758205546251,"floor":null,"visible":false}
+Resident progress: {"time":26.71666666666643,"phase":"walking-to-building","x":-608.9489533626866,"y":0,"z":-441.7259248372011,"floor":null,"visible":false}
+Resident progress: {"time":31.716666666666146,"phase":"walking-to-building","x":-603.7361955148972,"y":0,"z":-443.011738439656,"floor":null,"visible":false}
+Resident progress: {"time":37.21666666666584,"phase":"walking-to-building","x":-598.0021618823289,"y":0,"z":-444.4261334023566,"floor":null,"visible":false}
+Resident progress: {"time":42.716666666665525,"phase":"walking-to-building","x":-592.2681282497606,"y":0,"z":-445.8405283650571,"floor":null,"visible":false}
+Resident progress: {"time":47.699999999998575,"phase":"walking-to-building","x":-587.0727462614639,"y":0,"z":-447.1220559221706,"floor":null,"visible":false}
+Resident progress: {"time":52.69999999999829,"phase":"walking-to-building","x":-581.8599884136745,"y":0,"z":-448.40786952462565,"floor":null,"visible":false}
+Resident progress: {"time":57.94999999999799,"phase":"walking-to-building","x":-576.3865926734957,"y":0,"z":-449.7579738072034,"floor":null,"visible":false}
+Resident progress: {"time":63.44999999999768,"phase":"walking-to-building","x":-570.6525590409274,"y":0,"z":-451.1723687699039,"floor":null,"visible":false}
+Resident progress: {"time":68.48333333333073,"phase":"walking-to-building","x":-565.4050494741527,"y":0,"z":-452.46675446304204,"floor":null,"visible":false}
+Resident progress: {"time":73.98333333333042,"phase":"entering-building","x":-560,"y":0,"z":-454.12214,"floor":null,"visible":false}
+Resident progress: {"time":79.48333333333011,"phase":"entering-building","x":-560,"y":0,"z":-460.02804000000066,"floor":"lobby","visible":false}
+Resident progress: {"time":84.9833333333298,"phase":"entering-building","x":-556.5,"y":0,"z":-461.7919416200626,"floor":"lobby","visible":false}
+Resident progress: {"time":89.98333333332951,"phase":"entering-building","x":-556.5,"y":2.45,"z":-466.7591817800692,"floor":"gallery","visible":false}
+Resident progress: {"time":95.01666666666256,"phase":"entering-building","x":-557.0905899999996,"y":4.2,"z":-471.40000000000003,"floor":"gallery","visible":false}
+Resident progress: {"time":99.28333333332898,"phase":"entering-building","x":-560,"y":4.2,"z":-469.7356099999999,"floor":"gallery","visible":false}
+Resident progress: {"time":103.28333333332876,"phase":"entering-building","x":-560,"y":4.2,"z":-465.4404099999994,"floor":"gallery","visible":false}
+Resident progress: {"time":106.53333333332857,"phase":"entering-building","x":-560,"y":4.2,"z":-461.95055999999903,"floor":"gallery","visible":false}
+Resident progress: {"time":111.78333333332827,"phase":"entering-building","x":-556.5,"y":4.2,"z":-461.8411367337697,"floor":"gallery","visible":false}
+Resident progress: {"time":115.28333333332807,"phase":"entering-building","x":-556.5,"y":5.95,"z":-465.30576872374627,"floor":"gallery","visible":false}
+Resident progress: {"time":118.2833333333279,"phase":"entering-building","x":-556.5,"y":7.525,"z":-468.33486265680443,"floor":"workplace","visible":true}
+Resident progress: {"time":123.5333333333276,"phase":"entering-building","x":-559.0234299999981,"y":8.4,"z":-471.40000000000003,"floor":"workplace","visible":true}
+Resident progress: {"time":130.03333333332895,"phase":"entering-building","x":-560,"y":8.4,"z":-477.35959000000116,"floor":"workplace","visible":true}
+Resident progress: {"time":135.03333333333293,"phase":"entering-building","x":-560,"y":8.4,"z":-482.7285900000029,"floor":"workplace","visible":true}
+Resident progress: {"time":139.7833333333367,"phase":"entering-building","x":-560,"y":8.4,"z":-487.82914000000454,"floor":"workplace","visible":true}
+Resident progress: {"time":144.2833333333403,"phase":"entering-building","x":-560,"y":8.4,"z":-492.6612400000061,"floor":"workplace","visible":true}
+Resident progress: {"time":147.53333333334288,"phase":"entering-building","x":-560,"y":8.4,"z":-496.15109000000723,"floor":"workplace","visible":true}
+Resident progress: {"time":150.78333333334547,"phase":"entering-building","x":-560,"y":8.4,"z":-499.64094000000836,"floor":"workplace","visible":true}
+Resident progress: {"time":154.28333333334825,"phase":"entering-building","x":-560,"y":8.4,"z":-503.39924000000957,"floor":"workplace","visible":true}
+Resident progress: {"time":157.0666666666838,"phase":"entering-building","x":-561.0201099999992,"y":8.4,"z":-505.325,"floor":"workplace","visible":true}
+Resident progress: {"time":160.65000000002,"phase":"entering-building","x":-564.8678933333299,"y":8.4,"z":-505.325,"floor":"workplace","visible":true}
+Resident progress: {"time":165.18333333335693,"phase":"entering-building","x":-569.6948333333327,"y":8.4,"z":-505.325,"floor":"workplace","visible":true}
+  ✓  16 tests/e2e/occupied-city.spec.js:51:1 › the rendered resident enters a real workplace and stays there during working hours (18.1m)
+(node:18985) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.8m)
+  ✓  18 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (1.1m)
+  ✓  19 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.4m)
+  ✓  20 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (2.3m)
+
+
+  1) tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views 
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 48
+    Received length: 47
+    Received array:  [{"color": "#c6b79b", "depth": 64, "description": "双翼石墙围合中庭，铜顶灯塔俯瞰轮渡航道。", "district": "waterfront", "englishName": "Tide Maritime Museum", "entrance": [Object], "floors": [Array], "height": 34, "id": "tide-museum", "index": 0, "name": "潮汐海事博物馆", "style": "museum", "width": 88, "x": -560, "z": -490}, {"color": "#a9b6a0", "depth": 66, "description": "锯齿采光屋面下是鱼市与海鲜餐厅，外廊保留旧港仓的尺度。", "district": "waterfront", "englishName": "Harbour Fish Market", "entrance": [Object], "floors": [Array], "height": 24, "id": "harbor-market", "index": 1, "name": "海湾鱼市场", "style": "market", "width": 100, "x": -400, "z": -490}, {"color": "#dfd2b6", "depth": 60, "description": "连续拱廊与钟楼组成海滨会馆，屋顶露台面向老港。", "district": "waterfront", "englishName": "Ferry House", "entrance": [Object], "floors": [Array], "height": 42, "id": "ferry-house", "index": 2, "name": "渡海会馆", "style": "colonial", "width": 76, "x": -240, "z": -490}, {"color": "#bdb29e", "depth": 66, "description": "层层退台的客房塔楼，入口雨棚与高处空中花园相呼应。", "district": "waterfront", "englishName": "Meridian Hotel", "entrance": [Object], "floors": [Array], "height": 144, "id": "meridian-hotel", "index": 3, "name": "子午线酒店", "style": "hotel", "width": 66, "x": -80, "z": -490}, {"color": "#d5d6ca", "depth": 74, "description": "起伏壳形屋面覆盖展厅，海滨大厅连通会议层。", "district": "waterfront", "englishName": "Pearl Convention Centre", "entrance": [Object], "floors": [Array], "height": 48, "id": "pearl-convention", "index": 4, "name": "明珠会展中心", "style": "convention", "width": 108, "x": 80, "z": -490}, {"color": "#d6d0b9", "depth": 60, "description": "斜撑立面与逐级收拢的船帆轮廓，观景台朝向海湾。", "district": "waterfront", "englishName": "Sail Yacht Club", "entrance": [Object], "floors": [Array], "height": 48, "id": "sail-club", "index": 5, "name": "帆影游艇会", "style": "sail", "width": 78, "x": 240, "z": -490}, {"color": "#aebbb7", "depth": 68, "description": "叠合弧拱构成剧院外壳，门厅前设有公共广场。", "district": "waterfront", "englishName": "Wave Theatre", "entrance": [Object], "floors": [Array], "height": 46, "id": "wave-theatre", "index": 6, "name": "浪潮剧院", "style": "theatre", "width": 100, "x": 400, "z": -490}, {"color": "#759a94", "depth": 70, "description": "竖向青绿金属鳍片包裹金融塔楼，石材大堂通向屋顶花园。", "district": "central", "englishName": "Jade Bank", "entrance": [Object], "floors": [Array], "height": 188, "id": "jade-bank", "index": 8, "name": "翡翠银行", "style": "fins", "width": 72, "x": -560, "z": -630}, {"color": "#c9c1ab", "depth": 76, "description": "宽阔柱廊托起交易大厅，中央高窗呈现旧金融建筑的比例。", "district": "central", "englishName": "Harbour Exchange", "entrance": [Object], "floors": [Array], "height": 74, "id": "exchange-hall", "index": 9, "name": "港城交易所", "style": "exchange", "width": 104, "x": -400, "z": -630}, {"color": "#8caaae", "depth": 62, "description": "三段收分的超高层与细长塔冠，城市最高的公共观景层。", "district": "central", "englishName": "Apex Financial Centre", "entrance": [Object], "floors": [Array], "height": 276, "id": "apex-tower", "index": 10, "name": "天际金融中心", "style": "spire", "width": 62, "x": -240, "z": -630}, …]
+
+      72 |   await page.locator('#explore-city').click();
+      73 |   await expect(page.locator('[data-visit-viewpoint]')).toHaveCount(3);
+    > 74 |   expect(start.city.buildings.filter(building => !['south-expansion', 'east-expansion'].includes(building.district))).toHaveLength(48);
+         |                                                                                         ^
+      75 |   expect(start.city.buildings.filter(building => building.district === 'south-expansion')).toHaveLength(96);
+      76 |   expect(start.city.buildings.filter(building => building.district === 'east-expansion')).toHaveLength(76);
+      77 |   await expect(page.locator('[data-building-id]')).toHaveCount(start.city.buildings.length);
+        at /workspace/scratch/neon-harbor/tests/e2e/harbor-realism.spec.js:74:89
+
+    attachment #1: harbor-realism-menu-high (image/png) ────────────────────────────────────────────
+    test-results/v08-regression/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/attachments/harbor-realism-menu-high-607dacbda5de4dac1ff793bc7234292726b02a9b.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: harbor-realism-day-high (image/png) ─────────────────────────────────────────────
+    test-results/v08-regression/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/attachments/harbor-realism-day-high-546303e3170743e15602e57073db92728800641e.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/v08-regression/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/v08-regression/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/v08-regression/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/v08-regression/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail 
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 48
+    Received length: 47
+    Received array:  [{"color": "#c6b79b", "depth": 64, "description": "双翼石墙围合中庭，铜顶灯塔俯瞰轮渡航道。", "district": "waterfront", "englishName": "Tide Maritime Museum", "entrance": [Object], "floors": [Array], "height": 34, "id": "tide-museum", "index": 0, "name": "潮汐海事博物馆", "style": "museum", "width": 88, "x": -560, "z": -490}, {"color": "#a9b6a0", "depth": 66, "description": "锯齿采光屋面下是鱼市与海鲜餐厅，外廊保留旧港仓的尺度。", "district": "waterfront", "englishName": "Harbour Fish Market", "entrance": [Object], "floors": [Array], "height": 24, "id": "harbor-market", "index": 1, "name": "海湾鱼市场", "style": "market", "width": 100, "x": -400, "z": -490}, {"color": "#dfd2b6", "depth": 60, "description": "连续拱廊与钟楼组成海滨会馆，屋顶露台面向老港。", "district": "waterfront", "englishName": "Ferry House", "entrance": [Object], "floors": [Array], "height": 42, "id": "ferry-house", "index": 2, "name": "渡海会馆", "style": "colonial", "width": 76, "x": -240, "z": -490}, {"color": "#bdb29e", "depth": 66, "description": "层层退台的客房塔楼，入口雨棚与高处空中花园相呼应。", "district": "waterfront", "englishName": "Meridian Hotel", "entrance": [Object], "floors": [Array], "height": 144, "id": "meridian-hotel", "index": 3, "name": "子午线酒店", "style": "hotel", "width": 66, "x": -80, "z": -490}, {"color": "#d5d6ca", "depth": 74, "description": "起伏壳形屋面覆盖展厅，海滨大厅连通会议层。", "district": "waterfront", "englishName": "Pearl Convention Centre", "entrance": [Object], "floors": [Array], "height": 48, "id": "pearl-convention", "index": 4, "name": "明珠会展中心", "style": "convention", "width": 108, "x": 80, "z": -490}, {"color": "#d6d0b9", "depth": 60, "description": "斜撑立面与逐级收拢的船帆轮廓，观景台朝向海湾。", "district": "waterfront", "englishName": "Sail Yacht Club", "entrance": [Object], "floors": [Array], "height": 48, "id": "sail-club", "index": 5, "name": "帆影游艇会", "style": "sail", "width": 78, "x": 240, "z": -490}, {"color": "#aebbb7", "depth": 68, "description": "叠合弧拱构成剧院外壳，门厅前设有公共广场。", "district": "waterfront", "englishName": "Wave Theatre", "entrance": [Object], "floors": [Array], "height": 46, "id": "wave-theatre", "index": 6, "name": "浪潮剧院", "style": "theatre", "width": 100, "x": 400, "z": -490}, {"color": "#759a94", "depth": 70, "description": "竖向青绿金属鳍片包裹金融塔楼，石材大堂通向屋顶花园。", "district": "central", "englishName": "Jade Bank", "entrance": [Object], "floors": [Array], "height": 188, "id": "jade-bank", "index": 8, "name": "翡翠银行", "style": "fins", "width": 72, "x": -560, "z": -630}, {"color": "#c9c1ab", "depth": 76, "description": "宽阔柱廊托起交易大厅，中央高窗呈现旧金融建筑的比例。", "district": "central", "englishName": "Harbour Exchange", "entrance": [Object], "floors": [Array], "height": 74, "id": "exchange-hall", "index": 9, "name": "港城交易所", "style": "exchange", "width": 104, "x": -400, "z": -630}, {"color": "#8caaae", "depth": 62, "description": "三段收分的超高层与细长塔冠，城市最高的公共观景层。", "district": "central", "englishName": "Apex Financial Centre", "entrance": [Object], "floors": [Array], "height": 276, "id": "apex-tower", "index": 10, "name": "天际金融中心", "style": "spire", "width": 62, "x": -240, "z": -630}, …]
+
+      65 |   const errors = await boot(page);
+      66 |   const buildings = (await snapshot(page)).city.buildings;
+    > 67 |   expect(buildings.filter(building => !['south-expansion', 'east-expansion'].includes(building.district))).toHaveLength(48);
+         |                                                                              ^
+      68 |   expect(buildings.filter(building => building.district === 'south-expansion')).toHaveLength(96);
+      69 |   expect(buildings.filter(building => building.district === 'east-expansion')).toHaveLength(76);
+      70 |   expect(buildings).toHaveLength(220);
+        at /workspace/scratch/neon-harbor/tests/e2e/metropolis.spec.js:67:78
+
+    Error Context: test-results/v08-regression/metropolis-city-atlas-expo-3f69f-cts-real-north-shore-detail/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/v08-regression/metropolis-city-atlas-expo-3f69f-cts-real-north-shore-detail/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/v08-regression/metropolis-city-atlas-expo-3f69f-cts-real-north-shore-detail/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls 
+
+    TimeoutError: page.waitForFunction: Timeout 60000ms exceeded.
+
+      195 |     await expect.poll(async () => (await snapshot(page)).city.transit.riding).toBe(true);
+      196 |     const boarded = await snapshot(page);
+    > 197 |     await page.waitForFunction(() => {
+          |                ^
+      198 |       const s = window.__NEON__.snapshot().city.transit;
+      199 |       return s.vehicles.find(v => v.id === s.ridingVehicleId)?.stopId === null;
+      200 |     }, null, { polling: 'raf', timeout: 60000 });
+        at /workspace/scratch/neon-harbor/tests/e2e/metropolis.spec.js:197:16
+
+    Error Context: test-results/v08-regression/metropolis-ferry-wait-boar-6858d-light-using-public-controls/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/v08-regression/metropolis-ferry-wait-boar-6858d-light-using-public-controls/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/v08-regression/metropolis-ferry-wait-boar-6858d-light-using-public-controls/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: tests/e2e/occupied-city.spec.js (23.3m)
+  Slow test file: tests/e2e/stability.spec.js (6.6m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  3 failed
+    tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views 
+    tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail 
+    tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls 
+  17 passed (1.0h)
