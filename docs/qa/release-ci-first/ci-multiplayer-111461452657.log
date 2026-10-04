@@ -1,0 +1,493 @@
+﻿2026-10-04T14:51:36.1097279Z Current runner version: '2.337.0'
+2026-10-04T14:51:36.1122340Z ##[group]Runner Image Provisioner
+2026-10-04T14:51:36.1123249Z Hosted Compute Agent
+2026-10-04T14:51:36.1123800Z Version: 20260901.588
+2026-10-04T14:51:36.1124430Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-04T14:51:36.1125077Z Build Date: 2026-09-01T19:56:44Z
+2026-10-04T14:51:36.1125669Z Worker ID: {cf66cdbc-38af-4f98-93ad-bbcc677bcb2a}
+2026-10-04T14:51:36.1126348Z Azure Region: westus3
+2026-10-04T14:51:36.1126872Z ##[endgroup]
+2026-10-04T14:51:36.1128512Z ##[group]Operating System
+2026-10-04T14:51:36.1129094Z Ubuntu
+2026-10-04T14:51:36.1129553Z 24.04.5
+2026-10-04T14:51:36.1130027Z LTS
+2026-10-04T14:51:36.1130515Z ##[endgroup]
+2026-10-04T14:51:36.1131097Z ##[group]Runner Image
+2026-10-04T14:51:36.1131642Z Image: ubuntu-24.04
+2026-10-04T14:51:36.1132155Z Version: 20260927.320.1
+2026-10-04T14:51:36.1133429Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-04T14:51:36.1135137Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-04T14:51:36.1136024Z ##[endgroup]
+2026-10-04T14:51:36.1136985Z ##[group]GITHUB_TOKEN Permissions
+2026-10-04T14:51:36.1139605Z Contents: read
+2026-10-04T14:51:36.1140153Z Metadata: read
+2026-10-04T14:51:36.1140690Z ##[endgroup]
+2026-10-04T14:51:36.1142786Z Secret source: Actions
+2026-10-04T14:51:36.1143715Z Cache mode: write
+2026-10-04T14:51:36.1144328Z Prepare workflow directory
+2026-10-04T14:51:36.1516239Z Prepare all required actions
+2026-10-04T14:51:36.1565662Z Getting action download info
+2026-10-04T14:51:36.4791229Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-04T14:51:36.5989374Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-04T14:51:36.6691220Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-04T14:51:36.8506297Z Complete job name: Multiplayer rooms in two browsers
+2026-10-04T14:51:36.9317134Z ##[group]Run actions/checkout@v4
+2026-10-04T14:51:36.9318233Z with:
+2026-10-04T14:51:36.9318654Z   repository: qifalab/neon-harbor
+2026-10-04T14:51:36.9322787Z   token: ***
+2026-10-04T14:51:36.9323300Z   ssh-strict: true
+2026-10-04T14:51:36.9323678Z   ssh-user: git
+2026-10-04T14:51:36.9324229Z   persist-credentials: true
+2026-10-04T14:51:36.9324670Z   clean: true
+2026-10-04T14:51:36.9325062Z   sparse-checkout-cone-mode: true
+2026-10-04T14:51:36.9325514Z   fetch-depth: 1
+2026-10-04T14:51:36.9325887Z   fetch-tags: false
+2026-10-04T14:51:36.9326266Z   show-progress: true
+2026-10-04T14:51:36.9326646Z   lfs: false
+2026-10-04T14:51:36.9327003Z   submodules: false
+2026-10-04T14:51:36.9327394Z   set-safe-directory: true
+2026-10-04T14:51:36.9327967Z   allow-unsafe-pr-checkout: false
+2026-10-04T14:51:36.9328753Z ##[endgroup]
+2026-10-04T14:51:37.0376887Z Syncing repository: qifalab/neon-harbor
+2026-10-04T14:51:37.0379611Z ##[group]Getting Git version info
+2026-10-04T14:51:37.0380503Z Working directory is '/home/runner/work/neon-harbor/neon-harbor'
+2026-10-04T14:51:37.0381469Z [command]/usr/bin/git version
+2026-10-04T14:51:37.0458526Z git version 2.55.0
+2026-10-04T14:51:37.0479225Z ##[endgroup]
+2026-10-04T14:51:37.0496336Z Temporarily overriding HOME='/home/runner/work/_temp/8ffcecd3-6368-4530-8b8e-90c255b24fb2' before making global git config changes
+2026-10-04T14:51:37.0498678Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T14:51:37.0501486Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/neon-harbor/neon-harbor
+2026-10-04T14:51:37.0546640Z Deleting the contents of '/home/runner/work/neon-harbor/neon-harbor'
+2026-10-04T14:51:37.0551959Z ##[group]Initializing the repository
+2026-10-04T14:51:37.0555381Z [command]/usr/bin/git init /home/runner/work/neon-harbor/neon-harbor
+2026-10-04T14:51:37.0650957Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-04T14:51:37.0653286Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-04T14:51:37.0655247Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-04T14:51:37.0656740Z hint: call:
+2026-10-04T14:51:37.0658167Z hint:
+2026-10-04T14:51:37.0659283Z hint: 	git config --global init.defaultBranch <name>
+2026-10-04T14:51:37.0660618Z hint:
+2026-10-04T14:51:37.0661765Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-04T14:51:37.0663030Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-04T14:51:37.0663775Z hint:
+2026-10-04T14:51:37.0664236Z hint: 	git branch -m <name>
+2026-10-04T14:51:37.0664744Z hint:
+2026-10-04T14:51:37.0666107Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-04T14:51:37.0668392Z Initialized empty Git repository in /home/runner/work/neon-harbor/neon-harbor/.git/
+2026-10-04T14:51:37.0671947Z [command]/usr/bin/git remote add origin https://github.com/qifalab/neon-harbor
+2026-10-04T14:51:37.0706270Z ##[endgroup]
+2026-10-04T14:51:37.0708202Z ##[group]Disabling automatic garbage collection
+2026-10-04T14:51:37.0709780Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-04T14:51:37.0736572Z ##[endgroup]
+2026-10-04T14:51:37.0738091Z ##[group]Setting up auth
+2026-10-04T14:51:37.0742699Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T14:51:37.0774744Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T14:51:37.1096485Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T14:51:37.1128109Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T14:51:37.1340675Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T14:51:37.1372238Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T14:51:37.1559230Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-04T14:51:37.1598584Z ##[endgroup]
+2026-10-04T14:51:37.1599853Z ##[group]Fetching the repository
+2026-10-04T14:51:37.1609381Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3a81a74d9503836934e9eff10d3cadc88afa2e80:refs/remotes/origin/main
+2026-10-04T14:51:42.1456653Z From https://github.com/qifalab/neon-harbor
+2026-10-04T14:51:42.1459214Z  * [new ref]         3a81a74d9503836934e9eff10d3cadc88afa2e80 -> origin/main
+2026-10-04T14:51:42.1465832Z ##[endgroup]
+2026-10-04T14:51:42.1467107Z ##[group]Determining the checkout info
+2026-10-04T14:51:42.1468664Z ##[endgroup]
+2026-10-04T14:51:42.1471544Z [command]/usr/bin/git sparse-checkout disable
+2026-10-04T14:51:42.1515869Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-04T14:51:42.1543318Z ##[group]Checking out the ref
+2026-10-04T14:51:42.1547376Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-04T14:51:42.3047365Z Switched to a new branch 'main'
+2026-10-04T14:51:42.3049861Z branch 'main' set up to track 'origin/main'.
+2026-10-04T14:51:42.3069511Z ##[endgroup]
+2026-10-04T14:51:42.3112085Z [command]/usr/bin/git log -1 --format=%H
+2026-10-04T14:51:42.3135530Z 3a81a74d9503836934e9eff10d3cadc88afa2e80
+2026-10-04T14:51:42.3433186Z ##[group]Run actions/setup-node@v4
+2026-10-04T14:51:42.3433740Z with:
+2026-10-04T14:51:42.3434108Z   node-version: 22
+2026-10-04T14:51:42.3434492Z   cache: npm
+2026-10-04T14:51:42.3434854Z   always-auth: false
+2026-10-04T14:51:42.3435263Z   check-latest: false
+2026-10-04T14:51:42.3439248Z   token: ***
+2026-10-04T14:51:42.3439622Z ##[endgroup]
+2026-10-04T14:51:42.4923964Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-04T14:51:42.4928921Z (node:2302) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T14:51:42.4931900Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T14:51:42.4933957Z ##[group]Environment details
+2026-10-04T14:51:42.8720825Z node: v22.23.3
+2026-10-04T14:51:42.8722732Z npm: 10.9.9
+2026-10-04T14:51:42.8724114Z yarn: 1.22.22
+2026-10-04T14:51:42.8726889Z ##[endgroup]
+2026-10-04T14:51:42.8764663Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+2026-10-04T14:51:42.9788651Z /home/runner/.npm
+2026-10-04T14:51:43.1883309Z npm cache is not found
+2026-10-04T14:51:43.2016139Z ##[group]Run npm ci
+2026-10-04T14:51:43.2016590Z [36;1mnpm ci[0m
+2026-10-04T14:51:43.2197249Z shell: /usr/bin/bash -e {0}
+2026-10-04T14:51:43.2197635Z ##[endgroup]
+2026-10-04T14:51:44.0655995Z 
+2026-10-04T14:51:44.0665070Z added 3 packages, and audited 4 packages in 792ms
+2026-10-04T14:51:44.0665724Z 
+2026-10-04T14:51:44.0666061Z found 0 vulnerabilities
+2026-10-04T14:51:44.0904101Z ##[group]Run npm run build
+2026-10-04T14:51:44.0904397Z [36;1mnpm run build[0m
+2026-10-04T14:51:44.0945284Z shell: /usr/bin/bash -e {0}
+2026-10-04T14:51:44.0945586Z ##[endgroup]
+2026-10-04T14:51:44.1971642Z 
+2026-10-04T14:51:44.1972357Z > neon-harbor@0.8.0 build
+2026-10-04T14:51:44.1972808Z > node tools/build.mjs
+2026-10-04T14:51:44.1972965Z 
+2026-10-04T14:51:44.6843162Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/
+2026-10-04T14:51:44.9212629Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/
+2026-10-04T14:51:45.0278108Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist
+2026-10-04T14:51:45.0452218Z ##[group]Run npx playwright install --with-deps chromium
+2026-10-04T14:51:45.0452668Z [36;1mnpx playwright install --with-deps chromium[0m
+2026-10-04T14:51:45.0490230Z shell: /usr/bin/bash -e {0}
+2026-10-04T14:51:45.0490514Z ##[endgroup]
+2026-10-04T14:51:45.8593344Z Installing dependencies...
+2026-10-04T14:51:45.8652784Z Switching to root user to install dependencies...
+2026-10-04T14:51:45.9409708Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-04T14:51:45.9729856Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-04T14:51:45.9889643Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-04T14:51:45.9919529Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-04T14:51:45.9970191Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-04T14:51:46.0030636Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-04T14:51:46.0551768Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [458 kB]
+2026-10-04T14:51:46.0711633Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [511 kB]
+2026-10-04T14:51:46.0784354Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+2026-10-04T14:51:46.1578679Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1364 kB]
+2026-10-04T14:51:46.1677016Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [304 kB]
+2026-10-04T14:51:46.1709919Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [181 kB]
+2026-10-04T14:51:46.1723132Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+2026-10-04T14:51:46.1829646Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [341 kB]
+2026-10-04T14:51:46.1852299Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-10-04T14:51:46.1887130Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1720 kB]
+2026-10-04T14:51:46.1985257Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [394 kB]
+2026-10-04T14:51:46.2039792Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-10-04T14:51:46.2190732Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5776 B]
+2026-10-04T14:51:46.2618066Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-10-04T14:51:46.2633897Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1069 kB]
+2026-10-04T14:51:46.2686286Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [221 kB]
+2026-10-04T14:51:46.2705473Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.4 kB]
+2026-10-04T14:51:46.2720194Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1216 kB]
+2026-10-04T14:51:46.2785576Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [244 kB]
+2026-10-04T14:51:46.2806392Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.4 kB]
+2026-10-04T14:51:46.2822572Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1566 kB]
+2026-10-04T14:51:46.2898603Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+2026-10-04T14:51:50.7846345Z Fetched 12.6 MB in 1s (8999 kB/s)
+2026-10-04T14:51:51.6942551Z Reading package lists...
+2026-10-04T14:51:51.7200245Z Reading package lists...
+2026-10-04T14:51:51.9269885Z Building dependency tree...
+2026-10-04T14:51:51.9275130Z Reading state information...
+2026-10-04T14:51:52.1031905Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+2026-10-04T14:51:52.1032903Z libasound2t64 set to manually installed.
+2026-10-04T14:51:52.1033876Z libatk-bridge2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-04T14:51:52.1034642Z libatk-bridge2.0-0t64 set to manually installed.
+2026-10-04T14:51:52.1035426Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-04T14:51:52.1036080Z libatk1.0-0t64 set to manually installed.
+2026-10-04T14:51:52.1036836Z libatspi2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-04T14:51:52.1037658Z libatspi2.0-0t64 set to manually installed.
+2026-10-04T14:51:52.1038748Z libcairo2 is already the newest version (1.18.0-3build1).
+2026-10-04T14:51:52.1039528Z libcairo2 set to manually installed.
+2026-10-04T14:51:52.1040381Z libcups2t64 is already the newest version (2.4.7-1.2ubuntu7.14).
+2026-10-04T14:51:52.1041191Z libcups2t64 set to manually installed.
+2026-10-04T14:51:52.1042010Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+2026-10-04T14:51:52.1042777Z libdbus-1-3 set to manually installed.
+2026-10-04T14:51:52.1043562Z libdrm2 is already the newest version (2.4.125-1ubuntu0.1~24.04.2).
+2026-10-04T14:51:52.1044331Z libdrm2 set to manually installed.
+2026-10-04T14:51:52.1045079Z libglib2.0-0t64 is already the newest version (2.80.0-6ubuntu3.9).
+2026-10-04T14:51:52.1045642Z libglib2.0-0t64 set to manually installed.
+2026-10-04T14:51:52.1046108Z libnspr4 is already the newest version (2:4.35-1.1build1).
+2026-10-04T14:51:52.1046538Z libnspr4 set to manually installed.
+2026-10-04T14:51:52.1046970Z libnss3 is already the newest version (2:3.98-1ubuntu0.2).
+2026-10-04T14:51:52.1047517Z libnss3 set to manually installed.
+2026-10-04T14:51:52.1048206Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-10-04T14:51:52.1048667Z libpango-1.0-0 set to manually installed.
+2026-10-04T14:51:52.1049424Z libx11-6 is already the newest version (2:1.8.7-1build1).
+2026-10-04T14:51:52.1050115Z libx11-6 set to manually installed.
+2026-10-04T14:51:52.1050852Z libxcb1 is already the newest version (1.15-1ubuntu2).
+2026-10-04T14:51:52.1051541Z libxcb1 set to manually installed.
+2026-10-04T14:51:52.1052746Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+2026-10-04T14:51:52.1053590Z libxcomposite1 set to manually installed.
+2026-10-04T14:51:52.1054424Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+2026-10-04T14:51:52.1055297Z libxdamage1 set to manually installed.
+2026-10-04T14:51:52.1056120Z libxext6 is already the newest version (2:1.3.4-1build2).
+2026-10-04T14:51:52.1056931Z libxext6 set to manually installed.
+2026-10-04T14:51:52.1057968Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+2026-10-04T14:51:52.1058911Z libxfixes3 set to manually installed.
+2026-10-04T14:51:52.1059781Z libxkbcommon0 is already the newest version (1.6.0-1build1).
+2026-10-04T14:51:52.1060645Z libxkbcommon0 set to manually installed.
+2026-10-04T14:51:52.1061538Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+2026-10-04T14:51:52.1062393Z libxrandr2 set to manually installed.
+2026-10-04T14:51:52.1063248Z xvfb is already the newest version (2:21.1.12-1ubuntu1.8).
+2026-10-04T14:51:52.1064385Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+2026-10-04T14:51:52.1065593Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+2026-10-04T14:51:52.1066500Z libfontconfig1 set to manually installed.
+2026-10-04T14:51:52.1067450Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.1).
+2026-10-04T14:51:52.1068623Z libfreetype6 set to manually installed.
+2026-10-04T14:51:52.1069534Z fonts-liberation is already the newest version (1:2.1.5-3).
+2026-10-04T14:51:52.1070428Z fonts-liberation set to manually installed.
+2026-10-04T14:51:52.1071305Z The following additional packages will be installed:
+2026-10-04T14:51:52.1072361Z   libgl1-mesa-dri libglx-mesa0 mesa-libgallium xfonts-encodings xfonts-utils
+2026-10-04T14:51:52.1073226Z Recommended packages:
+2026-10-04T14:51:52.1073728Z   fonts-ipafont-mincho fonts-tlwg-loma
+2026-10-04T14:51:52.1236744Z The following NEW packages will be installed:
+2026-10-04T14:51:52.1237316Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-10-04T14:51:52.1248217Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-10-04T14:51:52.1248637Z   xfonts-utils
+2026-10-04T14:51:52.1255585Z The following packages will be upgraded:
+2026-10-04T14:51:52.1262502Z   libgbm1 libgl1-mesa-dri libglx-mesa0 mesa-libgallium
+2026-10-04T14:51:52.1411155Z 4 upgraded, 9 newly installed, 0 to remove and 21 not upgraded.
+2026-10-04T14:51:52.1411643Z Need to get 32.1 MB of archives.
+2026-10-04T14:51:52.1412340Z After this operation, 79.5 MB of additional disk space will be used.
+2026-10-04T14:51:52.1413088Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-04T14:51:52.2205143Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2026-10-04T14:51:52.3550118Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+2026-10-04T14:51:52.5314232Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2026-10-04T14:51:52.5962654Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+2026-10-04T14:51:52.7188644Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2026-10-04T14:51:52.9396045Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgl1-mesa-dri amd64 25.2.8-0ubuntu0.24.04.4 [38.0 kB]
+2026-10-04T14:51:53.0042239Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglx-mesa0 amd64 25.2.8-0ubuntu0.24.04.4 [110 kB]
+2026-10-04T14:51:53.0695350Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgbm1 amd64 25.2.8-0ubuntu0.24.04.4 [34.2 kB]
+2026-10-04T14:51:53.1349388Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 mesa-libgallium amd64 25.2.8-0ubuntu0.24.04.4 [10.8 MB]
+2026-10-04T14:51:53.4166051Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2026-10-04T14:51:53.4910812Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+2026-10-04T14:51:53.5565957Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+2026-10-04T14:51:53.6277646Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+2026-10-04T14:51:53.8857674Z Fetched 32.1 MB in 2s (21.4 MB/s)
+2026-10-04T14:51:53.9079020Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-10-04T14:51:53.9276951Z (Reading database ... 
+2026-10-04T14:51:53.9277263Z (Reading database ... 5%
+2026-10-04T14:51:53.9277521Z (Reading database ... 10%
+2026-10-04T14:51:53.9277910Z (Reading database ... 15%
+2026-10-04T14:51:53.9278185Z (Reading database ... 20%
+2026-10-04T14:51:53.9278425Z (Reading database ... 25%
+2026-10-04T14:51:53.9278669Z (Reading database ... 30%
+2026-10-04T14:51:53.9278898Z (Reading database ... 35%
+2026-10-04T14:51:53.9279126Z (Reading database ... 40%
+2026-10-04T14:51:53.9279358Z (Reading database ... 45%
+2026-10-04T14:51:53.9279585Z (Reading database ... 50%
+2026-10-04T14:51:53.9312883Z (Reading database ... 55%
+2026-10-04T14:51:54.0469276Z (Reading database ... 60%
+2026-10-04T14:51:54.2382647Z (Reading database ... 65%
+2026-10-04T14:51:54.4853144Z (Reading database ... 70%
+2026-10-04T14:51:54.6348198Z (Reading database ... 75%
+2026-10-04T14:51:54.7866474Z (Reading database ... 80%
+2026-10-04T14:51:54.9331101Z (Reading database ... 85%
+2026-10-04T14:51:55.0944743Z (Reading database ... 90%
+2026-10-04T14:51:55.2414855Z (Reading database ... 95%
+2026-10-04T14:51:55.2415467Z (Reading database ... 100%
+2026-10-04T14:51:55.2416166Z (Reading database ... 202296 files and directories currently installed.)
+2026-10-04T14:51:55.2460808Z Preparing to unpack .../00-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2026-10-04T14:51:55.2539129Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-04T14:51:55.4845673Z Selecting previously unselected package fonts-freefont-ttf.
+2026-10-04T14:51:55.4960080Z Preparing to unpack .../01-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+2026-10-04T14:51:55.4969021Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-04T14:51:55.5739939Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-10-04T14:51:55.5854184Z Preparing to unpack .../02-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2026-10-04T14:51:55.5863775Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-04T14:51:55.6026442Z Selecting previously unselected package fonts-unifont.
+2026-10-04T14:51:55.6139622Z Preparing to unpack .../03-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+2026-10-04T14:51:55.6146896Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+2026-10-04T14:51:55.7084729Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-10-04T14:51:55.7199388Z Preparing to unpack .../04-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2026-10-04T14:51:55.7284135Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-04T14:51:56.2106547Z Preparing to unpack .../05-libgl1-mesa-dri_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T14:51:56.2228703Z Unpacking libgl1-mesa-dri:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T14:51:56.2614508Z Preparing to unpack .../06-libglx-mesa0_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T14:51:56.2649230Z Unpacking libglx-mesa0:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T14:51:56.2962190Z Preparing to unpack .../07-libgbm1_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T14:51:56.2985510Z Unpacking libgbm1:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T14:51:56.3287913Z Preparing to unpack .../08-mesa-libgallium_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T14:51:56.3310110Z Unpacking mesa-libgallium:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T14:51:56.4954018Z Selecting previously unselected package xfonts-encodings.
+2026-10-04T14:51:56.5065352Z Preparing to unpack .../09-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2026-10-04T14:51:56.5073883Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-04T14:51:56.5284885Z Selecting previously unselected package xfonts-utils.
+2026-10-04T14:51:56.5398560Z Preparing to unpack .../10-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+2026-10-04T14:51:56.5410975Z Unpacking xfonts-utils (1:7.7+6build3) ...
+2026-10-04T14:51:56.5680953Z Selecting previously unselected package xfonts-cyrillic.
+2026-10-04T14:51:56.5794799Z Preparing to unpack .../11-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+2026-10-04T14:51:56.5803734Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-04T14:51:56.6044067Z Selecting previously unselected package xfonts-scalable.
+2026-10-04T14:51:56.6157254Z Preparing to unpack .../12-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+2026-10-04T14:51:56.6164543Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-04T14:51:56.6519434Z Setting up mesa-libgallium:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T14:51:56.6540018Z Setting up libgbm1:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T14:51:56.6559642Z Setting up libgl1-mesa-dri:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T14:51:56.6631880Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-04T14:51:56.6733231Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-04T14:51:56.6748540Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-04T14:51:56.6764880Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-04T14:51:56.6780052Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-04T14:51:56.6832560Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-10-04T14:51:56.6848212Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+2026-10-04T14:51:56.6864237Z Setting up libglx-mesa0:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T14:51:56.6883650Z Setting up xfonts-utils (1:7.7+6build3) ...
+2026-10-04T14:51:56.6921112Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-04T14:51:56.7164663Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-04T14:51:56.7386376Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-04T14:51:56.7623688Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-04T14:51:56.7640909Z Not building database; man-db/auto-update is not 'true'.
+2026-10-04T14:51:56.7654187Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-10-04T14:51:57.3779716Z 
+2026-10-04T14:51:57.3780761Z Running kernel seems to be up-to-date.
+2026-10-04T14:51:57.3781156Z 
+2026-10-04T14:51:57.3781421Z No services need to be restarted.
+2026-10-04T14:51:57.3781688Z 
+2026-10-04T14:51:57.3781922Z No containers need to be restarted.
+2026-10-04T14:51:57.3782189Z 
+2026-10-04T14:51:57.3782487Z No user sessions are running outdated binaries.
+2026-10-04T14:51:57.3782829Z 
+2026-10-04T14:51:57.3783286Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-04T14:51:58.3627693Z Downloading Chrome for Testing 151.0.7922.34 (playwright chromium v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-linux64.zip
+2026-10-04T14:51:59.3892672Z |                                                                                |   0% of 184.3 MiB
+2026-10-04T14:51:59.5644354Z |■■■■■■■■                                                                        |  10% of 184.3 MiB
+2026-10-04T14:51:59.6403704Z |■■■■■■■■■■■■■■■■                                                                |  20% of 184.3 MiB
+2026-10-04T14:51:59.7050093Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 184.3 MiB
+2026-10-04T14:51:59.7880458Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 184.3 MiB
+2026-10-04T14:51:59.8488898Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 184.3 MiB
+2026-10-04T14:51:59.9082079Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 184.3 MiB
+2026-10-04T14:51:59.9757246Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 184.3 MiB
+2026-10-04T14:52:00.0497011Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 184.3 MiB
+2026-10-04T14:52:00.1116920Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 184.3 MiB
+2026-10-04T14:52:00.1973019Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 184.3 MiB
+2026-10-04T14:52:02.7372469Z Chrome for Testing 151.0.7922.34 (playwright chromium v1234) downloaded to /home/runner/.cache/ms-playwright/chromium-1234
+2026-10-04T14:52:02.7377453Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+2026-10-04T14:52:03.7235848Z |                                                                                |   0% of 2.3 MiB
+2026-10-04T14:52:03.7272356Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-10-04T14:52:03.7302439Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-10-04T14:52:03.7323857Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-10-04T14:52:03.7338655Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-10-04T14:52:03.7351002Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-10-04T14:52:03.7359525Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-10-04T14:52:03.7374031Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-10-04T14:52:03.7414436Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-10-04T14:52:03.7576104Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-10-04T14:52:03.7583675Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-10-04T14:52:03.8081560Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2026-10-04T14:52:03.8084681Z Downloading Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-headless-shell-linux64.zip
+2026-10-04T14:52:04.8450881Z |                                                                                |   0% of 114.7 MiB
+2026-10-04T14:52:04.9883259Z |■■■■■■■■                                                                        |  10% of 114.7 MiB
+2026-10-04T14:52:05.0354739Z |■■■■■■■■■■■■■■■■                                                                |  20% of 114.7 MiB
+2026-10-04T14:52:05.0789847Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 114.7 MiB
+2026-10-04T14:52:05.1169951Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 114.7 MiB
+2026-10-04T14:52:05.1595124Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 114.7 MiB
+2026-10-04T14:52:05.2029758Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 114.7 MiB
+2026-10-04T14:52:05.2482857Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 114.7 MiB
+2026-10-04T14:52:05.2965685Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 114.7 MiB
+2026-10-04T14:52:05.3567215Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 114.7 MiB
+2026-10-04T14:52:05.4425528Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 114.7 MiB
+2026-10-04T14:52:07.2365306Z Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1234
+2026-10-04T14:52:07.2551110Z ##[group]Run npx playwright test --config=playwright.multiplayer.config.js
+2026-10-04T14:52:07.2551652Z [36;1mnpx playwright test --config=playwright.multiplayer.config.js[0m
+2026-10-04T14:52:07.2589907Z shell: /usr/bin/bash -e {0}
+2026-10-04T14:52:07.2590185Z ##[endgroup]
+2026-10-04T14:52:08.5648800Z 
+2026-10-04T14:52:08.5649209Z Running 2 tests using 1 worker
+2026-10-04T14:52:08.5649461Z 
+2026-10-04T14:54:18.2186147Z   ✘  1 tests/multiplayer-browser/rooms.spec.js:18:1 › two independent browsers share a room, rendered walking peers, chat and disconnect (2.2m)
+2026-10-04T14:57:07.1474937Z   ✘  2 tests/multiplayer-browser/rooms.spec.js:55:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit (2.8m)
+2026-10-04T14:57:07.1868190Z 
+2026-10-04T14:57:07.1873131Z 
+2026-10-04T14:57:07.1883277Z   1) tests/multiplayer-browser/rooms.spec.js:18:1 › two independent browsers share a room, rendered walking peers, chat and disconnect 
+2026-10-04T14:57:07.1884431Z 
+2026-10-04T14:57:07.1884848Z     TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.
+2026-10-04T14:57:07.1885360Z 
+2026-10-04T14:57:07.1885864Z       36 |     const target=await a.evaluate(()=>window.__NEON__.snapshot().position);
+2026-10-04T14:57:07.1887938Z       37 |     await expect.poll(()=>b.evaluate(({target})=>{const mesh=window.__NEON__.snapshot().multiplayer.meshes[0];return mesh?Math.hypot(mesh.x-target.x,mesh.z-target.z):1000;},{target})).toBeLessThan(.6);
+2026-10-04T14:57:07.1890268Z     > 38 |     await a.keyboard.down('KeyW');await a.waitForFunction(()=>window.__NEON__.snapshot().cars.some(c=>c.id==='starter'&&Math.hypot(c.x-window.__NEON__.snapshot().position.x,c.z-window.__NEON__.snapshot().position.z)<5),null,{timeout:30000});await a.keyboard.up('KeyW');
+2026-10-04T14:57:07.1891819Z          |                                           ^
+2026-10-04T14:57:07.1892532Z       39 |     await a.keyboard.press('KeyE');await expect.poll(()=>a.evaluate(()=>window.__NEON__.snapshot().inCar)).toBe('starter');
+2026-10-04T14:57:07.1893339Z       40 |     const carStart=await a.evaluate(()=>window.__NEON__.snapshot().position);
+2026-10-04T14:57:07.1894693Z       41 |     await a.keyboard.down('KeyW');await a.waitForFunction(({carStart})=>Math.hypot(window.__NEON__.snapshot().position.x-carStart.x,window.__NEON__.snapshot().position.z-carStart.z)>3,{carStart},{timeout:30000});await a.keyboard.up('KeyW');
+2026-10-04T14:57:07.1896130Z         at /home/runner/work/neon-harbor/neon-harbor/tests/multiplayer-browser/rooms.spec.js:38:43
+2026-10-04T14:57:07.1896562Z 
+2026-10-04T14:57:07.1897159Z     attachment #1: welcome-short-window-multiplayer (image/png) ────────────────────────────────────
+2026-10-04T14:57:07.1898698Z     multiplayer-test-results/rooms-two-independent-brow-9b405-g-peers-chat-and-disconnect/attachments/welcome-short-window-multiplayer-a8386e030be827b538fa88f3f55793dac4888348.png
+2026-10-04T14:57:07.1899976Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-04T14:57:07.1900304Z 
+2026-10-04T14:57:07.1900849Z     Error Context: multiplayer-test-results/rooms-two-independent-brow-9b405-g-peers-chat-and-disconnect/error-context.md
+2026-10-04T14:57:07.1901738Z 
+2026-10-04T14:57:07.1902464Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-04T14:57:07.1903889Z     multiplayer-test-results/rooms-two-independent-brow-9b405-g-peers-chat-and-disconnect/trace.zip
+2026-10-04T14:57:07.1904473Z     Usage:
+2026-10-04T14:57:07.1904595Z 
+2026-10-04T14:57:07.1905148Z         npx playwright show-trace multiplayer-test-results/rooms-two-independent-brow-9b405-g-peers-chat-and-disconnect/trace.zip
+2026-10-04T14:57:07.1905661Z 
+2026-10-04T14:57:07.1906004Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-04T14:57:07.1906267Z 
+2026-10-04T14:57:07.1907189Z   2) tests/multiplayer-browser/rooms.spec.js:55:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit 
+2026-10-04T14:57:07.1908305Z 
+2026-10-04T14:57:07.1908565Z     TimeoutError: page.waitForFunction: Timeout 59636ms exceeded.
+2026-10-04T14:57:07.1910566Z     Walking diagnostics: {"axis":"z","target":-217.45000000000002,"before":{"position":{"x":1192,"y":4.035,"z":-167.65,"yaw":3.141592653589793},"yaw":3.141592653589793,"simulationTime":1.5333333333333328,"teleportRevision":4,"floorId":"lobby","stationId":null},"current":{"position":{"x":1192,"y":4.035,"z":-210.5250000000028,"yaw":3.141592653589793},"yaw":3.141592653589793,"simulationTime":5.866666666666651,"teleportRevision":4,"floorId":"lobby","stationId":null},"samples":[{"value":-167.65,"simulationTime":1.5333333333333328}]}
+2026-10-04T14:57:07.1912199Z 
+2026-10-04T14:57:07.1912324Z        at ../e2e/helpers/walking.js:47
+2026-10-04T14:57:07.1912503Z 
+2026-10-04T14:57:07.1912681Z       45 |         if (sprinting) await page.keyboard.down('Shift');
+2026-10-04T14:57:07.1913066Z       46 |         await page.keyboard.down(key);
+2026-10-04T14:57:07.1913484Z     > 47 |         await page.waitForFunction(({ axis, target, positive }) => {
+2026-10-04T14:57:07.1913877Z          |                    ^
+2026-10-04T14:57:07.1914227Z       48 |           const value = window.__NEON__.snapshot().position[axis];
+2026-10-04T14:57:07.1914692Z       49 |           return positive ? value >= target - 2.2 : value <= target + 2.2;
+2026-10-04T14:57:07.1915276Z       50 |         }, { axis, target, positive }, { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) });
+2026-10-04T14:57:07.1915919Z         at walkAxis (/home/runner/work/neon-harbor/neon-harbor/tests/e2e/helpers/walking.js:47:20)
+2026-10-04T14:57:07.1916564Z         at chooseStorey (/home/runner/work/neon-harbor/neon-harbor/tests/e2e/helpers/occupied.js:35:3)
+2026-10-04T14:57:07.1917200Z         at /home/runner/work/neon-harbor/neon-harbor/tests/multiplayer-browser/rooms.spec.js:137:5
+2026-10-04T14:57:07.1917539Z 
+2026-10-04T14:57:07.1918156Z     Error Context: multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/error-context.md
+2026-10-04T14:57:07.1918616Z 
+2026-10-04T14:57:07.1919041Z     attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-04T14:57:07.1919729Z     multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/trace.zip
+2026-10-04T14:57:07.1920490Z     Usage:
+2026-10-04T14:57:07.1920672Z 
+2026-10-04T14:57:07.1921502Z         npx playwright show-trace multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/trace.zip
+2026-10-04T14:57:07.1922385Z 
+2026-10-04T14:57:07.1923025Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-04T14:57:07.1923516Z 
+2026-10-04T14:57:07.1923650Z   2 failed
+2026-10-04T14:57:07.1924811Z     tests/multiplayer-browser/rooms.spec.js:18:1 › two independent browsers share a room, rendered walking peers, chat and disconnect 
+2026-10-04T14:57:07.1926790Z     tests/multiplayer-browser/rooms.spec.js:55:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit 
+2026-10-04T14:57:07.2063494Z ##[error]Process completed with exit code 1.
+2026-10-04T14:57:07.2139079Z ##[group]Run actions/upload-artifact@v4
+2026-10-04T14:57:07.2139348Z with:
+2026-10-04T14:57:07.2139559Z   name: multiplayer-browser-test-results
+2026-10-04T14:57:07.2139851Z   path: multiplayer-test-results/
+2026-10-04T14:57:07.2140116Z   if-no-files-found: ignore
+2026-10-04T14:57:07.2140352Z   compression-level: 6
+2026-10-04T14:57:07.2140559Z   overwrite: false
+2026-10-04T14:57:07.2140764Z   include-hidden-files: false
+2026-10-04T14:57:07.2141016Z ##[endgroup]
+2026-10-04T14:57:07.3776642Z (node:3511) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T14:57:07.3778553Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T14:57:07.3897444Z With the provided path, there will be 6 files uploaded
+2026-10-04T14:57:07.3898853Z Artifact name is valid!
+2026-10-04T14:57:07.3899469Z Root directory input is valid!
+2026-10-04T14:57:07.7412150Z Beginning upload of artifact content to blob storage
+2026-10-04T14:57:07.7935486Z (node:3511) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-04T14:57:08.2947393Z Uploaded bytes 765067
+2026-10-04T14:57:08.3580618Z Finished uploading artifact content to blob storage!
+2026-10-04T14:57:08.3581833Z SHA256 digest of uploaded artifact zip is 7a98cb6bb71067bbfc31f0e408ffeb95ba7f2b553a8f7435d432bb371a6bc06d
+2026-10-04T14:57:08.3583344Z Finalizing artifact upload
+2026-10-04T14:57:08.6443541Z Artifact multiplayer-browser-test-results.zip successfully finalized. Artifact ID 11306178410
+2026-10-04T14:57:08.6444746Z Artifact multiplayer-browser-test-results has been successfully uploaded! Final size is 765067 bytes. Artifact ID is 11306178410
+2026-10-04T14:57:08.6451704Z Artifact download URL: https://github.com/qifalab/neon-harbor/actions/runs/37210812941/artifacts/11306178410
+2026-10-04T14:57:08.6631967Z Post job cleanup.
+2026-10-04T14:57:08.7471279Z [command]/usr/bin/git version
+2026-10-04T14:57:08.7512798Z git version 2.55.0
+2026-10-04T14:57:08.7551478Z Temporarily overriding HOME='/home/runner/work/_temp/b795641e-ec3d-4f7e-b9cc-44456f23e91d' before making global git config changes
+2026-10-04T14:57:08.7552982Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T14:57:08.7558183Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/neon-harbor/neon-harbor
+2026-10-04T14:57:08.7596853Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T14:57:08.7633001Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T14:57:08.7839368Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T14:57:08.7867452Z http.https://github.com/.extraheader
+2026-10-04T14:57:08.7878243Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-04T14:57:08.7913718Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T14:57:08.8141606Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T14:57:08.8180399Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T14:57:08.8552202Z Cleaning up orphan processes
+2026-10-04T14:57:08.8785546Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

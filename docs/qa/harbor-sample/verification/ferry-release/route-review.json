@@ -1,0 +1,11 @@
+{
+  "method": "Independent read-only audit of the actual final ferry route, arrival and outside records",
+  "sampleCount": 327,
+  "simulationClock": {"monotonicNonDecreasing": true, "duplicateBoundarySamples": 10, "maximumSampleGapSeconds": 1.4, "serviceTimeEqualsSimulationTime": true, "vehicleDelay": 0},
+  "cabinTeleportRevisions": [3],
+  "stairTraversal": {"ascendingChangingIntermediateSamples": 55, "descendingChangingIntermediateSamples": 55, "minimumHeight": 1.3, "maximumHeight": 3.7, "maximumSupportFormulaErrorMetres": 8.88e-16, "maximumLateralDeviationMetres": 0.076633, "passengerRadiusMetres": 0.3, "stairHalfWidthMetres": 0.51},
+  "centralAisle": {"maximumCapsuleEnvelopeMetres": 0.355041, "aisleHalfWidthMetres": 0.675},
+  "arrival": {"stopId": "harbor-ferry-north", "doorsOpen": true, "vehicleSpeed": 0, "remainingDwellSeconds": 15.880368374384808, "passengerHeight": 1.3, "distanceToDoorInsideMetres": 0.006452, "localToWorldPositionErrorMetres": 0, "teleportRevision": 3},
+  "outside": {"position": {"x": 220, "y": 1.3, "z": -380.5}, "riding": false, "interiorBuildingId": null, "teleportRevision": 4, "transition": "Normal public E alighting applies the street exit and advances the presentation revision once"},
+  "limitations": ["Samples are not a complete per-frame collision audit", "This single route does not prove all seats, traffic conflicts, long-term stability, hardware FPS, visual production quality or the continuous home-to-transit-to-home route", "Build identity and public input method must be assessed with the retained run log, manifest and test source"]
+}

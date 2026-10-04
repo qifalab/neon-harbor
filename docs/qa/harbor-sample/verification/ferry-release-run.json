@@ -1,6 +1,6 @@
 {
   "startedAtUtc": "2026-10-04T14:42:13.613313+00:00",
-  "runStatus": "running",
+  "runStatus": "completed",
   "buildInfoSha256": "b83ccae70a56a111ec5bd44e550b48fbb47d0634caf5899035713341b2aa4ab9",
   "testSha256": "3df001c6b62c1db31a1da746999ed183048dc7e56aae836b8d4cad2fab771ec9",
   "firstRunPreserved": true,
@@ -20,5 +20,12 @@
   "photoQuality": "high",
   "continuous20MinuteRoute": "pending",
   "hardwareTargets": "unmeasured",
-  "command": "CI=1 CHROMIUM_PATH=/usr/bin/chromium NEON_TEST_PORT=5186 NEON_TEST_RESULTS=test-results/harbor-sample-ferry-release NEON_TEST_REPORT=/tmp/neon-harbor-sample-ferry-release-report npx playwright test tests/e2e/harbor-sample.spec.js -g 'ferry:' > /tmp/neon-harbor-sample-ferry-release.log 2>&1"
+  "command": "CI=1 CHROMIUM_PATH=/usr/bin/chromium NEON_TEST_PORT=5186 NEON_TEST_RESULTS=test-results/harbor-sample-ferry-release NEON_TEST_REPORT=/tmp/neon-harbor-sample-ferry-release-report npx playwright test tests/e2e/harbor-sample.spec.js -g 'ferry:' > /tmp/neon-harbor-sample-ferry-release.log 2>&1",
+  "exitCode": 0,
+  "finishedAtUtc": "2026-10-04T14:53:20.882174+00:00",
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "reportedDuration": "10.0m"
+  }
 }

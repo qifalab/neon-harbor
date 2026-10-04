@@ -40,17 +40,57 @@ async function visit(page, kind, id) {
 // to the helper's .75 m. Original long-aisle sprints end before the door approach.
 const moveAxis = (page, axis, target, options = {}) => walkAxis(page, axis, target, { ...options, timeout: 90000 });
 
-async function takeLift(page, floorId) {
+async function takeLift(page, floorId, testInfo) {
   await page.keyboard.press('e');
   await expect(page.locator(`[data-floor-id="${floorId}"]`)).toBeEnabled();
+  // Observe the first active and first idle frames in the browser. Polling a
+  // full world snapshot over the protocol, then reading another snapshot after
+  // arrival, charges the idle frames during those round trips to the lift.
+  // This observer reads the same diagnostics without changing the clock or
+  // player position; the public floor button still starts the whole journey.
+  const observation = page.evaluate(() => new Promise(resolve => {
+    let frame, start = null, arrived = null;
+    const samples = [], wallStart = performance.now();
+    const finish = timedOut => {
+      clearTimeout(timer); cancelAnimationFrame(frame);
+      resolve({ timedOut, start, arrived, samples });
+    };
+    const timer = setTimeout(() => finish(true), 90000);
+    const observe = () => {
+      const state = window.__NEON__.snapshot(), interior = state.city.interior;
+      if (interior.moving || start) {
+        const value = { wallElapsed: (performance.now() - wallStart) / 1000,
+          simulationTime: state.simulationTime, position: state.position,
+          floorId: interior.floorId, moving: interior.moving,
+          elevator: { ...interior.elevator } };
+        samples.push(value);
+        if (!start && interior.moving) start = value;
+        if (start && !interior.moving) { arrived = value; finish(false); return; }
+      }
+      frame = requestAnimationFrame(observe);
+    };
+    observe();
+  }));
+  // Register rejection handling immediately while the real click is pending.
+  // A closed page should preserve the click error, not create a stray promise.
+  observation.catch(() => {});
   await page.locator(`[data-floor-id="${floorId}"]`).click();
-  await expect.poll(async () => (await snapshot(page)).city.interior.moving).toBe(true);
-  const moving = await snapshot(page);
-  await expect.poll(async () => (await snapshot(page)).city.interior.moving, { timeout: 90000 }).toBe(false);
-  const arrived = await snapshot(page);
-  expect(arrived.city.interior.floorId).toBe(floorId);
-  expect(arrived.city.interior.elevator.doorOpen).toBe(1);
-  expect(arrived.simulationTime - moving.simulationTime).toBeLessThan(moving.city.interior.elevator.duration + 3);
+  const journey = await observation;
+  await testInfo.attach(`living-city-lift-${floorId}`, {
+    body: Buffer.from(JSON.stringify(journey, null, 2)), contentType: 'application/json',
+  });
+  expect(journey.timedOut, 'the real lift completes within the original wall-clock limit').toBe(false);
+  expect(journey.start, 'the public floor button starts an observed lift journey').toBeTruthy();
+  expect(journey.arrived, 'the first idle frame supplies the arrival time').toBeTruthy();
+  expect(journey.arrived.floorId).toBe(floorId);
+  expect(journey.arrived.elevator.doorOpen).toBe(1);
+  expect([...new Set(journey.samples.map(value => value.elevator.phase))]).toEqual(['closing', 'moving', 'opening', 'idle']);
+  expect(journey.arrived.simulationTime - journey.start.simulationTime,
+    'the lift journey keeps the original simulation stall limit').toBeLessThan(journey.start.elevator.duration + 3);
+  for (const value of journey.samples) {
+    expect(value.position.x, 'the rider stays inside the physical cabin').toBeCloseTo(journey.start.position.x, 4);
+    expect(value.position.z, 'the rider stays inside the physical cabin').toBeCloseTo(journey.start.position.z, 4);
+  }
 }
 
 async function capture(page, testInfo, name) {
@@ -67,7 +107,7 @@ test('a resident rides to a furnished bedroom, walks through its doorway, and re
   const entered = await snapshot(page), lobby = entered.city.interior;
   expect(lobby.floorId).toBe('lobby');
   await moveAxis(page, 'z', lobby.cabin.z, { sprint: true });
-  await takeLift(page, 'gallery');
+  await takeLift(page, 'gallery', testInfo);
   const floor = (await snapshot(page)).city.interior;
   expect(floor.roomCount).toBe(4);
   const room = floor.rooms.find(room => room.type === 'bedroom');
@@ -95,7 +135,7 @@ test('a resident rides to a furnished bedroom, walks through its doorway, and re
   await moveAxis(page, 'z', room.entrance.z);
   await moveAxis(page, 'x', floor.entrance.x);
   await moveAxis(page, 'z', floor.cabin.z, { sprint: true });
-  await takeLift(page, 'lobby');
+  await takeLift(page, 'lobby', testInfo);
   await moveAxis(page, 'z', lobby.entrance.z, { sprint: true });
   await page.keyboard.press('e');
   await expect.poll(async () => (await snapshot(page)).city.interior.buildingId).toBeNull();

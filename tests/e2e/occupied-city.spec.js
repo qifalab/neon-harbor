@@ -13,7 +13,10 @@ test('all storeys are selectable and a visitor walks an upper stair flight witho
   await enterAddress(page, 'apex-tower');
   const building = (await snapshot(page)).city.buildings.find(item => item.id === 'apex-tower');
   expect(building.floors).toHaveLength(63);
-  await walkAxis(page, 'z', (await snapshot(page)).city.interior.cabin.z, { sprint: true });
+  // The preserved Pages run advanced only 2 real simulation seconds during
+  // 60 wall seconds on this 56 m aisle. Keep physical stall/teleport checks;
+  // allow the real renderer to advance the remaining journey.
+  await walkAxis(page, 'z', (await snapshot(page)).city.interior.cabin.z, { sprint: true, timeout: 180000 });
   await page.keyboard.press('e');
   await expect(page.locator('[data-floor-id]')).toHaveCount(63);
   await page.getByRole('searchbox', { name: '找楼层或房间' }).fill('16F');
@@ -39,7 +42,7 @@ test('all storeys are selectable and a visitor walks an upper stair flight witho
   await leaveRoom(page, room, building.x);
   const samples = [];
   for (const id of ['level-08', 'level-16', 'level-05', 'level-16']) {
-    const resident = await chooseStorey(page, id);
+    const resident = await chooseStorey(page, id, { walkingTimeout: 180000 });
     samples.push({ id, floors: resident.residentFloors, textures: resident.ownedSignTextures });
     expect(resident.activeFloors).toBe(3); expect(resident.ownedSignTextures).toBeLessThan(180);
   }
@@ -52,7 +55,8 @@ test('the rendered resident enters a real workplace and stays there during worki
   test.setTimeout(2400000);
   const errors = await bootOccupied(page);
   await enterAddress(page, 'tide-museum');
-  await chooseStorey(page, 'workplace');
+  // The first Pages run made 39 m of continuous progress in 60 wall seconds.
+  await chooseStorey(page, 'workplace', { walkingTimeout: 180000 });
   const initial = await snapshot(page), person = initial.city.people.people.find(item => item.id === 'resident-tide-museum-0');
   expect(person.journey.work.floorId).toBe('workplace');
   const monitor = setInterval(async () => {

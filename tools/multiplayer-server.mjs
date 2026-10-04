@@ -5,9 +5,14 @@ import { resolve } from 'node:path';
 import { createStaticServer } from './server.mjs';
 import { GameSimulation } from '../src/simulation.js';
 import { infrastructureGroundHeightAt } from '../src/metropolis-infrastructure.js';
+import { harborTerrainGroundHeightAt } from '../src/harbor-terrain.js';
 import { northernVehicles } from '../src/traffic.js';
 import { ROOM_PROTOCOL, ROOM_WORLD, MAX_PLAYERS, cleanRoomCode, cleanName, cleanPose } from '../src/multiplayer-protocol.js';
 const code=()=>randomBytes(4).toString('hex').slice(0,6).toUpperCase();
+// Preserve reachable raised roads before the eastern terrain fallback. A
+// single 3.75 m plane would incorrectly support the shipping channel and hide
+// the ridge's actual elevation from shared vehicle physics.
+export const multiplayerGroundHeightAt = (x,z,y=0) => infrastructureGroundHeightAt(x,z,y) ?? harborTerrainGroundHeightAt(x,z) ?? 0;
 function reply(res,status,body){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(body));}
 async function body(req){
   if(!req.headers['content-type']?.startsWith('application/json'))throw new Error('JSON_REQUIRED');
@@ -18,7 +23,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
   const server=await createStaticServer({root}),staticHandler=server.listeners('request')[0];server.removeAllListeners('request');
   const rooms=new Map(),sessions=new Map(),joinRates=new Map();
   function newRoom(roomCode){
-    const sim=new GameSimulation({bounds:1800,groundHeightAt:(x,z,y)=>infrastructureGroundHeightAt(x,z,y)??0});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
+    const sim=new GameSimulation({bounds:1800,groundHeightAt:multiplayerGroundHeightAt});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
     Object.assign(sim.player,{x:1400,z:1400});
     const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0};rooms.set(roomCode,room);return room;
   }

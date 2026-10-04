@@ -1,0 +1,1539 @@
+{
+  "total_count": 14,
+  "jobs": [
+    {
+      "id": 111461452657,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857LcQ",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452657",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452657",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T14:57:10Z",
+      "name": "Multiplayer rooms in two browsers",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:36Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:51:44Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:44Z",
+          "completed_at": "2026-10-04T14:51:45Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:51:45Z",
+          "completed_at": "2026-10-04T14:52:07Z"
+        },
+        {
+          "name": "Run npx playwright test --config=playwright.multiplayer.config.js",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7,
+          "started_at": "2026-10-04T14:52:07Z",
+          "completed_at": "2026-10-04T14:57:07Z"
+        },
+        {
+          "name": "Retain multiplayer verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:57:07Z",
+          "completed_at": "2026-10-04T14:57:08Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-04T14:57:08Z",
+          "completed_at": "2026-10-04T14:57:08Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-04T14:57:08Z",
+          "completed_at": "2026-10-04T14:57:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T14:57:08Z",
+          "completed_at": "2026-10-04T14:57:08Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452657",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000788,
+      "runner_name": "GitHub Actions 1000000788",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452844,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MLA",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452844",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452844",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T14:59:42Z",
+      "name": "Build and gameplay tests (metropolis-1)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:45Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:46Z",
+          "completed_at": "2026-10-04T14:51:48Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:48Z",
+          "completed_at": "2026-10-04T14:54:18Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:54:18Z",
+          "completed_at": "2026-10-04T14:54:19Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:54:19Z",
+          "completed_at": "2026-10-04T14:54:42Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/metropolis.spec.js --fully-parallel --shard=1/3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:42Z",
+          "completed_at": "2026-10-04T14:59:39Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T14:59:39Z",
+          "completed_at": "2026-10-04T14:59:40Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T14:59:40Z",
+          "completed_at": "2026-10-04T14:59:40Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T14:59:40Z",
+          "completed_at": "2026-10-04T14:59:40Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T14:59:40Z",
+          "completed_at": "2026-10-04T14:59:40Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452844",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000792,
+      "runner_name": "GitHub Actions 1000000792",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452862,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MPg",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452862",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452862",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T15:04:21Z",
+      "name": "Build and gameplay tests (harbor-sample-1)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:46Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:46Z",
+          "completed_at": "2026-10-04T14:51:48Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:48Z",
+          "completed_at": "2026-10-04T14:53:37Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:53:37Z",
+          "completed_at": "2026-10-04T14:53:38Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:53:38Z",
+          "completed_at": "2026-10-04T14:54:04Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/harbor-sample.spec.js --fully-parallel --shard=1/2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:04Z",
+          "completed_at": "2026-10-04T15:04:19Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T15:04:19Z",
+          "completed_at": "2026-10-04T15:04:19Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T15:04:19Z",
+          "completed_at": "2026-10-04T15:04:20Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T15:04:20Z",
+          "completed_at": "2026-10-04T15:04:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T15:04:20Z",
+          "completed_at": "2026-10-04T15:04:20Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452862",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000791,
+      "runner_name": "GitHub Actions 1000000791",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452912,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857McA",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452912",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452912",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T15:06:29Z",
+      "name": "Build and gameplay tests (metropolis-3)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:35Z",
+          "completed_at": "2026-10-04T14:51:36Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:41Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:41Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:54:11Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:54:11Z",
+          "completed_at": "2026-10-04T14:54:12Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:54:12Z",
+          "completed_at": "2026-10-04T14:54:35Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/metropolis.spec.js --fully-parallel --shard=3/3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:35Z",
+          "completed_at": "2026-10-04T15:06:27Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T15:06:27Z",
+          "completed_at": "2026-10-04T15:06:27Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T15:06:27Z",
+          "completed_at": "2026-10-04T15:06:28Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T15:06:28Z",
+          "completed_at": "2026-10-04T15:06:28Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T15:06:28Z",
+          "completed_at": "2026-10-04T15:06:28Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452912",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000790,
+      "runner_name": "GitHub Actions 1000000790",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452914,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857Mcg",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452914",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452914",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T14:59:55Z",
+      "name": "Build and gameplay tests (stability)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:35Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:45Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:45Z",
+          "completed_at": "2026-10-04T14:51:47Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:47Z",
+          "completed_at": "2026-10-04T14:53:36Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:53:36Z",
+          "completed_at": "2026-10-04T14:53:37Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:53:37Z",
+          "completed_at": "2026-10-04T14:54:12Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/stability.spec.js --fully-parallel --shard=1/1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:12Z",
+          "completed_at": "2026-10-04T14:59:52Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T14:59:52Z",
+          "completed_at": "2026-10-04T14:59:53Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T14:59:53Z",
+          "completed_at": "2026-10-04T14:59:53Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T14:59:53Z",
+          "completed_at": "2026-10-04T14:59:53Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T14:59:53Z",
+          "completed_at": "2026-10-04T14:59:53Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452914",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000797,
+      "runner_name": "GitHub Actions 1000000797",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452920,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MeA",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452920",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452920",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T15:01:27Z",
+      "name": "Build and gameplay tests (harbor-realism)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:51:44Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:44Z",
+          "completed_at": "2026-10-04T14:54:08Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:54:08Z",
+          "completed_at": "2026-10-04T14:54:09Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:54:09Z",
+          "completed_at": "2026-10-04T14:54:35Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/harbor-realism.spec.js --fully-parallel --shard=1/1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:35Z",
+          "completed_at": "2026-10-04T15:01:22Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T15:01:22Z",
+          "completed_at": "2026-10-04T15:01:24Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T15:01:24Z",
+          "completed_at": "2026-10-04T15:01:24Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T15:01:24Z",
+          "completed_at": "2026-10-04T15:01:24Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T15:01:24Z",
+          "completed_at": "2026-10-04T15:01:24Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452920",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000789,
+      "runner_name": "GitHub Actions 1000000789",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452940,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MjA",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452940",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452940",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T15:15:45Z",
+      "name": "Build and gameplay tests (harbor-sample-2)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:35Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:46Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:46Z",
+          "completed_at": "2026-10-04T14:51:48Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:48Z",
+          "completed_at": "2026-10-04T14:53:58Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:53:58Z",
+          "completed_at": "2026-10-04T14:53:59Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:53:59Z",
+          "completed_at": "2026-10-04T14:54:31Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/harbor-sample.spec.js --fully-parallel --shard=2/2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:31Z",
+          "completed_at": "2026-10-04T15:15:42Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T15:15:42Z",
+          "completed_at": "2026-10-04T15:15:43Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T15:15:43Z",
+          "completed_at": "2026-10-04T15:15:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T15:15:43Z",
+          "completed_at": "2026-10-04T15:15:44Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T15:15:44Z",
+          "completed_at": "2026-10-04T15:15:44Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452940",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000795,
+      "runner_name": "GitHub Actions 1000000795",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452974,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857Mrg",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452974",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452974",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T15:07:09Z",
+      "name": "Build and gameplay tests (occupied-city)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:53:04Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:53:04Z",
+          "completed_at": "2026-10-04T14:53:04Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:53:04Z",
+          "completed_at": "2026-10-04T14:53:24Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/occupied-city.spec.js --fully-parallel --shard=1/1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:53:24Z",
+          "completed_at": "2026-10-04T15:07:06Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T15:07:06Z",
+          "completed_at": "2026-10-04T15:07:07Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T15:07:07Z",
+          "completed_at": "2026-10-04T15:07:07Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T15:07:07Z",
+          "completed_at": "2026-10-04T15:07:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T15:07:08Z",
+          "completed_at": "2026-10-04T15:07:08Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452974",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000794,
+      "runner_name": "GitHub Actions 1000000794",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452980,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MtA",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452980",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452980",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T14:57:45Z",
+      "name": "Build and gameplay tests (metropolis-2)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:53:02Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:53:02Z",
+          "completed_at": "2026-10-04T14:53:03Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:53:03Z",
+          "completed_at": "2026-10-04T14:53:26Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/metropolis.spec.js --fully-parallel --shard=2/3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:53:26Z",
+          "completed_at": "2026-10-04T14:57:40Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T14:57:40Z",
+          "completed_at": "2026-10-04T14:57:42Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T14:57:42Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T14:57:43Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T14:57:43Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452980",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000796,
+      "runner_name": "GitHub Actions 1000000796",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452981,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MtQ",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452981",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452981",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T14:57:45Z",
+      "name": "Build and gameplay tests (game)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:37Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:51:44Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:44Z",
+          "completed_at": "2026-10-04T14:53:32Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:53:32Z",
+          "completed_at": "2026-10-04T14:53:32Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:53:32Z",
+          "completed_at": "2026-10-04T14:53:56Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/game.spec.js --fully-parallel --shard=1/1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:53:56Z",
+          "completed_at": "2026-10-04T14:57:41Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T14:57:41Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T14:57:43Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T14:57:43Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T14:57:43Z",
+          "completed_at": "2026-10-04T14:57:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452981",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000798,
+      "runner_name": "GitHub Actions 1000000798",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452991,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857Mvw",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452991",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452991",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T15:12:22Z",
+      "name": "Build and gameplay tests (city-materials)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:35Z",
+          "completed_at": "2026-10-04T14:51:36Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:54:12Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:54:12Z",
+          "completed_at": "2026-10-04T14:54:13Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:54:13Z",
+          "completed_at": "2026-10-04T14:54:37Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/city-materials.spec.js --fully-parallel --shard=1/1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:37Z",
+          "completed_at": "2026-10-04T15:12:20Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T15:12:20Z",
+          "completed_at": "2026-10-04T15:12:21Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-04T15:12:21Z",
+          "completed_at": "2026-10-04T15:12:21Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T15:12:21Z",
+          "completed_at": "2026-10-04T15:12:22Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T15:12:22Z",
+          "completed_at": "2026-10-04T15:12:22Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452991",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000799,
+      "runner_name": "GitHub Actions 1000000799",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461452997,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857MxQ",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461452997",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461452997",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:35Z",
+      "completed_at": "2026-10-04T14:59:45Z",
+      "name": "Build and gameplay tests (living-city)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T14:51:35Z",
+          "completed_at": "2026-10-04T14:51:36Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T14:51:36Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:42Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T14:51:42Z",
+          "completed_at": "2026-10-04T14:51:43Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T14:51:43Z",
+          "completed_at": "2026-10-04T14:54:10Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T14:54:10Z",
+          "completed_at": "2026-10-04T14:54:11Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T14:54:11Z",
+          "completed_at": "2026-10-04T14:54:39Z"
+        },
+        {
+          "name": "Run npx playwright test tests/e2e/living-city.spec.js --fully-parallel --shard=1/1",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8,
+          "started_at": "2026-10-04T14:54:39Z",
+          "completed_at": "2026-10-04T14:59:41Z"
+        },
+        {
+          "name": "Retain browser verification evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T14:59:41Z",
+          "completed_at": "2026-10-04T14:59:43Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17,
+          "started_at": "2026-10-04T14:59:43Z",
+          "completed_at": "2026-10-04T14:59:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-04T14:59:43Z",
+          "completed_at": "2026-10-04T14:59:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T14:59:43Z",
+          "completed_at": "2026-10-04T14:59:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461452997",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000793,
+      "runner_name": "GitHub Actions 1000000793",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 111461453358,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857OLg",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461453358",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461453358",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:33Z",
+      "completed_at": "2026-10-04T14:51:33Z",
+      "name": "Native High room detail (${{ matrix.shard }}/6)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461453358",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 111461453734,
+      "run_id": 37210812941,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37210812941",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUwLKw88AAAAZ857Ppg",
+      "head_sha": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+      "url": "https://api.github.com/repos/qifalab/neon-harbor/actions/jobs/111461453734",
+      "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37210812941/job/111461453734",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-04T14:51:33Z",
+      "started_at": "2026-10-04T14:51:33Z",
+      "completed_at": "2026-10-04T14:51:33Z",
+      "name": "Rendered room evidence (${{ matrix.shard }}/48)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/qifalab/neon-harbor/check-runs/111461453734",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ]
+}

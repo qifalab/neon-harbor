@@ -2,6 +2,64 @@ import { test,expect } from '@playwright/test';
 import { writeFile } from 'node:fs/promises';
 import { snapshot } from '../e2e/helpers/walking.js';
 import { chooseStorey } from '../e2e/helpers/occupied.js';
+
+const motionEvidence = page => page.evaluate(() => {
+  const state = window.__NEON__?.snapshot();
+  if (!state) return { ready: false };
+  const starter = state.cars.find(car => car.id === 'starter');
+  return { position: state.position, simulationTime: state.simulationTime,
+    teleportRevision: state.teleportRevision, inCar: state.inCar, speed: state.speed,
+    starter, starterDistance: starter ? Math.hypot(starter.x - state.position.x, starter.z - state.position.z) : null,
+    multiplayer: state.multiplayer, interior: state.city.interior,
+    timing: state.timing, renderer: state.renderer };
+});
+
+/** Slow software rendering may advance only a few simulation seconds in a
+ * minute. Bound wall time while recording actual progress; never alter poses,
+ * clocks, input rules, or remote synchronization tolerances. */
+async function holdUntil(page, key, predicate, argument, evidence, label) {
+  const before = await motionEvidence(page), started = Date.now();
+  let failure;
+  await page.keyboard.down(key);
+  try { await page.waitForFunction(predicate, argument, { polling: 'raf', timeout: 120000 }); }
+  catch (error) { failure = error; }
+  finally {
+    try { await page.keyboard.up(key); }
+    catch (error) { failure ||= error; }
+  }
+  let after;
+  try { after = await motionEvidence(page); }
+  catch (error) { after = { snapshotError: error.message }; failure ||= error; }
+  const record = { label, key, wallMilliseconds: Date.now() - started, before, after };
+  evidence.push(record);
+  if (failure) {
+    failure.message += `\nMultiplayer input diagnostics: ${JSON.stringify(record)}`;
+    throw failure;
+  }
+  expect(after.teleportRevision, `${label} uses ordinary held input`).toBe(before.teleportRevision);
+}
+
+async function finishClients(clients, contexts, testInfo, failed, evidence) {
+  const evidencePath = testInfo.outputPath('independent-client-progress.json');
+  const final = [];
+  if (failed) for (const [index, context] of contexts.entries()) for (const page of context.pages()) {
+    try { final.push({ client: index, state: await motionEvidence(page) }); }
+    catch (error) { final.push({ client: index, snapshotError: error.message }); }
+  }
+  await writeFile(evidencePath, JSON.stringify({ failed, phases: evidence, final }, null, 2));
+  await testInfo.attach('independent-client-progress', { path: evidencePath, contentType: 'application/json' });
+  for (const [index, context] of contexts.entries()) {
+    try {
+      if (failed) {
+        const path = testInfo.outputPath(`independent-client-${index + 1}-trace.zip`);
+        await context.tracing.stop({ path });
+        await testInfo.attach(`independent-client-${index + 1}-trace`, { path, contentType: 'application/zip' });
+      } else await context.tracing.stop();
+    } catch (error) { console.error(`Client ${index + 1} trace: ${error.message}`); }
+  }
+  await Promise.all(clients.map(client => client.close()));
+}
+
 async function boot(page){
   await page.addInitScript(()=>localStorage.setItem('neon-harbor.settings.v1',JSON.stringify({quality:'low',volume:0,dayCycle:false,hour:16.5})));
   await page.goto('/');await expect(page.locator('#start')).toBeEnabled({timeout:90000});
@@ -16,11 +74,15 @@ async function join(page,name,code=''){
   await expect(page.locator('#welcome')).toBeHidden();await expect.poll(()=>page.evaluate(()=>window.__NEON__.snapshot().multiplayer.status)).toBe('connected');
 }
 test('two independent browsers share a room, rendered walking peers, chat and disconnect',async({playwright},testInfo)=>{
+  test.setTimeout(600000);
   // Separate browser processes model two machines and avoid sharing one
   // software GPU command queue between the clients on hosted CI runners.
   const clients=await Promise.all([playwright.chromium.launch(testInfo.project.use.launchOptions),playwright.chromium.launch(testInfo.project.use.launchOptions)]);
+  const contexts=[],evidence=[];let failed=true;
   try{
     const first=await clients[0].newContext({baseURL:testInfo.project.use.baseURL,viewport:{width:640,height:400}}),second=await clients[1].newContext({baseURL:testInfo.project.use.baseURL,viewport:{width:640,height:400}}),a=await first.newPage(),b=await second.newPage(),errors=[];
+    contexts.push(first,second);
+    await Promise.all(contexts.map(context=>context.tracing.start({screenshots:true,snapshots:true,sources:true})));
     for(const page of [a,b])page.on('pageerror',e=>errors.push(e.message));
     await boot(a);
     const welcomeEvidence=testInfo.outputPath('welcome-short-window-multiplayer.png');
@@ -31,15 +93,15 @@ test('two independent browsers share a room, rendered walking peers, chat and di
     await expect.poll(()=>a.evaluate(()=>window.__NEON__.snapshot().multiplayer.players.length)).toBe(2);
     await expect.poll(()=>b.evaluate(()=>window.__NEON__.snapshot().multiplayer.meshes.filter(p=>p.visible).length)).toBe(1);
     const start=await a.evaluate(()=>window.__NEON__.snapshot().position);
-    await a.locator('#game').focus();await a.keyboard.down('KeyW');
-    await a.waitForFunction(({start})=>Math.hypot(window.__NEON__.snapshot().position.x-start.x,window.__NEON__.snapshot().position.z-start.z)>3,{start},{timeout:30000});await a.keyboard.up('KeyW');
+    await a.locator('#game').focus();
+    await holdUntil(a,'KeyW',({start})=>Math.hypot(window.__NEON__.snapshot().position.x-start.x,window.__NEON__.snapshot().position.z-start.z)>3,{start},evidence,'walk peer three metres');
     const target=await a.evaluate(()=>window.__NEON__.snapshot().position);
     await expect.poll(()=>b.evaluate(({target})=>{const mesh=window.__NEON__.snapshot().multiplayer.meshes[0];return mesh?Math.hypot(mesh.x-target.x,mesh.z-target.z):1000;},{target})).toBeLessThan(.6);
-    await a.keyboard.down('KeyW');await a.waitForFunction(()=>window.__NEON__.snapshot().cars.some(c=>c.id==='starter'&&Math.hypot(c.x-window.__NEON__.snapshot().position.x,c.z-window.__NEON__.snapshot().position.z)<5),null,{timeout:30000});await a.keyboard.up('KeyW');
+    await holdUntil(a,'KeyW',()=>{const s=window.__NEON__.snapshot();return s.cars.some(c=>c.id==='starter'&&Math.hypot(c.x-s.position.x,c.z-s.position.z)<5);},null,evidence,'approach starter car door');
     await a.keyboard.press('KeyE');await expect.poll(()=>a.evaluate(()=>window.__NEON__.snapshot().inCar)).toBe('starter');
     const carStart=await a.evaluate(()=>window.__NEON__.snapshot().position);
-    await a.keyboard.down('KeyW');await a.waitForFunction(({carStart})=>Math.hypot(window.__NEON__.snapshot().position.x-carStart.x,window.__NEON__.snapshot().position.z-carStart.z)>3,{carStart},{timeout:30000});await a.keyboard.up('KeyW');
-    await a.keyboard.down('Space');await a.waitForFunction(()=>window.__NEON__.snapshot().speed<.5,null,{timeout:30000});await a.keyboard.up('Space');
+    await holdUntil(a,'KeyW',({carStart})=>Math.hypot(window.__NEON__.snapshot().position.x-carStart.x,window.__NEON__.snapshot().position.z-carStart.z)>3,{carStart},evidence,'drive shared starter car');
+    await holdUntil(a,'Space',()=>window.__NEON__.snapshot().speed<.5,null,evidence,'brake shared starter car');
     const carTarget=await a.evaluate(()=>window.__NEON__.snapshot().cars.find(c=>c.id==='starter'));
     await expect.poll(()=>b.evaluate(({carTarget})=>{const car=window.__NEON__.snapshot().cars.find(c=>c.id==='starter');return Math.hypot(car.x-carTarget.x,car.z-carTarget.z);},{carTarget})).toBeLessThan(1);
     await a.keyboard.press('KeyE');await expect.poll(()=>a.evaluate(()=>window.__NEON__.snapshot().inCar)).toBe(null);
@@ -47,20 +109,23 @@ test('two independent browsers share a room, rendered walking peers, chat and di
     await b.locator('#multiplayer').click();await expect(b.locator('#room-chat')).toContainText('海风：一起去看海');
     await a.locator('#room-leave').click();await expect.poll(()=>b.evaluate(()=>window.__NEON__.snapshot().multiplayer.players.length)).toBe(1);
     await expect.poll(()=>b.evaluate(()=>window.__NEON__.snapshot().multiplayer.meshes.length)).toBe(0);
-    expect(errors).toEqual([]);await first.close();await second.close();
-  }finally{await Promise.all(clients.map(client=>client.close()));}
+    expect(errors).toEqual([]);failed=false;
+  }finally{await finishClients(clients,contexts,testInfo,failed,evidence);}
 });
 
 
 test('two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit', async ({ playwright }, testInfo) => {
-  test.setTimeout(600000);
+  test.setTimeout(900000);
   const clients = await Promise.all([
     playwright.chromium.launch(testInfo.project.use.launchOptions),
     playwright.chromium.launch(testInfo.project.use.launchOptions),
   ]);
+  const contexts = [], evidence = []; let failed = true;
   try {
     const options = { baseURL: testInfo.project.use.baseURL, viewport: { width: 640, height: 400 } };
     const first = await clients[0].newContext(options), second = await clients[1].newContext(options);
+    contexts.push(first, second);
+    await Promise.all(contexts.map(context => context.tracing.start({ screenshots: true, snapshots: true, sources: true })));
     const a = await first.newPage(), b = await second.newPage(), errors = [];
     for (const page of [a, b]) {
       page.on('pageerror', error => errors.push(error.message));
@@ -133,9 +198,11 @@ test('two browsers synchronize expanded east-bay addresses and elevator floors b
     await a.keyboard.press('e');
     await expect.poll(async () => (await snapshot(a)).city.interior.buildingId).toBe(highAddress.id);
     const lobby = await snapshot(a);
+    evidence.push({ label: 'east-bay lobby before actual corridor walk', state: await motionEvidence(a) });
     await assertRemotePose(lobby.position, `interior:${highAddress.id}:${highAddress.floors[0].id}`);
-    await chooseStorey(a, highFloor.id);
+    await chooseStorey(a, highFloor.id, { walkingTimeout: 180000 });
     const upstairs = await snapshot(a);
+    evidence.push({ label: 'east-bay elevator arrival', state: await motionEvidence(a) });
     expect(upstairs.position.y).toBeGreaterThan(320);
     expect(upstairs.position.y).toBeCloseTo(highFloor.y, 1);
     expect(receivedHeights.some(height => height > 50 && height < highFloor.y - 50),
@@ -156,7 +223,6 @@ test('two browsers synchronize expanded east-bay addresses and elevator floors b
       receivedHeightRange: [Math.min(...receivedHeights), Math.max(...receivedHeights)],
     }, null, 2));
     await testInfo.attach('expanded-east-bay-peer-state', { contentType: 'application/json', path: peerEvidence });
-    expect(errors).toEqual([]);
-    await first.close(); await second.close();
-  } finally { await Promise.all(clients.map(client => client.close())); }
+    expect(errors).toEqual([]); failed = false;
+  } finally { await finishClients(clients, contexts, testInfo, failed, evidence); }
 });
