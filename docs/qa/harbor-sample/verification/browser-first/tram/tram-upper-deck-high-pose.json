@@ -1,0 +1,1625 @@
+{
+  "quality": "high",
+  "hour": 17.16428571428563,
+  "position": {
+    "x": 248.01518457847473,
+    "y": 2.4,
+    "z": 19.140593465942292,
+    "yaw": 4.733963077064336
+  },
+  "camera": {
+    "position": {
+      "x": 248.01518457847473,
+      "y": 4.02,
+      "z": 19.140593465942292
+    },
+    "target": {
+      "x": 238.01751169128806,
+      "y": 2.7236585738030508,
+      "z": 19.356317458146773
+    },
+    "focus": {
+      "x": 248.01518457847473,
+      "y": 4.02,
+      "z": 19.140593465942292
+    },
+    "yaw": 4.7339630531411405,
+    "pitch": 0.28,
+    "fov": 65,
+    "boomLength": 0,
+    "desiredBoomLength": 0,
+    "obstructed": false,
+    "overheadFallback": false,
+    "colliderId": null,
+    "clearanceRadius": 0.45
+  },
+  "simulationTime": 23.24999999999996,
+  "sample": {
+    "transit": {
+      "time": 23.24999999999996,
+      "riding": true,
+      "ridingVehicleId": "harbor-tram-1",
+      "vehicleId": "harbor-tram-1",
+      "boardedStopId": "harbor-tram-lantern",
+      "currentStopId": null,
+      "stationId": null,
+      "currentStop": null,
+      "activeStation": null,
+      "phase": "moving",
+      "status": "行驶中",
+      "label": "08 · 灯湾街电车",
+      "nextStopId": "harbor-tram-workshop",
+      "secondsToArrival": 8.287287394205705,
+      "passengerPose": {
+        "x": 248.01518457847473,
+        "y": 2.4,
+        "z": 19.140593465942292,
+        "yaw": 4.733963077064336
+      },
+      "passengerLocal": {
+        "x": -0.015184578474716715,
+        "y": 2.4,
+        "z": 0.4404129333390848,
+        "yaw": 1.5923704234745428
+      },
+      "passengerDeck": "upper",
+      "routes": [
+        {
+          "id": "harbor-bus",
+          "kind": "bus",
+          "name": "12 · 潮汐街巴士",
+          "englishName": "Tide Street Bus",
+          "duration": 171.83792154259038,
+          "fleet": 2,
+          "atGrade": true,
+          "stops": [
+            "harbor-bus-courtyard",
+            "harbor-bus-market",
+            "harbor-bus-lantern",
+            "harbor-bus-workshop",
+            "harbor-bus-south",
+            "harbor-bus-garden"
+          ]
+        },
+        {
+          "id": "harbor-tram",
+          "kind": "tram",
+          "name": "08 · 灯湾街电车",
+          "englishName": "Lantern Street Tram",
+          "duration": 119.79546400165141,
+          "fleet": 2,
+          "atGrade": true,
+          "stops": [
+            "harbor-tram-lantern",
+            "harbor-tram-workshop",
+            "harbor-tram-quay"
+          ]
+        },
+        {
+          "id": "harbor-ferry",
+          "kind": "ferry",
+          "name": "03 · 河口渡轮",
+          "englishName": "Estuary Ferry",
+          "duration": 81.28436496873556,
+          "fleet": 1,
+          "atGrade": false,
+          "stops": [
+            "harbor-ferry-south",
+            "harbor-ferry-north"
+          ]
+        }
+      ],
+      "stops": [
+        {
+          "id": "harbor-bus-courtyard",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "name": "潮庭里",
+          "berth": {
+            "x": 152,
+            "y": 0,
+            "z": 120,
+            "yaw": 0,
+            "stopId": "harbor-bus-courtyard",
+            "doorsOpen": true,
+            "remaining": 11,
+            "nextStopId": "harbor-bus-courtyard",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 147.725,
+            "y": 0.18,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "platform": {
+            "x": 147.725,
+            "y": 0.18,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "portal": {
+            "x": 150.725,
+            "y": 0.44,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "entrance": {
+            "x": 147.725,
+            "y": 0.18,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "entry": {
+            "x": 147.725,
+            "y": 0.18,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "exit": {
+            "x": 147.725,
+            "y": 0.18,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "streetExit": {
+            "x": 147.725,
+            "y": 0.18,
+            "z": 123.74,
+            "yaw": 0
+          },
+          "doorId": "bus-door-0-port",
+          "walkable": true,
+          "nextArrival": 69.20433408735171
+        },
+        {
+          "id": "harbor-bus-market",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "name": "南街市集",
+          "berth": {
+            "x": 200,
+            "y": 0,
+            "z": 168,
+            "yaw": 1.5707963267948966,
+            "stopId": "harbor-bus-market",
+            "doorsOpen": true,
+            "remaining": 10.999999999999993,
+            "nextStopId": "harbor-bus-market",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 203.74,
+            "y": 0.18,
+            "z": 172.275,
+            "yaw": 1.5707963267948966
+          },
+          "platform": {
+            "x": 203.74,
+            "y": 0.18,
+            "z": 172.275,
+            "yaw": 1.5707963267948966
+          },
+          "portal": {
+            "x": 203.74,
+            "y": 0.44,
+            "z": 169.275,
+            "yaw": 1.5707963267948966
+          },
+          "entrance": {
+            "x": 203.74,
+            "y": 0.18,
+            "z": 172.275,
+            "yaw": 1.5707963267948966
+          },
+          "entry": {
+            "x": 203.74,
+            "y": 0.18,
+            "z": 172.275,
+            "yaw": 1.5707963267948966
+          },
+          "exit": {
+            "x": 203.74,
+            "y": 0.18,
+            "z": 172.275,
+            "yaw": 1.5707963267948966
+          },
+          "streetExit": {
+            "x": 203.74,
+            "y": 0.18,
+            "z": 172.275,
+            "yaw": 0
+          },
+          "doorId": "bus-door-0-port",
+          "walkable": true,
+          "nextArrival": 3.0880792688606675
+        },
+        {
+          "id": "harbor-bus-lantern",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "name": "灯湾街",
+          "berth": {
+            "x": 248,
+            "y": 0,
+            "z": 60,
+            "yaw": 3.141592653589793,
+            "stopId": "harbor-bus-lantern",
+            "doorsOpen": true,
+            "remaining": 11,
+            "nextStopId": "harbor-bus-lantern",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 252.275,
+            "y": -0.03,
+            "z": 56.26,
+            "yaw": 3.141592653589793
+          },
+          "platform": {
+            "x": 252.275,
+            "y": -0.03,
+            "z": 56.26,
+            "yaw": 3.141592653589793
+          },
+          "portal": {
+            "x": 249.275,
+            "y": 0.44,
+            "z": 56.26,
+            "yaw": 3.141592653589793
+          },
+          "entrance": {
+            "x": 252.275,
+            "y": -0.03,
+            "z": 56.26,
+            "yaw": 3.141592653589793
+          },
+          "entry": {
+            "x": 252.275,
+            "y": -0.03,
+            "z": 56.26,
+            "yaw": 3.141592653589793
+          },
+          "exit": {
+            "x": 252.275,
+            "y": -0.03,
+            "z": 56.26,
+            "yaw": 3.141592653589793
+          },
+          "streetExit": {
+            "x": 252.275,
+            "y": -0.03,
+            "z": 56.26,
+            "yaw": 0
+          },
+          "doorId": "bus-door-0-port",
+          "walkable": true,
+          "nextArrival": 33.30140580835442
+        },
+        {
+          "id": "harbor-bus-workshop",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "name": "工坊街",
+          "berth": {
+            "x": 248,
+            "y": 0,
+            "z": -80,
+            "yaw": 3.141592653589793,
+            "stopId": "harbor-bus-workshop",
+            "doorsOpen": true,
+            "remaining": 11,
+            "nextStopId": "harbor-bus-workshop",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 252.275,
+            "y": 0,
+            "z": -83.74,
+            "yaw": 3.141592653589793
+          },
+          "platform": {
+            "x": 252.275,
+            "y": 0,
+            "z": -83.74,
+            "yaw": 3.141592653589793
+          },
+          "portal": {
+            "x": 249.275,
+            "y": 0.44,
+            "z": -83.74,
+            "yaw": 3.141592653589793
+          },
+          "entrance": {
+            "x": 252.275,
+            "y": 0,
+            "z": -83.74,
+            "yaw": 3.141592653589793
+          },
+          "entry": {
+            "x": 252.275,
+            "y": 0,
+            "z": -83.74,
+            "yaw": 3.141592653589793
+          },
+          "exit": {
+            "x": 252.275,
+            "y": 0,
+            "z": -83.74,
+            "yaw": 3.141592653589793
+          },
+          "streetExit": {
+            "x": 252.275,
+            "y": 0,
+            "z": -83.74,
+            "yaw": 0
+          },
+          "doorId": "bus-door-0-port",
+          "walkable": true,
+          "nextArrival": 61.20909811604673
+        },
+        {
+          "id": "harbor-bus-south",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "name": "潮汐仓街",
+          "berth": {
+            "x": 200,
+            "y": 0,
+            "z": -168,
+            "yaw": -1.5707963267948966,
+            "stopId": "harbor-bus-south",
+            "doorsOpen": true,
+            "remaining": 10.999999999999972,
+            "nextStopId": "harbor-bus-south",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 196.26,
+            "y": 0.18,
+            "z": -172.275,
+            "yaw": -1.5707963267948966
+          },
+          "platform": {
+            "x": 196.26,
+            "y": 0.18,
+            "z": -172.275,
+            "yaw": -1.5707963267948966
+          },
+          "portal": {
+            "x": 196.26,
+            "y": 0.44,
+            "z": -169.275,
+            "yaw": -1.5707963267948966
+          },
+          "entrance": {
+            "x": 196.26,
+            "y": 0.18,
+            "z": -172.275,
+            "yaw": -1.5707963267948966
+          },
+          "entry": {
+            "x": 196.26,
+            "y": 0.18,
+            "z": -172.275,
+            "yaw": -1.5707963267948966
+          },
+          "exit": {
+            "x": 196.26,
+            "y": 0.18,
+            "z": -172.275,
+            "yaw": -1.5707963267948966
+          },
+          "streetExit": {
+            "x": 196.26,
+            "y": 0.18,
+            "z": -172.275,
+            "yaw": 0
+          },
+          "doorId": "bus-door-0-port",
+          "walkable": true,
+          "nextArrival": 6.25254600939644
+        },
+        {
+          "id": "harbor-bus-garden",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "name": "榕影花园",
+          "berth": {
+            "x": 152,
+            "y": 0,
+            "z": -80,
+            "yaw": 3.469446951953614e-18,
+            "stopId": null,
+            "doorsOpen": false,
+            "remaining": 2.842170943040401e-14,
+            "nextStopId": "harbor-bus-garden",
+            "secondsToArrival": 2.842170943040401e-14,
+            "speed": 1.286667834318039e-13
+          },
+          "board": {
+            "x": 147.725,
+            "y": 0,
+            "z": -76.26,
+            "yaw": 3.469446951953614e-18
+          },
+          "platform": {
+            "x": 147.725,
+            "y": 0,
+            "z": -76.26,
+            "yaw": 3.469446951953614e-18
+          },
+          "portal": {
+            "x": 150.725,
+            "y": 0.44,
+            "z": -76.26,
+            "yaw": 3.469446951953614e-18
+          },
+          "entrance": {
+            "x": 147.725,
+            "y": 0,
+            "z": -76.26,
+            "yaw": 3.469446951953614e-18
+          },
+          "entry": {
+            "x": 147.725,
+            "y": 0,
+            "z": -76.26,
+            "yaw": 3.469446951953614e-18
+          },
+          "exit": {
+            "x": 147.725,
+            "y": 0,
+            "z": -76.26,
+            "yaw": 3.469446951953614e-18
+          },
+          "streetExit": {
+            "x": 147.725,
+            "y": 0,
+            "z": -76.26,
+            "yaw": 0
+          },
+          "doorId": "bus-door-0-port",
+          "walkable": true,
+          "nextArrival": 34.050487933505565
+        },
+        {
+          "id": "harbor-tram-lantern",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "name": "灯湾书店",
+          "berth": {
+            "x": 248,
+            "y": 0,
+            "z": 100,
+            "yaw": 3.141592653589793,
+            "stopId": "harbor-tram-lantern",
+            "doorsOpen": true,
+            "remaining": 12,
+            "nextStopId": "harbor-tram-lantern",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": 103.45,
+            "yaw": 3.141592653589793
+          },
+          "platform": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": 103.45,
+            "yaw": 3.141592653589793
+          },
+          "portal": {
+            "x": 249.15,
+            "y": 0.44,
+            "z": 103.45,
+            "yaw": 3.141592653589793
+          },
+          "entrance": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": 103.45,
+            "yaw": 3.141592653589793
+          },
+          "entry": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": 103.45,
+            "yaw": 3.141592653589793
+          },
+          "exit": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": 103.45,
+            "yaw": 3.141592653589793
+          },
+          "streetExit": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": 103.45,
+            "yaw": 0
+          },
+          "doorId": "tram-door-0-port",
+          "walkable": true,
+          "nextArrival": 66.24467054462146
+        },
+        {
+          "id": "harbor-tram-workshop",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "name": "工坊街口",
+          "berth": {
+            "x": 248,
+            "y": 0,
+            "z": -40,
+            "yaw": 3.141592653589793,
+            "stopId": "harbor-tram-workshop",
+            "doorsOpen": true,
+            "remaining": 11.999999999999986,
+            "nextStopId": "harbor-tram-workshop",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -36.55,
+            "yaw": 3.141592653589793
+          },
+          "platform": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -36.55,
+            "yaw": 3.141592653589793
+          },
+          "portal": {
+            "x": 249.15,
+            "y": 0.44,
+            "z": -36.55,
+            "yaw": 3.141592653589793
+          },
+          "entrance": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -36.55,
+            "yaw": 3.141592653589793
+          },
+          "entry": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -36.55,
+            "yaw": 3.141592653589793
+          },
+          "exit": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -36.55,
+            "yaw": 3.141592653589793
+          },
+          "streetExit": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -36.55,
+            "yaw": 0
+          },
+          "doorId": "tram-door-0-port",
+          "walkable": true,
+          "nextArrival": 8.287287394205705
+        },
+        {
+          "id": "harbor-tram-quay",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "name": "河口南堤",
+          "berth": {
+            "x": 248,
+            "y": 0,
+            "z": -180,
+            "yaw": 3.141592653589793,
+            "stopId": null,
+            "doorsOpen": false,
+            "remaining": 1.4210854715202004e-14,
+            "nextStopId": "harbor-tram-quay",
+            "secondsToArrival": 1.4210854715202004e-14,
+            "speed": 2.812918905004442e-14
+          },
+          "board": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -176.55,
+            "yaw": 3.141592653589793
+          },
+          "platform": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -176.55,
+            "yaw": 3.141592653589793
+          },
+          "portal": {
+            "x": 249.15,
+            "y": 0.44,
+            "z": -176.55,
+            "yaw": 3.141592653589793
+          },
+          "entrance": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -176.55,
+            "yaw": 3.141592653589793
+          },
+          "entry": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -176.55,
+            "yaw": 3.141592653589793
+          },
+          "exit": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -176.55,
+            "yaw": 3.141592653589793
+          },
+          "streetExit": {
+            "x": 252.15,
+            "y": -0.03,
+            "z": -176.55,
+            "yaw": 0
+          },
+          "doorId": "tram-door-0-port",
+          "walkable": true,
+          "nextArrival": 7.082539876303372
+        },
+        {
+          "id": "harbor-ferry-south",
+          "routeId": "harbor-ferry",
+          "kind": "ferry",
+          "name": "河口南码头",
+          "berth": {
+            "x": 227.2,
+            "y": 0,
+            "z": -309.5,
+            "yaw": 1.5707963267948966,
+            "stopId": "harbor-ferry-south",
+            "doorsOpen": true,
+            "remaining": 16,
+            "nextStopId": "harbor-ferry-south",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 220,
+            "y": 1.3,
+            "z": -304
+          },
+          "platform": {
+            "x": 220,
+            "y": 1.3,
+            "z": -304
+          },
+          "portal": {
+            "x": 220,
+            "y": 1.3,
+            "z": -306,
+            "yaw": 1.5707963267948966
+          },
+          "entrance": {
+            "x": 220,
+            "y": 0,
+            "z": -280
+          },
+          "entry": {
+            "x": 220,
+            "y": 0,
+            "z": -280
+          },
+          "exit": {
+            "x": 220,
+            "y": 1.3,
+            "z": -304
+          },
+          "streetExit": {
+            "x": 220,
+            "y": 0,
+            "z": -280,
+            "yaw": 0
+          },
+          "doorId": "ferry-door-0-port",
+          "walkable": true,
+          "nextArrival": 58.0343649687356
+        },
+        {
+          "id": "harbor-ferry-north",
+          "routeId": "harbor-ferry",
+          "kind": "ferry",
+          "name": "河口北码头",
+          "berth": {
+            "x": 212.8,
+            "y": 0,
+            "z": -375,
+            "yaw": -1.5707963267948966,
+            "stopId": "harbor-ferry-north",
+            "doorsOpen": true,
+            "remaining": 15.999999999999993,
+            "nextStopId": "harbor-ferry-north",
+            "secondsToArrival": 0,
+            "speed": 0
+          },
+          "board": {
+            "x": 220,
+            "y": 1.3,
+            "z": -380.5
+          },
+          "platform": {
+            "x": 220,
+            "y": 1.3,
+            "z": -380.5
+          },
+          "portal": {
+            "x": 220,
+            "y": 1.3,
+            "z": -378.5,
+            "yaw": -1.5707963267948966
+          },
+          "entrance": {
+            "x": 220,
+            "y": 0,
+            "z": -400
+          },
+          "entry": {
+            "x": 220,
+            "y": 0,
+            "z": -400
+          },
+          "exit": {
+            "x": 220,
+            "y": 1.3,
+            "z": -380.5
+          },
+          "streetExit": {
+            "x": 220,
+            "y": 0,
+            "z": -400,
+            "yaw": 3.141592653589793
+          },
+          "doorId": "ferry-door-0-port",
+          "walkable": true,
+          "nextArrival": 17.379336738976974
+        }
+      ],
+      "vehicles": [
+        {
+          "id": "harbor-bus-1",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "x": 170.9045621531244,
+          "y": 0,
+          "z": 168,
+          "yaw": 1.5527566175161378,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 3.0880792688606604,
+          "nextStopId": "harbor-bus-market",
+          "secondsToArrival": 3.0880792688606675,
+          "speed": 5.736198769241128,
+          "delay": 3.3709065755208334,
+          "serviceTime": 19.87909342447924,
+          "held": null,
+          "trafficState": "cruise",
+          "junction": {
+            "x": 160,
+            "z": 160,
+            "axis": "z",
+            "direction": 1,
+            "committed": true
+          }
+        },
+        {
+          "id": "harbor-bus-2",
+          "routeId": "harbor-bus",
+          "kind": "bus",
+          "x": 245.7917323988715,
+          "y": 0,
+          "z": -163.52044600188086,
+          "yaw": -2.5282827694446857,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 0.013518867237564791,
+          "nextStopId": "harbor-bus-south",
+          "secondsToArrival": 6.252546009396411,
+          "speed": 6.000000000015294,
+          "delay": 1.704604085286458,
+          "serviceTime": 102.63358745523867,
+          "held": null,
+          "trafficState": "cruise",
+          "junction": {
+            "x": 240,
+            "z": -160,
+            "axis": "z",
+            "direction": -1,
+            "committed": true
+          }
+        },
+        {
+          "id": "harbor-tram-1",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "x": 248,
+          "y": 0,
+          "z": 19.581006399281378,
+          "yaw": 3.141592653589793,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 8.287287394205709,
+          "nextStopId": "harbor-tram-workshop",
+          "secondsToArrival": 8.287287394205705,
+          "speed": 0,
+          "delay": 1.2206207275390613,
+          "serviceTime": 22.029379272460954,
+          "held": "signal",
+          "trafficState": "signal",
+          "junction": {
+            "x": 240,
+            "z": 0,
+            "axis": "z",
+            "direction": -1,
+            "committed": false
+          }
+        },
+        {
+          "id": "harbor-tram-2",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "x": 248,
+          "y": 0,
+          "z": -134.3989694060841,
+          "yaw": 3.141592653589793,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 7.082539876303386,
+          "nextStopId": "harbor-tram-quay",
+          "secondsToArrival": 7.082539876303386,
+          "speed": 9.912267181284165,
+          "delay": 0.015873209635416666,
+          "serviceTime": 53.550793457029954,
+          "held": null,
+          "trafficState": "signal",
+          "junction": {
+            "x": 240,
+            "z": -160,
+            "axis": "z",
+            "direction": -1,
+            "committed": false
+          }
+        },
+        {
+          "id": "harbor-ferry-1",
+          "routeId": "harbor-ferry",
+          "kind": "ferry",
+          "x": 261.1612501812408,
+          "y": 0,
+          "z": -319.4465236583872,
+          "yaw": 2.4535329371821617,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 0.8011124828661877,
+          "nextStopId": "harbor-ferry-north",
+          "secondsToArrival": 17.379336738976974,
+          "speed": 6.99999999999981,
+          "delay": 0,
+          "serviceTime": 23.24999999999996,
+          "held": null,
+          "trafficState": "cruise",
+          "junction": null
+        }
+      ],
+      "citizenPassengers": [],
+      "citizenBoardings": 0
+    },
+    "life": {
+      "schema": "neon-harbor/daily-life",
+      "version": 1,
+      "seed": 749213,
+      "hour": 17.157142857142773,
+      "day": 0,
+      "residents": 20,
+      "activeDelivery": null,
+      "availableJobs": [
+        {
+          "id": "harbor-order-1",
+          "shopId": "harbor-produce",
+          "product": "produce",
+          "quantity": 8,
+          "wholesale": 16,
+          "reward": 12,
+          "escrow": 0,
+          "status": "available",
+          "createdTick": 0,
+          "carrierId": null,
+          "pickedTick": null,
+          "deliveredTick": null,
+          "name": "潮叶果铺补货",
+          "productName": "时令果蔬",
+          "pickup": {
+            "x": 193.5,
+            "z": 119.97975447401404,
+            "y": 0.18
+          },
+          "destination": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          },
+          "recipient": "潮叶果铺"
+        },
+        {
+          "id": "harbor-order-2",
+          "shopId": "harbor-tea",
+          "product": "tea",
+          "quantity": 8,
+          "wholesale": 8,
+          "reward": 12,
+          "escrow": 0,
+          "status": "available",
+          "createdTick": 0,
+          "carrierId": null,
+          "pickedTick": null,
+          "deliveredTick": null,
+          "name": "静潮茶室补货",
+          "productName": "港湾茶饮",
+          "pickup": {
+            "x": 193.5,
+            "z": 119.97975447401404,
+            "y": 0.18
+          },
+          "destination": {
+            "x": 225.3373617986217,
+            "z": 133,
+            "y": 0.18
+          },
+          "recipient": "静潮茶室"
+        },
+        {
+          "id": "harbor-order-3",
+          "shopId": "harbor-noodles",
+          "product": "meal",
+          "quantity": 8,
+          "wholesale": 24,
+          "reward": 12,
+          "escrow": 0,
+          "status": "available",
+          "createdTick": 0,
+          "carrierId": null,
+          "pickedTick": null,
+          "deliveredTick": null,
+          "name": "双碗面家补货",
+          "productName": "热汤面",
+          "pickup": {
+            "x": 193.5,
+            "z": 119.97975447401404,
+            "y": 0.18
+          },
+          "destination": {
+            "x": 193,
+            "z": 146.42007884336635,
+            "y": 0.18
+          },
+          "recipient": "双碗面家"
+        }
+      ],
+      "shops": [
+        {
+          "id": "harbor-produce",
+          "buildingId": "south-095",
+          "name": "潮叶果铺",
+          "product": "produce",
+          "productName": "时令果蔬",
+          "price": 6,
+          "wholesale": 2,
+          "frontage": "east",
+          "displayAnchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          },
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          },
+          "money": 260,
+          "stock": 4,
+          "sold": 0,
+          "received": 0,
+          "paidWages": 0,
+          "open": true,
+          "staff": 0,
+          "pending": [
+            {
+              "id": "harbor-order-1",
+              "shopId": "harbor-produce",
+              "product": "produce",
+              "quantity": 8,
+              "wholesale": 16,
+              "reward": 12,
+              "escrow": 0,
+              "status": "available",
+              "createdTick": 0,
+              "carrierId": null,
+              "pickedTick": null,
+              "deliveredTick": null,
+              "name": "潮叶果铺补货",
+              "productName": "时令果蔬",
+              "pickup": {
+                "x": 193.5,
+                "z": 119.97975447401404,
+                "y": 0.18
+              },
+              "destination": {
+                "x": 225.3058217712678,
+                "z": 187,
+                "y": 0.18
+              },
+              "recipient": "潮叶果铺"
+            }
+          ]
+        },
+        {
+          "id": "harbor-tea",
+          "buildingId": "south-092",
+          "name": "静潮茶室",
+          "product": "tea",
+          "productName": "港湾茶饮",
+          "price": 4,
+          "wholesale": 1,
+          "frontage": "east",
+          "displayAnchor": {
+            "x": 225.3373617986217,
+            "z": 133,
+            "y": 0.18
+          },
+          "anchor": {
+            "x": 225.3373617986217,
+            "z": 133,
+            "y": 0.18
+          },
+          "money": 260,
+          "stock": 4,
+          "sold": 0,
+          "received": 0,
+          "paidWages": 0,
+          "open": true,
+          "staff": 0,
+          "pending": [
+            {
+              "id": "harbor-order-2",
+              "shopId": "harbor-tea",
+              "product": "tea",
+              "quantity": 8,
+              "wholesale": 8,
+              "reward": 12,
+              "escrow": 0,
+              "status": "available",
+              "createdTick": 0,
+              "carrierId": null,
+              "pickedTick": null,
+              "deliveredTick": null,
+              "name": "静潮茶室补货",
+              "productName": "港湾茶饮",
+              "pickup": {
+                "x": 193.5,
+                "z": 119.97975447401404,
+                "y": 0.18
+              },
+              "destination": {
+                "x": 225.3373617986217,
+                "z": 133,
+                "y": 0.18
+              },
+              "recipient": "静潮茶室"
+            }
+          ]
+        },
+        {
+          "id": "harbor-noodles",
+          "buildingId": "south-090",
+          "name": "双碗面家",
+          "product": "meal",
+          "productName": "热汤面",
+          "price": 7,
+          "wholesale": 3,
+          "frontage": "south",
+          "displayAnchor": {
+            "x": 187,
+            "z": 146.42007884336635,
+            "y": 0.18
+          },
+          "anchor": {
+            "x": 193,
+            "z": 146.42007884336635,
+            "y": 0.18
+          },
+          "money": 260,
+          "stock": 4,
+          "sold": 0,
+          "received": 0,
+          "paidWages": 0,
+          "open": true,
+          "staff": 0,
+          "pending": [
+            {
+              "id": "harbor-order-3",
+              "shopId": "harbor-noodles",
+              "product": "meal",
+              "quantity": 8,
+              "wholesale": 24,
+              "reward": 12,
+              "escrow": 0,
+              "status": "available",
+              "createdTick": 0,
+              "carrierId": null,
+              "pickedTick": null,
+              "deliveredTick": null,
+              "name": "双碗面家补货",
+              "productName": "热汤面",
+              "pickup": {
+                "x": 193.5,
+                "z": 119.97975447401404,
+                "y": 0.18
+              },
+              "destination": {
+                "x": 193,
+                "z": 146.42007884336635,
+                "y": 0.18
+              },
+              "recipient": "双碗面家"
+            }
+          ]
+        }
+      ],
+      "statistics": {
+        "purchases": 0,
+        "playerPurchases": 0,
+        "missedPurchases": 0,
+        "wages": 0,
+        "deliveries": 0,
+        "consumed": 0,
+        "boarded": 0,
+        "alighted": 0
+      },
+      "totalMoney": 2972,
+      "initialMoney": 2972,
+      "cashPaidToPlayer": 0,
+      "cashPaidByPlayer": 0,
+      "playerInventory": {
+        "produce": 0,
+        "tea": 0,
+        "meal": 0
+      },
+      "totalGoods": 300,
+      "initialGoods": 300,
+      "consumedByProduct": {
+        "produce": 0,
+        "tea": 0,
+        "meal": 0
+      },
+      "phases": {
+        "leaving-home": 3,
+        "walking": 17
+      },
+      "agents": [
+        {
+          "id": "harbor-resident-01",
+          "name": "陈映川",
+          "role": "潮叶果铺店员",
+          "phase": "leaving-home",
+          "activity": "出门",
+          "x": 187,
+          "y": 0.18395234539041933,
+          "z": 198.5493663965359,
+          "insideBuildingId": "south-093",
+          "floorId": "lobby",
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-02",
+          "name": "林安禾",
+          "role": "潮叶果铺店员",
+          "phase": "walking",
+          "activity": "走去上班",
+          "x": 224,
+          "y": 0.18,
+          "z": 197.31015186312877,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-03",
+          "name": "梁嘉宁",
+          "role": "静潮茶室店员",
+          "phase": "leaving-home",
+          "activity": "出门",
+          "x": 187,
+          "y": 0.18057634375050535,
+          "z": 119.9316709382576,
+          "insideBuildingId": "south-089",
+          "floorId": "lobby",
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-04",
+          "name": "周晴岚",
+          "role": "静潮茶室店员",
+          "phase": "walking",
+          "activity": "走去上班",
+          "x": 224.52795901203615,
+          "y": 0.18,
+          "z": 124,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-05",
+          "name": "何书言",
+          "role": "双碗面家店员",
+          "phase": "leaving-home",
+          "activity": "出门",
+          "x": 187,
+          "y": 0.19054823017841457,
+          "z": 119.09973069912918,
+          "insideBuildingId": "south-089",
+          "floorId": "lobby",
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-06",
+          "name": "苏晓棠",
+          "role": "双碗面家店员",
+          "phase": "walking",
+          "activity": "走去上班",
+          "x": 197.18790704211344,
+          "y": 0.18,
+          "z": 146.07933559778024,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-07",
+          "name": "杨远舟",
+          "role": "港口仓储员",
+          "phase": "walking",
+          "activity": "走向电车站",
+          "x": 150.54959501536214,
+          "y": 0.18,
+          "z": 176,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": {
+            "phase": "approach",
+            "originStopId": "harbor-tram-lantern",
+            "destinationStopId": "harbor-tram-workshop",
+            "ticket": null
+          }
+        },
+        {
+          "id": "harbor-resident-08",
+          "name": "徐景和",
+          "role": "港口仓储员",
+          "phase": "walking",
+          "activity": "在斑马线前等灯",
+          "x": 157.4870000000001,
+          "y": 0.18,
+          "z": 224,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": {
+            "phase": "approach",
+            "originStopId": "harbor-tram-lantern",
+            "destinationStopId": "harbor-tram-workshop",
+            "ticket": null
+          }
+        },
+        {
+          "id": "harbor-resident-09",
+          "name": "郑沐辰",
+          "role": "港口仓储员",
+          "phase": "walking",
+          "activity": "走向电车站",
+          "x": 198,
+          "y": 0.18,
+          "z": 173.1661518631308,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": {
+            "phase": "approach",
+            "originStopId": "harbor-tram-lantern",
+            "destinationStopId": "harbor-tram-workshop",
+            "ticket": null
+          }
+        },
+        {
+          "id": "harbor-resident-10",
+          "name": "吴文澜",
+          "role": "港口仓储员",
+          "phase": "walking",
+          "activity": "走向电车站",
+          "x": 148.69359501536601,
+          "y": 0.18,
+          "z": 176,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": {
+            "phase": "approach",
+            "originStopId": "harbor-tram-lantern",
+            "destinationStopId": "harbor-tram-workshop",
+            "ticket": null
+          }
+        },
+        {
+          "id": "harbor-resident-11",
+          "name": "许亦庭",
+          "role": "街坊送货员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 148,
+          "y": 0.18,
+          "z": 198.5059807681626,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-12",
+          "name": "叶星野",
+          "role": "街坊送货员",
+          "phase": "walking",
+          "activity": "在斑马线前等灯",
+          "x": 154.11700000000005,
+          "y": 0.18,
+          "z": 146,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-13",
+          "name": "罗慕青",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 140.93695062791457,
+          "y": 0.18,
+          "z": 120,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-14",
+          "name": "沈知行",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 142.8735197899327,
+          "y": 0.18,
+          "z": 146,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-15",
+          "name": "顾子墨",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 148,
+          "y": 0.18,
+          "z": 111.25859676978604,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-16",
+          "name": "黄云舒",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "在斑马线前等灯",
+          "x": 154.11700000000005,
+          "y": 0.18,
+          "z": 146,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-17",
+          "name": "陈秋实",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 122,
+          "y": 0.18,
+          "z": 177.6094931874842,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-18",
+          "name": "林听潮",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 123.89671838231015,
+          "y": 0.18,
+          "z": 202,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-19",
+          "name": "梁小满",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 151.81192514505642,
+          "y": 0.18,
+          "z": 176,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        },
+        {
+          "id": "harbor-resident-20",
+          "name": "周予宁",
+          "role": "货栈分拣员",
+          "phase": "walking",
+          "activity": "走去采购",
+          "x": 148,
+          "y": 0.18,
+          "z": 196.5567855283768,
+          "insideBuildingId": null,
+          "floorId": null,
+          "transit": null
+        }
+      ]
+    },
+    "district": {
+      "quality": "high",
+      "frontages": [
+        {
+          "id": "reed-press",
+          "shellId": "south-091",
+          "name": "芦岸印房",
+          "programme": "books",
+          "x": 222.6443515154533,
+          "z": 107,
+          "baseY": 0.18,
+          "width": 16.4,
+          "angle": 1.5707963267948966
+        },
+        {
+          "id": "stillwater-cafe",
+          "shellId": "south-092",
+          "name": "静潮茶室",
+          "programme": "cafe",
+          "x": 222.8373617986217,
+          "z": 133,
+          "baseY": 0.18,
+          "width": 16.4,
+          "angle": 1.5707963267948966
+        },
+        {
+          "id": "tideleaf-market",
+          "shellId": "south-095",
+          "name": "潮叶果铺",
+          "programme": "market",
+          "x": 222.8058217712678,
+          "z": 187,
+          "baseY": 0.18,
+          "width": 16.4,
+          "angle": 1.5707963267948966
+        },
+        {
+          "id": "copper-reed",
+          "shellId": "south-096",
+          "name": "铜芦小馆",
+          "programme": "gallery",
+          "x": 222.37591856345534,
+          "z": 213,
+          "baseY": 0.18,
+          "width": 16.4,
+          "angle": 1.5707963267948966
+        },
+        {
+          "id": "two-bowls",
+          "shellId": "south-090",
+          "name": "双碗面家",
+          "programme": "noodles",
+          "x": 187,
+          "z": 143.42007884336635,
+          "baseY": 0.18,
+          "width": 16.4,
+          "angle": 0
+        },
+        {
+          "id": "morning-tin",
+          "shellId": "south-094",
+          "name": "晨罐烘焙",
+          "programme": "bakery",
+          "x": 187,
+          "z": 221.75940199801698,
+          "baseY": 0.18,
+          "width": 16.4,
+          "angle": 0
+        }
+      ],
+      "residentFrontages": [
+        "reed-press"
+      ],
+      "loads": 2,
+      "disposedMeshes": 14,
+      "disposedTriangles": 5020,
+      "drawCalls": 40,
+      "triangles": 3824,
+      "night": 0.1318074869116871,
+      "interiorBuildingId": null,
+      "near": 72,
+      "far": 96,
+      "originalMaterials": true,
+      "scannedMapsLoaded": 6,
+      "scannedMapsExpected": 6,
+      "scannedMapErrors": [],
+      "materialSource": "Poly Haven CC0: plastered_wall_02 / pavement_03"
+    },
+    "renderer": {
+      "detailed": 3,
+      "pooled": 5,
+      "distant": 14,
+      "maximumDetailed": 12,
+      "logical": 20,
+      "supplyCrates": 12,
+      "shopCrates": 3
+    }
+  },
+  "room": null,
+  "renderer": {
+    "calls": 922,
+    "triangles": 742148,
+    "contactOcclusion": {
+      "enabled": true,
+      "supported": true,
+      "quality": "high",
+      "technique": "depth-reconstructed short-range SSAO",
+      "sceneSize": [
+        512,
+        320
+      ],
+      "occlusionSize": [
+        256,
+        160
+      ],
+      "samples": 4,
+      "passes": 3,
+      "cpuSubmitMs": 14.1,
+      "fallback": null
+    }
+  },
+  "viewport": {
+    "width": 512,
+    "height": 320
+  }
+}

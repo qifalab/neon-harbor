@@ -1,0 +1,30 @@
+{
+  "purpose": "v0.8 repair diagnostic only; neither image is the v0.7 baseline",
+  "issue": "half-resolution depth texel-boundary rounding generated striped normals",
+  "repair": "explicit full-resolution texel-center coordinates before depth derivatives",
+  "camera": {
+    "position": [
+      -567.1,
+      5.82,
+      -1033.175
+    ],
+    "target": [
+      -577.1,
+      4.32,
+      -1033.175
+    ],
+    "fov": 55,
+    "near": 0.15,
+    "far": 3200
+  },
+  "viewport": [
+    640,
+    400
+  ],
+  "hour": 16.5,
+  "room": "camellia-court/gallery/bedroom",
+  "images": {
+    "v08-ao-repair.png": "6569d0adda3ea2e2f09cd8b072fcb3435eafba8a5da68dea82709c9a0c9fc195",
+    "v08-obsolete-ao-defect.png": "bacc1a8e9bc84c7ed366ed0e02cf96e8380d51cf72e11b86e44a54c69e69026d"
+  }
+}

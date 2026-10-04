@@ -18,7 +18,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
   const server=await createStaticServer({root}),staticHandler=server.listeners('request')[0];server.removeAllListeners('request');
   const rooms=new Map(),sessions=new Map(),joinRates=new Map();
   function newRoom(roomCode){
-    const sim=new GameSimulation({bounds:1450,groundHeightAt:(x,z,y)=>infrastructureGroundHeightAt(x,z,y)??0});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
+    const sim=new GameSimulation({bounds:1800,groundHeightAt:(x,z,y)=>infrastructureGroundHeightAt(x,z,y)??0});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
     Object.assign(sim.player,{x:1400,z:1400});
     const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0};rooms.set(roomCode,room);return room;
   }

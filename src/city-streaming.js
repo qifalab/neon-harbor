@@ -135,6 +135,7 @@ export function validateCityChunk(data, id) {
   for (const batch of data.batches) {
     if (typeof batch.kind !== 'string' || typeof batch.material !== 'string' || !Array.isArray(batch.transforms))
       throw new Error(`Invalid district batch ${id}`);
+    if (batch.buildings && (batch.buildings.length !== batch.transforms.length || batch.buildings.some(id => id !== null && (typeof id !== 'string' || id.length > 100 || !/^[a-z0-9-]+$/.test(id))))) throw new Error(`Invalid district membership ${id}`);
     count += batch.transforms.length;
     if (count > 50000) throw new Error(`District too large ${id}`);
     for (const t of batch.transforms) if (!Array.isArray(t) || t.length !== 9 || !t.every(Number.isFinite) || t.slice(3, 6).some(n => n <= 0))

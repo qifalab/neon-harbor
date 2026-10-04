@@ -1,0 +1,49 @@
+{
+  "scope": "Three supplementary v0.8 gameplay screenshots were opened and inspected; this is a sampled static review, not full art acceptance.",
+  "conditions": {
+    "quality": "high",
+    "hour": 16.5,
+    "drawingBuffer": [
+      640,
+      400
+    ],
+    "renderer": "Chromium ANGLE SwiftShader software WebGL",
+    "camera": "Player first-person camera reached through public atlas, doors, stairs, elevator and real keyboard input; pose JSON stored beside each screenshot."
+  },
+  "samples": [
+    {
+      "image": "city-materials-supplement/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/old-quarter-upstairs-room-high.png",
+      "observed": "An enclosed upstairs kitchen/dining room renders walls, ceiling, floor, windows, table and counters with visible surface textures; no black frame or obvious pixel-boundary banding is visible in this still.",
+      "limits": "Shared room construction and simple furniture remain visible. The HUD covers part of the upper-right view; this image does not review every fixture or establish animated stability."
+    },
+    {
+      "image": "city-materials-supplement/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-enclosed-room-high.png",
+      "observed": "An enclosed office has walls, ceiling, a light fixture, desks, screens and chairs; the rendered room is present rather than only an outdoor terrace. No black frame or obvious boundary stripe is visible in this still.",
+      "limits": "Simple shared geometry, sparse objects and broad material surfaces remain. This image is not evidence of individually authored office art or AAA production quality."
+    },
+    {
+      "image": "city-materials-supplement/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-observation-room-high.png",
+      "observed": "The rooftop lookout renders paving, a bench, a table, a display stand and the distant skyline in the same High screenshot configuration.",
+      "limits": "The distant skyline has coarse shapes; the HUD covers part of the view. The still cannot prove LOD transition quality, moving-camera flicker, or real hardware performance."
+    }
+  ],
+  "comparison": "These new south/east rooms have no matched v0.7 camera reference in this supplementary run. They must not be presented as same-pose before/after comparisons.",
+  "conclusion": "Sampled visible interiors render successfully. Full visual review, authored asset production and real-device performance remain separate requirements.",
+  "additionalInspectedScreenshots": [
+    {
+      "image": "five-rechecks/game/05-mobile.png",
+      "observed": "All five action buttons, including the Z slow-walking button, are visibly contained within the landscape viewport; normal touch movement is also asserted by the test.",
+      "limits": "This sampled 844 by 390 viewport does not establish all mobile-browser or real-device compatibility."
+    },
+    {
+      "image": "five-rechecks/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/harbor-realism-day-high.png",
+      "observed": "The actual boardwalk foreground, water and multiple tower silhouettes render in High after ordinary walking. No black frame or obvious boundary stripe is visible.",
+      "limits": "Procedural facade repetition and coarse foreground forms remain; this is not an AAA asset acceptance image."
+    },
+    {
+      "image": "five-rechecks/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/harbor-realism-night-high.png",
+      "observed": "The same gameplay view responds to the public late-night time setting and shows lit tower windows and the darkened waterfront.",
+      "limits": "These new gameplay captures are not a matched v0.7 before/after pair. Static views cannot establish moving-camera flicker or hardware performance."
+    }
+  ]
+}

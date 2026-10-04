@@ -23,9 +23,61 @@ await mkdir(output, { recursive: true });
 const report = { url: target.href, success: false, checks: [], errors: [], assets: [] };
 const loadedAssets = new Set();
 const browserAssetBodies = new Map();
+const manifestRequestConcurrency = 4;
 let browser;
 let page;
 let failure;
+
+async function verifyBrowserAssetHashes(manifest) {
+  const verified = [];
+  for (const [pathname, result] of browserAssetBodies) {
+    const relative = pathname === target.pathname ? 'index.html' : pathname.slice(target.pathname.length);
+    if (!pathname.startsWith(target.pathname)) continue;
+    expect(manifest.assets[relative], `Loaded asset is included in the release manifest: ${relative}`).toMatch(/^[a-f0-9]{64}$/);
+    const { body, error } = await result;
+    expect(error, `Read loaded asset ${relative}`).toBeUndefined();
+    const sha256 = createHash('sha256').update(body).digest('hex');
+    expect(sha256, `Deployed bytes match ${relative}`).toBe(manifest.assets[relative]);
+    verified.push({ path: relative, sha256 });
+  }
+  return verified;
+}
+
+async function verifyManifestAssetHashes(request, manifest) {
+  const entries = Object.entries(manifest.assets);
+  expect(entries.length, 'The release manifest contains deployed files').toBeGreaterThan(0);
+  const verified = [];
+  report.fingerprints.manifestAssets = verified;
+  report.fingerprints.manifestRequestConcurrency = manifestRequestConcurrency;
+  let next = 0;
+  const workers = Array.from({ length: Math.min(manifestRequestConcurrency, entries.length) }, async () => {
+    while (next < entries.length) {
+      const [path, expected] = entries[next++];
+      expect(expected, `Manifest SHA-256 for ${path}`).toMatch(/^[a-f0-9]{64}$/);
+      const assetURL = new URL(path, target);
+      expect(assetURL.origin, `Published asset origin for ${path}`).toBe(target.origin);
+      expect(assetURL.pathname.startsWith(target.pathname), `Published asset remains in the Pages directory: ${path}`).toBe(true);
+      let response;
+      try {
+        response = await request.get(assetURL.href, { timeout: 30000 });
+        expect(response.ok(), `Fetch published manifest asset ${path}: HTTP ${response.status()}`).toBe(true);
+        const sha256 = createHash('sha256').update(await response.body()).digest('hex');
+        expect(sha256, `All published bytes match ${path}`).toBe(expected);
+        verified.push({ path, sha256, status: response.status() });
+      } finally {
+        // APIRequestContext retains response buffers until disposal. Release
+        // every file before requesting another; at most four bodies are live.
+        await response?.dispose();
+      }
+    }
+  });
+  const results = await Promise.allSettled(workers);
+  const rejected = results.find(result => result.status === 'rejected');
+  if (rejected) throw rejected.reason;
+  expect(verified).toHaveLength(entries.length);
+  verified.sort((a, b) => a.path.localeCompare(b.path));
+  return verified;
+}
 
 // Chromium's software compositor can miss the first capture while compiling
 // the full-resolution scene. Retry only capture timeouts, record both attempts,
@@ -100,14 +152,7 @@ try {
   const manifest = await manifestResponse.json();
   report.build = { version: manifest.version, revision: manifest.revision };
   if (process.env.EXPECTED_REVISION) expect(manifest.revision, 'The public site serves this release').toBe(process.env.EXPECTED_REVISION);
-  for (const [pathname, result] of browserAssetBodies) {
-    const relative = pathname === target.pathname ? 'index.html' : pathname.slice(target.pathname.length);
-    if (!pathname.startsWith(target.pathname)) continue;
-    expect(manifest.assets[relative], `Loaded asset is included in the release manifest: ${relative}`).toMatch(/^[a-f0-9]{64}$/);
-    const { body, error } = await result;
-    expect(error, `Read loaded asset ${relative}`).toBeUndefined();
-    expect(createHash('sha256').update(body).digest('hex'), `Deployed bytes match ${relative}`).toBe(manifest.assets[relative]);
-  }
+  report.fingerprints = { initialBrowserAssets: await verifyBrowserAssetHashes(manifest) };
   report.checks.push('Public revision and browser-loaded asset hashes match the release manifest');
 
   const initial = await page.evaluate(() => window.__NEON__.snapshot());
@@ -134,6 +179,18 @@ try {
   await page.locator('#welcome-settings').click();
   await page.locator('#quality').selectOption('low');
   await page.locator('#resume').click();
+  await page.locator('#welcome-sample').click();
+  await expect(page.locator('[data-sample-stop]')).toHaveCount(11);
+  await expect(page.locator('[data-sample-shop]')).toHaveCount(3);
+  const sample = (await page.evaluate(() => window.__NEON__.snapshot())).city.sample;
+  expect(sample.life.residents).toBe(20);
+  expect(sample.transit.vehicles).toHaveLength(5);
+  expect(sample.transit.routes.map(route => route.kind).sort()).toEqual(['bus', 'ferry', 'tram']);
+  expect(sample.life.totalGoods).toBe(sample.life.initialGoods);
+  expect(sample.life.totalMoney).toBe(sample.life.initialMoney);
+  report.sample = { residents: sample.life.residents, fleet: sample.transit.vehicles.length, shops: sample.life.shops.map(shop => shop.name) };
+  await page.locator('#resume').click();
+  report.checks.push('Public harbor menu exposes the real three-mode fleet, eleven stops and twenty persistent residents');
   await page.locator('#harbor-start').click();
   await expect(page.locator('#hud')).toBeVisible();
   await expect(page.locator('#game')).toBeFocused();
@@ -170,10 +227,15 @@ try {
   // lobby using the normal interaction key. Snapshot access is read-only.
   await page.locator('#explore-city').click();
   await expect(page.locator('#atlas-results')).toBeVisible();
-  await expect(page.locator('[data-building-id]')).toHaveCount(48);
+  const addresses = (await page.evaluate(() => window.__NEON__.snapshot())).city.buildings;
+  expect(addresses.filter(building => !['south-expansion', 'east-expansion'].includes(building.district))).toHaveLength(48);
+  expect(addresses.filter(building => building.district === 'south-expansion')).toHaveLength(96);
+  expect(addresses.filter(building => building.district === 'east-expansion')).toHaveLength(76);
+  await expect(page.locator('[data-building-id]')).toHaveCount(addresses.length);
   await expect(page.locator('[data-visit-landmark]')).toHaveCount(3);
-  expect((await page.evaluate(() => window.__NEON__.snapshot())).city.buildings).toHaveLength(48);
-  report.checks.push('Opened the city guide with all 48 north-shore addresses');
+  expect(addresses).toHaveLength(220);
+  expect((await page.locator('[data-building-id]').evaluateAll(nodes => nodes.map(node => node.dataset.buildingId))).sort()).toEqual(addresses.map(building => building.id).sort());
+  report.checks.push('Opened the city guide with all 48 northern, 96 old-quarter and 76 eastern addresses');
   await page.locator('[data-visit-building="tide-museum"]').click();
   await expect(page.locator('#panel')).toBeHidden();
   await expect(page.locator('#game')).toBeFocused();
@@ -187,11 +249,48 @@ try {
   expect(museum.activeFloors).toBe(3);
   expect(museum.stairs).toHaveLength(museum.totalFloors - 1);
   const publicFloors=(await page.evaluate(()=>window.__NEON__.snapshot())).city.buildings;
-  expect(publicFloors.every(b=>b.floors.length>=5&&b.floors[1].y===4.2&&b.floors[2].y===8.4)).toBe(true);
+  for (const building of publicFloors) {
+    expect(building.floors.length).toBeGreaterThanOrEqual(2);
+    for (let index = 1; index < building.floors.length; index++) {
+      const rise = building.floors[index].y - building.floors[index - 1].y;
+      expect(rise).toBeGreaterThanOrEqual(3.7);
+      expect(rise).toBeLessThanOrEqual(6.2001);
+    }
+    if (!building.shellId) {
+      expect(building.floors[1].y).toBe(4.2);
+      expect(building.floors[2].y).toBe(8.4);
+    }
+  }
   expect(museum.rooms.some(room => room.type === 'maritime')).toBe(true);
   report.northMuseum = { buildingId: museum.buildingId, floorId: museum.floorId, floorName: museum.floorName, rooms: museum.rooms.map(room => room.name), furnitureCount: museum.furnitureCount };
   await capture('live-north-museum.png');
   report.checks.push('Visited the north-shore museum through the guide and entered its furnished lobby using E');
+
+  report.expansionInteriors = [];
+  for (const id of ['south-001', 'east-001']) {
+    const building = addresses.find(item => item.id === id);
+    await page.locator('#explore-city').click();
+    await page.locator(`[data-visit-building="${id}"]`).click();
+    await expect(page.locator('#panel')).toBeHidden();
+    await expect(page.locator('#interaction')).toContainText(`进入 ${building.name}`);
+    await page.keyboard.press('e');
+    await page.waitForFunction(id => window.__NEON__.snapshot().city.interior.buildingId === id, id);
+    const inside = (await page.evaluate(() => window.__NEON__.snapshot())).city.interior;
+    expect(inside.roomCount).toBe(building.compact ? 2 : 4);
+    expect(inside.furnitureCount).toBeGreaterThan(0);
+    expect(inside.activeFloors).toBe(Math.min(3, building.floors.length));
+    expect(inside.totalFloors).toBe(building.floors.length);
+    await capture(`live-${id}-lobby.png`);
+    await expect(page.locator('#interaction')).toContainText('返回街道');
+    await page.keyboard.press('e');
+    await page.waitForFunction(() => window.__NEON__.snapshot().city.interior.buildingId === null);
+    const outside = await page.evaluate(() => window.__NEON__.snapshot());
+    expect(outside.position.y).toBeCloseTo(building.entrance.y || 0, 1);
+    expect(outside.city.exterior).toEqual({ southInteriorId: null, harborInteriorId: null });
+    expect(outside.city.harbor.hiddenShells).toBe(0);
+    report.expansionInteriors.push({ id, rooms: inside.roomCount, floors: inside.totalFloors, groundY: outside.position.y });
+  }
+  report.checks.push('Entered and exited both a compact old-quarter lobby and an eastern lobby, restoring shells and supported ground');
 
   await page.keyboard.press('Escape');
   await page.locator('[data-tab="settings"]').click();
@@ -209,7 +308,11 @@ try {
   await expect(page.locator('#panel')).toBeHidden();
   await page.waitForFunction(()=>Math.abs(window.__NEON__.snapshot().position.x-285.5)<1);
   await capture('live-high-quality-harbor.png');
-  report.checks.push('Returned to the actual harbor promenade at High quality; all north-shore storey schedules and the museum stair count match the shipped catalog');
+  report.checks.push('Returned to the actual harbor promenade at High quality; all three shores have continuous storey schedules and the museum stair count matches the shipped catalog');
+  report.fingerprints.finalBrowserAssets = await verifyBrowserAssetHashes(manifest);
+  report.checks.push('All browser-loaded assets, including later streamed districts and interiors, match the release manifest');
+  await verifyManifestAssetHashes(context.request, manifest);
+  report.checks.push('Every file in the published release manifest responds successfully and matches its SHA-256');
   expect(report.errors, 'No page, console, network or HTTP resource errors').toEqual([]);
   report.success = true;
 } catch (error) {

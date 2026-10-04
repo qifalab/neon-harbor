@@ -1,7 +1,9 @@
 import { METROPOLIS_BUILDINGS, publicInteriorFootprint } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
 import { getRoomDesign } from './metropolis-room-designs.js';
+import { createHarborRoomDressing } from './harbor-room-dressing.js';
 import { roomArtDirection } from './occupied-programmes.js';
+import { createCompactInteriorLayout, createCompactInteriorStairs } from './compact-interiors.js';
 
 const WALL = 0.3;
 const CABIN = { width: 4.4, depth: 4.6, height: 3.25 };
@@ -25,12 +27,18 @@ const isGround = (building, floor) => floor.id === building.floors[0].id;
 
 /** The stair route is ordinary walking geometry in world coordinates. */
 export function createInteriorStairs(building) {
+  if (building.compact) return createCompactInteriorStairs(building);
   const lower = building.floors.filter(floor => floor.stairs);
   // The front landing needs clearance from both the first guard and the
   // closed upper-floor window frame, including the full walking radius.
-  const depth = building.depth - 0.7, x = building.x + 3.5, startZ = building.z + depth / 2 - 3.6;
+  const depth = building.depth - 0.7, x = building.x + 3.5;
+  const east = building.district === 'east-expansion';
+  const startZ = building.z + depth / 2 - (east ? 2 : 3.6);
   return lower.slice(0, -1).map((floor, index) => {
-    const next = lower[index + 1], rise = next.y - floor.y, run = 8.4;
+    const next = lower[index + 1], rise = next.y - floor.y;
+    // Narrow east-bay floors need the top landing ahead of their front-room
+    // doorway, so that visitors can cross the corridor without crossing a flight.
+    const run = east ? Math.min(8.4, depth / 4 - 3.25) : 8.4;
     const bottom = { x, z: startZ + 1.05, y: floor.y }, top = { x, z: startZ - run - 1.05, y: next.y };
     return { id: `${building.id}-${floor.id}-stairs`, fromFloorId: floor.id, toFloorId: next.id,
       x, startZ, endZ: startZ - run, width: 2.8, treadCount: 24, rise, run, fromY: floor.y, toY: next.y,
@@ -47,6 +55,7 @@ export function createInteriorStairs(building) {
  * Positions remain in city coordinates, including the actual elevation of each floor. */
 export function createInteriorLayout(building, floor) {
   if (!building || !floor) throw new Error('An interior requires a building and a floor.');
+  if (building.compact) return createCompactInteriorLayout(building, floor);
   const { width, depth } = publicInteriorFootprint(building);
   const next = building.floors.find(candidate => candidate.y > floor.y);
   // Keep the painted soffit BELOW the next storey's 0.32 m stone slab.
@@ -69,7 +78,8 @@ export function createInteriorLayout(building, floor) {
   const solid = (material, x, y, z, sx, sy, sz, kind = 'furniture') => box(material, x, y, z, sx, sy, sz, kind, true);
   // Geometry and collision share dimensions; soft shapes keep conservative AABBs.
   const shaped = (geometry, material, x, y, z, sx, sy, sz, kind = 'detail', collision = false) => {
-    const part = box(material, x, y, z, sx, sy, sz, kind, collision); part.geometry = geometry; return part;
+    const part = box(material, x, y, z, sx, sy, sz, kind, collision);
+    part.geometry = geometry === 'rounded' && /fabric|upholstery/.test(material) ? 'soft' : geometry; return part;
   };
   const round = (m, x, y, z, sx, sy, sz, kind = 'furniture', collision = true) => shaped('rounded', m, x, y, z, sx, sy, sz, kind, collision);
   const cylinder = (m, x, y, z, sx, sy, sz = sx, kind = 'detail', collision = false) => shaped('cylinder', m, x, y, z, sx, sy, sz, kind, collision);
@@ -374,15 +384,20 @@ export function createInteriorLayout(building, floor) {
     const type = specification.type;
     // Primary furnishings stay near the entrance at human scale. Secondary wall
     // collections occupy the broad perimeter; none crosses the circulation spine.
-    const community = floor.id === 'lobby' && type === 'living';
+    // The enlarged community lounge only fits broad shells. Smaller east-bay
+    // addresses keep the ordinary living-room arrangement at human scale.
+    const availableRoomWidth = width / 2 - 5.5 - 0.4;
+    const community = floor.id === 'lobby' && type === 'living' && availableRoomWidth >= 14 && zoneDepth >= 14;
     const compact = !observation && ['living', 'bedroom', 'kitchen', 'bath'].includes(type) && (/residential|hotel/.test(category) || type === 'bedroom' || type === 'bath');
     const domesticSize = community ? [14, 14] : { living: [9, 10], bedroom: [8, 8], kitchen: [7, 8], bath: [5, 6] }[type];
     const clinical = !observation && category === 'clinic';
     const clinicSize = { reception: [14, 12], waiting: [16, 14], pharmacy: [12, 10], consult: [10, 10], ward: [14, 12], rehab: [14, 12], office: [12, 10] }[type];
     const enclosedSize = clinical ? clinicSize : compact ? domesticSize : !observation ? [Math.min(zoneWidth, 19), Math.min(zoneDepth, 18)] : null;
-    const roomWidth = enclosedSize ? enclosedSize[0] : zoneWidth, roomDepth = enclosedSize ? enclosedSize[1] : zoneDepth;
-    const roomX = enclosedSize ? side * (5.5 + roomWidth / 2) : room.x;
-    const x = enclosedSize ? roomX : side * (7.8 + Math.min(zoneWidth, 21) / 2);
+    const roomWidth = enclosedSize ? Math.min(enclosedSize[0], availableRoomWidth) : zoneWidth;
+    const roomDepth = enclosedSize ? Math.min(enclosedSize[1], zoneDepth) : zoneDepth;
+    const eastProgramme = building.district === 'east-expansion' && !compact;
+    const roomX = enclosedSize || eastProgramme ? side * (5.5 + roomWidth / 2) : room.x;
+    const x = enclosedSize || eastProgramme ? roomX : side * (7.8 + Math.min(zoneWidth, 21) / 2);
     const ceilingHeight = Math.min(height - 0.16, clinical ? 3.18 : compact ? 2.98 : 3.7);
     const enclosed = !observation;
     const accessPoints = [];
@@ -412,7 +427,50 @@ export function createInteriorLayout(building, floor) {
     label(specification.name, side * 5.26, 2.18, z - 2.5, 2.75, 0.43, '#e9dfc7', -side * Math.PI / 2);
     if (!enclosedSize) label(specification.name, x, 2.86, z - reach - 2, Math.min(span, 7), 0.45);
     const v = specification.furnishingVariant;
-    if (clinical) {
+    if (eastProgramme) {
+      // East-bay rooms use a smaller collection of full-size furnishings. A
+      // 3.3 m arrival strip stays open; each arrangement fits its measured room.
+      const px = u => side * (5.5 + u), centerU = Math.min(roomWidth - 2.3, 7.2);
+      const cx = px(centerU), rearZ = z - roomDepth / 2 + 0.65;
+      if (type === 'office') {
+        desk(cx, z - 2.15); desk(cx, z + 1.5); shelf(cx, rearZ, 3.4);
+        cabinet(cx, z + roomDepth / 2 - 0.65, 3.2, 0.85); cup(cx, z + 1.5);
+      } else if (type === 'conference') {
+        table(cx, z, 3.5, 1.55);
+        for (const du of [-0.85, 0.85]) for (const dz of [-1.45, 1.45]) {
+          chair(px(centerU + du), z + dz, dz < 0 ? 1 : -1, 'navy');
+          cup(px(centerU + du), z + Math.sign(dz) * 0.4);
+        }
+        solid('dark', cx, 1.75, rearZ, 3.3, 1.9, 0.12, 'presentation-screen');
+        box('blue', cx, 1.75, rearZ + 0.075, 3.05, 1.66, 0.02);
+        cabinet(cx, z + roomDepth / 2 - 0.65, 3.1, 0.85);
+      } else if (type === 'library' || type === 'study') {
+        shelf(cx, rearZ, 3.6); table(cx, z, 3.1, 1.2);
+        for (const du of [-0.75, 0.75]) {
+          chair(px(centerU + du), z + 1.1, -1, 'navy');
+          book(px(centerU + du), z, 0.95, design.accent);
+        }
+        bench(cx, z + roomDepth / 2 - 1, 3.2);
+      } else if (type === 'lounge') {
+        sofa(cx, z - 2.4, 3.1); table(cx, z - 0.55, 2.2, 1.1);
+        chair(px(centerU - 0.85), z + 1.5, -1); chair(px(centerU + 0.85), z + 1.5, -1);
+        book(cx, z - 0.55); cup(cx + 0.65, z - 0.55);
+        cabinet(cx, rearZ, 3.2, 1.1); plant(cx, z + roomDepth / 2 - 1.1, 0.85);
+      } else if (type === 'lookout') {
+        telescope(cx, z - 1.75); bench(cx, z + 1.45, 3.1);
+        table(cx, z + 3.15, 2.9, 0.75, 'limestone');
+        box('paper', cx, 0.935, z + 3.15, 2.4, 0.025, 0.6);
+        gardenBed(cx, rearZ + 0.4, 3.4, 1.2);
+      } else if (type === 'garden') {
+        gardenBed(cx, z - 1.6, 3.4, 2.4); bench(cx, z + 1.8, 3.1);
+        plant(px(centerU - 1), rearZ + 0.5, 0.85); plant(px(centerU + 1), rearZ + 0.5, 0.85);
+      } else if (type === 'tea') {
+        roundTable(cx, z, 1.8);
+        chair(px(centerU - 0.9), z - 1.4); chair(px(centerU + 0.9), z + 1.4, -1);
+        placeSetting(cx - 0.42, z); placeSetting(cx + 0.42, z);
+        shelf(cx, rearZ, 3.2, 'medicine'); plant(cx, z + roomDepth / 2 - 1.1, 0.85);
+      } else throw new Error(`Unfurnished east-bay room type ${type}`);
+    } else if (clinical) {
       // All eight medical rooms have their own wall, floor and ceiling bounds.
       // The first 3.3 m and a spine at u=3.3 remain clear for returning visitors.
       const px = u => side * (5.5 + u);
@@ -511,8 +569,9 @@ export function createInteriorLayout(building, floor) {
         for (const dx of [-0.35, 0, 0.35]) cylinder('ceramic', px(2.7) + dx, 1.27, z - 3.37, 0.19, 0.23);
       } else {
         washbasin(px(1.3), z - 2.45);
-        round('white', px(4), 0.35, z - 1.7, 1.45, 0.7, 2.1, 'bathtub'); round('blue', px(4), 0.713, z - 1.7, 1.13, 0.025, 1.82, 'bathwater', false);
-        solid('glass', px(3.18), 1.3, z - 1.75, 0.07, 2.6, 2.2, 'shower-screen'); cylinder('steel', px(4.35), 1.43, z - 2.65, 0.05, 1.65); cylinder('steel', px(4.12), 2.28, z - 2.65, 0.4, 0.055);
+        const bathSetback = building.district === 'east-expansion' ? 0.1 : 0;
+        round('white', px(4), 0.35, z - 1.7 - bathSetback, 1.45, 0.7, 2.1, 'bathtub'); round('blue', px(4), 0.713, z - 1.7 - bathSetback, 1.13, 0.025, 1.82, 'bathwater', false);
+        solid('glass', px(3.18), 1.3, z - 1.75 - bathSetback, 0.07, 2.6, 2.2, 'shower-screen'); cylinder('steel', px(4.35), 1.43, z - 2.65, 0.05, 1.65); cylinder('steel', px(4.12), 2.28, z - 2.65, 0.4, 0.055);
         cylinder('white', px(1.6), 0.3, z + 1.9, 0.67, 0.6, 0.93, 'toilet', true); round('white', px(1.6), 0.72, z + 2.3, 0.68, 0.8, 0.3, 'cistern');
         cabinet(px(3.9), z + 2.38, 1.6, 1.2, 'white'); for (const dy of [0, 0.1, 0.2]) round('fabric', px(3.9), 1.27 + dy, z + 2.38, 0.6, 0.08, 0.4, 'folded-towel', false);
         box('carpet', px(2), 0.048, z - 1.25, 1.3, 0.02, 0.55);
@@ -861,7 +920,19 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     point.sub(center).normalize().multiplyScalar(0.09).add(center); vertices.setXYZ(index, point.x, point.y, point.z);
   }
   rounded.computeVertexNormals();
-  const geometries = { box: geometry, rounded, cylinder: new THREE.CylinderGeometry(0.5, 0.5, 1, 12), sphere: new THREE.SphereGeometry(0.5, 12, 8) };
+  // Cloth uses a distinct shared shape: shallow cushion compression and seam
+  // folds survive close views without increasing furniture draw-call count.
+  const soft = new THREE.BoxGeometry(1, 1, 1, 8, 8, 8), softVertices = soft.attributes.position;
+  for (let index = 0; index < softVertices.count; index++) {
+    const point = new THREE.Vector3().fromBufferAttribute(softVertices, index);
+    const center = new THREE.Vector3(clamp(point.x, -0.37, 0.37), clamp(point.y, -0.37, 0.37), clamp(point.z, -0.37, 0.37));
+    point.sub(center).normalize().multiplyScalar(0.13).add(center);
+    const envelope = Math.max(0, 1 - 4 * point.x * point.x) * Math.max(0, 1 - 4 * point.z * point.z);
+    if (point.y > 0.15) point.y -= 0.035 * envelope + 0.008 * Math.sin(point.x * 26) * Math.sin(point.z * 19) * envelope;
+    softVertices.setXYZ(index, point.x, point.y, point.z);
+  }
+  soft.computeVertexNormals();
+  const geometries = { box: geometry, rounded, soft, cylinder: new THREE.CylinderGeometry(0.5, 0.5, 1, 12), sphere: new THREE.SphereGeometry(0.5, 12, 8) };
   const state = { activeBuilding: null, buildingId: null, floor: null, moving: false, version: 0,
     elevator: { phase: 'idle', y: 0, targetFloorId: null, elapsed: 0, duration: 0, doorOpen: 1 } };
   let layout = null, residentLayouts = [], floorColliders = [], cabinColliders = [], colliders = [], playerRef = null, journey = null;
@@ -926,7 +997,12 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     if (key !== 'glass' && materials[key]?.isMaterial) return materials[key];
     const alias = { limestone: 'stone', timber: 'wood', walnut: 'wood', ceramic: 'tile', white: 'plaster', carpet: 'fabric', upholstery: 'fabric' }[key];
     if (!localMaterials.has(key) && alias && materials[alias]?.isMaterial) {
-      const instance = materials[alias].clone(); instance.color.set(COLORS[key]); localMaterials.set(key, instance);
+      const instance = materials[alias].clone(); instance.color.set(COLORS[key]);
+      // Three.clone does not retain compile hooks. Keep metre-scaled detail on
+      // upholstered seats and timber variants instead of default UV stretching.
+      instance.onBeforeCompile = materials[alias].onBeforeCompile;
+      instance.customProgramCacheKey = materials[alias].customProgramCacheKey;
+      localMaterials.set(key, instance);
     }
     if (!localMaterials.has(key)) localMaterials.set(key, new THREE.MeshStandardMaterial({ color: COLORS[key] || key,
       roughness: ['glass', 'metal', 'brass'].includes(key) ? 0.3 : 0.82,
@@ -945,6 +1021,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     floorRoot.clear(); floorGroups.clear(); layoutCache.clear();
   }
   function releaseFloor(group) {
+    group.userData.harborDressing?.dispose();
     group.traverse(object => { if (object.isInstancedMesh) object.dispose(); if (object.userData.ownedMaterial) { object.material.map?.dispose(); ownedTextures.delete(object.material.map); object.material.dispose(); } });
     group.removeFromParent();
   }
@@ -1041,6 +1118,9 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
         batch.castShadow = key !== 'glass' && key !== 'light'; batch.receiveShadow = true; group.add(batch);
       }
       occupied.labels.forEach(data => sign(data, group));
+      const dressedFloor = state.activeBuilding.floors.find(item => item.id === occupied.floorId);
+      const dressing = createHarborRoomDressing(THREE, { building: state.activeBuilding, floor: dressedFloor, layout: occupied });
+      group.userData.harborDressing = dressing; group.add(dressing.group);
     }
     updateFloorVisibility({ ...layout.entrance, groundY: floor.y });
     positionInteriorLights();
@@ -1175,7 +1255,8 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
   }
   function exit({ force = false } = {}) {
     if (!state.activeBuilding || (!force && (state.moving || !isGround(state.activeBuilding, state.floor)))) return null;
-    const building = state.activeBuilding, position = { x: building.entrance.x, z: building.entrance.z + 3.2, yaw: 0 };
+    const building = state.activeBuilding, position = building.exitPosition ? { ...building.exitPosition } :
+      { x: building.entrance.x, z: building.entrance.z + (building.exitOffset ?? 3.2), yaw: 0 };
     clearFloor(); cabinRoot.clear(); root.visible = false; layout = null; residentLayouts = []; floorColliders = []; cabinColliders = []; colliders = [];
     state.activeBuilding = null; state.buildingId = null; state.floor = null; state.moving = false; state.version++;
     state.elevator = { phase: 'idle', y: 0, targetFloorId: null, elapsed: 0, duration: 0, doorOpen: 1 };
@@ -1186,7 +1267,10 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     if (!player || state.moving) return null;
     if (!state.activeBuilding) {
       let nearest = null, gap = 5.4;
-      for (const building of buildings) { const distance = Math.hypot(player.x - building.entrance.x, player.z - building.entrance.z);
+      for (const building of buildings) {
+        const playerY = player.groundY ?? player.y ?? 0;
+        if (Math.abs(playerY - (building.entrance.y || 0)) > 1.5) continue;
+        const distance = Math.hypot(player.x - building.entrance.x, player.z - building.entrance.z);
         if (distance < gap) { gap = distance; nearest = building; } }
       return nearest ? { kind: 'enter', label: `进入 ${nearest.name}`, buildingId: nearest.id } : null;
     }

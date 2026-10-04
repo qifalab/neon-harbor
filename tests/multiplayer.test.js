@@ -43,7 +43,7 @@ test('vehicle claims are exclusive and leaving releases ownership',async t=>{
   assert.equal((await post('claim',{carId:'starter'},b.token)).error,'VEHICLE_TAKEN');
   assert.equal((await post('claim',{carId:'sunset'},b.token)).error,'VEHICLE_TOO_FAR');
   await post('leave',{},a.token);assert.equal((await post('claim',{carId:'starter'},b.token)).status,200);
-  assert.equal((await post('state',{pose:{x:1451,y:0,z:165,yaw:0}},b.token)).error,'INVALID_POSE');
+  assert.equal((await post('state',{pose:{x:1801,y:0,z:165,yaw:0}},b.token)).error,'INVALID_POSE');
 });
 test('room capacity is enforced and peer interpolation follows shortest angles without interpolating travel',async t=>{
   const {post}=await fixture(t),a=await post('join',world);

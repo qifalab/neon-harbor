@@ -1,0 +1,66 @@
+{
+  "reviewedImages": [
+    "v07-harbor-day-high.png",
+    "v08-harbor-day-high.png",
+    "v07-harbor-night-high.png",
+    "v08-harbor-night-high.png"
+  ],
+  "matchedConditions": "1280x800, device scale 1, same Chromium version, High, day cycle off, exact same player position and camera; hours 16.5 and 23.9. See comparison-verification.json.",
+  "observations": [
+    "Both final v0.8 captures show a complete rendered skyline and foreground without a black frame or an obvious broad color/tone-mapping shift from v0.7.",
+    "The near promenade wall has stronger narrow contact shading along its foot, especially in the daytime view; the open sky and distant facade colors remain similar.",
+    "No large dirty silhouette halo is apparent in the reviewed daytime or nighttime stills.",
+    "The distant ridge silhouette changes slightly because v0.8 moves the terrain east to support the expanded walkable shore; the comparison uses identical camera coordinates.",
+    "The large skyline remains recognizably the same procedural scene. These images support a localized shading improvement, not a claim that the overall city has become photorealistic."
+  ],
+  "limits": [
+    "Still images do not prove absence of temporal flicker or validate every other camera angle.",
+    "Traffic, water and boats were not locked to the same animation frame. Simulation timestamps are recorded.",
+    "Captures used software WebGL while other tests were also running. Recorded FPS and timings are diagnostics, not a hardware performance comparison.",
+    "The sea and repeated facade patterns remain stylized; these captures do not demonstrate AAA art quality."
+  ],
+  "browserErrors": {
+    "v07": [],
+    "v08": []
+  },
+  "candidateBuildManifestSha256": "40bbcfd0631778696a847c2abccd23da086c7836b8555867efdb56e540f390a8",
+  "candidateContactOcclusion": [
+    {
+      "enabled": true,
+      "supported": true,
+      "quality": "high",
+      "technique": "depth-reconstructed short-range SSAO",
+      "sceneSize": [
+        1280,
+        800
+      ],
+      "occlusionSize": [
+        640,
+        400
+      ],
+      "samples": 4,
+      "passes": 3,
+      "cpuSubmitMs": 6.3,
+      "fallback": null
+    },
+    {
+      "enabled": true,
+      "supported": true,
+      "quality": "high",
+      "technique": "depth-reconstructed short-range SSAO",
+      "sceneSize": [
+        1280,
+        800
+      ],
+      "occlusionSize": [
+        640,
+        400
+      ],
+      "samples": 4,
+      "passes": 3,
+      "cpuSubmitMs": 8.5,
+      "fallback": null
+    }
+  ],
+  "primaryConclusion": "These matched harbor images primarily support visual regression stability across the v0.8 rendering changes. The local contact-shadow change at the promenade wall is visible, but the evidence does not show a substantial improvement in overall city art quality."
+}

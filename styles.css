@@ -29,3 +29,10 @@ dialog{width:min(920px,94vw);max-height:88vh;overflow:auto;padding:32px;border:1
 .setting input[type="url"],.setting input:not([type]),.room-chat-form input{width:100%;box-sizing:border-box;padding:12px;color:#e0e7de;background:#10282c;border:1px solid #365459;border-radius:5px;font:inherit}
 .room-players{display:flex;gap:12px;flex-wrap:wrap;padding:0;list-style:none}.room-players li{padding:8px 12px;border:1px solid #365459;border-radius:5px}
 .room-chat{max-height:180px;overflow:auto;padding:8px 0}.room-chat p{font-size:14px;overflow-wrap:anywhere}.room-chat-form{display:flex;gap:12px}.room-chat-form input{flex:1;min-width:0}
+
+/* Short windows keep the complete welcome menu reachable by wheel and Tab.
+   The document itself stays fixed for gameplay; this overlay owns its scroll. */
+.welcome{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scroll-padding-block:16px}
+.welcome>.menu-top,.welcome>.hero-copy,.welcome>.welcome-footer{flex-shrink:0}
+
+.welcome button,.welcome a{scroll-margin-block:16px}

@@ -1,3 +1,4 @@
+import { expansionRoomDesign } from './expansion-programmes.js';
 /**
  * Public interiors are authored address by address. Each address names four
  * public floors and their four connected rooms; stable legacy floor IDs keep saves and
@@ -84,7 +85,7 @@ const FLOORS = {
   'lantern-tower': [
     ['灯笼茶食大厅', 'restaurant', 'tea:手冲茶席,booth:灯下卡座,kitchen:点心备餐间,gallery:灯彩工艺展'],
     ['光影工坊', 'gallery', 'workshop:竹骨灯彩工坊,gallery:纸灯光影展,archive:灯节图谱室,lecture:光影讲习厅'],
-    ['万灯夜景平台', 'observation', 'gallery:灯彩观赏廊,bar:夜灯饮品台,lookout:维港夜景台,garden:暖光花境'],
+    ['万灯夜景平台', 'observation', 'gallery:灯彩观赏廊,bar:夜灯饮品台,lookout:河口夜景台,garden:暖光花境'],
   ],
   'banyan-teahouse': [
     ['榕荫早茶大厅', 'restaurant', 'tea:老茶客茶席,dining:点心圆桌厅,kitchen:蒸笼备餐厨房,booth:街窗茶座'],
@@ -318,6 +319,7 @@ export const ROOM_DESIGNS = Object.freeze(Object.fromEntries(Object.entries(FLOO
 export function getRoomDesign(buildingId, floorId) {
   const result = ROOM_DESIGNS[buildingId]?.find(floor => floor.id === floorId) ||
     (/^level-\d{2,3}$/.test(floorId) ? upperRoomDesign(buildingId, Number(floorId.slice(6))) : null);
+  if (!result && expansionRoomDesign(buildingId, floorId)) return expansionRoomDesign(buildingId, floorId);
   if (!result) throw new Error(`Missing authored interior: ${buildingId}/${floorId}`);
   return result;
 }

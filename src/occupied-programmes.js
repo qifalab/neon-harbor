@@ -68,7 +68,7 @@ export function upperRoomDesign(buildingId, level) {
 }
 
 export function roomArtDirection(buildingId, floorId, roomIndex) {
-  const [, , , subject, ink, paper] = UPPER_PROGRAMMES[buildingId];
+  const [, , , subject, ink, paper] = UPPER_PROGRAMMES[buildingId] || ['海湾生活', 'residential', '', '街巷与海风', '#668983', '#c8ac85'];
   const address = Object.keys(UPPER_PROGRAMMES).indexOf(buildingId);
   const level = /^level-/.test(floorId) ? Number(floorId.slice(6)) : ['lobby', 'gallery', 'workplace', 'observation'].indexOf(floorId) + 1;
   return { subject, ink, paper, composition: address % 8, edition: level, variant: address * 13 + level * 7 + roomIndex * 3 };

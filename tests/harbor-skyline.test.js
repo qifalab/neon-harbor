@@ -6,6 +6,7 @@ import { HARBOR_TOWERS, HARBOR_VIEWPOINTS, harborTowerProfile, harborCoastX, cre
 import { createWorld } from '../src/world.js';
 import { createMetropolisWorld } from '../src/metropolis-world.js';
 import { CHARACTER_RADIUS, circleOBB } from '../src/collision.js';
+import { GameSimulation } from '../src/simulation.js';
 
 test('harbor towers occupy land behind a continuous shore and have authored geometric crowns', () => {
   assert.equal(new Set(HARBOR_TOWERS.map(t => t.id)).size, HARBOR_TOWERS.length);
@@ -59,6 +60,41 @@ test('all three harbor viewpoints are reached on existing real pavement with the
     }
   }
   north.dispose(); harbor.dispose();
+});
+
+test('walking inland across the former support edge stays on the rendered shore and mountain triangles', () => {
+  const harbor = createHarborSkyline(THREE, new THREE.Scene());
+  const terrain = harbor.root.children.filter(mesh => ['East Bay · walkable shore', 'Continuous eastern mountain ridge'].includes(mesh.name));
+  assert.equal(terrain.length, 2);
+  harbor.root.updateMatrixWorld(true);
+  const ray = new THREE.Raycaster(new THREE.Vector3(), new THREE.Vector3(0, -1, 0));
+  const renderedHeight = (x, z) => {
+    ray.ray.origin.set(x, 1000, z);
+    const hit = ray.intersectObjects(terrain, false)[0];
+    assert.ok(hit, `no visible terrain at ${x},${z}`);
+    return hit.point.y;
+  };
+  // Sample both triangles, terrain seams, and the parts of the mountain that
+  // extend beyond the flat shore. Raycasts inspect the actual render meshes.
+  for (const z of [-1490, -1200, -401.7, 750, 1040]) {
+    for (const x of [1670, 1675.3, 1699, 1705.8, 1750, 1799.5]) {
+      assert.ok(Math.abs(harbor.groundHeightAt(x, z) - renderedHeight(x, z)) < .0005, `support missed visible slope at ${x},${z}`);
+    }
+  }
+  for (const z of [-1200, -400, 750]) {
+    const sim = new GameSimulation({ colliders: harbor.colliders, bounds: 1800,
+      groundHeightAt: (x, z) => harbor.groundHeightAt(x, z) ?? -.03 });
+    Object.assign(sim.player, { x: 1656, z, y: 0, groundY: 3.75, vy: 0 });
+    for (let step = 0; step < 620; step++) {
+      sim._walk(1 / 60, { forward: 1, cameraYaw: Math.PI / 2 });
+      assert.ok(sim.player.groundY >= 3.75, 'walking past x1660 must not drop beneath the flat shore');
+      if (step % 10 === 0) assert.ok(Math.abs(sim.player.groundY - renderedHeight(sim.player.x, z)) < .0005,
+        'normal walking must follow the visible mountain instead of passing through it');
+    }
+    assert.ok(sim.player.x > 1710 && sim.player.groundY > 20, 'walk must actually reach and climb the mountain');
+  }
+  assert.equal(harbor.groundHeightAt(900, -400), null, 'support must not extend into the shipping channel');
+  harbor.dispose();
 });
 
 test('view distance streams and disposes real facade details without changing skyline massing or quality', () => {

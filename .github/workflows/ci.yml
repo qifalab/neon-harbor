@@ -30,6 +30,9 @@ jobs:
           - { id: metropolis-3, suite: metropolis, shard: '3/3' }
           - { id: living-city, suite: living-city, shard: '1/1' }
           - { id: harbor-realism, suite: harbor-realism, shard: '1/1' }
+          - { id: city-materials, suite: city-materials, shard: '1/1' }
+          - { id: harbor-sample-1, suite: harbor-sample, shard: '1/2' }
+          - { id: harbor-sample-2, suite: harbor-sample, shard: '2/2' }
           - { id: occupied-city, suite: occupied-city, shard: '1/1' }
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +58,9 @@ jobs:
   multiplayer:
     name: Multiplayer rooms in two browsers
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # Shared vehicles and expanded-world elevator synchronization are separate
+    # real-browser scenarios, each with its own interaction deadlines.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

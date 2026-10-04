@@ -1,0 +1,26 @@
+{
+  "method": "Opened the unmodified PNGs and inspected their recorded poses",
+  "environment": "Chromium 151.0.7922.173, SwiftShader, 512x320, High",
+  "imagesReviewed": [
+    "bus/bus-upper-deck-high.png",
+    "tram/tram-upper-deck-high.png",
+    "ferry/ferry-upper-deck-high.png",
+    "life/produce-frontage-high.png",
+    "life/produce-shop-room-high.png"
+  ],
+  "observations": [
+    "Both show the actual upper-deck windows, seat or rail structures and the live street outside",
+    "The small functional-test viewport gives the transit HUD a large share of the picture",
+    "The cabins and visible streets still expose simple procedural surfaces and repeated building forms; these pictures do not establish authored production quality",
+    "The ferry upper deck shows wood decking, bench forms, rails and the real stair opening",
+    "The produce exterior shows the actual counter prompt and street residents; room metadata identifies the actual entered shop",
+    "The third-person small-viewport room capture is substantially obscured by the player body and HUD and cannot establish interior art quality"
+  ],
+  "acceptance": {
+    "actualHighPoseEvidence": true,
+    "fixedBaselineComparison": "not performed in this suite",
+    "productionAssetQuality": "pending",
+    "continuousMotionVisualStability": "pending",
+    "hardwarePerformanceTargets": "unmeasured"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "reviewed": true,
+  "candidateManifestSha256": "b83ccae70a56a111ec5bd44e550b48fbb47d0634caf5899035713341b2aa4ab9",
+  "quality": "high",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "images": [
+    "v07-harbor-day-high.png",
+    "v08-harbor-day-high.png",
+    "v07-harbor-night-high.png",
+    "v08-harbor-night-high.png"
+  ],
+  "observations": [
+    "Both fixed views render without an obvious broad colour shift or black frame.",
+    "Nearby contact shading is a local refinement.",
+    "The existing procedural skyline remains similar; these images do not establish a commercial AAA art improvement."
+  ],
+  "limits": [
+    "Dynamic objects and water are not animation-frame locked.",
+    "Source-art and cabin inspections are separate.",
+    "The final batching reduces this viewpoint by nine calls and adds 876 triangles compared with the pre-batching candidate; hardware performance is unmeasured."
+  ]
+}

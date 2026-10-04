@@ -1,0 +1,254 @@
+{
+  "dateUtc": "2026-10-04T13:33:35.732936+00:00",
+  "environment": {
+    "chromiumExecutable": "/usr/bin/chromium",
+    "renderer": "ANGLE SwiftShader software WebGL",
+    "CI": true,
+    "workers": 1
+  },
+  "testedBuild": {
+    "version": "0.8.0",
+    "revision": null,
+    "buildInfoSha256": "37debac73c8f90864ad718815a3244f6cb493c32679df07cac9456ca862635b8",
+    "assets": {
+      "index.html": "b9456fbcdd1191b48a9c42405ecec4be659a37be43a1d56f18954f96845f51cc",
+      "src/main.js": "6223afd025667454b657035577f497350599520db1a1f326031641af958da683",
+      "styles.css": "b678622cdca60ee8ba4bc13dcb7a932e950bc4f51232a429bf8339405ecd42e7",
+      "src/contact-occlusion.js": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8",
+      "src/metropolis-catalog.js": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+      "src/metropolis-interiors.js": "f65c3e7c61184abb425b340ea01dff3102f54817a585d396909962b17406cdad",
+      "src/compact-interiors.js": "47a9da920577783b8fbede9e3823062e7d9c8926e7efe8212d6bce33c60b8f68",
+      "src/expansion-programmes.js": "62c58f263c641b29250e42dcd3659f4ceb582060be0b218242ea9f1ac9e6c6c0"
+    }
+  },
+  "status": {
+    "cityMaterialsSupplement": "2 passed (11.3m)",
+    "multiplayerFinal": "2 passed (7.7m); provided existing run, not rerun",
+    "originalRegression": "17 passed, 3 failed (1.0h); all three failed scenarios pass the separate final rechecks",
+    "fiveRechecks": "5 passed (10.2m), exit code 0"
+  },
+  "photos": [
+    {
+      "path": "city-materials-supplement/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-enclosed-room-high-pose.json",
+      "sha256": "0dbed725303f0c4db6fd72bf86f19bd40ad861ec4291292c1788958c0ae9ed26"
+    },
+    {
+      "path": "city-materials-supplement/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-enclosed-room-high.png",
+      "sha256": "5883356c13234cbf3978725555955ce4b3941d02c8db5dfd4ad7c34184151685"
+    },
+    {
+      "path": "city-materials-supplement/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-observation-room-high-pose.json",
+      "sha256": "4f9419e53fa69351daedeb1acbb5b593aefd034fb8026cc20a71c392c018c489"
+    },
+    {
+      "path": "city-materials-supplement/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-observation-room-high.png",
+      "sha256": "793ebeaf02365fd1776caff567ec92a6d8dcdee219b44da085465ef67a2898f6"
+    },
+    {
+      "path": "city-materials-supplement/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/input-timing.json",
+      "sha256": "4dd34dd90d6c3d6332022fc264a6ac099b748e667e9efc385a6cf9e7c4256b1b"
+    },
+    {
+      "path": "city-materials-supplement/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/old-quarter-upstairs-room-high-pose.json",
+      "sha256": "3207cba4c37c7a9bca417d43616b427454d48b7ba6e9b740e159ae2312118a01"
+    },
+    {
+      "path": "city-materials-supplement/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/old-quarter-upstairs-room-high.png",
+      "sha256": "6c7d8fb9fe9434bf1ddbe74b38c81b934494d50172b2d40d280d10cc98effa2f"
+    }
+  ],
+  "limitations": [
+    "Software renderer timing does not establish hardware FPS.",
+    "Supplement movement uses public menus and real keyboard input; High screenshots switch quality through settings.",
+    "Three reviewed screenshots establish sampled visible interiors, not every room or AAA art acceptance."
+  ],
+  "fiveRechecks": {
+    "command": "CI=1 CHROMIUM_PATH=/usr/bin/chromium NEON_TEST_PORT=5185 NEON_TEST_RESULTS=test-results/v08-rechecks-final NEON_TEST_REPORT=/tmp/neon-v08-rechecks-report npx playwright test tests/e2e/harbor-realism.spec.js tests/e2e/metropolis.spec.js tests/e2e/game.spec.js -g 'primary start|city atlas|ferry:|real keyboard gameplay|mobile touch'",
+    "clock": "Real browser and game clock; no clock acceleration or position writes. Public atlas relocation remains part of v0.8 product controls.",
+    "retries": 0,
+    "testSourceSha256": {
+      "playwright.config.js": "c36c32b6c238944690757af80c33968b9ed3f246717e9cc5b02854481abe259e",
+      "tests/e2e/harbor-realism.spec.js": "06cafb2ee868fcbfbbd9ac48eb20038a118537b7300fb4735e677316dbbccb31",
+      "tests/e2e/metropolis.spec.js": "8ee282b8f877e8d6447bb90be149fc0a303cae6b8119d77ffc331ac27a4f304a",
+      "tests/e2e/game.spec.js": "329c460eb9e4da4b4cbfbe8e6c69e23799f40580750c9b4bfe355ade98d67cfd"
+    },
+    "screenshots": [
+      {
+        "path": "five-rechecks/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/harbor-realism-day-high.png",
+        "sha256": "d345c878696494baec45a7170662fb5eacc0d4c583aa8d1c71c7d64da1169010"
+      },
+      {
+        "path": "five-rechecks/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/harbor-realism-menu-high.png",
+        "sha256": "541bcca143e7b856e584a1fc9b375d5df4eb0d65a0e28ddc025cce51af4f9ca2"
+      },
+      {
+        "path": "five-rechecks/harbor-realism-the-primary-ee12c-ty-with-day-and-night-views/harbor-realism-night-high.png",
+        "sha256": "98207d74018fd907d6c5f550154dbd705bc6f8bbd1b5626e7f58b3e1f95a98e9"
+      },
+      {
+        "path": "five-rechecks/game/01-welcome.png",
+        "sha256": "e445f4664fefa60dd4ddc9b4afc34d8634e2a532a87acc31bcb237aae22d631d"
+      },
+      {
+        "path": "five-rechecks/game/02-driving.png",
+        "sha256": "9ab4e54206b11fef9350eb591807ff219a64f43df746904f8fd03fc1c29ba326"
+      },
+      {
+        "path": "five-rechecks/game/03-map.png",
+        "sha256": "482cd8b1dfff8adca190778e271a75134ebe847da102c8afb5627e91419857ad"
+      },
+      {
+        "path": "five-rechecks/game/04-missions.png",
+        "sha256": "6e1e6bc2939c7b31a392a0ee6b9e018a4e0924fc4d425a9d0cf4affd7afe2547"
+      },
+      {
+        "path": "five-rechecks/game/05-mobile.png",
+        "sha256": "a1f0c1e747fc4e031d5bfb797972017902fb798bb725294db53a1024cf3045be"
+      },
+      {
+        "path": "five-rechecks/metropolis/08-north-waterfront.png",
+        "sha256": "d7dfda61ab8304b8e9419b323ea65a4dbb51883f2ffeae24309213f55bb38446"
+      },
+      {
+        "path": "five-rechecks/metropolis/09-two-shores-map.png",
+        "sha256": "d9e6c5d25969ebed7a908901efb9766f6d41ea2c4b0ba01c484f860c3088aa85"
+      },
+      {
+        "path": "five-rechecks/metropolis/11-ferry-riding.png",
+        "sha256": "397f51efad50f2bed03bfdfaef43a8a8fa86d351eab3336b1a829f0d3910d223"
+      },
+      {
+        "path": "five-rechecks/metropolis/11-ferry-arrival.png",
+        "sha256": "dec081ddfae8e8cc93a41c653102f056021e9c69523e71f179cbdb92794e690a"
+      }
+    ],
+    "result": {
+      "passed": 5,
+      "failed": 0,
+      "elapsed": "10.2m",
+      "exitCode": 0
+    }
+  },
+  "residentWorkplaceEvidence": {
+    "testResult": "passed (18.1m)",
+    "path": "original-regression/occupied-city-the-rendered-22538--there-during-working-hours/resident-in-workshop.png",
+    "sha256": "9e78ed5c4eabe630df5d4ce00f965f67291f45627b7318a078afd18be23dd49b",
+    "quality": "low",
+    "viewport": [
+      512,
+      320
+    ],
+    "scope": "A rendered resident follows a real route into the 8.4 m workplace room and remains working; screenshot is functional evidence, not default-High art acceptance."
+  },
+  "lastUpdatedUtc": "2026-10-04T13:45:56.831375+00:00",
+  "originalRegression": {
+    "result": {
+      "passed": 17,
+      "failed": 3,
+      "elapsed": "1.0h"
+    },
+    "resolvedByFinalRechecks": [
+      "primary harbor High day/night",
+      "three-shore city atlas and streaming",
+      "ferry wait/board/travel/alight"
+    ],
+    "clock": "Real browser and game clock; rendered workplace resident passed in 18.1m.",
+    "uniqueScenarioCoverage": "All 20 original scenarios have a passing run across the original 17 passes and the corrected three final rechecks; this is not a claim that the first 20-test run was clean.",
+    "screenshotsAndMetrics": [
+      {
+        "path": "original-regression/harbor-realism-a-visitor-w-fbe2b-p-and-returns-to-the-street/harbor-realism-second-floor-stair.png",
+        "sha256": "d31b4cad16e2d2ee0d66d684acc39a14a41ea34c652f6faec428333162332fd4"
+      },
+      {
+        "path": "original-regression/harbor-realism-a-visitor-w-fbe2b-p-and-returns-to-the-street/harbor-realism-third-floor-workshop.png",
+        "sha256": "dda8cebb950709f602fdd6b51c51aeb4637b386c18eec03d4c71a4c0982c64f7"
+      },
+      {
+        "path": "original-regression/living-city-a-resident-rid-9f05e-y-and-returns-to-the-street/living-city-camellia-bedroom.png",
+        "sha256": "0ea9eb483a7b60c786ca915dde0c423a300faf930174f9c19098a5bfc6e02fab"
+      },
+      {
+        "path": "original-regression/living-city-default-high-q-e5783-al-infrastructure-entrances/living-city-museum-high-walking-view.png",
+        "sha256": "c731c1f8caccf051556671c77038bb4740a9ee89c38a45e4c1f243caf2b99535"
+      },
+      {
+        "path": "original-regression/occupied-city-all-storeys--c7c24-ing-floors-or-sign-textures/apex-17F-crafted-room.png",
+        "sha256": "b5d353c6bc957eb6b50c612102ff6b01f4343c291ed969291315d39c82ab7961"
+      },
+      {
+        "path": "original-regression/occupied-city-the-rendered-22538--there-during-working-hours/resident-in-workshop.png",
+        "sha256": "9e78ed5c4eabe630df5d4ce00f965f67291f45627b7318a078afd18be23dd49b"
+      },
+      {
+        "path": "original-regression/stability-a-fast-steering--d72f6-ide-the-generated-buildings/stability-metrics.json",
+        "sha256": "ead4dec426da741566993e351a1abeed7e469d5ed45713e38b1b3843140e254a"
+      },
+      {
+        "path": "original-regression/stability-driving-and-stee-c127a-sume-and-exit-remain-stable/stability-metrics.json",
+        "sha256": "b2f73e711ab034fa66569bf49363a83bde730aadda4341698529504313190495"
+      },
+      {
+        "path": "original-regression/stability-driving-streams--e4d06-tail-within-the-cache-limit/stability-metrics.json",
+        "sha256": "3c95129386ba6749677063114aea2a1fcd02886989e13da1738e2bc13ebd6a0a"
+      },
+      {
+        "path": "original-regression/stability-orbiting-beside--71bec-and-walking-cannot-enter-it/stability-metrics.json",
+        "sha256": "982fdef27b49d3c90ddae8472dd86cb1ca9a09cf3891f93a1bf240c99472c9ff"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/06-stable-driving.png",
+        "sha256": "b0d0e4fca677dc268051704a48a2f99d27dd4c7793d1ddf3e16b8622a9de8584"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/07-wall-camera.png",
+        "sha256": "c22c842ada5a7d22a7848173ff50f457c04ba052a5b60560fe7961a64a8d2f46"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/10-tide-museum-interior.png",
+        "sha256": "941bdb684db6ff0343be42a2aa3c92f44f9eb59e55d79e9cf030d2897ad5372f"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/10-apex-tower-interior.png",
+        "sha256": "d3ffc085239a911b0f68d96b9dc33c6d2669f5dced227a596d5d704942e80561"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/10-camellia-court-interior.png",
+        "sha256": "016ea63644cfb2410c93f034ccf64be8684ddb0a5179435a7a184602ca66eefa"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/11-metro-riding.png",
+        "sha256": "7e8ecf977dec8260e018bfb8042c2aa585fb68595c452c4a07b53741c5bb1122"
+      },
+      {
+        "path": "original-regression/metropolis-and-stability/11-metro-arrival.png",
+        "sha256": "7facf75253e7185d14addce6e804b0101b2a0c006b913553773e8f99f5e94253"
+      }
+    ],
+    "localVideoArtifacts": [
+      {
+        "path": "test-results/v08-regression/stability-a-fast-steering--d72f6-ide-the-generated-buildings/video.webm",
+        "sha256": "1c23fd6ce484d8f8702cc8e7120c3477a40b29195fee7f1491163b5a9b13287c",
+        "bytes": 1653059,
+        "note": "Kept in local Playwright artifacts; not duplicated into repository evidence."
+      },
+      {
+        "path": "test-results/v08-regression/stability-driving-and-stee-c127a-sume-and-exit-remain-stable/video.webm",
+        "sha256": "523da9d283c60dd4b4dfaf5e3730fc94d7cf86694cea528eeaf54b9aeee19af6",
+        "bytes": 3456996,
+        "note": "Kept in local Playwright artifacts; not duplicated into repository evidence."
+      },
+      {
+        "path": "test-results/v08-regression/stability-driving-streams--e4d06-tail-within-the-cache-limit/video.webm",
+        "sha256": "7ed4fc33780e252092b9259d825f5d42dd8ad12b5fd69dd8dc7973a73d429a70",
+        "bytes": 4587157,
+        "note": "Kept in local Playwright artifacts; not duplicated into repository evidence."
+      },
+      {
+        "path": "test-results/v08-regression/stability-orbiting-beside--71bec-and-walking-cannot-enter-it/video.webm",
+        "sha256": "9d9bf5ad463ce8303ccb40a5e03f9381ce0cb893971fdd604ed5b86e8761d7b6",
+        "bytes": 2682414,
+        "note": "Kept in local Playwright artifacts; not duplicated into repository evidence."
+      }
+    ]
+  }
+}

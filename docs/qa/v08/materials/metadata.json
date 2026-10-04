@@ -1,0 +1,168 @@
+{
+  "generatedAt": "2026-10-04T12:38:06.678Z",
+  "baselineCommit": "a425667bd2fec0c81f482a89861c88c2acd2641e",
+  "note": "Controlled WebGL art fixture, same viewport, camera, light and street-reflection proxy for both versions. Not gameplay acceptance or hardware FPS evidence.",
+  "viewport": [
+    1280,
+    800
+  ],
+  "devicePixelRatio": 1,
+  "views": {
+    "car": {
+      "position": [
+        5.8,
+        2.6,
+        6.6
+      ],
+      "target": [
+        0,
+        0.75,
+        0
+      ],
+      "kind": "car"
+    },
+    "car-paint-closeup": {
+      "position": [
+        2.3,
+        1.25,
+        3.6
+      ],
+      "target": [
+        0,
+        0.85,
+        1.1
+      ],
+      "kind": "car"
+    },
+    "character": {
+      "position": [
+        0.6,
+        1.68,
+        1.4
+      ],
+      "target": [
+        0,
+        1.35,
+        0
+      ],
+      "kind": "character"
+    },
+    "character-walking": {
+      "position": [
+        2,
+        1.8,
+        3
+      ],
+      "target": [
+        0,
+        0.95,
+        0
+      ],
+      "kind": "character",
+      "pose": {
+        "leftArm": 0.4,
+        "rightArm": -0.4,
+        "leftElbow": -0.45,
+        "rightElbow": -0.15,
+        "leftLeg": 0.3,
+        "rightLeg": -0.3,
+        "leftKnee": 0.05,
+        "rightKnee": 0.5
+      }
+    }
+  },
+  "lighting": {
+    "sun": [
+      -7,
+      12,
+      8
+    ],
+    "sunIntensity": 3.1,
+    "hemisphereIntensity": 1.6,
+    "exposure": 0.9,
+    "toneMapping": "ACESFilmic",
+    "environment": "same fixed daylight street proxies",
+    "shadows": "PCFSoft 2048"
+  },
+  "car": {
+    "type": "sport",
+    "paint": "#375b68"
+  },
+  "character": {
+    "style": "architect"
+  },
+  "sourceHashes": {
+    "models": "cfc0a55d46a864acb9b8ca0206b7b841c1f6d6747bbda144dab60a24f96480db",
+    "surfaceFinish": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0"
+  },
+  "screenshots": [
+    "v07-car.png",
+    "v08-car.png",
+    "v07-car-paint-closeup.png",
+    "v08-car-paint-closeup.png",
+    "v07-character.png",
+    "v08-character.png",
+    "v07-character-walking.png",
+    "v08-character-walking.png"
+  ],
+  "renders": [
+    {
+      "view": "car",
+      "version": "0.7",
+      "calls": 32,
+      "triangles": 129938,
+      "programs": 15
+    },
+    {
+      "view": "car",
+      "version": "0.8",
+      "calls": 32,
+      "triangles": 129938,
+      "programs": 20
+    },
+    {
+      "view": "car-paint-closeup",
+      "version": "0.7",
+      "calls": 32,
+      "triangles": 129938,
+      "programs": 20
+    },
+    {
+      "view": "car-paint-closeup",
+      "version": "0.8",
+      "calls": 32,
+      "triangles": 129938,
+      "programs": 20
+    },
+    {
+      "view": "character",
+      "version": "0.7",
+      "calls": 17,
+      "triangles": 39970,
+      "programs": 20
+    },
+    {
+      "view": "character",
+      "version": "0.8",
+      "calls": 35,
+      "triangles": 39730,
+      "programs": 25
+    },
+    {
+      "view": "character-walking",
+      "version": "0.7",
+      "calls": 19,
+      "triangles": 43746,
+      "programs": 25
+    },
+    {
+      "view": "character-walking",
+      "version": "0.8",
+      "calls": 41,
+      "triangles": 43506,
+      "programs": 25
+    }
+  ],
+  "errors": [],
+  "reproductionTool": "tools/capture-material-comparison.mjs"
+}

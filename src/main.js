@@ -12,15 +12,18 @@ import { ChaseCamera, clipCameraSegment, resolveCameraPoint } from './camera.js'
 import { VEHICLE_DIMENSIONS } from './world-config.js';
 import { vehiclePoseEnvelope } from './ground-support.js';
 import { createAtmosphere } from './atmosphere.js';
+import { createContactOcclusion } from './contact-occlusion.js';
+import { HARBOR_COAST } from './harbor-skyline.js';
 import { SpatialIndex, vehicleContacts, circleContacts, CHARACTER_RADIUS } from './collision.js';
 import { getRoomDesign } from './metropolis-room-designs.js';
+import { renderHarborSampleMenu } from './harbor-sample-ui.js';
 
 const $=id=>document.getElementById(id), clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const SAVE_KEY='neon-harbor.progress.v1', SETTINGS_KEY='neon-harbor.settings.v1';
 const defaults={quality:'high',volume:.3,dayCycle:true,hour:16.5,sensitivity:1,firstPerson:false,touch:matchMedia('(pointer:coarse)').matches};
 let settings={...defaults},saved=null,storageOK=true;
 try{saved=localStorage.getItem(SAVE_KEY);const v=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'null');if(v&&typeof v==='object'){settings={quality:['high','balanced','low'].includes(v.quality)?v.quality:defaults.quality,volume:clamp(Number(v.volume)||0,0,1),dayCycle:typeof v.dayCycle==='boolean'?v.dayCycle:true,hour:Number.isFinite(v.hour)?clamp(v.hour,0,23.9):defaults.hour,sensitivity:Number.isFinite(v.sensitivity)?clamp(v.sensitivity,.3,2):1,firstPerson:v.firstPerson===true,touch:typeof v.touch==='boolean'?v.touch:defaults.touch};}}catch{storageOK=false;}
-let renderer,scene,camera,world,sim,character,sun,hemi,marker,markerRing,tracer,atmosphere;
+let renderer,scene,camera,world,sim,character,sun,hemi,marker,markerRing,tracer,atmosphere,contactOcclusion;
 let started=false,activeTab='jobs',paused=false,sceneTime=0,hudElapsed=0,saveElapsed=0,lastRevision=-1,lastShot=-1;
 const frameClock=new FixedStepClock(FIXED_STEP);
 let frameTiming={wallDt:0,dt:0,steps:0,alpha:0,simulationDelta:0,droppedSeconds:0,droppedTotal:0};
@@ -101,14 +104,16 @@ async function action(name){
 function inputState(){
   const forward=(keys.has('KeyW')||keys.has('ArrowUp')||touchHeld.has('forward')?1:0)-(keys.has('KeyS')||keys.has('ArrowDown')||touchHeld.has('backward')?1:0);
   const strafe=(keys.has('KeyD')||keys.has('ArrowRight')||touchHeld.has('right')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')||touchHeld.has('left')?1:0);
-  return {forward,strafe,turn:-strafe,sprint:keys.has('ShiftLeft')||keys.has('ShiftRight')||touchHeld.has('sprint'),brake:keys.has('Space')||touchHeld.has('brake'),jump:keys.has('Space')||touchHeld.has('brake'),fire:keys.has('KeyJ'),cameraYaw};
+  return {forward,strafe,turn:-strafe,slow:keys.has('KeyZ')||touchHeld.has('slow'),sprint:keys.has('ShiftLeft')||keys.has('ShiftRight')||touchHeld.has('sprint'),brake:keys.has('Space')||touchHeld.has('brake'),jump:keys.has('Space')||touchHeld.has('brake'),fire:keys.has('KeyJ'),cameraYaw};
 }
 window.addEventListener('keydown',event=>{
   if(event.target.matches('input,select,textarea'))return;
+  if(event.code==='Escape'){if(event.repeat)return;event.preventDefault();if(panel.open)closePanel();else if(started)openPanel('jobs');return;}
+  // Menus use native Tab focus, Space activation and arrow-key scrolling.
+  // Reserve game shortcuts only while the playable canvas is active.
+  if(!started||paused||panel.open)return;
   if(['Tab','Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code))event.preventDefault();
   if(event.repeat)return;
-  if(event.code==='Escape'){event.preventDefault();if(panel.open)closePanel();else if(started)openPanel('jobs');return;}
-  if(!started)return;
   if(event.code==='Tab'){if(panel.open&&activeTab==='jobs')closePanel();else openPanel('jobs');return;}
   if(event.code==='KeyM'){if(panel.open&&activeTab==='map')closePanel();else openPanel('map');return;}
   if(paused)return;keys.add(event.code);
@@ -137,6 +142,7 @@ $('harbor-start').addEventListener('click',async()=>{
   }finally{$('harbor-start').disabled=false;}
 });
 $('start').addEventListener('click',enterCity);$('welcome-settings').addEventListener('click',()=>openPanel('settings'));$('welcome-help').addEventListener('click',()=>openPanel('help'));
+$('welcome-sample').addEventListener('click',()=>openPanel('harbor'));$('harbor-life').addEventListener('click',()=>openPanel('harbor'));
 $('welcome-multiplayer').addEventListener('click',()=>openPanel('multiplayer'));$('multiplayer').addEventListener('click',()=>openPanel('multiplayer'));
 $('view-toggle').addEventListener('click',toggleView);
 $('pause').addEventListener('click',()=>openPanel('jobs'));$('jobs').addEventListener('click',()=>openPanel('jobs'));$('map-button').addEventListener('click',()=>openPanel('map'));$('explore-city').addEventListener('click',()=>openPanel('explore'));$('welcome-explore').addEventListener('click',()=>openPanel('explore'));
@@ -144,7 +150,7 @@ $('close-panel').addEventListener('click',closePanel);$('resume').addEventListen
 for(const tab of document.querySelectorAll('[data-tab]'))tab.addEventListener('click',()=>{activeTab=tab.dataset.tab;renderPanel();});
 
 function renderPanel(){
-  const titles={multiplayer:'一起漫游霓港',explore:'霓港城市导览',elevator:'选择楼层',jobs:'城市委托',map:'把整座城市装进口袋',garage:'车库与补给',settings:'按你的方式，游玩霓港',help:'出发之前'};
+  const titles={harbor:'在港湾过一天',multiplayer:'一起漫游霓港',explore:'霓港城市导览',elevator:'选择楼层',jobs:'城市委托',map:'把整座城市装进口袋',garage:'车库与补给',settings:'按你的方式，游玩霓港',help:'出发之前'};
   $('panel-title').textContent=titles[activeTab];$('resume').textContent=started?'继续游戏 →':'返回主菜单 →';
   document.querySelectorAll('[data-tab]').forEach(n=>n.classList.toggle('active',n.dataset.tab===activeTab));
   const content=$('panel-content');
@@ -154,6 +160,8 @@ function renderPanel(){
     renderCityGuide(content,world,async(destination)=>{const buttons=[...content.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);try{if(!started)await enterCity();paused=true;cleanInput();if(await world.travelTo(destination)){if(destination.kind==='metro')cameraPitch=.4;else if(destination.kind==='viewpoint')cameraPitch=-.06;else cameraPitch=settings.firstPerson?.15:.28;resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}finally{buttons.forEach(b=>b.disabled=false);}drainMessages();});
   }else if(activeTab==='elevator'){
     renderElevatorPanel(content,world,id=>{if(world.selectFloor(id)){closePanel();resetPresentation();}});
+  }else if(activeTab==='harbor'){
+    renderHarborSampleMenu(content,world,async destination=>{if(!started)await enterCity();paused=true;cleanInput();try{if(await world.travelTo(destination)){resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}});
   }else if(activeTab==='jobs'){
     content.innerHTML=`<p class="panel-intro">${sim.mission?'当前委托进行中。请先完成或放弃当前委托，再接受新的委托。':'每条街道，都通向一段新的故事。驾驶任意车辆，沿小地图导航抵达目标。'}<br>首次完成获得奖金，再次挑战刷新个人纪录。</p><div class="job-grid"></div>${sim.mission?'<div class="settings-actions"><button id="cancel-job" class="secondary-button danger">放弃当前委托</button></div>':''}`;
     const grid=content.querySelector('.job-grid');
@@ -170,7 +178,7 @@ function renderPanel(){
     content.innerHTML=`<p class="panel-intro">路边维修服务可恢复生命值与附近车辆，每次 $150。追捕期间无法使用。已完成的委托与资金会自动保存。</p><div class="garage-stats"><div><small>可用资金</small><strong>$ ${sim.cash.toLocaleString()}</strong></div><div><small>车辆状态</small><strong>${Math.round((sim.activeVehicle||sim.nearestCar)?.health??100)}%</strong></div><div><small>已完成委托</small><strong>${sim.completed.size} / 3</strong></div></div><button id="repair" class="primary-button compact">呼叫维修 · $150 ↗</button>`;
     $('repair').addEventListener('click',()=>{sim.repair();drainMessages();save();renderPanel();});
   }else if(activeTab==='settings'){
-    content.innerHTML=`<div class="settings-grid"><label class="setting">画面质量<select id="quality"><option value="high">精细 · 动态阴影</option><option value="balanced">均衡 · 推荐</option><option value="low">流畅 · 低像素密度</option></select><small>调整渲染分辨率与阴影，立即生效。</small></label><label class="setting">音效音量<input id="volume" type="range" min="0" max="1" step=".05"><small>引擎、提示和追捕音效。</small></label><label class="setting">镜头灵敏度<input id="sensitivity" type="range" min=".3" max="2" step=".1"></label><label class="setting">城市时间<input id="time" type="range" min="0" max="23.9" step=".1"><small>拖动选择白昼、黄昏或夜晚。</small></label><label class="setting check"><input id="cycle" type="checkbox"> 自动昼夜交替</label><label class="setting check"><input id="touch-setting" type="checkbox"> 显示触屏控制</label></div><div class="settings-actions"><button id="reload-city" class="secondary-button">重新加载附近街区</button><button id="export-save" class="secondary-button">导出进度</button><button id="import-save" class="secondary-button">导入进度</button><input id="save-file" class="hidden" type="file" accept="application/json,.json"><button id="reset-save" class="secondary-button danger">开始新旅程</button></div><p class="panel-intro" style="margin-top:18px">存档仅保存在本机浏览器；重新载入时回到步行状态，进行中的任务与追捕不会保留。</p>`;
+    content.innerHTML=`<div class="settings-grid"><label class="setting">画面质量<select id="quality"><option value="high">精细 · 动态阴影</option><option value="balanced">均衡 · 推荐</option><option value="low">流畅 · 低像素密度</option></select><small>调整渲染分辨率与阴影，立即生效。</small></label><label class="setting">音效音量<input id="volume" type="range" min="0" max="1" step=".05"><small>引擎、提示和追捕音效。</small></label><label class="setting">镜头灵敏度<input id="sensitivity" type="range" min=".3" max="2" step=".1"></label><label class="setting">城市时间<input id="time" type="range" min="0" max="23.9" step=".1"><small>拖动选择白昼、黄昏或夜晚。</small></label><label class="setting check"><input id="cycle" type="checkbox"> 自动昼夜交替</label><label class="setting check"><input id="touch-setting" type="checkbox"> 显示触屏控制</label></div><div class="settings-actions"><button id="reload-city" class="secondary-button">重新加载附近街区</button><button id="export-save" class="secondary-button">导出进度</button><button id="import-save" class="secondary-button">导入进度</button><input id="save-file" class="hidden" type="file" accept="application/json,.json"><button id="reset-save" class="secondary-button danger">开始新旅程</button></div><p class="panel-intro" style="margin-top:18px">存档仅保存在本机浏览器；重新载入回到步行状态。限时委托与追捕会结束，港湾随身物品、补货货物与街坊状态会保留。</p>`;
     if(multiplayer.session)for(const id of ['import-save','reset-save']){$(id).disabled=true;$(id).title='请先离开房间再修改存档';}
     $('quality').value=settings.quality;$('volume').value=settings.volume;$('sensitivity').value=settings.sensitivity;$('time').value=settings.hour;$('cycle').checked=settings.dayCycle;$('touch-setting').checked=settings.touch;
     $('quality').addEventListener('change',event=>{settings.quality=event.target.value;applyQuality();save();});
@@ -182,22 +190,23 @@ function renderPanel(){
     $('reload-city').addEventListener('click',async()=>{const button=$('reload-city');button.disabled=true;const result=await prepareLocation(true);button.disabled=false;if(result.ready)toast('附近街区已加载','success');});
     $('export-save').addEventListener('click',()=>{save();const url=URL.createObjectURL(new Blob([JSON.stringify(world.safeSave(),null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='neon-harbor-save.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('进度已导出');});
     $('import-save').addEventListener('click',()=>$('save-file').click());
-    $('save-file').addEventListener('change',async event=>{const file=event.target.files?.[0];if(!file)return;try{if(file.size>100000)throw Error();const value=JSON.parse(await file.text());if(value.version!==1||!Array.isArray(value.completed)||!Number.isFinite(value.cash))throw Error();sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:value});world.bind(sim);resetPresentation();await prepareLocation();save();toast('进度已导入','success');renderPanel();}catch{toast('无法读取此存档，请选择有效的霓港进度文件。','warning');}});
-    $('reset-save').addEventListener('click',()=>{content.innerHTML='<h3>开始新的旅程？</h3><p class="panel-intro">当前资金、委托纪录和位置将被重置。建议先导出进度。</p><div class="settings-actions"><button id="confirm-reset" class="secondary-button danger">确认重置进度</button><button id="cancel-reset" class="secondary-button">保留当前进度</button></div>';$('confirm-reset').addEventListener('click',async()=>{world.bind(sim);sim.reset();world.bind(sim);resetPresentation();await prepareLocation();save();drainMessages();renderPanel();});$('cancel-reset').addEventListener('click',renderPanel);});
+    $('save-file').addEventListener('change',async event=>{const file=event.target.files?.[0];if(!file)return;try{if(file.size>512000)throw Error();const value=JSON.parse(await file.text());if(value.version!==1||!Array.isArray(value.completed)||!Number.isFinite(value.cash))throw Error();sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:value});world.bind(sim,{save:value,hour:settings.hour});resetPresentation();await prepareLocation();save();toast('进度已导入','success');renderPanel();}catch{toast('无法读取此存档，请选择有效的霓港进度文件。','warning');}});
+    $('reset-save').addEventListener('click',()=>{content.innerHTML='<h3>开始新的旅程？</h3><p class="panel-intro">当前资金、委托纪录和位置将被重置。建议先导出进度。</p><div class="settings-actions"><button id="confirm-reset" class="secondary-button danger">确认重置进度</button><button id="cancel-reset" class="secondary-button">保留当前进度</button></div>';$('confirm-reset').addEventListener('click',async()=>{world.bind(sim,{hour:settings.hour});sim.reset();world.bind(sim,{hour:settings.hour});resetPresentation();await prepareLocation();save();drainMessages();renderPanel();});$('cancel-reset').addEventListener('click',renderPanel);});
   }else{
-    const rows=[['W A S D','移动 / 驾驶'],['Shift','步行冲刺'],['Space','跳跃 / 手刹'],['E / F','车辆 / 建筑 / 电梯 / 列车与渡轮 / 交谈'],['拖动画面','环顾镜头'],['C','重置镜头'],['V','步行 / 跟随视角'],['J','向前射击'],['R','装填弹匣'],['Tab','委托中心'],['M','城市地图'],['Esc','暂停 / 返回']];
+    const rows=[['W A S D','移动 / 驾驶'],['Shift','步行冲刺'],['Z','按住慢走，精确通过楼梯与房门'],['Space','跳跃 / 手刹'],['E / F','车辆 / 建筑 / 电梯 / 列车与渡轮 / 交谈'],['拖动画面','环顾镜头'],['C','重置镜头'],['V','步行 / 跟随视角'],['J','向前射击'],['R','装填弹匣'],['Tab','委托中心'],['M','城市地图'],['Esc','暂停 / 返回']];
     content.innerHTML='<p class="panel-intro">先靠近前方青色跑车，按 E 上车。W 加速，S 制动与倒车；高速转弯时配合空格手刹。碰撞交通车辆或开火会引来追捕，驶离警车视线并保持距离可解除警戒。射击命中朝向内的车辆，建筑会阻挡射线。</p><div class="help-grid">'+rows.map(([key,text])=>`<div class="help-row"><span>${text}</span><kbd>${key}</kbd></div>`).join('')+'</div><p class="panel-intro" style="margin-top:20px">手机使用左侧方向键与右侧操作按钮，拖动画面转动视角。建议横屏。城市包含原创建筑、生成材质与程序化人物。城市导览列出可进入建筑及交通站点。</p>';
   }
 }
 
-function applyQuality(){if(!renderer)return;world?.setQuality?.(settings.quality);const scale={high:2,balanced:1.2,low:.8}[settings.quality];renderer.setPixelRatio(Math.min(devicePixelRatio,scale));renderer.shadowMap.enabled=settings.quality==='high';renderer.setSize(innerWidth,innerHeight,false);if(world)world.root.traverse(n=>{if(n.isMesh&&!n.userData.noShadow)n.castShadow=settings.quality==='high';});}
-const mapExtent={x:-800,z:-1450,width:1600,depth:1800};
+function applyQuality(){if(!renderer)return;world?.setQuality?.(settings.quality);const scale={high:2,balanced:1.2,low:.8}[settings.quality];renderer.setPixelRatio(Math.min(devicePixelRatio,scale));renderer.shadowMap.enabled=settings.quality==='high';renderer.setSize(innerWidth,innerHeight,false);contactOcclusion?.setQuality(settings.quality);if(world)world.root.traverse(n=>{if(n.isMesh&&!n.userData.noShadow)n.castShadow=settings.quality==='high';});}
+const mapExtent={x:-800,z:-1450,width:2600,depth:2500};
 function buildMap(){
-  const canvas=document.createElement('canvas');canvas.width=1000;canvas.height=1125;const c=canvas.getContext('2d');
+  const canvas=document.createElement('canvas');canvas.width=1040;canvas.height=1000;const c=canvas.getContext('2d');
   const px=x=>(x-mapExtent.x)/mapExtent.width*canvas.width,pz=z=>(z-mapExtent.z)/mapExtent.depth*canvas.height;
   const rect=(x,z,w,d)=>c.fillRect(px(x),pz(z),w/mapExtent.width*canvas.width,d/mapExtent.depth*canvas.height);
   c.fillStyle='#183e4b';c.fillRect(0,0,canvas.width,canvas.height);
   c.fillStyle='#263e38';rect(-740,-1380,1480,990);rect(-298,-298,596,596);
+  c.beginPath();HARBOR_COAST.forEach((point,i)=>i?c.lineTo(px(point.x),pz(point.z)):c.moveTo(px(point.x),pz(point.z)));c.lineTo(px(1800),pz(HARBOR_COAST.at(-1).z));c.lineTo(px(1800),pz(HARBOR_COAST[0].z));c.closePath();c.fill();
   c.fillStyle='#314941';rect(-740,-1380,1480,100);
   c.fillStyle='#64716a';for(const lane of [-240,-160,-80,0,80,160,240]){rect(lane-11,-290,22,580);rect(-290,lane-11,580,22);}
   for(const lane of world.roads.vertical)rect(lane-13,-1280,26,880);
@@ -213,19 +222,20 @@ function buildMap(){
 function drawMap(canvas,full=false){
   if(!world||!sim||!canvas)return;const c=canvas===mapCanvas?mapContext:canvas.getContext('2d'),w=canvas.width,h=canvas.height,p=sim.position;
   c.fillStyle='#112831';c.fillRect(0,0,w,h);let scale,cx,cz;
-  if(full){scale=Math.min(w/mapExtent.width,h/mapExtent.depth)*.92;cx=0;cz=-550;}else{scale=1.1;cx=p.x;cz=p.z;}
+  if(full){scale=Math.min(w/mapExtent.width,h/mapExtent.depth)*.92;cx=mapExtent.x+mapExtent.width/2;cz=mapExtent.z+mapExtent.depth/2;}else{scale=1.1;cx=p.x;cz=p.z;}
   const px=x=>w/2+(x-cx)*scale,pz=z=>h/2+(z-cz)*scale;
   c.drawImage(mapBackground,px(mapExtent.x),pz(mapExtent.z),mapExtent.width*scale,mapExtent.depth*scale);
   if(full){
     c.font='12px system-ui';c.textAlign='center';
-    for(const d of world.districts){c.fillStyle='#dce4dc';c.fillText(d.name,px(0),pz(d.z)-19);}
-    c.fillStyle='#d4e0d9';c.fillText('南岸 · 霓港旧城',px(0),pz(0));c.fillStyle='#89b5bd';c.fillText('维 澜 海 峡',px(320),pz(-345));
+    for(const d of world.districts){c.fillStyle='#dce4dc';c.fillText(d.name,px(d.x??0),pz(d.z)-19);}
+    c.fillStyle='#89b5bd';c.fillText('维 澜 海 峡',px(320),pz(-345));
     for(const stop of world.transit.stops){const e=stop.entry||stop.entrance||stop.surface||stop.surfaceEntry;if(!e)continue;c.fillStyle='#f4cf86';c.beginPath();c.arc(px(e.x),pz(e.z),3.5,0,Math.PI*2);c.fill();}
     c.textAlign='start';
   }
-  for(const car of sim.cars){if(car.health<=0||car.id===sim.inCar)continue;c.fillStyle=car.police?'#ff8e87':car.traffic?'#9bbaaf':'#99d1d1';c.fillRect(px(car.x)-2,pz(car.z)-2,4,4);}
+  for(const stop of world.sample.transit.stops){const e=stop.entrance;c.fillStyle=stop.kind==='ferry'?'#88dce5':stop.kind==='tram'?'#e4b29e':'#c9d78d';c.beginPath();c.arc(px(e.x),pz(e.z),full?3.5:2.5,0,Math.PI*2);c.fill();}
+  for(const car of world.vehicles){if(car.health<=0||car.id===sim.inCar)continue;c.fillStyle=car.police?'#ff8e87':car.traffic?'#9bbaaf':'#99d1d1';c.fillRect(px(car.x)-2,pz(car.z)-2,4,4);}
   if(multiplayer.session)for(const peer of multiplayer.snapshot?.players||[]){if(peer.id===multiplayer.session.id||peer.scene!==roomScene())continue;c.fillStyle='#aab6ff';c.beginPath();c.arc(px(peer.x),pz(peer.z),4,0,Math.PI*2);c.fill();}
-  const target=sim.mission?.phase==='escape'?null:sim.mission?.target;if(target){c.strokeStyle='#ffde8a';c.fillStyle='#ffde8a22';c.lineWidth=2;c.beginPath();c.arc(px(target.x),pz(target.z),8+Math.sin(sceneTime*3)*2,0,Math.PI*2);c.fill();c.stroke();c.setLineDash([4,5]);c.lineWidth=1;c.beginPath();c.moveTo(px(p.x),pz(p.z));c.lineTo(px(target.x),pz(target.z));c.stroke();c.setLineDash([]);}
+  const target=sim.mission?.phase==='escape'?null:sim.mission?.target||world.sample.life.activeDelivery?.destination;if(target){c.strokeStyle='#ffde8a';c.fillStyle='#ffde8a22';c.lineWidth=2;c.beginPath();c.arc(px(target.x),pz(target.z),8+Math.sin(sceneTime*3)*2,0,Math.PI*2);c.fill();c.stroke();c.setLineDash([4,5]);c.lineWidth=1;c.beginPath();c.moveTo(px(p.x),pz(p.z));c.lineTo(px(target.x),pz(target.z));c.stroke();c.setLineDash([]);}
   c.save();c.translate(px(p.x),pz(p.z));c.rotate(-p.yaw);c.fillStyle='#d4ffa3';c.strokeStyle='#112a2e';c.lineWidth=2;c.beginPath();c.moveTo(0,9);c.lineTo(-6,-6);c.lineTo(0,-3);c.lineTo(6,-6);c.closePath();c.stroke();c.fill();c.restore();
 }
 function updateHUD(){
@@ -240,12 +250,14 @@ function updateHUD(){
   $('money').textContent='$ '+sim.cash.toLocaleString();$('wanted').textContent='★'.repeat(sim.wanted)+'☆'.repeat(5-sim.wanted);$('wanted').classList.toggle('hot',sim.wanted>0);$('wanted').setAttribute('aria-label',`追捕等级 ${sim.wanted}`);
   $('health-fill').style.width=sim.player.health+'%';$('stamina-fill').style.width=sim.player.stamina+'%';$('speed').textContent=String(Math.round(sim.speed*3.6)).padStart(2,'0');$('speed-fill').style.width=clamp(sim.speed/43*100,0,100)+'%';$('mode-label').textContent=car?'DRIVING / '+(car.type==='sport'?'SPORT':'STREET'):'ON FOOT';$('vehicle-name').textContent=car?`${car.police?'巡逻车':car.type==='sport'?'海风 GT':'城市轿车'} · ${Math.round(car.health)}%`:'城市漫游者';$('ammo').textContent=sim.reloadRemaining?'装填中…':`${sim.ammo} / ∞`;
   $('mission-label').textContent=m?'正在进行':sim.wanted?'追捕中':'自由探索';$('mission-title').textContent=m?m.title:sim.wanted?'甩开身后的追捕。':'这座城市，等你出发。';$('mission-objective').textContent=m?m.objective:sim.wanted?`离开警车视线并保持距离。脱离进度 ${Math.round(sim.escapeProgress*100)}%。`:'M 查看全城地图，城市导览可寻找建筑与站点。跨海桥通往北岸六区。';$('mission-time').textContent=m?`${Math.ceil(m.remaining)}s`:'';$('mission-distance').textContent=m?.phase==='escape'?`${Math.round(sim.escapeProgress*100)}%`:m?.target?`${Math.round(Math.hypot(m.target.x-pos.x,m.target.z-pos.z))} m`:'TAB';
-  const interior=world.interiors.snapshot(),transport=world.transit.snapshot();
+  const interior=world.interiors.snapshot(),transport=world.transit.snapshot(),sampleTransport=world.sample.transit.snapshot(),delivery=world.sample.life.activeDelivery;
   $('hud').classList.toggle('indoor',!!interior.buildingId);$('hud').classList.toggle('walking',!car&&!m&&!sim.wanted);
   $('view-toggle').disabled=!!car||!!world.riding;$('view-toggle').textContent=settings.firstPerson?'跟随视角':'步行视角';$('view-toggle').setAttribute('aria-pressed',String(settings.firstPerson));
   if(interior.buildingId&&!m){$('mission-label').textContent=interior.moving?'电梯运行中':'室内探索';$('mission-title').textContent=interior.currentRoomName||interior.floorName||interior.buildingName;$('mission-objective').textContent=interior.moving?`正在前往 ${world.buildings.find(b=>b.id===interior.buildingId)?.floors.find(f=>f.id===interior.elevator.targetFloorId)?.label||'目的楼层'}。到层后开门。`: `${getRoomDesign(interior.buildingId,interior.floorId).name} · ${getRoomDesign(interior.buildingId,interior.floorId).rooms.map(r=>r.name).join('、')}。楼梯贯通全部 ${interior.totalFloors} 层，中廊尽头按 E 乘电梯。`;$('mission-distance').textContent=Math.round(sim.player.groundY)+' m';}
   if(transport.boardingState!=='street'&&!m){$('mission-label').textContent=transport.riding?'公共交通 · 乘坐中':'公共交通 · 站台';$('mission-title').textContent=transport.label||transport.status||'港湾交通';$('mission-objective').textContent=world.getPrompt()?.label||'沿站台指示候车，停靠时按 E 上车。';$('mode-label').textContent=transport.riding?'ON BOARD':'PLATFORM';$('vehicle-name').textContent=transport.activeStation?.name||'港湾公共交通';$('mission-distance').textContent=transport.secondsToArrival?Math.ceil(transport.secondsToArrival)+' s':'';}
-  const cityPrompt=world.getPrompt();$('interaction').querySelector('kbd').textContent=cityPrompt?(cityPrompt.kind!=='transit'||/^E /.test(cityPrompt.label)?'E':'WASD'):car||sim.nearestCar?'E':'V';$('interaction').querySelector('span').textContent=cityPrompt?.label?.replace(/^E /,'')|| (world.isInside?(interior.moving?'电梯运行中 · 请稍候':'沿大厅中轴前往电梯'):car?(Math.abs(car.speed)>5?'先停车，再下车':'离开车辆'):sim.nearestCar?'驾驶这辆车':'切换步行 / 跟随视角 · 拖动画面环顾');$('crosshair').classList.toggle('hidden',!keys.has('KeyJ'));
+  if(delivery&&!m&&!interior.buildingId){$('mission-label').textContent='街坊补货';$('mission-title').textContent=delivery.recipient+'等着这批货';$('mission-objective').textContent=`把 ${delivery.quantity} 份${delivery.productName}送到黄色标记的柜台，按 E 交货，获得 $${delivery.reward} 运费。可以步行、驾驶或乘车。`;$('mission-distance').textContent=Math.round(Math.hypot(delivery.destination.x-pos.x,delivery.destination.z-pos.z))+' m';}
+  if(sampleTransport.riding&&!m){const upper=sampleTransport.passengerDeck==='upper';const next=world.sample.transit.stop(sampleTransport.nextStopId);$('mission-label').textContent='港湾公共交通 · '+(upper?'上层':'下层');$('mission-title').textContent=sampleTransport.label;$('mission-objective').textContent=`${sampleTransport.phase==='docked'?'到站停靠':next?'下一站 '+next.name:'行驶中'}。WASD 在车内走动，Z 慢走，沿楼梯上下层；下车请返回下层车门，停靠时按 E。`;$('mode-label').textContent='ON BOARD';$('vehicle-name').textContent=sampleTransport.status;$('mission-distance').textContent=sampleTransport.secondsToArrival?Math.ceil(sampleTransport.secondsToArrival)+' s':'';}
+  const cityPrompt=world.getPrompt();$('interaction').querySelector('kbd').textContent=cityPrompt?(!['transit','harbor-transit'].includes(cityPrompt.kind)||/^E /.test(cityPrompt.label)?'E':'WASD'):car||sim.nearestCar?'E':'V';$('interaction').querySelector('span').textContent=cityPrompt?.label?.replace(/^E /,'')|| (world.isInside?(interior.moving?'电梯运行中 · 请稍候':'Z 慢走微调 · 沿大厅前往电梯'):car?(Math.abs(car.speed)>5?'先停车，再下车':'离开车辆'):sim.nearestCar?'驾驶这辆车':'切换步行 / 跟随视角 · 拖动画面环顾');$('crosshair').classList.toggle('hidden',!keys.has('KeyJ'));
   drawMap(mapCanvas);if(panel.open&&activeTab==='map')drawMap($('city-map'),true);
 }
 
@@ -258,7 +270,7 @@ function animateCharacter(model,phase,amount,sprinting=false){
   if(joints.leftElbow)joints.leftElbow.rotation.x=-.12-amount*(sprinting?.9:.28)-Math.max(0,-swing)*.25;
   if(joints.rightElbow)joints.rightElbow.rotation.x=-.12-amount*(sprinting?.9:.28)-Math.max(0,swing)*.25;
 }
-function roomScene(){return world.isInside?'interior:'+world.interiors.state.buildingId+':'+world.interiors.state.floor.id:'outdoor';}
+function roomScene(){return world.isInside?'interior:'+world.interiors.state.buildingId+':'+world.interiors.state.floor.id:world.sample.transit.riding?'harbor-vehicle:'+world.sample.transit.ridingVehicleId:'outdoor';}
 function applyRoomVehicles(){
   if(!multiplayer.session||!multiplayer.snapshot)return;
   const remote=new Map(multiplayer.peers.sample(performance.now(),'cars').map(car=>[car.id,car]));
@@ -280,7 +292,7 @@ function updatePeers(dt){
 }
 function updateVisuals(dt){
   updatePeers(dt);
-  const alive=new Set();for(const car of sim.cars){alive.add(car.id);let model=carMeshes.get(car.id);if(!model){model=createCar(THREE,car.color,car.police?'police':car.type);scene.add(model);carMeshes.set(car.id,model);}const pose=renderFrame.cars.get(car.id)||car;model.position.set(pose.x,pose.y||0,pose.z);model.rotation.order='YXZ';model.rotation.set(pose.pitch||0,pose.yaw,pose.roll||0);model.visible=car.health>0&&Math.hypot(pose.x-renderFrame.subject.x,pose.z-renderFrame.subject.z)<600;for(const wheel of model.userData.wheelsAll||model.userData.wheels||[])wheel.rotation.x+=(pose.speed||0)*dt/VEHICLE_DIMENSIONS.wheelRadius;for(const [i,light] of (model.userData.policeLights||[]).entries()){light.emissiveIntensity=(Math.sin(sceneTime*13+i*Math.PI)>0?4:.2);}}
+  const visualCars=world.sample.transit.riding?world.vehicles:sim.cars;const alive=new Set();for(const car of visualCars){alive.add(car.id);let model=carMeshes.get(car.id);if(!model){model=createCar(THREE,car.color,car.police?'police':car.type);scene.add(model);carMeshes.set(car.id,model);}const pose=renderFrame.cars.get(car.id)||car;model.position.set(pose.x,pose.y||0,pose.z);model.rotation.order='YXZ';model.rotation.set(pose.pitch||0,pose.yaw,pose.roll||0);model.visible=car.health>0&&Math.hypot(pose.x-renderFrame.subject.x,pose.z-renderFrame.subject.z)<600;for(const wheel of model.userData.wheelsAll||model.userData.wheels||[])wheel.rotation.x+=(pose.speed||0)*dt/VEHICLE_DIMENSIONS.wheelRadius;for(const [i,light] of (model.userData.policeLights||[]).entries()){light.emissiveIntensity=(Math.sin(sceneTime*13+i*Math.PI)>0?4:.2);}}
   for(const [id,model] of carMeshes)if(!alive.has(id)){scene.remove(model);carMeshes.delete(id);model.userData.disposeInstance?.();}
   character.position.set(renderFrame.player.x,renderFrame.player.y,renderFrame.player.z);character.rotation.y=renderFrame.player.yaw;character.visible=!sim.inCar&&!world.riding&&!settings.firstPerson;
   const moving=inputState(),walkAmount=Math.abs(moving.forward)+Math.abs(moving.strafe)>0&&!paused?.55:0;
@@ -319,11 +331,11 @@ function updateCamera(dt){
   cameraDragAge+=dt;
   const manual=!!drag||cameraDragAge<2;
   const subject=renderFrame.subject,previous=cameraRig.position||subject;
-  const cameraColliders=world.interiors.cameraColliders||cameraCollisionIndex.query({x:(subject.x+previous.x)/2,z:(subject.z+previous.z)/2,
+  const cameraColliders=world.sample.transit.riding?world.sample.transit.cameraColliders:world.interiors.cameraColliders||cameraCollisionIndex.query({x:(subject.x+previous.x)/2,z:(subject.z+previous.z)/2,
     hx:Math.abs(subject.x-previous.x)/2+20,hz:Math.abs(subject.z-previous.z)/2+20});
   const state=cameraRig.update(renderFrame.subject,{
     yaw:(sim.inCar||world.riding)&&!manual?renderFrame.subject.yaw:cameraOrbitYaw,
-    pitch:cameraPitch,driving:!!sim.inCar,firstPerson:!!world.riding||settings.firstPerson&&!sim.inCar,indoor:world.isInside||!!world.transit.collisionContext(),floorY:sim.activeVehicle?.y??sim.player.groundY,platformY:world.interiors.state.moving?renderFrame.subject.y:undefined,manual,aspect:camera.aspect,near:camera.near,
+    pitch:cameraPitch,driving:!!sim.inCar,firstPerson:!!world.riding||settings.firstPerson&&!sim.inCar,indoor:world.isInside||!!world.transit.collisionContext()||world.sample.transit.riding,floorY:sim.activeVehicle?.y??sim.player.groundY,platformY:world.interiors.state.moving?renderFrame.subject.y:undefined,manual,aspect:camera.aspect,near:camera.near,
   },dt,cameraColliders);
   cameraYaw=state.yaw;
   camera.position.set(state.position.x,state.position.y,state.position.z);
@@ -364,10 +376,13 @@ function frame(time){
       if(presentation.advance(captureSimulation(sim))){cameraRig.reset();cameraYaw=cameraOrbitYaw=sim.position.yaw;cameraDragAge=99;}
     }
     renderFrame=presentation.sample(alpha);
+    // The sample cabin mesh uses the current fleet pose. Keep the passenger's
+    // eyes in that same pose so the vehicle cannot slide relative to its rider.
+    if(world.sample.transit.riding)Object.assign(renderFrame.subject,world.sample.transit.passengerPose);
     saveElapsed+=dt;if(saveElapsed>8||lastRevision!==sim.saveRevision){save();saveElapsed=0;lastRevision=sim.saveRevision;}drainMessages();
   }
   if(multiplayer.session){multiplayer.state({pose:{x:sim.position.x,y:sim.inCar?sim.activeVehicle.y||0:sim.player.groundY+sim.player.y,z:sim.position.z,yaw:sim.position.yaw},scene:roomScene(),speed:sim.activeVehicle?.speed||0,travel:roomRevision!==sim.teleportRevision,revision:sim.teleportRevision});roomRevision=sim.teleportRevision;}
-  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);renderer.render(scene,camera);
+  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.sample.transit.updateRender(camera,settings.hour);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);contactOcclusion.render(scene,camera);
 }
 
 try{
@@ -375,13 +390,15 @@ try{
   scene=new THREE.Scene();scene.background=new THREE.Color('#c0b8ca');scene.fog=new THREE.FogExp2('#b9b3c1',.0016);camera=new THREE.PerspectiveCamera(55,innerWidth/innerHeight,.15,3200);camera.position.set(240,135,345);
   hemi=new THREE.HemisphereLight('#d0e1ff','#67525d',1.5);scene.add(hemi);sun=new THREE.DirectionalLight('#ffd3a0',1.4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-90;sun.shadow.camera.right=90;sun.shadow.camera.top=90;sun.shadow.camera.bottom=-90;sun.shadow.camera.far=400;sun.shadow.normalBias=.12;scene.add(sunTarget);sun.target=sunTarget;scene.add(sun);
   atmosphere=createAtmosphere(THREE,renderer,scene);
+  contactOcclusion=createContactOcclusion(THREE,renderer);
   startupPhase='city';
-  world=createCityExploration(THREE,scene,{quality:settings.quality,onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim);resetPresentation();await prepareLocation(false,menuFocus);
+  world=createCityExploration(THREE,scene,{quality:settings.quality,onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim,{save:saved,hour:settings.hour});resetPresentation();await prepareLocation(false,menuFocus);
+  atmosphere.setBuildings?.(world.buildings);
   character=createCharacter(THREE);scene.add(character);
   for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
   marker=new THREE.Group();markerRing=new THREE.Mesh(new THREE.TorusGeometry(5,.12,6,48),new THREE.MeshBasicMaterial({color:'#e4ff9d'}));markerRing.rotation.x=Math.PI/2;marker.add(markerRing);const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.8),new THREE.MeshBasicMaterial({color:'#d5ff9a'}));diamond.position.y=4;marker.add(diamond);const beam=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,18,8),new THREE.MeshBasicMaterial({color:'#dcffa5',transparent:true,opacity:.38,depthWrite:false}));beam.position.y=9;marker.add(beam);scene.add(marker);
   tracer=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineBasicMaterial({color:'#ffeab1',transparent:true,opacity:.8}));tracer.visible=false;scene.add(tracer);
-  mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);world.updateRenderVisibility(camera);renderer.render(scene,camera);
+  mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);world.updateRenderVisibility(camera);contactOcclusion.render(scene,camera);
   bootCompleted=true;$('loading').classList.add('hidden');$('welcome').classList.remove('hidden');$('start').disabled=false;$('harbor-start').disabled=false;$('start').firstChild.textContent=saved?'继续上次旅程 ':'从旧城出发 ';
   if(!storageOK)toast('浏览器无法读取存储，可继续游玩并手动导出进度。','warning');
   // Diagnostics read actual mesh transforms, not just presentation bookkeeping.
@@ -392,8 +409,8 @@ try{
       renderedSubject:model?{x:model.position.x,y:model.position.y,z:model.position.z,yaw:model.rotation.y}:null};
   };
   // Read-only diagnostics help automated QA verify real input and renderer state.
-  Object.defineProperty(window,'__NEON__',{value:Object.freeze({snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},fps:Math.round(fps),timing:{...frameTiming},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles}})})});
-  window.addEventListener('pagehide',()=>multiplayer.leave());
+  Object.defineProperty(window,'__NEON__',{value:Object.freeze({snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},fps:Math.round(fps),timing:{...frameTiming},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,contactOcclusion:contactOcclusion.snapshot()}})})});
+  window.addEventListener('pagehide',event=>{multiplayer.leave();if(!event.persisted)contactOcclusion.dispose();});
   window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();applyQuality();});
   $('game').addEventListener('webglcontextlost',event=>{event.preventDefault();paused=true;save();toast('图形上下文中断，进度已保存。请刷新页面恢复。','warning');});
   requestAnimationFrame(frame);

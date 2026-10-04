@@ -71,14 +71,74 @@ export function createAtmosphere(THREE, renderer, scene) {
   renderer.toneMappingExposure = 1.02;
 
   // A modest radiance map is sufficient for glossy paint and glass reflections.
-  // Updating on explicit time changes avoids rebuilding GPU resources per frame.
+  // The city in this map is a coarse, local approximation, not a live rendering
+  // of the street. One instanced draw adds the actual surrounding building mass
+  // without rendering interiors, traffic or thousands of facade components.
   const pmrem = new THREE.PMREMGenerator(renderer);
   const environmentScene = new THREE.Scene();
   const environmentSky = new THREE.Mesh(geometry, material);
   environmentSky.renderOrder = -1000;
   environmentScene.add(environmentSky);
+  const proxyGeometry = new THREE.BoxGeometry(1, 1, 1);
+  const proxyNormals = proxyGeometry.getAttribute('normal');
+  const proxyFaceColors = new Float32Array(proxyNormals.count * 3);
+  const proxyLight = new THREE.Vector3(-100, 150, -65).normalize();
+  for (let i = 0; i < proxyNormals.count; i++) {
+    const directional = Math.max(0, proxyNormals.getX(i) * proxyLight.x
+      + proxyNormals.getY(i) * proxyLight.y + proxyNormals.getZ(i) * proxyLight.z);
+    const radiance = .48 + .38 * directional + .14 * Math.max(0, proxyNormals.getY(i));
+    proxyFaceColors.set([radiance, radiance, radiance], i * 3);
+  }
+  proxyGeometry.setAttribute('color', new THREE.BufferAttribute(proxyFaceColors, 3));
+  const proxyMaterial = new THREE.MeshBasicMaterial({ vertexColors: true, toneMapped: false });
+  const maxProxies = 64;
+  const proxies = new THREE.InstancedMesh(proxyGeometry, proxyMaterial, maxProxies);
+  proxies.name = 'Approximate nearby building reflection volumes';
+  proxies.count = 0;
+  proxies.frustumCulled = false;
+  environmentScene.add(proxies);
+  const proxyTransform = new THREE.Object3D(), proxyColor = new THREE.Color();
+  const previousProbeFocus = new THREE.Vector3(Infinity, Infinity, Infinity);
+  const probeFocus = new THREE.Vector3();
+  let buildings = [], proxiesDirty = false;
   let environment = null, previousEnvironmentHour = -Infinity, previousEnvironmentDaylight = -1;
   let disposed = false;
+
+  function setBuildings(nextBuildings) {
+    if (disposed) return;
+    buildings = (nextBuildings || []).filter(building =>
+      Number.isFinite(building.x) && Number.isFinite(building.z)
+      && ['width', 'depth', 'height'].every(key => Number.isFinite(building[key]) && building[key] > 0));
+    proxiesDirty = true;
+  }
+
+  function updateProxies(day) {
+    const nearest = buildings.map(building => {
+      const dx = Math.max(0, Math.abs(building.x - probeFocus.x) - building.width / 2);
+      const dz = Math.max(0, Math.abs(building.z - probeFocus.z) - building.depth / 2);
+      const baseY = Number.isFinite(building.baseY) ? building.baseY : 0;
+      // A closed proxy cannot represent a furnished interior. Omitting the
+      // containing shell prevents that proxy from covering the whole probe.
+      const inside = dx === 0 && dz === 0 && probeFocus.y >= baseY && probeFocus.y <= baseY + building.height;
+      return { building, baseY, distance: dx * dx + dz * dz, inside };
+    }).filter(item => !item.inside && item.distance <= 1500 * 1500)
+      .sort((a, b) => a.distance - b.distance).slice(0, maxProxies);
+    for (let index = 0; index < nearest.length; index++) {
+      const { building, baseY } = nearest[index];
+      proxyTransform.position.set(building.x - probeFocus.x,
+        baseY + building.height / 2 - probeFocus.y, building.z - probeFocus.z);
+      proxyTransform.scale.set(building.width, building.height, building.depth);
+      proxyTransform.updateMatrix();
+      proxies.setMatrixAt(index, proxyTransform.matrix);
+      // Basic materials store approximate outgoing radiance. They must not
+      // inherit the main scene's exposure or require a second light rig.
+      proxyColor.set(building.color || '#84969b').multiplyScalar(.12 + day * .76);
+      proxies.setColorAt(index, proxyColor);
+    }
+    proxies.count = nearest.length;
+    proxies.instanceMatrix.needsUpdate = true;
+    if (proxies.instanceColor) proxies.instanceColor.needsUpdate = true;
+  }
 
   function setPalette(hour) {
     const palette = harborAtmosphereAt(hour);
@@ -99,7 +159,7 @@ export function createAtmosphere(THREE, renderer, scene) {
 
   function update(hour, focus, hemi, sun) {
     if (disposed) return;
-    const { daylight: day, warmth, fogDensity, exposure, environmentIntensity, hemisphereIntensity, keyLightIntensity } = setPalette(hour);
+    const { hour: wrappedHour, daylight: day, warmth, fogDensity, exposure, environmentIntensity, hemisphereIntensity, keyLightIntensity } = setPalette(hour);
     if (focus) sky.position.set(focus.x, focus.y || 0, focus.z);
     scene.background.copy(uniforms.horizon.value);
     scene.fog.color.copy(uniforms.horizon.value);
@@ -114,21 +174,32 @@ export function createAtmosphere(THREE, renderer, scene) {
       .lerp(new THREE.Color('#ffc694'), warmth * .55);
     renderer.toneMappingExposure = exposure;
     scene.environmentIntensity = environmentIntensity;
-    if (!environment || Math.abs(hour - previousEnvironmentHour) >= 1 || Math.abs(day - previousEnvironmentDaylight) >= .18) {
+    probeFocus.set(Number.isFinite(focus?.x) ? focus.x : 0,
+      (Number.isFinite(focus?.y) ? focus.y : 0) + 1.5, Number.isFinite(focus?.z) ? focus.z : 0);
+    const travelled = Math.hypot(probeFocus.x - previousProbeFocus.x, probeFocus.z - previousProbeFocus.z) >= 60
+      || Math.abs(probeFocus.y - previousProbeFocus.y) >= 12;
+    const hourDelta = Math.abs(wrappedHour - previousEnvironmentHour);
+    const timeChanged = Math.min(hourDelta, 24 - hourDelta) >= 1 || Math.abs(day - previousEnvironmentDaylight) >= .18;
+    if (!environment || proxiesDirty || (buildings.length && travelled) || timeChanged) {
+      updateProxies(day);
       const next = pmrem.fromScene(environmentScene, 0.03, 0.1, 3200);
       scene.environment = next.texture;
       environment?.dispose(); environment = next;
-      previousEnvironmentHour = hour;
+      previousProbeFocus.copy(probeFocus);
+      proxiesDirty = false;
+      previousEnvironmentHour = wrappedHour;
       previousEnvironmentDaylight = day;
     }
   }
 
   return {
     update,
+    setBuildings,
     dispose() {
       disposed = true;
       scene.remove(sky); scene.environment = null;
       environment?.dispose(); pmrem.dispose(); geometry.dispose(); material.dispose();
+      proxies.dispose(); proxyGeometry.dispose(); proxyMaterial.dispose();
     },
   };
 }
