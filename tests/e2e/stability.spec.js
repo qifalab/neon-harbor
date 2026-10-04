@@ -183,30 +183,63 @@ test('a fast steering approach stops the full car body outside the generated bui
   const errors = await boot(page, { x: 8, z: 164, yaw: Math.PI });
   await page.keyboard.press('e');
   await expect.poll(async () => (await snapshot(page)).inCar).toBe('starter');
-  let approach;
+  let approach, triggeredSnapshotHandle, triggeredSnapshot, firstError = null;
+  const secondaryErrors = [];
+  const preserveFirstError = error => {
+    if (!firstError) firstError = error;
+    else if (error !== firstError) secondaryErrors.push({ message: error.message, stack: error.stack });
+  };
   // Keep the throttle held through the turn so control/renderer latency does not
   // insert a coast before this route reaches the clear section of the façade.
   const accelerationStarted = (await snapshot(page)).simulationTime;
   await page.keyboard.down('w');
   try {
-    await page.waitForFunction(started => {
+    // Capture the actual trigger state by handle; defer its serialization until
+    // the real steering/recording and key releases have finished.
+    triggeredSnapshotHandle = await page.waitForFunction(started => {
       const state = window.__NEON__.snapshot();
       if (state.simulationTime - started > 12) throw new Error('Movement exceeded its simulated-time budget');
-      return state.position.z < 142;
+      return state.position.z < 142 ? state : null;
     }, accelerationStarted, { polling: 'raf', timeout: 45000 });
-    const accelerated = await snapshot(page);
-    expect(accelerated.simulationTime - accelerationStarted).toBeLessThan(12);
-    expect(accelerated.speed).toBeGreaterThan(25);
-    await page.keyboard.down('d');
-    try { approach = await record(page, { untilVehicleDamaged: 'starter' }); }
-    finally { await page.keyboard.up('d'); }
-  } catch (error) {
-    const state = await snapshot(page);
-    error.message += `\nFast approach diagnostics: ${JSON.stringify({ position: state.position, speed: state.speed,
-      inCar: state.inCar, paused: state.paused, fps: state.fps, accelerationStarted,
-      simulationTime: state.simulationTime, renderer: state.renderer, streaming: state.streaming })}`;
-    throw error;
-  } finally { await page.keyboard.up('w'); }
+    try {
+      await page.keyboard.down('d');
+      approach = await record(page, { untilVehicleDamaged: 'starter' });
+    }
+    catch (error) { preserveFirstError(error); }
+    finally {
+      try { await page.keyboard.up('d'); }
+      catch (error) { preserveFirstError(error); }
+    }
+  } catch (error) { preserveFirstError(error); }
+  finally {
+    try { await page.keyboard.up('w'); }
+    catch (error) { preserveFirstError(error); }
+    if (triggeredSnapshotHandle) {
+      try {
+        triggeredSnapshot = await triggeredSnapshotHandle.jsonValue();
+        expect(triggeredSnapshot.simulationTime - accelerationStarted).toBeLessThan(12);
+        expect(triggeredSnapshot.speed).toBeGreaterThan(25);
+      } catch (error) { preserveFirstError(error); }
+      finally {
+        try { await triggeredSnapshotHandle.dispose(); }
+        catch (error) { preserveFirstError(error); }
+      }
+    }
+  }
+  if (firstError) {
+    try {
+      const state = await snapshot(page);
+      firstError.message += `\nFast approach diagnostics: ${JSON.stringify({ position: state.position, speed: state.speed,
+        inCar: state.inCar, paused: state.paused, fps: state.fps, accelerationStarted,
+        simulationTime: state.simulationTime, renderer: state.renderer, streaming: state.streaming,
+        diagnosticObservation: 'after actual key release attempts',
+        triggerSnapshot: triggeredSnapshot ? { position: triggeredSnapshot.position, speed: triggeredSnapshot.speed,
+          simulationTime: triggeredSnapshot.simulationTime } : null, secondaryErrors })}`;
+    } catch (error) {
+      firstError.message += `\nFast approach diagnostic read failed: ${error.stack || String(error)}\nSecondary errors: ${JSON.stringify(secondaryErrors)}`;
+    }
+    throw firstError;
+  }
   const car = approach.at(-1).cars.find(car => car.id === 'starter');
   expect(car.health).toBeLessThan(100);
   // An oblique impact preserves tangential sliding; verify a substantial loss
