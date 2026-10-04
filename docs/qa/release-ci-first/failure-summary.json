@@ -1,0 +1,84 @@
+{
+  "candidateCommit": "3a81a74d9503836934e9eff10d3cadc88afa2e80",
+  "candidateWasPublishedByArchivedPagesRun": false,
+  "ci": {
+    "runId": 37210812941,
+    "status": "completed",
+    "conclusion": "failure",
+    "successfulGameplayJobs": 10,
+    "failedGameplayJobs": [
+      "living-city"
+    ],
+    "multiplayerConclusion": "failure",
+    "optionalEvidenceJobsSkipped": 2
+  },
+  "pages": {
+    "runId": 37210818737,
+    "status": "completed",
+    "conclusion": "cancelled",
+    "successfulGameplayJobs": 6,
+    "failedGameplayJobs": [
+      "living-city",
+      "occupied-city"
+    ],
+    "cancelledGameplayJobs": [
+      "harbor-sample-2",
+      "city-materials",
+      "metropolis-3"
+    ],
+    "multiplayerConclusion": "failure",
+    "optionalEvidenceJobsSkipped": 2,
+    "deploymentConclusion": "cancelled",
+    "cancellationCompletedAtUtc": "2026-10-04T15:10:34Z"
+  },
+  "livingElevatorMeasurement": {
+    "limitSimulationSeconds": 5.2,
+    "ciMeasuredSimulationSeconds": 5.6999999999996795,
+    "pagesMeasuredSimulationSeconds": 5.5333333333336086,
+    "diagnosis": "Host polling and a second full snapshot continued measuring after the first idle elevator frame.",
+    "correctedTestStatusAtArchiveTime": "Browser RAF first-moving/first-idle observation implemented locally; final browser recheck pending."
+  },
+  "multiplayerFirstCase": {
+    "wallTimeoutSeconds": 30,
+    "waitingFor": "Starter car within five metres during real W input",
+    "diagnosticLimit": "Original manually created contexts did not start their own Playwright trace; logs do not establish collision or sync failure.",
+    "correctedTestStatusAtArchiveTime": "Retained context tracing, motion diagnostics and targeted wall budget changes in progress; real two-browser recheck pending."
+  },
+  "multiplayerEastInitialWalk": {
+    "axis": "z",
+    "start": -167.65,
+    "target": -217.45000000000002,
+    "wallTimeoutSeconds": 60,
+    "ciFinal": -210.5250000000028,
+    "ciSimulationSecondsAdvanced": 4.333333333333318,
+    "pagesFinalApproximately": -216.16,
+    "pagesSimulationSecondsAdvancedApproximately": 4.7,
+    "teleportRevisionUnchanged": true,
+    "diagnosis": "Character continued moving while software rendering advanced only limited simulated time; no blocked-route or upper-floor sync conclusion can be made from this timeout.",
+    "correctedStatusAtArchiveTime": "Targeted wall-budget adjustment and shared client/server terrain work in progress; original simulation and sync assertions retained, browser recheck pending."
+  },
+  "occupiedCityInitialWalks": [
+    {
+      "case": "Upper-storey selection and stairs",
+      "zStart": -602.15,
+      "zFinal": -623.1499999999945,
+      "zTarget": -656.9499999999999,
+      "simulationTimeBefore": 1.9999999999999978,
+      "simulationTimeAtTimeout": 3.9999999999999907,
+      "teleportRevisionBeforeAndAfter": 3,
+      "wallTimeoutSeconds": 60
+    },
+    {
+      "case": "Resident workplace",
+      "zStart": -461.15000000000003,
+      "zFinal": -500.5250000000026,
+      "zTarget": -517.9499999999999,
+      "simulationTimeBefore": 0.49999999999999994,
+      "simulationTimeAtTimeout": 4.24999999999999,
+      "teleportRevisionBeforeAndAfter": 3,
+      "wallTimeoutSeconds": 60
+    }
+  ],
+  "occupiedCityLocalFixStatusAtArchiveTime": "Only these two long approaches receive 180-second wall allowances. Shared helper default remains 60 seconds, simulation stall and teleport assertions retained; corrected build browser recheck pending.",
+  "successfulCiEvidenceLimits": "First-candidate successful shards and 285 passing rules do not establish acceptance for a later corrected tree, native GPU performance, or AAA art quality."
+}

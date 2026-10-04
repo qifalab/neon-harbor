@@ -1,0 +1,10 @@
+{
+  "method": "Independent read-only audit of the actual saved states and transaction records",
+  "pickup": {"quantity": 8, "supplyProduceBefore": 96, "supplyProduceAfter": 88, "wholesalePayment": 16, "shopMoneyBefore": 260, "shopMoneyAfter": 232, "escrow": 12, "uniquePickupTransactions": 1},
+  "delivery": {"shopStockBefore": 4, "shopStockAfter": 12, "receivedQuantity": 8, "escrowAfter": 0, "playerCashBefore": 1200, "playerCashAfter": 1212, "uniqueDeliveryTransactions": 1},
+  "purchase": {"price": 6, "playerCashAfter": 1206, "playerInventoryProduce": 1, "shopStockAfter": 11, "uniquePlayerPurchaseTransactions": 1, "uniquePurchaseReceipt": true},
+  "interleavedStaffWages": {"count": 3, "amountEach": 3, "residents": ["harbor-resident-02", "harbor-resident-04", "harbor-resident-06"]},
+  "conservationAcrossFourSavedStages": {"actualPlayerWalletPlusSupplyShopsAgentsEscrow": 4172, "totalGoods": 300, "goodsEachProduct": 100, "shopStockPlusSoldMinusReceived": 4},
+  "persistentServiceTimes": [0.25, 24.75, 30.6, 48.116666667],
+  "limitations": ["The two restored full snapshots were not stored in the first-run JSON; cargo, inventory, cash and service-clock restoration is supported by the passing test assertions", "This evidence does not audit restoration of every saved field or request replay idempotency", "No NPC purchase or consumption occurred in this run, so it does not prove the complete resident daily loop", "The first-run actual room pose is High but third-person; its small viewport and HUD/player occlusion do not establish interior art quality"]
+}

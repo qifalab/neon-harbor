@@ -3,6 +3,10 @@
  * City exploration attaches shared interiors and safe doorway approaches to
  * these shells. Shore geometry and collision remain resident.
  */
+import { applyWorldSurfaceFinish } from './world.js';
+import { HARBOR_COAST, harborCoastX, createHarborMountainData, harborTerrainGroundHeightAt } from './harbor-terrain.js';
+export { HARBOR_COAST, harborCoastX } from './harbor-terrain.js';
+
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 // x / z / roof height / width / depth / silhouette / material palette.
@@ -81,19 +85,6 @@ export const HARBOR_VIEWPOINTS = Object.freeze([
     entrance: Object.freeze({ x: 285.5, z: -241, y: .18, yaw: Math.atan2(889.5, -409) }),
     lookAt: Object.freeze({ x: 1175, y: 115, z: -650 }) }),
 ]);
-
-export const HARBOR_COAST = Object.freeze([
-  [-1320, 1127], [-1140, 1090], [-900, 1097], [-720, 1064], [-520, 1080],
-  [-340, 1058], [-120, 1030], [90, 1037], [310, 1004], [520, 989], [730, 1016], [905, 1075],
-].map(([z, x]) => Object.freeze({ x, z })));
-
-export function harborCoastX(z) {
-  for (let i = 1; i < HARBOR_COAST.length; i++) if (z <= HARBOR_COAST[i].z) {
-    const a = HARBOR_COAST[i - 1], b = HARBOR_COAST[i], t = clamp((z - a.z) / (b.z - a.z), 0, 1);
-    return a.x + (b.x - a.x) * t;
-  }
-  return HARBOR_COAST.at(-1).x;
-}
 
 /** Actual model profiles, in height/width/depth fractions. Rounded corners and
  * changes in these rings affect the silhouette, not just a painted facade. */
@@ -240,44 +231,12 @@ function facadeMaterial(THREE, palette, nightUniform) {
   return material;
 }
 
-const MOUNTAIN_COLUMNS = 18, MOUNTAIN_ROWS = 72;
-
 /** Sinuous, connected terrain, not repeated cone props in the shipping lane. */
 function mountainGeometry(THREE) {
-  const vertices = [], colors = [], indices = [], columns = MOUNTAIN_COLUMNS, rows = MOUNTAIN_ROWS;
-  for (let row = 0; row <= rows; row++) for (let column = 0; column <= columns; column++) {
-    const x = 1670 + column / columns * 610, z = -1600 + row / rows * 2770;
-    const ridge = 230 + 145 * Math.exp(-(((z + 620) / 470) ** 2)) + 122 * Math.exp(-(((z - 290) / 370) ** 2));
-    const cross = Math.sin(column / columns * Math.PI) ** .72;
-    const irregular = Math.sin(z * .013 + column * .7) * 19 + Math.cos(z * .032 - column * .9) * 8;
-    const y = 2 + Math.max(0, ridge + irregular) * cross;
-    vertices.push(x, y, z);
-    const color = new THREE.Color().setRGB(.105 + y * .00016, .16 + y * .00019, .135 + y * .0002);
-    colors.push(color.r, color.g, color.b);
-    if (row < rows && column < columns) { const a = row * (columns + 1) + column, b = a + columns + 1; indices.push(a, b, a + 1, a + 1, b, b + 1); }
-  }
-  const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); geometry.setIndex(indices); geometry.computeVertexNormals(); return geometry;
-}
-
-/** Sample the rendered triangles, including their diagonal split. Reusing the
- * Float32 vertices keeps collision support on the visible slope, rather than
- * on an independently evaluated smooth hill or the plane underneath it. */
-function mountainGroundSampler(geometry) {
-  const p = geometry.attributes.position.array, stride = MOUNTAIN_COLUMNS + 1;
-  const xMin = p[0], xMax = p[MOUNTAIN_COLUMNS * 3];
-  const zMin = p[2], zMax = p[MOUNTAIN_ROWS * stride * 3 + 2];
-  return (x, z) => {
-    if (x < xMin || x > xMax || z < zMin || z > zMax) return null;
-    const column = Math.min(MOUNTAIN_COLUMNS - 1, Math.floor((x - xMin) / (xMax - xMin) * MOUNTAIN_COLUMNS));
-    const row = Math.min(MOUNTAIN_ROWS - 1, Math.floor((z - zMin) / (zMax - zMin) * MOUNTAIN_ROWS));
-    const a = (row * stride + column) * 3, b = a + stride * 3;
-    const u = clamp((x - p[a]) / (p[a + 3] - p[a]), 0, 1);
-    const v = clamp((z - p[a + 2]) / (p[b + 2] - p[a + 2]), 0, 1);
-    return u + v <= 1
-      ? p[a + 1] + (p[a + 4] - p[a + 1]) * u + (p[b + 1] - p[a + 1]) * v
-      : p[b + 4] + (p[b + 1] - p[b + 4]) * (1 - u) + (p[a + 4] - p[b + 4]) * (1 - v);
-  };
+  const { positions, colors, indices } = createHarborMountainData();
+  const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  geometry.setIndex(new THREE.BufferAttribute(indices, 1)); geometry.computeVertexNormals(); return geometry;
 }
 
 /** All visible massing stays resident. Facade accessories and waterfront
@@ -298,6 +257,8 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
     solidMaterials[key] = new THREE.MeshStandardMaterial({ color, roughness: ['glass', 'metal', 'brass'].includes(key) ? .42 : .87,
       metalness: ['metal', 'brass'].includes(key) ? .5 : key === 'glass' ? .26 : .015 });
     materials.add(solidMaterials[key]);
+    if (['stone', 'wood'].includes(key)) applyWorldSurfaceFinish(solidMaterials[key], 'mineral');
+    if (['metal', 'brass'].includes(key)) applyWorldSurfaceFinish(solidMaterials[key], 'metal');
   }
   solidMaterials.light.emissive.set('#ffe0b0'); solidMaterials.light.emissiveIntensity = .12;
   solidMaterials.crownWarm.name = 'harbor-crown-warm'; solidMaterials.crownWarm.emissive.set('#ffd494');
@@ -345,7 +306,7 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   for (const p of HARBOR_COAST.slice(1)) shore.lineTo(p.x, -p.z);
   shore.lineTo(2160, -HARBOR_COAST.at(-1).z); shore.lineTo(2160, -HARBOR_COAST[0].z); shore.closePath();
   const shoreGeometry = new THREE.ShapeGeometry(shore); shoreGeometry.rotateX(-Math.PI / 2); geometries.add(shoreGeometry);
-  const land = new THREE.Mesh(shoreGeometry, solidMaterials.stone); land.position.y = 3.75; land.name = 'East Bay · walkable shore'; root.add(land);
+  const land = new THREE.Mesh(shoreGeometry, solidMaterials.stone); land.position.y = 3.75; land.name = 'East Bay · walkable shore'; land.receiveShadow = true; root.add(land);
   for (let i = 1; i < HARBOR_COAST.length; i++) {
     const a = HARBOR_COAST[i - 1], b = HARBOR_COAST[i], dx = b.x - a.x, dz = b.z - a.z, length = Math.hypot(dx, dz);
     part(permanent, 'stone', (a.x + b.x) / 2, 1.7, (a.z + b.z) / 2, 2.3, 4.1, length + .4, { y: Math.atan2(dx, dz) });
@@ -430,7 +391,6 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   }
   root.add(buildBatches(permanent, 'Harbour podiums · permanent'));
   const mountains = mountainGeometry(THREE); geometries.add(mountains);
-  const mountainGroundAt = mountainGroundSampler(mountains);
   const mountainMaterial = new THREE.MeshStandardMaterial({ color: '#b2b9a9', vertexColors: true, roughness: 1 }); materials.add(mountainMaterial);
   const mountain = new THREE.Mesh(mountains, mountainMaterial); mountain.name = 'Continuous eastern mountain ridge'; mountain.userData.noShadow = true; root.add(mountain);
 
@@ -540,11 +500,7 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
       residentInstances, residentMeshes, disposedInstances, night: nightUniform.value, scenicOppositeShore: false, interiorBuildingId: interiorId, hiddenShells: towerMeshes.filter(mesh => !mesh.visible).length, elapsed };
   }
   const api = { root, colliders, landmarks: HARBOR_VIEWPOINTS, viewpoints: HARBOR_VIEWPOINTS, towers: HARBOR_TOWERS,
-    groundHeightAt(x, z) {
-      const shoreY = z >= HARBOR_COAST[0].z && z <= HARBOR_COAST.at(-1).z && x >= harborCoastX(z) && x <= 2160 ? 3.75 : null;
-      const mountainY = mountainGroundAt(x, z);
-      return shoreY === null ? mountainY : mountainY === null ? shoreY : Math.max(shoreY, mountainY);
-    },
+    groundHeightAt: harborTerrainGroundHeightAt,
     supportAt: () => null, update, snapshot,
     setInteriorBuilding(id) { if (id === interiorId) return; interiorId = id; for (const mesh of towerMeshes) mesh.visible = mesh.userData.harborTowerId !== id; root.traverse(applyInteriorVisibility); },
     setQuality(value) { currentQuality = value; },

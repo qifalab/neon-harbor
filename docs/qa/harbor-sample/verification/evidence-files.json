@@ -1,10 +1,10 @@
 {
-  "scope": "first-run evidence and rule logs; final ferry recheck is pending",
+  "scope": "Preserved initial rule failure, first browser 3-pass/1-fail run, source-rule/build results and final ferry 1-pass recheck",
   "files": [
     {
       "path": "README.md",
-      "bytes": 4645,
-      "sha256": "6eb6ad05b6c4fdf76f8165781e051759bdc21db32072adba7295b805adf44ca2"
+      "bytes": 7159,
+      "sha256": "c59980dc585443259229019fbffae3a85c0a29703cdc2eae7a100d093e21e61f"
     },
     {
       "path": "browser-first/bus/bus-physical-route.json",
@@ -67,6 +67,11 @@
       "sha256": "365dfc67d5f7558e51a6bc88d73baad7bea6a601cd5ee5f3fcbb360de051c43c"
     },
     {
+      "path": "browser-first/life/ledger-review.json",
+      "bytes": 1570,
+      "sha256": "2f6d9870b8da857c4d64fd519b6982c918dbc9763f09391304851a9ce0f41c6b"
+    },
+    {
       "path": "browser-first/life/produce-frontage-high-pose.json",
       "bytes": 40964,
       "sha256": "cb7ad7b95131f74ec7686e7dbaaa7f0ec318de59fdfb56fe765bdb31123d5174"
@@ -122,6 +127,51 @@
       "sha256": "5ed4aeec025d8f40fa3a9fe4fcbb110c73e554b711d7e481225ae8ec72324811"
     },
     {
+      "path": "build-release.txt",
+      "bytes": 299,
+      "sha256": "5ed4aeec025d8f40fa3a9fe4fcbb110c73e554b711d7e481225ae8ec72324811"
+    },
+    {
+      "path": "ferry-release/ferry-physical-route.json",
+      "bytes": 302738,
+      "sha256": "0a7b00c1e202fa0d960520d03d5d3e480d4baf6ff234a51591bea5239691abe2"
+    },
+    {
+      "path": "ferry-release/ferry-upper-deck-high-pose.json",
+      "bytes": 44016,
+      "sha256": "687264c345face3db6a32b264999fe64ac002934572709f7bf85b9cad3d5847e"
+    },
+    {
+      "path": "ferry-release/ferry-upper-deck-high.png",
+      "bytes": 146389,
+      "sha256": "a4c2c3ba62b1a255792e09e00f20406dcf545a6e9a9e5b7c078336dc5b6011c4"
+    },
+    {
+      "path": "ferry-release/route-review.json",
+      "bytes": 1595,
+      "sha256": "94f06823fe1845e35c6693bcbf78709c528947319f848bcb7d721532e0d7605e"
+    },
+    {
+      "path": "ferry-release/visual-review.json",
+      "bytes": 852,
+      "sha256": "c874b9c6b1574d903040f253f8cf56d889cb67315a95a674fe3910e58f7ca04b"
+    },
+    {
+      "path": "ferry-release-final.log",
+      "bytes": 3269,
+      "sha256": "a4f412f0539fb2b1742fe6bb5905dc045650406848a81979f4bedaa0901ae12d"
+    },
+    {
+      "path": "ferry-release-run.json",
+      "bytes": 1324,
+      "sha256": "5951213204ad8e713f42833a191d54964c91b3910d5c75ead7432a6a191c922c"
+    },
+    {
+      "path": "release-build-comparison.json",
+      "bytes": 319,
+      "sha256": "6d6c4cc45a4fe0bcd48c282ed5229ff40f04d9da59c3ade4fd97a7fcf3497be5"
+    },
+    {
       "path": "rules-final-pass.txt",
       "bytes": 30876,
       "sha256": "775a20f7404a576dc038a25e8e7e7971e3cbdfb5539ab1d6a8e94aeadd99e731"
@@ -137,9 +187,19 @@
       "sha256": "ac8c951fc825b357f14a7eee59c900bf79c3232988e49deb2dc823f63604e230"
     },
     {
+      "path": "tested-dist-build-info-release.json",
+      "bytes": 14985,
+      "sha256": "b83ccae70a56a111ec5bd44e550b48fbb47d0634caf5899035713341b2aa4ab9"
+    },
+    {
       "path": "tested-dist-build-info.json",
       "bytes": 14985,
       "sha256": "eee79131221c700aa959b59509b770b8d1ee218c4586998aaec4a8ae52efaca8"
+    },
+    {
+      "path": "tested-harbor-sample-release.spec.js.txt",
+      "bytes": 21597,
+      "sha256": "3df001c6b62c1db31a1da746999ed183048dc7e56aae836b8d4cad2fab771ec9"
     },
     {
       "path": "tested-harbor-sample.spec.js.txt",

@@ -132,13 +132,13 @@ export function createCompactInteriorLayout(building, floor) {
   selectedRooms.forEach((specification, index) => {
     roomId = specification.id;
     const z = rearRoomZ + roomDepth * (index + 0.5), type = specification.type;
-    const ceilingHeight = Math.min(height - 0.16, 2.98), doorway = 1.9, segment = (roomDepth - doorway) / 2;
+    const ceilingHeight = Math.min(height - 0.16, 2.98), doorway = 2, segment = (roomDepth - doorway) / 2;
     const arrivalX = innerX - 0.9;
     rooms.push({ ...specification, x: origin.x + roomX, z: origin.z + z, width: roomWidth, depth: roomDepth,
       ceilingHeight, enclosed: true, entrance: { x: origin.x + innerX, z: origin.z + z },
       arrival: { x: origin.x + arrivalX, z: origin.z + z },
       bounds: { minX: origin.x + outerX, maxX: origin.x + innerX, minZ: origin.z + z - roomDepth / 2, maxZ: origin.z + z + roomDepth / 2 } });
-    box(['bath', 'kitchen'].includes(type) ? 'interiorTerrazzo' : 'timber', roomX, 0.025, z, roomWidth - 0.14, 0.03, roomDepth - 0.14);
+    box(['bath', 'kitchen', 'workshop', 'archive', 'maritime'].includes(type) ? 'interiorTerrazzo' : 'timber', roomX, 0.025, z, roomWidth - 0.14, 0.03, roomDepth - 0.14);
     for (const side of [-1, 1]) {
       solid('domesticPaint', innerX, ceilingHeight / 2, z + side * (doorway / 2 + segment / 2), 0.16, ceilingHeight, segment, 'partition');
       solid('domesticPaint', roomX, ceilingHeight / 2, z + side * roomDepth / 2, roomWidth, ceilingHeight, 0.16, 'partition');
@@ -149,7 +149,63 @@ export function createCompactInteriorLayout(building, floor) {
     solid('interiorCeiling', roomX, ceilingHeight + 0.07, z, roomWidth, 0.14, roomDepth, 'ceiling');
     label(specification.name, innerX + 0.1, 2.3, z + doorway / 2 + 0.4, Math.min(roomDepth / 2, 1.6), 0.25, Math.PI / 2);
     const furnitureX = outerX + 1.25;
-    if (['cafe', 'dining', 'tea'].includes(type)) {
+    if (['office', 'conference'].includes(type)) {
+      // Keep desks and chairs against the window side. The last two metres
+      // before the inner wall remain a continuous arrival/return passage.
+      const chair = (x, cz) => {
+        round('navy', x, .47, cz, .43, .12, .43, 'office-chair');
+        solid('metal', x, .23, cz, .1, .46, .1, 'chair-leg');
+        round('navy', x + .18, .79, cz, .065, .58, .43, 'chair-back');
+      };
+      if (type === 'office') {
+        solid('timber', furnitureX, .43, z, 1.6, .86, .76, 'office-desk');
+        round('walnut', furnitureX, .90, z, 1.68, .08, .82, 'desktop', false);
+        chair(furnitureX + 1.05, z);
+        round('navy', furnitureX - .12, 1.15, z - .16, .07, .4, .48, 'office-monitor', false);
+        box('paper', furnitureX + .26, .96, z + .15, .44, .025, .30, 'work-papers');
+        solid('walnut', furnitureX, .69, z - roomDepth / 2 + .38, 1.84, 1.38, .48, 'filing-cabinet');
+      } else {
+        solid('timber', furnitureX, .74, z, 1.65, .13, 1.9, 'conference-table');
+        solid('metal', furnitureX, .34, z, .17, .68, .17, 'table-leg');
+        for (const dz of [-.61, .61]) chair(furnitureX + 1.04, z + dz);
+        for (const dz of [-.48, .48]) {
+          box('paper', furnitureX, .83, z + dz, .38, .025, .29, 'meeting-papers');
+          cylinder('ceramic', furnitureX + .35, .91, z + dz, .13, .16);
+        }
+      }
+    } else if (['library', 'archive'].includes(type)) {
+      const back = z - roomDepth / 2 + .36, shelfKind = type === 'archive' ? 'archive-shelf' : 'library-shelf';
+      for (const side of [-1, 1]) solid('timber', furnitureX + side * .87, .98, back, .11, 1.96, .43, shelfKind);
+      for (const y of [.28, .79, 1.30, 1.81]) {
+        solid('timber', furnitureX, y, back, 1.82, .07, .45, shelfKind);
+        if (type === 'archive') for (const dx of [-.58, 0, .58]) {
+          box('paper', furnitureX + dx, y + .21, back, .46, .35, .33, 'archive-box');
+          box('white', furnitureX + dx, y + .22, back + .173, .25, .10, .012, 'archive-label');
+        } else for (let book = 0; book < 10; book++) box(['navy', 'paper', 'teal'][book % 3],
+          furnitureX - .70 + book * .15, y + .19, back, .12, .31, .28, 'library-book');
+      }
+      solid('timber', furnitureX, .73, z + .55, 1.72, .12, .72, 'reading-table');
+      for (const dx of [-.65, .65]) solid('walnut', furnitureX + dx, .34, z + .55, .09, .68, .48, 'table-leg');
+      box('paper', furnitureX, .83, z + .55, .53, .035, .35, 'reference-ledger');
+    } else if (type === 'workshop') {
+      const back = z - roomDepth / 2 + .22;
+      solid('walnut', furnitureX, .43, z + .42, 1.75, .86, .76, 'workbench');
+      round('timber', furnitureX, .91, z + .42, 1.83, .1, .84, 'workbench-top', false);
+      box('metal', furnitureX - .55, 1.05, z + .42, .28, .20, .24, 'bench-vice');
+      solid('timber', furnitureX, 1.7, back, 1.85, 1.12, .12, 'tool-board');
+      for (const dx of [-.60, -.20, .20, .60]) {
+        box('steel', furnitureX + dx, 1.74, back + .08, .045, .32, .035, 'workshop-tool');
+        box('metal', furnitureX + dx, 1.88, back + .08, .19, .05, .045, 'workshop-tool');
+      }
+      for (const dx of [-.45, .45]) solid('timber', furnitureX + dx, .34,
+        z - roomDepth / 2 + .73, .62, .68, .66, 'freight-crate');
+    } else if (type === 'maritime') {
+      solid('walnut', furnitureX, .47, z, 1.8, .94, .85, 'maritime-case');
+      round('navy', furnitureX, 1.09, z, 1.32, .24, .42, 'ship-model', false);
+      cylinder('brass', furnitureX, 1.55, z, .04, .75, .04, 'ship-mast');
+      box('paper', furnitureX + .19, 1.58, z, .35, .52, .025, 'ship-sail');
+      box('paper', furnitureX, 2.05, z - roomDepth / 2 + .13, 1.6, .65, .025, 'cargo-route-chart');
+    } else if (['cafe', 'dining', 'tea'].includes(type)) {
       round('timber', furnitureX, .78, z, 1.25, .12, .75, 'cafe-table');
       cylinder('metal', furnitureX, .38, z, .13, .75);
       for (const side of [-1, 1]) {
@@ -191,7 +247,7 @@ export function createCompactInteriorLayout(building, floor) {
         round('navy', cx + .48, 1.38, cz, .35, .24, .31, 'till', false);
         label('街坊柜台 · PAY HERE', cx, 1.78, z - roomDepth / 2 + .12, 1.8, .22);
       }
-    } else if (['bookshop', 'ceramics', 'workshop'].includes(type)) {
+    } else if (['bookshop', 'ceramics'].includes(type)) {
       const back = z - roomDepth / 2 + .36;
       for (const side of [-1, 1]) solid('timber', furnitureX + side * .87, .91, back, .11, 1.78, .43, 'display-shelf');
       for (const y of [.34, .86, 1.38]) {

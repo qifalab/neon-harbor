@@ -23,10 +23,22 @@ export function renderCityGuide(container, city, onTravel) {
     const found = city.buildings.filter(b => (!district.value || b.district === district.value) && `${b.name} ${b.englishName} ${b.description} ${city.districts.find(d => d.id === b.district)?.name}`.toLowerCase().includes(query));
     grid.innerHTML = '';
     for (const b of found) {
-      const design = b.shellId ? { podium: b.compact ? '紧凑生活空间' : '海湾公共门厅', facade: '共享用途与家具布局' } : architectureDesignFor(b), floors = b.floors.map(f => getRoomDesign(b.id, f.id));
+      const design = b.shellId ? { podium: b.compact ? '紧凑双房空间' : '海湾公共门厅', facade: '共享用途与家具布局' } : architectureDesignFor(b);
       const card = document.createElement('article'); card.className = 'address-card'; card.dataset.buildingId = b.id;
       card.style.setProperty('--address-color', b.color);
-      card.innerHTML = `<div class="address-roof"><span>${String(b.index + 1).padStart(2, '0')}</span><b>${Math.round(b.height)}<small>M</small></b></div><div class="address-body"><small>${city.districts.find(d => d.id === b.district)?.name}</small><h4>${b.name}</h4><span class="address-english">${b.englishName}</span><p>${b.description}</p><p class="address-craft">${design.podium} · ${design.facade}</p><details class="address-rooms"><summary>看看楼里有什么</summary>${floors.map(f => `<div><strong>${f.name}</strong><p>${f.rooms.map(r => r.name).join(' · ')}</p></div>`).join('')}</details><div class="address-footer"><span>${b.floors.length} 个开放楼层</span><button data-visit-building="${b.id}">前往门口 ↗</button></div></div>`;
+      card.innerHTML = `<div class="address-roof"><span>${String(b.index + 1).padStart(2, '0')}</span><b>${Math.round(b.height)}<small>M</small></b></div><div class="address-body"><small>${city.districts.find(d => d.id === b.district)?.name}</small><h4>${b.name}</h4><span class="address-english">${b.englishName}</span><p>${b.description}</p><p class="address-craft">${design.podium} · ${design.facade}</p><details class="address-rooms"><summary>看看楼里有什么</summary><div class="room-programmes"></div></details><div class="address-footer"><span>${b.floors.length} 个开放楼层</span><button data-visit-building="${b.id}">前往门口 ↗</button></div></div>`;
+      const details = card.querySelector('details'), programmes = card.querySelector('.room-programmes');
+      let roomsLoaded = false;
+      details.addEventListener('toggle', () => {
+        if (!details.open || roomsLoaded) return;
+        // Keep the city address list light: resolve floor programmes only when
+        // this building's disclosure is opened, and retain them on close.
+        programmes.innerHTML = b.floors.map(floor => {
+          const floorDesign = getRoomDesign(b.id, floor.id);
+          return `<div><strong>${floorDesign.name}</strong><p>${floorDesign.rooms.map(room => room.name).join(' · ')}</p></div>`;
+        }).join('');
+        roomsLoaded = true;
+      });
       card.querySelector('button').addEventListener('click', () => onTravel(b)); grid.append(card);
     }
     if (!found.length) grid.innerHTML = '<p class="panel-intro">没有找到这个地址，换个关键词试试。</p>';

@@ -4,6 +4,34 @@ import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
 import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
 import { subtractGroundRect, cutGroundGeometry } from './terrain-openings.js';
 import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
+import { applySurfaceFinish } from './surface-finish.js';
+
+/** Compose metre-scale finishes with existing facade projection. Instanced
+ * architecture uses unit geometry, so object-space grain would stretch with
+ * each building. Keep both the earlier shader hook and its cache identity. */
+export function applyWorldSurfaceFinish(material, kind) {
+  if (material.transparent || material.userData.worldSurfaceFinish) return material;
+  const previousCompile = material.onBeforeCompile;
+  const previousKey = material.customProgramCacheKey();
+  applySurfaceFinish(material, kind);
+  const finishCompile = material.onBeforeCompile;
+  const finishKey = material.customProgramCacheKey();
+  material.onBeforeCompile = shader => {
+    previousCompile.call(material, shader);
+    finishCompile.call(material, shader);
+    shader.vertexShader = shader.vertexShader.replace('vNHSurfacePosition = position;', `
+      vec4 nhWorldSurfacePosition = vec4(transformed, 1.0);
+      #ifdef USE_INSTANCING
+        nhWorldSurfacePosition = instanceMatrix * nhWorldSurfacePosition;
+      #endif
+      vNHSurfacePosition = (modelMatrix * nhWorldSurfacePosition).xyz;`);
+  };
+  material.customProgramCacheKey = () => `${previousKey}:world:${finishKey}`;
+  material.userData.worldSurfaceFinish = kind;
+  material.userData.surfaceFinish.world = true;
+  material.needsUpdate = true;
+  return material;
+}
 
 /**
  * The city is entirely original procedural art. Static details are batched by
@@ -99,6 +127,9 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
         materials[key].roughness = 0.5;
         materials[key].emissive.set('#ead4a2'); materials[key].emissiveIntensity = 0.08;
       }
+      if (['asphalt', 'sidewalk', 'cream', 'stone', 'brick', 'coral', 'roof', 'brickwork', 'pink', 'navy'].includes(key))
+        applyWorldSurfaceFinish(materials[key], 'mineral');
+      if (['metal', 'frame', 'brass'].includes(key)) applyWorldSurfaceFinish(materials[key], 'metal');
     }
     return materials[key];
   }

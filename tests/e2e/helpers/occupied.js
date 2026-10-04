@@ -28,11 +28,11 @@ export async function enterAddress(page, id) {
   await expect.poll(async () => (await snapshot(page)).city.interior.buildingId).toBe(id);
 }
 
-export async function chooseStorey(page, id) {
+export async function chooseStorey(page, id, { walkingTimeout = 60000 } = {}) {
   const before = await snapshot(page);
   if (before.city.interior.floorId === id) return before.city.interior;
-  await walkAxis(page, 'x', before.city.interior.cabin.x);
-  await walkAxis(page, 'z', before.city.interior.cabin.z, { sprint: true });
+  await walkAxis(page, 'x', before.city.interior.cabin.x, { timeout: walkingTimeout });
+  await walkAxis(page, 'z', before.city.interior.cabin.z, { sprint: true, timeout: walkingTimeout });
   await page.keyboard.press('e');
   await expect(page.locator('[data-floor-id]')).toHaveCount(before.city.interior.totalFloors);
   await page.locator(`[data-floor-id="${id}"]`).click();
