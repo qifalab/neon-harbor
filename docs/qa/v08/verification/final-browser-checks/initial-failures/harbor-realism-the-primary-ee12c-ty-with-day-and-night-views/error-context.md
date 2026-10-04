@@ -1,0 +1,3663 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: harbor-realism.spec.js >> the primary start reaches a walkable harbor panorama in default high quality, with day and night views
+- Location: tests/e2e/harbor-realism.spec.js:39:1
+
+# Error details
+
+```
+Error: expect(received).toHaveLength(expected)
+
+Expected length: 48
+Received length: 47
+Received array:  [{"color": "#c6b79b", "depth": 64, "description": "双翼石墙围合中庭，铜顶灯塔俯瞰轮渡航道。", "district": "waterfront", "englishName": "Tide Maritime Museum", "entrance": [Object], "floors": [Array], "height": 34, "id": "tide-museum", "index": 0, "name": "潮汐海事博物馆", "style": "museum", "width": 88, "x": -560, "z": -490}, {"color": "#a9b6a0", "depth": 66, "description": "锯齿采光屋面下是鱼市与海鲜餐厅，外廊保留旧港仓的尺度。", "district": "waterfront", "englishName": "Harbour Fish Market", "entrance": [Object], "floors": [Array], "height": 24, "id": "harbor-market", "index": 1, "name": "海湾鱼市场", "style": "market", "width": 100, "x": -400, "z": -490}, {"color": "#dfd2b6", "depth": 60, "description": "连续拱廊与钟楼组成海滨会馆，屋顶露台面向老港。", "district": "waterfront", "englishName": "Ferry House", "entrance": [Object], "floors": [Array], "height": 42, "id": "ferry-house", "index": 2, "name": "渡海会馆", "style": "colonial", "width": 76, "x": -240, "z": -490}, {"color": "#bdb29e", "depth": 66, "description": "层层退台的客房塔楼，入口雨棚与高处空中花园相呼应。", "district": "waterfront", "englishName": "Meridian Hotel", "entrance": [Object], "floors": [Array], "height": 144, "id": "meridian-hotel", "index": 3, "name": "子午线酒店", "style": "hotel", "width": 66, "x": -80, "z": -490}, {"color": "#d5d6ca", "depth": 74, "description": "起伏壳形屋面覆盖展厅，海滨大厅连通会议层。", "district": "waterfront", "englishName": "Pearl Convention Centre", "entrance": [Object], "floors": [Array], "height": 48, "id": "pearl-convention", "index": 4, "name": "明珠会展中心", "style": "convention", "width": 108, "x": 80, "z": -490}, {"color": "#d6d0b9", "depth": 60, "description": "斜撑立面与逐级收拢的船帆轮廓，观景台朝向海湾。", "district": "waterfront", "englishName": "Sail Yacht Club", "entrance": [Object], "floors": [Array], "height": 48, "id": "sail-club", "index": 5, "name": "帆影游艇会", "style": "sail", "width": 78, "x": 240, "z": -490}, {"color": "#aebbb7", "depth": 68, "description": "叠合弧拱构成剧院外壳，门厅前设有公共广场。", "district": "waterfront", "englishName": "Wave Theatre", "entrance": [Object], "floors": [Array], "height": 46, "id": "wave-theatre", "index": 6, "name": "浪潮剧院", "style": "theatre", "width": 100, "x": 400, "z": -490}, {"color": "#759a94", "depth": 70, "description": "竖向青绿金属鳍片包裹金融塔楼，石材大堂通向屋顶花园。", "district": "central", "englishName": "Jade Bank", "entrance": [Object], "floors": [Array], "height": 188, "id": "jade-bank", "index": 8, "name": "翡翠银行", "style": "fins", "width": 72, "x": -560, "z": -630}, {"color": "#c9c1ab", "depth": 76, "description": "宽阔柱廊托起交易大厅，中央高窗呈现旧金融建筑的比例。", "district": "central", "englishName": "Harbour Exchange", "entrance": [Object], "floors": [Array], "height": 74, "id": "exchange-hall", "index": 9, "name": "港城交易所", "style": "exchange", "width": 104, "x": -400, "z": -630}, {"color": "#8caaae", "depth": 62, "description": "三段收分的超高层与细长塔冠，城市最高的公共观景层。", "district": "central", "englishName": "Apex Financial Centre", "entrance": [Object], "floors": [Array], "height": 276, "id": "apex-tower", "index": 10, "name": "天际金融中心", "style": "spire", "width": 62, "x": -240, "z": -630}, …]
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic "霓港三维游戏画面" [ref=e2]
+  - main "游戏界面":
+    - generic:
+      - generic:
+        - generic:
+          - text: 霓港
+          - generic: NEON HARBOR
+        - generic:
+          - text: 星湾全景海滨
+          - generic: 16:35 · 晴
+      - generic:
+        - button "切换步行与跟随视角" [pressed] [ref=e3] [cursor=pointer]: 跟随视角
+        - button "打开多人房间" [ref=e4] [cursor=pointer]: 多人
+        - button "暂停游戏" [ref=e5] [cursor=pointer]: Ⅱ
+    - complementary:
+      - generic: 自由探索
+      - heading "这座城市，等你出发。" [level=2]
+      - paragraph: M 查看全城地图，城市导览可寻找建筑与站点。跨海桥通往北岸六区。
+      - generic:
+        - button "委托中心 ↗" [ref=e6] [cursor=pointer]
+        - button "城市导览 ↗" [ref=e7] [cursor=pointer]
+        - generic: TAB
+    - generic:
+      - button "打开城市地图" [ref=e8] [cursor=pointer]:
+        - generic [ref=e10]: "N"
+        - generic [ref=e11]: ↗
+      - generic:
+        - generic: HP
+        - generic: ST
+    - generic:
+      - generic: V
+      - generic: 切换步行 / 跟随视角 · 拖动画面环顾
+  - status
+  - dialog [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: NEON HARBOR / CITY SERVICES
+        - heading "霓港城市导览" [level=2] [ref=e16]
+      - button "关闭菜单" [active] [ref=e17] [cursor=pointer]: ×
+    - navigation "菜单分类" [ref=e18]:
+      - button "城市委托" [ref=e19] [cursor=pointer]
+      - button "城市地图" [ref=e20] [cursor=pointer]
+      - button "城市导览" [ref=e21] [cursor=pointer]
+      - button "多人房间" [ref=e22] [cursor=pointer]
+      - button "车库与补给" [ref=e23] [cursor=pointer]
+      - button "设置" [ref=e24] [cursor=pointer]
+      - button "操作指南" [ref=e25] [cursor=pointer]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: THREE SHORES · ONE CITY
+          - heading "从一间茶楼，到整座海港。" [level=3] [ref=e30]
+          - paragraph [ref=e31]: 220 处可进入建筑，覆盖北岸、南岸旧城与东湾。选择一个地址，步行与驾驶探索，或使用快速旅行抵达门口。
+        - generic [ref=e32]:
+          - text: "220"
+          - generic [ref=e33]: 城市地址
+      - generic [ref=e34]:
+        - generic [ref=e35]: START BY THE WATER
+        - heading "先去看海，再走进城市。" [level=3] [ref=e36]
+        - paragraph [ref=e37]: 海滨长廊望向对岸高楼群。北岸 48 栋建筑开放全部自然楼层，每层有明确用途和房间。楼梯逐层贯通，电梯可选择任意楼层。南岸旧城和东湾已开放连续楼层；从导览选择地址前往门口。
+        - generic [ref=e38]:
+          - article [ref=e39]:
+            - generic [ref=e40]:
+              - text: 海滨步行 · 全景
+              - heading "星湾全景海滨" [level=4] [ref=e41]
+            - button "去看海 ↗" [ref=e42] [cursor=pointer]
+          - article [ref=e43]:
+            - generic [ref=e44]:
+              - text: 海滨步行 · 全景
+              - heading "东岸观港长廊" [level=4] [ref=e45]
+            - button "去看海 ↗" [ref=e46] [cursor=pointer]
+          - article [ref=e47]:
+            - generic [ref=e48]:
+              - text: 海滨步行 · 全景
+              - heading "航道眺望台" [level=4] [ref=e49]
+            - button "去看海 ↗" [ref=e50] [cursor=pointer]
+        - generic [ref=e51]:
+          - button "走进海事博物馆 ↗" [ref=e52] [cursor=pointer]
+          - button "上楼看看一间住宅 ↗" [ref=e53] [cursor=pointer]
+          - button "沿楼梯下到地铁 ↗" [ref=e54] [cursor=pointer]
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - text: 寻找地点
+          - searchbox "寻找地点" [ref=e57]
+        - generic [ref=e58]:
+          - text: 街区
+          - combobox "街区" [ref=e59]:
+            - option "全部街区" [selected]
+            - option "潮光海滨"
+            - option "星汇金融区"
+            - option "榕树老城"
+            - option "西岸文化区"
+            - option "松岭花园"
+            - option "榕荫门户"
+            - option "南岸旧城"
+            - option "东湾天际线"
+      - generic [ref=e60]:
+        - article [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: "01"
+            - generic [ref=e64]: 34M
+          - generic [ref=e65]:
+            - text: 潮光海滨
+            - heading "潮汐海事博物馆" [level=4] [ref=e66]
+            - generic [ref=e67]: Tide Maritime Museum
+            - paragraph [ref=e68]: 双翼石墙围合中庭，铜顶灯塔俯瞰轮渡航道。
+            - paragraph [ref=e69]: 铜檐石墙 · 横向石材分缝
+            - group [ref=e70]:
+              - generic "看看楼里有什么" [ref=e71] [cursor=pointer]
+            - generic [ref=e72]:
+              - generic [ref=e73]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e74] [cursor=pointer]
+        - article [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]: "02"
+            - generic [ref=e78]: 24M
+          - generic [ref=e79]:
+            - text: 潮光海滨
+            - heading "海湾鱼市场" [level=4] [ref=e80]
+            - generic [ref=e81]: Harbour Fish Market
+            - paragraph [ref=e82]: 锯齿采光屋面下是鱼市与海鲜餐厅，外廊保留旧港仓的尺度。
+            - paragraph [ref=e83]: 防溅瓷砖基座 · 金属通风百叶
+            - group [ref=e84]:
+              - generic "看看楼里有什么" [ref=e85] [cursor=pointer]
+            - generic [ref=e86]:
+              - generic [ref=e87]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e88] [cursor=pointer]
+        - article [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]: "03"
+            - generic [ref=e92]: 42M
+          - generic [ref=e93]:
+            - text: 潮光海滨
+            - heading "渡海会馆" [level=4] [ref=e94]
+            - generic [ref=e95]: Ferry House
+            - paragraph [ref=e96]: 连续拱廊与钟楼组成海滨会馆，屋顶露台面向老港。
+            - paragraph [ref=e97]: 圆柱拱廊 · 拱窗与石材腰线
+            - group [ref=e98]:
+              - generic "看看楼里有什么" [ref=e99] [cursor=pointer]
+            - generic [ref=e100]:
+              - generic [ref=e101]: 9 个开放楼层
+              - button "前往门口 ↗" [ref=e102] [cursor=pointer]
+        - article [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]: "04"
+            - generic [ref=e106]: 144M
+          - generic [ref=e107]:
+            - text: 潮光海滨
+            - heading "子午线酒店" [level=4] [ref=e108]
+            - generic [ref=e109]: Meridian Hotel
+            - paragraph [ref=e110]: 层层退台的客房塔楼，入口雨棚与高处空中花园相呼应。
+            - paragraph [ref=e111]: 圆角铜边雨棚 · 错缝竖向窗套
+            - group [ref=e112]:
+              - generic "看看楼里有什么" [ref=e113] [cursor=pointer]
+            - generic [ref=e114]:
+              - generic [ref=e115]: 31 个开放楼层
+              - button "前往门口 ↗" [ref=e116] [cursor=pointer]
+        - article [ref=e117]:
+          - generic [ref=e118]:
+            - generic [ref=e119]: "05"
+            - generic [ref=e120]: 48M
+          - generic [ref=e121]:
+            - text: 潮光海滨
+            - heading "明珠会展中心" [level=4] [ref=e122]
+            - generic [ref=e123]: Pearl Convention Centre
+            - paragraph [ref=e124]: 起伏壳形屋面覆盖展厅，海滨大厅连通会议层。
+            - paragraph [ref=e125]: 通长玻璃入口 · 壳体铜肋与格栅
+            - group [ref=e126]:
+              - generic "看看楼里有什么" [ref=e127] [cursor=pointer]
+            - generic [ref=e128]:
+              - generic [ref=e129]: 11 个开放楼层
+              - button "前往门口 ↗" [ref=e130] [cursor=pointer]
+        - article [ref=e131]:
+          - generic [ref=e132]:
+            - generic [ref=e133]: "06"
+            - generic [ref=e134]: 48M
+          - generic [ref=e135]:
+            - text: 潮光海滨
+            - heading "帆影游艇会" [level=4] [ref=e136]
+            - generic [ref=e137]: Sail Yacht Club
+            - paragraph [ref=e138]: 斜撑立面与逐级收拢的船帆轮廓，观景台朝向海湾。
+            - paragraph [ref=e139]: 木制船坞门廊 · 帆布遮阳与斜杆
+            - group [ref=e140]:
+              - generic "看看楼里有什么" [ref=e141] [cursor=pointer]
+            - generic [ref=e142]:
+              - generic [ref=e143]: 11 个开放楼层
+              - button "前往门口 ↗" [ref=e144] [cursor=pointer]
+        - article [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]: "07"
+            - generic [ref=e148]: 46M
+          - generic [ref=e149]:
+            - text: 潮光海滨
+            - heading "浪潮剧院" [level=4] [ref=e150]
+            - generic [ref=e151]: Wave Theatre
+            - paragraph [ref=e152]: 叠合弧拱构成剧院外壳，门厅前设有公共广场。
+            - paragraph [ref=e153]: 深蓝剧场檐口 · 铜框节目灯箱
+            - group [ref=e154]:
+              - generic "看看楼里有什么" [ref=e155] [cursor=pointer]
+            - generic [ref=e156]:
+              - generic [ref=e157]: 10 个开放楼层
+              - button "前往门口 ↗" [ref=e158] [cursor=pointer]
+        - article [ref=e159]:
+          - generic [ref=e160]:
+            - generic [ref=e161]: "08"
+            - generic [ref=e162]: 118M
+          - generic [ref=e163]:
+            - text: 潮光海滨
+            - heading "东堤酒店" [level=4] [ref=e164]
+            - generic [ref=e165]: East Quay Hotel
+            - paragraph [ref=e166]: 面海阶梯露台与暖色石材基座，顶层设景观酒廊。
+            - paragraph [ref=e167]: 石材折板门廊 · 退台绿植与百叶
+            - group [ref=e168]:
+              - generic "看看楼里有什么" [ref=e169] [cursor=pointer]
+            - generic [ref=e170]:
+              - generic [ref=e171]: 25 个开放楼层
+              - button "前往门口 ↗" [ref=e172] [cursor=pointer]
+        - article [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e175]: "09"
+            - generic [ref=e176]: 188M
+          - generic [ref=e177]:
+            - text: 星汇金融区
+            - heading "翡翠银行" [level=4] [ref=e178]
+            - generic [ref=e179]: Jade Bank
+            - paragraph [ref=e180]: 竖向青绿金属鳍片包裹金融塔楼，石材大堂通向屋顶花园。
+            - paragraph [ref=e181]: 深绿石材柱脚 · 青铜竖鳍与深窗
+            - group [ref=e182]:
+              - generic "看看楼里有什么" [ref=e183] [cursor=pointer]
+            - generic [ref=e184]:
+              - generic [ref=e185]: 42 个开放楼层
+              - button "前往门口 ↗" [ref=e186] [cursor=pointer]
+        - article [ref=e187]:
+          - generic [ref=e188]:
+            - generic [ref=e189]: "10"
+            - generic [ref=e190]: 74M
+          - generic [ref=e191]:
+            - text: 星汇金融区
+            - heading "港城交易所" [level=4] [ref=e192]
+            - generic [ref=e193]: Harbour Exchange
+            - paragraph [ref=e194]: 宽阔柱廊托起交易大厅，中央高窗呈现旧金融建筑的比例。
+            - paragraph [ref=e195]: 厚石圆柱柱廊 · 成对高窗与横梁
+            - group [ref=e196]:
+              - generic "看看楼里有什么" [ref=e197] [cursor=pointer]
+            - generic [ref=e198]:
+              - generic [ref=e199]: 17 个开放楼层
+              - button "前往门口 ↗" [ref=e200] [cursor=pointer]
+        - article [ref=e201]:
+          - generic [ref=e202]:
+            - generic [ref=e203]: "11"
+            - generic [ref=e204]: 276M
+          - generic [ref=e205]:
+            - text: 星汇金融区
+            - heading "天际金融中心" [level=4] [ref=e206]
+            - generic [ref=e207]: Apex Financial Centre
+            - paragraph [ref=e208]: 三段收分的超高层与细长塔冠，城市最高的公共观景层。
+            - paragraph [ref=e209]: 折面金属门廊 · 收分塔身与纵向窗框
+            - group [ref=e210]:
+              - generic "看看楼里有什么" [ref=e211] [cursor=pointer]
+            - generic [ref=e212]:
+              - generic [ref=e213]: 63 个开放楼层
+              - button "前往门口 ↗" [ref=e214] [cursor=pointer]
+        - article [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: "12"
+            - generic [ref=e218]: 174M
+          - generic [ref=e219]:
+            - text: 星汇金融区
+            - heading "双松大厦" [level=4] [ref=e220]
+            - generic [ref=e221]: Twin Pines
+            - paragraph [ref=e222]: 双塔通过高空连廊相连，地面内院种植两株标志性松树。
+            - paragraph [ref=e223]: 双翼连廊门廊 · 双塔分格与玻璃桥
+            - group [ref=e224]:
+              - generic "看看楼里有什么" [ref=e225] [cursor=pointer]
+            - generic [ref=e226]:
+              - generic [ref=e227]: 39 个开放楼层
+              - button "前往门口 ↗" [ref=e228] [cursor=pointer]
+        - article [ref=e229]:
+          - generic [ref=e230]:
+            - generic [ref=e231]: "13"
+            - generic [ref=e232]: 226M
+          - generic [ref=e233]:
+            - text: 星汇金融区
+            - heading "冠环广场" [level=4] [ref=e234]
+            - generic [ref=e235]: Crown Plaza
+            - paragraph [ref=e236]: 环形塔冠悬于逐级退台之上，底层开放购物廊道。
+            - paragraph [ref=e237]: 铜边弧形橱窗 · 石材窗间墙与竖线
+            - group [ref=e238]:
+              - generic "看看楼里有什么" [ref=e239] [cursor=pointer]
+            - generic [ref=e240]:
+              - generic [ref=e241]: 51 个开放楼层
+              - button "前往门口 ↗" [ref=e242] [cursor=pointer]
+        - article [ref=e243]:
+          - generic [ref=e244]:
+            - generic [ref=e245]: "14"
+            - generic [ref=e246]: 166M
+          - generic [ref=e247]:
+            - text: 星汇金融区
+            - heading "经纬大厦" [level=4] [ref=e248]
+            - generic [ref=e249]: Axis House
+            - paragraph [ref=e250]: 对角结构网格贯穿立面，双层挑高门厅连接商务中心。
+            - paragraph [ref=e251]: 外露钢节点基座 · 菱形结构与水平遮阳
+            - group [ref=e252]:
+              - generic "看看楼里有什么" [ref=e253] [cursor=pointer]
+            - generic [ref=e254]:
+              - generic [ref=e255]: 37 个开放楼层
+              - button "前往门口 ↗" [ref=e256] [cursor=pointer]
+        - article [ref=e257]:
+          - generic [ref=e258]:
+            - generic [ref=e259]: "15"
+            - generic [ref=e260]: 128M
+          - generic [ref=e261]:
+            - text: 星汇金融区
+            - heading "银台总部" [level=4] [ref=e262]
+            - generic [ref=e263]: Silver Terrace
+            - paragraph [ref=e264]: 错落办公台地提供连续绿化露台，宽檐入口面向城市大道。
+            - paragraph [ref=e265]: 横向叠片雨棚 · 台地栏杆与露台花箱
+            - group [ref=e266]:
+              - generic "看看楼里有什么" [ref=e267] [cursor=pointer]
+            - generic [ref=e268]:
+              - generic [ref=e269]: 28 个开放楼层
+              - button "前往门口 ↗" [ref=e270] [cursor=pointer]
+        - article [ref=e271]:
+          - generic [ref=e272]:
+            - generic [ref=e273]: "16"
+            - generic [ref=e274]: 204M
+          - generic [ref=e275]:
+            - text: 星汇金融区
+            - heading "灯笼大厦" [level=4] [ref=e276]
+            - generic [ref=e277]: Lantern Tower
+            - paragraph [ref=e278]: 暖金竖线包围发光塔冠，裙楼嵌入展览与咖啡空间。
+            - paragraph [ref=e279]: 暖铜灯箱门廊 · 成组细框与竖向铜片
+            - group [ref=e280]:
+              - generic "看看楼里有什么" [ref=e281] [cursor=pointer]
+            - generic [ref=e282]:
+              - generic [ref=e283]: 46 个开放楼层
+              - button "前往门口 ↗" [ref=e284] [cursor=pointer]
+        - article [ref=e285]:
+          - generic [ref=e286]:
+            - generic [ref=e287]: "17"
+            - generic [ref=e288]: 27M
+          - generic [ref=e289]:
+            - text: 榕树老城
+            - heading "榕荫茶楼" [level=4] [ref=e290]
+            - generic [ref=e291]: Banyan Tea House
+            - paragraph [ref=e292]: 绿色百叶、木框阳台与深檐茶座，延续老城骑楼的步行尺度。
+            - paragraph [ref=e293]: 深木檐口与手写菜单 · 木百叶与生活阳台
+            - group [ref=e294]:
+              - generic "看看楼里有什么" [ref=e295] [cursor=pointer]
+            - generic [ref=e296]:
+              - generic [ref=e297]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e298] [cursor=pointer]
+        - article [ref=e299]:
+          - generic [ref=e300]:
+            - generic [ref=e301]: "18"
+            - generic [ref=e302]: 42M
+          - generic [ref=e303]:
+            - text: 榕树老城
+            - heading "红砖邮政局" [level=4] [ref=e304]
+            - generic [ref=e305]: Redbrick Post Office
+            - paragraph [ref=e306]: 砖墙拱窗与方形钟楼，旧邮政大厅改为城市书信展厅。
+            - paragraph [ref=e307]: 石砌拱门与铜邮筒 · 砖墙窗拱与石楣
+            - group [ref=e308]:
+              - generic "看看楼里有什么" [ref=e309] [cursor=pointer]
+            - generic [ref=e310]:
+              - generic [ref=e311]: 9 个开放楼层
+              - button "前往门口 ↗" [ref=e312] [cursor=pointer]
+        - article [ref=e313]:
+          - generic [ref=e314]:
+            - generic [ref=e315]: "19"
+            - generic [ref=e316]: 38M
+          - generic [ref=e317]:
+            - text: 榕树老城
+            - heading "榕荫骑楼" [level=4] [ref=e318]
+            - generic [ref=e319]: Banyan Arcade
+            - paragraph [ref=e320]: 首层连续拱券贯穿沿街店面，楼上保留老式外挂空调与阳台。
+            - paragraph [ref=e321]: 连续骑楼与卷闸 · 外挂冷气与晾衣架
+            - group [ref=e322]:
+              - generic "看看楼里有什么" [ref=e323] [cursor=pointer]
+            - generic [ref=e324]:
+              - generic [ref=e325]: 8 个开放楼层
+              - button "前往门口 ↗" [ref=e326] [cursor=pointer]
+        - article [ref=e327]:
+          - generic [ref=e328]:
+            - generic [ref=e329]: "20"
+            - generic [ref=e330]: 33M
+          - generic [ref=e331]:
+            - text: 榕树老城
+            - heading "金声电影院" [level=4] [ref=e332]
+            - generic [ref=e333]: Golden Sound Cinema
+            - paragraph [ref=e334]: 竖向装饰柱、霓虹招牌与阶梯塔头，还原港城电影文化。
+            - paragraph [ref=e335]: 流线票房与灯泡雨棚 · 台阶线脚与海报框
+            - group [ref=e336]:
+              - generic "看看楼里有什么" [ref=e337] [cursor=pointer]
+            - generic [ref=e338]:
+              - generic [ref=e339]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e340] [cursor=pointer]
+        - article [ref=e341]:
+          - generic [ref=e342]:
+            - generic [ref=e343]: "21"
+            - generic [ref=e344]: 22M
+          - generic [ref=e345]:
+            - text: 榕树老城
+            - heading "莲花街市" [level=4] [ref=e346]
+            - generic [ref=e347]: Lotus Street Market
+            - paragraph [ref=e348]: 多跨采光屋架、摊棚与内街，日常市集连接社区餐厅。
+            - paragraph [ref=e349]: 条纹篷布与瓷砖台 · 通风窗和百叶
+            - group [ref=e350]:
+              - generic "看看楼里有什么" [ref=e351] [cursor=pointer]
+            - generic [ref=e352]:
+              - generic [ref=e353]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e354] [cursor=pointer]
+        - article [ref=e355]:
+          - generic [ref=e356]:
+            - generic [ref=e357]: "22"
+            - generic [ref=e358]: 32M
+          - generic [ref=e359]:
+            - text: 榕树老城
+            - heading "靛庭公馆" [level=4] [ref=e360]
+            - generic [ref=e361]: Indigo Court
+            - paragraph [ref=e362]: 蓝灰抹灰墙面与铁艺阳台，老屋内部是社区生活展览。
+            - paragraph [ref=e363]: 木门、蓝墙与招牌 · 铁艺阳台和木百叶
+            - group [ref=e364]:
+              - generic "看看楼里有什么" [ref=e365] [cursor=pointer]
+            - generic [ref=e366]:
+              - generic [ref=e367]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e368] [cursor=pointer]
+        - article [ref=e369]:
+          - generic [ref=e370]:
+            - generic [ref=e371]: "23"
+            - generic [ref=e372]: 28M
+          - generic [ref=e373]:
+            - text: 榕树老城
+            - heading "海棠文化馆" [level=4] [ref=e374]
+            - generic [ref=e375]: Begonia Heritage Court
+            - paragraph [ref=e376]: 双重深檐、红柱与低矮院墙围合安静庭院。
+            - paragraph [ref=e377]: 红柱石鼓与重檐 · 格栅窗与脊饰
+            - group [ref=e378]:
+              - generic "看看楼里有什么" [ref=e379] [cursor=pointer]
+            - generic [ref=e380]:
+              - generic [ref=e381]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e382] [cursor=pointer]
+        - article [ref=e383]:
+          - generic [ref=e384]:
+            - generic [ref=e385]: "24"
+            - generic [ref=e386]: 48M
+          - generic [ref=e387]:
+            - text: 榕树老城
+            - heading "星澜书楼" [level=4] [ref=e388]
+            - generic [ref=e389]: Starlane Library
+            - paragraph [ref=e390]: 石砌拱廊与中央山花，阅览室和屋顶花园向市民开放。
+            - paragraph [ref=e391]: 石柱门廊与木门 · 双层拱窗与石材书脊
+            - group [ref=e392]:
+              - generic "看看楼里有什么" [ref=e393] [cursor=pointer]
+            - generic [ref=e394]:
+              - generic [ref=e395]: 11 个开放楼层
+              - button "前往门口 ↗" [ref=e396] [cursor=pointer]
+        - article [ref=e397]:
+          - generic [ref=e398]:
+            - generic [ref=e399]: "25"
+            - generic [ref=e400]: 46M
+          - generic [ref=e401]:
+            - text: 西岸文化区
+            - heading "西岸美术馆" [level=4] [ref=e402]
+            - generic [ref=e403]: Westbank Gallery
+            - paragraph [ref=e404]: 相互错动的石材体块间嵌入采光缝，入口处设置雕塑。
+            - paragraph [ref=e405]: 拉丝金属门框 · 错动石墙与采光缝
+            - group [ref=e406]:
+              - generic "看看楼里有什么" [ref=e407] [cursor=pointer]
+            - generic [ref=e408]:
+              - generic [ref=e409]: 10 个开放楼层
+              - button "前往门口 ↗" [ref=e410] [cursor=pointer]
+        - article [ref=e411]:
+          - generic [ref=e412]:
+            - generic [ref=e413]: "26"
+            - generic [ref=e414]: 64M
+          - generic [ref=e415]:
+            - text: 西岸文化区
+            - heading "海风音乐学院" [level=4] [ref=e416]
+            - generic [ref=e417]: Sea Breeze Conservatory
+            - paragraph [ref=e418]: 节奏化竖向鳍片围合排练室，裙楼内设公开演奏厅。
+            - paragraph [ref=e419]: 木声学格栅门廊 · 音阶节奏竖鳍
+            - group [ref=e420]:
+              - generic "看看楼里有什么" [ref=e421] [cursor=pointer]
+            - generic [ref=e422]:
+              - generic [ref=e423]: 15 个开放楼层
+              - button "前往门口 ↗" [ref=e424] [cursor=pointer]
+        - article [ref=e425]:
+          - generic [ref=e426]:
+            - generic [ref=e427]: "27"
+            - generic [ref=e428]: 56M
+          - generic [ref=e429]:
+            - text: 西岸文化区
+            - heading "云阶图书馆" [level=4] [ref=e430]
+            - generic [ref=e431]: Cloudstep Library
+            - paragraph [ref=e432]: 五层台阶式书库叠成城市客厅，露台与阅览层相连。
+            - paragraph [ref=e433]: 书架形门廊 · 水平遮阳和花台
+            - group [ref=e434]:
+              - generic "看看楼里有什么" [ref=e435] [cursor=pointer]
+            - generic [ref=e436]:
+              - generic [ref=e437]: 13 个开放楼层
+              - button "前往门口 ↗" [ref=e438] [cursor=pointer]
+        - article [ref=e439]:
+          - generic [ref=e440]:
+            - generic [ref=e441]: "28"
+            - generic [ref=e442]: 60M
+          - generic [ref=e443]:
+            - text: 西岸文化区
+            - heading "未来科学馆" [level=4] [ref=e444]
+            - generic [ref=e445]: Future Science Forum
+            - paragraph [ref=e446]: 半球天文穹顶与水平展厅结合，屋顶平台展示城市天际线。
+            - paragraph [ref=e447]: 展览环形门廊 · 圆窗与金属接缝
+            - group [ref=e448]:
+              - generic "看看楼里有什么" [ref=e449] [cursor=pointer]
+            - generic [ref=e450]:
+              - generic [ref=e451]: 14 个开放楼层
+              - button "前往门口 ↗" [ref=e452] [cursor=pointer]
+        - article [ref=e453]:
+          - generic [ref=e454]:
+            - generic [ref=e455]: "29"
+            - generic [ref=e456]: 38M
+          - generic [ref=e457]:
+            - text: 西岸文化区
+            - heading "设计铸造厂" [level=4] [ref=e458]
+            - generic [ref=e459]: Design Foundry
+            - paragraph [ref=e460]: 红砖厂房、锯齿天窗与保留烟囱，内部改为创意工作室。
+            - paragraph [ref=e461]: 铆接钢雨棚 · 红砖窗拱与工业窗
+            - group [ref=e462]:
+              - generic "看看楼里有什么" [ref=e463] [cursor=pointer]
+            - generic [ref=e464]:
+              - generic [ref=e465]: 8 个开放楼层
+              - button "前往门口 ↗" [ref=e466] [cursor=pointer]
+        - article [ref=e467]:
+          - generic [ref=e468]:
+            - generic [ref=e469]: "30"
+            - generic [ref=e470]: 52M
+          - generic [ref=e471]:
+            - text: 西岸文化区
+            - heading "翠玉戏曲中心" [level=4] [ref=e472]
+            - generic [ref=e473]: Jade Opera Centre
+            - paragraph [ref=e474]: 绿色叠檐与金属肋架包覆剧场，通透门厅延伸至广场。
+            - paragraph [ref=e475]: 翠绿叠片门廊 · 铜框格栅与戏曲纹样
+            - group [ref=e476]:
+              - generic "看看楼里有什么" [ref=e477] [cursor=pointer]
+            - generic [ref=e478]:
+              - generic [ref=e479]: 12 个开放楼层
+              - button "前往门口 ↗" [ref=e480] [cursor=pointer]
+        - article [ref=e481]:
+          - generic [ref=e482]:
+            - generic [ref=e483]: "31"
+            - generic [ref=e484]: 68M
+          - generic [ref=e485]:
+            - text: 西岸文化区
+            - heading "城市档案馆" [level=4] [ref=e486]
+            - generic [ref=e487]: City Archive
+            - paragraph [ref=e488]: 厚重混凝土悬挑与竖向采光槽，首层开放城市记忆展。
+            - paragraph [ref=e489]: 粗面混凝土深门洞 · 竖向采光缝与模板缝
+            - group [ref=e490]:
+              - generic "看看楼里有什么" [ref=e491] [cursor=pointer]
+            - generic [ref=e492]:
+              - generic [ref=e493]: 16 个开放楼层
+              - button "前往门口 ↗" [ref=e494] [cursor=pointer]
+        - article [ref=e495]:
+          - generic [ref=e496]:
+            - generic [ref=e497]: "32"
+            - generic [ref=e498]: 84M
+          - generic [ref=e499]:
+            - text: 西岸文化区
+            - heading "星港天文台" [level=4] [ref=e500]
+            - generic [ref=e501]: Star Harbour Observatory
+            - paragraph [ref=e502]: 阶梯式研究楼托起观测圆顶，顶层可眺望山海。
+            - paragraph [ref=e503]: 星图铜板门廊 · 深色窗洞与设备百叶
+            - group [ref=e504]:
+              - generic "看看楼里有什么" [ref=e505] [cursor=pointer]
+            - generic [ref=e506]:
+              - generic [ref=e507]: 19 个开放楼层
+              - button "前往门口 ↗" [ref=e508] [cursor=pointer]
+        - article [ref=e509]:
+          - generic [ref=e510]:
+            - generic [ref=e511]: "33"
+            - generic [ref=e512]: 96M
+          - generic [ref=e513]:
+            - text: 松岭花园
+            - heading "山茶公寓" [level=4] [ref=e514]
+            - generic [ref=e515]: Camellia Court
+            - paragraph [ref=e516]: 连续阳台与种植槽让住宅呈现生活痕迹，入口设置社区会客厅。
+            - paragraph [ref=e517]: 花纹瓷砖基座 · 窗花、冷气与生活阳台
+            - group [ref=e518]:
+              - generic "看看楼里有什么" [ref=e519] [cursor=pointer]
+            - generic [ref=e520]:
+              - generic [ref=e521]: 22 个开放楼层
+              - button "前往门口 ↗" [ref=e522] [cursor=pointer]
+        - article [ref=e523]:
+          - generic [ref=e524]:
+            - generic [ref=e525]: "34"
+            - generic [ref=e526]: 112M
+          - generic [ref=e527]:
+            - text: 松岭花园
+            - heading "松岭居" [level=4] [ref=e528]
+            - generic [ref=e529]: Pine Ridge Residence
+            - paragraph [ref=e530]: 浅绿墙面和错层阳台，屋顶花园与山景相连。
+            - paragraph [ref=e531]: 木格栅双层门廊 · 错层阳台和防晒百叶
+            - group [ref=e532]:
+              - generic "看看楼里有什么" [ref=e533] [cursor=pointer]
+            - generic [ref=e534]:
+              - generic [ref=e535]: 24 个开放楼层
+              - button "前往门口 ↗" [ref=e536] [cursor=pointer]
+        - article [ref=e537]:
+          - generic [ref=e538]:
+            - generic [ref=e539]: "35"
+            - generic [ref=e540]: 134M
+          - generic [ref=e541]:
+            - text: 松岭花园
+            - heading "云庭花园" [level=4] [ref=e542]
+            - generic [ref=e543]: Sky Garden
+            - paragraph [ref=e544]: 两座住宅塔楼在高空花园相接，裙楼容纳社区商业。
+            - paragraph [ref=e545]: 玻璃门廊与树池 · 双塔阳台与种植槽
+            - group [ref=e546]:
+              - generic "看看楼里有什么" [ref=e547] [cursor=pointer]
+            - generic [ref=e548]:
+              - generic [ref=e549]: 29 个开放楼层
+              - button "前往门口 ↗" [ref=e550] [cursor=pointer]
+        - article [ref=e551]:
+          - generic [ref=e552]:
+            - generic [ref=e553]: "36"
+            - generic [ref=e554]: 72M
+          - generic [ref=e555]:
+            - text: 松岭花园
+            - heading "花园医院" [level=4] [ref=e556]
+            - generic [ref=e557]: Garden Hospital
+            - paragraph [ref=e558]: 明亮的条形病房与退台疗愈花园，主入口雨棚方便步行抵达。
+            - paragraph [ref=e559]: 清晰深檐与导向十字 · 水平遮阳与病房窗
+            - group [ref=e560]:
+              - generic "看看楼里有什么" [ref=e561] [cursor=pointer]
+            - generic [ref=e562]:
+              - generic [ref=e563]: 16 个开放楼层
+              - button "前往门口 ↗" [ref=e564] [cursor=pointer]
+        - article [ref=e565]:
+          - generic [ref=e566]:
+            - generic [ref=e567]: "37"
+            - generic [ref=e568]: 38M
+          - generic [ref=e569]:
+            - text: 松岭花园
+            - heading "松岭书院" [level=4] [ref=e570]
+            - generic [ref=e571]: Pine Ridge Academy
+            - paragraph [ref=e572]: 砖石教学楼围绕钟塔展开，宽阔外廊连接公共阅览空间。
+            - paragraph [ref=e573]: 砖柱门廊与校徽 · 砖石窗套与外廊
+            - group [ref=e574]:
+              - generic "看看楼里有什么" [ref=e575] [cursor=pointer]
+            - generic [ref=e576]:
+              - generic [ref=e577]: 8 个开放楼层
+              - button "前往门口 ↗" [ref=e578] [cursor=pointer]
+        - article [ref=e579]:
+          - generic [ref=e580]:
+            - generic [ref=e581]: "38"
+            - generic [ref=e582]: 62M
+          - generic [ref=e583]:
+            - text: 松岭花园
+            - heading "杉木公馆" [level=4] [ref=e584]
+            - generic [ref=e585]: Cedar Mansion
+            - paragraph [ref=e586]: 几何装饰与成组窗洞构成宁静住宅，入口两侧设有花坛。
+            - paragraph [ref=e587]: 装饰艺术铜门 · 成组窗套和几何石雕
+            - group [ref=e588]:
+              - generic "看看楼里有什么" [ref=e589] [cursor=pointer]
+            - generic [ref=e590]:
+              - generic [ref=e591]: 14 个开放楼层
+              - button "前往门口 ↗" [ref=e592] [cursor=pointer]
+        - article [ref=e593]:
+          - generic [ref=e594]:
+            - generic [ref=e595]: "39"
+            - generic [ref=e596]: 90M
+          - generic [ref=e597]:
+            - text: 松岭花园
+            - heading "叠翠花园" [level=4] [ref=e598]
+            - generic [ref=e599]: Terrace Gardens
+            - paragraph [ref=e600]: 每层后退的绿色露台形成山坡般轮廓，公共大厅连接社区咖啡馆。
+            - paragraph [ref=e601]: 木制深檐入口 · 多层花槽与退台栏杆
+            - group [ref=e602]:
+              - generic "看看楼里有什么" [ref=e603] [cursor=pointer]
+            - generic [ref=e604]:
+              - generic [ref=e605]: 21 个开放楼层
+              - button "前往门口 ↗" [ref=e606] [cursor=pointer]
+        - article [ref=e607]:
+          - generic [ref=e608]:
+            - generic [ref=e609]: "40"
+            - generic [ref=e610]: 124M
+          - generic [ref=e611]:
+            - text: 松岭花园
+            - heading "灯塔居" [level=4] [ref=e612]
+            - generic [ref=e613]: Lighthouse Residence
+            - paragraph [ref=e614]: 细长暖色塔楼与灯室般的公共屋顶，沿街设置雨棚与商铺。
+            - paragraph [ref=e615]: 灯室形铜玻璃门廊 · 暖石墙与成组阳台
+            - group [ref=e616]:
+              - generic "看看楼里有什么" [ref=e617] [cursor=pointer]
+            - generic [ref=e618]:
+              - generic [ref=e619]: 27 个开放楼层
+              - button "前往门口 ↗" [ref=e620] [cursor=pointer]
+        - article [ref=e621]:
+          - generic [ref=e622]:
+            - generic [ref=e623]: "41"
+            - generic [ref=e624]: 98M
+          - generic [ref=e625]:
+            - text: 榕荫门户
+            - heading "北门商务楼" [level=4] [ref=e626]
+            - generic [ref=e627]: North Gate House
+            - paragraph [ref=e628]: 列柱基座与精简塔楼正对交通门户，底层设旅客服务大厅。
+            - paragraph [ref=e629]: 站房式宽檐与时钟 · 竖向石柱和信息橱窗
+            - group [ref=e630]:
+              - generic "看看楼里有什么" [ref=e631] [cursor=pointer]
+            - generic [ref=e632]:
+              - generic [ref=e633]: 23 个开放楼层
+              - button "前往门口 ↗" [ref=e634] [cursor=pointer]
+        - article [ref=e635]:
+          - generic [ref=e636]:
+            - generic [ref=e637]: "42"
+            - generic [ref=e638]: 88M
+          - generic [ref=e639]:
+            - text: 榕荫门户
+            - heading "启航创新中心" [level=4] [ref=e640]
+            - generic [ref=e641]: Launch Innovation Hub
+            - paragraph [ref=e642]: 斜交框架包裹联合办公空间，首层是开放技术展厅。
+            - paragraph [ref=e643]: 金属网格雨棚 · 斜交框架和遮阳屏
+            - group [ref=e644]:
+              - generic "看看楼里有什么" [ref=e645] [cursor=pointer]
+            - generic [ref=e646]:
+              - generic [ref=e647]: 20 个开放楼层
+              - button "前往门口 ↗" [ref=e648] [cursor=pointer]
+        - article [ref=e649]:
+          - generic [ref=e650]:
+            - generic [ref=e651]: "43"
+            - generic [ref=e652]: 66M
+          - generic [ref=e653]:
+            - text: 榕荫门户
+            - heading "货运交易大厦" [level=4] [ref=e654]
+            - generic [ref=e655]: Freight Exchange
+            - paragraph [ref=e656]: 港口仓库式裙楼与办公塔楼组合，装卸记忆转化为公共展览。
+            - paragraph [ref=e657]: 铆接雨棚与装卸门 · 仓储砖墙和工业高窗
+            - group [ref=e658]:
+              - generic "看看楼里有什么" [ref=e659] [cursor=pointer]
+            - generic [ref=e660]:
+              - generic [ref=e661]: 15 个开放楼层
+              - button "前往门口 ↗" [ref=e662] [cursor=pointer]
+        - article [ref=e663]:
+          - generic [ref=e664]:
+            - generic [ref=e665]: "44"
+            - generic [ref=e666]: 172M
+          - generic [ref=e667]:
+            - text: 榕荫门户
+            - heading "北辰大厦" [level=4] [ref=e668]
+            - generic [ref=e669]: North Star Tower
+            - paragraph [ref=e670]: 逐级收分的塔楼面向山口，顶部星形天线成为北部地标。
+            - paragraph [ref=e671]: 折线雨棚与星标 · 收分窗带和细铜线
+            - group [ref=e672]:
+              - generic "看看楼里有什么" [ref=e673] [cursor=pointer]
+            - generic [ref=e674]:
+              - generic [ref=e675]: 38 个开放楼层
+              - button "前往门口 ↗" [ref=e676] [cursor=pointer]
+        - article [ref=e677]:
+          - generic [ref=e678]:
+            - generic [ref=e679]: "45"
+            - generic [ref=e680]: 52M
+          - generic [ref=e681]:
+            - text: 榕荫门户
+            - heading "港城市民中心" [level=4] [ref=e682]
+            - generic [ref=e683]: Harbour Civic Hall
+            - paragraph [ref=e684]: 高柱廊与通长屋檐构成市民大厅，前庭留给公共活动。
+            - paragraph [ref=e685]: 高柱廊与导览屏 · 石材竖向分段与宽檐
+            - group [ref=e686]:
+              - generic "看看楼里有什么" [ref=e687] [cursor=pointer]
+            - generic [ref=e688]:
+              - generic [ref=e689]: 12 个开放楼层
+              - button "前往门口 ↗" [ref=e690] [cursor=pointer]
+        - article [ref=e691]:
+          - generic [ref=e692]:
+            - generic [ref=e693]: "46"
+            - generic [ref=e694]: 38M
+          - generic [ref=e695]:
+            - text: 榕荫门户
+            - heading "跃动体育馆" [level=4] [ref=e696]
+            - generic [ref=e697]: Motion Sports Pavilion
+            - paragraph [ref=e698]: 钢肋弧顶覆盖运动大厅，连续玻璃门厅面向街角。
+            - paragraph [ref=e699]: 钢管桁架门廊 · 通长玻璃和外露肋架
+            - group [ref=e700]:
+              - generic "看看楼里有什么" [ref=e701] [cursor=pointer]
+            - generic [ref=e702]:
+              - generic [ref=e703]: 8 个开放楼层
+              - button "前往门口 ↗" [ref=e704] [cursor=pointer]
+        - article [ref=e705]:
+          - generic [ref=e706]:
+            - generic [ref=e707]: "47"
+            - generic [ref=e708]: 126M
+          - generic [ref=e709]:
+            - text: 榕荫门户
+            - heading "望山酒店" [level=4] [ref=e710]
+            - generic [ref=e711]: Mountain View Hotel
+            - paragraph [ref=e712]: 沉稳石材基座和修长客房塔楼，顶层餐厅朝向北山。
+            - paragraph [ref=e713]: 木石门廊与行李亭 · 成对窗套与深挑檐
+            - group [ref=e714]:
+              - generic "看看楼里有什么" [ref=e715] [cursor=pointer]
+            - generic [ref=e716]:
+              - generic [ref=e717]: 27 个开放楼层
+              - button "前往门口 ↗" [ref=e718] [cursor=pointer]
+        - article [ref=e719]:
+          - generic [ref=e720]:
+            - generic [ref=e721]: "48"
+            - generic [ref=e722]: 80M
+          - generic [ref=e723]:
+            - text: 榕荫门户
+            - heading "海港研究院" [level=4] [ref=e724]
+            - generic [ref=e725]: Harbour Research Labs
+            - paragraph [ref=e726]: 分翼研究楼、遮阳格栅与中央玻璃大厅组成科学园入口。
+            - paragraph [ref=e727]: 玻璃屏和金属门廊 · 遮阳格栅与成组实验窗
+            - group [ref=e728]:
+              - generic "看看楼里有什么" [ref=e729] [cursor=pointer]
+            - generic [ref=e730]:
+              - generic [ref=e731]: 18 个开放楼层
+              - button "前往门口 ↗" [ref=e732] [cursor=pointer]
+        - article [ref=e733]:
+          - generic [ref=e734]:
+            - generic [ref=e735]: "49"
+            - generic [ref=e736]: 21M
+          - generic [ref=e737]:
+            - text: 南岸旧城
+            - heading "苔巷1号楼" [level=4] [ref=e738]
+            - generic [ref=e739]: Old Quarter 1
+            - paragraph [ref=e740]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e741]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e742]:
+              - generic "看看楼里有什么" [ref=e743] [cursor=pointer]
+            - generic [ref=e744]:
+              - generic [ref=e745]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e746] [cursor=pointer]
+        - article [ref=e747]:
+          - generic [ref=e748]:
+            - generic [ref=e749]: "50"
+            - generic [ref=e750]: 24M
+          - generic [ref=e751]:
+            - text: 南岸旧城
+            - heading "风铃1号楼" [level=4] [ref=e752]
+            - generic [ref=e753]: Old Quarter 2
+            - paragraph [ref=e754]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e755]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e756]:
+              - generic "看看楼里有什么" [ref=e757] [cursor=pointer]
+            - generic [ref=e758]:
+              - generic [ref=e759]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e760] [cursor=pointer]
+        - article [ref=e761]:
+          - generic [ref=e762]:
+            - generic [ref=e763]: "51"
+            - generic [ref=e764]: 21M
+          - generic [ref=e765]:
+            - text: 南岸旧城
+            - heading "榛木1号楼" [level=4] [ref=e766]
+            - generic [ref=e767]: Old Quarter 3
+            - paragraph [ref=e768]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e769]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e770]:
+              - generic "看看楼里有什么" [ref=e771] [cursor=pointer]
+            - generic [ref=e772]:
+              - generic [ref=e773]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e774] [cursor=pointer]
+        - article [ref=e775]:
+          - generic [ref=e776]:
+            - generic [ref=e777]: "52"
+            - generic [ref=e778]: 16M
+          - generic [ref=e779]:
+            - text: 南岸旧城
+            - heading "晴窗1号楼" [level=4] [ref=e780]
+            - generic [ref=e781]: Old Quarter 4
+            - paragraph [ref=e782]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e783]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e784]:
+              - generic "看看楼里有什么" [ref=e785] [cursor=pointer]
+            - generic [ref=e786]:
+              - generic [ref=e787]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e788] [cursor=pointer]
+        - article [ref=e789]:
+          - generic [ref=e790]:
+            - generic [ref=e791]: "53"
+            - generic [ref=e792]: 29M
+          - generic [ref=e793]:
+            - text: 南岸旧城
+            - heading "白帆1号楼" [level=4] [ref=e794]
+            - generic [ref=e795]: Old Quarter 5
+            - paragraph [ref=e796]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e797]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e798]:
+              - generic "看看楼里有什么" [ref=e799] [cursor=pointer]
+            - generic [ref=e800]:
+              - generic [ref=e801]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e802] [cursor=pointer]
+        - article [ref=e803]:
+          - generic [ref=e804]:
+            - generic [ref=e805]: "54"
+            - generic [ref=e806]: 11M
+          - generic [ref=e807]:
+            - text: 南岸旧城
+            - heading "陶溪1号楼" [level=4] [ref=e808]
+            - generic [ref=e809]: Old Quarter 6
+            - paragraph [ref=e810]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e811]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e812]:
+              - generic "看看楼里有什么" [ref=e813] [cursor=pointer]
+            - generic [ref=e814]:
+              - generic [ref=e815]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e816] [cursor=pointer]
+        - article [ref=e817]:
+          - generic [ref=e818]:
+            - generic [ref=e819]: "55"
+            - generic [ref=e820]: 26M
+          - generic [ref=e821]:
+            - text: 南岸旧城
+            - heading "苔巷2号楼" [level=4] [ref=e822]
+            - generic [ref=e823]: Old Quarter 7
+            - paragraph [ref=e824]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e825]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e826]:
+              - generic "看看楼里有什么" [ref=e827] [cursor=pointer]
+            - generic [ref=e828]:
+              - generic [ref=e829]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e830] [cursor=pointer]
+        - article [ref=e831]:
+          - generic [ref=e832]:
+            - generic [ref=e833]: "56"
+            - generic [ref=e834]: 15M
+          - generic [ref=e835]:
+            - text: 南岸旧城
+            - heading "风铃2号楼" [level=4] [ref=e836]
+            - generic [ref=e837]: Old Quarter 8
+            - paragraph [ref=e838]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e839]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e840]:
+              - generic "看看楼里有什么" [ref=e841] [cursor=pointer]
+            - generic [ref=e842]:
+              - generic [ref=e843]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e844] [cursor=pointer]
+        - article [ref=e845]:
+          - generic [ref=e846]:
+            - generic [ref=e847]: "57"
+            - generic [ref=e848]: 10M
+          - generic [ref=e849]:
+            - text: 南岸旧城
+            - heading "榛木2号楼" [level=4] [ref=e850]
+            - generic [ref=e851]: Old Quarter 9
+            - paragraph [ref=e852]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e853]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e854]:
+              - generic "看看楼里有什么" [ref=e855] [cursor=pointer]
+            - generic [ref=e856]:
+              - generic [ref=e857]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e858] [cursor=pointer]
+        - article [ref=e859]:
+          - generic [ref=e860]:
+            - generic [ref=e861]: "58"
+            - generic [ref=e862]: 11M
+          - generic [ref=e863]:
+            - text: 南岸旧城
+            - heading "晴窗2号楼" [level=4] [ref=e864]
+            - generic [ref=e865]: Old Quarter 10
+            - paragraph [ref=e866]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e867]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e868]:
+              - generic "看看楼里有什么" [ref=e869] [cursor=pointer]
+            - generic [ref=e870]:
+              - generic [ref=e871]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e872] [cursor=pointer]
+        - article [ref=e873]:
+          - generic [ref=e874]:
+            - generic [ref=e875]: "59"
+            - generic [ref=e876]: 18M
+          - generic [ref=e877]:
+            - text: 南岸旧城
+            - heading "白帆2号楼" [level=4] [ref=e878]
+            - generic [ref=e879]: Old Quarter 11
+            - paragraph [ref=e880]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e881]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e882]:
+              - generic "看看楼里有什么" [ref=e883] [cursor=pointer]
+            - generic [ref=e884]:
+              - generic [ref=e885]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e886] [cursor=pointer]
+        - article [ref=e887]:
+          - generic [ref=e888]:
+            - generic [ref=e889]: "60"
+            - generic [ref=e890]: 12M
+          - generic [ref=e891]:
+            - text: 南岸旧城
+            - heading "陶溪2号楼" [level=4] [ref=e892]
+            - generic [ref=e893]: Old Quarter 12
+            - paragraph [ref=e894]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e895]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e896]:
+              - generic "看看楼里有什么" [ref=e897] [cursor=pointer]
+            - generic [ref=e898]:
+              - generic [ref=e899]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e900] [cursor=pointer]
+        - article [ref=e901]:
+          - generic [ref=e902]:
+            - generic [ref=e903]: "61"
+            - generic [ref=e904]: 13M
+          - generic [ref=e905]:
+            - text: 南岸旧城
+            - heading "苔巷3号楼" [level=4] [ref=e906]
+            - generic [ref=e907]: Old Quarter 13
+            - paragraph [ref=e908]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e909]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e910]:
+              - generic "看看楼里有什么" [ref=e911] [cursor=pointer]
+            - generic [ref=e912]:
+              - generic [ref=e913]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e914] [cursor=pointer]
+        - article [ref=e915]:
+          - generic [ref=e916]:
+            - generic [ref=e917]: "62"
+            - generic [ref=e918]: 16M
+          - generic [ref=e919]:
+            - text: 南岸旧城
+            - heading "风铃3号楼" [level=4] [ref=e920]
+            - generic [ref=e921]: Old Quarter 14
+            - paragraph [ref=e922]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e923]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e924]:
+              - generic "看看楼里有什么" [ref=e925] [cursor=pointer]
+            - generic [ref=e926]:
+              - generic [ref=e927]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e928] [cursor=pointer]
+        - article [ref=e929]:
+          - generic [ref=e930]:
+            - generic [ref=e931]: "63"
+            - generic [ref=e932]: 11M
+          - generic [ref=e933]:
+            - text: 南岸旧城
+            - heading "榛木3号楼" [level=4] [ref=e934]
+            - generic [ref=e935]: Old Quarter 15
+            - paragraph [ref=e936]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e937]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e938]:
+              - generic "看看楼里有什么" [ref=e939] [cursor=pointer]
+            - generic [ref=e940]:
+              - generic [ref=e941]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e942] [cursor=pointer]
+        - article [ref=e943]:
+          - generic [ref=e944]:
+            - generic [ref=e945]: "64"
+            - generic [ref=e946]: 23M
+          - generic [ref=e947]:
+            - text: 南岸旧城
+            - heading "晴窗3号楼" [level=4] [ref=e948]
+            - generic [ref=e949]: Old Quarter 16
+            - paragraph [ref=e950]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e951]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e952]:
+              - generic "看看楼里有什么" [ref=e953] [cursor=pointer]
+            - generic [ref=e954]:
+              - generic [ref=e955]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e956] [cursor=pointer]
+        - article [ref=e957]:
+          - generic [ref=e958]:
+            - generic [ref=e959]: "65"
+            - generic [ref=e960]: 12M
+          - generic [ref=e961]:
+            - text: 南岸旧城
+            - heading "白帆3号楼" [level=4] [ref=e962]
+            - generic [ref=e963]: Old Quarter 17
+            - paragraph [ref=e964]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e965]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e966]:
+              - generic "看看楼里有什么" [ref=e967] [cursor=pointer]
+            - generic [ref=e968]:
+              - generic [ref=e969]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e970] [cursor=pointer]
+        - article [ref=e971]:
+          - generic [ref=e972]:
+            - generic [ref=e973]: "66"
+            - generic [ref=e974]: 20M
+          - generic [ref=e975]:
+            - text: 南岸旧城
+            - heading "陶溪3号楼" [level=4] [ref=e976]
+            - generic [ref=e977]: Old Quarter 18
+            - paragraph [ref=e978]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e979]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e980]:
+              - generic "看看楼里有什么" [ref=e981] [cursor=pointer]
+            - generic [ref=e982]:
+              - generic [ref=e983]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e984] [cursor=pointer]
+        - article [ref=e985]:
+          - generic [ref=e986]:
+            - generic [ref=e987]: "67"
+            - generic [ref=e988]: 28M
+          - generic [ref=e989]:
+            - text: 南岸旧城
+            - heading "苔巷4号楼" [level=4] [ref=e990]
+            - generic [ref=e991]: Old Quarter 19
+            - paragraph [ref=e992]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e993]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e994]:
+              - generic "看看楼里有什么" [ref=e995] [cursor=pointer]
+            - generic [ref=e996]:
+              - generic [ref=e997]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e998] [cursor=pointer]
+        - article [ref=e999]:
+          - generic [ref=e1000]:
+            - generic [ref=e1001]: "68"
+            - generic [ref=e1002]: 12M
+          - generic [ref=e1003]:
+            - text: 南岸旧城
+            - heading "风铃4号楼" [level=4] [ref=e1004]
+            - generic [ref=e1005]: Old Quarter 20
+            - paragraph [ref=e1006]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1007]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1008]:
+              - generic "看看楼里有什么" [ref=e1009] [cursor=pointer]
+            - generic [ref=e1010]:
+              - generic [ref=e1011]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1012] [cursor=pointer]
+        - article [ref=e1013]:
+          - generic [ref=e1014]:
+            - generic [ref=e1015]: "69"
+            - generic [ref=e1016]: 29M
+          - generic [ref=e1017]:
+            - text: 南岸旧城
+            - heading "榛木4号楼" [level=4] [ref=e1018]
+            - generic [ref=e1019]: Old Quarter 21
+            - paragraph [ref=e1020]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1021]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1022]:
+              - generic "看看楼里有什么" [ref=e1023] [cursor=pointer]
+            - generic [ref=e1024]:
+              - generic [ref=e1025]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e1026] [cursor=pointer]
+        - article [ref=e1027]:
+          - generic [ref=e1028]:
+            - generic [ref=e1029]: "70"
+            - generic [ref=e1030]: 17M
+          - generic [ref=e1031]:
+            - text: 南岸旧城
+            - heading "晴窗4号楼" [level=4] [ref=e1032]
+            - generic [ref=e1033]: Old Quarter 22
+            - paragraph [ref=e1034]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1035]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1036]:
+              - generic "看看楼里有什么" [ref=e1037] [cursor=pointer]
+            - generic [ref=e1038]:
+              - generic [ref=e1039]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1040] [cursor=pointer]
+        - article [ref=e1041]:
+          - generic [ref=e1042]:
+            - generic [ref=e1043]: "71"
+            - generic [ref=e1044]: 25M
+          - generic [ref=e1045]:
+            - text: 南岸旧城
+            - heading "白帆4号楼" [level=4] [ref=e1046]
+            - generic [ref=e1047]: Old Quarter 23
+            - paragraph [ref=e1048]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1049]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1050]:
+              - generic "看看楼里有什么" [ref=e1051] [cursor=pointer]
+            - generic [ref=e1052]:
+              - generic [ref=e1053]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1054] [cursor=pointer]
+        - article [ref=e1055]:
+          - generic [ref=e1056]:
+            - generic [ref=e1057]: "72"
+            - generic [ref=e1058]: 16M
+          - generic [ref=e1059]:
+            - text: 南岸旧城
+            - heading "陶溪4号楼" [level=4] [ref=e1060]
+            - generic [ref=e1061]: Old Quarter 24
+            - paragraph [ref=e1062]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1063]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1064]:
+              - generic "看看楼里有什么" [ref=e1065] [cursor=pointer]
+            - generic [ref=e1066]:
+              - generic [ref=e1067]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1068] [cursor=pointer]
+        - article [ref=e1069]:
+          - generic [ref=e1070]:
+            - generic [ref=e1071]: "73"
+            - generic [ref=e1072]: 50M
+          - generic [ref=e1073]:
+            - text: 南岸旧城
+            - heading "苔巷5号楼" [level=4] [ref=e1074]
+            - generic [ref=e1075]: Old Quarter 25
+            - paragraph [ref=e1076]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1077]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1078]:
+              - generic "看看楼里有什么" [ref=e1079] [cursor=pointer]
+            - generic [ref=e1080]:
+              - generic [ref=e1081]: 12 个开放楼层
+              - button "前往门口 ↗" [ref=e1082] [cursor=pointer]
+        - article [ref=e1083]:
+          - generic [ref=e1084]:
+            - generic [ref=e1085]: "74"
+            - generic [ref=e1086]: 13M
+          - generic [ref=e1087]:
+            - text: 南岸旧城
+            - heading "风铃5号楼" [level=4] [ref=e1088]
+            - generic [ref=e1089]: Old Quarter 26
+            - paragraph [ref=e1090]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1091]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1092]:
+              - generic "看看楼里有什么" [ref=e1093] [cursor=pointer]
+            - generic [ref=e1094]:
+              - generic [ref=e1095]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1096] [cursor=pointer]
+        - article [ref=e1097]:
+          - generic [ref=e1098]:
+            - generic [ref=e1099]: "75"
+            - generic [ref=e1100]: 49M
+          - generic [ref=e1101]:
+            - text: 南岸旧城
+            - heading "榛木5号楼" [level=4] [ref=e1102]
+            - generic [ref=e1103]: Old Quarter 27
+            - paragraph [ref=e1104]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1105]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1106]:
+              - generic "看看楼里有什么" [ref=e1107] [cursor=pointer]
+            - generic [ref=e1108]:
+              - generic [ref=e1109]: 12 个开放楼层
+              - button "前往门口 ↗" [ref=e1110] [cursor=pointer]
+        - article [ref=e1111]:
+          - generic [ref=e1112]:
+            - generic [ref=e1113]: "76"
+            - generic [ref=e1114]: 19M
+          - generic [ref=e1115]:
+            - text: 南岸旧城
+            - heading "晴窗5号楼" [level=4] [ref=e1116]
+            - generic [ref=e1117]: Old Quarter 28
+            - paragraph [ref=e1118]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1119]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1120]:
+              - generic "看看楼里有什么" [ref=e1121] [cursor=pointer]
+            - generic [ref=e1122]:
+              - generic [ref=e1123]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1124] [cursor=pointer]
+        - article [ref=e1125]:
+          - generic [ref=e1126]:
+            - generic [ref=e1127]: "77"
+            - generic [ref=e1128]: 40M
+          - generic [ref=e1129]:
+            - text: 南岸旧城
+            - heading "白帆5号楼" [level=4] [ref=e1130]
+            - generic [ref=e1131]: Old Quarter 29
+            - paragraph [ref=e1132]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1133]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1134]:
+              - generic "看看楼里有什么" [ref=e1135] [cursor=pointer]
+            - generic [ref=e1136]:
+              - generic [ref=e1137]: 10 个开放楼层
+              - button "前往门口 ↗" [ref=e1138] [cursor=pointer]
+        - article [ref=e1139]:
+          - generic [ref=e1140]:
+            - generic [ref=e1141]: "78"
+            - generic [ref=e1142]: 22M
+          - generic [ref=e1143]:
+            - text: 南岸旧城
+            - heading "陶溪5号楼" [level=4] [ref=e1144]
+            - generic [ref=e1145]: Old Quarter 30
+            - paragraph [ref=e1146]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1147]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1148]:
+              - generic "看看楼里有什么" [ref=e1149] [cursor=pointer]
+            - generic [ref=e1150]:
+              - generic [ref=e1151]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1152] [cursor=pointer]
+        - article [ref=e1153]:
+          - generic [ref=e1154]:
+            - generic [ref=e1155]: "79"
+            - generic [ref=e1156]: 11M
+          - generic [ref=e1157]:
+            - text: 南岸旧城
+            - heading "苔巷6号楼" [level=4] [ref=e1158]
+            - generic [ref=e1159]: Old Quarter 31
+            - paragraph [ref=e1160]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1161]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1162]:
+              - generic "看看楼里有什么" [ref=e1163] [cursor=pointer]
+            - generic [ref=e1164]:
+              - generic [ref=e1165]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1166] [cursor=pointer]
+        - article [ref=e1167]:
+          - generic [ref=e1168]:
+            - generic [ref=e1169]: "80"
+            - generic [ref=e1170]: 27M
+          - generic [ref=e1171]:
+            - text: 南岸旧城
+            - heading "风铃6号楼" [level=4] [ref=e1172]
+            - generic [ref=e1173]: Old Quarter 32
+            - paragraph [ref=e1174]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1175]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1176]:
+              - generic "看看楼里有什么" [ref=e1177] [cursor=pointer]
+            - generic [ref=e1178]:
+              - generic [ref=e1179]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1180] [cursor=pointer]
+        - article [ref=e1181]:
+          - generic [ref=e1182]:
+            - generic [ref=e1183]: "81"
+            - generic [ref=e1184]: 17M
+          - generic [ref=e1185]:
+            - text: 南岸旧城
+            - heading "榛木6号楼" [level=4] [ref=e1186]
+            - generic [ref=e1187]: Old Quarter 33
+            - paragraph [ref=e1188]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1189]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1190]:
+              - generic "看看楼里有什么" [ref=e1191] [cursor=pointer]
+            - generic [ref=e1192]:
+              - generic [ref=e1193]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1194] [cursor=pointer]
+        - article [ref=e1195]:
+          - generic [ref=e1196]:
+            - generic [ref=e1197]: "82"
+            - generic [ref=e1198]: 26M
+          - generic [ref=e1199]:
+            - text: 南岸旧城
+            - heading "晴窗6号楼" [level=4] [ref=e1200]
+            - generic [ref=e1201]: Old Quarter 34
+            - paragraph [ref=e1202]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1203]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1204]:
+              - generic "看看楼里有什么" [ref=e1205] [cursor=pointer]
+            - generic [ref=e1206]:
+              - generic [ref=e1207]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1208] [cursor=pointer]
+        - article [ref=e1209]:
+          - generic [ref=e1210]:
+            - generic [ref=e1211]: "83"
+            - generic [ref=e1212]: 17M
+          - generic [ref=e1213]:
+            - text: 南岸旧城
+            - heading "白帆6号楼" [level=4] [ref=e1214]
+            - generic [ref=e1215]: Old Quarter 35
+            - paragraph [ref=e1216]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1217]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1218]:
+              - generic "看看楼里有什么" [ref=e1219] [cursor=pointer]
+            - generic [ref=e1220]:
+              - generic [ref=e1221]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1222] [cursor=pointer]
+        - article [ref=e1223]:
+          - generic [ref=e1224]:
+            - generic [ref=e1225]: "84"
+            - generic [ref=e1226]: 21M
+          - generic [ref=e1227]:
+            - text: 南岸旧城
+            - heading "陶溪6号楼" [level=4] [ref=e1228]
+            - generic [ref=e1229]: Old Quarter 36
+            - paragraph [ref=e1230]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1231]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1232]:
+              - generic "看看楼里有什么" [ref=e1233] [cursor=pointer]
+            - generic [ref=e1234]:
+              - generic [ref=e1235]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1236] [cursor=pointer]
+        - article [ref=e1237]:
+          - generic [ref=e1238]:
+            - generic [ref=e1239]: "85"
+            - generic [ref=e1240]: 25M
+          - generic [ref=e1241]:
+            - text: 南岸旧城
+            - heading "苔巷7号楼" [level=4] [ref=e1242]
+            - generic [ref=e1243]: Old Quarter 37
+            - paragraph [ref=e1244]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1245]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1246]:
+              - generic "看看楼里有什么" [ref=e1247] [cursor=pointer]
+            - generic [ref=e1248]:
+              - generic [ref=e1249]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1250] [cursor=pointer]
+        - article [ref=e1251]:
+          - generic [ref=e1252]:
+            - generic [ref=e1253]: "86"
+            - generic [ref=e1254]: 17M
+          - generic [ref=e1255]:
+            - text: 南岸旧城
+            - heading "风铃7号楼" [level=4] [ref=e1256]
+            - generic [ref=e1257]: Old Quarter 38
+            - paragraph [ref=e1258]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1259]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1260]:
+              - generic "看看楼里有什么" [ref=e1261] [cursor=pointer]
+            - generic [ref=e1262]:
+              - generic [ref=e1263]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1264] [cursor=pointer]
+        - article [ref=e1265]:
+          - generic [ref=e1266]:
+            - generic [ref=e1267]: "87"
+            - generic [ref=e1268]: 14M
+          - generic [ref=e1269]:
+            - text: 南岸旧城
+            - heading "榛木7号楼" [level=4] [ref=e1270]
+            - generic [ref=e1271]: Old Quarter 39
+            - paragraph [ref=e1272]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1273]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1274]:
+              - generic "看看楼里有什么" [ref=e1275] [cursor=pointer]
+            - generic [ref=e1276]:
+              - generic [ref=e1277]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1278] [cursor=pointer]
+        - article [ref=e1279]:
+          - generic [ref=e1280]:
+            - generic [ref=e1281]: "88"
+            - generic [ref=e1282]: 29M
+          - generic [ref=e1283]:
+            - text: 南岸旧城
+            - heading "晴窗7号楼" [level=4] [ref=e1284]
+            - generic [ref=e1285]: Old Quarter 40
+            - paragraph [ref=e1286]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1287]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1288]:
+              - generic "看看楼里有什么" [ref=e1289] [cursor=pointer]
+            - generic [ref=e1290]:
+              - generic [ref=e1291]: 7 个开放楼层
+              - button "前往门口 ↗" [ref=e1292] [cursor=pointer]
+        - article [ref=e1293]:
+          - generic [ref=e1294]:
+            - generic [ref=e1295]: "89"
+            - generic [ref=e1296]: 10M
+          - generic [ref=e1297]:
+            - text: 南岸旧城
+            - heading "白帆7号楼" [level=4] [ref=e1298]
+            - generic [ref=e1299]: Old Quarter 41
+            - paragraph [ref=e1300]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1301]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1302]:
+              - generic "看看楼里有什么" [ref=e1303] [cursor=pointer]
+            - generic [ref=e1304]:
+              - generic [ref=e1305]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1306] [cursor=pointer]
+        - article [ref=e1307]:
+          - generic [ref=e1308]:
+            - generic [ref=e1309]: "90"
+            - generic [ref=e1310]: 16M
+          - generic [ref=e1311]:
+            - text: 南岸旧城
+            - heading "陶溪7号楼" [level=4] [ref=e1312]
+            - generic [ref=e1313]: Old Quarter 42
+            - paragraph [ref=e1314]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1315]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1316]:
+              - generic "看看楼里有什么" [ref=e1317] [cursor=pointer]
+            - generic [ref=e1318]:
+              - generic [ref=e1319]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1320] [cursor=pointer]
+        - article [ref=e1321]:
+          - generic [ref=e1322]:
+            - generic [ref=e1323]: "91"
+            - generic [ref=e1324]: 44M
+          - generic [ref=e1325]:
+            - text: 南岸旧城
+            - heading "苔巷8号楼" [level=4] [ref=e1326]
+            - generic [ref=e1327]: Old Quarter 43
+            - paragraph [ref=e1328]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1329]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1330]:
+              - generic "看看楼里有什么" [ref=e1331] [cursor=pointer]
+            - generic [ref=e1332]:
+              - generic [ref=e1333]: 10 个开放楼层
+              - button "前往门口 ↗" [ref=e1334] [cursor=pointer]
+        - article [ref=e1335]:
+          - generic [ref=e1336]:
+            - generic [ref=e1337]: "92"
+            - generic [ref=e1338]: 20M
+          - generic [ref=e1339]:
+            - text: 南岸旧城
+            - heading "风铃8号楼" [level=4] [ref=e1340]
+            - generic [ref=e1341]: Old Quarter 44
+            - paragraph [ref=e1342]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1343]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1344]:
+              - generic "看看楼里有什么" [ref=e1345] [cursor=pointer]
+            - generic [ref=e1346]:
+              - generic [ref=e1347]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1348] [cursor=pointer]
+        - article [ref=e1349]:
+          - generic [ref=e1350]:
+            - generic [ref=e1351]: "93"
+            - generic [ref=e1352]: 54M
+          - generic [ref=e1353]:
+            - text: 南岸旧城
+            - heading "榛木8号楼" [level=4] [ref=e1354]
+            - generic [ref=e1355]: Old Quarter 45
+            - paragraph [ref=e1356]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1357]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1358]:
+              - generic "看看楼里有什么" [ref=e1359] [cursor=pointer]
+            - generic [ref=e1360]:
+              - generic [ref=e1361]: 13 个开放楼层
+              - button "前往门口 ↗" [ref=e1362] [cursor=pointer]
+        - article [ref=e1363]:
+          - generic [ref=e1364]:
+            - generic [ref=e1365]: "94"
+            - generic [ref=e1366]: 22M
+          - generic [ref=e1367]:
+            - text: 南岸旧城
+            - heading "晴窗8号楼" [level=4] [ref=e1368]
+            - generic [ref=e1369]: Old Quarter 46
+            - paragraph [ref=e1370]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1371]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1372]:
+              - generic "看看楼里有什么" [ref=e1373] [cursor=pointer]
+            - generic [ref=e1374]:
+              - generic [ref=e1375]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1376] [cursor=pointer]
+        - article [ref=e1377]:
+          - generic [ref=e1378]:
+            - generic [ref=e1379]: "95"
+            - generic [ref=e1380]: 58M
+          - generic [ref=e1381]:
+            - text: 南岸旧城
+            - heading "白帆8号楼" [level=4] [ref=e1382]
+            - generic [ref=e1383]: Old Quarter 47
+            - paragraph [ref=e1384]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1385]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1386]:
+              - generic "看看楼里有什么" [ref=e1387] [cursor=pointer]
+            - generic [ref=e1388]:
+              - generic [ref=e1389]: 14 个开放楼层
+              - button "前往门口 ↗" [ref=e1390] [cursor=pointer]
+        - article [ref=e1391]:
+          - generic [ref=e1392]:
+            - generic [ref=e1393]: "96"
+            - generic [ref=e1394]: 22M
+          - generic [ref=e1395]:
+            - text: 南岸旧城
+            - heading "陶溪8号楼" [level=4] [ref=e1396]
+            - generic [ref=e1397]: Old Quarter 48
+            - paragraph [ref=e1398]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1399]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1400]:
+              - generic "看看楼里有什么" [ref=e1401] [cursor=pointer]
+            - generic [ref=e1402]:
+              - generic [ref=e1403]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1404] [cursor=pointer]
+        - article [ref=e1405]:
+          - generic [ref=e1406]:
+            - generic [ref=e1407]: "97"
+            - generic [ref=e1408]: 43M
+          - generic [ref=e1409]:
+            - text: 南岸旧城
+            - heading "苔巷9号楼" [level=4] [ref=e1410]
+            - generic [ref=e1411]: Old Quarter 49
+            - paragraph [ref=e1412]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1413]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1414]:
+              - generic "看看楼里有什么" [ref=e1415] [cursor=pointer]
+            - generic [ref=e1416]:
+              - generic [ref=e1417]: 10 个开放楼层
+              - button "前往门口 ↗" [ref=e1418] [cursor=pointer]
+        - article [ref=e1419]:
+          - generic [ref=e1420]:
+            - generic [ref=e1421]: "98"
+            - generic [ref=e1422]: 15M
+          - generic [ref=e1423]:
+            - text: 南岸旧城
+            - heading "风铃9号楼" [level=4] [ref=e1424]
+            - generic [ref=e1425]: Old Quarter 50
+            - paragraph [ref=e1426]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1427]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1428]:
+              - generic "看看楼里有什么" [ref=e1429] [cursor=pointer]
+            - generic [ref=e1430]:
+              - generic [ref=e1431]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1432] [cursor=pointer]
+        - article [ref=e1433]:
+          - generic [ref=e1434]:
+            - generic [ref=e1435]: "99"
+            - generic [ref=e1436]: 13M
+          - generic [ref=e1437]:
+            - text: 南岸旧城
+            - heading "榛木9号楼" [level=4] [ref=e1438]
+            - generic [ref=e1439]: Old Quarter 51
+            - paragraph [ref=e1440]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1441]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1442]:
+              - generic "看看楼里有什么" [ref=e1443] [cursor=pointer]
+            - generic [ref=e1444]:
+              - generic [ref=e1445]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1446] [cursor=pointer]
+        - article [ref=e1447]:
+          - generic [ref=e1448]:
+            - generic [ref=e1449]: "100"
+            - generic [ref=e1450]: 24M
+          - generic [ref=e1451]:
+            - text: 南岸旧城
+            - heading "晴窗9号楼" [level=4] [ref=e1452]
+            - generic [ref=e1453]: Old Quarter 52
+            - paragraph [ref=e1454]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1455]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1456]:
+              - generic "看看楼里有什么" [ref=e1457] [cursor=pointer]
+            - generic [ref=e1458]:
+              - generic [ref=e1459]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1460] [cursor=pointer]
+        - article [ref=e1461]:
+          - generic [ref=e1462]:
+            - generic [ref=e1463]: "101"
+            - generic [ref=e1464]: 12M
+          - generic [ref=e1465]:
+            - text: 南岸旧城
+            - heading "白帆9号楼" [level=4] [ref=e1466]
+            - generic [ref=e1467]: Old Quarter 53
+            - paragraph [ref=e1468]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1469]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1470]:
+              - generic "看看楼里有什么" [ref=e1471] [cursor=pointer]
+            - generic [ref=e1472]:
+              - generic [ref=e1473]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1474] [cursor=pointer]
+        - article [ref=e1475]:
+          - generic [ref=e1476]:
+            - generic [ref=e1477]: "102"
+            - generic [ref=e1478]: 12M
+          - generic [ref=e1479]:
+            - text: 南岸旧城
+            - heading "陶溪9号楼" [level=4] [ref=e1480]
+            - generic [ref=e1481]: Old Quarter 54
+            - paragraph [ref=e1482]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1483]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1484]:
+              - generic "看看楼里有什么" [ref=e1485] [cursor=pointer]
+            - generic [ref=e1486]:
+              - generic [ref=e1487]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1488] [cursor=pointer]
+        - article [ref=e1489]:
+          - generic [ref=e1490]:
+            - generic [ref=e1491]: "103"
+            - generic [ref=e1492]: 72M
+          - generic [ref=e1493]:
+            - text: 南岸旧城
+            - heading "苔巷10号楼" [level=4] [ref=e1494]
+            - generic [ref=e1495]: Old Quarter 55
+            - paragraph [ref=e1496]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1497]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1498]:
+              - generic "看看楼里有什么" [ref=e1499] [cursor=pointer]
+            - generic [ref=e1500]:
+              - generic [ref=e1501]: 17 个开放楼层
+              - button "前往门口 ↗" [ref=e1502] [cursor=pointer]
+        - article [ref=e1503]:
+          - generic [ref=e1504]:
+            - generic [ref=e1505]: "104"
+            - generic [ref=e1506]: 22M
+          - generic [ref=e1507]:
+            - text: 南岸旧城
+            - heading "风铃10号楼" [level=4] [ref=e1508]
+            - generic [ref=e1509]: Old Quarter 56
+            - paragraph [ref=e1510]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1511]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1512]:
+              - generic "看看楼里有什么" [ref=e1513] [cursor=pointer]
+            - generic [ref=e1514]:
+              - generic [ref=e1515]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1516] [cursor=pointer]
+        - article [ref=e1517]:
+          - generic [ref=e1518]:
+            - generic [ref=e1519]: "105"
+            - generic [ref=e1520]: 59M
+          - generic [ref=e1521]:
+            - text: 南岸旧城
+            - heading "榛木10号楼" [level=4] [ref=e1522]
+            - generic [ref=e1523]: Old Quarter 57
+            - paragraph [ref=e1524]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1525]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1526]:
+              - generic "看看楼里有什么" [ref=e1527] [cursor=pointer]
+            - generic [ref=e1528]:
+              - generic [ref=e1529]: 14 个开放楼层
+              - button "前往门口 ↗" [ref=e1530] [cursor=pointer]
+        - article [ref=e1531]:
+          - generic [ref=e1532]:
+            - generic [ref=e1533]: "106"
+            - generic [ref=e1534]: 13M
+          - generic [ref=e1535]:
+            - text: 南岸旧城
+            - heading "晴窗10号楼" [level=4] [ref=e1536]
+            - generic [ref=e1537]: Old Quarter 58
+            - paragraph [ref=e1538]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1539]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1540]:
+              - generic "看看楼里有什么" [ref=e1541] [cursor=pointer]
+            - generic [ref=e1542]:
+              - generic [ref=e1543]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1544] [cursor=pointer]
+        - article [ref=e1545]:
+          - generic [ref=e1546]:
+            - generic [ref=e1547]: "107"
+            - generic [ref=e1548]: 66M
+          - generic [ref=e1549]:
+            - text: 南岸旧城
+            - heading "白帆10号楼" [level=4] [ref=e1550]
+            - generic [ref=e1551]: Old Quarter 59
+            - paragraph [ref=e1552]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1553]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1554]:
+              - generic "看看楼里有什么" [ref=e1555] [cursor=pointer]
+            - generic [ref=e1556]:
+              - generic [ref=e1557]: 16 个开放楼层
+              - button "前往门口 ↗" [ref=e1558] [cursor=pointer]
+        - article [ref=e1559]:
+          - generic [ref=e1560]:
+            - generic [ref=e1561]: "108"
+            - generic [ref=e1562]: 16M
+          - generic [ref=e1563]:
+            - text: 南岸旧城
+            - heading "陶溪10号楼" [level=4] [ref=e1564]
+            - generic [ref=e1565]: Old Quarter 60
+            - paragraph [ref=e1566]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1567]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1568]:
+              - generic "看看楼里有什么" [ref=e1569] [cursor=pointer]
+            - generic [ref=e1570]:
+              - generic [ref=e1571]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1572] [cursor=pointer]
+        - article [ref=e1573]:
+          - generic [ref=e1574]:
+            - generic [ref=e1575]: "109"
+            - generic [ref=e1576]: 12M
+          - generic [ref=e1577]:
+            - text: 南岸旧城
+            - heading "苔巷11号楼" [level=4] [ref=e1578]
+            - generic [ref=e1579]: Old Quarter 61
+            - paragraph [ref=e1580]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1581]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1582]:
+              - generic "看看楼里有什么" [ref=e1583] [cursor=pointer]
+            - generic [ref=e1584]:
+              - generic [ref=e1585]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1586] [cursor=pointer]
+        - article [ref=e1587]:
+          - generic [ref=e1588]:
+            - generic [ref=e1589]: "110"
+            - generic [ref=e1590]: 18M
+          - generic [ref=e1591]:
+            - text: 南岸旧城
+            - heading "风铃11号楼" [level=4] [ref=e1592]
+            - generic [ref=e1593]: Old Quarter 62
+            - paragraph [ref=e1594]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1595]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1596]:
+              - generic "看看楼里有什么" [ref=e1597] [cursor=pointer]
+            - generic [ref=e1598]:
+              - generic [ref=e1599]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1600] [cursor=pointer]
+        - article [ref=e1601]:
+          - generic [ref=e1602]:
+            - generic [ref=e1603]: "111"
+            - generic [ref=e1604]: 22M
+          - generic [ref=e1605]:
+            - text: 南岸旧城
+            - heading "榛木11号楼" [level=4] [ref=e1606]
+            - generic [ref=e1607]: Old Quarter 63
+            - paragraph [ref=e1608]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1609]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1610]:
+              - generic "看看楼里有什么" [ref=e1611] [cursor=pointer]
+            - generic [ref=e1612]:
+              - generic [ref=e1613]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1614] [cursor=pointer]
+        - article [ref=e1615]:
+          - generic [ref=e1616]:
+            - generic [ref=e1617]: "112"
+            - generic [ref=e1618]: 15M
+          - generic [ref=e1619]:
+            - text: 南岸旧城
+            - heading "晴窗11号楼" [level=4] [ref=e1620]
+            - generic [ref=e1621]: Old Quarter 64
+            - paragraph [ref=e1622]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1623]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1624]:
+              - generic "看看楼里有什么" [ref=e1625] [cursor=pointer]
+            - generic [ref=e1626]:
+              - generic [ref=e1627]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1628] [cursor=pointer]
+        - article [ref=e1629]:
+          - generic [ref=e1630]:
+            - generic [ref=e1631]: "113"
+            - generic [ref=e1632]: 15M
+          - generic [ref=e1633]:
+            - text: 南岸旧城
+            - heading "白帆11号楼" [level=4] [ref=e1634]
+            - generic [ref=e1635]: Old Quarter 65
+            - paragraph [ref=e1636]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1637]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1638]:
+              - generic "看看楼里有什么" [ref=e1639] [cursor=pointer]
+            - generic [ref=e1640]:
+              - generic [ref=e1641]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1642] [cursor=pointer]
+        - article [ref=e1643]:
+          - generic [ref=e1644]:
+            - generic [ref=e1645]: "114"
+            - generic [ref=e1646]: 10M
+          - generic [ref=e1647]:
+            - text: 南岸旧城
+            - heading "陶溪11号楼" [level=4] [ref=e1648]
+            - generic [ref=e1649]: Old Quarter 66
+            - paragraph [ref=e1650]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1651]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1652]:
+              - generic "看看楼里有什么" [ref=e1653] [cursor=pointer]
+            - generic [ref=e1654]:
+              - generic [ref=e1655]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1656] [cursor=pointer]
+        - article [ref=e1657]:
+          - generic [ref=e1658]:
+            - generic [ref=e1659]: "115"
+            - generic [ref=e1660]: 24M
+          - generic [ref=e1661]:
+            - text: 南岸旧城
+            - heading "苔巷12号楼" [level=4] [ref=e1662]
+            - generic [ref=e1663]: Old Quarter 67
+            - paragraph [ref=e1664]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1665]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1666]:
+              - generic "看看楼里有什么" [ref=e1667] [cursor=pointer]
+            - generic [ref=e1668]:
+              - generic [ref=e1669]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1670] [cursor=pointer]
+        - article [ref=e1671]:
+          - generic [ref=e1672]:
+            - generic [ref=e1673]: "116"
+            - generic [ref=e1674]: 22M
+          - generic [ref=e1675]:
+            - text: 南岸旧城
+            - heading "风铃12号楼" [level=4] [ref=e1676]
+            - generic [ref=e1677]: Old Quarter 68
+            - paragraph [ref=e1678]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1679]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1680]:
+              - generic "看看楼里有什么" [ref=e1681] [cursor=pointer]
+            - generic [ref=e1682]:
+              - generic [ref=e1683]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1684] [cursor=pointer]
+        - article [ref=e1685]:
+          - generic [ref=e1686]:
+            - generic [ref=e1687]: "117"
+            - generic [ref=e1688]: 56M
+          - generic [ref=e1689]:
+            - text: 南岸旧城
+            - heading "榛木12号楼" [level=4] [ref=e1690]
+            - generic [ref=e1691]: Old Quarter 69
+            - paragraph [ref=e1692]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1693]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1694]:
+              - generic "看看楼里有什么" [ref=e1695] [cursor=pointer]
+            - generic [ref=e1696]:
+              - generic [ref=e1697]: 13 个开放楼层
+              - button "前往门口 ↗" [ref=e1698] [cursor=pointer]
+        - article [ref=e1699]:
+          - generic [ref=e1700]:
+            - generic [ref=e1701]: "118"
+            - generic [ref=e1702]: 15M
+          - generic [ref=e1703]:
+            - text: 南岸旧城
+            - heading "晴窗12号楼" [level=4] [ref=e1704]
+            - generic [ref=e1705]: Old Quarter 70
+            - paragraph [ref=e1706]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1707]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1708]:
+              - generic "看看楼里有什么" [ref=e1709] [cursor=pointer]
+            - generic [ref=e1710]:
+              - generic [ref=e1711]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1712] [cursor=pointer]
+        - article [ref=e1713]:
+          - generic [ref=e1714]:
+            - generic [ref=e1715]: "119"
+            - generic [ref=e1716]: 54M
+          - generic [ref=e1717]:
+            - text: 南岸旧城
+            - heading "白帆12号楼" [level=4] [ref=e1718]
+            - generic [ref=e1719]: Old Quarter 71
+            - paragraph [ref=e1720]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1721]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1722]:
+              - generic "看看楼里有什么" [ref=e1723] [cursor=pointer]
+            - generic [ref=e1724]:
+              - generic [ref=e1725]: 13 个开放楼层
+              - button "前往门口 ↗" [ref=e1726] [cursor=pointer]
+        - article [ref=e1727]:
+          - generic [ref=e1728]:
+            - generic [ref=e1729]: "120"
+            - generic [ref=e1730]: 17M
+          - generic [ref=e1731]:
+            - text: 南岸旧城
+            - heading "陶溪12号楼" [level=4] [ref=e1732]
+            - generic [ref=e1733]: Old Quarter 72
+            - paragraph [ref=e1734]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1735]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1736]:
+              - generic "看看楼里有什么" [ref=e1737] [cursor=pointer]
+            - generic [ref=e1738]:
+              - generic [ref=e1739]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1740] [cursor=pointer]
+        - article [ref=e1741]:
+          - generic [ref=e1742]:
+            - generic [ref=e1743]: "121"
+            - generic [ref=e1744]: 23M
+          - generic [ref=e1745]:
+            - text: 南岸旧城
+            - heading "苔巷13号楼" [level=4] [ref=e1746]
+            - generic [ref=e1747]: Old Quarter 73
+            - paragraph [ref=e1748]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1749]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1750]:
+              - generic "看看楼里有什么" [ref=e1751] [cursor=pointer]
+            - generic [ref=e1752]:
+              - generic [ref=e1753]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1754] [cursor=pointer]
+        - article [ref=e1755]:
+          - generic [ref=e1756]:
+            - generic [ref=e1757]: "122"
+            - generic [ref=e1758]: 24M
+          - generic [ref=e1759]:
+            - text: 南岸旧城
+            - heading "风铃13号楼" [level=4] [ref=e1760]
+            - generic [ref=e1761]: Old Quarter 74
+            - paragraph [ref=e1762]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1763]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1764]:
+              - generic "看看楼里有什么" [ref=e1765] [cursor=pointer]
+            - generic [ref=e1766]:
+              - generic [ref=e1767]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1768] [cursor=pointer]
+        - article [ref=e1769]:
+          - generic [ref=e1770]:
+            - generic [ref=e1771]: "123"
+            - generic [ref=e1772]: 22M
+          - generic [ref=e1773]:
+            - text: 南岸旧城
+            - heading "榛木13号楼" [level=4] [ref=e1774]
+            - generic [ref=e1775]: Old Quarter 75
+            - paragraph [ref=e1776]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1777]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1778]:
+              - generic "看看楼里有什么" [ref=e1779] [cursor=pointer]
+            - generic [ref=e1780]:
+              - generic [ref=e1781]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1782] [cursor=pointer]
+        - article [ref=e1783]:
+          - generic [ref=e1784]:
+            - generic [ref=e1785]: "124"
+            - generic [ref=e1786]: 20M
+          - generic [ref=e1787]:
+            - text: 南岸旧城
+            - heading "晴窗13号楼" [level=4] [ref=e1788]
+            - generic [ref=e1789]: Old Quarter 76
+            - paragraph [ref=e1790]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1791]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1792]:
+              - generic "看看楼里有什么" [ref=e1793] [cursor=pointer]
+            - generic [ref=e1794]:
+              - generic [ref=e1795]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1796] [cursor=pointer]
+        - article [ref=e1797]:
+          - generic [ref=e1798]:
+            - generic [ref=e1799]: "125"
+            - generic [ref=e1800]: 25M
+          - generic [ref=e1801]:
+            - text: 南岸旧城
+            - heading "白帆13号楼" [level=4] [ref=e1802]
+            - generic [ref=e1803]: Old Quarter 77
+            - paragraph [ref=e1804]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1805]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1806]:
+              - generic "看看楼里有什么" [ref=e1807] [cursor=pointer]
+            - generic [ref=e1808]:
+              - generic [ref=e1809]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1810] [cursor=pointer]
+        - article [ref=e1811]:
+          - generic [ref=e1812]:
+            - generic [ref=e1813]: "126"
+            - generic [ref=e1814]: 20M
+          - generic [ref=e1815]:
+            - text: 南岸旧城
+            - heading "陶溪13号楼" [level=4] [ref=e1816]
+            - generic [ref=e1817]: Old Quarter 78
+            - paragraph [ref=e1818]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1819]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1820]:
+              - generic "看看楼里有什么" [ref=e1821] [cursor=pointer]
+            - generic [ref=e1822]:
+              - generic [ref=e1823]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1824] [cursor=pointer]
+        - article [ref=e1825]:
+          - generic [ref=e1826]:
+            - generic [ref=e1827]: "127"
+            - generic [ref=e1828]: 24M
+          - generic [ref=e1829]:
+            - text: 南岸旧城
+            - heading "苔巷14号楼" [level=4] [ref=e1830]
+            - generic [ref=e1831]: Old Quarter 79
+            - paragraph [ref=e1832]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1833]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1834]:
+              - generic "看看楼里有什么" [ref=e1835] [cursor=pointer]
+            - generic [ref=e1836]:
+              - generic [ref=e1837]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1838] [cursor=pointer]
+        - article [ref=e1839]:
+          - generic [ref=e1840]:
+            - generic [ref=e1841]: "128"
+            - generic [ref=e1842]: 17M
+          - generic [ref=e1843]:
+            - text: 南岸旧城
+            - heading "风铃14号楼" [level=4] [ref=e1844]
+            - generic [ref=e1845]: Old Quarter 80
+            - paragraph [ref=e1846]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1847]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1848]:
+              - generic "看看楼里有什么" [ref=e1849] [cursor=pointer]
+            - generic [ref=e1850]:
+              - generic [ref=e1851]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1852] [cursor=pointer]
+        - article [ref=e1853]:
+          - generic [ref=e1854]:
+            - generic [ref=e1855]: "129"
+            - generic [ref=e1856]: 15M
+          - generic [ref=e1857]:
+            - text: 南岸旧城
+            - heading "榛木14号楼" [level=4] [ref=e1858]
+            - generic [ref=e1859]: Old Quarter 81
+            - paragraph [ref=e1860]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1861]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1862]:
+              - generic "看看楼里有什么" [ref=e1863] [cursor=pointer]
+            - generic [ref=e1864]:
+              - generic [ref=e1865]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e1866] [cursor=pointer]
+        - article [ref=e1867]:
+          - generic [ref=e1868]:
+            - generic [ref=e1869]: "130"
+            - generic [ref=e1870]: 18M
+          - generic [ref=e1871]:
+            - text: 南岸旧城
+            - heading "晴窗14号楼" [level=4] [ref=e1872]
+            - generic [ref=e1873]: Old Quarter 82
+            - paragraph [ref=e1874]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1875]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1876]:
+              - generic "看看楼里有什么" [ref=e1877] [cursor=pointer]
+            - generic [ref=e1878]:
+              - generic [ref=e1879]: 4 个开放楼层
+              - button "前往门口 ↗" [ref=e1880] [cursor=pointer]
+        - article [ref=e1881]:
+          - generic [ref=e1882]:
+            - generic [ref=e1883]: "131"
+            - generic [ref=e1884]: 23M
+          - generic [ref=e1885]:
+            - text: 南岸旧城
+            - heading "白帆14号楼" [level=4] [ref=e1886]
+            - generic [ref=e1887]: Old Quarter 83
+            - paragraph [ref=e1888]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1889]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1890]:
+              - generic "看看楼里有什么" [ref=e1891] [cursor=pointer]
+            - generic [ref=e1892]:
+              - generic [ref=e1893]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1894] [cursor=pointer]
+        - article [ref=e1895]:
+          - generic [ref=e1896]:
+            - generic [ref=e1897]: "132"
+            - generic [ref=e1898]: 25M
+          - generic [ref=e1899]:
+            - text: 南岸旧城
+            - heading "陶溪14号楼" [level=4] [ref=e1900]
+            - generic [ref=e1901]: Old Quarter 84
+            - paragraph [ref=e1902]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1903]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1904]:
+              - generic "看看楼里有什么" [ref=e1905] [cursor=pointer]
+            - generic [ref=e1906]:
+              - generic [ref=e1907]: 6 个开放楼层
+              - button "前往门口 ↗" [ref=e1908] [cursor=pointer]
+        - article [ref=e1909]:
+          - generic [ref=e1910]:
+            - generic [ref=e1911]: "133"
+            - generic [ref=e1912]: 12M
+          - generic [ref=e1913]:
+            - text: 南岸旧城
+            - heading "苔巷15号楼" [level=4] [ref=e1914]
+            - generic [ref=e1915]: Old Quarter 85
+            - paragraph [ref=e1916]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1917]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1918]:
+              - generic "看看楼里有什么" [ref=e1919] [cursor=pointer]
+            - generic [ref=e1920]:
+              - generic [ref=e1921]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1922] [cursor=pointer]
+        - article [ref=e1923]:
+          - generic [ref=e1924]:
+            - generic [ref=e1925]: "134"
+            - generic [ref=e1926]: 10M
+          - generic [ref=e1927]:
+            - text: 南岸旧城
+            - heading "风铃15号楼" [level=4] [ref=e1928]
+            - generic [ref=e1929]: Old Quarter 86
+            - paragraph [ref=e1930]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1931]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1932]:
+              - generic "看看楼里有什么" [ref=e1933] [cursor=pointer]
+            - generic [ref=e1934]:
+              - generic [ref=e1935]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1936] [cursor=pointer]
+        - article [ref=e1937]:
+          - generic [ref=e1938]:
+            - generic [ref=e1939]: "135"
+            - generic [ref=e1940]: 12M
+          - generic [ref=e1941]:
+            - text: 南岸旧城
+            - heading "榛木15号楼" [level=4] [ref=e1942]
+            - generic [ref=e1943]: Old Quarter 87
+            - paragraph [ref=e1944]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1945]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1946]:
+              - generic "看看楼里有什么" [ref=e1947] [cursor=pointer]
+            - generic [ref=e1948]:
+              - generic [ref=e1949]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1950] [cursor=pointer]
+        - article [ref=e1951]:
+          - generic [ref=e1952]:
+            - generic [ref=e1953]: "136"
+            - generic [ref=e1954]: 10M
+          - generic [ref=e1955]:
+            - text: 南岸旧城
+            - heading "晴窗15号楼" [level=4] [ref=e1956]
+            - generic [ref=e1957]: Old Quarter 88
+            - paragraph [ref=e1958]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1959]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1960]:
+              - generic "看看楼里有什么" [ref=e1961] [cursor=pointer]
+            - generic [ref=e1962]:
+              - generic [ref=e1963]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e1964] [cursor=pointer]
+        - article [ref=e1965]:
+          - generic [ref=e1966]:
+            - generic [ref=e1967]: "137"
+            - generic [ref=e1968]: 20M
+          - generic [ref=e1969]:
+            - text: 南岸旧城
+            - heading "白帆15号楼" [level=4] [ref=e1970]
+            - generic [ref=e1971]: Old Quarter 89
+            - paragraph [ref=e1972]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1973]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1974]:
+              - generic "看看楼里有什么" [ref=e1975] [cursor=pointer]
+            - generic [ref=e1976]:
+              - generic [ref=e1977]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1978] [cursor=pointer]
+        - article [ref=e1979]:
+          - generic [ref=e1980]:
+            - generic [ref=e1981]: "138"
+            - generic [ref=e1982]: 22M
+          - generic [ref=e1983]:
+            - text: 南岸旧城
+            - heading "陶溪15号楼" [level=4] [ref=e1984]
+            - generic [ref=e1985]: Old Quarter 90
+            - paragraph [ref=e1986]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e1987]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e1988]:
+              - generic "看看楼里有什么" [ref=e1989] [cursor=pointer]
+            - generic [ref=e1990]:
+              - generic [ref=e1991]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e1992] [cursor=pointer]
+        - article [ref=e1993]:
+          - generic [ref=e1994]:
+            - generic [ref=e1995]: "139"
+            - generic [ref=e1996]: 11M
+          - generic [ref=e1997]:
+            - text: 南岸旧城
+            - heading "苔巷16号楼" [level=4] [ref=e1998]
+            - generic [ref=e1999]: Old Quarter 91
+            - paragraph [ref=e2000]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e2001]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e2002]:
+              - generic "看看楼里有什么" [ref=e2003] [cursor=pointer]
+            - generic [ref=e2004]:
+              - generic [ref=e2005]: 2 个开放楼层
+              - button "前往门口 ↗" [ref=e2006] [cursor=pointer]
+        - article [ref=e2007]:
+          - generic [ref=e2008]:
+            - generic [ref=e2009]: "140"
+            - generic [ref=e2010]: 21M
+          - generic [ref=e2011]:
+            - text: 南岸旧城
+            - heading "风铃16号楼" [level=4] [ref=e2012]
+            - generic [ref=e2013]: Old Quarter 92
+            - paragraph [ref=e2014]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e2015]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e2016]:
+              - generic "看看楼里有什么" [ref=e2017] [cursor=pointer]
+            - generic [ref=e2018]:
+              - generic [ref=e2019]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e2020] [cursor=pointer]
+        - article [ref=e2021]:
+          - generic [ref=e2022]:
+            - generic [ref=e2023]: "141"
+            - generic [ref=e2024]: 13M
+          - generic [ref=e2025]:
+            - text: 南岸旧城
+            - heading "榛木16号楼" [level=4] [ref=e2026]
+            - generic [ref=e2027]: Old Quarter 93
+            - paragraph [ref=e2028]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e2029]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e2030]:
+              - generic "看看楼里有什么" [ref=e2031] [cursor=pointer]
+            - generic [ref=e2032]:
+              - generic [ref=e2033]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e2034] [cursor=pointer]
+        - article [ref=e2035]:
+          - generic [ref=e2036]:
+            - generic [ref=e2037]: "142"
+            - generic [ref=e2038]: 22M
+          - generic [ref=e2039]:
+            - text: 南岸旧城
+            - heading "晴窗16号楼" [level=4] [ref=e2040]
+            - generic [ref=e2041]: Old Quarter 94
+            - paragraph [ref=e2042]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e2043]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e2044]:
+              - generic "看看楼里有什么" [ref=e2045] [cursor=pointer]
+            - generic [ref=e2046]:
+              - generic [ref=e2047]: 5 个开放楼层
+              - button "前往门口 ↗" [ref=e2048] [cursor=pointer]
+        - article [ref=e2049]:
+          - generic [ref=e2050]:
+            - generic [ref=e2051]: "143"
+            - generic [ref=e2052]: 14M
+          - generic [ref=e2053]:
+            - text: 南岸旧城
+            - heading "白帆16号楼" [level=4] [ref=e2054]
+            - generic [ref=e2055]: Old Quarter 95
+            - paragraph [ref=e2056]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e2057]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e2058]:
+              - generic "看看楼里有什么" [ref=e2059] [cursor=pointer]
+            - generic [ref=e2060]:
+              - generic [ref=e2061]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e2062] [cursor=pointer]
+        - article [ref=e2063]:
+          - generic [ref=e2064]:
+            - generic [ref=e2065]: "144"
+            - generic [ref=e2066]: 12M
+          - generic [ref=e2067]:
+            - text: 南岸旧城
+            - heading "陶溪16号楼" [level=4] [ref=e2068]
+            - generic [ref=e2069]: Old Quarter 96
+            - paragraph [ref=e2070]: 旧城紧凑楼宇，中央通路连接两间生活房间、实体楼梯和后部电梯。
+            - paragraph [ref=e2071]: 紧凑生活空间 · 共享用途与家具布局
+            - group [ref=e2072]:
+              - generic "看看楼里有什么" [ref=e2073] [cursor=pointer]
+            - generic [ref=e2074]:
+              - generic [ref=e2075]: 3 个开放楼层
+              - button "前往门口 ↗" [ref=e2076] [cursor=pointer]
+        - article [ref=e2077]:
+          - generic [ref=e2078]:
+            - generic [ref=e2079]: "145"
+            - generic [ref=e2080]: 92M
+          - generic [ref=e2081]:
+            - text: 东湾天际线
+            - heading "海峡大厦" [level=4] [ref=e2082]
+            - generic [ref=e2083]: East Bay 1
+            - paragraph [ref=e2084]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2085]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2086]:
+              - generic "看看楼里有什么" [ref=e2087] [cursor=pointer]
+            - generic [ref=e2088]:
+              - generic [ref=e2089]: 22 个开放楼层
+              - button "前往门口 ↗" [ref=e2090] [cursor=pointer]
+        - article [ref=e2091]:
+          - generic [ref=e2092]:
+            - generic [ref=e2093]: "146"
+            - generic [ref=e2094]: 168M
+          - generic [ref=e2095]:
+            - text: 东湾天际线
+            - heading "北湾灯楼" [level=4] [ref=e2096]
+            - generic [ref=e2097]: East Bay 2
+            - paragraph [ref=e2098]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2099]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2100]:
+              - generic "看看楼里有什么" [ref=e2101] [cursor=pointer]
+            - generic [ref=e2102]:
+              - generic [ref=e2103]: 37 个开放楼层
+              - button "前往门口 ↗" [ref=e2104] [cursor=pointer]
+        - article [ref=e2105]:
+          - generic [ref=e2106]:
+            - generic [ref=e2107]: "147"
+            - generic [ref=e2108]: 122M
+          - generic [ref=e2109]:
+            - text: 东湾天际线
+            - heading "石湾公馆" [level=4] [ref=e2110]
+            - generic [ref=e2111]: East Bay 3
+            - paragraph [ref=e2112]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2113]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2114]:
+              - generic "看看楼里有什么" [ref=e2115] [cursor=pointer]
+            - generic [ref=e2116]:
+              - generic [ref=e2117]: 26 个开放楼层
+              - button "前往门口 ↗" [ref=e2118] [cursor=pointer]
+        - article [ref=e2119]:
+          - generic [ref=e2120]:
+            - generic [ref=e2121]: "148"
+            - generic [ref=e2122]: 238M
+          - generic [ref=e2123]:
+            - text: 东湾天际线
+            - heading "东湾冠塔" [level=4] [ref=e2124]
+            - generic [ref=e2125]: East Bay 4
+            - paragraph [ref=e2126]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2127]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2128]:
+              - generic "看看楼里有什么" [ref=e2129] [cursor=pointer]
+            - generic [ref=e2130]:
+              - generic [ref=e2131]: 54 个开放楼层
+              - button "前往门口 ↗" [ref=e2132] [cursor=pointer]
+        - article [ref=e2133]:
+          - generic [ref=e2134]:
+            - generic [ref=e2135]: "149"
+            - generic [ref=e2136]: 138M
+          - generic [ref=e2137]:
+            - text: 东湾天际线
+            - heading "石堤中心" [level=4] [ref=e2138]
+            - generic [ref=e2139]: East Bay 5
+            - paragraph [ref=e2140]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2141]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2142]:
+              - generic "看看楼里有什么" [ref=e2143] [cursor=pointer]
+            - generic [ref=e2144]:
+              - generic [ref=e2145]: 30 个开放楼层
+              - button "前往门口 ↗" [ref=e2146] [cursor=pointer]
+        - article [ref=e2147]:
+          - generic [ref=e2148]:
+            - generic [ref=e2149]: "150"
+            - generic [ref=e2150]: 284M
+          - generic [ref=e2151]:
+            - text: 东湾天际线
+            - heading "银流中心" [level=4] [ref=e2152]
+            - generic [ref=e2153]: East Bay 6
+            - paragraph [ref=e2154]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2155]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2156]:
+              - generic "看看楼里有什么" [ref=e2157] [cursor=pointer]
+            - generic [ref=e2158]:
+              - generic [ref=e2159]: 65 个开放楼层
+              - button "前往门口 ↗" [ref=e2160] [cursor=pointer]
+        - article [ref=e2161]:
+          - generic [ref=e2162]:
+            - generic [ref=e2163]: "151"
+            - generic [ref=e2164]: 108M
+          - generic [ref=e2165]:
+            - text: 东湾天际线
+            - heading "岸庭" [level=4] [ref=e2166]
+            - generic [ref=e2167]: East Bay 7
+            - paragraph [ref=e2168]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2169]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2170]:
+              - generic "看看楼里有什么" [ref=e2171] [cursor=pointer]
+            - generic [ref=e2172]:
+              - generic [ref=e2173]: 23 个开放楼层
+              - button "前往门口 ↗" [ref=e2174] [cursor=pointer]
+        - article [ref=e2175]:
+          - generic [ref=e2176]:
+            - generic [ref=e2177]: "152"
+            - generic [ref=e2178]: 206M
+          - generic [ref=e2179]:
+            - text: 东湾天际线
+            - heading "海湾椭圆" [level=4] [ref=e2180]
+            - generic [ref=e2181]: East Bay 8
+            - paragraph [ref=e2182]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2183]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2184]:
+              - generic "看看楼里有什么" [ref=e2185] [cursor=pointer]
+            - generic [ref=e2186]:
+              - generic [ref=e2187]: 46 个开放楼层
+              - button "前往门口 ↗" [ref=e2188] [cursor=pointer]
+        - article [ref=e2189]:
+          - generic [ref=e2190]:
+            - generic [ref=e2191]: "153"
+            - generic [ref=e2192]: 144M
+          - generic [ref=e2193]:
+            - text: 东湾天际线
+            - heading "石带大厦" [level=4] [ref=e2194]
+            - generic [ref=e2195]: East Bay 9
+            - paragraph [ref=e2196]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2197]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2198]:
+              - generic "看看楼里有什么" [ref=e2199] [cursor=pointer]
+            - generic [ref=e2200]:
+              - generic [ref=e2201]: 31 个开放楼层
+              - button "前往门口 ↗" [ref=e2202] [cursor=pointer]
+        - article [ref=e2203]:
+          - generic [ref=e2204]:
+            - generic [ref=e2205]: "154"
+            - generic [ref=e2206]: 328M
+          - generic [ref=e2207]:
+            - text: 东湾天际线
+            - heading "三棱金融中心" [level=4] [ref=e2208]
+            - generic [ref=e2209]: East Bay 10
+            - paragraph [ref=e2210]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2211]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2212]:
+              - generic "看看楼里有什么" [ref=e2213] [cursor=pointer]
+            - generic [ref=e2214]:
+              - generic [ref=e2215]: 75 个开放楼层
+              - button "前往门口 ↗" [ref=e2216] [cursor=pointer]
+        - article [ref=e2217]:
+          - generic [ref=e2218]:
+            - generic [ref=e2219]: "155"
+            - generic [ref=e2220]: 172M
+          - generic [ref=e2221]:
+            - text: 东湾天际线
+            - heading "晨钟东座" [level=4] [ref=e2222]
+            - generic [ref=e2223]: East Bay 11
+            - paragraph [ref=e2224]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2225]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2226]:
+              - generic "看看楼里有什么" [ref=e2227] [cursor=pointer]
+            - generic [ref=e2228]:
+              - generic [ref=e2229]: 38 个开放楼层
+              - button "前往门口 ↗" [ref=e2230] [cursor=pointer]
+        - article [ref=e2231]:
+          - generic [ref=e2232]:
+            - generic [ref=e2233]: "156"
+            - generic [ref=e2234]: 386M
+          - generic [ref=e2235]:
+            - text: 东湾天际线
+            - heading "明珠国际中心" [level=4] [ref=e2236]
+            - generic [ref=e2237]: East Bay 12
+            - paragraph [ref=e2238]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2239]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2240]:
+              - generic "看看楼里有什么" [ref=e2241] [cursor=pointer]
+            - generic [ref=e2242]:
+              - generic [ref=e2243]: 89 个开放楼层
+              - button "前往门口 ↗" [ref=e2244] [cursor=pointer]
+        - article [ref=e2245]:
+          - generic [ref=e2246]:
+            - generic [ref=e2247]: "157"
+            - generic [ref=e2248]: 182M
+          - generic [ref=e2249]:
+            - text: 东湾天际线
+            - heading "星湾西座" [level=4] [ref=e2250]
+            - generic [ref=e2251]: East Bay 13
+            - paragraph [ref=e2252]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2253]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2254]:
+              - generic "看看楼里有什么" [ref=e2255] [cursor=pointer]
+            - generic [ref=e2256]:
+              - generic [ref=e2257]: 41 个开放楼层
+              - button "前往门口 ↗" [ref=e2258] [cursor=pointer]
+        - article [ref=e2259]:
+          - generic [ref=e2260]:
+            - generic [ref=e2261]: "158"
+            - generic [ref=e2262]: 226M
+          - generic [ref=e2263]:
+            - text: 东湾天际线
+            - heading "星湾东座" [level=4] [ref=e2264]
+            - generic [ref=e2265]: East Bay 14
+            - paragraph [ref=e2266]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2267]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2268]:
+              - generic "看看楼里有什么" [ref=e2269] [cursor=pointer]
+            - generic [ref=e2270]:
+              - generic [ref=e2271]: 51 个开放楼层
+              - button "前往门口 ↗" [ref=e2272] [cursor=pointer]
+        - article [ref=e2273]:
+          - generic [ref=e2274]:
+            - generic [ref=e2275]: "159"
+            - generic [ref=e2276]: 296M
+          - generic [ref=e2277]:
+            - text: 东湾天际线
+            - heading "云帆中心" [level=4] [ref=e2278]
+            - generic [ref=e2279]: East Bay 15
+            - paragraph [ref=e2280]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2281]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2282]:
+              - generic "看看楼里有什么" [ref=e2283] [cursor=pointer]
+            - generic [ref=e2284]:
+              - generic [ref=e2285]: 68 个开放楼层
+              - button "前往门口 ↗" [ref=e2286] [cursor=pointer]
+        - article [ref=e2287]:
+          - generic [ref=e2288]:
+            - generic [ref=e2289]: "160"
+            - generic [ref=e2290]: 151M
+          - generic [ref=e2291]:
+            - text: 东湾天际线
+            - heading "港灯大厦" [level=4] [ref=e2292]
+            - generic [ref=e2293]: East Bay 16
+            - paragraph [ref=e2294]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2295]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2296]:
+              - generic "看看楼里有什么" [ref=e2297] [cursor=pointer]
+            - generic [ref=e2298]:
+              - generic [ref=e2299]: 33 个开放楼层
+              - button "前往门口 ↗" [ref=e2300] [cursor=pointer]
+        - article [ref=e2301]:
+          - generic [ref=e2302]:
+            - generic [ref=e2303]: "161"
+            - generic [ref=e2304]: 99M
+          - generic [ref=e2305]:
+            - text: 东湾天际线
+            - heading "水岸花园" [level=4] [ref=e2306]
+            - generic [ref=e2307]: East Bay 17
+            - paragraph [ref=e2308]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2309]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2310]:
+              - generic "看看楼里有什么" [ref=e2311] [cursor=pointer]
+            - generic [ref=e2312]:
+              - generic [ref=e2313]: 24 个开放楼层
+              - button "前往门口 ↗" [ref=e2314] [cursor=pointer]
+        - article [ref=e2315]:
+          - generic [ref=e2316]:
+            - generic [ref=e2317]: "162"
+            - generic [ref=e2318]: 244M
+          - generic [ref=e2319]:
+            - text: 东湾天际线
+            - heading "南湾弧塔" [level=4] [ref=e2320]
+            - generic [ref=e2321]: East Bay 18
+            - paragraph [ref=e2322]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2323]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2324]:
+              - generic "看看楼里有什么" [ref=e2325] [cursor=pointer]
+            - generic [ref=e2326]:
+              - generic [ref=e2327]: 55 个开放楼层
+              - button "前往门口 ↗" [ref=e2328] [cursor=pointer]
+        - article [ref=e2329]:
+          - generic [ref=e2330]:
+            - generic [ref=e2331]: "163"
+            - generic [ref=e2332]: 116M
+          - generic [ref=e2333]:
+            - text: 东湾天际线
+            - heading "渡湾汇" [level=4] [ref=e2334]
+            - generic [ref=e2335]: East Bay 19
+            - paragraph [ref=e2336]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2337]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2338]:
+              - generic "看看楼里有什么" [ref=e2339] [cursor=pointer]
+            - generic [ref=e2340]:
+              - generic [ref=e2341]: 25 个开放楼层
+              - button "前往门口 ↗" [ref=e2342] [cursor=pointer]
+        - article [ref=e2343]:
+          - generic [ref=e2344]:
+            - generic [ref=e2345]: "164"
+            - generic [ref=e2346]: 188M
+          - generic [ref=e2347]:
+            - text: 东湾天际线
+            - heading "铜湾酒店" [level=4] [ref=e2348]
+            - generic [ref=e2349]: East Bay 20
+            - paragraph [ref=e2350]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2351]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2352]:
+              - generic "看看楼里有什么" [ref=e2353] [cursor=pointer]
+            - generic [ref=e2354]:
+              - generic [ref=e2355]: 42 个开放楼层
+              - button "前往门口 ↗" [ref=e2356] [cursor=pointer]
+        - article [ref=e2357]:
+          - generic [ref=e2358]:
+            - generic [ref=e2359]: "165"
+            - generic [ref=e2360]: 108M
+          - generic [ref=e2361]:
+            - text: 东湾天际线
+            - heading "海角公寓" [level=4] [ref=e2362]
+            - generic [ref=e2363]: East Bay 21
+            - paragraph [ref=e2364]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2365]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2366]:
+              - generic "看看楼里有什么" [ref=e2367] [cursor=pointer]
+            - generic [ref=e2368]:
+              - generic [ref=e2369]: 23 个开放楼层
+              - button "前往门口 ↗" [ref=e2370] [cursor=pointer]
+        - article [ref=e2371]:
+          - generic [ref=e2372]:
+            - generic [ref=e2373]: "166"
+            - generic [ref=e2374]: 198M
+          - generic [ref=e2375]:
+            - text: 东湾天际线
+            - heading "岭上一号" [level=4] [ref=e2376]
+            - generic [ref=e2377]: East Bay 22
+            - paragraph [ref=e2378]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2379]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2380]:
+              - generic "看看楼里有什么" [ref=e2381] [cursor=pointer]
+            - generic [ref=e2382]:
+              - generic [ref=e2383]: 44 个开放楼层
+              - button "前往门口 ↗" [ref=e2384] [cursor=pointer]
+        - article [ref=e2385]:
+          - generic [ref=e2386]:
+            - generic [ref=e2387]: "167"
+            - generic [ref=e2388]: 222M
+          - generic [ref=e2389]:
+            - text: 东湾天际线
+            - heading "岭上二号" [level=4] [ref=e2390]
+            - generic [ref=e2391]: East Bay 23
+            - paragraph [ref=e2392]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2393]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2394]:
+              - generic "看看楼里有什么" [ref=e2395] [cursor=pointer]
+            - generic [ref=e2396]:
+              - generic [ref=e2397]: 50 个开放楼层
+              - button "前往门口 ↗" [ref=e2398] [cursor=pointer]
+        - article [ref=e2399]:
+          - generic [ref=e2400]:
+            - generic [ref=e2401]: "168"
+            - generic [ref=e2402]: 173M
+          - generic [ref=e2403]:
+            - text: 东湾天际线
+            - heading "花岗广场" [level=4] [ref=e2404]
+            - generic [ref=e2405]: East Bay 24
+            - paragraph [ref=e2406]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2407]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2408]:
+              - generic "看看楼里有什么" [ref=e2409] [cursor=pointer]
+            - generic [ref=e2410]:
+              - generic [ref=e2411]: 38 个开放楼层
+              - button "前往门口 ↗" [ref=e2412] [cursor=pointer]
+        - article [ref=e2413]:
+          - generic [ref=e2414]:
+            - generic [ref=e2415]: "169"
+            - generic [ref=e2416]: 274M
+          - generic [ref=e2417]:
+            - text: 东湾天际线
+            - heading "飞桥中心" [level=4] [ref=e2418]
+            - generic [ref=e2419]: East Bay 25
+            - paragraph [ref=e2420]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2421]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2422]:
+              - generic "看看楼里有什么" [ref=e2423] [cursor=pointer]
+            - generic [ref=e2424]:
+              - generic [ref=e2425]: 62 个开放楼层
+              - button "前往门口 ↗" [ref=e2426] [cursor=pointer]
+        - article [ref=e2427]:
+          - generic [ref=e2428]:
+            - generic [ref=e2429]: "170"
+            - generic [ref=e2430]: 197M
+          - generic [ref=e2431]:
+            - text: 东湾天际线
+            - heading "松岭双庭南座" [level=4] [ref=e2432]
+            - generic [ref=e2433]: East Bay 26
+            - paragraph [ref=e2434]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2435]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2436]:
+              - generic "看看楼里有什么" [ref=e2437] [cursor=pointer]
+            - generic [ref=e2438]:
+              - generic [ref=e2439]: 44 个开放楼层
+              - button "前往门口 ↗" [ref=e2440] [cursor=pointer]
+        - article [ref=e2441]:
+          - generic [ref=e2442]:
+            - generic [ref=e2443]: "171"
+            - generic [ref=e2444]: 212M
+          - generic [ref=e2445]:
+            - text: 东湾天际线
+            - heading "松岭双庭北座" [level=4] [ref=e2446]
+            - generic [ref=e2447]: East Bay 27
+            - paragraph [ref=e2448]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2449]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2450]:
+              - generic "看看楼里有什么" [ref=e2451] [cursor=pointer]
+            - generic [ref=e2452]:
+              - generic [ref=e2453]: 48 个开放楼层
+              - button "前往门口 ↗" [ref=e2454] [cursor=pointer]
+        - article [ref=e2455]:
+          - generic [ref=e2456]:
+            - generic [ref=e2457]: "172"
+            - generic [ref=e2458]: 306M
+          - generic [ref=e2459]:
+            - text: 东湾天际线
+            - heading "望山金融汇" [level=4] [ref=e2460]
+            - generic [ref=e2461]: East Bay 28
+            - paragraph [ref=e2462]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2463]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2464]:
+              - generic "看看楼里有什么" [ref=e2465] [cursor=pointer]
+            - generic [ref=e2466]:
+              - generic [ref=e2467]: 70 个开放楼层
+              - button "前往门口 ↗" [ref=e2468] [cursor=pointer]
+        - article [ref=e2469]:
+          - generic [ref=e2470]:
+            - generic [ref=e2471]: "173"
+            - generic [ref=e2472]: 156M
+          - generic [ref=e2473]:
+            - text: 东湾天际线
+            - heading "晴岭花园" [level=4] [ref=e2474]
+            - generic [ref=e2475]: East Bay 29
+            - paragraph [ref=e2476]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2477]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2478]:
+              - generic "看看楼里有什么" [ref=e2479] [cursor=pointer]
+            - generic [ref=e2480]:
+              - generic [ref=e2481]: 34 个开放楼层
+              - button "前往门口 ↗" [ref=e2482] [cursor=pointer]
+        - article [ref=e2483]:
+          - generic [ref=e2484]:
+            - generic [ref=e2485]: "174"
+            - generic [ref=e2486]: 179M
+          - generic [ref=e2487]:
+            - text: 东湾天际线
+            - heading "滨海雅苑" [level=4] [ref=e2488]
+            - generic [ref=e2489]: East Bay 30
+            - paragraph [ref=e2490]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2491]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2492]:
+              - generic "看看楼里有什么" [ref=e2493] [cursor=pointer]
+            - generic [ref=e2494]:
+              - generic [ref=e2495]: 40 个开放楼层
+              - button "前往门口 ↗" [ref=e2496] [cursor=pointer]
+        - article [ref=e2497]:
+          - generic [ref=e2498]:
+            - generic [ref=e2499]: "175"
+            - generic [ref=e2500]: 247M
+          - generic [ref=e2501]:
+            - text: 东湾天际线
+            - heading "岭光灯塔" [level=4] [ref=e2502]
+            - generic [ref=e2503]: East Bay 31
+            - paragraph [ref=e2504]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2505]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2506]:
+              - generic "看看楼里有什么" [ref=e2507] [cursor=pointer]
+            - generic [ref=e2508]:
+              - generic [ref=e2509]: 56 个开放楼层
+              - button "前往门口 ↗" [ref=e2510] [cursor=pointer]
+        - article [ref=e2511]:
+          - generic [ref=e2512]:
+            - generic [ref=e2513]: "176"
+            - generic [ref=e2514]: 184M
+          - generic [ref=e2515]:
+            - text: 东湾天际线
+            - heading "南山庭院" [level=4] [ref=e2516]
+            - generic [ref=e2517]: East Bay 32
+            - paragraph [ref=e2518]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2519]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2520]:
+              - generic "看看楼里有什么" [ref=e2521] [cursor=pointer]
+            - generic [ref=e2522]:
+              - generic [ref=e2523]: 41 个开放楼层
+              - button "前往门口 ↗" [ref=e2524] [cursor=pointer]
+        - article [ref=e2525]:
+          - generic [ref=e2526]:
+            - generic [ref=e2527]: "177"
+            - generic [ref=e2528]: 228M
+          - generic [ref=e2529]:
+            - text: 东湾天际线
+            - heading "铜岭居" [level=4] [ref=e2530]
+            - generic [ref=e2531]: East Bay 33
+            - paragraph [ref=e2532]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2533]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2534]:
+              - generic "看看楼里有什么" [ref=e2535] [cursor=pointer]
+            - generic [ref=e2536]:
+              - generic [ref=e2537]: 51 个开放楼层
+              - button "前往门口 ↗" [ref=e2538] [cursor=pointer]
+        - article [ref=e2539]:
+          - generic [ref=e2540]:
+            - generic [ref=e2541]: "178"
+            - generic [ref=e2542]: 157M
+          - generic [ref=e2543]:
+            - text: 东湾天际线
+            - heading "海角商务楼" [level=4] [ref=e2544]
+            - generic [ref=e2545]: East Bay 34
+            - paragraph [ref=e2546]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2547]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2548]:
+              - generic "看看楼里有什么" [ref=e2549] [cursor=pointer]
+            - generic [ref=e2550]:
+              - generic [ref=e2551]: 35 个开放楼层
+              - button "前往门口 ↗" [ref=e2552] [cursor=pointer]
+        - article [ref=e2553]:
+          - generic [ref=e2554]:
+            - generic [ref=e2555]: "179"
+            - generic [ref=e2556]: 276M
+          - generic [ref=e2557]:
+            - text: 东湾天际线
+            - heading "岭冠大厦" [level=4] [ref=e2558]
+            - generic [ref=e2559]: East Bay 35
+            - paragraph [ref=e2560]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2561]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2562]:
+              - generic "看看楼里有什么" [ref=e2563] [cursor=pointer]
+            - generic [ref=e2564]:
+              - generic [ref=e2565]: 63 个开放楼层
+              - button "前往门口 ↗" [ref=e2566] [cursor=pointer]
+        - article [ref=e2567]:
+          - generic [ref=e2568]:
+            - generic [ref=e2569]: "180"
+            - generic [ref=e2570]: 183M
+          - generic [ref=e2571]:
+            - text: 东湾天际线
+            - heading "东山台地" [level=4] [ref=e2572]
+            - generic [ref=e2573]: East Bay 36
+            - paragraph [ref=e2574]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2575]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2576]:
+              - generic "看看楼里有什么" [ref=e2577] [cursor=pointer]
+            - generic [ref=e2578]:
+              - generic [ref=e2579]: 41 个开放楼层
+              - button "前往门口 ↗" [ref=e2580] [cursor=pointer]
+        - article [ref=e2581]:
+          - generic [ref=e2582]:
+            - generic [ref=e2583]: "181"
+            - generic [ref=e2584]: 284M
+          - generic [ref=e2585]:
+            - text: 东湾天际线
+            - heading "望岭中心" [level=4] [ref=e2586]
+            - generic [ref=e2587]: East Bay 37
+            - paragraph [ref=e2588]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2589]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2590]:
+              - generic "看看楼里有什么" [ref=e2591] [cursor=pointer]
+            - generic [ref=e2592]:
+              - generic [ref=e2593]: 65 个开放楼层
+              - button "前往门口 ↗" [ref=e2594] [cursor=pointer]
+        - article [ref=e2595]:
+          - generic [ref=e2596]:
+            - generic [ref=e2597]: "182"
+            - generic [ref=e2598]: 212M
+          - generic [ref=e2599]:
+            - text: 东湾天际线
+            - heading "杉岭高庭" [level=4] [ref=e2600]
+            - generic [ref=e2601]: East Bay 38
+            - paragraph [ref=e2602]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2603]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2604]:
+              - generic "看看楼里有什么" [ref=e2605] [cursor=pointer]
+            - generic [ref=e2606]:
+              - generic [ref=e2607]: 48 个开放楼层
+              - button "前往门口 ↗" [ref=e2608] [cursor=pointer]
+        - article [ref=e2609]:
+          - generic [ref=e2610]:
+            - generic [ref=e2611]: "183"
+            - generic [ref=e2612]: 203M
+          - generic [ref=e2613]:
+            - text: 东湾天际线
+            - heading "东峰住宅" [level=4] [ref=e2614]
+            - generic [ref=e2615]: East Bay 39
+            - paragraph [ref=e2616]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2617]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2618]:
+              - generic "看看楼里有什么" [ref=e2619] [cursor=pointer]
+            - generic [ref=e2620]:
+              - generic [ref=e2621]: 46 个开放楼层
+              - button "前往门口 ↗" [ref=e2622] [cursor=pointer]
+        - article [ref=e2623]:
+          - generic [ref=e2624]:
+            - generic [ref=e2625]: "184"
+            - generic [ref=e2626]: 163M
+          - generic [ref=e2627]:
+            - text: 东湾天际线
+            - heading "海角高庭" [level=4] [ref=e2628]
+            - generic [ref=e2629]: East Bay 40
+            - paragraph [ref=e2630]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2631]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2632]:
+              - generic "看看楼里有什么" [ref=e2633] [cursor=pointer]
+            - generic [ref=e2634]:
+              - generic [ref=e2635]: 36 个开放楼层
+              - button "前往门口 ↗" [ref=e2636] [cursor=pointer]
+        - article [ref=e2637]:
+          - generic [ref=e2638]:
+            - generic [ref=e2639]: "185"
+            - generic [ref=e2640]: 74M
+          - generic [ref=e2641]:
+            - text: 东湾天际线
+            - heading "东湾街区 1" [level=4] [ref=e2642]
+            - generic [ref=e2643]: East Bay 41
+            - paragraph [ref=e2644]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2645]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2646]:
+              - generic "看看楼里有什么" [ref=e2647] [cursor=pointer]
+            - generic [ref=e2648]:
+              - generic [ref=e2649]: 18 个开放楼层
+              - button "前往门口 ↗" [ref=e2650] [cursor=pointer]
+        - article [ref=e2651]:
+          - generic [ref=e2652]:
+            - generic [ref=e2653]: "186"
+            - generic [ref=e2654]: 88M
+          - generic [ref=e2655]:
+            - text: 东湾天际线
+            - heading "东湾街区 2" [level=4] [ref=e2656]
+            - generic [ref=e2657]: East Bay 42
+            - paragraph [ref=e2658]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2659]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2660]:
+              - generic "看看楼里有什么" [ref=e2661] [cursor=pointer]
+            - generic [ref=e2662]:
+              - generic [ref=e2663]: 21 个开放楼层
+              - button "前往门口 ↗" [ref=e2664] [cursor=pointer]
+        - article [ref=e2665]:
+          - generic [ref=e2666]:
+            - generic [ref=e2667]: "187"
+            - generic [ref=e2668]: 66M
+          - generic [ref=e2669]:
+            - text: 东湾天际线
+            - heading "东湾街区 3" [level=4] [ref=e2670]
+            - generic [ref=e2671]: East Bay 43
+            - paragraph [ref=e2672]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2673]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2674]:
+              - generic "看看楼里有什么" [ref=e2675] [cursor=pointer]
+            - generic [ref=e2676]:
+              - generic [ref=e2677]: 16 个开放楼层
+              - button "前往门口 ↗" [ref=e2678] [cursor=pointer]
+        - article [ref=e2679]:
+          - generic [ref=e2680]:
+            - generic [ref=e2681]: "188"
+            - generic [ref=e2682]: 105M
+          - generic [ref=e2683]:
+            - text: 东湾天际线
+            - heading "东湾街区 4" [level=4] [ref=e2684]
+            - generic [ref=e2685]: East Bay 44
+            - paragraph [ref=e2686]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2687]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2688]:
+              - generic "看看楼里有什么" [ref=e2689] [cursor=pointer]
+            - generic [ref=e2690]:
+              - generic [ref=e2691]: 22 个开放楼层
+              - button "前往门口 ↗" [ref=e2692] [cursor=pointer]
+        - article [ref=e2693]:
+          - generic [ref=e2694]:
+            - generic [ref=e2695]: "189"
+            - generic [ref=e2696]: 87M
+          - generic [ref=e2697]:
+            - text: 东湾天际线
+            - heading "东湾街区 5" [level=4] [ref=e2698]
+            - generic [ref=e2699]: East Bay 45
+            - paragraph [ref=e2700]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2701]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2702]:
+              - generic "看看楼里有什么" [ref=e2703] [cursor=pointer]
+            - generic [ref=e2704]:
+              - generic [ref=e2705]: 21 个开放楼层
+              - button "前往门口 ↗" [ref=e2706] [cursor=pointer]
+        - article [ref=e2707]:
+          - generic [ref=e2708]:
+            - generic [ref=e2709]: "190"
+            - generic [ref=e2710]: 113M
+          - generic [ref=e2711]:
+            - text: 东湾天际线
+            - heading "东湾街区 6" [level=4] [ref=e2712]
+            - generic [ref=e2713]: East Bay 46
+            - paragraph [ref=e2714]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2715]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2716]:
+              - generic "看看楼里有什么" [ref=e2717] [cursor=pointer]
+            - generic [ref=e2718]:
+              - generic [ref=e2719]: 24 个开放楼层
+              - button "前往门口 ↗" [ref=e2720] [cursor=pointer]
+        - article [ref=e2721]:
+          - generic [ref=e2722]:
+            - generic [ref=e2723]: "191"
+            - generic [ref=e2724]: 91M
+          - generic [ref=e2725]:
+            - text: 东湾天际线
+            - heading "东湾街区 7" [level=4] [ref=e2726]
+            - generic [ref=e2727]: East Bay 47
+            - paragraph [ref=e2728]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2729]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2730]:
+              - generic "看看楼里有什么" [ref=e2731] [cursor=pointer]
+            - generic [ref=e2732]:
+              - generic [ref=e2733]: 22 个开放楼层
+              - button "前往门口 ↗" [ref=e2734] [cursor=pointer]
+        - article [ref=e2735]:
+          - generic [ref=e2736]:
+            - generic [ref=e2737]: "192"
+            - generic [ref=e2738]: 119M
+          - generic [ref=e2739]:
+            - text: 东湾天际线
+            - heading "东湾街区 8" [level=4] [ref=e2740]
+            - generic [ref=e2741]: East Bay 48
+            - paragraph [ref=e2742]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2743]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2744]:
+              - generic "看看楼里有什么" [ref=e2745] [cursor=pointer]
+            - generic [ref=e2746]:
+              - generic [ref=e2747]: 26 个开放楼层
+              - button "前往门口 ↗" [ref=e2748] [cursor=pointer]
+        - article [ref=e2749]:
+          - generic [ref=e2750]:
+            - generic [ref=e2751]: "193"
+            - generic [ref=e2752]: 83M
+          - generic [ref=e2753]:
+            - text: 东湾天际线
+            - heading "东湾街区 9" [level=4] [ref=e2754]
+            - generic [ref=e2755]: East Bay 49
+            - paragraph [ref=e2756]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2757]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2758]:
+              - generic "看看楼里有什么" [ref=e2759] [cursor=pointer]
+            - generic [ref=e2760]:
+              - generic [ref=e2761]: 20 个开放楼层
+              - button "前往门口 ↗" [ref=e2762] [cursor=pointer]
+        - article [ref=e2763]:
+          - generic [ref=e2764]:
+            - generic [ref=e2765]: "194"
+            - generic [ref=e2766]: 68M
+          - generic [ref=e2767]:
+            - text: 东湾天际线
+            - heading "东湾街区 10" [level=4] [ref=e2768]
+            - generic [ref=e2769]: East Bay 50
+            - paragraph [ref=e2770]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2771]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2772]:
+              - generic "看看楼里有什么" [ref=e2773] [cursor=pointer]
+            - generic [ref=e2774]:
+              - generic [ref=e2775]: 16 个开放楼层
+              - button "前往门口 ↗" [ref=e2776] [cursor=pointer]
+        - article [ref=e2777]:
+          - generic [ref=e2778]:
+            - generic [ref=e2779]: "195"
+            - generic [ref=e2780]: 106M
+          - generic [ref=e2781]:
+            - text: 东湾天际线
+            - heading "东湾街区 11" [level=4] [ref=e2782]
+            - generic [ref=e2783]: East Bay 51
+            - paragraph [ref=e2784]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2785]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2786]:
+              - generic "看看楼里有什么" [ref=e2787] [cursor=pointer]
+            - generic [ref=e2788]:
+              - generic [ref=e2789]: 22 个开放楼层
+              - button "前往门口 ↗" [ref=e2790] [cursor=pointer]
+        - article [ref=e2791]:
+          - generic [ref=e2792]:
+            - generic [ref=e2793]: "196"
+            - generic [ref=e2794]: 97M
+          - generic [ref=e2795]:
+            - text: 东湾天际线
+            - heading "东湾街区 12" [level=4] [ref=e2796]
+            - generic [ref=e2797]: East Bay 52
+            - paragraph [ref=e2798]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2799]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2800]:
+              - generic "看看楼里有什么" [ref=e2801] [cursor=pointer]
+            - generic [ref=e2802]:
+              - generic [ref=e2803]: 23 个开放楼层
+              - button "前往门口 ↗" [ref=e2804] [cursor=pointer]
+        - article [ref=e2805]:
+          - generic [ref=e2806]:
+            - generic [ref=e2807]: "197"
+            - generic [ref=e2808]: 63M
+          - generic [ref=e2809]:
+            - text: 东湾天际线
+            - heading "东湾街区 13" [level=4] [ref=e2810]
+            - generic [ref=e2811]: East Bay 53
+            - paragraph [ref=e2812]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2813]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2814]:
+              - generic "看看楼里有什么" [ref=e2815] [cursor=pointer]
+            - generic [ref=e2816]:
+              - generic [ref=e2817]: 15 个开放楼层
+              - button "前往门口 ↗" [ref=e2818] [cursor=pointer]
+        - article [ref=e2819]:
+          - generic [ref=e2820]:
+            - generic [ref=e2821]: "198"
+            - generic [ref=e2822]: 101M
+          - generic [ref=e2823]:
+            - text: 东湾天际线
+            - heading "东湾街区 14" [level=4] [ref=e2824]
+            - generic [ref=e2825]: East Bay 54
+            - paragraph [ref=e2826]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2827]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2828]:
+              - generic "看看楼里有什么" [ref=e2829] [cursor=pointer]
+            - generic [ref=e2830]:
+              - generic [ref=e2831]: 21 个开放楼层
+              - button "前往门口 ↗" [ref=e2832] [cursor=pointer]
+        - article [ref=e2833]:
+          - generic [ref=e2834]:
+            - generic [ref=e2835]: "199"
+            - generic [ref=e2836]: 76M
+          - generic [ref=e2837]:
+            - text: 东湾天际线
+            - heading "东湾街区 15" [level=4] [ref=e2838]
+            - generic [ref=e2839]: East Bay 55
+            - paragraph [ref=e2840]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2841]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2842]:
+              - generic "看看楼里有什么" [ref=e2843] [cursor=pointer]
+            - generic [ref=e2844]:
+              - generic [ref=e2845]: 18 个开放楼层
+              - button "前往门口 ↗" [ref=e2846] [cursor=pointer]
+        - article [ref=e2847]:
+          - generic [ref=e2848]:
+            - generic [ref=e2849]: "200"
+            - generic [ref=e2850]: 93M
+          - generic [ref=e2851]:
+            - text: 东湾天际线
+            - heading "东湾街区 16" [level=4] [ref=e2852]
+            - generic [ref=e2853]: East Bay 56
+            - paragraph [ref=e2854]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2855]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2856]:
+              - generic "看看楼里有什么" [ref=e2857] [cursor=pointer]
+            - generic [ref=e2858]:
+              - generic [ref=e2859]: 22 个开放楼层
+              - button "前往门口 ↗" [ref=e2860] [cursor=pointer]
+        - article [ref=e2861]:
+          - generic [ref=e2862]:
+            - generic [ref=e2863]: "201"
+            - generic [ref=e2864]: 128M
+          - generic [ref=e2865]:
+            - text: 东湾天际线
+            - heading "东湾街区 17" [level=4] [ref=e2866]
+            - generic [ref=e2867]: East Bay 57
+            - paragraph [ref=e2868]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2869]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2870]:
+              - generic "看看楼里有什么" [ref=e2871] [cursor=pointer]
+            - generic [ref=e2872]:
+              - generic [ref=e2873]: 28 个开放楼层
+              - button "前往门口 ↗" [ref=e2874] [cursor=pointer]
+        - article [ref=e2875]:
+          - generic [ref=e2876]:
+            - generic [ref=e2877]: "202"
+            - generic [ref=e2878]: 151M
+          - generic [ref=e2879]:
+            - text: 东湾天际线
+            - heading "东湾街区 18" [level=4] [ref=e2880]
+            - generic [ref=e2881]: East Bay 58
+            - paragraph [ref=e2882]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2883]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2884]:
+              - generic "看看楼里有什么" [ref=e2885] [cursor=pointer]
+            - generic [ref=e2886]:
+              - generic [ref=e2887]: 33 个开放楼层
+              - button "前往门口 ↗" [ref=e2888] [cursor=pointer]
+        - article [ref=e2889]:
+          - generic [ref=e2890]:
+            - generic [ref=e2891]: "203"
+            - generic [ref=e2892]: 119M
+          - generic [ref=e2893]:
+            - text: 东湾天际线
+            - heading "东湾街区 19" [level=4] [ref=e2894]
+            - generic [ref=e2895]: East Bay 59
+            - paragraph [ref=e2896]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2897]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2898]:
+              - generic "看看楼里有什么" [ref=e2899] [cursor=pointer]
+            - generic [ref=e2900]:
+              - generic [ref=e2901]: 26 个开放楼层
+              - button "前往门口 ↗" [ref=e2902] [cursor=pointer]
+        - article [ref=e2903]:
+          - generic [ref=e2904]:
+            - generic [ref=e2905]: "204"
+            - generic [ref=e2906]: 144M
+          - generic [ref=e2907]:
+            - text: 东湾天际线
+            - heading "东湾街区 20" [level=4] [ref=e2908]
+            - generic [ref=e2909]: East Bay 60
+            - paragraph [ref=e2910]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2911]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2912]:
+              - generic "看看楼里有什么" [ref=e2913] [cursor=pointer]
+            - generic [ref=e2914]:
+              - generic [ref=e2915]: 31 个开放楼层
+              - button "前往门口 ↗" [ref=e2916] [cursor=pointer]
+        - article [ref=e2917]:
+          - generic [ref=e2918]:
+            - generic [ref=e2919]: "205"
+            - generic [ref=e2920]: 137M
+          - generic [ref=e2921]:
+            - text: 东湾天际线
+            - heading "东湾街区 21" [level=4] [ref=e2922]
+            - generic [ref=e2923]: East Bay 61
+            - paragraph [ref=e2924]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2925]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2926]:
+              - generic "看看楼里有什么" [ref=e2927] [cursor=pointer]
+            - generic [ref=e2928]:
+              - generic [ref=e2929]: 30 个开放楼层
+              - button "前往门口 ↗" [ref=e2930] [cursor=pointer]
+        - article [ref=e2931]:
+          - generic [ref=e2932]:
+            - generic [ref=e2933]: "206"
+            - generic [ref=e2934]: 121M
+          - generic [ref=e2935]:
+            - text: 东湾天际线
+            - heading "东湾街区 22" [level=4] [ref=e2936]
+            - generic [ref=e2937]: East Bay 62
+            - paragraph [ref=e2938]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2939]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2940]:
+              - generic "看看楼里有什么" [ref=e2941] [cursor=pointer]
+            - generic [ref=e2942]:
+              - generic [ref=e2943]: 26 个开放楼层
+              - button "前往门口 ↗" [ref=e2944] [cursor=pointer]
+        - article [ref=e2945]:
+          - generic [ref=e2946]:
+            - generic [ref=e2947]: "207"
+            - generic [ref=e2948]: 164M
+          - generic [ref=e2949]:
+            - text: 东湾天际线
+            - heading "东湾街区 23" [level=4] [ref=e2950]
+            - generic [ref=e2951]: East Bay 63
+            - paragraph [ref=e2952]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2953]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2954]:
+              - generic "看看楼里有什么" [ref=e2955] [cursor=pointer]
+            - generic [ref=e2956]:
+              - generic [ref=e2957]: 36 个开放楼层
+              - button "前往门口 ↗" [ref=e2958] [cursor=pointer]
+        - article [ref=e2959]:
+          - generic [ref=e2960]:
+            - generic [ref=e2961]: "208"
+            - generic [ref=e2962]: 129M
+          - generic [ref=e2963]:
+            - text: 东湾天际线
+            - heading "东湾街区 24" [level=4] [ref=e2964]
+            - generic [ref=e2965]: East Bay 64
+            - paragraph [ref=e2966]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2967]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2968]:
+              - generic "看看楼里有什么" [ref=e2969] [cursor=pointer]
+            - generic [ref=e2970]:
+              - generic [ref=e2971]: 28 个开放楼层
+              - button "前往门口 ↗" [ref=e2972] [cursor=pointer]
+        - article [ref=e2973]:
+          - generic [ref=e2974]:
+            - generic [ref=e2975]: "209"
+            - generic [ref=e2976]: 138M
+          - generic [ref=e2977]:
+            - text: 东湾天际线
+            - heading "东湾街区 25" [level=4] [ref=e2978]
+            - generic [ref=e2979]: East Bay 65
+            - paragraph [ref=e2980]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2981]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2982]:
+              - generic "看看楼里有什么" [ref=e2983] [cursor=pointer]
+            - generic [ref=e2984]:
+              - generic [ref=e2985]: 30 个开放楼层
+              - button "前往门口 ↗" [ref=e2986] [cursor=pointer]
+        - article [ref=e2987]:
+          - generic [ref=e2988]:
+            - generic [ref=e2989]: "210"
+            - generic [ref=e2990]: 159M
+          - generic [ref=e2991]:
+            - text: 东湾天际线
+            - heading "东湾街区 26" [level=4] [ref=e2992]
+            - generic [ref=e2993]: East Bay 66
+            - paragraph [ref=e2994]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e2995]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e2996]:
+              - generic "看看楼里有什么" [ref=e2997] [cursor=pointer]
+            - generic [ref=e2998]:
+              - generic [ref=e2999]: 35 个开放楼层
+              - button "前往门口 ↗" [ref=e3000] [cursor=pointer]
+        - article [ref=e3001]:
+          - generic [ref=e3002]:
+            - generic [ref=e3003]: "211"
+            - generic [ref=e3004]: 119M
+          - generic [ref=e3005]:
+            - text: 东湾天际线
+            - heading "东湾街区 27" [level=4] [ref=e3006]
+            - generic [ref=e3007]: East Bay 67
+            - paragraph [ref=e3008]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3009]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3010]:
+              - generic "看看楼里有什么" [ref=e3011] [cursor=pointer]
+            - generic [ref=e3012]:
+              - generic [ref=e3013]: 26 个开放楼层
+              - button "前往门口 ↗" [ref=e3014] [cursor=pointer]
+        - article [ref=e3015]:
+          - generic [ref=e3016]:
+            - generic [ref=e3017]: "212"
+            - generic [ref=e3018]: 133M
+          - generic [ref=e3019]:
+            - text: 东湾天际线
+            - heading "东湾街区 28" [level=4] [ref=e3020]
+            - generic [ref=e3021]: East Bay 68
+            - paragraph [ref=e3022]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3023]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3024]:
+              - generic "看看楼里有什么" [ref=e3025] [cursor=pointer]
+            - generic [ref=e3026]:
+              - generic [ref=e3027]: 29 个开放楼层
+              - button "前往门口 ↗" [ref=e3028] [cursor=pointer]
+        - article [ref=e3029]:
+          - generic [ref=e3030]:
+            - generic [ref=e3031]: "213"
+            - generic [ref=e3032]: 127M
+          - generic [ref=e3033]:
+            - text: 东湾天际线
+            - heading "东湾街区 29" [level=4] [ref=e3034]
+            - generic [ref=e3035]: East Bay 69
+            - paragraph [ref=e3036]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3037]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3038]:
+              - generic "看看楼里有什么" [ref=e3039] [cursor=pointer]
+            - generic [ref=e3040]:
+              - generic [ref=e3041]: 27 个开放楼层
+              - button "前往门口 ↗" [ref=e3042] [cursor=pointer]
+        - article [ref=e3043]:
+          - generic [ref=e3044]:
+            - generic [ref=e3045]: "214"
+            - generic [ref=e3046]: 149M
+          - generic [ref=e3047]:
+            - text: 东湾天际线
+            - heading "东湾街区 30" [level=4] [ref=e3048]
+            - generic [ref=e3049]: East Bay 70
+            - paragraph [ref=e3050]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3051]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3052]:
+              - generic "看看楼里有什么" [ref=e3053] [cursor=pointer]
+            - generic [ref=e3054]:
+              - generic [ref=e3055]: 33 个开放楼层
+              - button "前往门口 ↗" [ref=e3056] [cursor=pointer]
+        - article [ref=e3057]:
+          - generic [ref=e3058]:
+            - generic [ref=e3059]: "215"
+            - generic [ref=e3060]: 138M
+          - generic [ref=e3061]:
+            - text: 东湾天际线
+            - heading "东湾街区 31" [level=4] [ref=e3062]
+            - generic [ref=e3063]: East Bay 71
+            - paragraph [ref=e3064]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3065]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3066]:
+              - generic "看看楼里有什么" [ref=e3067] [cursor=pointer]
+            - generic [ref=e3068]:
+              - generic [ref=e3069]: 30 个开放楼层
+              - button "前往门口 ↗" [ref=e3070] [cursor=pointer]
+        - article [ref=e3071]:
+          - generic [ref=e3072]:
+            - generic [ref=e3073]: "216"
+            - generic [ref=e3074]: 127M
+          - generic [ref=e3075]:
+            - text: 东湾天际线
+            - heading "东湾街区 32" [level=4] [ref=e3076]
+            - generic [ref=e3077]: East Bay 72
+            - paragraph [ref=e3078]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3079]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3080]:
+              - generic "看看楼里有什么" [ref=e3081] [cursor=pointer]
+            - generic [ref=e3082]:
+              - generic [ref=e3083]: 27 个开放楼层
+              - button "前往门口 ↗" [ref=e3084] [cursor=pointer]
+        - article [ref=e3085]:
+          - generic [ref=e3086]:
+            - generic [ref=e3087]: "217"
+            - generic [ref=e3088]: 154M
+          - generic [ref=e3089]:
+            - text: 东湾天际线
+            - heading "东湾街区 33" [level=4] [ref=e3090]
+            - generic [ref=e3091]: East Bay 73
+            - paragraph [ref=e3092]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3093]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3094]:
+              - generic "看看楼里有什么" [ref=e3095] [cursor=pointer]
+            - generic [ref=e3096]:
+              - generic [ref=e3097]: 34 个开放楼层
+              - button "前往门口 ↗" [ref=e3098] [cursor=pointer]
+        - article [ref=e3099]:
+          - generic [ref=e3100]:
+            - generic [ref=e3101]: "218"
+            - generic [ref=e3102]: 142M
+          - generic [ref=e3103]:
+            - text: 东湾天际线
+            - heading "东湾街区 34" [level=4] [ref=e3104]
+            - generic [ref=e3105]: East Bay 74
+            - paragraph [ref=e3106]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3107]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3108]:
+              - generic "看看楼里有什么" [ref=e3109] [cursor=pointer]
+            - generic [ref=e3110]:
+              - generic [ref=e3111]: 31 个开放楼层
+              - button "前往门口 ↗" [ref=e3112] [cursor=pointer]
+        - article [ref=e3113]:
+          - generic [ref=e3114]:
+            - generic [ref=e3115]: "219"
+            - generic [ref=e3116]: 112M
+          - generic [ref=e3117]:
+            - text: 东湾天际线
+            - heading "东湾街区 35" [level=4] [ref=e3118]
+            - generic [ref=e3119]: East Bay 75
+            - paragraph [ref=e3120]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3121]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3122]:
+              - generic "看看楼里有什么" [ref=e3123] [cursor=pointer]
+            - generic [ref=e3124]:
+              - generic [ref=e3125]: 24 个开放楼层
+              - button "前往门口 ↗" [ref=e3126] [cursor=pointer]
+        - article [ref=e3127]:
+          - generic [ref=e3128]:
+            - generic [ref=e3129]: "220"
+            - generic [ref=e3130]: 128M
+          - generic [ref=e3131]:
+            - text: 东湾天际线
+            - heading "东湾街区 36" [level=4] [ref=e3132]
+            - generic [ref=e3133]: East Bay 76
+            - paragraph [ref=e3134]: 东湾楼宇开放连续楼层和顶层海景空间，按用途配置共享房间与家具。
+            - paragraph [ref=e3135]: 海湾公共门厅 · 共享用途与家具布局
+            - group [ref=e3136]:
+              - generic "看看楼里有什么" [ref=e3137] [cursor=pointer]
+            - generic [ref=e3138]:
+              - generic [ref=e3139]: 28 个开放楼层
+              - button "前往门口 ↗" [ref=e3140] [cursor=pointer]
+      - generic [ref=e3141]:
+        - generic [ref=e3142]: HARBOUR CONNECTIONS
+        - heading "乘一班车，去另一岸。" [level=3] [ref=e3143]
+        - paragraph [ref=e3144]: 地铁站沿入口楼梯步行下行，经站厅前往站台；轻轨、高铁及码头目前通过 E 进入。车辆按班次运行，停靠时按 E 上下客。
+        - generic [ref=e3145]:
+          - article [ref=e3146]:
+            - generic [ref=e3147]:
+              - text: 地铁
+              - heading "旧城 · 海港广场" [level=4] [ref=e3148]
+            - button "前往 ↗" [ref=e3149] [cursor=pointer]
+          - article [ref=e3150]:
+            - generic [ref=e3151]:
+              - text: 地铁
+              - heading "北岸 · 滨海中心" [level=4] [ref=e3152]
+            - button "前往 ↗" [ref=e3153] [cursor=pointer]
+          - article [ref=e3154]:
+            - generic [ref=e3155]:
+              - text: 地铁
+              - heading "北岸 · 中央公园" [level=4] [ref=e3156]
+            - button "前往 ↗" [ref=e3157] [cursor=pointer]
+          - article [ref=e3158]:
+            - generic [ref=e3159]:
+              - text: 轻轨
+              - heading "东岸 · 海滨" [level=4] [ref=e3160]
+            - button "前往 ↗" [ref=e3161] [cursor=pointer]
+          - article [ref=e3162]:
+            - generic [ref=e3163]:
+              - text: 轻轨
+              - heading "东岸 · 科技园" [level=4] [ref=e3164]
+            - button "前往 ↗" [ref=e3165] [cursor=pointer]
+          - article [ref=e3166]:
+            - generic [ref=e3167]:
+              - text: 轻轨
+              - heading "东岸 · 山海公园" [level=4] [ref=e3168]
+            - button "前往 ↗" [ref=e3169] [cursor=pointer]
+          - article [ref=e3170]:
+            - generic [ref=e3171]:
+              - text: 高铁
+              - heading "北岸 · 城际总站" [level=4] [ref=e3172]
+            - button "前往 ↗" [ref=e3173] [cursor=pointer]
+          - article [ref=e3174]:
+            - generic [ref=e3175]:
+              - text: 高铁
+              - heading "旧城 · 西港站" [level=4] [ref=e3176]
+            - button "前往 ↗" [ref=e3177] [cursor=pointer]
+          - article [ref=e3178]:
+            - generic [ref=e3179]:
+              - text: 渡轮
+              - heading "旧城 · 白帆码头" [level=4] [ref=e3180]
+            - button "前往 ↗" [ref=e3181] [cursor=pointer]
+          - article [ref=e3182]:
+            - generic [ref=e3183]:
+              - text: 渡轮
+              - heading "北岸 · 星湾码头" [level=4] [ref=e3184]
+            - button "前往 ↗" [ref=e3185] [cursor=pointer]
+      - generic [ref=e3186]:
+        - generic [ref=e3187]: CITY AT DIFFERENT LEVELS
+        - heading "沿高架远行，到码头看海。" [level=3] [ref=e3188]
+        - paragraph [ref=e3189]: 抵达坡脚后可自由步行或驾驶。高架和桥下道路分别通行，港区有公共观景步道。
+        - generic [ref=e3190]:
+          - article [ref=e3191]:
+            - generic [ref=e3192]:
+              - text: 道路与港口
+              - heading "西堤高架路" [level=4] [ref=e3193]
+              - paragraph [ref=e3194]: 双向双车道高架连接松岭与星汇，缓坡、伸缩缝、泄水口与桥墩沿线展开。
+            - button "前往坡脚 ↗" [ref=e3195] [cursor=pointer]
+          - article [ref=e3196]:
+            - generic [ref=e3197]:
+              - text: 道路与港口
+              - heading "榕荫东连接路" [level=4] [ref=e3198]
+              - paragraph [ref=e3199]: 东西向高架跨过三条城区大道，桥下道路保留独立通行净空。
+            - button "前往坡脚 ↗" [ref=e3200] [cursor=pointer]
+          - article [ref=e3201]:
+            - generic [ref=e3202]:
+              - text: 道路与港口
+              - heading "星湾货运码头" [level=4] [ref=e3203]
+              - paragraph [ref=e3204]: 抬高的公共码头越过海堤连接货柜堆场，两座岸桥、装卸通道与防波堤围成港区。
+            - button "前往坡脚 ↗" [ref=e3205] [cursor=pointer]
+    - contentinfo [ref=e3206]:
+      - generic [ref=e3207]: 进度已保存 · 当前浏览器
+      - button "继续游戏 →" [ref=e3208] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect } from '@playwright/test';
+  2   | import { snapshot, walkAxis, walkRoute, stairWalkingRoute } from './helpers/walking.js';
+  3   | 
+  4   | // The default-quality panorama and the physical stair route are separate gates.
+  5   | // Every relocation uses visible product controls; diagnostics never write state.
+  6   | test.use({ viewport: { width: 800, height: 500 } });
+  7   | test.setTimeout(360000);
+  8   | 
+  9   | async function boot(page, { low = false } = {}) {
+  10  |   const errors = [];
+  11  |   page.on('pageerror', error => errors.push(error.message));
+  12  |   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  13  |   page.on('response', response => { if (response.status() >= 400) errors.push(`HTTP ${response.status()}: ${response.url()}`); });
+  14  |   await page.goto('/');
+  15  |   await expect(page.locator('#harbor-start')).toBeEnabled({ timeout: 90000 });
+  16  |   if (low) {
+  17  |     await page.locator('#welcome-settings').click();
+  18  |     await page.locator('#quality').selectOption('low');
+  19  |     await page.locator('#resume').click();
+  20  |   }
+  21  |   return errors;
+  22  | }
+  23  | 
+  24  | async function capture(page, testInfo, name) {
+  25  |   const path = testInfo.outputPath(`${name}.png`);
+  26  |   await page.screenshot({ path, timeout: 90000 });
+  27  |   await testInfo.attach(name, { path, contentType: 'image/png' });
+  28  | }
+  29  | 
+  30  | async function visit(page, kind, id) {
+  31  |   await page.locator('#explore-city').click();
+  32  |   await expect(page.locator('#atlas-results')).toBeVisible();
+  33  |   await page.locator(`[data-visit-${kind}="${id}"]`).click();
+  34  |   await expect(page.locator('#panel')).not.toBeVisible({ timeout: 45000 });
+  35  |   await expect(page.locator('#game')).toBeFocused();
+  36  | }
+  37  | 
+  38  | 
+  39  | test('the primary start reaches a walkable harbor panorama in default high quality, with day and night views', async ({ page }, testInfo) => {
+  40  |   const errors = await boot(page);
+  41  |   expect((await snapshot(page)).settings.quality).toBe('high');
+  42  |   await capture(page, testInfo, 'harbor-realism-menu-high');
+  43  |   await page.locator('#harbor-start').click();
+  44  |   await expect(page.locator('#welcome')).not.toBeVisible({ timeout: 90000 });
+  45  |   await expect.poll(async () => (await snapshot(page)).position.x).toBeCloseTo(285.5, 1);
+  46  |   await expect(page.locator('#game')).toBeFocused();
+  47  |   await expect.poll(async () => (await snapshot(page)).camera?.boomLength).toBe(0);
+  48  |   const start = await snapshot(page), harbor = start.city.harbor;
+  49  |   expect(start.settings.firstPerson).toBe(true);
+  50  |   expect(start.settings.quality).toBe('high');
+  51  |   expect(harbor.quality).toBe('high');
+  52  |   expect(harbor.scenicOppositeShore).toBe(false);
+  53  |   expect(harbor.landmarkTowers).toBe(40);
+  54  |   expect(harbor.neighborhoodBuildings).toBeGreaterThanOrEqual(30);
+  55  |   expect(harbor.towers).toBe(harbor.landmarkTowers + harbor.neighborhoodBuildings);
+  56  |   expect(harbor.permanentTowers, 'distant buildings stay present without a detail chunk').toBe(harbor.towers);
+  57  |   for (const id of ['pearl-spire', 'cloud-sail', 'triangular-exchange']) expect(harbor.towerIds).toContain(id);
+  58  |   expect(harbor.maximumRoofHeight).toBeGreaterThan(350);
+  59  |   expect(start.camera.position.y - start.position.y).toBeCloseTo(1.62, 1);
+  60  |   expect(start.camera.target.x).toBeGreaterThan(start.camera.position.x + 8);
+  61  |   expect(start.renderer.calls).toBeGreaterThan(0);
+  62  |   expect(start.renderer.triangles).toBeGreaterThan(0);
+  63  |   // Walking along the same real boardwalk changes the rendered position while
+  64  |   // retaining ground support and the high-quality panorama; no photo backdrop.
+  65  |   await walkAxis(page, 'z', start.position.z - 10);
+  66  |   const walked = await snapshot(page);
+  67  |   expect(Math.abs(walked.position.y - start.position.y)).toBeLessThan(.3);
+  68  |   expect(Math.abs(walked.position.x - start.position.x)).toBeLessThan(.4);
+  69  |   expect(walked.teleportRevision).toBe(start.teleportRevision);
+  70  |   await capture(page, testInfo, 'harbor-realism-day-high');
+  71  | 
+  72  |   await page.locator('#explore-city').click();
+  73  |   await expect(page.locator('[data-visit-viewpoint]')).toHaveCount(3);
+> 74  |   expect(start.city.buildings.filter(building => !['south-expansion', 'east-expansion'].includes(building.district))).toHaveLength(48);
+      |                                                                                         ^ Error: expect(received).toHaveLength(expected)
+  75  |   expect(start.city.buildings.filter(building => building.district === 'south-expansion')).toHaveLength(96);
+  76  |   expect(start.city.buildings.filter(building => building.district === 'east-expansion')).toHaveLength(76);
+  77  |   await expect(page.locator('[data-building-id]')).toHaveCount(start.city.buildings.length);
+  78  |   await expect(page.locator('#panel-content')).toContainText('共享');
+  79  |   await page.locator('[data-tab="settings"]').click();
+  80  |   // A real range-input keypress selects late night through the settings UI.
+  81  |   await page.locator('#time').press('End');
+  82  |   await page.locator('#resume').click();
+  83  |   await expect.poll(async () => (await snapshot(page)).city.harbor.night).toBeGreaterThan(.8);
+  84  |   expect((await snapshot(page)).settings.quality).toBe('high');
+  85  |   await capture(page, testInfo, 'harbor-realism-night-high');
+  86  |   expect(errors).toEqual([]);
+  87  | });
+  88  | 
+  89  | test('a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street', async ({ page }, testInfo) => {
+  90  |   // Match the other functional suites; the separate panorama gate stays High.
+  91  |   await page.setViewportSize({ width: 640, height: 400 });
+  92  |   const errors = await boot(page, { low: true });
+  93  |   await page.locator('#start').click();
+  94  |   await expect(page.locator('#game')).toBeFocused();
+  95  |   await visit(page, 'building', 'tide-museum');
+  96  |   await page.keyboard.press('e');
+  97  |   await expect.poll(async () => (await snapshot(page)).city.interior.buildingId).toBe('tide-museum');
+  98  |   const entered = await snapshot(page), lobby = entered.city.interior;
+  99  |   expect(lobby.floorId).toBe('lobby');
+  100 |   expect(lobby.activeFloors).toBe(3);
+  101 |   expect(lobby.stairs).toHaveLength(lobby.totalFloors - 1);
+  102 |   const [lower, upper] = lobby.stairs;
+  103 |   expect(lower.fromFloorId).toBe('lobby');
+  104 |   expect(lower.toFloorId).toBe('gallery');
+  105 |   expect(upper.fromFloorId).toBe('gallery');
+  106 |   expect(upper.toFloorId).toBe('workplace');
+  107 |   expect(lower.width).toBeGreaterThanOrEqual(2.8);
+  108 |   const lowerWalk = stairWalkingRoute(lower, lobby.entrance.x), upperWalk = stairWalkingRoute(upper, lobby.entrance.x);
+  109 | 
+  110 |   await walkRoute(page, [{ ...lowerWalk.bottom, x: lobby.entrance.x }, lowerWalk.bottom, lowerWalk.middle, lowerWalk.top]);
+  111 |   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('gallery');
+  112 |   expect((await snapshot(page)).city.interior.moving).toBe(false);
+  113 |   await capture(page, testInfo, 'harbor-realism-second-floor-stair');
+  114 |   await walkRoute(page, [...lowerWalk.bypass, upperWalk.bottom, upperWalk.middle, upperWalk.top]);
+  115 |   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('workplace');
+  116 |   const third = (await snapshot(page)).city.interior;
+  117 |   expect(third.floorName).toContain('研习');
+  118 |   expect(third.roomCount).toBe(4);
+  119 |   expect(third.furnitureCount).toBeGreaterThan(12);
+  120 |   expect(third.activeFloors).toBe(3);
+  121 |   const room = third.rooms.find(room => room.type === 'workshop');
+  122 |   expect(room, 'third-floor learning space has a real furnished restoration workshop').toBeTruthy();
+  123 |   expect(room.entrance).toBeTruthy();
+  124 |   expect(room.arrival).toBeTruthy();
+  125 |   // Leave the stair opening via its landing, then use the actual central aisle
+  126 |   // and room doorway. A valid room record alone cannot pass this route.
+  127 |   await walkRoute(page, [upperWalk.bypass[0]]);
+  128 |   await walkAxis(page, 'z', room.entrance.z);
+  129 |   await walkAxis(page, 'x', room.arrival.x);
+  130 |   await walkAxis(page, 'z', room.arrival.z);
+  131 |   const inRoom = await snapshot(page);
+  132 |   expect(inRoom.city.interior.currentRoomId).toBe(room.id);
+  133 |   expect(inRoom.position.y).toBeCloseTo(8.4, 1);
+  134 |   expect(inRoom.teleportRevision).toBe(entered.teleportRevision);
+  135 |   await capture(page, testInfo, 'harbor-realism-third-floor-workshop');
+  136 | 
+  137 |   await walkAxis(page, 'z', room.entrance.z);
+  138 |   await walkAxis(page, 'x', lobby.entrance.x);
+  139 |   await walkRoute(page, [upperWalk.bypass[0], upperWalk.top, upperWalk.middle, upperWalk.bottom]);
+  140 |   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('gallery');
+  141 |   await walkRoute(page, [...lowerWalk.bypass].reverse().concat([lowerWalk.top, lowerWalk.middle, lowerWalk.bottom]));
+  142 |   await expect.poll(async () => (await snapshot(page)).city.interior.floorId).toBe('lobby');
+  143 |   const returned = await snapshot(page);
+  144 |   expect(returned.teleportRevision).toBe(entered.teleportRevision);
+  145 |   expect(returned.city.interior.moving).toBe(false);
+  146 |   await walkAxis(page, 'x', lobby.entrance.x);
+  147 |   await walkAxis(page, 'z', lobby.entrance.z);
+  148 |   await page.keyboard.press('e');
+  149 |   await expect.poll(async () => (await snapshot(page)).city.interior.buildingId).toBeNull();
+  150 |   expect((await snapshot(page)).cars.length).toBeGreaterThan(0);
+  151 |   expect(errors).toEqual([]);
+  152 | });
+  153 | 
+```

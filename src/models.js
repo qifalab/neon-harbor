@@ -1,4 +1,5 @@
 import { VEHICLE_DIMENSIONS, PLAYER_DIMENSIONS } from './world-config.js';
+import { applySurfaceFinish, cloneSurfaceMaterial } from './surface-finish.js';
 
 /**
  * Original, metre-scale hero assets. Geometry is authored once, then shared by
@@ -15,7 +16,7 @@ export function createCar(THREE, color = '#375b68', type = 'sport') {
   for (const [tier, distance] of [0, 35, 100].entries()) {
     const model = templates[tier].clone(true); model.visible = tier === 0; lod.addLevel(model, distance, .12);
   }
-  const paint = templates[0].getObjectByName('coachwork').material.clone();
+  const paint = cloneSurfaceMaterial(templates[0].getObjectByName('coachwork').material);
   paint.color.set(color);
   group.traverse(node => {
     if (node.isMesh && node.material.name === 'automotive-paint') node.material = paint;
@@ -102,12 +103,12 @@ function getLibrary(THREE) {
 
 function buildCar(THREE, type, detail = 0) {
   const group = new THREE.Group(); group.name = `Original NH ${type === 'sport' ? 'Aster coupe' : 'Atlas touring'}`;
-  const paint = new THREE.MeshPhysicalMaterial({ color: '#375b68', roughness: 0.24, metalness: 0.72,
-    clearcoat: 1, clearcoatRoughness: 0.13, envMapIntensity: 1.15 });
+  const paint = applySurfaceFinish(new THREE.MeshPhysicalMaterial({ color: '#375b68', roughness: .33, metalness: .48,
+    clearcoat: .62, clearcoatRoughness: .24, envMapIntensity: .9 }), 'automotive');
   paint.name = 'automotive-paint';
-  const trim = new THREE.MeshStandardMaterial({ color: '#12191e', roughness: 0.43, metalness: 0.32 });
-  const metal = new THREE.MeshStandardMaterial({ color: '#a4adb3', roughness: 0.27, metalness: 0.88 });
-  const leather = new THREE.MeshStandardMaterial({ color: '#242e32', roughness: 0.82 });
+  const trim = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#12191e', roughness: .68, metalness: .12 }), 'rubber');
+  const metal = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#a4adb3', roughness: .32, metalness: .88 }), 'metal');
+  const leather = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#242e32', roughness: .69 }), 'leather');
   const glass = new THREE.MeshPhysicalMaterial({ color: '#819fa9', metalness: 0.08, roughness: 0.12,
     transparent: true, opacity: 0.67, depthWrite: false, clearcoat: 1, envMapIntensity: 1.1, side: THREE.DoubleSide });
   const frontLight = new THREE.MeshStandardMaterial({ color: '#e4f2f5', emissive: '#c6e1ec', emissiveIntensity: 1.1, roughness: 0.23 });
@@ -282,7 +283,7 @@ function buildWheel(THREE, detail = 0) {
   const radial = [48, 24, 12][detail];
   const tire = new THREE.TorusGeometry(.3375, .0925, detail ? 8 : 12, radial);
   tire.scale(1, 1, .14 / .0925); tire.rotateY(Math.PI / 2);
-  const rubber = new THREE.MeshStandardMaterial({ color: '#171b1e', roughness: .92 });
+  const rubber = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#171b1e', roughness: .92 }), 'rubber');
   const tireMesh = new THREE.Mesh(tire, rubber); tireMesh.castShadow = true; wheel.add(tireMesh);
   const pieces = [];
   const add = (geometry, color) => pieces.push({ geometry, color });
@@ -301,7 +302,8 @@ function buildWheel(THREE, detail = 0) {
       dot.scale(.25, 1, 1); dot.translate(side * .106, Math.cos(angle) * .22, Math.sin(angle) * .22); add(dot, '#171b1e');
     }
   }
-  const alloy = new THREE.Mesh(mergeColoredGeometry(THREE, pieces), new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .30, metalness: .78 }));
+  const alloy = new THREE.Mesh(mergeColoredGeometry(THREE, pieces), applySurfaceFinish(
+    new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .34, metalness: .78 }), 'metal'));
   alloy.castShadow = true; wheel.add(alloy);
   return wheel;
 }
@@ -315,11 +317,17 @@ function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
   colors.stitch = '#' + new THREE.Color(style.pants).lerp(new THREE.Color('#c3b8a0'), .14).getHexString();
   const collection = new Map();
   const density = [1, .4, .2][detail];
-  const loft = (profile, rows, columns) => loftY(THREE, profile,
-    Math.max(3, Math.round(rows * density)), Math.max(6, Math.round(columns * (detail ? .5 : 1))));
+  const loft = (profile, rows, columns, cloth = false) => loftY(THREE, profile,
+    Math.max(3, Math.round(rows * density)), Math.max(6, Math.round(columns * (detail ? .5 : 1))),
+    cloth && detail === 0 ? .0028 : 0);
+  const surfaceKinds = { skin: 'skin', skinLight: 'skin', hair: 'hair', shoe: 'leather', sole: 'rubber',
+    eyes: 'eye', '#b8b6aa': 'eye', '#865e4a': 'skin', '#747b7c': 'metal', '#727c7d': 'metal',
+    '#4a4540': 'leather', '#685d51': 'leather' };
   const put = (parent, geometry, color) => {
-    if (!collection.has(parent)) collection.set(parent, []);
-    collection.get(parent).push({ geometry, color: colors[color] || color });
+    if (!collection.has(parent)) collection.set(parent, new Map());
+    const batches = collection.get(parent), kind = surfaceKinds[color] || 'cloth';
+    if (!batches.has(kind)) batches.set(kind, []);
+    batches.get(kind).push({ geometry, color: colors[color] || color });
   };
   const oval = (parent, color, x, y, z, sx, sy, sz, segments = 16) => {
     if (detail === 2 && Math.max(sx, sy, sz) < .038) return;
@@ -335,20 +343,23 @@ function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
   };
   const joint = (parent, name, x, y, z) => { const node = new THREE.Group(); node.name = name; node.position.set(x, y, z); parent.add(node); return node; };
   const torso = loft([[style.cut === 'coat' ? .81 : .90, style.cut === 'coat' ? .192 : .15, .102], [.98, .17, .11], [1.13, .175, .123],
-    [1.26, .205, .128], [1.35, .224, .112], [1.40, .155, .088]], 32, 24);
+    [1.26, .195, .124], [1.34, .210, .112], [1.365, .209, .102],
+    [1.39, .153, .083], [1.408, .065, .061]], 40, 28, true);
   put(root, torso, 'jacket');
   oval(root, 'pants', 0, .915, 0, .177, .107, .117);
-  oval(root, 'skin', 0, 1.435, 0, .054, .070, .054);
+  // The neck widens into the collar and overlaps the underside of the jaw;
+  // an ellipsoid under a flat chin used to read as a separate wooden peg.
+  put(root, loft([[1.385, .071, .061], [1.418, .059, .052], [1.455, .052, .053],
+    [1.49, .055, .060]], 12, 20), 'skin');
   // Facial silhouette uses chin, cheekbones, brow, nose and ears, rather than a
   // cube wearing sunglasses. The ears/nose also make heading legible in motion.
-  put(root, loft([[1.47, .055, .058], [1.50, .078, .080], [1.55, .101, .092],
+  put(root, loft([[1.455, .030, .040], [1.477, .060, .066], [1.50, .078, .080], [1.55, .101, .092], [1.59, .113, .101],
     [1.62, .112, .104], [1.69, .109, .098], [1.735, .077, .073], [1.764, .018, .024]], 28, 28), 'skin');
   for (const sign of [-1, 1]) {
     oval(root, 'skin', sign * .116, 1.599, -.004, .022, .039, .022);
     oval(root, '#b8b6aa', sign * .042, 1.631, .096, .013, .004, .004, 12);
     if (detail === 0) {
       stroke(root, 'skinLight', [[sign * .028, 1.636, .097], [sign * .042, 1.639, .099], [sign * .057, 1.636, .094]], .0025);
-      oval(root, 'skinLight', sign * .065, 1.594, .078, .029, .017, .011, 12);
     }
     oval(root, 'eyes', sign * .042, 1.631, .101, .005, .0045, .0025, 12);
     stroke(root, 'hair', [[sign * .025, 1.651, .101], [sign * .045, 1.655, .100], [sign * .061, 1.651, .089]], .004);
@@ -372,7 +383,8 @@ function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
     const angle = i * Math.PI / 6;
     oval(root, 'hair', Math.cos(angle) * .098, 1.711 + (i % 2) * .019, Math.sin(angle) * .081 - .008, .030, .044, .031, 8);
   }
-  for (let i = -3; i <= 3; i++) stroke(root, 'hair', [[i * .027, 1.77, .005], [i * .03, 1.752, -.055], [i * .025, 1.716, -.1]], .006);
+  // The cap carries its own fine strand response. Separate raised tubes here
+  // used to leave spikes and disconnected loops above the curved scalp.
 
   if (style.cut !== 'knit') {
     rounded(root, 'shirt', 0, 1.31, .113, .095, .17, .019, .012);
@@ -404,34 +416,65 @@ function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
 
   for (const [side, sign] of [['left', -1], ['right', 1]]) {
     const leg = joint(root, `${side}Leg`, sign * .103, .91, 0);
-    put(leg, loft([[ -.42, .074, .079], [-.26, .086, .094], [-.09, .095, .11], [.015, .091, .107]], 18, 16), 'pants');
+    put(leg, loft([[ -.42, .074, .079], [-.26, .086, .094], [-.09, .095, .11], [.015, .091, .107]], 18, 16, true), 'pants');
     const knee = joint(leg, `${side}Knee`, 0, -.42, 0);
     oval(knee, 'pants', 0, .005, .003, .070, .058, .073);
-    put(knee, loft([[-.345, .063, .064], [-.24, .063, .066], [-.09, .073, .082], [.005, .073, .077]], 16, 16), 'pants');
+    put(knee, loft([[-.345, .063, .064], [-.24, .063, .066], [-.09, .073, .082], [.005, .073, .077]], 16, 16, true), 'pants');
     stroke(knee, 'stitch', [[sign * .064, -.05, 0], [sign * .059, -.18, 0], [sign * .055, -.31, 0]], .003);
     // Sole sits 5mm over ground; the visual bounds are tested against the capsule.
     oval(knee, 'sole', 0, -.4375, .043, .080, .0475, .145);
     oval(knee, 'shoe', 0, -.414, .047, .077, .053, .138);
     for (let lace = 0; lace < 3; lace++) stroke(knee, '#9c9f98', [[-.041, -.368, .005 + lace * .025], [0, -.363, .018 + lace * .025], [.041, -.368, .005 + lace * .025]], .003);
 
-    const arm = joint(root, `${side}Arm`, sign * .234, 1.345, 0);
-    const sleeve = loft([[-.265, .061, .065], [-.12, .070, .076], [0, .085, .085]], 14, 16);
-    sleeve.translate(sign * .017, 0, 0); put(arm, sleeve, 'jacket');
-    oval(arm, 'jacket', sign * .01, -.015, 0, .085, .091, .083);
-    const elbow = joint(arm, `${side}Elbow`, sign * .018, -.27, 0);
-    oval(elbow, 'jacket', 0, .013, 0, .061, .061, .065);
-    put(elbow, loft([[-.207, .044, .047], [-.12, .053, .058], [.01, .058, .061]], 14, 16), 'jacket');
+    const arm = joint(root, `${side}Arm`, sign * .199, 1.345, 0);
+    // The low sleeve cap tucks into the sloping torso shoulder. Its top is below
+    // the collar, avoiding the detached high spheres of a mannequin silhouette.
+    const sleeve = loft([[-.265, .055, .061], [-.12, .062, .070], [-.03, .067, .075],
+      [.002, .052, .062], [.017, .026, .037], [.020, .004, .006]], 22, 20, true);
+    sleeve.translate(sign * .011, 0, 0); put(arm, sleeve, 'jacket');
+    const elbow = joint(arm, `${side}Elbow`, sign * .011, -.27, 0);
+    // Recess the upper forearm inside the sleeve instead of wrapping the hinge
+    // with a larger visible sphere. The overlap stays covered during walking.
+    put(elbow, loft([[-.207, .044, .047], [-.12, .050, .056], [-.04, .054, .058],
+      [.015, .055, .061], [.035, .054, .060]], 18, 20, true), 'jacket');
     rounded(elbow, 'seam', 0, -.201, 0, .09, .043, .097, .016);
     oval(elbow, 'skin', 0, -.250, .009, .040, .061, .034);
     for (let finger = 0; finger < 4; finger++) oval(elbow, 'skin', -.024 + finger * .016, -.298, .019, .009, .033 - Math.abs(finger - 1.5) * .004, .012, 8);
     oval(elbow, 'skinLight', -sign * .039, -.253, .037, .016, .036, .018, 10);
     if (side === 'left') rounded(elbow, '#747b7c', 0, -.215, .048, .045, .039, .011, .005);
   }
-  // Nine shared meshes retain separate knees/elbows while drawing each colored
-  // limb in one call; every surface has smooth analytic/interpolated normals.
-  const material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .81 });
-  for (const [parent, pieces] of collection) {
-    const mesh = new THREE.Mesh(mergeColoredGeometry(THREE, pieces), material);
+  // At 45+ metres the figure is only a few dozen pixels tall. Keep the original
+  // nine animated batches there: pores, fibres and tiny specular distinctions
+  // are subpixel, while extra material draws still cost every visible NPC.
+  if (detail === 2) {
+    const distant = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .82, envMapIntensity: .45 });
+    distant.name = 'character-distance';
+    for (const [parent, batches] of collection) {
+      const mesh = new THREE.Mesh(mergeColoredGeometry(THREE, [...batches.values()].flat()), distant);
+      mesh.name = `${parent.name || 'body'}-distance`;
+      mesh.castShadow = true; mesh.receiveShadow = true; parent.add(mesh);
+    }
+    return root;
+  }
+  // Batch within each anatomical joint and surface kind: skin, clothes, shoes,
+  // eyes and hardware no longer inherit one uniform plastic-looking response.
+  const palette = {
+    skin: applySurfaceFinish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .57,
+      metalness: 0, specularIntensity: .44, envMapIntensity: .55 }), 'skin'),
+    cloth: applySurfaceFinish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .89,
+      sheen: .18, sheenColor: '#b8b2a5', sheenRoughness: 1, envMapIntensity: .42 }), 'cloth'),
+    leather: applySurfaceFinish(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .68,
+      envMapIntensity: .7 }), 'leather'),
+    rubber: applySurfaceFinish(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .94 }), 'rubber'),
+    hair: applySurfaceFinish(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .76,
+      envMapIntensity: .45 }), 'hair'),
+    metal: applySurfaceFinish(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .34, metalness: .82 }), 'metal'),
+    eye: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .2, envMapIntensity: .55 }),
+  };
+  for (const [kind, material] of Object.entries(palette)) material.name = `character-${kind}`;
+  for (const [parent, batches] of collection) for (const [kind, pieces] of batches) {
+    const mesh = new THREE.Mesh(mergeColoredGeometry(THREE, pieces), palette[kind]);
+    mesh.name = `${parent.name || 'body'}-${kind}`;
     mesh.castShadow = true; mesh.receiveShadow = true; parent.add(mesh);
   }
   return root;
@@ -463,11 +506,16 @@ function gridGeometry(THREE, rows, columns, point, reverse = false) {
   geometry.setIndex(indices); geometry.computeVertexNormals(); return geometry;
 }
 
-function loftY(THREE, profile, rows, columns) {
+function loftY(THREE, profile, rows, columns, clothRelief = 0) {
   const geometry = gridGeometry(THREE, rows, columns, (r, c) => {
     const y = profile[0][0] + (profile.at(-1)[0] - profile[0][0]) * r;
     const [width, depth] = interpolateProfile(profile, y), angle = c * Math.PI * 2;
-    return [Math.cos(angle) * width, y, Math.sin(angle) * depth];
+    // Long low-amplitude diagonal folds; smooth taper leaves cuffs and the
+    // collision height intact. Only the nearest wardrobe tier carries these.
+    const taper = Math.sin(Math.PI * r) ** 2;
+    const fold = clothRelief * taper * (Math.sin(r * 27 + Math.sin(angle * 2) * 1.8) * .7
+      + Math.sin(r * 43 - angle * 3) * .3);
+    return [Math.cos(angle) * (width + fold), y, Math.sin(angle) * (depth + fold)];
   }, true);
   // Closed cuffs/necklines prevent a camera looking through the open tube ends.
   const pieces = [{ geometry }];

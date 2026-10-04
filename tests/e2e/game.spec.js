@@ -129,13 +129,21 @@ test('import, invalid input and confirmed reset preserve valid progress', async 
   expect(errors).toEqual([]);
 });
 
-test('mobile touch controls move the player and fit the landscape viewport', async ({ browser }) => {
+test('mobile touch controls move the player and fit the landscape viewport', async ({ browser, baseURL }) => {
   const context = await browser.newContext({viewport:{width:844,height:390},isMobile:true,hasTouch:true,deviceScaleFactor:1});
   const page = await context.newPage();
-  await page.goto('http://127.0.0.1:5173');
+  await page.goto(baseURL);
   await expect(page.locator('#start')).toBeEnabled();
   await page.locator('#start').tap();
   await expect(page.locator('#touch-controls')).toBeVisible();
+  await expect(page.locator('[data-hold="slow"]')).toBeVisible();
+  for (const button of await page.locator('.touch-actions button').all()) {
+    const box = await button.boundingBox();
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.y).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(844);
+    expect(box.y + box.height).toBeLessThanOrEqual(390);
+  }
   const initial = await snapshot(page), rect = await page.locator('[data-hold="forward"]').boundingBox();
   await page.mouse.move(rect.x+rect.width/2,rect.y+rect.height/2);
   await page.mouse.down();

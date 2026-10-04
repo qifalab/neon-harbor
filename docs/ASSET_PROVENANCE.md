@@ -22,7 +22,7 @@ Concrete, roof finishes, ceramic, leather and steel, plus temporary fallback ver
 
 ## License
 
-The project-authored material code, procedural textures, and generated texture assets are distributed with this repository under its MIT license (`LICENSE`), to the extent rights in these assets are held by the project. No third-party texture-library license or paid asset dependency applies. This entry records creation and redistribution intent; it does not claim exclusive copyright protection for AI-generated pixels.
+The project-authored material code, procedural textures, and generated texture assets are distributed with this repository under its MIT license (`LICENSE`), to the extent rights in these assets are held by the project. These original images have no paid asset dependency. The separately licensed v0.8 scanned harbor surfaces are documented below. This entry records creation and redistribution intent; it does not claim exclusive copyright protection for AI-generated pixels.
 
 ## Generation prompt
 
@@ -121,3 +121,11 @@ Constraints: exactly one material, one square image. Seamless matching edges on 
 - Linen: `exec-647bd4f4-eabd-447b-be87-4d2b7e1dc039.png`
 
 These identifiers record the tool-returned source files; the durable repository versions are the `*-source.webp` files listed above. The same MIT redistribution intent and AI-pixel copyright qualification described above applies to these additions.
+
+## v0.8 scanned harbor surfaces
+
+The focused harbor storefronts use Poly Haven's **Plastered Wall 02** (Charlotte Baglioni) and **Pavement 03** (Charlotte Baglioni, photography; Dario Barresi, processing), licensed under CC0-1.0. These are scanned albedo, OpenGL normal and roughness maps, separate from the earlier generated color studies. Six locally served 1024×1024 JPEGs total **1,431,098 bytes**. No external texture CDN is required at runtime.
+
+The [material manifest](../assets/harbor/material-manifest.json) records source URLs, authors, original MD5, local SHA-256, physical metre scale, dimensions, colour space and JPEG processing for every file. The [CC0 record](../assets/harbor/LICENSE-CC0.txt) provides the source licence. Near storefront geometry loads these maps on demand and releases them after the last detailed frontage leaves its residency radius.
+
+The new bus, tram, ferry, storefront geometry and room dressing are original procedural assets. Their presence does not establish a professional GLB asset pipeline or commercial AAA quality. Individual source-art inspections and their rendering limitations are recorded in [harbor art](qa/harbor-art/REVIEW.md) and [vehicle inspection](qa/harbor-vehicles/REVIEW.md).

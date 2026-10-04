@@ -1,7 +1,7 @@
 /**
  * An authored opposite shore, visible from the existing walkable waterfront.
- * These are scenery buildings, not extra enterable addresses. In particular,
- * no guide entry or collision surface implies that the far shore is playable.
+ * City exploration attaches shared interiors and safe doorway approaches to
+ * these shells. Shore geometry and collision remain resident.
  */
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -36,9 +36,9 @@ const towers = [
   ['midlevel-twins-a', '松岭双庭南座', 1311, -529, 197, 38, 48, 'residential', 4],
   ['midlevel-twins-b', '松岭双庭北座', 1348, -447, 212, 41, 43, 'residential', 3],
   ['mountain-exchange', '望山金融汇', 1387, -272, 306, 53, 61, 'taper', 0],
-  ['upper-garden', '上环花园', 1289, -116, 156, 39, 44, 'residential', 4],
+  ['upper-garden', '晴岭花园', 1289, -116, 156, 39, 44, 'residential', 4],
   ['coastal-court', '滨海雅苑', 1320, 43, 179, 44, 50, 'terrace', 3],
-  ['peak-lantern', '山顶灯塔', 1379, 186, 247, 47, 51, 'lantern', 5],
+  ['peak-lantern', '岭光灯塔', 1379, 186, 247, 47, 51, 'lantern', 5],
   ['southern-gardens', '南山庭院', 1268, 360, 184, 40, 43, 'residential', 4],
   ['copper-ridge', '铜岭居', 1370, 466, 228, 38, 48, 'residential', 3],
   ['cape-office', '海角商务楼', 1261, 632, 157, 48, 54, 'terrace', 2],
@@ -65,7 +65,7 @@ const neighborhoodRows = [
 const neighborhood = neighborhoodRows.map(([x,z,height,width,depth], i) =>
   [`harbor-neighborhood-${i + 1}`, `东湾街区 ${i + 1}`, x,z,height,width,depth, i % 4 === 0 ? 'terrace' : 'residential', i % 3 === 0 ? 5 : 3 + i % 2]);
 export const HARBOR_TOWERS = Object.freeze([...towers, ...neighborhood].map(([id, name, x, z, height, width, depth, style, palette], index) =>
-  Object.freeze({ id, name, x, z, height, width, depth, style, palette, index, scenic: true, baseY: 4, neighborhood: index >= towers.length })));
+  Object.freeze({ id, name, x, z, height, width, depth, style, palette, index, scenic: false, baseY: 4, neighborhood: index >= towers.length })));
 
 export const HARBOR_VIEWPOINTS = Object.freeze([
   Object.freeze({ id: 'victoria-panorama', name: '星湾全景海滨', kind: 'viewpoint', walkable: true,
@@ -240,11 +240,13 @@ function facadeMaterial(THREE, palette, nightUniform) {
   return material;
 }
 
+const MOUNTAIN_COLUMNS = 18, MOUNTAIN_ROWS = 72;
+
 /** Sinuous, connected terrain, not repeated cone props in the shipping lane. */
 function mountainGeometry(THREE) {
-  const vertices = [], colors = [], indices = [], columns = 18, rows = 72;
+  const vertices = [], colors = [], indices = [], columns = MOUNTAIN_COLUMNS, rows = MOUNTAIN_ROWS;
   for (let row = 0; row <= rows; row++) for (let column = 0; column <= columns; column++) {
-    const x = 1540 + column / columns * 610, z = -1600 + row / rows * 2770;
+    const x = 1670 + column / columns * 610, z = -1600 + row / rows * 2770;
     const ridge = 230 + 145 * Math.exp(-(((z + 620) / 470) ** 2)) + 122 * Math.exp(-(((z - 290) / 370) ** 2));
     const cross = Math.sin(column / columns * Math.PI) ** .72;
     const irregular = Math.sin(z * .013 + column * .7) * 19 + Math.cos(z * .032 - column * .9) * 8;
@@ -256,6 +258,26 @@ function mountainGeometry(THREE) {
   }
   const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); geometry.setIndex(indices); geometry.computeVertexNormals(); return geometry;
+}
+
+/** Sample the rendered triangles, including their diagonal split. Reusing the
+ * Float32 vertices keeps collision support on the visible slope, rather than
+ * on an independently evaluated smooth hill or the plane underneath it. */
+function mountainGroundSampler(geometry) {
+  const p = geometry.attributes.position.array, stride = MOUNTAIN_COLUMNS + 1;
+  const xMin = p[0], xMax = p[MOUNTAIN_COLUMNS * 3];
+  const zMin = p[2], zMax = p[MOUNTAIN_ROWS * stride * 3 + 2];
+  return (x, z) => {
+    if (x < xMin || x > xMax || z < zMin || z > zMax) return null;
+    const column = Math.min(MOUNTAIN_COLUMNS - 1, Math.floor((x - xMin) / (xMax - xMin) * MOUNTAIN_COLUMNS));
+    const row = Math.min(MOUNTAIN_ROWS - 1, Math.floor((z - zMin) / (zMax - zMin) * MOUNTAIN_ROWS));
+    const a = (row * stride + column) * 3, b = a + stride * 3;
+    const u = clamp((x - p[a]) / (p[a + 3] - p[a]), 0, 1);
+    const v = clamp((z - p[a + 2]) / (p[b + 2] - p[a + 2]), 0, 1);
+    return u + v <= 1
+      ? p[a + 1] + (p[a + 4] - p[a + 1]) * u + (p[b + 1] - p[a + 1]) * v
+      : p[b + 4] + (p[b + 1] - p[b + 4]) * (1 - u) + (p[a + 4] - p[b + 4]) * (1 - v);
+  };
 }
 
 /** All visible massing stays resident. Facade accessories and waterfront
@@ -281,11 +303,13 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   solidMaterials.crownWarm.name = 'harbor-crown-warm'; solidMaterials.crownWarm.emissive.set('#ffd494');
   solidMaterials.crownCool.name = 'harbor-crown-cool'; solidMaterials.crownCool.emissive.set('#c3ddff');
   solidMaterials.glass.emissive.set('#edd4af'); solidMaterials.glass.emissiveIntensity = 0;
+  let activeBuildingId = null, interiorId = null;
   let currentQuality = quality, elapsed = 0, lastViewer = { x: 285.5, z: 42 }, disposedInstances = 0, detailLoads = 0;
   function part(pools, key, x, y, z, width, height, depth, rotation = {}, kind = 'box') {
     const id = `${kind}:${key}`;
-    if (!pools.has(id)) pools.set(id, { kind, key, transforms: [] });
+    if (!pools.has(id)) pools.set(id, { kind, key, transforms: [], buildings: [] });
     pools.get(id).transforms.push([x, y, z, width, height, depth, rotation.x || 0, rotation.y || 0, rotation.z || 0]);
+    pools.get(id).buildings.push(activeBuildingId);
   }
   function buildBatches(pools, name) {
     const group = new THREE.Group(); group.name = name;
@@ -294,9 +318,20 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
       const mesh = new THREE.InstancedMesh(geometry, solidMaterials[batch.key], batch.transforms.length);
       mesh.name = `${name} · ${batch.key}`;
       batch.transforms.forEach((p, i) => { temp.position.set(p[0], p[1], p[2]); temp.scale.set(p[3], p[4], p[5]); temp.rotation.set(p[6], p[7], p[8]); temp.updateMatrix(); mesh.setMatrixAt(i, temp.matrix); });
-      mesh.userData.noShadow = true; mesh.castShadow = false; mesh.receiveShadow = true; mesh.computeBoundingSphere(); group.add(mesh);
+      mesh.userData.buildings = batch.buildings; mesh.userData.originalTransforms = batch.transforms;
+      mesh.userData.noShadow = true; mesh.castShadow = false; mesh.receiveShadow = true; mesh.computeBoundingSphere(); applyInteriorVisibility(mesh); group.add(mesh);
     }
     return group;
+  }
+  function applyInteriorVisibility(mesh) {
+    const members = mesh.userData.buildings, transforms = mesh.userData.originalTransforms;
+    if (!mesh.isInstancedMesh || !members?.length) return;
+    for (let i = 0; i < members.length; i++) {
+      if (!members[i]) continue;
+      const p = transforms[i]; temp.position.set(p[0], p[1], p[2]); temp.rotation.set(p[6], p[7], p[8]);
+      temp.scale.set(...(members[i] === interiorId ? [0, 0, 0] : p.slice(3, 6))); temp.updateMatrix(); mesh.setMatrixAt(i, temp.matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
   }
   function lightBeam(pools, key, a, b, thickness) {
     const line = b.clone().sub(a), center = a.clone().add(b).multiplyScalar(.5);
@@ -310,13 +345,15 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   for (const p of HARBOR_COAST.slice(1)) shore.lineTo(p.x, -p.z);
   shore.lineTo(2160, -HARBOR_COAST.at(-1).z); shore.lineTo(2160, -HARBOR_COAST[0].z); shore.closePath();
   const shoreGeometry = new THREE.ShapeGeometry(shore); shoreGeometry.rotateX(-Math.PI / 2); geometries.add(shoreGeometry);
-  const land = new THREE.Mesh(shoreGeometry, solidMaterials.stone); land.position.y = 3.75; land.name = 'Opposite shore · scenery only'; root.add(land);
+  const land = new THREE.Mesh(shoreGeometry, solidMaterials.stone); land.position.y = 3.75; land.name = 'East Bay · walkable shore'; root.add(land);
   for (let i = 1; i < HARBOR_COAST.length; i++) {
     const a = HARBOR_COAST[i - 1], b = HARBOR_COAST[i], dx = b.x - a.x, dz = b.z - a.z, length = Math.hypot(dx, dz);
     part(permanent, 'stone', (a.x + b.x) / 2, 1.7, (a.z + b.z) / 2, 2.3, 4.1, length + .4, { y: Math.atan2(dx, dz) });
     part(permanent, 'dark', (a.x + b.x) / 2 - .4, .25, (a.z + b.z) / 2, .25, 1.2, length + .4, { y: Math.atan2(dx, dz) });
   }
   for (const tower of HARBOR_TOWERS) {
+    activeBuildingId = tower.id;
+    colliders.push({ id: `harbor-shell-${tower.id}`, buildingId: tower.id, kind: 'building', x: tower.x, z: tower.z, hx: tower.width * .67, hz: tower.depth * .67, minY: 3.75, maxY: tower.baseY + tower.height, physics: true, camera: true });
     const geometry = createHarborTowerGeometry(THREE, tower); geometries.add(geometry);
     const mesh = new THREE.Mesh(geometry, facadeMaterials[tower.palette]); mesh.position.set(tower.x, tower.baseY, tower.z);
     mesh.name = tower.name; mesh.userData.harborTowerId = tower.id; mesh.userData.noShadow = true; mesh.receiveShadow = true; root.add(mesh); towerMeshes.push(mesh);
@@ -375,21 +412,25 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
       }
     }
   }
+  activeBuildingId = null;
   // Low, articulated frontage and yacht sheds maintain a human-scale base.
   for (let i = 0; i < 17; i++) {
     const z = -1130 + i * 115, x = harborCoastX(z) + 29, roof = [9, 14, 11, 17, 8][i % 5];
+    colliders.push({ id: `harbor-frontage-${i}`, kind: 'building', x, z, hx: 14.1, hz: 34.5, minY: 3.75, maxY: 4 + roof + .72, physics: true, camera: true });
     part(permanent, 'stone', x, 4 + roof / 2, z, 26, roof, 66);
     part(permanent, 'glass', x - 13.1, 8.7, z, .22, 5.9, 61);
     for (let bay = -3; bay <= 3; bay++) part(permanent, 'stone', x - 13.3, 8.3, z + bay * 9, .55, 8.4, .6);
     part(permanent, 'metal', x, 4 + roof + .36, z, 28.2, .72, 69);
   }
   // Sail-shell convention roof at water's edge, broken into curved strips.
+  colliders.push({ id: 'harbor-shell-convention', kind: 'building', x: 1071, z: -20, hx: 31, hz: 38.5, minY: 3.75, maxY: 32, physics: true, camera: true });
   for (let i = 0; i < 18; i++) {
     const angle = (i + .5) / 18 * Math.PI, x = 1071 + Math.cos(angle) * 28;
     part(permanent, 'stone', x, 12 + Math.sin(angle) * 19, -20, 5.6, .65, 77, { z: -angle + Math.PI / 2 });
   }
   root.add(buildBatches(permanent, 'Harbour podiums · permanent'));
   const mountains = mountainGeometry(THREE); geometries.add(mountains);
+  const mountainGroundAt = mountainGroundSampler(mountains);
   const mountainMaterial = new THREE.MeshStandardMaterial({ color: '#b2b9a9', vertexColors: true, roughness: 1 }); materials.add(mountainMaterial);
   const mountain = new THREE.Mesh(mountains, mountainMaterial); mountain.name = 'Continuous eastern mountain ridge'; mountain.userData.noShadow = true; root.add(mountain);
 
@@ -402,6 +443,7 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   }
 
   function towerDetail(tower, sharedPool = null) {
+    activeBuildingId = tower.id;
     const pool = sharedPool || new Map(), x = tower.x, z = tower.z, h = tower.height, base = tower.baseY;
     // Recessed vertical fins remain proportionate to the 3.35/3.9 m storeys.
     if (tower.style === 'residential') {
@@ -436,6 +478,7 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
       part(pool, 'stone', x + sign * tower.width * .56, base + 15.5, z + dz, 2.5, 1, 5);
       part(pool, 'leaves', x + sign * tower.width * .56, base + 16.5, z + dz, 1.6, 1.1, 2.1, {}, 'sphere');
     }
+    activeBuildingId = null;
     return sharedPool || buildBatches(pool, `${tower.name} · streamed facade accessories`);
   }
   function promenadeDetail(p) {
@@ -494,10 +537,16 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
     return { towers: HARBOR_TOWERS.length, landmarkTowers: towers.length, neighborhoodBuildings: neighborhood.length,
       towerIds: HARBOR_TOWERS.map(t => t.id), maximumRoofHeight: Math.max(...HARBOR_TOWERS.map(t => t.height)),
       viewpoints: HARBOR_VIEWPOINTS, quality: currentQuality, permanentTowers: towerMeshes.length, detailLoads, residentDetailGroups: detailResidents.size,
-      residentInstances, residentMeshes, disposedInstances, night: nightUniform.value, scenicOppositeShore: true, elapsed };
+      residentInstances, residentMeshes, disposedInstances, night: nightUniform.value, scenicOppositeShore: false, interiorBuildingId: interiorId, hiddenShells: towerMeshes.filter(mesh => !mesh.visible).length, elapsed };
   }
   const api = { root, colliders, landmarks: HARBOR_VIEWPOINTS, viewpoints: HARBOR_VIEWPOINTS, towers: HARBOR_TOWERS,
-    groundHeightAt: () => null, supportAt: () => null, update, snapshot,
+    groundHeightAt(x, z) {
+      const shoreY = z >= HARBOR_COAST[0].z && z <= HARBOR_COAST.at(-1).z && x >= harborCoastX(z) && x <= 2160 ? 3.75 : null;
+      const mountainY = mountainGroundAt(x, z);
+      return shoreY === null ? mountainY : mountainY === null ? shoreY : Math.max(shoreY, mountainY);
+    },
+    supportAt: () => null, update, snapshot,
+    setInteriorBuilding(id) { if (id === interiorId) return; interiorId = id; for (const mesh of towerMeshes) mesh.visible = mesh.userData.harborTowerId !== id; root.traverse(applyInteriorVisibility); },
     setQuality(value) { currentQuality = value; },
     dispose() { for (const id of [...detailResidents.keys()]) unloadDetail(id); root.traverse(mesh => { if (mesh.isInstancedMesh) mesh.dispose(); });
       root.removeFromParent(); for (const g of geometries) g.dispose(); for (const m of materials) m.dispose(); root.clear(); },

@@ -59,14 +59,22 @@ async function waitForLift(page) {
   expect(finish.simulationTime - start.simulationTime).toBeLessThan(start.city.interior.elevator.duration + 3);
 }
 
-test('city atlas exposes all 48 addresses and fetches and evicts real north-shore detail', async ({ page }) => {
+test('city atlas exposes all three shores and fetches and evicts real north-shore detail', async ({ page }) => {
   const chunks = [];
   page.on('response', response => { if (/\/assets\/metropolis\/chunks\/[^/]+\.json/.test(response.url())) chunks.push(response); });
   const errors = await boot(page);
-  expect((await snapshot(page)).city.buildings).toHaveLength(48);
+  const buildings = (await snapshot(page)).city.buildings;
+  expect(buildings.filter(building => !['south-expansion', 'east-expansion'].includes(building.district))).toHaveLength(48);
+  expect(buildings.filter(building => building.district === 'south-expansion')).toHaveLength(96);
+  expect(buildings.filter(building => building.district === 'east-expansion')).toHaveLength(76);
+  expect(buildings).toHaveLength(220);
   await atlas(page);
-  await expect(page.locator('[data-building-id]')).toHaveCount(48);
-  expect(new Set(await page.locator('[data-building-id]').evaluateAll(nodes => nodes.map(node => node.dataset.buildingId))).size).toBe(48);
+  await expect(page.locator('[data-building-id]')).toHaveCount(buildings.length);
+  expect((await page.locator('[data-building-id]').evaluateAll(nodes => nodes.map(node => node.dataset.buildingId))).sort()).toEqual(buildings.map(building => building.id).sort());
+  await page.locator('#atlas-district').selectOption('south-expansion');
+  await expect(page.locator('[data-building-id]')).toHaveCount(96);
+  await page.locator('#atlas-district').selectOption('east-expansion');
+  await expect(page.locator('[data-building-id]')).toHaveCount(76);
   await page.locator('#atlas-district').selectOption('oldtown');
   await expect(page.locator('[data-building-id]')).toHaveCount(8);
   await page.locator('#atlas-district').selectOption('');
@@ -167,8 +175,10 @@ for (const journey of [
     // metro stair routes now cover 110 m, about 85 m more plus landing checks.
     // Software rendering may reach the destination at the old wall-time
     // deadline. Keep physical route assertions and give CI arrival headroom.
-    // The ferry retains its original total budget.
-    test.setTimeout(journey.route === 'metro' ? (process.env.CI ? 600000 : 480000) : 360000);
+    // Software GPU traces also show ferry frames above three seconds. The
+    // fixed-step clock deliberately limits catch-up to 250 ms per frame, so
+    // allow the same CI wall-time headroom while retaining simulation limits.
+    test.setTimeout(journey.route === 'metro' ? (process.env.CI ? 600000 : 480000) : (process.env.CI ? 600000 : 360000));
     const errors = await boot(page);
     await visit(page, 'stop', journey.from);
     if (journey.route === 'metro') {
@@ -189,7 +199,7 @@ for (const journey of [
     await page.waitForFunction(() => {
       const s = window.__NEON__.snapshot().city.transit;
       return s.vehicles.find(v => v.id === s.ridingVehicleId)?.stopId === null;
-    }, null, { polling: 'raf', timeout: 60000 });
+    }, null, { polling: 'raf', timeout: process.env.CI ? 180000 : 60000 });
     expect((await snapshot(page)).simulationTime - boarded.simulationTime).toBeLessThan(11);
     // Leaving a moving vehicle must preserve the passenger; no mid-water exit.
     await page.keyboard.press('e');

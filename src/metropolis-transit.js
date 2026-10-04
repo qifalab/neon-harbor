@@ -30,7 +30,7 @@ export const TRANSIT_STOPS = Object.freeze([
   { id: 'light-hills', routeId: 'light-rail', name: '东岸 · 山海公园', entrance: point(660, -1180), platform: point(660, -1180, 9), berth: point(667, -1180, 8.3), kind: 'light-rail' },
   { id: 'hsr-north', routeId: 'high-speed', name: '北岸 · 城际总站', entrance: point(-672, -1160), platform: point(-690, -1160, 13), berth: point(-699, -1160, 12.3), kind: 'high-speed' },
   { id: 'hsr-old', routeId: 'high-speed', name: '旧城 · 西港站', entrance: point(-276, 180), platform: point(-317, 180, 13), berth: point(-308, 180, 12.3), kind: 'high-speed' },
-  { id: 'ferry-south', routeId: 'ferry', name: '旧城 · 天星码头', entrance: point(-160, -282), platform: point(-160, -307, 0.7), berth: point(-160, -320, -0.15), kind: 'ferry' },
+  { id: 'ferry-south', routeId: 'ferry', name: '旧城 · 白帆码头', entrance: point(-160, -282), platform: point(-160, -307, 0.7), berth: point(-160, -320, -0.15), kind: 'ferry' },
   { id: 'ferry-north', routeId: 'ferry', name: '北岸 · 星湾码头', entrance: point(-160, -402), platform: point(-160, -389, 0.7), berth: point(-160, -377, -0.15), kind: 'ferry' },
 ].map(stop => Object.freeze(stop)));
 

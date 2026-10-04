@@ -15,6 +15,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   root.name = 'Neon Harbor · city';
   scene.add(root);
   const colliders = [];
+  const buildings = [];
+  let activeBuildingId = null, interiorId = null;
   const chunkMetadata = new Map();
   const proxyBuildings = [];
   const chunkSize = 80;
@@ -107,14 +109,14 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     // In the browser, high-detail transforms come only from the streamed JSON.
     // Keep just lightweight physics metadata and global surfaces at startup.
     if (streaming && !global) return { batch: id, index: -1 };
-    if (!pool.has(id)) pool.set(id, { kind, key, material: mat(key), transforms: [] });
+    if (!pool.has(id)) pool.set(id, { kind, key, material: mat(key), transforms: [], buildings: [] });
     const batch = pool.get(id);
-    batch.transforms.push([x, y, z, sx, sy, sz, rx, ry, rz]);
+    batch.transforms.push([x, y, z, sx, sy, sz, rx, ry, rz]); batch.buildings.push(activeBuildingId);
     return { batch: id, index: batch.transforms.length - 1 };
   }
   const box = (key, x, y, z, sx, sy, sz, ry = 0) => stamp('box', key, x, y, z, sx, sy, sz, ry);
   function solid(x, z, hx, hz, minY, maxY, { kind = 'solid', physics = true, camera = true, render = null } = {}) {
-    const collider = { id: `${kind}-${++colliderSerial}`, kind, x, z, hx, hz, minY, maxY, physics, camera };
+    const collider = { id: `${kind}-${++colliderSerial}`, kind, x, z, hx, hz, minY, maxY, physics, camera, buildingId: activeBuildingId };
     colliders.push(collider);
     if (render) renderObstacles.push({ ...render, colliderId: collider.id });
     return collider;
@@ -292,10 +294,13 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   }
   function building(x, z, width, depth, height, key = 'cream', style = 0) {
     const base = groundHeightAt(x, z);
+    const id = `south-${String(buildings.length + 1).padStart(3, '0')}`;
+    buildings.push({ id, x, z, width, depth, height, baseY: base, color: palettes[key], style: style ? 'office' : 'residential' });
+    activeBuildingId = id;
     const wall = block(key, x, height / 2 + base, z, width, height, depth, { kind: 'building' });
     // Glazing protrudes by at most 7cm beyond the shell; include the facade skin.
     wall.hx += 0.25; wall.hz += 0.25;
-    proxyBuildings.push({ x, z, y: base + height / 2, width, depth, height, color: palettes[key], chunkId: chunkIdAt(x, z) });
+    proxyBuildings.push({ x, z, y: base + height / 2, width, depth, height, color: palettes[key], chunkId: chunkIdAt(x, z), buildingId: id });
     block('roof', x, base + height + 0.2, z, width + 0.45, 0.4, depth + 0.45, { kind: 'roof' });
     box('dark', x, base + 0.72, z + depth / 2 + 0.045, width - 0.9, 1.4, 0.08);
     windows(x, z, width, depth, height, style ? 'glass' : 'glassDark', style);
@@ -307,6 +312,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
       block('metal', x, base + height + 3.9, z, 0.25, 7, 0.25, { kind: 'antenna' });
       block('light', x, base + height + 7.6, z, 0.4, 0.4, 0.4, { kind: 'antenna-light' });
     }
+    activeBuildingId = null;
+    return id;
   }
   function billboard(text, sub, color, x, y, z, width = 15, height = 5, rotation = 0) {
     const halfX = Math.abs(Math.cos(rotation)) * width / 2 + 0.04;
@@ -385,9 +392,12 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
         const height = 35 + rng() * 38 + (x === 40 && z === -40 ? 24 : 0);
         const width = 22 + rng() * 7;
         const depth = 23 + rng() * 7;
-        building(x - 6, z - 3, width, depth, height, rng() > 0.5 ? 'navy' : 'stone', 1);
+        const towerId = building(x - 6, z - 3, width, depth, height, rng() > 0.5 ? 'navy' : 'stone', 1);
         building(x + 16, z + 15, 13, 15, 12 + rng() * 12, 'cream');
+        Object.assign(buildings.find(b => b.id === towerId), { exteriorWidth: width + 5, exteriorDepth: depth + 5 });
+        activeBuildingId = towerId;
         block('roof', x - 6, 1.18, z - 3, width + 5, 2, depth + 5, { kind: 'podium' });
+        activeBuildingId = null;
       } else {
         for (const dx of [-13, 13]) for (const dz of [-13, 13]) {
           const h = 10 + rng() * 19;
@@ -479,8 +489,18 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   billboard('PALM STUDIOS', 'EVERY STREET HAS A STORY', '#e8bf86', -112, 28, 135, 20, 5);
   billboard('OPEN LATE', 'COFFEE  •  TACOS  •  RECORDS', '#ffac83', -201, 18, -108, 14, 4.5);
 
+  function applyInteriorVisibility(mesh) {
+    const members = mesh.userData.buildings, transforms = mesh.userData.originalTransforms;
+    if (!mesh.isInstancedMesh || !members?.length) return;
+    for (let i = 0; i < members.length; i++) {
+      if (!members[i]) continue;
+      const t = transforms[i]; temp.position.set(t[0], t[1], t[2]); temp.rotation.set(t[6], t[7], t[8]);
+      temp.scale.set(...(members[i] === interiorId ? [0, 0, 0] : t.slice(3, 6))); temp.updateMatrix(); mesh.setMatrixAt(i, temp.matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+  }
   const geometryFor = kind => surfaceGeometries.get(kind) || (kind === 'box' || kind === 'detail-box' ? boxGeo : kind === 'architecture' ? architectureGeo : kind === 'leaf' ? leafGeo : kind === 'tree-crown' ? treeGeo : kind === 'cylinder' ? cylinderGeo : null);
-  function makeBatch(kind, key, transforms) {
+  function makeBatch(kind, key, transforms, members = []) {
     const geometry = geometryFor(kind);
     if (!geometry) throw new Error(`Unsupported city geometry ${kind}`);
     const material = mat(key);
@@ -490,23 +510,25 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
       temp.updateMatrix(); instanced.setMatrixAt(index, temp.matrix);
     });
     instanced.castShadow = quality === 'high'; instanced.receiveShadow = true;
+    instanced.userData.originalTransforms = transforms; instanced.userData.buildings = members;
     instanced.userData.batchId = `${kind}:${key}`;
     instanced.userData.nearDetail = kind === 'detail-box';
     instanced.userData.noShadow = kind.startsWith('surface-') || ['sand', 'marking', 'white'].includes(key);
     if (instanced.userData.noShadow) instanced.castShadow = false;
-    instanced.computeBoundingSphere(); return instanced;
+    instanced.computeBoundingSphere(); applyInteriorVisibility(instanced); return instanced;
   }
-  for (const { kind, key, transforms } of pool.values()) root.add(makeBatch(kind, key, transforms));
+  for (const { kind, key, transforms, buildings: members } of pool.values()) root.add(makeBatch(kind, key, transforms, members));
   const chunkPayloads = new Map();
-  if (!streaming) for (const { kind, key, transforms } of pool.values()) {
-    for (const transform of transforms) {
+  if (!streaming) for (const { kind, key, transforms, buildings: members } of pool.values()) {
+    for (const [index, transform] of transforms.entries()) {
       const [x, , z, sx, , sz] = transform;
       if (isGlobal(kind, key, x, z, sx, sz)) continue;
       const id = chunkIdAt(x, z);
       if (!chunkPayloads.has(id)) chunkPayloads.set(id, new Map());
       const batches = chunkPayloads.get(id), batchId = `${kind}:${key}`;
-      if (!batches.has(batchId)) batches.set(batchId, { kind, material: key, transforms: [] });
+      if (!batches.has(batchId)) batches.set(batchId, { kind, material: key, transforms: [], buildings: [] });
       batches.get(batchId).transforms.push(transform.map(n => Math.round(n * 1e6) / 1e6));
+      batches.get(batchId).buildings.push(members[index]);
     }
   }
   let streamer = null;
@@ -520,14 +542,14 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
         obstacle.kind === 'container' ? '#778b88' : obstacle.kind.includes('roof') || obstacle.kind === 'parapet' ? '#69777b' : '#586563';
       proxyBuildings.push({ x: obstacle.x, z: obstacle.z, y: (obstacle.minY + obstacle.maxY) / 2,
         width: obstacle.hx * 2, depth: obstacle.hz * 2, height: obstacle.maxY - obstacle.minY,
-        color, chunkId: chunkIdAt(obstacle.x, obstacle.z) });
+        color, chunkId: chunkIdAt(obstacle.x, obstacle.z), buildingId: obstacle.buildingId });
     }
     // The skyline proxy preserves genuine district silhouettes while their richer
     // geometry streams. Each loaded district hides only its own proxy instances.
     const proxyMaterial = new THREE.MeshStandardMaterial({ roughness: 0.83, metalness: 0.04 });
     const proxy = new THREE.InstancedMesh(boxGeo, proxyMaterial, proxyBuildings.length);
     proxy.name = 'Distant city silhouette'; proxy.userData.noShadow = true;
-    const proxyMatrices = [], proxyIndices = new Map();
+    const proxyMatrices = [], proxyIndices = new Map(), loadedProxyChunks = new Set();
     proxyBuildings.forEach((building, i) => {
       temp.position.set(building.x, building.y, building.z); temp.rotation.set(0, 0, 0); temp.scale.set(building.width, building.height, building.depth); temp.updateMatrix();
       proxyMatrices.push(temp.matrix.clone()); proxy.setMatrixAt(i, temp.matrix); proxy.setColorAt(i, new THREE.Color(building.color));
@@ -537,9 +559,11 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     proxy.computeBoundingSphere(); root.add(proxy);
     const hidden = new THREE.Matrix4().makeScale(0, 0, 0);
     const proxyVisible = (id, visible) => {
-      for (const index of proxyIndices.get(id) || []) proxy.setMatrixAt(index, visible ? proxyMatrices[index] : hidden);
+      if (visible) loadedProxyChunks.delete(id); else loadedProxyChunks.add(id);
+      for (const index of proxyIndices.get(id) || []) proxy.setMatrixAt(index, visible && !(interiorId && proxyBuildings[index].buildingId === interiorId) ? proxyMatrices[index] : hidden);
       proxy.instanceMatrix.needsUpdate = true;
     };
+    proxy.userData.refreshInterior = () => { for (const id of proxyIndices.keys()) proxyVisible(id, !loadedProxyChunks.has(id)); };
     streamer = new DistrictStreamer({ chunks: [...chunkMetadata.values()],
       load: async (meta, signal) => {
         if (signal.aborted) throw new Error('District load cancelled');
@@ -552,7 +576,7 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
           const source = await response.text();
           const data = validateCityChunk(JSON.parse(source), meta.id);
           const group = new THREE.Group(); group.name = `City district ${meta.id}`;
-          for (const batch of data.batches) group.add(makeBatch(batch.kind, batch.material, batch.transforms));
+          for (const batch of data.batches) group.add(makeBatch(batch.kind, batch.material, batch.transforms, batch.buildings));
           return { node: group, bytes: new TextEncoder().encode(source).length,
             instances: data.batches.reduce((sum, batch) => sum + batch.transforms.length, 0), meshes: group.children.length };
         } finally { clearTimeout(timeout); signal.removeEventListener('abort', abort); }
@@ -600,7 +624,9 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   updateSignals(0);
   let elapsed = 0, detailClock = 0;
   return {
-    root, colliders, surfaces, roadSurfaces, renderObstacles, groundHeightAt, walkerRoutes, landmarks,
+    root, colliders, surfaces, roadSurfaces, renderObstacles, groundHeightAt, walkerRoutes, landmarks, buildings,
+    setInteriorBuilding(id) { if (id === interiorId) return; interiorId = id; root.traverse(mesh => { applyInteriorVisibility(mesh); mesh.userData.refreshInterior?.(); }); },
+    get interiorBuildingId() { return interiorId; },
     get streamingStats() { return streamer ? streamer.stats : { ready: true, loaded: chunkMetadata.size, pending: 0, failed: 0, activeChunks: [...chunkMetadata.keys()] }; },
     prepare: position => streamer ? streamer.prepare(position) : Promise.resolve({ ready: true, loaded: chunkMetadata.size, failed: [] }),
     retry: position => streamer ? streamer.retry(position) : Promise.resolve({ ready: true, failed: [] }),

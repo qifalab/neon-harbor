@@ -1,0 +1,676 @@
+{
+  "createdAt": "2026-10-04T12:57:53.239Z",
+  "scenario": "camellia-court/gallery/bedroom",
+  "method": "Native WebGL rendering of each version’s createInteriorSystem and its own materials and room meshes. Exact recorded in-game camera, fixed atmosphere clock and lights; no image retouching.",
+  "limits": [
+    "Controlled interior fixture: excludes the exterior city, player/HUD, residents and building reflection proxies.",
+    "Both versions use the same sky-only environment and lamp/sun setup to isolate room geometry, materials and contact occlusion.",
+    "This comparison does not measure full-city performance or establish AAA art quality.",
+    "The v0.8 direct image isolates mesh/material changes from the added contact pass."
+  ],
+  "script": "/workspace/scratch/neon-harbor/tools/capture-furniture-comparison.mjs",
+  "scriptSha256": "ab590c2c3e5fca69fa899f885fc34ed268791a65ee39a0ac267c97d8c3a4c5b8",
+  "viewport": {
+    "width": 640,
+    "height": 400,
+    "deviceScaleFactor": 1
+  },
+  "requestedPose": {
+    "position": {
+      "x": -567.0000000000022,
+      "y": 4.2,
+      "z": -1032.756666666664,
+      "yaw": -1.5707963267948968
+    },
+    "camera": {
+      "position": {
+        "x": -567.0000000000022,
+        "y": 5.82,
+        "z": -1032.756666666664
+      },
+      "target": {
+        "x": -576.8628711812833,
+        "y": 5.82,
+        "z": -1034.4070520948155
+      },
+      "fov": 65
+    },
+    "hour": 16.5
+  },
+  "browser": {
+    "executable": "/usr/bin/chromium",
+    "nodeVersion": "v24.19.0",
+    "args": [
+      "--no-sandbox",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader"
+    ],
+    "version": "151.0.7922.173"
+  },
+  "variants": [
+    {
+      "version": "v07",
+      "mode": "direct",
+      "image": "v07-bedroom-direct.png",
+      "imageSha256": "05ec08b05c9bea65fb838e4ada33f342f4bea97cc3b747ec9a576228a4c91ec8",
+      "root": "/workspace/scratch/neon-harbor-baseline",
+      "commit": null,
+      "baselineReference": "a425667bd2fec0c81f482a89861c88c2acd2641e",
+      "setup": {
+        "roomId": "camellia-court-1-1",
+        "floorId": "gallery",
+        "room": {
+          "id": "camellia-court-1-1",
+          "type": "bedroom",
+          "name": "山茶主卧室",
+          "furnishingVariant": 2,
+          "x": -569.5,
+          "z": -1033.175,
+          "width": 8,
+          "depth": 8,
+          "ceilingHeight": 2.98,
+          "enclosed": true,
+          "entrance": {
+            "x": -565.5,
+            "z": -1033.175
+          },
+          "arrival": {
+            "x": -568.8,
+            "z": -1033.175
+          },
+          "bounds": {
+            "minX": -573.5,
+            "maxX": -565.5,
+            "minZ": -1037.175,
+            "maxZ": -1029.175
+          },
+          "number": "202",
+          "art": {
+            "subject": "山茶与木窗",
+            "ink": "#8b766d",
+            "paper": "#c4ac83",
+            "composition": 0,
+            "edition": 2,
+            "variant": 433
+          }
+        },
+        "camera": {
+          "position": [
+            -567.0000000000022,
+            5.82,
+            -1032.756666666664
+          ],
+          "target": [
+            -576.8628711812833,
+            5.82,
+            -1034.4070520948155
+          ],
+          "fov": 65,
+          "near": 0.15,
+          "far": 3200,
+          "aspect": 1.6
+        },
+        "lights": [
+          {
+            "type": "HemisphereLight",
+            "color": [
+              0.508881320845802,
+              0.6583748172725346,
+              0.7835377915215659
+            ],
+            "groundColor": [
+              0.12477181755144427,
+              0.10946171076915331,
+              0.08021982030622662
+            ],
+            "intensity": 0.74,
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "distance": null,
+            "decay": null,
+            "castShadow": false
+          },
+          {
+            "type": "DirectionalLight",
+            "color": [
+              1,
+              0.846213233222326,
+              0.6809004987722651
+            ],
+            "groundColor": null,
+            "intensity": 3.21,
+            "position": [
+              -667.0000000000022,
+              137.46834323650899,
+              -1097.756666666664
+            ],
+            "distance": null,
+            "decay": null,
+            "castShadow": true
+          },
+          {
+            "type": "PointLight",
+            "color": [
+              1,
+              0.8069522576650873,
+              0.5775804404214573
+            ],
+            "groundColor": null,
+            "intensity": 48,
+            "position": [
+              -561.4,
+              7.5,
+              -1023.666
+            ],
+            "distance": 65.04,
+            "decay": 1.6,
+            "castShadow": false
+          },
+          {
+            "type": "PointLight",
+            "color": [
+              1,
+              0.8069522576650873,
+              0.5775804404214573
+            ],
+            "groundColor": null,
+            "intensity": 48,
+            "position": [
+              -558.6,
+              7.5,
+              -1065.246
+            ],
+            "distance": 65.04,
+            "decay": 1.6,
+            "castShadow": false
+          }
+        ],
+        "sunTarget": [
+          -567.0000000000022,
+          4.2,
+          -1032.756666666664
+        ],
+        "shadow": {
+          "mapSize": [
+            2048,
+            2048
+          ],
+          "type": "PCFSoftShadowMap",
+          "normalBias": 0.12
+        },
+        "hour": 16.5,
+        "outputColorSpace": "srgb",
+        "toneMapping": "ACESFilmicToneMapping",
+        "pixelRatio": 1,
+        "exposure": 1.02,
+        "environmentIntensity": 0.54,
+        "fog": {
+          "color": [
+            0.494902190671581,
+            0.5880275459967926,
+            0.6742220688908219
+          ],
+          "density": 0.00048
+        },
+        "threeRevision": "185"
+      },
+      "render": {
+        "contact": {
+          "enabled": false
+        },
+        "glError": 0,
+        "canvasSamples": 4,
+        "contextLost": false,
+        "calls": 105,
+        "triangles": 49882,
+        "textureLoading": {
+          "pending": false,
+          "errors": []
+        }
+      },
+      "errors": [],
+      "resources": {
+        "/assets/materials/jade-tile.webp": "5703c2af30ba4361b70354f36ce2224b9ef4e61eee08156a2dfd8852ca2366fe",
+        "/assets/materials/limestone.webp": "c36ad29ebb1e4c8b92fc58a3e61fa057952140d80b9ccbbd5ad8adc6c27616c4",
+        "/assets/materials/oak.webp": "5aef9f0f5a4c6e6fe6e795f7c00eea1252365d3464e4ad13cfb10826c12ac8a3",
+        "/assets/materials/v04/aggregate-asphalt.webp": "4356006469b8b2b039b8eced31d2513e2c62c6d62a4626812638e9b75eaad558",
+        "/assets/materials/v04/weathered-plaster.webp": "7b55b71ae8bad77235b7dab94f97c6a2fdf978b00c2a93eb3c1ef00c92e92212",
+        "/assets/materials/v04/woven-linen.webp": "47b9043dd22a9a743bf630b4398181bad5f8416d34d2308c88223eba3546de24",
+        "/src/atmosphere.js": "07017ee33edb954770c23e4caae69361c10db8ae086b7f0d65b86ed81cee9af1",
+        "/src/metropolis-catalog.js": "f7ae3c5be531dade3d6da490eb518a899ee78f5445fdf83be0f8b0d24c70240a",
+        "/src/metropolis-interiors.js": "d430b45a46c6e970ccbf7c04a37b122fd470d8d40642f1db3368699c26ef08fc",
+        "/src/metropolis-materials.js": "2963e82ed9c904dd65c427b80de93f260b3a38101f4b3b316ff1e01d7fb1e075",
+        "/src/metropolis-room-designs.js": "e97492dc013d842ca66415385079d39719b16dd089be0866df0f5dbbb78d5af5",
+        "/src/occupied-programmes.js": "cd97ed7c292d32702779266c7f6ad338f1dcffff1c2d4515ef9632812581523c",
+        "/vendor/three/three.core.min.js": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90",
+        "/vendor/three/three.module.js": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+      }
+    },
+    {
+      "version": "v08",
+      "mode": "direct",
+      "image": "v08-bedroom-direct.png",
+      "imageSha256": "a6b20ec7ba363e8c7cef7ec0eb5f68429930ea210de0faddcb37a86f32929f9a",
+      "root": "/workspace/scratch/neon-harbor/",
+      "commit": "a425667bd2fec0c81f482a89861c88c2acd2641e",
+      "baselineReference": null,
+      "setup": {
+        "roomId": "camellia-court-1-1",
+        "floorId": "gallery",
+        "room": {
+          "id": "camellia-court-1-1",
+          "type": "bedroom",
+          "name": "山茶主卧室",
+          "furnishingVariant": 2,
+          "x": -569.5,
+          "z": -1033.175,
+          "width": 8,
+          "depth": 8,
+          "ceilingHeight": 2.98,
+          "enclosed": true,
+          "entrance": {
+            "x": -565.5,
+            "z": -1033.175
+          },
+          "arrival": {
+            "x": -568.8,
+            "z": -1033.175
+          },
+          "bounds": {
+            "minX": -573.5,
+            "maxX": -565.5,
+            "minZ": -1037.175,
+            "maxZ": -1029.175
+          },
+          "number": "202",
+          "art": {
+            "subject": "山茶与木窗",
+            "ink": "#8b766d",
+            "paper": "#c4ac83",
+            "composition": 0,
+            "edition": 2,
+            "variant": 433
+          }
+        },
+        "camera": {
+          "position": [
+            -567.0000000000022,
+            5.82,
+            -1032.756666666664
+          ],
+          "target": [
+            -576.8628711812833,
+            5.82,
+            -1034.4070520948155
+          ],
+          "fov": 65,
+          "near": 0.15,
+          "far": 3200,
+          "aspect": 1.6
+        },
+        "lights": [
+          {
+            "type": "HemisphereLight",
+            "color": [
+              0.508881320845802,
+              0.6583748172725346,
+              0.7835377915215659
+            ],
+            "groundColor": [
+              0.12477181755144427,
+              0.10946171076915331,
+              0.08021982030622662
+            ],
+            "intensity": 0.74,
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "distance": null,
+            "decay": null,
+            "castShadow": false
+          },
+          {
+            "type": "DirectionalLight",
+            "color": [
+              1,
+              0.846213233222326,
+              0.6809004987722651
+            ],
+            "groundColor": null,
+            "intensity": 3.21,
+            "position": [
+              -667.0000000000022,
+              137.46834323650899,
+              -1097.756666666664
+            ],
+            "distance": null,
+            "decay": null,
+            "castShadow": true
+          },
+          {
+            "type": "PointLight",
+            "color": [
+              1,
+              0.8069522576650873,
+              0.5775804404214573
+            ],
+            "groundColor": null,
+            "intensity": 48,
+            "position": [
+              -561.4,
+              7.5,
+              -1023.666
+            ],
+            "distance": 65.04,
+            "decay": 1.6,
+            "castShadow": false
+          },
+          {
+            "type": "PointLight",
+            "color": [
+              1,
+              0.8069522576650873,
+              0.5775804404214573
+            ],
+            "groundColor": null,
+            "intensity": 48,
+            "position": [
+              -558.6,
+              7.5,
+              -1065.246
+            ],
+            "distance": 65.04,
+            "decay": 1.6,
+            "castShadow": false
+          }
+        ],
+        "sunTarget": [
+          -567.0000000000022,
+          4.2,
+          -1032.756666666664
+        ],
+        "shadow": {
+          "mapSize": [
+            2048,
+            2048
+          ],
+          "type": "PCFSoftShadowMap",
+          "normalBias": 0.12
+        },
+        "hour": 16.5,
+        "outputColorSpace": "srgb",
+        "toneMapping": "ACESFilmicToneMapping",
+        "pixelRatio": 1,
+        "exposure": 1.02,
+        "environmentIntensity": 0.54,
+        "fog": {
+          "color": [
+            0.494902190671581,
+            0.5880275459967926,
+            0.6742220688908219
+          ],
+          "density": 0.00048
+        },
+        "threeRevision": "185"
+      },
+      "render": {
+        "contact": {
+          "enabled": false
+        },
+        "glError": 0,
+        "canvasSamples": 4,
+        "contextLost": false,
+        "calls": 105,
+        "triangles": 80986,
+        "textureLoading": {
+          "pending": false,
+          "errors": []
+        }
+      },
+      "errors": [],
+      "resources": {
+        "/assets/materials/jade-tile.webp": "5703c2af30ba4361b70354f36ce2224b9ef4e61eee08156a2dfd8852ca2366fe",
+        "/assets/materials/limestone.webp": "c36ad29ebb1e4c8b92fc58a3e61fa057952140d80b9ccbbd5ad8adc6c27616c4",
+        "/assets/materials/oak.webp": "5aef9f0f5a4c6e6fe6e795f7c00eea1252365d3464e4ad13cfb10826c12ac8a3",
+        "/assets/materials/v04/aggregate-asphalt.webp": "4356006469b8b2b039b8eced31d2513e2c62c6d62a4626812638e9b75eaad558",
+        "/assets/materials/v04/weathered-plaster.webp": "7b55b71ae8bad77235b7dab94f97c6a2fdf978b00c2a93eb3c1ef00c92e92212",
+        "/assets/materials/v04/woven-linen.webp": "47b9043dd22a9a743bf630b4398181bad5f8416d34d2308c88223eba3546de24",
+        "/src/atmosphere.js": "73d4cef1814ff96c4cc33853616a16d97b818539d9e7f8c0add3ba202f82b3be",
+        "/src/compact-interiors.js": "47a9da920577783b8fbede9e3823062e7d9c8926e7efe8212d6bce33c60b8f68",
+        "/src/expansion-programmes.js": "62c58f263c641b29250e42dcd3659f4ceb582060be0b218242ea9f1ac9e6c6c0",
+        "/src/metropolis-catalog.js": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+        "/src/metropolis-interiors.js": "f65c3e7c61184abb425b340ea01dff3102f54817a585d396909962b17406cdad",
+        "/src/metropolis-materials.js": "2963e82ed9c904dd65c427b80de93f260b3a38101f4b3b316ff1e01d7fb1e075",
+        "/src/metropolis-room-designs.js": "e0f37e26c4aec98293cd71663d1ee47a7b18f333af1882751bc000f737d35775",
+        "/src/occupied-programmes.js": "464ae9b4bb35004f271ec6566474179063997b0a0b92d79de74f468629d3cb7e",
+        "/vendor/three/three.core.min.js": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90",
+        "/vendor/three/three.module.js": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+      }
+    },
+    {
+      "version": "v08",
+      "mode": "contact",
+      "image": "v08-bedroom-contact.png",
+      "imageSha256": "acbac181bdd4344b8d47bde6ccf0ba8c87cc8dd29d3f3c703ec6350f395b75f7",
+      "root": "/workspace/scratch/neon-harbor/",
+      "commit": "a425667bd2fec0c81f482a89861c88c2acd2641e",
+      "baselineReference": null,
+      "setup": {
+        "roomId": "camellia-court-1-1",
+        "floorId": "gallery",
+        "room": {
+          "id": "camellia-court-1-1",
+          "type": "bedroom",
+          "name": "山茶主卧室",
+          "furnishingVariant": 2,
+          "x": -569.5,
+          "z": -1033.175,
+          "width": 8,
+          "depth": 8,
+          "ceilingHeight": 2.98,
+          "enclosed": true,
+          "entrance": {
+            "x": -565.5,
+            "z": -1033.175
+          },
+          "arrival": {
+            "x": -568.8,
+            "z": -1033.175
+          },
+          "bounds": {
+            "minX": -573.5,
+            "maxX": -565.5,
+            "minZ": -1037.175,
+            "maxZ": -1029.175
+          },
+          "number": "202",
+          "art": {
+            "subject": "山茶与木窗",
+            "ink": "#8b766d",
+            "paper": "#c4ac83",
+            "composition": 0,
+            "edition": 2,
+            "variant": 433
+          }
+        },
+        "camera": {
+          "position": [
+            -567.0000000000022,
+            5.82,
+            -1032.756666666664
+          ],
+          "target": [
+            -576.8628711812833,
+            5.82,
+            -1034.4070520948155
+          ],
+          "fov": 65,
+          "near": 0.15,
+          "far": 3200,
+          "aspect": 1.6
+        },
+        "lights": [
+          {
+            "type": "HemisphereLight",
+            "color": [
+              0.508881320845802,
+              0.6583748172725346,
+              0.7835377915215659
+            ],
+            "groundColor": [
+              0.12477181755144427,
+              0.10946171076915331,
+              0.08021982030622662
+            ],
+            "intensity": 0.74,
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "distance": null,
+            "decay": null,
+            "castShadow": false
+          },
+          {
+            "type": "DirectionalLight",
+            "color": [
+              1,
+              0.846213233222326,
+              0.6809004987722651
+            ],
+            "groundColor": null,
+            "intensity": 3.21,
+            "position": [
+              -667.0000000000022,
+              137.46834323650899,
+              -1097.756666666664
+            ],
+            "distance": null,
+            "decay": null,
+            "castShadow": true
+          },
+          {
+            "type": "PointLight",
+            "color": [
+              1,
+              0.8069522576650873,
+              0.5775804404214573
+            ],
+            "groundColor": null,
+            "intensity": 48,
+            "position": [
+              -561.4,
+              7.5,
+              -1023.666
+            ],
+            "distance": 65.04,
+            "decay": 1.6,
+            "castShadow": false
+          },
+          {
+            "type": "PointLight",
+            "color": [
+              1,
+              0.8069522576650873,
+              0.5775804404214573
+            ],
+            "groundColor": null,
+            "intensity": 48,
+            "position": [
+              -558.6,
+              7.5,
+              -1065.246
+            ],
+            "distance": 65.04,
+            "decay": 1.6,
+            "castShadow": false
+          }
+        ],
+        "sunTarget": [
+          -567.0000000000022,
+          4.2,
+          -1032.756666666664
+        ],
+        "shadow": {
+          "mapSize": [
+            2048,
+            2048
+          ],
+          "type": "PCFSoftShadowMap",
+          "normalBias": 0.12
+        },
+        "hour": 16.5,
+        "outputColorSpace": "srgb",
+        "toneMapping": "ACESFilmicToneMapping",
+        "pixelRatio": 1,
+        "exposure": 1.02,
+        "environmentIntensity": 0.54,
+        "fog": {
+          "color": [
+            0.494902190671581,
+            0.5880275459967926,
+            0.6742220688908219
+          ],
+          "density": 0.00048
+        },
+        "threeRevision": "185"
+      },
+      "render": {
+        "contact": {
+          "enabled": true,
+          "supported": true,
+          "quality": "high",
+          "technique": "depth-reconstructed short-range SSAO",
+          "sceneSize": [
+            640,
+            400
+          ],
+          "occlusionSize": [
+            320,
+            200
+          ],
+          "samples": 4,
+          "passes": 3,
+          "cpuSubmitMs": 471,
+          "fallback": null
+        },
+        "glError": 0,
+        "canvasSamples": 4,
+        "contextLost": false,
+        "calls": 107,
+        "triangles": 80988,
+        "textureLoading": {
+          "pending": false,
+          "errors": []
+        }
+      },
+      "errors": [],
+      "resources": {
+        "/assets/materials/jade-tile.webp": "5703c2af30ba4361b70354f36ce2224b9ef4e61eee08156a2dfd8852ca2366fe",
+        "/assets/materials/limestone.webp": "c36ad29ebb1e4c8b92fc58a3e61fa057952140d80b9ccbbd5ad8adc6c27616c4",
+        "/assets/materials/oak.webp": "5aef9f0f5a4c6e6fe6e795f7c00eea1252365d3464e4ad13cfb10826c12ac8a3",
+        "/assets/materials/v04/aggregate-asphalt.webp": "4356006469b8b2b039b8eced31d2513e2c62c6d62a4626812638e9b75eaad558",
+        "/assets/materials/v04/weathered-plaster.webp": "7b55b71ae8bad77235b7dab94f97c6a2fdf978b00c2a93eb3c1ef00c92e92212",
+        "/assets/materials/v04/woven-linen.webp": "47b9043dd22a9a743bf630b4398181bad5f8416d34d2308c88223eba3546de24",
+        "/src/atmosphere.js": "73d4cef1814ff96c4cc33853616a16d97b818539d9e7f8c0add3ba202f82b3be",
+        "/src/compact-interiors.js": "47a9da920577783b8fbede9e3823062e7d9c8926e7efe8212d6bce33c60b8f68",
+        "/src/contact-occlusion.js": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8",
+        "/src/expansion-programmes.js": "62c58f263c641b29250e42dcd3659f4ceb582060be0b218242ea9f1ac9e6c6c0",
+        "/src/metropolis-catalog.js": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+        "/src/metropolis-interiors.js": "f65c3e7c61184abb425b340ea01dff3102f54817a585d396909962b17406cdad",
+        "/src/metropolis-materials.js": "2963e82ed9c904dd65c427b80de93f260b3a38101f4b3b316ff1e01d7fb1e075",
+        "/src/metropolis-room-designs.js": "e0f37e26c4aec98293cd71663d1ee47a7b18f333af1882751bc000f737d35775",
+        "/src/occupied-programmes.js": "464ae9b4bb35004f271ec6566474179063997b0a0b92d79de74f468629d3cb7e",
+        "/vendor/three/three.core.min.js": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90",
+        "/vendor/three/three.module.js": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+      }
+    }
+  ],
+  "conditionsMatch": true
+}

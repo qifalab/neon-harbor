@@ -78,6 +78,9 @@ export class SpatialIndex {
 }
 
 function supported(body, options, radius) {
+  // Public transport supplies its own metre-scale hull and vertical envelope;
+  // a double-decker cannot inherit the sedan's height or wheel support shape.
+  if (radius === undefined && body.externalBody) return { ...body };
   if (radius === undefined && options.supportAt) return { ...body, ...options.supportAt(body) };
   const ground = options.groundHeightAt ? options.groundHeightAt(body.x, body.z, body.groundY ?? body.y ?? 0) : body.y || 0;
   const minY = ground + (body.jumpY || 0);

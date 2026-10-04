@@ -1,0 +1,130 @@
+{
+  "failure": "Whole-scenario 600000ms budget exceeded",
+  "lastRecordedCabinPose": {
+    "local": {
+      "x": -1.2640118768752346,
+      "y": 1.3,
+      "z": -7.277942118997247,
+      "yaw": -1.6810927923476364
+    },
+    "vehicle": {
+      "id": "harbor-ferry-1",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "x": 241.68922393370732,
+      "y": 0,
+      "z": -374.80787759845936,
+      "yaw": -1.7022396590252356,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 0.03824018146240604,
+      "nextStopId": "harbor-ferry-north",
+      "secondsToArrival": 6.313701707717769,
+      "speed": 5.999999999999752,
+      "delay": 0,
+      "serviceTime": 115.59999999999472,
+      "held": null,
+      "trafficState": "cruise",
+      "junction": null
+    },
+    "cameraYaw": 10.761568685281611,
+    "sensitivity": 1,
+    "time": 115.59999999999472,
+    "teleportRevision": 3,
+    "deck": "lower"
+  },
+  "lastRecordedInputActions": [
+    {
+      "method": "keyboardUp",
+      "params": {
+        "key": "d"
+      },
+      "error": null
+    },
+    {
+      "method": "keyboardUp",
+      "params": {
+        "key": "z"
+      },
+      "error": null
+    },
+    {
+      "method": "mouseMove",
+      "params": {
+        "x": -772.3093865119478,
+        "y": 96
+      },
+      "error": null
+    },
+    {
+      "method": "waitForFunction",
+      "params": {
+        "isFunction": true,
+        "timeout": 15000
+      },
+      "error": null
+    },
+    {
+      "method": "keyboardDown",
+      "params": {
+        "key": "z"
+      },
+      "error": null
+    },
+    {
+      "method": "keyboardDown",
+      "params": {
+        "key": "d"
+      },
+      "error": null
+    },
+    {
+      "method": "waitForFunction",
+      "params": {
+        "isFunction": true,
+        "timeout": 93808
+      },
+      "error": null
+    },
+    {
+      "method": "keyboardUp",
+      "params": {
+        "key": "d"
+      },
+      "error": null
+    },
+    {
+      "method": "keyboardUp",
+      "params": {
+        "key": "z"
+      },
+      "error": null
+    },
+    {
+      "method": "mouseMove",
+      "params": {
+        "x": -803.5856973628371,
+        "y": 96
+      },
+      "error": null
+    }
+  ],
+  "errors": [
+    {
+      "method": "pw:api",
+      "message": "Error: page.waitForFunction: Test timeout of 600000ms exceeded."
+    },
+    {
+      "method": "pw:api",
+      "message": "Error: keyboard.up: Target page, context or browser has been closed"
+    }
+  ],
+  "classification": "The recorded movement and voyage continued; lower-door alighting was not reached before the software-rendering scenario deadline",
+  "automaticRetries": 0,
+  "budgetChangePlanned": {
+    "ferryOnlyScenarioTimeoutMs": 900000,
+    "perWalkingDeadlineMs": 150000,
+    "perArrivalDeadlineMs": 180000,
+    "reason": "Actual first-run trace and continuing movement near the door, not a game-state write or a collision repair"
+  }
+}

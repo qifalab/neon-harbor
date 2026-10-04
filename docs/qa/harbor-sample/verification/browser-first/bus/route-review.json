@@ -1,0 +1,10 @@
+{
+  "method": "Independent read-only review of the recorded browser samples and authored cabin dimensions",
+  "sampleCount": 189,
+  "simulationClock": {"monotonicNonDecreasing": true, "duplicateBoundarySamples": 10, "maximumSampleGapSeconds": 1.65},
+  "teleportRevision": {"distinctValues": [3]},
+  "stairTraversal": {"ascendingChangingIntermediateSamples": 43, "descendingChangingIntermediateSamples": 42, "minimumHeight": 0.44, "maximumHeight": 2.4, "supportFormulaMatched": true, "maximumLateralDeviationMetres": 0.084868, "passengerRadiusMetres": 0.22, "stairHalfWidthMetres": 0.37},
+  "centralAisle": {"maximumCapsuleEnvelopeMetres": 0.245, "aisleHalfWidthMetres": 0.33},
+  "highPose": {"localToWorldPositionErrorMetres": 0, "eyeHeightMetres": 1.62, "boomLengthMetres": 0, "quality": "high", "viewport": [512, 320]},
+  "limitations": ["Samples are not a complete per-frame collision audit", "Final arrival and outside poses are not in this first-run route JSON; alighting is supported by the passing assertions and original run log", "These samples do not prove all seats, all traffic conflicts, long-term stability, visual quality acceptance, hardware FPS or the continuous 20-minute route", "positionWrites/clockWrites are test declarations to be assessed together with the archived test source"]
+}

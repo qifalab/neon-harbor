@@ -155,7 +155,7 @@ export class GameSimulation {
       this._indexedColliders = this.colliders;
       this._spatialIndex = new SpatialIndex(this.colliders);
     }
-    return { index: this._spatialIndex, bounds: this.bounds, vehicles: this.cars || [], ignore,
+    return { index: this._spatialIndex, bounds: this.bounds, vehicles: [...(this.cars || []), ...(this.externalVehicles?.(ignore) || [])], ignore,
       groundHeightAt: this.groundHeightAt, supportAt: pose => this._supportAt(pose) };
   }
 
@@ -194,7 +194,7 @@ export class GameSimulation {
   _moveCar(car, dx, dz, dyaw = 0) {
     const vx = car.vx || 0, vz = car.vz || 0;
     const options = this._collisionOptions(car);
-    options.circles = [...(!this.inCar ? [{ ...this.player, radius: CHARACTER_RADIUS, id: 'player' }] : []),
+    options.circles = [...(!this.inCar && !this._backgroundTraffic && !this.isolatedPlayer?.() ? [{ ...this.player, radius: CHARACTER_RADIUS, id: 'player' }] : []),
       ...(this.pedestriansAt?.(car) || [])];
     const result = moveVehicle(car, dx, dz, dyaw, options);
     for (const contact of result.contacts) {
@@ -276,8 +276,10 @@ export class GameSimulation {
     let dz = Math.cos(camera) * forward + Math.sin(camera) * strafe;
     const magnitude = Math.hypot(dx, dz);
     if (magnitude > 1) { dx /= magnitude; dz /= magnitude; }
-    const sprinting = input.sprint && this.player.stamina > 1 && magnitude > 0.01;
-    const speed = sprinting ? 10.5 : 5.6;
+    const sprinting = !input.slow && input.sprint && this.player.stamina > 1 && magnitude > 0.01;
+    // A deliberate precision gait keeps even a 250 ms catch-up frame below
+    // the clearance beside an avatar on a narrow stair or doorway.
+    const speed = input.slow ? .8 : sprinting ? 10.5 : 5.6;
     this.player.stamina = clamp(this.player.stamina + (sprinting ? -22 : 15) * dt, 0, 100);
     this._move(this.player, dx * speed * dt, dz * speed * dt, CHARACTER_RADIUS);
     this.player.groundY = this.groundHeightAt(this.player.x, this.player.z, this.player.groundY || 0);
@@ -366,12 +368,35 @@ export class GameSimulation {
       car.waypoint=(car.waypoint+1)%car.route.length;
     }
     const target=car.route[car.waypoint],gap=distance(car,target);
-    const control=trafficTargetSpeed(car,this.cars,this.elapsed,{pedestrian:this.trafficStopDistanceAt?false:this.trafficYieldAt?.(car),pedestrianDistance:this.trafficStopDistanceAt?.(car)});
+    const control=trafficTargetSpeed(car,[...this.cars,...(this.externalVehicles?.(car)||[])],this.trafficClock?.(car)??this.elapsed,{pedestrian:this.trafficStopDistanceAt?false:this.trafficYieldAt?.(car),pedestrianDistance:this.trafficStopDistanceAt?.(car)});
     const turn=car.route[car.waypoint].turn&&gap<12;
     const desired=Math.min(control.speed,turn?4.5:car.cruise);
     const speed=car.speed+clamp(desired-car.speed,-6*dt,2.6*dt);
     car.trafficState=control.reason;
     this._driveNPC(car,target,Math.max(0,speed),dt);
+  }
+
+  /** Advance stored outdoor traffic using its own collision and ground data.
+   * Interior visibility must not suspend the street timetable or route state.
+   * The indoor player is excluded from this independent outdoor context.
+   */
+  updateStoredTraffic(dt, { cars, colliders, groundHeightAt }) {
+    if (!cars?.length || !(dt > 0)) return;
+    const previous = { cars: this.cars, colliders: this.colliders, groundHeightAt: this.groundHeightAt,
+      _indexedColliders: this._indexedColliders, _spatialIndex: this._spatialIndex };
+    try {
+      Object.assign(this, { cars, colliders, groundHeightAt, _backgroundTraffic: true });
+      if (this._storedTrafficColliders !== colliders) {
+        this._storedTrafficColliders = colliders;
+        this._storedTrafficIndex = new SpatialIndex(colliders);
+      }
+      this._indexedColliders = colliders; this._spatialIndex = this._storedTrafficIndex;
+      this._supportCache.clear();
+      for (const car of cars) if (car.traffic && car.health > 0 && !this.networkControlled?.has(car.id)) this._updateTraffic(car, dt);
+    } finally {
+      Object.assign(this, previous); this._backgroundTraffic = false;
+      this._supportCache.clear();
+    }
   }
 
   _crime(amount = 1) {

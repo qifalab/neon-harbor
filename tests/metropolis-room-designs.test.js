@@ -40,7 +40,7 @@ test('every natural-floor room threshold remain reachable through the central ai
       assert.ok(Math.hypot(player.x - building.x, player.z - layout.entrance.z) < 0.015, `${room.name} cannot return to elevator/exit aisle`);
     }
     for (const part of layout.parts) {
-      assert.ok(['box', 'rounded', 'cylinder', 'sphere'].includes(part.geometry));
+      assert.ok(['box', 'rounded', 'soft', 'cylinder', 'sphere'].includes(part.geometry));
       assert.ok([part.x, part.y, part.z, part.sx, part.sy, part.sz].every(Number.isFinite));
       assert.ok(part.sx > 0 && part.sy > 0 && part.sz > 0);
     }

@@ -7,7 +7,7 @@ export function publicInteriorFootprint(building) {
     minZ: building.z - depth / 2, maxZ: building.z + depth / 2 };
 }
 
-export const METROPOLIS_BOUNDS = 1450;
+export const METROPOLIS_BOUNDS = 1800;
 export const METROPOLIS_ROADS = Object.freeze({
   vertical: [-640, -480, -320, -160, 0, 160, 320, 480, 640],
   horizontal: [-420, -560, -700, -840, -980, -1120, -1260], width: 26,
