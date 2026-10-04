@@ -13,16 +13,16 @@ const city = createCityExploration(THREE, new THREE.Scene(), { streaming: false 
 function fixture() {
   const transit = new TransitService();
   const residents = city.people.journeys.residents.map(person => ({ ...person, routine: { ...person.routine }, journey: null }));
-  const life = new CitizenJourneys({ residents, buildings: city.buildings, transit, colliders: city.colliders });
+  const life = new CitizenJourneys({ residents, buildings: city.people.journeys.buildings, transit, colliders: city.colliders });
   return { transit, residents, life };
 }
 
-test('the complete shipped world has legal doorstep routes, unobstructed station entrances and real crossing edges', () => {
+test('the north-shore resident network has legal doorstep routes, unobstructed station entrances and real crossing edges', () => {
   const { life } = fixture(), nav = life.navigation;
-  for (const building of city.buildings) {
+  for (const building of life.buildings) {
     const door = { x: building.x, z: building.entrance.z + 1.2 };
     assert.ok(nav.clear(door), `${building.id}: doorstep obstructed`);
-    for (const destination of city.buildings) assert.ok(nav.route(door, { x: destination.x, z: destination.entrance.z + 1.2 }), `${building.id} -> ${destination.id}: unreachable`);
+    for (const destination of life.buildings) assert.ok(nav.route(door, { x: destination.x, z: destination.entrance.z + 1.2 }), `${building.id} -> ${destination.id}: unreachable`);
     for (const stop of city.transit.stops.filter(stop => stop.entrance.z < -390)) assert.ok(nav.route(door, stop.entrance), `${building.id} -> ${stop.id}: street approach blocked`);
   }
   for (const node of nav.nodes) for (const edge of node.edges) {

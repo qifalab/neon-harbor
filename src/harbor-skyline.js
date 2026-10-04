@@ -1,8 +1,9 @@
 /**
  * An authored opposite shore, visible from the existing walkable waterfront.
- * These are scenery buildings, not extra enterable addresses. In particular,
- * no guide entry or collision surface implies that the far shore is playable.
+ * v0.8 opens these towers as real addresses and retains their distant geometry.
  */
+import { expandedAddress } from './expansion-programmes.js';
+import { applySurfaceFinish } from './surface-finish.js';
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 // x / z / roof height / width / depth / silhouette / material palette.
@@ -36,7 +37,7 @@ const towers = [
   ['midlevel-twins-a', '松岭双庭南座', 1311, -529, 197, 38, 48, 'residential', 4],
   ['midlevel-twins-b', '松岭双庭北座', 1348, -447, 212, 41, 43, 'residential', 3],
   ['mountain-exchange', '望山金融汇', 1387, -272, 306, 53, 61, 'taper', 0],
-  ['upper-garden', '上环花园', 1289, -116, 156, 39, 44, 'residential', 4],
+  ['upper-garden', '山麓花园', 1289, -116, 156, 39, 44, 'residential', 4],
   ['coastal-court', '滨海雅苑', 1320, 43, 179, 44, 50, 'terrace', 3],
   ['peak-lantern', '山顶灯塔', 1379, 186, 247, 47, 51, 'lantern', 5],
   ['southern-gardens', '南山庭院', 1268, 360, 184, 40, 43, 'residential', 4],
@@ -263,6 +264,12 @@ function mountainGeometry(THREE) {
  * No quality mode substitutes fewer or shorter skyline buildings. */
 export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   const root = new THREE.Group(); root.name = 'Star Bay · authored eastern skyline'; scene.add(root);
+  const buildings=HARBOR_TOWERS.map(t=>{
+    const use=t.style==='residential'?'home':'office';
+    const address=expandedAddress({id:`east-${use}-${String(t.index+1).padStart(3,'0')}`,name:t.name,englishName:`East Bay ${t.index+1}`,x:t.x,z:t.z,width:t.width,depth:t.depth,height:t.height,color:facadePalettes[t.palette],index:t.index,baseY:t.baseY,district:'east-bay',style:t.style});
+    return Object.freeze({...address,towerId:t.id,entrance:Object.freeze({...address.entrance,z:t.z+t.depth*.645+3})});
+  });
+  let interiorBuilding=null;
   const colliders = [], geometries = new Set(), materials = new Set(), towerMeshes = [], detailResidents = new Map();
   const nightUniform = { value: 0 }, boxGeometry = new THREE.BoxGeometry(1, 1, 1), cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 12);
   const sphereGeometry = new THREE.SphereGeometry(1, 12, 7), temp = new THREE.Object3D();
@@ -276,6 +283,8 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
     solidMaterials[key] = new THREE.MeshStandardMaterial({ color, roughness: ['glass', 'metal', 'brass'].includes(key) ? .42 : .87,
       metalness: ['metal', 'brass'].includes(key) ? .5 : key === 'glass' ? .26 : .015 });
     materials.add(solidMaterials[key]);
+    if(['stone','wood'].includes(key))applySurfaceFinish(solidMaterials[key],'mineral',{world:true});
+    if(['metal','brass'].includes(key))applySurfaceFinish(solidMaterials[key],'metal',{world:true});
   }
   solidMaterials.light.emissive.set('#ffe0b0'); solidMaterials.light.emissiveIntensity = .12;
   solidMaterials.crownWarm.name = 'harbor-crown-warm'; solidMaterials.crownWarm.emissive.set('#ffd494');
@@ -293,10 +302,22 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
       const geometry = batch.kind === 'cylinder' ? cylinderGeometry : batch.kind === 'sphere' ? sphereGeometry : boxGeometry;
       const mesh = new THREE.InstancedMesh(geometry, solidMaterials[batch.key], batch.transforms.length);
       mesh.name = `${name} · ${batch.key}`;
+      mesh.userData.originalTransforms=batch.transforms;
       batch.transforms.forEach((p, i) => { temp.position.set(p[0], p[1], p[2]); temp.scale.set(p[3], p[4], p[5]); temp.rotation.set(p[6], p[7], p[8]); temp.updateMatrix(); mesh.setMatrixAt(i, temp.matrix); });
       mesh.userData.noShadow = true; mesh.castShadow = false; mesh.receiveShadow = true; mesh.computeBoundingSphere(); group.add(mesh);
     }
-    return group;
+    applyInteriorVisibility(group);return group;
+  }
+  function applyInteriorVisibility(target=root) {
+    target.traverse(mesh=>{
+      if(mesh.userData.harborTowerId)mesh.visible=mesh.userData.harborTowerId!==interiorBuilding?.towerId;
+      const transforms=mesh.userData.originalTransforms;if(!mesh.isInstancedMesh||!transforms)return;
+      transforms.forEach((p,i)=>{
+        const hidden=interiorBuilding&&Math.abs(p[0]-interiorBuilding.x)<interiorBuilding.width*.70&&
+          Math.abs(p[2]-interiorBuilding.z)<interiorBuilding.depth*.70&&p[1]>=interiorBuilding.baseY&&p[3]<interiorBuilding.width*1.5&&p[5]<interiorBuilding.depth*1.5;
+        temp.position.set(p[0],p[1],p[2]);temp.rotation.set(p[6],p[7],p[8]);temp.scale.set(hidden?0:p[3],hidden?0:p[4],hidden?0:p[5]);temp.updateMatrix();mesh.setMatrixAt(i,temp.matrix);
+      });mesh.instanceMatrix.needsUpdate=true;
+    });
   }
   function lightBeam(pools, key, a, b, thickness) {
     const line = b.clone().sub(a), center = a.clone().add(b).multiplyScalar(.5);
@@ -310,13 +331,15 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   for (const p of HARBOR_COAST.slice(1)) shore.lineTo(p.x, -p.z);
   shore.lineTo(2160, -HARBOR_COAST.at(-1).z); shore.lineTo(2160, -HARBOR_COAST[0].z); shore.closePath();
   const shoreGeometry = new THREE.ShapeGeometry(shore); shoreGeometry.rotateX(-Math.PI / 2); geometries.add(shoreGeometry);
-  const land = new THREE.Mesh(shoreGeometry, solidMaterials.stone); land.position.y = 3.75; land.name = 'Opposite shore · scenery only'; root.add(land);
+  const land = new THREE.Mesh(shoreGeometry, solidMaterials.stone); land.position.y = 3.75; land.name = 'East Bay · walkable shore'; land.receiveShadow=true;root.add(land);
   for (let i = 1; i < HARBOR_COAST.length; i++) {
     const a = HARBOR_COAST[i - 1], b = HARBOR_COAST[i], dx = b.x - a.x, dz = b.z - a.z, length = Math.hypot(dx, dz);
     part(permanent, 'stone', (a.x + b.x) / 2, 1.7, (a.z + b.z) / 2, 2.3, 4.1, length + .4, { y: Math.atan2(dx, dz) });
     part(permanent, 'dark', (a.x + b.x) / 2 - .4, .25, (a.z + b.z) / 2, .25, 1.2, length + .4, { y: Math.atan2(dx, dz) });
   }
   for (const tower of HARBOR_TOWERS) {
+    colliders.push({id:`${tower.id}-shell`,kind:'east-building',x:tower.x,z:tower.z,hx:tower.width/2,hz:tower.depth/2,minY:tower.baseY,maxY:tower.baseY+tower.height,physics:true,camera:true});
+    colliders.push({id:`${tower.id}-podium`,kind:'east-podium',x:tower.x,z:tower.z,hx:tower.width*.645,hz:tower.depth*.645,minY:tower.baseY,maxY:tower.baseY+14.8,physics:true,camera:true});
     const geometry = createHarborTowerGeometry(THREE, tower); geometries.add(geometry);
     const mesh = new THREE.Mesh(geometry, facadeMaterials[tower.palette]); mesh.position.set(tower.x, tower.baseY, tower.z);
     mesh.name = tower.name; mesh.userData.harborTowerId = tower.id; mesh.userData.noShadow = true; mesh.receiveShadow = true; root.add(mesh); towerMeshes.push(mesh);
@@ -494,10 +517,12 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
     return { towers: HARBOR_TOWERS.length, landmarkTowers: towers.length, neighborhoodBuildings: neighborhood.length,
       towerIds: HARBOR_TOWERS.map(t => t.id), maximumRoofHeight: Math.max(...HARBOR_TOWERS.map(t => t.height)),
       viewpoints: HARBOR_VIEWPOINTS, quality: currentQuality, permanentTowers: towerMeshes.length, detailLoads, residentDetailGroups: detailResidents.size,
-      residentInstances, residentMeshes, disposedInstances, night: nightUniform.value, scenicOppositeShore: true, elapsed };
+      residentInstances, residentMeshes, disposedInstances, night: nightUniform.value, scenicOppositeShore: false, enterableBuildings:buildings.length,elapsed };
   }
-  const api = { root, colliders, landmarks: HARBOR_VIEWPOINTS, viewpoints: HARBOR_VIEWPOINTS, towers: HARBOR_TOWERS,
-    groundHeightAt: () => null, supportAt: () => null, update, snapshot,
+  const api = { root, colliders, landmarks: HARBOR_VIEWPOINTS, viewpoints: HARBOR_VIEWPOINTS, towers: HARBOR_TOWERS,buildings,
+    groundHeightAt: (x,z) => z>=HARBOR_COAST[0].z&&z<=HARBOR_COAST.at(-1).z&&x>=harborCoastX(z)&&x<=2160?3.75:null,
+    supportAt: () => null, update, snapshot,
+    setInteriorBuilding(id) { const next=buildings.find(b=>b.id===id)||null;if(next===interiorBuilding)return;interiorBuilding=next;applyInteriorVisibility(); },
     setQuality(value) { currentQuality = value; },
     dispose() { for (const id of [...detailResidents.keys()]) unloadDetail(id); root.traverse(mesh => { if (mesh.isInstancedMesh) mesh.dispose(); });
       root.removeFromParent(); for (const g of geometries) g.dispose(); for (const m of materials) m.dispose(); root.clear(); },

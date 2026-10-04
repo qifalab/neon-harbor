@@ -3,9 +3,10 @@ import { getRoomDesign } from './metropolis-room-designs.js';
 import { architectureDesignFor } from './metropolis-architecture-designs.js';
 
 export function renderCityGuide(container, city, onTravel) {
-  container.innerHTML = `<div class="atlas-intro"><div><span class="eyebrow">TWO SHORES · ONE CITY</span><h3>从一间茶楼，到整座海港。</h3><p>48 处可进入建筑，6 个北岸街区。选择一个地址，步行与驾驶探索，或使用快速旅行抵达门口。</p></div><div class="atlas-number">48<small>城市地址</small></div></div><div class="atlas-tools"><label>寻找地点<input id="atlas-search" type="search" placeholder="建筑、街区或英文名称"></label><label>街区<select id="atlas-district"><option value="">全部街区</option>${city.districts.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}</select></label></div><div id="atlas-results" class="atlas-grid"></div><section class="transit-directory"><span class="eyebrow">HARBOUR CONNECTIONS</span><h3>乘一班车，去另一岸。</h3><p class="panel-intro">地铁站沿入口楼梯步行下行，经站厅前往站台；轻轨、高铁及码头目前通过 E 进入。车辆按班次运行，停靠时按 E 上下客。</p><div id="transit-stops" class="stop-grid"></div></section>`;
+  const total=city.buildings.length;
+  container.innerHTML = `<div class="atlas-intro"><div><span class="eyebrow">THREE DISTRICTS · ONE CITY</span><h3>从一间茶楼，到整座海港。</h3><p>${total} 处可进入建筑，覆盖北岸、南岸旧城与东湾。选择地址，步行探索，或快速旅行抵达门口。</p></div><div class="atlas-number">${total}<small>城市地址</small></div></div><div class="atlas-tools"><label>寻找地点<input id="atlas-search" type="search" placeholder="建筑、街区或英文名称"></label><label>街区<select id="atlas-district"><option value="">全部街区</option>${city.districts.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}</select></label></div><div id="atlas-results" class="atlas-grid"></div><section class="transit-directory"><span class="eyebrow">HARBOUR CONNECTIONS</span><h3>乘一班车，去另一岸。</h3><p class="panel-intro">地铁站沿入口楼梯步行下行，经站厅前往站台；轻轨、高铁及码头目前通过 E 进入。车辆按班次运行，停靠时按 E 上下客。</p><div id="transit-stops" class="stop-grid"></div></section>`;
   const journey=document.createElement('section');journey.className='harbor-route';
-  journey.innerHTML='<span class="eyebrow">START BY THE WATER</span><h3>先去看海，再走进城市。</h3><p>海滨长廊望向对岸高楼群。北岸 48 栋建筑开放全部自然楼层，每层有明确用途和房间。楼梯逐层贯通，电梯可选择任意楼层。对岸天际线和南岸旧城的背景楼宇暂未开放室内。</p><div class="stop-grid"></div><div class="route-steps"></div>';
+  journey.innerHTML='<span class="eyebrow">START BY THE WATER</span><h3>先去看海，再走进城市。</h3><p>北岸 48 栋原创地址保持原有室内；南岸旧城和东湾天际线现已开放室内，提供连续楼梯、电梯和屋顶露台。新增楼宇采用共享用途布局，尚未逐房手工精修。容器、雕塑、设备和地形不属于可进入建筑。</p><div class="stop-grid"></div><div class="route-steps"></div>';
   for(const viewpoint of city.harbor?.viewpoints||[]) {
     const card=document.createElement('article');card.className='stop-card';
     card.innerHTML=`<div><small>海滨步行 · 全景</small><h4>${viewpoint.name}</h4></div><button data-visit-viewpoint="${viewpoint.id}">去看海 ↗</button>`;
@@ -23,10 +24,14 @@ export function renderCityGuide(container, city, onTravel) {
     const found = city.buildings.filter(b => (!district.value || b.district === district.value) && `${b.name} ${b.englishName} ${b.description} ${city.districts.find(d => d.id === b.district)?.name}`.toLowerCase().includes(query));
     grid.innerHTML = '';
     for (const b of found) {
-      const design = architectureDesignFor(b), floors = b.floors.map(f => getRoomDesign(b.id, f.id));
+      const expansion=/^(south|east)-/.test(b.id);
+      const design = expansion?{podium:b.compact?'紧凑街坊门厅':'东湾塔楼基座',facade:'已有外观 · 新增共享室内'}:architectureDesignFor(b);
       const card = document.createElement('article'); card.className = 'address-card'; card.dataset.buildingId = b.id;
+      card.dataset.buildingShore=b.district==='south-oldtown'?'south':b.district==='east-bay'?'east':'north';
       card.style.setProperty('--address-color', b.color);
-      card.innerHTML = `<div class="address-roof"><span>${String(b.index + 1).padStart(2, '0')}</span><b>${Math.round(b.height)}<small>M</small></b></div><div class="address-body"><small>${city.districts.find(d => d.id === b.district)?.name}</small><h4>${b.name}</h4><span class="address-english">${b.englishName}</span><p>${b.description}</p><p class="address-craft">${design.podium} · ${design.facade}</p><details class="address-rooms"><summary>看看楼里有什么</summary>${floors.map(f => `<div><strong>${f.name}</strong><p>${f.rooms.map(r => r.name).join(' · ')}</p></div>`).join('')}</details><div class="address-footer"><span>${b.floors.length} 个开放楼层</span><button data-visit-building="${b.id}">前往门口 ↗</button></div></div>`;
+      card.innerHTML = `<div class="address-roof"><span>${String(b.index + 1).padStart(2, '0')}</span><b>${Math.round(b.height)}<small>M</small></b></div><div class="address-body"><small>${city.districts.find(d => d.id === b.district)?.name}</small><h4>${b.name}</h4><span class="address-english">${b.englishName}</span><p>${b.description}</p><p class="address-craft">${design.podium} · ${design.facade}</p><details class="address-rooms"><summary>看看楼里有什么</summary><div class="room-programmes"></div></details><div class="address-footer"><span>${b.floors.length} 个开放楼层</span><button data-visit-building="${b.id}">前往门口 ↗</button></div></div>`;
+      card.querySelector('details').addEventListener('toggle',event=>{const node=card.querySelector('.room-programmes');if(!event.target.open||node.childElementCount)return;
+        node.innerHTML=b.floors.map(f=>{const d=getRoomDesign(b.id,f.id);return `<div><strong>${f.label}</strong><p>${(b.compact?d.rooms.slice(f.id==='gallery'?2:0,f.id==='gallery'?4:2):d.rooms).map(r=>r.name).join(' · ')}</p></div>`;}).join('');});
       card.querySelector('button').addEventListener('click', () => onTravel(b)); grid.append(card);
     }
     if (!found.length) grid.innerHTML = '<p class="panel-intro">没有找到这个地址，换个关键词试试。</p>';

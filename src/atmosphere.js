@@ -77,6 +77,34 @@ export function createAtmosphere(THREE, renderer, scene) {
   const environmentSky = new THREE.Mesh(geometry, material);
   environmentSky.renderOrder = -1000;
   environmentScene.add(environmentSky);
+  // Original radiance proxy built from actual address footprints. Nearby walls
+  // break up mirror-smooth sky-only reflections without recapturing the full
+  // city six times. This is approximate IBL, not planar/SSR reflection.
+  const architecture=new THREE.Group();environmentScene.add(architecture);
+  const proxyGeometry=new THREE.BoxGeometry(1,1,1), proxyMaterials=[];
+  const proxyPalette=['#c4b9a5','#7b9298','#586c73','#c8b69a','#71817b','#d6cdbc'];
+  for(const color of proxyPalette)proxyMaterials.push(new THREE.MeshBasicMaterial({color}));
+  const darkProxy=new THREE.MeshBasicMaterial({color:'#34444c'});proxyMaterials.push(darkProxy);
+  let contextBuildings=[],environmentCell=null;
+  function environmentContext(buildings) { contextBuildings=buildings; environmentCell=null; }
+  function rebuildArchitecture(focus,exclude,daylight) {
+    architecture.clear();
+    const near=contextBuildings.filter(b=>b.id!==exclude).map(b=>({b,d:Math.hypot(b.x-focus.x,b.z-focus.z)}))
+      .filter(item=>item.d<1800).sort((a,b)=>a.d-b.d);
+    const selected=[...near.filter(item=>item.d<180).slice(0,18),...near.filter(item=>item.d>=180).slice(0,8)];
+    for(const {b,d} of selected) {
+      const shell=new THREE.Mesh(proxyGeometry,proxyMaterials[Math.abs(b.index||0)%6]);
+      shell.position.set(b.x-focus.x,(b.baseY||0)+b.height/2-(focus.y||1.6),b.z-focus.z);
+      shell.scale.set(b.width,b.height,b.depth);architecture.add(shell);
+      if(d>180)continue;
+      for(let y=3.5;y<b.height-1;y+=4.2) {
+        const band=new THREE.Mesh(proxyGeometry,darkProxy);
+        band.position.set(shell.position.x,(b.baseY||0)+y-(focus.y||1.6),shell.position.z);
+        band.scale.set(b.width+.04,1.6,b.depth+.04);architecture.add(band);
+      }
+    }
+    proxyMaterials.forEach((m,i)=>m.color.set(i<6?proxyPalette[i]:'#34444c').multiplyScalar(.15+daylight*.68));
+  }
   let environment = null, previousEnvironmentHour = -Infinity, previousEnvironmentDaylight = -1;
   let disposed = false;
 
@@ -97,7 +125,7 @@ export function createAtmosphere(THREE, renderer, scene) {
     return palette;
   }
 
-  function update(hour, focus, hemi, sun) {
+  function update(hour, focus, hemi, sun, excludedBuilding = null) {
     if (disposed) return;
     const { daylight: day, warmth, fogDensity, exposure, environmentIntensity, hemisphereIntensity, keyLightIntensity } = setPalette(hour);
     if (focus) sky.position.set(focus.x, focus.y || 0, focus.z);
@@ -114,7 +142,9 @@ export function createAtmosphere(THREE, renderer, scene) {
       .lerp(new THREE.Color('#ffc694'), warmth * .55);
     renderer.toneMappingExposure = exposure;
     scene.environmentIntensity = environmentIntensity;
-    if (!environment || Math.abs(hour - previousEnvironmentHour) >= 1 || Math.abs(day - previousEnvironmentDaylight) >= .18) {
+    const cell=focus?`${Math.floor(focus.x/45)},${Math.floor(focus.z/45)},${Math.floor((focus.y||0)/30)},${excludedBuilding||''}`:'origin';
+    if (!environment || cell!==environmentCell || Math.abs(hour - previousEnvironmentHour) >= 1 || Math.abs(day - previousEnvironmentDaylight) >= .18) {
+      rebuildArchitecture(focus||{x:0,z:0,y:1.6},excludedBuilding,day);environmentCell=cell;
       const next = pmrem.fromScene(environmentScene, 0.03, 0.1, 3200);
       scene.environment = next.texture;
       environment?.dispose(); environment = next;
@@ -124,11 +154,12 @@ export function createAtmosphere(THREE, renderer, scene) {
   }
 
   return {
-    update,
+    update, environmentContext,
     dispose() {
       disposed = true;
       scene.remove(sky); scene.environment = null;
       environment?.dispose(); pmrem.dispose(); geometry.dispose(); material.dispose();
+      proxyGeometry.dispose();proxyMaterials.forEach(m=>m.dispose());
     },
   };
 }

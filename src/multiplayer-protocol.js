@@ -1,10 +1,11 @@
 export const ROOM_PROTOCOL = 1;
-export const ROOM_WORLD = 'neon-harbor-v07';
+export const ROOM_WORLD = 'neon-harbor-v08';
+export const ROOM_WORLD_BOUNDS = 1800;
 export const MAX_PLAYERS = 8;
 export function cleanRoomCode(value){return typeof value==='string'&&/^[A-Z0-9]{6}$/.test(value)?value:null;}
 export function cleanName(value){return typeof value==='string'?value.replace(/[\u0000-\u001f\u007f<>]/g,'').trim().slice(0,20)||'漫游者':'漫游者';}
 export function validPose(value){
-  return value&&['x','y','z','yaw'].every(key=>Number.isFinite(value[key]))&&Math.abs(value.x)<=1450&&Math.abs(value.z)<=1450&&value.y>=-.5&&value.y<=320;
+  return value&&['x','y','z','yaw'].every(key=>Number.isFinite(value[key]))&&Math.abs(value.x)<=ROOM_WORLD_BOUNDS&&Math.abs(value.z)<=ROOM_WORLD_BOUNDS&&value.y>=-.5&&value.y<=460;
 }
 export function cleanPose(value){return validPose(value)?{x:value.x,y:value.y,z:value.z,yaw:Math.atan2(Math.sin(value.yaw),Math.cos(value.yaw))}:null;}
 const blend=(a,b,t)=>a+(b-a)*t;

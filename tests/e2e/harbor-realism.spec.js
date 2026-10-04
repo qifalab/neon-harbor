@@ -49,7 +49,8 @@ test('the primary start reaches a walkable harbor panorama in default high quali
   expect(start.settings.firstPerson).toBe(true);
   expect(start.settings.quality).toBe('high');
   expect(harbor.quality).toBe('high');
-  expect(harbor.scenicOppositeShore).toBe(true);
+  expect(harbor.scenicOppositeShore).toBe(false);
+  expect(harbor.enterableBuildings).toBe(76);
   expect(harbor.landmarkTowers).toBe(40);
   expect(harbor.neighborhoodBuildings).toBeGreaterThanOrEqual(30);
   expect(harbor.towers).toBe(harbor.landmarkTowers + harbor.neighborhoodBuildings);
@@ -71,8 +72,9 @@ test('the primary start reaches a walkable harbor panorama in default high quali
 
   await page.locator('#explore-city').click();
   await expect(page.locator('[data-visit-viewpoint]')).toHaveCount(3);
-  await expect(page.locator('[data-building-id]')).toHaveCount(48);
-  await expect(page.locator('#panel-content')).toContainText('背景楼宇暂未开放室内');
+  await expect(page.locator('[data-building-shore="north"]')).toHaveCount(48);
+  await expect(page.locator('[data-building-id]')).toHaveCount(220);
+  await expect(page.locator('#panel-content')).toContainText('现已开放室内');
   await page.locator('[data-tab="settings"]').click();
   // A real range-input keypress selects late night through the settings UI.
   await page.locator('#time').press('End');

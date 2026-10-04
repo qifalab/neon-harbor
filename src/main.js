@@ -7,6 +7,7 @@ import { createCar, createCharacter } from './models.js';
 import { GameSimulation, MISSION_DEFS } from './simulation.js';
 import { CityAudio } from './audio.js';
 import { FIXED_STEP, captureSimulation, RenderSnapshots } from './presentation.js';
+import { createContactOcclusion } from './contact-occlusion.js';
 import { FixedStepClock } from './frame-clock.js';
 import { ChaseCamera, clipCameraSegment, resolveCameraPoint } from './camera.js';
 import { VEHICLE_DIMENSIONS } from './world-config.js';
@@ -20,7 +21,7 @@ const SAVE_KEY='neon-harbor.progress.v1', SETTINGS_KEY='neon-harbor.settings.v1'
 const defaults={quality:'high',volume:.3,dayCycle:true,hour:16.5,sensitivity:1,firstPerson:false,touch:matchMedia('(pointer:coarse)').matches};
 let settings={...defaults},saved=null,storageOK=true;
 try{saved=localStorage.getItem(SAVE_KEY);const v=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'null');if(v&&typeof v==='object'){settings={quality:['high','balanced','low'].includes(v.quality)?v.quality:defaults.quality,volume:clamp(Number(v.volume)||0,0,1),dayCycle:typeof v.dayCycle==='boolean'?v.dayCycle:true,hour:Number.isFinite(v.hour)?clamp(v.hour,0,23.9):defaults.hour,sensitivity:Number.isFinite(v.sensitivity)?clamp(v.sensitivity,.3,2):1,firstPerson:v.firstPerson===true,touch:typeof v.touch==='boolean'?v.touch:defaults.touch};}}catch{storageOK=false;}
-let renderer,scene,camera,world,sim,character,sun,hemi,marker,markerRing,tracer,atmosphere;
+let renderer,scene,camera,world,sim,character,sun,hemi,marker,markerRing,tracer,atmosphere,contactOcclusion;
 let started=false,activeTab='jobs',paused=false,sceneTime=0,hudElapsed=0,saveElapsed=0,lastRevision=-1,lastShot=-1;
 const frameClock=new FixedStepClock(FIXED_STEP);
 let frameTiming={wallDt:0,dt:0,steps:0,alpha:0,simulationDelta:0,droppedSeconds:0,droppedTotal:0};
@@ -335,7 +336,7 @@ function lighting(dt){
   if(!multiplayer.session&&settings.dayCycle&&started&&!paused)settings.hour=(settings.hour+dt/35)%24;
   const daylight=clamp(Math.sin((settings.hour-6)/12*Math.PI),0,1);
   const p=started?renderFrame.subject:menuFocus;
-  atmosphere.update(settings.hour,p,hemi,sun);
+  atmosphere.update(settings.hour,p,hemi,sun,world.interiors.state.buildingId);
   sunOffset.set(-100,95+daylight*100,-65);
   sunRight.crossVectors(worldUp,sunOffset).normalize();sunUp.crossVectors(sunOffset,sunRight).normalize();
   sunTarget.position.set(p.x,p.y||0,p.z);
@@ -367,16 +368,19 @@ function frame(time){
     saveElapsed+=dt;if(saveElapsed>8||lastRevision!==sim.saveRevision){save();saveElapsed=0;lastRevision=sim.saveRevision;}drainMessages();
   }
   if(multiplayer.session){multiplayer.state({pose:{x:sim.position.x,y:sim.inCar?sim.activeVehicle.y||0:sim.player.groundY+sim.player.y,z:sim.position.z,yaw:sim.position.yaw},scene:roomScene(),speed:sim.activeVehicle?.speed||0,travel:roomRevision!==sim.teleportRevision,revision:sim.teleportRevision});roomRevision=sim.teleportRevision;}
-  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);renderer.render(scene,camera);
+  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);contactOcclusion.render(scene,camera,settings.quality);
 }
 
 try{
   renderer=new THREE.WebGLRenderer({canvas:$('game'),antialias:true,powerPreference:'high-performance'});renderer.setSize(innerWidth,innerHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.info.autoReset=false;
   scene=new THREE.Scene();scene.background=new THREE.Color('#c0b8ca');scene.fog=new THREE.FogExp2('#b9b3c1',.0016);camera=new THREE.PerspectiveCamera(55,innerWidth/innerHeight,.15,3200);camera.position.set(240,135,345);
-  hemi=new THREE.HemisphereLight('#d0e1ff','#67525d',1.5);scene.add(hemi);sun=new THREE.DirectionalLight('#ffd3a0',1.4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-90;sun.shadow.camera.right=90;sun.shadow.camera.top=90;sun.shadow.camera.bottom=-90;sun.shadow.camera.far=400;sun.shadow.normalBias=.12;scene.add(sunTarget);sun.target=sunTarget;scene.add(sun);
+  hemi=new THREE.HemisphereLight('#d0e1ff','#67525d',1.5);scene.add(hemi);sun=new THREE.DirectionalLight('#ffd3a0',1.4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-90;sun.shadow.camera.right=90;sun.shadow.camera.top=90;sun.shadow.camera.bottom=-90;sun.shadow.camera.far=400;sun.shadow.normalBias=.035;scene.add(sunTarget);sun.target=sunTarget;scene.add(sun);
+  contactOcclusion=createContactOcclusion(THREE,renderer);
   atmosphere=createAtmosphere(THREE,renderer,scene);
   startupPhase='city';
   world=createCityExploration(THREE,scene,{quality:settings.quality,onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim);resetPresentation();await prepareLocation(false,menuFocus);
+  atmosphere.environmentContext(world.buildings);
   character=createCharacter(THREE);scene.add(character);
   for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
   marker=new THREE.Group();markerRing=new THREE.Mesh(new THREE.TorusGeometry(5,.12,6,48),new THREE.MeshBasicMaterial({color:'#e4ff9d'}));markerRing.rotation.x=Math.PI/2;marker.add(markerRing);const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.8),new THREE.MeshBasicMaterial({color:'#d5ff9a'}));diamond.position.y=4;marker.add(diamond);const beam=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,18,8),new THREE.MeshBasicMaterial({color:'#dcffa5',transparent:true,opacity:.38,depthWrite:false}));beam.position.y=9;marker.add(beam);scene.add(marker);

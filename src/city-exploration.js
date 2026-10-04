@@ -8,6 +8,7 @@ import { createPeopleSystem } from './metropolis-people.js';
 import { createCitizenCrossings } from './citizen-crossings.js';
 import { createMetropolisInfrastructure } from './metropolis-infrastructure.js';
 import { createHarborSkyline } from './harbor-skyline.js';
+import { circleContacts,SpatialIndex,CHARACTER_RADIUS } from './collision.js';
 
 /** Owns scene transitions so rendering, collision, saving and input agree.
  * The original driving district remains usable without the expansion module.
@@ -16,12 +17,27 @@ import { createHarborSkyline } from './harbor-skyline.js';
 export function createCityExploration(THREE, scene, { quality = 'high', streaming = true, onContextChange = () => {} } = {}) {
   const south = createWorld(THREE, scene, { quality, streaming, openNorth: true });
   const north = createMetropolisWorld(THREE, scene, { quality, streaming });
-  const interiors = createInteriorSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS });
   const transit = createTransitSystem(THREE, scene);
   const infrastructure = createMetropolisInfrastructure(THREE, scene, { quality });
   const harbor = createHarborSkyline(THREE, scene, { quality });
+  const buildings=[...METROPOLIS_BUILDINGS,...south.buildings,...harbor.buildings];
+  const districts=[...METROPOLIS_DISTRICTS,{id:'south-oldtown',name:'南岸旧城',color:'#c8b394'},{id:'east-bay',name:'东湾山海区',color:'#829b9f'}];
   const colliders = [...south.colliders, ...north.colliders, ...transit.colliders, ...infrastructure.colliders, ...harbor.colliders];
-  const groundHeightAt = (x, z, currentY = 0) => infrastructure.groundHeightAt(x, z, currentY) ?? north.groundHeightAt(x, z) ?? south.groundHeightAt(x, z);
+  const groundHeightAt = (x, z, currentY = 0) => infrastructure.groundHeightAt(x, z, currentY) ?? harbor.groundHeightAt(x,z) ?? north.groundHeightAt(x, z) ?? south.groundHeightAt(x, z);
+  // Older silhouettes overlap their podiums or neighbouring towers. Resolve an
+  // unobstructed doorstep AND exit through the same physical collision index;
+  // a directory entry alone must never put the player inside a solid shell.
+  const entranceIndex=new SpatialIndex(colliders);
+  const clearEntrance=p=>!circleContacts({x:p.x,z:p.z,y:groundHeightAt(p.x,p.z)},CHARACTER_RADIUS+.12,{index:entranceIndex,bounds:METROPOLIS_BOUNDS}).length;
+  for(let i=48;i<buildings.length;i++) {
+    const b=buildings[i],candidates=[];
+    for(let offset=0;offset<=22;offset+=.5)candidates.push({...b.entrance,z:b.entrance.z+offset});
+    for(const side of [-1,1])for(let offset=0;offset<=14;offset+=.5)candidates.push({x:b.x+side*(b.width*.68+3+offset),z:b.z,y:b.baseY,yaw:-side*Math.PI/2});
+    const entrance=candidates.find(p=>clearEntrance(p)&&clearEntrance({...p,z:p.z+3.2}));
+    if(!entrance)throw new Error(`No accessible doorway for ${b.id}`);
+    buildings[i]=Object.freeze({...b,entrance:Object.freeze({...entrance,y:groundHeightAt(entrance.x,entrance.z)})});
+  }
+  const interiors = createInteriorSystem(THREE, scene, { buildings });
   const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, transit, streetStops: infrastructure.metadata.streetLifeStops || [] });
   const crossings = createCitizenCrossings(THREE, scene, people.journeys.navigation.crossings, colliders);
   const root = new THREE.Group(); root.name = 'Neon Harbor · two shores'; scene.add(root);
@@ -50,6 +66,8 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       onContextChange(nextColliders);
     } else simulation.groundHeightAt = next?.groundHeightAt || groundHeightAt;
     north.setInteriorBuilding?.(interiors.state?.buildingId || null);
+    south.setInteriorBuilding?.(interiors.state?.buildingId || null);
+    harbor.setInteriorBuilding?.(interiors.state?.buildingId || null);
   }
   function applyTransition(transition) {
     if (!transition || !simulation) return;
@@ -139,7 +157,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   }
   function safeSave() {
     const save = simulation.exportSave();
-    const building = METROPOLIS_BUILDINGS.find(b => b.id === interiors.state?.buildingId);
+    const building = buildings.find(b => b.id === interiors.state?.buildingId);
     if (building) save.player = { x: building.entrance.x, z: building.entrance.z, yaw: building.entrance.yaw };
     const state = transit.snapshot();
     if (!building && (state.riding || transit.collisionContext())) {
@@ -157,7 +175,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   return {
     root, south, north, interiors, transit, infrastructure, harbor, people, colliders, groundHeightAt, bounds: METROPOLIS_BOUNDS,
     get vehicles() { return outdoorCars || simulation?.cars || []; },
-    buildings: METROPOLIS_BUILDINGS, districts: METROPOLIS_DISTRICTS, roads: METROPOLIS_ROADS,
+    buildings, districts, roads: METROPOLIS_ROADS,
     walkerRoutes: south.walkerRoutes, landmarks: [...south.landmarks, ...north.landmarks, ...infrastructure.landmarks, ...harbor.landmarks], spawn: south.spawn,
     bind(sim) {
       if(simulation)leaveSpecialLocation(); simulation = sim; addNorthernTraffic();
@@ -183,7 +201,8 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       return stats;
     },
     districtAt(x, z) {
-      if (inside()) return `${METROPOLIS_BUILDINGS.find(b => b.id === interiors.state.buildingId)?.name || ''} · 室内`;
+      if (inside()) return `${buildings.find(b => b.id === interiors.state.buildingId)?.name || ''} · 室内`;
+      if(harbor.groundHeightAt(x,z)!==null)return '东湾山海区';
       if(x>272&&x<295&&z>-280&&z<285)return '星湾全景海滨';
       const deck = infrastructure.supportAt(x, z, simulation?.activeVehicle?.y ?? simulation?.player.groundY ?? 0);
       if (deck?.height > .5) return infrastructure.landmarks.find(l => l.id === deck.id)?.name || '高架道路';
@@ -208,7 +227,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       return enclosed;
     },
     setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); harbor.setQuality(value); },
-    snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings: METROPOLIS_BUILDINGS, streaming: north.streamingStats,
+    snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings, streaming: north.streamingStats,
       renderVisibility: { outdoor: root.visible, transit: transit.root.visible } }; },
   };
 }

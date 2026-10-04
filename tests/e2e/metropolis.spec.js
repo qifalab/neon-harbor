@@ -63,10 +63,11 @@ test('city atlas exposes all 48 addresses and fetches and evicts real north-shor
   const chunks = [];
   page.on('response', response => { if (/\/assets\/metropolis\/chunks\/[^/]+\.json/.test(response.url())) chunks.push(response); });
   const errors = await boot(page);
-  expect((await snapshot(page)).city.buildings).toHaveLength(48);
+  expect((await snapshot(page)).city.buildings).toHaveLength(220);
   await atlas(page);
-  await expect(page.locator('[data-building-id]')).toHaveCount(48);
-  expect(new Set(await page.locator('[data-building-id]').evaluateAll(nodes => nodes.map(node => node.dataset.buildingId))).size).toBe(48);
+  await expect(page.locator('[data-building-shore="north"]')).toHaveCount(48);
+  await expect(page.locator('[data-building-id]')).toHaveCount(220);
+  expect(new Set(await page.locator('[data-building-id]').evaluateAll(nodes => nodes.map(node => node.dataset.buildingId))).size).toBe(220);
   await page.locator('#atlas-district').selectOption('oldtown');
   await expect(page.locator('[data-building-id]')).toHaveCount(8);
   await page.locator('#atlas-district').selectOption('');

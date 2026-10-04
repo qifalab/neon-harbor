@@ -1,4 +1,5 @@
 import { VEHICLE_DIMENSIONS, PLAYER_DIMENSIONS } from './world-config.js';
+import { applySurfaceFinish } from './surface-finish.js';
 
 /**
  * Original, metre-scale hero assets. Geometry is authored once, then shared by
@@ -16,6 +17,7 @@ export function createCar(THREE, color = '#375b68', type = 'sport') {
     const model = templates[tier].clone(true); model.visible = tier === 0; lod.addLevel(model, distance, .12);
   }
   const paint = templates[0].getObjectByName('coachwork').material.clone();
+  applySurfaceFinish(paint, 'paint');
   paint.color.set(color);
   group.traverse(node => {
     if (node.isMesh && node.material.name === 'automotive-paint') node.material = paint;
@@ -102,12 +104,12 @@ function getLibrary(THREE) {
 
 function buildCar(THREE, type, detail = 0) {
   const group = new THREE.Group(); group.name = `Original NH ${type === 'sport' ? 'Aster coupe' : 'Atlas touring'}`;
-  const paint = new THREE.MeshPhysicalMaterial({ color: '#375b68', roughness: 0.24, metalness: 0.72,
-    clearcoat: 1, clearcoatRoughness: 0.13, envMapIntensity: 1.15 });
+  const paint = applySurfaceFinish(new THREE.MeshPhysicalMaterial({ color: '#375b68', roughness: 0.32, metalness: 0.36,
+    clearcoat: .78, clearcoatRoughness: 0.23, envMapIntensity: .95 }), 'paint');
   paint.name = 'automotive-paint';
   const trim = new THREE.MeshStandardMaterial({ color: '#12191e', roughness: 0.43, metalness: 0.32 });
-  const metal = new THREE.MeshStandardMaterial({ color: '#a4adb3', roughness: 0.27, metalness: 0.88 });
-  const leather = new THREE.MeshStandardMaterial({ color: '#242e32', roughness: 0.82 });
+  const metal = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#a4adb3', roughness: 0.31, metalness: 0.88 }), 'metal');
+  const leather = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#242e32', roughness: 0.72 }), 'leather');
   const glass = new THREE.MeshPhysicalMaterial({ color: '#819fa9', metalness: 0.08, roughness: 0.12,
     transparent: true, opacity: 0.67, depthWrite: false, clearcoat: 1, envMapIntensity: 1.1, side: THREE.DoubleSide });
   const frontLight = new THREE.MeshStandardMaterial({ color: '#e4f2f5', emissive: '#c6e1ec', emissiveIntensity: 1.1, roughness: 0.23 });
@@ -318,8 +320,25 @@ function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
   const loft = (profile, rows, columns) => loftY(THREE, profile,
     Math.max(3, Math.round(rows * density)), Math.max(6, Math.round(columns * (detail ? .5 : 1))));
   const put = (parent, geometry, color) => {
-    if (!collection.has(parent)) collection.set(parent, []);
-    collection.get(parent).push({ geometry, color: colors[color] || color });
+    if (!collection.has(parent)) collection.set(parent, new Map());
+    const finish = ['skin','skinLight'].includes(color) ? 'skin'
+      : ['jacket','shirt','pants','seam','stitch'].includes(color) ? 'fabric' : color === 'shoe' ? 'leather' : 'neutral';
+    const batches=collection.get(parent);
+    if (!batches.has(finish)) batches.set(finish, []);
+    // Small folds belong to the cloth mesh, not a glossy colour texture. Keep
+    // joints and the original collision envelope unchanged at every LOD.
+    if (finish === 'fabric' && detail === 0 && geometry.attributes.position.count > 180) {
+      const positions=geometry.attributes.position, normals=geometry.attributes.normal;
+      geometry.computeBoundingBox();const box=geometry.boundingBox;
+      for(let i=0;i<positions.count;i++) {
+        const x=positions.getX(i),y=positions.getY(i),z=positions.getZ(i);
+        const edge=Math.sin(Math.PI*(y-box.min.y)/Math.max(.001,box.max.y-box.min.y));
+        const fold=(Math.sin(y*64+x*19)*.0015+Math.sin(y*113-z*37)*.0007)*edge;
+        positions.setXYZ(i,x+normals.getX(i)*fold,y,z+normals.getZ(i)*fold);
+      }
+      positions.needsUpdate=true;geometry.computeVertexNormals();
+    }
+    batches.get(finish).push({ geometry, color: colors[color] || color });
   };
   const oval = (parent, color, x, y, z, sx, sy, sz, segments = 16) => {
     if (detail === 2 && Math.max(sx, sy, sz) < .038) return;
@@ -429,9 +448,15 @@ function buildCharacter(THREE, detail = 0, style = CHARACTER_STYLES[0]) {
   }
   // Nine shared meshes retain separate knees/elbows while drawing each colored
   // limb in one call; every surface has smooth analytic/interpolated normals.
-  const material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .81 });
-  for (const [parent, pieces] of collection) {
-    const mesh = new THREE.Mesh(mergeColoredGeometry(THREE, pieces), material);
+  const wardrobe = new Map();
+  for (const [parent, batches] of collection) for (const [finish,pieces] of batches) {
+    if(!wardrobe.has(finish)) {
+      const material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:finish==='skin'?.61:finish==='fabric'?.94:finish==='leather'?.66:.83});
+      material.name=`Character · ${finish}`;
+      if(finish!=='neutral')applySurfaceFinish(material,finish);
+      wardrobe.set(finish,material);
+    }
+    const mesh = new THREE.Mesh(mergeColoredGeometry(THREE, pieces), wardrobe.get(finish));
     mesh.castShadow = true; mesh.receiveShadow = true; parent.add(mesh);
   }
   return root;

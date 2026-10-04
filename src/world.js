@@ -4,6 +4,8 @@ import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
 import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
 import { subtractGroundRect, cutGroundGeometry } from './terrain-openings.js';
 import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
+import { applySurfaceFinish } from './surface-finish.js';
+import { expandedAddress } from './expansion-programmes.js';
 
 /**
  * The city is entirely original procedural art. Static details are batched by
@@ -17,6 +19,7 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   const colliders = [];
   const chunkMetadata = new Map();
   const proxyBuildings = [];
+  const buildings=[];let interiorBuilding=null,proxyInteriorUpdater=()=>{};
   const chunkSize = 80;
   const chunkIdAt = (x, z) => `${Math.floor((x + 320) / chunkSize)}_${Math.floor((z + 320) / chunkSize)}`;
   function chunkAt(x, z) {
@@ -76,8 +79,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
       materials[key] = new Constructor({
         color: key.startsWith('shop-sign-') || key.startsWith('street-sign-') ? '#ffffff' : palettes[key] || key,
         roughness: glass ? 0.17 : key === 'frame' ? 0.38 : 0.87,
-        metalness: glass ? 0.3 : key === 'frame' || key === 'brass' ? 0.55 : 0.025,
-        ...(glass ? { clearcoat: 0.7, clearcoatRoughness: 0.15 } : {}),
+        metalness: glass ? 0.02 : key === 'frame' || key === 'brass' ? 0.55 : 0,
+        ...(glass ? { clearcoat: 0.2, clearcoatRoughness: 0.24 } : {}),
         ...(key === 'leaves' ? { side: THREE.DoubleSide } : {}),
         ...(emissive ? { emissive: palettes[key], emissiveIntensity: 0.5 } : {}),
         ...(['marking', 'white'].includes(key) ? { polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 } : {}),
@@ -97,6 +100,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
         materials[key].roughness = 0.5;
         materials[key].emissive.set('#ead4a2'); materials[key].emissiveIntensity = 0.08;
       }
+      if (['asphalt','sidewalk','cream','stone','brick','coral','roof','brickwork','pink','navy'].includes(key)) applySurfaceFinish(materials[key],'mineral',{world:true});
+      if (['metal','frame','brass'].includes(key)) applySurfaceFinish(materials[key],'metal',{world:true});
     }
     return materials[key];
   }
@@ -292,10 +297,13 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   }
   function building(x, z, width, depth, height, key = 'cream', style = 0) {
     const base = groundHeightAt(x, z);
+    const index=buildings.length,use=width>35?'warehouse':style?'office':'home';
+    const address=expandedAddress({id:`south-${use}-${String(index+1).padStart(3,'0')}`,name:`${use==='warehouse'?'东湾工坊':style?'星港商务楼':'霞光街坊'} ${index+1}号`,englishName:`Old Town ${use} ${index+1}`,x,z,width,depth,height,
+      color:palettes[key],index,baseY:base+.025,district:'south-oldtown',compact:true});buildings.push(address);
     const wall = block(key, x, height / 2 + base, z, width, height, depth, { kind: 'building' });
     // Glazing protrudes by at most 7cm beyond the shell; include the facade skin.
     wall.hx += 0.25; wall.hz += 0.25;
-    proxyBuildings.push({ x, z, y: base + height / 2, width, depth, height, color: palettes[key], chunkId: chunkIdAt(x, z) });
+    proxyBuildings.push({ id:address.id,x, z, y: base + height / 2, width, depth, height, color: palettes[key], chunkId: chunkIdAt(x, z) });
     block('roof', x, base + height + 0.2, z, width + 0.45, 0.4, depth + 0.45, { kind: 'roof' });
     box('dark', x, base + 0.72, z + depth / 2 + 0.045, width - 0.9, 1.4, 0.08);
     windows(x, z, width, depth, height, style ? 'glass' : 'glassDark', style);
@@ -491,10 +499,21 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     });
     instanced.castShadow = quality === 'high'; instanced.receiveShadow = true;
     instanced.userData.batchId = `${kind}:${key}`;
+    instanced.userData.originalTransforms=transforms;
     instanced.userData.nearDetail = kind === 'detail-box';
     instanced.userData.noShadow = kind.startsWith('surface-') || ['sand', 'marking', 'white'].includes(key);
     if (instanced.userData.noShadow) instanced.castShadow = false;
-    instanced.computeBoundingSphere(); return instanced;
+    instanced.computeBoundingSphere(); applyInteriorVisibility(instanced);return instanced;
+  }
+  function applyInteriorVisibility(node) {
+    node.traverse(mesh=>{
+      const transforms=mesh.userData.originalTransforms;if(!mesh.isInstancedMesh||!transforms||mesh.userData.noShadow)return;
+      transforms.forEach(([x,y,z,sx,sy,sz,rx,ry,rz],i)=>{
+        const hidden=interiorBuilding&&Math.abs(x-interiorBuilding.x)<=interiorBuilding.width/2+.7&&
+          Math.abs(z-interiorBuilding.z)<=interiorBuilding.depth/2+1.5&&y>interiorBuilding.baseY+.15;
+        temp.position.set(x,y,z);temp.rotation.set(rx,ry,rz);temp.scale.set(hidden?0:sx,hidden?0:sy,hidden?0:sz);temp.updateMatrix();mesh.setMatrixAt(i,temp.matrix);
+      });mesh.instanceMatrix.needsUpdate=true;
+    });
   }
   for (const { kind, key, transforms } of pool.values()) root.add(makeBatch(kind, key, transforms));
   const chunkPayloads = new Map();
@@ -536,10 +555,13 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
     });
     proxy.computeBoundingSphere(); root.add(proxy);
     const hidden = new THREE.Matrix4().makeScale(0, 0, 0);
+    const loadedProxyChunks=new Set();
     const proxyVisible = (id, visible) => {
-      for (const index of proxyIndices.get(id) || []) proxy.setMatrixAt(index, visible ? proxyMatrices[index] : hidden);
+      if(visible)loadedProxyChunks.delete(id);else loadedProxyChunks.add(id);
+      for (const index of proxyIndices.get(id) || []) proxy.setMatrixAt(index, visible&&proxyBuildings[index].id!==interiorBuilding?.id ? proxyMatrices[index] : hidden);
       proxy.instanceMatrix.needsUpdate = true;
     };
+    proxyInteriorUpdater=()=>{proxyBuildings.forEach((b,i)=>proxy.setMatrixAt(i,!loadedProxyChunks.has(b.chunkId)&&b.id!==interiorBuilding?.id?proxyMatrices[i]:hidden));proxy.instanceMatrix.needsUpdate=true;};
     streamer = new DistrictStreamer({ chunks: [...chunkMetadata.values()],
       load: async (meta, signal) => {
         if (signal.aborted) throw new Error('District load cancelled');
@@ -600,7 +622,8 @@ export function createWorld(THREE, scene, { quality = 'high', streaming = typeof
   updateSignals(0);
   let elapsed = 0, detailClock = 0;
   return {
-    root, colliders, surfaces, roadSurfaces, renderObstacles, groundHeightAt, walkerRoutes, landmarks,
+    root, colliders, surfaces, roadSurfaces, renderObstacles, groundHeightAt, walkerRoutes, landmarks,buildings,
+    setInteriorBuilding(id) { const next=buildings.find(b=>b.id===id)||null;if(next===interiorBuilding)return;interiorBuilding=next;applyInteriorVisibility(root);proxyInteriorUpdater(); },
     get streamingStats() { return streamer ? streamer.stats : { ready: true, loaded: chunkMetadata.size, pending: 0, failed: 0, activeChunks: [...chunkMetadata.keys()] }; },
     prepare: position => streamer ? streamer.prepare(position) : Promise.resolve({ ready: true, loaded: chunkMetadata.size, failed: [] }),
     retry: position => streamer ? streamer.retry(position) : Promise.resolve({ ready: true, failed: [] }),

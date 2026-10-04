@@ -170,10 +170,11 @@ try {
   // lobby using the normal interaction key. Snapshot access is read-only.
   await page.locator('#explore-city').click();
   await expect(page.locator('#atlas-results')).toBeVisible();
-  await expect(page.locator('[data-building-id]')).toHaveCount(48);
+  await expect(page.locator('[data-building-id]')).toHaveCount(220);
+  await expect(page.locator('[data-building-shore="north"]')).toHaveCount(48);
   await expect(page.locator('[data-visit-landmark]')).toHaveCount(3);
-  expect((await page.evaluate(() => window.__NEON__.snapshot())).city.buildings).toHaveLength(48);
-  report.checks.push('Opened the city guide with all 48 north-shore addresses');
+  expect((await page.evaluate(() => window.__NEON__.snapshot())).city.buildings).toHaveLength(220);
+  report.checks.push('Opened the city guide with all 220 enterable addresses');
   await page.locator('[data-visit-building="tide-museum"]').click();
   await expect(page.locator('#panel')).toBeHidden();
   await expect(page.locator('#game')).toBeFocused();

@@ -1,5 +1,6 @@
 /** Address-specific upper storeys. Original room programmes and graphic subjects;
  * no external models, photos or licensed artwork are used. */
+import { expandedRoomDesign } from './expansion-programmes.js';
 export const UPPER_PROGRAMMES = Object.freeze({
   'tide-museum': ['海洋藏品研习', 'gallery', 'maritime:船艺藏品室,archive:航海手稿室,workshop:木船修复室,library:海洋研究书室', '帆船与潮汐', '#477f86', '#caa978'],
   'harbor-market': ['鱼市商户生活', 'residential', 'living:渔商起居室,bedroom:清晨休息卧室,kitchen:海味家常餐厨,bath:渔工洗浴间', '鱼汛与渔网', '#598577', '#c9a27c'],
@@ -68,6 +69,8 @@ export function upperRoomDesign(buildingId, level) {
 }
 
 export function roomArtDirection(buildingId, floorId, roomIndex) {
+  const expansion=expandedRoomDesign(buildingId,floorId);
+  if(expansion)return {...expansion.collection,composition:Number(buildingId.match(/-(\d+)/)[1])%8,variant:roomIndex*17+expansion.collection.edition};
   const [, , , subject, ink, paper] = UPPER_PROGRAMMES[buildingId];
   const address = Object.keys(UPPER_PROGRAMMES).indexOf(buildingId);
   const level = /^level-/.test(floorId) ? Number(floorId.slice(6)) : ['lobby', 'gallery', 'workplace', 'observation'].indexOf(floorId) + 1;

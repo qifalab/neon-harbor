@@ -31,6 +31,7 @@ jobs:
           - { id: living-city, suite: living-city, shard: '1/1' }
           - { id: harbor-realism, suite: harbor-realism, shard: '1/1' }
           - { id: occupied-city, suite: occupied-city, shard: '1/1' }
+          - { id: city-materials, suite: city-materials, shard: '1/1' }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

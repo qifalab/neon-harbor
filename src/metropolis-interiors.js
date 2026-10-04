@@ -2,6 +2,7 @@ import { METROPOLIS_BUILDINGS, publicInteriorFootprint } from './metropolis-cata
 import { createMetropolisMaterials } from './metropolis-materials.js';
 import { getRoomDesign } from './metropolis-room-designs.js';
 import { roomArtDirection } from './occupied-programmes.js';
+import { createCompactInteriorLayout } from './compact-interiors.js';
 
 const WALL = 0.3;
 const CABIN = { width: 4.4, depth: 4.6, height: 3.25 };
@@ -28,17 +29,19 @@ export function createInteriorStairs(building) {
   const lower = building.floors.filter(floor => floor.stairs);
   // The front landing needs clearance from both the first guard and the
   // closed upper-floor window frame, including the full walking radius.
-  const depth = building.depth - 0.7, x = building.x + 3.5, startZ = building.z + depth / 2 - 3.6;
+  const depth = building.depth - 0.7, width=building.compact?1.8:2.8;
+  const x = building.x + (building.compact?(building.width-.7)/2-1.6:3.5), startZ = building.z + depth / 2 - 3.6;
   return lower.slice(0, -1).map((floor, index) => {
-    const next = lower[index + 1], rise = next.y - floor.y, run = 8.4;
+    const next = lower[index + 1], rise = next.y - floor.y, run = building.compact?Math.min(8.4,depth-8.5):8.4;
     const bottom = { x, z: startZ + 1.05, y: floor.y }, top = { x, z: startZ - run - 1.05, y: next.y };
     return { id: `${building.id}-${floor.id}-stairs`, fromFloorId: floor.id, toFloorId: next.id,
-      x, startZ, endZ: startZ - run, width: 2.8, treadCount: 24, rise, run, fromY: floor.y, toY: next.y,
+      x, startZ, endZ: startZ - run, width, treadCount: 24, rise, run, fromY: floor.y, toY: next.y,
       bottom, top, waypoints: [bottom, top],
       // The clear central corridor lets walkers go around an opening to the
       // next flight, or return to the descending top without changing height.
-      bypass: [{ x: building.x, z: top.z, y: next.y }, { x: building.x, z: bottom.z, y: next.y }],
-      hole: { minX: x - 1.6, maxX: x + 1.6, minZ: startZ - run - 0.9, maxZ: startZ + 0.35 },
+      bypass: building.compact? [{x:x-width/2-.55,z:top.z,y:next.y},{x:x-width/2-.55,z:building.z-depth/2+7,y:next.y},{x:building.x,z:building.z-depth/2+7,y:next.y},{x:building.x,z:bottom.z,y:next.y}]
+        :[{ x: building.x, z: top.z, y: next.y }, { x: building.x, z: bottom.z, y: next.y }],
+      hole: { minX: x - width/2-.2, maxX: x + width/2+.2, minZ: startZ - run - 0.9, maxZ: startZ + 0.35 },
     };
   });
 }
@@ -47,6 +50,7 @@ export function createInteriorStairs(building) {
  * Positions remain in city coordinates, including the actual elevation of each floor. */
 export function createInteriorLayout(building, floor) {
   if (!building || !floor) throw new Error('An interior requires a building and a floor.');
+  if(building.compact)return createCompactInteriorLayout(building,floor,createInteriorStairs(building),getRoomDesign(building.id,floor.id));
   const { width, depth } = publicInteriorFootprint(building);
   const next = building.floors.find(candidate => candidate.y > floor.y);
   // Keep the painted soffit BELOW the next storey's 0.32 m stone slab.
@@ -861,7 +865,18 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     point.sub(center).normalize().multiplyScalar(0.09).add(center); vertices.setXYZ(index, point.x, point.y, point.z);
   }
   rounded.computeVertexNormals();
-  const geometries = { box: geometry, rounded, cylinder: new THREE.CylinderGeometry(0.5, 0.5, 1, 12), sphere: new THREE.SphereGeometry(0.5, 12, 8) };
+  const cushion=new THREE.BoxGeometry(1,1,1,12,12,12),cushionVertices=cushion.attributes.position;
+  for(let i=0;i<cushionVertices.count;i++) {
+    const p=new THREE.Vector3().fromBufferAttribute(cushionVertices,i);
+    const centre=new THREE.Vector3(clamp(p.x,-.36,.36),clamp(p.y,-.36,.36),clamp(p.z,-.36,.36));
+    p.sub(centre).normalize().multiplyScalar(.14).add(centre);
+    // Soft creases taper away at the rim and remain within the unit envelope.
+    if(Math.abs(p.y)>.36) { const crease=Math.sin(p.x*39+p.z*11)*Math.sin(p.z*23)*.018;
+      p.y=Math.sign(p.y)*Math.min(.5,Math.abs(p.y)+crease*(1-Math.abs(p.x)*2)*(1-Math.abs(p.z)*2)); }
+    cushionVertices.setXYZ(i,p.x,p.y,p.z);
+  }
+  cushion.computeVertexNormals();
+  const geometries = { box: geometry, rounded,cushion, cylinder: new THREE.CylinderGeometry(0.5, 0.5, 1, 12), sphere: new THREE.SphereGeometry(0.5, 12, 8) };
   const state = { activeBuilding: null, buildingId: null, floor: null, moving: false, version: 0,
     elevator: { phase: 'idle', y: 0, targetFloorId: null, elapsed: 0, duration: 0, doorOpen: 1 } };
   let layout = null, residentLayouts = [], floorColliders = [], cabinColliders = [], colliders = [], playerRef = null, journey = null;
@@ -1031,8 +1046,10 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       floorGroups.set(occupied.floorId, group); floorRoot.add(group);
       const batches = new Map();
       for (const part of occupied.parts) {
-        const batchKey = `${part.material}:${part.geometry}`;
-        if (!batches.has(batchKey)) batches.set(batchKey, []); batches.get(batchKey).push(part);
+        const shape=/upholstery|fabric|white/.test(part.material)&&/sofa|chair|pillow|quilt|mattress/.test(part.kind)?'cushion':part.geometry;
+        const batchKey = `${part.material}:${shape}`;
+        const renderPart={...part,geometry:shape};
+        if (!batches.has(batchKey)) batches.set(batchKey, []); batches.get(batchKey).push(renderPart);
       }
       for (const [batchKey, parts] of batches) {
         const key = parts[0].material, shape = parts[0].geometry;
