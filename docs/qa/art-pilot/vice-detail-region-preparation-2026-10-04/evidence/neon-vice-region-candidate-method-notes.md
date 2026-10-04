@@ -1,0 +1,9 @@
+本候选只在/tmp，等待独立scope审查与ROOT明确GPU GO。ROOT f147和runtime未修改。
+
+变更仅为：safe North z−113.32、全部walk tolerance .18、完整proof rectangle+ground guard在目标及原图前后、CPU计划eye range与较宽native camera observation guard分别标注；捕获Error.message+stack并提取原Walking diagnostics JSON/parsed对象；每次同一walk helper调用在finally追加before/actualAfter或snapshotError/首错误/effectiveBudget/result。后续snapshot或IO错误不能替换已有movementError，无隐藏恢复或额外walk helper重试。
+
+High/1280/static16.5/FOV/敏感度/半分辨AO/MSAA、ready/11mesh/6texture/GL/严格vice4/4+图片关闭/实际exit、20min/phase和finalization/late-error守卫未放宽；walking12e助手不改。截图failure30sec和cleanup10/10/5原上限也未修改，故本候选不声称已解决首轮真实secondary截图/关闭超时；若再次发生仍会FAIL并保存。
+
+实际CPU适配器四项通过：真实Playwright ExpectError的附加message保留24个fixtureOnly samples且与stack分开；walk只调用原helper一次，后续snapshot及IO失败保持首Error对象身份/原样JSON；成功分支完成before/actualAfter/budget/result；坏JSON保留原字符串和parseError，不伪造parsed对象。这些是CPU控制流证明，不是浏览器键盘收敛、原24sample补造或照片结果。合法整个±.18几何区域由独立221collider/.65body proof证明。
+
+最终候选469da79377238d2a8d71077bd0270a1733e24bfa4d79fc9cc3f9d6651c869101，patch20520a6b23ac86092c2f3acafa642f7cd675a4e81b3de32624be03e48a2ca717，Nodecheck0。建议新输出docs/qa/art-pilot/vice-detail-region-native-2026-10-04。

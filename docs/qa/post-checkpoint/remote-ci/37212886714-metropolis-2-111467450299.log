@@ -1,0 +1,2263 @@
+﻿2026-10-04T15:24:39.4078144Z Current runner version: '2.337.0'
+2026-10-04T15:24:39.4103927Z ##[group]Runner Image Provisioner
+2026-10-04T15:24:39.4105517Z Hosted Compute Agent
+2026-10-04T15:24:39.4106249Z Version: 20260901.588
+2026-10-04T15:24:39.4106910Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-04T15:24:39.4107703Z Build Date: 2026-09-01T19:56:44Z
+2026-10-04T15:24:39.4108386Z Worker ID: {5b7cf719-56b7-4e36-ae30-71de94b35984}
+2026-10-04T15:24:39.4109142Z Azure Region: northcentralus
+2026-10-04T15:24:39.4109829Z ##[endgroup]
+2026-10-04T15:24:39.4111647Z ##[group]Operating System
+2026-10-04T15:24:39.4112369Z Ubuntu
+2026-10-04T15:24:39.4112926Z 24.04.5
+2026-10-04T15:24:39.4113491Z LTS
+2026-10-04T15:24:39.4114072Z ##[endgroup]
+2026-10-04T15:24:39.4114631Z ##[group]Runner Image
+2026-10-04T15:24:39.4115862Z Image: ubuntu-24.04
+2026-10-04T15:24:39.4116496Z Version: 20260927.320.1
+2026-10-04T15:24:39.4117899Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-04T15:24:39.4119487Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-04T15:24:39.4120495Z ##[endgroup]
+2026-10-04T15:24:39.4121672Z ##[group]GITHUB_TOKEN Permissions
+2026-10-04T15:24:39.4123935Z Contents: read
+2026-10-04T15:24:39.4124571Z Metadata: read
+2026-10-04T15:24:39.4125469Z ##[endgroup]
+2026-10-04T15:24:39.4127707Z Secret source: Actions
+2026-10-04T15:24:39.4128704Z Cache mode: write
+2026-10-04T15:24:39.4129743Z Prepare workflow directory
+2026-10-04T15:24:39.4477717Z Prepare all required actions
+2026-10-04T15:24:39.4527849Z Getting action download info
+2026-10-04T15:24:39.7353363Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-04T15:24:39.8422340Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-04T15:24:39.9321613Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-04T15:24:40.1609156Z Complete job name: Build and gameplay tests (metropolis-2)
+2026-10-04T15:24:40.2332513Z ##[group]Run actions/checkout@v4
+2026-10-04T15:24:40.2333406Z with:
+2026-10-04T15:24:40.2333868Z   repository: qifalab/neon-harbor
+2026-10-04T15:24:40.2338193Z   token: ***
+2026-10-04T15:24:40.2338634Z   ssh-strict: true
+2026-10-04T15:24:40.2339071Z   ssh-user: git
+2026-10-04T15:24:40.2339518Z   persist-credentials: true
+2026-10-04T15:24:40.2340046Z   clean: true
+2026-10-04T15:24:40.2340484Z   sparse-checkout-cone-mode: true
+2026-10-04T15:24:40.2340994Z   fetch-depth: 1
+2026-10-04T15:24:40.2341422Z   fetch-tags: false
+2026-10-04T15:24:40.2341865Z   show-progress: true
+2026-10-04T15:24:40.2342297Z   lfs: false
+2026-10-04T15:24:40.2342704Z   submodules: false
+2026-10-04T15:24:40.2343147Z   set-safe-directory: true
+2026-10-04T15:24:40.2343645Z   allow-unsafe-pr-checkout: false
+2026-10-04T15:24:40.2344454Z ##[endgroup]
+2026-10-04T15:24:40.3440181Z Syncing repository: qifalab/neon-harbor
+2026-10-04T15:24:40.3442875Z ##[group]Getting Git version info
+2026-10-04T15:24:40.3444170Z Working directory is '/home/runner/work/neon-harbor/neon-harbor'
+2026-10-04T15:24:40.3446059Z [command]/usr/bin/git version
+2026-10-04T15:24:40.3490773Z git version 2.55.0
+2026-10-04T15:24:40.3513134Z ##[endgroup]
+2026-10-04T15:24:40.3528781Z Temporarily overriding HOME='/home/runner/work/_temp/e981e760-ade8-48b5-86a9-c576687caa2b' before making global git config changes
+2026-10-04T15:24:40.3530408Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T15:24:40.3538934Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/neon-harbor/neon-harbor
+2026-10-04T15:24:40.3594647Z Deleting the contents of '/home/runner/work/neon-harbor/neon-harbor'
+2026-10-04T15:24:40.3603782Z ##[group]Initializing the repository
+2026-10-04T15:24:40.3612026Z [command]/usr/bin/git init /home/runner/work/neon-harbor/neon-harbor
+2026-10-04T15:24:40.3710721Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-04T15:24:40.3712875Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-04T15:24:40.3714469Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-04T15:24:40.3716196Z hint: call:
+2026-10-04T15:24:40.3716837Z hint:
+2026-10-04T15:24:40.3717630Z hint: 	git config --global init.defaultBranch <name>
+2026-10-04T15:24:40.3718678Z hint:
+2026-10-04T15:24:40.3719670Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-04T15:24:40.3721224Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-04T15:24:40.3722420Z hint:
+2026-10-04T15:24:40.3723121Z hint: 	git branch -m <name>
+2026-10-04T15:24:40.3723898Z hint:
+2026-10-04T15:24:40.3724964Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-04T15:24:40.3727058Z Initialized empty Git repository in /home/runner/work/neon-harbor/neon-harbor/.git/
+2026-10-04T15:24:40.3729893Z [command]/usr/bin/git remote add origin https://github.com/qifalab/neon-harbor
+2026-10-04T15:24:40.3789761Z ##[endgroup]
+2026-10-04T15:24:40.3791164Z ##[group]Disabling automatic garbage collection
+2026-10-04T15:24:40.3793463Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-04T15:24:40.3861202Z ##[endgroup]
+2026-10-04T15:24:40.3862465Z ##[group]Setting up auth
+2026-10-04T15:24:40.3863846Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T15:24:40.3900582Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T15:24:40.4424454Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T15:24:40.4464973Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T15:24:40.4718474Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T15:24:40.4767407Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T15:24:40.5010527Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-04T15:24:40.5056330Z ##[endgroup]
+2026-10-04T15:24:40.5057833Z ##[group]Fetching the repository
+2026-10-04T15:24:40.5068031Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0330df7ee1042d0f211304b042e01cdf6a0b4d44:refs/remotes/origin/main
+2026-10-04T15:24:46.1679069Z From https://github.com/qifalab/neon-harbor
+2026-10-04T15:24:46.1680367Z  * [new ref]         0330df7ee1042d0f211304b042e01cdf6a0b4d44 -> origin/main
+2026-10-04T15:24:46.1689964Z ##[endgroup]
+2026-10-04T15:24:46.1691957Z ##[group]Determining the checkout info
+2026-10-04T15:24:46.1694379Z ##[endgroup]
+2026-10-04T15:24:46.1696189Z [command]/usr/bin/git sparse-checkout disable
+2026-10-04T15:24:46.1748739Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-04T15:24:46.1783541Z ##[group]Checking out the ref
+2026-10-04T15:24:46.1789240Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-04T15:24:46.3570848Z Switched to a new branch 'main'
+2026-10-04T15:24:46.3596574Z branch 'main' set up to track 'origin/main'.
+2026-10-04T15:24:46.3608844Z ##[endgroup]
+2026-10-04T15:24:46.3655983Z [command]/usr/bin/git log -1 --format=%H
+2026-10-04T15:24:46.3682363Z 0330df7ee1042d0f211304b042e01cdf6a0b4d44
+2026-10-04T15:24:46.4044161Z ##[group]Run actions/setup-node@v4
+2026-10-04T15:24:46.4108123Z with:
+2026-10-04T15:24:46.4109157Z   node-version: 22
+2026-10-04T15:24:46.4110115Z   cache: npm
+2026-10-04T15:24:46.4111005Z   always-auth: false
+2026-10-04T15:24:46.4111947Z   check-latest: false
+2026-10-04T15:24:46.4122441Z   token: ***
+2026-10-04T15:24:46.4123336Z ##[endgroup]
+2026-10-04T15:24:46.5578457Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-04T15:24:46.5581981Z (node:2298) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T15:24:46.5582767Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T15:24:46.5585622Z ##[group]Environment details
+2026-10-04T15:24:47.0860181Z node: v22.23.3
+2026-10-04T15:24:47.0861140Z npm: 10.9.9
+2026-10-04T15:24:47.0861372Z yarn: 1.22.22
+2026-10-04T15:24:47.0908534Z ##[endgroup]
+2026-10-04T15:24:47.0909051Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+2026-10-04T15:24:47.1962147Z /home/runner/.npm
+2026-10-04T15:24:47.3465816Z Cache hit for: node-cache-Linux-x64-npm-6438cc70f01e36935f5c8c9cb620f6c972b229821dda55e94f5b735e54c263b7
+2026-10-04T15:24:47.3578445Z (node:2298) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-04T15:24:47.7956915Z Received 3980947 of 3980947 (100.0%), 11.2 MBs/sec
+2026-10-04T15:24:47.7959210Z Cache Size: ~4 MB (3980947 B)
+2026-10-04T15:24:47.8006346Z [command]/usr/bin/tar -xf /home/runner/work/_temp/2fd09ea9-a1a6-4f08-81ca-7e71409a6c98/cache.tzst -P -C /home/runner/work/neon-harbor/neon-harbor --use-compress-program unzstd
+2026-10-04T15:24:47.8128416Z Cache restored successfully
+2026-10-04T15:24:47.8134464Z Cache restored from key: node-cache-Linux-x64-npm-6438cc70f01e36935f5c8c9cb620f6c972b229821dda55e94f5b735e54c263b7
+2026-10-04T15:24:47.8295559Z ##[group]Run npm ci
+2026-10-04T15:24:47.8295886Z [36;1mnpm ci[0m
+2026-10-04T15:24:47.8564377Z shell: /usr/bin/bash -e {0}
+2026-10-04T15:24:47.8564744Z ##[endgroup]
+2026-10-04T15:24:48.6627049Z 
+2026-10-04T15:24:48.6634009Z added 3 packages, and audited 4 packages in 746ms
+2026-10-04T15:24:48.6634609Z 
+2026-10-04T15:24:48.6634903Z found 0 vulnerabilities
+2026-10-04T15:24:48.7056273Z ##[group]Run npm test
+2026-10-04T15:24:48.7056601Z [36;1mnpm test[0m
+2026-10-04T15:24:48.7122323Z shell: /usr/bin/bash -e {0}
+2026-10-04T15:24:48.7122623Z ##[endgroup]
+2026-10-04T15:24:48.8151912Z 
+2026-10-04T15:24:48.8152341Z > neon-harbor@0.8.0 test
+2026-10-04T15:24:48.8152992Z > node --test tests/*.test.js
+2026-10-04T15:24:48.8153255Z 
+2026-10-04T15:24:48.8774819Z TAP version 13
+2026-10-04T15:24:49.0227072Z # Subtest: render interpolation removes fixed-step staircasing at 30/60/90/144 Hz and uneven cadences
+2026-10-04T15:24:49.0286618Z ok 1 - render interpolation removes fixed-step staircasing at 30/60/90/144 Hz and uneven cadences
+2026-10-04T15:24:49.0287783Z   ---
+2026-10-04T15:24:49.0306906Z   duration_ms: 47.612068
+2026-10-04T15:24:49.0307593Z   type: 'test'
+2026-10-04T15:24:49.0308155Z   ...
+2026-10-04T15:24:49.0309229Z # Subtest: yaw interpolation follows the shortest arc; ground, pitch and roll remain shared
+2026-10-04T15:24:49.0329497Z ok 2 - yaw interpolation follows the shortest arc; ground, pitch and roll remain shared
+2026-10-04T15:24:49.0330856Z   ---
+2026-10-04T15:24:49.0335364Z   duration_ms: 0.619823
+2026-10-04T15:24:49.0336140Z   type: 'test'
+2026-10-04T15:24:49.0336736Z   ...
+2026-10-04T15:24:49.0337791Z # Subtest: teleports and entering or leaving a vehicle never interpolate across the city
+2026-10-04T15:24:49.0339287Z ok 3 - teleports and entering or leaving a vehicle never interpolate across the city
+2026-10-04T15:24:49.0340345Z   ---
+2026-10-04T15:24:49.0340927Z   duration_ms: 0.708258
+2026-10-04T15:24:49.0341556Z   type: 'test'
+2026-10-04T15:24:49.0342091Z   ...
+2026-10-04T15:24:49.0343122Z # Subtest: rendered OBB interpolation cannot clip a corner between two legal headings
+2026-10-04T15:24:49.0344719Z ok 4 - rendered OBB interpolation cannot clip a corner between two legal headings
+2026-10-04T15:24:49.0346129Z   ---
+2026-10-04T15:24:49.0347036Z   duration_ms: 0.747362
+2026-10-04T15:24:49.0377854Z   type: 'test'
+2026-10-04T15:24:49.0378641Z   ...
+2026-10-04T15:24:49.0379743Z # Subtest: sequential legal vehicle moves cannot produce a colliding render interpolant
+2026-10-04T15:24:49.0381251Z ok 5 - sequential legal vehicle moves cannot produce a colliding render interpolant
+2026-10-04T15:24:49.0382219Z   ---
+2026-10-04T15:24:49.0382782Z   duration_ms: 1.294798
+2026-10-04T15:24:49.0383402Z   type: 'test'
+2026-10-04T15:24:49.0384003Z   ...
+2026-10-04T15:24:49.0385006Z # Subtest: moving-target exponential damping is cadence-independent at constant speed
+2026-10-04T15:24:49.0386836Z ok 6 - moving-target exponential damping is cadence-independent at constant speed
+2026-10-04T15:24:49.0387874Z   ---
+2026-10-04T15:24:49.0388462Z   duration_ms: 0.659998
+2026-10-04T15:24:49.0389091Z   type: 'test'
+2026-10-04T15:24:49.0389660Z   ...
+2026-10-04T15:24:49.0390686Z # Subtest: chase camera position, look target and yaw stay consistent at 30/60/144 Hz
+2026-10-04T15:24:49.0392134Z ok 7 - chase camera position, look target and yaw stay consistent at 30/60/144 Hz
+2026-10-04T15:24:49.0393138Z   ---
+2026-10-04T15:24:49.0393743Z   duration_ms: 26.3254
+2026-10-04T15:24:49.0394385Z   type: 'test'
+2026-10-04T15:24:49.0395028Z   ...
+2026-10-04T15:24:49.0397275Z # Subtest: camera follows the same bounded simulation time at 4 Hz and uneven slow frames
+2026-10-04T15:24:49.0398802Z ok 8 - camera follows the same bounded simulation time at 4 Hz and uneven slow frames
+2026-10-04T15:24:49.0399769Z   ---
+2026-10-04T15:24:49.0400337Z   duration_ms: 7.714979
+2026-10-04T15:24:49.0400956Z   type: 'test'
+2026-10-04T15:24:49.0401547Z   ...
+2026-10-04T15:24:49.0402657Z # Subtest: height-aware swept camera clears curbs, catches thin walls, and pads the near plane
+2026-10-04T15:24:49.0404254Z ok 9 - height-aware swept camera clears curbs, catches thin walls, and pads the near plane
+2026-10-04T15:24:49.0405713Z   ---
+2026-10-04T15:24:49.0406306Z   duration_ms: 1.063023
+2026-10-04T15:24:49.0406926Z   type: 'test'
+2026-10-04T15:24:49.0407518Z   ...
+2026-10-04T15:24:49.0408943Z # Subtest: camera focus inside foliage is moved to a legal pivot before the boom sweep
+2026-10-04T15:24:49.0410528Z ok 10 - camera focus inside foliage is moved to a legal pivot before the boom sweep
+2026-10-04T15:24:49.0411627Z   ---
+2026-10-04T15:24:49.0412252Z   duration_ms: 0.945242
+2026-10-04T15:24:49.0412932Z   type: 'test'
+2026-10-04T15:24:49.0413565Z   ...
+2026-10-04T15:24:49.0414715Z # Subtest: camera retracts without entering buildings and releases an obstruction gradually
+2026-10-04T15:24:49.0416796Z ok 11 - camera retracts without entering buildings and releases an obstruction gradually
+2026-10-04T15:24:49.0417883Z   ---
+2026-10-04T15:24:49.0418454Z   duration_ms: 0.459942
+2026-10-04T15:24:49.0419119Z   type: 'test'
+2026-10-04T15:24:49.0419772Z   ...
+2026-10-04T15:24:49.0420949Z # Subtest: camera takes shortest yaw arc and does not advance its pose with a zero timestep
+2026-10-04T15:24:49.0422625Z ok 12 - camera takes shortest yaw arc and does not advance its pose with a zero timestep
+2026-10-04T15:24:49.0423746Z   ---
+2026-10-04T15:24:49.0424371Z   duration_ms: 1.281744
+2026-10-04T15:24:49.0424978Z   type: 'test'
+2026-10-04T15:24:49.0426619Z   ...
+2026-10-04T15:25:20.0967377Z # Subtest: the northern resident network has legal doorstep routes, unobstructed station entrances and real crossing edges
+2026-10-04T15:25:20.0992688Z ok 13 - the northern resident network has legal doorstep routes, unobstructed station entrances and real crossing edges
+2026-10-04T15:25:20.1000829Z   ---
+2026-10-04T15:25:20.1001468Z   duration_ms: 6683.87975
+2026-10-04T15:25:20.1001934Z   type: 'test'
+2026-10-04T15:25:20.1002317Z   ...
+2026-10-04T15:25:20.1003592Z # Subtest: all 240 residents finish real work visits, use all four shared routes, return and rest in actual homes without stranded journeys
+2026-10-04T15:25:20.1005874Z ok 14 - all 240 residents finish real work visits, use all four shared routes, return and rest in actual homes without stranded journeys
+2026-10-04T15:25:20.1007529Z   ---
+2026-10-04T15:25:20.1007936Z   duration_ms: 18880.342719
+2026-10-04T15:25:20.1008418Z   type: 'test'
+2026-10-04T15:25:20.1008794Z   ...
+2026-10-04T15:25:20.1010187Z # Subtest: citizens enter a crossing only with enough green time, and traffic yields for the occupied lane and releases it after the walker leaves
+2026-10-04T15:25:20.1012352Z ok 15 - citizens enter a crossing only with enough green time, and traffic yields for the occupied lane and releases it after the walker leaves
+2026-10-04T15:25:20.1013536Z   ---
+2026-10-04T15:25:20.1013930Z   duration_ms: 86.166333
+2026-10-04T15:25:20.1014378Z   type: 'test'
+2026-10-04T15:25:20.1014744Z   ...
+2026-10-04T15:25:20.1016225Z # Subtest: working periods keep residents at their real posts and the night change starts a walk home without resetting position
+2026-10-04T15:25:20.1018103Z ok 16 - working periods keep residents at their real posts and the night change starts a walk home without resetting position
+2026-10-04T15:25:20.1019130Z   ---
+2026-10-04T15:25:20.1019522Z   duration_ms: 1719.136419
+2026-10-04T15:25:20.1019960Z   type: 'test'
+2026-10-04T15:25:20.1020318Z   ...
+2026-10-04T15:25:20.1021324Z # Subtest: every assigned home and workplace has a clear arrival and departure through its actual room door
+2026-10-04T15:25:20.1022900Z ok 17 - every assigned home and workplace has a clear arrival and departure through its actual room door
+2026-10-04T15:25:20.1023807Z   ---
+2026-10-04T15:25:20.1024173Z   duration_ms: 834.388873
+2026-10-04T15:25:20.1024589Z   type: 'test'
+2026-10-04T15:25:20.1055687Z   ...
+2026-10-04T15:25:20.1056868Z # Subtest: boarding paths align with real carriage doors and keep passengers out of carriage gaps and the ferry cabin
+2026-10-04T15:25:20.1058607Z ok 18 - boarding paths align with real carriage doors and keep passengers out of carriage gaps and the ferry cabin
+2026-10-04T15:25:20.1059588Z   ---
+2026-10-04T15:25:20.1059973Z   duration_ms: 3.678014
+2026-10-04T15:25:20.1060404Z   type: 'test'
+2026-10-04T15:25:20.1060789Z   ...
+2026-10-04T15:25:20.1062292Z # Subtest: elevated station lift poses have continuous movement, real landings and enough door time to walk aboard
+2026-10-04T15:25:20.1064079Z ok 19 - elevated station lift poses have continuous movement, real landings and enough door time to walk aboard
+2026-10-04T15:25:20.1065048Z   ---
+2026-10-04T15:25:20.1065715Z   duration_ms: 2.897835
+2026-10-04T15:25:20.1066150Z   type: 'test'
+2026-10-04T15:25:20.1066519Z   ...
+2026-10-04T15:25:32.1867270Z # Subtest: integrated building travel, continuous elevator and forced departure restore outdoor collision and cars
+2026-10-04T15:25:32.1913079Z ok 20 - integrated building travel, continuous elevator and forced departure restore outdoor collision and cars
+2026-10-04T15:25:32.1935808Z   ---
+2026-10-04T15:25:32.1946358Z   duration_ms: 10892.480471
+2026-10-04T15:25:32.1965837Z   type: 'test'
+2026-10-04T15:25:32.1966622Z   ...
+2026-10-04T15:25:32.1968127Z # Subtest: underground platform remains below street and transit motion does not trigger teleports or reindex every tick
+2026-10-04T15:25:32.1970286Z ok 21 - underground platform remains below street and transit motion does not trigger teleports or reindex every tick
+2026-10-04T15:25:32.1971543Z   ---
+2026-10-04T15:25:32.1972148Z   duration_ms: 25493.42067
+2026-10-04T15:25:32.1972868Z   type: 'test'
+2026-10-04T15:25:32.1973499Z   ...
+2026-10-04T15:25:32.1974653Z # Subtest: a saved journey from the north ferry restores at its own pier, including after departure
+2026-10-04T15:25:32.1976516Z ok 22 - a saved journey from the north ferry restores at its own pier, including after departure
+2026-10-04T15:25:32.1977600Z   ---
+2026-10-04T15:25:32.1978205Z   duration_ms: 6729.279433
+2026-10-04T15:25:32.1978894Z   type: 'test'
+2026-10-04T15:25:32.1979485Z   ...
+2026-10-04T15:25:32.1980826Z # Subtest: camera supports below-sea-level clearance and seated passenger views without roof-crossing chase booms
+2026-10-04T15:25:32.1982886Z ok 23 - camera supports below-sea-level clearance and seated passenger views without roof-crossing chase booms
+2026-10-04T15:25:32.1984599Z   ---
+2026-10-04T15:25:32.1985490Z   duration_ms: 1.035727
+2026-10-04T15:25:32.1986199Z   type: 'test'
+2026-10-04T15:25:32.1986798Z   ...
+2026-10-04T15:25:32.2465067Z # Subtest: collapsed city guide lists addresses without reading floor contents or constructing room rows
+2026-10-04T15:25:32.2473444Z ok 24 - collapsed city guide lists addresses without reading floor contents or constructing room rows
+2026-10-04T15:25:32.2474860Z   ---
+2026-10-04T15:25:32.2475755Z   duration_ms: 6.677533
+2026-10-04T15:25:32.2476359Z   type: 'test'
+2026-10-04T15:25:32.2476925Z   ...
+2026-10-04T15:25:32.2478113Z # Subtest: first disclosure resolves its current floor and room records once, including both compact rooms
+2026-10-04T15:25:32.2479861Z ok 25 - first disclosure resolves its current floor and room records once, including both compact rooms
+2026-10-04T15:25:32.2480940Z   ---
+2026-10-04T15:25:32.2481501Z   duration_ms: 4.823687
+2026-10-04T15:25:32.2482131Z   type: 'test'
+2026-10-04T15:25:32.2482717Z   ...
+2026-10-04T15:25:32.2483938Z # Subtest: search and district filtering preserve visit targets without resolving hidden floor programmes
+2026-10-04T15:25:32.2486332Z ok 26 - search and district filtering preserve visit targets without resolving hidden floor programmes
+2026-10-04T15:25:32.2487450Z   ---
+2026-10-04T15:25:32.2488012Z   duration_ms: 5.847507
+2026-10-04T15:25:32.2488619Z   type: 'test'
+2026-10-04T15:25:32.2489144Z   ...
+2026-10-04T15:25:32.2490333Z # Subtest: every address targets its own entrance and safely restores its exterior, traffic and save position
+2026-10-04T15:25:32.2492044Z ok 27 - every address targets its own entrance and safely restores its exterior, traffic and save position
+2026-10-04T15:25:32.2493083Z   ---
+2026-10-04T15:25:32.2493599Z   duration_ms: 9846.107706
+2026-10-04T15:25:32.2494180Z   type: 'test'
+2026-10-04T15:25:32.2494684Z   ...
+2026-10-04T15:25:32.2496346Z # Subtest: every occupied floor has finite positive solids, rooms inside its footprint, a clear arrival and continuous stair elevations
+2026-10-04T15:25:32.2499050Z ok 28 - every occupied floor has finite positive solids, rooms inside its footprint, a clear arrival and continuous stair elevations
+2026-10-04T15:25:32.2500345Z   ---
+2026-10-04T15:25:32.2500876Z   duration_ms: 3760.845855
+2026-10-04T15:25:32.2501472Z   type: 'test'
+2026-10-04T15:25:32.2501995Z   ...
+2026-10-04T15:25:32.2503275Z # Subtest: multiplayer accepts the actual eastern top floors and rejects out-of-world or nonfinite positions
+2026-10-04T15:25:32.2505399Z ok 29 - multiplayer accepts the actual eastern top floors and rejects out-of-world or nonfinite positions
+2026-10-04T15:25:32.2506549Z   ---
+2026-10-04T15:25:32.2507198Z   duration_ms: 1.051121
+2026-10-04T15:25:32.2507792Z   type: 'test'
+2026-10-04T15:25:32.2508327Z   ...
+2026-10-04T15:25:32.2509723Z # Subtest: a south shell stays hidden through an actual streamed load and restores valid culling bounds and fallback scenery on exit
+2026-10-04T15:25:32.2511939Z ok 30 - a south shell stays hidden through an actual streamed load and restores valid culling bounds and fallback scenery on exit
+2026-10-04T15:25:32.2513209Z   ---
+2026-10-04T15:25:32.2513755Z   duration_ms: 249.043369
+2026-10-04T15:25:32.2514465Z   type: 'test'
+2026-10-04T15:25:32.2515005Z   ...
+2026-10-04T15:25:32.2516360Z # Subtest: prepare fetches only nearby real district payloads and exposes resident metrics
+2026-10-04T15:25:32.2517918Z ok 31 - prepare fetches only nearby real district payloads and exposes resident metrics
+2026-10-04T15:25:32.2518887Z   ---
+2026-10-04T15:25:32.2519434Z   duration_ms: 4.93176
+2026-10-04T15:25:32.2520047Z   type: 'test'
+2026-10-04T15:25:32.2520587Z   ...
+2026-10-04T15:25:32.2521735Z # Subtest: directional prefetch anticipates travel while distance and hysteresis drive actual disposal
+2026-10-04T15:25:32.2523453Z ok 32 - directional prefetch anticipates travel while distance and hysteresis drive actual disposal
+2026-10-04T15:25:32.2524584Z   ---
+2026-10-04T15:25:32.2525833Z   duration_ms: 7.381874
+2026-10-04T15:25:32.2526443Z   type: 'test'
+2026-10-04T15:25:32.2527009Z   ...
+2026-10-04T15:25:32.2527930Z # Subtest: resident budget is a hard bound even when more targets are nearby
+2026-10-04T15:25:32.2529252Z ok 33 - resident budget is a hard bound even when more targets are nearby
+2026-10-04T15:25:32.2530148Z   ---
+2026-10-04T15:25:32.2530704Z   duration_ms: 0.724359
+2026-10-04T15:25:32.2531319Z   type: 'test'
+2026-10-04T15:25:32.2531871Z   ...
+2026-10-04T15:25:32.2533094Z # Subtest: failed near district remains failed until retry succeeds without pretending a proxy is full detail
+2026-10-04T15:25:32.2534942Z ok 34 - failed near district remains failed until retry succeeds without pretending a proxy is full detail
+2026-10-04T15:25:32.2536445Z   ---
+2026-10-04T15:25:32.2537037Z   duration_ms: 1.006528
+2026-10-04T15:25:32.2537646Z   type: 'test'
+2026-10-04T15:25:32.2538195Z   ...
+2026-10-04T15:25:32.2539280Z # Subtest: dispose settles prepare, releases late payloads, and never attaches after disposal
+2026-10-04T15:25:32.2540904Z ok 35 - dispose settles prepare, releases late payloads, and never attaches after disposal
+2026-10-04T15:25:32.2541902Z   ---
+2026-10-04T15:25:32.2542427Z   duration_ms: 6.907183
+2026-10-04T15:25:32.2543086Z   type: 'test'
+2026-10-04T15:25:32.2543615Z   ...
+2026-10-04T15:25:32.2544620Z # Subtest: cancelled district can be revisited before its aborted request settles
+2026-10-04T15:25:32.2546151Z ok 36 - cancelled district can be revisited before its aborted request settles
+2026-10-04T15:25:32.2547101Z   ---
+2026-10-04T15:25:32.2547677Z   duration_ms: 3.339493
+2026-10-04T15:25:32.2548299Z   type: 'test'
+2026-10-04T15:25:32.2548837Z   ...
+2026-10-04T15:25:32.2549877Z # Subtest: old request failure cannot overwrite the latest successful prepare state
+2026-10-04T15:25:32.2551322Z ok 37 - old request failure cannot overwrite the latest successful prepare state
+2026-10-04T15:25:32.2552269Z   ---
+2026-10-04T15:25:32.2552920Z   duration_ms: 3.882331
+2026-10-04T15:25:32.2553516Z   type: 'test'
+2026-10-04T15:25:32.2554067Z   ...
+2026-10-04T15:25:32.2555490Z # Subtest: chunk validation rejects malformed geometry before creating GPU resources
+2026-10-04T15:25:32.2556952Z ok 38 - chunk validation rejects malformed geometry before creating GPU resources
+2026-10-04T15:25:32.2557830Z   ---
+2026-10-04T15:25:32.2558432Z   duration_ms: 0.590527
+2026-10-04T15:25:32.2559118Z   type: 'test'
+2026-10-04T15:25:32.2559660Z   ...
+2026-10-04T15:25:32.2560727Z # Subtest: a normal 60 Hz steering arc cannot graze a building corner between two clear endpoints
+2026-10-04T15:25:32.2562557Z ok 39 - a normal 60 Hz steering arc cannot graze a building corner between two clear endpoints
+2026-10-04T15:25:32.2563452Z   ---
+2026-10-04T15:25:32.2563980Z   duration_ms: 16.5299
+2026-10-04T15:25:32.2564469Z   type: 'test'
+2026-10-04T15:25:32.2564908Z   ...
+2026-10-04T15:25:32.2566092Z # Subtest: a short diagonal translation cannot cut a building corner with clear endpoints
+2026-10-04T15:25:32.2567281Z ok 40 - a short diagonal translation cannot cut a building corner with clear endpoints
+2026-10-04T15:25:32.2568186Z   ---
+2026-10-04T15:25:32.2568704Z   duration_ms: 5.725357
+2026-10-04T15:25:32.2569218Z   type: 'test'
+2026-10-04T15:25:32.2569686Z   ...
+2026-10-04T15:25:32.2570572Z # Subtest: grazing the corner of another vehicle stays blocked between clear endpoints
+2026-10-04T15:25:32.2571879Z ok 41 - grazing the corner of another vehicle stays blocked between clear endpoints
+2026-10-04T15:25:32.2595792Z   ---
+2026-10-04T15:25:32.2645916Z   duration_ms: 2.509175
+2026-10-04T15:25:32.2646363Z   type: 'test'
+2026-10-04T15:25:32.2646715Z   ...
+2026-10-04T15:25:32.2647656Z # Subtest: the circular pedestrian footprint cannot cross a shallow rounded corner between samples
+2026-10-04T15:25:32.2668451Z ok 42 - the circular pedestrian footprint cannot cross a shallow rounded corner between samples
+2026-10-04T15:25:32.2692596Z   ---
+2026-10-04T15:25:32.2705912Z   duration_ms: 16.986566
+2026-10-04T15:25:32.2706391Z   type: 'test'
+2026-10-04T15:25:32.2707185Z   ...
+2026-10-04T15:25:32.2708067Z # Subtest: the prospective supported vehicle envelope and height participate in collision
+2026-10-04T15:25:32.2709358Z ok 43 - the prospective supported vehicle envelope and height participate in collision
+2026-10-04T15:25:32.2710105Z   ---
+2026-10-04T15:25:32.2710445Z   duration_ms: 2.429687
+2026-10-04T15:25:32.2710843Z   type: 'test'
+2026-10-04T15:25:32.2711182Z   ...
+2026-10-04T15:25:32.2711973Z # Subtest: stepping onto higher ground under an awning cannot eject an entity sideways
+2026-10-04T15:25:32.2713236Z ok 44 - stepping onto higher ground under an awning cannot eject an entity sideways
+2026-10-04T15:25:32.2713955Z   ---
+2026-10-04T15:25:32.2714299Z   duration_ms: 0.540013
+2026-10-04T15:25:32.2714699Z   type: 'test'
+2026-10-04T15:25:32.2715032Z   ...
+2026-10-04T15:25:32.2716166Z # Subtest: vehicle bounds contain the full rotated footprint and swap width/length at a quarter turn
+2026-10-04T15:25:32.2717606Z ok 45 - vehicle bounds contain the full rotated footprint and swap width/length at a quarter turn
+2026-10-04T15:25:32.2718352Z   ---
+2026-10-04T15:25:32.2718677Z   duration_ms: 3.302063
+2026-10-04T15:25:32.2719052Z   type: 'test'
+2026-10-04T15:25:32.2719392Z   ...
+2026-10-04T15:25:32.2720243Z # Subtest: SAT catches a vehicle nose beyond the old centre radius and its rotated outer corner
+2026-10-04T15:25:32.2721482Z ok 46 - SAT catches a vehicle nose beyond the old centre radius and its rotated outer corner
+2026-10-04T15:25:32.2722235Z   ---
+2026-10-04T15:25:32.2722566Z   duration_ms: 0.777047
+2026-10-04T15:25:32.2722924Z   type: 'test'
+2026-10-04T15:25:32.2723248Z   ...
+2026-10-04T15:25:32.2724189Z # Subtest: SAT reports a separation normal, permits touching and rejects separated rotated rectangles
+2026-10-04T15:25:32.2726067Z ok 47 - SAT reports a separation normal, permits touching and rejects separated rotated rectangles
+2026-10-04T15:25:32.2727002Z   ---
+2026-10-04T15:25:32.2727396Z   duration_ms: 0.367169
+2026-10-04T15:25:32.2727860Z   type: 'test'
+2026-10-04T15:25:32.2728266Z   ...
+2026-10-04T15:25:32.2729529Z # Subtest: circle/OBB checks the whole foot radius without treating clear diagonal corners as walls
+2026-10-04T15:25:32.2731026Z ok 48 - circle/OBB checks the whole foot radius without treating clear diagonal corners as walls
+2026-10-04T15:25:32.2731933Z   ---
+2026-10-04T15:25:32.2732318Z   duration_ms: 0.457107
+2026-10-04T15:25:32.2732750Z   type: 'test'
+2026-10-04T15:25:32.2733125Z   ...
+2026-10-04T15:25:32.2734251Z # Subtest: spatial queries find large colliders across cell edges, including negative coordinates, without duplicates
+2026-10-04T15:25:32.2736294Z ok 49 - spatial queries find large colliders across cell edges, including negative coordinates, without duplicates
+2026-10-04T15:25:32.2737278Z   ---
+2026-10-04T15:25:32.2737660Z   duration_ms: 1.826034
+2026-10-04T15:25:32.2738087Z   type: 'test'
+2026-10-04T15:25:32.2738459Z   ...
+2026-10-04T15:25:32.2739447Z # Subtest: a fast vehicle cannot tunnel through a thin wall, even across a long one-frame displacement
+2026-10-04T15:25:32.2740957Z ok 50 - a fast vehicle cannot tunnel through a thin wall, even across a long one-frame displacement
+2026-10-04T15:25:32.2741826Z   ---
+2026-10-04T15:25:32.2742214Z   duration_ms: 12.775689
+2026-10-04T15:25:32.2742635Z   type: 'test'
+2026-10-04T15:25:32.2742982Z   ...
+2026-10-04T15:25:32.2743949Z # Subtest: a rotation sweep cannot pass through a thin obstacle even when the final orientation would be clear
+2026-10-04T15:25:32.2745765Z ok 51 - a rotation sweep cannot pass through a thin obstacle even when the final orientation would be clear
+2026-10-04T15:25:32.2746619Z   ---
+2026-10-04T15:25:32.2775794Z   duration_ms: 35.087474
+2026-10-04T15:25:32.2776477Z   type: 'test'
+2026-10-04T15:25:32.2805792Z   ...
+2026-10-04T15:25:32.2836291Z # Subtest: continuous diagonal pressure slides along a wall without bouncing or oscillating
+2026-10-04T15:25:32.2866443Z ok 52 - continuous diagonal pressure slides along a wall without bouncing or oscillating
+2026-10-04T15:25:32.2867722Z   ---
+2026-10-04T15:25:32.2868105Z   duration_ms: 18.748981
+2026-10-04T15:25:32.2868525Z   type: 'test'
+2026-10-04T15:25:32.2868871Z   ...
+2026-10-04T15:25:32.2869752Z # Subtest: walking keeps the entire character circle outside a thin wall during a swept move
+2026-10-04T15:25:32.2871042Z ok 53 - walking keeps the entire character circle outside a thin wall during a swept move
+2026-10-04T15:25:32.2871815Z   ---
+2026-10-04T15:25:32.2872196Z   duration_ms: 5.11908
+2026-10-04T15:25:32.2872594Z   type: 'test'
+2026-10-04T15:25:32.2872990Z   ...
+2026-10-04T15:25:32.2873886Z # Subtest: parked and moving vehicles both block a swept vehicle without moving the other car
+2026-10-04T15:25:32.2875551Z ok 54 - parked and moving vehicles both block a swept vehicle without moving the other car
+2026-10-04T15:25:32.2876360Z   ---
+2026-10-04T15:25:32.2876710Z   duration_ms: 12.376996
+2026-10-04T15:25:32.2877123Z   type: 'test'
+2026-10-04T15:25:32.2877471Z   ...
+2026-10-04T15:25:32.2878425Z # Subtest: walking collides with parked cars and dynamic self references never block their own movement
+2026-10-04T15:25:32.2879891Z ok 55 - walking collides with parked cars and dynamic self references never block their own movement
+2026-10-04T15:25:32.2880689Z   ---
+2026-10-04T15:25:32.2880987Z   duration_ms: 2.125186
+2026-10-04T15:25:32.2881387Z   type: 'test'
+2026-10-04T15:25:32.2881697Z   ...
+2026-10-04T15:25:32.2882311Z # Subtest: a car stops for a pedestrian using the pedestrian full circular footprint
+2026-10-04T15:25:32.2883222Z ok 56 - a car stops for a pedestrian using the pedestrian full circular footprint
+2026-10-04T15:25:32.2883803Z   ---
+2026-10-04T15:25:32.2884129Z   duration_ms: 3.188089
+2026-10-04T15:25:32.2947689Z   type: 'test'
+2026-10-04T15:25:32.2948089Z   ...
+2026-10-04T15:25:32.2949194Z # Subtest: height filtering blocks building sides while allowing rooftop travel and passage beneath elevated solids
+2026-10-04T15:25:32.2950889Z ok 57 - height filtering blocks building sides while allowing rooftop travel and passage beneath elevated solids
+2026-10-04T15:25:32.2952183Z   ---
+2026-10-04T15:25:32.2952560Z   duration_ms: 17.099142
+2026-10-04T15:25:32.2952985Z   type: 'test'
+2026-10-04T15:25:32.2953334Z   ...
+2026-10-04T15:25:32.2954225Z # Subtest: world boundaries constrain the rotated vehicle footprint and full character radius
+2026-10-04T15:25:32.2976086Z ok 58 - world boundaries constrain the rotated vehicle footprint and full character radius
+2026-10-04T15:25:32.2976940Z   ---
+2026-10-04T15:25:32.2977304Z   duration_ms: 23.367968
+2026-10-04T15:25:32.2977721Z   type: 'test'
+2026-10-04T15:25:32.2978084Z   ...
+2026-10-04T15:25:32.2978932Z # Subtest: legacy overlapping poses are repaired once and remain stable while stationary
+2026-10-04T15:25:32.2980231Z ok 59 - legacy overlapping poses are repaired once and remain stable while stationary
+2026-10-04T15:25:32.2981007Z   ---
+2026-10-04T15:25:32.2981359Z   duration_ms: 7.240882
+2026-10-04T15:25:32.2981765Z   type: 'test'
+2026-10-04T15:25:32.2982110Z   ...
+2026-10-04T15:25:32.2983014Z # Subtest: camera-only foliage never becomes a physical wall at overlapping character height
+2026-10-04T15:25:32.2984335Z ok 60 - camera-only foliage never becomes a physical wall at overlapping character height
+2026-10-04T15:25:32.2985360Z   ---
+2026-10-04T15:25:32.2985741Z   duration_ms: 2.553589
+2026-10-04T15:25:32.2986144Z   type: 'test'
+2026-10-04T15:25:32.2986500Z   ...
+2026-10-04T15:25:32.2987586Z # Subtest: every compact building supports all-floor stair walks, furnished-room entries, lift return and street exit
+2026-10-04T15:25:32.2989268Z ok 61 - every compact building supports all-floor stair walks, furnished-room entries, lift return and street exit
+2026-10-04T15:25:32.2990207Z   ---
+2026-10-04T15:25:32.2990564Z   duration_ms: 5888.808641
+2026-10-04T15:25:32.2990981Z   type: 'test'
+2026-10-04T15:25:32.2991329Z   ...
+2026-10-04T15:25:32.2992395Z # Subtest: minimum compact shell keeps real stair openings, clear cabin approach and height-filtered exterior prompts
+2026-10-04T15:25:32.2994408Z ok 62 - minimum compact shell keeps real stair openings, clear cabin approach and height-filtered exterior prompts
+2026-10-04T15:25:32.2995614Z   ---
+2026-10-04T15:25:32.2995965Z   duration_ms: 26.784082
+2026-10-04T15:25:32.2996380Z   type: 'test'
+2026-10-04T15:25:32.2996749Z   ...
+2026-10-04T15:25:32.2997737Z # Subtest: east-bay room furnishings fit every shell and narrow floors preserve room, stair and lift routes
+2026-10-04T15:25:32.2999273Z ok 63 - east-bay room furnishings fit every shell and narrow floors preserve room, stair and lift routes
+2026-10-04T15:25:32.3000141Z   ---
+2026-10-04T15:25:32.3000497Z   duration_ms: 9570.445761
+2026-10-04T15:25:32.3000918Z   type: 'test'
+2026-10-04T15:25:32.3001262Z   ...
+2026-10-04T15:25:32.3002323Z # Subtest: every restored southern workplace has fitting functional furniture and a clear full-height room approach
+2026-10-04T15:25:32.3004059Z ok 64 - every restored southern workplace has fitting functional furniture and a clear full-height room approach
+2026-10-04T15:25:32.3004991Z   ---
+2026-10-04T15:25:32.3035770Z   duration_ms: 124.977071
+2026-10-04T15:25:32.3036230Z   type: 'test'
+2026-10-04T15:25:32.3036608Z   ...
+2026-10-04T15:25:32.3037654Z # Subtest: shared workplace layouts fit the minimum compact shell and support future taller freight buildings
+2026-10-04T15:25:32.3039228Z ok 65 - shared workplace layouts fit the minimum compact shell and support future taller freight buildings
+2026-10-04T15:25:32.3040117Z   ---
+2026-10-04T15:25:32.3040473Z   duration_ms: 3.612754
+2026-10-04T15:25:32.3040875Z   type: 'test'
+2026-10-04T15:25:32.3041234Z   ...
+2026-10-04T15:25:32.3042199Z # Subtest: existing shell uses survive stable address IDs and safer floor heights across both new shores
+2026-10-04T15:25:32.3043677Z ok 66 - existing shell uses survive stable address IDs and safer floor heights across both new shores
+2026-10-04T15:25:32.3044556Z   ---
+2026-10-04T15:25:32.3044906Z   duration_ms: 5.071524
+2026-10-04T15:25:32.3045558Z   type: 'test'
+2026-10-04T15:25:32.3045938Z   ...
+2026-10-04T15:25:32.3047267Z # Subtest: harbor shop overrides and residents actual homes remain distinct from the restored employment warehouses
+2026-10-04T15:25:32.3048980Z ok 67 - harbor shop overrides and residents actual homes remain distinct from the restored employment warehouses
+2026-10-04T15:25:32.3049873Z   ---
+2026-10-04T15:25:32.3050240Z   duration_ms: 0.967948
+2026-10-04T15:25:32.3050614Z   type: 'test'
+2026-10-04T15:25:32.3050919Z   ...
+2026-10-04T15:25:32.3051923Z # Subtest: bounded fixed-step clock preserves visible simulation time at 4–144 Hz
+2026-10-04T15:25:32.3053099Z ok 68 - bounded fixed-step clock preserves visible simulation time at 4–144 Hz
+2026-10-04T15:25:32.3053772Z   ---
+2026-10-04T15:25:32.3054103Z   duration_ms: 15.642043
+2026-10-04T15:25:32.3054503Z   type: 'test'
+2026-10-04T15:25:32.3054829Z   ...
+2026-10-04T15:25:32.3055885Z # Subtest: a long rendering stall runs at most 15 small steps without a future backlog
+2026-10-04T15:25:32.3057112Z ok 69 - a long rendering stall runs at most 15 small steps without a future backlog
+2026-10-04T15:25:32.3057840Z   ---
+2026-10-04T15:25:32.3058194Z   duration_ms: 0.381088
+2026-10-04T15:25:32.3058614Z   type: 'test'
+2026-10-04T15:25:32.3058962Z   ...
+2026-10-04T15:25:32.3059877Z # Subtest: pause and visibility resume discard inactive time without rewinding the rendered phase
+2026-10-04T15:25:32.3061276Z ok 70 - pause and visibility resume discard inactive time without rewinding the rendered phase
+2026-10-04T15:25:32.3062090Z   ---
+2026-10-04T15:25:32.3062430Z   duration_ms: 0.19393
+2026-10-04T15:25:32.3062830Z   type: 'test'
+2026-10-04T15:25:32.3063178Z   ...
+2026-10-04T15:25:32.3063922Z # Subtest: flat streets produce zero body pitch/roll and keep wheels on the road
+2026-10-04T15:25:32.3065044Z ok 71 - flat streets produce zero body pitch/roll and keep wheels on the road
+2026-10-04T15:25:32.3096231Z   ---
+2026-10-04T15:25:32.3096600Z   duration_ms: 1.798887
+2026-10-04T15:25:32.3097014Z   type: 'test'
+2026-10-04T15:25:32.3097673Z   ...
+2026-10-04T15:25:32.3098528Z # Subtest: a diagonal curb residual raises only the clearance missing from a fitted plane
+2026-10-04T15:25:32.3099792Z ok 72 - a diagonal curb residual raises only the clearance missing from a fitted plane
+2026-10-04T15:25:32.3100547Z   ---
+2026-10-04T15:25:32.3100896Z   duration_ms: 1.791663
+2026-10-04T15:25:32.3101303Z   type: 'test'
+2026-10-04T15:25:32.3101654Z   ...
+2026-10-04T15:25:32.3102608Z # Subtest: actual rendered tire vertices stay above the real city ramp at known curb problem positions
+2026-10-04T15:25:32.3104048Z ok 73 - actual rendered tire vertices stay above the real city ramp at known curb problem positions
+2026-10-04T15:25:32.3104874Z   ---
+2026-10-04T15:25:32.3105499Z   duration_ms: 373.023146
+2026-10-04T15:25:32.3105911Z   type: 'test'
+2026-10-04T15:25:32.3106259Z   ...
+2026-10-04T15:25:32.3107261Z # Subtest: slope collision envelope encloses every rendered car vertex including tilted mirrors
+2026-10-04T15:25:32.3108619Z ok 74 - slope collision envelope encloses every rendered car vertex including tilted mirrors
+2026-10-04T15:25:32.3109438Z   ---
+2026-10-04T15:25:32.3109802Z   duration_ms: 178.542463
+2026-10-04T15:25:32.3110211Z   type: 'test'
+2026-10-04T15:25:32.3110562Z   ...
+2026-10-04T15:25:32.3111418Z # Subtest: authored frontages attach to six actual occupied shells and keep High the default
+2026-10-04T15:25:32.3112731Z ok 75 - authored frontages attach to six actual occupied shells and keep High the default
+2026-10-04T15:25:32.3113500Z   ---
+2026-10-04T15:25:32.3113852Z   duration_ms: 57.434676
+2026-10-04T15:25:32.3114279Z   type: 'test'
+2026-10-04T15:25:32.3114625Z   ...
+2026-10-04T15:25:32.3115842Z # Subtest: clear original entrance approaches, frontage walking strip and road lanes are preserved
+2026-10-04T15:25:32.3117254Z ok 76 - clear original entrance approaches, frontage walking strip and road lanes are preserved
+2026-10-04T15:25:32.3118067Z   ---
+2026-10-04T15:25:32.3118425Z   duration_ms: 24.994182
+2026-10-04T15:25:32.3118859Z   type: 'test'
+2026-10-04T15:25:32.3119204Z   ...
+2026-10-04T15:25:32.3120295Z # Subtest: finite curved art geometry, metre projected scanned UVs and a bounded render budget
+2026-10-04T15:25:32.3121707Z ok 77 - finite curved art geometry, metre projected scanned UVs and a bounded render budget
+2026-10-04T15:25:32.3122482Z   ---
+2026-10-04T15:25:32.3122830Z   duration_ms: 203.161166
+2026-10-04T15:25:32.3123246Z   type: 'test'
+2026-10-04T15:25:32.3123588Z   ...
+2026-10-04T15:25:32.3124421Z # Subtest: near detail uses hysteresis, actually destroys buffers and restores far proxies
+2026-10-04T15:25:32.3156120Z ok 78 - near detail uses hysteresis, actually destroys buffers and restores far proxies
+2026-10-04T15:25:32.3156921Z   ---
+2026-10-04T15:25:32.3157279Z   duration_ms: 98.731003
+2026-10-04T15:25:32.3157694Z   type: 'test'
+2026-10-04T15:25:32.3158048Z   ...
+2026-10-04T15:25:32.3158986Z # Subtest: shared interior shell IDs hide both proxy and resident art, including later streamed loads
+2026-10-04T15:25:32.3160460Z ok 79 - shared interior shell IDs hide both proxy and resident art, including later streamed loads
+2026-10-04T15:25:32.3161307Z   ---
+2026-10-04T15:25:32.3161657Z   duration_ms: 24.829783
+2026-10-04T15:25:32.3162084Z   type: 'test'
+2026-10-04T15:25:32.3162435Z   ...
+2026-10-04T15:25:32.3163350Z # Subtest: locally served scanned material maps have recorded CC0 provenance and verified hashes
+2026-10-04T15:25:32.3164775Z ok 80 - locally served scanned material maps have recorded CC0 provenance and verified hashes
+2026-10-04T15:25:32.3165823Z   ---
+2026-10-04T15:25:32.3166187Z   duration_ms: 12.525844
+2026-10-04T15:25:32.3166596Z   type: 'test'
+2026-10-04T15:25:32.3166943Z   ...
+2026-10-04T15:25:32.3167931Z # Subtest: sample room craft fits actual furniture and overhead walls without adding circulation obstacles
+2026-10-04T15:25:32.3169466Z ok 81 - sample room craft fits actual furniture and overhead walls without adding circulation obstacles
+2026-10-04T15:25:32.3170251Z   ---
+2026-10-04T15:25:32.3170990Z   duration_ms: 153.684436
+2026-10-04T15:25:32.3171348Z   type: 'test'
+2026-10-04T15:25:32.3171639Z   ...
+2026-10-04T15:25:41.2787107Z # Subtest: sample binds twenty separate residents to actual homes, counter frontages and legal routes
+2026-10-04T15:25:41.2789106Z ok 82 - sample binds twenty separate residents to actual homes, counter frontages and legal routes
+2026-10-04T15:25:41.2790562Z   ---
+2026-10-04T15:25:41.2791215Z   duration_ms: 531.007064
+2026-10-04T15:25:41.2791887Z   type: 'test'
+2026-10-04T15:25:41.2792480Z   ...
+2026-10-04T15:25:41.2793840Z # Subtest: actual delivery moves finite stock, debits wholesale and escrow, and pays the player once at the recipient
+2026-10-04T15:25:41.2795891Z ok 83 - actual delivery moves finite stock, debits wholesale and escrow, and pays the player once at the recipient
+2026-10-04T15:25:41.2797152Z   ---
+2026-10-04T15:25:41.2797816Z   duration_ms: 261.852293
+2026-10-04T15:25:41.2798536Z   type: 'test'
+2026-10-04T15:25:41.2799154Z   ...
+2026-10-04T15:25:41.2800291Z # Subtest: stock availability and shop funds cause actual successful or blocked purchases
+2026-10-04T15:25:41.2801945Z ok 84 - stock availability and shop funds cause actual successful or blocked purchases
+2026-10-04T15:25:41.2803027Z   ---
+2026-10-04T15:25:41.2803654Z   duration_ms: 208.785346
+2026-10-04T15:25:41.2804363Z   type: 'test'
+2026-10-04T15:25:41.2804999Z   ...
+2026-10-04T15:25:41.2806700Z # Subtest: daily schedules complete home, work, shop and courier loops regardless of visible distance or indoor context
+2026-10-04T15:25:41.2808740Z ok 85 - daily schedules complete home, work, shop and courier loops regardless of visible distance or indoor context
+2026-10-04T15:25:41.2814424Z   ---
+2026-10-04T15:25:41.2815368Z   duration_ms: 656.327789
+2026-10-04T15:25:41.2816096Z   type: 'test'
+2026-10-04T15:25:41.2816734Z   ...
+2026-10-04T15:25:41.2859531Z # Subtest: fixed economic ticks and persisted paths resume deterministically without repeating wages or deliveries
+2026-10-04T15:25:41.2866703Z ok 86 - fixed economic ticks and persisted paths resume deterministically without repeating wages or deliveries
+2026-10-04T15:25:41.2895744Z   ---
+2026-10-04T15:25:41.2975668Z   duration_ms: 796.989112
+2026-10-04T15:25:41.2996538Z   type: 'test'
+2026-10-04T15:25:41.3005789Z   ...
+2026-10-04T15:25:41.3066404Z # Subtest: corrupt or foreign snapshots cannot mint stock, money, arbitrary positions or orphan delivery payouts
+2026-10-04T15:25:41.3099050Z ok 87 - corrupt or foreign snapshots cannot mint stock, money, arbitrary positions or orphan delivery payouts
+2026-10-04T15:25:41.3125988Z   ---
+2026-10-04T15:25:41.3153552Z   duration_ms: 143.090983
+2026-10-04T15:25:41.3176070Z   type: 'test'
+2026-10-04T15:25:41.3176627Z   ...
+2026-10-04T15:25:41.3177937Z # Subtest: warehouse commutes board real moving trams and physically alight onto legal final pavement routes
+2026-10-04T15:25:41.3179808Z ok 88 - warehouse commutes board real moving trams and physically alight onto legal final pavement routes
+2026-10-04T15:25:41.3180927Z   ---
+2026-10-04T15:25:41.3181561Z   duration_ms: 1083.965658
+2026-10-04T15:25:41.3182196Z   type: 'test'
+2026-10-04T15:25:41.3182763Z   ...
+2026-10-04T15:25:41.3183992Z # Subtest: renderer streams at most twelve detailed instances while presentation never advances city state
+2026-10-04T15:25:41.3186065Z ok 89 - renderer streams at most twelve detailed instances while presentation never advances city state
+2026-10-04T15:25:41.3187212Z   ---
+2026-10-04T15:25:41.3187777Z   duration_ms: 573.093692
+2026-10-04T15:25:41.3188396Z   type: 'test'
+2026-10-04T15:25:41.3188949Z   ...
+2026-10-04T15:25:41.3190184Z # Subtest: restoring real in-flight fleet tickets preserves boarding, cargo and deterministic continuation
+2026-10-04T15:25:41.3191943Z ok 90 - restoring real in-flight fleet tickets preserves boarding, cargo and deterministic continuation
+2026-10-04T15:25:41.3193023Z   ---
+2026-10-04T15:25:41.3193572Z   duration_ms: 838.959956
+2026-10-04T15:25:41.3194211Z   type: 'test'
+2026-10-04T15:25:41.3194768Z   ...
+2026-10-04T15:25:41.3196686Z # Subtest: rewinding display time never repeats an elapsed wage slot or changes the money supply
+2026-10-04T15:25:41.3198351Z ok 91 - rewinding display time never repeats an elapsed wage slot or changes the money supply
+2026-10-04T15:25:41.3199381Z   ---
+2026-10-04T15:25:41.3199981Z   duration_ms: 108.73604
+2026-10-04T15:25:41.3200613Z   type: 'test'
+2026-10-04T15:25:41.3201158Z   ...
+2026-10-04T15:25:41.3202396Z # Subtest: player buys an actual stocked portion only from the staffed counter and game-owned cash funds the shop
+2026-10-04T15:25:41.3204247Z ok 92 - player buys an actual stocked portion only from the staffed counter and game-owned cash funds the shop
+2026-10-04T15:25:41.3205573Z   ---
+2026-10-04T15:25:41.3206131Z   duration_ms: 483.700028
+2026-10-04T15:25:41.3206797Z   type: 'test'
+2026-10-04T15:25:41.3207349Z   ...
+2026-10-04T15:25:41.3208465Z # Subtest: remote, unfunded, unstaffed, closed and sold-out retail requests never debit the game wallet
+2026-10-04T15:25:41.3210203Z ok 93 - remote, unfunded, unstaffed, closed and sold-out retail requests never debit the game wallet
+2026-10-04T15:25:41.3211283Z   ---
+2026-10-04T15:25:41.3211853Z   duration_ms: 288.394782
+2026-10-04T15:25:41.3212471Z   type: 'test'
+2026-10-04T15:25:41.3213010Z   ...
+2026-10-04T15:25:41.3214173Z # Subtest: runtime traffic clock controls crossing permission independently of persisted economic days
+2026-10-04T15:25:41.3216078Z ok 94 - runtime traffic clock controls crossing permission independently of persisted economic days
+2026-10-04T15:25:41.3217020Z   ---
+2026-10-04T15:25:41.3217536Z   duration_ms: 250.606571
+2026-10-04T15:25:41.3218397Z   type: 'test'
+2026-10-04T15:25:41.3218881Z   ...
+2026-10-04T15:25:41.3219953Z # Subtest: integrated E retail changes the sole game wallet and a saved inventory restores alongside its ledger
+2026-10-04T15:25:41.3221733Z ok 95 - integrated E retail changes the sole game wallet and a saved inventory restores alongside its ledger
+2026-10-04T15:25:41.3222834Z   ---
+2026-10-04T15:25:41.3223452Z   duration_ms: 9679.714737
+2026-10-04T15:25:41.3224403Z   type: 'test'
+2026-10-04T15:25:41.3224999Z   ...
+2026-10-04T15:25:41.3463362Z # Subtest: opposite-shore landmarks retain contrast across the full public harbour view
+2026-10-04T15:25:41.3470146Z ok 96 - opposite-shore landmarks retain contrast across the full public harbour view
+2026-10-04T15:25:41.3471232Z   ---
+2026-10-04T15:25:41.3471737Z   duration_ms: 2.61278
+2026-10-04T15:25:41.3472234Z   type: 'test'
+2026-10-04T15:25:41.3472676Z   ...
+2026-10-04T15:25:41.3473689Z # Subtest: water variants keep independent clocks, shared programs and working cloned shader hooks
+2026-10-04T15:25:41.3475445Z ok 97 - water variants keep independent clocks, shared programs and working cloned shader hooks
+2026-10-04T15:25:41.3476431Z   ---
+2026-10-04T15:25:41.3476864Z   duration_ms: 2.162117
+2026-10-04T15:25:41.3477350Z   type: 'test'
+2026-10-04T15:25:41.3477782Z   ...
+2026-10-04T15:25:41.3478734Z # Subtest: urban finishes separate dielectric glazing, rough mineral surfaces and metal frames
+2026-10-04T15:25:41.3480195Z ok 98 - urban finishes separate dielectric glazing, rough mineral surfaces and metal frames
+2026-10-04T15:25:41.3481072Z   ---
+2026-10-04T15:25:41.3481491Z   duration_ms: 53.880427
+2026-10-04T15:25:41.3481976Z   type: 'test'
+2026-10-04T15:25:41.3482401Z   ...
+2026-10-04T15:27:18.6841962Z # Subtest: normal city play boards bus, walks both decks, travels and alights at another physical stop
+2026-10-04T15:27:18.6843632Z ok 99 - normal city play boards bus, walks both decks, travels and alights at another physical stop
+2026-10-04T15:27:18.6844577Z   ---
+2026-10-04T15:27:18.6844992Z   duration_ms: 12996.788863
+2026-10-04T15:27:18.6845740Z   type: 'test'
+2026-10-04T15:27:18.6846128Z   ...
+2026-10-04T15:27:18.6847431Z # Subtest: normal city play boards tram, walks both decks, travels and alights at another physical stop
+2026-10-04T15:27:18.6849342Z ok 100 - normal city play boards tram, walks both decks, travels and alights at another physical stop
+2026-10-04T15:27:18.6850952Z   ---
+2026-10-04T15:27:18.6851490Z   duration_ms: 20766.447492
+2026-10-04T15:27:18.6852070Z   type: 'test'
+2026-10-04T15:27:18.6852539Z   ...
+2026-10-04T15:27:18.6859772Z # Subtest: normal city play boards ferry, walks both decks, travels and alights at another physical stop
+2026-10-04T15:27:18.6861786Z ok 101 - normal city play boards ferry, walks both decks, travels and alights at another physical stop
+2026-10-04T15:27:18.6863037Z   ---
+2026-10-04T15:27:18.6863666Z   duration_ms: 22415.319367
+2026-10-04T15:27:18.6864150Z   type: 'test'
+2026-10-04T15:27:18.6864540Z   ...
+2026-10-04T15:27:18.6865718Z # Subtest: interior visits preserve street traffic, sample service clocks and resident phases
+2026-10-04T15:27:18.6867244Z ok 102 - interior visits preserve street traffic, sample service clocks and resident phases
+2026-10-04T15:27:18.6868122Z   ---
+2026-10-04T15:27:18.6868486Z   duration_ms: 1976.738694
+2026-10-04T15:27:18.6868937Z   type: 'test'
+2026-10-04T15:27:18.6869310Z   ...
+2026-10-04T15:27:18.6870380Z # Subtest: safeSave restores real commuting tickets, economic paths and delayed dwell before another tick
+2026-10-04T15:27:18.6872001Z ok 103 - safeSave restores real commuting tickets, economic paths and delayed dwell before another tick
+2026-10-04T15:27:18.6872944Z   ---
+2026-10-04T15:27:18.6873347Z   duration_ms: 41717.011547
+2026-10-04T15:27:18.6873799Z   type: 'test'
+2026-10-04T15:27:18.6874165Z   ...
+2026-10-04T15:27:18.6875038Z # Subtest: fresh binding and malformed saved sample fields leave finite clean street state
+2026-10-04T15:27:18.6876610Z ok 104 - fresh binding and malformed saved sample fields leave finite clean street state
+2026-10-04T15:27:18.6877285Z   ---
+2026-10-04T15:27:18.6877509Z   duration_ms: 3093.409725
+2026-10-04T15:27:18.6877747Z   type: 'test'
+2026-10-04T15:27:18.6877950Z   ...
+2026-10-04T15:27:18.6878487Z # Subtest: fixed simulation and render updates remain separate, with bounded collector-height tram wires
+2026-10-04T15:27:18.6879988Z ok 105 - fixed simulation and render updates remain separate, with bounded collector-height tram wires
+2026-10-04T15:27:18.6880832Z   ---
+2026-10-04T15:27:18.6881166Z   duration_ms: 4638.560954
+2026-10-04T15:27:18.6881563Z   type: 'test'
+2026-10-04T15:27:18.6881882Z   ...
+2026-10-04T15:27:18.6883153Z # Subtest: a restored south-shore signal clock controls real cars, rendered lights and crossing residents while north traffic keeps its original clock
+2026-10-04T15:27:18.6885434Z ok 106 - a restored south-shore signal clock controls real cars, rendered lights and crossing residents while north traffic keeps its original clock
+2026-10-04T15:27:18.6886531Z   ---
+2026-10-04T15:27:18.6886863Z   duration_ms: 254.464364
+2026-10-04T15:27:18.6887253Z   type: 'test'
+2026-10-04T15:27:18.6887580Z   ...
+2026-10-04T15:27:18.6888527Z # Subtest: ordinary city steps yield the long bus to a real resident already crossing, including after save/load
+2026-10-04T15:27:18.6890008Z ok 107 - ordinary city steps yield the long bus to a real resident already crossing, including after save/load
+2026-10-04T15:27:18.6890864Z   ---
+2026-10-04T15:27:18.6891191Z   duration_ms: 4052.159843
+2026-10-04T15:27:18.6891586Z   type: 'test'
+2026-10-04T15:27:18.6891911Z   ...
+2026-10-04T15:27:18.7545477Z # Subtest: harbor towers occupy land behind a continuous shore and have authored geometric crowns
+2026-10-04T15:27:18.7546870Z ok 108 - harbor towers occupy land behind a continuous shore and have authored geometric crowns
+2026-10-04T15:27:18.7547584Z   ---
+2026-10-04T15:27:18.7547802Z   duration_ms: 26.013865
+2026-10-04T15:27:18.7548130Z   type: 'test'
+2026-10-04T15:27:18.7548460Z   ...
+2026-10-04T15:27:18.7549140Z # Subtest: the actual eye-level promenade camera sees multiple distinct towers across open water
+2026-10-04T15:27:18.7550282Z ok 109 - the actual eye-level promenade camera sees multiple distinct towers across open water
+2026-10-04T15:27:18.7551046Z   ---
+2026-10-04T15:27:18.7551410Z   duration_ms: 104.522436
+2026-10-04T15:27:18.7551818Z   type: 'test'
+2026-10-04T15:27:18.7552610Z   ...
+2026-10-04T15:27:18.7553542Z # Subtest: all three harbor viewpoints are reached on existing real pavement with the full player radius
+2026-10-04T15:27:18.7554909Z ok 110 - all three harbor viewpoints are reached on existing real pavement with the full player radius
+2026-10-04T15:27:18.7556042Z   ---
+2026-10-04T15:27:18.7556416Z   duration_ms: 286.857476
+2026-10-04T15:27:18.7556845Z   type: 'test'
+2026-10-04T15:27:18.7557215Z   ...
+2026-10-04T15:27:18.7558249Z # Subtest: walking inland across the former support edge stays on the rendered shore and mountain triangles
+2026-10-04T15:27:18.7559804Z ok 111 - walking inland across the former support edge stays on the rendered shore and mountain triangles
+2026-10-04T15:27:18.7560682Z   ---
+2026-10-04T15:27:18.7561047Z   duration_ms: 379.562469
+2026-10-04T15:27:18.7561479Z   type: 'test'
+2026-10-04T15:27:18.7561829Z   ...
+2026-10-04T15:27:18.7562811Z # Subtest: view distance streams and disposes real facade details without changing skyline massing or quality
+2026-10-04T15:27:18.7564408Z ok 112 - view distance streams and disposes real facade details without changing skyline massing or quality
+2026-10-04T15:27:18.7565951Z   ---
+2026-10-04T15:27:18.7566325Z   duration_ms: 30.502256
+2026-10-04T15:27:18.7566749Z   type: 'test'
+2026-10-04T15:27:18.7567118Z   ...
+2026-10-04T15:27:18.7567971Z # Subtest: small window bays use metre UVs and sparse office lights follow the world clock
+2026-10-04T15:27:18.7568687Z ok 113 - small window bays use metre UVs and sparse office lights follow the world clock
+2026-10-04T15:27:18.7569111Z   ---
+2026-10-04T15:27:18.7569314Z   duration_ms: 14.491486
+2026-10-04T15:27:18.7569549Z   type: 'test'
+2026-10-04T15:27:18.7569755Z   ...
+2026-10-04T15:27:18.7570222Z # Subtest: shared shore support ends at the visible coastline and preserves water outside it
+2026-10-04T15:27:18.7570916Z ok 114 - shared shore support ends at the visible coastline and preserves water outside it
+2026-10-04T15:27:18.7571338Z   ---
+2026-10-04T15:27:18.7571538Z   duration_ms: 1.967311
+2026-10-04T15:27:18.7571964Z   type: 'test'
+2026-10-04T15:27:18.7572175Z   ...
+2026-10-04T15:27:18.7572697Z # Subtest: client and multiplayer server support match raycast triangles on both sides of ridge diagonals
+2026-10-04T15:27:18.7573506Z ok 115 - client and multiplayer server support match raycast triangles on both sides of ridge diagonals
+2026-10-04T15:27:18.7573982Z   ---
+2026-10-04T15:27:18.7574176Z   duration_ms: 265.884989
+2026-10-04T15:27:18.7574404Z   type: 'test'
+2026-10-04T15:27:18.7574593Z   ...
+2026-10-04T15:27:18.7575503Z # Subtest: multiplayer support retains reachable infrastructure decks and the road beneath an underpass
+2026-10-04T15:27:18.7576986Z ok 116 - multiplayer support retains reachable infrastructure decks and the road beneath an underpass
+2026-10-04T15:27:18.7577765Z   ---
+2026-10-04T15:27:18.7577978Z   duration_ms: 0.439773
+2026-10-04T15:27:18.7578202Z   type: 'test'
+2026-10-04T15:27:18.7578395Z   ...
+2026-10-04T15:27:18.7578888Z # Subtest: every original service fits its existing street or water corridor for a whole circuit
+2026-10-04T15:27:18.7579621Z ok 117 - every original service fits its existing street or water corridor for a whole circuit
+2026-10-04T15:27:18.7580210Z   ---
+2026-10-04T15:27:18.7580460Z   duration_ms: 1577.152988
+2026-10-04T15:27:18.7580695Z   type: 'test'
+2026-10-04T15:27:18.7580893Z   ...
+2026-10-04T15:27:18.7581413Z # Subtest: bus: walk through the boarding door, upstairs, along the upper aisle and back downstairs
+2026-10-04T15:27:18.7582351Z ok 118 - bus: walk through the boarding door, upstairs, along the upper aisle and back downstairs
+2026-10-04T15:27:18.7583117Z   ---
+2026-10-04T15:27:18.7583452Z   duration_ms: 168.446486
+2026-10-04T15:27:18.7583853Z   type: 'test'
+2026-10-04T15:27:18.7584180Z   ...
+2026-10-04T15:27:18.7585007Z # Subtest: tram: walk through the boarding door, upstairs, along the upper aisle and back downstairs
+2026-10-04T15:27:18.7586545Z ok 119 - tram: walk through the boarding door, upstairs, along the upper aisle and back downstairs
+2026-10-04T15:27:18.7587614Z   ---
+2026-10-04T15:27:18.7587958Z   duration_ms: 125.195767
+2026-10-04T15:27:18.7588353Z   type: 'test'
+2026-10-04T15:27:18.7588676Z   ...
+2026-10-04T15:27:18.7589594Z # Subtest: ferry: walk through the boarding door, upstairs, along the upper aisle and back downstairs
+2026-10-04T15:27:18.7590944Z ok 120 - ferry: walk through the boarding door, upstairs, along the upper aisle and back downstairs
+2026-10-04T15:27:18.7591723Z   ---
+2026-10-04T15:27:18.7592050Z   duration_ms: 159.443252
+2026-10-04T15:27:18.7592440Z   type: 'test'
+2026-10-04T15:27:18.7592772Z   ...
+2026-10-04T15:27:18.7593672Z # Subtest: passenger seats, closed doors and end walls reject movement rather than pinning the passenger
+2026-10-04T15:27:18.7595256Z ok 121 - passenger seats, closed doors and end walls reject movement rather than pinning the passenger
+2026-10-04T15:27:18.7596084Z   ---
+2026-10-04T15:27:18.7596405Z   duration_ms: 8.853644
+2026-10-04T15:27:18.7596781Z   type: 'test'
+2026-10-04T15:27:18.7597123Z   ...
+2026-10-04T15:27:18.7597836Z # Subtest: ten minutes of independent timetables keep bus and tram bodies apart
+2026-10-04T15:27:18.7598885Z ok 122 - ten minutes of independent timetables keep bus and tram bodies apart
+2026-10-04T15:27:18.7599540Z   ---
+2026-10-04T15:27:18.7599866Z   duration_ms: 470.883585
+2026-10-04T15:27:18.7600251Z   type: 'test'
+2026-10-04T15:27:18.7600606Z   ...
+2026-10-04T15:27:18.7601405Z # Subtest: external traffic stops the bus before contact and the delayed timetable resumes
+2026-10-04T15:27:18.7602605Z ok 123 - external traffic stops the bus before contact and the delayed timetable resumes
+2026-10-04T15:27:18.7603324Z   ---
+2026-10-04T15:27:18.7603646Z   duration_ms: 27.41554
+2026-10-04T15:27:18.7604019Z   type: 'test'
+2026-10-04T15:27:18.7604343Z   ...
+2026-10-04T15:27:18.7605455Z # Subtest: saving restores stop dwell and delayed schedules without placing a load inside a vehicle
+2026-10-04T15:27:18.7606816Z ok 124 - saving restores stop dwell and delayed schedules without placing a load inside a vehicle
+2026-10-04T15:27:18.7607784Z   ---
+2026-10-04T15:27:18.7608129Z   duration_ms: 20.806076
+2026-10-04T15:27:18.7608512Z   type: 'test'
+2026-10-04T15:27:18.7608840Z   ...
+2026-10-04T15:27:18.7609664Z # Subtest: citizens board a real stop, travel in the moving cabin and alight at a different stop
+2026-10-04T15:27:18.7610926Z ok 125 - citizens board a real stop, travel in the moving cabin and alight at a different stop
+2026-10-04T15:27:18.7611671Z   ---
+2026-10-04T15:27:18.7612031Z   duration_ms: 75.539985
+2026-10-04T15:27:18.7612436Z   type: 'test'
+2026-10-04T15:27:18.7612767Z   ...
+2026-10-04T15:27:18.7613586Z # Subtest: a saved boarding token, door hold and citizen cabin pose continue after load
+2026-10-04T15:27:18.7614730Z ok 126 - a saved boarding token, door hold and citizen cabin pose continue after load
+2026-10-04T15:27:18.7615616Z   ---
+2026-10-04T15:27:18.7615940Z   duration_ms: 18.807426
+2026-10-04T15:27:18.7616320Z   type: 'test'
+2026-10-04T15:27:18.7616653Z   ...
+2026-10-04T15:27:18.7617602Z # Subtest: both ferry piers can be walked from real street height over the sea wall and match rendered support
+2026-10-04T15:27:18.7619051Z ok 127 - both ferry piers can be walked from real street height over the sea wall and match rendered support
+2026-10-04T15:27:18.7619874Z   ---
+2026-10-04T15:27:18.7620208Z   duration_ms: 1490.249898
+2026-10-04T15:27:18.7620600Z   type: 'test'
+2026-10-04T15:27:18.7620927Z   ...
+2026-10-04T15:27:18.7622007Z # Subtest: sixteen static batches retain all 101 original transforms, materials and shadow flags with independent bank bounds
+2026-10-04T15:27:18.7623679Z ok 128 - sixteen static batches retain all 101 original transforms, materials and shadow flags with independent bank bounds
+2026-10-04T15:27:18.7624574Z   ---
+2026-10-04T15:27:18.7624903Z   duration_ms: 49.449109
+2026-10-04T15:27:18.7625456Z   type: 'test'
+2026-10-04T15:27:18.7625783Z   ...
+2026-10-04T15:27:18.7626819Z # Subtest: static instances stay shared while ferry gangways, eleven canvas signs and the live fleet remain independent
+2026-10-04T15:27:18.7628614Z ok 129 - static instances stay shared while ferry gangways, eleven canvas signs and the live fleet remain independent
+2026-10-04T15:27:18.7629509Z   ---
+2026-10-04T15:27:18.7629841Z   duration_ms: 94.88918
+2026-10-04T15:27:18.7630214Z   type: 'test'
+2026-10-04T15:27:18.7630537Z   ...
+2026-10-04T15:27:18.7631458Z # Subtest: bus at its actual eight-metre curb lane brakes before red, restores its queue and resumes on green
+2026-10-04T15:27:18.7632902Z ok 130 - bus at its actual eight-metre curb lane brakes before red, restores its queue and resumes on green
+2026-10-04T15:27:18.7633721Z   ---
+2026-10-04T15:27:18.7634043Z   duration_ms: 41.047474
+2026-10-04T15:27:18.7634432Z   type: 'test'
+2026-10-04T15:27:18.7634756Z   ...
+2026-10-04T15:27:18.7635860Z # Subtest: tram at its actual eight-metre curb lane brakes before red, restores its queue and resumes on green
+2026-10-04T15:27:18.7637321Z ok 131 - tram at its actual eight-metre curb lane brakes before red, restores its queue and resumes on green
+2026-10-04T15:27:18.7638154Z   ---
+2026-10-04T15:27:18.7638476Z   duration_ms: 48.281016
+2026-10-04T15:27:18.7638860Z   type: 'test'
+2026-10-04T15:27:18.7639184Z   ...
+2026-10-04T15:27:18.7639928Z # Subtest: a vehicle already admitted through green clears a newly red junction after save/load
+2026-10-04T15:27:18.7641212Z ok 132 - a vehicle already admitted through green clears a newly red junction after save/load
+2026-10-04T15:27:18.7641959Z   ---
+2026-10-04T15:27:18.7642279Z   duration_ms: 35.164538
+2026-10-04T15:27:18.7642656Z   type: 'test'
+2026-10-04T15:27:18.7642985Z   ...
+2026-10-04T15:27:18.7643992Z # Subtest: the shared pedestrian stop-distance hook protects the bus front, persists its wait and excludes the ferry
+2026-10-04T15:27:18.7645731Z ok 133 - the shared pedestrian stop-distance hook protects the bus front, persists its wait and excludes the ferry
+2026-10-04T15:27:18.7646624Z   ---
+2026-10-04T15:27:18.7646953Z   duration_ms: 56.796376
+2026-10-04T15:27:18.7647330Z   type: 'test'
+2026-10-04T15:27:18.7647832Z   ...
+2026-10-04T15:27:18.7648744Z # Subtest: harbor assets have finite geometry and actual closed/open bounds inside their metre envelopes
+2026-10-04T15:27:18.7650146Z ok 134 - harbor assets have finite geometry and actual closed/open bounds inside their metre envelopes
+2026-10-04T15:27:18.7650961Z   ---
+2026-10-04T15:27:18.7651282Z   duration_ms: 1691.199903
+2026-10-04T15:27:18.7651669Z   type: 'test'
+2026-10-04T15:27:18.7651993Z   ...
+2026-10-04T15:27:18.7652888Z # Subtest: both decks, all portals and stair landings remain reachable by the declared passenger capsule
+2026-10-04T15:27:18.7654272Z ok 135 - both decks, all portals and stair landings remain reachable by the declared passenger capsule
+2026-10-04T15:27:18.7655349Z   ---
+2026-10-04T15:27:18.7655717Z   duration_ms: 16.695335
+2026-10-04T15:27:18.7656114Z   type: 'test'
+2026-10-04T15:27:18.7656446Z   ...
+2026-10-04T15:27:18.7657323Z # Subtest: open doorway geometry clears a full body at both jambs, and closed leaves block passage
+2026-10-04T15:27:18.7658640Z ok 136 - open doorway geometry clears a full body at both jambs, and closed leaves block passage
+2026-10-04T15:27:18.7659403Z   ---
+2026-10-04T15:27:18.7659738Z   duration_ms: 555.577686
+2026-10-04T15:27:18.7660128Z   type: 'test'
+2026-10-04T15:27:18.7660453Z   ...
+2026-10-04T15:27:18.7661297Z # Subtest: actual stair mesh and ceilings leave standing headroom across the entire companionway
+2026-10-04T15:27:18.7662578Z ok 137 - actual stair mesh and ceilings leave standing headroom across the entire companionway
+2026-10-04T15:27:18.7663335Z   ---
+2026-10-04T15:27:18.7663665Z   duration_ms: 2855.521361
+2026-10-04T15:27:18.7663917Z   type: 'test'
+2026-10-04T15:27:18.7664115Z   ...
+2026-10-04T15:27:18.7664623Z # Subtest: ferry support and side collision narrow with its bow rather than exposing square deck overhangs
+2026-10-04T15:27:18.7665789Z ok 138 - ferry support and side collision narrow with its bow rather than exposing square deck overhangs
+2026-10-04T15:27:18.7666833Z   ---
+2026-10-04T15:27:18.7667163Z   duration_ms: 1.215755
+2026-10-04T15:27:18.7667550Z   type: 'test'
+2026-10-04T15:27:18.7667875Z   ...
+2026-10-04T15:27:18.7668926Z # Subtest: LOD budgets, original provenance and material response are explicit and lighting updates are instance-local
+2026-10-04T15:27:18.7670144Z ok 139 - LOD budgets, original provenance and material response are explicit and lighting updates are instance-local
+2026-10-04T15:27:18.7671057Z   ---
+2026-10-04T15:27:18.7671380Z   duration_ms: 28.905283
+2026-10-04T15:27:18.7671767Z   type: 'test'
+2026-10-04T15:27:18.7672091Z   ...
+2026-10-04T15:27:18.7673069Z # Subtest: instance disposal is idempotent and preserves shared geometry used by remaining vehicles and all LODs
+2026-10-04T15:27:18.7674614Z ok 140 - instance disposal is idempotent and preserves shared geometry used by remaining vehicles and all LODs
+2026-10-04T15:27:18.7675672Z   ---
+2026-10-04T15:27:18.7676002Z   duration_ms: 32.866354
+2026-10-04T15:27:18.7676395Z   type: 'test'
+2026-10-04T15:27:18.7676734Z   ...
+2026-10-04T15:27:18.7677420Z # Subtest: closed cabin actually blocks the former gap above the door leaves
+2026-10-04T15:27:18.7678432Z ok 141 - closed cabin actually blocks the former gap above the door leaves
+2026-10-04T15:27:18.7679072Z   ---
+2026-10-04T15:27:18.7679396Z   duration_ms: 148.501726
+2026-10-04T15:27:18.7679785Z   type: 'test'
+2026-10-04T15:27:18.7680147Z   ...
+2026-10-04T15:27:18.7680950Z # Subtest: cabin occlusion follows actual camera bounds and restores city before doors open
+2026-10-04T15:27:18.7682252Z ok 142 - cabin occlusion follows actual camera bounds and restores city before doors open
+2026-10-04T15:27:18.7682994Z   ---
+2026-10-04T15:27:18.7683324Z   duration_ms: 2471.459536
+2026-10-04T15:27:18.7683719Z   type: 'test'
+2026-10-04T15:27:18.7684050Z   ...
+2026-10-04T15:27:18.7684951Z # Subtest: ordinary third-person camera retracts behind the safety door throughout the high lift ride
+2026-10-04T15:27:18.7686674Z ok 143 - ordinary third-person camera retracts behind the safety door throughout the high lift ride
+2026-10-04T15:27:18.7687485Z   ---
+2026-10-04T15:27:18.7687827Z   duration_ms: 133.251041
+2026-10-04T15:27:18.7688213Z   type: 'test'
+2026-10-04T15:27:18.7688548Z   ...
+2026-10-04T15:27:18.7689369Z # Subtest: moving lift carries the normal low-pitch camera at 60 Hz without a floor-level view
+2026-10-04T15:27:18.7690608Z ok 144 - moving lift carries the normal low-pitch camera at 60 Hz without a floor-level view
+2026-10-04T15:27:18.7691345Z   ---
+2026-10-04T15:27:18.7691681Z   duration_ms: 91.968848
+2026-10-04T15:27:18.7692065Z   type: 'test'
+2026-10-04T15:27:18.7692389Z   ...
+2026-10-04T15:27:18.7693188Z # Subtest: moving lift carries the normal low-pitch camera at 4 Hz without a floor-level view
+2026-10-04T15:27:18.7694423Z ok 145 - moving lift carries the normal low-pitch camera at 4 Hz without a floor-level view
+2026-10-04T15:27:18.7695320Z   ---
+2026-10-04T15:27:18.7695649Z   duration_ms: 24.905699
+2026-10-04T15:27:18.7696047Z   type: 'test'
+2026-10-04T15:27:18.7696383Z   ...
+2026-10-04T15:27:18.7697135Z # Subtest: west-link: a pedestrian walks up, across and down without height mutation
+2026-10-04T15:27:18.7698276Z ok 146 - west-link: a pedestrian walks up, across and down without height mutation
+2026-10-04T15:27:18.7698961Z   ---
+2026-10-04T15:27:18.7699289Z   duration_ms: 1457.034047
+2026-10-04T15:27:18.7699690Z   type: 'test'
+2026-10-04T15:27:18.7699886Z   ...
+2026-10-04T15:27:18.7700281Z # {"maximum":8,"maximumStep":0.010181811998556611,"seconds":87.48333333332965}
+2026-10-04T15:27:18.7701318Z # Subtest: west-link: a car drives both ramps and saves on a safe ground entrance
+2026-10-04T15:27:18.7702376Z ok 147 - west-link: a car drives both ramps and saves on a safe ground entrance
+2026-10-04T15:27:18.7703029Z   ---
+2026-10-04T15:27:18.7703358Z   duration_ms: 1248.354831
+2026-10-04T15:27:18.7703755Z   type: 'test'
+2026-10-04T15:27:18.7704084Z   ...
+2026-10-04T15:27:18.7704776Z # {"maximum":8.001,"maximumStep":0.04337433879758379,"seconds":21.883333333333372}
+2026-10-04T15:27:18.7706411Z # Subtest: east-link: a pedestrian walks up, across and down without height mutation
+2026-10-04T15:27:18.7707535Z ok 148 - east-link: a pedestrian walks up, across and down without height mutation
+2026-10-04T15:27:18.7708220Z   ---
+2026-10-04T15:27:18.7708552Z   duration_ms: 1307.848476
+2026-10-04T15:27:18.7708948Z   type: 'test'
+2026-10-04T15:27:18.7709491Z   ...
+2026-10-04T15:27:18.7710312Z # {"maximum":9,"maximumStep":0.01049999775308752,"seconds":130.34999999999587}
+2026-10-04T15:27:18.7711478Z # Subtest: east-link: a car drives both ramps and saves on a safe ground entrance
+2026-10-04T15:27:18.7712828Z ok 149 - east-link: a car drives both ramps and saves on a safe ground entrance
+2026-10-04T15:27:18.7713605Z   ---
+2026-10-04T15:27:18.7714095Z   duration_ms: 1543.580544
+2026-10-04T15:27:18.7714678Z   type: 'test'
+2026-10-04T15:27:18.7715377Z   ...
+2026-10-04T15:27:18.7716407Z # {"maximum":9.001,"maximumStep":0.0447177873670066,"seconds":31.983333333332798}
+2026-10-04T15:27:18.7717680Z # Subtest: a pedestrian reaches the public freight-port promenade and walks back over the sea wall
+2026-10-04T15:27:18.7718600Z ok 150 - a pedestrian reaches the public freight-port promenade and walks back over the sea wall
+2026-10-04T15:27:18.7719138Z   ---
+2026-10-04T15:27:18.7730053Z   duration_ms: 428.642717
+2026-10-04T15:27:18.7730485Z   type: 'test'
+2026-10-04T15:27:18.7730861Z   ...
+2026-10-04T15:27:18.7731735Z # {"outbound":{"maximum":2.4,"maximumStep":0.017683754768263338,"seconds":16.95000000000032},"inbound":{"maximum":2.4,"maximumStep":0.017683754768263338,"seconds":16.933333333332374}}
+2026-10-04T15:27:18.7732658Z # Subtest: cars cross below both flyovers without being lifted onto the deck
+2026-10-04T15:27:18.7733241Z ok 151 - cars cross below both flyovers without being lifted onto the deck
+2026-10-04T15:27:18.7733617Z   ---
+2026-10-04T15:27:18.7733830Z   duration_ms: 119.055671
+2026-10-04T15:27:18.7734066Z   type: 'test'
+2026-10-04T15:27:18.7734279Z   ...
+2026-10-04T15:27:18.7734963Z # Subtest: added piers and street equipment leave existing north-shore traffic crossings open
+2026-10-04T15:27:18.7735867Z ok 152 - added piers and street equipment leave existing north-shore traffic crossings open
+2026-10-04T15:27:18.7736307Z   ---
+2026-10-04T15:27:18.7736521Z   duration_ms: 627.411737
+2026-10-04T15:27:18.7736759Z   type: 'test'
+2026-10-04T15:27:18.7736956Z   ...
+2026-10-04T15:27:18.7737446Z # Subtest: every address has an explicit entrance, frontage, roof, and unique physical signature
+2026-10-04T15:27:18.7738154Z ok 153 - every address has an explicit entrance, frontage, roof, and unique physical signature
+2026-10-04T15:27:18.7738581Z   ---
+2026-10-04T15:27:18.7738773Z   duration_ms: 1.54972
+2026-10-04T15:27:18.7738999Z   type: 'test'
+2026-10-04T15:27:18.7739193Z   ...
+2026-10-04T15:27:18.7739680Z # Subtest: all 192 authored display fronts are visible chunk geometry and clear the central approach
+2026-10-04T15:27:18.7740446Z ok 154 - all 192 authored display fronts are visible chunk geometry and clear the central approach
+2026-10-04T15:27:18.7740887Z   ---
+2026-10-04T15:27:18.7741084Z   duration_ms: 3.427132
+2026-10-04T15:27:18.7741314Z   type: 'test'
+2026-10-04T15:27:18.7741514Z   ...
+2026-10-04T15:27:18.7741985Z # Subtest: shop lettering preserves its physical aspect ratio and uses ordinary UV projection
+2026-10-04T15:27:18.7742692Z ok 155 - shop lettering preserves its physical aspect ratio and uses ordinary UV projection
+2026-10-04T15:27:18.7743121Z   ---
+2026-10-04T15:27:18.7743317Z   duration_ms: 83.677044
+2026-10-04T15:27:18.7743554Z   type: 'test'
+2026-10-04T15:27:18.7743751Z   ...
+2026-10-04T15:27:18.7744155Z # Subtest: upper facade ribs do not obscure retail signs or the entrance canopy
+2026-10-04T15:27:18.7744747Z ok 156 - upper facade ribs do not obscure retail signs or the entrance canopy
+2026-10-04T15:27:18.7745759Z   ---
+2026-10-04T15:27:18.7746115Z   duration_ms: 18.821035
+2026-10-04T15:27:18.7746521Z   type: 'test'
+2026-10-04T15:27:18.7747055Z   ...
+2026-10-04T15:27:18.7747920Z # Subtest: retail counters and collision agree at adult scale, with small goods resting on top
+2026-10-04T15:27:18.7749220Z ok 157 - retail counters and collision agree at adult scale, with small goods resting on top
+2026-10-04T15:27:18.7749997Z   ---
+2026-10-04T15:27:18.7750331Z   duration_ms: 55.177108
+2026-10-04T15:27:18.7750726Z   type: 'test'
+2026-10-04T15:27:18.7751064Z   ...
+2026-10-04T15:27:18.7751729Z # Subtest: human-scale motifs and curved components survive actual chunk export
+2026-10-04T15:27:18.7752532Z ok 158 - human-scale motifs and curved components survive actual chunk export
+2026-10-04T15:27:18.7753223Z   ---
+2026-10-04T15:27:18.7753530Z   duration_ms: 274.826452
+2026-10-04T15:27:18.7753778Z   type: 'test'
+2026-10-04T15:27:18.7753979Z   ...
+2026-10-04T15:27:18.7754460Z # Subtest: additional architectural detail stays streamed and within bounded chunk budgets
+2026-10-04T15:27:18.7755972Z ok 159 - additional architectural detail stays streamed and within bounded chunk budgets
+2026-10-04T15:27:18.7756544Z   ---
+2026-10-04T15:27:18.7756759Z   duration_ms: 25.314044
+2026-10-04T15:27:18.7756989Z   type: 'test'
+2026-10-04T15:27:18.7757187Z   ...
+2026-10-04T15:27:18.7757636Z # Subtest: architectural refinement retains the full wide lobby approach at every address
+2026-10-04T15:27:18.7758332Z ok 160 - architectural refinement retains the full wide lobby approach at every address
+2026-10-04T15:27:18.7758753Z   ---
+2026-10-04T15:27:18.7758945Z   duration_ms: 6.164975
+2026-10-04T15:27:18.7759181Z   type: 'test'
+2026-10-04T15:27:18.7759380Z   ...
+2026-10-04T15:27:18.7759831Z # Subtest: address-specific sign materials are disposed along with their streamed district
+2026-10-04T15:27:18.7760516Z ok 161 - address-specific sign materials are disposed along with their streamed district
+2026-10-04T15:27:18.7760943Z   ---
+2026-10-04T15:27:18.7761139Z   duration_ms: 121.900623
+2026-10-04T15:27:18.7761378Z   type: 'test'
+2026-10-04T15:27:18.7761583Z   ...
+2026-10-04T15:27:18.7762164Z # Subtest: an underpass and its upper carriageway stay independent at the same x/z
+2026-10-04T15:27:18.7762814Z ok 162 - an underpass and its upper carriageway stay independent at the same x/z
+2026-10-04T15:27:18.7763201Z   ---
+2026-10-04T15:27:18.7763401Z   duration_ms: 5.285808
+2026-10-04T15:27:18.7763632Z   type: 'test'
+2026-10-04T15:27:18.7763827Z   ...
+2026-10-04T15:27:18.7764444Z # Subtest: both directions of both ramps support a continuous pedestrian journey without an elevation snap
+2026-10-04T15:27:18.7765435Z ok 163 - both directions of both ramps support a continuous pedestrian journey without an elevation snap
+2026-10-04T15:27:18.7766402Z   ---
+2026-10-04T15:27:18.7766791Z   duration_ms: 427.61776
+2026-10-04T15:27:18.7767226Z   type: 'test'
+2026-10-04T15:27:18.7767585Z   ...
+2026-10-04T15:27:18.7768633Z # Subtest: four-wheel car support follows both complete flyovers without jumping level or striking a collider
+2026-10-04T15:27:18.7770288Z ok 164 - four-wheel car support follows both complete flyovers without jumping level or striking a collider
+2026-10-04T15:27:18.7771228Z   ---
+2026-10-04T15:27:18.7771597Z   duration_ms: 847.129502
+2026-10-04T15:27:18.7772022Z   type: 'test'
+2026-10-04T15:27:18.7772374Z   ...
+2026-10-04T15:27:18.7773304Z # Subtest: rendered carriageway tops agree with the analytical support profile to one centimetre
+2026-10-04T15:27:18.7774772Z ok 165 - rendered carriageway tops agree with the analytical support profile to one centimetre
+2026-10-04T15:27:18.7775899Z   ---
+2026-10-04T15:27:18.7776267Z   duration_ms: 1.03145
+2026-10-04T15:27:18.7776691Z   type: 'test'
+2026-10-04T15:27:18.7777055Z   ...
+2026-10-04T15:27:18.7778098Z # Subtest: cross-streets retain a clear path below the flyovers and bridge piers remain outside carriageways
+2026-10-04T15:27:18.7779719Z ok 166 - cross-streets retain a clear path below the flyovers and bridge piers remain outside carriageways
+2026-10-04T15:27:18.7780343Z   ---
+2026-10-04T15:27:18.7780555Z   duration_ms: 45.356083
+2026-10-04T15:27:18.7781015Z   type: 'test'
+2026-10-04T15:27:18.7781221Z   ...
+2026-10-04T15:27:18.7781785Z # Subtest: freight access rises continuously over the original seawall and reaches a real clear deck
+2026-10-04T15:27:18.7782560Z ok 167 - freight access rises continuously over the original seawall and reaches a real clear deck
+2026-10-04T15:27:18.7783020Z   ---
+2026-10-04T15:27:18.7783223Z   duration_ms: 46.1293
+2026-10-04T15:27:18.7783452Z   type: 'test'
+2026-10-04T15:27:18.7783659Z   ...
+2026-10-04T15:27:18.7784145Z # Subtest: station additions preserve every building entrance, transit entrance and ferry passage
+2026-10-04T15:27:18.7784883Z ok 168 - station additions preserve every building entrance, transit entrance and ferry passage
+2026-10-04T15:27:18.7785564Z   ---
+2026-10-04T15:27:18.7785762Z   duration_ms: 11.930472
+2026-10-04T15:27:18.7785991Z   type: 'test'
+2026-10-04T15:27:18.7786190Z   ...
+2026-10-04T15:27:18.7786697Z # Subtest: district culling hides distant detail while keeping local geometry and permanent collisions
+2026-10-04T15:27:18.7787484Z ok 169 - district culling hides distant detail while keeping local geometry and permanent collisions
+2026-10-04T15:27:18.7787940Z   ---
+2026-10-04T15:27:18.7788133Z   duration_ms: 0.565348
+2026-10-04T15:27:18.7788359Z   type: 'test'
+2026-10-04T15:27:18.7788561Z   ...
+2026-10-04T15:27:18.7789017Z # Subtest: entry signs face their approach routes and every sign has an opaque blank reverse
+2026-10-04T15:27:18.7789701Z ok 170 - entry signs face their approach routes and every sign has an opaque blank reverse
+2026-10-04T15:27:18.7790118Z   ---
+2026-10-04T15:27:18.7790318Z   duration_ms: 35.155888
+2026-10-04T15:27:18.7790544Z   type: 'test'
+2026-10-04T15:27:18.7790736Z   ...
+2026-10-04T15:27:18.7791305Z # Subtest: every one of 48 addresses has distinct furnished programmes, open entrances, and a walkable elevator route
+2026-10-04T15:27:18.7792241Z ok 171 - every one of 48 addresses has distinct furnished programmes, open entrances, and a walkable elevator route
+2026-10-04T15:27:18.7792791Z   ---
+2026-10-04T15:27:18.7793152Z   duration_ms: 1085.64296
+2026-10-04T15:27:18.7793425Z   type: 'test'
+2026-10-04T15:27:18.7793643Z   ...
+2026-10-04T15:27:18.7794257Z # Subtest: all natural floor plans keep furniture collision aligned with visible geometry and guard upper-floor edges
+2026-10-04T15:27:18.7795397Z ok 172 - all natural floor plans keep furniture collision aligned with visible geometry and guard upper-floor edges
+2026-10-04T15:27:18.7796182Z   ---
+2026-10-04T15:27:18.7796561Z   duration_ms: 2455.700174
+2026-10-04T15:27:18.7797030Z   type: 'test'
+2026-10-04T15:27:18.7797347Z   ...
+2026-10-04T15:27:18.7797980Z # Subtest: the tallest lift carries a boarded passenger continuously, closes its doors, and arrives clear of furniture
+2026-10-04T15:27:18.7798922Z ok 173 - the tallest lift carries a boarded passenger continuously, closes its doors, and arrives clear of furniture
+2026-10-04T15:27:18.7799470Z   ---
+2026-10-04T15:27:18.7799671Z   duration_ms: 80.084614
+2026-10-04T15:27:18.7799960Z   type: 'test'
+2026-10-04T15:27:18.7800170Z   ...
+2026-10-04T15:27:18.7800832Z # Subtest: elevator selection validates the passenger still occupies the physical cabin and forced leave clears a moving ride
+2026-10-04T15:27:18.7801896Z ok 174 - elevator selection validates the passenger still occupies the physical cabin and forced leave clears a moving ride
+2026-10-04T15:27:18.7802474Z   ---
+2026-10-04T15:27:18.7802689Z   duration_ms: 22.155895
+2026-10-04T15:27:18.7802944Z   type: 'test'
+2026-10-04T15:27:18.7803139Z   ...
+2026-10-04T15:27:18.7803723Z # Subtest: interiors use textured shared finishes but transparent local glazing, and refresh copied player snapshots
+2026-10-04T15:27:18.7804671Z ok 175 - interiors use textured shared finishes but transparent local glazing, and refresh copied player snapshots
+2026-10-04T15:27:18.7805376Z   ---
+2026-10-04T15:27:18.7805594Z   duration_ms: 26.839669
+2026-10-04T15:27:18.7805840Z   type: 'test'
+2026-10-04T15:27:18.7806047Z   ...
+2026-10-04T15:27:18.7806849Z # Subtest: entering and leaving rooms preserves the global point-light shader budget without changing outdoor daylight
+2026-10-04T15:27:18.7807765Z ok 176 - entering and leaving rooms preserves the global point-light shader budget without changing outdoor daylight
+2026-10-04T15:27:18.7808301Z   ---
+2026-10-04T15:27:18.7808492Z   duration_ms: 34.960369
+2026-10-04T15:27:18.7808717Z   type: 'test'
+2026-10-04T15:27:18.7809048Z   ...
+2026-10-04T15:27:18.7810117Z # Subtest: every natural stair flight carries ordinary walking up and down all occupied floors without teleporting
+2026-10-04T15:27:18.7811249Z ok 177 - every natural stair flight carries ordinary walking up and down all occupied floors without teleporting
+2026-10-04T15:27:18.7811801Z   ---
+2026-10-04T15:27:18.7812119Z   duration_ms: 21524.189912
+2026-10-04T15:27:18.7812410Z   type: 'test'
+2026-10-04T15:27:18.7812612Z   ...
+2026-10-04T15:27:18.7813116Z # Subtest: stair treads, nosings, landings and cutouts agree with continuous-world support geometry
+2026-10-04T15:27:18.7813889Z ok 178 - stair treads, nosings, landings and cutouts agree with continuous-world support geometry
+2026-10-04T15:27:18.7814340Z   ---
+2026-10-04T15:27:18.7814545Z   duration_ms: 4854.652083
+2026-10-04T15:27:18.7814775Z   type: 'test'
+2026-10-04T15:27:18.7814970Z   ...
+2026-10-04T15:27:18.7815716Z # Subtest: the upper stair opening guards its wrong end without a four-metre ground-height snap
+2026-10-04T15:27:18.7816436Z ok 179 - the upper stair opening guards its wrong end without a four-metre ground-height snap
+2026-10-04T15:27:18.7816865Z   ---
+2026-10-04T15:27:18.7817067Z   duration_ms: 22.003544
+2026-10-04T15:27:18.7817298Z   type: 'test'
+2026-10-04T15:27:18.7817494Z   ...
+2026-10-04T15:27:18.7818106Z # Subtest: hidden enclosed floors keep their collision and furnishings resident while the stair opening reveals adjacent floors
+2026-10-04T15:27:18.7819080Z ok 180 - hidden enclosed floors keep their collision and furnishings resident while the stair opening reveals adjacent floors
+2026-10-04T15:27:18.7819631Z   ---
+2026-10-04T15:27:18.7820006Z   duration_ms: 12.575813
+2026-10-04T15:27:18.7820243Z   type: 'test'
+2026-10-04T15:27:18.7820437Z   ...
+2026-10-04T15:27:18.7820941Z # Subtest: painted corridor ceilings sit below the stone slab above instead of exposing its underside
+2026-10-04T15:27:18.7821714Z ok 181 - painted corridor ceilings sit below the stone slab above instead of exposing its underside
+2026-10-04T15:27:18.7822169Z   ---
+2026-10-04T15:27:18.7822366Z   duration_ms: 75.156563
+2026-10-04T15:27:18.7822596Z   type: 'test'
+2026-10-04T15:27:18.7822793Z   ...
+2026-10-04T15:27:18.7823369Z # Subtest: occupied finishes retain matte microtexture and modest indirect light with the same two-point-light budget
+2026-10-04T15:27:18.7824271Z ok 182 - occupied finishes retain matte microtexture and modest indirect light with the same two-point-light budget
+2026-10-04T15:27:18.7824787Z   ---
+2026-10-04T15:27:18.7824980Z   duration_ms: 10.167286
+2026-10-04T15:27:18.7825474Z   type: 'test'
+2026-10-04T15:27:18.7825670Z   ...
+2026-10-04T15:27:18.7826158Z # Subtest: all 48 closed pedestrian routes remain on pavements and outside every building envelope
+2026-10-04T15:27:18.7826900Z ok 183 - all 48 closed pedestrian routes remain on pavements and outside every building envelope
+2026-10-04T15:27:18.7827365Z   ---
+2026-10-04T15:27:18.7827563Z   duration_ms: 192.754084
+2026-10-04T15:27:18.7827792Z   type: 'test'
+2026-10-04T15:27:18.7827995Z   ...
+2026-10-04T15:27:18.7828508Z # Subtest: population has continuous persistent identities, social groups and eight original wardrobes
+2026-10-04T15:27:18.7829290Z ok 184 - population has continuous persistent identities, social groups and eight original wardrobes
+2026-10-04T15:27:18.7829749Z   ---
+2026-10-04T15:27:18.7829942Z   duration_ms: 697.949508
+2026-10-04T15:27:18.7830195Z   type: 'test'
+2026-10-04T15:27:18.7830396Z   ...
+2026-10-04T15:27:18.7830875Z # Subtest: distance streaming enforces entity budgets and unloads the entire crowd beyond the city
+2026-10-04T15:27:18.7831770Z ok 185 - distance streaming enforces entity budgets and unloads the entire crowd beyond the city
+2026-10-04T15:27:18.7832245Z   ---
+2026-10-04T15:27:18.7832438Z   duration_ms: 212.760861
+2026-10-04T15:27:18.7832667Z   type: 'test'
+2026-10-04T15:27:18.7832866Z   ...
+2026-10-04T15:27:18.7833465Z # Subtest: pause freezes resident positions and animation time, and nearby conversations return actual local directions
+2026-10-04T15:27:18.7834659Z ok 186 - pause freezes resident positions and animation time, and nearby conversations return actual local directions
+2026-10-04T15:27:18.7835864Z   ---
+2026-10-04T15:27:18.7836205Z   duration_ms: 17.15051
+2026-10-04T15:27:18.7836441Z   type: 'test'
+2026-10-04T15:27:18.7836646Z   ...
+2026-10-04T15:27:18.7837132Z # Subtest: pedestrians wait for a stopped vehicle on their route without tunnelling into its body
+2026-10-04T15:27:18.7837864Z ok 187 - pedestrians wait for a stopped vehicle on their route without tunnelling into its body
+2026-10-04T15:27:18.7838320Z   ---
+2026-10-04T15:27:18.7838521Z   duration_ms: 62.214999
+2026-10-04T15:27:18.7838756Z   type: 'test'
+2026-10-04T15:27:18.7838952Z   ...
+2026-10-04T15:27:18.7839469Z # Subtest: wardrobe variants share cached geometry while retaining compatible animated knees and elbows
+2026-10-04T15:27:18.7840251Z ok 188 - wardrobe variants share cached geometry while retaining compatible animated knees and elbows
+2026-10-04T15:27:18.7840710Z   ---
+2026-10-04T15:27:18.7840909Z   duration_ms: 13.518534
+2026-10-04T15:27:18.7841138Z   type: 'test'
+2026-10-04T15:27:18.7841333Z   ...
+2026-10-04T15:27:18.7841892Z # Subtest: local collision queries match a full-population reference after movement and reuse stable body records
+2026-10-04T15:27:18.7842757Z ok 189 - local collision queries match a full-population reference after movement and reuse stable body records
+2026-10-04T15:27:18.7843255Z   ---
+2026-10-04T15:27:18.7843453Z   duration_ms: 59.069663
+2026-10-04T15:27:18.7843681Z   type: 'test'
+2026-10-04T15:27:18.7843882Z   ...
+2026-10-04T15:27:18.7844561Z # Subtest: all citizens have stable distinct names, district occupations and four changing daily purposes
+2026-10-04T15:27:18.7845768Z ok 190 - all citizens have stable distinct names, district occupations and four changing daily purposes
+2026-10-04T15:27:18.7846245Z   ---
+2026-10-04T15:27:18.7846448Z   duration_ms: 11.857777
+2026-10-04T15:27:18.7846682Z   type: 'test'
+2026-10-04T15:27:18.7846881Z   ...
+2026-10-04T15:27:18.7847429Z # Subtest: street activities are finite, social residents resume walking, and hour changes never teleport people
+2026-10-04T15:27:18.7848282Z ok 191 - street activities are finite, social residents resume walking, and hour changes never teleport people
+2026-10-04T15:27:18.7848768Z   ---
+2026-10-04T15:27:18.7848961Z   duration_ms: 684.815463
+2026-10-04T15:27:18.7849198Z   type: 'test'
+2026-10-04T15:27:18.7849396Z   ...
+2026-10-04T15:27:18.7849980Z # Subtest: repeated conversations expose identity, current purpose and actual local floors instead of one repeated tip
+2026-10-04T15:27:18.7850918Z ok 192 - repeated conversations expose identity, current purpose and actual local floors instead of one repeated tip
+2026-10-04T15:27:18.7851432Z   ---
+2026-10-04T15:27:18.7851630Z   duration_ms: 6.528847
+2026-10-04T15:27:18.7851862Z   type: 'test'
+2026-10-04T15:27:18.7852056Z   ...
+2026-10-04T15:27:18.7852562Z # Subtest: occupational props retain hand attachment, cache geometry, and fit varied anatomical bodies
+2026-10-04T15:27:18.7853350Z ok 193 - occupational props retain hand attachment, cache geometry, and fit varied anatomical bodies
+2026-10-04T15:27:18.7853818Z   ---
+2026-10-04T15:27:18.7854015Z   duration_ms: 3.408948
+2026-10-04T15:27:18.7854240Z   type: 'test'
+2026-10-04T15:27:18.7854440Z   ...
+2026-10-04T15:27:18.7855015Z # Subtest: real bus-bay residents stay outside the avenue and parked vehicles without adding population or fake boarding
+2026-10-04T15:27:18.7856178Z ok 194 - real bus-bay residents stay outside the avenue and parked vehicles without adding population or fake boarding
+2026-10-04T15:27:18.7856858Z   ---
+2026-10-04T15:27:18.7857059Z   duration_ms: 154.439815
+2026-10-04T15:27:18.7857288Z   type: 'test'
+2026-10-04T15:27:18.7857483Z   ...
+2026-10-04T15:27:18.7857977Z # Subtest: all natural floors name distinct functional areas without substituting furniture for rooms
+2026-10-04T15:27:18.7858947Z ok 195 - all natural floors name distinct functional areas without substituting furniture for rooms
+2026-10-04T15:27:18.7859925Z   ---
+2026-10-04T15:27:18.7860862Z   duration_ms: 15.540467
+2026-10-04T15:27:18.7861863Z   type: 'test'
+2026-10-04T15:27:18.7862779Z   ...
+2026-10-04T15:27:18.7863680Z # Subtest: every natural-floor room threshold remain reachable through the central aisle and real door openings
+2026-10-04T15:27:18.7866141Z ok 196 - every natural-floor room threshold remain reachable through the central aisle and real door openings
+2026-10-04T15:27:18.7867712Z   ---
+2026-10-04T15:27:18.7868147Z   duration_ms: 9498.386815
+2026-10-04T15:27:18.7868623Z   type: 'test'
+2026-10-04T15:27:18.7868917Z   ...
+2026-10-04T15:27:18.7869488Z # Subtest: distinct programmes contain their recognizable specialist equipment and real domestic subdivisions
+2026-10-04T15:27:18.7870352Z ok 197 - distinct programmes contain their recognizable specialist equipment and real domestic subdivisions
+2026-10-04T15:27:18.7870846Z   ---
+2026-10-04T15:27:18.7871051Z   duration_ms: 924.053687
+2026-10-04T15:27:18.7871286Z   type: 'test'
+2026-10-04T15:27:18.7871487Z   ...
+2026-10-04T15:27:18.7872027Z # Subtest: soft furniture batches share geometry and materials while snapshot exposes navigable room metadata
+2026-10-04T15:27:18.7872847Z ok 198 - soft furniture batches share geometry and materials while snapshot exposes navigable room metadata
+2026-10-04T15:27:18.7873327Z   ---
+2026-10-04T15:27:18.7873527Z   duration_ms: 120.292944
+2026-10-04T15:27:18.7873767Z   type: 'test'
+2026-10-04T15:27:18.7873970Z   ...
+2026-10-04T15:27:18.7874583Z # Subtest: domestic room dimensions reflect furnished homes rather than unused public halls
+2026-10-04T15:27:18.7876339Z ok 199 - domestic room dimensions reflect furnished homes rather than unused public halls
+2026-10-04T15:27:18.7877150Z   ---
+2026-10-04T15:27:18.7877499Z   duration_ms: 7.817126
+2026-10-04T15:27:18.7877907Z   type: 'test'
+2026-10-04T15:27:18.7878257Z   ...
+2026-10-04T15:27:18.7879200Z # Subtest: eight hospital rooms have clean bounded interiors and medical furniture within real walls
+2026-10-04T15:27:18.7880655Z ok 200 - eight hospital rooms have clean bounded interiors and medical furniture within real walls
+2026-10-04T15:27:18.7881551Z   ---
+2026-10-04T15:27:18.7881900Z   duration_ms: 5.298945
+2026-10-04T15:27:18.7882306Z   type: 'test'
+2026-10-04T15:27:18.7882646Z   ...
+2026-10-04T15:27:18.7883680Z # Subtest: hospital visitors can reach counters, seats, beds, handwashing and rehabilitation equipment and return
+2026-10-04T15:27:18.7885620Z ok 201 - hospital visitors can reach counters, seats, beds, handwashing and rehabilitation equipment and return
+2026-10-04T15:27:18.7886567Z   ---
+2026-10-04T15:27:18.7886919Z   duration_ms: 19.500086
+2026-10-04T15:27:18.7887328Z   type: 'test'
+2026-10-04T15:27:18.7887686Z   ...
+2026-10-04T15:27:18.7888768Z # Subtest: all enclosed occupied rooms have human-scale enclosures and furnishings within their walls
+2026-10-04T15:27:18.7890287Z ok 202 - all enclosed occupied rooms have human-scale enclosures and furnishings within their walls
+2026-10-04T15:27:18.7891163Z   ---
+2026-10-04T15:27:18.7891520Z   duration_ms: 1036.096298
+2026-10-04T15:27:18.7891937Z   type: 'test'
+2026-10-04T15:27:18.7892292Z   ...
+2026-10-04T15:27:18.7893324Z # Subtest: public arrival and corridor spaces contain legible orientation, seating and programme-specific displays
+2026-10-04T15:27:18.7894868Z ok 203 - public arrival and corridor spaces contain legible orientation, seating and programme-specific displays
+2026-10-04T15:27:18.7895962Z   ---
+2026-10-04T15:27:18.7896289Z   duration_ms: 761.890682
+2026-10-04T15:27:18.7896876Z   type: 'test'
+2026-10-04T15:27:18.7897203Z   ...
+2026-10-04T15:27:18.7897896Z # Subtest: metro: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7898973Z ok 204 - metro: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7899630Z   ---
+2026-10-04T15:27:18.7900012Z   duration_ms: 67.439091
+2026-10-04T15:27:18.7900395Z   type: 'test'
+2026-10-04T15:27:18.7900716Z   ...
+2026-10-04T15:27:18.7901449Z # Subtest: light-rail: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7902534Z ok 205 - light-rail: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7903192Z   ---
+2026-10-04T15:27:18.7903516Z   duration_ms: 3.569799
+2026-10-04T15:27:18.7903878Z   type: 'test'
+2026-10-04T15:27:18.7904206Z   ...
+2026-10-04T15:27:18.7904965Z # Subtest: high-speed: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7906234Z ok 206 - high-speed: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7906892Z   ---
+2026-10-04T15:27:18.7907202Z   duration_ms: 5.540237
+2026-10-04T15:27:18.7907570Z   type: 'test'
+2026-10-04T15:27:18.7907878Z   ...
+2026-10-04T15:27:18.7908569Z # Subtest: ferry: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7909633Z ok 207 - ferry: enter, wait, board, travel and disembark at the next station
+2026-10-04T15:27:18.7910294Z   ---
+2026-10-04T15:27:18.7910630Z   duration_ms: 5.871546
+2026-10-04T15:27:18.7911020Z   type: 'test'
+2026-10-04T15:27:18.7911407Z   ...
+2026-10-04T15:27:18.7912315Z # Subtest: all ten stations have an initial visible service and maximum waiting time under 25 seconds
+2026-10-04T15:27:18.7913536Z ok 208 - all ten stations have an initial visible service and maximum waiting time under 25 seconds
+2026-10-04T15:27:18.7913996Z   ---
+2026-10-04T15:27:18.7914199Z   duration_ms: 37.348161
+2026-10-04T15:27:18.7914427Z   type: 'test'
+2026-10-04T15:27:18.7914626Z   ...
+2026-10-04T15:27:18.7915625Z # Subtest: underground platforms preserve their own floor height and cannot activate from the street
+2026-10-04T15:27:18.7916979Z ok 209 - underground platforms preserve their own floor height and cannot activate from the street
+2026-10-04T15:27:18.7917758Z   ---
+2026-10-04T15:27:18.7917967Z   duration_ms: 1.762688
+2026-10-04T15:27:18.7918378Z   type: 'test'
+2026-10-04T15:27:18.7918753Z   ...
+2026-10-04T15:27:18.7919857Z # Subtest: leave and reset return a platform or moving passenger to a safe street entrance
+2026-10-04T15:27:18.7920861Z ok 210 - leave and reset return a platform or moving passenger to a safe street entrance
+2026-10-04T15:27:18.7921290Z   ---
+2026-10-04T15:27:18.7921500Z   duration_ms: 3.643307
+2026-10-04T15:27:18.7921734Z   type: 'test'
+2026-10-04T15:27:18.7921936Z   ...
+2026-10-04T15:27:18.7922393Z # Subtest: large or invalid frame increments preserve deterministic finite vehicle poses
+2026-10-04T15:27:18.7923059Z ok 211 - large or invalid frame increments preserve deterministic finite vehicle poses
+2026-10-04T15:27:18.7923491Z   ---
+2026-10-04T15:27:18.7923704Z   duration_ms: 21.489037
+2026-10-04T15:27:18.7923943Z   type: 'test'
+2026-10-04T15:27:18.7924143Z   ...
+2026-10-04T15:27:18.7924622Z # Subtest: boarding requires reaching the marked platform area and an open stationary vehicle
+2026-10-04T15:27:18.7925607Z ok 212 - boarding requires reaching the marked platform area and an open stationary vehicle
+2026-10-04T15:27:18.7926055Z   ---
+2026-10-04T15:27:18.7926257Z   duration_ms: 1.585336
+2026-10-04T15:27:18.7926494Z   type: 'test'
+2026-10-04T15:27:18.7926692Z   ...
+2026-10-04T15:27:18.7927211Z # Subtest: station architecture and fleet share instanced resources and cull remote underground vehicles
+2026-10-04T15:27:18.7928021Z ok 213 - station architecture and fleet share instanced resources and cull remote underground vehicles
+2026-10-04T15:27:18.7928493Z   ---
+2026-10-04T15:27:18.7928687Z   duration_ms: 166.231636
+2026-10-04T15:27:18.7928927Z   type: 'test'
+2026-10-04T15:27:18.7929329Z   ...
+2026-10-04T15:27:18.7929877Z # Subtest: underground and elevated station roofs clip a steep camera boom without altering walking collision
+2026-10-04T15:27:18.7930715Z ok 214 - underground and elevated station roofs clip a steep camera boom without altering walking collision
+2026-10-04T15:27:18.7931201Z   ---
+2026-10-04T15:27:18.7931396Z   duration_ms: 4.126281
+2026-10-04T15:27:18.7931624Z   type: 'test'
+2026-10-04T15:27:18.7931818Z   ...
+2026-10-04T15:27:18.7932250Z # Subtest: ferry entrance signage supports stay above an approaching pedestrian camera
+2026-10-04T15:27:18.7932908Z ok 215 - ferry entrance signage supports stay above an approaching pedestrian camera
+2026-10-04T15:27:18.7933325Z   ---
+2026-10-04T15:27:18.7933526Z   duration_ms: 86.180703
+2026-10-04T15:27:18.7933757Z   type: 'test'
+2026-10-04T15:27:18.7933961Z   ...
+2026-10-04T15:27:18.7934440Z # Subtest: every station returns the player to rendered street ground clear of all world obstacles
+2026-10-04T15:27:18.7935419Z ok 216 - every station returns the player to rendered street ground clear of all world obstacles
+2026-10-04T15:27:18.7935893Z   ---
+2026-10-04T15:27:18.7936095Z   duration_ms: 1178.396498
+2026-10-04T15:27:18.7936329Z   type: 'test'
+2026-10-04T15:27:18.7936532Z   ...
+2026-10-04T15:27:18.7937069Z # Subtest: the ferry passenger stands on the forward deck clear of furniture with an unobstructed forward view
+2026-10-04T15:27:18.7937904Z ok 217 - the ferry passenger stands on the forward deck clear of furniture with an unobstructed forward view
+2026-10-04T15:27:18.7938390Z   ---
+2026-10-04T15:27:18.7938588Z   duration_ms: 46.995592
+2026-10-04T15:27:18.7938820Z   type: 'test'
+2026-10-04T15:27:18.7939019Z   ...
+2026-10-04T15:27:18.7939479Z # Subtest: ferry entrance sign planes retract the default chase boom on both landward exits
+2026-10-04T15:27:18.7940174Z ok 218 - ferry entrance sign planes retract the default chase boom on both landward exits
+2026-10-04T15:27:18.7940601Z   ---
+2026-10-04T15:27:18.7940813Z   duration_ms: 44.837825
+2026-10-04T15:27:18.7941049Z   type: 'test'
+2026-10-04T15:27:18.7941390Z   ...
+2026-10-04T15:27:18.7941938Z # Subtest: all three metro stations can be walked down and back up with the real player capsule and no teleport
+2026-10-04T15:27:18.7942756Z ok 219 - all three metro stations can be walked down and back up with the real player capsule and no teleport
+2026-10-04T15:27:18.7943233Z   ---
+2026-10-04T15:27:18.7943432Z   duration_ms: 260.681846
+2026-10-04T15:27:18.7943662Z   type: 'test'
+2026-10-04T15:27:18.7943858Z   ...
+2026-10-04T15:27:18.7944353Z # Subtest: metro upper streets, lower platforms and switchback stairs keep their independent heights
+2026-10-04T15:27:18.7945390Z ok 220 - metro upper streets, lower platforms and switchback stairs keep their independent heights
+2026-10-04T15:27:18.7945876Z   ---
+2026-10-04T15:27:18.7946075Z   duration_ms: 0.386434
+2026-10-04T15:27:18.7946304Z   type: 'test'
+2026-10-04T15:27:18.7946498Z   ...
+2026-10-04T15:27:18.7947005Z # Subtest: metro gate turns remain walkable in both directions throughout the bounded endpoint margin
+2026-10-04T15:27:18.7947802Z ok 221 - metro gate turns remain walkable in both directions throughout the bounded endpoint margin
+2026-10-04T15:27:18.7948256Z   ---
+2026-10-04T15:27:18.7948454Z   duration_ms: 117.493467
+2026-10-04T15:27:18.7948694Z   type: 'test'
+2026-10-04T15:27:18.7948889Z   ...
+2026-10-04T15:27:18.7949400Z # Subtest: rendered metro treads match the physical walking slope within one riser, with clear headroom
+2026-10-04T15:27:18.7950180Z ok 222 - rendered metro treads match the physical walking slope within one riser, with clear headroom
+2026-10-04T15:27:18.7950633Z   ---
+2026-10-04T15:27:18.7950834Z   duration_ms: 930.359503
+2026-10-04T15:27:18.7951064Z   type: 'test'
+2026-10-04T15:27:18.7951267Z   ...
+2026-10-04T15:27:18.7951817Z # Subtest: upper metro stairs see a solid retaining wall above the covered landing instead of the world underside
+2026-10-04T15:27:18.7952663Z ok 223 - upper metro stairs see a solid retaining wall above the covered landing instead of the world underside
+2026-10-04T15:27:18.7953305Z   ---
+2026-10-04T15:27:18.7953500Z   duration_ms: 243.322381
+2026-10-04T15:27:18.7953732Z   type: 'test'
+2026-10-04T15:27:18.7953936Z   ...
+2026-10-04T15:27:18.7954474Z # Subtest: every animated train-door batch has a stable conservative envelope for both open and closed poses
+2026-10-04T15:27:18.7955696Z ok 224 - every animated train-door batch has a stable conservative envelope for both open and closed poses
+2026-10-04T15:27:18.7956401Z   ---
+2026-10-04T15:27:18.7956609Z   duration_ms: 40.878245
+2026-10-04T15:27:18.7956847Z   type: 'test'
+2026-10-04T15:27:18.7957050Z   ...
+2026-10-04T15:27:18.7957572Z # Subtest: offscreen above-ground train doors cull for a metro viewer while doors inside the view remain
+2026-10-04T15:27:18.7958359Z ok 225 - offscreen above-ground train doors cull for a metro viewer while doors inside the view remain
+2026-10-04T15:27:18.7958821Z   ---
+2026-10-04T15:27:18.7959021Z   duration_ms: 43.769395
+2026-10-04T15:27:18.7959262Z   type: 'test'
+2026-10-04T15:27:18.7959461Z   ...
+2026-10-04T15:27:18.7959995Z # Subtest: 48 permanent addresses have unique identity, continuous natural storeys, and distinct programmes
+2026-10-04T15:27:18.7960802Z ok 226 - 48 permanent addresses have unique identity, continuous natural storeys, and distinct programmes
+2026-10-04T15:27:18.7961315Z   ---
+2026-10-04T15:27:18.7961515Z   duration_ms: 2.834394
+2026-10-04T15:27:18.7961740Z   type: 'test'
+2026-10-04T15:27:18.7961934Z   ...
+2026-10-04T15:27:18.7962354Z # Subtest: every south entrance has a physical street approach and a door opening
+2026-10-04T15:27:18.7962965Z ok 227 - every south entrance has a physical street approach and a door opening
+2026-10-04T15:27:18.7963346Z   ---
+2026-10-04T15:27:18.7963546Z   duration_ms: 3.075975
+2026-10-04T15:27:18.7963772Z   type: 'test'
+2026-10-04T15:27:18.7963970Z   ...
+2026-10-04T15:27:18.7964414Z # Subtest: permanent road lanes remain free of building collision with unloaded districts
+2026-10-04T15:27:18.7965509Z ok 228 - permanent road lanes remain free of building collision with unloaded districts
+2026-10-04T15:27:18.7965970Z   ---
+2026-10-04T15:27:18.7966175Z   duration_ms: 19.422811
+2026-10-04T15:27:18.7966419Z   type: 'test'
+2026-10-04T15:27:18.7966618Z   ...
+2026-10-04T15:27:18.7967042Z # Subtest: bridge deck joins both shores continuously, with no abrupt end slope
+2026-10-04T15:27:18.7967650Z ok 229 - bridge deck joins both shores continuously, with no abrupt end slope
+2026-10-04T15:27:18.7968034Z   ---
+2026-10-04T15:27:18.7968235Z   duration_ms: 0.533518
+2026-10-04T15:27:18.7968470Z   type: 'test'
+2026-10-04T15:27:18.7968667Z   ...
+2026-10-04T15:27:18.7969090Z # Subtest: north ferry, metro, light rail and high-speed station approaches stay open
+2026-10-04T15:27:18.7969731Z ok 230 - north ferry, metro, light rail and high-speed station approaches stay open
+2026-10-04T15:27:18.7970138Z   ---
+2026-10-04T15:27:18.7970341Z   duration_ms: 0.388707
+2026-10-04T15:27:18.7970567Z   type: 'test'
+2026-10-04T15:27:18.7970781Z   ...
+2026-10-04T15:27:18.7971241Z # Subtest: export contains twelve real validated chunks with independent detailed geometry
+2026-10-04T15:27:18.7971928Z ok 231 - export contains twelve real validated chunks with independent detailed geometry
+2026-10-04T15:27:18.7972358Z   ---
+2026-10-04T15:27:18.7972558Z   duration_ms: 42.008831
+2026-10-04T15:27:18.7972790Z   type: 'test'
+2026-10-04T15:27:18.7972986Z   ...
+2026-10-04T15:27:18.7973382Z # Subtest: entering one address hides just its shell and exiting restores it
+2026-10-04T15:27:18.7973953Z ok 232 - entering one address hides just its shell and exiting restores it
+2026-10-04T15:27:18.7974320Z   ---
+2026-10-04T15:27:18.7974518Z   duration_ms: 89.65556
+2026-10-04T15:27:18.7974740Z   type: 'test'
+2026-10-04T15:27:18.7974934Z   ...
+2026-10-04T15:27:18.7975619Z # Subtest: runtime fetches nearby JSON and actually disposes detail after moving away
+2026-10-04T15:27:18.7976264Z ok 233 - runtime fetches nearby JSON and actually disposes detail after moving away
+2026-10-04T15:27:18.7976805Z   ---
+2026-10-04T15:27:18.7977015Z   duration_ms: 128.997973
+2026-10-04T15:27:18.7977253Z   type: 'test'
+2026-10-04T15:27:18.7977451Z   ...
+2026-10-04T15:27:18.7977864Z # Subtest: streaming startup retains no authored detail transforms before any fetch
+2026-10-04T15:27:18.7978494Z ok 234 - streaming startup retains no authored detail transforms before any fetch
+2026-10-04T15:27:18.7978884Z   ---
+2026-10-04T15:27:18.7979080Z   duration_ms: 26.028292
+2026-10-04T15:27:18.7979314Z   type: 'test'
+2026-10-04T15:27:18.7979508Z   ...
+2026-10-04T15:27:18.7980014Z # Subtest: paving keeps every doorway covered while an occupied lobby has exactly one visible y=0 floor
+2026-10-04T15:27:18.7980803Z ok 235 - paving keeps every doorway covered while an occupied lobby has exactly one visible y=0 floor
+2026-10-04T15:27:18.7981260Z   ---
+2026-10-04T15:27:18.7981494Z   duration_ms: 2273.010881
+2026-10-04T15:27:18.7981737Z   type: 'test'
+2026-10-04T15:27:18.7981932Z   ...
+2026-10-04T15:27:18.7982493Z # Subtest: distance LOD preserves the hero car and reduces distant geometry without changing its collision envelope
+2026-10-04T15:27:18.7983373Z ok 236 - distance LOD preserves the hero car and reduces distant geometry without changing its collision envelope
+2026-10-04T15:27:18.7983872Z   ---
+2026-10-04T15:27:18.7984066Z   duration_ms: 397.757697
+2026-10-04T15:27:18.7984298Z   type: 'test'
+2026-10-04T15:27:18.7984500Z   ...
+2026-10-04T15:27:18.7984925Z # Subtest: distant pedestrians retain animated joints and original human dimensions
+2026-10-04T15:27:18.7985785Z ok 237 - distant pedestrians retain animated joints and original human dimensions
+2026-10-04T15:27:18.7986191Z   ---
+2026-10-04T15:27:18.7986389Z   duration_ms: 110.593838
+2026-10-04T15:27:18.7986619Z   type: 'test'
+2026-10-04T15:27:18.7986824Z   ...
+2026-10-04T15:27:18.7987290Z # Subtest: removing a car disposes owned paint and lights while preserving shared LOD geometry
+2026-10-04T15:27:18.7988139Z ok 238 - removing a car disposes owned paint and lights while preserving shared LOD geometry
+2026-10-04T15:27:18.7988593Z   ---
+2026-10-04T15:27:18.7988795Z   duration_ms: 172.007345
+2026-10-04T15:27:18.7989024Z   type: 'test'
+2026-10-04T15:27:18.7989217Z   ...
+2026-10-04T15:27:18.7989764Z # Subtest: real room service joins two clients, streams movement/chat, isolates rooms and rejects invalid packets
+2026-10-04T15:27:18.7990610Z ok 239 - real room service joins two clients, streams movement/chat, isolates rooms and rejects invalid packets
+2026-10-04T15:27:18.7991100Z   ---
+2026-10-04T15:27:18.7991300Z   duration_ms: 1200.440679
+2026-10-04T15:27:18.7991538Z   type: 'test'
+2026-10-04T15:27:18.7991731Z   ...
+2026-10-04T15:27:18.7992102Z # Subtest: vehicle claims are exclusive and leaving releases ownership
+2026-10-04T15:27:18.7992636Z ok 240 - vehicle claims are exclusive and leaving releases ownership
+2026-10-04T15:27:18.7992988Z   ---
+2026-10-04T15:27:18.7993191Z   duration_ms: 21.319544
+2026-10-04T15:27:18.7993423Z   type: 'test'
+2026-10-04T15:27:18.7993624Z   ...
+2026-10-04T15:27:18.7994178Z # Subtest: room capacity is enforced and peer interpolation follows shortest angles without interpolating travel
+2026-10-04T15:27:18.7995222Z ok 241 - room capacity is enforced and peer interpolation follows shortest angles without interpolating travel
+2026-10-04T15:27:18.7995769Z   ---
+2026-10-04T15:27:18.7995970Z   duration_ms: 23.895034
+2026-10-04T15:27:18.7996212Z   type: 'test'
+2026-10-04T15:27:18.7996415Z   ...
+2026-10-04T15:27:18.7996902Z # Subtest: traffic follows the same street route while the player uses an indoor collision context
+2026-10-04T15:27:18.7997648Z ok 242 - traffic follows the same street route while the player uses an indoor collision context
+2026-10-04T15:27:18.7998094Z   ---
+2026-10-04T15:27:18.7998296Z   duration_ms: 4030.326253
+2026-10-04T15:27:18.7998536Z   type: 'test'
+2026-10-04T15:27:18.7998737Z   ...
+2026-10-04T15:27:18.7999173Z # Subtest: background traffic restores indoor data after an invalid road update throws
+2026-10-04T15:27:18.7999979Z ok 243 - background traffic restores indoor data after an invalid road update throws
+2026-10-04T15:27:18.8000386Z   ---
+2026-10-04T15:27:18.8000582Z   duration_ms: 1.348162
+2026-10-04T15:27:18.8000810Z   type: 'test'
+2026-10-04T15:27:18.8001017Z   ...
+2026-10-04T15:27:18.8001459Z # Subtest: precision input crosses a 1.6 metre doorway at four rendered frames per second
+2026-10-04T15:27:18.8002128Z ok 244 - precision input crosses a 1.6 metre doorway at four rendered frames per second
+2026-10-04T15:27:18.8002545Z   ---
+2026-10-04T15:27:18.8002744Z   duration_ms: 23.917706
+2026-10-04T15:27:18.8002972Z   type: 'test'
+2026-10-04T15:27:18.8003177Z   ...
+2026-10-04T15:27:18.8003678Z # Subtest: normal and sprint speeds stay intact; precision overrides sprint without draining stamina
+2026-10-04T15:27:18.8004431Z ok 245 - normal and sprint speeds stay intact; precision overrides sprint without draining stamina
+2026-10-04T15:27:18.8004881Z   ---
+2026-10-04T15:27:18.8005275Z   duration_ms: 6.472792
+2026-10-04T15:27:18.8005520Z   type: 'test'
+2026-10-04T15:27:18.8005722Z   ...
+2026-10-04T15:27:18.8006189Z # Subtest: double-decker hull blocks feet above sedan height and preserves its actual span
+2026-10-04T15:27:18.8006877Z ok 246 - double-decker hull blocks feet above sedan height and preserves its actual span
+2026-10-04T15:27:18.8007294Z   ---
+2026-10-04T15:27:18.8007494Z   duration_ms: 2.399821
+2026-10-04T15:27:18.8007719Z   type: 'test'
+2026-10-04T15:27:18.8007912Z   ...
+2026-10-04T15:27:18.8008359Z # Subtest: fresh saves have bounded values; corrupt and incompatible saves recover safely
+2026-10-04T15:27:18.8009019Z ok 247 - fresh saves have bounded values; corrupt and incompatible saves recover safely
+2026-10-04T15:27:18.8009430Z   ---
+2026-10-04T15:27:18.8009630Z   duration_ms: 9.405069
+2026-10-04T15:27:18.8009853Z   type: 'test'
+2026-10-04T15:27:18.8010049Z   ...
+2026-10-04T15:27:18.8010428Z # Subtest: walking respects camera orientation, bounds and solid buildings
+2026-10-04T15:27:18.8011131Z ok 248 - walking respects camera orientation, bounds and solid buildings
+2026-10-04T15:27:18.8011506Z   ---
+2026-10-04T15:27:18.8011705Z   duration_ms: 73.315337
+2026-10-04T15:27:18.8011943Z   type: 'test'
+2026-10-04T15:27:18.8012141Z   ...
+2026-10-04T15:27:18.8012508Z # Subtest: diagonal movement is normalized and sprint consumes stamina
+2026-10-04T15:27:18.8013051Z ok 249 - diagonal movement is normalized and sprint consumes stamina
+2026-10-04T15:27:18.8013402Z   ---
+2026-10-04T15:27:18.8013596Z   duration_ms: 41.55513
+2026-10-04T15:27:18.8013822Z   type: 'test'
+2026-10-04T15:27:18.8014026Z   ...
+2026-10-04T15:27:18.8014451Z # Subtest: strafe-right follows the rendered camera right vector in both directions
+2026-10-04T15:27:18.8015312Z ok 250 - strafe-right follows the rendered camera right vector in both directions
+2026-10-04T15:27:18.8015730Z   ---
+2026-10-04T15:27:18.8015927Z   duration_ms: 12.602582
+2026-10-04T15:27:18.8016153Z   type: 'test'
+2026-10-04T15:27:18.8016353Z   ...
+2026-10-04T15:27:18.8016714Z # Subtest: jump lands, and holding jump does not repeatedly bounce
+2026-10-04T15:27:18.8017211Z ok 251 - jump lands, and holding jump does not repeatedly bounce
+2026-10-04T15:27:18.8017548Z   ---
+2026-10-04T15:27:18.8017745Z   duration_ms: 12.935817
+2026-10-04T15:27:18.8018015Z   type: 'test'
+2026-10-04T15:27:18.8018441Z   ...
+2026-10-04T15:27:18.8028015Z # Subtest: entering requires proximity; exiting needs low speed and an unobstructed location
+2026-10-04T15:27:18.8028954Z ok 252 - entering requires proximity; exiting needs low speed and an unobstructed location
+2026-10-04T15:27:18.8029414Z   ---
+2026-10-04T15:27:18.8029619Z   duration_ms: 4.419339
+2026-10-04T15:27:18.8029852Z   type: 'test'
+2026-10-04T15:27:18.8030057Z   ...
+2026-10-04T15:27:18.8030387Z # Subtest: fast vehicles cannot tunnel through a thin wall
+2026-10-04T15:27:18.8030838Z ok 253 - fast vehicles cannot tunnel through a thin wall
+2026-10-04T15:27:18.8031147Z   ---
+2026-10-04T15:27:18.8031351Z   duration_ms: 28.182998
+2026-10-04T15:27:18.8031785Z   type: 'test'
+2026-10-04T15:27:18.8031983Z   ...
+2026-10-04T15:27:18.8032378Z # Subtest: braking reduces speed, reversing and steering remain bounded
+2026-10-04T15:27:18.8032920Z ok 254 - braking reduces speed, reversing and steering remain bounded
+2026-10-04T15:27:18.8033267Z   ---
+2026-10-04T15:27:18.8033472Z   duration_ms: 69.888459
+2026-10-04T15:27:18.8033697Z   type: 'test'
+2026-10-04T15:27:18.8033892Z   ...
+2026-10-04T15:27:18.8034241Z # Subtest: courier checkpoints require a vehicle and correct order
+2026-10-04T15:27:18.8034745Z ok 255 - courier checkpoints require a vehicle and correct order
+2026-10-04T15:27:18.8035303Z   ---
+2026-10-04T15:27:18.8035540Z   duration_ms: 3.811984
+2026-10-04T15:27:18.8035775Z   type: 'test'
+2026-10-04T15:27:18.8035969Z   ...
+2026-10-04T15:27:18.8036378Z # Subtest: first clear pays exactly once, including after save/reload and replay
+2026-10-04T15:27:18.8036989Z ok 256 - first clear pays exactly once, including after save/reload and replay
+2026-10-04T15:27:18.8037381Z   ---
+2026-10-04T15:27:18.8037581Z   duration_ms: 5.698183
+2026-10-04T15:27:18.8037809Z   type: 'test'
+2026-10-04T15:27:18.8038004Z   ...
+2026-10-04T15:27:18.8038406Z # Subtest: expired missions fail without rewards and cancellation permits retry
+2026-10-04T15:27:18.8039007Z ok 257 - expired missions fail without rewards and cancellation permits retry
+2026-10-04T15:27:18.8039387Z   ---
+2026-10-04T15:27:18.8039580Z   duration_ms: 1.657882
+2026-10-04T15:27:18.8039801Z   type: 'test'
+2026-10-04T15:27:18.8039999Z   ...
+2026-10-04T15:27:18.8040410Z # Subtest: escape mission waits for wanted to clear before permitting the finish
+2026-10-04T15:27:18.8041013Z ok 258 - escape mission waits for wanted to clear before permitting the finish
+2026-10-04T15:27:18.8041398Z   ---
+2026-10-04T15:27:18.8041593Z   duration_ms: 290.223312
+2026-10-04T15:27:18.8041825Z   type: 'test'
+2026-10-04T15:27:18.8042018Z   ...
+2026-10-04T15:27:18.8042486Z # Subtest: shots consume ammunition, hit cars only along clear sightlines, and trigger pursuit
+2026-10-04T15:27:18.8043338Z ok 259 - shots consume ammunition, hit cars only along clear sightlines, and trigger pursuit
+2026-10-04T15:27:18.8043776Z   ---
+2026-10-04T15:27:18.8043975Z   duration_ms: 18.756438
+2026-10-04T15:27:18.8044199Z   type: 'test'
+2026-10-04T15:27:18.8044389Z   ...
+2026-10-04T15:27:18.8044722Z # Subtest: empty magazine reloads without negative ammunition
+2026-10-04T15:27:18.8045394Z ok 260 - empty magazine reloads without negative ammunition
+2026-10-04T15:27:18.8045717Z   ---
+2026-10-04T15:27:18.8045916Z   duration_ms: 101.033969
+2026-10-04T15:27:18.8046139Z   type: 'test'
+2026-10-04T15:27:18.8046332Z   ...
+2026-10-04T15:27:18.8046717Z # Subtest: wanted decays outside patrol sight and stays active inside sight
+2026-10-04T15:27:18.8047284Z ok 261 - wanted decays outside patrol sight and stays active inside sight
+2026-10-04T15:27:18.8047645Z   ---
+2026-10-04T15:27:18.8047827Z   duration_ms: 626.839762
+2026-10-04T15:27:18.8048059Z   type: 'test'
+2026-10-04T15:27:18.8048259Z   ...
+2026-10-04T15:27:18.8048624Z # Subtest: police movement remains on roads and cannot cross buildings
+2026-10-04T15:27:18.8049160Z ok 262 - police movement remains on roads and cannot cross buildings
+2026-10-04T15:27:18.8049502Z   ---
+2026-10-04T15:27:18.8049696Z   duration_ms: 288.111416
+2026-10-04T15:27:18.8049925Z   type: 'test'
+2026-10-04T15:27:18.8050117Z   ...
+2026-10-04T15:27:18.8050495Z # Subtest: traffic moves on its route and a vehicle collision raises wanted
+2026-10-04T15:27:18.8051047Z ok 263 - traffic moves on its route and a vehicle collision raises wanted
+2026-10-04T15:27:18.8051408Z   ---
+2026-10-04T15:27:18.8051601Z   duration_ms: 24.78012
+2026-10-04T15:27:18.8051819Z   type: 'test'
+2026-10-04T15:27:18.8052015Z   ...
+2026-10-04T15:27:18.8052392Z # Subtest: recovery clears transient state and charges only available funds
+2026-10-04T15:27:18.8052946Z ok 264 - recovery clears transient state and charges only available funds
+2026-10-04T15:27:18.8053313Z   ---
+2026-10-04T15:27:18.8053678Z   duration_ms: 3.041401
+2026-10-04T15:27:18.8053907Z   type: 'test'
+2026-10-04T15:27:18.8054100Z   ...
+2026-10-04T15:27:18.8054508Z # Subtest: repair charges only when needed and disallows repairs during pursuit
+2026-10-04T15:27:18.8055343Z ok 265 - repair charges only when needed and disallows repairs during pursuit
+2026-10-04T15:27:18.8055733Z   ---
+2026-10-04T15:27:18.8055928Z   duration_ms: 2.404239
+2026-10-04T15:27:18.8056145Z   type: 'test'
+2026-10-04T15:27:18.8056335Z   ...
+2026-10-04T15:27:18.8056714Z # Subtest: repair never charges a healthy pedestrian with no nearby vehicle
+2026-10-04T15:27:18.8057262Z ok 266 - repair never charges a healthy pedestrian with no nearby vehicle
+2026-10-04T15:27:18.8057663Z   ---
+2026-10-04T15:27:18.8057853Z   duration_ms: 1.374882
+2026-10-04T15:27:18.8058067Z   type: 'test'
+2026-10-04T15:27:18.8058260Z   ...
+2026-10-04T15:27:18.8058693Z # Subtest: reset restores a fresh game and discarded runtime state is absent from saves
+2026-10-04T15:27:18.8059369Z ok 267 - reset restores a fresh game and discarded runtime state is absent from saves
+2026-10-04T15:27:18.8059781Z   ---
+2026-10-04T15:27:18.8059974Z   duration_ms: 3.520959
+2026-10-04T15:27:18.8060195Z   type: 'test'
+2026-10-04T15:27:18.8060389Z   ...
+2026-10-04T15:27:18.8060911Z # Subtest: vehicle bumpers remain solid during a damage cooldown without oscillating while throttle is held
+2026-10-04T15:27:18.8061721Z ok 268 - vehicle bumpers remain solid during a damage cooldown without oscillating while throttle is held
+2026-10-04T15:27:18.8062188Z   ---
+2026-10-04T15:27:18.8062387Z   duration_ms: 247.072712
+2026-10-04T15:27:18.8062614Z   type: 'test'
+2026-10-04T15:27:18.8062806Z   ...
+2026-10-04T15:27:18.8063121Z # Subtest: parked cars block a walking character with their full bumper footprint
+2026-10-04T15:27:18.8063417Z ok 269 - parked cars block a walking character with their full bumper footprint
+2026-10-04T15:27:18.8063502Z   ---
+2026-10-04T15:27:18.8063596Z   duration_ms: 20.186754
+2026-10-04T15:27:18.8063686Z   type: 'test'
+2026-10-04T15:27:18.8063775Z   ...
+2026-10-04T15:27:18.8064112Z # Subtest: walking ignores a destroyed invisible vehicle
+2026-10-04T15:27:18.8064322Z ok 270 - walking ignores a destroyed invisible vehicle
+2026-10-04T15:27:18.8064408Z   ---
+2026-10-04T15:27:18.8064500Z   duration_ms: 9.348995
+2026-10-04T15:27:18.8064589Z   type: 'test'
+2026-10-04T15:27:18.8064672Z   ...
+2026-10-04T15:27:18.8064927Z # Subtest: entering a nearby car cannot teleport through a thin wall
+2026-10-04T15:27:18.8065408Z ok 271 - entering a nearby car cannot teleport through a thin wall
+2026-10-04T15:27:18.8065503Z   ---
+2026-10-04T15:27:18.8065605Z   duration_ms: 2.755306
+2026-10-04T15:27:18.8065691Z   type: 'test'
+2026-10-04T15:27:18.8065775Z   ...
+2026-10-04T15:27:18.8066174Z # Subtest: an exit destination beyond a thin wall is rejected even if the destination itself is clear
+2026-10-04T15:27:18.8066553Z ok 272 - an exit destination beyond a thin wall is rejected even if the destination itself is clear
+2026-10-04T15:27:18.8066650Z   ---
+2026-10-04T15:27:18.8066752Z   duration_ms: 3.425199
+2026-10-04T15:27:18.8066852Z   type: 'test'
+2026-10-04T15:27:18.8066932Z   ...
+2026-10-04T15:27:18.8067353Z # Subtest: unsafe saved positions use a validated fallback, including when the default spawn is blocked
+2026-10-04T15:27:18.8067739Z ok 273 - unsafe saved positions use a validated fallback, including when the default spawn is blocked
+2026-10-04T15:27:18.8067818Z   ---
+2026-10-04T15:27:18.8067917Z   duration_ms: 3.552428
+2026-10-04T15:27:18.8068008Z   type: 'test'
+2026-10-04T15:27:18.8068090Z   ...
+2026-10-04T15:27:18.8068439Z # Subtest: oncoming NPC traffic stops at contact instead of passing through other traffic
+2026-10-04T15:27:18.8068765Z ok 274 - oncoming NPC traffic stops at contact instead of passing through other traffic
+2026-10-04T15:27:18.8068849Z   ---
+2026-10-04T15:27:18.8068953Z   duration_ms: 152.134631
+2026-10-04T15:27:18.8069043Z   type: 'test'
+2026-10-04T15:27:18.8069125Z   ...
+2026-10-04T15:27:18.8069448Z # Subtest: jumping beneath a canopy clamps upward motion without horizontal ejection
+2026-10-04T15:27:18.8069895Z ok 275 - jumping beneath a canopy clamps upward motion without horizontal ejection
+2026-10-04T15:27:18.8069979Z   ---
+2026-10-04T15:27:18.8070078Z   duration_ms: 14.063136
+2026-10-04T15:27:18.8070164Z   type: 'test'
+2026-10-04T15:27:18.8070247Z   ...
+2026-10-04T15:27:18.8070605Z # Subtest: a jump can land on a low solid, remain supported and jump again without being ejected
+2026-10-04T15:27:18.8070944Z ok 276 - a jump can land on a low solid, remain supported and jump again without being ejected
+2026-10-04T15:27:18.8071027Z   ---
+2026-10-04T15:27:18.8071125Z   duration_ms: 18.186942
+2026-10-04T15:27:18.8071210Z   type: 'test'
+2026-10-04T15:27:18.8071292Z   ...
+2026-10-04T15:27:18.8071686Z # Subtest: an entirely obstructed world fails explicitly instead of placing the player inside a wall
+2026-10-04T15:27:18.8072064Z ok 277 - an entirely obstructed world fails explicitly instead of placing the player inside a wall
+2026-10-04T15:27:18.8072149Z   ---
+2026-10-04T15:27:18.8072249Z   duration_ms: 84.998222
+2026-10-04T15:27:18.8072338Z   type: 'test'
+2026-10-04T15:27:18.8072415Z   ...
+2026-10-04T15:27:18.8072749Z # Subtest: boarding respects the road level when a vehicle is directly below the player
+2026-10-04T15:27:18.8073067Z ok 278 - boarding respects the road level when a vehicle is directly below the player
+2026-10-04T15:27:18.8073149Z   ---
+2026-10-04T15:27:18.8073242Z   duration_ms: 1.969415
+2026-10-04T15:27:18.8073332Z   type: 'test'
+2026-10-04T15:27:18.8073415Z   ...
+2026-10-04T15:27:18.8073760Z # Subtest: exiting an elevated vehicle sweeps the door at deck height and stays on the deck
+2026-10-04T15:27:18.8074092Z ok 279 - exiting an elevated vehicle sweeps the door at deck height and stays on the deck
+2026-10-04T15:27:18.8074177Z   ---
+2026-10-04T15:27:18.8074268Z   duration_ms: 3.744477
+2026-10-04T15:27:18.8074358Z   type: 'test'
+2026-10-04T15:27:18.8074440Z   ...
+2026-10-04T15:27:18.8074750Z # Subtest: a driver cannot exit onto a different road level beyond the bridge edge
+2026-10-04T15:27:18.8075386Z ok 280 - a driver cannot exit onto a different road level beyond the bridge edge
+2026-10-04T15:27:18.8075492Z   ---
+2026-10-04T15:27:18.8075603Z   duration_ms: 2.342053
+2026-10-04T15:27:18.8075693Z   type: 'test'
+2026-10-04T15:27:18.8075773Z   ...
+2026-10-04T15:27:18.8076155Z # Subtest: stair opening removes the terrain itself and retains adjacent sloped surface and UVs
+2026-10-04T15:27:18.8076505Z ok 281 - stair opening removes the terrain itself and retains adjacent sloped surface and UVs
+2026-10-04T15:27:18.8076588Z   ---
+2026-10-04T15:27:18.8076685Z   duration_ms: 4.945214
+2026-10-04T15:27:18.8076770Z   type: 'test'
+2026-10-04T15:27:18.8076853Z   ...
+2026-10-04T15:27:18.8077262Z # Subtest: all three real world metro stair apertures are open to the sky while adjacent pavement remains
+2026-10-04T15:27:18.8077652Z ok 282 - all three real world metro stair apertures are open to the sky while adjacent pavement remains
+2026-10-04T15:27:18.8077739Z   ---
+2026-10-04T15:27:18.8077841Z   duration_ms: 1017.94029
+2026-10-04T15:27:18.8077928Z   type: 'test'
+2026-10-04T15:27:18.8078007Z   ...
+2026-10-04T15:27:18.8078395Z # Subtest: traffic uses opposite separated lanes and follows rounded corners without getting stuck
+2026-10-04T15:27:18.8078765Z ok 283 - traffic uses opposite separated lanes and follows rounded corners without getting stuck
+2026-10-04T15:27:18.8078845Z   ---
+2026-10-04T15:27:18.8078937Z   duration_ms: 2308.58696
+2026-10-04T15:27:18.8079023Z   type: 'test'
+2026-10-04T15:27:18.8079102Z   ...
+2026-10-04T15:27:18.8079553Z # Subtest: drivers brake for a queue before collision, let another lane pass and do not enter a blocked junction
+2026-10-04T15:27:18.8079973Z ok 284 - drivers brake for a queue before collision, let another lane pass and do not enter a blocked junction
+2026-10-04T15:27:18.8080056Z   ---
+2026-10-04T15:27:18.8080150Z   duration_ms: 0.621543
+2026-10-04T15:27:18.8080233Z   type: 'test'
+2026-10-04T15:27:18.8080433Z   ...
+2026-10-04T15:27:18.8080806Z # Subtest: each junction has mutually exclusive green phases and an all-red clearance interval
+2026-10-04T15:27:18.8081169Z ok 285 - each junction has mutually exclusive green phases and an all-red clearance interval
+2026-10-04T15:27:18.8081253Z   ---
+2026-10-04T15:27:18.8081387Z   duration_ms: 1.057107
+2026-10-04T15:27:18.8081476Z   type: 'test'
+2026-10-04T15:27:18.8081557Z   ...
+2026-10-04T15:27:18.8082010Z # Subtest: the complete southern fleet keeps moving past parked intersection cars for three simulated minutes
+2026-10-04T15:27:18.8082439Z ok 286 - the complete southern fleet keeps moving past parked intersection cars for three simulated minutes
+2026-10-04T15:27:18.8082519Z   ---
+2026-10-04T15:27:18.8082622Z   duration_ms: 18494.993944
+2026-10-04T15:27:18.8082712Z   type: 'test'
+2026-10-04T15:27:18.8082790Z   ...
+2026-10-04T15:27:18.8083184Z # Subtest: generated-city courier is completable with walking and real driving before its deadline
+2026-10-04T15:27:18.8083568Z ok 287 - generated-city courier is completable with walking and real driving before its deadline
+2026-10-04T15:27:18.8083650Z   ---
+2026-10-04T15:27:18.8083746Z   duration_ms: 1784.762413
+2026-10-04T15:27:18.8083833Z   type: 'test'
+2026-10-04T15:27:18.8083914Z   ...
+2026-10-04T15:27:18.8084311Z # {"seconds":13.783333333333685,"reached":2,"minimumHealth":100,"maximumWanted":0,"maximumPatrols":0}
+2026-10-04T15:27:18.8084703Z # Subtest: generated-city timed circuit is completable through every checkpoint with real steering
+2026-10-04T15:27:18.8085269Z ok 288 - generated-city timed circuit is completable through every checkpoint with real steering
+2026-10-04T15:27:18.8085360Z   ---
+2026-10-04T15:27:18.8085456Z   duration_ms: 7927.389051
+2026-10-04T15:27:18.8085546Z   type: 'test'
+2026-10-04T15:27:18.8085626Z   ...
+2026-10-04T15:27:18.8086073Z # {"seconds":46.59999999999854,"reached":4,"minimumHealth":76.17862340525166,"maximumWanted":1,"maximumPatrols":2}
+2026-10-04T15:27:18.8086619Z # Subtest: generated-city getaway can trigger pursuit, lose real patrols and return without teleporting
+2026-10-04T15:27:18.8087029Z ok 289 - generated-city getaway can trigger pursuit, lose real patrols and return without teleporting
+2026-10-04T15:27:18.8087111Z   ---
+2026-10-04T15:27:18.8087207Z   duration_ms: 11749.040128
+2026-10-04T15:27:18.8087297Z   type: 'test'
+2026-10-04T15:27:18.8087379Z   ...
+2026-10-04T15:27:18.8087760Z # {"seconds":74.69999999999695,"reached":5,"minimumHealth":100,"maximumWanted":2,"maximumPatrols":3}
+2026-10-04T15:27:18.8088146Z # Subtest: asphalt surfaces tile the real road grid at one height without overlapping intersections
+2026-10-04T15:27:18.8088518Z ok 290 - asphalt surfaces tile the real road grid at one height without overlapping intersections
+2026-10-04T15:27:18.8088596Z   ---
+2026-10-04T15:27:18.8088694Z   duration_ms: 3.97157
+2026-10-04T15:27:18.8088781Z   type: 'test'
+2026-10-04T15:27:18.8088863Z   ...
+2026-10-04T15:27:18.8089296Z # Subtest: ground-height query agrees with rendered triangles at ramps, pavement, park paths and promenade
+2026-10-04T15:27:18.8089719Z ok 291 - ground-height query agrees with rendered triangles at ramps, pavement, park paths and promenade
+2026-10-04T15:27:18.8089800Z   ---
+2026-10-04T15:27:18.8089892Z   duration_ms: 18.752981
+2026-10-04T15:27:18.8089982Z   type: 'test'
+2026-10-04T15:27:18.8090062Z   ...
+2026-10-04T15:27:18.8090431Z # Subtest: all registered obstacles have finite height and cover their actual instance geometry
+2026-10-04T15:27:18.8090781Z ok 292 - all registered obstacles have finite height and cover their actual instance geometry
+2026-10-04T15:27:18.8090867Z   ---
+2026-10-04T15:27:18.8090961Z   duration_ms: 13.875767
+2026-10-04T15:27:18.8091044Z   type: 'test'
+2026-10-04T15:27:18.8091128Z   ...
+2026-10-04T15:27:18.8091455Z # Subtest: Node and browser texture paths emit identical physical and camera geometry
+2026-10-04T15:27:18.8091767Z ok 293 - Node and browser texture paths emit identical physical and camera geometry
+2026-10-04T15:27:18.8091974Z   ---
+2026-10-04T15:27:18.8092072Z   duration_ms: 483.108255
+2026-10-04T15:27:18.8092163Z   type: 'test'
+2026-10-04T15:27:18.8092240Z   ...
+2026-10-04T15:27:18.8092731Z # Subtest: shared vehicle and character dimensions enclose actual rendered geometry including mirrors and police lights
+2026-10-04T15:27:18.8093197Z ok 294 - shared vehicle and character dimensions enclose actual rendered geometry including mirrors and police lights
+2026-10-04T15:27:18.8093275Z   ---
+2026-10-04T15:27:18.8093375Z   duration_ms: 835.630777
+2026-10-04T15:27:18.8093463Z   type: 'test'
+2026-10-04T15:27:18.8093547Z   ...
+2026-10-04T15:27:18.8093966Z # Subtest: all decorative sidewalk routes remain clear of grounded obstacles and sample the real pavement
+2026-10-04T15:27:18.8094367Z ok 295 - all decorative sidewalk routes remain clear of grounded obstacles and sample the real pavement
+2026-10-04T15:27:18.8094448Z   ---
+2026-10-04T15:27:18.8094538Z   duration_ms: 431.323039
+2026-10-04T15:27:18.8094628Z   type: 'test'
+2026-10-04T15:27:18.8094715Z   ...
+2026-10-04T15:27:18.8095403Z # Subtest: world finish composes existing hooks, preserves physical values and runs once in real instance metres
+2026-10-04T15:27:18.8095850Z ok 296 - world finish composes existing hooks, preserves physical values and runs once in real instance metres
+2026-10-04T15:27:18.8095933Z   ---
+2026-10-04T15:27:18.8096028Z   duration_ms: 3.914793
+2026-10-04T15:27:18.8096112Z   type: 'test'
+2026-10-04T15:27:18.8096192Z   ...
+2026-10-04T15:27:18.8096687Z # Subtest: southern street and eastern shore retain checkpoint mineral and metal coverage without modifying glazing shaders
+2026-10-04T15:27:18.8097165Z ok 297 - southern street and eastern shore retain checkpoint mineral and metal coverage without modifying glazing shaders
+2026-10-04T15:27:18.8097246Z   ---
+2026-10-04T15:27:18.8097338Z   duration_ms: 585.227461
+2026-10-04T15:27:18.8097425Z   type: 'test'
+2026-10-04T15:27:18.8097502Z   ...
+2026-10-04T15:27:18.8097824Z # Subtest: browser facade texture projection survives the added world grain shader
+2026-10-04T15:27:18.8098263Z ok 298 - browser facade texture projection survives the added world grain shader
+2026-10-04T15:27:18.8098345Z   ---
+2026-10-04T15:27:18.8098442Z   duration_ms: 347.77598
+2026-10-04T15:27:18.8098529Z   type: 'test'
+2026-10-04T15:27:18.8098609Z   ...
+2026-10-04T15:27:18.8098691Z 1..298
+2026-10-04T15:27:18.8098776Z # tests 298
+2026-10-04T15:27:18.8098862Z # suites 0
+2026-10-04T15:27:18.8098943Z # pass 298
+2026-10-04T15:27:18.8099028Z # fail 0
+2026-10-04T15:27:18.8099125Z # cancelled 0
+2026-10-04T15:27:18.8099208Z # skipped 0
+2026-10-04T15:27:18.8099291Z # todo 0
+2026-10-04T15:27:18.8099402Z # duration_ms 149904.061484
+2026-10-04T15:27:18.8128764Z ##[group]Run npm run build
+2026-10-04T15:27:18.8128910Z [36;1mnpm run build[0m
+2026-10-04T15:27:18.8191271Z shell: /usr/bin/bash -e {0}
+2026-10-04T15:27:18.8191367Z ##[endgroup]
+2026-10-04T15:27:18.9203071Z 
+2026-10-04T15:27:18.9203829Z > neon-harbor@0.8.0 build
+2026-10-04T15:27:18.9204134Z > node tools/build.mjs
+2026-10-04T15:27:18.9204196Z 
+2026-10-04T15:27:19.4020543Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/
+2026-10-04T15:27:19.6349894Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/
+2026-10-04T15:27:19.7690924Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist
+2026-10-04T15:27:19.7950162Z ##[group]Run npx playwright install --with-deps chromium
+2026-10-04T15:27:19.7950633Z [36;1mnpx playwright install --with-deps chromium[0m
+2026-10-04T15:27:19.8014725Z shell: /usr/bin/bash -e {0}
+2026-10-04T15:27:19.8015000Z ##[endgroup]
+2026-10-04T15:27:20.5803752Z Installing dependencies...
+2026-10-04T15:27:20.5870311Z Switching to root user to install dependencies...
+2026-10-04T15:27:20.6886855Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-04T15:27:20.7070005Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-04T15:27:20.7206893Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-04T15:27:20.7221485Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-04T15:27:20.7284544Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-04T15:27:20.7328441Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-04T15:27:20.8046240Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [511 kB]
+2026-10-04T15:27:20.8366773Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [458 kB]
+2026-10-04T15:27:20.8418846Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+2026-10-04T15:27:20.9110559Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1364 kB]
+2026-10-04T15:27:20.9216668Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [304 kB]
+2026-10-04T15:27:20.9243123Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [181 kB]
+2026-10-04T15:27:20.9265053Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1699 kB]
+2026-10-04T15:27:20.9349797Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [341 kB]
+2026-10-04T15:27:20.9376323Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [388 kB]
+2026-10-04T15:27:20.9406571Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1720 kB]
+2026-10-04T15:27:20.9527130Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [394 kB]
+2026-10-04T15:27:20.9546830Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-10-04T15:27:20.9710098Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5776 B]
+2026-10-04T15:27:21.0139593Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [12.6 kB]
+2026-10-04T15:27:21.0229618Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1069 kB]
+2026-10-04T15:27:21.0286727Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [221 kB]
+2026-10-04T15:27:21.0306886Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [46.4 kB]
+2026-10-04T15:27:21.0321731Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1216 kB]
+2026-10-04T15:27:21.0381910Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [244 kB]
+2026-10-04T15:27:21.0404256Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.4 kB]
+2026-10-04T15:27:21.0423179Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1566 kB]
+2026-10-04T15:27:21.0494512Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+2026-10-04T15:27:25.2769944Z Fetched 12.6 MB in 1s (9155 kB/s)
+2026-10-04T15:27:26.1131598Z Reading package lists...
+2026-10-04T15:27:26.1376751Z Reading package lists...
+2026-10-04T15:27:26.3268429Z Building dependency tree...
+2026-10-04T15:27:26.3275421Z Reading state information...
+2026-10-04T15:27:26.4730636Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+2026-10-04T15:27:26.4732408Z libasound2t64 set to manually installed.
+2026-10-04T15:27:26.4733742Z libatk-bridge2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-04T15:27:26.4734765Z libatk-bridge2.0-0t64 set to manually installed.
+2026-10-04T15:27:26.4736085Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-04T15:27:26.4737006Z libatk1.0-0t64 set to manually installed.
+2026-10-04T15:27:26.4738036Z libatspi2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-04T15:27:26.4739089Z libatspi2.0-0t64 set to manually installed.
+2026-10-04T15:27:26.4740042Z libcairo2 is already the newest version (1.18.0-3build1).
+2026-10-04T15:27:26.4741333Z libcairo2 set to manually installed.
+2026-10-04T15:27:26.4742152Z libcups2t64 is already the newest version (2.4.7-1.2ubuntu7.14).
+2026-10-04T15:27:26.4743176Z libcups2t64 set to manually installed.
+2026-10-04T15:27:26.4744325Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+2026-10-04T15:27:26.4745468Z libdbus-1-3 set to manually installed.
+2026-10-04T15:27:26.4746324Z libdrm2 is already the newest version (2.4.125-1ubuntu0.1~24.04.2).
+2026-10-04T15:27:26.4747180Z libdrm2 set to manually installed.
+2026-10-04T15:27:26.4748019Z libglib2.0-0t64 is already the newest version (2.80.0-6ubuntu3.9).
+2026-10-04T15:27:26.4749055Z libglib2.0-0t64 set to manually installed.
+2026-10-04T15:27:26.4749966Z libnspr4 is already the newest version (2:4.35-1.1build1).
+2026-10-04T15:27:26.4750790Z libnspr4 set to manually installed.
+2026-10-04T15:27:26.4751615Z libnss3 is already the newest version (2:3.98-1ubuntu0.2).
+2026-10-04T15:27:26.4752529Z libnss3 set to manually installed.
+2026-10-04T15:27:26.4753388Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-10-04T15:27:26.4754288Z libpango-1.0-0 set to manually installed.
+2026-10-04T15:27:26.4755377Z libx11-6 is already the newest version (2:1.8.7-1build1).
+2026-10-04T15:27:26.4756130Z libx11-6 set to manually installed.
+2026-10-04T15:27:26.4756890Z libxcb1 is already the newest version (1.15-1ubuntu2).
+2026-10-04T15:27:26.4757605Z libxcb1 set to manually installed.
+2026-10-04T15:27:26.4758439Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+2026-10-04T15:27:26.4759243Z libxcomposite1 set to manually installed.
+2026-10-04T15:27:26.4760273Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+2026-10-04T15:27:26.4761014Z libxdamage1 set to manually installed.
+2026-10-04T15:27:26.4761756Z libxext6 is already the newest version (2:1.3.4-1build2).
+2026-10-04T15:27:26.4762505Z libxext6 set to manually installed.
+2026-10-04T15:27:26.4763291Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+2026-10-04T15:27:26.4764243Z libxfixes3 set to manually installed.
+2026-10-04T15:27:26.4764985Z libxkbcommon0 is already the newest version (1.6.0-1build1).
+2026-10-04T15:27:26.4766055Z libxkbcommon0 set to manually installed.
+2026-10-04T15:27:26.4766880Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+2026-10-04T15:27:26.4767669Z libxrandr2 set to manually installed.
+2026-10-04T15:27:26.4768437Z xvfb is already the newest version (2:21.1.12-1ubuntu1.8).
+2026-10-04T15:27:26.4769483Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+2026-10-04T15:27:26.4770627Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+2026-10-04T15:27:26.4771468Z libfontconfig1 set to manually installed.
+2026-10-04T15:27:26.4772338Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.1).
+2026-10-04T15:27:26.4773206Z libfreetype6 set to manually installed.
+2026-10-04T15:27:26.4774028Z fonts-liberation is already the newest version (1:2.1.5-3).
+2026-10-04T15:27:26.4774846Z fonts-liberation set to manually installed.
+2026-10-04T15:27:26.4775964Z The following additional packages will be installed:
+2026-10-04T15:27:26.4776939Z   libgl1-mesa-dri libglx-mesa0 mesa-libgallium xfonts-encodings xfonts-utils
+2026-10-04T15:27:26.4777833Z Recommended packages:
+2026-10-04T15:27:26.4778365Z   fonts-ipafont-mincho fonts-tlwg-loma
+2026-10-04T15:27:26.4987159Z The following NEW packages will be installed:
+2026-10-04T15:27:26.4988953Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-10-04T15:27:26.4994452Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-10-04T15:27:26.4995567Z   xfonts-utils
+2026-10-04T15:27:26.5003053Z The following packages will be upgraded:
+2026-10-04T15:27:26.5016542Z   libgbm1 libgl1-mesa-dri libglx-mesa0 mesa-libgallium
+2026-10-04T15:27:26.5240130Z 4 upgraded, 9 newly installed, 0 to remove and 21 not upgraded.
+2026-10-04T15:27:26.5240842Z Need to get 32.1 MB of archives.
+2026-10-04T15:27:26.5241613Z After this operation, 79.5 MB of additional disk space will be used.
+2026-10-04T15:27:26.5242134Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-04T15:27:26.5638785Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2026-10-04T15:27:26.7086893Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+2026-10-04T15:27:26.9356490Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2026-10-04T15:27:26.9657827Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+2026-10-04T15:27:27.1092672Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2026-10-04T15:27:27.5564090Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgl1-mesa-dri amd64 25.2.8-0ubuntu0.24.04.4 [38.0 kB]
+2026-10-04T15:27:27.5811330Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglx-mesa0 amd64 25.2.8-0ubuntu0.24.04.4 [110 kB]
+2026-10-04T15:27:27.6134967Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgbm1 amd64 25.2.8-0ubuntu0.24.04.4 [34.2 kB]
+2026-10-04T15:27:27.6396554Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 mesa-libgallium amd64 25.2.8-0ubuntu0.24.04.4 [10.8 MB]
+2026-10-04T15:27:28.7793648Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2026-10-04T15:27:28.8692212Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+2026-10-04T15:27:28.9054802Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+2026-10-04T15:27:28.9784762Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+2026-10-04T15:27:29.2599685Z Fetched 32.1 MB in 3s (12.8 MB/s)
+2026-10-04T15:27:29.2827983Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-10-04T15:27:29.3107911Z (Reading database ... 
+2026-10-04T15:27:29.3108699Z (Reading database ... 5%
+2026-10-04T15:27:29.3109051Z (Reading database ... 10%
+2026-10-04T15:27:29.3109325Z (Reading database ... 15%
+2026-10-04T15:27:29.3109617Z (Reading database ... 20%
+2026-10-04T15:27:29.3109866Z (Reading database ... 25%
+2026-10-04T15:27:29.3110122Z (Reading database ... 30%
+2026-10-04T15:27:29.3110429Z (Reading database ... 35%
+2026-10-04T15:27:29.3110911Z (Reading database ... 40%
+2026-10-04T15:27:29.3111397Z (Reading database ... 45%
+2026-10-04T15:27:29.3111762Z (Reading database ... 50%
+2026-10-04T15:27:29.3152626Z (Reading database ... 55%
+2026-10-04T15:27:29.3909494Z (Reading database ... 60%
+2026-10-04T15:27:29.5894326Z (Reading database ... 65%
+2026-10-04T15:27:29.7757146Z (Reading database ... 70%
+2026-10-04T15:27:29.9406862Z (Reading database ... 75%
+2026-10-04T15:27:30.0803006Z (Reading database ... 80%
+2026-10-04T15:27:30.2851924Z (Reading database ... 85%
+2026-10-04T15:27:30.4928619Z (Reading database ... 90%
+2026-10-04T15:27:30.6811198Z (Reading database ... 95%
+2026-10-04T15:27:30.6811626Z (Reading database ... 100%
+2026-10-04T15:27:30.6812306Z (Reading database ... 202296 files and directories currently installed.)
+2026-10-04T15:27:30.6854642Z Preparing to unpack .../00-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2026-10-04T15:27:30.6944639Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-04T15:27:30.9194395Z Selecting previously unselected package fonts-freefont-ttf.
+2026-10-04T15:27:30.9320829Z Preparing to unpack .../01-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+2026-10-04T15:27:30.9329506Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-04T15:27:31.0090372Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-10-04T15:27:31.0218771Z Preparing to unpack .../02-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2026-10-04T15:27:31.0226837Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-04T15:27:31.0432187Z Selecting previously unselected package fonts-unifont.
+2026-10-04T15:27:31.0556523Z Preparing to unpack .../03-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+2026-10-04T15:27:31.0563688Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+2026-10-04T15:27:31.1593520Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-10-04T15:27:31.1716623Z Preparing to unpack .../04-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2026-10-04T15:27:31.1816063Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-04T15:27:31.6496285Z Preparing to unpack .../05-libgl1-mesa-dri_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T15:27:31.6644633Z Unpacking libgl1-mesa-dri:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T15:27:31.7228952Z Preparing to unpack .../06-libglx-mesa0_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T15:27:31.7263600Z Unpacking libglx-mesa0:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T15:27:31.7624003Z Preparing to unpack .../07-libgbm1_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T15:27:31.7650908Z Unpacking libgbm1:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T15:27:31.8013070Z Preparing to unpack .../08-mesa-libgallium_25.2.8-0ubuntu0.24.04.4_amd64.deb ...
+2026-10-04T15:27:31.8040121Z Unpacking mesa-libgallium:amd64 (25.2.8-0ubuntu0.24.04.4) over (25.2.8-0ubuntu0.24.04.2) ...
+2026-10-04T15:27:31.9664948Z Selecting previously unselected package xfonts-encodings.
+2026-10-04T15:27:31.9791255Z Preparing to unpack .../09-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2026-10-04T15:27:31.9801506Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-04T15:27:32.0092863Z Selecting previously unselected package xfonts-utils.
+2026-10-04T15:27:32.0216605Z Preparing to unpack .../10-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+2026-10-04T15:27:32.0225408Z Unpacking xfonts-utils (1:7.7+6build3) ...
+2026-10-04T15:27:32.0571634Z Selecting previously unselected package xfonts-cyrillic.
+2026-10-04T15:27:32.0696100Z Preparing to unpack .../11-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+2026-10-04T15:27:32.0705750Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-04T15:27:32.1061834Z Selecting previously unselected package xfonts-scalable.
+2026-10-04T15:27:32.1185601Z Preparing to unpack .../12-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+2026-10-04T15:27:32.1194691Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-04T15:27:32.1636095Z Setting up mesa-libgallium:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T15:27:32.1661501Z Setting up libgbm1:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T15:27:32.1687806Z Setting up libgl1-mesa-dri:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T15:27:32.1769063Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-04T15:27:32.1889239Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-04T15:27:32.1912688Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-04T15:27:32.1934466Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-04T15:27:32.1955279Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-04T15:27:32.2024083Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-10-04T15:27:32.2041547Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+2026-10-04T15:27:32.2064175Z Setting up libglx-mesa0:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+2026-10-04T15:27:32.2086925Z Setting up xfonts-utils (1:7.7+6build3) ...
+2026-10-04T15:27:32.2129920Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-04T15:27:32.2424002Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-04T15:27:32.2690438Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-04T15:27:32.3004906Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-04T15:27:32.3024921Z Not building database; man-db/auto-update is not 'true'.
+2026-10-04T15:27:32.3036409Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-10-04T15:27:33.0254210Z 
+2026-10-04T15:27:33.0255012Z Running kernel seems to be up-to-date.
+2026-10-04T15:27:33.0255786Z 
+2026-10-04T15:27:33.0256059Z No services need to be restarted.
+2026-10-04T15:27:33.0256311Z 
+2026-10-04T15:27:33.0256510Z No containers need to be restarted.
+2026-10-04T15:27:33.0256759Z 
+2026-10-04T15:27:33.0257046Z No user sessions are running outdated binaries.
+2026-10-04T15:27:33.0257333Z 
+2026-10-04T15:27:33.0257727Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-04T15:27:33.8712196Z Downloading Chrome for Testing 151.0.7922.34 (playwright chromium v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-linux64.zip
+2026-10-04T15:27:34.9326934Z |                                                                                |   0% of 184.3 MiB
+2026-10-04T15:27:35.1876383Z |■■■■■■■■                                                                        |  10% of 184.3 MiB
+2026-10-04T15:27:35.3111215Z |■■■■■■■■■■■■■■■■                                                                |  20% of 184.3 MiB
+2026-10-04T15:27:35.5237702Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 184.3 MiB
+2026-10-04T15:27:35.7056690Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 184.3 MiB
+2026-10-04T15:27:35.8322810Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 184.3 MiB
+2026-10-04T15:27:35.9766010Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 184.3 MiB
+2026-10-04T15:27:36.1079973Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 184.3 MiB
+2026-10-04T15:27:36.2351617Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 184.3 MiB
+2026-10-04T15:27:36.4095508Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 184.3 MiB
+2026-10-04T15:27:36.6372273Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 184.3 MiB
+2026-10-04T15:27:39.4453312Z Chrome for Testing 151.0.7922.34 (playwright chromium v1234) downloaded to /home/runner/.cache/ms-playwright/chromium-1234
+2026-10-04T15:27:39.4457492Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+2026-10-04T15:27:40.4112975Z |                                                                                |   0% of 2.3 MiB
+2026-10-04T15:27:40.4167815Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-10-04T15:27:40.4197849Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-10-04T15:27:40.4246417Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-10-04T15:27:40.4262691Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-10-04T15:27:40.4273980Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-10-04T15:27:40.4290826Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-10-04T15:27:40.4307269Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-10-04T15:27:40.4318523Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-10-04T15:27:40.4333300Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-10-04T15:27:40.4342381Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-10-04T15:27:40.4940194Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2026-10-04T15:27:40.4943795Z Downloading Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-headless-shell-linux64.zip
+2026-10-04T15:27:41.5213668Z |                                                                                |   0% of 114.7 MiB
+2026-10-04T15:27:41.6584098Z |■■■■■■■■                                                                        |  10% of 114.7 MiB
+2026-10-04T15:27:41.7324345Z |■■■■■■■■■■■■■■■■                                                                |  20% of 114.7 MiB
+2026-10-04T15:27:41.8026303Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 114.7 MiB
+2026-10-04T15:27:41.8786255Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 114.7 MiB
+2026-10-04T15:27:41.9553250Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 114.7 MiB
+2026-10-04T15:27:42.0364786Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 114.7 MiB
+2026-10-04T15:27:42.0974916Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 114.7 MiB
+2026-10-04T15:27:42.1577326Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 114.7 MiB
+2026-10-04T15:27:42.2313286Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 114.7 MiB
+2026-10-04T15:27:42.2975611Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 114.7 MiB
+2026-10-04T15:27:44.2688843Z Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1234
+2026-10-04T15:27:44.2944771Z ##[group]Run npx playwright test tests/e2e/metropolis.spec.js --fully-parallel --shard=2/3
+2026-10-04T15:27:44.2945800Z [36;1mnpx playwright test tests/e2e/metropolis.spec.js --fully-parallel --shard=2/3[0m
+2026-10-04T15:27:44.3007527Z shell: /usr/bin/bash -e {0}
+2026-10-04T15:27:44.3007807Z ##[endgroup]
+2026-10-04T15:27:45.4380888Z 
+2026-10-04T15:27:45.4381628Z Running 2 tests using 1 worker, shard 2 of 3
+2026-10-04T15:27:45.4382154Z 
+2026-10-04T15:31:53.4619998Z   ✓  1 tests/e2e/metropolis.spec.js:113:3 › apex-tower: ride to a high floor and travel back to the street (4.1m)
+2026-10-04T15:34:46.6298784Z   ✓  2 tests/e2e/metropolis.spec.js:113:3 › camellia-court: walk through the lobby, ride the elevator, return to the street (2.9m)
+2026-10-04T15:35:01.1715970Z 
+2026-10-04T15:35:01.1720934Z   Slow test file: tests/e2e/metropolis.spec.js (7.0m)
+2026-10-04T15:35:01.1722207Z   Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+2026-10-04T15:35:01.1723322Z   2 passed (7.3m)
+2026-10-04T15:35:01.2222496Z ##[group]Run actions/upload-artifact@v4
+2026-10-04T15:35:01.2222809Z with:
+2026-10-04T15:35:01.2223038Z   name: browser-test-results-metropolis-2
+2026-10-04T15:35:01.2223353Z   path: playwright-report/
+test-results/
+
+2026-10-04T15:35:01.2223668Z   if-no-files-found: ignore
+2026-10-04T15:35:01.2223907Z   compression-level: 6
+2026-10-04T15:35:01.2224129Z   overwrite: false
+2026-10-04T15:35:01.2224355Z   include-hidden-files: false
+2026-10-04T15:35:01.2224597Z ##[endgroup]
+2026-10-04T15:35:01.3917617Z (node:3659) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T15:35:01.3918666Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T15:35:01.4057568Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-04T15:35:01.4061426Z The least common ancestor is /home/runner/work/neon-harbor/neon-harbor. This will be the root directory of the artifact
+2026-10-04T15:35:01.4063189Z With the provided path, there will be 3 files uploaded
+2026-10-04T15:35:01.4065080Z Artifact name is valid!
+2026-10-04T15:35:01.4066251Z Root directory input is valid!
+2026-10-04T15:35:01.6648021Z Beginning upload of artifact content to blob storage
+2026-10-04T15:35:01.7213745Z (node:3659) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-04T15:35:01.9358262Z Uploaded bytes 786165
+2026-10-04T15:35:01.9703917Z Finished uploading artifact content to blob storage!
+2026-10-04T15:35:01.9705535Z SHA256 digest of uploaded artifact zip is 075823caf536669bc392610a44f10233e3f2e6c263e4ff5f0811c571963bf2a4
+2026-10-04T15:35:01.9707121Z Finalizing artifact upload
+2026-10-04T15:35:02.2076344Z Artifact browser-test-results-metropolis-2.zip successfully finalized. Artifact ID 11307412395
+2026-10-04T15:35:02.2077816Z Artifact browser-test-results-metropolis-2 has been successfully uploaded! Final size is 786165 bytes. Artifact ID is 11307412395
+2026-10-04T15:35:02.2079510Z Artifact download URL: https://github.com/qifalab/neon-harbor/actions/runs/37212886714/artifacts/11307412395
+2026-10-04T15:35:02.2248279Z Post job cleanup.
+2026-10-04T15:35:02.3522667Z (node:3675) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-04T15:35:02.3523774Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-04T15:35:02.3527507Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-6438cc70f01e36935f5c8c9cb620f6c972b229821dda55e94f5b735e54c263b7, not saving cache.
+2026-10-04T15:35:02.3674413Z Post job cleanup.
+2026-10-04T15:35:02.4559708Z [command]/usr/bin/git version
+2026-10-04T15:35:02.4603780Z git version 2.55.0
+2026-10-04T15:35:02.4656784Z Temporarily overriding HOME='/home/runner/work/_temp/f6aaf231-a05e-4b82-81d5-75f035cd88e5' before making global git config changes
+2026-10-04T15:35:02.4658626Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-04T15:35:02.4660156Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/neon-harbor/neon-harbor
+2026-10-04T15:35:02.4696612Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-04T15:35:02.4735704Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-04T15:35:02.5024922Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-04T15:35:02.5064371Z http.https://github.com/.extraheader
+2026-10-04T15:35:02.5079221Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-04T15:35:02.5116501Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-04T15:35:02.5420980Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-04T15:35:02.5495010Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-04T15:35:02.5992534Z Cleaning up orphan processes
+2026-10-04T15:35:02.6331116Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

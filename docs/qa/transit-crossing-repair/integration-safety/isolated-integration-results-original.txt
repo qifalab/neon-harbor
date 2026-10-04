@@ -1,0 +1,17 @@
+✔ normal city play boards bus, walks both decks, travels and alights at another physical stop (5843.49412ms)
+✔ normal city play boards tram, walks both decks, travels and alights at another physical stop (9528.824752ms)
+✔ normal city play boards ferry, walks both decks, travels and alights at another physical stop (10620.870885ms)
+✔ interior visits preserve street traffic, sample service clocks and resident phases (1029.202924ms)
+✔ safeSave restores real commuting tickets, economic paths and delayed dwell before another tick (28669.055057ms)
+✔ fresh binding and malformed saved sample fields leave finite clean street state (2388.086204ms)
+✔ fixed simulation and render updates remain separate, with bounded collector-height tram wires (3754.227881ms)
+✔ a restored south-shore signal clock controls real cars, rendered lights and crossing residents while north traffic keeps its original clock (186.091826ms)
+✔ ordinary city steps yield the long bus to a real resident already crossing, including after save/load (3568.16228ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66752.820772

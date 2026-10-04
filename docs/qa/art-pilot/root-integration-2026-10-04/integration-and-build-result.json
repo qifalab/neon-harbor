@@ -1,0 +1,54 @@
+{
+  "recordedAtUtc": "2026-10-04T20:37:43.909208+00:00",
+  "status": "ROOT_SELECTIVE_INTEGRATION_AND_BUILD_PASS",
+  "integrationMethodSha256": "27a8cdd80fa13cef16c039842de175df77c031b00cba975c4d1080da55f9e8b3",
+  "integrationCommand": {
+    "argv": [
+      "python3",
+      "/tmp/neon-integrate-verified-art-pilot.py"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor",
+    "exitCode": 0,
+    "toolWallTimeSeconds": 0.067560851,
+    "receiptSource": "actual preceding exec_command completion; integration was not rerun"
+  },
+  "buildCommand": {
+    "argv": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/scratch/neon-harbor",
+    "exitCode": 0,
+    "toolWallTimeSeconds": 0.592510418,
+    "receiptSource": "actual preceding exec_command completion; build was not rerun"
+  },
+  "buildInfoSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "runtimeResourceCount": 156,
+  "sourceModuleCount": 53,
+  "allRuntimeSourceAndBuiltBytesMatchIsolatedTestedManifest": true,
+  "nodeTestFiles": 43,
+  "nodeTestBytesEqualIsolatedFullRun": true,
+  "packageAndLockBytesEqual": true,
+  "fullRules": {
+    "actualExecutedDirectory": "/workspace/scratch/neon-harbor-art-pilot",
+    "originalLog": "../cpu-validation-release-revision-2026-10-04/node-rules.stdout.txt",
+    "originalLogSha256": "45f19c9defa8d9c785efbb7a2a431e245b2833e932e56583009854660a699129",
+    "tests": 311,
+    "pass": 311,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "evidenceReusedAfterExactSourceTestsAndPackageComparison": true,
+    "newRootNpmTestExecution": false
+  },
+  "nativeResourceSuiteLedgerSha256": "c4f759b3798010590381c45fa833ebffd13d66a4bf1fdc47498637836a12439b",
+  "rootMultiplayerTraceFixRetained": {
+    "file": "tests/multiplayer-browser/rooms.spec.js",
+    "sha256": "c3e382b6a86b2b0130a138e936817f35f5dc802c8ee586ffa7834433f89ad20f"
+  },
+  "publicReleasePerformed": false,
+  "closeDetailStatus": "separately started after this integration; result pending",
+  "continuousFourthRouteStatus": "not executed yet",
+  "finalTourMethodSha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+}

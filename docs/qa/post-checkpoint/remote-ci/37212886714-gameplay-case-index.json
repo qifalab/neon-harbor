@@ -1,0 +1,225 @@
+{
+  "runId": 37212886714,
+  "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+  "gameplayJobsPassed": 11,
+  "gameplayBrowserCasesPassed": 27,
+  "multiplayerCasesPassed": 0,
+  "multiplayerCasesFailedBeforeBoot": 2,
+  "wholeWorkflowConclusion": "failure",
+  "gameplayJobs": [
+    {
+      "jobId": 111467450244,
+      "jobName": "Build and gameplay tests (living-city)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "4.0m",
+      "rawLog": "37212886714-living-city-111467450244.log",
+      "caseResultLines": [
+        "2026-10-04T15:29:45.4545506Z   ✓  1 tests/e2e/living-city.spec.js:102:1 › a resident rides to a furnished bedroom, walks through its doorway, and returns to the street (2.6m)",
+        "2026-10-04T15:30:52.5259297Z   ✓  2 tests/e2e/living-city.spec.js:146:1 › default high quality loads crafted materials and exposes walk-in viewing and real infrastructure entrances (1.1m)"
+      ]
+    },
+    {
+      "jobId": 111467450267,
+      "jobName": "Build and gameplay tests (metropolis-3)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "11.1m",
+      "rawLog": "37212886714-metropolis-3-111467450267.log",
+      "caseResultLines": [
+        "2026-10-04T15:34:22.2046990Z   ✓  1 tests/e2e/metropolis.spec.js:173:3 › metro: wait, board, travel and alight using public controls (6.8m)",
+        "2026-10-04T15:38:27.5835720Z   ✓  2 tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls (4.1m)"
+      ]
+    },
+    {
+      "jobId": 111467450292,
+      "jobName": "Build and gameplay tests (game)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 4,
+      "wallDuration": "5.2m",
+      "rawLog": "37212886714-game-111467450292.log",
+      "caseResultLines": [
+        "2026-10-04T15:29:55.1624014Z   ✓  1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (2.0m)",
+        "2026-10-04T15:31:00.9585195Z   ✓  2 tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets (1.1m)",
+        "2026-10-04T15:31:38.0274142Z   ✓  3 tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress (37.0s)",
+        "2026-10-04T15:32:47.8019303Z   ✓  4 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (1.2m)"
+      ]
+    },
+    {
+      "jobId": 111467450299,
+      "jobName": "Build and gameplay tests (metropolis-2)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "7.3m",
+      "rawLog": "37212886714-metropolis-2-111467450299.log",
+      "caseResultLines": [
+        "2026-10-04T15:31:53.4619998Z   ✓  1 tests/e2e/metropolis.spec.js:113:3 › apex-tower: ride to a high floor and travel back to the street (4.1m)",
+        "2026-10-04T15:34:46.6298784Z   ✓  2 tests/e2e/metropolis.spec.js:113:3 › camellia-court: walk through the lobby, ride the elevator, return to the street (2.9m)"
+      ]
+    },
+    {
+      "jobId": 111467450323,
+      "jobName": "Build and gameplay tests (harbor-sample-2)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "16.2m",
+      "rawLog": "37212886714-harbor-sample-2-111467450323.log",
+      "caseResultLines": [
+        "2026-10-04T15:36:58.9970792Z   ✓  1 tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting (10.2m)",
+        "2026-10-04T15:42:53.6910161Z   ✓  2 tests/e2e/harbor-sample.spec.js:213:1 › funded cargo and a real purchase persist across reload, with physical delivery and the actual High shop room (5.9m)"
+      ]
+    },
+    {
+      "jobId": 111467450347,
+      "jobName": "Build and gameplay tests (stability)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 4,
+      "wallDuration": "5.7m",
+      "rawLog": "37212886714-stability-111467450347.log",
+      "caseResultLines": [
+        "2026-10-04T15:28:22.6860276Z   ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.3m)",
+        "2026-10-04T15:29:12.6131621Z   ✓  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (49.9s)",
+        "2026-10-04T15:30:34.0984179Z   ✓  3 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.4m)",
+        "2026-10-04T15:32:26.8962596Z   ✓  4 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (1.9m)"
+      ]
+    },
+    {
+      "jobId": 111467450373,
+      "jobName": "Build and gameplay tests (occupied-city)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "23.7m",
+      "rawLog": "37212886714-occupied-city-111467450373.log",
+      "caseResultLines": [
+        "2026-10-04T15:34:53.2882500Z   ✓  1 tests/e2e/occupied-city.spec.js:11:1 › all storeys are selectable and a visitor walks an upper stair flight without accumulating floors or sign textures (7.3m)",
+        "2026-10-04T15:51:04.4914909Z   ✓  2 tests/e2e/occupied-city.spec.js:54:1 › the rendered resident enters a real workplace and stays there during working hours (16.2m)"
+      ]
+    },
+    {
+      "jobId": 111467450384,
+      "jobName": "Build and gameplay tests (harbor-sample-1)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "7.8m",
+      "rawLog": "37212886714-harbor-sample-1-111467450384.log",
+      "caseResultLines": [
+        "2026-10-04T15:30:47.2847169Z   ✓  1 tests/e2e/harbor-sample.spec.js:136:3 › bus: public boarding, physical upper-deck stairs, travel and lower-door alighting (4.2m)",
+        "2026-10-04T15:34:11.4379903Z   ✓  2 tests/e2e/harbor-sample.spec.js:136:3 › tram: public boarding, physical upper-deck stairs, travel and lower-door alighting (3.4m)"
+      ]
+    },
+    {
+      "jobId": 111467450394,
+      "jobName": "Build and gameplay tests (city-materials)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 3,
+      "wallDuration": "10.2m",
+      "rawLog": "37212886714-city-materials-111467450394.log",
+      "caseResultLines": [
+        "2026-10-04T15:28:34.0758044Z   ✓  1 tests/e2e/city-materials.spec.js:113:1 › a northern home renders its furnished bedroom in High and survives quality changes at the same pose (2.0m)",
+        "2026-10-04T15:33:05.2093292Z   ✓  2 tests/e2e/city-materials.spec.js:137:1 › an old-quarter visitor walks the compact stairs and a room doorway, rides down and exits (4.5m)",
+        "2026-10-04T15:36:36.3629563Z   ✓  3 tests/e2e/city-materials.spec.js:194:1 › an eastern visitor enters an enclosed office, rides to the observation terrace and reloads safely (3.5m)"
+      ]
+    },
+    {
+      "jobId": 111467450438,
+      "jobName": "Build and gameplay tests (metropolis-1)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "4.9m",
+      "rawLog": "37212886714-metropolis-1-111467450438.log",
+      "caseResultLines": [
+        "2026-10-04T15:29:05.5657881Z   ✓  1 tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail (1.5m)",
+        "2026-10-04T15:32:11.9845197Z   ✓  2 tests/e2e/metropolis.spec.js:113:3 › tide-museum: walk through the lobby, ride the elevator, return to the street (3.1m)"
+      ]
+    },
+    {
+      "jobId": 111467450443,
+      "jobName": "Build and gameplay tests (harbor-realism)",
+      "conclusion": "success",
+      "sourceCommit": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+      "rules": {
+        "tests": 298,
+        "passed": 298,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browserCasesPassed": 2,
+      "wallDuration": "6.2m",
+      "rawLog": "37212886714-harbor-realism-111467450443.log",
+      "caseResultLines": [
+        "2026-10-04T15:28:59.7752900Z   ✓  1 tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views (1.3m)",
+        "2026-10-04T15:33:43.7032403Z   ✓  2 tests/e2e/harbor-realism.spec.js:89:1 › a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street (4.7m)"
+      ]
+    }
+  ]
+}

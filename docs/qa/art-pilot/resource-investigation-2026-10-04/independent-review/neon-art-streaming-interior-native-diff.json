@@ -1,0 +1,2264 @@
+{
+  "kind": "CPU read-only parse of closed native FAIL evidence and current matching source",
+  "nativeStatus": "failed",
+  "baseline": {
+    "geometries": 580,
+    "textures": 118
+  },
+  "memory": [
+    {
+      "label": "warm-outside-baseline",
+      "samples": [
+        {
+          "at": "2026-10-04T19:14:49.211Z",
+          "memory": {
+            "geometries": 519,
+            "textures": 98
+          },
+          "programs": 57,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.34999999999882,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:14:56.416Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.34999999999882,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:14:57.886Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.59999999999881,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:14:59.367Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.84999999999879,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:15:00.848Z",
+          "memory": {
+            "geometries": 580,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 43.84999999999879,
+          "pendingChunks": 0
+        }
+      ],
+      "stableMemory": {
+        "geometries": 580,
+        "textures": 118
+      }
+    },
+    {
+      "label": "actual-E-exit-reentry-cycle-1",
+      "samples": [
+        {
+          "at": "2026-10-04T19:22:23.284Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 59,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 78.83333333333015,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:22:29.043Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 78.83333333333015,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:22:30.663Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 79.33333333333012,
+          "pendingChunks": 0
+        },
+        {
+          "at": "2026-10-04T19:22:32.144Z",
+          "memory": {
+            "geometries": 615,
+            "textures": 118
+          },
+          "programs": 60,
+          "position": {
+            "x": 200,
+            "y": 0.18,
+            "z": -94.9,
+            "yaw": 0
+          },
+          "simulationTime": 79.33333333333012,
+          "pendingChunks": 0
+        }
+      ],
+      "stableMemory": {
+        "geometries": 615,
+        "textures": 118
+      }
+    }
+  ],
+  "events": [
+    {
+      "index": 0,
+      "kind": "independent-public-Atlas-location-setup",
+      "simulationTime": 0.8000000000000008,
+      "memory": {
+        "geometries": 474,
+        "textures": 88
+      },
+      "position": {
+        "x": 200,
+        "y": 0.18,
+        "z": -95.5,
+        "yaw": -3.141592653589793
+      }
+    },
+    {
+      "index": 1,
+      "kind": "real-E-entry",
+      "simulationTime": 0.8000000000000008,
+      "memory": {
+        "geometries": 473,
+        "textures": 87
+      },
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "memoryDelta": {
+        "geometries": -1,
+        "textures": -1
+      }
+    },
+    {
+      "index": 2,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 0.8166666666666675,
+      "memory": {
+        "geometries": 479,
+        "textures": 99
+      },
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "memoryDelta": {
+        "geometries": 6,
+        "textures": 12
+      }
+    },
+    {
+      "index": 3,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 4.216666666666657,
+      "memory": {
+        "geometries": 491,
+        "textures": 103
+      },
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": 3.141592653589793
+      },
+      "memoryDelta": {
+        "geometries": 12,
+        "textures": 4
+      }
+    },
+    {
+      "index": 4,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 6.966666666666647,
+      "memory": {
+        "geometries": 491,
+        "textures": 103
+      },
+      "position": {
+        "x": 197.800000000002,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": -1.5707963267948968
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 5,
+      "kind": "physical-real-room-door-entry",
+      "simulationTime": 6.966666666666647,
+      "memory": {
+        "geometries": 491,
+        "textures": 103
+      },
+      "position": {
+        "x": 197.800000000002,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": -1.5707963267948968
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 6,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 10.233333333333421,
+      "memory": {
+        "geometries": 491,
+        "textures": 105
+      },
+      "position": {
+        "x": 182.7866666666691,
+        "y": 0.215,
+        "z": -114.82000000000016,
+        "yaw": -1.5707963267948968
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 2
+      }
+    },
+    {
+      "index": 7,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 10.483333333333434,
+      "memory": {
+        "geometries": 491,
+        "textures": 105
+      },
+      "position": {
+        "x": 182.7866666666691,
+        "y": 0.215,
+        "z": -114.62000000000013,
+        "yaw": -1.2246467991473532e-16
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 8,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 21.11666666666675,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "position": {
+        "x": 182.78659067321672,
+        "y": 0.215,
+        "z": -117.61999998723407,
+        "yaw": -3.141592336142978
+      },
+      "memoryDelta": {
+        "geometries": 7,
+        "textures": 10
+      }
+    },
+    {
+      "index": 9,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 23.116666666666635,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "position": {
+        "x": 181.18659067321818,
+        "y": 0.215,
+        "z": -117.61999947931993,
+        "yaw": -1.5707960093480813
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 10,
+      "kind": "actual-11mesh-6texture-near-verification",
+      "simulationTime": 28.499999999999662,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "position": {
+        "x": 181.18659067321818,
+        "y": 0.215,
+        "z": -117.61999947931993,
+        "yaw": -1.5707960093480813
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 11,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 31.249999999999506,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "position": {
+        "x": 182.7865905893218,
+        "y": 0.215,
+        "z": -117.62019247376766,
+        "yaw": 1.5707966503664026
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 12,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 34.616666666665985,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "position": {
+        "x": 182.78659142629084,
+        "y": 0.215,
+        "z": -115.03352580710059,
+        "yaw": 3.235708126877386e-07
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 13,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 39.73333333333236,
+      "memory": {
+        "geometries": 530,
+        "textures": 115
+      },
+      "position": {
+        "x": 199.98659142628927,
+        "y": 0.215,
+        "z": -115.03353137251794,
+        "yaw": 1.5707966503657094
+      },
+      "memoryDelta": {
+        "geometries": 32,
+        "textures": 0
+      }
+    },
+    {
+      "index": 14,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 43.34999999999882,
+      "memory": {
+        "geometries": 530,
+        "textures": 115
+      },
+      "position": {
+        "x": 199.9865962453369,
+        "y": 0.215,
+        "z": -100.14019803918441,
+        "yaw": 3.235708126877386e-07
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 15,
+      "kind": "real-E-street-exit",
+      "simulationTime": 43.34999999999882,
+      "memory": {
+        "geometries": 519,
+        "textures": 98
+      },
+      "position": {
+        "x": 200,
+        "y": 0.18,
+        "z": -94.9,
+        "yaw": 0
+      },
+      "memoryDelta": {
+        "geometries": -11,
+        "textures": -17
+      }
+    },
+    {
+      "index": 16,
+      "kind": "real-E-entry",
+      "simulationTime": 44.84999999999874,
+      "memory": {
+        "geometries": 580,
+        "textures": 118
+      },
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "memoryDelta": {
+        "geometries": 61,
+        "textures": 20
+      }
+    },
+    {
+      "index": 17,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 44.8666666666654,
+      "memory": {
+        "geometries": 580,
+        "textures": 126
+      },
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -100.1,
+        "yaw": 3.141592653589793
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 8
+      }
+    },
+    {
+      "index": 18,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 48.34999999999854,
+      "memory": {
+        "geometries": 591,
+        "textures": 129
+      },
+      "position": {
+        "x": 200,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": 3.141592653589793
+      },
+      "memoryDelta": {
+        "geometries": 11,
+        "textures": 3
+      }
+    },
+    {
+      "index": 19,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 51.049999999998384,
+      "memory": {
+        "geometries": 591,
+        "textures": 129
+      },
+      "position": {
+        "x": 197.84000000000196,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": -1.5707963267948968
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 20,
+      "kind": "physical-real-room-door-entry",
+      "simulationTime": 51.049999999998384,
+      "memory": {
+        "geometries": 591,
+        "textures": 129
+      },
+      "position": {
+        "x": 197.84000000000196,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": -1.5707963267948968
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 21,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 55.016666666664825,
+      "memory": {
+        "geometries": 591,
+        "textures": 131
+      },
+      "position": {
+        "x": 182.82666666666967,
+        "y": 0.215,
+        "z": -114.88666666666684,
+        "yaw": -1.5707963267948968
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 2
+      }
+    },
+    {
+      "index": 22,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 55.26666666666481,
+      "memory": {
+        "geometries": 591,
+        "textures": 131
+      },
+      "position": {
+        "x": 182.82666666666967,
+        "y": 0.215,
+        "z": -114.68666666666681,
+        "yaw": -1.2246467991473532e-16
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 23,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 61.2999999999978,
+      "memory": {
+        "geometries": 591,
+        "textures": 133
+      },
+      "position": {
+        "x": 182.82646248779042,
+        "y": 0.215,
+        "z": -117.60666656925096,
+        "yaw": -3.141592500698665
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 2
+      }
+    },
+    {
+      "index": 24,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 63.16666666666436,
+      "memory": {
+        "geometries": 591,
+        "textures": 133
+      },
+      "position": {
+        "x": 181.33312915445845,
+        "y": 0.215,
+        "z": -117.60666634093369,
+        "yaw": -1.5707961739037681
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 25,
+      "kind": "actual-11mesh-6texture-near-verification",
+      "simulationTime": 64.4166666666643,
+      "memory": {
+        "geometries": 591,
+        "textures": 133
+      },
+      "position": {
+        "x": 181.33312915445845,
+        "y": 0.215,
+        "z": -117.60666634093369,
+        "yaw": -1.5707961739037681
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 26,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 67.08333333333081,
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "position": {
+        "x": 182.7331290395364,
+        "y": 0.215,
+        "z": -117.60688281943793,
+        "yaw": 1.570796517903553
+      },
+      "memoryDelta": {
+        "geometries": 35,
+        "textures": 0
+      }
+    },
+    {
+      "index": 27,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 70.33333333333063,
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "position": {
+        "x": 182.73312953641425,
+        "y": 0.215,
+        "z": -115.00688281943752,
+        "yaw": 1.9110596115556169e-07
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 28,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 75.33333333333034,
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "position": {
+        "x": 199.93312953641268,
+        "y": 0.215,
+        "z": -115.00688610645959,
+        "yaw": 1.5707965179008578
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 29,
+      "kind": "physical-WASD-Z",
+      "simulationTime": 78.83333333333015,
+      "memory": {
+        "geometries": 626,
+        "textures": 133
+      },
+      "position": {
+        "x": 199.93313236478147,
+        "y": 0.215,
+        "z": -100.20688610645941,
+        "yaw": 1.9110596115556169e-07
+      },
+      "memoryDelta": {
+        "geometries": 0,
+        "textures": 0
+      }
+    },
+    {
+      "index": 30,
+      "kind": "real-E-street-exit",
+      "simulationTime": 78.83333333333015,
+      "memory": {
+        "geometries": 615,
+        "textures": 118
+      },
+      "position": {
+        "x": 200,
+        "y": 0.18,
+        "z": -94.9,
+        "yaw": 0
+      },
+      "memoryDelta": {
+        "geometries": -11,
+        "textures": -15
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "normal-cycle0-vice-near-pose.json:before",
+      "simulationTime": 12.733333333333546,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "residency": {
+        "loaded": 24,
+        "pending": 0,
+        "residentBytes": 2763022,
+        "residentMeshes": 437,
+        "residentInstances": 41394,
+        "requested": 37,
+        "unloaded": 13,
+        "disposedInstances": 22373,
+        "activeChunks": [
+          "3_4",
+          "4_1",
+          "4_2",
+          "4_3",
+          "4_4",
+          "4_5",
+          "5_0",
+          "5_1",
+          "5_2",
+          "5_3",
+          "5_4",
+          "5_5",
+          "6_0",
+          "6_1",
+          "6_2",
+          "6_3",
+          "6_4",
+          "6_5",
+          "7_0",
+          "7_1",
+          "7_2",
+          "7_3",
+          "7_4",
+          "7_5"
+        ]
+      },
+      "north": {
+        "ready": true,
+        "lastPrepareReady": true,
+        "loaded": 0,
+        "pending": 0,
+        "failed": 0,
+        "failedChunks": [],
+        "historicalFailedChunks": [],
+        "bytes": 0,
+        "residentBytes": 0,
+        "residentMeshes": 0,
+        "residentInstances": 0,
+        "requested": 0,
+        "unloaded": 0,
+        "disposedInstances": 0,
+        "activeChunks": [],
+        "targetChunks": [],
+        "maxResidentChunks": 7,
+        "loadRadius": 230,
+        "unloadRadius": 420
+      },
+      "assetJSONCounts": {
+        "kinds": {
+          "box": 176,
+          "detail-box": 159,
+          "cylinder": 54,
+          "leaf": 20,
+          "architecture": 27,
+          "tree-crown": 1
+        },
+        "instances": 41394,
+        "batches": 437,
+        "residentBytes": 2763022
+      },
+      "district": {
+        "residentFrontages": [],
+        "loads": 0,
+        "disposedMeshes": 0,
+        "drawCalls": 30,
+        "scannedMapsLoaded": 0
+      },
+      "interior": {
+        "buildingId": "south-086",
+        "residentFloors": [
+          "lobby",
+          "observation"
+        ],
+        "ownedSignTextures": 14,
+        "workshopPilot": {
+          "enabled": true,
+          "status": "ready",
+          "wanted": true,
+          "assetCount": 2,
+          "pending": false,
+          "releasedAssets": 0,
+          "fallbackVisible": false,
+          "bounds": [
+            {
+              "id": "bench_vice_01",
+              "min": [
+                180.16877265567263,
+                1.0894138837711236,
+                -114.6801245379448
+              ],
+              "max": [
+                180.56449435050558,
+                1.3745625650096913,
+                -114.47964216947557
+              ]
+            },
+            {
+              "id": "metal_tool_chest",
+              "min": [
+                180.14157521277667,
+                0.895,
+                -119.70321896698326
+              ],
+              "max": [
+                180.75842478722336,
+                1.4816520047187804,
+                -119.33678103301675
+              ]
+            }
+          ],
+          "resources": [
+            {
+              "assetId": "bench_vice_01",
+              "meshes": 4,
+              "triangles": 2864,
+              "skinnedMeshes": 4,
+              "geometries": 4,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            },
+            {
+              "assetId": "metal_tool_chest",
+              "meshes": 7,
+              "triangles": 13360,
+              "skinnedMeshes": 0,
+              "geometries": 7,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            }
+          ],
+          "boneTextureCount": 1,
+          "errors": [],
+          "placementPlan": {
+            "roomId": "south-086-lobby-0",
+            "placements": [
+              {
+                "id": "bench_vice_01",
+                "position": {
+                  "x": 180.35,
+                  "y": 1.175,
+                  "z": -114.58000000000001
+                },
+                "scale": 1,
+                "rotationY": 1.5707963267948966,
+                "purpose": "Existing repair bench vise, jaws and handle facing the room",
+                "ownerPartId": "south-086:lobby:267"
+              },
+              {
+                "id": "metal_tool_chest",
+                "position": {
+                  "x": 180.47406801301986,
+                  "y": 0.8942718607187271,
+                  "z": -119.52553873311729
+                },
+                "scale": 0.9,
+                "rotationY": 0,
+                "purpose": "Portable shared tool chest staged on the existing cargo crate for workshop repairs",
+                "ownerPartId": "south-086:lobby:285"
+              }
+            ],
+            "colliders": [
+              {
+                "id": "south-086:lobby:cc0-tool-chest",
+                "kind": "interior-workshop-asset",
+                "x": 180.45,
+                "z": -119.52000000000001,
+                "hx": 0.3084247872233391,
+                "hz": 0.18321896698325874,
+                "minY": 0.895,
+                "maxY": 1.4816520047187804,
+                "physics": true,
+                "camera": true
+              }
+            ],
+            "fallbackParts": [
+              {
+                "id": "south-086:lobby:275",
+                "material": "metal",
+                "x": 180.35,
+                "y": 1.2750000000000001,
+                "z": -114.58000000000001,
+                "sx": 0.28,
+                "sy": 0.2,
+                "sz": 0.24,
+                "kind": "bench-vice",
+                "geometry": "box",
+                "roomId": "south-086-lobby-0"
+              },
+              {
+                "id": "south-086:lobby:cc0-tool-chest:fallback",
+                "kind": "tool-chest-fallback",
+                "geometry": "box",
+                "material": "metal",
+                "roomId": "south-086-lobby-0",
+                "x": 180.45,
+                "y": 1.1883260023593902,
+                "z": -119.52000000000001,
+                "sx": 0.6168495744466782,
+                "sy": 0.5866520047187805,
+                "sz": 0.36643793396651747
+              }
+            ],
+            "replacePartIds": [
+              "south-086:lobby:275"
+            ],
+            "centre": {
+              "x": 180.39999999999998,
+              "y": 0.215,
+              "z": -117.05000000000001
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "normal-cycle0-vice-near-pose.json:after",
+      "simulationTime": 16.40000000000035,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "residency": {
+        "loaded": 24,
+        "pending": 0,
+        "residentBytes": 2763022,
+        "residentMeshes": 437,
+        "residentInstances": 41394,
+        "requested": 37,
+        "unloaded": 13,
+        "disposedInstances": 22373,
+        "activeChunks": [
+          "3_4",
+          "4_1",
+          "4_2",
+          "4_3",
+          "4_4",
+          "4_5",
+          "5_0",
+          "5_1",
+          "5_2",
+          "5_3",
+          "5_4",
+          "5_5",
+          "6_0",
+          "6_1",
+          "6_2",
+          "6_3",
+          "6_4",
+          "6_5",
+          "7_0",
+          "7_1",
+          "7_2",
+          "7_3",
+          "7_4",
+          "7_5"
+        ]
+      },
+      "north": {
+        "ready": true,
+        "lastPrepareReady": true,
+        "loaded": 0,
+        "pending": 0,
+        "failed": 0,
+        "failedChunks": [],
+        "historicalFailedChunks": [],
+        "bytes": 0,
+        "residentBytes": 0,
+        "residentMeshes": 0,
+        "residentInstances": 0,
+        "requested": 0,
+        "unloaded": 0,
+        "disposedInstances": 0,
+        "activeChunks": [],
+        "targetChunks": [],
+        "maxResidentChunks": 7,
+        "loadRadius": 230,
+        "unloadRadius": 420
+      },
+      "assetJSONCounts": {
+        "kinds": {
+          "box": 176,
+          "detail-box": 159,
+          "cylinder": 54,
+          "leaf": 20,
+          "architecture": 27,
+          "tree-crown": 1
+        },
+        "instances": 41394,
+        "batches": 437,
+        "residentBytes": 2763022
+      },
+      "district": {
+        "residentFrontages": [],
+        "loads": 0,
+        "disposedMeshes": 0,
+        "drawCalls": 30,
+        "scannedMapsLoaded": 0
+      },
+      "interior": {
+        "buildingId": "south-086",
+        "residentFloors": [
+          "lobby",
+          "observation"
+        ],
+        "ownedSignTextures": 14,
+        "workshopPilot": {
+          "enabled": true,
+          "status": "ready",
+          "wanted": true,
+          "assetCount": 2,
+          "pending": false,
+          "releasedAssets": 0,
+          "fallbackVisible": false,
+          "bounds": [
+            {
+              "id": "bench_vice_01",
+              "min": [
+                180.16877265567263,
+                1.0894138837711236,
+                -114.6801245379448
+              ],
+              "max": [
+                180.56449435050558,
+                1.3745625650096913,
+                -114.47964216947557
+              ]
+            },
+            {
+              "id": "metal_tool_chest",
+              "min": [
+                180.14157521277667,
+                0.895,
+                -119.70321896698326
+              ],
+              "max": [
+                180.75842478722336,
+                1.4816520047187804,
+                -119.33678103301675
+              ]
+            }
+          ],
+          "resources": [
+            {
+              "assetId": "bench_vice_01",
+              "meshes": 4,
+              "triangles": 2864,
+              "skinnedMeshes": 4,
+              "geometries": 4,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            },
+            {
+              "assetId": "metal_tool_chest",
+              "meshes": 7,
+              "triangles": 13360,
+              "skinnedMeshes": 0,
+              "geometries": 7,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            }
+          ],
+          "boneTextureCount": 1,
+          "errors": [],
+          "placementPlan": {
+            "roomId": "south-086-lobby-0",
+            "placements": [
+              {
+                "id": "bench_vice_01",
+                "position": {
+                  "x": 180.35,
+                  "y": 1.175,
+                  "z": -114.58000000000001
+                },
+                "scale": 1,
+                "rotationY": 1.5707963267948966,
+                "purpose": "Existing repair bench vise, jaws and handle facing the room",
+                "ownerPartId": "south-086:lobby:267"
+              },
+              {
+                "id": "metal_tool_chest",
+                "position": {
+                  "x": 180.47406801301986,
+                  "y": 0.8942718607187271,
+                  "z": -119.52553873311729
+                },
+                "scale": 0.9,
+                "rotationY": 0,
+                "purpose": "Portable shared tool chest staged on the existing cargo crate for workshop repairs",
+                "ownerPartId": "south-086:lobby:285"
+              }
+            ],
+            "colliders": [
+              {
+                "id": "south-086:lobby:cc0-tool-chest",
+                "kind": "interior-workshop-asset",
+                "x": 180.45,
+                "z": -119.52000000000001,
+                "hx": 0.3084247872233391,
+                "hz": 0.18321896698325874,
+                "minY": 0.895,
+                "maxY": 1.4816520047187804,
+                "physics": true,
+                "camera": true
+              }
+            ],
+            "fallbackParts": [
+              {
+                "id": "south-086:lobby:275",
+                "material": "metal",
+                "x": 180.35,
+                "y": 1.2750000000000001,
+                "z": -114.58000000000001,
+                "sx": 0.28,
+                "sy": 0.2,
+                "sz": 0.24,
+                "kind": "bench-vice",
+                "geometry": "box",
+                "roomId": "south-086-lobby-0"
+              },
+              {
+                "id": "south-086:lobby:cc0-tool-chest:fallback",
+                "kind": "tool-chest-fallback",
+                "geometry": "box",
+                "material": "metal",
+                "roomId": "south-086-lobby-0",
+                "x": 180.45,
+                "y": 1.1883260023593902,
+                "z": -119.52000000000001,
+                "sx": 0.6168495744466782,
+                "sy": 0.5866520047187805,
+                "sz": 0.36643793396651747
+              }
+            ],
+            "replacePartIds": [
+              "south-086:lobby:275"
+            ],
+            "centre": {
+              "x": 180.39999999999998,
+              "y": 0.215,
+              "z": -117.05000000000001
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "normal-cycle0-chest-near-pose.json:before",
+      "simulationTime": 24.866666666666536,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "residency": {
+        "loaded": 24,
+        "pending": 0,
+        "residentBytes": 2763022,
+        "residentMeshes": 437,
+        "residentInstances": 41394,
+        "requested": 37,
+        "unloaded": 13,
+        "disposedInstances": 22373,
+        "activeChunks": [
+          "3_4",
+          "4_1",
+          "4_2",
+          "4_3",
+          "4_4",
+          "4_5",
+          "5_0",
+          "5_1",
+          "5_2",
+          "5_3",
+          "5_4",
+          "5_5",
+          "6_0",
+          "6_1",
+          "6_2",
+          "6_3",
+          "6_4",
+          "6_5",
+          "7_0",
+          "7_1",
+          "7_2",
+          "7_3",
+          "7_4",
+          "7_5"
+        ]
+      },
+      "north": {
+        "ready": true,
+        "lastPrepareReady": true,
+        "loaded": 0,
+        "pending": 0,
+        "failed": 0,
+        "failedChunks": [],
+        "historicalFailedChunks": [],
+        "bytes": 0,
+        "residentBytes": 0,
+        "residentMeshes": 0,
+        "residentInstances": 0,
+        "requested": 0,
+        "unloaded": 0,
+        "disposedInstances": 0,
+        "activeChunks": [],
+        "targetChunks": [],
+        "maxResidentChunks": 7,
+        "loadRadius": 230,
+        "unloadRadius": 420
+      },
+      "assetJSONCounts": {
+        "kinds": {
+          "box": 176,
+          "detail-box": 159,
+          "cylinder": 54,
+          "leaf": 20,
+          "architecture": 27,
+          "tree-crown": 1
+        },
+        "instances": 41394,
+        "batches": 437,
+        "residentBytes": 2763022
+      },
+      "district": {
+        "residentFrontages": [],
+        "loads": 0,
+        "disposedMeshes": 0,
+        "drawCalls": 30,
+        "scannedMapsLoaded": 0
+      },
+      "interior": {
+        "buildingId": "south-086",
+        "residentFloors": [
+          "lobby",
+          "observation"
+        ],
+        "ownedSignTextures": 14,
+        "workshopPilot": {
+          "enabled": true,
+          "status": "ready",
+          "wanted": true,
+          "assetCount": 2,
+          "pending": false,
+          "releasedAssets": 0,
+          "fallbackVisible": false,
+          "bounds": [
+            {
+              "id": "bench_vice_01",
+              "min": [
+                180.16877265567263,
+                1.0894138837711236,
+                -114.6801245379448
+              ],
+              "max": [
+                180.56449435050558,
+                1.3745625650096913,
+                -114.47964216947557
+              ]
+            },
+            {
+              "id": "metal_tool_chest",
+              "min": [
+                180.14157521277667,
+                0.895,
+                -119.70321896698326
+              ],
+              "max": [
+                180.75842478722336,
+                1.4816520047187804,
+                -119.33678103301675
+              ]
+            }
+          ],
+          "resources": [
+            {
+              "assetId": "bench_vice_01",
+              "meshes": 4,
+              "triangles": 2864,
+              "skinnedMeshes": 4,
+              "geometries": 4,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            },
+            {
+              "assetId": "metal_tool_chest",
+              "meshes": 7,
+              "triangles": 13360,
+              "skinnedMeshes": 0,
+              "geometries": 7,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            }
+          ],
+          "boneTextureCount": 1,
+          "errors": [],
+          "placementPlan": {
+            "roomId": "south-086-lobby-0",
+            "placements": [
+              {
+                "id": "bench_vice_01",
+                "position": {
+                  "x": 180.35,
+                  "y": 1.175,
+                  "z": -114.58000000000001
+                },
+                "scale": 1,
+                "rotationY": 1.5707963267948966,
+                "purpose": "Existing repair bench vise, jaws and handle facing the room",
+                "ownerPartId": "south-086:lobby:267"
+              },
+              {
+                "id": "metal_tool_chest",
+                "position": {
+                  "x": 180.47406801301986,
+                  "y": 0.8942718607187271,
+                  "z": -119.52553873311729
+                },
+                "scale": 0.9,
+                "rotationY": 0,
+                "purpose": "Portable shared tool chest staged on the existing cargo crate for workshop repairs",
+                "ownerPartId": "south-086:lobby:285"
+              }
+            ],
+            "colliders": [
+              {
+                "id": "south-086:lobby:cc0-tool-chest",
+                "kind": "interior-workshop-asset",
+                "x": 180.45,
+                "z": -119.52000000000001,
+                "hx": 0.3084247872233391,
+                "hz": 0.18321896698325874,
+                "minY": 0.895,
+                "maxY": 1.4816520047187804,
+                "physics": true,
+                "camera": true
+              }
+            ],
+            "fallbackParts": [
+              {
+                "id": "south-086:lobby:275",
+                "material": "metal",
+                "x": 180.35,
+                "y": 1.2750000000000001,
+                "z": -114.58000000000001,
+                "sx": 0.28,
+                "sy": 0.2,
+                "sz": 0.24,
+                "kind": "bench-vice",
+                "geometry": "box",
+                "roomId": "south-086-lobby-0"
+              },
+              {
+                "id": "south-086:lobby:cc0-tool-chest:fallback",
+                "kind": "tool-chest-fallback",
+                "geometry": "box",
+                "material": "metal",
+                "roomId": "south-086-lobby-0",
+                "x": 180.45,
+                "y": 1.1883260023593902,
+                "z": -119.52000000000001,
+                "sx": 0.6168495744466782,
+                "sy": 0.5866520047187805,
+                "sz": 0.36643793396651747
+              }
+            ],
+            "replacePartIds": [
+              "south-086:lobby:275"
+            ],
+            "centre": {
+              "x": 180.39999999999998,
+              "y": 0.215,
+              "z": -117.05000000000001
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "normal-cycle0-chest-near-pose.json:after",
+      "simulationTime": 28.499999999999662,
+      "memory": {
+        "geometries": 498,
+        "textures": 115
+      },
+      "residency": {
+        "loaded": 24,
+        "pending": 0,
+        "residentBytes": 2763022,
+        "residentMeshes": 437,
+        "residentInstances": 41394,
+        "requested": 37,
+        "unloaded": 13,
+        "disposedInstances": 22373,
+        "activeChunks": [
+          "3_4",
+          "4_1",
+          "4_2",
+          "4_3",
+          "4_4",
+          "4_5",
+          "5_0",
+          "5_1",
+          "5_2",
+          "5_3",
+          "5_4",
+          "5_5",
+          "6_0",
+          "6_1",
+          "6_2",
+          "6_3",
+          "6_4",
+          "6_5",
+          "7_0",
+          "7_1",
+          "7_2",
+          "7_3",
+          "7_4",
+          "7_5"
+        ]
+      },
+      "north": {
+        "ready": true,
+        "lastPrepareReady": true,
+        "loaded": 0,
+        "pending": 0,
+        "failed": 0,
+        "failedChunks": [],
+        "historicalFailedChunks": [],
+        "bytes": 0,
+        "residentBytes": 0,
+        "residentMeshes": 0,
+        "residentInstances": 0,
+        "requested": 0,
+        "unloaded": 0,
+        "disposedInstances": 0,
+        "activeChunks": [],
+        "targetChunks": [],
+        "maxResidentChunks": 7,
+        "loadRadius": 230,
+        "unloadRadius": 420
+      },
+      "assetJSONCounts": {
+        "kinds": {
+          "box": 176,
+          "detail-box": 159,
+          "cylinder": 54,
+          "leaf": 20,
+          "architecture": 27,
+          "tree-crown": 1
+        },
+        "instances": 41394,
+        "batches": 437,
+        "residentBytes": 2763022
+      },
+      "district": {
+        "residentFrontages": [],
+        "loads": 0,
+        "disposedMeshes": 0,
+        "drawCalls": 30,
+        "scannedMapsLoaded": 0
+      },
+      "interior": {
+        "buildingId": "south-086",
+        "residentFloors": [
+          "lobby",
+          "observation"
+        ],
+        "ownedSignTextures": 14,
+        "workshopPilot": {
+          "enabled": true,
+          "status": "ready",
+          "wanted": true,
+          "assetCount": 2,
+          "pending": false,
+          "releasedAssets": 0,
+          "fallbackVisible": false,
+          "bounds": [
+            {
+              "id": "bench_vice_01",
+              "min": [
+                180.16877265567263,
+                1.0894138837711236,
+                -114.6801245379448
+              ],
+              "max": [
+                180.56449435050558,
+                1.3745625650096913,
+                -114.47964216947557
+              ]
+            },
+            {
+              "id": "metal_tool_chest",
+              "min": [
+                180.14157521277667,
+                0.895,
+                -119.70321896698326
+              ],
+              "max": [
+                180.75842478722336,
+                1.4816520047187804,
+                -119.33678103301675
+              ]
+            }
+          ],
+          "resources": [
+            {
+              "assetId": "bench_vice_01",
+              "meshes": 4,
+              "triangles": 2864,
+              "skinnedMeshes": 4,
+              "geometries": 4,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            },
+            {
+              "assetId": "metal_tool_chest",
+              "meshes": 7,
+              "triangles": 13360,
+              "skinnedMeshes": 0,
+              "geometries": 7,
+              "materials": 1,
+              "textures": 3,
+              "decodedTextures": 3,
+              "images": [
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": "srgb"
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                },
+                {
+                  "width": 1024,
+                  "height": 1024,
+                  "decoderObject": "ImageBitmap",
+                  "closable": true,
+                  "decoded": true,
+                  "colourSpace": ""
+                }
+              ]
+            }
+          ],
+          "boneTextureCount": 1,
+          "errors": [],
+          "placementPlan": {
+            "roomId": "south-086-lobby-0",
+            "placements": [
+              {
+                "id": "bench_vice_01",
+                "position": {
+                  "x": 180.35,
+                  "y": 1.175,
+                  "z": -114.58000000000001
+                },
+                "scale": 1,
+                "rotationY": 1.5707963267948966,
+                "purpose": "Existing repair bench vise, jaws and handle facing the room",
+                "ownerPartId": "south-086:lobby:267"
+              },
+              {
+                "id": "metal_tool_chest",
+                "position": {
+                  "x": 180.47406801301986,
+                  "y": 0.8942718607187271,
+                  "z": -119.52553873311729
+                },
+                "scale": 0.9,
+                "rotationY": 0,
+                "purpose": "Portable shared tool chest staged on the existing cargo crate for workshop repairs",
+                "ownerPartId": "south-086:lobby:285"
+              }
+            ],
+            "colliders": [
+              {
+                "id": "south-086:lobby:cc0-tool-chest",
+                "kind": "interior-workshop-asset",
+                "x": 180.45,
+                "z": -119.52000000000001,
+                "hx": 0.3084247872233391,
+                "hz": 0.18321896698325874,
+                "minY": 0.895,
+                "maxY": 1.4816520047187804,
+                "physics": true,
+                "camera": true
+              }
+            ],
+            "fallbackParts": [
+              {
+                "id": "south-086:lobby:275",
+                "material": "metal",
+                "x": 180.35,
+                "y": 1.2750000000000001,
+                "z": -114.58000000000001,
+                "sx": 0.28,
+                "sy": 0.2,
+                "sz": 0.24,
+                "kind": "bench-vice",
+                "geometry": "box",
+                "roomId": "south-086-lobby-0"
+              },
+              {
+                "id": "south-086:lobby:cc0-tool-chest:fallback",
+                "kind": "tool-chest-fallback",
+                "geometry": "box",
+                "material": "metal",
+                "roomId": "south-086-lobby-0",
+                "x": 180.45,
+                "y": 1.1883260023593902,
+                "z": -119.52000000000001,
+                "sx": 0.6168495744466782,
+                "sy": 0.5866520047187805,
+                "sz": 0.36643793396651747
+              }
+            ],
+            "replacePartIds": [
+              "south-086:lobby:275"
+            ],
+            "centre": {
+              "x": 180.39999999999998,
+              "y": 0.215,
+              "z": -117.05000000000001
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "failureSnapshot",
+      "simulationTime": 79.33333333333012,
+      "memory": {
+        "geometries": 615,
+        "textures": 118
+      },
+      "residency": {
+        "loaded": 24,
+        "pending": 0,
+        "residentBytes": 2763022,
+        "residentMeshes": 437,
+        "residentInstances": 41394,
+        "requested": 37,
+        "unloaded": 13,
+        "disposedInstances": 22373,
+        "activeChunks": [
+          "3_4",
+          "4_1",
+          "4_2",
+          "4_3",
+          "4_4",
+          "4_5",
+          "5_0",
+          "5_1",
+          "5_2",
+          "5_3",
+          "5_4",
+          "5_5",
+          "6_0",
+          "6_1",
+          "6_2",
+          "6_3",
+          "6_4",
+          "6_5",
+          "7_0",
+          "7_1",
+          "7_2",
+          "7_3",
+          "7_4",
+          "7_5"
+        ]
+      },
+      "north": {
+        "ready": true,
+        "lastPrepareReady": true,
+        "loaded": 0,
+        "pending": 0,
+        "failed": 0,
+        "failedChunks": [],
+        "historicalFailedChunks": [],
+        "bytes": 0,
+        "residentBytes": 0,
+        "residentMeshes": 0,
+        "residentInstances": 0,
+        "requested": 0,
+        "unloaded": 0,
+        "disposedInstances": 0,
+        "activeChunks": [],
+        "targetChunks": [],
+        "maxResidentChunks": 7,
+        "loadRadius": 230,
+        "unloadRadius": 420
+      },
+      "assetJSONCounts": {
+        "kinds": {
+          "box": 176,
+          "detail-box": 159,
+          "cylinder": 54,
+          "leaf": 20,
+          "architecture": 27,
+          "tree-crown": 1
+        },
+        "instances": 41394,
+        "batches": 437,
+        "residentBytes": 2763022
+      },
+      "district": {
+        "residentFrontages": [],
+        "loads": 0,
+        "disposedMeshes": 0,
+        "drawCalls": 30,
+        "scannedMapsLoaded": 0
+      },
+      "interior": {
+        "buildingId": null,
+        "residentFloors": [],
+        "ownedSignTextures": 0,
+        "workshopPilot": null
+      }
+    }
+  ],
+  "residencyIdenticalAcrossRecordedSnapshots": true,
+  "districtResidentAndLoadCountsIdentical": true,
+  "nativeAssetReleaseEvents": [
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 1,
+      "assetId": "bench_vice_01",
+      "resourceRelease": {
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 1,
+        "closedImages": 3
+      },
+      "sequence": 5
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "assetId": "metal_tool_chest",
+      "resourceRelease": {
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 0,
+        "closedImages": 3
+      },
+      "sequence": 6
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 1,
+      "assetId": "bench_vice_01",
+      "resourceRelease": {
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 1,
+        "closedImages": 3
+      },
+      "sequence": 13
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "assetId": "metal_tool_chest",
+      "resourceRelease": {
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 0,
+        "closedImages": 3
+      },
+      "sequence": 14
+    }
+  ],
+  "sourceBindings": {
+    "src/city-streaming.js": {
+      "actual": "f4d6e7df86781280a24363c9de451abdc7d1dd47b4e753645c4ff2ad876609c3",
+      "frozen": "f4d6e7df86781280a24363c9de451abdc7d1dd47b4e753645c4ff2ad876609c3",
+      "matches": true
+    },
+    "src/world.js": {
+      "actual": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6",
+      "frozen": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6",
+      "matches": true
+    },
+    "src/metropolis-world.js": {
+      "actual": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+      "frozen": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+      "matches": true
+    },
+    "src/metropolis-interiors.js": {
+      "actual": "290af1e550e027c6d73ff7bab33beeef5c7ee71a8940c0bf233b1554bd96f2e3",
+      "frozen": "290af1e550e027c6d73ff7bab33beeef5c7ee71a8940c0bf233b1554bd96f2e3",
+      "matches": true
+    },
+    "src/harbor-room-dressing.js": {
+      "actual": "6cb3e40ca9f51cae1860aaaa819c174852e2d1798510bab71b32c3b3b67cf85b",
+      "frozen": "6cb3e40ca9f51cae1860aaaa819c174852e2d1798510bab71b32c3b3b67cf85b",
+      "matches": true
+    },
+    "src/harbor-district.js": {
+      "actual": "0514988698c38f70928002bebd110438fa764ca44f35ef557315d0cba5452a9b",
+      "frozen": "0514988698c38f70928002bebd110438fa764ca44f35ef557315d0cba5452a9b",
+      "matches": true
+    },
+    "src/city-exploration.js": {
+      "actual": "e92f51b7bed5630c8b5b65419363e37cde8235f246aae25ce9f7696fd67a8c9c",
+      "frozen": "e92f51b7bed5630c8b5b65419363e37cde8235f246aae25ce9f7696fd67a8c9c",
+      "matches": true
+    },
+    "tools/capture-workshop-pilot.mjs": {
+      "actual": "8be52d410558e25da2016ce7d83fd669b2647ed27e1904c1a22e3404d62516a9",
+      "frozen": "8be52d410558e25da2016ce7d83fd669b2647ed27e1904c1a22e3404d62516a9",
+      "matches": true
+    }
+  },
+  "inputs": {
+    "/workspace/scratch/neon-harbor-art-pilot/docs/qa/art-pilot/native-validation-2026-10-04/metadata.json": {
+      "bytes": 2419123,
+      "sha256": "921a551fefe70a872cc9ca53a520f2c41a85023fa932a8d5d1f99c23ed3b43ae"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/docs/qa/art-pilot/native-validation-2026-10-04/normal-cycle0-vice-near-pose.json": {
+      "bytes": 3396804,
+      "sha256": "52727616a696c6c2f05e3c235045026fca68f3a0c39a18adc28ae6ceb83117c9"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/docs/qa/art-pilot/native-validation-2026-10-04/normal-cycle0-chest-near-pose.json": {
+      "bytes": 3417058,
+      "sha256": "8f0d48bfcc95b5679110a5ba82da1ddc8de74b59fd2e5fb910d25e8c76a6f54a"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/docs/qa/art-pilot/native-validation-2026-10-04/build-info.json": {
+      "bytes": 16323,
+      "sha256": "8f9186c1a3da3ebf1b3cc25db9adcaa66945871a06565bbd4e4cbfbcf8859204"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/city-streaming.js": {
+      "bytes": 9416,
+      "sha256": "f4d6e7df86781280a24363c9de451abdc7d1dd47b4e753645c4ff2ad876609c3"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/world.js": {
+      "bytes": 51197,
+      "sha256": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/metropolis-world.js": {
+      "bytes": 55617,
+      "sha256": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/metropolis-interiors.js": {
+      "bytes": 108560,
+      "sha256": "290af1e550e027c6d73ff7bab33beeef5c7ee71a8940c0bf233b1554bd96f2e3"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/harbor-room-dressing.js": {
+      "bytes": 10752,
+      "sha256": "6cb3e40ca9f51cae1860aaaa819c174852e2d1798510bab71b32c3b3b67cf85b"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/harbor-district.js": {
+      "bytes": 26222,
+      "sha256": "0514988698c38f70928002bebd110438fa764ca44f35ef557315d0cba5452a9b"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/src/city-exploration.js": {
+      "bytes": 22049,
+      "sha256": "e92f51b7bed5630c8b5b65419363e37cde8235f246aae25ce9f7696fd67a8c9c"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/tools/capture-workshop-pilot.mjs": {
+      "bytes": 30634,
+      "sha256": "8be52d410558e25da2016ce7d83fd669b2647ed27e1904c1a22e3404d62516a9"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/3_4.json": {
+      "bytes": 189761,
+      "sha256": "a29ad6842766896e21c667facadef5ebcbdab08d9b7813443841b6362df13e83"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/4_1.json": {
+      "bytes": 338755,
+      "sha256": "319cf5fc591969e7bd0f71355ee41686650ccce431eab3f1b044051c9c5998b0"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/4_2.json": {
+      "bytes": 255887,
+      "sha256": "78d675340ebb9421a046280ae4176eb9d27f460483d3a1405a8d9788ebd683f5"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/4_3.json": {
+      "bytes": 290964,
+      "sha256": "d998e7f036526ceac3f1db45390ab44cb7724e47092f411930eb42748fd08a7f"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/4_4.json": {
+      "bytes": 4251,
+      "sha256": "2402657555d59ab7f38c35ab9c683c8b0b593b41df1805cd9a73e2499a397b53"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/4_5.json": {
+      "bytes": 211293,
+      "sha256": "4af877f8dc0ad1d3ad905fa08c455f20a2879a066ebb8b7bc1e1c26e0907596f"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/5_0.json": {
+      "bytes": 1559,
+      "sha256": "8bdde7c7295da72600caaacf8eb6c1cc4df58f0c3f9bfabb12fd307d8433e6ce"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/5_1.json": {
+      "bytes": 256460,
+      "sha256": "c99a0f0e4a27195ba4da160cb5a75be1f805a2b2dfe83c43213e68f219c7dd0e"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/5_2.json": {
+      "bytes": 5323,
+      "sha256": "c4ae1d629e25725e651fb95e4f86126557e027ff9ad36ac2c34bcfac98cc6dc1"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/5_3.json": {
+      "bytes": 237674,
+      "sha256": "021cf8cd9f6c35c49ff4726a7bf591b2a01448f8070995c87e6a400af2adb884"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/5_4.json": {
+      "bytes": 262063,
+      "sha256": "86823542d32a59b7c988c187ac231ca7ed9de8516321915affe4d48569c0b5cc"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/5_5.json": {
+      "bytes": 270390,
+      "sha256": "6f552737ba5e7bf9928cf797d51453e808ecaf34e40666ea070425773616ae29"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/6_0.json": {
+      "bytes": 853,
+      "sha256": "e258674a926dde5202765ccc988b9627015a35d1de60f1e891fb0c6d64ad754d"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/6_1.json": {
+      "bytes": 60432,
+      "sha256": "a236d352d1c9144044aa3449f2e51439c04f6e99e92d3bfbd315f4a3d9639d35"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/6_2.json": {
+      "bytes": 41195,
+      "sha256": "cc73785300c0f712fff06052743ec6557f61c11287b7bfc14ebb696b63da4514"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/6_3.json": {
+      "bytes": 59717,
+      "sha256": "256d86a5f459a60d8d82ee728be2bfb636c548f7ab9c2392dab025f1c96886df"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/6_4.json": {
+      "bytes": 40173,
+      "sha256": "b24b797a3452d16b55d169cf95e003f7e889d597bdba69f0b436a177b3e53905"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/6_5.json": {
+      "bytes": 218485,
+      "sha256": "a21dce1c4ec132cbfe11f486ee7645636b5c8aacbc99f9a4e4e400f1cf726f12"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/7_0.json": {
+      "bytes": 2889,
+      "sha256": "651bd1728f70015d221a688fbfec41eeca13ce54e96a45c8dcbedbb0403dab1f"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/7_1.json": {
+      "bytes": 3164,
+      "sha256": "0a022144701b50ee1cd9d13e9005fc428a859e41daeea1255520c8467cde6616"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/7_2.json": {
+      "bytes": 3059,
+      "sha256": "4489a062b1931d0e3b16ec178f6ce97df1c221e1ce056b9029bb257225f08260"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/7_3.json": {
+      "bytes": 2434,
+      "sha256": "4c0ae862386cc583f54e867c11f2a9fdeb519a5f733bd2d3156403515959edab"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/7_4.json": {
+      "bytes": 3090,
+      "sha256": "229cf17f217b5504eac1678f4edb07ca478fbb848e12554a9890a5d3ba8f6ea8"
+    },
+    "/workspace/scratch/neon-harbor-art-pilot/assets/city/chunks/7_5.json": {
+      "bytes": 3151,
+      "sha256": "3a6c5b4ed9391ca58a348120843b674ca51920609c812176027a3f879188997b"
+    }
+  }
+}

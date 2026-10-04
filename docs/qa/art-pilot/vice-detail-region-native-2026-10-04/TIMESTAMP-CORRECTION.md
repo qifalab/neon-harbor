@@ -1,0 +1,1 @@
+README中metadata开始20:53:51.563Z为文档抄写误差。原metadata及result-timeline保存的实际开始是20:53:51.797Z，playableCompletedAt21:01:08.919Z，finalizationCompletedAt21:01:18.967Z；精确metadata case持续447.170秒。Popen wrapper实际wait后保存endedAtUtc21:01:19Z，该字段只有整秒精度；从其startedAtUtc20:53:51Z计算的7分28秒是整秒收据差，不声称更精确wait时刻。独立closure21:01:29Z仍准确。原运行数据无修改；185项初次ledger和各文件精确保留，追加本更正以避免用错误文档时间，最终ledger重新索引追加项。

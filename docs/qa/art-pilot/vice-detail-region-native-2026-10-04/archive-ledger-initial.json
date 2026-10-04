@@ -1,0 +1,933 @@
+{
+  "status": "COLLECTOR_CLEANUP_FAIL_FINITE_VISUAL_EXIT_RELEASE_EVIDENCE",
+  "sealedAtUtc": "2026-10-04T21:03:19.411810+00:00",
+  "nativeExitCode": 1,
+  "gpuReleased": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3719,
+      "sha256": "d4a049702684f076c1aba4d58ae0f2ed365c8199633520d1a12697199c86dde5"
+    },
+    {
+      "path": "build-info.json",
+      "bytes": 16323,
+      "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+    },
+    {
+      "path": "close-native-archive.py",
+      "bytes": 5929,
+      "sha256": "a29691ef616bae40da8ac48debdf73fc582514829c11dd214c2dccb94d045fe3"
+    },
+    {
+      "path": "closure-process-check.json",
+      "bytes": 233,
+      "sha256": "e605646fa19ff04da5a4e58de176f0987fb95fabbb60951bb6496c1ed06b1f64"
+    },
+    {
+      "path": "copy-provenance.json",
+      "bytes": 43454,
+      "sha256": "abf33bf0271260c4ff2b53d6ecfdc18d2a1c5911c0f8b423f1e2ef5da565944a"
+    },
+    {
+      "path": "freeze-verification.json",
+      "bytes": 281,
+      "sha256": "d0da3d1c3e8b253b1aa2bb9a564a63f600c5b9697ee9f5081212ba35796d7511"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/0_0.json",
+      "bytes": 884,
+      "sha256": "652d015e2d037a5ad801ac6775bff3bbbefa724abbb7c63f1475d01a5dcaa48e"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/0_7.json",
+      "bytes": 864,
+      "sha256": "57322819734745cea51d8cf55f4631564fa827662c95a09f10d160e1c368e9e0"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_0.json",
+      "bytes": 1581,
+      "sha256": "0f776636fd6c4fe81cc194ec67dc5e76492e277041d82a069c3d84afe3c21dc1"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_1.json",
+      "bytes": 267075,
+      "sha256": "4e1c8efa3a1a4db6c868a48d2f6c91a842a236983afb2394b6f29340a772207f"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_2.json",
+      "bytes": 270745,
+      "sha256": "7f8462686dbe0086e28cfc0eac6fe76403e9787579bb83820766b48f0486a035"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_3.json",
+      "bytes": 152785,
+      "sha256": "22c03d004955a448273a55a422f2930379c079e07db973bf8ca7cc6ea9fbb28d"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_4.json",
+      "bytes": 181844,
+      "sha256": "2f66db93f700817d60a5fc05b95ecce1cd57555a2ce1e94cdbc04e7b8367e316"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_5.json",
+      "bytes": 224254,
+      "sha256": "8d2f341daf1f3fae7758eb3c2ed4b5cdb4b881ee339663b703213c8fd18ec912"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_6.json",
+      "bytes": 262870,
+      "sha256": "460872f6620dad480f3df77aef28bfa5f2b4ee48a31eca1331517b410afd2fa7"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/1_7.json",
+      "bytes": 1568,
+      "sha256": "b854749371e150b1f89d71f119ee2f5dd397c07fa60499550109646138a0baf4"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_0.json",
+      "bytes": 863,
+      "sha256": "fc70e74178bc63dca60af776632d8ebb523515bc14a2960b14e19e30ed57ef58"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_1.json",
+      "bytes": 222525,
+      "sha256": "8b9fe1e354bd9f72c067821b31ac54f614a8a13fa94ec6b5b5e3cf163ba7f56c"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_2.json",
+      "bytes": 236489,
+      "sha256": "2b71b8f4967923cd0148498427d13f5c21c865e3e77e953e87b6efa203ac6b35"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_3.json",
+      "bytes": 208022,
+      "sha256": "bcf0f267b82a435a3b2715cf127af1d2d8f0d57bcbcc3759060a4cae8b9e1e44"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_4.json",
+      "bytes": 247219,
+      "sha256": "81e1c8af1bf33d45644ee615b0db473aec24a3bb635a6ca373c888ec66a4abbf"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_5.json",
+      "bytes": 243925,
+      "sha256": "8280d3541042e04f78d5f1aef30e083a80fd102f1edb1735ee07fbaf702c093b"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_6.json",
+      "bytes": 211715,
+      "sha256": "3f603997a615dbadaf6ffb1f25bc507b227664624e651084c63015755e2fb692"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/2_7.json",
+      "bytes": 875,
+      "sha256": "f777d5dc620ba826f89af489c00cc8ceb9d055993007ad1074e1d137af5b764c"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_0.json",
+      "bytes": 1559,
+      "sha256": "0fb707ca8b0e4e461fe28591e690fc6e87e4e8c31c56ebdd6008b8f56c38c113"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_1.json",
+      "bytes": 206305,
+      "sha256": "b2101407558bf817f477087864e1b4e4697095ca1d1123afe6041a846b3b3add"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_2.json",
+      "bytes": 256289,
+      "sha256": "2137e9ad1b59795a96da33971486c40b788ec2e1359c72a02239b111f6c106ce"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_3.json",
+      "bytes": 264515,
+      "sha256": "f9b82e9cc355ab604f570f251e6c1f003ec31bd7bdf280a9a485a62d2fb9a2df"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_4.json",
+      "bytes": 189761,
+      "sha256": "a29ad6842766896e21c667facadef5ebcbdab08d9b7813443841b6362df13e83"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_5.json",
+      "bytes": 5390,
+      "sha256": "c229b7ab2e23d3220c8bccd57dd77a13c5a8a3c28f577f2a3fe24ecd80f94289"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_6.json",
+      "bytes": 186102,
+      "sha256": "27bdeebf40427dfc013a7261015e7e8bbbedc58e8d9c869231b3aaa3921b9112"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/3_7.json",
+      "bytes": 1536,
+      "sha256": "2bfd63125fc927259bcc0d16ddc9f21abc7dc65d3542a77971140f7efd443511"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_0.json",
+      "bytes": 853,
+      "sha256": "fb50e9f20463cef9a208ca67a76302a9fc7d01750e8491b5b8b0e7f35673ef48"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_1.json",
+      "bytes": 338755,
+      "sha256": "319cf5fc591969e7bd0f71355ee41686650ccce431eab3f1b044051c9c5998b0"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_2.json",
+      "bytes": 255887,
+      "sha256": "78d675340ebb9421a046280ae4176eb9d27f460483d3a1405a8d9788ebd683f5"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_3.json",
+      "bytes": 290964,
+      "sha256": "d998e7f036526ceac3f1db45390ab44cb7724e47092f411930eb42748fd08a7f"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_4.json",
+      "bytes": 4251,
+      "sha256": "2402657555d59ab7f38c35ab9c683c8b0b593b41df1805cd9a73e2499a397b53"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_5.json",
+      "bytes": 211293,
+      "sha256": "4af877f8dc0ad1d3ad905fa08c455f20a2879a066ebb8b7bc1e1c26e0907596f"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_6.json",
+      "bytes": 209279,
+      "sha256": "e8fbb9a1dfcc2e76d0bc4b10697f4feb628b1d6bd7da6d23dbc04385a5826712"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/4_7.json",
+      "bytes": 853,
+      "sha256": "4ac5f4fd1a8880487adf80f575c4074fb2a13639caa4e9e7b3b17da32ace8fb8"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_0.json",
+      "bytes": 1559,
+      "sha256": "8bdde7c7295da72600caaacf8eb6c1cc4df58f0c3f9bfabb12fd307d8433e6ce"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_1.json",
+      "bytes": 256460,
+      "sha256": "c99a0f0e4a27195ba4da160cb5a75be1f805a2b2dfe83c43213e68f219c7dd0e"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_2.json",
+      "bytes": 5323,
+      "sha256": "c4ae1d629e25725e651fb95e4f86126557e027ff9ad36ac2c34bcfac98cc6dc1"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_3.json",
+      "bytes": 237674,
+      "sha256": "021cf8cd9f6c35c49ff4726a7bf591b2a01448f8070995c87e6a400af2adb884"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_4.json",
+      "bytes": 262063,
+      "sha256": "86823542d32a59b7c988c187ac231ca7ed9de8516321915affe4d48569c0b5cc"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_5.json",
+      "bytes": 270390,
+      "sha256": "6f552737ba5e7bf9928cf797d51453e808ecaf34e40666ea070425773616ae29"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_6.json",
+      "bytes": 229643,
+      "sha256": "41216d1405f31db3a53cbb37712e87707e2568ad1f1411e644c8dff341a05c24"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/5_7.json",
+      "bytes": 1558,
+      "sha256": "6a4761f1e2c18c662cc94f1e2119e089d6a5e35b8c00ed26023f88dda8bdd3b4"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_0.json",
+      "bytes": 853,
+      "sha256": "e258674a926dde5202765ccc988b9627015a35d1de60f1e891fb0c6d64ad754d"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_1.json",
+      "bytes": 60432,
+      "sha256": "a236d352d1c9144044aa3449f2e51439c04f6e99e92d3bfbd315f4a3d9639d35"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_2.json",
+      "bytes": 41195,
+      "sha256": "cc73785300c0f712fff06052743ec6557f61c11287b7bfc14ebb696b63da4514"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_3.json",
+      "bytes": 59717,
+      "sha256": "256d86a5f459a60d8d82ee728be2bfb636c548f7ab9c2392dab025f1c96886df"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_4.json",
+      "bytes": 40173,
+      "sha256": "b24b797a3452d16b55d169cf95e003f7e889d597bdba69f0b436a177b3e53905"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_5.json",
+      "bytes": 218485,
+      "sha256": "a21dce1c4ec132cbfe11f486ee7645636b5c8aacbc99f9a4e4e400f1cf726f12"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_6.json",
+      "bytes": 184825,
+      "sha256": "3ccab93ffef23a15ffff04f48f140edc131f4d77368be9392de5db3ca88fffab"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/6_7.json",
+      "bytes": 853,
+      "sha256": "6529bca60260308fd19f6cfec7028e9656eb6384cf2a7da3e389e0f38ce786dd"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_0.json",
+      "bytes": 2889,
+      "sha256": "651bd1728f70015d221a688fbfec41eeca13ce54e96a45c8dcbedbb0403dab1f"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_1.json",
+      "bytes": 3164,
+      "sha256": "0a022144701b50ee1cd9d13e9005fc428a859e41daeea1255520c8467cde6616"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_2.json",
+      "bytes": 3059,
+      "sha256": "4489a062b1931d0e3b16ec178f6ce97df1c221e1ce056b9029bb257225f08260"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_3.json",
+      "bytes": 2434,
+      "sha256": "4c0ae862386cc583f54e867c11f2a9fdeb519a5f733bd2d3156403515959edab"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_4.json",
+      "bytes": 3090,
+      "sha256": "229cf17f217b5504eac1678f4edb07ca478fbb848e12554a9890a5d3ba8f6ea8"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_5.json",
+      "bytes": 3151,
+      "sha256": "3a6c5b4ed9391ca58a348120843b674ca51920609c812176027a3f879188997b"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_6.json",
+      "bytes": 3131,
+      "sha256": "54d42d0c9d213ca5c9ff95d9015e24ea5e99b378dcc5ac0202691698c33777b3"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/7_7.json",
+      "bytes": 1968,
+      "sha256": "427bcfae58eb7f423fed32361f7d55bb8fde01cda83aceb95cac044dc597b60d"
+    },
+    {
+      "path": "frozen-source/assets/city/chunks/manifest.json",
+      "bytes": 9766,
+      "sha256": "4e28111e3beaaee91a8f9b1d07512a6e54144c2a1cde7ccd213c00b9a2abc525"
+    },
+    {
+      "path": "frozen-source/assets/harbor/LICENSE-CC0.txt",
+      "bytes": 391,
+      "sha256": "67e425af97d2d41d7e6043e95dc83527e628402e0f9a3496f188af27d760d695"
+    },
+    {
+      "path": "frozen-source/assets/harbor/material-manifest.json",
+      "bytes": 6257,
+      "sha256": "c1e2ceb9b56ce1cf2f8ccb7dbdedcf30f73f9d974441cad1ef56a7cf364592c1"
+    },
+    {
+      "path": "frozen-source/assets/harbor/materials/pavement_03_diff_1k.jpg",
+      "bytes": 472235,
+      "sha256": "c8454cc98fb04bc417ab70cc7db26df3e62d30dc8dc4bb17efa9da5b91f3e49e"
+    },
+    {
+      "path": "frozen-source/assets/harbor/materials/pavement_03_nor_gl_1k.jpg",
+      "bytes": 450088,
+      "sha256": "48c4d16a1cf84efd7c196cc7b5a8383d26691dd29434b511d2744fe7f269c487"
+    },
+    {
+      "path": "frozen-source/assets/harbor/materials/pavement_03_rough_1k.jpg",
+      "bytes": 87671,
+      "sha256": "d346407cf734bf8bd3ef3ea142bf0b5bdd749ff121606f2f977b1769599b61dd"
+    },
+    {
+      "path": "frozen-source/assets/harbor/materials/plastered_wall_02_diff_1k.jpg",
+      "bytes": 94766,
+      "sha256": "297c581bff18a26234869bc5596fa4da6bd7ef26d0f62c304816c2b2483834f8"
+    },
+    {
+      "path": "frozen-source/assets/harbor/materials/plastered_wall_02_nor_gl_1k.jpg",
+      "bytes": 317769,
+      "sha256": "f21b85d2de0d6b366e2260b4c88724c4b2d323f407b2d2513359ad1e13ebb882"
+    },
+    {
+      "path": "frozen-source/assets/harbor/materials/plastered_wall_02_rough_1k.jpg",
+      "bytes": 8569,
+      "sha256": "c0089d2ea7fc4b4a4d7ab625d6329511ec99b210d20ff356cf1b3d822a58adba"
+    },
+    {
+      "path": "frozen-source/assets/harbor/workshop/LICENSE-CC0.txt",
+      "bytes": 292,
+      "sha256": "ab7778b1d11c0457d591fd413d51660911b363dd48318e6b00d884cf057a3deb"
+    },
+    {
+      "path": "frozen-source/assets/harbor/workshop/asset-manifest.json",
+      "bytes": 8517,
+      "sha256": "d08d339c2c453d3e889c5938433f37a66b941f2886da372a12020fcaacfac372"
+    },
+    {
+      "path": "frozen-source/assets/harbor/workshop/bench_vice_01.glb",
+      "bytes": 2434304,
+      "sha256": "4dc3378d2d63e16e18dafaa82bb16eb59d4bcd7b57c1543f450da22c18141c1e"
+    },
+    {
+      "path": "frozen-source/assets/harbor/workshop/metal_tool_chest.glb",
+      "bytes": 2354472,
+      "sha256": "e1bcd07991c2c01df17bb628c5e621a0da170db2313b025aa2d918b156e27803"
+    },
+    {
+      "path": "frozen-source/assets/materials/jade-tile.webp",
+      "bytes": 43628,
+      "sha256": "5703c2af30ba4361b70354f36ce2224b9ef4e61eee08156a2dfd8852ca2366fe"
+    },
+    {
+      "path": "frozen-source/assets/materials/lime-plaster.webp",
+      "bytes": 59876,
+      "sha256": "58e78f32043551db36aa7ddd5c892b7f70d81d561645dd0e8920d85ff8b24cc2"
+    },
+    {
+      "path": "frozen-source/assets/materials/limestone.webp",
+      "bytes": 65144,
+      "sha256": "c36ad29ebb1e4c8b92fc58a3e61fa057952140d80b9ccbbd5ad8adc6c27616c4"
+    },
+    {
+      "path": "frozen-source/assets/materials/metropolis-original-atlas.webp",
+      "bytes": 307754,
+      "sha256": "7151beb441220b3e7473008f452325ba54286eedc828a72a7937e37aafa9fa74"
+    },
+    {
+      "path": "frozen-source/assets/materials/oak.webp",
+      "bytes": 35062,
+      "sha256": "5aef9f0f5a4c6e6fe6e795f7c00eea1252365d3464e4ad13cfb10826c12ac8a3"
+    },
+    {
+      "path": "frozen-source/assets/materials/v04/aggregate-asphalt.webp",
+      "bytes": 359508,
+      "sha256": "4356006469b8b2b039b8eced31d2513e2c62c6d62a4626812638e9b75eaad558"
+    },
+    {
+      "path": "frozen-source/assets/materials/v04/weathered-plaster.webp",
+      "bytes": 294122,
+      "sha256": "7b55b71ae8bad77235b7dab94f97c6a2fdf978b00c2a93eb3c1ef00c92e92212"
+    },
+    {
+      "path": "frozen-source/assets/materials/v04/woven-linen.webp",
+      "bytes": 260678,
+      "sha256": "47b9043dd22a9a743bf630b4398181bad5f8416d34d2308c88223eba3546de24"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/manifest.json",
+      "bytes": 2278,
+      "sha256": "eaa1784ec0a02054e3ed1db1c07aa9116486e3d8b66f76c68fe33ab3b7f6fa96"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-0-0.json",
+      "bytes": 535768,
+      "sha256": "c4fc8b18d422e7c38ce783090b08cc388f32b6f3962da7dd1943a1d688d435b2"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-0-1.json",
+      "bytes": 394931,
+      "sha256": "4138dc8ec1d0259519cb0a4289e144b913d729a14dbd492e38a58d77a1417bd9"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-0-2.json",
+      "bytes": 1037972,
+      "sha256": "c9b3badb85639732e470e4b44f1a2f9e40fe180f4263a9c2e99342bdaca7c616"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-1-0.json",
+      "bytes": 721743,
+      "sha256": "ec355942804cae5c4c1460a94ae5b7288d1aee30a7341897cc01acd698452d9b"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-1-1.json",
+      "bytes": 419699,
+      "sha256": "af6f2c92b36e44c1e307c482bc98cc0d8aace157ca7d1461e012ac906ceb5a35"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-1-2.json",
+      "bytes": 741913,
+      "sha256": "b796d5c3f2ae1363267ab9dd29a1a4fbfd80cd80775dd1dd35036b1f7e373dee"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-2-0.json",
+      "bytes": 627464,
+      "sha256": "8d42441f0214e434fee169fbe3fe5a42506e09f267859de6cb570aa0e13e8801"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-2-1.json",
+      "bytes": 436232,
+      "sha256": "7eef046c1dc6b0f80c5691c0e0e28006863486ce177a98dbaa659019d80aa775"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-2-2.json",
+      "bytes": 320165,
+      "sha256": "cacaca414d80934e59a9a6ebbe6571f1abb348ba4ad54599eaaf53d328d683a9"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-3-0.json",
+      "bytes": 519786,
+      "sha256": "48b6de7147ce6a150adfc6a4c9cced8835124df9a4d74331b0d34c0124e56bc7"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-3-1.json",
+      "bytes": 294382,
+      "sha256": "19ce279a78e2f4595672a2b4cf4ace4f9b5c615e6283d101f0d972d56c653105"
+    },
+    {
+      "path": "frozen-source/assets/metropolis/chunks/north-3-2.json",
+      "bytes": 711188,
+      "sha256": "938fad1137277c2693a18a43a93b5065423bafe0c72821cd625af5ce901ac6d3"
+    },
+    {
+      "path": "frozen-source/build-info.json",
+      "bytes": 16323,
+      "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+    },
+    {
+      "path": "frozen-source/favicon.svg",
+      "bytes": 227,
+      "sha256": "787d0f7416250ddffb3469283a0b0ac2dcc823f4e3324fb9ff83f8e904ea607e"
+    },
+    {
+      "path": "frozen-source/index.html",
+      "bytes": 6498,
+      "sha256": "4d664cbe3e994c8cd695aa040eaea89b4617d17733c7f0fdae5218eb326d7582"
+    },
+    {
+      "path": "frozen-source/package-lock.json",
+      "bytes": 2305,
+      "sha256": "163259fc64f19ce8fa5bba80359eb97befc847648bb7f6454c0569d4867fc87d"
+    },
+    {
+      "path": "frozen-source/package.json",
+      "bytes": 652,
+      "sha256": "445222967a997007bd4b6d7bd8b2c22b88b0cf031fed4f2cefb08a6f04a7f028"
+    },
+    {
+      "path": "frozen-source/src/atmosphere.js",
+      "bytes": 11001,
+      "sha256": "73d4cef1814ff96c4cc33853616a16d97b818539d9e7f8c0add3ba202f82b3be"
+    },
+    {
+      "path": "frozen-source/src/audio.js",
+      "bytes": 2163,
+      "sha256": "d8ec4adcf24bb8afb0aeeaf844f3d2f5a88c2752843e454ed23c7009f61eef43"
+    },
+    {
+      "path": "frozen-source/src/camera.js",
+      "bytes": 10656,
+      "sha256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3"
+    },
+    {
+      "path": "frozen-source/src/citizen-appearance.js",
+      "bytes": 4875,
+      "sha256": "3fe24776d2e6732a9753cf7a2a6e576b1f8daae9ce41aa42570e174046744a06"
+    },
+    {
+      "path": "frozen-source/src/citizen-crossings.js",
+      "bytes": 2835,
+      "sha256": "cf9ae62c1141514dab849079655136d17762a8efa16b2dc378a1b0393b4d1caf"
+    },
+    {
+      "path": "frozen-source/src/citizen-journeys.js",
+      "bytes": 23964,
+      "sha256": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a"
+    },
+    {
+      "path": "frozen-source/src/citizen-life.js",
+      "bytes": 7965,
+      "sha256": "59bfdeaf9aa783dee276a5a8c40f1b90166a15ba835895a3b17023fac7f448da"
+    },
+    {
+      "path": "frozen-source/src/citizen-navigation.js",
+      "bytes": 6318,
+      "sha256": "7ae2e7d47fdaf10355d81641f8e338745234cb2cfd30c7c2d1fcfc8ef267f9ed"
+    },
+    {
+      "path": "frozen-source/src/city-exploration.js",
+      "bytes": 22089,
+      "sha256": "4bcee64c1fd0141a62ce7ca09f5511b6f648ea518e44f0201a622f6b83ffa28f"
+    },
+    {
+      "path": "frozen-source/src/city-guide.js",
+      "bytes": 8986,
+      "sha256": "3dd5f765838d46a392d5016819afae780376a1c606102f8b89b019c0c0608a9b"
+    },
+    {
+      "path": "frozen-source/src/city-streaming.js",
+      "bytes": 9416,
+      "sha256": "f4d6e7df86781280a24363c9de451abdc7d1dd47b4e753645c4ff2ad876609c3"
+    },
+    {
+      "path": "frozen-source/src/collision.js",
+      "bytes": 19179,
+      "sha256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0"
+    },
+    {
+      "path": "frozen-source/src/compact-interiors.js",
+      "bytes": 23527,
+      "sha256": "9df0250b3b5382db775b7d69aca35e07da9ee6d0c8adaff1b7f81ef1c4dce92c"
+    },
+    {
+      "path": "frozen-source/src/contact-occlusion.js",
+      "bytes": 12201,
+      "sha256": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8"
+    },
+    {
+      "path": "frozen-source/src/expansion-entrances.js",
+      "bytes": 3634,
+      "sha256": "7a74062a03ca5ce0556b2fd600efc2e91c5d5f987b6fa74bbca1de46f4c3ee09"
+    },
+    {
+      "path": "frozen-source/src/expansion-programmes.js",
+      "bytes": 5673,
+      "sha256": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a"
+    },
+    {
+      "path": "frozen-source/src/frame-clock.js",
+      "bytes": 1492,
+      "sha256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8"
+    },
+    {
+      "path": "frozen-source/src/ground-support.js",
+      "bytes": 4354,
+      "sha256": "1b54d60edd1c456b6c4a24a11d084465a4d9f62636e9ac0dd3d8bcf3677e0823"
+    },
+    {
+      "path": "frozen-source/src/harbor-district.js",
+      "bytes": 26222,
+      "sha256": "0514988698c38f70928002bebd110438fa764ca44f35ef557315d0cba5452a9b"
+    },
+    {
+      "path": "frozen-source/src/harbor-life-renderer.js",
+      "bytes": 10003,
+      "sha256": "e059f53588e47124f62500067d4c954dddb9d9d1203734da894c40c894433390"
+    },
+    {
+      "path": "frozen-source/src/harbor-life.js",
+      "bytes": 53573,
+      "sha256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d"
+    },
+    {
+      "path": "frozen-source/src/harbor-room-dressing.js",
+      "bytes": 10752,
+      "sha256": "6cb3e40ca9f51cae1860aaaa819c174852e2d1798510bab71b32c3b3b67cf85b"
+    },
+    {
+      "path": "frozen-source/src/harbor-sample-ui.js",
+      "bytes": 4401,
+      "sha256": "5b4d55197c6c21165c5a8773cfe14ce15bf232e4b96b45d2534c5794417152fc"
+    },
+    {
+      "path": "frozen-source/src/harbor-shop-defs.js",
+      "bytes": 726,
+      "sha256": "f6bbf2c0d4da08aaf7b241c53efc92fe9bf324eec46c4168376c86fbe71fb63d"
+    },
+    {
+      "path": "frozen-source/src/harbor-skyline.js",
+      "bytes": 36635,
+      "sha256": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7"
+    },
+    {
+      "path": "frozen-source/src/harbor-terrain.js",
+      "bytes": 3460,
+      "sha256": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49"
+    },
+    {
+      "path": "frozen-source/src/harbor-transit-renderer.js",
+      "bytes": 11728,
+      "sha256": "4e5788540b754b1309614eb544a18a1d62cf5808c1cabd491befd81b81d67cf9"
+    },
+    {
+      "path": "frozen-source/src/harbor-transit.js",
+      "bytes": 38246,
+      "sha256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e"
+    },
+    {
+      "path": "frozen-source/src/harbor-vehicle-models.js",
+      "bytes": 45167,
+      "sha256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9"
+    },
+    {
+      "path": "frozen-source/src/harbor-water.js",
+      "bytes": 4074,
+      "sha256": "e0afd958019761ce05c956c5095f62c03170b19cfba913b39def218aa17dd4c1"
+    },
+    {
+      "path": "frozen-source/src/harbor-workshop-pilot.js",
+      "bytes": 14598,
+      "sha256": "0e46506ba9b84dba07a244c0912e0b463a5d44c3e2ea813a3d1cb6141613d6b7"
+    },
+    {
+      "path": "frozen-source/src/main.js",
+      "bytes": 53113,
+      "sha256": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d"
+    },
+    {
+      "path": "frozen-source/src/metropolis-architecture-designs.js",
+      "bytes": 12349,
+      "sha256": "d5a8370d3dd87b5faab2018ab11d53185df97a5d4a8549ce4807f69ae5ad179a"
+    },
+    {
+      "path": "frozen-source/src/metropolis-catalog.js",
+      "bytes": 11081,
+      "sha256": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea"
+    },
+    {
+      "path": "frozen-source/src/metropolis-infrastructure.js",
+      "bytes": 25292,
+      "sha256": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2"
+    },
+    {
+      "path": "frozen-source/src/metropolis-interiors.js",
+      "bytes": 109056,
+      "sha256": "6eaa1f76be34c795b76bda6f95c7c04cabc78a80867159aa9a8a122dd9b33573"
+    },
+    {
+      "path": "frozen-source/src/metropolis-materials.js",
+      "bytes": 14641,
+      "sha256": "2963e82ed9c904dd65c427b80de93f260b3a38101f4b3b316ff1e01d7fb1e075"
+    },
+    {
+      "path": "frozen-source/src/metropolis-people.js",
+      "bytes": 27172,
+      "sha256": "7d6c230b99215105605b22c7c323ff037a538facf9b726c265fc7bf2027df06e"
+    },
+    {
+      "path": "frozen-source/src/metropolis-room-designs.js",
+      "bytes": 32479,
+      "sha256": "adc33a9c57af6a38a461686d210099346aeebfef41b20cac9f0616cfbf5c32c6"
+    },
+    {
+      "path": "frozen-source/src/metropolis-transit.js",
+      "bytes": 63073,
+      "sha256": "ca316720b79de2a15dfeaf41fb3109589612733b886d1566d91049d383fc8a1e"
+    },
+    {
+      "path": "frozen-source/src/metropolis-world.js",
+      "bytes": 55617,
+      "sha256": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e"
+    },
+    {
+      "path": "frozen-source/src/models.js",
+      "bytes": 36421,
+      "sha256": "cfc0a55d46a864acb9b8ca0206b7b841c1f6d6747bbda144dab60a24f96480db"
+    },
+    {
+      "path": "frozen-source/src/multiplayer-protocol.js",
+      "bytes": 1471,
+      "sha256": "0ae36169ad355c4595efaf718515084ae192e319ee9d75e53545e41906b55319"
+    },
+    {
+      "path": "frozen-source/src/multiplayer-ui.js",
+      "bytes": 4445,
+      "sha256": "27fb0552eb84e332ae689e75d14b884a7e6f62142b6629bada758a646c84f27f"
+    },
+    {
+      "path": "frozen-source/src/multiplayer.js",
+      "bytes": 4509,
+      "sha256": "aa260c8ab351100b5ec8e12a395b1e7e4f8061b7b03b0a9ea0675550df6b5bc0"
+    },
+    {
+      "path": "frozen-source/src/occupied-programmes.js",
+      "bytes": 11055,
+      "sha256": "464ae9b4bb35004f271ec6566474179063997b0a0b92d79de74f468629d3cb7e"
+    },
+    {
+      "path": "frozen-source/src/presentation.js",
+      "bytes": 4910,
+      "sha256": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf"
+    },
+    {
+      "path": "frozen-source/src/simulation.js",
+      "bytes": 32947,
+      "sha256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705"
+    },
+    {
+      "path": "frozen-source/src/surface-finish.js",
+      "bytes": 5812,
+      "sha256": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0"
+    },
+    {
+      "path": "frozen-source/src/terrain-openings.js",
+      "bytes": 3037,
+      "sha256": "5c7ea45ce83f8b0f3e20c70d9fc2c3a6e4284fa7bb16af48e201c5c8968cdfea"
+    },
+    {
+      "path": "frozen-source/src/traffic.js",
+      "bytes": 5678,
+      "sha256": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101"
+    },
+    {
+      "path": "frozen-source/src/world-config.js",
+      "bytes": 467,
+      "sha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c"
+    },
+    {
+      "path": "frozen-source/src/world.js",
+      "bytes": 51197,
+      "sha256": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6"
+    },
+    {
+      "path": "frozen-source/styles.css",
+      "bytes": 25076,
+      "sha256": "b678622cdca60ee8ba4bc13dcb7a932e950bc4f51232a429bf8339405ecd42e7"
+    },
+    {
+      "path": "frozen-source/tools/capture-harbor-tour.mjs",
+      "bytes": 60171,
+      "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+    },
+    {
+      "path": "frozen-source/tools/capture-workshop-pilot.mjs",
+      "bytes": 35572,
+      "sha256": "6bb5b9b574e22b2be5ebec977d3b4f1e56faab64e3ed11d5fb9ef47bc426f714"
+    },
+    {
+      "path": "frozen-source/tools/capture-workshop-vice-detail.mjs",
+      "bytes": 28556,
+      "sha256": "469da79377238d2a8d71077bd0270a1733e24bfa4d79fc9cc3f9d6651c869101"
+    },
+    {
+      "path": "frozen-source/tools/server.mjs",
+      "bytes": 4529,
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+    },
+    {
+      "path": "frozen-source/tools/workshop-review-helpers/occupied.js",
+      "bytes": 5371,
+      "sha256": "7698eb877fcaf3f4a60136beb4a0a00a4310985f20437939ce99b9ecd1047bed"
+    },
+    {
+      "path": "frozen-source/tools/workshop-review-helpers/walking.js",
+      "bytes": 7277,
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+    },
+    {
+      "path": "frozen-source/vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "frozen-source/vendor/three/addons/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "frozen-source/vendor/three/addons/loaders/GLTFLoader.js",
+      "bytes": 114975,
+      "sha256": "23523ca91c475035c5cf8f5b9705b9abc796a71662d4a4872b885895bd00566d"
+    },
+    {
+      "path": "frozen-source/vendor/three/addons/manifest.json",
+      "bytes": 1974,
+      "sha256": "2a128c25c259e0e94c62bf82ca5a2611f2c80174dbaf544a3fb153691e3e4b14"
+    },
+    {
+      "path": "frozen-source/vendor/three/addons/utils/BufferGeometryUtils.js",
+      "bytes": 37637,
+      "sha256": "1b5f5a0b7dd8871762ccd3b7cfe34dac6ccd0f5f08d0f47dcb78e8450de9f41d"
+    },
+    {
+      "path": "frozen-source/vendor/three/addons/utils/SkeletonUtils.js",
+      "bytes": 11551,
+      "sha256": "28017bf37d0ecb0c4be6048db759ff14df729a562464830b064d4cc239c5af17"
+    },
+    {
+      "path": "frozen-source/vendor/three/three.core.min.js",
+      "bytes": 385386,
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90"
+    },
+    {
+      "path": "frozen-source/vendor/three/three.module.js",
+      "bytes": 365552,
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+    },
+    {
+      "path": "independent-review/neon-vice-region-root-visual-review.json",
+      "bytes": 1395,
+      "sha256": "26a070a70ad7fdadd25efafc1ae11bac422b893ae9c72097604fd546311a43fd"
+    },
+    {
+      "path": "independent-review/neon-workshop-vice-detail-469d-review.md",
+      "bytes": 5848,
+      "sha256": "0962463461d184385546a18a85a759ea720d10770570ce2de6ab870cacd81158"
+    },
+    {
+      "path": "invocation-original.json",
+      "bytes": 1280,
+      "sha256": "2e44ece1352c2612e300e1948082ebdd62751f38801574ff1ddb5c4486707f57"
+    },
+    {
+      "path": "metadata.json",
+      "bytes": 2046677,
+      "sha256": "2001cff11d1ee703778318bdcedc91b21382690bff38a9a3a2747a5475becb43"
+    },
+    {
+      "path": "normalized-detail-evidence.json",
+      "bytes": 18604,
+      "sha256": "0cf3efa686f8667bd0c40abc96f10fe7cd9cc8b8f12563ff49d9623e06c48118"
+    },
+    {
+      "path": "owner-visual-review.json",
+      "bytes": 1050,
+      "sha256": "680436299f4af389ab7c9a5a7adadc3cb4732cbc27a27a7188563be9b8751b56"
+    },
+    {
+      "path": "preflight-original.json",
+      "bytes": 17330,
+      "sha256": "c00f3fc0775e0421f975bddcc618189854618fd8e972b58ce34fcbe1f382a6a0"
+    },
+    {
+      "path": "protected-evidence-verification.json",
+      "bytes": 702,
+      "sha256": "428d170944b515d44a1ed3b8c3c269f5d820ebd61d55bb37c87defa9230533c7"
+    },
+    {
+      "path": "result-timeline.json",
+      "bytes": 4650,
+      "sha256": "26499a04a112a12717bcfe3ff8daac7eb6907a84fc558e00be99e8f3cbde0c28"
+    },
+    {
+      "path": "run-native-wrapper.py",
+      "bytes": 2142,
+      "sha256": "ba7c8513784ffd7df8d6e28af8b05e1f3a7fc3a93e3f5b953c504e6738785f65"
+    },
+    {
+      "path": "vice-detail-north-side-detail-high.png",
+      "bytes": 1063594,
+      "sha256": "fbf75dd9fd9ec35c7677690650c414dcce043084e9241ad99700c597d1eb9e4a"
+    },
+    {
+      "path": "vice-detail-north-side-detail-pose.json",
+      "bytes": 3405878,
+      "sha256": "9f50b47d257aca14783cb738adf1ee415d5daad84776326fdc4d2966faaa6164"
+    },
+    {
+      "path": "vice-detail-region-native-2026-10-04.stderr.txt",
+      "bytes": 353,
+      "sha256": "ecdaff7eb45992669afc234d716fd419971f6cb96dcaae874b12df654627b878"
+    },
+    {
+      "path": "vice-detail-region-native-2026-10-04.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

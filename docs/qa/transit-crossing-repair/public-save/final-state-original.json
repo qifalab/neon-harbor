@@ -1,0 +1,7906 @@
+{
+  "harborLife": {
+    "schema": "neon-harbor/daily-life",
+    "version": 1,
+    "seed": 749213,
+    "secondsPerHour": 35,
+    "startHour": 16.5,
+    "ticks": 2400,
+    "accumulator": 0,
+    "externalHour": 16.5,
+    "revision": 83,
+    "serial": 72,
+    "orderSerial": 3,
+    "initialMoney": 2972,
+    "initialGoods": 300,
+    "consumedByProduct": {
+      "produce": 0,
+      "tea": 0,
+      "meal": 0
+    },
+    "player": {
+      "earnedCash": 0,
+      "spentCash": 0,
+      "inventory": {
+        "produce": 0,
+        "tea": 0,
+        "meal": 0
+      },
+      "purchaseRequests": [],
+      "activeJobId": null,
+      "completed": 0
+    },
+    "statistics": {
+      "purchases": 0,
+      "playerPurchases": 0,
+      "missedPurchases": 0,
+      "wages": 66,
+      "deliveries": 3,
+      "consumed": 0,
+      "boarded": 4,
+      "alighted": 4
+    },
+    "supply": {
+      "money": 813,
+      "stock": {
+        "produce": 88,
+        "tea": 88,
+        "meal": 88
+      }
+    },
+    "shops": [
+      {
+        "id": "harbor-produce",
+        "money": 211,
+        "stock": 12,
+        "sold": 0,
+        "received": 8,
+        "paidWages": 21
+      },
+      {
+        "id": "harbor-tea",
+        "money": 219,
+        "stock": 12,
+        "sold": 0,
+        "received": 8,
+        "paidWages": 21
+      },
+      {
+        "id": "harbor-noodles",
+        "money": 203,
+        "stock": 12,
+        "sold": 0,
+        "received": 8,
+        "paidWages": 21
+      }
+    ],
+    "agents": [
+      {
+        "id": "harbor-resident-01",
+        "money": 55,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 184.8,
+        "y": 0.215,
+        "z": 192.68955246312544,
+        "yaw": -1.5707963267948966,
+        "phase": "resting",
+        "activity": "在家休息",
+        "goal": {
+          "kind": "home",
+          "id": "south-093",
+          "anchor": {
+            "x": 187,
+            "z": 198.87910492625087,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": "south-093",
+        "floorId": "lobby",
+        "roomId": "south-093-lobby-1",
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 58.728335511060216,
+        "visits": 1
+      },
+      {
+        "id": "harbor-resident-02",
+        "money": 93,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 225.3058217712678,
+        "y": 0.18,
+        "z": 187.7,
+        "yaw": -2.9815367727847084,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-produce",
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187.7,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 346.3727709324133,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-03",
+        "money": 58,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 184.8,
+        "y": 0.215,
+        "z": 113.23987723700702,
+        "yaw": -1.5707963267948966,
+        "phase": "resting",
+        "activity": "在家休息",
+        "goal": {
+          "kind": "home",
+          "id": "south-089",
+          "anchor": {
+            "x": 187,
+            "z": 119.97975447401404,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": "south-089",
+        "floorId": "lobby",
+        "roomId": "south-089-lobby-1",
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 62.580608928231584,
+        "visits": 1
+      },
+      {
+        "id": "harbor-resident-04",
+        "money": 96,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 225.3373617986217,
+        "y": 0.18,
+        "z": 133.7,
+        "yaw": -0.1772127193775421,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-tea",
+          "anchor": {
+            "x": 225.3373617986217,
+            "z": 133.7,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 369.3123636089724,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-05",
+        "money": 61,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 184.8,
+        "y": 0.215,
+        "z": 113.23987723700702,
+        "yaw": -1.5707963267948966,
+        "phase": "resting",
+        "activity": "在家休息",
+        "goal": {
+          "kind": "home",
+          "id": "south-089",
+          "anchor": {
+            "x": 187,
+            "z": 119.97975447401404,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": "south-089",
+        "floorId": "lobby",
+        "roomId": "south-089-lobby-1",
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 62.580608928231285,
+        "visits": 1
+      },
+      {
+        "id": "harbor-resident-06",
+        "money": 99,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 193.7,
+        "y": 0.18,
+        "z": 146.42007884336635,
+        "yaw": -1.4734125940074339,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-noodles",
+          "anchor": {
+            "x": 193.7,
+            "z": 146.42007884336635,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 289.2435811393801,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-07",
+        "money": 64,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 224,
+        "y": 0.18,
+        "z": -68.66099999999892,
+        "yaw": 3.141592653589793,
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 252,
+            "z": -40,
+            "y": 0.18
+          },
+          {
+            "x": 252,
+            "z": -42,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 252,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 250,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 228,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 228,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 222,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 200,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 9,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 2004.2120130648593,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-08",
+        "money": 50,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 224,
+        "y": 0.18,
+        "z": -70.18900000000039,
+        "yaw": 3.141592653589793,
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 252,
+            "z": -40,
+            "y": 0.18
+          },
+          {
+            "x": 252,
+            "z": -42,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 252,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 250,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 230,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 230,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 228,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 228,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": -72,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 222,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 202,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 202,
+            "z": -94,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 11,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 2212.088514919632,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-09",
+        "money": 67,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 226.39499999999978,
+        "y": 0.18,
+        "z": -68,
+        "yaw": -1.5707963267948966,
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 252,
+            "z": -40,
+            "y": 0.18
+          },
+          {
+            "x": 252,
+            "z": -42,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 252,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 250,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 230,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 230,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 228,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 228,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": -72,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 222,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 202,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 8,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1592.4982412143784,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-10",
+        "money": 53,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 226.86699999999846,
+        "y": 0.18,
+        "z": -70,
+        "yaw": -1.5707963267948966,
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 252,
+            "z": -40,
+            "y": 0.18
+          },
+          {
+            "x": 252,
+            "z": -42,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 252,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 250,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 232,
+            "z": -64,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 232,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 230,
+            "z": -66,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 230,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 228,
+            "z": -68,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:240:-66"
+          },
+          {
+            "x": 228,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 226,
+            "z": -70,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": -72,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -72,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": -74,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 224,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:-80:226"
+          },
+          {
+            "x": 222,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 204,
+            "z": -92,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 10,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1993.5160130648574,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-11",
+        "money": 85,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 189.1,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": -1.4429757010560313,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 2572.1809079517266,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-12",
+        "money": 92,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 189.9,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": -1.4183887864548375,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1753.6700021631887,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-13",
+        "money": 88,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 190.7,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 0.7985772806193714,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 190.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 910.4736567070497,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-14",
+        "money": 77,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 191.5,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.3927713381369797,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 191.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 769.247590122538,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-15",
+        "money": 94,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 192.3,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.0219122922114738,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 192.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 729.3089610242423,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-16",
+        "money": 80,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 193.1,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.3703770246117821,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 589.5154059970064,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-17",
+        "money": 94,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 193.9,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.410702720639911,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1158.6400767435593,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-18",
+        "money": 71,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 194.7,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.4375993454913958,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1345.4101287797553,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-19",
+        "money": 66,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 195.5,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.3927713381371152,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 195.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 984.7502666402336,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-20",
+        "money": 83,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 23,
+        "x": 196.3,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.4253756231474606,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 196.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1175.110430484631,
+        "visits": 0
+      }
+    ],
+    "jobs": [
+      {
+        "id": "harbor-order-1",
+        "shopId": "harbor-produce",
+        "product": "produce",
+        "quantity": 8,
+        "wholesale": 16,
+        "reward": 12,
+        "escrow": 0,
+        "status": "delivered",
+        "createdTick": 0,
+        "carrierId": "harbor-resident-11",
+        "pickedTick": 1083,
+        "deliveredTick": 1690
+      },
+      {
+        "id": "harbor-order-2",
+        "shopId": "harbor-tea",
+        "product": "tea",
+        "quantity": 8,
+        "wholesale": 8,
+        "reward": 12,
+        "escrow": 0,
+        "status": "delivered",
+        "createdTick": 0,
+        "carrierId": "harbor-resident-12",
+        "pickedTick": 771,
+        "deliveredTick": 1026
+      },
+      {
+        "id": "harbor-order-3",
+        "shopId": "harbor-noodles",
+        "product": "meal",
+        "quantity": 8,
+        "wholesale": 24,
+        "reward": 12,
+        "escrow": 0,
+        "status": "delivered",
+        "createdTick": 0,
+        "carrierId": "harbor-resident-12",
+        "pickedTick": 1281,
+        "deliveredTick": 1480
+      }
+    ],
+    "transactions": [
+      {
+        "id": "harbor-tx-1",
+        "tick": 254,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 17
+      },
+      {
+        "id": "harbor-tx-2",
+        "tick": 295,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 17
+      },
+      {
+        "id": "harbor-tx-3",
+        "tick": 304,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 17
+      },
+      {
+        "id": "harbor-tx-4",
+        "tick": 525,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-5",
+        "tick": 525,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-6",
+        "tick": 525,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-7",
+        "tick": 578,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-12",
+        "from": "harbor-supply",
+        "to": "harbor-resident-12",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-8",
+        "tick": 596,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-9",
+        "tick": 610,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-10",
+        "tick": 675,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-11",
+        "tick": 771,
+        "day": 0,
+        "hour": 16.5,
+        "type": "pickup",
+        "jobId": "harbor-order-2",
+        "shopId": "harbor-tea",
+        "carrierId": "harbor-resident-12",
+        "from": "harbor-tea",
+        "to": "harbor-supply",
+        "amount": 8,
+        "quantity": 8,
+        "product": "tea",
+        "escrow": 12
+      },
+      {
+        "id": "harbor-tx-12",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-13",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-14",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-15",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-16",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-17",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-18",
+        "tick": 915,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-19",
+        "tick": 1026,
+        "day": 0,
+        "hour": 16.5,
+        "type": "delivery",
+        "jobId": "harbor-order-2",
+        "shopId": "harbor-tea",
+        "carrierId": "harbor-resident-12",
+        "from": "escrow:harbor-order-2",
+        "to": "harbor-resident-12",
+        "amount": 12,
+        "quantity": 8,
+        "product": "tea"
+      },
+      {
+        "id": "harbor-tx-20",
+        "tick": 1063,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-21",
+        "tick": 1072,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-22",
+        "tick": 1083,
+        "day": 0,
+        "hour": 16.5,
+        "type": "pickup",
+        "jobId": "harbor-order-1",
+        "shopId": "harbor-produce",
+        "carrierId": "harbor-resident-11",
+        "from": "harbor-produce",
+        "to": "harbor-supply",
+        "amount": 16,
+        "quantity": 8,
+        "product": "produce",
+        "escrow": 12
+      },
+      {
+        "id": "harbor-tx-23",
+        "tick": 1106,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-24",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-25",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-26",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-27",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-28",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-29",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-30",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-31",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-32",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-33",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-34",
+        "tick": 1281,
+        "day": 0,
+        "hour": 16.5,
+        "type": "pickup",
+        "jobId": "harbor-order-3",
+        "shopId": "harbor-noodles",
+        "carrierId": "harbor-resident-12",
+        "from": "harbor-noodles",
+        "to": "harbor-supply",
+        "amount": 24,
+        "quantity": 8,
+        "product": "meal",
+        "escrow": 12
+      },
+      {
+        "id": "harbor-tx-35",
+        "tick": 1480,
+        "day": 0,
+        "hour": 16.5,
+        "type": "delivery",
+        "jobId": "harbor-order-3",
+        "shopId": "harbor-noodles",
+        "carrierId": "harbor-resident-12",
+        "from": "escrow:harbor-order-3",
+        "to": "harbor-resident-12",
+        "amount": 12,
+        "quantity": 8,
+        "product": "meal"
+      },
+      {
+        "id": "harbor-tx-36",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-37",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-38",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-39",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-40",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-41",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-42",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-43",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-44",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-45",
+        "tick": 1575,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-46",
+        "tick": 1690,
+        "day": 0,
+        "hour": 16.5,
+        "type": "delivery",
+        "jobId": "harbor-order-1",
+        "shopId": "harbor-produce",
+        "carrierId": "harbor-resident-11",
+        "from": "escrow:harbor-order-1",
+        "to": "harbor-resident-11",
+        "amount": 12,
+        "quantity": 8,
+        "product": "produce"
+      },
+      {
+        "id": "harbor-tx-47",
+        "tick": 1699,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-12",
+        "from": "harbor-supply",
+        "to": "harbor-resident-12",
+        "amount": 3,
+        "slot": 21
+      },
+      {
+        "id": "harbor-tx-48",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-49",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-50",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-51",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-12",
+        "from": "harbor-supply",
+        "to": "harbor-resident-12",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-52",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-53",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-54",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-55",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-56",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-57",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-58",
+        "tick": 1925,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-59",
+        "tick": 2031,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-18",
+        "from": "harbor-supply",
+        "to": "harbor-resident-18",
+        "amount": 3,
+        "slot": 22
+      },
+      {
+        "id": "harbor-tx-60",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-61",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-62",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-63",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-12",
+        "from": "harbor-supply",
+        "to": "harbor-resident-12",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-64",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-65",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-66",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-67",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-68",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-69",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-18",
+        "from": "harbor-supply",
+        "to": "harbor-resident-18",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-70",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-71",
+        "tick": 2275,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 23
+      },
+      {
+        "id": "harbor-tx-72",
+        "tick": 2299,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-11",
+        "from": "harbor-supply",
+        "to": "harbor-resident-11",
+        "amount": 3,
+        "slot": 23
+      }
+    ]
+  },
+  "harborTransit": {
+    "version": 1,
+    "time": 240.00000000008313,
+    "vehicles": [
+      {
+        "id": "harbor-bus-1",
+        "serviceTime": 186.8059763590834,
+        "delay": 53.19402364094922,
+        "distanceTravelled": 879.1066550366088,
+        "doorHoldUntil": 0,
+        "motionSpeed": 2.6088836897963574,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": {
+          "x": 160,
+          "z": 160,
+          "axis": "z",
+          "direction": 1,
+          "committed": true
+        }
+      },
+      {
+        "id": "harbor-bus-2",
+        "serviceTime": 247.8064461385792,
+        "delay": 73.28174540201654,
+        "distanceTravelled": 815.0462945917541,
+        "doorHoldUntil": 0,
+        "motionSpeed": 10.601098883687143,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": {
+          "x": 240,
+          "z": -80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      {
+        "id": "harbor-tram-1",
+        "serviceTime": 171.1435770670863,
+        "delay": 68.85642293294123,
+        "distanceTravelled": 969.9400661585286,
+        "doorHoldUntil": 0,
+        "motionSpeed": 12.002853677759333,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      {
+        "id": "harbor-tram-2",
+        "serviceTime": 196.7643971761508,
+        "delay": 73.55226949055817,
+        "distanceTravelled": 938.5415860996059,
+        "doorHoldUntil": 192.40000000004366,
+        "motionSpeed": 5.996445979902774,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": {
+          "x": 240,
+          "z": -240,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      {
+        "id": "harbor-ferry-1",
+        "serviceTime": 240.00000000008313,
+        "delay": 0,
+        "distanceTravelled": 807.6628611820349,
+        "doorHoldUntil": 0,
+        "motionSpeed": 6.183736725463973,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": null
+      }
+    ],
+    "boardedStopId": null,
+    "citizenPassengers": [],
+    "citizenBoardings": 4
+  },
+  "cars": [
+    {
+      "id": "starter",
+      "x": 4,
+      "z": 160,
+      "yaw": 3.141592653589793,
+      "type": "sport",
+      "color": 3696757,
+      "home": {
+        "x": 4,
+        "z": 160,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "sunset",
+      "x": -4,
+      "z": 80,
+      "yaw": 0,
+      "type": "sport",
+      "color": 16744540,
+      "home": {
+        "x": -4,
+        "z": 80,
+        "yaw": 0
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "violet",
+      "x": 160,
+      "z": 4,
+      "yaw": 1.5707963267948966,
+      "type": "sedan",
+      "color": 10652415,
+      "home": {
+        "x": 160,
+        "z": 4,
+        "yaw": 1.5707963267948966
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "taxi",
+      "x": -160,
+      "z": -4,
+      "yaw": -1.5707963267948966,
+      "type": "sedan",
+      "color": 16765021,
+      "home": {
+        "x": -160,
+        "z": -4,
+        "yaw": -1.5707963267948966
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "marina",
+      "x": 80,
+      "z": -164,
+      "yaw": 1.5707963267948966,
+      "type": "sport",
+      "color": 16280236,
+      "home": {
+        "x": 80,
+        "z": -164,
+        "yaw": 1.5707963267948966
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "traffic-0",
+      "x": 154.35686327951692,
+      "z": -153.94120355524225,
+      "yaw": 3.8928934799144326,
+      "waypoint": 28,
+      "route": [
+        {
+          "x": -156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": -155.93000000000004,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": 151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": -155.36999999999998,
+          "z": 152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": 153.48,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": -153.48000000000002,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": -152.57,
+          "z": 155.37,
+          "turn": true
+        },
+        {
+          "x": -151.52,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": 155.93,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": 155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": 151.52000000000004,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 152.56999999999996,
+          "z": 155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": 153.48,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": 153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": 155.37,
+          "z": 152.57,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": 151.52,
+          "turn": true
+        },
+        {
+          "x": 155.93,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": -149,
+          "turn": true
+        },
+        {
+          "x": 155.93000000000004,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": -151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": 155.36999999999998,
+          "z": -152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": -153.48,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": 153.48000000000002,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": 152.57,
+          "z": -155.37,
+          "turn": true
+        },
+        {
+          "x": 151.52,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": -155.93,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": -155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": -151.52000000000004,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -152.56999999999996,
+          "z": -155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": -153.48,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": -153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": -155.37,
+          "z": -152.57,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": -151.52,
+          "turn": true
+        },
+        {
+          "x": -155.93,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": -156,
+          "z": -149,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 15199735,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 4.5,
+      "cruise": 11.4,
+      "vx": -3.0716549243093003,
+      "vz": -3.2886070038796706,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "traffic-1",
+      "x": -57.21032239792407,
+      "z": -155.9679605872252,
+      "yaw": 4.712039927938808,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": -155.93000000000004,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": 151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": -155.36999999999998,
+          "z": 152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": 153.48,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": -153.48000000000002,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": -152.57,
+          "z": 155.37,
+          "turn": true
+        },
+        {
+          "x": -151.52,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": 155.93,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": 155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": 151.52000000000004,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 152.56999999999996,
+          "z": 155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": 153.48,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": 153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": 155.37,
+          "z": 152.57,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": 151.52,
+          "turn": true
+        },
+        {
+          "x": 155.93,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": -149,
+          "turn": true
+        },
+        {
+          "x": 155.93000000000004,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": -151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": 155.36999999999998,
+          "z": -152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": -153.48,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": 153.48000000000002,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": 152.57,
+          "z": -155.37,
+          "turn": true
+        },
+        {
+          "x": 151.52,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": -155.93,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": -155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": -151.52000000000004,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -152.56999999999996,
+          "z": -155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": -153.48,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": -153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": -155.37,
+          "z": -152.57,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": -151.52,
+          "turn": true
+        },
+        {
+          "x": -155.93,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": -156,
+          "z": -149,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 16426842,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 12,
+      "cruise": 12,
+      "vx": -11.99999926897435,
+      "vz": -0.004188629265522952,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "traffic-2",
+      "x": -155.9710187643434,
+      "z": 65.96820103327815,
+      "yaw": 6.282836269403212,
+      "waypoint": 0,
+      "route": [
+        {
+          "x": -156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": -155.93000000000004,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": 151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": -155.36999999999998,
+          "z": 152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": 153.48,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": -153.48000000000002,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": -152.57,
+          "z": 155.37,
+          "turn": true
+        },
+        {
+          "x": -151.52,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": 155.93,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": 155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": 151.52000000000004,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 152.56999999999996,
+          "z": 155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": 153.48,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": 153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": 155.37,
+          "z": 152.57,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": 151.52,
+          "turn": true
+        },
+        {
+          "x": 155.93,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": -149,
+          "turn": true
+        },
+        {
+          "x": 155.93000000000004,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": -151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": 155.36999999999998,
+          "z": -152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": -153.48,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": 153.48000000000002,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": 152.57,
+          "z": -155.37,
+          "turn": true
+        },
+        {
+          "x": 151.52,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": -155.93,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": -155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": -151.52000000000004,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -152.56999999999996,
+          "z": -155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": -153.48,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": -153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": -155.37,
+          "z": -152.57,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": -151.52,
+          "turn": true
+        },
+        {
+          "x": -155.93,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": -156,
+          "z": -149,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 8426964,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 2.6433333333333375,
+      "cruise": 12.6,
+      "vx": -0.0009226231701490282,
+      "vz": 2.643333172318166,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "traffic-3",
+      "x": -155.9989581944132,
+      "z": 145.96829129996152,
+      "yaw": -0.00034363642713618317,
+      "waypoint": 0,
+      "route": [
+        {
+          "x": -156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": -155.93000000000004,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": 151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": -155.36999999999998,
+          "z": 152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": 153.48,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": -153.48000000000002,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": -152.57,
+          "z": 155.37,
+          "turn": true
+        },
+        {
+          "x": -151.52,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": 155.93,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": 155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": 151.52000000000004,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 152.56999999999996,
+          "z": 155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": 153.48,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": 153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": 155.37,
+          "z": 152.57,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": 151.52,
+          "turn": true
+        },
+        {
+          "x": 155.93,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": -149,
+          "turn": true
+        },
+        {
+          "x": 155.93000000000004,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": -151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": 155.36999999999998,
+          "z": -152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": -153.48,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": 153.48000000000002,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": 152.57,
+          "z": -155.37,
+          "turn": true
+        },
+        {
+          "x": 151.52,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": -155.93,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": -155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": -151.52000000000004,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -152.56999999999996,
+          "z": -155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": -153.48,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": -153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": -155.37,
+          "z": -152.57,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": -151.52,
+          "turn": true
+        },
+        {
+          "x": -155.93,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": -156,
+          "z": -149,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 13927599,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 2.6433333333333375,
+      "cruise": 11.4,
+      "vx": -0.0009083456045194964,
+      "vz": 2.643333177263017,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "traffic-4",
+      "x": 144.60265072129215,
+      "z": 155.99843969150967,
+      "yaw": 1.5704414974816105,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": -155.93000000000004,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": 151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": -155.36999999999998,
+          "z": 152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": 153.48,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": -153.48000000000002,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": -152.57,
+          "z": 155.37,
+          "turn": true
+        },
+        {
+          "x": -151.52,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": 155.93,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": 155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": 151.52000000000004,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 152.56999999999996,
+          "z": 155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": 153.48,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": 153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": 155.37,
+          "z": 152.57,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": 151.52,
+          "turn": true
+        },
+        {
+          "x": 155.93,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": -149,
+          "turn": true
+        },
+        {
+          "x": 155.93000000000004,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": -151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": 155.36999999999998,
+          "z": -152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": -153.48,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": 153.48000000000002,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": 152.57,
+          "z": -155.37,
+          "turn": true
+        },
+        {
+          "x": 151.52,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": -155.93,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": -155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": -151.52000000000004,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -152.56999999999996,
+          "z": -155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": -153.48,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": -153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": -155.37,
+          "z": -152.57,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": -151.52,
+          "turn": true
+        },
+        {
+          "x": -155.93,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": -156,
+          "z": -149,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 6084541,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 0,
+      "cruise": 12,
+      "vx": 0,
+      "vz": 0,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "following"
+    },
+    {
+      "id": "traffic-5",
+      "x": 155.99843703976265,
+      "z": -144.480946196664,
+      "yaw": 3.141246793539649,
+      "waypoint": 22,
+      "route": [
+        {
+          "x": -156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": -155.93000000000004,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": 151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": -155.36999999999998,
+          "z": 152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": 153.48,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": -153.48000000000002,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": -152.57,
+          "z": 155.37,
+          "turn": true
+        },
+        {
+          "x": -151.52,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": 155.93,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": 156,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": 155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": 151.52000000000004,
+          "z": 155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 152.56999999999996,
+          "z": 155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": 153.48,
+          "z": 154.88,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": 154.25,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": 153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": 155.37,
+          "z": 152.57,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": 151.52,
+          "turn": true
+        },
+        {
+          "x": 155.93,
+          "z": 150.33,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": 149,
+          "turn": true
+        },
+        {
+          "x": 156,
+          "z": -149,
+          "turn": true
+        },
+        {
+          "x": 155.93000000000004,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": 155.72000000000003,
+          "z": -151.52000000000004,
+          "turn": true
+        },
+        {
+          "x": 155.36999999999998,
+          "z": -152.56999999999996,
+          "turn": true
+        },
+        {
+          "x": 154.88,
+          "z": -153.48,
+          "turn": true
+        },
+        {
+          "x": 154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": 153.48000000000002,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": 152.57,
+          "z": -155.37,
+          "turn": true
+        },
+        {
+          "x": 151.52,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": 150.33,
+          "z": -155.93,
+          "turn": true
+        },
+        {
+          "x": 149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -149,
+          "z": -156,
+          "turn": true
+        },
+        {
+          "x": -150.33,
+          "z": -155.93000000000004,
+          "turn": true
+        },
+        {
+          "x": -151.52000000000004,
+          "z": -155.72000000000003,
+          "turn": true
+        },
+        {
+          "x": -152.56999999999996,
+          "z": -155.36999999999998,
+          "turn": true
+        },
+        {
+          "x": -153.48,
+          "z": -154.88,
+          "turn": true
+        },
+        {
+          "x": -154.25,
+          "z": -154.25,
+          "turn": true
+        },
+        {
+          "x": -154.88,
+          "z": -153.48000000000002,
+          "turn": true
+        },
+        {
+          "x": -155.37,
+          "z": -152.57,
+          "turn": true
+        },
+        {
+          "x": -155.72000000000003,
+          "z": -151.52,
+          "turn": true
+        },
+        {
+          "x": -155.93,
+          "z": -150.33,
+          "turn": true
+        },
+        {
+          "x": -156,
+          "z": -149,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 15199735,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 2.7527259003277793,
+      "cruise": 12.6,
+      "vx": 0.0009520578989403572,
+      "vz": -2.752725735688381,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "junction-clearing"
+    },
+    {
+      "id": "inner-traffic-0",
+      "x": -83.91814568758797,
+      "z": 43.557793211963165,
+      "yaw": -3.1409136904331763,
+      "waypoint": 0,
+      "route": [
+        {
+          "x": -84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": -78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.72000000000001,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": -82.88000000000001,
+          "z": -81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": -81.48,
+          "z": -82.88,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": -83.72,
+          "turn": true
+        },
+        {
+          "x": -78.33,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 78.33000000000001,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": -83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": 81.47999999999999,
+          "z": -82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": 82.88,
+          "z": -81.48,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": 83.72,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": -78.33,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": 77,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": 78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.72000000000001,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": 82.88000000000001,
+          "z": 81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": 81.48,
+          "z": 82.88,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": 83.72,
+          "turn": true
+        },
+        {
+          "x": 78.33,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -78.33000000000001,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": 83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": -81.47999999999999,
+          "z": 82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": -82.88,
+          "z": 81.48,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": -83.72,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": 78.33,
+          "turn": true
+        },
+        {
+          "x": -84,
+          "z": 77,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 15199735,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 9.4,
+      "cruise": 9.4,
+      "vx": -0.0063822531818394585,
+      "vz": -9.399997833342534,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "inner-traffic-1",
+      "x": 52.86330795989818,
+      "z": -83.98294561402315,
+      "yaw": -4.711682405386327,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": -78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.72000000000001,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": -82.88000000000001,
+          "z": -81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": -81.48,
+          "z": -82.88,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": -83.72,
+          "turn": true
+        },
+        {
+          "x": -78.33,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 78.33000000000001,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": -83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": 81.47999999999999,
+          "z": -82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": 82.88,
+          "z": -81.48,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": 83.72,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": -78.33,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": 77,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": 78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.72000000000001,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": 82.88000000000001,
+          "z": 81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": 81.48,
+          "z": 82.88,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": 83.72,
+          "turn": true
+        },
+        {
+          "x": 78.33,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -78.33000000000001,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": 83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": -81.47999999999999,
+          "z": 82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": -82.88,
+          "z": 81.48,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": -83.72,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": 78.33,
+          "turn": true
+        },
+        {
+          "x": -84,
+          "z": 77,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 16426842,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 10,
+      "cruise": 10,
+      "vx": 9.999997503758962,
+      "vz": -0.007065749395702624,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "inner-traffic-2",
+      "x": 83.9559475251836,
+      "z": 11.351891909565873,
+      "yaw": -6.28251426776222,
+      "waypoint": 22,
+      "route": [
+        {
+          "x": -84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": -78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.72000000000001,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": -82.88000000000001,
+          "z": -81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": -81.48,
+          "z": -82.88,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": -83.72,
+          "turn": true
+        },
+        {
+          "x": -78.33,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 78.33000000000001,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": -83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": 81.47999999999999,
+          "z": -82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": 82.88,
+          "z": -81.48,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": 83.72,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": -78.33,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": 77,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": 78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.72000000000001,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": 82.88000000000001,
+          "z": 81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": 81.48,
+          "z": 82.88,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": 83.72,
+          "turn": true
+        },
+        {
+          "x": 78.33,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -78.33000000000001,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": 83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": -81.47999999999999,
+          "z": 82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": -82.88,
+          "z": 81.48,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": -83.72,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": 78.33,
+          "turn": true
+        },
+        {
+          "x": -84,
+          "z": 77,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 8426964,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 10.6,
+      "cruise": 10.6,
+      "vx": 0.007113017290256435,
+      "vz": 10.59999761344242,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "inner-traffic-3",
+      "x": 71.3700772870457,
+      "z": 83.9004329875981,
+      "yaw": -1.5701252548424096,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": -78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.72000000000001,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": -82.88000000000001,
+          "z": -81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": -81.48,
+          "z": -82.88,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": -83.72,
+          "turn": true
+        },
+        {
+          "x": -78.33,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": -84,
+          "turn": true
+        },
+        {
+          "x": 78.33000000000001,
+          "z": -83.93,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": -83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": -83.37,
+          "turn": true
+        },
+        {
+          "x": 81.47999999999999,
+          "z": -82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": -82.25,
+          "turn": true
+        },
+        {
+          "x": 82.88,
+          "z": -81.48,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": -80.57,
+          "turn": true
+        },
+        {
+          "x": 83.72,
+          "z": -79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": -78.33,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": -77,
+          "turn": true
+        },
+        {
+          "x": 84,
+          "z": 77,
+          "turn": true
+        },
+        {
+          "x": 83.93,
+          "z": 78.33000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.72000000000001,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": 83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": 82.88000000000001,
+          "z": 81.47999999999999,
+          "turn": true
+        },
+        {
+          "x": 82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": 81.48,
+          "z": 82.88,
+          "turn": true
+        },
+        {
+          "x": 80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": 79.52000000000001,
+          "z": 83.72,
+          "turn": true
+        },
+        {
+          "x": 78.33,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": 77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -77,
+          "z": 84,
+          "turn": true
+        },
+        {
+          "x": -78.33000000000001,
+          "z": 83.93,
+          "turn": true
+        },
+        {
+          "x": -79.52000000000001,
+          "z": 83.72000000000001,
+          "turn": true
+        },
+        {
+          "x": -80.57,
+          "z": 83.37,
+          "turn": true
+        },
+        {
+          "x": -81.47999999999999,
+          "z": 82.88000000000001,
+          "turn": true
+        },
+        {
+          "x": -82.25,
+          "z": 82.25,
+          "turn": true
+        },
+        {
+          "x": -82.88,
+          "z": 81.48,
+          "turn": true
+        },
+        {
+          "x": -83.37,
+          "z": 80.57,
+          "turn": true
+        },
+        {
+          "x": -83.72,
+          "z": 79.52000000000001,
+          "turn": true
+        },
+        {
+          "x": -83.93,
+          "z": 78.33,
+          "turn": true
+        },
+        {
+          "x": -84,
+          "z": 77,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 13927599,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 7.291105327837974,
+      "cruise": 9.4,
+      "vx": -7.291103686108723,
+      "vz": 0.004892855920901158,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-parked-0",
+      "x": 6,
+      "z": -455,
+      "yaw": 3.141592653589793,
+      "type": "sedan",
+      "color": 10728880,
+      "home": {
+        "x": 6,
+        "z": -455,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "north-parked-1",
+      "x": 6,
+      "z": -595,
+      "yaw": 3.141592653589793,
+      "type": "sedan",
+      "color": 11170387,
+      "home": {
+        "x": 6,
+        "z": -595,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "north-parked-2",
+      "x": 6,
+      "z": -735,
+      "yaw": 3.141592653589793,
+      "type": "sedan",
+      "color": 4291972,
+      "home": {
+        "x": 6,
+        "z": -735,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "north-parked-3",
+      "x": 6,
+      "z": -875,
+      "yaw": 3.141592653589793,
+      "type": "sedan",
+      "color": 13613706,
+      "home": {
+        "x": 6,
+        "z": -875,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "north-parked-4",
+      "x": 6,
+      "z": -1015,
+      "yaw": 3.141592653589793,
+      "type": "sedan",
+      "color": 9675444,
+      "home": {
+        "x": 6,
+        "z": -1015,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "north-parked-5",
+      "x": 6,
+      "z": -1155,
+      "yaw": 3.141592653589793,
+      "type": "sedan",
+      "color": 12684679,
+      "home": {
+        "x": 6,
+        "z": -1155,
+        "yaw": 3.141592653589793
+      },
+      "speed": 0,
+      "vx": 0,
+      "vz": 0,
+      "health": 100,
+      "traffic": false,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75
+    },
+    {
+      "id": "north-traffic-0-0",
+      "x": 15.258999999999999,
+      "z": -424,
+      "yaw": 1.5707963267948966,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -429.67,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -428.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -424.63,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -424.28000000000003,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -424.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -424.62999999999994,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -428.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -429.66999999999996,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -549,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -551.5200000000001,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -555.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -555.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -555.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -555.7200000000001,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -551.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -549,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 15199735,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 0,
+      "cruise": 9.4,
+      "vx": 0,
+      "vz": -7.703719777548943e-34,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-0-1",
+      "x": 443.6992656586656,
+      "z": -555.9098187037022,
+      "yaw": 4.712304910879869,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -429.67,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -428.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -424.63,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -424.28000000000003,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -424.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -424.62999999999994,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -428.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -429.66999999999996,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -549,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -551.5200000000001,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -555.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -555.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -555.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -555.7200000000001,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -551.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -549,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 16426842,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 10,
+      "cruise": 10,
+      "vx": -9.999999964661592,
+      "vz": -0.0008406950472191497,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-0-2",
+      "x": -144.60121403758865,
+      "z": -556,
+      "yaw": -1.5707963267948966,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -429.67,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -428.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -424.63,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -424.28000000000003,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -424.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -424.62999999999994,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -428.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -429.66999999999996,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -549,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -551.5200000000001,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -555.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -555.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -555.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -555.7200000000001,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -551.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -549,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 8426964,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 0,
+      "cruise": 10.6,
+      "vx": 0,
+      "vz": 0,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "signal"
+    },
+    {
+      "id": "north-traffic-0-3",
+      "x": -507.8181931779265,
+      "z": -424.09366795113675,
+      "yaw": 1.5707139319568417,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -429.67,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -428.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -424.63,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -424.28000000000003,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -424,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -424.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -424.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -424.62999999999994,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -425.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -425.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -426.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -427.42999999999995,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -428.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -429.66999999999996,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -431,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -549,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -551.5200000000001,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -555.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -555.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -556,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -555.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -555.7200000000001,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -555.3699999999999,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -554.88,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -554.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -553.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -552.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -551.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -550.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -549,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 13927599,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 9.4,
+      "cruise": 9.4,
+      "vx": 9.399999968092127,
+      "vz": 0.0007745114768396615,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-1-0",
+      "x": 15.259722222222221,
+      "z": -844,
+      "yaw": 1.5707963267948966,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -838.3300000000002,
+          "turn": true
+        },
+        {
+          "x": -643.7200000000001,
+          "z": -839.5200000000001,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -642.8800000000001,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -842.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": -639.52,
+          "z": -843.72,
+          "turn": true
+        },
+        {
+          "x": -638.33,
+          "z": -843.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 638.3300000000002,
+          "z": -843.9300000000002,
+          "turn": true
+        },
+        {
+          "x": 639.5200000000001,
+          "z": -843.7200000000001,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -842.8800000000001,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": 642.88,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 643.72,
+          "z": -839.52,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -838.3299999999999,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -703,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 643.7200000000001,
+          "z": -700.4800000000001,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -699.43,
+          "turn": true
+        },
+        {
+          "x": 642.8800000000001,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -696.6300000000001,
+          "turn": true
+        },
+        {
+          "x": 639.52,
+          "z": -696.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 638.33,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -638.3300000000002,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": -639.5200000000001,
+          "z": -696.2800000000002,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -696.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": -642.88,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -699.4300000000001,
+          "turn": true
+        },
+        {
+          "x": -643.72,
+          "z": -700.48,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -644,
+          "z": -703,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 15199735,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 0.043333333333333335,
+      "cruise": 10.4,
+      "vx": 0.043333333333333335,
+      "vz": 2.6534013981525984e-18,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-1-1",
+      "x": 536.4515339316097,
+      "z": -696.0952613874107,
+      "yaw": -1.5707151462906772,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -838.3300000000002,
+          "turn": true
+        },
+        {
+          "x": -643.7200000000001,
+          "z": -839.5200000000001,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -642.8800000000001,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -842.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": -639.52,
+          "z": -843.72,
+          "turn": true
+        },
+        {
+          "x": -638.33,
+          "z": -843.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 638.3300000000002,
+          "z": -843.9300000000002,
+          "turn": true
+        },
+        {
+          "x": 639.5200000000001,
+          "z": -843.7200000000001,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -842.8800000000001,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": 642.88,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 643.72,
+          "z": -839.52,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -838.3299999999999,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -703,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 643.7200000000001,
+          "z": -700.4800000000001,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -699.43,
+          "turn": true
+        },
+        {
+          "x": 642.8800000000001,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -696.6300000000001,
+          "turn": true
+        },
+        {
+          "x": 639.52,
+          "z": -696.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 638.33,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -638.3300000000002,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": -639.5200000000001,
+          "z": -696.2800000000002,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -696.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": -642.88,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -699.4300000000001,
+          "turn": true
+        },
+        {
+          "x": -643.72,
+          "z": -700.48,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -644,
+          "z": -703,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 16426842,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 11,
+      "cruise": 11,
+      "vx": -10.99999996375349,
+      "vz": 0.0008929855454326535,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-1-2",
+      "x": -406.42074148895324,
+      "z": -696,
+      "yaw": -1.5707963267948966,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -838.3300000000002,
+          "turn": true
+        },
+        {
+          "x": -643.7200000000001,
+          "z": -839.5200000000001,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -642.8800000000001,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -842.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": -639.52,
+          "z": -843.72,
+          "turn": true
+        },
+        {
+          "x": -638.33,
+          "z": -843.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 638.3300000000002,
+          "z": -843.9300000000002,
+          "turn": true
+        },
+        {
+          "x": 639.5200000000001,
+          "z": -843.7200000000001,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -842.8800000000001,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": 642.88,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 643.72,
+          "z": -839.52,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -838.3299999999999,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -703,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 643.7200000000001,
+          "z": -700.4800000000001,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -699.43,
+          "turn": true
+        },
+        {
+          "x": 642.8800000000001,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -696.6300000000001,
+          "turn": true
+        },
+        {
+          "x": 639.52,
+          "z": -696.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 638.33,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -638.3300000000002,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": -639.5200000000001,
+          "z": -696.2800000000002,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -696.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": -642.88,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -699.4300000000001,
+          "turn": true
+        },
+        {
+          "x": -643.72,
+          "z": -700.48,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -644,
+          "z": -703,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 8426964,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 11.6,
+      "cruise": 11.6,
+      "vx": -11.6,
+      "vz": 7.102951435054649e-16,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-1-3",
+      "x": -643.9580001548574,
+      "z": -782.2795235147939,
+      "yaw": -3.140825119394317,
+      "waypoint": 0,
+      "route": [
+        {
+          "x": -644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -838.3300000000002,
+          "turn": true
+        },
+        {
+          "x": -643.7200000000001,
+          "z": -839.5200000000001,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": -642.8800000000001,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -842.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": -639.52,
+          "z": -843.72,
+          "turn": true
+        },
+        {
+          "x": -638.33,
+          "z": -843.9300000000001,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -844,
+          "turn": true
+        },
+        {
+          "x": 638.3300000000002,
+          "z": -843.9300000000002,
+          "turn": true
+        },
+        {
+          "x": 639.5200000000001,
+          "z": -843.7200000000001,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -843.37,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -842.8800000000001,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -842.25,
+          "turn": true
+        },
+        {
+          "x": 642.88,
+          "z": -841.48,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -840.5699999999999,
+          "turn": true
+        },
+        {
+          "x": 643.72,
+          "z": -839.52,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -838.3299999999999,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -837,
+          "turn": true
+        },
+        {
+          "x": 644,
+          "z": -703,
+          "turn": true
+        },
+        {
+          "x": 643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 643.7200000000001,
+          "z": -700.4800000000001,
+          "turn": true
+        },
+        {
+          "x": 643.37,
+          "z": -699.43,
+          "turn": true
+        },
+        {
+          "x": 642.8800000000001,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": 642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": 641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": 640.5699999999999,
+          "z": -696.6300000000001,
+          "turn": true
+        },
+        {
+          "x": 639.52,
+          "z": -696.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 638.33,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": 637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -637,
+          "z": -696,
+          "turn": true
+        },
+        {
+          "x": -638.3300000000002,
+          "z": -696.0699999999999,
+          "turn": true
+        },
+        {
+          "x": -639.5200000000001,
+          "z": -696.2800000000002,
+          "turn": true
+        },
+        {
+          "x": -640.5699999999999,
+          "z": -696.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -641.48,
+          "z": -697.12,
+          "turn": true
+        },
+        {
+          "x": -642.25,
+          "z": -697.75,
+          "turn": true
+        },
+        {
+          "x": -642.88,
+          "z": -698.52,
+          "turn": true
+        },
+        {
+          "x": -643.37,
+          "z": -699.4300000000001,
+          "turn": true
+        },
+        {
+          "x": -643.72,
+          "z": -700.48,
+          "turn": true
+        },
+        {
+          "x": -643.93,
+          "z": -701.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -644,
+          "z": -703,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 13927599,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 0.043333333333333335,
+      "cruise": 10.4,
+      "vx": -0.00003325981187169243,
+      "vz": -0.04333332056931123,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-2-0",
+      "x": 304.30553547292294,
+      "z": -984,
+      "yaw": 1.5707963267948966,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -988.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -987.4299999999998,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -984.28,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -984.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -987.43,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -988.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -1109,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -1110.3300000000002,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -1111.5200000000002,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -1112.57,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -1114.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -1114.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -1112.5700000000002,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -1111.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -1110.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -1109,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 15199735,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 1.8013524587260834,
+      "cruise": 11.4,
+      "vx": 1.8013524587260834,
+      "vz": 1.1030102613575565e-16,
+      "y": 9,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 9,
+      "maxY": 10.75,
+      "trafficState": "signal"
+    },
+    {
+      "id": "north-traffic-2-1",
+      "x": 546.4038706843647,
+      "z": -1115.9029831835044,
+      "yaw": 4.712306441251806,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -988.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -987.4299999999998,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -984.28,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -984.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -987.43,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -988.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -1109,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -1110.3300000000002,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -1111.5200000000002,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -1112.57,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -1114.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -1114.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -1112.5700000000002,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -1111.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -1110.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -1109,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 16426842,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 12,
+      "cruise": 12,
+      "vx": -11.99999995912375,
+      "vz": -0.0009904695934859307,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-2-2",
+      "x": -309.84447607263104,
+      "z": -1116,
+      "yaw": -1.5707963267948966,
+      "waypoint": 33,
+      "route": [
+        {
+          "x": -636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -988.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -987.4299999999998,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -984.28,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -984.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -987.43,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -988.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -1109,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -1110.3300000000002,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -1111.5200000000002,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -1112.57,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -1114.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -1114.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -1112.5700000000002,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -1111.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -1110.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -1109,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 8426964,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 5.1999999999999975,
+      "cruise": 12.6,
+      "vx": -5.1999999999999975,
+      "vz": 3.184081677783117e-16,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    },
+    {
+      "id": "north-traffic-2-3",
+      "x": -287.48521247801244,
+      "z": -984.0768518658284,
+      "yaw": 1.570712471796909,
+      "waypoint": 11,
+      "route": [
+        {
+          "x": -636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": -635.7200000000001,
+          "z": -988.4800000000001,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -987.4299999999998,
+          "turn": true
+        },
+        {
+          "x": -634.88,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": -631.52,
+          "z": -984.28,
+          "turn": true
+        },
+        {
+          "x": -630.3299999999999,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -984,
+          "turn": true
+        },
+        {
+          "x": 630.33,
+          "z": -984.07,
+          "turn": true
+        },
+        {
+          "x": 631.5200000000002,
+          "z": -984.2800000000001,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -984.6299999999999,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -985.12,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -985.75,
+          "turn": true
+        },
+        {
+          "x": 634.8799999999999,
+          "z": -986.52,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -987.43,
+          "turn": true
+        },
+        {
+          "x": 635.72,
+          "z": -988.48,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -989.6700000000001,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -991,
+          "turn": true
+        },
+        {
+          "x": 636,
+          "z": -1109,
+          "turn": true
+        },
+        {
+          "x": 635.9300000000001,
+          "z": -1110.3300000000002,
+          "turn": true
+        },
+        {
+          "x": 635.7200000000001,
+          "z": -1111.5200000000002,
+          "turn": true
+        },
+        {
+          "x": 635.37,
+          "z": -1112.57,
+          "turn": true
+        },
+        {
+          "x": 634.88,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": 634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": 633.48,
+          "z": -1114.88,
+          "turn": true
+        },
+        {
+          "x": 632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": 631.52,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": 630.3299999999999,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": 629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -629,
+          "z": -1116,
+          "turn": true
+        },
+        {
+          "x": -630.33,
+          "z": -1115.93,
+          "turn": true
+        },
+        {
+          "x": -631.5200000000002,
+          "z": -1115.72,
+          "turn": true
+        },
+        {
+          "x": -632.5699999999999,
+          "z": -1115.37,
+          "turn": true
+        },
+        {
+          "x": -633.48,
+          "z": -1114.8799999999999,
+          "turn": true
+        },
+        {
+          "x": -634.25,
+          "z": -1114.25,
+          "turn": true
+        },
+        {
+          "x": -634.8799999999999,
+          "z": -1113.48,
+          "turn": true
+        },
+        {
+          "x": -635.37,
+          "z": -1112.5700000000002,
+          "turn": true
+        },
+        {
+          "x": -635.72,
+          "z": -1111.52,
+          "turn": true
+        },
+        {
+          "x": -635.9300000000001,
+          "z": -1110.33,
+          "turn": true
+        },
+        {
+          "x": -636,
+          "z": -1109,
+          "turn": true
+        }
+      ],
+      "type": "sedan",
+      "color": 13927599,
+      "health": 100,
+      "traffic": true,
+      "pause": 0,
+      "speed": 11.4,
+      "cruise": 11.4,
+      "vx": 11.399999959919535,
+      "vz": 0.0009559469759412775,
+      "y": 0,
+      "pitch": 0,
+      "roll": 0,
+      "hx": 1.18,
+      "hz": 2.32,
+      "minY": 0,
+      "maxY": 1.75,
+      "trafficState": "cruise"
+    }
+  ],
+  "player": {
+    "x": 8,
+    "z": 174,
+    "yaw": 3.141592653589793,
+    "y": 0,
+    "health": 100,
+    "stamina": 100,
+    "vy": 0,
+    "groundY": 0,
+    "jumpY": 0
+  },
+  "elapsed": 89.99999999999618
+}

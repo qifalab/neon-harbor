@@ -1,0 +1,1 @@
+集成门禁按 invocation 原字段查找 stdout/stderr，并要求 invocation-original.json。整套运行已在20:32:50Z exit0、20:32:54Z确认GPU释放后，补入3份原记录精确字节副本；已有raw-*和所有195项初次记录均未修改。初次ledger原字节保留为archive-ledger-initial.json，SHA8997af5fcbe222689fa04555e47446b5967a68c8837e8a087ef21050bfbd5b7d，其195项仍逐项精确。最终archive-ledger.json追加索引这些兼容文件名和本说明，不改方法、源、原metadata、原图或原输出，未重跑。

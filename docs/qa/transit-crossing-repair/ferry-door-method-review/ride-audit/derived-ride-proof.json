@@ -1,0 +1,3087 @@
+{
+  "schema": "neon-harbor-derived-offline-ride-mock-proof-v1",
+  "startedAt": "2026-10-04T19:16:37.172Z",
+  "completedAt": "2026-10-04T19:16:37.244Z",
+  "candidate": "/tmp/neon-harbor-tour-first-error-candidate-2026-10-04T19-13-07-129Z/capture-harbor-tour.mjs",
+  "expectedSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "finalSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "candidateUnchanged": true,
+  "node": "v24.19.0",
+  "script": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs",
+  "scriptSha256": "6c21830f4c4a7561f55dd24ae145bd2ae5c2deb2a32e87c3a7762ff3191f38dd",
+  "scope": "Only exact extracted writeCabinEvidence, retainCabinCleanupError, and ride definitions; all browser, product, waypoint movement, clock and phase dependencies are derived mocks. This is control-flow evidence, never live route, collision, rendering, duration, or product-test evidence.",
+  "extractedFunctions": [
+    {
+      "names": [
+        "writeCabinEvidence",
+        "retainCabinCleanupError"
+      ],
+      "startLine": 347,
+      "endLine": 357,
+      "sha256": "a982f5c3253f39f63e8eab4ab3650d7dfc8efd7a5cb35abfc9f0ebea2e78608c"
+    },
+    {
+      "names": [
+        "ride"
+      ],
+      "startLine": 431,
+      "endLine": 513,
+      "sha256": "b1a89039f9a2138b5f4ed068433b92df5d47a2065b118aa0726f796515d22354"
+    }
+  ],
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "ascent-primary-and-mouse-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "ascent-primary-and-mouse-failure",
+        "stairs": true,
+        "walkFailAt": 1,
+        "mouseFailAt": 1,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:ascent-primary-and-mouse-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-ascent-primary-and-mouse-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.175Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.179Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "failed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.179Z",
+            "context": {
+              "label": "derived-mock-ascent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:ascent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:ascent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:ascent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_PRIMARY:ascent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ],
+        "error": {
+          "message": "MOCK_PRIMARY:ascent-primary-and-mouse-failure",
+          "stack": "Error: MOCK_PRIMARY:ascent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/ascent-primary-and-mouse-failure/derived-mock-ascent-primary-and-mouse-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-ascent-primary-and-mouse-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "43adc0d1f94e1cccef0e573eb9845bd16316b9c097244d4c2dd8a5535143c361",
+            "bytes": 1946
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.179Z",
+            "context": {
+              "label": "derived-mock-ascent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:ascent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:ascent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:ascent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_PRIMARY:ascent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "ascent-normal-mouse-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "ascent-normal-mouse-failure",
+        "stairs": true,
+        "mouseFailAt": 1,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 6,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 6,
+        "mouseUp": 1,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": false,
+        "cleanupObjectIdentityPropagated": true
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-ascent-normal-mouse-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.181Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.181Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0002.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0003.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0004.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0005.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0006.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.181Z",
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": null,
+            "primaryPreserved": false
+          }
+        ],
+        "error": {
+          "message": "MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure",
+          "stack": "Error: MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/ascent-normal-mouse-failure/derived-mock-ascent-normal-mouse-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-ascent-normal-mouse-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "1c32d039778d53fe12874d1dff1ef097d5dd1464cf4f62bcbd99a324b790ef5a",
+            "bytes": 2113
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.181Z",
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:ascent-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": null,
+            "primaryPreserved": false
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-ascent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "descent-primary-and-mouse-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "descent-primary-and-mouse-failure",
+        "stairs": true,
+        "walkFailAt": 7,
+        "mouseFailAt": 2,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 7,
+        "expectedMouseCalls": 2
+      },
+      "counters": {
+        "state": 2,
+        "focus": 2,
+        "wait": 3,
+        "press": 2,
+        "pointer": 2,
+        "walk": 7,
+        "mouseUp": 2,
+        "phase": 4
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:descent-primary-and-mouse-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-descent-primary-and-mouse-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.208Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.208Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0002.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0003.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0004.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0005.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0006.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0007.json",
+            "status": "failed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.208Z",
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:descent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:descent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_PRIMARY:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ],
+        "error": {
+          "message": "MOCK_PRIMARY:descent-primary-and-mouse-failure",
+          "stack": "Error: MOCK_PRIMARY:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/descent-primary-and-mouse-failure/derived-mock-descent-primary-and-mouse-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-descent-primary-and-mouse-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "635111177f7b711a3e146be5004433bed96cdf4919fba0aa5dde1411a120b5da",
+            "bytes": 2584
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.208Z",
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:descent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:descent-primary-and-mouse-failure",
+              "stack": "Error: MOCK_PRIMARY:descent-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "descent-normal-mouse-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "descent-normal-mouse-failure",
+        "stairs": true,
+        "mouseFailAt": 2,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 12,
+        "expectedMouseCalls": 2
+      },
+      "counters": {
+        "state": 2,
+        "focus": 2,
+        "wait": 3,
+        "press": 2,
+        "pointer": 2,
+        "walk": 12,
+        "mouseUp": 2,
+        "phase": 4
+      },
+      "thrown": {
+        "message": "MOCK_MOUSE_RELEASE:descent-normal-mouse-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": false,
+        "cleanupObjectIdentityPropagated": true
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-descent-normal-mouse-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.209Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.209Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0002.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0003.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0004.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0005.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0006.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0007.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0008.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0009.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0010.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0011.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0012.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.209Z",
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:descent-normal-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:descent-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": null,
+            "primaryPreserved": false
+          }
+        ],
+        "error": {
+          "message": "MOCK_MOUSE_RELEASE:descent-normal-mouse-failure",
+          "stack": "Error: MOCK_MOUSE_RELEASE:descent-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/descent-normal-mouse-failure/derived-mock-descent-normal-mouse-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-descent-normal-mouse-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "3ccebe21d81a3d8c63ca85f460f5188c908e78221197dca62f2113e1f891bda4",
+            "bytes": 2749
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.209Z",
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:descent-normal-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:descent-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": null,
+            "primaryPreserved": false
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-descent-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "direct-primary-and-mouse-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "direct-primary-and-mouse-failure",
+        "stairs": false,
+        "walkFailAt": 1,
+        "mouseFailAt": 1,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:direct-primary-and-mouse-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-direct-primary-and-mouse-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.210Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.211Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "failed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.211Z",
+            "context": {
+              "label": "derived-mock-direct-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:direct-primary-and-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:direct-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:direct-primary-and-mouse-failure",
+              "stack": "Error: MOCK_PRIMARY:direct-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ],
+        "error": {
+          "message": "MOCK_PRIMARY:direct-primary-and-mouse-failure",
+          "stack": "Error: MOCK_PRIMARY:direct-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/direct-primary-and-mouse-failure/derived-mock-direct-primary-and-mouse-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-direct-primary-and-mouse-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "4e8a9427a4d3af694cbd208283bcaef5d4d1cd43f8a248935c647ac3ec7c8b6e",
+            "bytes": 1946
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.211Z",
+            "context": {
+              "label": "derived-mock-direct-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:direct-primary-and-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:direct-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:direct-primary-and-mouse-failure",
+              "stack": "Error: MOCK_PRIMARY:direct-primary-and-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-direct-primary-and-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "direct-normal-mouse-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "direct-normal-mouse-failure",
+        "stairs": false,
+        "mouseFailAt": 1,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_MOUSE_RELEASE:direct-normal-mouse-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": false,
+        "cleanupObjectIdentityPropagated": true
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-direct-normal-mouse-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.212Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.212Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.212Z",
+            "context": {
+              "label": "derived-mock-direct-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:direct-normal-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:direct-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": null,
+            "primaryPreserved": false
+          }
+        ],
+        "error": {
+          "message": "MOCK_MOUSE_RELEASE:direct-normal-mouse-failure",
+          "stack": "Error: MOCK_MOUSE_RELEASE:direct-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/direct-normal-mouse-failure/derived-mock-direct-normal-mouse-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-direct-normal-mouse-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "4fdfa1665599995042acb96ca3ce00eda055d5cc3203393617609ba2ee0103e5",
+            "bytes": 1588
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.212Z",
+            "context": {
+              "label": "derived-mock-direct-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:direct-normal-mouse-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:direct-normal-mouse-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": null,
+            "primaryPreserved": false
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-direct-normal-mouse-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "early-initial-state",
+      "status": "passed",
+      "configuration": {
+        "name": "early-initial-state",
+        "failAt": "initial-state",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 1,
+        "focus": 0,
+        "wait": 0,
+        "press": 0,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-initial-state",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-initial-state",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.213Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.213Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-initial-state",
+          "stack": "Error: MOCK_PRIMARY:early-initial-state\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-initial-state/derived-mock-early-initial-state-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-initial-state-cabin-segments.json",
+            "status": "failed",
+            "sha256": "988472445c6910f498e5e661b33ee2790d3c3da4f8a8e6e6b10d9680e4ec7b74",
+            "bytes": 791
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-route",
+      "status": "passed",
+      "configuration": {
+        "name": "early-route",
+        "failAt": "route",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 1,
+        "focus": 0,
+        "wait": 0,
+        "press": 0,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-route",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-route",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.216Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.216Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-route",
+          "stack": "Error: MOCK_PRIMARY:early-route\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-route/derived-mock-early-route-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-route-cabin-segments.json",
+            "status": "failed",
+            "sha256": "f465a2ee70347f36e2076f1b2a18c7f23a6a1a57973f83e33c3ad0c99536cb57",
+            "bytes": 767
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-focus",
+      "status": "passed",
+      "configuration": {
+        "name": "early-focus",
+        "failAt": "focus",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 1,
+        "focus": 1,
+        "wait": 0,
+        "press": 0,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-focus",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-focus",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.217Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.217Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-focus",
+          "stack": "Error: MOCK_PRIMARY:early-focus\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-focus/derived-mock-early-focus-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-focus-cabin-segments.json",
+            "status": "failed",
+            "sha256": "7f1c50f7fa8b1051d2132954bc619c038f307a7998363d9a8360bd20898ea71b",
+            "bytes": 767
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-scheduled-boarding-wait",
+      "status": "passed",
+      "configuration": {
+        "name": "early-scheduled-boarding-wait",
+        "failAt": "scheduled-boarding-wait",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 1,
+        "focus": 1,
+        "wait": 1,
+        "press": 0,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-scheduled-boarding-wait",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-scheduled-boarding-wait",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.218Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.218Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-scheduled-boarding-wait",
+          "stack": "Error: MOCK_PRIMARY:early-scheduled-boarding-wait\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-scheduled-boarding-wait/derived-mock-early-scheduled-boarding-wait-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-scheduled-boarding-wait-cabin-segments.json",
+            "status": "failed",
+            "sha256": "5f4b6162a82f0bcbb5b84b1a07510ed33eaddc4e5c3f2b6a571341a613c6e291",
+            "bytes": 821
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-boarding-guard-state",
+      "status": "passed",
+      "configuration": {
+        "name": "early-boarding-guard-state",
+        "failAt": "boarding-guard-state",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 1,
+        "press": 0,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-boarding-guard-state",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-boarding-guard-state",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.224Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.224Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-boarding-guard-state",
+          "stack": "Error: MOCK_PRIMARY:early-boarding-guard-state\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-boarding-guard-state/derived-mock-early-boarding-guard-state-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-boarding-guard-state-cabin-segments.json",
+            "status": "failed",
+            "sha256": "ea222029128b04d827914bc0c7f91c69478e4cdbebdd868c74d1604b7079a965",
+            "bytes": 812
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-boarding-E",
+      "status": "passed",
+      "configuration": {
+        "name": "early-boarding-E",
+        "failAt": "boarding-E",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 1,
+        "press": 1,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-boarding-E",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-boarding-E",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.225Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.225Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-boarding-E",
+          "stack": "Error: MOCK_PRIMARY:early-boarding-E\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-boarding-E/derived-mock-early-boarding-E-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-boarding-E-cabin-segments.json",
+            "status": "failed",
+            "sha256": "a8b050216b2bd55ea75171725c066b8aadd0428aef61325205fa5d49f7ef021b",
+            "bytes": 782
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-riding-wait",
+      "status": "passed",
+      "configuration": {
+        "name": "early-riding-wait",
+        "failAt": "riding-wait",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-riding-wait",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-riding-wait",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.226Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.226Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-riding-wait",
+          "stack": "Error: MOCK_PRIMARY:early-riding-wait\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-riding-wait/derived-mock-early-riding-wait-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-riding-wait-cabin-segments.json",
+            "status": "failed",
+            "sha256": "c34d95db4bff6d5f63251bc78e5a459668e91fd9b9d602b9fbf39c7b999e0b7a",
+            "bytes": 785
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "early-boarded-phase",
+      "status": "passed",
+      "configuration": {
+        "name": "early-boarded-phase",
+        "failAt": "boarded-phase",
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:early-boarded-phase",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-early-boarded-phase",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.227Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.227Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:early-boarded-phase",
+          "stack": "Error: MOCK_PRIMARY:early-boarded-phase\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/early-boarded-phase/derived-mock-early-boarded-phase-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-early-boarded-phase-cabin-segments.json",
+            "status": "failed",
+            "sha256": "11e7d03fee19aaf9cd8991a5c592c058a8d269724bb2f8d671fd17e79fa26bd5",
+            "bytes": 791
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "cabin-layout-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "cabin-layout-failure",
+        "failAt": "layout",
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:cabin-layout-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-cabin-layout-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.228Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.228Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:cabin-layout-failure",
+          "stack": "Error: MOCK_PRIMARY:cabin-layout-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/cabin-layout-failure/derived-mock-cabin-layout-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-cabin-layout-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "c3823570191f5ad7bcb043216e6e92cb42422fd1bb0f75328164fe05b826d944",
+            "bytes": 795
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "ascent-pointer-setup-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "ascent-pointer-setup-failure",
+        "failAt": "pointer",
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:ascent-pointer-setup-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-ascent-pointer-setup-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.232Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.232Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:ascent-pointer-setup-failure",
+          "stack": "Error: MOCK_PRIMARY:ascent-pointer-setup-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/ascent-pointer-setup-failure/derived-mock-ascent-pointer-setup-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-ascent-pointer-setup-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "563027d0950a72505b0b9770b89d6595e3dd429a7243b23225086c6e3e945372",
+            "bytes": 819
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "descent-pointer-setup-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "descent-pointer-setup-failure",
+        "failAt": "pointer",
+        "pointerFailAt": 2,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 6,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 2,
+        "wait": 3,
+        "press": 2,
+        "pointer": 2,
+        "walk": 6,
+        "mouseUp": 1,
+        "phase": 4
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:descent-pointer-setup-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-descent-pointer-setup-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.233Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.233Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0002.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0003.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0004.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0005.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0006.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:descent-pointer-setup-failure",
+          "stack": "Error: MOCK_PRIMARY:descent-pointer-setup-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/descent-pointer-setup-failure/derived-mock-descent-pointer-setup-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-descent-pointer-setup-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "f8215673a776fb6266c70de080caacc727395c3cd0a2fbb13bda8bd8079ee27b",
+            "bytes": 1454
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-pointer-setup-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-pointer-setup-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-pointer-setup-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-pointer-setup-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-pointer-setup-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-descent-pointer-setup-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "direct-pointer-setup-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "direct-pointer-setup-failure",
+        "stairs": false,
+        "failAt": "pointer",
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:direct-pointer-setup-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-direct-pointer-setup-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.234Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.234Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:direct-pointer-setup-failure",
+          "stack": "Error: MOCK_PRIMARY:direct-pointer-setup-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/direct-pointer-setup-failure/derived-mock-direct-pointer-setup-failure-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-direct-pointer-setup-failure-cabin-segments.json",
+            "status": "failed",
+            "sha256": "0f8ece62484b4a3401b2817ade349290c441705693b159b2c63c18f8f367b8dd",
+            "bytes": 819
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "primary-walk-and-evidence-write-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "primary-walk-and-evidence-write-failure",
+        "walkFailAt": 1,
+        "writeCollision": true,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:primary-walk-and-evidence-write-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-primary-walk-and-evidence-write-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.237Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.237Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "failed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:primary-walk-and-evidence-write-failure",
+          "stack": "Error: MOCK_PRIMARY:primary-walk-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": null,
+      "collisionSentinelRetained": true,
+      "metadata": {
+        "cabinRides": [],
+        "cabinEvidenceErrors": [
+          {
+            "file": "derived-mock-primary-walk-and-evidence-write-failure-cabin-segments.json",
+            "message": "EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/primary-walk-and-evidence-write-failure/derived-mock-primary-walk-and-evidence-write-failure-cabin-segments.json'",
+            "stack": "Error: EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/primary-walk-and-evidence-write-failure/derived-mock-primary-walk-and-evidence-write-failure-cabin-segments.json'\n    at async open (node:internal/fs/promises:697:25)\n    at async writeFile (node:internal/fs/promises:1317:14)\n    at async writeCabinEvidence (derived-finite-functions-only.mjs:3:3)\n    at async Object.ride [as derivedRide] (derived-finite-functions-only.mjs:92:34)\n    at async scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:129:16)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+          }
+        ],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-primary-walk-and-evidence-write-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "primary-setup-and-evidence-write-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "primary-setup-and-evidence-write-failure",
+        "failAt": "initial-state",
+        "writeCollision": true,
+        "expectNullId": true,
+        "expectedStage": "boarding-setup",
+        "expectedWalkCalls": 0,
+        "expectedMouseCalls": 0
+      },
+      "counters": {
+        "state": 1,
+        "focus": 0,
+        "wait": 0,
+        "press": 0,
+        "pointer": 0,
+        "walk": 0,
+        "mouseUp": 0,
+        "phase": 0
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:primary-setup-and-evidence-write-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-primary-setup-and-evidence-write-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": null,
+        "attemptedAt": "2026-10-04T19:16:37.238Z",
+        "rideStage": "boarding-setup",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.238Z",
+        "segments": [],
+        "cleanupErrors": [],
+        "error": {
+          "message": "MOCK_PRIMARY:primary-setup-and-evidence-write-failure",
+          "stack": "Error: MOCK_PRIMARY:primary-setup-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": null,
+      "collisionSentinelRetained": true,
+      "metadata": {
+        "cabinRides": [],
+        "cabinEvidenceErrors": [
+          {
+            "file": "derived-mock-primary-setup-and-evidence-write-failure-cabin-segments.json",
+            "message": "EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/primary-setup-and-evidence-write-failure/derived-mock-primary-setup-and-evidence-write-failure-cabin-segments.json'",
+            "stack": "Error: EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/primary-setup-and-evidence-write-failure/derived-mock-primary-setup-and-evidence-write-failure-cabin-segments.json'\n    at async open (node:internal/fs/promises:697:25)\n    at async writeFile (node:internal/fs/promises:1317:14)\n    at async writeCabinEvidence (derived-finite-functions-only.mjs:3:3)\n    at async Object.ride [as derivedRide] (derived-finite-functions-only.mjs:92:34)\n    at async scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:129:16)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+          }
+        ],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": []
+    },
+    {
+      "name": "primary-walk-mouse-and-evidence-write-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "primary-walk-mouse-and-evidence-write-failure",
+        "stairs": false,
+        "walkFailAt": 1,
+        "mouseFailAt": 1,
+        "writeCollision": true,
+        "expectedStage": "cabin",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 2,
+        "focus": 1,
+        "wait": 2,
+        "press": 1,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 1
+      },
+      "thrown": {
+        "message": "MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure",
+        "code": null,
+        "primaryObjectIdentityPreserved": true,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "failed",
+        "label": "derived-mock-primary-walk-mouse-and-evidence-write-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.239Z",
+        "rideStage": "cabin",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.239Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "failed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.239Z",
+            "context": {
+              "label": "derived-mock-primary-walk-mouse-and-evidence-write-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:primary-walk-mouse-and-evidence-write-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:primary-walk-mouse-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure",
+              "stack": "Error: MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ],
+        "error": {
+          "message": "MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure",
+          "stack": "Error: MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+        }
+      },
+      "retainedIndexFile": null,
+      "collisionSentinelRetained": true,
+      "metadata": {
+        "cabinRides": [],
+        "cabinEvidenceErrors": [
+          {
+            "file": "derived-mock-primary-walk-mouse-and-evidence-write-failure-cabin-segments.json",
+            "message": "EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/primary-walk-mouse-and-evidence-write-failure/derived-mock-primary-walk-mouse-and-evidence-write-failure-cabin-segments.json'",
+            "stack": "Error: EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/primary-walk-mouse-and-evidence-write-failure/derived-mock-primary-walk-mouse-and-evidence-write-failure-cabin-segments.json'\n    at async open (node:internal/fs/promises:697:25)\n    at async writeFile (node:internal/fs/promises:1317:14)\n    at async writeCabinEvidence (derived-finite-functions-only.mjs:3:3)\n    at async Object.ride [as derivedRide] (derived-finite-functions-only.mjs:92:34)\n    at async scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:129:16)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+          }
+        ],
+        "cabinCleanupErrors": [
+          {
+            "at": "2026-10-04T19:16:37.239Z",
+            "context": {
+              "label": "derived-mock-primary-walk-mouse-and-evidence-write-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "scope": "mouse-up"
+            },
+            "error": {
+              "message": "MOCK_MOUSE_RELEASE:primary-walk-mouse-and-evidence-write-failure",
+              "stack": "Error: MOCK_MOUSE_RELEASE:primary-walk-mouse-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:33:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primary": {
+              "message": "MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure",
+              "stack": "Error: MOCK_PRIMARY:primary-walk-mouse-and-evidence-write-failure\n    at scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:32:19)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+            },
+            "primaryPreserved": true
+          }
+        ]
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-primary-walk-mouse-and-evidence-write-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "normal-ride-evidence-write-failure",
+      "status": "passed",
+      "configuration": {
+        "name": "normal-ride-evidence-write-failure",
+        "stairs": false,
+        "writeCollision": true,
+        "expectedStage": "completed",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 3,
+        "focus": 2,
+        "wait": 4,
+        "press": 2,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 4
+      },
+      "thrown": {
+        "message": "EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/normal-ride-evidence-write-failure/derived-mock-normal-ride-evidence-write-failure-cabin-segments.json'",
+        "code": "EEXIST",
+        "primaryObjectIdentityPreserved": false,
+        "cleanupObjectIdentityPropagated": false
+      },
+      "returned": false,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "passed",
+        "label": "derived-mock-normal-ride-evidence-write-failure",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.240Z",
+        "rideStage": "completed",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.241Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [],
+        "error": null
+      },
+      "retainedIndexFile": null,
+      "collisionSentinelRetained": true,
+      "metadata": {
+        "cabinRides": [],
+        "cabinEvidenceErrors": [
+          {
+            "file": "derived-mock-normal-ride-evidence-write-failure-cabin-segments.json",
+            "message": "EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/normal-ride-evidence-write-failure/derived-mock-normal-ride-evidence-write-failure-cabin-segments.json'",
+            "stack": "Error: EEXIST: file already exists, open '/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/normal-ride-evidence-write-failure/derived-mock-normal-ride-evidence-write-failure-cabin-segments.json'\n    at async open (node:internal/fs/promises:697:25)\n    at async writeFile (node:internal/fs/promises:1317:14)\n    at async writeCabinEvidence (derived-finite-functions-only.mjs:3:3)\n    at async Object.ride [as derivedRide] (derived-finite-functions-only.mjs:92:34)\n    at async scenario (file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:129:16)\n    at async file:///tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-ride-mocks.mjs:205:18"
+          }
+        ],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-normal-ride-evidence-write-failure",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "normal-stairs-ride",
+      "status": "passed",
+      "configuration": {
+        "name": "normal-stairs-ride",
+        "expectedStage": "completed",
+        "expectedWalkCalls": 12,
+        "expectedMouseCalls": 2
+      },
+      "counters": {
+        "state": 3,
+        "focus": 3,
+        "wait": 5,
+        "press": 3,
+        "pointer": 2,
+        "walk": 12,
+        "mouseUp": 2,
+        "phase": 7
+      },
+      "thrown": null,
+      "returned": true,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "passed",
+        "label": "derived-mock-normal-stairs-ride",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.242Z",
+        "rideStage": "completed",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.242Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0002.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0003.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0004.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0005.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0006.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0007.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0008.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0009.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0010.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0011.json",
+            "status": "passed",
+            "derivedMock": true
+          },
+          {
+            "file": "mock-segment-0012.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [],
+        "error": null
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/normal-stairs-ride/derived-mock-normal-stairs-ride-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-normal-stairs-ride-cabin-segments.json",
+            "status": "passed",
+            "sha256": "ef80da4caa8a4a6cf78fc28c96c4cdb40d94e69bf92ffdb242fa60ca64766a7e",
+            "bytes": 1754
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 4,
+            "y": 3.7
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 2,
+            "y": 2.5
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 1,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": 0,
+            "y": 1.3
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": 0,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": false,
+            "wallBudgetMilliseconds": 150000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "cabin-waypoint"
+            }
+          },
+          "failed": false
+        },
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-normal-stairs-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "normal-direct-ride",
+      "status": "passed",
+      "configuration": {
+        "name": "normal-direct-ride",
+        "stairs": false,
+        "expectedStage": "completed",
+        "expectedWalkCalls": 1,
+        "expectedMouseCalls": 1
+      },
+      "counters": {
+        "state": 3,
+        "focus": 2,
+        "wait": 4,
+        "press": 2,
+        "pointer": 1,
+        "walk": 1,
+        "mouseUp": 1,
+        "phase": 4
+      },
+      "thrown": null,
+      "returned": true,
+      "attemptedIndex": {
+        "schema": "neon-harbor-cabin-ride-v1",
+        "status": "passed",
+        "label": "derived-mock-normal-direct-ride",
+        "from": "mock-south",
+        "to": "mock-north",
+        "vehicleId": "mock-ferry-1",
+        "attemptedAt": "2026-10-04T19:16:37.243Z",
+        "rideStage": "completed",
+        "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+        "manifestSha256": "DERIVED_MOCK_MANIFEST",
+        "endedAt": "2026-10-04T19:16:37.243Z",
+        "segments": [
+          {
+            "file": "mock-segment-0001.json",
+            "status": "passed",
+            "derivedMock": true
+          }
+        ],
+        "cleanupErrors": [],
+        "error": null
+      },
+      "retainedIndexFile": "/tmp/neon-harbor-derived-ride-mocks-Xt9itCfY/derived-mock-cases/normal-direct-ride/derived-mock-normal-direct-ride-cabin-segments.json",
+      "collisionSentinelRetained": false,
+      "metadata": {
+        "cabinRides": [
+          {
+            "file": "derived-mock-normal-direct-ride-cabin-segments.json",
+            "status": "passed",
+            "sha256": "0b54fc91071afd0cb123c8268de49a532e3a359f23e9ece87df8e7c255bc1170",
+            "bytes": 599
+          }
+        ],
+        "cabinEvidenceErrors": [],
+        "cabinCleanupErrors": []
+      },
+      "dispatchedMockWaypoints": [
+        {
+          "target": {
+            "x": -2.7,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "options": {
+            "precision": true,
+            "wallBudgetMilliseconds": 300000,
+            "context": {
+              "label": "derived-mock-normal-direct-ride",
+              "kind": "ferry",
+              "vehicleId": "mock-ferry-1",
+              "from": "mock-south",
+              "to": "mock-north",
+              "doorId": "mock-door",
+              "role": "lower-door-approach"
+            }
+          },
+          "failed": false
+        }
+      ]
+    }
+  ]
+}

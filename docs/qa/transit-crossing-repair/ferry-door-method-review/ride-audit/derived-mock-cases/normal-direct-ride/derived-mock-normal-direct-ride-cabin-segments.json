@@ -1,0 +1,22 @@
+{
+  "schema": "neon-harbor-cabin-ride-v1",
+  "status": "passed",
+  "label": "derived-mock-normal-direct-ride",
+  "from": "mock-south",
+  "to": "mock-north",
+  "vehicleId": "mock-ferry-1",
+  "attemptedAt": "2026-10-04T19:16:37.243Z",
+  "rideStage": "completed",
+  "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "manifestSha256": "DERIVED_MOCK_MANIFEST",
+  "endedAt": "2026-10-04T19:16:37.243Z",
+  "segments": [
+    {
+      "file": "mock-segment-0001.json",
+      "status": "passed",
+      "derivedMock": true
+    }
+  ],
+  "cleanupErrors": [],
+  "error": null
+}

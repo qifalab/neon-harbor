@@ -1,0 +1,82 @@
+{
+  "verdict": "PROSPECTIVE_30S_COLLECTOR_CAP_SUPPORTED; EXISTING_CASE_REMAINS_FAIL_WITH_COMPLETED_FINITE_EVIDENCE",
+  "browserPromiseResolutionNotRecorded": true,
+  "runs": [
+    {
+      "method": "f147",
+      "folder": "vice-detail-native-2026-10-04",
+      "closeStartedAt": "2026-10-04T20:41:35.065Z",
+      "timeoutCompletedAt": "2026-10-04T20:41:45.064Z",
+      "closureCheckedAt": "2026-10-04T20:41:54Z",
+      "closeStartToObservedResourceAbsenceSeconds": 18.935,
+      "timeoutToObservedResourceAbsenceSeconds": 8.936,
+      "caseStatus": "failed",
+      "exitCode": 1,
+      "actualBrowserPromiseResolvedAt": "not recorded"
+    },
+    {
+      "method": "469d",
+      "folder": "vice-detail-region-native-2026-10-04",
+      "closeStartedAt": "2026-10-04T21:01:08.965Z",
+      "timeoutCompletedAt": "2026-10-04T21:01:18.966Z",
+      "closureCheckedAt": "2026-10-04T21:01:29Z",
+      "closeStartToObservedResourceAbsenceSeconds": 20.035,
+      "timeoutToObservedResourceAbsenceSeconds": 10.034,
+      "caseStatus": "failed",
+      "exitCode": 1,
+      "actualBrowserPromiseResolvedAt": "not recorded"
+    }
+  ],
+  "candidateReverseRecoversBaseline": true,
+  "sourceRuntimeChanged": false,
+  "artifacts": {
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-native-2026-10-04/metadata.json": {
+      "bytes": 1808916,
+      "sha256": "2d2128809a4ff15931c908a09e5f661fcd7bd37e95ca6443423b425510bed6c8"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-native-2026-10-04/closure-process-check.json": {
+      "bytes": 233,
+      "sha256": "8872f7a7eb996ecefca346cc4f26c0888699d071e580537873c42632b023863e"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-native-2026-10-04/invocation-original.json": {
+      "bytes": 1199,
+      "sha256": "8bc1a4b6e6128c9028e18044f3104ca421dc3d55d51fbbbcbea849b5fd35eac5"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-native-2026-10-04/freeze-verification.json": {
+      "bytes": 281,
+      "sha256": "d0da3d1c3e8b253b1aa2bb9a564a63f600c5b9697ee9f5081212ba35796d7511"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-region-native-2026-10-04/metadata.json": {
+      "bytes": 2046677,
+      "sha256": "2001cff11d1ee703778318bdcedc91b21382690bff38a9a3a2747a5475becb43"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-region-native-2026-10-04/closure-process-check.json": {
+      "bytes": 233,
+      "sha256": "e605646fa19ff04da5a4e58de176f0987fb95fabbb60951bb6496c1ed06b1f64"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-region-native-2026-10-04/invocation-original.json": {
+      "bytes": 1280,
+      "sha256": "2e44ece1352c2612e300e1948082ebdd62751f38801574ff1ddb5c4486707f57"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/art-pilot/vice-detail-region-native-2026-10-04/freeze-verification.json": {
+      "bytes": 281,
+      "sha256": "d0da3d1c3e8b253b1aa2bb9a564a63f600c5b9697ee9f5081212ba35796d7511"
+    },
+    "/workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs": {
+      "bytes": 28556,
+      "sha256": "469da79377238d2a8d71077bd0270a1733e24bfa4d79fc9cc3f9d6651c869101"
+    },
+    "/tmp/capture-workshop-vice-detail-browser30-candidate.mjs": {
+      "bytes": 28556,
+      "sha256": "1cc5537fe516cf57cbd71ff7f463588b962ce1d102799c1b8ec1fab90f1b4e7d"
+    },
+    "/tmp/neon-vice-detail-browser30-candidate.patch": {
+      "bytes": 702,
+      "sha256": "32313b02e8ddce905ae1be75b58eedb5deb0206240d24680c5cd9ab605a81557"
+    },
+    "/tmp/neon-vice-detail-browser30-and-limited-evidence-review.md": {
+      "bytes": 6320,
+      "sha256": "38f060460b9e71d8eef43256e28c7eeba4b54dc2038f7c5d6805ee5903d451ac"
+    }
+  }
+}

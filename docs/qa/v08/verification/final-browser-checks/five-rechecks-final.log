@@ -1,0 +1,16 @@
+[WebServer] (node:17561) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:17577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (1.5m)
+  ✓  2 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (60.0s)
+  ✓  3 tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views (1.2m)
+  ✓  4 tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail (1.1m)
+  ✓  5 tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls (5.4m)
+
+  Slow test file: tests/e2e/metropolis.spec.js (6.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  5 passed (10.2m)

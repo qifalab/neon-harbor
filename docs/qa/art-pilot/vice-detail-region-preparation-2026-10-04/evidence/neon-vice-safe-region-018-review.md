@@ -1,0 +1,33 @@
+# Vice detail safe-region review after the first native FAIL
+
+Verdict: the proposed north pose **(180.35, 0.215, −113.32)** supports the legacy walking helper's **±0.18m** endpoint tolerance without changing the real **0.65m** player radius, 1.8m height, asset placement, collider, light, FOV or High settings. This is a static CPU proof and preparation for a future native attempt; no new photograph, entry/exit run or browser test was performed.
+
+The actual ROOT build-info bytes are SHA256 `502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3` (156 runtime assets, 53 source modules). Seven relevant source modules were checked against that manifest before and after this one-address probe; exact hashes are in [proof JSON](/tmp/neon-vice-safe-region-018-proof.json). The actual archived failure's south-086 building was registered through `expansionBuilding(..., 'south', 85)` before creating the real interior system. This preserves the workshop programme rather than silently using the default home layout.
+
+The system supplies all **221** active-floor colliders (lobby and observation); **122** are physics-enabled and overlap the player's lobby height envelope using the collision module's same 1e−7 vertical tolerance. All relevant boxes are axis aligned. The proof finds the minimum distance between each complete centre region and every relevant box, then subtracts 0.65m. This proves the closed rectangle and complete route tubes analytically rather than sampling only a few points. One layout/system construction took **57.957ms**; no city world, GLB decoder, texture image, renderer or network fetch was created.
+
+The full final centre region is **x[180.17,180.53], z[−113.50,−113.14]**. Its minimum clearance is **0.05m** to both `south-086:lobby:6` (outer wall, x[179.23,179.47]) and `south-086:lobby:266` (workbench, x[180.025,181.775], z[−114.96,−114.20]); the window `:7` has **0.12m** clearance. All remaining height-relevant colliders are farther away. These clearances include the full ±0.18m centre tolerance and the unchanged 0.65m body.
+
+Each axis-aligned route segment is expanded by ±0.18m in both axes. The resulting conservative tube, which also covers the reverse path, has these minimum clearances:
+
+| Leg | Nominal XZ route | Minimum clearance (m) | Nearest collider |
+| --- | --- | ---: | --- |
+| 1 | (200, -100.1) → (200, -115) | 0.390000 | south-086:lobby:260 |
+| 2 | (200, -115) → (197.8, -115) | 0.170000 | south-086:lobby:260 |
+| 3 | (197.8, -115) → (182.8, -115) | 0.195000 | south-086:lobby:266 |
+| 4 | (182.8, -115) → (182.8, -113.32) | 0.195000 | south-086:lobby:266 |
+| 5 | (182.8, -113.32) → (180.35, -113.32) | 0.050000 | south-086:lobby:6 |
+
+The probe also calls the actual `moveCircle` kernel through all five forward and five reverse nominal legs with the full 221-collider spatial index and the real player radius. All ten movements have **zero contacts**; maximum endpoint error is 9.96e-13m. The route starts at the real inside entrance (200,−100.1), crosses the actual room doorway at (197.8,−115), approaches the bench from its east bypass, then moves north before moving west. It returns on the same route. CPU support is fixed at the actual lobby y=0.215; this is a level route, not a stair/physics timing test. The tube proof is conditional on ordinary cardinal motion remaining within those tubes; native input must still record and verify both X and Z bounds, actual floor height and real E exit.
+
+The actual native mesh bounds put the vice centre at (180.3666335030891, 1.2319882243904, -114.5798833537102). With the unchanged first-person eye height y=1.835, the nominal eye-to-centre distance is **1.396855733m**. Across the complete ±0.18m centre rectangle the analytically derived range is **1.236839221–1.573388702m**. The new tool should preserve its exact XZ safe-region assertion and record actual eye position/distance, using this honest bound (plus only numerical epsilon); the old 1.2–1.4m assertion does not cover the full newly approved region. This supports a closer view than the earlier ~2.4m picture, but does not itself sign off on artwork quality or claim a 0.5–1m view.
+
+The original f147 native attempt remains **FAIL**. It stopped at x=182.640000000003, z=−114.98000000000036, 0.16m short of its intermediate x=182.8 target, against an unnecessarily strict 0.04m tolerance. At that exact recorded failure point the current real `circleContacts` kernel finds **zero static contacts**. Its closest obstacle is the workbench, with **0.215231183m** clearance. This rules out a static obstruction at the recorded stop; it does not reconstruct the absent 24 native adjustment samples or prove the cause of every preceding movement.
+
+Source facts support input/frame granularity as a concrete explanation to investigate: `MAX_FRAME_TIME=0.25`, the frame loop consumes fixed physics steps, the precision gait is 0.8m/s, and the helper waits for actual directed motion before protocol key-up. A full 250ms catch-up batch can therefore move ~0.2m at that gait; protocol latency can span further batches. No archived 24-sample series establishes which frame/input timings actually occurred. The original tool persisted `Error.stack`, while the helper appended its samples only to `Error.message`; those lost samples cannot be invented. The revised tool should preserve message, stack and the original diagnostics string/parsed value for new attempts without modifying the helper or claiming recovered old evidence.
+
+First-run limits are retained: there was no near detail PNG, no reached close pose, and no real E exit in f147. Its attempted failure screenshot timed out and the file is absent; late process closure does not convert the original browser-cleanup timeout into a PASS. The separate 6bb/502af owned-resource suite's three closed PASS cases remain separate evidence.
+
+Reproducible command (already executed once): `node /tmp/neon-vice-safe-region-018-probe.mjs > /tmp/neon-vice-safe-region-018-probe.log 2>&1`.
+
+Method SHA256 `bc1030967895f7619ed79e9af67668699acb7f10b0627920d4740164eb3a9740`; proof JSON SHA256 `4c6bf8a24237ec7bec0d603cc490b924e9b59b5e283f842e70c0e2113b76321f`; raw log SHA256 `1bc5c84251b67f215e9233eaa22c623ab83fa5ec223bf2a002dffb714e9774a5`. The archived first-failure metadata input has SHA256 `2d2128809a4ff15931c908a09e5f661fcd7bd37e95ca6443423b425510bed6c8`. Full artifact/source hashes are in the independent [provenance JSON](/tmp/neon-vice-safe-region-018-provenance.json). ROOT source and dist were read only; no full tests/build, GPU/browser, source mutation, staging or remote write was performed.

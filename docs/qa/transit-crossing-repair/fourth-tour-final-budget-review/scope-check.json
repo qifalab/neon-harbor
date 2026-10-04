@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-10-04T19:43:47.081Z",
+  "scope": "Prepared only; global/destination budgets and explanatory strings/comments. No source/runtime/dist/root edit, no browser, no repeated mocks.",
+  "parent": {
+    "file": "/tmp/neon-harbor-tour-first-error-candidate-2026-10-04T19-13-07-129Z/capture-harbor-tour.mjs",
+    "sha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+    "bytes": 59884
+  },
+  "candidate": {
+    "file": "capture-harbor-tour.mjs",
+    "sha256": "7c1d299a91dfb738270f4d8a783dd39f67b7c9acbc381f50522dca1f78b8d802",
+    "bytes": 60118
+  },
+  "wholeCaseBudgetMilliseconds": {
+    "from": 5400000,
+    "to": 14400000
+  },
+  "destinationWaitWallMilliseconds": {
+    "from": 900000,
+    "to": 2400000
+  },
+  "reverseFiveAllowedReplacementsRestores6aExactly": true,
+  "executableChanges": "Exactly the two metadata budget constants. One comment block and two error message literals updated for accuracy.",
+  "preserved": {
+    "boardingUpperWaitMilliseconds": 600000,
+    "ordinaryCabinMilliseconds": 150000,
+    "finalFerryDoorMilliseconds": 300000,
+    "groundAxisMilliseconds": 180000,
+    "endpointMetres": 0.06,
+    "heightToleranceMetres": 0.15,
+    "minimumNaturalRouteWallMilliseconds": 1200000,
+    "actualInputsAndOrder": true,
+    "allAuthoredGeometryAndCollisionAssertions": true,
+    "simulationRouteGuardsAndRevisionAndDisplacement": true,
+    "firstErrorAndSegmentRecording": true,
+    "noRetryAndNoWrites": true
+  },
+  "derivation": {
+    "boundManifestSha256": "7145fa443190896ff24050d518a54fea364ddb0547ddfa71756a33d64c515fb3",
+    "conditionalSuffixSimulationSeconds": 576.4523250161068,
+    "observedLowestPreFailureWindowRatio": 0.06613095039616984,
+    "conditionalCaseMinutesAtLowestWithReserves": 199.38556831574607,
+    "onePointTwoTimesConditionalCaseMinutes": 239.26268197889527,
+    "roundedWholeCaseMinutes": 240,
+    "conditionalDestinationSimulationSeconds": 148.53253333577197,
+    "conditionalDestinationWallSecondsAtLowest": 2246.036575097742,
+    "proposedDestinationSeconds": 2400
+  },
+  "limitations": [
+    "The third run did not complete this suffix; these are finite planning budgets, not proof of performance or acceptance.",
+    "Fixed 600s boarding/upper caps still can fail if observed slow ratio persists. They are not relaxed.",
+    "No causality is inferred from the stopped concurrent ART task, and CPU/GPU exclusivity does not guarantee throughput recovery.",
+    "Final ART assets may change throughput; freeze actual final build separately.",
+    "An additional missed tram cycle can exceed a local or whole budget; failure remains first failure, without automatic retry."
+  ],
+  "rootApplied": false
+}

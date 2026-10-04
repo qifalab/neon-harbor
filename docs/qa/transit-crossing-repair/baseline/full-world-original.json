@@ -1,0 +1,3550 @@
+[
+  {
+    "time": 10.000000000000076,
+    "bus": {
+      "x": 248,
+      "y": 0,
+      "z": -80,
+      "yaw": 3.141592653589793,
+      "stopId": "harbor-bus-workshop",
+      "doorsOpen": true,
+      "remaining": 1.0000000000005969,
+      "nextStopId": "harbor-bus-workshop",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 0,
+      "held": null,
+      "junction": null
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": []
+  },
+  {
+    "time": 20.000000000000146,
+    "bus": {
+      "x": 248,
+      "y": 0,
+      "z": -153.79377168933019,
+      "yaw": 3.162957295475585,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 0.7455746312857912,
+      "nextStopId": "harbor-bus-south",
+      "secondsToArrival": 8.480993478471845,
+      "speed": 3.36067742612272,
+      "delay": 0.6830515543619785,
+      "held": null,
+      "junction": {
+        "x": 240,
+        "z": -160,
+        "axis": "z",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-08",
+        "x": 151.75900000000004,
+        "z": 224,
+        "crossingId": "harbor-crossing-x:160:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 172,
+          "z": 224,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:226"
+        },
+        "next": {
+          "x": 151.93800000000005,
+          "z": 224,
+          "y": 0.18
+        },
+        "forward": -375.65155529567295,
+        "side": 104.28985095488297,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 29.999999999999577,
+    "bus": {
+      "x": 204.40849320133103,
+      "y": 0,
+      "z": -168,
+      "yaw": -1.5735296740683742,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 0.9768369843314701,
+      "nextStopId": "harbor-bus-south",
+      "secondsToArrival": 0.9768369843314701,
+      "speed": 8.686976708857514,
+      "delay": 3.1788950602213517,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": -160,
+        "axis": "x",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-07",
+        "x": 162.17759501536162,
+        "z": 176,
+        "crossingId": "harbor-crossing-x:160:174",
+        "phase": "walking",
+        "activity": "走向电车站",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 5,
+        "target": {
+          "x": 172,
+          "z": 176,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:174"
+        },
+        "next": {
+          "x": 162.3485950153616,
+          "z": 176,
+          "y": 0.18
+        },
+        "forward": 41.29047013733948,
+        "side": 344.1141465232593,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-08",
+        "x": 169.65900000000025,
+        "z": 224,
+        "crossingId": "harbor-crossing-x:160:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 172,
+          "z": 224,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:226"
+        },
+        "next": {
+          "x": 169.83800000000025,
+          "z": 224,
+          "y": 0.18
+        },
+        "forward": 33.67789259441628,
+        "side": 392.0935179624222,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-10",
+        "x": 159.77759501536676,
+        "z": 176,
+        "crossingId": "harbor-crossing-x:160:174",
+        "phase": "walking",
+        "activity": "走向电车站",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 5,
+        "target": {
+          "x": 172,
+          "z": 176,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:174"
+        },
+        "next": {
+          "x": 159.94059501536677,
+          "z": 176,
+          "y": 0.18
+        },
+        "forward": 43.690461171915146,
+        "side": 344.1207065485471,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-12",
+        "x": 164.2890000000002,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 172,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 164.4680000000002,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 39.266540043884525,
+        "side": 312.1084948663103,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-14",
+        "x": 154.56369166073952,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 191.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 172,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.72669166073953,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 48.99181205336765,
+        "side": 312.1350774782425,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-15",
+        "x": 162.1534032302139,
+        "z": 96,
+        "crossingId": "harbor-crossing-x:160:94",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 192.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 5,
+        "target": {
+          "x": 172,
+          "z": 96,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:94"
+        },
+        "next": {
+          "x": 162.3244032302139,
+          "z": 96,
+          "y": 0.18
+        },
+        "forward": 41.53332934171021,
+        "side": 264.1145114950336,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-16",
+        "x": 164.2890000000002,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 172,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 164.4680000000002,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 39.266540043884525,
+        "side": 312.1084948663103,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 39.99999999999901,
+    "bus": {
+      "x": 200,
+      "y": 0,
+      "z": -168,
+      "yaw": -1.5707963267948966,
+      "stopId": "harbor-bus-south",
+      "doorsOpen": true,
+      "remaining": 1.9768369843320386,
+      "nextStopId": "harbor-bus-south",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 3.1788950602213517,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": -160,
+        "axis": "x",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 19.419,
+      "reason": "signal",
+      "red": true
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-11",
+        "x": 146,
+        "z": 169.12704810675203,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 7,
+        "target": {
+          "x": 146,
+          "z": 162,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 146,
+          "z": 168.95604810675204,
+          "y": 0.18
+        },
+        "forward": 54.00000000000002,
+        "side": 337.127048106752,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-14",
+        "x": 170.8636916607406,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 191.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 172,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 171.02669166074062,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 29.136308339259404,
+        "side": 312,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-19",
+        "x": 148,
+        "z": 165.4500000000004,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 195.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 9,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 165.2790000000004,
+          "y": 0.18
+        },
+        "forward": 52.00000000000002,
+        "side": 333.4500000000004,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-20",
+        "x": 148,
+        "z": 167.92704810674815,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 196.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 9,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 167.74804810674814,
+          "y": 0.18
+        },
+        "forward": 52.00000000000002,
+        "side": 335.92704810674815,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 49.999999999998444,
+    "bus": {
+      "x": 180.59595139203378,
+      "y": 0,
+      "z": -168,
+      "yaw": -1.5587654579844379,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.970742930095298,
+      "nextStopId": "harbor-bus-garden",
+      "secondsToArrival": 14.536931008050573,
+      "speed": 0,
+      "delay": 8.94104715983076,
+      "held": "signal",
+      "junction": {
+        "x": 160,
+        "z": -160,
+        "axis": "x",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000010439499680229593,
+      "reason": "signal",
+      "red": true
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-07",
+        "x": 176,
+        "z": 155.62240498463993,
+        "crossingId": "harbor-crossing-z:160:174",
+        "phase": "walking",
+        "activity": "走向电车站",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 10,
+        "target": {
+          "x": 176,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:174"
+        },
+        "next": {
+          "x": 176,
+          "z": 155.45140498463994,
+          "y": 0.18
+        },
+        "forward": 8.488983557699356,
+        "side": 323.5436924673349,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-09",
+        "x": 224,
+        "z": 157.6261518631305,
+        "crossingId": "harbor-crossing-z:160:226",
+        "phase": "walking",
+        "activity": "走向电车站",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 6,
+        "target": {
+          "x": 224,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:226"
+        },
+        "next": {
+          "x": 224,
+          "z": 157.4711518631305,
+          "y": 0.18
+        },
+        "forward": -39.4834364466121,
+        "side": 326.1247621066508,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-10",
+        "x": 176,
+        "z": 159.62240498463106,
+        "crossingId": "harbor-crossing-z:160:174",
+        "phase": "walking",
+        "activity": "走向电车站",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 10,
+        "target": {
+          "x": 176,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:174"
+        },
+        "next": {
+          "x": 176,
+          "z": 159.45940498463105,
+          "y": 0.18
+        },
+        "forward": 8.537105872036381,
+        "side": 327.543402987209,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-11",
+        "x": 148,
+        "z": 154.0270481067528,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 10,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 153.8560481067528,
+          "y": 0.18
+        },
+        "forward": 36.46776413059104,
+        "side": 321.61159484511165,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-13",
+        "x": 149.55,
+        "z": 96,
+        "crossingId": "harbor-crossing-x:160:94",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 190.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 150,
+          "z": 96,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:94"
+        },
+        "next": {
+          "x": 149.705,
+          "z": 96,
+          "y": 0.18
+        },
+        "forward": 34.219777341874135,
+        "side": 263.60739355433316,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-17",
+        "x": 148,
+        "z": 162.06949318748389,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 161.91449318748388,
+          "y": 0.18
+        },
+        "forward": 36.564519398144554,
+        "side": 329.6534578938571,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-19",
+        "x": 148,
+        "z": 148.35000000000116,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 195.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 9,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 148.17900000000117,
+          "y": 0.18
+        },
+        "forward": 36.399465957216016,
+        "side": 315.93495758649755,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-20",
+        "x": 148,
+        "z": 150.02704810674794,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 196.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 9,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 149.84804810674794,
+          "y": 0.18
+        },
+        "forward": 36.41964181625386,
+        "side": 317.6118843252238,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 59.999999999997875,
+    "bus": {
+      "x": 162.6709007767717,
+      "y": 0,
+      "z": -167.87870011096737,
+      "yaw": -1.4657256934268015,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 0.28131077855836395,
+      "nextStopId": "harbor-bus-garden",
+      "secondsToArrival": 12.183974871983054,
+      "speed": 3.5628662109260465,
+      "delay": 16.5880910237633,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": -160,
+        "axis": "x",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-11",
+        "x": 159.07295189324643,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 12,
+        "target": {
+          "x": 162,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 159.24395189324642,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 36.706647627959015,
+        "side": 313.75933522347947,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-13",
+        "x": 165.05000000000013,
+        "z": 96,
+        "crossingId": "harbor-crossing-x:160:94",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 190.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 5,
+        "target": {
+          "x": 172,
+          "z": 96,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:94"
+        },
+        "next": {
+          "x": 165.20500000000013,
+          "z": 96,
+          "y": 0.18
+        },
+        "forward": 25.30893652863528,
+        "side": 262.67296438186656,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-17",
+        "x": 149.43050681251623,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 19,
+        "target": {
+          "x": 150,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 149.58550681251623,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 46.29591614163914,
+        "side": 312.7480605291254,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-19",
+        "x": 164.74999999999807,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 195.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 11,
+        "target": {
+          "x": 170,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 164.92099999999806,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 31.060907548037466,
+        "side": 314.3547293419756,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-20",
+        "x": 163.87295189325226,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 196.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 11,
+        "target": {
+          "x": 170,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 164.05195189325227,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 31.93311887250823,
+        "side": 314.2627468055279,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 69.99999999999731,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": -99.40061693912195,
+      "yaw": -0.005616832203844426,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 3.0773973166433564,
+      "nextStopId": "harbor-bus-garden",
+      "secondsToArrival": 3.0773973166433564,
+      "speed": 11.407451041226864,
+      "delay": 17.48151346842475,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": -80,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-08",
+        "x": 176,
+        "z": 159.46999999999986,
+        "crossingId": "harbor-crossing-z:160:174",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 12,
+        "target": {
+          "x": 176,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:174"
+        },
+        "next": {
+          "x": 176,
+          "z": 159.29099999999985,
+          "y": 0.18
+        },
+        "forward": 258.73173015660325,
+        "side": 25.453646587712647,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-17",
+        "x": 164.93050681251634,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 20,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 165.08550681251634,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 247.32408624740788,
+        "side": 14.319903287782424,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 148,
+        "z": 164.58999999999924,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 16,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 164.42699999999923,
+          "y": 0.18
+        },
+        "forward": 264.0089198666321,
+        "side": 2.51715370052293,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 79.99999999999675,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": -80,
+      "yaw": 0,
+      "stopId": "harbor-bus-garden",
+      "doorsOpen": true,
+      "remaining": 4.077397316635398,
+      "nextStopId": "harbor-bus-garden",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 17.48151346842475,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": -80,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-09",
+        "x": 235.75000000000006,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:240:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 11,
+        "target": {
+          "x": 252,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:146"
+        },
+        "next": {
+          "x": 235.90500000000006,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 224,
+        "side": 83.75000000000006,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-11",
+        "x": 169.12999999999977,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "pickup",
+          "id": "harbor-order-1",
+          "anchor": {
+            "x": 193.5,
+            "z": 119.97975447401404,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 2,
+        "target": {
+          "x": 172,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 169.30099999999976,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 224,
+        "side": 17.129999999999768,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-17",
+        "x": 170.65000000000003,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 24,
+        "target": {
+          "x": 172,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 170.80500000000004,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 224,
+        "side": 18.650000000000034,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 148,
+        "z": 148.28999999999814,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 16,
+        "target": {
+          "x": 148,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:146"
+        },
+        "next": {
+          "x": 148,
+          "z": 148.12699999999813,
+          "y": 0.18
+        },
+        "forward": 228.28999999999814,
+        "side": 4,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 89.99999999999618,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": -51.76816908827168,
+      "yaw": 0,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 18.2312434704736,
+      "nextStopId": "harbor-bus-courtyard",
+      "secondsToArrival": 18.2312434704736,
+      "speed": 9.047293958201976,
+      "delay": 17.48151346842475,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": 0,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 31.187169088271677,
+      "reason": "signal",
+      "red": true
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-09",
+        "x": 251.25000000000017,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:240:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 11,
+        "target": {
+          "x": 252,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:146"
+        },
+        "next": {
+          "x": 251.40500000000017,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 195.7681690882717,
+        "side": 99.25000000000017,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 6.099999999999994,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 199.7681690882717,
+        "side": 2.067000000002281,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 99.99999999999561,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 27.10781439866082,
+      "yaw": 0,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 11.529984111747183,
+      "nextStopId": "harbor-bus-courtyard",
+      "secondsToArrival": 11.529984111747183,
+      "speed": 12.974688735174595,
+      "delay": 20.780254109700813,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": 80,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": null,
+      "reason": null,
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 16.09999999999996,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 120.89218560133918,
+        "side": 2.067000000002281,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 109.99999999999504,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 118.02649906853574,
+      "yaw": 0,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.5299841117392248,
+      "nextStopId": "harbor-bus-courtyard",
+      "secondsToArrival": 1.5299841117392248,
+      "speed": 2.585064989046373,
+      "delay": 20.780254109700813,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 21.39250093146426,
+      "reason": "signal",
+      "red": true
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-07",
+        "x": 239.96999999999946,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:240:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 252,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:146"
+        },
+        "next": {
+          "x": 240.14099999999945,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 25.973500931464258,
+        "side": 87.96999999999946,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-08",
+        "x": 232.13000000000096,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:240:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 20,
+        "target": {
+          "x": 252,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:146"
+        },
+        "next": {
+          "x": 232.30900000000096,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 25.973500931464258,
+        "side": 80.13000000000096,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-10",
+        "x": 239.41000000000076,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:240:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 252,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:146"
+        },
+        "next": {
+          "x": 239.57300000000077,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 25.973500931464258,
+        "side": 87.41000000000076,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 26.1000000000001,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 29.973500931464258,
+        "side": 2.067000000002281,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 119.99999999999447,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 120,
+      "yaw": 0,
+      "stopId": "harbor-bus-courtyard",
+      "doorsOpen": true,
+      "remaining": 2.5299841117312667,
+      "nextStopId": "harbor-bus-courtyard",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 20.780254109700813,
+      "held": null,
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 20.720000000000002,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-08",
+        "x": 250.03000000000117,
+        "z": 144,
+        "crossingId": "harbor-crossing-x:240:146",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 20,
+        "target": {
+          "x": 252,
+          "z": 144,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:146"
+        },
+        "next": {
+          "x": 250.20900000000117,
+          "z": 144,
+          "y": 0.18
+        },
+        "forward": 24,
+        "side": 98.03000000000117,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 36.10000000000024,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 28,
+        "side": 2.067000000002281,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 129.9999999999956,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 25.884943644205876,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 46.100000000000385,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 140.00000000000355,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 35.88494364420531,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 56.10000000000053,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 150.0000000000115,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 45.88494364420474,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-11",
+        "x": 224,
+        "z": 156.7209999999996,
+        "crossingId": "harbor-crossing-z:160:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "deliver",
+          "id": "harbor-order-1",
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 5,
+        "target": {
+          "x": 224,
+          "z": 172,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:226"
+        },
+        "next": {
+          "x": 224,
+          "z": 156.8919999999996,
+          "y": 0.18
+        },
+        "forward": 16.89980629755801,
+        "side": 71.78856445037685,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 66.10000000000052,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 160.00000000001947,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 55.88494364420417,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-11",
+        "x": 224,
+        "z": 173.82099999999883,
+        "crossingId": "harbor-crossing-z:160:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "deliver",
+          "id": "harbor-order-1",
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 6,
+        "target": {
+          "x": 224,
+          "z": 174,
+          "y": 0.18,
+          "crossingId": null
+        },
+        "next": {
+          "x": 224,
+          "z": 173.99199999999882,
+          "y": 0.18
+        },
+        "forward": 33.99839168639072,
+        "side": 71.56861513628368,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 76.09999999999995,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 170.00000000002743,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 65.8849436442036,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 86.09999999999938,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 180.00000000003539,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 75.88494364420303,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-11",
+        "x": 226,
+        "z": 168.26926670057185,
+        "crossingId": "harbor-crossing-z:160:226",
+        "phase": "walking",
+        "activity": "走去上班",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 226,
+          "z": 156,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:160:226"
+        },
+        "next": {
+          "x": 226,
+          "z": 168.09826670057186,
+          "y": 0.18
+        },
+        "forward": 28.472842724513747,
+        "side": 73.63985903738919,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 96.09999999999881,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 190.00000000004334,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 85.88494364420247,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 106.09999999999825,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 200.0000000000513,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 95.8849436442019,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 116.09999999999768,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 210.00000000005926,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 105.88494364420133,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 126.09999999999711,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 220.00000000006722,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 115.88494364420076,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 136.09999999999656,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 230.00000000007518,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 125.88494364420019,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-07",
+        "x": 236.4390000000007,
+        "z": -64,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 228,
+          "z": -64,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 236.2680000000007,
+          "z": -64,
+          "y": 0.18
+        },
+        "forward": -203.64293733347728,
+        "side": 87.06556656778454,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-08",
+        "x": 235.7109999999998,
+        "z": -64,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 230,
+          "z": -64,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 235.5319999999998,
+          "z": -64,
+          "y": 0.18
+        },
+        "forward": -203.6523012574925,
+        "side": 86.33762679216548,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-09",
+        "x": 237.8949999999999,
+        "z": -64,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 230,
+          "z": -64,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 237.7399999999999,
+          "z": -64,
+          "y": 0.18
+        },
+        "forward": -203.6242094854469,
+        "side": 88.52144611902008,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-10",
+        "x": 237.166999999999,
+        "z": -64,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 4,
+        "target": {
+          "x": 232,
+          "z": -64,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 237.003999999999,
+          "z": -64,
+          "y": 0.18
+        },
+        "forward": -203.63357340946212,
+        "side": 87.79350634340102,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 146.099999999996,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 240.00000000008313,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 135.88494364420634,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-07",
+        "x": 224,
+        "z": -68.66099999999892,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 9,
+        "target": {
+          "x": 224,
+          "z": -70,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:-80:226"
+        },
+        "next": {
+          "x": 224,
+          "z": -68.83199999999893,
+          "y": 0.18
+        },
+        "forward": -208.46354879636263,
+        "side": 74.68754786025684,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 156.09999999999542,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 250.0000000000911,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 145.8849436442143,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-07",
+        "x": 224,
+        "z": -85.76099999999957,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 10,
+        "target": {
+          "x": 224,
+          "z": -92,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:-80:226"
+        },
+        "next": {
+          "x": 224,
+          "z": -85.93199999999958,
+          "y": 0.18
+        },
+        "forward": -225.56213418519678,
+        "side": 74.90749717435003,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-08",
+        "x": 228.03099999999998,
+        "z": -66,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 6,
+        "target": {
+          "x": 228,
+          "z": -66,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 228,
+          "z": -66,
+          "y": 0.18
+        },
+        "forward": -205.7509200592412,
+        "side": 78.6839871922794,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-09",
+        "x": 228.295,
+        "z": -66,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 6,
+        "target": {
+          "x": 228,
+          "z": -66,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 228.14,
+          "z": -66,
+          "y": 0.18
+        },
+        "forward": -205.7475243505324,
+        "side": 78.94796535266842,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-10",
+        "x": 230.20699999999988,
+        "z": -66,
+        "crossingId": "harbor-crossing-x:240:-66",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 6,
+        "target": {
+          "x": 230,
+          "z": -66,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:240:-66"
+        },
+        "next": {
+          "x": 230.04399999999987,
+          "z": -66,
+          "y": 0.18
+        },
+        "forward": -205.72293118745952,
+        "side": 80.85980718094022,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 166.09999999999485,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 260.0000000000922,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 155.88494364422226,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 176.09999999999428,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 270.0000000000831,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 165.88494364423022,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-08",
+        "x": 224,
+        "z": -78.70900000000015,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 12,
+        "target": {
+          "x": 224,
+          "z": -92,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:-80:226"
+        },
+        "next": {
+          "x": 224,
+          "z": -78.88800000000015,
+          "y": 0.18
+        },
+        "forward": -218.5107175675334,
+        "side": 74.81679059171933,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-09",
+        "x": 224,
+        "z": -77.00500000000008,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 12,
+        "target": {
+          "x": 224,
+          "z": -92,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:-80:226"
+        },
+        "next": {
+          "x": 224,
+          "z": -77.16000000000008,
+          "y": 0.18
+        },
+        "forward": -216.80685853229517,
+        "side": 74.79487283550795,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-10",
+        "x": 224,
+        "z": -79.57299999999994,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 14,
+        "target": {
+          "x": 224,
+          "z": -92,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-z:-80:226"
+        },
+        "next": {
+          "x": 224,
+          "z": -79.73599999999993,
+          "y": 0.18
+        },
+        "forward": -219.37464609244265,
+        "side": 74.82790382022088,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 186.0999999999937,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 280.000000000074,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 175.88494364423818,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-09",
+        "x": 223.4949999999998,
+        "z": -92,
+        "crossingId": "harbor-crossing-z:-80:226",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "blockedFor": 0,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 13,
+        "target": {
+          "x": 222,
+          "z": -92,
+          "y": 0.18,
+          "crossingId": null
+        },
+        "next": {
+          "x": 223.3399999999998,
+          "z": -92,
+          "y": 0.18
+        },
+        "forward": -231.80711363809482,
+        "side": 74.48278829418997,
+        "claim": false,
+        "overlapCurrentBus": false,
+        "collisions": []
+      },
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 196.09999999999314,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 290.0000000000649,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 185.88494364424614,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 206.09999999999258,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  },
+  {
+    "time": 300.0000000000558,
+    "bus": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214,
+      "yaw": 0.012862887687415945,
+      "stopId": null,
+      "doorsOpen": false,
+      "remaining": 1.8664274923882775,
+      "nextStopId": "harbor-bus-market",
+      "secondsToArrival": 9.601846339574337,
+      "speed": 0,
+      "delay": 195.8849436442541,
+      "held": "pedestrian",
+      "junction": {
+        "x": 160,
+        "z": 160,
+        "axis": "z",
+        "direction": 1,
+        "committed": true
+      }
+    },
+    "control": {
+      "distance": 0.000012229810191291546,
+      "reason": "pedestrian",
+      "red": false
+    },
+    "agents": [
+      {
+        "id": "harbor-resident-18",
+        "x": 154.06700000000228,
+        "z": 148,
+        "crossingId": "harbor-crossing-z:160:146",
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "blockedFor": 216.099999999992,
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "pathIndex": 18,
+        "target": {
+          "x": 168,
+          "z": 148,
+          "y": 0.18,
+          "crossingId": "harbor-crossing-x:160:146"
+        },
+        "next": {
+          "x": 154.2300000000023,
+          "z": 148,
+          "y": 0.18
+        },
+        "forward": 7.2800122298101915,
+        "side": 1.9735238638828978,
+        "claim": true,
+        "overlapCurrentBus": false,
+        "collisions": []
+      }
+    ]
+  }
+]

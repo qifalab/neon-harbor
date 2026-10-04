@@ -1,0 +1,119 @@
+{
+  "actualInputPhases": [
+    {
+      "label": "walk peer three metres",
+      "wallMilliseconds": 877,
+      "simulationSeconds": 0.5833333333333344,
+      "beforePosition": {
+        "x": 8,
+        "y": 0,
+        "z": 174,
+        "yaw": 3.141592653589793
+      },
+      "afterPosition": {
+        "x": 8,
+        "y": 0,
+        "z": 170.73333333333332,
+        "yaw": 3.141592653589793
+      },
+      "teleportRevisionUnchanged": true
+    },
+    {
+      "label": "approach starter car door",
+      "wallMilliseconds": 8870,
+      "simulationSeconds": 1.4666666666666623,
+      "beforePosition": {
+        "x": 8,
+        "y": 0,
+        "z": 170.73333333333332,
+        "yaw": 3.141592653589793
+      },
+      "afterPosition": {
+        "x": 8,
+        "y": 0,
+        "z": 162.51999999999995,
+        "yaw": 3.141592653589793
+      },
+      "teleportRevisionUnchanged": true
+    },
+    {
+      "label": "drive shared starter car",
+      "wallMilliseconds": 12591,
+      "simulationSeconds": 0.7499999999999973,
+      "beforePosition": {
+        "x": 4,
+        "y": 0,
+        "z": 160,
+        "yaw": 3.141592653589793
+      },
+      "afterPosition": {
+        "x": 4,
+        "y": 0,
+        "z": 154.54142121963574,
+        "yaw": 3.141592653589793
+      },
+      "teleportRevisionUnchanged": true
+    },
+    {
+      "label": "brake shared starter car",
+      "wallMilliseconds": 8993,
+      "simulationSeconds": 0.9999999999999969,
+      "beforePosition": {
+        "x": 4,
+        "y": 0,
+        "z": 154.54142121963574,
+        "yaw": 3.141592653589793
+      },
+      "afterPosition": {
+        "x": 4,
+        "y": 0,
+        "z": 146.3993002620764,
+        "yaw": 3.141592653589793
+      },
+      "teleportRevisionUnchanged": true
+    }
+  ],
+  "expandedEastBay": {
+    "boundary": {
+      "x": 1525,
+      "y": 3.75,
+      "z": -340.49,
+      "yaw": -3.141592653589793
+    },
+    "floor": "level-78",
+    "local": {
+      "x": 1192,
+      "y": 327.785,
+      "z": -217.29166666666978,
+      "yaw": 3.141592653589793
+    },
+    "remote": {
+      "id": "e34273f0-d488-47ea-b621-a5e9d97d97e8",
+      "name": "东湾访客",
+      "x": 1192,
+      "y": 327.785,
+      "z": -217.29166666666978,
+      "yaw": 3.141592653589793,
+      "scene": "interior:east-012:level-78",
+      "carId": null
+    },
+    "positionDifferenceMetres": 0.0,
+    "receivedHeightRange": [
+      4.035,
+      327.785
+    ],
+    "lobbyThroughElevatorSimulationSeconds": 45.033333333331974,
+    "intermediateElevationAssertionPassed": true
+  },
+  "originalAssertionsPreserved": [
+    "peer rendered movement error <0.6 m",
+    "shared car error <1 m",
+    "East address/local/server-sent event pose error <0.45 m",
+    "chat delivered to the second browser",
+    "room disconnect removes rendered peer",
+    "actual corridor walk simulation stall budget and unchanged walking teleportRevision",
+    "intermediate elevator elevations received",
+    "elevator floor above320 m, three active storeys, open doors and <60 simulation seconds"
+  ],
+  "publicDeploymentVerified": false
+}

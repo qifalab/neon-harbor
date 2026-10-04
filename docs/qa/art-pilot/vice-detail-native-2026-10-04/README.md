@@ -1,0 +1,15 @@
+# 独立台钳近景：首次原生 FAIL，未重试
+
+20:37:19Z开始，20:41:45Z runner exit1。首错误为walkAxis到x182.8的实际绝对误差0.1599999999970123，严格断言要求<0.04。实际failureSnapshot位置x182.640000000003、y0.215、z−114.98000000000036。场景只完成公开Atlas定位、真实E进入和房门进入；未到达北侧目标、未生成近景图、未计算actualEyeDistance、未真实E退出。因此没有1.28m近景、美术细部或本context正常退出资源计数结论。preparedPose中的1.280834是已验证的计划距离，绝不能写成实际距离。
+
+源方法f147a2d783628e016b37f9ce48103901dada4e65e08759e1ede45f686ed5a993，始末manifest502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3。原调用、空stdout与含原首断言的stderr精确保存；pid54529/exit1。metadata及failureSnapshot/错误处理/有界cleanup全为原运行字节。全156source/served、53src、7method/package依赖和manifest精确未变，完整快照在frozen-source。此运行未改产品或方法、未重试、未写debug坐标/clock/storage、未启动第二context。
+
+failureImageAttempt明确记录截图Timeout30000ms，文件vice-detail-failure-original.png不存在，失败PNG是已知证据缺口。超时原堆栈、开始/结束与timeout均保存，没有掩盖为成功、没有另起浏览器补图。此前沟通中尚未核对就称PNG保留、并把停点写182.96，均已明确更正为缺失PNG与真实182.64；原记录没有被改写。
+
+cleanup browser-context实际closed；browser关闭超过10000ms，status failed，原错误保留；server closed。primaryError仍是步行断言，并未被截图或cleanup替换。errorsAfterFinalization为空，完整case预算内finishedBeforeDeadline=true/hardDeadlineReached=false，但playable未完成且cleanup含失败，所以结果仍FAIL。20:41:54Z独立process/socket读数确认pid54529消失、activeChromeProcesses=[]、5208 connect_ex=111，GPU/browser/server实际释放；这项释放证明不追改browser cleanup failed为PASS，检查没有kill任何进程。
+
+只读源码说明：walking.js端点循环确实使用传入tolerance=.04，并最多24次真实键盘修正，异常发生于循环后的最终距离断言。不能归因为某个固定.16退出阈值。当前原stderr/metadata仅保存error.stack，没有24次samples附加message，故不能重建每一次真实输入/端点，更不能唯一归因为碰撞或协议过冲。失败位置快照和源代码均原样留档；本目录不提出已经验证的修复。
+
+High/1280×800为实际boot配置，意外page/console/HTTP/request错误为0；未达到显式近景capture的GL读取，不能宣称截图时GLerror0或模型细部可见。本单context未完整满足预定观察范围，不是正常near照片或美术签收。模型自身正常解码/owned释放的此前独立normal/404/delay-exit PASS仍在native-validation-owned-release-2026-10-04，201-file ledger c4f759b3798010590381c45fa833ebffd13d66a4bf1fdc47498637836a12439b逐项精确不变；本失败不覆盖或追记其结果。原更早全场景严格FAIL也未修改。
+
+需要修改方法或再次GPU运行时，必须另行审查/明确GO并用新目录；此首次FAIL及全部缺口保持。

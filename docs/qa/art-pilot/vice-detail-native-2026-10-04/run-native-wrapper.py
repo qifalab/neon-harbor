@@ -1,0 +1,10 @@
+import hashlib,json,subprocess,time
+from pathlib import Path
+root=Path('/workspace/scratch/neon-harbor');base=root/'docs/qa/art-pilot';name='vice-detail-native-2026-10-04';output=base/name;stdout=base/(name+'.stdout.txt');stderr=base/(name+'.stderr.txt');invocation=base/(name+'.invocation.json');sha=lambda b:hashlib.sha256(b).hexdigest()
+assert not output.exists() and not stdout.exists() and not stderr.exists() and not invocation.exists(),'Single fresh run only; preserve previous evidence'
+assert sha((root/'tools/capture-workshop-vice-detail.mjs').read_bytes())=='f147a2d783628e016b37f9ce48103901dada4e65e08759e1ede45f686ed5a993';assert sha((root/'dist/build-info.json').read_bytes())=='502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3'
+command=['node','tools/capture-workshop-vice-detail.mjs','--gpu-go','yes','--root','dist','--port','5208','--output','docs/qa/art-pilot/'+name]
+r={'status':'running','startedAtUtc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'cwd':str(root),'command':command,'stdout':stdout.name,'stderr':stderr.name,'gpuAuthorization':'Explicit parent independent GPU GO after 27a gate/selective/build; one fresh context, no retry, frozen f147/156 runtime','sourceSha256':sha((root/'tools/capture-workshop-vice-detail.mjs').read_bytes()),'buildInfoSha256':sha((root/'dist/build-info.json').read_bytes())};invocation.write_text(json.dumps(r,indent=2)+'\n')
+with stdout.open('wb')as out,stderr.open('wb')as err:
+ p=subprocess.Popen(command,cwd=root,stdout=out,stderr=err);r['pid']=p.pid;invocation.write_text(json.dumps(r,indent=2)+'\n');code=p.wait()
+r.update({'status':'passed'if code==0 else'failed','exitCode':code,'endedAtUtc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'stdoutSha256':sha(stdout.read_bytes()),'stderrSha256':sha(stderr.read_bytes()),'finalSourceSha256':sha((root/'tools/capture-workshop-vice-detail.mjs').read_bytes()),'finalBuildInfoSha256':sha((root/'dist/build-info.json').read_bytes())});invocation.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r),flush=True);raise SystemExit(code)

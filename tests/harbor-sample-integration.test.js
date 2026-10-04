@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import * as THREE from '../vendor/three/three.module.js';
 import { createCityExploration } from '../src/city-exploration.js';
 import { GameSimulation } from '../src/simulation.js';
+import { circleOBB } from '../src/collision.js';
 import { harborWorldToLocal } from '../src/harbor-transit.js';
 import { HARBOR_VEHICLE_SPECS } from '../src/harbor-vehicle-models.js';
 import { intersectionSignal } from '../src/traffic.js';
@@ -185,18 +186,35 @@ test('ordinary city steps yield the long bus to a real resident already crossing
   Object.assign(resident, { x: 148, y: .18, z: 146, phase: 'walking', insideBuildingId: null, floorId: null, roomId: null, transit: null, crossingId: crossing.id,
     goal: { kind: 'work', id: resident.work.employer, anchor: { ...resident.work.anchor } }, path: [{ x: 174, y: .18, z: 146, crossingId: crossing.id }], pathIndex: 0 });
   const spec = HARBOR_VEHICLE_SPECS.bus;
-  for (let n = 0; n < 80; n++) {
+  const stepCrossing = ({ protectFront = false } = {}) => {
     city.step(.05, {});
-    assert.equal(intersectionSignal(service.time, 160, 160, 'z'), 'green');
-    const front = bus.pose.z + spec.halfLength * Math.abs(Math.cos(bus.pose.yaw)) + spec.halfWidth * Math.abs(Math.sin(bus.pose.yaw));
-    assert.ok(front < resident.z - 1.7, 'the real resident hook protects the actual long vehicle front');
-  }
+    const person = life.agents[0], body = service.trafficBodies.find(v => v.id === bus.id);
+    assert.equal(circleOBB({ ...person, radius: .43 }, body), null, 'the physical resident stays outside the whole long bus');
+    assert.equal(circleOBB({ ...person, radius: .6 }, body), null, 'the original resident avoidance clearance remains intact');
+    if (protectFront) {
+      assert.equal(intersectionSignal(service.time, 160, 160, 'z'), 'green');
+      const front = bus.pose.z + spec.halfLength * Math.abs(Math.cos(bus.pose.yaw)) + spec.halfWidth * Math.abs(Math.sin(bus.pose.yaw));
+      assert.ok(front < person.z - 1.7, 'the real resident hook protects the actual long vehicle front');
+    }
+  };
+  // Save while the body still occupies this bus lane, before the resident
+  // clears its actual full width plus the original .6m avoidance radius.
+  for (let n = 0; n < 70; n++) stepCrossing({ protectFront: true });
   assert.equal(bus.trafficState, 'pedestrian'); assert.ok(bus.pose.speed < .05);
-  assert.ok(resident.x > 153 && resident.x < 155 && resident.crossingId === crossing.id, 'the resident keeps physically crossing while the bus waits');
+  assert.ok(resident.x > 153 && resident.x < 154 && resident.crossingId === crossing.id, 'the resident keeps physically crossing while the bus waits');
   const residentX = resident.x, save = JSON.parse(JSON.stringify(city.safeSave())); fixture({ save, hour: 8 });
   assert.deepEqual(service.exportState(), save.harborTransit); assert.deepEqual(life.snapshot(), save.harborLife);
-  advance(1);
+  for (let n = 0; n < 4; n++) stepCrossing({ protectFront: true });
   assert.equal(bus.trafficState, 'pedestrian'); assert.ok(bus.pose.speed < .05);
   assert.ok(bus.pose.z < 138.9, 'the resumed bus still yields before the nearer pedestrian crossing, not merely at the signal line');
   assert.ok(life.agents[0].x > residentX && life.agents[0].crossingId === crossing.id);
+  // Preserve the original eighty-step front protection. Once the person
+  // clears this vehicle's lane, its continuing claim protects other lanes
+  // without keeping an already clear bus stopped indefinitely.
+  for (let n = 0; n < 6; n++) stepCrossing({ protectFront: true });
+  const stoppedZ = bus.pose.z;
+  for (let n = 0; n < 14; n++) stepCrossing();
+  assert.equal(life.agents[0].crossingId, crossing.id, 'the person is still crossing the road rather than dropping the claim');
+  assert.equal(bus.trafficState, 'cruise'); assert.ok(bus.pose.speed > .05);
+  assert.ok(bus.pose.z > stoppedZ + .1, 'the bus really resumes after its lane is safely clear');
 });

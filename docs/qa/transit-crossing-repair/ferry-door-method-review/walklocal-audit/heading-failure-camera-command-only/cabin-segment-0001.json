@@ -1,0 +1,133 @@
+{
+  "schema": "neon-harbor-cabin-segment-v1",
+  "file": "cabin-segment-0001.json",
+  "status": "failed",
+  "context": {
+    "label": "heading-failure-camera-command-only",
+    "kind": "bus",
+    "role": "cabin-waypoint"
+  },
+  "methodSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "manifestSha256": "frozen-manifest",
+  "precision": true,
+  "target": {
+    "x": 0,
+    "y": 1.3,
+    "z": 0.1
+  },
+  "requestedAt": "2026-10-04T19:16:28.067Z",
+  "startedAt": "2026-10-04T19:16:28.067Z",
+  "deadlineAt": "2026-10-04T19:18:58.067Z",
+  "endedAt": "2026-10-04T19:16:28.067Z",
+  "wallBudgetMilliseconds": 150000,
+  "effectiveWallBudgetMilliseconds": 150000,
+  "elapsedWallMilliseconds": 0,
+  "initial": {
+    "local": {
+      "x": 0,
+      "y": 1.3,
+      "z": 0,
+      "yaw": 0
+    },
+    "vehicle": {
+      "yaw": 0
+    },
+    "cameraYaw": 0,
+    "sensitivity": 1,
+    "time": 0,
+    "revision": 11,
+    "deck": "lower"
+  },
+  "current": {
+    "local": {
+      "x": 0,
+      "y": 1.3,
+      "z": 0,
+      "yaw": 0
+    },
+    "vehicle": {
+      "yaw": 0
+    },
+    "cameraYaw": 0,
+    "sensitivity": 1,
+    "time": 0,
+    "revision": 11,
+    "deck": "lower"
+  },
+  "actualCurrent": {
+    "local": {
+      "x": 0,
+      "y": 1.3,
+      "z": 0,
+      "yaw": 0
+    },
+    "vehicle": {
+      "yaw": 0
+    },
+    "cameraYaw": 0,
+    "sensitivity": 1,
+    "time": 0,
+    "revision": 11,
+    "deck": "lower"
+  },
+  "actualCurrentObservedAt": "2026-10-04T19:16:28.067Z",
+  "snapshotError": null,
+  "samples": [
+    {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower",
+      "observedAt": "2026-10-04T19:16:28.067Z"
+    }
+  ],
+  "heldSeconds": 0,
+  "geometricMetres": 0,
+  "completedInputIterations": {
+    "count": 0,
+    "heldSeconds": 0,
+    "geometricMetres": 0
+  },
+  "firstInput": null,
+  "lastInput": null,
+  "lastCommand": {
+    "iteration": 0,
+    "key": "w",
+    "slow": true,
+    "desiredYaw": 0,
+    "before": {
+      "local": {
+        "x": 0,
+        "y": 1.3,
+        "z": 0,
+        "yaw": 0
+      },
+      "vehicle": {
+        "yaw": 0
+      },
+      "cameraYaw": 0,
+      "sensitivity": 1,
+      "time": 0,
+      "revision": 11,
+      "deck": "lower"
+    },
+    "pointerOrbitYaw": 0.5,
+    "requestedAt": "2026-10-04T19:16:28.067Z"
+  },
+  "cleanupErrors": [],
+  "errorCaughtAt": "2026-10-04T19:16:28.067Z",
+  "error": {
+    "message": "PRIMARY_INPUT_FAILURE",
+    "stack": "Error: PRIMARY_INPUT_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:26)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+  }
+}

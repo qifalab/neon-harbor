@@ -1,0 +1,142 @@
+{
+  "schema": "neon-harbor/first-continuous-tour-evidence/v1",
+  "generatedAt": "2026-10-04T17:11:27.608Z",
+  "result": "failed-first-attempt-no-retry",
+  "processExitCode": 1,
+  "originalRawFilesVerifiedUnchanged": true,
+  "executedMethodSha256": "b23e40572d86f3f228d3b5f8a788e7c813eb9a9ff5b2e100ca327d2f0889c114",
+  "buildManifestSha256": "b9a52d3adf613cac85b6ae9fbe19136712ac66390400c6def41d113e1ae8378b",
+  "routeCompleted": false,
+  "completedTwentyMinuteRoute": false,
+  "published": false,
+  "publicationUrl": null,
+  "publicationDecision": "Root approved adding the 20744648-byte original WebM with failure evidence to Git; this task does not commit/upload it.",
+  "inventoryScope": "All current evidence/documentation files except evidence-files.json itself, whose self-hash would be circular. External offline reproduction is referenced separately and is not archived in this directory.",
+  "files": [
+    {
+      "file": "build-info.json",
+      "bytes": 15181,
+      "sha256": "b9a52d3adf613cac85b6ae9fbe19136712ac66390400c6def41d113e1ae8378b",
+      "kind": "immutable-original-evidence",
+      "role": "original frozen build manifest",
+      "published": false
+    },
+    {
+      "file": "bus-upper-deck-low-functional.png",
+      "bytes": 137190,
+      "sha256": "048750fd465d54a003f7b22bd99a25b8eeeb1f1cb27206bd2394ae8f9dc47fe9",
+      "kind": "immutable-original-evidence",
+      "role": "original functional Low upper-deck PNG",
+      "published": false
+    },
+    {
+      "file": "capture-harbor-tour-original.mjs",
+      "bytes": 51371,
+      "sha256": "b23e40572d86f3f228d3b5f8a788e7c813eb9a9ff5b2e100ca327d2f0889c114",
+      "kind": "immutable-original-evidence",
+      "role": "exact original executed method bytes, not the later repository method",
+      "published": false
+    },
+    {
+      "file": "capture-original.log",
+      "bytes": 9432,
+      "sha256": "b066d0e9bfa40bd68f25028c156e823d590919bed55599cd1fc89c683ef2757e",
+      "kind": "immutable-original-evidence",
+      "role": "byte-identical original process stdout/stderr log",
+      "published": false
+    },
+    {
+      "file": "failure-original.png",
+      "bytes": 122092,
+      "sha256": "5a0fefd50c6f0131e3df180b879e5e8fa956e4bab520e7005f51bc0835b34282",
+      "kind": "immutable-original-evidence",
+      "role": "original first-failure PNG",
+      "published": false
+    },
+    {
+      "file": "initial-public-catalog.json",
+      "bytes": 961066,
+      "sha256": "b3d2511a6bf917928a2e6c09b8b260d5688378f152349125eb043485a0eb60e7",
+      "kind": "immutable-original-evidence",
+      "role": "original one-time real browser building catalog",
+      "published": false
+    },
+    {
+      "file": "metadata.json",
+      "bytes": 383618,
+      "sha256": "b7460c894b11297fbc2919a2e81fa05791817f1d115d8273e53c660be78e3f6e",
+      "kind": "immutable-original-evidence",
+      "role": "original tool result, phases, trimmed real snapshots and video probe",
+      "published": false
+    },
+    {
+      "file": "original-method.json",
+      "bytes": 338,
+      "sha256": "3f10969cd7774363ae65cce98484af8d092589b0428fc8fdcb95a0d769187ba0",
+      "kind": "immutable-original-evidence",
+      "role": "original method-copy provenance",
+      "published": false
+    },
+    {
+      "file": "route-plan.json",
+      "bytes": 16823,
+      "sha256": "ec1814d4aa8b3c380d86f3fe3e4dc7fe0e1e658a1f5f9ea8a6fff312a1f2dc80",
+      "kind": "immutable-original-evidence",
+      "role": "original static-collider route plan; not proof later route steps ran",
+      "published": false
+    },
+    {
+      "file": "tour-start-home-2F-low-functional.png",
+      "bytes": 127551,
+      "sha256": "178cbef68c01bba9bd9ccc84efdd5d5da8b543ebc67ee4116d71db23c7162a28",
+      "kind": "immutable-original-evidence",
+      "role": "original functional Low 2F starting-room PNG",
+      "published": false
+    },
+    {
+      "file": "video/page@ba86a50f42d45bf55f12ac6d154937d9.webm",
+      "bytes": 20744648,
+      "sha256": "7fa9592c2aa01d65a25ef3f3d87aa480007cd85d4adbb8cbc81253160b575c7b",
+      "kind": "immutable-original-evidence",
+      "role": "single unedited original WebM, including setup and failure",
+      "published": false
+    },
+    {
+      "file": "README.md",
+      "bytes": 4853,
+      "sha256": "9364d0c1322fa7f04bf76a1380968d460718f2ad878c595b86fd6b90fb8a014b",
+      "kind": "post-run-documentation",
+      "role": "documentation added after failure; not original game evidence",
+      "published": false
+    },
+    {
+      "file": "post-run-verification.json",
+      "bytes": 7804,
+      "sha256": "53a59a8d97034416854373d2df4a5f4b0189abfc9d5ae17dc279de65af2e41f3",
+      "kind": "post-run-documentation",
+      "role": "post-run freeze verification plus later documentation",
+      "published": false
+    }
+  ],
+  "relatedOfflineReproduction": {
+    "path": "/tmp/harbor-life-bus-deadlock-world.json",
+    "sha256": "e338de7100b88f5e61f4c0bee16b5df18f3d100074dc978cde8b6ead7f6e6a0e",
+    "bytes": 86182,
+    "provenance": "separate offline Node world reproduction provided to root after this first browser failure; not browser-state evidence",
+    "includedInThisDirectory": false,
+    "samples": 30,
+    "matchingHeldSamples": 18,
+    "firstObservedSimulationTime": 129.9999999999956,
+    "lastObservedSimulationTime": 300.0000000000558,
+    "busPosition": {
+      "x": 152,
+      "y": 0,
+      "z": 140.7459745308214
+    },
+    "held": "pedestrian",
+    "committed": true,
+    "trafficLightRed": false,
+    "agentId": "harbor-resident-18",
+    "fixAppliedToThisAttempt": false
+  }
+}

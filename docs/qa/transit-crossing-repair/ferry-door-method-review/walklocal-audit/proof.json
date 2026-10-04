@@ -1,0 +1,477 @@
+{
+  "schema": "derived-offline-cabin-mock-proof-v1",
+  "startedAt": "2026-10-04T19:16:28.047Z",
+  "candidate": "/tmp/neon-harbor-tour-first-error-candidate-2026-10-04T19-13-07-129Z/capture-harbor-tour.mjs",
+  "candidateSha256": "6a0178c8fb0b099dda2a82b1bc8157206861c35bb8e00cd1b4661216450027db",
+  "fullTourExecuted": false,
+  "browserCreated": false,
+  "originalArtifactsWritten": false,
+  "checks": [
+    {
+      "name": "entire route/save/reload/browser/90-minute/cleanup suffix byte-identical to 60436",
+      "status": "passed"
+    },
+    {
+      "name": "planning/source/assets/global timing prefix unchanged except four evidence arrays",
+      "status": "passed"
+    },
+    {
+      "name": "cabinState and cabinPointer action functions byte-identical",
+      "status": "passed"
+    },
+    {
+      "name": "dominant keys/mouse/.06/.15/revision/held-input/n1800 and simulation guards retained verbatim",
+      "status": "passed"
+    },
+    {
+      "name": "18 cap cases: only actual ferry door object in each direction extends; up/down/no-stairs share wrapper",
+      "status": "passed",
+      "capChecks": 18,
+      "extended": [
+        {
+          "kind": "ferry",
+          "direction": "outbound",
+          "target": "actual-door-object"
+        },
+        {
+          "kind": "ferry",
+          "direction": "return",
+          "target": "actual-door-object"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "name": "normal-input-success",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "evidence.write"
+      ],
+      "thrown": null,
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/normal-input-success/cabin-segment-0001.json",
+      "recordStatus": "passed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "input-primary-plus-keyup-failure",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "snapshot:3",
+        "up:w",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/input-primary-plus-keyup-failure/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [
+        {
+          "at": "2026-10-04T19:16:28.057Z",
+          "context": {
+            "label": "input-primary-plus-keyup-failure",
+            "kind": "bus",
+            "role": "cabin-waypoint",
+            "segmentFile": "cabin-segment-0001.json",
+            "scope": "keyboard-up",
+            "key": "w",
+            "slow": true
+          },
+          "error": {
+            "message": "CLEANUP_FAILURE",
+            "stack": "Error: CLEANUP_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:69)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+          },
+          "primary": {
+            "message": "PRIMARY_INPUT_FAILURE",
+            "stack": "Error: PRIMARY_INPUT_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:26)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+          },
+          "primaryPreserved": true
+        }
+      ],
+      "evidenceErrors": []
+    },
+    {
+      "name": "normal-keyup-failure-is-fail",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "snapshot:3",
+        "evidence.write"
+      ],
+      "thrown": "CLEANUP_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/normal-keyup-failure-is-fail/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [
+        {
+          "at": "2026-10-04T19:16:28.058Z",
+          "context": {
+            "label": "normal-keyup-failure-is-fail",
+            "kind": "bus",
+            "role": "cabin-waypoint",
+            "segmentFile": "cabin-segment-0001.json",
+            "scope": "keyboard-up",
+            "key": "w",
+            "slow": true
+          },
+          "error": {
+            "message": "CLEANUP_FAILURE",
+            "stack": "Error: CLEANUP_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:69)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+          },
+          "primary": null,
+          "primaryPreserved": false
+        }
+      ],
+      "evidenceErrors": []
+    },
+    {
+      "name": "input-primary-plus-slowkeyup-failure",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "snapshot:3",
+        "up:w",
+        "up:z",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/input-primary-plus-slowkeyup-failure/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [
+        {
+          "at": "2026-10-04T19:16:28.058Z",
+          "context": {
+            "label": "input-primary-plus-slowkeyup-failure",
+            "kind": "bus",
+            "role": "cabin-waypoint",
+            "segmentFile": "cabin-segment-0001.json",
+            "scope": "keyboard-up",
+            "key": "w",
+            "slow": true
+          },
+          "error": {
+            "message": "CLEANUP_FAILURE",
+            "stack": "Error: CLEANUP_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:69)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+          },
+          "primary": {
+            "message": "PRIMARY_INPUT_FAILURE",
+            "stack": "Error: PRIMARY_INPUT_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:26)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+          },
+          "primaryPreserved": true
+        }
+      ],
+      "evidenceErrors": []
+    },
+    {
+      "name": "normal-slowkeyup-failure-is-fail",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "evidence.write"
+      ],
+      "thrown": "CLEANUP_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/normal-slowkeyup-failure-is-fail/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [
+        {
+          "at": "2026-10-04T19:16:28.059Z",
+          "context": {
+            "label": "normal-slowkeyup-failure-is-fail",
+            "kind": "bus",
+            "role": "cabin-waypoint",
+            "segmentFile": "cabin-segment-0001.json",
+            "scope": "keyboard-up",
+            "key": "w",
+            "slow": true
+          },
+          "error": {
+            "message": "CLEANUP_FAILURE",
+            "stack": "Error: CLEANUP_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:69)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+          },
+          "primary": null,
+          "primaryPreserved": false
+        }
+      ],
+      "evidenceErrors": []
+    },
+    {
+      "name": "keydown-read-failure-observed-state",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "snapshot:3",
+        "up:w",
+        "up:z",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "KEYDOWN_READ_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/keydown-read-failure-observed-state/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "keydown-read-failure-unavailable-state",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "snapshot:3",
+        "up:w",
+        "up:z",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "KEYDOWN_READ_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/keydown-read-failure-unavailable-state/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "wait-failure-unavailable-state",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "snapshot:3",
+        "up:w",
+        "up:z",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/wait-failure-unavailable-state/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "initial-read-failure-zero-count",
+      "trace": [
+        "snapshot:1",
+        "snapshot:2",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/initial-read-failure-zero-count/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "keydown-dispatch-failure-no-invented-observation",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "up:w",
+        "up:z",
+        "snapshot:2",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/keydown-dispatch-failure-no-invented-observation/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "heading-failure-camera-command-only",
+      "trace": [
+        "snapshot:1",
+        "mouse.move",
+        "heading.wait",
+        "snapshot:2",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/heading-failure-camera-command-only/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "successful-motion-evidence-write-failure",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "evidence.write"
+      ],
+      "thrown": "EVIDENCE_WRITE_FAILURE",
+      "recordFile": null,
+      "recordStatus": null,
+      "cleanupErrors": [],
+      "evidenceErrors": [
+        {
+          "file": "cabin-segment-0001.json",
+          "message": "EVIDENCE_WRITE_FAILURE",
+          "stack": "Error: EVIDENCE_WRITE_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:212)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+        }
+      ]
+    },
+    {
+      "name": "input-primary-plus-evidence-write-failure",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "snapshot:3",
+        "up:w",
+        "up:z",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "PRIMARY_INPUT_FAILURE",
+      "recordFile": null,
+      "recordStatus": null,
+      "cleanupErrors": [],
+      "evidenceErrors": [
+        {
+          "file": "cabin-segment-0001.json",
+          "message": "EVIDENCE_WRITE_FAILURE",
+          "stack": "Error: EVIDENCE_WRITE_FAILURE\n    at run (file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:66:212)\n    at file:///tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/proof.mjs:122:9"
+        }
+      ]
+    },
+    {
+      "name": "revision-guard-still-fails",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "cabin walking preserves transition revision\n\n12 !== 11\n",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/revision-guard-still-fails/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "height-guard-still-fails",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "actual stair support height",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/height-guard-still-fails/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "held-input-guard-still-fails",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "snapshot:4",
+        "evidence.write"
+      ],
+      "thrown": "held cabin inputs do not stall against seats or walls",
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/held-input-guard-still-fails/cabin-segment-0001.json",
+      "recordStatus": "failed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "ferry-final-300000-effective-budget",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "evidence.write"
+      ],
+      "thrown": null,
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/ferry-final-300000-effective-budget/cabin-segment-0001.json",
+      "recordStatus": "passed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    },
+    {
+      "name": "global-budget-caps-local-budget",
+      "trace": [
+        "snapshot:1",
+        "down:z",
+        "down:w",
+        "snapshot:2",
+        "movement.wait",
+        "up:w",
+        "up:z",
+        "snapshot:3",
+        "evidence.write"
+      ],
+      "thrown": null,
+      "recordFile": "/tmp/neon-harbor-first-error-walklocal-proof-audit-6a0178/global-budget-caps-local-budget/cabin-segment-0001.json",
+      "recordStatus": "passed",
+      "cleanupErrors": [],
+      "evidenceErrors": []
+    }
+  ],
+  "completedAt": "2026-10-04T19:16:28.077Z",
+  "status": "passed"
+}

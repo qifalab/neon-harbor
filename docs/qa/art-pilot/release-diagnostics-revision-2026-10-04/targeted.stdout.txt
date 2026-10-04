@@ -1,0 +1,17 @@
+✔ GLBs contain exact official acquired BIN and 1K JPEG bytes, original scenes/skins/PBR and proven hashes (36.867537ms)
+✔ matching local r185 loader dependencies and source snapshot hashes are complete and local (10.777683ms)
+✔ actual indexed geometry, retained vice skin, default-pose bounds and PBR references fit the two-model budget (36.684769ms)
+✔ single actual workshop scope keeps every existing collider, stairs and >2m main passage; tool box stays on its owner crate (86.23926ms)
+✔ distance hysteresis loads once, unloads all GPU-owned resources and releases again on real building exit (75.34419ms)
+✔ late asynchronous loads cannot attach to released floor, and missing/corrupt PBR keeps the primitive fallback (60.420097ms)
+✔ old pending generation cannot clear or replace a successful new near generation (45.747294ms)
+✔ cold synchronous disposal counters separate owned rendered objects from never-rendered decoded resources (36.635314ms)
+✔ throwing optional renderer diagnostics cannot prevent real GLB cleanup and snapshots do not alias read errors (45.34779ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 550.036542

@@ -1,0 +1,31 @@
+diff --git a/src/main.js b/src/main.js
+index 9ca3068..1d713e1 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -385,6 +385,17 @@ function frame(time){
+   updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.sample.transit.updateRender(camera,settings.hour);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);contactOcclusion.render(scene,camera);
+ }
+ 
++// Isolated art-review instrumentation: counts and actual switches only. It
++// neither drains the GL error queue nor changes renderer/game/storage state.
++function rendererReviewState(){
++  return {calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,
++    memory:{...renderer.info.memory},programs:renderer.info.programs?.length??null,
++    contextLost:renderer.getContext().isContextLost(),
++    shadow:{enabled:renderer.shadowMap.enabled,type:renderer.shadowMap.type,
++      sunCastShadow:!!sun.castShadow,mapResident:!!sun.shadow.map,
++      mapSize:[sun.shadow.mapSize.x,sun.shadow.mapSize.y]},
++    contactOcclusion:contactOcclusion.snapshot()};
++}
+ try{
+   renderer=new THREE.WebGLRenderer({canvas:$('game'),antialias:true,powerPreference:'high-performance'});renderer.setSize(innerWidth,innerHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+   scene=new THREE.Scene();scene.background=new THREE.Color('#c0b8ca');scene.fog=new THREE.FogExp2('#b9b3c1',.0016);camera=new THREE.PerspectiveCamera(55,innerWidth/innerHeight,.15,3200);camera.position.set(240,135,345);
+@@ -409,7 +420,7 @@ try{
+       renderedSubject:model?{x:model.position.x,y:model.position.y,z:model.position.z,yaw:model.rotation.y}:null};
+   };
+   // Read-only diagnostics help automated QA verify real input and renderer state.
+-  Object.defineProperty(window,'__NEON__',{value:Object.freeze({snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},fps:Math.round(fps),timing:{...frameTiming},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,contactOcclusion:contactOcclusion.snapshot()}})})});
++  Object.defineProperty(window,'__NEON__',{value:Object.freeze({snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},fps:Math.round(fps),timing:{...frameTiming},renderer:rendererReviewState()})})});
+   window.addEventListener('pagehide',event=>{multiplayer.leave();if(!event.persisted)contactOcclusion.dispose();});
+   window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();applyQuality();});
+   $('game').addEventListener('webglcontextlost',event=>{event.preventDefault();paused=true;save();toast('图形上下文中断，进度已保存。请刷新页面恢复。','warning');});

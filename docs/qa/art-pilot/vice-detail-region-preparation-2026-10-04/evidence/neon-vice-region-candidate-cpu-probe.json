@@ -1,0 +1,42 @@
+{
+  "status": "CPU_ADAPTER_PASS_NOT_BROWSER_OR_PATH_PROOF",
+  "sourceSha256": "469da79377238d2a8d71077bd0270a1733e24bfa4d79fc9cc3f9d6651c869101",
+  "checks": [
+    {
+      "name": "Real Playwright ExpectError keeps appended message and exact raw/parsed 24-sample CPU fixture",
+      "passed": true,
+      "messageContainsDiagnostics": true,
+      "stackContainsDiagnostics": false
+    },
+    {
+      "name": "One unchanged helper call; snapshot and metadata I/O failures preserve the original movement error identity and samples",
+      "passed": true,
+      "calls": {
+        "turn": 1,
+        "helper": 1,
+        "snapshot": 2,
+        "event": 0,
+        "persist": 1
+      }
+    },
+    {
+      "name": "Successful CPU adapter records before/actualAfter/budget/result with one helper call and no recovery",
+      "passed": true,
+      "calls": {
+        "turn": 1,
+        "helper": 1,
+        "snapshot": 2,
+        "event": 1,
+        "persist": 1
+      }
+    },
+    {
+      "name": "Malformed diagnostic JSON preserves raw text and real parse error without fabricating a parsed object",
+      "passed": true
+    }
+  ],
+  "limits": [
+    "Synthetic motion fixtures; no browser/server/GPU/key input.",
+    "Independent legal-region proof and native capture remain separate."
+  ]
+}

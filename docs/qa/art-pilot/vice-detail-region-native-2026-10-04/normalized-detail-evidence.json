@@ -1,0 +1,647 @@
+{
+  "status": "failed",
+  "runnerExitCode": 1,
+  "actualEyeDistanceMetres": 1.416724123991076,
+  "captures": [
+    {
+      "file": "vice-detail-north-side-detail-high.png",
+      "sha256": "fbf75dd9fd9ec35c7677690650c414dcce043084e9241ad99700c597d1eb9e4a",
+      "poseSha256": "9f50b47d257aca14783cb738adf1ee415d5daad84776326fdc4d2966faaa6164",
+      "size": [
+        1280,
+        800
+      ],
+      "matches": true,
+      "gl": {
+        "width": 1280,
+        "height": 800,
+        "contextLost": false,
+        "errorAtCapture": 0,
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    }
+  ],
+  "actualExitReleaseEvents": [
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 1,
+      "assetId": "bench_vice_01",
+      "resourceRelease": {
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 1,
+        "boneTextures": 1,
+        "closedImages": 3
+      },
+      "rendererRelease": {
+        "scope": "single synchronous asset disposal",
+        "attachedAtRelease": true,
+        "available": true,
+        "readErrors": [],
+        "before": {
+          "geometries": 523,
+          "textures": 107
+        },
+        "after": {
+          "geometries": 519,
+          "textures": 103
+        },
+        "difference": {
+          "geometries": 4,
+          "textures": 4
+        }
+      },
+      "sequence": 5
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "assetId": "metal_tool_chest",
+      "resourceRelease": {
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 0,
+        "boneTextures": 0,
+        "closedImages": 3
+      },
+      "rendererRelease": {
+        "scope": "single synchronous asset disposal",
+        "attachedAtRelease": true,
+        "available": true,
+        "readErrors": [],
+        "before": {
+          "geometries": 519,
+          "textures": 103
+        },
+        "after": {
+          "geometries": 512,
+          "textures": 100
+        },
+        "difference": {
+          "geometries": 7,
+          "textures": 3
+        }
+      },
+      "sequence": 6
+    }
+  ],
+  "errors": [],
+  "errorsAfterFinalization": [],
+  "cleanup": [
+    {
+      "label": "browser-context",
+      "startedAt": "2026-10-04T21:01:08.944Z",
+      "timeoutMs": 10000,
+      "status": "closed",
+      "completedAt": "2026-10-04T21:01:08.965Z"
+    },
+    {
+      "label": "browser",
+      "startedAt": "2026-10-04T21:01:08.965Z",
+      "timeoutMs": 10000,
+      "status": "failed",
+      "error": "Error: browser cleanup exceeded 10000ms\n    at Timeout._onTimeout (file:///workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs:308:114)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)",
+      "completedAt": "2026-10-04T21:01:18.966Z"
+    },
+    {
+      "label": "server",
+      "startedAt": "2026-10-04T21:01:18.966Z",
+      "timeoutMs": 5000,
+      "status": "closed",
+      "completedAt": "2026-10-04T21:01:18.967Z"
+    }
+  ],
+  "caseBudget": {
+    "deadlineAt": "2026-10-04T21:13:51.813Z",
+    "finishedBeforeDeadline": true,
+    "hardDeadlineReached": false
+  },
+  "finalizationErrors": [
+    "One or more owned cleanup operations failed; raw errors are preserved in cleanup."
+  ],
+  "walkAttempts": [
+    {
+      "index": 1,
+      "axis": "x",
+      "target": 200,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:54:19.241Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1172572,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 1165357
+      },
+      "before": {
+        "position": {
+          "x": 200,
+          "y": 0.215,
+          "z": -100.1,
+          "yaw": 3.141592653589793
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 0.8000000000000008,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "actualAfter": {
+        "position": {
+          "x": 200,
+          "y": 0.215,
+          "z": -100.1,
+          "yaw": 3.141592653589793
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 0.8000000000000008,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "completedAt": "2026-10-04T20:54:26.456Z",
+      "firstError": null
+    },
+    {
+      "index": 2,
+      "axis": "z",
+      "target": -115,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:54:26.459Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1165354,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 1128961
+      },
+      "before": {
+        "position": {
+          "x": 200,
+          "y": 0.215,
+          "z": -100.1,
+          "yaw": 3.141592653589793
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 0.8000000000000008,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "actualAfter": {
+        "position": {
+          "x": 200,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": 3.141592653589793
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 4.29999999999999,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "completedAt": "2026-10-04T20:55:02.852Z",
+      "firstError": null
+    },
+    {
+      "index": 3,
+      "axis": "x",
+      "target": 197.8,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:55:02.854Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1128959,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 1093333
+      },
+      "before": {
+        "position": {
+          "x": 200,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": 3.141592653589793
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 4.29999999999999,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "actualAfter": {
+        "position": {
+          "x": 197.800000000002,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 7.04999999999998,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:55:38.480Z",
+      "firstError": null
+    },
+    {
+      "index": 4,
+      "axis": "x",
+      "target": 182.8,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:55:40.022Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1091791,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 1038166
+      },
+      "before": {
+        "position": {
+          "x": 197.800000000002,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 7.04999999999998,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 182.84000000000358,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 11.90000000000017,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:56:33.647Z",
+      "firstError": null
+    },
+    {
+      "index": 5,
+      "axis": "z",
+      "target": -115,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:56:33.649Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1038164,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 1036777
+      },
+      "before": {
+        "position": {
+          "x": 182.84000000000358,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 11.90000000000017,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 182.84000000000358,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 11.90000000000017,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:56:35.036Z",
+      "firstError": null
+    },
+    {
+      "index": 6,
+      "axis": "z",
+      "target": -113.32,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:56:35.039Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1036774,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 1014901
+      },
+      "before": {
+        "position": {
+          "x": 182.84000000000358,
+          "y": 0.215,
+          "z": -114.90000000000018,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 11.90000000000017,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 182.84000000000358,
+          "y": 0.215,
+          "z": -113.29999999999993,
+          "yaw": -1.2246467991473532e-16
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 13.90000000000027,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:56:56.912Z",
+      "firstError": null
+    },
+    {
+      "index": 7,
+      "axis": "x",
+      "target": 180.35,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:56:56.914Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 1014899,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 974946
+      },
+      "before": {
+        "position": {
+          "x": 182.84000000000358,
+          "y": 0.215,
+          "z": -113.29999999999993,
+          "yaw": -1.2246467991473532e-16
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 13.90000000000027,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 180.44000000000577,
+          "y": 0.215,
+          "z": -113.29999999999993,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.141592653589793,
+        "simulationTime": 17.000000000000316,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:57:36.867Z",
+      "firstError": null
+    },
+    {
+      "index": 8,
+      "axis": "x",
+      "target": 182.8,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:58:41.821Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 909992,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 870832
+      },
+      "before": {
+        "position": {
+          "x": 180.44000000000577,
+          "y": 0.215,
+          "z": -113.29999999999993,
+          "yaw": -1.5707963267948968
+        },
+        "cameraYaw": 3.1417604863981254,
+        "simulationTime": 22.350000000000012,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 182.63999999717979,
+          "y": 0.215,
+          "z": -113.3000357188567,
+          "yaw": 1.5707965246072382
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 25.099999999999856,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:59:20.981Z",
+      "firstError": null
+    },
+    {
+      "index": 9,
+      "axis": "z",
+      "target": -115,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:59:20.985Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 870828,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 847241
+      },
+      "before": {
+        "position": {
+          "x": 182.63999999717979,
+          "y": 0.215,
+          "z": -113.3000357188567,
+          "yaw": 1.5707965246072382
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 25.099999999999856,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 182.63999968067904,
+          "y": 0.215,
+          "z": -114.90003571885696,
+          "yaw": -3.141592455777452
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 27.099999999999742,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "completedAt": "2026-10-04T20:59:44.572Z",
+      "firstError": null
+    },
+    {
+      "index": 10,
+      "axis": "x",
+      "target": 200,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T20:59:44.575Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 847238,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 799165
+      },
+      "before": {
+        "position": {
+          "x": 182.63999968067904,
+          "y": 0.215,
+          "z": -114.90003571885696,
+          "yaw": -3.141592455777452
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 27.099999999999742,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": "south-086-lobby-0"
+      },
+      "actualAfter": {
+        "position": {
+          "x": 199.97333301401153,
+          "y": 0.215,
+          "z": -114.90003914760402,
+          "yaw": 1.5707965246072382
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 31.266666666666172,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "completedAt": "2026-10-04T21:00:32.648Z",
+      "firstError": null
+    },
+    {
+      "index": 11,
+      "axis": "z",
+      "target": -100.1,
+      "toleranceMetres": 0.18,
+      "precision": true,
+      "startedAt": "2026-10-04T21:00:33.144Z",
+      "result": "passed",
+      "effectiveBudget": {
+        "wholeCaseDeadlineAt": "2026-10-04T21:13:51.813Z",
+        "remainingMsAtStart": 798669,
+        "walkTimeoutMs": 120000,
+        "remainingMsAfter": 763702
+      },
+      "before": {
+        "position": {
+          "x": 199.97333301401153,
+          "y": 0.215,
+          "z": -114.90003914760402,
+          "yaw": 1.5707965246072382
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 31.266666666666172,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "actualAfter": {
+        "position": {
+          "x": 199.97333592580986,
+          "y": 0.215,
+          "z": -100.18003914760385,
+          "yaw": 1.9781234149551088e-07
+        },
+        "cameraYaw": 3.1415928514021347,
+        "simulationTime": 34.66666666666598,
+        "teleportRevision": 3,
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "roomId": null
+      },
+      "completedAt": "2026-10-04T21:01:08.111Z",
+      "firstError": null
+    }
+  ],
+  "primaryError": {
+    "name": "Error",
+    "message": "One or more owned cleanup operations failed; raw errors are preserved in cleanup.",
+    "stack": "Error: One or more owned cleanup operations failed; raw errors are preserved in cleanup.\n    at file:///workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs:325:59\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+    "walkingDiagnosticsSource": null,
+    "walkingDiagnosticsRaw": null,
+    "walkingDiagnostics": null,
+    "walkingDiagnosticsParseError": null
+  },
+  "failureImageAttempt": null,
+  "scope": "One independent vice material inspection, not a repeated resource suite, whole-room/city art approval or driver allocation measurement."
+}

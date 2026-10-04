@@ -1,0 +1,109 @@
+--- a/src/harbor-life.js
++++ b/src/harbor-life.js
+@@ -1,7 +1,8 @@
+ import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
+-import { SpatialIndex, circleOBB } from './collision.js';
++import { SpatialIndex, circleOBB, VEHICLE_SHAPE, moveVehicle, moveCircle } from './collision.js';
+ import { createInteriorLayout } from './metropolis-interiors.js';
+ import { intersectionSignal } from './traffic.js';
++import { harborRoutePose } from './harbor-transit.js';
+ 
+ export const HARBOR_LIFE_SCHEMA = 'neon-harbor/daily-life';
+ export const HARBOR_LIFE_VERSION = 1;
+@@ -283,13 +284,43 @@
+     }
+     if (agent.goal.kind === 'deliver') { const job = this.jobs.find(j => j.id === agent.goal.id); this._deliver(job, agent); agent.goal = null; this._chooseGoal(agent); }
+   }
++  _crossingRun(agent, crossing) {
++    const points = [point(agent)], edge = crossing.width / 2 - 2 + .6;
++    for (let i = agent.pathIndex; i < agent.path.length; i++) {
++      const p = agent.path[i]; points.push(point(p));
++      if (Math.abs(p[crossing.axis] - crossing.road) >= edge) break;
++    }
++    return points;
++  }
++  _crossingOccupied(points, vehicle) {
++    const body = { ...vehicle, hx: vehicle.hx ?? VEHICLE_SHAPE.hx, hz: vehicle.hz ?? VEHICLE_SHAPE.hz, externalBody: true,
++      minY: vehicle.minY ?? vehicle.y ?? 0, maxY: vehicle.maxY ?? (vehicle.y ?? 0) + VEHICLE_SHAPE.height };
++    const s = Math.abs(Math.sin(body.yaw)), c = Math.abs(Math.cos(body.yaw));
++    const hx = c * body.hx + s * body.hz, hz = s * body.hx + c * body.hz;
++    if (Math.max(...points.map(p => p.x)) + .6 < body.x - hx || Math.min(...points.map(p => p.x)) - .6 > body.x + hx ||
++        Math.max(...points.map(p => p.z)) + .6 < body.z - hz || Math.min(...points.map(p => p.z)) - .6 > body.z + hz) return false;
++    for (let i = 1; i < points.length; i++) {
++      const p = { ...points[i - 1] }, next = points[i];
++      if (moveCircle(p, next.x - p.x, next.z - p.z, .6, { bounds: 3000, vehicles: [body] }).contacts.length) return true;
++    }
++    return false;
++  }
+   _walk(agent, dt, vehicles) {
+     let remaining = agent.speed * dt;
+     while (remaining > 1e-8 && agent.pathIndex < agent.path.length) {
+       const target = agent.path[agent.pathIndex], gap = Math.hypot(target.x - agent.x, target.z - agent.z, (target.y ?? .18) - agent.y);
+-      if (target.crossingId && !agent.crossingId) {
++      const previous = this.navigation.crossings.find(c => c.id === agent.crossingId);
++      if (previous && target.crossingId !== previous.id && Math.abs(agent[previous.axis] - previous.road) >= previous.width / 2 - 2 + .6) agent.crossingId = null;
++      if (target.crossingId && target.crossingId !== agent.crossingId) {
+         const crossing = this.navigation.crossings.find(c => c.id === target.crossingId);
+-        if (intersectionSignal(this.trafficTime ?? this.time, crossing.x, crossing.z, crossing.axis) !== 'green') { agent.activity = '在斑马线前等灯'; return; }
++        // Older saves may retain the previous leg's claim after a turn.
++        // A person already inside this carriageway completes that crossing;
++        // an approach from pavement still waits for this leg's green light.
++        const admitted = agent.crossingId && Math.abs(agent[crossing.axis] - crossing.road) < crossing.width / 2 - 2 + .6;
++        if (!admitted && intersectionSignal(this.trafficTime ?? this.time, crossing.x, crossing.z, crossing.axis) !== 'green') { agent.activity = '在斑马线前等灯'; return; }
++        if (!admitted && vehicles.some(v => v.health !== 0 && Math.abs((v.y ?? 0) - agent.y) < 1.5 && this._crossingOccupied(this._crossingRun(agent, crossing), v))) {
++          agent.activity = '在路缘等占线车辆清空'; return;
++        }
+         agent.crossingId = target.crossingId;
+       }
+       const step = Math.min(remaining, gap), t = gap > 1e-9 ? step / gap : 1;
+@@ -297,7 +328,11 @@
+       if (!agent.insideBuildingId && vehicles.some(v => v.health !== 0 && Math.abs((v.y ?? 0) - next.y) < 1.5 && distance(v, next) < 7 && circleOBB({ ...next, radius: .6 }, v))) { agent.blockedFor += dt; agent.activity = '给车辆让行'; return; }
+       if (gap > 1e-7) agent.yaw = Math.atan2(target.x - agent.x, target.z - agent.z);
+       Object.assign(agent, next); remaining -= step; agent.gait += step * 7; agent.blockedFor = 0;
+-      if (t === 1) { agent.pathIndex++; if (!target.crossingId) agent.crossingId = null; }
++      if (t === 1) {
++        agent.pathIndex++;
++        const claim = this.navigation.crossings.find(c => c.id === agent.crossingId);
++        if (claim && Math.abs(agent[claim.axis] - claim.road) >= claim.width / 2 - 2 + .6) agent.crossingId = null;
++      }
+     }
+     if (agent.pathIndex >= agent.path.length) this._arrive(agent);
+   }
+@@ -374,10 +409,34 @@
+   trafficStopDistanceAt(car) {
+     if (Math.abs(car.y || 0) > 2) return Infinity;
+     let gap = Infinity;
++    const sine = Math.sin(car.yaw), cosine = Math.cos(car.yaw), radius = .6;
++    const padding = car.kind === 'bus' || car.kind === 'tram' ? .08 : 0;
++    const body = { ...car, hx: (car.hx ?? VEHICLE_SHAPE.hx) + padding, hz: (car.hz ?? VEHICLE_SHAPE.hz) + padding };
++    const vehicle = padding && this.transport?.vehicle(car.id);
++    const next = vehicle && harborRoutePose(this.transport.route(vehicle.routeId), vehicle.serviceTime + .05);
++    const sweep = a => next && moveVehicle({ ...body }, next.x - car.x, next.z - car.z,
++      Math.atan2(Math.sin(next.yaw - car.yaw), Math.cos(next.yaw - car.yaw)),
++      { bounds: 3000, circles: [{ x: a.x, z: a.z, groundY: a.y, y: 0, radius }] }).contacts.length;
+     for (const a of this.agents) if (a.crossingId) {
+-      const forward = (a.x - car.x) * Math.sin(car.yaw) + (a.z - car.z) * Math.cos(car.yaw);
+-      const side = Math.abs((a.x - car.x) * Math.cos(car.yaw) - (a.z - car.z) * Math.sin(car.yaw));
+-      if (forward > -3 && forward < 50 && side < 5) gap = Math.min(gap, Math.max(0, forward - 4));
++      // Check actual contact before path bounds: a turning long vehicle may
++      // sweep a person whose crossing plane is nearly parallel or behind it.
++      if (circleOBB({ ...a, radius }, body) || sweep(a)) { gap = 0; continue; }
++      const target = a.path[a.pathIndex];
++      const crossing = this.navigation.crossings.find(c => c.id === (target?.crossingId || a.crossingId));
++      if (!crossing) continue;
++      const points = this._crossingRun(a, crossing);
++      const projected = points.map(p => ({
++        forward: (p.x - car.x) * sine + (p.z - car.z) * cosine,
++        side: (p.x - car.x) * cosine - (p.z - car.z) * sine,
++      }));
++      const first = Math.min(...projected.map(p => p.forward)), last = Math.max(...projected.map(p => p.forward));
++      const left = Math.min(...projected.map(p => p.side)), right = Math.max(...projected.map(p => p.side));
++      if (last < -body.hz - radius || first >= 50 || left > body.hx + radius || right < -body.hx - radius) continue;
++      // A vehicle already occupying this actual polyline clears first while
++      // the person waits outside its side. New entrants wait at the curb.
++      const side = Math.abs((a.x - car.x) * cosine - (a.z - car.z) * sine);
++      if (side >= body.hx + radius && (!padding || vehicle) && this._crossingOccupied(points, body)) continue;
++      gap = Math.min(gap, Math.max(0, first - 4));
+     }
+     return gap;
+   }

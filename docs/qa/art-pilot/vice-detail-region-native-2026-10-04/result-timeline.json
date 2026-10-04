@@ -1,0 +1,160 @@
+{
+  "invocationStartUtc": "2026-10-04T20:53:51Z",
+  "popenWaitReturnedAtUtc": "2026-10-04T21:01:19Z",
+  "runnerExitCode": 1,
+  "caseStartedAt": "2026-10-04T20:53:51.797Z",
+  "playableCompletedAt": "2026-10-04T21:01:08.919Z",
+  "finalizationCompletedAt": "2026-10-04T21:01:18.967Z",
+  "cleanup": [
+    {
+      "label": "browser-context",
+      "startedAt": "2026-10-04T21:01:08.944Z",
+      "timeoutMs": 10000,
+      "status": "closed",
+      "completedAt": "2026-10-04T21:01:08.965Z"
+    },
+    {
+      "label": "browser",
+      "startedAt": "2026-10-04T21:01:08.965Z",
+      "timeoutMs": 10000,
+      "status": "failed",
+      "error": "Error: browser cleanup exceeded 10000ms\n    at Timeout._onTimeout (file:///workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs:308:114)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)",
+      "completedAt": "2026-10-04T21:01:18.966Z"
+    },
+    {
+      "label": "server",
+      "startedAt": "2026-10-04T21:01:18.966Z",
+      "timeoutMs": 5000,
+      "status": "closed",
+      "completedAt": "2026-10-04T21:01:18.967Z"
+    }
+  ],
+  "independentClosure": {
+    "checkedAtUtc": "2026-10-04T21:01:29Z",
+    "methodPid55333Present": false,
+    "activeChromeProcesses": [],
+    "port5208ConnectEx": 111,
+    "serverClosed": true,
+    "gpuBrowserReleased": true,
+    "noProcessesKilledForThisCheck": true
+  },
+  "caseBudget": {
+    "deadlineAt": "2026-10-04T21:13:51.813Z",
+    "finishedBeforeDeadline": true,
+    "hardDeadlineReached": false
+  },
+  "walkCount": 11,
+  "allWalksPassed": true,
+  "realEExitEvent": "real-E-street-exit",
+  "actualExitReleaseEvents": [
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 1,
+      "assetId": "bench_vice_01",
+      "resourceRelease": {
+        "geometries": 4,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 1,
+        "boneTextures": 1,
+        "closedImages": 3
+      },
+      "rendererRelease": {
+        "scope": "single synchronous asset disposal",
+        "attachedAtRelease": true,
+        "available": true,
+        "readErrors": [],
+        "before": {
+          "geometries": 523,
+          "textures": 107
+        },
+        "after": {
+          "geometries": 519,
+          "textures": 103
+        },
+        "difference": {
+          "geometries": 4,
+          "textures": 4
+        }
+      },
+      "sequence": 5
+    },
+    {
+      "kind": "asset-released",
+      "buildingId": "south-086",
+      "floorId": "lobby",
+      "generation": 2,
+      "disposed": true,
+      "wanted": false,
+      "status": "ready",
+      "loadedAssets": 0,
+      "releasedAssets": 2,
+      "assetId": "metal_tool_chest",
+      "resourceRelease": {
+        "geometries": 7,
+        "materials": 1,
+        "textures": 3,
+        "skeletons": 0,
+        "boneTextures": 0,
+        "closedImages": 3
+      },
+      "rendererRelease": {
+        "scope": "single synchronous asset disposal",
+        "attachedAtRelease": true,
+        "available": true,
+        "readErrors": [],
+        "before": {
+          "geometries": 519,
+          "textures": 103
+        },
+        "after": {
+          "geometries": 512,
+          "textures": 100
+        },
+        "difference": {
+          "geometries": 7,
+          "textures": 3
+        }
+      },
+      "sequence": 6
+    }
+  ],
+  "capture": {
+    "file": "vice-detail-north-side-detail-high.png",
+    "sha256": "fbf75dd9fd9ec35c7677690650c414dcce043084e9241ad99700c597d1eb9e4a",
+    "poseFile": "vice-detail-north-side-detail-pose.json",
+    "poseSha256": "9f50b47d257aca14783cb738adf1ee415d5daad84776326fdc4d2966faaa6164",
+    "gl": {
+      "width": 1280,
+      "height": 800,
+      "contextLost": false,
+      "errorAtCapture": 0,
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "quality": "high",
+    "originalPixels": [
+      1280,
+      800
+    ]
+  },
+  "nativeGL": {
+    "width": 1280,
+    "height": 800,
+    "contextLost": false,
+    "errorAtCapture": 0,
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "actualEyeDistanceMetres": 1.416724123991076,
+  "unexpectedErrors": [],
+  "errorsAfterFinalization": [],
+  "status": "COLLECTOR_FAIL_WITH_FINITE_PHOTO_WALK_EXIT_RELEASE_EVIDENCE"
+}

@@ -1,0 +1,179 @@
+{
+  "status": "terminated-partial-NOT-PASS",
+  "reason": "Parent requested pause due ROOT tour slowdown; CPU authorization suspended until GPU release",
+  "stoppedAtUtc": "2026-10-04T18:58:10Z",
+  "taskDriverPid": 48147,
+  "ownedProcesses": [
+    {
+      "pid": 48147,
+      "ppid": 472,
+      "argv": [
+        "python3",
+        "/tmp/neon-pilot-final-cpu-validation.py"
+      ]
+    },
+    {
+      "pid": 48150,
+      "ppid": 48147,
+      "argv": [
+        "npm test"
+      ]
+    },
+    {
+      "pid": 48161,
+      "ppid": 48150,
+      "argv": [
+        "sh",
+        "-c",
+        "node --test tests/*.test.js"
+      ]
+    },
+    {
+      "pid": 48162,
+      "ppid": 48161,
+      "argv": [
+        "node",
+        "--test",
+        "tests/camera.test.js",
+        "tests/citizen-journeys.test.js",
+        "tests/city-exploration.test.js",
+        "tests/city-guide.test.js",
+        "tests/city-materials-v08.test.js",
+        "tests/city-streaming.test.js",
+        "tests/collision-sweep.test.js",
+        "tests/collision.test.js",
+        "tests/compact-interiors.test.js",
+        "tests/compact-workplaces.test.js",
+        "tests/expansion-programmes.test.js",
+        "tests/frame-clock.test.js",
+        "tests/ground-support.test.js",
+        "tests/harbor-district.test.js",
+        "tests/harbor-life-traffic.test.js",
+        "tests/harbor-life.test.js",
+        "tests/harbor-rendering.test.js",
+        "tests/harbor-sample-integration.test.js",
+        "tests/harbor-skyline.test.js",
+        "tests/harbor-terrain.test.js",
+        "tests/harbor-transit.test.js",
+        "tests/harbor-vehicle-models.test.js",
+        "tests/harbor-workshop-pilot.test.js",
+        "tests/interior-occlusion.test.js",
+        "tests/layered-city.test.js",
+        "tests/metropolis-architecture.test.js",
+        "tests/metropolis-infrastructure.test.js",
+        "tests/metropolis-interiors.test.js",
+        "tests/metropolis-people.test.js",
+        "tests/metropolis-room-designs.test.js",
+        "tests/metropolis-transit.test.js",
+        "tests/metropolis-world.test.js",
+        "tests/models.test.js",
+        "tests/multiplayer.test.js",
+        "tests/persistent-street-traffic.test.js",
+        "tests/precision-walking.test.js",
+        "tests/public-vehicle-collision.test.js",
+        "tests/simulation.test.js",
+        "tests/terrain-openings.test.js",
+        "tests/traffic.test.js",
+        "tests/world-gameplay.test.js",
+        "tests/world-geometry.test.js",
+        "tests/world-surface-finish.test.js"
+      ]
+    },
+    {
+      "pid": 48325,
+      "ppid": 48162,
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--experimental-addon-modules",
+        "--test-coverage-functions=0",
+        "--test-concurrency=0",
+        "--inspect-publish-uid=stderr,http",
+        "--inspect-port=127.0.0.1:9229",
+        "--report-signal=SIGUSR2",
+        "--test-coverage-lines=0",
+        "--test-isolation=process",
+        "--heap-prof-interval=524288",
+        "--cpu-prof-interval=1000",
+        "--v8-pool-size=4",
+        "--trace-event-file-pattern=node_trace.${rotation}.log",
+        "--secure-heap-min=2",
+        "--network-family-autoselection-attempt-timeout=250",
+        "--tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA",
+        "--use-largepages=off",
+        "--secure-heap=0",
+        "--watch-kill-signal=SIGTERM",
+        "--test-coverage-branches=0",
+        "--max-http-header-size=16384",
+        "--test-timeout=0",
+        "--node-snapshot",
+        "--stack-trace-limit=10",
+        "--heapsnapshot-near-heap-limit=0",
+        "tests/harbor-life-traffic.test.js"
+      ]
+    }
+  ],
+  "signal": "SIGTERM",
+  "browserServerGpuStartedByPilot": false,
+  "nextBuildAndValidationNotStarted": true,
+  "driverToolExitCode": 143,
+  "nodeRulesTerminationExitCode": 1,
+  "completedFullRuleRun": false,
+  "partialOutputs": [
+    {
+      "path": "final-node-rules.stdout.txt",
+      "bytes": 35907,
+      "sha256": "bdf82ab7396365f37d7839a422a1e09b472d63f3c9ed6e534ecf2b939457f3d0"
+    },
+    {
+      "path": "final-node-rules.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "remainingOwnedProcesses": [
+    {
+      "pid": 48150,
+      "state": "State:\tZ (zombie)"
+    },
+    {
+      "pid": 48162,
+      "state": "State:\tZ (zombie)"
+    },
+    {
+      "pid": 48325,
+      "state": "State:\tZ (zombie)"
+    }
+  ],
+  "observedChildExitStatuses": [
+    {
+      "pid": 48150,
+      "state": "Z",
+      "procStatExitCodeField52": 15,
+      "decodedWaitExitCode": -15,
+      "activeCpuWork": false
+    },
+    {
+      "pid": 48162,
+      "state": "Z",
+      "procStatExitCodeField52": 256,
+      "decodedWaitExitCode": 1,
+      "activeCpuWork": false
+    },
+    {
+      "pid": 48325,
+      "state": "Z",
+      "procStatExitCodeField52": 15,
+      "decodedWaitExitCode": -15,
+      "activeCpuWork": false
+    }
+  ],
+  "nodeRulesReporterSummary": {
+    "tests": 306,
+    "pass": 305,
+    "fail": 0,
+    "cancelled": 1,
+    "completedNormally": false,
+    "rawSummaryFrom": "final-node-rules.stdout.txt",
+    "cancelledLocation": "tests/harbor-life-traffic.test.js:1:1"
+  }
+}

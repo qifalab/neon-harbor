@@ -1,0 +1,1752 @@
+{
+  "version": 1,
+  "cash": 1200,
+  "completed": [],
+  "bestTimes": {},
+  "player": {
+    "x": 8,
+    "z": 174,
+    "yaw": 3.141592653589793
+  },
+  "harborLife": {
+    "schema": "neon-harbor/daily-life",
+    "version": 1,
+    "seed": 749213,
+    "secondsPerHour": 35,
+    "startHour": 16.5,
+    "ticks": 1500,
+    "accumulator": 0,
+    "externalHour": 16.5,
+    "revision": 42,
+    "serial": 35,
+    "orderSerial": 3,
+    "initialMoney": 2972,
+    "initialGoods": 300,
+    "consumedByProduct": {
+      "produce": 0,
+      "tea": 0,
+      "meal": 0
+    },
+    "player": {
+      "earnedCash": 0,
+      "spentCash": 0,
+      "inventory": {
+        "produce": 0,
+        "tea": 0,
+        "meal": 0
+      },
+      "purchaseRequests": [],
+      "activeJobId": null,
+      "completed": 0
+    },
+    "statistics": {
+      "purchases": 0,
+      "playerPurchases": 0,
+      "missedPurchases": 0,
+      "wages": 30,
+      "deliveries": 2,
+      "consumed": 0,
+      "boarded": 4,
+      "alighted": 0
+    },
+    "supply": {
+      "money": 894,
+      "stock": {
+        "produce": 88,
+        "tea": 88,
+        "meal": 88
+      }
+    },
+    "shops": [
+      {
+        "id": "harbor-produce",
+        "money": 220,
+        "stock": 4,
+        "sold": 0,
+        "received": 0,
+        "paidWages": 12
+      },
+      {
+        "id": "harbor-tea",
+        "money": 228,
+        "stock": 12,
+        "sold": 0,
+        "received": 8,
+        "paidWages": 12
+      },
+      {
+        "id": "harbor-noodles",
+        "money": 212,
+        "stock": 12,
+        "sold": 0,
+        "received": 8,
+        "paidWages": 12
+      }
+    ],
+    "agents": [
+      {
+        "id": "harbor-resident-01",
+        "money": 55,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 184.8,
+        "y": 0.215,
+        "z": 192.68955246312544,
+        "yaw": -1.5707963267948966,
+        "phase": "resting",
+        "activity": "在家休息",
+        "goal": {
+          "kind": "home",
+          "id": "south-093",
+          "anchor": {
+            "x": 187,
+            "z": 198.87910492625087,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": "south-093",
+        "floorId": "lobby",
+        "roomId": "south-093-lobby-1",
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 58.728335511060216,
+        "visits": 1
+      },
+      {
+        "id": "harbor-resident-02",
+        "money": 84,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 225.3058217712678,
+        "y": 0.18,
+        "z": 187.7,
+        "yaw": -2.9815367727847084,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-produce",
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187.7,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 346.3727709324133,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-03",
+        "money": 58,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 184.8,
+        "y": 0.215,
+        "z": 113.23987723700702,
+        "yaw": -1.5707963267948966,
+        "phase": "resting",
+        "activity": "在家休息",
+        "goal": {
+          "kind": "home",
+          "id": "south-089",
+          "anchor": {
+            "x": 187,
+            "z": 119.97975447401404,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": "south-089",
+        "floorId": "lobby",
+        "roomId": "south-089-lobby-1",
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 62.580608928231584,
+        "visits": 1
+      },
+      {
+        "id": "harbor-resident-04",
+        "money": 87,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 225.3373617986217,
+        "y": 0.18,
+        "z": 133.7,
+        "yaw": -0.1772127193775421,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-tea",
+          "anchor": {
+            "x": 225.3373617986217,
+            "z": 133.7,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 369.3123636089724,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-05",
+        "money": 61,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 184.8,
+        "y": 0.215,
+        "z": 113.23987723700702,
+        "yaw": -1.5707963267948966,
+        "phase": "resting",
+        "activity": "在家休息",
+        "goal": {
+          "kind": "home",
+          "id": "south-089",
+          "anchor": {
+            "x": 187,
+            "z": 119.97975447401404,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": "south-089",
+        "floorId": "lobby",
+        "roomId": "south-089-lobby-1",
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 62.580608928231285,
+        "visits": 1
+      },
+      {
+        "id": "harbor-resident-06",
+        "money": 90,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 193.7,
+        "y": 0.18,
+        "z": 146.42007884336635,
+        "yaw": -1.4734125940074339,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-noodles",
+          "anchor": {
+            "x": 193.7,
+            "z": 146.42007884336635,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 289.2435811393801,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-07",
+        "money": 64,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 248,
+        "y": 0.44,
+        "z": 101.384,
+        "yaw": 3.141592653589793,
+        "phase": "riding",
+        "activity": "乘坐港湾电车",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 198.35,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": {
+          "phase": "riding",
+          "originStopId": "harbor-tram-lantern",
+          "destinationStopId": "harbor-tram-workshop",
+          "ticket": {
+            "vehicleId": "harbor-tram-2",
+            "routeId": "harbor-tram",
+            "fromStopId": "harbor-tram-lantern",
+            "toStopId": "harbor-tram-workshop",
+            "slot": 6,
+            "phase": "boarding"
+          }
+        },
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1539.562783312063,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-08",
+        "money": 50,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 248,
+        "y": 0.44,
+        "z": 100.502,
+        "yaw": 3.141592653589793,
+        "phase": "riding",
+        "activity": "乘坐港湾电车",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 199.45,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": {
+          "phase": "riding",
+          "originStopId": "harbor-tram-lantern",
+          "destinationStopId": "harbor-tram-workshop",
+          "ticket": {
+            "vehicleId": "harbor-tram-2",
+            "routeId": "harbor-tram",
+            "fromStopId": "harbor-tram-lantern",
+            "toStopId": "harbor-tram-workshop",
+            "slot": 7,
+            "phase": "boarding"
+          }
+        },
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1730.5692851667973,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-09",
+        "money": 67,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 248,
+        "y": 0.44,
+        "z": 102.266,
+        "yaw": 3.141592653589793,
+        "phase": "riding",
+        "activity": "乘坐港湾电车",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 200.55,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": {
+          "phase": "riding",
+          "originStopId": "harbor-tram-lantern",
+          "destinationStopId": "harbor-tram-workshop",
+          "ticket": {
+            "vehicleId": "harbor-tram-2",
+            "routeId": "harbor-tram",
+            "fromStopId": "harbor-tram-lantern",
+            "toStopId": "harbor-tram-workshop",
+            "slot": 0,
+            "phase": "boarding"
+          }
+        },
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1155.4150114615286,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-10",
+        "money": 53,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 248,
+        "y": 0.44,
+        "z": 101.384,
+        "yaw": 3.141592653589793,
+        "phase": "riding",
+        "activity": "乘坐港湾电车",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 201.65,
+            "z": -94.85,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": {
+          "phase": "riding",
+          "originStopId": "harbor-tram-lantern",
+          "destinationStopId": "harbor-tram-workshop",
+          "ticket": {
+            "vehicleId": "harbor-tram-2",
+            "routeId": "harbor-tram",
+            "fromStopId": "harbor-tram-lantern",
+            "toStopId": "harbor-tram-workshop",
+            "slot": 1,
+            "phase": "boarding"
+          }
+        },
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1539.5627833119904,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-11",
+        "money": 70,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 224,
+        "y": 0.18,
+        "z": 156.7209999999996,
+        "yaw": 0,
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "goal": {
+          "kind": "deliver",
+          "id": "harbor-order-1",
+          "anchor": {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 198,
+            "z": 120,
+            "y": 0.18
+          },
+          {
+            "x": 198,
+            "z": 122,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 198,
+            "z": 148,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": 148,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": 150,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:160:226"
+          },
+          {
+            "x": 224,
+            "z": 172,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:160:226"
+          },
+          {
+            "x": 224,
+            "z": 174,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 224,
+            "z": 176,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": 176,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 226,
+            "z": 184,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 225.3058217712678,
+            "z": 187,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 5,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": "harbor-crossing-z:160:226",
+        "transit": null,
+        "cargoJobId": "harbor-order-1",
+        "blockedFor": 0,
+        "gait": 1617.53605529334,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-12",
+        "money": 83,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 18,
+        "x": 196.56743151599005,
+        "y": 0.18,
+        "z": 146.12035834236113,
+        "yaw": 1.6546152491946604,
+        "phase": "walking",
+        "activity": "走去上班",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 189.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 198,
+            "z": 146,
+            "y": 0.18
+          },
+          {
+            "x": 198,
+            "z": 144,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 198,
+            "z": 120,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 194,
+            "z": 120,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 189.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1504.5701135993663,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-13",
+        "money": 79,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 190.7,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 0.7985772806193714,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 190.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 910.4736567070497,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-14",
+        "money": 68,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 191.5,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.3927713381369797,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 191.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 769.247590122538,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-15",
+        "money": 85,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 192.3,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.0219122922114738,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 192.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 729.3089610242423,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-16",
+        "money": 71,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 193.1,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.3703770246117821,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.1,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 589.5154059970064,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-17",
+        "money": 85,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 193.9,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.410702720639911,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 193.9,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1158.6400767435593,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-18",
+        "money": 65,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": -1,
+        "x": 154.06700000000228,
+        "y": 0.18,
+        "z": 148,
+        "yaw": 1.5707963267948966,
+        "phase": "walking",
+        "activity": "给车辆让行",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [
+          {
+            "x": 110,
+            "z": 224,
+            "y": 0.18
+          },
+          {
+            "x": 112,
+            "z": 224,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 120,
+            "z": 224,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 120,
+            "z": 194,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 122,
+            "z": 194,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 122,
+            "z": 176,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 140,
+            "z": 176,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 140,
+            "z": 174,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 142,
+            "z": 174,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 142,
+            "z": 172,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 144,
+            "z": 172,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 144,
+            "z": 170,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:160:146"
+          },
+          {
+            "x": 146,
+            "z": 170,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 146,
+            "z": 168,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:160:146"
+          },
+          {
+            "x": 148,
+            "z": 168,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 148,
+            "z": 166,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:160:146"
+          },
+          {
+            "x": 148,
+            "z": 148,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-z:160:146"
+          },
+          {
+            "x": 150,
+            "z": 148,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:160:146"
+          },
+          {
+            "x": 168,
+            "z": 148,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:160:146"
+          },
+          {
+            "x": 168,
+            "z": 146,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 170,
+            "z": 146,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:160:146"
+          },
+          {
+            "x": 170,
+            "z": 144,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 172,
+            "z": 144,
+            "y": 0.18,
+            "crossingId": "harbor-crossing-x:160:146"
+          },
+          {
+            "x": 172,
+            "z": 142,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 174,
+            "z": 142,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 174,
+            "z": 140,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 176,
+            "z": 140,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 176,
+            "z": 120,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 190,
+            "z": 120,
+            "y": 0.18,
+            "crossingId": null
+          },
+          {
+            "x": 194.7,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        ],
+        "pathIndex": 18,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": "harbor-crossing-z:160:146",
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 66.10000000000052,
+        "gait": 864.685109074729,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-19",
+        "money": 57,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 195.5,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.3927713381371152,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 195.5,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 984.7502666402336,
+        "visits": 0
+      },
+      {
+        "id": "harbor-resident-20",
+        "money": 74,
+        "purchased": {
+          "produce": -1,
+          "tea": -1,
+          "meal": -1
+        },
+        "lastWageSlot": 20,
+        "x": 196.3,
+        "y": 0.18,
+        "z": 120.62975447401405,
+        "yaw": 1.4253756231474606,
+        "phase": "working",
+        "activity": "在岗位工作",
+        "goal": {
+          "kind": "work",
+          "id": "harbor-supply",
+          "anchor": {
+            "x": 196.3,
+            "z": 120.62975447401405,
+            "y": 0.18
+          }
+        },
+        "path": [],
+        "pathIndex": 0,
+        "insideBuildingId": null,
+        "floorId": null,
+        "roomId": null,
+        "crossingId": null,
+        "transit": null,
+        "cargoJobId": null,
+        "blockedFor": 0,
+        "gait": 1175.110430484631,
+        "visits": 0
+      }
+    ],
+    "jobs": [
+      {
+        "id": "harbor-order-1",
+        "shopId": "harbor-produce",
+        "product": "produce",
+        "quantity": 8,
+        "wholesale": 16,
+        "reward": 12,
+        "escrow": 12,
+        "status": "picked-up",
+        "createdTick": 0,
+        "carrierId": "harbor-resident-11",
+        "pickedTick": 1083,
+        "deliveredTick": null
+      },
+      {
+        "id": "harbor-order-2",
+        "shopId": "harbor-tea",
+        "product": "tea",
+        "quantity": 8,
+        "wholesale": 8,
+        "reward": 12,
+        "escrow": 0,
+        "status": "delivered",
+        "createdTick": 0,
+        "carrierId": "harbor-resident-12",
+        "pickedTick": 771,
+        "deliveredTick": 1026
+      },
+      {
+        "id": "harbor-order-3",
+        "shopId": "harbor-noodles",
+        "product": "meal",
+        "quantity": 8,
+        "wholesale": 24,
+        "reward": 12,
+        "escrow": 0,
+        "status": "delivered",
+        "createdTick": 0,
+        "carrierId": "harbor-resident-12",
+        "pickedTick": 1281,
+        "deliveredTick": 1480
+      }
+    ],
+    "transactions": [
+      {
+        "id": "harbor-tx-1",
+        "tick": 254,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 17
+      },
+      {
+        "id": "harbor-tx-2",
+        "tick": 295,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 17
+      },
+      {
+        "id": "harbor-tx-3",
+        "tick": 304,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 17
+      },
+      {
+        "id": "harbor-tx-4",
+        "tick": 525,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-5",
+        "tick": 525,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-6",
+        "tick": 525,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-7",
+        "tick": 578,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-12",
+        "from": "harbor-supply",
+        "to": "harbor-resident-12",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-8",
+        "tick": 596,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-9",
+        "tick": 610,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-10",
+        "tick": 675,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 18
+      },
+      {
+        "id": "harbor-tx-11",
+        "tick": 771,
+        "day": 0,
+        "hour": 16.5,
+        "type": "pickup",
+        "jobId": "harbor-order-2",
+        "shopId": "harbor-tea",
+        "carrierId": "harbor-resident-12",
+        "from": "harbor-tea",
+        "to": "harbor-supply",
+        "amount": 8,
+        "quantity": 8,
+        "product": "tea",
+        "escrow": 12
+      },
+      {
+        "id": "harbor-tx-12",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-13",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-14",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-15",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-16",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-17",
+        "tick": 875,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-18",
+        "tick": 915,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-19",
+        "tick": 1026,
+        "day": 0,
+        "hour": 16.5,
+        "type": "delivery",
+        "jobId": "harbor-order-2",
+        "shopId": "harbor-tea",
+        "carrierId": "harbor-resident-12",
+        "from": "escrow:harbor-order-2",
+        "to": "harbor-resident-12",
+        "amount": 12,
+        "quantity": 8,
+        "product": "tea"
+      },
+      {
+        "id": "harbor-tx-20",
+        "tick": 1063,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-21",
+        "tick": 1072,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-22",
+        "tick": 1083,
+        "day": 0,
+        "hour": 16.5,
+        "type": "pickup",
+        "jobId": "harbor-order-1",
+        "shopId": "harbor-produce",
+        "carrierId": "harbor-resident-11",
+        "from": "harbor-produce",
+        "to": "harbor-supply",
+        "amount": 16,
+        "quantity": 8,
+        "product": "produce",
+        "escrow": 12
+      },
+      {
+        "id": "harbor-tx-23",
+        "tick": 1106,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 19
+      },
+      {
+        "id": "harbor-tx-24",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-02",
+        "from": "harbor-produce",
+        "to": "harbor-resident-02",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-25",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-04",
+        "from": "harbor-tea",
+        "to": "harbor-resident-04",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-26",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-06",
+        "from": "harbor-noodles",
+        "to": "harbor-resident-06",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-27",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-13",
+        "from": "harbor-supply",
+        "to": "harbor-resident-13",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-28",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-14",
+        "from": "harbor-supply",
+        "to": "harbor-resident-14",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-29",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-15",
+        "from": "harbor-supply",
+        "to": "harbor-resident-15",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-30",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-16",
+        "from": "harbor-supply",
+        "to": "harbor-resident-16",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-31",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-17",
+        "from": "harbor-supply",
+        "to": "harbor-resident-17",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-32",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-19",
+        "from": "harbor-supply",
+        "to": "harbor-resident-19",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-33",
+        "tick": 1225,
+        "day": 0,
+        "hour": 16.5,
+        "type": "wage",
+        "agentId": "harbor-resident-20",
+        "from": "harbor-supply",
+        "to": "harbor-resident-20",
+        "amount": 3,
+        "slot": 20
+      },
+      {
+        "id": "harbor-tx-34",
+        "tick": 1281,
+        "day": 0,
+        "hour": 16.5,
+        "type": "pickup",
+        "jobId": "harbor-order-3",
+        "shopId": "harbor-noodles",
+        "carrierId": "harbor-resident-12",
+        "from": "harbor-noodles",
+        "to": "harbor-supply",
+        "amount": 24,
+        "quantity": 8,
+        "product": "meal",
+        "escrow": 12
+      },
+      {
+        "id": "harbor-tx-35",
+        "tick": 1480,
+        "day": 0,
+        "hour": 16.5,
+        "type": "delivery",
+        "jobId": "harbor-order-3",
+        "shopId": "harbor-noodles",
+        "carrierId": "harbor-resident-12",
+        "from": "escrow:harbor-order-3",
+        "to": "harbor-resident-12",
+        "amount": 12,
+        "quantity": 8,
+        "product": "meal"
+      }
+    ]
+  },
+  "harborTransit": {
+    "version": 1,
+    "time": 150.0000000000115,
+    "vehicles": [
+      {
+        "id": "harbor-bus-1",
+        "serviceTime": 121.28852335611543,
+        "delay": 28.711476643879887,
+        "distanceTravelled": 521.9688765635136,
+        "doorHoldUntil": 0,
+        "motionSpeed": 6.92624609016832,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": {
+          "x": 160,
+          "z": -160,
+          "axis": "x",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      {
+        "id": "harbor-bus-2",
+        "serviceTime": 185.20324789635595,
+        "delay": 45.88494364420474,
+        "distanceTravelled": 482.9465579283024,
+        "doorHoldUntil": 0,
+        "motionSpeed": 0,
+        "held": "pedestrian",
+        "trafficState": "pedestrian",
+        "junction": {
+          "x": 160,
+          "z": 160,
+          "axis": "z",
+          "direction": 1,
+          "committed": true
+        }
+      },
+      {
+        "id": "harbor-tram-1",
+        "serviceTime": 98.38877156575202,
+        "delay": 51.611228434243955,
+        "distanceTravelled": 546.8241554270551,
+        "doorHoldUntil": 0,
+        "motionSpeed": 5.583251953137278,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": {
+          "x": 240,
+          "z": 0,
+          "axis": "z",
+          "direction": 1,
+          "committed": true
+        }
+      },
+      {
+        "id": "harbor-tram-2",
+        "serviceTime": 131.22441914876123,
+        "delay": 49.09224751790298,
+        "distanceTravelled": 621.4636247979221,
+        "doorHoldUntil": 149.80000000000976,
+        "motionSpeed": 0,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": 80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      {
+        "id": "harbor-ferry-1",
+        "serviceTime": 150.0000000000115,
+        "delay": 0,
+        "distanceTravelled": 482.83782338541715,
+        "doorHoldUntil": 0,
+        "motionSpeed": 6.000000000006639,
+        "held": null,
+        "trafficState": "cruise",
+        "junction": null
+      }
+    ],
+    "boardedStopId": null,
+    "citizenPassengers": [
+      {
+        "id": "harbor-resident-09",
+        "vehicleId": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "fromStopId": "harbor-tram-lantern",
+        "toStopId": "harbor-tram-workshop",
+        "slot": 0,
+        "phase": "riding"
+      },
+      {
+        "id": "harbor-resident-07",
+        "vehicleId": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "fromStopId": "harbor-tram-lantern",
+        "toStopId": "harbor-tram-workshop",
+        "slot": 6,
+        "phase": "riding"
+      },
+      {
+        "id": "harbor-resident-10",
+        "vehicleId": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "fromStopId": "harbor-tram-lantern",
+        "toStopId": "harbor-tram-workshop",
+        "slot": 1,
+        "phase": "riding"
+      },
+      {
+        "id": "harbor-resident-08",
+        "vehicleId": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "fromStopId": "harbor-tram-lantern",
+        "toStopId": "harbor-tram-workshop",
+        "slot": 7,
+        "phase": "riding"
+      }
+    ],
+    "citizenBoardings": 4
+  },
+  "provenance": {
+    "kind": "natural pre-crossing-repair capture",
+    "lifeModuleSha256": "6122d6738f36ee281277c80c1c8e7f777a87498295571f568f18be30f10927f8",
+    "rawCaptureSha256": "8ea1f3e9831eb4feace75804cddeb8f9370b373af6fc5584657974b7217ea6a9",
+    "sourceCapture": "harbor-life-deadlocked-save.json",
+    "captureMethod": "Fresh createCityExploration and GameSimulation bound at hour 16.5; world.step(1/60, {cameraYaw:0}) for 9000 steps. Resident and fleet state captured without injection.",
+    "fixedStepSeconds": 0.016666666666666666,
+    "stepCount": 9000,
+    "simulationSeconds": 150,
+    "cityHour": 16.5,
+    "seed": 749213,
+    "publicSaveNote": "Runtime cars and elapsed are intentionally omitted, matching actual public saves. Original harborLife and harborTransit fields are preserved verbatim."
+  }
+}

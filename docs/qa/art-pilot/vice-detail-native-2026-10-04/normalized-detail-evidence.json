@@ -1,0 +1,43 @@
+{
+  "status": "failed",
+  "runnerExitCode": 1,
+  "actualEyeDistanceMetres": null,
+  "captures": [],
+  "actualExitReleaseEvents": null,
+  "errors": [],
+  "errorsAfterFinalization": [],
+  "cleanup": [
+    {
+      "label": "browser-context",
+      "startedAt": "2026-10-04T20:41:35.038Z",
+      "timeoutMs": 10000,
+      "status": "closed",
+      "completedAt": "2026-10-04T20:41:35.065Z"
+    },
+    {
+      "label": "browser",
+      "startedAt": "2026-10-04T20:41:35.065Z",
+      "timeoutMs": 10000,
+      "status": "failed",
+      "error": "Error: browser cleanup exceeded 10000ms\n    at Timeout._onTimeout (file:///workspace/scratch/neon-harbor/tools/capture-workshop-vice-detail.mjs:236:114)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)",
+      "completedAt": "2026-10-04T20:41:45.064Z"
+    },
+    {
+      "label": "server",
+      "startedAt": "2026-10-04T20:41:45.065Z",
+      "timeoutMs": 5000,
+      "status": "closed",
+      "completedAt": "2026-10-04T20:41:45.065Z"
+    }
+  ],
+  "caseBudget": {
+    "deadlineAt": "2026-10-04T20:57:19.563Z",
+    "finishedBeforeDeadline": true,
+    "hardDeadlineReached": false
+  },
+  "finalizationErrors": [
+    "One or more owned cleanup operations failed; raw errors are preserved in cleanup.",
+    "Playable inspection did not complete."
+  ],
+  "scope": "One independent vice material inspection, not a repeated resource suite, whole-room/city art approval or driver allocation measurement."
+}

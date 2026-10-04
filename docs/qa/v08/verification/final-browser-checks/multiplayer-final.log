@@ -1,0 +1,13 @@
+[WebServer] (node:14165) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:14177) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/multiplayer-browser/rooms.spec.js:17:1 › two independent browsers share a room, rendered walking peers, chat and disconnect (2.5m)
+  ✓  2 tests/multiplayer-browser/rooms.spec.js:54:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit (5.2m)
+
+  Slow test file: tests/multiplayer-browser/rooms.spec.js (7.7m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 passed (7.7m)

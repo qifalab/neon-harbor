@@ -1,0 +1,902 @@
+{
+  "kind": "ROOT final single-address CPU geometry proof, not a native repair or executed photograph",
+  "manifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "runtimeAssets": 156,
+  "sourceModules": 53,
+  "sourceHashes": {
+    "src/metropolis-interiors.js": "6eaa1f76be34c795b76bda6f95c7c04cabc78a80867159aa9a8a122dd9b33573",
+    "src/compact-interiors.js": "9df0250b3b5382db775b7d69aca35e07da9ee6d0c8adaff1b7f81ef1c4dce92c",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+    "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+    "src/expansion-programmes.js": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+    "src/metropolis-room-designs.js": "adc33a9c57af6a38a461686d210099346aeebfef41b20cac9f0616cfbf5c32c6",
+    "src/harbor-workshop-pilot.js": "0e46506ba9b84dba07a244c0912e0b463a5d44c3e2ea813a3d1cb6141613d6b7"
+  },
+  "firstFailedMetadataSha256": "2d2128809a4ff15931c908a09e5f661fcd7bd37e95ca6443423b425510bed6c8",
+  "actualPlayerRadius": 0.65,
+  "actualPlayerHeight": 1.8,
+  "colliderCount": 221,
+  "heightRelevantPhysicsColliders": 122,
+  "activeFloors": [
+    "lobby",
+    "observation"
+  ],
+  "pose": {
+    "x": 180.35,
+    "y": 0.215,
+    "z": -113.32
+  },
+  "tolerance": 0.18,
+  "end": {
+    "region": {
+      "minX": 180.17,
+      "maxX": 180.53,
+      "minZ": -113.5,
+      "maxZ": -113.13999999999999
+    },
+    "nearest": [
+      {
+        "id": "south-086:lobby:6",
+        "kind": "interior-wall",
+        "margin": 0.04999999999999316,
+        "bounds": {
+          "minX": 179.23,
+          "maxX": 179.47,
+          "minZ": -127.15,
+          "maxZ": -98.85,
+          "minY": 0.21499999999999997,
+          "maxY": 1.1749999999999998
+        }
+      },
+      {
+        "id": "south-086:lobby:266",
+        "kind": "interior-workbench",
+        "margin": 0.05000000000001248,
+        "bounds": {
+          "minX": 180.025,
+          "maxX": 181.775,
+          "minZ": -114.96000000000001,
+          "maxZ": -114.20000000000002,
+          "minY": 1.075,
+          "maxY": 1.115
+        }
+      },
+      {
+        "id": "south-086:lobby:7",
+        "kind": "interior-window",
+        "margin": 0.11999999999999311,
+        "bounds": {
+          "minX": 179.29999999999998,
+          "maxX": 179.4,
+          "minZ": -127,
+          "maxZ": -99,
+          "minY": 1.175,
+          "maxY": 2.7750000000000004
+        }
+      },
+      {
+        "id": "south-086:lobby:261",
+        "kind": "interior-partition",
+        "margin": 2.659999999999988,
+        "bounds": {
+          "minX": 179.65,
+          "maxX": 198.70000000000002,
+          "minZ": -109.83,
+          "maxZ": -109.67,
+          "minY": 0.21500000000000008,
+          "maxY": 3.1950000000000003
+        }
+      },
+      {
+        "id": "south-086:lobby:290",
+        "kind": "interior-partition",
+        "margin": 2.659999999999988,
+        "bounds": {
+          "minX": 179.65,
+          "maxX": 198.70000000000002,
+          "minZ": -109.83,
+          "maxZ": -109.67,
+          "minY": 0.21500000000000008,
+          "maxY": 3.1950000000000003
+        }
+      }
+    ]
+  },
+  "waypoints": [
+    {
+      "x": 200,
+      "z": -100.1,
+      "yaw": 3.141592653589793,
+      "y": 0.215
+    },
+    {
+      "x": 200,
+      "y": 0.215,
+      "z": -115
+    },
+    {
+      "x": 197.8,
+      "z": -115,
+      "y": 0.215
+    },
+    {
+      "x": 182.8,
+      "y": 0.215,
+      "z": -115
+    },
+    {
+      "x": 182.8,
+      "y": 0.215,
+      "z": -113.32
+    },
+    {
+      "x": 180.35,
+      "y": 0.215,
+      "z": -113.32
+    }
+  ],
+  "forwardAndReverseSafeStrips": [
+    {
+      "from": {
+        "x": 200,
+        "z": -100.1,
+        "yaw": 3.141592653589793,
+        "y": 0.215
+      },
+      "to": {
+        "x": 200,
+        "y": 0.215,
+        "z": -115
+      },
+      "region": {
+        "minX": 199.82,
+        "maxX": 200.18,
+        "minZ": -115.18,
+        "maxZ": -99.91999999999999
+      },
+      "nearest": [
+        {
+          "id": "south-086:lobby:260",
+          "kind": "interior-partition",
+          "margin": 0.39000000000000445,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -114,
+            "maxZ": -109.75,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:289",
+          "kind": "interior-partition",
+          "margin": 0.39000000000000445,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -109.75,
+            "maxZ": -105.5,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:293",
+          "kind": "interior-partition",
+          "margin": 0.39000000000000445,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -103.5,
+            "maxZ": -99.25,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:261",
+          "kind": "interior-partition",
+          "margin": 0.4699999999999832,
+          "bounds": {
+            "minX": 179.65,
+            "maxX": 198.70000000000002,
+            "minZ": -109.83,
+            "maxZ": -109.67,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:290",
+          "kind": "interior-partition",
+          "margin": 0.4699999999999832,
+          "bounds": {
+            "minX": 179.65,
+            "maxX": 198.70000000000002,
+            "minZ": -109.83,
+            "maxZ": -109.67,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        }
+      ]
+    },
+    {
+      "from": {
+        "x": 200,
+        "y": 0.215,
+        "z": -115
+      },
+      "to": {
+        "x": 197.8,
+        "z": -115,
+        "y": 0.215
+      },
+      "region": {
+        "minX": 197.62,
+        "maxX": 200.18,
+        "minZ": -115.18,
+        "maxZ": -114.82
+      },
+      "nearest": [
+        {
+          "id": "south-086:lobby:260",
+          "kind": "interior-partition",
+          "margin": 0.16999999999999316,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -114,
+            "maxZ": -109.75,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:256",
+          "kind": "interior-partition",
+          "margin": 0.17000000000000648,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -120.25000000000001,
+            "maxZ": -116.00000000000001,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:195",
+          "kind": "interior-stair-stringer",
+          "margin": 0.5200000000000159,
+          "bounds": {
+            "minX": 201.35000000000002,
+            "maxX": 201.43,
+            "minZ": -114.98882352941177,
+            "maxZ": -114.42147058823531,
+            "minY": 0.21499999999999986,
+            "maxY": 4.5992793791212465
+          }
+        },
+        {
+          "id": "south-086:lobby:201",
+          "kind": "interior-stair-stringer",
+          "margin": 0.5200000000000159,
+          "bounds": {
+            "minX": 201.35000000000002,
+            "maxX": 201.43,
+            "minZ": -115.54617647058824,
+            "maxZ": -114.97882352941177,
+            "minY": 0.21499999999999986,
+            "maxY": 4.774650554286096
+          }
+        },
+        {
+          "id": "south-086:lobby:207",
+          "kind": "interior-stair-stringer",
+          "margin": 0.5730133597801496,
+          "bounds": {
+            "minX": 201.35000000000002,
+            "maxX": 201.43,
+            "minZ": -116.10352941176471,
+            "maxZ": -115.53617647058825,
+            "minY": 0.21499999999999986,
+            "maxY": 4.950021729450946
+          }
+        }
+      ]
+    },
+    {
+      "from": {
+        "x": 197.8,
+        "z": -115,
+        "y": 0.215
+      },
+      "to": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -115
+      },
+      "region": {
+        "minX": 182.62,
+        "maxX": 197.98000000000002,
+        "minZ": -115.18,
+        "maxZ": -114.82
+      },
+      "nearest": [
+        {
+          "id": "south-086:lobby:266",
+          "kind": "interior-workbench",
+          "margin": 0.19499999999999884,
+          "bounds": {
+            "minX": 180.025,
+            "maxX": 181.775,
+            "minZ": -114.96000000000001,
+            "maxZ": -114.20000000000002,
+            "minY": 1.075,
+            "maxY": 1.115
+          }
+        },
+        {
+          "id": "south-086:lobby:260",
+          "kind": "interior-partition",
+          "margin": 0.39019228991563615,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -114,
+            "maxZ": -109.75,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:256",
+          "kind": "interior-partition",
+          "margin": 0.3901922899156468,
+          "bounds": {
+            "minX": 198.61999999999998,
+            "maxX": 198.78,
+            "minZ": -120.25000000000001,
+            "maxZ": -116.00000000000001,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:6",
+          "kind": "interior-wall",
+          "margin": 2.50000000000001,
+          "bounds": {
+            "minX": 179.23,
+            "maxX": 179.47,
+            "minZ": -127.15,
+            "maxZ": -98.85,
+            "minY": 0.21499999999999997,
+            "maxY": 1.1749999999999998
+          }
+        },
+        {
+          "id": "south-086:lobby:7",
+          "kind": "interior-window",
+          "margin": 2.5700000000000105,
+          "bounds": {
+            "minX": 179.29999999999998,
+            "maxX": 179.4,
+            "minZ": -127,
+            "maxZ": -99,
+            "minY": 1.175,
+            "maxY": 2.7750000000000004
+          }
+        }
+      ]
+    },
+    {
+      "from": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -115
+      },
+      "to": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -113.32
+      },
+      "region": {
+        "minX": 182.62,
+        "maxX": 182.98000000000002,
+        "minZ": -115.18,
+        "maxZ": -113.13999999999999
+      },
+      "nearest": [
+        {
+          "id": "south-086:lobby:266",
+          "kind": "interior-workbench",
+          "margin": 0.19499999999999884,
+          "bounds": {
+            "minX": 180.025,
+            "maxX": 181.775,
+            "minZ": -114.96000000000001,
+            "maxZ": -114.20000000000002,
+            "minY": 1.075,
+            "maxY": 1.115
+          }
+        },
+        {
+          "id": "south-086:lobby:6",
+          "kind": "interior-wall",
+          "margin": 2.50000000000001,
+          "bounds": {
+            "minX": 179.23,
+            "maxX": 179.47,
+            "minZ": -127.15,
+            "maxZ": -98.85,
+            "minY": 0.21499999999999997,
+            "maxY": 1.1749999999999998
+          }
+        },
+        {
+          "id": "south-086:lobby:7",
+          "kind": "interior-window",
+          "margin": 2.5700000000000105,
+          "bounds": {
+            "minX": 179.29999999999998,
+            "maxX": 179.4,
+            "minZ": -127,
+            "maxZ": -99,
+            "minY": 1.175,
+            "maxY": 2.7750000000000004
+          }
+        },
+        {
+          "id": "south-086:lobby:261",
+          "kind": "interior-partition",
+          "margin": 2.659999999999988,
+          "bounds": {
+            "minX": 179.65,
+            "maxX": 198.70000000000002,
+            "minZ": -109.83,
+            "maxZ": -109.67,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:290",
+          "kind": "interior-partition",
+          "margin": 2.659999999999988,
+          "bounds": {
+            "minX": 179.65,
+            "maxX": 198.70000000000002,
+            "minZ": -109.83,
+            "maxZ": -109.67,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        }
+      ]
+    },
+    {
+      "from": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -113.32
+      },
+      "to": {
+        "x": 180.35,
+        "y": 0.215,
+        "z": -113.32
+      },
+      "region": {
+        "minX": 180.17,
+        "maxX": 182.98000000000002,
+        "minZ": -113.5,
+        "maxZ": -113.13999999999999
+      },
+      "nearest": [
+        {
+          "id": "south-086:lobby:6",
+          "kind": "interior-wall",
+          "margin": 0.04999999999999316,
+          "bounds": {
+            "minX": 179.23,
+            "maxX": 179.47,
+            "minZ": -127.15,
+            "maxZ": -98.85,
+            "minY": 0.21499999999999997,
+            "maxY": 1.1749999999999998
+          }
+        },
+        {
+          "id": "south-086:lobby:266",
+          "kind": "interior-workbench",
+          "margin": 0.05000000000001248,
+          "bounds": {
+            "minX": 180.025,
+            "maxX": 181.775,
+            "minZ": -114.96000000000001,
+            "maxZ": -114.20000000000002,
+            "minY": 1.075,
+            "maxY": 1.115
+          }
+        },
+        {
+          "id": "south-086:lobby:7",
+          "kind": "interior-window",
+          "margin": 0.11999999999999311,
+          "bounds": {
+            "minX": 179.29999999999998,
+            "maxX": 179.4,
+            "minZ": -127,
+            "maxZ": -99,
+            "minY": 1.175,
+            "maxY": 2.7750000000000004
+          }
+        },
+        {
+          "id": "south-086:lobby:261",
+          "kind": "interior-partition",
+          "margin": 2.659999999999988,
+          "bounds": {
+            "minX": 179.65,
+            "maxX": 198.70000000000002,
+            "minZ": -109.83,
+            "maxZ": -109.67,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        },
+        {
+          "id": "south-086:lobby:290",
+          "kind": "interior-partition",
+          "margin": 2.659999999999988,
+          "bounds": {
+            "minX": 179.65,
+            "maxX": 198.70000000000002,
+            "minZ": -109.83,
+            "maxZ": -109.67,
+            "minY": 0.21500000000000008,
+            "maxY": 3.1950000000000003
+          }
+        }
+      ]
+    }
+  ],
+  "nominalActualSweepMovements": [
+    {
+      "from": {
+        "x": 200,
+        "z": -100.1,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 200,
+        "y": 0.215,
+        "z": -115
+      },
+      "actual": {
+        "x": 200,
+        "z": -114.99999999999993,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 7.105427357601002e-14
+    },
+    {
+      "from": {
+        "x": 200,
+        "z": -114.99999999999993,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 197.8,
+        "z": -115,
+        "y": 0.215
+      },
+      "actual": {
+        "x": 197.79999999999987,
+        "z": -114.99999999999993,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 1.5888218580782548e-13
+    },
+    {
+      "from": {
+        "x": 197.79999999999987,
+        "z": -114.99999999999993,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -115
+      },
+      "actual": {
+        "x": 182.8000000000009,
+        "z": -114.99999999999993,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 8.839334407232391e-13
+    },
+    {
+      "from": {
+        "x": 182.8000000000009,
+        "z": -114.99999999999993,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -113.32
+      },
+      "actual": {
+        "x": 182.80000000000004,
+        "z": -113.32000000000001,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 3.1776437161565096e-14
+    },
+    {
+      "from": {
+        "x": 182.80000000000004,
+        "z": -113.32000000000001,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 180.35,
+        "y": 0.215,
+        "z": -113.32
+      },
+      "actual": {
+        "x": 180.34999999999988,
+        "z": -113.32000000000001,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 1.1457157353758233e-13
+    },
+    {
+      "from": {
+        "x": 180.34999999999988,
+        "z": -113.32000000000001,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -113.32
+      },
+      "actual": {
+        "x": 182.80000000000004,
+        "z": -113.32000000000001,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 3.1776437161565096e-14
+    },
+    {
+      "from": {
+        "x": 182.80000000000004,
+        "z": -113.32000000000001,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 182.8,
+        "y": 0.215,
+        "z": -115
+      },
+      "actual": {
+        "x": 182.80000000000004,
+        "z": -115.00000000000006,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 6.355287432313019e-14
+    },
+    {
+      "from": {
+        "x": 182.80000000000004,
+        "z": -115.00000000000006,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 197.8,
+        "z": -115,
+        "y": 0.215
+      },
+      "actual": {
+        "x": 197.79999999999902,
+        "z": -115.00000000000006,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 9.96382604112006e-13
+    },
+    {
+      "from": {
+        "x": 197.79999999999902,
+        "z": -115.00000000000006,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 200,
+        "y": 0.215,
+        "z": -115
+      },
+      "actual": {
+        "x": 199.9999999999999,
+        "z": -115.00000000000006,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 1.2710574864626038e-13
+    },
+    {
+      "from": {
+        "x": 199.9999999999999,
+        "z": -115.00000000000006,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "target": {
+        "x": 200,
+        "z": -100.1,
+        "yaw": 3.141592653589793,
+        "y": 0.215
+      },
+      "actual": {
+        "x": 199.9999999999999,
+        "z": -100.10000000000012,
+        "yaw": 3.141592653589793,
+        "y": 0.215,
+        "groundY": 0.215
+      },
+      "contactIds": [],
+      "error": 1.7112135109858138e-13
+    }
+  ],
+  "target": {
+    "x": 180.3666335030891,
+    "y": 1.2319882243904074,
+    "z": -114.57988335371019
+  },
+  "eyeY": 1.8350000000000002,
+  "nominalEyeDistance": 1.396855733390136,
+  "minimumEyeDistanceWithinRegion": 1.236839221218423,
+  "maximumEyeDistanceWithinRegion": 1.5733887022451465,
+  "eyeExtrema": {
+    "nearestPoint": {
+      "x": 180.3666335030891,
+      "z": -113.5
+    },
+    "farthestPoint": {
+      "x": 180.17,
+      "z": -113.13999999999999
+    }
+  },
+  "actualFailedPoint": {
+    "x": 182.640000000003,
+    "y": 0.215,
+    "z": -114.98000000000036,
+    "yaw": -1.5707963267948968
+  },
+  "actualFailedPointContacts": [],
+  "actualFailedPointMargins": {
+    "region": {
+      "minX": 182.640000000003,
+      "maxX": 182.640000000003,
+      "minZ": -114.98000000000036,
+      "maxZ": -114.98000000000036
+    },
+    "nearest": [
+      {
+        "id": "south-086:lobby:266",
+        "kind": "interior-workbench",
+        "margin": 0.21523118298243993,
+        "bounds": {
+          "minX": 180.025,
+          "maxX": 181.775,
+          "minZ": -114.96000000000001,
+          "maxZ": -114.20000000000002,
+          "minY": 1.075,
+          "maxY": 1.115
+        }
+      },
+      {
+        "id": "south-086:lobby:6",
+        "kind": "interior-wall",
+        "margin": 2.5200000000030047,
+        "bounds": {
+          "minX": 179.23,
+          "maxX": 179.47,
+          "minZ": -127.15,
+          "maxZ": -98.85,
+          "minY": 0.21499999999999997,
+          "maxY": 1.1749999999999998
+        }
+      },
+      {
+        "id": "south-086:lobby:7",
+        "kind": "interior-window",
+        "margin": 2.590000000003005,
+        "bounds": {
+          "minX": 179.29999999999998,
+          "maxX": 179.4,
+          "minZ": -127,
+          "maxZ": -99,
+          "minY": 1.175,
+          "maxY": 2.7750000000000004
+        }
+      },
+      {
+        "id": "south-086:lobby:286",
+        "kind": "interior-freight-crate",
+        "margin": 3.672557113561711,
+        "bounds": {
+          "minX": 181.04,
+          "maxX": 181.66,
+          "minZ": -119.85000000000001,
+          "maxZ": -119.19000000000001,
+          "minY": 0.21500000000000002,
+          "maxY": 0.895
+        }
+      },
+      {
+        "id": "south-086:lobby:285",
+        "kind": "interior-freight-crate",
+        "margin": 3.9606940909160717,
+        "bounds": {
+          "minX": 180.14,
+          "maxX": 180.76,
+          "minZ": -119.85000000000001,
+          "maxZ": -119.19000000000001,
+          "minY": 0.21500000000000002,
+          "maxY": 0.895
+        }
+      }
+    ]
+  },
+  "caveat": "Rectangular route tube is a conservative static proof for ordinary cardinal motion whose centres stay in that tube. Native helper/input samples are unavailable; this does not reconstruct the failed path or uniquely attribute its error. Final native pose must independently satisfy both X and Z region bounds.",
+  "elapsedMilliseconds": 57.95711700000001
+}

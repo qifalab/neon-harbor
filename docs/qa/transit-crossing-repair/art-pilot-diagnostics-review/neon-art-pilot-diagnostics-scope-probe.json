@@ -1,0 +1,380 @@
+{
+  "kind": "Read-only actual source geometry/system CPU comparison; no browser, renderer, request or formal test rerun",
+  "capturedAt": "2026-10-04T18:52:56.546Z",
+  "routePlanFile": "/workspace/scratch/neon-harbor/docs/qa/transit-crossing-repair/continuous-tour-budget-review/route-plan.json",
+  "routePlanSha256": "ec1814d4aa8b3c380d86f3fe3e4dc7fe0e1e658a1f5f9ea8a6fff312a1f2dc80",
+  "actualBuildingCatalogIdentical": true,
+  "routeAddresses": {
+    "home": "south-079",
+    "shop": "south-095",
+    "north": "sail-club"
+  },
+  "buildingCount": 220,
+  "floorCount": 4150,
+  "applicable": [
+    {
+      "building": "south-086",
+      "floor": "lobby",
+      "plan": {
+        "roomId": "south-086-lobby-0",
+        "placements": [
+          {
+            "id": "bench_vice_01",
+            "position": {
+              "x": 180.35,
+              "y": 1.175,
+              "z": -114.58000000000001
+            },
+            "scale": 1,
+            "rotationY": 1.5707963267948966,
+            "purpose": "Existing repair bench vise, jaws and handle facing the room",
+            "ownerPartId": "south-086:lobby:267"
+          },
+          {
+            "id": "metal_tool_chest",
+            "position": {
+              "x": 180.47406801301986,
+              "y": 0.8942718607187271,
+              "z": -119.52553873311729
+            },
+            "scale": 0.9,
+            "rotationY": 0,
+            "purpose": "Portable shared tool chest staged on the existing cargo crate for workshop repairs",
+            "ownerPartId": "south-086:lobby:285"
+          }
+        ],
+        "colliders": [
+          {
+            "id": "south-086:lobby:cc0-tool-chest",
+            "kind": "interior-workshop-asset",
+            "x": 180.45,
+            "z": -119.52000000000001,
+            "hx": 0.3084247872233391,
+            "hz": 0.18321896698325874,
+            "minY": 0.895,
+            "maxY": 1.4816520047187804,
+            "physics": true,
+            "camera": true
+          }
+        ],
+        "fallbackParts": [
+          {
+            "id": "south-086:lobby:275",
+            "material": "metal",
+            "x": 180.35,
+            "y": 1.2750000000000001,
+            "z": -114.58000000000001,
+            "sx": 0.28,
+            "sy": 0.2,
+            "sz": 0.24,
+            "kind": "bench-vice",
+            "geometry": "box",
+            "roomId": "south-086-lobby-0"
+          },
+          {
+            "id": "south-086:lobby:cc0-tool-chest:fallback",
+            "kind": "tool-chest-fallback",
+            "geometry": "box",
+            "material": "metal",
+            "roomId": "south-086-lobby-0",
+            "x": 180.45,
+            "y": 1.1883260023593902,
+            "z": -119.52000000000001,
+            "sx": 0.6168495744466782,
+            "sy": 0.5866520047187805,
+            "sz": 0.36643793396651747
+          }
+        ],
+        "replacePartIds": [
+          "south-086:lobby:275"
+        ],
+        "centre": {
+          "x": 180.39999999999998,
+          "y": 0.215,
+          "z": -117.05000000000001
+        }
+      }
+    }
+  ],
+  "records": [
+    {
+      "address": "south-079",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 231,
+          "colliders": 132,
+          "sha256": "53fa0079bf4c40bcbf0e877b9ed31ccb6305a7416b6ffa6d629d726c98b7dfab",
+          "stairsSha256": "05924b38eae9644386d11bc0dcdb1f045d00144ad06886c511767d575667c3a3"
+        },
+        {
+          "floor": "gallery",
+          "identical": true,
+          "parts": 233,
+          "colliders": 128,
+          "sha256": "3548d8c28c5a1d3f256c4ee2f6a8fd9ae0495628e85f3a7bb49334b6abd7000b",
+          "stairsSha256": "05924b38eae9644386d11bc0dcdb1f045d00144ad06886c511767d575667c3a3"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 91,
+          "colliders": 37,
+          "sha256": "b7411566a86f879ed20b12086e96a4042fa6bff302e659a86636e876c658e950",
+          "stairsSha256": "05924b38eae9644386d11bc0dcdb1f045d00144ad06886c511767d575667c3a3"
+        }
+      ],
+      "oldSystemColliders": 400,
+      "newSystemColliders": 400,
+      "collidersIdentical": true,
+      "changedExistingColliders": [],
+      "addedColliders": [],
+      "snapshotIdenticalExceptNewDiagnostic": true,
+      "requestsWhenPositionedAtWorkshopCoordinates": []
+    },
+    {
+      "address": "south-095",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 262,
+          "colliders": 143,
+          "sha256": "37e2a82452415cb622be54b1870a680aa167f4302142d2432e51444ec1865d71",
+          "stairsSha256": "635ea76ed1f034325cca1548a54d53bea089d89e845a658e2bd20f2c4e89e108"
+        },
+        {
+          "floor": "gallery",
+          "identical": true,
+          "parts": 261,
+          "colliders": 149,
+          "sha256": "9875119c48a72ca11d6945335fd55de32f59cf37067f2cbf1cb75ad91bff24ad",
+          "stairsSha256": "635ea76ed1f034325cca1548a54d53bea089d89e845a658e2bd20f2c4e89e108"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 93,
+          "colliders": 37,
+          "sha256": "fd8b7033ccad2431d19507d755f3d67888641b100d17550a01fd204289641831",
+          "stairsSha256": "635ea76ed1f034325cca1548a54d53bea089d89e845a658e2bd20f2c4e89e108"
+        }
+      ],
+      "oldSystemColliders": 336,
+      "newSystemColliders": 336,
+      "collidersIdentical": true,
+      "changedExistingColliders": [],
+      "addedColliders": [],
+      "snapshotIdenticalExceptNewDiagnostic": true,
+      "requestsWhenPositionedAtWorkshopCoordinates": []
+    },
+    {
+      "address": "sail-club",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 846,
+          "colliders": 224,
+          "sha256": "9f04dc426efa5a0cd6facac045e3d27cabf465c293b9ddac943c72ab441166cc",
+          "stairsSha256": "b2307121fb019488014e6a33811e5a1cbe113b13d578435561b73966768ab0f8"
+        },
+        {
+          "floor": "gallery",
+          "identical": true,
+          "parts": 801,
+          "colliders": 224,
+          "sha256": "623908c4bfdcfb6b370e61899f3dcc99e1802f61380c7698f453f3b4268d1309",
+          "stairsSha256": "b2307121fb019488014e6a33811e5a1cbe113b13d578435561b73966768ab0f8"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 481,
+          "colliders": 82,
+          "sha256": "ddda29a4a8b6cddfe3eae2833c61bbf1a8f9e27619aa1c96bed99d25ec201da9",
+          "stairsSha256": "b2307121fb019488014e6a33811e5a1cbe113b13d578435561b73966768ab0f8"
+        }
+      ],
+      "oldSystemColliders": 692,
+      "newSystemColliders": 692,
+      "collidersIdentical": true,
+      "changedExistingColliders": [],
+      "addedColliders": [],
+      "snapshotIdenticalExceptNewDiagnostic": true,
+      "requestsWhenPositionedAtWorkshopCoordinates": []
+    },
+    {
+      "address": "south-085",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 339,
+          "colliders": 180,
+          "sha256": "2f3d13d7a1357e7a268f72b7709d85659b54cc4c31897ffcbfe0887a47cc683c",
+          "stairsSha256": "4a310e019f4d9db3812ddcda87143d2563ac95fa22305502396078c295ed1399"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 101,
+          "colliders": 37,
+          "sha256": "07ca475048eff612490080c40f0d5df23248606d21c43aeb451f4bbb8339c175",
+          "stairsSha256": "4a310e019f4d9db3812ddcda87143d2563ac95fa22305502396078c295ed1399"
+        }
+      ],
+      "oldSystemColliders": 224,
+      "newSystemColliders": 224,
+      "collidersIdentical": true,
+      "changedExistingColliders": [],
+      "addedColliders": [],
+      "snapshotIdenticalExceptNewDiagnostic": true,
+      "requestsWhenPositionedAtWorkshopCoordinates": []
+    },
+    {
+      "address": "south-086",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 333,
+          "colliders": 176,
+          "sha256": "0c87a3795648b945f946e0a853aaea0b856c130814af86594dfad0928277029b",
+          "stairsSha256": "f1d19c9668091d1fcd263d419987cdf31fb53451a51a7ab3c48a9e383d244ab4"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 101,
+          "colliders": 37,
+          "sha256": "be0b2eec8671dc17debd40a3a0e1db22aa8cde6050f77c2e1ea45871115bfb9e",
+          "stairsSha256": "f1d19c9668091d1fcd263d419987cdf31fb53451a51a7ab3c48a9e383d244ab4"
+        }
+      ],
+      "oldSystemColliders": 220,
+      "newSystemColliders": 221,
+      "collidersIdentical": false,
+      "changedExistingColliders": [],
+      "addedColliders": [
+        {
+          "id": "south-086:lobby:cc0-tool-chest",
+          "kind": "interior-workshop-asset",
+          "x": 180.45,
+          "z": -119.52000000000001,
+          "hx": 0.3084247872233391,
+          "hz": 0.18321896698325874,
+          "minY": 0.895,
+          "maxY": 1.4816520047187804,
+          "physics": true,
+          "camera": true
+        }
+      ],
+      "snapshotIdenticalExceptNewDiagnostic": false,
+      "requestsWhenPositionedAtWorkshopCoordinates": [
+        "bench_vice_01",
+        "metal_tool_chest"
+      ]
+    },
+    {
+      "address": "south-087",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 339,
+          "colliders": 180,
+          "sha256": "4e3c95024af85329fd38f60cfa464822bfe411f5a4b8d9fd97c2d2cd5721cfa1",
+          "stairsSha256": "d72f56772ef063c609a013808753cce06e6f25343e2985b54dd81910a3cc74a1"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 101,
+          "colliders": 37,
+          "sha256": "0804dd63ddf95b381ee6e1ad7f1e91385982211c74dda349a7daab565492e365",
+          "stairsSha256": "d72f56772ef063c609a013808753cce06e6f25343e2985b54dd81910a3cc74a1"
+        }
+      ],
+      "oldSystemColliders": 224,
+      "newSystemColliders": 224,
+      "collidersIdentical": true,
+      "changedExistingColliders": [],
+      "addedColliders": [],
+      "snapshotIdenticalExceptNewDiagnostic": true,
+      "requestsWhenPositionedAtWorkshopCoordinates": []
+    },
+    {
+      "address": "east-001",
+      "pureLayouts": [
+        {
+          "floor": "lobby",
+          "identical": true,
+          "parts": 667,
+          "colliders": 199,
+          "sha256": "ab7f496b8725369668b27bb34d3944d8d04a158b58c22938d6d24c9770e70ed7",
+          "stairsSha256": "dc0b17196d09b8e7568a26e435cf5d5803a1f79efa02cfb2f78d24ee45eaaaa6"
+        },
+        {
+          "floor": "gallery",
+          "identical": true,
+          "parts": 667,
+          "colliders": 200,
+          "sha256": "57b6f89b69f40ad0794f7b7f2a5a0156e3e3100f81ace2b2a39ada506483f671",
+          "stairsSha256": "dc0b17196d09b8e7568a26e435cf5d5803a1f79efa02cfb2f78d24ee45eaaaa6"
+        },
+        {
+          "floor": "observation",
+          "identical": true,
+          "parts": 301,
+          "colliders": 51,
+          "sha256": "8850679fd4314f3fc1e336ed692eeb326b1f4b8461e9b0356cf306b326fc9f0f",
+          "stairsSha256": "dc0b17196d09b8e7568a26e435cf5d5803a1f79efa02cfb2f78d24ee45eaaaa6"
+        }
+      ],
+      "oldSystemColliders": 606,
+      "newSystemColliders": 606,
+      "collidersIdentical": true,
+      "changedExistingColliders": [],
+      "addedColliders": [],
+      "snapshotIdenticalExceptNewDiagnostic": true,
+      "requestsWhenPositionedAtWorkshopCoordinates": []
+    }
+  ],
+  "paths": {
+    "homeToBus": {
+      "metres": 18.91575228121131,
+      "minDistanceToNewChestXZ": 241.29863412341885
+    },
+    "busToProduce": {
+      "metres": 36.29082177126779,
+      "minDistanceToNewChestXZ": 292.72298530351185
+    },
+    "produceCounterToDoor": {
+      "metres": 25.261777254287153,
+      "minDistanceToNewChestXZ": 309.7846915952687
+    },
+    "produceToPier": {
+      "metres": 501.5559554830194,
+      "minDistanceToNewChestXZ": 46.55000000000001
+    },
+    "northPierToAddress": {
+      "metres": 77,
+      "minDistanceToNewChestXZ": 283.25471381779334
+    },
+    "northAddressToPier": {
+      "metres": 73.80000000000001,
+      "minDistanceToNewChestXZ": 283.25471381779334
+    },
+    "southPierToTram": {
+      "metres": 135.6,
+      "minDistanceToNewChestXZ": 91.61501459913654
+    },
+    "tramToHome": {
+      "metres": 134.64924771878867,
+      "minDistanceToNewChestXZ": 234.21466841340236
+    }
+  },
+  "requestProbeNotes": "A rejecting CPU-only callback counts load triggers; it never fetches files or decodes JPEG. The workshop coordinate is supplied to each actual currently entered address to prove address gating."
+}

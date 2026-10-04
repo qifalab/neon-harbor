@@ -1,0 +1,11 @@
+--- a/tools/capture-workshop-vice-detail.mjs
++++ b/tools/capture-workshop-vice-detail.mjs
+@@ -310,7 +310,7 @@
+   finally{clearTimeout(timer);item.completedAt=new Date().toISOString();record.cleanup.push(item);}
+  };
+  if(context)await boundedClose('browser-context',()=>context.close(),10000);
+- if(browser)await boundedClose('browser',()=>browser.close(),10000);
++ if(browser)await boundedClose('browser',()=>browser.close(),30000);
+  if(server)await boundedClose('server',()=>new Promise((done,reject)=>server.close(error=>error?reject(error):done())),5000);
+  record.errorsAfterFinalization=currentScenario.errors.map(error=>({...error}));
+  record.finalizationCompletedAt=new Date().toISOString();
