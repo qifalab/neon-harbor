@@ -1,0 +1,340 @@
+{
+  "status": "ORIGINAL_NATIVE_FAILURES_PRESERVED_READONLY_PROTOCOL_CANDIDATE_CPU_VERIFIED_NATIVE_RECAPTURE_REQUIRED",
+  "createdAtUTC": "2026-10-05T05:50:33.713223+00:00",
+  "archiveArtifactId": 11326904370,
+  "archiveSha256": "f450167d73e3dc4f77de8b8211f080d0385fe8ee0e74abbfef4a8368ffb150c2",
+  "originalMethodSha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
+  "originalRoles": {
+    "baseline": {
+      "status": "FAILED",
+      "sourceHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "buildInfoSha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+      "assetCount": 156,
+      "beforeAfterSourceHashesIdentical": true,
+      "beforeAfterRawBuildInfoHashesIdentical": true,
+      "wholeBudgetMs": 2400000,
+      "elapsedMs": 1512418,
+      "startedAt": "2026-10-05T04:56:30.885Z",
+      "firstFailureAt": "2026-10-05T05:21:40.739Z",
+      "firstError": {
+        "stage": "case",
+        "name": "Error",
+        "message": "finite aim phase exceeded 60000 ms",
+        "stack": "Error: finite aim phase exceeded 60000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+      },
+      "lastMotionStage": "lower-0",
+      "localBudgetMs": 150000,
+      "photos": [
+        {
+          "stage": "exterior",
+          "file": "exterior.png",
+          "imageSha256": "8699c607813c29f6876c2fb6273cd624fa854c7a0b902f4f03e0dbfcecbbd978",
+          "poseFile": "exterior-pose.json",
+          "bytes": 572930,
+          "actualSettings": {
+            "quality": "high",
+            "volume": 0.3,
+            "dayCycle": false,
+            "hour": 16.5,
+            "sensitivity": 1,
+            "firstPerson": true,
+            "touch": false
+          }
+        },
+        {
+          "stage": "lower",
+          "file": "lower.png",
+          "imageSha256": "1f394734f20243d9e587f864263bc6c123909e611b7121a2827434e62f7e4d21",
+          "poseFile": "lower-pose.json",
+          "bytes": 641623,
+          "actualSettings": {
+            "quality": "high",
+            "volume": 0.3,
+            "dayCycle": false,
+            "hour": 16.5,
+            "sensitivity": 1,
+            "firstPerson": true,
+            "touch": false
+          }
+        },
+        {
+          "stage": "upper",
+          "file": "upper.png",
+          "imageSha256": "e2b2409f48bbed76a0b4b2161c620a8fd89bb15b3a7e1580eec68c140defa3c8",
+          "poseFile": "upper-pose.json",
+          "bytes": 642268,
+          "actualSettings": {
+            "quality": "high",
+            "volume": 0.3,
+            "dayCycle": false,
+            "hour": 16.5,
+            "sensitivity": 1,
+            "firstPerson": true,
+            "touch": false
+          }
+        }
+      ],
+      "runtimeErrors": [],
+      "secondaryErrors": [],
+      "caseCleanup": [
+        {
+          "operation": "context.close",
+          "budget": 30000,
+          "elapsedMs": 2563,
+          "confirmed": true,
+          "error": null,
+          "originalFirstError": {
+            "stage": "case",
+            "name": "Error",
+            "message": "finite aim phase exceeded 60000 ms",
+            "stack": "Error: finite aim phase exceeded 60000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        }
+      ],
+      "runCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T05:21:44.287Z",
+          "elapsedMs": 26190,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T05:22:10.477Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "actualGraphics": {
+        "width": 1280,
+        "height": 800,
+        "renderer": "WebKit WebGL",
+        "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "lost": false
+      },
+      "originalDirectWritesAndRetry": {
+        "directGameStateWrites": false,
+        "directClockWrites": false,
+        "directStorageWrites": false,
+        "retry": false
+      }
+    },
+    "authored": {
+      "status": "FAILED",
+      "sourceHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+      "buildRevision": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+      "buildInfoSha256": "333332feb9191772e2a1d653c22c1c2827fd8198258fe7bb46cc3d1ee2e1de3d",
+      "assetCount": 199,
+      "beforeAfterSourceHashesIdentical": true,
+      "beforeAfterRawBuildInfoHashesIdentical": true,
+      "wholeBudgetMs": 2400000,
+      "elapsedMs": 901323,
+      "startedAt": "2026-10-05T05:22:12.213Z",
+      "firstFailureAt": "2026-10-05T05:37:10.803Z",
+      "firstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 563ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 563ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:269:380)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "lastMotionStage": "upper-3",
+      "localBudgetMs": 150000,
+      "photos": [
+        {
+          "stage": "exterior",
+          "file": "exterior.png",
+          "imageSha256": "6edd5623c921721dd58cf370ad735674c3221035580cd666a30110e325ad79d5",
+          "poseFile": "exterior-pose.json",
+          "bytes": 658804,
+          "actualSettings": {
+            "quality": "high",
+            "volume": 0.3,
+            "dayCycle": false,
+            "hour": 16.5,
+            "sensitivity": 1,
+            "firstPerson": true,
+            "touch": false
+          }
+        },
+        {
+          "stage": "lower",
+          "file": "lower.png",
+          "imageSha256": "0f202008d46cc527637ff912387244aa5f11448cf327266559e8585c95192ea1",
+          "poseFile": "lower-pose.json",
+          "bytes": 816972,
+          "actualSettings": {
+            "quality": "high",
+            "volume": 0.3,
+            "dayCycle": false,
+            "hour": 16.5,
+            "sensitivity": 1,
+            "firstPerson": true,
+            "touch": false
+          }
+        }
+      ],
+      "runtimeErrors": [],
+      "secondaryErrors": [],
+      "caseCleanup": [
+        {
+          "operation": "context.close",
+          "budget": 30000,
+          "elapsedMs": 2732,
+          "confirmed": true,
+          "error": null,
+          "originalFirstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 563ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 563ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:269:380)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          }
+        }
+      ],
+      "runCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T05:37:14.016Z",
+          "elapsedMs": 30000,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3798,
+          "limit": 5000,
+          "elapsedMs": 52,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T05:37:44.069Z",
+          "elapsedMs": 1,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "actualGraphics": {
+        "width": 1280,
+        "height": 800,
+        "renderer": "WebKit WebGL",
+        "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "lost": false
+      },
+      "originalDirectWritesAndRetry": {
+        "directGameStateWrites": false,
+        "directClockWrites": false,
+        "directStorageWrites": false,
+        "retry": false
+      }
+    }
+  },
+  "baselineFirstFailureCause": {
+    "stage": "return lower-0 after baseline upper photo and actual public upper-E refusal",
+    "stalePrePointerdownOriginYaw": 3.141592864995516,
+    "actualBeforeInputYaw": 4.843772752873229,
+    "requestedYaw": 3.0956418557369787,
+    "actualTimeoutYaw": 4.797821825138854,
+    "staleOriginPredictedFinalYaw": 4.797821743614692,
+    "predictionAbsoluteErrorRadians": 8.15241616436424e-08,
+    "actualRemainingYawErrorRadians": 1.7021799694018753,
+    "explanation": "Original method caches yaw before mouse.move and pointerdown. Byte-pinned public pointerdown instead resets orbit to actual cameraYaw at event time. The recorded angle offset and executed-handler CPU replay reproduce the native failure. Candidate reads actual origin after public pointerdown.",
+    "notClaimed": "No bus runtime stair/physics defect is established by this baseline aim failure."
+  },
+  "authoredFirstFailureDetail": {
+    "stage": "upper-3",
+    "target": {
+      "x": -0.77,
+      "z": 1.06,
+      "y": 1.42
+    },
+    "initialLocal": {
+      "x": -0.7499781485613278,
+      "y": 0.44,
+      "z": 3.069722015681849,
+      "yaw": -1.5652953513436996
+    },
+    "lastObservedLocal": {
+      "x": -0.765843890625313,
+      "y": 1.3368755278908013,
+      "z": 1.1948652149526793,
+      "yaw": -3.117518469518292
+    },
+    "horizontalGapMetres": 0.1349292386748207,
+    "completedPhysicalCycles": 25,
+    "attemptedPhysicalCycles": 26,
+    "geometricMetresLastCompleted": 1.8749999786733589,
+    "conservativeHeldSimulationSecondsLastCompleted": 6.4999999999996305,
+    "originalHeldGuardUpperBoundSeconds": 9.249999928911198,
+    "allAttemptedKeyReleasesConfirmed": true,
+    "firstError": {
+      "stage": "local movement",
+      "name": "TimeoutError",
+      "message": "page.waitForFunction: Timeout 563ms exceeded.",
+      "stack": "page.waitForFunction: Timeout 563ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:269:380)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+    },
+    "interpretation": "The original 150000ms local movement phase runs out before upper-3 reaches its unchanged .06m endpoint. Real movement advances up the continuous stair, but upper-3, subsequent upper legs, authored upper photo, descending, return-to-stop and exit are unverified. Whole budget is not exhausted."
+  },
+  "redundantRPCFinding": {
+    "failedLegPhysicalAimPhases": 26,
+    "freshCurrentCameraSatisfiedPhases": 25,
+    "lawfulPointerFallbackPhases": 1,
+    "guardPairsCompared": 25,
+    "identicalSimulationTimePairs": 24,
+    "freshCurrentCameraReadAndImmediateSecondRead": "The existing acceptCurrent predicate already reads an actual full snapshot. The candidate returns only that already-satisfying snapshot and uses it as the conservative before-action guard; fallback still does its original later read.",
+    "limits": "The original metadata does not isolate all RPC elapsed durations. No measured wall-time saving or guarantee of completion within 150000ms is asserted."
+  },
+  "candidatePayload": {
+    "status": "SEALED_THREE_FILE_NATIVE_PROTOCOL_CANDIDATE_NOT_NATIVE_RUN",
+    "metadataParentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
+    "baseMethodSha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
+    "files": [
+      {
+        "target": "tools/native-review/methods/transport/POINTER_ORIGIN_AND_GUARD_FRAME_AMENDMENT-20261005.json",
+        "bytes": 4501,
+        "sha256": "9733ad7f2320736867507d744a727ab9bcefb4a931c34afdf605f5d507bb2015"
+      },
+      {
+        "target": "tools/native-review/methods/transport/method-manifest.json",
+        "bytes": 18812,
+        "sha256": "860d5590fe60d58415224c65c81ba0903744d8b0acf2434cca4622d9003e8e07"
+      },
+      {
+        "target": "tools/native-review/methods/transport/native-transport-high.mjs",
+        "bytes": 48770,
+        "sha256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee"
+      }
+    ]
+  },
+  "cpuVerification": {
+    "actualExtractedProtocolFunctionAndBytePinnedPublicHandlers": true,
+    "cases": 12,
+    "originalCycleGuardComparisons": 25,
+    "cpuReceiptSha256": "d95a47c94ba02e57f3593d2542fc6c74f464addf3aebb2ede0564dcb1d2ba299",
+    "negativeCases": "Stale origin, wrong camera outside .025rad, wrong pitch, explicit no-reuse photo aim, paused snapshot and expired finite deadline.",
+    "physicalContinuationReceiptSha256": "2760de56dc3c2841e48e57d23d68fc172434ce4906c1c18536a249508f83b7ae",
+    "physicalContinuationGapMetres": 0.05993306584936796,
+    "limits": "Synthetic CPU continuations of actual functions, not a real browser or new native acceptance. Derived vehicle yaw is explicit; no live world was mutated."
+  },
+  "adoptionBoundary": {
+    "metadataParentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
+    "productionOrFrozenNextWrites": false,
+    "browserOrGPUInvoked": false,
+    "originalEvidenceWrites": false,
+    "retryOrToleranceOrPhysicsOrBudgetRelaxation": false,
+    "nextAction": "Parent may adopt protocol in a separate AEC-derived worktree, update active bundle seals, then run new explicitly High native bus/tram cases on the new head. Its runtime206 dictionary must be independently pinned; the original 5cd authored199 run cannot supply runtime206 acceptance."
+  }
+}

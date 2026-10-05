@@ -266,17 +266,9 @@
       "bytes": 559,
       "sha256": "3facb79d9937c8c250474b57028eca6c0eb4ee7125bcfd8db650da7f33d80f01"
     },
-    "methods/transport/POINTER_ORIGIN_AND_GUARD_FRAME_AMENDMENT-20261005.json": {
-      "bytes": 4501,
-      "sha256": "9733ad7f2320736867507d744a727ab9bcefb4a931c34afdf605f5d507bb2015"
-    },
     "methods/transport/POSTSEAL-PROVENANCE.json": {
       "bytes": 3132,
       "sha256": "f73a7ef657fb5e5b7cdf93ff250f1ed083d957642c18694ff6948f3401bfdcf4"
-    },
-    "methods/transport/PRECISION_SLOW_MODIFIER_LEG_AMENDMENT-20261005.json": {
-      "bytes": 4906,
-      "sha256": "ddc5406a32008c25496e0b4f656dcb72cc6f92ee5503a20012c637e7f8282f92"
     },
     "methods/transport/README.md": {
       "bytes": 8180,
@@ -295,12 +287,12 @@
       "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
     },
     "methods/transport/method-manifest.json": {
-      "bytes": 19310,
-      "sha256": "79900cd1332a9ab5c458f70d577c7d1ca34734e35b3c7db4f6369c63aba768f0"
+      "bytes": 18263,
+      "sha256": "79b7b998bc7603b50cd32b714dc3bea674440fc12ca0221929075436ec788159"
     },
     "methods/transport/native-transport-high.mjs": {
-      "bytes": 49904,
-      "sha256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+      "bytes": 48131,
+      "sha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a"
     },
     "methods/transport/runtime-resources.json": {
       "bytes": 3799,
@@ -713,30 +705,5 @@
     "nativeOnlyNoInputDefault": "false",
     "dispatchActivationActuallyExecutedBySealer": false,
     "productTestsBuildBrowserGpuExecutedBySealer": false
-  },
-  "transportPublicInputAndPrecisionModifierAmendment": {
-    "status": "EXACT_INHERITED_POINTER_AND_LEG_SCOPED_Z_PROTOCOL_ADOPTED_NATIVE_RECAPTURE_ART_PENDING",
-    "parentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
-    "original128ManifestSHA256": "de0cf09ceac31cf985bb27285143cb6d048446793bac7b3885c55a412c97c7dd",
-    "historical129ManifestSHA256": "a3a68214a92392c723a112de0d2ceedbd4184f5fa2d61d23f78a3a63680cc27d",
-    "historical129ProofIsCurrent130Proof": false,
-    "oldPayloadLedgerSHA256": "515c2ea11179b097ef0ec23ad55cee8ec6dacb2097a0c609a75ef7b93c14d59a",
-    "precisionPayloadLedgerSHA256": "c0f2aec03a30e30a1da46d67157720273d698604395de60d566de822b442fd4f",
-    "originalMethodSHA256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
-    "priorPointerMethodSHA256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
-    "activeMethodSHA256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b",
-    "originalBundleFiles": 128,
-    "historicalPointerBundleFiles": 129,
-    "currentBundleFiles": 130,
-    "unchangedOriginalBundleFiles": 126,
-    "actualRuntimeAssetCount": 206,
-    "actualAECBuildInfoSHA256": "0700334224a69f044f50814a0dee64aae07cad6fdf373905e5eb4681201f8a62",
-    "originalNullRevisionBuildInfoSHA256": "9519740965c34cb55fa95a8b601187eaac32cf231a75af8adb2058f07ccfd943",
-    "productionSourceChanged": false,
-    "originalNativeFailuresPreserved": true,
-    "nativeExecutedByAdoption": false,
-    "humanArtAcceptance": false,
-    "futureTreeCandidateAssetsCovered": false,
-    "scope": "AEC206 runtime only. Public pointer-origin/current-camera qualifying-frame amendment retained; precision Z is held only across a forced-precision local leg with original directional per-cycle release, unchanged slow gait/budgets/guards and confirmed final Z release on normal and error paths. Does not accept later QUAY startup or current tree art failures."
   }
 }

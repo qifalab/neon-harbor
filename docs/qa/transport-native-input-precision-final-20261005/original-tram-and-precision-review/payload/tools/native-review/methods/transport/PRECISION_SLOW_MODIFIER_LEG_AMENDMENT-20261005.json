@@ -1,0 +1,92 @@
+{
+  "status": "SOURCE_SYNTAX_AND_ACTUAL_FUNCTION_CPU_REPLAY_PASSED_NEW_HIGH_NATIVE_REQUIRED",
+  "createdAtUTC": "2026-10-05T06:02:45.518785+00:00",
+  "metadataParentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
+  "candidateMethodParentSHA256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
+  "candidateMethodSHA256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b",
+  "candidateMethodBytes": 49904,
+  "baseManifestSHA256": "860d5590fe60d58415224c65c81ba0903744d8b0acf2434cca4622d9003e8e07",
+  "originalTramFailureArtifact": {
+    "id": 11328275235,
+    "zipBytes": 314302916,
+    "zipSHA256": "bb91e7da1f48930db02011b2cc03bec80ad60d16d8ede4b0dd47dabd4c599fa9",
+    "reportSHA256": "290394a8ba8a0443cebbb3a15d58055a2eb6555ceb6fcda80709847c7e01a2d9",
+    "statuses": [
+      "FAILED",
+      "FAILED"
+    ],
+    "photosPerRole": [
+      2,
+      2
+    ],
+    "upperPNGPerRole": [
+      false,
+      false
+    ]
+  },
+  "minimalDeltaFrom2fdc": "Only precision=true walkLocal owns one public Zdown attempt and one real Zup in its outer finally; all per-cycle ordinary WASD down/up remain independently confirmed. First Zdown ownership is set before await, so rejected RPCs still trigger a real release attempt. Release rejection propagates as primary or preserves existing primary plus secondary. Nonprecision legacy per-cycle modifier handling remains unchanged. Already-complete or deadline-expired legs issue no Z input.",
+  "actualPublicInputSemantics": {
+    "mainSHA256": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+    "mainKeyZ": "Keydown adds KeyZ; keyup deletes KeyZ; inputState reads it only as slow modifier. Z alone has forward=0/strafe=0, no interact/view/warp action.",
+    "harborTransitSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+    "actualGaitStatement": "input.slow ? .3 : input.sprint ? 3.4 : 2.25; original .25 maximum dt remains."
+  },
+  "preserved": "All runtime source/assets/High16.5/1280x800/60s aim/150s local/40min whole/ferry900000/.025/.003 camera/.06/.15 endpoint/1800/radius/blocker/revision/held<metres/.3+3/resource/photo/pointer/cleanup guards. No Shift, private setter, clock change, endpoint relaxation, time increase, retry or hidden relaunch.",
+  "cpu": {
+    "inheritedPointerCases": 12,
+    "inheritedOriginalBusGuardCycles": 25,
+    "inheritedReceiptSHA256": "e257495e370959fb9aeb8a6e152bbf4b3242990dd1e64dc20df6346b4d234d4f",
+    "newActualWalkLocalAndPublicInputModifierCases": 15,
+    "newReceiptSHA256": "bcf32ddfa305565fbd948a603db3cb2887287429f163cc680462f058233ca9a3",
+    "faultAndBoundaryCases": [
+      "normal precision",
+      "nonprecision unchanged",
+      "keydown rejects before dispatch",
+      "keydown rejects after dispatch",
+      "movement keydown failure",
+      "wait failure",
+      "movement keyup failure",
+      "modifier keyup failure",
+      "wait and modifier keyup failures preserve primary",
+      "already endpoint",
+      "local deadline expired",
+      "wrong height",
+      "changed revision",
+      "outside full radius"
+    ],
+    "limit": "Actual functions/public input handlers replayed on isolated recorded first-three native endpoints and injected failures with synthetic RPC timing. No new browser, true 150s completion, unobserved stairs/upper/return/exit or art acceptance."
+  },
+  "originalTramTraceRPCCountEvidence": [
+    {
+      "role": "baseline",
+      "observedPhysicalCycles": 19,
+      "originalRecordedZDownUpRPCCount": 38,
+      "candidatePrecisionLegZDownUpRPCCount": 2,
+      "candidateRemovesRepeatedZRPCCount": 36,
+      "perCycleWDownUpUntouched": true,
+      "originalFreshFrameReuseEligiblePairs": 18,
+      "exactSameSimulationTimePairs": 17,
+      "oldActualCompletedGeometricMetres": 1.350000000000026,
+      "oldActualCompletedHeldSimulationSeconds": 4.999999999999716,
+      "noMeasuredSavedWallTimeClaim": true
+    },
+    {
+      "role": "authored",
+      "observedPhysicalCycles": 20,
+      "originalRecordedZDownUpRPCCount": 40,
+      "candidatePrecisionLegZDownUpRPCCount": 2,
+      "candidateRemovesRepeatedZRPCCount": 38,
+      "perCycleWDownUpUntouched": true,
+      "originalFreshFrameReuseEligiblePairs": 19,
+      "exactSameSimulationTimePairs": 19,
+      "oldActualCompletedGeometricMetres": 1.500000000000015,
+      "oldActualCompletedHeldSimulationSeconds": 4.999999999999716,
+      "noMeasuredSavedWallTimeClaim": true
+    }
+  ],
+  "rootWritten": false,
+  "nativeExecuted": false,
+  "runtimeSourceChanged": false,
+  "active129Original2fdcPayloadMustRemainArchived": true,
+  "adoption": "Adopt these three files after the sealed2fdc parent payload in separate AEC-derived protocol worktree; preserve original first failures and original129 seals, refresh active outerbundle pins, then independently execute explicit High bus/tram on new head with runtime206 dictionary verified."
+}

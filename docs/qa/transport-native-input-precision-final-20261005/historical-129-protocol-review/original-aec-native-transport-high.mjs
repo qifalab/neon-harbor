@@ -154,18 +154,9 @@ async function captureCase(kind) {
   const distance = (a,b) => Math.hypot(a.x-b.x,a.z-b.z);
   const healthy = s => { assert.equal(s.settings.quality,'high');assert.equal(s.settings.hour,16.5);assert.equal(s.settings.dayCycle,false);assert.equal(s.settings.firstPerson,true);assert.equal(s.renderer.contextLost,false);assert.equal(s.settings.sensitivity,1); };
   async function pointer() {
-    const box=await page.locator('#game').boundingBox();
-    const p={x:box.x+box.width*.86,y:box.y+box.height*.30,orbitYaw:null};
-    await page.mouse.move(p.x,p.y);await page.mouse.down();activePointer=p;
-    // The public pointerdown handler resets orbit to the camera rendered at
-    // that input event. Read its actual origin after the event, since an
-    // automatic passenger follow can advance between earlier RPCs.
-    const s=await read();healthy(s);
-    assert.ok(s.started&&!s.paused&&Number.isFinite(s.camera?.yaw),'actual unpaused pointer origin');
-    p.orbitYaw=s.camera.yaw;
-    record.events.push({stage:'public-pointerdown-fresh-origin',at:new Date().toISOString(),
-      camera:s.camera,simulationTime:s.simulationTime,revision:s.teleportRevision});
-    return p;
+    const box=await page.locator('#game').boundingBox(), s=await read();
+    const p={x:box.x+box.width*.86,y:box.y+box.height*.30,orbitYaw:s.camera.yaw};
+    await page.mouse.move(p.x,p.y);await page.mouse.down();activePointer=p;return p;
   }
   const progressOf = (s,id=null) => {
     const t=transit(s),v=id?vehicle(s,id):null;
@@ -190,7 +181,6 @@ async function captureCase(kind) {
     }catch(error){const diagnostic=err(error,`${phase.type} ${when} progress diagnostic`);phase.diagnosticErrors.push(diagnostic);record.secondaryErrors.push(diagnostic);if(!primary)record.progressDiagnosticFailures.push(diagnostic);}
   }
   async function aim(p,yaw,pitch=.15,{acceptCurrent=false}={}) {
-    let currentFrame=null;
     const phaseDeadline=Date.now()+remaining(60000),phase={type:'aim',target:{yaw,pitch},budgetMs:60000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.aimPhases.push(phase);
     try {
       await bounded(async()=>{
@@ -201,7 +191,7 @@ async function captureCase(kind) {
           &&Math.abs(angle(s.camera.yaw-yaw))<.025&&Math.abs(s.camera.pitch-pitch)<.003) {
           assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
           phase.skippedPointerInput=true;phase.satisfiedBy='fresh-read-only-current-camera-original-predicate';
-          currentFrame=s;return;
+          return;
         }
         p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
         await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
@@ -209,7 +199,7 @@ async function captureCase(kind) {
         await page.waitForFunction(({yaw,pitch})=>{const c=window.__NEON__.snapshot().camera;return Math.abs(Math.atan2(Math.sin(c.yaw-yaw),Math.cos(c.yaw-yaw)))<.025&&Math.abs(c.pitch-pitch)<.003;},{yaw,pitch},{polling:'raf',timeout:cap});
         assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
       },Math.max(1,Math.min(phaseDeadline-Date.now(),deadline-Date.now())),'finite aim phase');
-      phase.status='SATISFIED';return currentFrame;
+      phase.status='SATISFIED';
     }catch(error){phase.firstError=err(error,'aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',null,null,error);throw error;}
     finally{phase.finishedAt=new Date().toISOString();}
   }
@@ -269,16 +259,16 @@ async function captureCase(kind) {
   }
   async function walkLocal(target,p,layout,stage,{precision=true}={}) {
     const initial=await read(), revision=initial.teleportRevision, localDeadline=Date.now()+remaining(150000), samples=[initial];let current=initial,held=0,metres=0;
-    let first=null;const precisionModifier={key:'z',scope:'precision-local-leg-only',downAttempted:false,downConfirmed:false,releaseConfirmed:null,inputs:[]};
+    let first=null;
     try {
       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
-        const desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
+        const desired=v.yaw+Math.atan2(dx,dz)-offset;await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null;
-        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
+        try {guardBeforeAction=await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
-        finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
+        finally {for(const k of [key,...(slow?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
         if(cycleError){cycle.firstError ||= err(cycleError,'release');samples.push(cycle);throw cycleError;}
         current=await read();assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
         held+=Math.max(0,current.simulationTime-guardBeforeAction.simulationTime);metres+=distance(before,transit(current).passengerLocal);
@@ -286,15 +276,7 @@ async function captureCase(kind) {
       }
       assert.ok(distance(target,transit(current).passengerLocal)<.06,'original physical local endpoint');if(target.y!=null)assert.ok(Math.abs(transit(current).passengerLocal.y-target.y)<.15);assert.equal(current.teleportRevision,revision);
     } catch(error){first=error;throw error;}
-    finally {
-      let modifierReleaseError=null;
-      if(precisionModifier.downAttempted){
-        try{await page.keyboard.up('z');precisionModifier.releaseConfirmed=true;precisionModifier.inputs.push({action:'up',key:'z',confirmed:true});}
-        catch(error){precisionModifier.releaseConfirmed=false;precisionModifier.inputs.push({action:'up',key:'z',confirmed:false,error:err(error,'precision modifier keyup')});modifierReleaseError=error;if(!first)first=error;else record.secondaryErrors.push(err(error,'precision modifier keyup'));}
-      }
-      record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,firstError:first?err(first,'local movement'):null});
-      if(modifierReleaseError&&first===modifierReleaseError)throw modifierReleaseError;
-    }
+    finally {record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,firstError:first?err(first,'local movement'):null});}
   }
   async function waitBerth(id, stopId=null) {
     const berthBudgetMs=kind==='tram'?1200000:600000;
