@@ -1,0 +1,171 @@
+{
+  "schema": "original-six-near-street-trees-v1",
+  "license": "CC0-1.0",
+  "creator": "qifalab / Neon Harbor original modelling",
+  "source": "art-source/sample-street-trees/source/author-trees.mjs",
+  "editableRecipe": "art-source/sample-street-trees/source/recipes.json",
+  "oldEnvelope": {
+    "min": [
+      -3.4,
+      0.3,
+      -3.4
+    ],
+    "max": [
+      4.5,
+      12,
+      3.4
+    ]
+  },
+  "assets": [
+    {
+      "id": "quay-banyan-a",
+      "file": "quay-banyan-a.glb",
+      "bytes": 1368240,
+      "sha256": "782419c6acea55e9b39de17b70a44dcdc9b03cd1be387c7f22d24c784a046884",
+      "triangles": 8944,
+      "meshes": 2,
+      "leafCount": 576,
+      "barkTriangles": 2032,
+      "leafTriangles": 6912,
+      "bounds": {
+        "bark": {
+          "min": [
+            -2.7257118225097656,
+            0.3207566738128662,
+            -2.2817814350128174
+          ],
+          "max": [
+            3.637002944946289,
+            11.592913627624512,
+            1.809622883796692
+          ]
+        },
+        "leaves": {
+          "min": [
+            -3.2630279064178467,
+            8.387707710266113,
+            -2.8599963188171387
+          ],
+          "max": [
+            4.268263816833496,
+            11.769681930541992,
+            2.1691396236419678
+          ]
+        }
+      }
+    },
+    {
+      "id": "quay-banyan-b",
+      "file": "quay-banyan-b.glb",
+      "bytes": 1368240,
+      "sha256": "acb022c55a664b8bd31397f22ebe8373964dbed8ee8d935bd7d47945007ee099",
+      "triangles": 8944,
+      "meshes": 2,
+      "leafCount": 576,
+      "barkTriangles": 2032,
+      "leafTriangles": 6912,
+      "bounds": {
+        "bark": {
+          "min": [
+            -2.859807252883911,
+            0.3207566738128662,
+            -2.209152936935425
+          ],
+          "max": [
+            3.702155113220215,
+            11.705698013305664,
+            2.0094408988952637
+          ]
+        },
+        "leaves": {
+          "min": [
+            -3.3070712089538574,
+            8.555996894836426,
+            -2.7664825916290283
+          ],
+          "max": [
+            4.221989154815674,
+            11.806548118591309,
+            2.523545980453491
+          ]
+        }
+      }
+    },
+    {
+      "id": "quay-banyan-c",
+      "file": "quay-banyan-c.glb",
+      "bytes": 1368240,
+      "sha256": "726582fab72eae28bcb65d9bc08df0d43a9c826c1484090746d00eba407d6107",
+      "triangles": 8944,
+      "meshes": 2,
+      "leafCount": 576,
+      "barkTriangles": 2032,
+      "leafTriangles": 6912,
+      "bounds": {
+        "bark": {
+          "min": [
+            -2.6879920959472656,
+            0.3207566738128662,
+            -2.2589476108551025
+          ],
+          "max": [
+            3.7720353603363037,
+            11.637856483459473,
+            1.9634181261062622
+          ]
+        },
+        "leaves": {
+          "min": [
+            -3.2181525230407715,
+            8.072342872619629,
+            -2.7929341793060303
+          ],
+          "max": [
+            4.31735372543335,
+            11.780953407287598,
+            2.5605263710021973
+          ]
+        }
+      }
+    }
+  ],
+  "editableSourceFiles": [
+    {
+      "path": "art-source/sample-street-trees/LICENSE.txt",
+      "bytes": 462,
+      "sha256": "1d03915a8b5c51b0635d43e393e255ac6d73d9d2e7bede151cf9669711fba6ee"
+    },
+    {
+      "path": "art-source/sample-street-trees/source/author-trees.mjs",
+      "bytes": 8982,
+      "sha256": "4e8889a4c018112c869ed3c8c4840c0eabae28aa8e3ee1d5095c2014d792af3c"
+    },
+    {
+      "path": "art-source/sample-street-trees/source/make-original-tree-textures.py",
+      "bytes": 925,
+      "sha256": "ed6e7ca1971b6cf72f5be184da5fc61a3c4fc2e8f667d10caa796a6d562f1eb2"
+    },
+    {
+      "path": "art-source/sample-street-trees/source/original-bark-albedo.png",
+      "bytes": 163460,
+      "sha256": "dfc4fd1f66c1ad6595c091c019ca48ff485ce6ea673976e81e0e2ff43c91652e"
+    },
+    {
+      "path": "art-source/sample-street-trees/source/original-bark-roughness.png",
+      "bytes": 16680,
+      "sha256": "b101ea81669a1bdd0b7f0673c308f6f5cc89382351dc1cdf750b1f51600318fb"
+    },
+    {
+      "path": "art-source/sample-street-trees/source/original-leaf-roughness.png",
+      "bytes": 4688,
+      "sha256": "0365621ced5ed9fa7a69bf9260f9617a43b27643a92a2897eedeade9e5b6c972"
+    },
+    {
+      "path": "art-source/sample-street-trees/source/recipes.json",
+      "bytes": 1840,
+      "sha256": "99596af542dc3416d98feb1b8a4883065e20431124978a999707735ece1921d8"
+    }
+  ],
+  "runtimeOwner": "src/harbor-sample-trees.js",
+  "physicalDetail": "576 closed actual folded leaf blades per variant with 1.6mm thickness; tapered curved trunks/branches with 72 actual-triangle parent containment checks; original bark albedo and leaf/bark roughness maps; no sphere crown props"
+}

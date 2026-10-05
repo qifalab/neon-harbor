@@ -1,0 +1,101 @@
+{
+  "status": "SOURCE_ONLY_FINAL_STREET_HUD_RUNTIME_PINS_REFRESHED_NATIVE_PENDING",
+  "worktree": "/tmp/neon-harbor-street-refinement-candidate-20261005",
+  "at": "2026-10-05T04:47:52.480196+00:00",
+  "actualBuildInfo": {
+    "path": "expected-build-provenance/authored-build-info-street-trees-western-ridge-public-hud-20261005-dc28ab1f15da.json",
+    "sha256": "dc28ab1f15dafc1ec47a6d779a2f784a3029c395eee8a472c4cf0fef42517ba6",
+    "version": "0.8.0",
+    "assetCount": 199,
+    "revision": null,
+    "bytes": 21307,
+    "scope": "Actual completed final build combines six near-street trees, ten western decorative ridge silhouettes and the optional reversible public HUD view control. Exact seven runtime additions and four changed runtime files from original6ad192; no other runtime changes. No build/rule/geometry/browser/GPU execution is performed by this metadata refresh.",
+    "note": "Actual local build revisionnull. A future actual remote Git HEAD/build revision must be verified independently. Native rendering, actual public HUD click/restore and human art acceptance remain pending."
+  },
+  "intermediateC07BuildPreserved": {
+    "path": "/tmp/neon-harbor-street-refinement-candidate-20261005/tools/native-review/expected-build-provenance/authored-build-info-street-trees-western-ridge-20261005-c07bda2d624e.json",
+    "sha256": "c07bda2d624e2ebcd1628f0ca2bb780d8a154ab27fadf23211dc4fb7492b5bb8"
+  },
+  "originalParent192BuildPreserved": {
+    "path": "expected-build-provenance/authored-build-info-home-storefront-finish-20261005-c2c266636447.json",
+    "bytes": 20512,
+    "sha256": "c2c2666364473fae80905c28288bb16703eebb31fb00dcbd5bf7429702df2939"
+  },
+  "exactRuntimeDeltaFrom6ad192": {
+    "added": {
+      "assets/harbor/vegetation/LICENSE.txt": "1d03915a8b5c51b0635d43e393e255ac6d73d9d2e7bede151cf9669711fba6ee",
+      "assets/harbor/vegetation/asset-manifest.json": "d40e437090f935da59f3ab9b6cc5a53114a339d20f68053c3ae7ba5678ef997f",
+      "assets/harbor/vegetation/quay-banyan-a.glb": "782419c6acea55e9b39de17b70a44dcdc9b03cd1be387c7f22d24c784a046884",
+      "assets/harbor/vegetation/quay-banyan-b.glb": "acb022c55a664b8bd31397f22ebe8373964dbed8ee8d935bd7d47945007ee099",
+      "assets/harbor/vegetation/quay-banyan-c.glb": "726582fab72eae28bcb65d9bc08df0d43a9c826c1484090746d00eba407d6107",
+      "src/harbor-sample-trees.js": "7870323230db1e7e4bda2a218e479a3ecd61d8ed72403e628adf85b9891a18e5",
+      "src/metropolis-western-ridge.js": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c"
+    },
+    "changed": {
+      "index.html": {
+        "before": "4d664cbe3e994c8cd695aa040eaea89b4617d17733c7f0fdae5218eb326d7582",
+        "after": "4fca4a76a27849dca753ec34a8e4ba38bfdb4bb7e9ac57b6bfb64850df8c2f66"
+      },
+      "src/main.js": {
+        "before": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+        "after": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+      },
+      "src/metropolis-world.js": {
+        "before": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+        "after": "ba1bef7154840d60344413d9332d4119b908d8fa1bbf30c31b66941f5e2a9347"
+      },
+      "styles.css": {
+        "before": "b678622cdca60ee8ba4bc13dcb7a932e950bc4f51232a429bf8339405ecd42e7",
+        "after": "8a62bca88da2c27403cc937f760e0195c722a273c81af57c25e7f8bc140f8a2c"
+      }
+    },
+    "removed": [],
+    "unchangedCount": 188
+  },
+  "exactRuntimeDeltaFromStreetC07b199": {
+    "added": {},
+    "changed": {
+      "index.html": {
+        "before": "4d664cbe3e994c8cd695aa040eaea89b4617d17733c7f0fdae5218eb326d7582",
+        "after": "4fca4a76a27849dca753ec34a8e4ba38bfdb4bb7e9ac57b6bfb64850df8c2f66"
+      },
+      "src/main.js": {
+        "before": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+        "after": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+      },
+      "styles.css": {
+        "before": "b678622cdca60ee8ba4bc13dcb7a932e950bc4f51232a429bf8339405ecd42e7",
+        "after": "8a62bca88da2c27403cc937f760e0195c722a273c81af57c25e7f8bc140f8a2c"
+      }
+    },
+    "removed": []
+  },
+  "actualHudSourceAmendment": {
+    "path": "runtime-amendments/public-hud-control-20261005/source-pin-amendment.json",
+    "bytes": 3626,
+    "sha256": "9c748ee427e0475b86737e140eff38aaf76f4a54711d52c1676fca00c62faf6b"
+  },
+  "baseline156DictionaryDeepIdentity": true,
+  "historicalFileBytesIdentity": true,
+  "productionSourceOrIndexStyleMutatedByMetadataRefresh": false,
+  "productBuildRuleGeometryBrowserGpuExecutedByMetadataRefresh": false,
+  "stageCommitRefsMutated": false,
+  "nativeHudAndArtAcceptance": false,
+  "writes": [
+    {
+      "path": "tools/native-review/expected-runtime-dictionaries.json",
+      "bytes": 40076,
+      "sha256": "68f0417f0c181a9cb1f579e40ad4025997cd22eb2ed438079d61d974101601fc"
+    },
+    {
+      "path": "tools/native-review/methods/transport-owner/method-manifest.json",
+      "bytes": 9815,
+      "sha256": "d99d9d65da0f9739b4471f96028153b76ff36563b4f6865c29bf6fa6b0f5ad7a"
+    },
+    {
+      "path": "tools/native-review/expected-build-provenance/authored-build-info-street-trees-western-ridge-public-hud-20261005-dc28ab1f15da.json",
+      "bytes": 21307,
+      "sha256": "dc28ab1f15dafc1ec47a6d779a2f784a3029c395eee8a472c4cf0fef42517ba6"
+    }
+  ]
+}

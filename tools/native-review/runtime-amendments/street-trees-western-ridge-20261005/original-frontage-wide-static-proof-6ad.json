@@ -1,0 +1,1053 @@
+{
+  "schema": "frontage-wide-static-preparation-v1",
+  "status": "SOURCE_ONLY_STATIC_GEOMETRY_REVIEW",
+  "scope": "Six revised complete planned outdoor cardinal paths and added wide paths in source-derived static model, including authored lower solid envelopes; not instantiated full-world, native/timing/dynamic visibility or art acceptance; narrow 2026-10-05 shop-display art amendment updates only two authored source pins using exact bounded geometry and collider/fixture source identity, without rerunning the original navigation model; additional 2026-10-05 south094/south096 baked-loaf/ceramic/sign-face refinement updates the same two source pins using CPU physical bounds and unchanged collision identities only, with original route model retained",
+  "bodyRadius": 0.65,
+  "axisTolerance": 0.15,
+  "sourceHashes": {
+    "baseline": {
+      "src/citizen-crossings.js": "cf9ae62c1141514dab849079655136d17762a8efa16b2dc378a1b0393b4d1caf",
+      "src/citizen-navigation.js": "7ae2e7d47fdaf10355d81641f8e338745234cb2cfd30c7c2d1fcfc8ef267f9ed",
+      "src/city-exploration.js": "4bcee64c1fd0141a62ce7ca09f5511b6f648ea518e44f0201a622f6b83ffa28f",
+      "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "src/expansion-programmes.js": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+      "src/harbor-district.js": "0514988698c38f70928002bebd110438fa764ca44f35ef557315d0cba5452a9b",
+      "src/harbor-skyline.js": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
+      "src/harbor-terrain.js": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49",
+      "src/harbor-transit-renderer.js": "4e5788540b754b1309614eb544a18a1d62cf5808c1cabd491befd81b81d67cf9",
+      "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "src/metropolis-catalog.js": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+      "src/metropolis-infrastructure.js": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2",
+      "src/metropolis-transit.js": "ca316720b79de2a15dfeaf41fb3109589612733b886d1566d91049d383fc8a1e",
+      "src/metropolis-world.js": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+      "src/simulation.js": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "src/terrain-openings.js": "5c7ea45ce83f8b0f3e20c70d9fc2c3a6e4284fa7bb16af48e201c5c8968cdfea",
+      "src/traffic.js": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101",
+      "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "src/world.js": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6"
+    },
+    "authored": {
+      "src/citizen-crossings.js": "cf9ae62c1141514dab849079655136d17762a8efa16b2dc378a1b0393b4d1caf",
+      "src/citizen-navigation.js": "7ae2e7d47fdaf10355d81641f8e338745234cb2cfd30c7c2d1fcfc8ef267f9ed",
+      "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+      "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "src/expansion-programmes.js": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+      "src/harbor-district.js": "7e454501bfb4d99edcf8dd2017b5e210f06086b53484623920087b1e0ca4b6fe",
+      "src/harbor-frontage-profiles.js": "215c498d178c8133fdb1f58fe18744c72c9d6df401b9658016a1a7879e5bb7fe",
+      "src/harbor-skyline.js": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
+      "src/harbor-terrain.js": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49",
+      "src/harbor-transit-renderer.js": "5fb7ade1a232883759576c706b30a96d665b3ed4a0a425a92c6eba6f5bcc9422",
+      "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "src/metropolis-catalog.js": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+      "src/metropolis-infrastructure.js": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2",
+      "src/metropolis-transit.js": "ca316720b79de2a15dfeaf41fb3109589612733b886d1566d91049d383fc8a1e",
+      "src/metropolis-world.js": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+      "src/simulation.js": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "src/terrain-openings.js": "5c7ea45ce83f8b0f3e20c70d9fc2c3a6e4284fa7bb16af48e201c5c8968cdfea",
+      "src/traffic.js": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101",
+      "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "src/world.js": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6"
+    }
+  },
+  "sourceAbsent": {
+    "baseline": [
+      "src/harbor-frontage-profiles.js"
+    ],
+    "authored": []
+  },
+  "preparedModeHeads": {
+    "baseline": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+    "authored": "ef92c25980f1da12b508971170b72b9dd6230059"
+  },
+  "preparationProvenance": {
+    "geometry": {
+      "path": "/tmp/neon-frontage-wide-static-geometry-v2-2026-10-05/geometry.json",
+      "bytes": 231673,
+      "sha256": "93c30fb38f716a26f3080a8a25359f05c92b94c43b8fc7fb88b1ff26f8f6228f"
+    },
+    "review": {
+      "path": "/tmp/neon-frontage-wide-static-geometry-v2-2026-10-05/review.md",
+      "bytes": 11200,
+      "sha256": "84a1404fc134d1157aa12811a45319ddb6a3be66f5072cca25ab0d19c9503cea"
+    },
+    "ledger": {
+      "path": "/tmp/neon-frontage-wide-static-geometry-v2-2026-10-05/ledger.json",
+      "bytes": 1315,
+      "sha256": "9540cd5a190d25a20481378c7e1ab728cb381a9bbddb68e3885fb789dc1b2a46"
+    },
+    "originalWorldCatalogueGroundSourceVerified": true
+  },
+  "cases": {
+    "south-090": {
+      "originalDoorStation": {
+        "x": 187,
+        "z": 145.42007884336635,
+        "y": 0.18
+      },
+      "wideStanding": {
+        "x": 187,
+        "z": 153.06007884336634,
+        "y": 0
+      },
+      "publicDoor": {
+        "x": 187,
+        "z": 144.06007884336634,
+        "y": 0.18,
+        "yaw": 0
+      },
+      "normalDistanceMetres": 9,
+      "doorCentreHorizontalDistanceMetres": 9.0,
+      "outwardWaypoints": [
+        {
+          "x": 187,
+          "z": 145.42007884336635
+        },
+        {
+          "x": 187,
+          "z": 153.06007884336634
+        }
+      ],
+      "returnWaypoints": [
+        {
+          "x": 187,
+          "z": 153.06007884336634
+        },
+        {
+          "x": 187,
+          "z": 145.42007884336635
+        }
+      ],
+      "fixtureDetour": null,
+      "minimumAddedStaticCapsuleClearanceMetres": 0.9499999999999943,
+      "minimumAddedAuthoredGroundEnvelopeClearanceMetres": 0.3449999999999761,
+      "revisedOriginalOutdoorRouteClear": true,
+      "viewPolygon": [
+        {
+          "x": 176.84140028059483,
+          "z": 144.06007884336634
+        },
+        {
+          "x": 197.15859971940517,
+          "z": 144.06007884336634
+        },
+        {
+          "x": 187.15,
+          "z": 153.21007884336635
+        },
+        {
+          "x": 186.85,
+          "z": 153.21007884336635
+        }
+      ],
+      "minimumOtherShellViewClearanceMetres": 5.997113482442505,
+      "clear": true
+    },
+    "south-091": {
+      "originalDoorStation": {
+        "x": 213,
+        "z": 117.67839586455375,
+        "y": 0.18
+      },
+      "wideStanding": {
+        "x": 234.5,
+        "z": 125.31839586455375,
+        "y": 0
+      },
+      "publicDoor": {
+        "x": 213,
+        "z": 116.31839586455375,
+        "y": 0.18,
+        "yaw": 0
+      },
+      "normalDistanceMetres": 9,
+      "doorCentreHorizontalDistanceMetres": 23.30772404161333,
+      "outwardWaypoints": [
+        {
+          "x": 213,
+          "z": 117.67839586455375
+        },
+        {
+          "x": 234.5,
+          "z": 117.67839586455375
+        },
+        {
+          "x": 234.5,
+          "z": 125.31839586455375
+        }
+      ],
+      "returnWaypoints": [
+        {
+          "x": 234.5,
+          "z": 125.31839586455375
+        },
+        {
+          "x": 234.5,
+          "z": 117.67839586455375
+        },
+        {
+          "x": 213,
+          "z": 117.67839586455375
+        }
+      ],
+      "fixtureDetour": null,
+      "minimumAddedStaticCapsuleClearanceMetres": 0.9499999999999943,
+      "minimumAddedAuthoredGroundEnvelopeClearanceMetres": 0.36500000000000055,
+      "revisedOriginalOutdoorRouteClear": true,
+      "viewPolygon": [
+        {
+          "x": 203.1056484845467,
+          "z": 116.31839586455375
+        },
+        {
+          "x": 222.8943515154533,
+          "z": 116.31839586455375
+        },
+        {
+          "x": 234.65,
+          "z": 125.16839586455374
+        },
+        {
+          "x": 234.65,
+          "z": 125.46839586455376
+        },
+        {
+          "x": 234.35,
+          "z": 125.46839586455376
+        }
+      ],
+      "minimumOtherShellViewClearanceMetres": 1.401069863624089,
+      "clear": true
+    },
+    "south-092": {
+      "originalDoorStation": {
+        "x": 213,
+        "z": 144.11998675437644,
+        "y": 0.18
+      },
+      "wideStanding": {
+        "x": 213,
+        "z": 151.75998675437643,
+        "y": 0
+      },
+      "publicDoor": {
+        "x": 213,
+        "z": 142.75998675437643,
+        "y": 0.18,
+        "yaw": 0
+      },
+      "normalDistanceMetres": 9,
+      "doorCentreHorizontalDistanceMetres": 9.0,
+      "outwardWaypoints": [
+        {
+          "x": 213,
+          "z": 144.11998675437644
+        },
+        {
+          "x": 213,
+          "z": 151.75998675437643
+        }
+      ],
+      "returnWaypoints": [
+        {
+          "x": 213,
+          "z": 151.75998675437643
+        },
+        {
+          "x": 213,
+          "z": 144.11998675437644
+        }
+      ],
+      "fixtureDetour": {
+        "status": "ROOT_AUTHORIZED_SOURCE_ONLY_PROPOSAL",
+        "safeOutwardOffsetMetres": 1.8,
+        "safeReturnZ": 143.91998675437645,
+        "outboundWaypoints": [
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 143.91998675437645
+          }
+        ],
+        "waypoints": [
+          {
+            "x": 225.8373617986217,
+            "z": 133
+          },
+          {
+            "x": 225.8373617986217,
+            "z": 143.91998675437645
+          },
+          {
+            "x": 213,
+            "z": 143.91998675437645
+          },
+          {
+            "x": 213,
+            "z": 145.11998675437644
+          }
+        ],
+        "returnWaypoints": [
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 143.91998675437645
+          },
+          {
+            "kind": "walk",
+            "axis": "x",
+            "target": 213
+          },
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 145.11998675437644
+          }
+        ],
+        "outboundLegs": [
+          {
+            "start": {
+              "x": 213,
+              "z": 145.11998675437644
+            },
+            "end": {
+              "x": 213,
+              "z": 143.91998675437645
+            },
+            "minimumStaticColliderClearanceMetres": 0.7500000000000057,
+            "nearestStaticCollider": "south-092:skin",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-092:authored-public-door-envelope",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 213,
+              "z": 143.91998675437645
+            },
+            "end": {
+              "x": 225.8373617986217,
+              "z": 143.91998675437645
+            },
+            "minimumStaticColliderClearanceMetres": 0.6800132456235474,
+            "nearestStaticCollider": "block-200-120:lamp-25.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-092:authored-public-door-envelope",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 225.8373617986217,
+              "z": 143.91998675437645
+            },
+            "end": {
+              "x": 225.8373617986217,
+              "z": 133
+            },
+            "minimumStaticColliderClearanceMetres": 0.6699999999999932,
+            "nearestStaticCollider": "south-092:table--4.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.3659460847411594,
+            "nearestAuthoredGroundEnvelope": "south-092:planter-leaf-envelope--7.549999999999999",
+            "clear": true
+          }
+        ],
+        "returnLegs": [
+          {
+            "start": {
+              "x": 225.8373617986217,
+              "z": 133
+            },
+            "end": {
+              "x": 225.8373617986217,
+              "z": 143.91998675437645
+            },
+            "minimumStaticColliderClearanceMetres": 0.6699999999999932,
+            "nearestStaticCollider": "south-092:table--4.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.3659460847411594,
+            "nearestAuthoredGroundEnvelope": "south-092:planter-leaf-envelope--7.549999999999999",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 225.8373617986217,
+              "z": 143.91998675437645
+            },
+            "end": {
+              "x": 213,
+              "z": 143.91998675437645
+            },
+            "minimumStaticColliderClearanceMetres": 0.6800132456235474,
+            "nearestStaticCollider": "block-200-120:lamp-25.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-092:authored-public-door-envelope",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 213,
+              "z": 143.91998675437645
+            },
+            "end": {
+              "x": 213,
+              "z": 145.11998675437644
+            },
+            "minimumStaticColliderClearanceMetres": 0.7500000000000057,
+            "nearestStaticCollider": "south-092:skin",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-092:authored-public-door-envelope",
+            "clear": true
+          }
+        ],
+        "originalEastPhotoPosition": {
+          "x": 225.8373617986217,
+          "z": 133,
+          "y": 0.18
+        },
+        "originalEntranceTarget": {
+          "x": 213,
+          "z": 145.11998675437644,
+          "y": 0.18
+        },
+        "groundY": 0.18,
+        "originalPhotosUnchanged": true,
+        "note": "Preserve original Z alignment at entrance; add Zsafe before original X-east leg. Replace original direct return Z with Zsafe/Xcenter/ZoriginalEntrance, then preserved Xcenter/Zclose/door/E. Original files are untouched.",
+        "auditedOutboundCoordinatePoints": [
+          {
+            "x": 213,
+            "z": 145.11998675437644
+          },
+          {
+            "x": 213,
+            "z": 143.91998675437645
+          },
+          {
+            "x": 225.8373617986217,
+            "z": 143.91998675437645
+          },
+          {
+            "x": 225.8373617986217,
+            "z": 133
+          }
+        ],
+        "auditedReturnCoordinatePoints": [
+          {
+            "x": 225.8373617986217,
+            "z": 133
+          },
+          {
+            "x": 225.8373617986217,
+            "z": 143.91998675437645
+          },
+          {
+            "x": 213,
+            "z": 143.91998675437645
+          },
+          {
+            "x": 213,
+            "z": 145.11998675437644
+          }
+        ]
+      },
+      "minimumAddedStaticCapsuleClearanceMetres": 0.9499999999999943,
+      "minimumAddedAuthoredGroundEnvelopeClearanceMetres": 0.36499999999998634,
+      "revisedOriginalOutdoorRouteClear": true,
+      "viewPolygon": [
+        {
+          "x": 202.9126382013783,
+          "z": 142.75998675437643
+        },
+        {
+          "x": 223.0873617986217,
+          "z": 142.75998675437643
+        },
+        {
+          "x": 213.15,
+          "z": 151.90998675437643
+        },
+        {
+          "x": 212.85,
+          "z": 151.90998675437643
+        }
+      ],
+      "minimumOtherShellViewClearanceMetres": 5.754038481973112,
+      "clear": true
+    },
+    "south-094": {
+      "originalDoorStation": {
+        "x": 187,
+        "z": 223.75940199801698,
+        "y": 0.18
+      },
+      "wideStanding": {
+        "x": 187,
+        "z": 231.39940199801697,
+        "y": 0
+      },
+      "publicDoor": {
+        "x": 187,
+        "z": 222.39940199801697,
+        "y": 0.18,
+        "yaw": 0
+      },
+      "normalDistanceMetres": 9,
+      "doorCentreHorizontalDistanceMetres": 9.0,
+      "outwardWaypoints": [
+        {
+          "x": 187,
+          "z": 223.75940199801698
+        },
+        {
+          "x": 187,
+          "z": 231.39940199801697
+        }
+      ],
+      "returnWaypoints": [
+        {
+          "x": 187,
+          "z": 231.39940199801697
+        },
+        {
+          "x": 187,
+          "z": 223.75940199801698
+        }
+      ],
+      "fixtureDetour": null,
+      "minimumAddedStaticCapsuleClearanceMetres": 0.9499999999999943,
+      "minimumAddedAuthoredGroundEnvelopeClearanceMetres": 0.3449999999999761,
+      "revisedOriginalOutdoorRouteClear": true,
+      "viewPolygon": [
+        {
+          "x": 177.81450772006065,
+          "z": 222.39940199801697
+        },
+        {
+          "x": 196.18549227993935,
+          "z": 222.39940199801697
+        },
+        {
+          "x": 187.15,
+          "z": 231.54940199801698
+        },
+        {
+          "x": 186.85,
+          "z": 231.54940199801698
+        }
+      ],
+      "minimumOtherShellViewClearanceMetres": 7.188589156605303,
+      "clear": true
+    },
+    "south-095": {
+      "originalDoorStation": {
+        "x": 213,
+        "z": 198.95595548301935,
+        "y": 0.18
+      },
+      "wideStanding": {
+        "x": 234.5,
+        "z": 206.59595548301934,
+        "y": 0
+      },
+      "publicDoor": {
+        "x": 213,
+        "z": 197.59595548301934,
+        "y": 0.18,
+        "yaw": 0
+      },
+      "normalDistanceMetres": 9,
+      "doorCentreHorizontalDistanceMetres": 23.30772404161333,
+      "outwardWaypoints": [
+        {
+          "x": 213,
+          "z": 198.95595548301935
+        },
+        {
+          "x": 234.5,
+          "z": 198.95595548301935
+        },
+        {
+          "x": 234.5,
+          "z": 206.59595548301934
+        }
+      ],
+      "returnWaypoints": [
+        {
+          "x": 234.5,
+          "z": 206.59595548301934
+        },
+        {
+          "x": 234.5,
+          "z": 198.95595548301935
+        },
+        {
+          "x": 213,
+          "z": 198.95595548301935
+        }
+      ],
+      "fixtureDetour": null,
+      "minimumAddedStaticCapsuleClearanceMetres": 0.9499999999999943,
+      "minimumAddedAuthoredGroundEnvelopeClearanceMetres": 0.36499999999998634,
+      "revisedOriginalOutdoorRouteClear": true,
+      "viewPolygon": [
+        {
+          "x": 202.9441782287322,
+          "z": 197.59595548301934
+        },
+        {
+          "x": 223.0558217712678,
+          "z": 197.59595548301934
+        },
+        {
+          "x": 234.65,
+          "z": 206.44595548301933
+        },
+        {
+          "x": 234.65,
+          "z": 206.74595548301934
+        },
+        {
+          "x": 234.35,
+          "z": 206.74595548301934
+        }
+      ],
+      "minimumOtherShellViewClearanceMetres": 0.09682625155048409,
+      "clear": true
+    },
+    "south-096": {
+      "originalDoorStation": {
+        "x": 213,
+        "z": 224.31897145090625,
+        "y": 0.18
+      },
+      "wideStanding": {
+        "x": 213,
+        "z": 231.95897145090623,
+        "y": 0
+      },
+      "publicDoor": {
+        "x": 213,
+        "z": 222.95897145090623,
+        "y": 0.18,
+        "yaw": 0
+      },
+      "normalDistanceMetres": 9,
+      "doorCentreHorizontalDistanceMetres": 9.0,
+      "outwardWaypoints": [
+        {
+          "x": 213,
+          "z": 224.31897145090625
+        },
+        {
+          "x": 213,
+          "z": 231.95897145090623
+        }
+      ],
+      "returnWaypoints": [
+        {
+          "x": 213,
+          "z": 231.95897145090623
+        },
+        {
+          "x": 213,
+          "z": 224.31897145090625
+        }
+      ],
+      "fixtureDetour": {
+        "status": "ROOT_AUTHORIZED_SOURCE_ONLY_PROPOSAL",
+        "safeOutwardOffsetMetres": 1.8,
+        "safeReturnZ": 224.11897145090626,
+        "outboundWaypoints": [
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 224.11897145090626
+          }
+        ],
+        "waypoints": [
+          {
+            "x": 225.37591856345534,
+            "z": 213
+          },
+          {
+            "x": 225.37591856345534,
+            "z": 224.11897145090626
+          },
+          {
+            "x": 213,
+            "z": 224.11897145090626
+          },
+          {
+            "x": 213,
+            "z": 225.31897145090625
+          }
+        ],
+        "returnWaypoints": [
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 224.11897145090626
+          },
+          {
+            "kind": "walk",
+            "axis": "x",
+            "target": 213
+          },
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 225.31897145090625
+          }
+        ],
+        "outboundLegs": [
+          {
+            "start": {
+              "x": 213,
+              "z": 225.31897145090625
+            },
+            "end": {
+              "x": 213,
+              "z": 224.11897145090626
+            },
+            "minimumStaticColliderClearanceMetres": 0.7500000000000057,
+            "nearestStaticCollider": "south-096:skin",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-096:authored-public-door-envelope",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 213,
+              "z": 224.11897145090626
+            },
+            "end": {
+              "x": 225.37591856345534,
+              "z": 224.11897145090626
+            },
+            "minimumStaticColliderClearanceMetres": 0.4810285490937417,
+            "nearestStaticCollider": "block-200-200:lamp-25.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-096:authored-public-door-envelope",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 225.37591856345534,
+              "z": 224.11897145090626
+            },
+            "end": {
+              "x": 225.37591856345534,
+              "z": 213
+            },
+            "minimumStaticColliderClearanceMetres": 0.4810285490937417,
+            "nearestStaticCollider": "block-200-200:lamp-25.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.3659460847411594,
+            "nearestAuthoredGroundEnvelope": "south-096:planter-leaf-envelope--7.549999999999999",
+            "clear": true
+          }
+        ],
+        "returnLegs": [
+          {
+            "start": {
+              "x": 225.37591856345534,
+              "z": 213
+            },
+            "end": {
+              "x": 225.37591856345534,
+              "z": 224.11897145090626
+            },
+            "minimumStaticColliderClearanceMetres": 0.4810285490937417,
+            "nearestStaticCollider": "block-200-200:lamp-25.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.3659460847411594,
+            "nearestAuthoredGroundEnvelope": "south-096:planter-leaf-envelope--7.549999999999999",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 225.37591856345534,
+              "z": 224.11897145090626
+            },
+            "end": {
+              "x": 213,
+              "z": 224.11897145090626
+            },
+            "minimumStaticColliderClearanceMetres": 0.4810285490937417,
+            "nearestStaticCollider": "block-200-200:lamp-25.5",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-096:authored-public-door-envelope",
+            "clear": true
+          },
+          {
+            "start": {
+              "x": 213,
+              "z": 224.11897145090626
+            },
+            "end": {
+              "x": 213,
+              "z": 225.31897145090625
+            },
+            "minimumStaticColliderClearanceMetres": 0.7500000000000057,
+            "nearestStaticCollider": "south-096:skin",
+            "minimumAuthoredGroundEnvelopeClearanceMetres": 0.1649999999999977,
+            "nearestAuthoredGroundEnvelope": "south-096:authored-public-door-envelope",
+            "clear": true
+          }
+        ],
+        "originalEastPhotoPosition": {
+          "x": 225.37591856345534,
+          "z": 213,
+          "y": 0.18
+        },
+        "originalEntranceTarget": {
+          "x": 213,
+          "z": 225.31897145090625,
+          "y": 0.18
+        },
+        "groundY": 0.18,
+        "originalPhotosUnchanged": true,
+        "note": "Preserve original Z alignment at entrance; add Zsafe before original X-east leg. Replace original direct return Z with Zsafe/Xcenter/ZoriginalEntrance, then preserved Xcenter/Zclose/door/E. Original files are untouched.",
+        "auditedOutboundCoordinatePoints": [
+          {
+            "x": 213,
+            "z": 225.31897145090625
+          },
+          {
+            "x": 213,
+            "z": 224.11897145090626
+          },
+          {
+            "x": 225.37591856345534,
+            "z": 224.11897145090626
+          },
+          {
+            "x": 225.37591856345534,
+            "z": 213
+          }
+        ],
+        "auditedReturnCoordinatePoints": [
+          {
+            "x": 225.37591856345534,
+            "z": 213
+          },
+          {
+            "x": 225.37591856345534,
+            "z": 224.11897145090626
+          },
+          {
+            "x": 213,
+            "z": 224.11897145090626
+          },
+          {
+            "x": 213,
+            "z": 225.31897145090625
+          }
+        ]
+      },
+      "minimumAddedStaticCapsuleClearanceMetres": 0.9499999999999943,
+      "minimumAddedAuthoredGroundEnvelopeClearanceMetres": 0.36499999999998634,
+      "revisedOriginalOutdoorRouteClear": true,
+      "viewPolygon": [
+        {
+          "x": 203.37408143654466,
+          "z": 222.95897145090623
+        },
+        {
+          "x": 222.62591856345534,
+          "z": 222.95897145090623
+        },
+        {
+          "x": 213.15,
+          "z": 232.10897145090624
+        },
+        {
+          "x": 212.85,
+          "z": 232.10897145090624
+        }
+      ],
+      "minimumOtherShellViewClearanceMetres": 7.25103414750777,
+      "clear": true
+    }
+  },
+  "knownLimits": [
+    "Native walking, frame time, browser/GPU rendering, traffic timing, projected FOV, image/art acceptance, old interior proof reuse, world construction are not established.",
+    "Dynamic cars/NPCs/tram remain;091 actually crosses tram track.",
+    "Tightest other-shell source view margin095=.09682625155048409m; not native framing guarantee.",
+    "Original interior common-pose-proof reused unchanged and scoped separately.",
+    "New whole24/30 caps are accepted bounded preparation estimates;720 original failures retained.",
+    "Display amendment changes only two authored source pins with explicit retained old proof provenance and conservative horizontal envelope/collider identity. Original case-clear values remain source-model results; no new native or full-world navigation evidence is implied."
+  ],
+  "preparedModeHeadsScope": "These heads identify the original static preparation inputs. The original authored ef92 head does not identify the amended, uncommitted sourceHashes.authored runtime.",
+  "shopDisplayArtAmendment": {
+    "schema": "frontage-wide-bounded-display-amendment-v1",
+    "status": "SOURCE_HASH_AND_EXACT_HORIZONTAL_ENVELOPE_IDENTITY_ONLY",
+    "amendedAtUTC": "2026-10-05 01:29:35 UTC",
+    "rootHeadAtSourceVerification": "ef92c25980f1da12b508971170b72b9dd6230059",
+    "rootAuthoredSourceIsUncommitted": true,
+    "originalProof": {
+      "path": "/tmp/neon-frontage-wide-proof-amendment-20261005/original/frontage-wide-static-proof.json",
+      "bytes": 27270,
+      "sha256": "e838dde5a764b117af553bd041f205e0514435891f3f6fe0abd70ec9e4252456",
+      "preparedModeHeads": {
+        "baseline": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+        "authored": "ef92c25980f1da12b508971170b72b9dd6230059"
+      },
+      "authoredSourceHashesBefore": {
+        "src/harbor-district.js": "82f786b881798a7c313654630b6c9e3fd307025ed9056c46a7945dc9e76d912f",
+        "src/harbor-frontage-profiles.js": "15825e008acd4af848ad681a80864c7e3c69d9456a15ec88b3632833e22137c6"
+      }
+    },
+    "actualAuthoredSourceHashesAfter": {
+      "src/harbor-district.js": "0e00bc483ece05f73e5711aa7a6e1ee59de2ebe415a9405d94211c66b5dd696d",
+      "src/harbor-frontage-profiles.js": "bdc48b86d9043e5fa263a0db23e15ce27415b2aef9d8d3d7ce50c70ded4231c0"
+    },
+    "basis": {
+      "displayBoundsProof": {
+        "path": "/tmp/neon-frontage-display-art-candidate-20261005/display-bounds-proof.json",
+        "bytes": 425597,
+        "sha256": "b1dbcdcfcab21f8265610e21f35bb093dcb52fcb1ddeae803057234f7c405197"
+      },
+      "adoptionReceipt": {
+        "path": "/tmp/neon-frontage-display-art-candidate-20261005/source-after.json",
+        "sha256": "8d5001a20fd884c99166b9275a25c46c801e0c9ebf54a920ed58327fc95a076b"
+      },
+      "originalGeometryProvenance": {
+        "path": "/tmp/neon-frontage-wide-static-geometry-v2-2026-10-05/geometry.json",
+        "bytes": 231673,
+        "sha256": "93c30fb38f716a26f3080a8a25359f05c92b94c43b8fc7fb88b1ff26f8f6228f"
+      },
+      "colliderAndFixtureSourceBlockSha256Unchanged": "9109ef28068ce757d567afc227bf717c9c74440b377834f34c4d2b182a177ce3"
+    },
+    "changeDescription": "Dedicated warm brass handle material, moved-back display backing, finite real programme-specific shelf goods, and independent transparent non-emissive glazing. Original public-door and all other elevation geometry operations/transforms are unchanged except declared handle material substitution. No collision, fixture, entrance, navigation, support, or route coordinates are changed.",
+    "boundsInterpretation": "New out range .18-.683 is within the existing window outer reach .69. The original ground-profile horizontal AABB starts at out .24, so the new backing .18-.24 is NOT claimed to lie inside that AABB alone: it lies inside the unchanged original registered shell skin (out <= .25). Every added horizontal geometry bounding rectangle is checked against the exact union of those two original envelopes by splitting at overlap out .245.",
+    "bodyAndViewScope": "The original lower-body-height/static source model and original route/clearance values are retained. This amendment proves no added horizontal projection beyond its existing modelled shell/profile union; it does not certify whole-height visual framing, transparency, native timing, or dynamic clearance.",
+    "checks": [
+      {
+        "buildingId": "south-090",
+        "programme": "noodles",
+        "addedGeometryPartsChecked": 48,
+        "oldShellSkinEnvelope": "south-090:skin",
+        "oldGroundProfileEnvelope": "south-090:ground-profile-envelope",
+        "allAddedHorizontalBoundsContainedInOriginalShellSkinAndProfileUnion": true,
+        "splitOutMetres": 0.245,
+        "newOutMinMetres": 0.18000000000000002,
+        "newOutMaxMetres": 0.683,
+        "existingPublicDoorAndOtherGeometryUnchanged": true
+      },
+      {
+        "buildingId": "south-091",
+        "programme": "books",
+        "addedGeometryPartsChecked": 181,
+        "oldShellSkinEnvelope": "south-091:skin",
+        "oldGroundProfileEnvelope": "south-091:ground-profile-envelope",
+        "allAddedHorizontalBoundsContainedInOriginalShellSkinAndProfileUnion": true,
+        "splitOutMetres": 0.245,
+        "newOutMinMetres": 0.18000000000000002,
+        "newOutMaxMetres": 0.683,
+        "existingPublicDoorAndOtherGeometryUnchanged": true
+      },
+      {
+        "buildingId": "south-092",
+        "programme": "cafe",
+        "addedGeometryPartsChecked": 64,
+        "oldShellSkinEnvelope": "south-092:skin",
+        "oldGroundProfileEnvelope": "south-092:ground-profile-envelope",
+        "allAddedHorizontalBoundsContainedInOriginalShellSkinAndProfileUnion": true,
+        "splitOutMetres": 0.245,
+        "newOutMinMetres": 0.18000000000000002,
+        "newOutMaxMetres": 0.683,
+        "existingPublicDoorAndOtherGeometryUnchanged": true
+      },
+      {
+        "buildingId": "south-094",
+        "programme": "bakery",
+        "addedGeometryPartsChecked": 78,
+        "oldShellSkinEnvelope": "south-094:skin",
+        "oldGroundProfileEnvelope": "south-094:ground-profile-envelope",
+        "allAddedHorizontalBoundsContainedInOriginalShellSkinAndProfileUnion": true,
+        "splitOutMetres": 0.245,
+        "newOutMinMetres": 0.18000000000000002,
+        "newOutMaxMetres": 0.683,
+        "existingPublicDoorAndOtherGeometryUnchanged": true
+      },
+      {
+        "buildingId": "south-095",
+        "programme": "market",
+        "addedGeometryPartsChecked": 168,
+        "oldShellSkinEnvelope": "south-095:skin",
+        "oldGroundProfileEnvelope": "south-095:ground-profile-envelope",
+        "allAddedHorizontalBoundsContainedInOriginalShellSkinAndProfileUnion": true,
+        "splitOutMetres": 0.245,
+        "newOutMinMetres": 0.18000000000000002,
+        "newOutMaxMetres": 0.683,
+        "existingPublicDoorAndOtherGeometryUnchanged": true
+      },
+      {
+        "buildingId": "south-096",
+        "programme": "gallery",
+        "addedGeometryPartsChecked": 64,
+        "oldShellSkinEnvelope": "south-096:skin",
+        "oldGroundProfileEnvelope": "south-096:ground-profile-envelope",
+        "allAddedHorizontalBoundsContainedInOriginalShellSkinAndProfileUnion": true,
+        "splitOutMetres": 0.245,
+        "newOutMinMetres": 0.18000000000000002,
+        "newOutMaxMetres": 0.683,
+        "existingPublicDoorAndOtherGeometryUnchanged": true
+      }
+    ],
+    "otherAuthoredSourcePinsMatchRoot": true,
+    "allOriginalCasesAndClearanceNumbersPreserved": true,
+    "notPerformed": [
+      "No new full-world construction",
+      "No new navigation route calculation or gameplay traversal",
+      "No browser or GPU execution",
+      "No new timing/frame-rate evidence",
+      "No native screenshot or visual acceptance"
+    ]
+  },
+  "shopDisplayCraftRefinementAmendment": {
+    "schema": "two-shop-actual-geometry-bounds-amendment-v1",
+    "status": "CPU_ONLY_SOURCE_BOUNDS_COLLIDER_IDENTITY_NATIVE_PENDING",
+    "amendedAtUTC": "2026-10-05T03:19:41.870030+00:00",
+    "candidateBaseHead": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+    "sourceHashesBefore": {
+      "src/harbor-district.js": "0e00bc483ece05f73e5711aa7a6e1ee59de2ebe415a9405d94211c66b5dd696d",
+      "src/harbor-frontage-profiles.js": "bdc48b86d9043e5fa263a0db23e15ce27415b2aef9d8d3d7ce50c70ded4231c0"
+    },
+    "actualSourceHashesAfter": {
+      "src/harbor-district.js": "7e454501bfb4d99edcf8dd2017b5e210f06086b53484623920087b1e0ca4b6fe",
+      "src/harbor-frontage-profiles.js": "215c498d178c8133fdb1f58fe18744c72c9d6df401b9658016a1a7879e5bb7fe"
+    },
+    "previousProofPreserved": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/history/previous-wide-proof/frontage-wide-static-proof.json",
+      "bytes": 34688,
+      "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+    },
+    "previousShopDisplayArtAmendmentRetainedUnmodified": true,
+    "oldSourceAndNativePngLedger": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/original-history-ledger.json",
+      "bytes": 8797,
+      "sha256": "5ee8123d5b709e4ebfcdfdd57bf72d8fb9074ca046b9b30b53513970cb9bceb2"
+    },
+    "cpuBoundsMaterialIdentityAndDisposal": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-final-b-proof.json",
+      "bytes": 14517,
+      "sha256": "efb51faa99e8b685304e35bd78d23fc02da55b7480a46a59f0d237f0bd297602"
+    },
+    "cpuActualTrianglePhysicalDetailProof": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-physical-detail-proof.json",
+      "bytes": 1383,
+      "sha256": "f84af57d15f2754a8d22364d51b1453703e0a7ee2b2b1675fee2120303725a2e"
+    },
+    "limits": {
+      "sixFrontagesDrawCalls": 99,
+      "sixFrontagesTriangles": 84830,
+      "drawLimit": 100,
+      "triangleLimit": 85000,
+      "countsIncludeAllActualCanvasLabelBranches": true,
+      "canvasAndTextureDecodeAreCpuPlaceholders": true
+    },
+    "geometryScope": "Only south094 bakery loaves and south096 craft vessel/cup detail, material separation, fewer craft display items positioned clear of middle mullions; public south096 original coffee sign face repainted exactly coplanar at out .205 with an non-emissive original studio name texture. All other four frontages attribute hashes unchanged. Public opaque doors and transparent display glazing unchanged. No world/chunk source or collision/navigation coordinates changed.",
+    "boundsScope": "All 38 actual new window piece transformed AABBs checked inside their original specific window x/y boundaries and out .18-.69. New loaf radii/height stay inside prior per-loaf maxima; exterior craft vessels stay within old display rack including shelf-top. South096 repaint lies entirely in original south sign face x/y bounds at exact front out .205 and behind actual opaque door front out .43. The old shell/profile horizontal union still covers these new pieces; retained original lower-body/navigation proof cases are not re-run or promoted.",
+    "realTriangleDetailScope": "All 338 score vertices ray-tested above triangulated recessed crust; ceramic rays verify open mouth, real inner floor and real bottom. These are CPU geometry checks, not rendered aesthetic acceptance.",
+    "pending": "Parent final build/rules, exact runtime/source dictionary refresh, bundle proof byte/hash refresh, new south094/south096 High native captures and actual art review; old captures are historical and cannot accept this revision."
+  }
+}

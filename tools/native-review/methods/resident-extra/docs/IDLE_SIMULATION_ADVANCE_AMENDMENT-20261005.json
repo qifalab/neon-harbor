@@ -1,0 +1,83 @@
+{
+  "status": "BOUNDED_ACTUAL_SIMULATION_ADVANCE_CANDIDATE_PENDING_NATIVE",
+  "at": "2026-10-05T03:42:14.468539+00:00",
+  "originalRun": 37259435733,
+  "originalArtifact": 11323799230,
+  "originalHead": "6ad1ec712a32157635d179453e3b468db8cb116c",
+  "originalMethodSha256": "728cd6e76191d5becc48bd0d1b050f7f445b46ce32c2b000f399f66539aaf2f3",
+  "candidateMethodSha256": "c7362468a1f2648d4f7f8db6a9a3aefd3c3f6fa8346ba0ddae1cca0676bbbc69",
+  "originalFirstFailurePreserved": true,
+  "originalZip": {
+    "path": "/workspace/attachments/19d4274a-b083-4cbd-8f74-e54609c55422/neon-6ad1-north-phone-original-fail.zip",
+    "bytes": 31667071,
+    "sha256": "c4faf91898a88d1d5417e13275eae9806555928599ba8c2b7370b6d47b3e9a96"
+  },
+  "originalMetadataSha256": "129c15af9c2fd3817068be137463126e8a97f1801a8b3b2590a583584db927b6",
+  "originalFirstFailure": {
+    "at": "2026-10-05T03:33:13.611Z",
+    "type": "method",
+    "message": "AssertionError [ERR_ASSERTION]: idle observation must actually advance\n    at observe45 (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:289:10)\n    at async northCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:379:81)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:535:107)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:584:3"
+  },
+  "recordedEvidence": {
+    "beforeWalkAt": "2026-10-05T03:33:08.524Z",
+    "idleBeforeWalkAt": "2026-10-05T03:33:13.592Z",
+    "identicalSnapshots": true,
+    "simulationTimeBoth": 16.966666666666985,
+    "recordedLastFrameWallDtSeconds": 5.5165,
+    "physicalProgressRows": 37,
+    "maximumRecordedFrameWallDtSeconds": 9.266299999999989,
+    "recordedFrameRowsOverFiveSeconds": 8,
+    "visibilityFocusOrRafSequenceRecorded": false,
+    "lastSnapshotReady": true,
+    "lastSnapshotPaused": false,
+    "lastSnapshotContextLost": false
+  },
+  "scope": "Shared observe45 idle gate only. Keep original five-second released-input idle, then wait finitely for an actual positive simulation delta; every read shares the same phase deadline clamped to unchanged whole deadline. No input, setting, focus, time or simulation setters are added. Bounded idle snapshots are staged in the existing observations array; evidence is persisted once after the wait phase closes under the existing whole-method handling. File I/O is not described as hard-limited by the 30-second wait budget.",
+  "phaseBudget": {
+    "originalIdleMs": 5000,
+    "maximumAdditionalWallMs": 30000,
+    "pollGapMs": 1500,
+    "includesSnapshotReads": true,
+    "clampedToOriginalWholeDeadline": true,
+    "startsAfterOriginalFiveSecondDelay": true,
+    "neverAdvanceIsFirstFailure": true,
+    "evidencePersistenceOutsideWaitPhase": true,
+    "phaseSamplesStagedInOriginalObservations": true
+  },
+  "unchangedGuardsAndActions": {
+    "minimumObservationWallMs": 45000,
+    "originalWalkOutDistanceMeters": 4,
+    "originalWalkBackTarget": "original start.position.x",
+    "legWallMs": 180000,
+    "firstPersonSettingCameraWallMs": 15000,
+    "independentPublicFocusWallMs": 180000,
+    "highViewport": [
+      1280,
+      800
+    ],
+    "deviceScaleFactor": 1,
+    "teleportRevisionMustMatch": true,
+    "originalValidateFunctionUnchanged": true,
+    "qualityAndViewMustRemainStartValues": true,
+    "readyMustRemainTrue": true,
+    "allPriorPhoneSprintCupParcelResidentLoopAndCleanupBytesOutsideIdleAndPlanHunksUnchanged": true
+  },
+  "wholeBudgetsSeconds": {
+    "north-book": 1080,
+    "north-phone": 1080,
+    "north-cup-owner": 2400,
+    "south-parcel": 3600,
+    "resident-loop": 10800
+  },
+  "productionSourceChanges": false,
+  "verifiedExactOriginalProductionSourcePins": {
+    "src/simulation.js": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+    "src/frame-clock.js": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+    "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850"
+  },
+  "cpuReceipt": "proof/cpu-idle-gate-receipt.json",
+  "cpuChecks": 13,
+  "nativeResult": "NOT_RUN",
+  "artAcceptance": "NOT_EVALUATED",
+  "evidenceLimit": "Recorded frame timing supports a fixed five-second window not covering a newer completed frame. Missing visibility/focus/RAF diagnostics prevent proving the cause or ruling out a continuing stall. The finite wait remains a first failure when there is no actual progress."
+}

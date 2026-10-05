@@ -222,7 +222,10 @@ function publicInterviewInput(s,corridorReached) {
     {keys:['s','d'],forward:-1,strafe:1},{keys:['s','a'],forward:-1,strafe:-1}];
   for(const c of candidates){const q=Math.hypot(c.forward,c.strafe);c.x=(Math.sin(yaw)*c.forward-Math.cos(yaw)*c.strafe)/q;c.z=(Math.cos(yaw)*c.forward+Math.sin(yaw)*c.strafe)/q;c.dot=c.x*dx+c.z*dz;}
   const choice=candidates.sort((a,b)=>b.dot-a.dot)[0];
-  return {keys:choice.keys,slow:passedCorridor?distance<=3:goalDistance<=3.2,passedCorridor,distance};
+  // The corridor is a crossing waypoint, not the photograph endpoint.
+  // Use public sprint only on its long unobstructed approach; release Shift
+  // before the crossing and retain Z for the actual moving close interview.
+  return {keys:choice.keys,slow:passedCorridor&&distance<=3,sprint:!passedCorridor&&goalDistance>3.2,passedCorridor,distance};
 }
 async function dynamicShopkeeperCapture() {
   const id='resident-tide-museum-1',started=await read(),startWall=Date.now();
@@ -243,7 +246,7 @@ async function dynamicShopkeeperCapture() {
         const target=s.north.find(n=>n.id===id);assert.ok(target?.materialized&&!target.insideBuildingId,'actual shopkeeper must remain visible on its real pavement');
         const input=publicInterviewInput({...s,target},passedCorridor);passedCorridor=input.passedCorridor;
         if(s.simulationTime-lastSim>=.1){assert.ok(trace.length<2048,'finite interview pose record');trace.push({at:new Date().toISOString(),phase,simulationTime:s.simulationTime,player:s.position,target:{id,x:target.x,y:target.y,z:target.z,yaw:target.yaw,state:target.state,insideBuildingId:target.insideBuildingId},distance:input.distance,keys:input.keys,slow:input.slow});lastSim=s.simulationTime;}
-        await setHeld([...input.keys,...(input.slow?['z']:[])]);
+        await setHeld([...input.keys,...(input.slow?['z']:[]),...(input.sprint?['Shift']:[])]);
         if(phase==='approach'&&passedCorridor&&input.distance<=3)readyResolve();
         await new Promise(ok=>setTimeout(ok,Math.min(100,remaining())));
       }

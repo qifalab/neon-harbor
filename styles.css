@@ -36,3 +36,6 @@ dialog{width:min(920px,94vw);max-height:88vh;overflow:auto;padding:32px;border:1
 .welcome>.menu-top,.welcome>.hero-copy,.welcome>.welcome-footer{flex-shrink:0}
 
 .welcome button,.welcome a{scroll-margin-block:16px}
+
+/* Optional clear view keeps pause, view switching and interaction accessible. */
+.hud.details-hidden .mission-card,.hud.details-hidden .map-wrap,.hud.details-hidden .driving-info{display:none}

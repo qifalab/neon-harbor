@@ -148,6 +148,13 @@ $('start').addEventListener('click',enterCity);$('welcome-settings').addEventLis
 $('welcome-sample').addEventListener('click',()=>openPanel('harbor'));$('harbor-life').addEventListener('click',()=>openPanel('harbor'));
 $('welcome-multiplayer').addEventListener('click',()=>openPanel('multiplayer'));$('multiplayer').addEventListener('click',()=>openPanel('multiplayer'));
 $('view-toggle').addEventListener('click',toggleView);
+$('hud-detail-toggle').addEventListener('click',()=>{
+  const compact=$('hud').classList.toggle('details-hidden');
+  $('hud-detail-toggle').textContent=compact?'显示信息':'简洁视野';
+  $('hud-detail-toggle').setAttribute('aria-pressed',String(compact));
+  $('hud-detail-toggle').setAttribute('aria-label',compact?'显示地图与导览卡片':'收起地图与导览卡片，获得简洁视野');
+  cleanInput();$('game').focus();
+});
 $('pause').addEventListener('click',()=>openPanel('jobs'));$('jobs').addEventListener('click',()=>openPanel('jobs'));$('map-button').addEventListener('click',()=>openPanel('map'));$('explore-city').addEventListener('click',()=>openPanel('explore'));$('welcome-explore').addEventListener('click',()=>openPanel('explore'));
 $('close-panel').addEventListener('click',closePanel);$('resume').addEventListener('click',closePanel);
 for(const tab of document.querySelectorAll('[data-tab]'))tab.addEventListener('click',()=>{activeTab=tab.dataset.tab;renderPanel();});

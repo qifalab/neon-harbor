@@ -226,7 +226,7 @@ async function room(building, type, label) {
   await route(building, label + '-enter', [{ x: building.x, z: p.z }, { x: building.x, z: r.entrance.z },
     { x: r.arrival.x, z: r.entrance.z }, { x: r.arrival.x, z: r.arrival.z }]);
   s = await event('physical-room-entry-' + type); assert.equal(s.city.interior.currentRoomId, r.id);
-  await input.face(Math.atan2(r.x - s.position.x, r.z - s.position.z), .15);
+  await input.face(Math.atan2(r.x - r.arrival.x, r.z - r.arrival.z), .15);
   await capture(label, { buildingId: building.id, room: r });
   if (type === 'lookout') { await input.face(-Math.PI / 2, .26); await capture('east-observation-waterfront-view', { actualUpperFloor: s.city.interior.floorId, realRoom: r }); }
   await route(building, label + '-return', [{ x: (await snapshot(page)).position.x, z: r.entrance.z }, { x: building.x, z: r.entrance.z }]);

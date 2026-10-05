@@ -1,0 +1,69 @@
+{
+  "sealedAtUTC": "2026-10-05T03:43:41.269099+00:00",
+  "payloadLedger": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/payload-ledger.json",
+    "bytes": 7357,
+    "sha256": "715afaada8f79b1910eb05552d701cc270d0e7e8a6a41b00a1c9b5b4fbde78a2"
+  },
+  "worldPatch": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/world-hook-only.patch",
+    "bytes": 6432,
+    "sha256": "83e8463446709ce6128d1b554fc85af818e640fa655fbc7f9448a699a51ed97d"
+  },
+  "ownerAndBudgetCpu": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-six-near-trees-proof.json",
+    "bytes": 8300,
+    "sha256": "38e506bd166586cae43e8f8663dcaad6c53bbe306bc833fb8e15af8c96e4c61a"
+  },
+  "realStreamAndSolidLeafCpu": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-streamer-physical-tree-proof.json",
+    "bytes": 5597,
+    "sha256": "1612c80c1b7770e7a4317b2e1c0029dddc75ab349942262b96862892ee405eed"
+  },
+  "originalMapsCpu": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-original-texture-proof.json",
+    "bytes": 930,
+    "sha256": "d971a596ea104411fab2d56126b1b51aaddc3eaedcc501bf195df027e93504b3"
+  },
+  "originalHighPng": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/history/original-high-native/02-commuter-player.png",
+    "bytes": 1341857,
+    "sha256": "11c3d73d181e77621727a7330dccec1cdcebb8ec6f417ad8ab541c42bb0ffd57"
+  },
+  "originalHighMetadata": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/history/original-high-native/metadata.json",
+    "bytes": 2062273,
+    "sha256": "514330ad322e3700a9759cba5dde6bc107c226c245720b8549858e22f39fdf9a"
+  },
+  "modelAuthorRawResult": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-author-models.stdout.txt",
+    "bytes": 3126,
+    "sha256": "12747a0f7760faf18061a359ce18eee2aa82f3649d0fba52b747e5c573e7677b"
+  },
+  "parentPinRefreshRequired": [
+    "new src/harbor-sample-trees.js and changed src/metropolis-world.js in authored full build/runtime dictionary",
+    "3 new assets/harbor/vegetation/*.glb plus asset-manifest.json / LICENSE according to parent build resource inclusion",
+    "all live method proofs with sourceHashes.authored[src/metropolis-world.js]: preserve original proof bytes/history and add explicit bounded six-tree rendering-only amendment; original route/collider/export model is exactly unchanged",
+    "bundle-manifest actual hashes for any explicitly amended live method proof; historical source/build dictionaries remain unchanged",
+    "three source-author recipe/image SHA pins in asset-manifest verified directly; new native High tree shot must bind fresh combined tree+mountain source and full asset dictionary"
+  ],
+  "mountainHookCompatibility": "World patch leaves buildBatches InstancedMesh constructor/loop unchanged. Root should apply additive imports/dispose hooks and only this tree owner hunk beside independently reviewed mountain buildBatches change, rather than overwrite the mountain source.",
+  "noRootFrozenCandidateGpuNetworkMutations": true,
+  "status": "CPU_PASS_NATIVE_ART_REVIEW_PENDING",
+  "actualClosedParentTriangleContainment": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-real-branch-attachment-proof.json",
+    "bytes": 22592,
+    "sha256": "61d61d4ec8cafec313ebc053dbe71ebc90e3c9ea93d858e35ae3b1ef21b2a9fd"
+  },
+  "adoptionDescription": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/ADOPTION.md",
+    "bytes": 4561,
+    "sha256": "5b855dccc6d8fc054af32e271585d612ea36ab4b0e2d1a8fc05150afe2bf4cab"
+  },
+  "sourceFreezeScope": "The two production JS source hashes remain 7870323230db1e7e4bda2a218e479a3ecd61d8ed72403e628adf85b9891a18e5 and 2eca03d2f662e6dfa97748b9f309c45b82a0aa6a224340e173d93d8d7ce02e25. The three final GLB hashes supersede the explicitly preserved first branch-attachment draft. Parent recomputes combined tree+mountain world source pin after merge.",
+  "originalSourceImageAndDraftHistoryArchive": {
+    "path": "/tmp/neon-sample-near-trees-candidate-20261005/original-source-image-and-draft-history.tar.gz",
+    "bytes": 2939526,
+    "sha256": "7e52d71087b0414ffbb9025abae0f4b1c21fde6aa3b099c3326f1d4abff00203"
+  }
+}

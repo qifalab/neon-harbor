@@ -185,9 +185,9 @@ async function captureCase(kind) {
     try {
       await bounded(async()=>{
         const s=await read();phase.progress.push({when:'before-input',status:'OBSERVED',at:new Date().toISOString(),observed:progressOf(s)});
-        // Only a ferry cabin leg can reuse the fresh, actual rendered camera
-        // when it already satisfies the identical original aim predicate.
-        if(kind==='ferry'&&acceptCurrent&&Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)
+        // Cabin walking may reuse a fresh actual rendered camera when it
+        // already satisfies the identical original aim predicate.
+        if(acceptCurrent&&Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)
           &&Math.abs(angle(s.camera.yaw-yaw))<.025&&Math.abs(s.camera.pitch-pitch)<.003) {
           assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
           phase.skippedPointerInput=true;phase.satisfiedBy='fresh-read-only-current-camera-original-predicate';
@@ -264,7 +264,7 @@ async function captureCase(kind) {
       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
-        const desired=v.yaw+Math.atan2(dx,dz)-offset;await aim(p,desired,.15,{acceptCurrent:kind==='ferry'});const slow=precision||distance(target,before)<1.2;
+        const desired=v.yaw+Math.atan2(dx,dz)-offset;await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null;
         try {guardBeforeAction=await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}

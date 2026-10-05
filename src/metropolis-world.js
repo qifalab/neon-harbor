@@ -1,3 +1,4 @@
+import { createSampleStreetTrees } from './harbor-sample-trees.js';
 import { DistrictStreamer, validateCityChunk } from './city-streaming.js';
 import { METROPOLIS_BUILDINGS, METROPOLIS_DISTRICTS, METROPOLIS_ROADS, publicInteriorFootprint } from './metropolis-catalog.js';
 import { createMetropolisMaterials } from './metropolis-materials.js';
@@ -5,11 +6,12 @@ import { architectureDesignFor, architectureSignLayout, architectureStalls } fro
 import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
 import { subtractGroundRect } from './terrain-openings.js';
 import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
+import { createWesternMountainBatch } from './metropolis-western-ridge.js';
 
 /** North shore: permanent terrain/collision/silhouettes, independently fetched detail. */
 export function createMetropolisWorld(THREE, scene, {
   quality = 'high', streaming = true,
-  assetBase = new URL('../assets/metropolis/chunks/', import.meta.url).href,
+  assetBase = new URL('../assets/metropolis/chunks/', import.meta.url).href, sampleTreeOptions = {},
 } = {}) {
   const root = new THREE.Group(); root.name = 'North Shore · 48 addresses'; scene.add(root);
   const colliders = [], staticPool = new Map(), detailPools = new Map();
@@ -779,22 +781,25 @@ export function createMetropolisWorld(THREE, scene, {
     for(const batch of batches) {
       const geo=geometries[batch.kind];if(!geo)throw new Error(`Unknown metropolis geometry ${batch.kind}`);
       if(batch.buildings && (batch.buildings.length!==batch.transforms.length||batch.buildings.some(id=>id!==null&&!chunkByBuilding.has(id))))throw new Error('Invalid metropolis building membership');
-      const mesh=new THREE.InstancedMesh(geo,material(batch.material),batch.transforms.length);
+      const mountainBatch=name==='North shore silhouettes'&&batch.kind==='cone'&&batch.material==='leaves';
+      const mesh=mountainBatch?createWesternMountainBatch(THREE,batch,geo,material(batch.material)):new THREE.InstancedMesh(geo,material(batch.material),batch.transforms.length);
+      if(mountainBatch){geometries.westernRidge=mesh.geometry;materials.set('western-ridge',mesh.material);}
       // Window panes/paint and streamed trim do not need their own shadow map
       // pass; the permanent shell supplies the building's full silhouette.
       mesh.userData.noShadow=['glass','glassDark','light','line','white','water'].includes(batch.material)||(name!=='North shore silhouettes'&&!['leaves','trunk'].includes(batch.material));
       mesh.castShadow=currentQuality==='high'&&!mesh.userData.noShadow;mesh.receiveShadow=true;mesh.name=`${name} · ${batch.kind} · ${batch.material}`;
       mesh.userData.buildings=batch.buildings||batch.transforms.map(()=>null);
       mesh.userData.originalTransforms=batch.transforms;
-      for(let index=0;index<batch.transforms.length;index++) {
+      for(let index=0;mesh.isInstancedMesh&&index<batch.transforms.length;index++) {
         const t=batch.transforms[index];dummy.position.set(t[0],t[1],t[2]);dummy.scale.set(t[3],t[4],t[5]);dummy.rotation.set(t[6],t[7],t[8]);dummy.updateMatrix();mesh.setMatrixAt(index,dummy.matrix);
       }
-      mesh.computeBoundingSphere();group.add(mesh);instances+=batch.transforms.length;
+      if(mesh.isInstancedMesh)mesh.computeBoundingSphere();group.add(mesh);instances+=batch.transforms.length;
     }
     group.userData.instances=instances;return group;
   }
   const permanent=buildBatches([...staticPool.values()],'North shore silhouettes');root.add(permanent);
   const liveGroups=new Map();
+  const sampleTrees=createSampleStreetTrees(THREE,root,{...sampleTreeOptions,quality});
   function applyInteriorVisibility(group) {
     group.traverse(mesh=>{
       if(!mesh.isInstancedMesh)return;
@@ -806,6 +811,7 @@ export function createMetropolisWorld(THREE, scene, {
       }
       mesh.instanceMatrix.needsUpdate=true;
     });
+    sampleTrees.setInteriorBuilding(interiorId);
   }
   const streamer=streaming?new DistrictStreamer({ chunks,loadRadius:230,unloadRadius:420,prefetchDistance:180,concurrency:3,maxResidentChunks:7,unloadDelay:2.5,
     load:async(meta,signal)=>{
@@ -814,9 +820,9 @@ export function createMetropolisWorld(THREE, scene, {
       const source=await response.text(),payload=validateCityChunk(JSON.parse(source),meta.id);
       const node=buildBatches(payload.batches,meta.id);return {node,bytes:new TextEncoder().encode(source).length,instances:node.userData.instances,meshes:node.children.length};
     },
-    attach:(node,meta)=>{root.add(node);liveGroups.set(meta.id,node);applyInteriorVisibility(node);},
+    attach:(node,meta)=>{root.add(node);liveGroups.set(meta.id,node);sampleTrees.register(node);applyInteriorVisibility(node);},
     detach:(node,meta)=>{
-      if(!node)return 0;root.remove(node);liveGroups.delete(meta.id);
+      if(!node)return 0;sampleTrees.unregister(node);root.remove(node);liveGroups.delete(meta.id);
       node.traverse(mesh=>{
         if(!mesh.isInstancedMesh)return;
         // A shop sign belongs to exactly one address/chunk. Release its canvas
@@ -828,7 +834,7 @@ export function createMetropolisWorld(THREE, scene, {
       return node.userData.instances||0;
     },
   }):null;
-  if(!streaming)for(const [id,pool]of detailPools) {const node=buildBatches([...pool.values()],id);root.add(node);liveGroups.set(id,node);}
+  if(!streaming)for(const [id,pool]of detailPools) {const node=buildBatches([...pool.values()],id);root.add(node);liveGroups.set(id,node);sampleTrees.register(node);}
 
   const labels=typeof document!=='undefined'?createLabels(THREE,METROPOLIS_BUILDINGS):[];
   for(const label of labels)root.add(label);
@@ -841,10 +847,11 @@ export function createMetropolisWorld(THREE, scene, {
       if(x>=-740&&x<=740&&z>=-1380&&z<=-390)return 0;
       return null;
     },
-    prepare:position=>streamer?streamer.prepare(position):Promise.resolve({ready:true,failed:[],loaded:12}),
+    prepare:async position=>{const result=streamer?await streamer.prepare(position):{ready:true,failed:[],loaded:12};await sampleTrees.readyFor(position);return result;},
     retry:position=>streamer?streamer.retry(position):Promise.resolve({ready:true,failed:[],loaded:12}),
     update(position,velocity,dt=0) {
       streamer?.update(position,velocity,dt);
+      sampleTrees.update(position);
       for(const label of labels)label.visible=label.userData.buildingId!==interiorId&&Math.hypot(label.position.x-position.x,label.position.z-position.z)<155;
     },
     setInteriorBuilding(id) {
@@ -853,10 +860,11 @@ export function createMetropolisWorld(THREE, scene, {
       interiorId=id;applyInteriorVisibility(permanent);for(const group of liveGroups.values())applyInteriorVisibility(group);
       for(const label of labels)if(label.userData.buildingId===id)label.visible=false;
     },
-    setQuality(value) {currentQuality=value;root.traverse(mesh=>{if(mesh.isMesh)mesh.castShadow=value==='high'&&!mesh.userData.noShadow;});},
-    get streamingStats(){return streamer?streamer.stats:{ready:true,loaded:12,pending:0,failed:0,residentInstances:[...liveGroups.values()].reduce((n,g)=>n+g.userData.instances,0),activeChunks:chunks.map(c=>c.id)};},
+    setQuality(value) {currentQuality=value;sampleTrees.setQuality(value);root.traverse(mesh=>{if(mesh.isMesh)mesh.castShadow=value==='high'&&!mesh.userData.noShadow;});},
+    get sampleTreeStats(){return sampleTrees.snapshot();},
+    get streamingStats(){const stats=streamer?streamer.stats:{ready:true,loaded:12,pending:0,failed:0,residentInstances:[...liveGroups.values()].reduce((n,g)=>n+g.userData.instances,0),activeChunks:chunks.map(c=>c.id)};return{...stats,sampleTrees:sampleTrees.snapshot()};},
     exportCity(){return {version:1,chunkSize:320,chunks,payloads:[...detailPools].map(([id,pool])=>({version:1,id,batches:[...pool.values()]}))};},
-    dispose(){streamer?.dispose();root.removeFromParent();root.traverse(mesh=>{if(mesh.isInstancedMesh)mesh.dispose();});for(const geo of Object.values(geometries))geo.dispose();for(const m of materials.values())m.dispose();for(const texture of signTextures)texture.dispose();for(const label of labels){label.material.map?.dispose();label.material.dispose();}},
+    dispose(){streamer?.dispose();sampleTrees.dispose();root.removeFromParent();root.traverse(mesh=>{if(mesh.isInstancedMesh)mesh.dispose();});for(const geo of Object.values(geometries))geo.dispose();for(const m of materials.values())m.dispose();for(const texture of signTextures)texture.dispose();for(const label of labels){label.material.map?.dispose();label.material.dispose();}},
   };
 }
 

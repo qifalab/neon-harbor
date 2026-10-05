@@ -1,0 +1,48 @@
+{
+  "status": "ACTIVE_PUBLIC_HUD_SOURCE_PIN_AMENDMENT_NATIVE_CLICK_PENDING",
+  "at": "2026-10-05T04:47:52.475839+00:00",
+  "sourceHashesBefore": {
+    "index.html": "4d664cbe3e994c8cd695aa040eaea89b4617d17733c7f0fdae5218eb326d7582",
+    "styles.css": "b678622cdca60ee8ba4bc13dcb7a932e950bc4f51232a429bf8339405ecd42e7",
+    "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850"
+  },
+  "sourceHashesAfter": {
+    "index.html": "4fca4a76a27849dca753ec34a8e4ba38bfdb4bb7e9ac57b6bfb64850df8c2f66",
+    "styles.css": "8a62bca88da2c27403cc937f760e0195c722a273c81af57c25e7f8bc140f8a2c",
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+  },
+  "originalHudSourceReceipt": {
+    "path": "runtime-amendments/public-hud-control-20261005/public-hud-amendment-original.json",
+    "bytes": 786,
+    "sha256": "040d7ed7088c75c2d3517a4f8145c24cb51bd724d7aa3fe939cb6f0fc78ff7d9"
+  },
+  "actualFinalBuildInfo": {
+    "path": "expected-build-provenance/authored-build-info-street-trees-western-ridge-public-hud-20261005-dc28ab1f15da.json",
+    "sha256": "dc28ab1f15dafc1ec47a6d779a2f784a3029c395eee8a472c4cf0fef42517ba6",
+    "version": "0.8.0",
+    "assetCount": 199,
+    "revision": null,
+    "bytes": 21307,
+    "scope": "Actual completed final build combines six near-street trees, ten western decorative ridge silhouettes and the optional reversible public HUD view control. Exact seven runtime additions and four changed runtime files from original6ad192; no other runtime changes. No build/rule/geometry/browser/GPU execution is performed by this metadata refresh.",
+    "note": "Actual local build revisionnull. A future actual remote Git HEAD/build revision must be verified independently. Native rendering, actual public HUD click/restore and human art acceptance remain pending."
+  },
+  "retainedSourceIdentity": {
+    "src/simulation.js": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+    "src/frame-clock.js": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+    "src/camera.js": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+    "src/harbor-authored-transport.js": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
+    "src/harbor-authored-transit-snapshot.js": "ad658d129d4b5de7eae93eaae1540c6db1a892a0df75b7e528cb26a09493ab6e",
+    "src/harbor-authored-transport-assets.js": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848",
+    "src/contact-occlusion.js": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8"
+  },
+  "scope": "Optional session-only public button; map/guide/status panels hidden and restorable, interaction/pause/view retained. Default High and simulation untouched.",
+  "sourceReview": "Actual git diff inspected: index adds #hud-detail-toggle button; main adds only a reversible details-hidden class/text/ARIA click handler, releases inputs and refocuses canvas; CSS hides only mission/map/driving panels while compact. Current main-source pin changes only because of this public UI control. Metadata refresh does not execute public click/restore. Existing resident original-source-inspection/idle-failure evidence hashes remain historical and unmodified.",
+  "originalOwnerManifest": {
+    "path": "runtime-amendments/public-hud-control-20261005/original-transport-owner-method-manifest-6ad.json",
+    "bytes": 8795,
+    "sha256": "a7726eea60eb96c3649f55251f2a28d7103c3c7cb39e76647e8b12cb77988d36"
+  },
+  "nativeHudClickRestoreExecuted": false,
+  "existingRouteGeometryRerunByMetadataRefresh": false,
+  "humanArtAcceptance": false
+}
