@@ -1,0 +1,214 @@
+{
+  "status": "BLOCKED_KNOWN_SOURCE_TIME_AND_CAMERA_LAG_PRESSURE_DO_NOT_DISPATCH_AS_NATIVE_READY",
+  "candidateCodeUnchangedAfterInitialGeneration": true,
+  "candidateMethod": {
+    "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+    "bytes": 64676,
+    "sha256": "240055dbca55f1e8b85f3567939e67f8745d1c1606f3f28cf988271daf1aed2c"
+  },
+  "parentMethod": {
+    "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/original-15c-active-2e9-native-transport-high.mjs",
+    "bytes": 57789,
+    "sha256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94"
+  },
+  "sourceHEAD": "15c692eae329b8eaa8d5aba9ada4149e6b5bec79",
+  "actualSourceRawBuild": {
+    "path": "/workspace/neon-candidates/harbor-combined-transit-art-final-20261005/dist/build-info.json",
+    "bytes": 22347,
+    "sha256": "a29cd13a867bbddd4dd5578f19c296a9fd899beb5fb3c77e00051587c13a1076"
+  },
+  "cpuReceipt": {
+    "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/ACTUAL_SOURCE_FERRY_RELATIVE_AIM_CPU_RECEIPT.json",
+    "bytes": 1084717,
+    "sha256": "68b0485e27a8f2e760c6a05f7a873e6aa1b96218086bd2d0590baa3085a0b407"
+  },
+  "literalBusTramCPUReceipt": {
+    "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/BUS_TRAM_LITERAL_PUBLIC_ACTION_AND_MOTION_CPU_RECEIPT.json",
+    "bytes": 304868,
+    "sha256": "b25d86985067ed1aefe1fe267ecdd0abb652d18237f82eebc31dbc5c393f3246"
+  },
+  "exactReversal": {
+    "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/EXACT_SOURCE_REVERSAL.json",
+    "bytes": 8187,
+    "sha256": "429701355d1d6a1aba60be4a5cf827afbc86da214c217b74731c36de94248c0f"
+  },
+  "firstOriginalFailureReviewSeal": {
+    "path": "/workspace/neon-candidates/current220-ferry-high-first-failure-original-deep-readonly-review-20261005/SEAL.json",
+    "bytes": 1011,
+    "sha256": "fa7129c50bc6c72b0efb3fa582e3cb9a4e199cc9740e653b83894be66fef8a5d"
+  },
+  "sourcePhysicalMath": {
+    "cameraFormula": "cameraNext = cameraPrevious + angle(requestedOrbitYaw-cameraPrevious)*(1-exp(-12*actualFrameDt))",
+    "dt": 0.25,
+    "weight": 0.950212931632136,
+    "passengerUpdate": "15 actual source 1/60 substeps; input camera sampled before steps; real boat source updates before stepPlayer; camera update after steps",
+    "newProtocolPressureSeed": "Original authored lower5 n6 aim before-input snapshot sim109.4333333333284, local[-2.3172491509258943,1.3,-7.221266538349477], camera3.19833879580247",
+    "fixtureCaveat": "7666.4ms per frame is a fixed pressure fixture from an observed original High-frame value; not whole-run mean and not a native result. It represents a relevant potential slow frame condition, not an environment exemption.",
+    "failure": "8 real public mouse corrections, 8 physical frames, no movement key, original60 aim deadline reached because fixed current orbit requested before frame lags the newly rotated Ferry relative target by .084-.110 radians, above original.025. Only initial one full and one compact read; remaining observations are small handles.",
+    "correctedCausalScope": "Some old desired goals equal the relative goal at the aim before-input read. The observed source gap can arise between camera-match and later guard/physical frame; do not claim every outer state was already stale before aim.",
+    "rawNativeKeyWallTimestampsAvailable": false
+  },
+  "pressureRows": [
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:01.020Z",
+      "simulationTime": 109.4333333333284,
+      "actualSourceVehicleYaw": -3.0411707767864975,
+      "actualSourceCameraYaw": 3.19833879580247,
+      "actualSourceRelativeDesiredYaw": -2.985665493549855,
+      "angleGap": 0.09918101782726142
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:08.716Z",
+      "simulationTime": 109.68333333332839,
+      "actualSourceVehicleYaw": -2.9483415783894045,
+      "actualSourceCameraYaw": 3.292581881514371,
+      "actualSourceRelativeDesiredYaw": -2.8928362951527617,
+      "angleGap": 0.0977671305124537
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:08.716Z",
+      "simulationTime": 109.68333333332839,
+      "actualSourceVehicleYaw": -2.9483415783894045,
+      "actualSourceCameraYaw": 3.292581881514371,
+      "actualSourceRelativeDesiredYaw": -2.8928362951527617,
+      "angleGap": 0.0977671305124537
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:16.412Z",
+      "simulationTime": 109.93333333332838,
+      "actualSourceVehicleYaw": -2.8489488735771884,
+      "actualSourceCameraYaw": 3.385481473215871,
+      "actualSourceRelativeDesiredYaw": -2.793443590340546,
+      "angleGap": 0.10426024362316991
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:16.412Z",
+      "simulationTime": 109.93333333332838,
+      "actualSourceVehicleYaw": -2.8489488735771884,
+      "actualSourceCameraYaw": 3.385481473215871,
+      "actualSourceRelativeDesiredYaw": -2.793443590340546,
+      "angleGap": 0.10426024362316991
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:24.109Z",
+      "simulationTime": 110.18333333332836,
+      "actualSourceVehicleYaw": -2.746506982584625,
+      "actualSourceCameraYaw": 3.4845509049617234,
+      "actualSourceRelativeDesiredYaw": -2.691001699347982,
+      "angleGap": 0.10763270286988048
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:24.109Z",
+      "simulationTime": 110.18333333332836,
+      "actualSourceVehicleYaw": -2.746506982584625,
+      "actualSourceCameraYaw": 3.4845509049617234,
+      "actualSourceRelativeDesiredYaw": -2.691001699347982,
+      "angleGap": 0.10763270286988048
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:31.805Z",
+      "simulationTime": 110.43333333332835,
+      "actualSourceVehicleYaw": -2.643788559029102,
+      "actualSourceCameraYaw": 3.5868248910952034,
+      "actualSourceRelativeDesiredYaw": -2.5882832757924596,
+      "angleGap": 0.10807714029192386
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:31.805Z",
+      "simulationTime": 110.43333333332835,
+      "actualSourceVehicleYaw": -2.643788559029102,
+      "actualSourceCameraYaw": 3.5868248910952034,
+      "actualSourceRelativeDesiredYaw": -2.5882832757924596,
+      "angleGap": 0.10807714029192386
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:39.502Z",
+      "simulationTime": 110.68333333332833,
+      "actualSourceVehicleYaw": -2.543838534328876,
+      "actualSourceCameraYaw": 3.6895211874144094,
+      "actualSourceRelativeDesiredYaw": -2.488333251092234,
+      "angleGap": 0.10533086867294308
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:39.502Z",
+      "simulationTime": 110.68333333332833,
+      "actualSourceVehicleYaw": -2.543838534328876,
+      "actualSourceCameraYaw": 3.6895211874144094,
+      "actualSourceRelativeDesiredYaw": -2.488333251092234,
+      "angleGap": 0.10533086867294308
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:47.198Z",
+      "simulationTime": 110.93333333332832,
+      "actualSourceVehicleYaw": -2.4493583226153217,
+      "actualSourceCameraYaw": 3.789607940927486,
+      "actualSourceRelativeDesiredYaw": -2.3938530393786794,
+      "angleGap": 0.09972432687342117
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:47.198Z",
+      "simulationTime": 110.93333333332832,
+      "actualSourceVehicleYaw": -2.4493583226153217,
+      "actualSourceCameraYaw": 3.789607940927486,
+      "actualSourceRelativeDesiredYaw": -2.3938530393786794,
+      "angleGap": 0.09972432687342117
+    },
+    {
+      "when": "fresh-relative-readonly-waiter",
+      "status": "PUBLIC_RELATIVE_REAIM_REQUIRED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:54.894Z",
+      "simulationTime": 111.1833333333283,
+      "actualSourceVehicleYaw": -2.3702994108942366,
+      "actualSourceCameraYaw": 3.8843672859209204,
+      "actualSourceRelativeDesiredYaw": -2.3147941276575943,
+      "angleGap": 0.08402389360107179
+    },
+    {
+      "when": "fresh-relative-before-public-input",
+      "status": "OBSERVED",
+      "syntheticWallTimestamp": "1970-01-01T00:00:54.894Z",
+      "simulationTime": 111.1833333333283,
+      "actualSourceVehicleYaw": -2.3702994108942366,
+      "actualSourceCameraYaw": 3.8843672859209204,
+      "actualSourceRelativeDesiredYaw": -2.3147941276575943,
+      "angleGap": 0.08402389360107179
+    }
+  ],
+  "necessaryNextConsideration": "Finite real public-mouse anticipation from actually observed boat yaw change and actual unchanged ChaseCamera damping, with every successful control frame still independently matching actual current goal at original.025. No future simulation/camera/world setter and no budget/tolerance weakening. Not implemented or approved here.",
+  "limits": {
+    "genericAimAndPhotoAndHeldObserverLiteral": true,
+    "sourceRuntimeChanged": false,
+    "nativeExecuted": false,
+    "GPUExecuted": false,
+    "nativePassed": false,
+    "finalReleasedDiagnosticRPCRejectionSeparatelyInjected": false,
+    "errorAndCleanupSourceBlocksLiteral": true,
+    "originalHarnnessAssumptionFailuresPreserved": true
+  }
+}

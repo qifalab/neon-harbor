@@ -335,12 +335,12 @@
       "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
     },
     "methods/transport/method-manifest.json": {
-      "bytes": 22938,
-      "sha256": "574b04a1164c6d30321fba27e439e6315eea79d896b8eb79d9dfb665d74e8620"
+      "bytes": 22341,
+      "sha256": "c569db21bb594bc5a7ddf6c91876c3a26ccb19a73d4c41cf57082fa6f1809cec"
     },
     "methods/transport/native-transport-high.mjs": {
-      "bytes": 66912,
-      "sha256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50"
+      "bytes": 57789,
+      "sha256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94"
     },
     "methods/transport/runtime-resources.json": {
       "bytes": 4173,
@@ -581,22 +581,6 @@
     "runtime-amendments/east-immutable-arrival-20261005/capture-scenic-east-original.mjs": {
       "bytes": 32756,
       "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
-    },
-    "runtime-amendments/ferry-observed-one-frame-public-aim-20261005/active-source-amendment.json": {
-      "bytes": 6985,
-      "sha256": "f8a5c247704d5b62a7876076dc8861a2055cdb8552a49d8932a4effebbf66071"
-    },
-    "runtime-amendments/ferry-observed-one-frame-public-aim-20261005/actual-exact15c208-and409-source-bridge.json": {
-      "bytes": 2231,
-      "sha256": "67fec90477b2a7be88c0ba864fee1ee25a36b2611d5a8129428c18fb76b4066b"
-    },
-    "runtime-amendments/ferry-observed-one-frame-public-aim-20261005/actual-root-literal-adoption-receipt.json": {
-      "bytes": 23522,
-      "sha256": "89d9bd7cc632337bc105e3cc112481f40eff82ad0cbd99b41bff1cf4eb97b3cd"
-    },
-    "runtime-amendments/ferry-observed-one-frame-public-aim-20261005/original-native224-bundle-manifest-15c.json": {
-      "bytes": 68453,
-      "sha256": "08172c3f3f281515f2f065904d60dbd00ed7f6c29ed7fd604a46a8edbc4354e8"
     },
     "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/active-source-amendment.json": {
       "bytes": 4786,
@@ -948,7 +932,7 @@
     "currentLocalBuildInfoSHA256": "1822eed0866105128279f5150044c60e547750992ec69c79cb9ed67b1dcd0e51",
     "historicalBaselineAndAuthoredOriginalFilesUnchanged": true,
     "nativeCaptureAndArtApproval": "PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW",
-    "refreshChangedRuntimeSource": false
+    "refreshChangedRuntimeSource": true
   },
   "activeCases": {
     "home": {
@@ -1098,7 +1082,7 @@
   },
   "activityPinRefresh": {
     "status": "SOURCE_ONLY_ACTIVITY_PINS_NO_NATIVE_ACCEPTANCE",
-    "at": "2026-10-05T11:53:58.430289+00:00",
+    "at": "2026-10-05T10:59:43.002583+00:00",
     "historicalRecordBytesPreserved": true,
     "actualCurrentBuildInfoSHA256": "1822eed0866105128279f5150044c60e547750992ec69c79cb9ed67b1dcd0e51",
     "caseCount": 24,
@@ -1452,21 +1436,5 @@
     "sourceAmendmentSHA256": "f69b8054f02c6091e89fab8b4d473c7bbf1aee58cfbb1eb574fda00e7201f292",
     "allOldOutcomesPreserved": true,
     "newNativeOrArtPass": false
-  },
-  "ferryFreshPublicRelativeAimNativeOnlyAmendment": {
-    "status": "EXPLICIT_NATIVE_METHOD_ONLY_CPU_PROOF_NEW_NATIVE_PENDING",
-    "parentCommit": "15c692eae329b8eaa8d5aba9ada4149e6b5bec79",
-    "parentNativeFileCount": 224,
-    "parentNativeManifestSHA256": "08172c3f3f281515f2f065904d60dbd00ed7f6c29ed7fd604a46a8edbc4354e8",
-    "actualNativeFileCount": 228,
-    "runtimeDeltaRelative15c": {
-      "changed": [],
-      "added": [],
-      "removed": [],
-      "unchangedCount": 208
-    },
-    "source409Literal15c": true,
-    "approvedCandidateManifestSHA256": "dc1a248457a61a99f1056c43b256110e114c43c377204d9bb962fca47c7eaf86",
-    "newNativeOrArtPassInherited": false
   }
 }
