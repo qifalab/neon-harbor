@@ -1,0 +1,82 @@
+--- original-crown-544251-source-sealer.py
++++ new-crisp-bread-source-sealer.py
+@@ -99,32 +99,42 @@
+  info_path=contained(w,info['path']) if info['path'].startswith('tools/native-review/') else contained(b,info['path'])
+  info['path']=str(info_path.relative_to(b));build=load(info_path)
+  problem(build.get('version')=='0.8.0' and authored['version']=='0.8.0','Current authored version must be0.8.0')
+- # Explicit continuous-crown206 guard: actualA8, exactly5tree changes fromAEC206.
+- # Original951/AEC070033/130bundle and every original nativeFAIL remain immutable.
+- final_receipt_path=Path('/workspace/neon-candidates/continuous-crown-runtime-pin-refresh-20261005/metadata-refresh-receipt.json')
+- problem(digest(final_receipt_path)=='216687248ccc1530c2d4b6824ccc0e54a348aa10ff13f96793aedd23215d51aa','Supplied actualA8 metadata receipt changed')
++ # Strict crisp-bread source bridge: exactly6resources from committedCROWN91c206.
++ # Original A8/null951/AEC070033/130/154 manifests and all FAIL records are immutable.
++ final_receipt_path=Path('/workspace/neon-candidates/harbor-crisp-bread-final-20261005-review/metadata-refresh-receipt.json')
++ problem(digest(final_receipt_path)=='0003669d1d2839646863725f0ce9079e884a06029a49dcf8067df587b1c18ea2','Supplied final crisp-bread metadata receipt changed')
+  final_receipt=load(final_receipt_path)
+- problem(final_receipt.get('status')=='ACTUAL_A8_206_FIVE_TREE_RESOURCE_METADATA_REFRESHED_NATIVE_PENDING','ActualA8 source-only receipt missing')
+- problem(digest(info_path)=='a8c05e366a39f1330e3f1036add0cebb9b1b49df2f72070394815c5e4b60f8c1','ActualA8 raw build bytes changed')
+- problem(len(build['assets'])==len(authored['assets'])==206,'Current authored runtime must contain exactly actual206 assets')
+- parent_build_path=b/'runtime-amendments/continuous-crown-20261005/original-actual-aec-build-info070033.json'
+- parent_null_path=b/'runtime-amendments/continuous-crown-20261005/original-build-info-null951.json'
+- problem(digest(parent_build_path)=='0700334224a69f044f50814a0dee64aae07cad6fdf373905e5eb4681201f8a62','ActualAEC206 original build changed')
+- problem(digest(parent_null_path)=='9519740965c34cb55fa95a8b601187eaac32cf231a75af8adb2058f07ccfd943','Original null951 provenance changed')
++ problem(final_receipt.get('status')=='ACTUAL_CRISP_BREAD_206_SIX_RESOURCE_METADATA_PREPARED_NATIVE_PENDING','Actual crisp-bread source-only receipt missing')
++ problem(digest(info_path)=='6acbaae2fd803671b312890c058be973a8afb9c3f9c7bb7d0ad869bf383b7917','Actual null6ac raw build bytes changed')
++ problem(build.get('revision') is None and len(build['assets'])==len(authored['assets'])==206,'Current authored runtime must be exactly actual206/nullrevision')
++ parent_build_path=b/'runtime-amendments/crisp-bread-20261005/original-committed-crown91c-build-info.json'
++ parent_null_path=b/'expected-build-provenance/authored-build-info-continuous-crown-20261005-a8c05e366a39.json'
++ problem(digest(parent_build_path)=='da96f662b9c3181079df9db875b73f30b1f6ab8ce07aec4885ef584d0ba12b92','Original committedCROWN91c raw build changed')
++ problem(digest(parent_null_path)=='a8c05e366a39f1330e3f1036add0cebb9b1b49df2f72070394815c5e4b60f8c1','Original CROWN nullA8 provenance changed')
+  parent_assets=load(parent_build_path)['assets']
+- problem(len(parent_assets)==206 and parent_assets==load(parent_null_path)['assets']==final_receipt['parentRuntimeAssets'],'ParentAEC206 entire dictionary changed')
++ problem(len(parent_assets)==206 and parent_assets==load(parent_null_path)['assets']==final_receipt['parentRuntimeAssets'],'ParentCROWN206 entire dictionary changed')
+  delta={'added':{p:build['assets'][p] for p in sorted(build['assets'].keys()-parent_assets.keys())},'changed':{p:{'before':parent_assets[p],'after':build['assets'][p]} for p in sorted(build['assets'].keys()&parent_assets.keys()) if build['assets'][p]!=parent_assets[p]},'removed':sorted(parent_assets.keys()-build['assets'].keys()),'unchangedCount':sum(build['assets'][p]==parent_assets[p] for p in build['assets'].keys()&parent_assets.keys())}
+- problem(delta==final_receipt['exactRuntimeDeltaFromAEC206'],'ActualA8 runtime differs from supplied exact5-resource delta')
+- problem(set(delta['changed'])=={'src/harbor-sample-trees.js','assets/harbor/vegetation/asset-manifest.json','assets/harbor/vegetation/quay-banyan-a.glb','assets/harbor/vegetation/quay-banyan-b.glb','assets/harbor/vegetation/quay-banyan-c.glb'} and not delta['added'] and not delta['removed'] and delta['unchangedCount']==201,'Continuous crown delta exceeds exactly5-tree-resources/201unchanged/0add/remove')
+- problem(build['assets']==final_receipt['actualRuntimeAssets'],'ActualA8 complete source/image/model pins changed')
+- for rel,pin in final_receipt['actualRuntimeAssets'].items():problem(digest(contained(w,rel))==pin,'ActualA8 source/asset pin changed:'+rel)
++ problem(delta==final_receipt['exactRuntimeDeltaFromCrown91c'],'Actual crisp-bread runtime differs from supplied exact6-resource delta')
++ problem(set(delta['changed'])=={'src/harbor-bread-art.js','src/harbor-frontage-profiles.js','assets/harbor/bakery/manifest.json','assets/harbor/bakery/bread-crust-albedo.png','assets/harbor/bakery/bread-crust-height.png','assets/harbor/bakery/bread-crust-roughness.png'} and not delta['added'] and not delta['removed'] and delta['unchangedCount']==200,'Crisp bread delta exceeds exactly6resources/200unchanged/0add/remove')
++ problem(build['assets']==final_receipt['actualRuntimeAssets'],'Actual crisp-bread complete runtime dictionary changed')
++ for rel,pin in final_receipt['actualRuntimeAssets'].items():
++  problem(digest(contained(w,rel))==pin,'Actual crisp-bread source/asset changed:'+rel)
++  problem(digest(contained(w/'dist',rel))==pin,'Actual crisp-bread served dist changed:'+rel)
+  actual_native_files=[p for p in b.rglob('*') if p.is_file() and p!=b/'bundle-manifest.json']
+  actual_native_map={str(p.relative_to(b)):{'bytes':p.stat().st_size,'sha256':digest(p)} for p in actual_native_files}
+- problem(len(actual_native_map)==final_receipt['expectedNativeBundleFileCount']==154 and actual_native_map==final_receipt['expectedNativeBundleFiles'],'Full actual154-file inventory differs from explicit supplied metadata/method/source ledger')
++ problem(len(actual_native_map)==final_receipt['expectedNativeBundleFileCount']==164 and actual_native_map==final_receipt['expectedNativeBundleFiles'],'Full exact164-file inventory differs from actual metadata/method/source ledger')
+  problem(not any(p.is_symlink() or '__pycache__' in p.parts or p.suffix=='.pyc' for p in b.rglob('*')),'No bundle symlink/cache may be admitted')
+- original_expected=load(b/'runtime-amendments/continuous-crown-20261005/original-expected-runtime-dictionaries-3aa.json')
++ original_expected=load(b/'runtime-amendments/crisp-bread-20261005/original-expected-runtime-dictionaries-crown91c.json')
+  problem(original_expected['baseline']==baseline and len(baseline['assets'])==156,'Entire immutable baseline156 object changed')
+- notes.append('StrictA8 copy binds actual206build/exact5-tree changes/201same/0addremove and exact154bundle inventory. Original physical/B case records and native/artFAILs remain historical; no tests/build/native/art execution by sealer.')
++ original_catalog=load(b/'runtime-amendments/crisp-bread-20261005/original-native154-bundle-manifest-crown91c.json')
++ problem(digest(b/'runtime-amendments/crisp-bread-20261005/original-native154-bundle-manifest-crown91c.json')==final_receipt['parentNative154ManifestSHA256'],'Original native154 catalog changed')
++ for rel,pin in original_catalog['files'].items():
++  if rel.startswith('methods/') and rel!='methods/harbor/evidence/frontage-wide-static-proof.json':problem(digest(contained(b,rel))==pin['sha256'],'Functional method/input/plan/seal changed:'+rel)
++ original_wide=load(b/'runtime-amendments/crisp-bread-20261005/original-frontage-wide-static-proof-crown91c.json')
++ current_wide=load(b/'methods/harbor/evidence/frontage-wide-static-proof.json')
++ for key,value in original_wide.items():
++  if key!='sourceHashes':problem(current_wide.get(key)==value,'Original B geometry/amendment history changed:'+key)
++ notes.append('Strict crisp-bread copy binds actual206/null6ac, exactly6bread changes/200same/0addremove and all164bundle files. Source bridge and original CPU proof retained; no B-case/native/art execution by sealer.')
+  problem(build['assets']==authored['assets'],'Current actual build-info and authored expected dictionary disagree; supply actual final build, never infer a receipt')
+  problem(digest(info_path)==info['sha256'],'Current original build-info bytes do not match declared SHA')
+  problem(len(baseline['assets'])==156,'Fixed baseline156 dictionary changed')
+@@ -151,7 +161,7 @@
+  problem(homepins==[authored['assets'][home_source]],'Active common-pose HOME source pin is stale; its approved source-only amendment must be supplied')
+  wide_path=b/'methods/harbor/evidence/frontage-wide-static-proof.json';wide=load(wide_path);old_wide=copy.deepcopy(wide)
+  updated={rel:authored['assets'][rel] for rel in B_SOURCES};stale={rel:{'before':wide['sourceHashes']['authored'].get(rel),'after':pin} for rel,pin in updated.items() if wide['sourceHashes']['authored'].get(rel)!=pin}
+- active_b_amendment=wide.get('breadCeramicFinishAmendment',wide.get('shopDisplayCraftRefinementAmendment'))
++ active_b_amendment=wide.get('crispBreadArtRefinementAmendment',wide.get('breadCeramicFinishAmendment',wide.get('shopDisplayCraftRefinementAmendment')))
+  if active_b_amendment:
+   after_pins=active_b_amendment.get('sourceHashesAfter',active_b_amendment.get('actualSourceHashesAfter',{}))
+   problem(all(after_pins.get(rel)==pin for rel,pin in updated.items()),'B current amendment source hashes do not match both final source pins')
+@@ -197,7 +207,7 @@
+  catalog.update(nativeWorkflowSha256=digest(native_path),ciWorkflowSha256=digest(ci_path),unchangedPagesSha256=PAGES_PIN,caseCount=len(rows),pairedHighCases=paired,authoredOnlyHighCases=author_only-len(low),authoredOnlyLowFunctionalCases=len(low),maxParallelNativeVMs=max_parallel,artAcceptance='PENDING_HUMAN_NATIVE_REVIEW')
+  catalog['activeCases']={r['id']:{'activeBudgetSeconds':r['originalBudgetSeconds'],'historicalBudgetSeconds':r.get('historicalOriginalBudgetSeconds',r['originalBudgetSeconds']),'jobTimeoutMinutes':r['jobTimeoutMinutes'],'paired':r['paired']} for r in rows}
+  catalog['currentRuntimeProvenance'].update(authoredAssetCount=len(authored['assets']),baselineAssetCount=len(baseline['assets']),currentLocalBuildInfoPath=info['path'],currentLocalBuildInfoSHA256=info['sha256'],historicalBaselineAndAuthoredOriginalFilesUnchanged=True,nativeCaptureAndArtApproval='PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW',refreshChangedRuntimeSource=True)
+- catalog['continuousCrownRuntimeAmendment']={'status':'ACTUAL_A8_206_TREE_GRAPHICS_SOURCE_METADATA_NATIVE_ART_PENDING','parentProtocolBundleFileCount':130,'parentProtocolBundleManifestSHA256':final_receipt['parentNative130ManifestSHA256'],'actualBuildInfoSHA256':info['sha256'],'exactRuntimeDeltaFromAEC206':final_receipt['exactRuntimeDeltaFromAEC206'],'currentExactNativeBundleFileCount':154,'sourceAmendmentPath':'runtime-amendments/continuous-crown-20261005/continuous-crown-source-amendment.json','functionalNativeMethodInputsBudgetsAndResourcesUnchanged':True,'oldProofsAndFailuresPreserved':True,'physicalCaseCPUReexecutedBySealer':False,'nativeArtAccepted':False}
++ catalog['crispBreadRuntimeAmendment']={'status':'ACTUAL_CRISP_BREAD_206_SOURCE_METADATA_NATIVE_HIGH_ART_PENDING','parentNativeBundleFileCount':154,'parentNativeBundleManifestSHA256':final_receipt['parentNative154ManifestSHA256'],'actualBuildInfoSHA256':info['sha256'],'exactRuntimeDeltaFromCrown91c':final_receipt['exactRuntimeDeltaFromCrown91c'],'currentExactNativeBundleFileCount':164,'sourceAmendmentPath':'runtime-amendments/crisp-bread-20261005/crisp-bread-source-amendment.json','functionalNativeMethodInputsBudgetsAndResourcesUnchanged':True,'oldProofsAndFailuresPreserved':True,'physicalCaseCPUReexecutedBySealer':False,'nativeArtAccepted':False}
+  catalog['activityPinRefresh']={'status':'SOURCE_ONLY_ACTIVITY_PINS_NO_NATIVE_ACCEPTANCE','at':utc(),'historicalRecordBytesPreserved':True,'actualCurrentBuildInfoSHA256':info['sha256'],'caseCount':len(rows),'nativeOnlyNoInputDefault':cn['native_only'].get('default'),'dispatchActivationActuallyExecutedBySealer':False,'productTestsBuildBrowserGpuExecutedBySealer':False}
+  planjson(catalog_path,catalog)
+  inventory={'trackedBefore':subprocess.check_output(['git','ls-files','--','tools/native-review','.github/workflows'],cwd=w,text=True).splitlines(),'allActualBundleFiles':[str(p.relative_to(w)) for p in sorted(actual_files)],'untrackedBundleFiles':subprocess.check_output(['git','ls-files','--others','--exclude-standard','--','tools/native-review'],cwd=w,text=True).splitlines()}

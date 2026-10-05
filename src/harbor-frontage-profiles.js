@@ -40,32 +40,45 @@ export function createFrontageFrame(THREE,width,height,radius=.08) {
 // Closed baked crust has real recessed scores, not paper marks on an ellipsoid.
 export function createBakedDisplayLoaf(THREE,variant=0) {
  const a=.143+(variant%3)*.009,b=.086+((variant+1)%3)*.006,h=.123+(variant%2)*.009;
- const cuts=variant%2?[-.065,.040]:[-.078,0,.078],nx=24,nz=12,p=[],uv=[],crustColors=[],crumbColors=[],ix=[];
- const dome=(x,z)=>Math.pow(Math.max(0,1-(x/a)**2-(z/b)**2),.44);
- const oldTop=(x,z)=>Math.max(0,h*dome(x,z)*(1+.025*Math.sin(x*37+variant)*Math.sin(z*29+.7))-cuts.reduce((n,c)=>n+.007*Math.exp(-(((x+.32*z-c)/.011)**2)),0)*dome(x,z)**2);
- let oldMaximum=0;for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2));oldMaximum=Math.max(oldMaximum,oldTop(x,z));}
- const score=(x,z)=>{let strength=0;for(const [i,c]of cuts.entries()){const bend=.0025*Math.sin(z*41+i*.8+variant),width=.0095*(.88+.12*Math.sin(z*53+variant+i)),d=(x+.32*z-c-bend)/width;strength=Math.max(strength,Math.exp(-d*d));}return strength;};
- const top=(x,z)=>{const shell=dome(x,z),asym=1+.019*Math.sin(x*39+variant)*Math.sin(z*27+.7)+.009*Math.cos(x*71-z*19+variant);return Math.min(oldMaximum,Math.max(0,h*shell*asym-score(x,z)*.013*shell*shell));};
- const exposed=new THREE.Color(0xdbb679),bakedLip=new THREE.Color(0x935523),color=new THREE.Color();
+ const cuts=variant%2?[-.065,.040]:[-.078,0,.078],nx=36,nz=12,p=[],uv=[],crustColors=[],crumbColors=[],ix=[];
+ // Actual original AEC Float32 maximum per displayed variant, not an
+ // idealised recipe height. Every new ridge stays beneath this measured bound.
+ const oldMaximum=[.12249676138162613,.13378888368606567,.12312094867229462,.132079616189003,.12119659781455994][variant%5];
+ const scoreData=(x,z)=>{let distance=Infinity,cut=0;for(const [i,c]of cuts.entries()){const bend=.0016*Math.sin(z*67+i*.8+variant)+.0008*Math.sin(z*139+i+variant),d=x+.32*z-c-bend;if(Math.abs(d)<Math.abs(distance)){distance=d;cut=i;}}return{distance,cut};};
+ const score=(x,z)=>Math.exp(-((scoreData(x,z).distance/.0082)**2));
+ const top=(x,z)=>{
+  const envelope=Math.max(0,1-(x/a)**2-(z/b)**2),dome=Math.pow(envelope,[.46,.53,.40,.49,.43][variant%5]);
+  const asym=1+.032*Math.sin(x*29+variant*1.7)*Math.sin(z*31+.7)+.014*Math.cos(x*69-z*17+variant);
+  const d=scoreData(x,z).distance,cut=Math.exp(-((d/.0072)**2)),lip=Math.exp(-((((d+.0115)/.0038)**2)));
+  // The baked ear is integral to the closed shell, on one side of a 13 mm cut.
+  // A second narrower ridge and millimetre fractures break the smooth gutter.
+  const dryEdge=1+.25*Math.sin(z*263+variant)+.12*Math.sin(z*499+variant*2);
+  const ridge=.0038*lip*dryEdge-.0012*Math.exp(-((((d-.010)/.0035)**2)));
+  return Math.min(oldMaximum,Math.max(0,h*dome*asym+(ridge-.013*cut)*envelope));
+ };
+ const color=new THREE.Color(),toasted=new THREE.Color(0x8c4920),neutral=new THREE.Color(0xffffff);
  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
-  const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2)),y=top(x,z),grain=.5+.5*Math.sin(x*47+z*39+variant);
-  p.push(x,y,z);const u=(x/a+1)/2,v=(z/b+1)/2;uv.push((variant%2?1-u:u)+variant*.137,v+variant*.093);
-  // The original color map supplies toasted color; neutral vertices avoid
-  // multiplying it by the previous dark-brown dome tint a second time.
-  const tint=.96+.04*grain;crustColors.push(tint,tint,tint);
-  color.copy(bakedLip).lerp(exposed,Math.min(.90,score(x,z)*(.72+.18*grain)));crumbColors.push(color.r,color.g,color.b);
+  const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2)),y=top(x,z),d=scoreData(x,z).distance;
+  p.push(x,y,z);const u=(x/a+1)/2,v=(z/b+1)/2,uu=variant%2?1-u:u,vv=variant%3===1?1-v:v;
+  // Each map has crust in the left 3/4 and independently authored crumb in the
+  // right 1/4. All three shared images stay one near-owner resource set.
+  uv.push(.012+uu*.726,.012+vv*.976);
+  const lip=Math.exp(-((((d+.0115)/.005)**2))),tint=.97+.03*Math.sin(x*91+z*83+variant);
+  color.copy(neutral).lerp(toasted,lip*.42);color.multiplyScalar(tint);crustColors.push(color.r,color.g,color.b);
+  const wall=Math.min(1,Math.abs(d)/.010),ragged=.05*Math.sin(z*311+x*197+variant);
+  color.copy(neutral).lerp(toasted,Math.max(0,wall*.60+ragged));crumbColors.push(color.r,color.g,color.b);
   if(i<nx&&j<nz){const q=j*(nx+1)+i;ix.push(q,q+nx+1,q+1,q+1,q+nx+1,q+nx+2);}
  }
  const edge=[];for(let i=0;i<=nx;i++)edge.push(i);for(let j=1;j<=nz;j++)edge.push(j*(nx+1)+nx);for(let i=nx-1;i>=0;i--)edge.push(nz*(nx+1)+i);for(let j=nz-1;j>0;j--)edge.push(j*(nx+1));
- const centre=p.length/3;p.push(0,0,0);uv.push(.5+variant*.137,.5+variant*.093);crustColors.push(.90,.90,.90);crumbColors.push(bakedLip.r,bakedLip.g,bakedLip.b);
+ const centre=p.length/3;p.push(0,0,0);uv.push(.375,.5);crustColors.push(.88,.88,.88);crumbColors.push(1,1,1);
  const crustIndices=[],scoreIndices=[];
- for(let i=0;i<ix.length;i+=3){const [ia,ib,ic]=ix.slice(i,i+3),x=(p[ia*3]+p[ib*3]+p[ic*3])/3,z=(p[ia*3+2]+p[ib*3+2]+p[ic*3+2])/3;(score(x,z)>.34&&Math.abs(z)<b*.76?scoreIndices:crustIndices).push(ia,ib,ic);}
+ for(let i=0;i<ix.length;i+=3){const [ia,ib,ic]=ix.slice(i,i+3),x=(p[ia*3]+p[ib*3]+p[ic*3])/3,z=(p[ia*3+2]+p[ib*3+2]+p[ic*3+2])/3;(score(x,z)>.33&&Math.abs(z)<b*.79?scoreIndices:crustIndices).push(ia,ib,ic);}
  for(let i=0;i<edge.length;i++)crustIndices.push(centre,edge[(i+1)%edge.length],edge[i]);
+ const removeCollapsedFaces=indices=>{const clean=[];for(let i=0;i<indices.length;i+=3){const [a,b,c]=indices.slice(i,i+3),ax=p[b*3]-p[a*3],ay=p[b*3+1]-p[a*3+1],az=p[b*3+2]-p[a*3+2],bx=p[c*3]-p[a*3],by=p[c*3+1]-p[a*3+1],bz=p[c*3+2]-p[a*3+2];if((ay*bz-az*by)**2+(az*bx-ax*bz)**2+(ax*by-ay*bx)**2>1e-20)clean.push(a,b,c);}indices.splice(0,indices.length,...clean);};
+ removeCollapsedFaces(crustIndices);removeCollapsedFaces(scoreIndices);
  const shell=new THREE.BufferGeometry();shell.setAttribute('position',new THREE.Float32BufferAttribute(p,3));shell.setIndex([...crustIndices,...scoreIndices]);shell.computeVertexNormals();const normals=shell.attributes.normal;
- const make=(indices,tints)=>{const used=[...new Set(indices)],mapping=new Map(used.map((v,i)=>[v,i])),positions=[],texcoords=[],colors=[],ns=[];for(const v of used){positions.push(...p.slice(v*3,v*3+3));texcoords.push(...uv.slice(v*2,v*2+2));colors.push(...tints.slice(v*3,v*3+3));ns.push(normals.getX(v),normals.getY(v),normals.getZ(v));}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(texcoords,2));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));g.setAttribute('normal',new THREE.Float32BufferAttribute(ns,3));g.setIndex(indices.map(v=>mapping.get(v)));g.computeBoundingBox();return g;};
- // Crumb triangles replace crust triangles in one continuous original shell.
- // The two sets share exact Float32 positions, with no ribbon offset or overlay.
- const crust=make(crustIndices,crustColors),scores=make(scoreIndices,crumbColors);shell.dispose();return{crust,scores,variant,halfWidth:a,halfDepth:b,height:h,cutDepth:.013,scoreTopology:'disjoint-index-partition-of-shared-shell'};
+ const make=(indices,tints,crumb=false)=>{const used=[...new Set(indices)],mapping=new Map(used.map((v,i)=>[v,i])),positions=[],texcoords=[],colors=[],ns=[];for(const v of used){positions.push(...p.slice(v*3,v*3+3));const [u,w]=uv.slice(v*2,v*2+2);texcoords.push(crumb?.765+(u-.012)/.726*.22:u,w);colors.push(...tints.slice(v*3,v*3+3));ns.push(normals.getX(v),normals.getY(v),normals.getZ(v));}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(texcoords,2));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));g.setAttribute('normal',new THREE.Float32BufferAttribute(ns,3));g.setIndex(indices.map(v=>mapping.get(v)));g.computeBoundingBox();return g;};
+ const crust=make(crustIndices,crustColors),scores=make(scoreIndices,crumbColors,true);shell.dispose();return{crust,scores,variant,halfWidth:a,halfDepth:b,height:h,cutDepth:.013,bakedEarHeight:.0038,scoreTopology:'disjoint-index-partition-of-shared-shell',mapAtlas:'crust-left-three-quarters-crumb-right-quarter'};
 }
 
 // Smooth continuous thrown profile, closed foot, inner wall and rounded thick

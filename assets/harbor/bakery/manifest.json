@@ -1,5 +1,5 @@
 {
-  "id": "morning-tin-original-bread-crust-v1",
+  "id": "morning-tin-original-crisp-bread-v3",
   "site": "south-094",
   "author": "Neon Harbor contributors, original procedural work 2026",
   "assetLicense": "CC0-1.0",
@@ -10,7 +10,7 @@
   ],
   "originalProceduralInputsOnly": true,
   "externalTextureOrPhotoInputs": false,
-  "seed": 2026100594,
+  "seed": 202610059403,
   "authoringSource": "art-source/morning-tin-bread/author_bread_crust.py",
   "recipe": "art-source/morning-tin-bread/bread-crust-recipe.json",
   "geometrySource": [
@@ -20,51 +20,50 @@
   "files": [
     {
       "file": "bread-crust-albedo.png",
+      "bytes": 231645,
+      "sha256": "5f6955db230d00f38c2ee77b732e28cf5fe5538c8a5d68d315033dcb712702e6",
       "channel": "map",
       "colorSpace": "sRGB",
       "dimensions": [
-        256,
-        256
-      ],
-      "bytes": 55974,
-      "sha256": "f28b3a238049bc865d3c6b1781677584b2ea62e50d2782b337cbc01578f9c105"
+        512,
+        512
+      ]
     },
     {
       "file": "bread-crust-height.png",
+      "bytes": 112238,
+      "sha256": "65dc1e80a3ec01ccb0927fc4ea40f9d151449ef1d1eeebcbaefa1ab155670ce0",
       "channel": "bumpMap",
       "colorSpace": "linear",
       "dimensions": [
-        256,
-        256
-      ],
-      "bytes": 27755,
-      "sha256": "8d46fe5490d03a470536f27347d2113ce73b768a7ed69f55ab0a03a10b9be589"
+        512,
+        512
+      ]
     },
     {
       "file": "bread-crust-roughness.png",
+      "bytes": 78472,
+      "sha256": "9f5e138903c6816b8c52fdd295d8fb5c5b27b237b9fb9f5e55bc1c11f6e48bf5",
       "channel": "roughnessMap",
       "colorSpace": "linear",
       "dimensions": [
-        256,
-        256
-      ],
-      "bytes": 16330,
-      "sha256": "65b04aa5acb176519da041a9e6dd7a28d958b6a92e6ed08b2c02299cf562c6ae"
+        512,
+        512
+      ]
     }
   ],
-  "compressedMapBytes": 100059,
+  "compressedMapBytes": 422355,
   "material": {
     "color": "#ffffff",
     "metalness": 0,
     "emissive": 0,
     "scalarRoughness": 1,
-    "bumpScaleMetres": 0.0008,
-    "neutralCrustVertexTint": [
-      0.96,
-      1
-    ],
-    "crumbBumpScaleMetres": 0.00036,
-    "crumbDoesNotMultiplyCrustAlbedo": true
+    "bumpScaleMetres": 0.0011,
+    "crumbBumpScaleMetres": 0.00065,
+    "crumbDoesNotMultiplyCrustAlbedo": true,
+    "crumbUsesIndependentAtlasRegion": true,
+    "crustVertexTint": "neutral 0.94\u20131.0 body; narrowly darkened toasted integral ear",
+    "crumbAtlasIsIndependentDryPores": true
   },
   "ownership": {
     "scope": "south-094 near resident only",
@@ -79,5 +78,19 @@
     "ownerReferencesDroppedWithUnloadedNearGroup": true,
     "nativeDecodeGpuUploadAndMemoryMeasured": false
   },
-  "artAcceptance": "PENDING_NATIVE_HIGH_SAME_VIEW_REVIEW"
+  "artAcceptance": "PENDING_ACTUAL_NATIVE_HIGH_CRISP_BREAD_RECAPTURE",
+  "atlasRegions": {
+    "crust": [
+      0,
+      0,
+      0.75,
+      1
+    ],
+    "independently_authored_dry_crumb": [
+      0.75,
+      0,
+      1,
+      1
+    ]
+  }
 }

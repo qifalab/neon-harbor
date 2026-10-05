@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(newBounds.max[axis]<=oldBounds.max[axis]+1e-7)
+
+    at file:///workspace/neon-candidates/morning-tin-crisp-bread-candidate-20261005/verify-crisp-bread.mjs:31:243 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

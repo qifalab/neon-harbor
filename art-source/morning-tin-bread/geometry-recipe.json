@@ -1,52 +1,167 @@
 {
-  "site": "south-094",
-  "basisGitHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
-  "editableGeometrySource": [
-    "src/harbor-frontage-profiles.js:createBakedDisplayLoaf",
-    "src/harbor-bread-art.js"
+  "schema": 3,
+  "runtimeSource": "src/harbor-frontage-profiles.js:createBakedDisplayLoaf",
+  "scope": "south-094 near bread only",
+  "sourceAECProfileSHA256": "9f391a319a8854fce05a8f6dba80a8bfcbb75b8e87fe62c775d429a1c0717b3e",
+  "surfaceTopology": "closed integral shell; score triangles disjoint from crust triangles; no overlay ribbon",
+  "grid": [
+    36,
+    12
   ],
-  "bread": {
-    "grid": [
-      24,
-      12
-    ],
-    "variantCount": 5,
-    "trianglesPerLoaf": 648,
-    "scoreDepthMetres": 0.013,
-    "scoreTopology": "disjoint-index-partition-of-shared-shell",
-    "floatingScoreRibbons": false,
-    "sharedScoreLipPositionUvAndNormalBitExact": true,
-    "textureProjection": "physical X/Z planar projection with per-variant UV flip/offset",
-    "originalActualAabbContainedAllFiveVariants": true
-  },
-  "cup": {
-    "windowAndTableRadialSegments": 32,
-    "handleMinorSegments": 5,
-    "handleMajorSegments": 20,
-    "coffeeRadialSegments": 32,
-    "physicalThickRimInnerWallFloorAndUnderside": true,
-    "cupTriangles": 384,
-    "dimensions": "fit to original actual Float32 10-sided AABB, not ideal analytic cylinder",
-    "mouthOpen": true
-  },
-  "integration": {
-    "otherFiveShopsGeometryAndMaterialByteIdentity": true,
-    "colliderFixtureEntranceAndGlazingIdentity": true,
-    "maxNearFrontages": 6,
-    "drawCallLimit": 100,
-    "nearTriangleBudget": 90000,
-    "cpuCanvasBranchesTopologyBefore": {
-      "drawCalls": 99,
-      "triangles": 84830
+  "indexedTrianglesPerLoaf": 816,
+  "zeroAreaTrianglesRemoved": true,
+  "nominalCentralCutDepthMetres": 0.013,
+  "nominalSingleSideBakedEarHeightMetres": 0.0038,
+  "actualFiveOriginalAABBBoundsAndCandidateProof": [
+    {
+      "variant": 0,
+      "actualIndexedTriangles": 816,
+      "nonzeroAreaTriangles": 816,
+      "crumbFaces": 145,
+      "withinOriginalAABB": true,
+      "oldMinimum": [
+        -0.14300000667572021,
+        0,
+        -0.09200000017881393
+      ],
+      "oldMaximum": [
+        0.14300000667572021,
+        0.12249676138162613,
+        0.09200000017881393
+      ],
+      "minimum": [
+        -0.14300000667572021,
+        0,
+        -0.09200000017881393
+      ],
+      "maximum": [
+        0.14300000667572021,
+        0.12249676138162613,
+        0.09200000017881393
+      ],
+      "coordinatesSHA256": "27fb8c88c60640c10bef6b982423f23bda2542e5f50731678026683ee0460676",
+      "integralEarAndRecessNotOverlay": true
     },
-    "cpuCanvasBranchesTopologyAfter": {
-      "drawCalls": 100,
-      "triangles": 89534
+    {
+      "variant": 1,
+      "actualIndexedTriangles": 816,
+      "nonzeroAreaTriangles": 816,
+      "crumbFaces": 93,
+      "withinOriginalAABB": true,
+      "oldMinimum": [
+        -0.15199999511241913,
+        0,
+        -0.09799999743700027
+      ],
+      "oldMaximum": [
+        0.15199999511241913,
+        0.13378888368606567,
+        0.09799999743700027
+      ],
+      "minimum": [
+        -0.15199999511241913,
+        0,
+        -0.09799999743700027
+      ],
+      "maximum": [
+        0.15199999511241913,
+        0.13378888368606567,
+        0.09799999743700027
+      ],
+      "coordinatesSHA256": "185a47f472cce72a382735a1d1e63a06f9a9d676a7913d9536a5fd9c365c304c",
+      "integralEarAndRecessNotOverlay": true
     },
-    "delta": {
-      "drawCalls": 1,
-      "triangles": 4704
+    {
+      "variant": 2,
+      "actualIndexedTriangles": 816,
+      "nonzeroAreaTriangles": 816,
+      "crumbFaces": 132,
+      "withinOriginalAABB": true,
+      "oldMinimum": [
+        -0.16099999845027924,
+        0,
+        -0.0860000029206276
+      ],
+      "oldMaximum": [
+        0.16099999845027924,
+        0.12312094867229462,
+        0.0860000029206276
+      ],
+      "minimum": [
+        -0.16099999845027924,
+        0,
+        -0.0860000029206276
+      ],
+      "maximum": [
+        0.16099999845027924,
+        0.12312094867229462,
+        0.0860000029206276
+      ],
+      "coordinatesSHA256": "8fa64335c29ac4b17dd31da59ac9ed1db1b7fd86e8519b635f40a87346e4895d",
+      "integralEarAndRecessNotOverlay": true
     },
-    "nativeDriverPerformanceMeasured": false
-  }
+    {
+      "variant": 3,
+      "actualIndexedTriangles": 816,
+      "nonzeroAreaTriangles": 816,
+      "crumbFaces": 102,
+      "withinOriginalAABB": true,
+      "oldMinimum": [
+        -0.14300000667572021,
+        0,
+        -0.09200000017881393
+      ],
+      "oldMaximum": [
+        0.14300000667572021,
+        0.132079616189003,
+        0.09200000017881393
+      ],
+      "minimum": [
+        -0.14300000667572021,
+        0,
+        -0.09200000017881393
+      ],
+      "maximum": [
+        0.14300000667572021,
+        0.13050664961338043,
+        0.09200000017881393
+      ],
+      "coordinatesSHA256": "4bb1099e2330628c67a58f1340ae629b9010f10b42384989a0411a21b1048a3d",
+      "integralEarAndRecessNotOverlay": true
+    },
+    {
+      "variant": 4,
+      "actualIndexedTriangles": 816,
+      "nonzeroAreaTriangles": 816,
+      "crumbFaces": 141,
+      "withinOriginalAABB": true,
+      "oldMinimum": [
+        -0.15199999511241913,
+        0,
+        -0.09799999743700027
+      ],
+      "oldMaximum": [
+        0.15199999511241913,
+        0.12119659781455994,
+        0.09799999743700027
+      ],
+      "minimum": [
+        -0.15199999511241913,
+        0,
+        -0.09799999743700027
+      ],
+      "maximum": [
+        0.15199999511241913,
+        0.12119659781455994,
+        0.09799999743700027
+      ],
+      "coordinatesSHA256": "ce1f9caaaa2a208790dcfa4085c5a93b72cebec13d22aee78c4280903633640e",
+      "integralEarAndRecessNotOverlay": true
+    }
+  ],
+  "fixedPositionsGlassLightColliders": true,
+  "mapsPerOwner": 3,
+  "materialsPerOwner": 2,
+  "independentCrumbAtlasRegion": true,
+  "canvasCPUProofOnly": "no native image/GPU/rendered art quality claim"
 }

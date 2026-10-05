@@ -1,0 +1,60 @@
+{
+  "status": "CPU_ORIGINAL_512_ATLAS_CHECKED_NATIVE_HIGH_PENDING",
+  "seed": 202610059403,
+  "atlasSize": [
+    512,
+    512
+  ],
+  "actualVRAMMeasured": false,
+  "channels": {
+    "bread-crust-albedo.png": {
+      "mode": "RGB",
+      "min": [
+        115,
+        73,
+        35
+      ],
+      "max": [
+        236,
+        192,
+        124
+      ],
+      "std": [
+        12.032972034006029,
+        19.89708012000628,
+        20.86104975401518
+      ]
+    },
+    "bread-crust-height.png": {
+      "mode": "L",
+      "min": 64,
+      "max": 167,
+      "std": 13.993923275997656
+    },
+    "bread-crust-roughness.png": {
+      "mode": "L",
+      "min": 197,
+      "max": 242,
+      "std": 9.558655638376974
+    }
+  },
+  "maps": [
+    {
+      "file": "bread-crust-albedo.png",
+      "sha256": "5f6955db230d00f38c2ee77b732e28cf5fe5538c8a5d68d315033dcb712702e6",
+      "bytes": 231645
+    },
+    {
+      "file": "bread-crust-height.png",
+      "sha256": "65dc1e80a3ec01ccb0927fc4ea40f9d151449ef1d1eeebcbaefa1ab155670ce0",
+      "bytes": 112238
+    },
+    {
+      "file": "bread-crust-roughness.png",
+      "sha256": "9f5e138903c6816b8c52fdd295d8fb5c5b27b237b9fb9f5e55bc1c11f6e48bf5",
+      "bytes": 78472
+    }
+  ],
+  "compressedBytes": 422355,
+  "gpuRGBA8MipUploadUpperBoundBytes": 4194304
+}

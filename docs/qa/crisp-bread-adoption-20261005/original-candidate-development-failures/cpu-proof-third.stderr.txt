@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"status":"CPU_ONLY_PASS_NATIVE_ART_PENDING","canvas":"Actual @napi-rs/canvas label rasterization and 2D CPU PNG decoding; no browser, HTMLImageElement, GPU or VRAM claim","unchangedOtherFive":[],"loaves":[],"before":{"drawCalls":102,"triangles":106814},"candidate":{"drawCalls":102,"triangles":112894},"delta":{"drawCalls":0,"triangles":6080},"limits":{"near":72,"far":96,"maxDrawCalls":102,"maxTriangles":110000,"maxResidentFrontages":6}}
+    at file:///workspace/neon-candidates/morning-tin-crisp-bread-candidate-20261005/verify-crisp-bread.mjs:19:128 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

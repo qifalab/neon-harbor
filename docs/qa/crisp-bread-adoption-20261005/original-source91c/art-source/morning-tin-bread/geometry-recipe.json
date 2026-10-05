@@ -1,0 +1,52 @@
+{
+  "site": "south-094",
+  "basisGitHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "editableGeometrySource": [
+    "src/harbor-frontage-profiles.js:createBakedDisplayLoaf",
+    "src/harbor-bread-art.js"
+  ],
+  "bread": {
+    "grid": [
+      24,
+      12
+    ],
+    "variantCount": 5,
+    "trianglesPerLoaf": 648,
+    "scoreDepthMetres": 0.013,
+    "scoreTopology": "disjoint-index-partition-of-shared-shell",
+    "floatingScoreRibbons": false,
+    "sharedScoreLipPositionUvAndNormalBitExact": true,
+    "textureProjection": "physical X/Z planar projection with per-variant UV flip/offset",
+    "originalActualAabbContainedAllFiveVariants": true
+  },
+  "cup": {
+    "windowAndTableRadialSegments": 32,
+    "handleMinorSegments": 5,
+    "handleMajorSegments": 20,
+    "coffeeRadialSegments": 32,
+    "physicalThickRimInnerWallFloorAndUnderside": true,
+    "cupTriangles": 384,
+    "dimensions": "fit to original actual Float32 10-sided AABB, not ideal analytic cylinder",
+    "mouthOpen": true
+  },
+  "integration": {
+    "otherFiveShopsGeometryAndMaterialByteIdentity": true,
+    "colliderFixtureEntranceAndGlazingIdentity": true,
+    "maxNearFrontages": 6,
+    "drawCallLimit": 100,
+    "nearTriangleBudget": 90000,
+    "cpuCanvasBranchesTopologyBefore": {
+      "drawCalls": 99,
+      "triangles": 84830
+    },
+    "cpuCanvasBranchesTopologyAfter": {
+      "drawCalls": 100,
+      "triangles": 89534
+    },
+    "delta": {
+      "drawCalls": 1,
+      "triangles": 4704
+    },
+    "nativeDriverPerformanceMeasured": false
+  }
+}

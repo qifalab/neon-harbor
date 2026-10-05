@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "status": "CPU_CANDIDATE_SEALED_ACTUAL_HIGH_ART_PENDING",
+  "sourceOnly": true,
+  "noBrowserOrGpuStarted": true,
+  "noRootNextOrActiveFrozenCandidateEdits": true,
+  "numpyVersion": "2.3.5",
+  "pillowVersion": "12.3.0",
+  "sourceAECFrozenUnchanged": [
+    {
+      "path": "src/harbor-frontage-profiles.js",
+      "sha256": "9f391a319a8854fce05a8f6dba80a8bfcbb75b8e87fe62c775d429a1c0717b3e",
+      "sameAsReadOnlyBefore": true
+    },
+    {
+      "path": "src/harbor-bread-art.js",
+      "sha256": "554bf94fd5723864062e27891c07869f5ee42fa0a423ea7d603575d1cd952f49",
+      "sameAsReadOnlyBefore": true
+    },
+    {
+      "path": "src/harbor-district.js",
+      "sha256": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+      "sameAsReadOnlyBefore": true
+    },
+    {
+      "path": "src/harbor-ceramic-art.js",
+      "sha256": "480cbd60ab45f068a9154e826f5df73a140efb8ff1cf00267ec0aede0ec43b67",
+      "sameAsReadOnlyBefore": true
+    },
+    {
+      "path": "src/surface-finish.js",
+      "sha256": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0",
+      "sameAsReadOnlyBefore": true
+    },
+    {
+      "path": "src/harbor-shop-defs.js",
+      "sha256": "f6bbf2c0d4da08aaf7b241c53efc92fe9bf324eec46c4168376c86fbe71fb63d",
+      "sameAsReadOnlyBefore": true
+    }
+  ],
+  "actualReferenceInputs": [
+    {
+      "path": "/workspace/neon-evidence/street-close-bakery-aec53e1-final-workspace-temp-20261005/native/01-bread-scored-crust-right-high.png",
+      "sha256": "0f4ae96af2f1d8d5b65c985dfa9b5ab1afe507855927a7ec8c06e40b8118710f",
+      "role": "Read-only actual AEC native High art reference"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-bakery-aec53e1-final-workspace-temp-20261005/native/02-bread-crust-left-high.png",
+      "sha256": "f592db1fd16855f213ba7afe8b2d4449febadb7839b762fff00d4cc01d8e22ea",
+      "role": "Read-only actual AEC native High art reference"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-bakery-aec53e1-final-workspace-temp-20261005/native/01-bread-scored-crust-right-pose.json",
+      "sha256": "794fce6bf57a334310033371da07fa28e2860273dbddcab364fe3f759a71f01d",
+      "role": "Actual reference pose"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-bakery-aec53e1-final-workspace-temp-20261005/native/02-bread-crust-left-pose.json",
+      "sha256": "3edf14ac4f1ee29a4aa04662200568b91d7b35eb659043f45a0d5e3cfbbadc6a",
+      "role": "Actual reference pose"
+    }
+  ],
+  "files": {
+    "payload-manifest.json": "676f358e66fc18f96c7e994c6371faa6c765bfa4f0ba9d98c42a9907aa6bcfe4",
+    "cpu-proof.json": "e736c6701768704d9e7efb0c9088531dd9e506807c186c47d4c14b1ac334380e",
+    "determinism-receipt.json": "ada50c0c7477db4a0f752f3cdb35b1336caca232e68a9f14538230cc051a9f8c",
+    "REPORT.md": "3ef08a647f46ceb28c2b193d45b491fc89cc8660ffc4a9dcd7d148201d69a4ac",
+    "verify-crisp-bread.mjs": "a6a0d1ff6044cfc15fffbc82a60202cb64206ba648f2c742197c4483da72422e",
+    "cpu-proof-validated.stdout.txt": "e736c6701768704d9e7efb0c9088531dd9e506807c186c47d4c14b1ac334380e",
+    "cpu-proof-validated.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "cpuExitCode": 0,
+  "deterministicPngByteEquality": true,
+  "actualHighAcceptance": "PENDING_PARENT_RECAPTURE_AND_INDEPENDENT_REVIEW",
+  "developmentFailureLogsPreserved": [
+    "cpu-proof-original.stderr.txt",
+    "cpu-proof-second.stderr.txt",
+    "cpu-proof-third.stderr.txt",
+    "cpu-proof-final.stderr.txt"
+  ]
+}
