@@ -1,0 +1,240 @@
+{
+  "status": "READ_ONLY_MEASUREMENT_NOT_GPU_ART_ACCEPTANCE",
+  "measuredAssetDirectory": "/workspace/neon-candidates/tree-crown-density-candidate-20261005/payload/assets/harbor/vegetation",
+  "sourceHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "image": {
+    "path": "/workspace/neon-evidence/5cd-resident-core-11326827515/extracted/native/authored/02-commuter-player.png",
+    "sha256": "dbe6da212cc1d32598418040ad1cab116a1cfc3c477150018f116d3c90d9dcb0",
+    "actualCamera": {
+      "position": {
+        "x": -577.569844348963,
+        "y": 3.0236591900037926,
+        "z": -441.07924695421883
+      },
+      "target": {
+        "x": -570.8000000000004,
+        "y": 1.35,
+        "z": -440.9866666666727
+      },
+      "focus": {
+        "x": -570.8000000000004,
+        "y": 1.35,
+        "z": -440.9866666666727
+      },
+      "yaw": 7.853937036409628,
+      "pitch": 0.1800027272327086,
+      "fov": 55,
+      "boomLength": 7.001448940868357,
+      "desiredBoomLength": 7.001448940868357,
+      "obstructed": false,
+      "overheadFallback": false,
+      "colliderId": null,
+      "clearanceRadius": 0.45
+    }
+  },
+  "method": "Actual GLB first two outward triangles per closed leaf are its one-sided folded blade surface. Orthographic projected triangle unions sampled at 5 mm; convex hull is a geometric envelope proxy, not real botanical crown or native shaded visibility.",
+  "variants": [
+    {
+      "name": "quay-banyan-a",
+      "bytes": 3193516,
+      "sha256": "2cbde57d8510997cc21c41604bb561dad9258c3544c1a3beebe9d1783b97a23c",
+      "leafCount": 1728,
+      "triangles": 22768,
+      "leafOneSideSurfaceAreaM2": 54.91136169433594,
+      "leafMeanOneSideAreaCm2": 317.7740783691406,
+      "leafTotalClosedSurfaceM2": 112.02960205078125,
+      "barkAttributeSha256": {
+        "POSITION": "c47306bfe505984fb12a88169757f7d4f2594dafcc93a144b6273770273fb294",
+        "NORMAL": "e1a59bc689340b8d4d0ddb07c375b76b757f3459915a50cdeb9a8f210721e6db",
+        "TEXCOORD_0": "349ea28e9f7a1f5917ec75b811d1c695c646ec0da166ae04fa7bdb33000f112f",
+        "COLOR_0": "fdeb4b9e207b5b8e99f75964a10010940889d9295928dc9873f487f7f05eecff"
+      },
+      "min": [
+        -3.2630279064178467,
+        5.695289134979248,
+        -2.8599963188171387
+      ],
+      "max": [
+        4.268263816833496,
+        11.769681930541992,
+        2.2857513427734375
+      ],
+      "leafDegenerateTriangles": 0,
+      "orthographicProjections": {
+        "frontXY": {
+          "unionM2Approx": 13.3912,
+          "convexHullM2": 35.0322151184082,
+          "unionToConvexHullApprox": 0.38225388526916504,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            7.531261444091797,
+            6.073880672454834
+          ]
+        },
+        "sideZY": {
+          "unionM2Approx": 8.03755,
+          "convexHullM2": 22.894285202026367,
+          "unionToConvexHullApprox": 0.3510723412036896,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            5.144665718078613,
+            6.073880672454834
+          ]
+        },
+        "topXZ": {
+          "unionM2Approx": 16.39485,
+          "convexHullM2": 32.258060455322266,
+          "unionToConvexHullApprox": 0.5082404017448425,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            7.531261444091797,
+            5.144665718078613
+          ]
+        }
+      }
+    },
+    {
+      "name": "quay-banyan-b",
+      "bytes": 3193516,
+      "sha256": "e61ddea8ad0c97b136d37800211e72f481f0118743e0329fe058502dce026281",
+      "leafCount": 1728,
+      "triangles": 22768,
+      "leafOneSideSurfaceAreaM2": 54.813453674316406,
+      "leafMeanOneSideAreaCm2": 317.2074890136719,
+      "leafTotalClosedSurfaceM2": 111.8304672241211,
+      "barkAttributeSha256": {
+        "POSITION": "bcc41287f75e4b3c6130c5cd4a37a361ec444be04c715819d094ea1ff1ae23f0",
+        "NORMAL": "e3a686bb3a7a30c607afd187b14e8c8fe6b3eecd81bdbcde6a276cfa5376c141",
+        "TEXCOORD_0": "7d7404715609acdeace2b53dfe09b39a45ec7208d4ca70c193cfceb196405e93",
+        "COLOR_0": "fdeb4b9e207b5b8e99f75964a10010940889d9295928dc9873f487f7f05eecff"
+      },
+      "min": [
+        -3.3070712089538574,
+        5.707276344299316,
+        -2.7664825916290283
+      ],
+      "max": [
+        4.221989154815674,
+        11.806548118591309,
+        2.5727620124816895
+      ],
+      "leafDegenerateTriangles": 0,
+      "orthographicProjections": {
+        "frontXY": {
+          "unionM2Approx": 12.9004,
+          "convexHullM2": 35.27583312988281,
+          "unionToConvexHullApprox": 0.36570078134536743,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            7.529060363769531,
+            6.098379611968994
+          ]
+        },
+        "sideZY": {
+          "unionM2Approx": 7.921375,
+          "convexHullM2": 23.51407241821289,
+          "unionToConvexHullApprox": 0.33687806129455566,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            5.33777379989624,
+            6.098379611968994
+          ]
+        },
+        "topXZ": {
+          "unionM2Approx": 16.866875,
+          "convexHullM2": 33.82278823852539,
+          "unionToConvexHullApprox": 0.49868375062942505,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            7.529060363769531,
+            5.33777379989624
+          ]
+        }
+      },
+      "actualCameraGeometricLeafProjection": {
+        "treeWorldRoot": [
+          -503,
+          0,
+          -445
+        ],
+        "leafPixelBox": {
+          "min": [
+            554.8402363895492,
+            109.69375639947225
+          ],
+          "max": [
+            614.7190885139565,
+            180.52846146818513
+          ]
+        },
+        "leafHullPx2": 2967.8865632166853,
+        "rasterUnionPxApprox": 2067,
+        "medianLeafBoxPx": [
+          2.4794235271742764,
+          1.1774874715688384
+        ],
+        "leavesWithBoxMinDimensionUnder1Px": 678,
+        "limitations": "CPU geometry projection only; no depth/scene occlusion, texture, antialiasing, native shading or actual lit pixels; union small-polygon rasterization overestimates coverage."
+      }
+    },
+    {
+      "name": "quay-banyan-c",
+      "bytes": 3193520,
+      "sha256": "c559b15c63a70b4c8ab0387facef866e45b9d31077c7ffee64b1807dba94c7dc",
+      "leafCount": 1728,
+      "triangles": 22768,
+      "leafOneSideSurfaceAreaM2": 55.32279968261719,
+      "leafMeanOneSideAreaCm2": 320.15509033203125,
+      "leafTotalClosedSurfaceM2": 112.86067199707031,
+      "barkAttributeSha256": {
+        "POSITION": "be9682a6279cbb099515df59efd82793a81b5b68cd3f645d7a31c34fd4719a09",
+        "NORMAL": "c020db2012b79e747336f247c1c751fb46632b1f9f9914bd701bdc96d21c9d7b",
+        "TEXCOORD_0": "d3576b3e45edb4ba8c3d40a6a02c5124f2f6b885f07dbaa6264cc719b1f001a4",
+        "COLOR_0": "fdeb4b9e207b5b8e99f75964a10010940889d9295928dc9873f487f7f05eecff"
+      },
+      "min": [
+        -3.2181525230407715,
+        5.700746059417725,
+        -2.7929341793060303
+      ],
+      "max": [
+        4.31735372543335,
+        11.780953407287598,
+        2.5605263710021973
+      ],
+      "leafDegenerateTriangles": 0,
+      "orthographicProjections": {
+        "frontXY": {
+          "unionM2Approx": 13.159325,
+          "convexHullM2": 35.46058654785156,
+          "unionToConvexHullApprox": 0.371097207069397,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            7.535172462463379,
+            6.078913688659668
+          ]
+        },
+        "sideZY": {
+          "unionM2Approx": 8.215175,
+          "convexHullM2": 24.424022674560547,
+          "unionToConvexHullApprox": 0.33635634183883667,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            5.351411819458008,
+            6.078913688659668
+          ]
+        },
+        "topXZ": {
+          "unionM2Approx": 16.662475,
+          "convexHullM2": 33.0916862487793,
+          "unionToConvexHullApprox": 0.5035245418548584,
+          "samplingMetres": 0.005,
+          "boxMetres": [
+            7.535172462463379,
+            5.351411819458008
+          ]
+        }
+      }
+    }
+  ]
+}

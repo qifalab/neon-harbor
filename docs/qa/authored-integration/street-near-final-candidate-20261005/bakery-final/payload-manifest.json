@@ -1,0 +1,91 @@
+{
+  "status": "SEALED_PRODUCTION_CANDIDATE_NATIVE_ART_PENDING",
+  "baseGitHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "scope": "south-094 bread crust / cup geometry only",
+  "files": [
+    {
+      "file": "src/harbor-bread-art.js",
+      "bytes": 5100,
+      "sha256": "554bf94fd5723864062e27891c07869f5ee42fa0a423ea7d603575d1cd952f49"
+    },
+    {
+      "file": "src/harbor-frontage-profiles.js",
+      "bytes": 16331,
+      "sha256": "c0d44d9f886e430397e5a3726a8b402a984d970fb44125bb0b326594a1f0e8ba"
+    },
+    {
+      "file": "src/harbor-district.js",
+      "bytes": 30331,
+      "sha256": "985a986f92519bca1812ee7dfc73061837f3c8f47ff97292384b5353a2057b2f"
+    },
+    {
+      "file": "assets/harbor/bakery/LICENSE-ASSETS-CC0.txt",
+      "bytes": 937,
+      "sha256": "1b0bb490b85725732ac3061f8347a9be50f557c59178e18afdc64a8bf867f8e5"
+    },
+    {
+      "file": "assets/harbor/bakery/bread-crust-albedo.png",
+      "bytes": 55974,
+      "sha256": "f28b3a238049bc865d3c6b1781677584b2ea62e50d2782b337cbc01578f9c105"
+    },
+    {
+      "file": "assets/harbor/bakery/bread-crust-height.png",
+      "bytes": 27755,
+      "sha256": "8d46fe5490d03a470536f27347d2113ce73b768a7ed69f55ab0a03a10b9be589"
+    },
+    {
+      "file": "assets/harbor/bakery/bread-crust-roughness.png",
+      "bytes": 16330,
+      "sha256": "65b04aa5acb176519da041a9e6dd7a28d958b6a92e6ed08b2c02299cf562c6ae"
+    },
+    {
+      "file": "assets/harbor/bakery/manifest.json",
+      "bytes": 2398,
+      "sha256": "9de13e4964eff09cc43e0592006f493a9495eb1c50af4dc7ff91425d944451e6"
+    },
+    {
+      "file": "art-source/morning-tin-bread/LICENSE-ASSETS-CC0.txt",
+      "bytes": 937,
+      "sha256": "1b0bb490b85725732ac3061f8347a9be50f557c59178e18afdc64a8bf867f8e5"
+    },
+    {
+      "file": "art-source/morning-tin-bread/LICENSE-CODE-MIT.txt",
+      "bytes": 1081,
+      "sha256": "9d5e22f9b77ce6b4f0d1f69b51e01a7927cb96407b959c147ce349aa9b1f9abe"
+    },
+    {
+      "file": "art-source/morning-tin-bread/README.md",
+      "bytes": 3053,
+      "sha256": "a7eb0d87a9699ccf70a589dbdb808cb3e34fcaeb798d09012e6a7971e8fa4e0f"
+    },
+    {
+      "file": "art-source/morning-tin-bread/author_bread_crust.py",
+      "bytes": 11691,
+      "sha256": "56203f70fc3c2ec879a974a1bb4f31301120fda2c52abffa3f88fc70b964f72a"
+    },
+    {
+      "file": "art-source/morning-tin-bread/bread-crust-recipe.json",
+      "bytes": 18552,
+      "sha256": "8b8567c8c931cddce7dd112eeff34ec537c2e26079411f882a7e39523a2f4698"
+    },
+    {
+      "file": "art-source/morning-tin-bread/geometry-recipe.json",
+      "bytes": 1533,
+      "sha256": "3a5cd9eaed2e0bfab46badf00e1999892effd705d173ae87d2cb7753ac5c1beb"
+    },
+    {
+      "file": "art-source/morning-tin-bread/requirements-authoring.txt",
+      "bytes": 28,
+      "sha256": "e32056a5263b5972e789540468f3d3e1e8e2d1649d21ef65e814317727be4897"
+    }
+  ],
+  "integrationNotes": [
+    "Copy new harbor-bread-art.js, bakery assets and morning-tin source files to same paths.",
+    "Apply two contextual existing-file patches; do not overwrite independent south-096 ceramic refinement.",
+    "Both agents modify imports and nearby material conditional/cup branch; manually compose these source hunks, retaining exact south-094 vs south-096 scope.",
+    "85,000 to 90,000 is an explicit near-triangle budget increase for rounded cups, not measured rendering performance.",
+    "Retest final combined draw/triangle budget; independent south-096 payload may add triangles beyond this isolated result.",
+    "Native same-view High bread quality remains pending; do not label CPU previews as runtime acceptance."
+  ],
+  "totalPayloadBytes": 192031
+}

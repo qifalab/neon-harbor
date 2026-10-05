@@ -1,0 +1,153 @@
+{
+  "status": "CPU_ONLY_PASS_NATIVE_ART_PENDING",
+  "startedAt": "2026-10-05T05:21:23.093Z",
+  "canvas": "Actual @napi-rs/canvas CanvasElement with real 2D rasterization and font metrics; no browser, WebGL or GPU",
+  "scannedTextureLoader": "Existing six scanned-image loads use CPU placeholder Texture objects; no image/GPU claim",
+  "sourceHashes": {
+    "src/harbor-district.js": "2d040feae13890b9a1e03109d0d8f689bbebb2a17dc45fe0d460d2afc4b013b6",
+    "src/harbor-frontage-profiles.js": "6f488a5151a99ed2119da22ed2e3d57407d4c68743f7d4846ae2456a3ec5eca1",
+    "src/harbor-ceramic-art.js": "480cbd60ab45f068a9154e826f5df73a140efb8ff1cf00267ec0aede0ec43b67"
+  },
+  "vessels": [
+    {
+      "radius": 0.096,
+      "height": 0.29,
+      "beforeTriangles": 1216,
+      "triangles": 2944,
+      "profilePoints": 49,
+      "radialSegments": 32,
+      "minimum": [
+        -0.0953618660569191,
+        0,
+        -0.0953618660569191
+      ],
+      "maximum": [
+        0.0953618660569191,
+        0.28999999165534973,
+        0.0953618660569191
+      ],
+      "sameActualPreviousFloat32AABB": true,
+      "zeroAreaTriangles": 0,
+      "inwardWallTriangles": 1152,
+      "closedFootTriangles": 128,
+      "openMouth": true
+    },
+    {
+      "radius": 0.16,
+      "height": 0.43,
+      "beforeTriangles": 1216,
+      "triangles": 2944,
+      "profilePoints": 49,
+      "radialSegments": 32,
+      "minimum": [
+        -0.15893644094467163,
+        0,
+        -0.15893644094467163
+      ],
+      "maximum": [
+        0.15893644094467163,
+        0.4300000071525574,
+        0.15893644094467163
+      ],
+      "sameActualPreviousFloat32AABB": true,
+      "zeroAreaTriangles": 0,
+      "inwardWallTriangles": 1152,
+      "closedFootTriangles": 128,
+      "openMouth": true
+    }
+  ],
+  "otherFiveShops": [
+    {
+      "id": "south-091",
+      "byteIdentical": true,
+      "sha256": "18dbb47c9c5d42a2c474cd2374adbaeb316f89a6bfa246eeb6cf6b1f301d62ed",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-092",
+      "byteIdentical": true,
+      "sha256": "b58ba4dcd80f9ee88585e7692acf9aeaa8760845a1749d97ed242c7e2970d447",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-095",
+      "byteIdentical": true,
+      "sha256": "c9eccdeab58f7c003cc3fc19b93d2dcd53a91828e12e7f51ef5757a65c90449c",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-090",
+      "byteIdentical": true,
+      "sha256": "d4641a574e4d172596878ef9ae81b3ccd9e7e002d870fb2c2bac8e2693254de4",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-094",
+      "byteIdentical": true,
+      "sha256": "c5eb3a26a905264cda9f281d72f64a38c01e8ee3bef38861559d02ab1173309a",
+      "drawCalls": 17
+    }
+  ],
+  "ownership": [
+    {
+      "operation": "distance unload + double owner dispose",
+      "sixTextureDisposalsExactlyOnce": true,
+      "twoMaterialDisposalsExactlyOnce": true,
+      "nearGeometryDisposalsExactlyOnce": true,
+      "originalFarProxyRestored": true
+    },
+    {
+      "operation": "reload + whole-owner dispose",
+      "newDisjointTextureIdentities": true,
+      "reloadedTexturesDisposedExactlyOnce": true,
+      "rootDetachedAndEmpty": true
+    }
+  ],
+  "before": {
+    "drawCalls": 99,
+    "triangles": 84830
+  },
+  "candidate": {
+    "drawCalls": 101,
+    "triangles": 102110
+  },
+  "limits": {
+    "near": 72,
+    "far": 96,
+    "maxDrawCalls": 102,
+    "maxTriangles": 110000,
+    "maxResidentFrontages": 6
+  },
+  "unchanged096NonCeramicBuckets": [
+    "Harbor · CC0 pavement",
+    "Harbor · CC0 plaster",
+    "Harbor · CC0 plaster",
+    "Harbor · tile plinth",
+    "Harbor · patinated bronze",
+    "Harbor · chalk enamel",
+    "Harbor · oiled timber",
+    "Harbor · clear display glazing",
+    "Harbor · warm shop glass",
+    "Harbor · brushed warm brass handle",
+    "Harbor · canvas gallery",
+    "",
+    "",
+    "Harbor · broad subtropical leaves"
+  ],
+  "authoredMaps": {
+    "textureRows": 6,
+    "baseLevelBytes": 1572864,
+    "fullMipChainTexelBytes": 2097144,
+    "measuredVram": false
+  },
+  "colliders": {
+    "worldCount": 1874,
+    "frontageCount": 36,
+    "unchanged": true,
+    "sha256": "a759649ba8fc40df7a9a2259a50e3b739b7bae25165311b924077ee0264e8c18",
+    "fixturesSha256": "a01ddfe35bde830c5622a1e5f57a7127028e8c67a2eae57c1f676beddad7025a"
+  },
+  "actualCanvasObjects": 38,
+  "actualCanvasRastersSha256": 38,
+  "finishedAt": "2026-10-05T05:21:25.484Z"
+}

@@ -1,0 +1,247 @@
+{
+  "status": "CPU_ONLY_PASS_NATIVE_ART_PENDING",
+  "startedAt": "2026-10-05T05:21:23.093Z",
+  "canvas": "Actual @napi-rs/canvas CanvasElement with real 2D rasterization and font metrics; no browser, WebGL or GPU",
+  "scannedTextureLoader": "Existing six scanned-image loads use CPU placeholder Texture objects; no image/GPU claim",
+  "sourceHashes": {
+    "src/harbor-district.js": "2d040feae13890b9a1e03109d0d8f689bbebb2a17dc45fe0d460d2afc4b013b6",
+    "src/harbor-frontage-profiles.js": "6f488a5151a99ed2119da22ed2e3d57407d4c68743f7d4846ae2456a3ec5eca1",
+    "src/harbor-ceramic-art.js": "480cbd60ab45f068a9154e826f5df73a140efb8ff1cf00267ec0aede0ec43b67"
+  },
+  "vessels": [
+    {
+      "radius": 0.096,
+      "height": 0.29,
+      "beforeTriangles": 1216,
+      "triangles": 2944,
+      "profilePoints": 49,
+      "radialSegments": 32,
+      "minimum": [
+        -0.0953618660569191,
+        0,
+        -0.0953618660569191
+      ],
+      "maximum": [
+        0.0953618660569191,
+        0.28999999165534973,
+        0.0953618660569191
+      ],
+      "sameActualPreviousFloat32AABB": true,
+      "zeroAreaTriangles": 0,
+      "inwardWallTriangles": 1152,
+      "closedFootTriangles": 128,
+      "openMouth": true
+    },
+    {
+      "radius": 0.16,
+      "height": 0.43,
+      "beforeTriangles": 1216,
+      "triangles": 2944,
+      "profilePoints": 49,
+      "radialSegments": 32,
+      "minimum": [
+        -0.15893644094467163,
+        0,
+        -0.15893644094467163
+      ],
+      "maximum": [
+        0.15893644094467163,
+        0.4300000071525574,
+        0.15893644094467163
+      ],
+      "sameActualPreviousFloat32AABB": true,
+      "zeroAreaTriangles": 0,
+      "inwardWallTriangles": 1152,
+      "closedFootTriangles": 128,
+      "openMouth": true
+    }
+  ],
+  "otherFiveShops": [
+    {
+      "id": "south-091",
+      "byteIdentical": true,
+      "sha256": "18dbb47c9c5d42a2c474cd2374adbaeb316f89a6bfa246eeb6cf6b1f301d62ed",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-092",
+      "byteIdentical": true,
+      "sha256": "b58ba4dcd80f9ee88585e7692acf9aeaa8760845a1749d97ed242c7e2970d447",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-095",
+      "byteIdentical": true,
+      "sha256": "c9eccdeab58f7c003cc3fc19b93d2dcd53a91828e12e7f51ef5757a65c90449c",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-090",
+      "byteIdentical": true,
+      "sha256": "d4641a574e4d172596878ef9ae81b3ccd9e7e002d870fb2c2bac8e2693254de4",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-094",
+      "byteIdentical": true,
+      "sha256": "c5eb3a26a905264cda9f281d72f64a38c01e8ee3bef38861559d02ab1173309a",
+      "drawCalls": 17
+    }
+  ],
+  "ownership": [
+    {
+      "operation": "distance unload + double owner dispose",
+      "sixTextureDisposalsExactlyOnce": true,
+      "twoMaterialDisposalsExactlyOnce": true,
+      "nearGeometryDisposalsExactlyOnce": true,
+      "originalFarProxyRestored": true
+    },
+    {
+      "operation": "reload + whole-owner dispose",
+      "newDisjointTextureIdentities": true,
+      "reloadedTexturesDisposedExactlyOnce": true,
+      "rootDetachedAndEmpty": true
+    }
+  ],
+  "before": {
+    "drawCalls": 99,
+    "triangles": 84830
+  },
+  "candidate": {
+    "drawCalls": 101,
+    "triangles": 102110
+  },
+  "limits": {
+    "near": 72,
+    "far": 96,
+    "maxDrawCalls": 102,
+    "maxTriangles": 110000,
+    "maxResidentFrontages": 6
+  },
+  "unchanged096NonCeramicBuckets": [
+    "Harbor · CC0 pavement",
+    "Harbor · CC0 plaster",
+    "Harbor · CC0 plaster",
+    "Harbor · tile plinth",
+    "Harbor · patinated bronze",
+    "Harbor · chalk enamel",
+    "Harbor · oiled timber",
+    "Harbor · clear display glazing",
+    "Harbor · warm shop glass",
+    "Harbor · brushed warm brass handle",
+    "Harbor · canvas gallery",
+    "",
+    "",
+    "Harbor · broad subtropical leaves"
+  ],
+  "authoredMaps": {
+    "textureRows": [
+      {
+        "name": "Copper Reed · original glaze pigment",
+        "uuid": "01463ea5-a1a6-487b-a143-606ec40a6d77",
+        "bytes": 262144,
+        "sha256": "585c57330a7e0f2c01515acc34b21a0a5172b006d61d632de76a6852730335ec",
+        "colorSpace": "srgb",
+        "generateMipmaps": true,
+        "minFilter": 1008
+      },
+      {
+        "name": "Copper Reed · original glaze physical map",
+        "uuid": "fc2aa1d8-4d5d-4eb2-b220-9a1372724b98",
+        "bytes": 262144,
+        "sha256": "94620410899b6dc0e30bce6af021e61f481413c3828533965eb23201b2b5af9b",
+        "colorSpace": "",
+        "generateMipmaps": true,
+        "minFilter": 1008
+      },
+      {
+        "name": "Copper Reed · original glaze physical map",
+        "uuid": "8ec346b3-b404-4cbf-88e7-9fc8fb42090a",
+        "bytes": 262144,
+        "sha256": "2dc3a76c3ea26b6105d82b31aef9127597fa649738c05d21cc277d74d0651cb2",
+        "colorSpace": "",
+        "generateMipmaps": true,
+        "minFilter": 1008
+      },
+      {
+        "name": "Copper Reed · original clay pigment",
+        "uuid": "d3c93e91-be57-431c-a16f-c73d337c5038",
+        "bytes": 262144,
+        "sha256": "725aaba78e8235748c31539b688cc8376ab84e8e10de56d1ad9a0ea7837ce0dd",
+        "colorSpace": "srgb",
+        "generateMipmaps": true,
+        "minFilter": 1008
+      },
+      {
+        "name": "Copper Reed · original clay physical map",
+        "uuid": "cfbd3748-d11f-46a5-9587-58271607ba09",
+        "bytes": 262144,
+        "sha256": "a8d126267712700c783417d4d817f5a3cdc04451d338272225a009e6eb02f277",
+        "colorSpace": "",
+        "generateMipmaps": true,
+        "minFilter": 1008
+      },
+      {
+        "name": "Copper Reed · original clay physical map",
+        "uuid": "b8b58e4a-7f11-4f16-946e-65162ef5f097",
+        "bytes": 262144,
+        "sha256": "556818c7c36e5b5158eb1fccc0abfb97f7307ae694e7518028b56b548646e714",
+        "colorSpace": "",
+        "generateMipmaps": true,
+        "minFilter": 1008
+      }
+    ],
+    "baseLevelBytes": 1572864,
+    "fullMipChainTexelBytes": 2097144,
+    "measuredVram": false
+  },
+  "colliders": {
+    "worldCount": 1874,
+    "frontageCount": 36,
+    "unchanged": true,
+    "sha256": "a759649ba8fc40df7a9a2259a50e3b739b7bae25165311b924077ee0264e8c18",
+    "fixturesSha256": "a01ddfe35bde830c5622a1e5f57a7127028e8c67a2eae57c1f676beddad7025a"
+  },
+  "actualCanvasObjects": 38,
+  "actualCanvasRastersSha256": [
+    "e1b9496fcc730394da84bd8bebfcd406f3baa210d7b0606e6fe9715388f4c8de",
+    "e1b9496fcc730394da84bd8bebfcd406f3baa210d7b0606e6fe9715388f4c8de",
+    "46f31d3ea27360b1d2359cfe25e1c966f96ba5b64e0c3389330a243618242ad0",
+    "bc9f020b0e342138b8692782abaa7b6680c9f8a19c5cc22484557fcf8c55e52a",
+    "2ab9b25653d56b27a0fc04fa7af30f5c4deb86f4223619b382275010c08a8307",
+    "d1853944ee9e2113840ce2f521fbbce2f2728b7f78a16839c20e59c06107ce2e",
+    "8b5b53af3dccd37e2b1f38cd77717510bdf36dfb4b0fedd61416069cb172a9d6",
+    "ec3bd510faf034515875b499f37aac764f2c495a652a1db1e120693eb5c22fac",
+    "e1b9496fcc730394da84bd8bebfcd406f3baa210d7b0606e6fe9715388f4c8de",
+    "6fc55fd8c8961c191f220c699f8631ba67805c53b7d18601d3de087116b1d9ac",
+    "4c554b4e59e39183fe726829ba40aaaf48f0f2a6af3499c722b4345cae57df11",
+    "620e5edaf8907157cad09508ea08aff553447ede346e20c658d74bf82de51bfb",
+    "cab817da592e670b52a675668bfd0a5e742c2b5300c8c67b22936b2c409d421c",
+    "680aa65664152edc513b47be745ca9f772298c916615ef83bdb90135146e0012",
+    "46f31d3ea27360b1d2359cfe25e1c966f96ba5b64e0c3389330a243618242ad0",
+    "bc9f020b0e342138b8692782abaa7b6680c9f8a19c5cc22484557fcf8c55e52a",
+    "2ab9b25653d56b27a0fc04fa7af30f5c4deb86f4223619b382275010c08a8307",
+    "d1853944ee9e2113840ce2f521fbbce2f2728b7f78a16839c20e59c06107ce2e",
+    "8b5b53af3dccd37e2b1f38cd77717510bdf36dfb4b0fedd61416069cb172a9d6",
+    "ec3bd510faf034515875b499f37aac764f2c495a652a1db1e120693eb5c22fac",
+    "e1b9496fcc730394da84bd8bebfcd406f3baa210d7b0606e6fe9715388f4c8de",
+    "6fc55fd8c8961c191f220c699f8631ba67805c53b7d18601d3de087116b1d9ac",
+    "4c554b4e59e39183fe726829ba40aaaf48f0f2a6af3499c722b4345cae57df11",
+    "620e5edaf8907157cad09508ea08aff553447ede346e20c658d74bf82de51bfb",
+    "cab817da592e670b52a675668bfd0a5e742c2b5300c8c67b22936b2c409d421c",
+    "680aa65664152edc513b47be745ca9f772298c916615ef83bdb90135146e0012",
+    "46f31d3ea27360b1d2359cfe25e1c966f96ba5b64e0c3389330a243618242ad0",
+    "bc9f020b0e342138b8692782abaa7b6680c9f8a19c5cc22484557fcf8c55e52a",
+    "2ab9b25653d56b27a0fc04fa7af30f5c4deb86f4223619b382275010c08a8307",
+    "d1853944ee9e2113840ce2f521fbbce2f2728b7f78a16839c20e59c06107ce2e",
+    "8b5b53af3dccd37e2b1f38cd77717510bdf36dfb4b0fedd61416069cb172a9d6",
+    "ec3bd510faf034515875b499f37aac764f2c495a652a1db1e120693eb5c22fac",
+    "e1b9496fcc730394da84bd8bebfcd406f3baa210d7b0606e6fe9715388f4c8de",
+    "6fc55fd8c8961c191f220c699f8631ba67805c53b7d18601d3de087116b1d9ac",
+    "4c554b4e59e39183fe726829ba40aaaf48f0f2a6af3499c722b4345cae57df11",
+    "620e5edaf8907157cad09508ea08aff553447ede346e20c658d74bf82de51bfb",
+    "cab817da592e670b52a675668bfd0a5e742c2b5300c8c67b22936b2c409d421c",
+    "680aa65664152edc513b47be745ca9f772298c916615ef83bdb90135146e0012"
+  ],
+  "finishedAt": "2026-10-05T05:21:25.484Z"
+}

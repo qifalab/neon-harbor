@@ -1,0 +1,17 @@
+{
+  "status": "ORIGINAL_CPU_TEST_FAILURE_RETAINED",
+  "firstCheckerSHA256": "21c50bddae1803a604e651f0e3c63522c206fca6e643e55b82a878f0aa721b06",
+  "error": "Shared geometric score lip has exact continuous normals/positions/UV",
+  "actual": [
+    0,
+    1,
+    0
+  ],
+  "expected": [
+    -0.19028791785240173,
+    0.03857429698109627,
+    -0.9809702038764954
+  ],
+  "diagnosis": "Checker erroneously compared repeated collapsed original ellipse-pole vertices within crust to one another. These retain original independent top/bottom normals; they are not shared crumb/crust boundary vertices. Corrected comparison checks cross-mesh physical score boundaries only; same position/UV matching and exact normal guard remain.",
+  "productionSourceChangedForThisCorrection": false
+}

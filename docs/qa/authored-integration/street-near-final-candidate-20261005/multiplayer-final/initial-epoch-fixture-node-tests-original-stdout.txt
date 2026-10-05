@@ -1,0 +1,42 @@
+✔ eight real room clients coalesce rapid atlas, entry and lift travel into the latest bounded position (274.866696ms)
+✔ the real service still rejects rapid direct travel, excessive movement and out-of-world positions (25.44804ms)
+✔ an acknowledged travel cannot clear a newer revision queued during the actual HTTP request (11.735936ms)
+✔ a throttled HTTP acknowledgement preserves the unsent travel until an actual accepted update (16.539641ms)
+✔ leaving discards the queued travel and ignores an old session acknowledgement (15.453667ms)
+✔ a rapid travel-to-car claim waits for the actual latest pose before requesting ownership (118.832119ms)
+✔ a claim awaits an existing actual HTTP state request without duplicating it (7.837612ms)
+✔ a failed actual state update aborts the claim without silently retrying HTTP (8.208533ms)
+✔ leaving during a queued claim prevents any later ownership request (112.203379ms)
+✔ a claim without a session fails before making an HTTP request (0.475571ms)
+✖ an old session acknowledgement cannot clear a new session state request or complete its old claim (6506.480753ms)
+✔ a claim waiting on a hung state RPC has a 6500 ms bound and cannot claim after timeout (1.9146ms)
+✔ real room service joins two clients, streams movement/chat, isolates rooms and rejects invalid packets (174.910363ms)
+✔ vehicle claims are exclusive and leaving releases ownership (32.633829ms)
+✔ room capacity is enforced and peer interpolation follows shortest angles without interpolating travel (27.072435ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7219.793643
+
+✖ failing tests:
+
+test at tests/multiplayer-travel.test.js:182:1
+✖ an old session acknowledgement cannot clear a new session state request or complete its old claim (6506.480753ms)
+  [AssertionError [ERR_ASSERTION]: The input did not match the regular expression /连接已结束/. Input:
+  
+  'Error: 位置同步未完成，请稍后再试。'
+  ] {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: 位置同步未完成，请稍后再试。
+        at Timeout.<anonymous> (file:///tmp/neon-multiplayer-travel-claim-candidate-20261005/src/multiplayer.js:75:86)
+        at listOnTimeout (node:internal/timers:635:17)
+        at process.processTimers (node:internal/timers:571:7),
+    expected: /连接已结束/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

@@ -1,0 +1,31 @@
+{
+  "status": "ONLY_MP_AND_HUD_ADOPTED_BREAD_CERAMICS_PENDING",
+  "parentCommit": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "adoptedAfterOwnedGPUClosure": true,
+  "browserTestsAfterAdoption": false,
+  "buildAfterAdoption": false,
+  "files": [
+    {
+      "path": "src/multiplayer.js",
+      "beforeSHA256": "aa260c8ab351100b5ec8e12a395b1e7e4f8061b7b03b0a9ea0675550df6b5bc0",
+      "afterSHA256": "3ed3fed5ad4f454d468a36af393b9c3f6de80f2f554fad06ffc0e94e528c3e65",
+      "candidateSource": "/tmp/neon-multiplayer-travel-rate-candidate-review-20261005/payload/src/multiplayer.js"
+    },
+    {
+      "path": "tests/multiplayer-travel.test.js",
+      "beforeSHA256": null,
+      "afterSHA256": "473613e5ab4338baddce0277d6ee04747d25ccbf3ac28704803f7f60a2432671",
+      "candidateSource": "/tmp/neon-multiplayer-travel-rate-candidate-review-20261005/payload/tests/multiplayer-travel.test.js"
+    },
+    {
+      "path": "styles.css",
+      "beforeSHA256": "8a62bca88da2c27403cc937f760e0195c722a273c81af57c25e7f8bc140f8a2c",
+      "afterSHA256": "f06efcf1804fa40f419d3475a8c203858a19d7868c22dcc4af9d1ae88ec3f418",
+      "candidateSource": "/workspace/neon-candidates/hud-label-wrap-20261005/styles.css"
+    }
+  ],
+  "originalServerRateLimitChanged": false,
+  "noNodeModulesOrPyCacheStaged": true,
+  "preAdoptionStatus": "?? node_modules\n?? tools/native-review/__pycache__/\n",
+  "firstAttemptPreMutationGuardBlockedOnUntrackedOwnedHarnessPyCache": true
+}

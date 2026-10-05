@@ -1,0 +1,129 @@
+{
+  "reviewedAtUTC": "2026-10-05T05:19:47.306771+00:00",
+  "scope": "Independent review of actual original1280x800 High PNGs; no image editing",
+  "originalOutcomesRewritten": false,
+  "publishedOrArtAccepted": false,
+  "firstMethodStartupFAILKept": "/workspace/neon-evidence/street-close-bakery-5cd2088-20261005",
+  "rows": [
+    {
+      "case": "bakery",
+      "sourceHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+      "methodSHA256": "339644e068faaeaab59fc76d9bcf6cd171437beaae4812c45dadb4649361cbb0",
+      "originalOutput": "/workspace/neon-evidence/street-close-bakery-5cd2088-first-render-init-20261005",
+      "captureOutcome": "capture-complete-art-review-pending",
+      "artReview": "NEAR_ART_NOT_ACCEPTED_REFINEMENT_REQUIRED",
+      "actualImagesViewedByRoot": [
+        {
+          "file": "/workspace/neon-evidence/street-close-bakery-5cd2088-first-render-init-20261005/native/01-bread-scored-crust-right-high.png",
+          "sha256": "ee7dd928bef17126bf78b8ca2a6296b8f5e0e509148b70bb88305ab542aec763"
+        },
+        {
+          "file": "/workspace/neon-evidence/street-close-bakery-5cd2088-first-render-init-20261005/native/02-bread-crust-left-high.png",
+          "sha256": "47c72421b02010a2b9d13b6c9fc2da5da4c5b736096fb3eaa862d5c1fbeea2f1"
+        }
+      ],
+      "findings": [
+        "Actual two High photographs show broad smooth crust with weak near-scale surface detail.",
+        "Pale score geometry appears as separate uniform raised strips rather than irregular opened crust.",
+        "Existing nearby display mugs have polygonal rims and angular handles.",
+        "Original capture SUCCESS is retained, near art is not accepted."
+      ],
+      "sourceRuntimeFreezeUnchanged": true,
+      "ownedClosure": {
+        "exitCode": 0,
+        "remainingOwnedProcesses": [],
+        "port": {
+          "port": 5240,
+          "connectErrno": 111,
+          "confirmedRefused": true
+        }
+      },
+      "actualBrowserClose": {
+        "before": {
+          "pid": 162050,
+          "state": "S",
+          "ppid": 162026,
+          "startTicks": "5983407"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30043,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true
+      }
+    },
+    {
+      "case": "ceramics",
+      "sourceHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+      "methodSHA256": "339644e068faaeaab59fc76d9bcf6cd171437beaae4812c45dadb4649361cbb0",
+      "originalOutput": "/workspace/neon-evidence/street-close-ceramics-5cd2088-first-render-init-20261005",
+      "captureOutcome": "capture-complete-art-review-pending",
+      "artReview": "NEAR_ART_NOT_ACCEPTED_REFINEMENT_REQUIRED",
+      "actualImagesViewedByRoot": [
+        {
+          "file": "/workspace/neon-evidence/street-close-ceramics-5cd2088-first-render-init-20261005/native/03-ceramic-glaze-mouth-high.png",
+          "sha256": "8bd7b9305e6bc8e7b361480981c6098aad6fa4919878c569e7c6ab71824a2f57"
+        },
+        {
+          "file": "/workspace/neon-evidence/street-close-ceramics-5cd2088-first-render-init-20261005/native/04-ceramic-unglazed-profile-high.png",
+          "sha256": "069bf39ed3ba301562f1ddc3593e34c65e17591af8c6e2cb561372dc22318df1"
+        }
+      ],
+      "findings": [
+        "Both actual High photographs show coarse longitudinal profile bends on vessel silhouette.",
+        "Glaze and unglazed surfaces remain too uniform in this fixed light and glass view.",
+        "Photographs do not show the interior mouth clearly enough to certify inner-wall appearance.",
+        "Original capture SUCCESS is retained, near art is not accepted."
+      ],
+      "sourceRuntimeFreezeUnchanged": true,
+      "ownedClosure": {
+        "exitCode": 0,
+        "remainingOwnedProcesses": [],
+        "port": {
+          "port": 5240,
+          "connectErrno": 111,
+          "confirmedRefused": true
+        }
+      },
+      "actualBrowserClose": {
+        "before": {
+          "pid": 163004,
+          "state": "R",
+          "ppid": 162980,
+          "startTicks": "6041020"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30039,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "status": "CPU_OWNER_DENSER_REAL_GLB_LIFECYCLE_PASS_NATIVE_PENDING",
+  "allThreeVariantSnapshot": {
+    "enabled": true,
+    "near": 80,
+    "far": 100,
+    "drawCalls": 6,
+    "triangles": 136608,
+    "loads": 3,
+    "releases": 0,
+    "staleReleases": 0,
+    "residentVariants": 3,
+    "pendingVariants": 0,
+    "failures": [],
+    "trees": [
+      {
+        "id": "sample-quay-tree-0",
+        "buildingId": "tide-museum",
+        "x": -617,
+        "z": -445,
+        "registered": true,
+        "originalInstances": 3,
+        "wanted": true,
+        "authored": true
+      },
+      {
+        "id": "sample-quay-tree-1",
+        "buildingId": "tide-museum",
+        "x": -503,
+        "z": -445,
+        "registered": true,
+        "originalInstances": 3,
+        "wanted": true,
+        "authored": true
+      },
+      {
+        "id": "sample-quay-tree-2",
+        "buildingId": "harbor-market",
+        "x": -457,
+        "z": -445,
+        "registered": true,
+        "originalInstances": 3,
+        "wanted": true,
+        "authored": true
+      },
+      {
+        "id": "sample-quay-tree-3",
+        "buildingId": "harbor-market",
+        "x": -343,
+        "z": -445,
+        "registered": true,
+        "originalInstances": 3,
+        "wanted": false,
+        "authored": false
+      },
+      {
+        "id": "sample-quay-tree-4",
+        "buildingId": "ferry-house",
+        "x": -297,
+        "z": -445,
+        "registered": true,
+        "originalInstances": 3,
+        "wanted": false,
+        "authored": false
+      },
+      {
+        "id": "sample-quay-tree-5",
+        "buildingId": "ferry-house",
+        "x": -183,
+        "z": -445,
+        "registered": true,
+        "originalInstances": 3,
+        "wanted": false,
+        "authored": false
+      }
+    ]
+  },
+  "limits": {
+    "near": 80,
+    "far": 100,
+    "maxDrawCalls": 6,
+    "maxTriangles": 150000,
+    "maxTreeTriangles": 25000
+  },
+  "distance80Load100ReleaseAndExactFarRestore": true,
+  "interiorHideRestore": true,
+  "balancedLowHighReleaseReload": true,
+  "chunkUnregisterRegisterRestoreReload": true,
+  "lateCancelledLoadDisposesTrue": true,
+  "disposeReturnsOriginalMatrices": true,
+  "counts": {
+    "geometryDisposes": 26,
+    "materialDisposes": 26,
+    "textureDisposes": 39,
+    "bitmapCloses": 39,
+    "instanceDisposes": 0
+  },
+  "limitations": [
+    "Actual real GLB attributes decode; canvas-independent injected owner test, not a native browser.",
+    "Texture ImageBitmap close counters use CPU stand-ins; they do not prove actual native close or hardware VRAM.",
+    "Six submitted draw calls and 136608 triangles include both instance slots of each visible variant."
+  ]
+}

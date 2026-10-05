@@ -1,0 +1,111 @@
+{
+  "status": "FINAL206_INDEPENDENT_DAY_COPIES_COMPLETE_NATIVE_NOT_RUN",
+  "methods": {
+    "ordinary": {
+      "path": "/workspace/neon-candidates/street-close-final-ordinary-951974-20261005",
+      "entrySHA256": "9bae499713d167adfea8704a80cb9abf5ab2e64641430ddea183e838ba9308df",
+      "inputSHA256": "d4d53259572c18eab57b9ce017960ace6c3ce2f73facffeafdcbd0432bbc50b4",
+      "plansSHA256": "9904cd6e416d48e8b26a622bf769d1bafd2b44cebb4464aeaca2f0d1bfcd19cf",
+      "proofSHA256": "f1c5fe0f17c4773032c26f4e39d39b32b43db497d16e599628fd0e6178f59e7f",
+      "sealSHA256": "ed0fbaa9a745df4e1c29af30b082034fb4468f5de783b636968f3fb9d1f17361",
+      "nineMethodHashes": {
+        "capture-street-close.mjs": {
+          "bytes": 29263,
+          "sha256": "9bae499713d167adfea8704a80cb9abf5ab2e64641430ddea183e838ba9308df"
+        },
+        "plans.mjs": {
+          "bytes": 4469,
+          "sha256": "9904cd6e416d48e8b26a622bf769d1bafd2b44cebb4464aeaca2f0d1bfcd19cf"
+        },
+        "input.mjs": {
+          "bytes": 7347,
+          "sha256": "d4d53259572c18eab57b9ce017960ace6c3ce2f73facffeafdcbd0432bbc50b4"
+        },
+        "server.mjs": {
+          "bytes": 4529,
+          "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+        },
+        "render-readiness.mjs": {
+          "bytes": 1091,
+          "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+        },
+        "prepare-public-route.mjs": {
+          "bytes": 3868,
+          "sha256": "b2f9e3410c0174311d5e7ebfcad6cf9cbec00cda58e15e9a13d5f4ec57e2a32b"
+        },
+        "append-method.py": {
+          "bytes": 8234,
+          "sha256": "cbce622ad6b4fed186d847915436007187f961941cc4e6c1102d155e8d71c361"
+        },
+        "evidence/captured-buildings.json": {
+          "bytes": 14628,
+          "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+        },
+        "evidence/public-route-static-proof.json": {
+          "bytes": 16930,
+          "sha256": "f1c5fe0f17c4773032c26f4e39d39b32b43db497d16e599628fd0e6178f59e7f"
+        }
+      },
+      "changedMethods": [
+        "capture-street-close.mjs",
+        "evidence/public-route-static-proof.json"
+      ],
+      "nativeExecuted": false
+    },
+    "quay-public-sprint": {
+      "path": "/workspace/neon-candidates/street-close-final-quay-public-sprint-951974-20261005",
+      "entrySHA256": "8b16b8905f08850a9d4415441364b6ecd0dd1039e0cef7c09f06ee7954ea6604",
+      "inputSHA256": "f4dd2165a7b25acf150efbc699f8168651c3e6c082901366d80224ee0d4c6678",
+      "plansSHA256": "059664838d05af9789c159fe669484bd631fa7ae263be9a286aefb2efb1a42a0",
+      "proofSHA256": "c8dab6f046b05f149deb92f70af8e4e2c2ad567481c1f41ddebec83fc658d7ed",
+      "sealSHA256": "adff421b029a30185d45171433b0fc30b83402cd330e9ad9b3c80d2cc064b3a2",
+      "nineMethodHashes": {
+        "capture-street-close.mjs": {
+          "bytes": 29264,
+          "sha256": "8b16b8905f08850a9d4415441364b6ecd0dd1039e0cef7c09f06ee7954ea6604"
+        },
+        "plans.mjs": {
+          "bytes": 4469,
+          "sha256": "059664838d05af9789c159fe669484bd631fa7ae263be9a286aefb2efb1a42a0"
+        },
+        "input.mjs": {
+          "bytes": 8321,
+          "sha256": "f4dd2165a7b25acf150efbc699f8168651c3e6c082901366d80224ee0d4c6678"
+        },
+        "server.mjs": {
+          "bytes": 4529,
+          "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+        },
+        "render-readiness.mjs": {
+          "bytes": 1091,
+          "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+        },
+        "prepare-public-route.mjs": {
+          "bytes": 3868,
+          "sha256": "b2f9e3410c0174311d5e7ebfcad6cf9cbec00cda58e15e9a13d5f4ec57e2a32b"
+        },
+        "append-method.py": {
+          "bytes": 8234,
+          "sha256": "cbce622ad6b4fed186d847915436007187f961941cc4e6c1102d155e8d71c361"
+        },
+        "evidence/captured-buildings.json": {
+          "bytes": 14628,
+          "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+        },
+        "evidence/public-route-static-proof.json": {
+          "bytes": 17163,
+          "sha256": "c8dab6f046b05f149deb92f70af8e4e2c2ad567481c1f41ddebec83fc658d7ed"
+        }
+      },
+      "changedMethods": [
+        "capture-street-close.mjs",
+        "plans.mjs",
+        "evidence/public-route-static-proof.json"
+      ],
+      "nativeExecuted": false
+    }
+  },
+  "productionSourcesChangedByCopy": false,
+  "originalMethodsChangedByCopy": false,
+  "testsBuildBrowserGpuGitExecutedByCopy": false
+}

@@ -1,0 +1,65 @@
+--- a/src/harbor-district.js
++++ b/src/harbor-district.js
+@@ -1,3 +1,4 @@
++import {createBakedCrustMaterials,createMorningTinCup,createMorningTinCoffee} from './harbor-bread-art.js';
+ import { addAuthoredGroundElevation,createCraftVesselGeometry } from './harbor-frontage-profiles.js';
+ import { applySurfaceFinish } from './surface-finish.js';
+ import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
+@@ -16,7 +17,7 @@
+   ['south-094', 'morning-tin', '晨罐烘焙', 'MORNING TIN', 'bakery', 0, '#a3aa90', 'BREAD · BISCUITS · TEA'],
+ ].map(([shellId,id,name,english,programme,side,color,subtitle]) => Object.freeze({ shellId,id,name,english,programme,side,color,subtitle })));
+ 
+-export const HARBOR_ART_LIMITS = Object.freeze({ near: 72, far: 96, maxDrawCalls: 100, maxTriangles: 85000, maxResidentFrontages: 6 });
++export const HARBOR_ART_LIMITS = Object.freeze({ near: 72, far: 96, maxDrawCalls: 100, maxTriangles: 90000, maxResidentFrontages: 6 });
+ const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
+ 
+ /** A real rounded rectangular arch, with a closed outer profile and open inset.
+@@ -123,7 +124,7 @@
+ 
+ export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()=>.18,quality='high'}={}) {
+   const root=new THREE.Group();root.name='Harbor sample · authored neighborhood frontages';scene.add(root);
+-  const resident=new Map(),colliders=[],fixtures=[],materialCache=new Map(),textureSet=new Set(),proxyGroups=new Map();
++  const resident=new Map(),colliders=[],fixtures=[],materialCache=new Map(),textureSet=new Set(),proxyGroups=new Map(),breadAssetEvents=[];
+   let currentQuality=quality,interiorId=null,loads=0,disposedMeshes=0,disposedTriangles=0,night=0,lastViewer={x:0,z:0};
+   let scanGeneration=0,scanStarted=false,scannedMaps={},scannedMaterials=new Set(),scanLoaded=0,scanErrors=[];
+   const assetBase=new URL('../assets/harbor/materials/',import.meta.url).href;
+@@ -194,9 +195,10 @@
+     else for(const u of[-4.55,4.55])collider(s,`display-${u}`,u,.63,.81,2.3,1.26,.94);
+   }
+   function buildSite(site,detail) {
+-    const siteMaterials=site.shellId==='south-096'?{...baseMaterials,ceramic:glaze,brick:clayForm}:baseMaterials;
++    const breadOwner=detail&&site.shellId==='south-094'?createBakedCrustMaterials(THREE):null;
++    const siteMaterials=breadOwner?{...baseMaterials,breadCrust:breadOwner.crust,breadCrumb:breadOwner.crumb}:site.shellId==='south-096'?{...baseMaterials,ceramic:glaze,brick:clayForm}:baseMaterials;
+     const group=new THREE.Group();group.name=`${site.name} · ${detail?'near street art':'far facade proxy'}`;group.userData.shellId=site.shellId;group.position.set(site.x,site.baseY,site.z);group.rotation.y=site.angle;
+-    const buckets=new Map(),ownedTextures=[],ownedMaterials=[];let craftIdentityMaterial=null;
++    const buckets=new Map(),ownedTextures=[],ownedMaterials=[];group.userData.breadOwner=breadOwner;let craftIdentityMaterial=null;
+     const add=(material,geometry,x,y,z,sx=1,sy=1,sz=1,rx=0,ry=0,rz=0)=>{
+       if(!buckets.has(material))buckets.set(material,[]);temporary.position.set(x,y,z);temporary.rotation.set(rx,ry,rz);temporary.scale.set(sx,sy,sz);temporary.updateMatrix();buckets.get(material).push({geometry,matrix:temporary.matrix.clone()});
+     };
+@@ -247,7 +249,7 @@
+         add(siteMaterials.brick,new THREE.CylinderGeometry(.40,.34,.68,12),u,.36,.88);c(siteMaterials.dark,u,.69,.88,.34,.04);
+         for(let i=0;i<8;i++){const a=i*Math.PI/4;add(siteMaterials.leaf,leaf,u+.04*Math.cos(a),.69,.88+.04*Math.sin(a),.92,1.08,.92,-.30, a,-.28);}
+       }
+-      function cup(x,y,z){const g=new THREE.LatheGeometry([new THREE.Vector2(.08,0),new THREE.Vector2(.10,.02),new THREE.Vector2(.12,.16),new THREE.Vector2(.10,.18),new THREE.Vector2(.092,.15),new THREE.Vector2(.065,.02)],10);add(siteMaterials.ceramic,g,x,y,z);c(siteMaterials.dark,x,y+.15,z,.086,.008);}
++      function cup(x,y,z){if(site.shellId==='south-094'){add(siteMaterials.ceramic,createMorningTinCup(THREE,{table:true}),x,y,z);add(siteMaterials.dark,createMorningTinCoffee(THREE),x,y+.15,z);return;}const g=new THREE.LatheGeometry([new THREE.Vector2(.08,0),new THREE.Vector2(.10,.02),new THREE.Vector2(.12,.16),new THREE.Vector2(.10,.18),new THREE.Vector2(.092,.15),new THREE.Vector2(.065,.02)],10);add(siteMaterials.ceramic,g,x,y,z);c(siteMaterials.dark,x,y+.15,z,.086,.008);}
+       function chair(x,z,turn=0) {
+         c(siteMaterials.wood,x,.47,z,.235,.06);
+         for(const dx of[-.145,.145])for(const dz of[-.145,.145])c(siteMaterials.metal,x+dx,.24,z+dz,.026,.46);
+@@ -305,7 +307,7 @@
+     group.visible=site.shellId!==interiorId;return group;
+   }
+   for(const s of sites){const proxy=buildSite(s,false);proxyGroups.set(s.id,proxy);root.add(proxy);}
+-  function unload(id){const g=resident.get(id);if(!g)return;g.traverse(m=>{if(m.isMesh){disposedMeshes++;disposedTriangles+=m.geometry.getAttribute('position').count/3;m.geometry.dispose();}});for(const t of g.userData.ownedTextures){t.dispose();textureSet.delete(t);}for(const m of g.userData.ownedMaterials){scannedMaterials.delete(m);m.dispose();}g.removeFromParent();g.clear();resident.delete(id);proxyGroups.get(id).visible=sites.find(s=>s.id===id).shellId!==interiorId;if(!resident.size)releaseScannedMaps();}
++  function unload(id){const g=resident.get(id);if(!g)return;if(g.userData.breadOwner){const before=g.userData.breadOwner.snapshot();g.userData.breadOwner.dispose();breadAssetEvents.push({kind:'bakery-crust-owner-released',before,after:g.userData.breadOwner.snapshot()});if(breadAssetEvents.length>8)breadAssetEvents.shift();}g.traverse(m=>{if(m.isMesh){disposedMeshes++;disposedTriangles+=m.geometry.getAttribute('position').count/3;m.geometry.dispose();}});for(const t of g.userData.ownedTextures){t.dispose();textureSet.delete(t);}for(const m of g.userData.ownedMaterials){scannedMaterials.delete(m);m.dispose();}g.removeFromParent();g.clear();resident.delete(id);proxyGroups.get(id).visible=sites.find(s=>s.id===id).shellId!==interiorId;if(!resident.size)releaseScannedMaps();}
+   function update(viewer,dt=0,time=.6){
+     const v=viewer?.position||viewer;if(v&&Number.isFinite(v.x)&&Number.isFinite(v.z))lastViewer={x:v.x,z:v.z};
+     const hour=time<=1?time*24:time;night=1-clamp(Math.sin((hour-6)/12*Math.PI)*4,0,1);baseMaterials.glass.emissiveIntensity=.025+night*.18;
+@@ -315,7 +317,7 @@
+     }
+   }
+   function snapshot(){let calls=0,triangles=0;root.traverse(m=>{if(m.isMesh&&m.parent.visible){calls++;triangles+=m.geometry.getAttribute('position').count/3;}});
+-    return{quality:currentQuality,frontages:sites.map(s=>({id:s.id,shellId:s.shellId,name:s.name,programme:s.programme,x:s.x,z:s.z,baseY:s.baseY,width:s.width,angle:s.angle,publicDoor:{x:s.shell.x,z:s.shell.z+s.shell.depth/2+.64,y:s.baseY,yaw:0},displayFaceHasDoor:s.side===0})),residentFrontages:[...resident.keys()],loads,disposedMeshes,disposedTriangles,drawCalls:calls,triangles,night,interiorBuildingId:interiorId,near:HARBOR_ART_LIMITS.near,far:HARBOR_ART_LIMITS.far,originalMaterials:true,scannedMapsLoaded:scanLoaded,scannedMapsExpected:6,scannedMapErrors:scanErrors,materialSource:'Poly Haven CC0: plastered_wall_02 / pavement_03'};}
++    return{quality:currentQuality,bakedCrust:resident.get('morning-tin')?.userData.breadOwner?.snapshot()||{status:'not-resident',expectedMaps:3,loadedMaps:0,pending:false},breadAssetEvents:[...breadAssetEvents],frontages:sites.map(s=>({id:s.id,shellId:s.shellId,name:s.name,programme:s.programme,x:s.x,z:s.z,baseY:s.baseY,width:s.width,angle:s.angle,publicDoor:{x:s.shell.x,z:s.shell.z+s.shell.depth/2+.64,y:s.baseY,yaw:0},displayFaceHasDoor:s.side===0})),residentFrontages:[...resident.keys()],loads,disposedMeshes,disposedTriangles,drawCalls:calls,triangles,night,interiorBuildingId:interiorId,near:HARBOR_ART_LIMITS.near,far:HARBOR_ART_LIMITS.far,originalMaterials:true,scannedMapsLoaded:scanLoaded,scannedMapsExpected:6,scannedMapErrors:scanErrors,materialSource:'Poly Haven CC0: plastered_wall_02 / pavement_03'};}
+   const api={root,colliders,fixtures,update,snapshot,get metadata(){return snapshot();},setQuality(value){currentQuality=value;root.traverse(m=>{if(m.isMesh)m.castShadow=value==='high'&&[...resident.values()].includes(m.parent)&&!m.material.userData.displayGlass&&!m.material.userData.surfacePaint;});},setInteriorBuilding(id){interiorId=id;for(const s of sites){const near=resident.get(s.id);if(near)near.visible=s.shellId!==id;proxyGroups.get(s.id).visible=!near&&s.shellId!==id;}},dispose(){for(const id of [...resident.keys()])unload(id);root.traverse(m=>{if(m.isMesh)m.geometry.dispose();});for(const g of sharedGeometry)g.dispose();for(const t of textureSet)t.dispose();for(const m of materialCache.values())m.dispose();root.removeFromParent();root.clear();}};
+   return api;
+ }

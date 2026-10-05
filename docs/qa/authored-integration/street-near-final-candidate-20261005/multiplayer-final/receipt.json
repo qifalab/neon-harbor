@@ -1,0 +1,69 @@
+{
+  "candidateSourceParent": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "candidateWorktree": "/tmp/neon-multiplayer-travel-claim-candidate-20261005",
+  "status": "SEALED_ISOLATED_CANDIDATE_NOT_ADOPTED_OR_BROWSER_TESTED",
+  "files": [
+    {
+      "path": "src/multiplayer.js",
+      "bytes": 6479,
+      "sha256": "db16cfb3634f527285d7e6200b48cc5fc55efdbe16da5a91f40fd04a9c4b50dc",
+      "previousSealedSha256": "3ed3fed5ad4f454d468a36af393b9c3f6de80f2f554fad06ffc0e94e528c3e65"
+    },
+    {
+      "path": "tests/multiplayer-travel.test.js",
+      "bytes": 14292,
+      "sha256": "5b1fdf5565ec1744068dc5f6dea4f98e80b76e79b600ea692ed1bdaf6de5ae5a",
+      "previousSealedSha256": "473613e5ab4338baddce0277d6ee04747d25ccbf3ac28704803f7f60a2432671"
+    }
+  ],
+  "unchangedSourceProof": {
+    "tools/multiplayer-server.mjs": {
+      "sha256": "2a0db9c5f8ddef730063d18b6dbef7e5c10d01e86fbcee8c972c49ce32354388",
+      "byteIdenticalToSourceParent": true
+    },
+    "tests/multiplayer.test.js": {
+      "sha256": "b7604433920cb670aa9282b7a354ff4c68bdcdd30de1a026dac128cca9ada36d",
+      "byteIdenticalToSourceParent": true
+    },
+    "tests/multiplayer-browser/rooms.spec.js": {
+      "sha256": "049b54bf7ca1e9186ea88f2da8bb0b75d997959a4be208d92c57e11ce7156c28",
+      "byteIdenticalToSourceParent": true
+    }
+  },
+  "testFileCount": {
+    "newTestsInMultiplayerTravelFile": 12,
+    "existingTestsInMultiplayerFile": 3,
+    "actualTargetedExecuted": 15,
+    "actualTargetedPass": 15,
+    "actualTargetedFail": 0
+  },
+  "executionReceiptFile": "test-execution-receipt.json",
+  "diffCheck": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "semantics": {
+    "ordinaryStateCadenceMs": 100,
+    "minimumAcceptedTravelGapMs": 1000,
+    "maximumStateWaitForClaimMs": 6500,
+    "ownershipRequestHasExisting5000msRequestTimeout": true,
+    "queuedLatestTravelMustBeAcceptedBeforeClaim": true,
+    "inFlightStateSharedWithoutDuplicatePost": true,
+    "failedHTTPNotRetriedByClaim": true,
+    "leaveEpochAndCapturedSessionCheckedBeforeClaim": true,
+    "lateStateAckCannotClearNewSessionRequest": true,
+    "lateStateAckCannotIssueOwnershipAfterTimeout": true,
+    "serverRateProtectionUnchanged": true
+  },
+  "originalFailedFixture": {
+    "retained": true,
+    "stdout": "initial-epoch-fixture-node-tests-original-stdout.txt",
+    "reason": "The extra epoch test froze the monotonic clock at the previous send timestamp and waited for a new send, which was correctly suppressed by the unchanged 90 ms guard. Fixture corrected to advance the ordinary 100 ms tick; production unchanged between those executions."
+  },
+  "limitations": [
+    "No GPU, no two-browser rerun, no full npm test/build executed on this isolated candidate.",
+    "No commits, refs, remote application writes, ROOT or NEXT source mutations.",
+    "The original 5cd remote multiplayer failure remains a failure; this receipt is not browser acceptance."
+  ]
+}

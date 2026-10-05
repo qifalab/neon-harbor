@@ -1,3 +1,4 @@
+import {createMorningTinCup,createMorningTinHandle} from './harbor-bread-art.js';
 // Six hand specified shop elevations. All dimensions are metres and fitted to
 // the existing storefront plane; this module never changes simulation routes.
 export const FRONTAGE_PROFILES = Object.freeze({
@@ -39,38 +40,59 @@ export function createFrontageFrame(THREE,width,height,radius=.08) {
 // Closed baked crust has real recessed scores, not paper marks on an ellipsoid.
 export function createBakedDisplayLoaf(THREE,variant=0) {
  const a=.143+(variant%3)*.009,b=.086+((variant+1)%3)*.006,h=.123+(variant%2)*.009;
- const cuts=variant%2?[-.065,.040]:[-.078,0,.078],nx=24,nz=12,p=[],uv=[],colors=[],ix=[];
- const tone=new THREE.Color([0xb4763d,0xc18b4c,0xae6b35][variant%3]);
- const top=(x,z)=>{
-  const dome=Math.pow(Math.max(0,1-(x/a)**2-(z/b)**2),.44),wave=1+.025*Math.sin(x*37+variant)*Math.sin(z*29+.7);
-  const score=cuts.reduce((n,c)=>n+.007*Math.exp(-(((x+.32*z-c)/.011)**2)),0)*dome*dome;
-  return Math.max(0,h*dome*wave-score);
- };
+ const cuts=variant%2?[-.065,.040]:[-.078,0,.078],nx=24,nz=12,p=[],uv=[],crustColors=[],crumbColors=[],ix=[];
+ const dome=(x,z)=>Math.pow(Math.max(0,1-(x/a)**2-(z/b)**2),.44);
+ const oldTop=(x,z)=>Math.max(0,h*dome(x,z)*(1+.025*Math.sin(x*37+variant)*Math.sin(z*29+.7))-cuts.reduce((n,c)=>n+.007*Math.exp(-(((x+.32*z-c)/.011)**2)),0)*dome(x,z)**2);
+ let oldMaximum=0;for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2));oldMaximum=Math.max(oldMaximum,oldTop(x,z));}
+ const score=(x,z)=>{let strength=0;for(const [i,c]of cuts.entries()){const bend=.0025*Math.sin(z*41+i*.8+variant),width=.0095*(.88+.12*Math.sin(z*53+variant+i)),d=(x+.32*z-c-bend)/width;strength=Math.max(strength,Math.exp(-d*d));}return strength;};
+ const top=(x,z)=>{const shell=dome(x,z),asym=1+.019*Math.sin(x*39+variant)*Math.sin(z*27+.7)+.009*Math.cos(x*71-z*19+variant);return Math.min(oldMaximum,Math.max(0,h*shell*asym-score(x,z)*.013*shell*shell));};
+ const exposed=new THREE.Color(0xdbb679),bakedLip=new THREE.Color(0x935523),color=new THREE.Color();
  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
-  const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2)),y=top(x,z),shade=.88+.12*Math.sin(x*87+z*64+variant)**2;
-  p.push(x,y,z);uv.push(i/nx,j/nz);colors.push(tone.r*shade,tone.g*shade,tone.b*shade);
+  const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2)),y=top(x,z),grain=.5+.5*Math.sin(x*47+z*39+variant);
+  p.push(x,y,z);const u=(x/a+1)/2,v=(z/b+1)/2;uv.push((variant%2?1-u:u)+variant*.137,v+variant*.093);
+  // The original color map supplies toasted color; neutral vertices avoid
+  // multiplying it by the previous dark-brown dome tint a second time.
+  const tint=.96+.04*grain;crustColors.push(tint,tint,tint);
+  color.copy(bakedLip).lerp(exposed,Math.min(.90,score(x,z)*(.72+.18*grain)));crumbColors.push(color.r,color.g,color.b);
   if(i<nx&&j<nz){const q=j*(nx+1)+i;ix.push(q,q+nx+1,q+1,q+1,q+nx+1,q+nx+2);}
  }
  const edge=[];for(let i=0;i<=nx;i++)edge.push(i);for(let j=1;j<=nz;j++)edge.push(j*(nx+1)+nx);for(let i=nx-1;i>=0;i--)edge.push(nz*(nx+1)+i);for(let j=nz-1;j>0;j--)edge.push(j*(nx+1));
- const centre=p.length/3;p.push(0,0,0);uv.push(.5,.5);colors.push(tone.r*.85,tone.g*.85,tone.b*.85);
- for(let i=0;i<edge.length;i++)ix.push(centre,edge[(i+1)%edge.length],edge[i]);
- const make=(positions,uvs,tints,indices)=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));g.setAttribute('color',new THREE.Float32BufferAttribute(tints,3));g.setIndex(indices);g.computeVertexNormals();g.computeBoundingBox();return g;};
- const sp=[],su=[],sc=[],si=[],crumb=new THREE.Color(0xd8bd88);
- for(const cut of cuts){const begin=sp.length/3;for(let j=0;j<=12;j++)for(const side of[-1,1]){
-  const z=(j/12*2-1)*b*.68,x=cut-.32*z+side*.006;
-  sp.push(x,top(x,z)+.0011,z);su.push(side<0?0:1,j/12);sc.push(crumb.r,crumb.g,crumb.b);
-  if(j<12&&side===-1){const q=begin+j*2;si.push(q,q+2,q+1,q+1,q+2,q+3);}
- }}
- return {crust:make(p,uv,colors,ix),scores:make(sp,su,sc,si),variant,halfWidth:a,halfDepth:b,height:h,cutDepth:.007};
+ const centre=p.length/3;p.push(0,0,0);uv.push(.5+variant*.137,.5+variant*.093);crustColors.push(.90,.90,.90);crumbColors.push(bakedLip.r,bakedLip.g,bakedLip.b);
+ const crustIndices=[],scoreIndices=[];
+ for(let i=0;i<ix.length;i+=3){const [ia,ib,ic]=ix.slice(i,i+3),x=(p[ia*3]+p[ib*3]+p[ic*3])/3,z=(p[ia*3+2]+p[ib*3+2]+p[ic*3+2])/3;(score(x,z)>.34&&Math.abs(z)<b*.76?scoreIndices:crustIndices).push(ia,ib,ic);}
+ for(let i=0;i<edge.length;i++)crustIndices.push(centre,edge[(i+1)%edge.length],edge[i]);
+ const shell=new THREE.BufferGeometry();shell.setAttribute('position',new THREE.Float32BufferAttribute(p,3));shell.setIndex([...crustIndices,...scoreIndices]);shell.computeVertexNormals();const normals=shell.attributes.normal;
+ const make=(indices,tints)=>{const used=[...new Set(indices)],mapping=new Map(used.map((v,i)=>[v,i])),positions=[],texcoords=[],colors=[],ns=[];for(const v of used){positions.push(...p.slice(v*3,v*3+3));texcoords.push(...uv.slice(v*2,v*2+2));colors.push(...tints.slice(v*3,v*3+3));ns.push(normals.getX(v),normals.getY(v),normals.getZ(v));}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(texcoords,2));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));g.setAttribute('normal',new THREE.Float32BufferAttribute(ns,3));g.setIndex(indices.map(v=>mapping.get(v)));g.computeBoundingBox();return g;};
+ // Crumb triangles replace crust triangles in one continuous original shell.
+ // The two sets share exact Float32 positions, with no ribbon offset or overlay.
+ const crust=make(crustIndices,crustColors),scores=make(scoreIndices,crumbColors);shell.dispose();return{crust,scores,variant,halfWidth:a,halfDepth:b,height:h,cutDepth:.013,scoreTopology:'disjoint-index-partition-of-shared-shell'};
 }
 
 // Smooth continuous thrown profile, closed foot, inner wall and rounded thick
 // mouth. Old ceramic display maximum radius/height are explicit arguments.
 export function createCraftVesselGeometry(THREE,radius=.096,height=.29) {
  const control=[[.54,0],[.88,.19],[1,.44],[.94,.63],[.62,.82],[.43,.94],[.51,.978]].map(([r,y])=>new THREE.Vector2(r*radius,y*height));
- const curve=new THREE.SplineCurve(control),outer=curve.getPoints(7).map(v=>new THREE.Vector2(Math.min(radius,Math.max(radius*.43,v.x)),Math.min(height*.978,Math.max(0,v.y))));
- outer[0].y=0;const points=[...outer,new THREE.Vector2(radius*.46,height),...outer.slice().reverse().map(v=>new THREE.Vector2(Math.max(radius*.28,v.x-radius*.11),Math.max(height*.035,v.y-height*.018))),new THREE.Vector2(0,height*.035),new THREE.Vector2(0,0),outer[0].clone()];
- const g=new THREE.LatheGeometry(points,32);g.computeBoundingBox();g.computeBoundingSphere();return g;
+ const curve=new THREE.SplineCurve(control),old=curve.getPoints(7).map(v=>Math.min(radius,Math.max(radius*.43,v.x))),maximum=Math.max(...old);
+ const outer=curve.getPoints(24).map(v=>new THREE.Vector2(Math.max(radius*.43,v.x),Math.min(height*.978,Math.max(0,v.y))));
+ const scale=maximum/Math.max(...outer.map(v=>v.x));
+ for(const p of outer)p.x=Math.min(maximum,p.x*scale);
+ outer[0].y=0;
+ const lipOuter=outer.at(-1).x,lipInner=lipOuter-radius*.11,lipMiddle=(lipOuter+lipInner)/2;
+ const points=[new THREE.Vector2(0,0),...outer];
+ for(let i=1;i<=4;i++){const a=i*Math.PI/4;points.push(new THREE.Vector2(lipMiddle+radius*.055*Math.cos(a),height*.978+height*.022*Math.sin(a)));}
+ const inner=curve.getPoints(16).map(v=>new THREE.Vector2(Math.min(maximum,Math.max(radius*.43,v.x)*scale),Math.min(height*.978,Math.max(0,v.y))));
+ points.push(...inner.reverse().map(v=>new THREE.Vector2(Math.max(radius*.28,v.x-radius*.11),Math.max(height*.035,v.y-height*.018))),new THREE.Vector2(0,height*.035),new THREE.Vector2(0,0));
+ const g=new THREE.LatheGeometry(points,32),position=g.getAttribute('position'),uv=g.getAttribute('uv'),indices=[];
+ // Physical height coordinates keep pigment/grain density coherent on both
+ // sides of the rim. Remove the axis-ring zero-area triangles from the mesh.
+ for(let i=0;i<uv.count;i++)uv.setY(i,position.getY(i)/height);
+ for(let i=0;i<g.index.count;i+=3){const a=g.index.getX(i),b=g.index.getX(i+1),c=g.index.getX(i+2),ax=position.getX(b)-position.getX(a),ay=position.getY(b)-position.getY(a),az=position.getZ(b)-position.getZ(a),bx=position.getX(c)-position.getX(a),by=position.getY(c)-position.getY(a),bz=position.getZ(c)-position.getZ(a);if((ay*bz-az*by)**2+(az*bx-ax*bz)**2+(ax*by-ay*bx)**2>1e-20)indices.push(a,b,c);}
+ g.setIndex(indices);g.computeVertexNormals();
+ // computeVertexNormals splits the duplicated UV seam; restore a continuous
+ // thrown surface across the first/last meridian without changing UVs.
+ const normals=g.getAttribute('normal'),normal=new THREE.Vector3(),last=32*points.length;
+ for(let j=0;j<points.length;j++){normal.set(normals.getX(j)+normals.getX(last+j),normals.getY(j)+normals.getY(last+j),normals.getZ(j)+normals.getZ(last+j)).normalize();normals.setXYZ(j,normal.x,normal.y,normal.z);normals.setXYZ(last+j,normal.x,normal.y,normal.z);}
+ g.computeBoundingBox();g.computeBoundingSphere();return g;
 }
 
 // A shallow, real display fits inside the existing window frame. None of
@@ -87,8 +109,8 @@ function addWindowDisplay(THREE,{site,programme,u,width,bottom,height,add,b,mate
   const curved=(material,geometry,x,y,z,sx=1,sy=1,sz=1)=>add(material,geometry,x,y,z,sx,sy,sz);
   const cup=(x,y,z)=>{
     const points=[[.054,0],[.068,.014],[.077,.12],[.069,.135],[.060,.118],[.047,.016]].map(([x,y])=>new THREE.Vector2(x,y));
-    curved(m.ceramic,new THREE.LatheGeometry(points,refinedCraft?32:10),x,y,z);
-    curved(m.ceramic,new THREE.TorusGeometry(.040,.011,5,refinedCraft?16:10),x+.088,y+.075,z,1,1,1);
+    curved(refinedCraft?m.glaze:m.ceramic,refinedBake?createMorningTinCup(THREE):new THREE.LatheGeometry(points,refinedCraft?32:10),x,y,z);
+    curved(refinedCraft?m.glaze:m.ceramic,refinedBake?createMorningTinHandle(THREE):new THREE.TorusGeometry(.040,.011,5,refinedCraft?16:10),x+.088,y+.075,z,1,1,1);
   };
   for(let i=0;i<count;i++) {
     const x=at(i),y=shelfY+.025,z=.405;
@@ -114,7 +136,7 @@ function addWindowDisplay(THREE,{site,programme,u,width,bottom,height,add,b,mate
       }
     } else if(programme==='bakery') {
       b(m.wood,x,y+.012,z,.38,.024,.26);
-      if(refinedBake){const loaf=createBakedDisplayLoaf(THREE,i);curved(m.breadCrust,loaf.crust,x,y+.024,z);curved(m.breadCrust,loaf.scores,x,y+.024,z);}
+      if(refinedBake){const loaf=createBakedDisplayLoaf(THREE,i);curved(m.breadCrust,loaf.crust,x,y+.024,z);curved(m.breadCrumb,loaf.scores,x,y+.024,z);}
       else {curved(m.fruit,new THREE.SphereGeometry(1,12,7),x,y+.087,z,.165,.074,.101);for(const dx of[-.062,0,.062])b(m.paper,x+dx,y+.150,z,.014,.006,.080);}
     } else {
       if(programme==='noodles') {
