@@ -1,0 +1,167 @@
+{
+  "status": "ACTUAL_ONE_WEST_PATTERN_SOURCE_BRIDGE_NATIVE_ART_PENDING",
+  "parentCommit": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+  "actualBuildInfoPath": "expected-build-provenance/authored-build-info-mineral-pattern-correction-20261005-18ba8b44486c.json",
+  "actualBuildInfoSHA256": "18ba8b44486ce4f5bdcb188c58ac519c2feec165056d709001d72d35eb7b286f",
+  "actualResourceCount": 208,
+  "exactRuntimeDeltaFrom9cf": {
+    "added": {},
+    "changed": {
+      "src/metropolis-western-ridge.js": {
+        "before": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78",
+        "after": "c56b88dc552d90d3909383b0cdfc77fe884d0d4dac7b52ceaa60ffb2449b4960"
+      }
+    },
+    "removed": [],
+    "unchangedCount": 207
+  },
+  "sourceHashesBefore": {
+    "src/metropolis-western-ridge.js": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78",
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "3f0fd65efbb8259a4fca77a09ad0ea2d80190ed9084ac831bc6c277800411c55"
+  },
+  "sourceHashesAfter": {
+    "src/metropolis-western-ridge.js": "c56b88dc552d90d3909383b0cdfc77fe884d0d4dac7b52ceaa60ffb2449b4960",
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "3f0fd65efbb8259a4fca77a09ad0ea2d80190ed9084ac831bc6c277800411c55"
+  },
+  "actualPayloadAdoptionReceipt": {
+    "path": "runtime-amendments/mineral-pattern-correction-20261005/actual-three-literal-payload-adoption-receipt.json",
+    "sha256": "eb90c1d022ed307759ad3d076757484ffb3d9c62c16eff1c4ac6f582f73a2018"
+  },
+  "originalProducerCPUProof": {
+    "path": "docs/qa/mineral-pattern-correction-adoption-20261005/original-sealed-candidate/evidence/actual-cpu/actual-cpu-proof.json",
+    "sha256": "56f2874794348faba97da104e1e7e7d51dd4c6912d0b5e4e814b7702e0e46df8",
+    "proofAuthoredByProducerNotIndependent": true,
+    "reexecutedByAdopterOrSealer": false
+  },
+  "producerActualGeometryIdentity": {
+    "position": {
+      "itemSize": 3,
+      "count": 4018,
+      "bytes": 48216,
+      "sha256": "c191d83d36ca22ac6a1651dde9bb39c62baf7ad9e663bd48fc1c440137ac5bfd"
+    },
+    "normal": {
+      "itemSize": 3,
+      "count": 4018,
+      "bytes": 48216,
+      "sha256": "67d8849f926659449b69b33ee1bd0dd70833af4b729dfdbc7ea628436e37dfa4"
+    },
+    "uv": {
+      "itemSize": 2,
+      "count": 4018,
+      "bytes": 32144,
+      "sha256": "5aafbea57829ddfb9a2f58215a622f685df93fd708a10b5199c1afd19aab6cbd"
+    },
+    "index": {
+      "count": 24096,
+      "bytes": 48192,
+      "sha256": "a2c38e00de4a32f51bdc82158201af5acbfe82836790bf71a5d840b12ea57e3a"
+    },
+    "AABB": {
+      "min": [
+        -1076,
+        -18.5,
+        -1439
+      ],
+      "max": [
+        -790,
+        160.5,
+        -495
+      ]
+    },
+    "sphere": {
+      "center": [
+        -933,
+        71,
+        -967
+      ],
+      "radius": 501.2417081608433
+    },
+    "vertices": 4018,
+    "triangles": 8032,
+    "geometryBytes": 224984,
+    "producerTypedArrayBytes": 283472,
+    "producerCapUnchanged": 300000
+  },
+  "producerActualPhysicsIdentity": {
+    "all4178LiteralFieldsIdentical": true,
+    "colliderSHA256": "7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30",
+    "original72CoordinatesSameSupports": true,
+    "all220LiteralBuildingsAndEntrancesExact": true,
+    "sixTreeSitesAndSupportsExact": true
+  },
+  "producerActualStandardProgrammeIdentity": {
+    "beforeType": "MeshStandardMaterial",
+    "afterType": "MeshStandardMaterial",
+    "standardProgramIdentity": true,
+    "onBeforeCompileFunctionIdentity": true,
+    "cacheKeyIdentity": true,
+    "normalScaleBefore": [
+      1,
+      1
+    ],
+    "normalScaleAfter": [
+      0.35,
+      0.35
+    ]
+  },
+  "producerActualTextureDimensionsBudgetIdentity": {
+    "count": 2,
+    "dimensions": [
+      128,
+      128
+    ],
+    "CPUBasePixelBytes": 131072,
+    "fullMipGPUTheoreticalBytes": 174760,
+    "CPUPlusGPUTheoreticalResidentBytes": 305832,
+    "maxBytes": 524288,
+    "actualVRAMMeasured": false,
+    "actualShaderCompiledInNative": false
+  },
+  "producerActualNorthAndLightOwnerIdentity": {
+    "northIdentity": true,
+    "ownership": {
+      "beforeWorldDispose": {
+        "westGeometry": 1,
+        "westMaterial": 1,
+        "westNormal": 1,
+        "westRoughness": 1,
+        "northGeometry": 0,
+        "northMaterial": 0,
+        "northNormal": 0,
+        "northRoughness": 0
+      },
+      "afterWorldDisposeAndRepeatedWestDisposals": {
+        "westGeometry": 1,
+        "westMaterial": 1,
+        "westNormal": 1,
+        "westRoughness": 1,
+        "northGeometry": 1,
+        "northMaterial": 1,
+        "northNormal": 1,
+        "northRoughness": 1
+      },
+      "oldNorthWorldDisposal": {
+        "normal": 1,
+        "roughness": 1
+      },
+      "westAndNorthTextureOwnersIndependent": true
+    }
+  },
+  "originalRejectedFishscaleHighImageReference": {
+    "path": "/workspace/neon-evidence/street-day-material-lighting-9cf1c86-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
+    "bytes": 1121403,
+    "sha256": "bbb126a273417de623dda71820cedc1be1d66693cae8598e776976b3193dc517"
+  },
+  "allOther207ResourcesIncludingLightingControlsTransportLiteral9cf": true,
+  "allNativeExecutableMethodsInputsPlansSealsCasesAndBudgetsLiteral9cf": true,
+  "baseline156EntireObjectUnchanged": true,
+  "originalWideCasesPreparedHeadsAndHistoricalAmendmentsUnchanged": true,
+  "all401SourceFrozenThroughActualFinal381AndBuild": true,
+  "nativeArtAccepted": false,
+  "pixelAcceptanceInheritedFrom9cf": false,
+  "actualVRAMOrShaderCompileMeasuredBySealer": false,
+  "scope": "Only West texel recipe, standardnormalScale.35 and nonperiodic macro colours change. Geometry position/normal/index/UV/AABB/sphere and standard shader programme/cache identity, map dimensions/caps and actual physics are producerCPU-backed. Explicit gameplay/control source identity permits source-scoped functional bridging only after actual outcomes; visual approval requires new actual High pixels."
+}

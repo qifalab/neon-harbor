@@ -1,0 +1,34 @@
+{
+  "status": "HISTORICAL_SIX_DECLARED_QA_RAW_LOG_BYTES_RESTORED_IN_NEW_CHILD_ONLY",
+  "reason": "Earlier exact staged list excluded six .log files via gitignore though the immutable original QA seal declared them. Restoring literal declared bytes in this new child makes that historical seal complete without rewriting the original seal or frozen9cf worktree.",
+  "originalHistoricalQASealSHA256": "5df0be26513d6c0f8819ca60d4304f8dc3ff617f72fab0baad6d43be12f3ae0e",
+  "restoredFiles": {
+    "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/build.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/build.stdout.log": {
+      "bytes": 473,
+      "sha256": "7a0023f54e13aafdbb7a7e15d17d92c303c9a6773cfa63b20adb411ad59de98c"
+    },
+    "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/evidence/independent-cpu/actual-node-stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/evidence/independent-cpu/actual-node-stdout.log": {
+      "bytes": 943,
+      "sha256": "a383c3302036c4e33d1f8954fb0935f30689bce0cb066fb57f6441d762b639eb"
+    },
+    "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/targeted-5-contracts.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/targeted-5-contracts.stdout.log": {
+      "bytes": 684,
+      "sha256": "1ed210bd8ba18307c6708b36fe269fd6611a29ea57e58bb089b665cf41eb6138"
+    }
+  },
+  "productionOrNativeOrOriginalSealChanged": false,
+  "frozen9cfWorktreeWritten": false,
+  "gpuOrTestsOrBuildOrNetworkExecuted": false
+}
