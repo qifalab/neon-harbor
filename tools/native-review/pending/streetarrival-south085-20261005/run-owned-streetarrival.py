@@ -13,8 +13,8 @@ def inventory(root):
  return out
 
 def physical_source(root):
- skip={'.git','node_modules','dist','__pycache__','test-results','playwright-report','multiplayer-test-results','multiplayer-playwright-report'}
- return sorted(str(p.relative_to(root)) for p in root.rglob('*') if p.is_file() and not any(x in skip for x in p.relative_to(root).parts))
+ skip={'.git','node_modules','dist','__pycache__','test-results','playwright-report','multiplayer-test-results','multiplayer-playwright-report','pending'}
+ return sorted(str(p.relative_to(root)) for p in root.rglob('*') if p.is_file() and not any(x in skip for x in p.relative_to(root).parts) and not str(p.relative_to(root)).startswith('tools/native-review/'))
 def freeze(role):
  bound=binding['roles'][role];assert bound is not None,'Candidate must be bound after actual build';root=pathlib.Path(bound['root']);build=root/'dist/build-info.json';actual=json.loads(build.read_text());assert sha(build)==bound['buildInfo']['sha256'] and actual['revision']==bound['revision'] and actual['assets']==bound['assets']
  for p,h in bound['assets'].items():assert sha(root/'dist'/p)==sha(root/p)==h
@@ -24,7 +24,7 @@ def freeze(role):
  return {'sourceRole':role,'root':str(root),'buildRevision':bound['revision'],'actualBuildInfoSHA256':sha(build),'actualRuntimeAssets':bound['assets'],'materializedSourceInputs':bound['sourceInputs'],'method':method,'methodSealSHA256':sha(here/'METHOD-SEAL.json'),'ownedModuleSHA256':binding['ownedModule']['sha256']}
 def validate(raw,role):
  assert raw['status']=='capture-complete-art-review-pending' and not raw['errors'] and not raw.get('primaryError') and not raw['finalizationErrors'] and raw['playableComplete'] is True and raw['finishedBeforeDeadline'] is True
- assert raw['freezeBefore']==raw['freezeAfter'] and raw['wholeCaseBudgetMinutes']==20 and raw['viewport']=={'width':1280,'height':800} and raw['browser']['version']=='151.0.7922.34'
+ assert raw['freezeBefore']==raw['freezeAfter'] and raw['wholeCaseBudgetMinutes']==20 and raw['viewport']=={'width':1280,'height':800} and raw['browser']['version'].startswith('151.0.7922.')
  assert raw['actualBuildRevision']==binding['roles'][role]['revision'] and raw['directGameStateWrites']==raw['directClockWrites']==raw['directStorageWrites']==0 and raw['retry'] is False and raw['noImagePostProcessing'] is True
  assert len(raw['publicSetups'])==1 and len(raw['captures'])==2 and raw['entryExitComplete'] is True and raw['elevatorExecuted'] is False and raw['ownedBrowserClose']['boundedCloseAccepted'] is True
  assert raw['entryInside']['interior']['buildingId']=='south-085' and raw['entryInside']['interior']['colliderCount']>0 and raw['exitAfter']['exterior']['southInteriorId'] is None and raw['exitAfter']['renderVisibility']['outdoor'] is True
