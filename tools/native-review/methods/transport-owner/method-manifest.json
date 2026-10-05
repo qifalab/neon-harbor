@@ -20,7 +20,7 @@
     "src/harbor-authored-transport.js": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
     "src/harbor-authored-transit-snapshot.js": "ad658d129d4b5de7eae93eaae1540c6db1a892a0df75b7e528cb26a09493ab6e",
     "src/harbor-authored-transport-assets.js": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848",
-    "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
     "src/contact-occlusion.js": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8"
   },
   "processAdapter": {
@@ -153,5 +153,22 @@
     "verifiedNativeSpeedup": false,
     "publicStopListingOnlyProjectsActualStopArray": true,
     "productionSourceOrRuntimeAssetChanged": false
+  },
+  "publicHudSourcePinAmendment": {
+    "status": "ACTIVE_PUBLIC_HUD_SOURCE_PIN_AMENDMENT_NATIVE_CLICK_PENDING",
+    "bundleRelativePath": "runtime-amendments/public-hud-control-20261005/source-pin-amendment.json",
+    "sha256": "9c748ee427e0475b86737e140eff38aaf76f4a54711d52c1676fca00c62faf6b",
+    "sourceHashesBefore": {
+      "index.html": "4d664cbe3e994c8cd695aa040eaea89b4617d17733c7f0fdae5218eb326d7582",
+      "styles.css": "b678622cdca60ee8ba4bc13dcb7a932e950bc4f51232a429bf8339405ecd42e7",
+      "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850"
+    },
+    "sourceHashesAfter": {
+      "index.html": "4fca4a76a27849dca753ec34a8e4ba38bfdb4bb7e9ac57b6bfb64850df8c2f66",
+      "styles.css": "8a62bca88da2c27403cc937f760e0195c722a273c81af57c25e7f8bc140f8a2c",
+      "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+    },
+    "nativeClickExecutedBySealer": false,
+    "transportControllerAssetsCameraAndPostprocessingSourcePinsUnchanged": true
   }
 }

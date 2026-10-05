@@ -1,0 +1,109 @@
+{
+  "status": "SOURCE_ONLY_RUNTIME_DICTIONARY_AND_WORLD_PIN_REFRESH_NATIVE_PENDING",
+  "at": "2026-10-05T04:45:43.962514+00:00",
+  "worktree": "/tmp/neon-harbor-street-refinement-candidate-20261005",
+  "actualBuildInfo": {
+    "path": "expected-build-provenance/authored-build-info-street-trees-western-ridge-20261005-c07bda2d624e.json",
+    "sha256": "c07bda2d624e2ebcd1628f0ca2bb780d8a154ab27fadf23211dc4fb7492b5bb8",
+    "version": "0.8.0",
+    "assetCount": 199,
+    "revision": null,
+    "bytes": 21307,
+    "scope": "Actual completed build of combined six near-street trees and western decorative ridge rendering. Exact seven new runtime files and one changed world source from original 6ad 192-asset build. This metadata refresh executes no build, rule, geometry, browser or GPU tests.",
+    "note": "Actual local build revision is null. The actual remote Git HEAD/build revision must be verified independently for a new native run; current new native and human art acceptance remain pending."
+  },
+  "sourceParentHead": "6ad1ec712a32157635d179453e3b468db8cb116c",
+  "exactRuntimeDelta": {
+    "added": {
+      "assets/harbor/vegetation/LICENSE.txt": "1d03915a8b5c51b0635d43e393e255ac6d73d9d2e7bede151cf9669711fba6ee",
+      "assets/harbor/vegetation/asset-manifest.json": "d40e437090f935da59f3ab9b6cc5a53114a339d20f68053c3ae7ba5678ef997f",
+      "assets/harbor/vegetation/quay-banyan-a.glb": "782419c6acea55e9b39de17b70a44dcdc9b03cd1be387c7f22d24c784a046884",
+      "assets/harbor/vegetation/quay-banyan-b.glb": "acb022c55a664b8bd31397f22ebe8373964dbed8ee8d935bd7d47945007ee099",
+      "assets/harbor/vegetation/quay-banyan-c.glb": "726582fab72eae28bcb65d9bc08df0d43a9c826c1484090746d00eba407d6107",
+      "src/harbor-sample-trees.js": "7870323230db1e7e4bda2a218e479a3ecd61d8ed72403e628adf85b9891a18e5",
+      "src/metropolis-western-ridge.js": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c"
+    },
+    "changed": {
+      "src/metropolis-world.js": {
+        "before": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+        "after": "ba1bef7154840d60344413d9332d4119b908d8fa1bbf30c31b66941f5e2a9347"
+      }
+    },
+    "removed": [],
+    "unchangedCount": 191
+  },
+  "baselineDictionaryDeepIdentity": true,
+  "originalWideDataAndAmendmentsDeepIdentity": true,
+  "originalHistoricalFilesByteIdentity": true,
+  "originalCpuReceipts": {
+    "western-ridge-cpu-identity-proof-original.json": {
+      "original": {
+        "path": "/tmp/neon-western-mountain-candidate-20261005/cpu-identity-proof.json",
+        "bytes": 16450,
+        "sha256": "73227b9a8a8ed362492da29ecdcf9cb702657ad50a01f87a450300032a8c7cde"
+      },
+      "archived": {
+        "path": "runtime-amendments/street-trees-western-ridge-20261005/western-ridge-cpu-identity-proof-original.json",
+        "bytes": 16450,
+        "sha256": "73227b9a8a8ed362492da29ecdcf9cb702657ad50a01f87a450300032a8c7cde"
+      }
+    },
+    "near-trees-source-payload-receipt-original.json": {
+      "original": {
+        "path": "/tmp/neon-sample-near-trees-candidate-20261005/source-payload-receipt.json",
+        "bytes": 4181,
+        "sha256": "50ded2b60a0813d9dbc31278f2405c3a32a1d96e00211f6a7a8ea2ebc36a1faa"
+      },
+      "archived": {
+        "path": "runtime-amendments/street-trees-western-ridge-20261005/near-trees-source-payload-receipt-original.json",
+        "bytes": 4181,
+        "sha256": "50ded2b60a0813d9dbc31278f2405c3a32a1d96e00211f6a7a8ea2ebc36a1faa"
+      }
+    },
+    "near-trees-cpu-ownership-budget-proof-original.json": {
+      "original": {
+        "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-six-near-trees-proof.json",
+        "bytes": 8300,
+        "sha256": "38e506bd166586cae43e8f8663dcaad6c53bbe306bc833fb8e15af8c96e4c61a"
+      },
+      "archived": {
+        "path": "runtime-amendments/street-trees-western-ridge-20261005/near-trees-cpu-ownership-budget-proof-original.json",
+        "bytes": 8300,
+        "sha256": "38e506bd166586cae43e8f8663dcaad6c53bbe306bc833fb8e15af8c96e4c61a"
+      }
+    },
+    "near-trees-cpu-real-streamer-solid-leaf-proof-original.json": {
+      "original": {
+        "path": "/tmp/neon-sample-near-trees-candidate-20261005/cpu-streamer-physical-tree-proof.json",
+        "bytes": 5597,
+        "sha256": "1612c80c1b7770e7a4317b2e1c0029dddc75ab349942262b96862892ee405eed"
+      },
+      "archived": {
+        "path": "runtime-amendments/street-trees-western-ridge-20261005/near-trees-cpu-real-streamer-solid-leaf-proof-original.json",
+        "bytes": 5597,
+        "sha256": "1612c80c1b7770e7a4317b2e1c0029dddc75ab349942262b96862892ee405eed"
+      }
+    }
+  },
+  "productionSourceMutatedByRefresh": false,
+  "productBuildRuleGeometryBrowserGpuExecutedByRefresh": false,
+  "stageCommitRefsMutated": false,
+  "nativeArtAcceptance": false,
+  "writes": [
+    {
+      "path": "tools/native-review/expected-runtime-dictionaries.json",
+      "bytes": 39977,
+      "sha256": "282533a41b31dcbcb959934913ad4a7345300c649e3094e415a609dec0c6cac8"
+    },
+    {
+      "path": "tools/native-review/methods/harbor/evidence/frontage-wide-static-proof.json",
+      "bytes": 43656,
+      "sha256": "51c66a7831418b3eaf0c60650219f23fbce70455e3cb159eb16a65a26acf4394"
+    },
+    {
+      "path": "tools/native-review/expected-build-provenance/authored-build-info-street-trees-western-ridge-20261005-c07bda2d624e.json",
+      "bytes": 21307,
+      "sha256": "c07bda2d624e2ebcd1628f0ca2bb780d8a154ab27fadf23211dc4fb7492b5bb8"
+    }
+  ]
+}

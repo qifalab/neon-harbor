@@ -34,7 +34,8 @@ const plan = {
   quality: isResidentLoop?'low':'high', hour: 16.5, dayCycle: false,
   selectedCase: { name:options.case, ...selectedCase },
   routePolicy: 'Independent public Atlas for the named address; one pre-planned pavement approach from actual read-only starting NPC coordinates, no chase or endpoint retry. South uses shipped harbor supply UI.',
-  actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment' },
+  actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment',
+    idleSimulationAdvance: { originalIdleMs:5000, additionalWaitCapMs:30000, sharedPhaseClampedToWhole:true, requiresActualPositiveSimulationDelta:true } },
   budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?3600:options.case==='north-cup-owner'?2400:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
     ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:2100,naturalSouthParcelWallSeconds:360}:{}) },
   ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + fixed pavement x=-544, x=-521, z=-602 out/back and one uninterrupted real 13-simulation-second zero-demand cooldown' : null,
@@ -283,10 +284,40 @@ async function aimAt(target) {
 }
 async function observe45(label,id) {
   const start=await event(`${label}-45-start`),startWall=Date.now(),teleport=start.teleportRevision,observationOffset=metadata.observations.length;
-  const sample=async phase=>{const state=await read();validate(state);assert.equal(state.teleportRevision,teleport);
-    metadata.observations.push({at:new Date().toISOString(),wallSeconds:(Date.now()-startWall)/1000,phase,id,state});await persist();return state;};
-  await sample('before-walk');await new Promise(ok=>setTimeout(ok,5000));const idle=await sample('idle-before-walk');
-  assert.ok(idle.simulationTime>start.simulationTime,'idle observation must actually advance');
+  const sample=async(phase,readState=read,persistSample=true)=>{const state=await readState();validate(state);assert.equal(state.teleportRevision,teleport);
+    metadata.observations.push({at:new Date().toISOString(),wallSeconds:(Date.now()-startWall)/1000,phase,id,state});if(persistSample)await persist();return state;};
+  // Preserve the original five-second released-input idle, then allow only a
+  // bounded read-only wait for a real completed simulation step on slow frames.
+  await sample('before-walk');await new Promise(ok=>setTimeout(ok,5000));
+  const idleBegan=Date.now(),idleDeadline=Math.min(idleBegan+30000,totalDeadlineAt);
+  const idleReceipt={label,id,originalIdleMs:5000,additionalWaitCapMs:30000,
+    beganAt:new Date(idleBegan).toISOString(),deadlineAt:new Date(idleDeadline).toISOString(),
+    wholeDeadlineAt:new Date(totalDeadlineAt).toISOString(),startSimulationTime:start.simulationTime,
+    status:'awaiting-actual-simulation-progress',evidencePersistenceOutsideWaitPhase:true};
+  (metadata.idleSimulationAdvancePhases ||= []).push(idleReceipt);
+  const idleRemaining=()=>{const ms=idleDeadline-Date.now();assert.ok(ms>0,
+    'idle observation must actually advance within the fixed additional phase and original whole deadline');return ms;};
+  const readIdle=async()=>{const ms=idleRemaining();let timer;try {
+    const state=await Promise.race([read(),new Promise((_,bad)=>{timer=setTimeout(()=>bad(new Error(
+      'idle observation must actually advance: read-only snapshot exceeded fixed additional phase')),ms);})]);
+    idleRemaining();assert.equal(state.ready,true,'idle observation must remain ready');
+    assert.equal(state.settings.quality,start.settings.quality,'idle observation quality must remain unchanged');
+    assert.equal(state.settings.firstPerson,start.settings.firstPerson,'idle observation view must remain unchanged');
+    return state;
+  } finally {clearTimeout(timer);}};
+  // Stage bounded idle samples in the original observations array. Persist
+  // once after closing the wait phase so file I/O cannot hold that phase open.
+  try {
+    let idle=await sample('idle-before-walk',readIdle,false);
+    while(!(idle.simulationTime>start.simulationTime)) {
+      await new Promise(ok=>setTimeout(ok,Math.min(1500,idleRemaining())));
+      idle=await sample('idle-await-real-simulation-advance',readIdle,false);
+    }
+    idleRemaining();assert.ok(idle.simulationTime>start.simulationTime,'idle observation must actually advance');
+    idleReceipt.status='actual-positive-simulation-progress';idleReceipt.endSimulationTime=idle.simulationTime;
+    idleReceipt.actualSimulationDelta=idle.simulationTime-start.simulationTime;
+  } catch(error) {idleReceipt.status='first-failure-preserved';idleReceipt.error=error.stack||error.message;throw error;}
+  finally {idleReceipt.endedAt=new Date().toISOString();idleReceipt.additionalPhaseWallMs=Date.now()-idleBegan;await persist();}
   await walk('x',start.position.x+4);await sample('walk-out');await walk('x',start.position.x);const walkedBack=await sample('walk-return');
   const liveTarget=[...walkedBack.north,...(walkedBack.sampleLife.agents||[])].find(a=>a.id===id);
   if(liveTarget&&!liveTarget.insideBuildingId){await aimAt(liveTarget);await sample('facing-actual-target');}

@@ -1,0 +1,43 @@
+{
+  "status": "CPU_REPLAY_PASSED_NATIVE_NOT_YET_RECAPTURED",
+  "at": "2026-10-05T04:48:31.331734+00:00",
+  "activeMethod": "tools/capture-resident-native.mjs",
+  "activeMethodSha256": "5900b54b27ec2598e707c17322f143e490968612b2b9349861d37b0a5e362b73",
+  "priorMethodSha256": "c5bae3eafd9fa65c8040bc3f19fb16f9c5480e5f98ef1a28d2daa1ce49c3c15b",
+  "originalFailureArtifacts": {
+    "root": "/tmp/neon-6ad1-resident-core-11324271932/extracted",
+    "baselineFirstFailureAt": "2026-10-05T03:36:43.622Z",
+    "authoredFirstFailureAt": "2026-10-05T03:46:45.157Z",
+    "firstFailure": "original public interview approach deadline",
+    "statusesRemain": "FAILED"
+  },
+  "reason": "Both native variants use only d then Z, advance9.0/9.8167simulation seconds during180wall seconds and stop before x>=-510.6 corridor. Camera yaw remainspi throughout; there is no repeated camera operation to remove. Intermediate crossing Z gait delays the actual interview.",
+  "change": "Ordinary public Shift on the unobstructed long approach until within3.2m of the intermediate corridor crossing; use ordinary gait through that crossing. Shift releases after crossing, and original Z remains within3m of the actual moving NPC.",
+  "preservedGuards": {
+    "approachWallSeconds": 180,
+    "captureWallSeconds": 120,
+    "wholeWallSeconds": 1080,
+    "actualPhotoBeforeAndAfterDistanceMetres": 3.5,
+    "targetIdentity": "resident-tide-museum-1",
+    "continuousSameTeleportRevision": true,
+    "unpausedHighNoContextLost": true,
+    "noNpcWorldClockPause": true,
+    "noTargetWarp": true,
+    "originalFirstFailurePreserved": true,
+    "inputReleaseConfirmed": true
+  },
+  "cpuReplay": {
+    "sourceActual": "Original recorded37/40poll simulation intervals and target poses plus actual274northstreet colliders and finite-stamina GameSimulation._walk",
+    "baselineCandidateReadyWallSeconds": 113.46,
+    "baselineCandidateDistanceMetres": 1.9969935827039307,
+    "authoredCandidateReadyWallSeconds": 121.713,
+    "authoredCandidateDistanceMetres": 2.36103596832076,
+    "staticColliderContacts": 0,
+    "originalBothFailuresExactlyReproducedWithinMetres": 1e-08,
+    "receiptSha256": "329df8e0829b1135319f38965682699685a36f20d6220a7033ea02fcf6d1e820",
+    "scriptSha256": "59b53d023125fb7994ab5ff4f2426785ea89ed40c7237ef01a801b404b6cbd30",
+    "limit": "Explicitly synthetic CPU replay with four other start-snapshot residents static. Future real traffic/actors, screenshots and120secondcapture phase remain unverified."
+  },
+  "nativeExecuted": false,
+  "artAccepted": false
+}

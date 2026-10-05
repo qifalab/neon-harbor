@@ -1,0 +1,86 @@
+{
+  "scope": "Isolated one-line method candidate only. No source tree, NEXT tree, reference or original evidence changes. No native execution, status rewrite, tolerance relaxation or budget change.",
+  "originalPath": "/tmp/neon-cc038-east-11324735837/extracted/native/authored/capture-scenic-east.mjs",
+  "originalSha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac",
+  "candidateFile": "capture-scenic-east.candidate.mjs",
+  "candidateSha256": "641e67c1be3ab81ecb243859d0d62b70d67d6d04c71f09fe9a2816e4039b7cf5",
+  "patchFile": "EAST-IMMUTABLE-ARRIVAL.patch",
+  "edit": "Room target yaw derives from sealed identical r.arrival instead of each achieved walking endpoint. Physical route still independently reaches .15m source tolerance; public pointer face still applies.",
+  "originalPoint003GuardsPreservedExactly": [
+    "assert.ok(Math.abs(s.camera.pitch + .06) < .003);",
+    "assert.ok(Math.abs(Math.atan2(Math.sin(s.camera.yaw - Math.PI / 2), Math.cos(s.camera.yaw - Math.PI / 2))) < .003);",
+    "assert.ok(Math.abs(Math.atan2(Math.sin(a.camera.yaw - b.camera.yaw), Math.cos(a.camera.yaw - b.camera.yaw))) < .003);"
+  ],
+  "allOtherBytesPreserved": true,
+  "inputMjsUnchangedSha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+  "cpuMathChecks": [
+    {
+      "label": "east-lobby-office",
+      "sourceArrival": {
+        "x": 1183.2,
+        "z": -206.575
+      },
+      "canonicalYaw": -1.5707963267948966,
+      "candidateIdenticalForBothVariants": true,
+      "originalRecordedCrossVariantYawDelta": 0.019709167480469247,
+      "authored": {
+        "originalAchievedEndpointTargetYaw": -1.573785448327387,
+        "recordedYawErrorAgainstOriginalTarget": 1.9842646927849288e-07,
+        "canonicalMinusOriginalTargetWrappedAbs": 0.002989121532490424
+      },
+      "baseline": {
+        "originalAchievedEndpointTargetYaw": -1.5540763937948086,
+        "recordedYawErrorAgainstOriginalTarget": 8.547857823849897e-08,
+        "canonicalMinusOriginalTargetWrappedAbs": 0.016719933000088005
+      }
+    },
+    {
+      "label": "east-lobby-conference",
+      "sourceArrival": {
+        "x": 1183.2,
+        "z": -179.425
+      },
+      "canonicalYaw": -1.5707963267948966,
+      "candidateIdenticalForBothVariants": true,
+      "originalRecordedCrossVariantYawDelta": 0.01305023193359478,
+      "authored": {
+        "originalAchievedEndpointTargetYaw": -1.5906303700156108,
+        "recordedYawErrorAgainstOriginalTarget": 6.43359012959674e-08,
+        "canonicalMinusOriginalTargetWrappedAbs": 0.019834043220714248
+      },
+      "baseline": {
+        "originalAchievedEndpointTargetYaw": -1.5775802186285406,
+        "recordedYawErrorAgainstOriginalTarget": 1.6210622821185843e-08,
+        "canonicalMinusOriginalTargetWrappedAbs": 0.006783891833644029
+      }
+    },
+    {
+      "label": "east-upper-lookout",
+      "sourceArrival": {
+        "x": 1183.2,
+        "z": -179.425
+      },
+      "canonicalYaw": -1.5707963267948966,
+      "candidateIdenticalForBothVariants": true,
+      "originalRecordedCrossVariantYawDelta": 0.0031102927499486732,
+      "authored": {
+        "originalAchievedEndpointTargetYaw": -1.5647570789123968,
+        "recordedYawErrorAgainstOriginalTarget": 1.1657284026966863e-09,
+        "canonicalMinusOriginalTargetWrappedAbs": 0.006039247882499765
+      },
+      "baseline": {
+        "originalAchievedEndpointTargetYaw": -1.5678672537326492,
+        "recordedYawErrorAgainstOriginalTarget": 1.1909542463328648e-07,
+        "canonicalMinusOriginalTargetWrappedAbs": 0.0029290730622473227
+      }
+    }
+  ],
+  "nativeSuccessProven": false,
+  "originalFailureRemainsImmutable": true,
+  "candidateSyntaxCheck": {
+    "command": "node --check capture-scenic-east.candidate.mjs",
+    "exitCode": 0,
+    "cpuOnly": true,
+    "doesNotExecuteImportsOrBrowser": true
+  }
+}

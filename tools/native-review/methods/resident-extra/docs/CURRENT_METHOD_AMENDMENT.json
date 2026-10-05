@@ -1,8 +1,8 @@
 {
-  "status": "SOURCE_CATALOGUE_FOCUS_PHONE_AND_PARCEL_BOUNDS_CORRECTED_PENDING_NATIVE",
+  "status": "SOURCE_CATALOGUE_FOCUS_PHONE_PARCEL_AND_BOUNDED_IDLE_CORRECTED_PENDING_NATIVE",
   "at": "2026-10-05T01:35:19.214226+00:00",
   "activeMethod": "tools/capture-resident-extra.mjs",
-  "activeMethodSha256": "728cd6e76191d5becc48bd0d1b050f7f445b46ce32c2b000f399f66539aaf2f3",
+  "activeMethodSha256": "c7362468a1f2648d4f7f8db6a9a3aefd3c3f6fa8346ba0ddae1cca0676bbbc69",
   "historicalSeal": "provenance/SEALED_SHA256-original-ef92.json",
   "preservesOriginalFailures": true,
   "changes": "One fixed coarse + Z fine hold per same180s leg, original endpoint .75/teleport/simulation guard; supported owner35 clamped whole, context/static old shared30 first. Extra also includes South75sim startup1200 + original360 watch, South-only whole2700; original firstPerson15 shared readiness.",
@@ -61,5 +61,21 @@
     "continuousAbsentDemandSimulationSeconds": 13,
     "zeroOwnerGuardsUnchanged": true,
     "nativeResult": "NOT_RUN"
+  },
+  "idleSimulationAdvanceAmendment": {
+    "reference": "IDLE_SIMULATION_ADVANCE_AMENDMENT-20261005.json",
+    "originalCurrentMethodSha256": "728cd6e76191d5becc48bd0d1b050f7f445b46ce32c2b000f399f66539aaf2f3",
+    "originalRun": 37259435733,
+    "originalArtifact": 11323799230,
+    "originalFirstFailurePreserved": true,
+    "originalIdleMs": 5000,
+    "maximumAdditionalPhaseMs": 30000,
+    "sharedPhaseClampedToWhole": true,
+    "minimumObservationWallMs": 45000,
+    "unchangedWholeBudgets": true,
+    "unchangedPublicWalkLegs": true,
+    "noProductionSourceOrHiddenSetterChanges": true,
+    "nativeResult": "NOT_RUN",
+    "evidencePersistenceOutsideWaitPhase": true
   }
 }

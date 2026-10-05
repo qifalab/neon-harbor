@@ -1,0 +1,1152 @@
+{
+  "scope": "Read-only CPU review of the two original archives; no browser, GPU, source/reference changes, new native attempt, budget expansion, publication or status modification.",
+  "createdUTC": "2026-10-05T04:48:46.306843+00:00",
+  "archives": {
+    "owner-tram": {
+      "path": "/tmp/neon-6ad1-ownership-tram-11324730548/original.zip",
+      "sha256": "862c201ea7febe0bbdd66760ba103af9d8533409ad02a5253f4cf2fc9d78168f",
+      "archiveBytes": 16477623,
+      "originalFileCount": 108,
+      "originalUncompressedBytes": 16452635,
+      "allExtractedBytesMatchArchive": true,
+      "extractedMismatches": [],
+      "extraExtractedFiles": [],
+      "evidenceInventoryCount": 107,
+      "evidenceInventoryMismatches": []
+    },
+    "EAST": {
+      "path": "/tmp/neon-cc038-east-11324735837/original.zip",
+      "sha256": "7eee4a3214b0a8c71e2b281d9380575e0a2c5d6184348ed9cd8082e021b195de",
+      "archiveBytes": 41429320,
+      "originalFileCount": 134,
+      "originalUncompressedBytes": 41401036,
+      "allExtractedBytesMatchArchive": true,
+      "extractedMismatches": [],
+      "extraExtractedFiles": [],
+      "evidenceInventoryCount": 133,
+      "evidenceInventoryMismatches": []
+    }
+  },
+  "ownerTram": {
+    "originalStatus": "FAILED",
+    "pairStatus": "FAILED",
+    "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+    "firstError": {
+      "stage": "ownership case",
+      "name": "Error",
+      "message": "read-only actual snapshot exceeded 30000 ms",
+      "stack": "Error: read-only actual snapshot exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs:85:134)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+    },
+    "secondaryErrors": [],
+    "runtimeErrorCount": 0,
+    "diagnosticErrorCount": 0,
+    "actualMethod": {
+      "path": "/tmp/neon-6ad1-ownership-tram-11324730548/extracted/preparation/method-bundle-original/methods/transport-owner/native-transport-ownership-extra.mjs",
+      "sha256": "20713be5c1f23ea9604bfb54a15852a585ec431fe191ebba8b167a3ab36ac440",
+      "matchesRecordedToolSha": true,
+      "actualSnapshotLines": "171-183",
+      "lowTransitionLines": "231-235, 278-282",
+      "boundedReadLines": "84-86, 181-193"
+    },
+    "failurePhase": "Low response after the successful public-low-selected-paused read; publicQuality resumes then ordinaryFrames invokes waitState/read. No completed actual-low-ordinary-frames observation is retained.",
+    "lastSuccessfulSample": {
+      "stage": "public-low-selected-paused",
+      "at": "2026-10-05T03:45:33.449Z",
+      "quality": "low",
+      "paused": true,
+      "simulationTime": 4.7499999999999885,
+      "teleportRevision": 2,
+      "auditTail": 15,
+      "oldPoolCount": 2,
+      "pendingPoolCount": 0,
+      "authoredFleetCount": 3,
+      "returnedStateJsonBytesApprox": 48699
+    },
+    "firstErrorRecordedAt": "2026-10-05T03:46:04.306Z",
+    "responsePhase": "low",
+    "stageCounts": {
+      "events": 8,
+      "samples": 11,
+      "auditEvents": 15,
+      "responses": 6,
+      "photos": 1
+    },
+    "retainedAuditTypes": {
+      "pool-requested": 2,
+      "pool-lod-decoded": 6,
+      "pool-ready": 2,
+      "instance-attached": 3,
+      "pool-settled": 2
+    },
+    "initialResponses": {
+      "allStatus200": true,
+      "allRecordedBytesAndShaMatchExpected": true,
+      "phases": {
+        "initial": 6
+      }
+    },
+    "highPhoto": {
+      "file": "01-high-loaded.png",
+      "bytes": 794449,
+      "sha256": "d3a9d69ac1df3b3d58899acc87e1b6ce3cf77595e0bc556f20e9806fe599a163",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "completePngVerifiedCpu": true
+    },
+    "wholeCase": {
+      "budgetMs": 1200000,
+      "caseFinalElapsedMs": 203638,
+      "authoritativeCompletionFinalElapsedMs": 203654,
+      "lateFailureFinalElapsedMs": 203654,
+      "hardDeadlineReached": false,
+      "callerOwnedForceInvoked": false
+    },
+    "cleanup": [
+      {
+        "operation": "context.close",
+        "sharedBudgetMs": 30000,
+        "outerCapMs": null,
+        "actualCapMs": 29999,
+        "elapsedMs": 4379,
+        "confirmed": true,
+        "error": null
+      },
+      {
+        "operation": "server.close",
+        "sharedBudgetMs": 30000,
+        "outerCapMs": null,
+        "actualCapMs": 25620,
+        "elapsedMs": 1,
+        "confirmed": true,
+        "error": null
+      },
+      {
+        "operation": "browser.close",
+        "sharedBudgetMs": null,
+        "outerCapMs": 35000,
+        "actualCapMs": 35000,
+        "elapsedMs": 8188,
+        "confirmed": true,
+        "error": null
+      }
+    ],
+    "ownedBrowserClose": {
+      "before": {
+        "pid": 3398,
+        "state": "S",
+        "ppid": 3385,
+        "startTicks": "7184"
+      },
+      "current": null,
+      "apiCloseResolved": true,
+      "outerCapMs": 35000,
+      "providerDefaultInnerCloseMs": 30000,
+      "apiCloseElapsedMs": 8188,
+      "exitCode": 0,
+      "signalCode": null,
+      "forcedExit": false,
+      "graceful": true,
+      "forceAttribution": "none-or-not-eligible",
+      "providerInternalBranchIndependentlyObserved": false,
+      "callerForceInvoked": false,
+      "hardDeadlineReached": false,
+      "identityReadConfirmed": true,
+      "exactOwnedClosureConfirmed": true,
+      "exitModeEligible": true,
+      "withinOuterCap": true,
+      "boundedCloseAccepted": true,
+      "api": "supported in-process browser.close \u2192 pinned browserProcess.close"
+    },
+    "actualChildExit": {
+      "pid": 3398,
+      "confirmed": true,
+      "exitCode": 0,
+      "signalCode": null
+    },
+    "sourceFreeze": {
+      "beforeAfterEqual": true,
+      "entryCount": 74
+    },
+    "authoritativeCompletion": {
+      "status": "FAILED",
+      "actualCaseShaMatches": true,
+      "lateFailureInvalidatesEarlierStatus": true
+    },
+    "conclusions": [
+      "The first failure is an individual 30000 ms read-only snapshot timeout, not the fixed 1200000 ms case deadline or owned-close timeout.",
+      "High load/render/photo was recorded. Low selection was observed while paused. Pool and instance release, Low frame, restored High generation, and full ownership lifecycle remain unproven.",
+      "The paused Low state retaining old pools is before the resumed observation; it does not by itself prove a release defect.",
+      "Exact owned child closure was recorded with exitCode 0, no signal, no caller force, and accepted graceful close."
+    ],
+    "limits": [
+      "No trace of the timed-out evaluation internals or completion is preserved. Browser scheduling, full snapshot construction, serialization, Low transition work, and render load cannot be separated.",
+      "The method already filters previously consumed audit rows but still constructs the complete __NEON__.snapshot. Approximately 48.7 KB returned state does not establish a protocol serialization bottleneck.",
+      "Promise.race timeout does not cancel page.evaluate; no later result is retained.",
+      "No owner method optimization or timeout expansion is justified as a proven fix by these original records."
+    ]
+  },
+  "EAST": {
+    "originalPairStatus": "FAILED",
+    "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+    "primaryError": {
+      "name": "AssertionError",
+      "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Math.abs(Math.atan2(Math.sin(a.camera.yaw - b.camera.yaw), Math.cos(a.camera.yaw - b.camera.yaw))) < .003)\n",
+      "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(Math.abs(Math.atan2(Math.sin(a.camera.yaw - b.camera.yaw), Math.cos(a.camera.yaw - b.camera.yaw))) < .003)\n\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:307:14"
+    },
+    "exactFailurePhase": "Post-completed EAST route reference-pose comparison, capture-scenic-east.mjs:301-311; first failure is first capture yaw assertion at line 307, east-lobby-office.",
+    "referenceShaMatchesPreservedBaselineMetadata": true,
+    "modes": {
+      "baseline": {
+        "status": "capture-complete-art-review-pending",
+        "startedAt": "2026-10-05T02:10:26.693Z",
+        "closedAt": "2026-10-05T02:57:08.608Z",
+        "wholeCaseBudgetMinutes": 60,
+        "phaseLimitsMs": {
+          "normal": 180000,
+          "renderedCamera": 60000,
+          "inputHold": 180000,
+          "pointerLook": 60000,
+          "elevator": 900000,
+          "cleanup": 30000
+        },
+        "finishedBeforeDeadline": true,
+        "published": false,
+        "eventCount": 50,
+        "eventStatusCounts": {
+          "observed-current-render": 46,
+          "prompt-only": 4
+        },
+        "inputStatusCounts": {
+          "completed": 24
+        },
+        "walkCount": 16,
+        "pointerCount": 8,
+        "captures": [
+          {
+            "label": "east-lobby-office",
+            "image": {
+              "file": "east-lobby-office-high.png",
+              "bytes": 731918,
+              "sha256": "c34b4e926c10b1d1ff8098ebac650ba058049fc7ef611869fb69b12a1bf97e4b",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "52142505bb2c9f930af0042ed5455ed5c36e69a1eb59ce927561cff694fe510b",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.080000000008,
+              "y": 4.035,
+              "z": -206.67666666666486,
+              "yaw": -1.5707963267948968
+            },
+            "yaw": 4.7291088279062,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 4.856248816409447e-07,
+            "roomCenter": [
+              1177,
+              -206.575
+            ],
+            "declaredArrival": {
+              "x": 1183.2,
+              "z": -206.575
+            },
+            "yawRequestedFromAchievedEndpoint": -1.5540763937948086,
+            "recordedYawErrorAgainstAchievedEndpoint": 8.547857823849897e-08,
+            "sameSourceArrivalCanonicalYaw": -1.5707963267948966
+          },
+          {
+            "label": "east-lobby-conference",
+            "image": {
+              "file": "east-lobby-conference-high.png",
+              "bytes": 713083,
+              "sha256": "c3fb62b0d4e7b981d59945ec60f70afac8337908f9de9743e0f28bc02383f7d4",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "3aa9c28de8d1e879644eef43c4795a71b6504c86d89c58f5a3b9d9c5ea9ec786",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.133325002989,
+              "y": 4.035,
+              "z": -179.38339154830706,
+              "yaw": -1.5707966319706774
+            },
+            "yaw": 4.705605104761669,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 4.784351315123558e-07,
+            "roomCenter": [
+              1177,
+              -179.425
+            ],
+            "declaredArrival": {
+              "x": 1183.2,
+              "z": -179.425
+            },
+            "yawRequestedFromAchievedEndpoint": -1.5775802186285406,
+            "recordedYawErrorAgainstAchievedEndpoint": 1.6210622821185843e-08,
+            "sameSourceArrivalCanonicalYaw": -1.5707963267948966
+          },
+          {
+            "label": "east-upper-elevator-cabin",
+            "image": {
+              "file": "east-upper-elevator-cabin-high.png",
+              "bytes": 520507,
+              "sha256": "31c76629c7b3ec6f8ba1d0d4d7558cc9931d7f07c9db6553eb68aef228c0b486",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "1771cb1244a26acf1037ea39f4850fbd1a698d4cab6fc12d2958210d0294cb0c",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1191.9466583363144,
+              "y": 374.035,
+              "z": -217.54339160064043,
+              "yaw": -3.1415926535897927
+            },
+            "yaw": -3.1415926535897927,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 0.0
+          },
+          {
+            "label": "east-upper-lookout",
+            "image": {
+              "file": "east-upper-lookout-high.png",
+              "bytes": 932988,
+              "sha256": "4b8f0f68a77962bb23020d1309ee5643d0c9a143d170c29311f2e57db559b0bc",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "3f7309f0516f6ae5f31644aa8f37feea2f531ee83acdff4ed7f2d070f6a03605",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.0799916696558,
+              "y": 374.035,
+              "z": -179.4500582673096,
+              "yaw": -1.5707963267948961
+            },
+            "yaw": -1.5678673728280739,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 4.814062151137222e-07,
+            "roomCenter": [
+              1174.525,
+              -179.425
+            ],
+            "declaredArrival": {
+              "x": 1183.2,
+              "z": -179.425
+            },
+            "yawRequestedFromAchievedEndpoint": -1.5678672537326492,
+            "recordedYawErrorAgainstAchievedEndpoint": 1.1909542463328648e-07,
+            "sameSourceArrivalCanonicalYaw": -1.5707963267948966
+          },
+          {
+            "label": "east-observation-waterfront-view",
+            "image": {
+              "file": "east-observation-waterfront-view-high.png",
+              "bytes": 1063222,
+              "sha256": "9419e869ed50a88ade57661eac52ff835da7900c81b785192aca4442ce57898b",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "e65987a0f5fffbc5b103a8daa207a822d856561c4955b7d4a3aba8898fe8acfe",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.0799916696558,
+              "y": 374.035,
+              "z": -179.4500582673096,
+              "yaw": -1.5707963267948961
+            },
+            "yaw": -1.5707964499765115,
+            "pitch": 0.2599999694824219,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 8.970872933389273e-10
+          }
+        ],
+        "routePlans": [
+          {
+            "label": "east-lobby-office-enter",
+            "floorId": "lobby",
+            "segmentCount": 4,
+            "endpointCount": 4,
+            "maxActualAxisError": 0.11999999999193278,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "east-lobby-office-return",
+            "floorId": "lobby",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.10172219609086142,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "east-lobby-conference-enter",
+            "floorId": "lobby",
+            "segmentCount": 4,
+            "endpointCount": 4,
+            "maxActualAxisError": 0.06667499701893576,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "east-lobby-conference-return",
+            "floorId": "lobby",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.05334166368561455,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "physical-cabin-entry-observation",
+            "floorId": "lobby",
+            "segmentCount": 3,
+            "endpointCount": 3,
+            "maxActualAxisError": 0.09339160064041607,
+            "minimumStaticClearanceMargin": 1.4128679656438994
+          },
+          {
+            "label": "physical-cabin-exit-observation",
+            "floorId": "observation",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.05672493397557332,
+            "minimumStaticClearanceMargin": 2.4155263019585522
+          },
+          {
+            "label": "east-upper-lookout-enter",
+            "floorId": "observation",
+            "segmentCount": 4,
+            "endpointCount": 4,
+            "maxActualAxisError": 0.1200083303442625,
+            "minimumStaticClearanceMargin": 1.7283505461684925
+          },
+          {
+            "label": "east-upper-lookout-return",
+            "floorId": "observation",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.0266583362529218,
+            "minimumStaticClearanceMargin": 1.619996658265472
+          },
+          {
+            "label": "physical-cabin-entry-lobby",
+            "floorId": "observation",
+            "segmentCount": 3,
+            "endpointCount": 3,
+            "maxActualAxisError": 0.026669924815223567,
+            "minimumStaticClearanceMargin": 2.4688679656441668
+          },
+          {
+            "label": "physical-cabin-exit-lobby",
+            "floorId": "lobby",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.09673642345549638,
+            "minimumStaticClearanceMargin": 2.442198040828943
+          },
+          {
+            "label": "physical-street-door-return",
+            "floorId": "lobby",
+            "segmentCount": 3,
+            "endpointCount": 3,
+            "maxActualAxisError": 0.05340309012427724,
+            "minimumStaticClearanceMargin": 1.0378679656441268
+          }
+        ],
+        "finalRecordedEvent": {
+          "kind": "real-exterior-walk-after-exit",
+          "finishedAt": "2026-10-05T02:56:38.140Z",
+          "interiorBuildingId": null,
+          "exterior": {
+            "southInteriorId": null,
+            "harborInteriorId": null
+          },
+          "hiddenHarborShells": 0,
+          "inCar": null,
+          "transitRiding": false,
+          "sampleTransitRiding": false,
+          "position": {
+            "x": 1191.9998780144756,
+            "y": 3.75,
+            "z": -149.61000003360232,
+            "yaw": -9.377577882031128e-08
+          },
+          "revision": 10
+        },
+        "runtimeErrorCount": 0,
+        "secondaryErrors": [],
+        "teardownEvents": [],
+        "cleanup": [
+          {
+            "label": "browser-context",
+            "startedAt": "2026-10-05T02:56:38.378Z",
+            "timeoutMs": 30000,
+            "status": "closed",
+            "finishedAt": "2026-10-05T02:56:38.396Z",
+            "elapsedMs": 18
+          },
+          {
+            "label": "browser-connection",
+            "startedAt": "2026-10-05T02:56:38.396Z",
+            "timeoutMs": 29982,
+            "status": "closed",
+            "finishedAt": "2026-10-05T02:56:38.397Z",
+            "elapsedMs": 1
+          },
+          {
+            "label": "owned-browser-server",
+            "startedAt": "2026-10-05T02:56:38.397Z",
+            "timeoutMs": 35000,
+            "status": "closed",
+            "finishedAt": "2026-10-05T02:57:08.450Z",
+            "elapsedMs": 30053
+          },
+          {
+            "label": "static-server",
+            "startedAt": "2026-10-05T02:57:08.450Z",
+            "timeoutMs": 1,
+            "status": "closed",
+            "finishedAt": "2026-10-05T02:57:08.450Z",
+            "elapsedMs": 0
+          }
+        ],
+        "ownedBrowserClose": {
+          "before": {
+            "pid": 3635,
+            "state": "S",
+            "ppid": 3618,
+            "startTicks": "110504"
+          },
+          "current": null,
+          "apiCloseResolved": true,
+          "outerCapMs": 35000,
+          "providerDefaultInnerCloseMs": 30000,
+          "apiCloseElapsedMs": 30053,
+          "exitCode": null,
+          "signalCode": "SIGKILL",
+          "forcedExit": true,
+          "graceful": false,
+          "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+          "providerInternalBranchIndependentlyObserved": false,
+          "callerForceInvoked": false,
+          "hardDeadlineReached": false,
+          "identityReadConfirmed": true,
+          "exactOwnedClosureConfirmed": true,
+          "exitModeEligible": true,
+          "withinOuterCap": true,
+          "boundedCloseAccepted": true
+        },
+        "browserProcessAfter": {
+          "pid": 3635,
+          "exitCode": null,
+          "signalCode": "SIGKILL"
+        },
+        "sourceFreeze": {
+          "completeDictionariesEqual": true,
+          "recordedFreezeUnchanged": true,
+          "assetDictionaryEntries": 156,
+          "sourceCount": 53,
+          "methodEntries": 4,
+          "dependencyEntries": 2,
+          "gitHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+          "gitStatus": ""
+        }
+      },
+      "authored": {
+        "status": "failed",
+        "startedAt": "2026-10-05T02:57:09.728Z",
+        "closedAt": "2026-10-05T03:44:16.924Z",
+        "wholeCaseBudgetMinutes": 60,
+        "phaseLimitsMs": {
+          "normal": 180000,
+          "renderedCamera": 60000,
+          "inputHold": 180000,
+          "pointerLook": 60000,
+          "elevator": 900000,
+          "cleanup": 30000
+        },
+        "finishedBeforeDeadline": true,
+        "published": false,
+        "eventCount": 50,
+        "eventStatusCounts": {
+          "observed-current-render": 46,
+          "prompt-only": 4
+        },
+        "inputStatusCounts": {
+          "completed": 25
+        },
+        "walkCount": 16,
+        "pointerCount": 9,
+        "captures": [
+          {
+            "label": "east-lobby-office",
+            "image": {
+              "file": "east-lobby-office-high.png",
+              "bytes": 730529,
+              "sha256": "c9cb99bfbb31310f53d1eb062828e477a0b7507b4f3639527c30483a99418162",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "cb1bb258414f06bc290fee89b550dd5df4c32cec87148750de8a5169fddd98aa",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.1333333333414,
+              "y": 4.035,
+              "z": -206.55666666666548,
+              "yaw": -1.5707963267948968
+            },
+            "yaw": 4.70939966042573,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 5.316199036542457e-08,
+            "roomCenter": [
+              1177,
+              -206.575
+            ],
+            "declaredArrival": {
+              "x": 1183.2,
+              "z": -206.575
+            },
+            "yawRequestedFromAchievedEndpoint": -1.573785448327387,
+            "recordedYawErrorAgainstAchievedEndpoint": 1.9842646927849288e-07,
+            "sameSourceArrivalCanonicalYaw": -1.5707963267948966
+          },
+          {
+            "label": "east-lobby-conference",
+            "image": {
+              "file": "east-lobby-conference-high.png",
+              "bytes": 714563,
+              "sha256": "63e70f170c97ccbea151acc1821cf81642c47e5a58db60a18cbef7789fca396c",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "6046baaa95211be226ce35b89b099ead4d2913c9d41844999a2269380c4d414e",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.1333333333414,
+              "y": 4.035,
+              "z": -179.3033352472916,
+              "yaw": -1.5707963267948968
+            },
+            "yaw": 4.692554872828074,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 4.744429418224172e-07,
+            "roomCenter": [
+              1177,
+              -179.425
+            ],
+            "declaredArrival": {
+              "x": 1183.2,
+              "z": -179.425
+            },
+            "yawRequestedFromAchievedEndpoint": -1.5906303700156108,
+            "recordedYawErrorAgainstAchievedEndpoint": 6.43359012959674e-08,
+            "sameSourceArrivalCanonicalYaw": -1.5707963267948966
+          },
+          {
+            "label": "east-upper-elevator-cabin",
+            "image": {
+              "file": "east-upper-elevator-cabin-high.png",
+              "bytes": 549466,
+              "sha256": "09d0d4d5ed7bb19df7cd370b18b806a4198bc4f2421bce48b8867439791aea83",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "96775b54c96252bebef75f90b82c2ead9689ff288af033fe20db2008dcec5c25",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1191.9333449788514,
+              "y": 374.035,
+              "z": -217.46333259658755,
+              "yaw": -3.0517578165668175e-07
+            },
+            "yaw": -3.141592712402344,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 1.616484723854228e-13
+          },
+          {
+            "label": "east-upper-lookout",
+            "image": {
+              "file": "east-upper-lookout-high.png",
+              "bytes": 934175,
+              "sha256": "c264bb794ce6589135be9a23b52481d0db98f4b125f16dc98e8bdde93cdf22ef",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "49cf30258a5f0ab240f970a5ee857ef7daab2275c5b8cae952da6c60728e1c0b",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.0800094113902,
+              "y": 374.035,
+              "z": -179.47666645060917,
+              "yaw": -1.5707963856074474
+            },
+            "yaw": -1.5647570800781252,
+            "pitch": 0.15,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 4.823576789103612e-07,
+            "roomCenter": [
+              1174.525,
+              -179.425
+            ],
+            "declaredArrival": {
+              "x": 1183.2,
+              "z": -179.425
+            },
+            "yawRequestedFromAchievedEndpoint": -1.5647570789123968,
+            "recordedYawErrorAgainstAchievedEndpoint": 1.1657284026966863e-09,
+            "sameSourceArrivalCanonicalYaw": -1.5707963267948966
+          },
+          {
+            "label": "east-observation-waterfront-view",
+            "image": {
+              "file": "east-observation-waterfront-view-high.png",
+              "bytes": 1063524,
+              "sha256": "108511d01cf417b5d44d6668cfbead17c526f9d13e84314dd28a79e9786e41bc",
+              "dimensions": [
+                1280,
+                800
+              ],
+              "completePngVerifiedCpu": true
+            },
+            "poseSha256": "c70fa8dfd53d4d08895afd475a6c59387569e81be23e329c5eeaefcb5ae33426",
+            "poseShaVerified": true,
+            "position": {
+              "x": 1183.0800094113902,
+              "y": 374.035,
+              "z": -179.47666645060917,
+              "yaw": -1.5707963856074474
+            },
+            "yaw": -1.5707965087890627,
+            "pitch": 0.2599999694824219,
+            "fov": 65,
+            "pixels": {
+              "width": 1280,
+              "height": 800,
+              "lost": false,
+              "error": 0,
+              "dpr": 1
+            },
+            "beforeAfterPositionEqual": true,
+            "beforeAfterYawDelta": 9.198042327795974e-11
+          }
+        ],
+        "routePlans": [
+          {
+            "label": "east-lobby-office-enter",
+            "floorId": "lobby",
+            "segmentCount": 4,
+            "endpointCount": 4,
+            "maxActualAxisError": 0.06666666665864796,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "east-lobby-office-return",
+            "floorId": "lobby",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.03999999999996362,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "east-lobby-conference-enter",
+            "floorId": "lobby",
+            "segmentCount": 4,
+            "endpointCount": 4,
+            "maxActualAxisError": 0.12166475270839783,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "east-lobby-conference-return",
+            "floorId": "lobby",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.12166740341280047,
+            "minimumStaticClearanceMargin": 0.73786796564403
+          },
+          {
+            "label": "physical-cabin-entry-observation",
+            "floorId": "lobby",
+            "segmentCount": 3,
+            "endpointCount": 3,
+            "maxActualAxisError": 0.06666666666660603,
+            "minimumStaticClearanceMargin": 1.4128679656438994
+          },
+          {
+            "label": "physical-cabin-exit-observation",
+            "floorId": "observation",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.06665521798231566,
+            "minimumStaticClearanceMargin": 2.402212944495604
+          },
+          {
+            "label": "east-upper-lookout-enter",
+            "floorId": "observation",
+            "segmentCount": 4,
+            "endpointCount": 4,
+            "maxActualAxisError": 0.11999058860988043,
+            "minimumStaticClearanceMargin": 1.7283505461684925
+          },
+          {
+            "label": "east-upper-lookout-return",
+            "floorId": "observation",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.06665725528455368,
+            "minimumStaticClearanceMargin": 1.6200125977896174
+          },
+          {
+            "label": "physical-cabin-entry-lobby",
+            "floorId": "observation",
+            "segmentCount": 3,
+            "endpointCount": 3,
+            "maxActualAxisError": 0.06666939737624489,
+            "minimumStaticClearanceMargin": 2.4688679656441668
+          },
+          {
+            "label": "physical-cabin-exit-lobby",
+            "floorId": "lobby",
+            "segmentCount": 2,
+            "endpointCount": 2,
+            "maxActualAxisError": 0.07666939737444523,
+            "minimumStaticClearanceMargin": 2.40222450800019
+          },
+          {
+            "label": "physical-street-door-return",
+            "floorId": "lobby",
+            "segmentCount": 3,
+            "endpointCount": 3,
+            "maxActualAxisError": 0.09333606403825456,
+            "minimumStaticClearanceMargin": 1.0378679656441268
+          }
+        ],
+        "finalRecordedEvent": {
+          "kind": "real-exterior-walk-after-exit",
+          "finishedAt": "2026-10-05T03:43:29.662Z",
+          "interiorBuildingId": null,
+          "exterior": {
+            "southInteriorId": null,
+            "harborInteriorId": null
+          },
+          "hiddenHarborShells": 0,
+          "inCar": null,
+          "transitRiding": false,
+          "sampleTransitRiding": false,
+          "position": {
+            "x": 1191.9999182477493,
+            "y": 3.75,
+            "z": -149.62333334841094,
+            "yaw": -9.377563449131807e-08
+          },
+          "revision": 10
+        },
+        "runtimeErrorCount": 0,
+        "secondaryErrors": [
+          {
+            "stage": "failure-photo",
+            "name": "TimeoutError",
+            "message": "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+            "stack": "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n\n    at /home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:317:22"
+          }
+        ],
+        "teardownEvents": [],
+        "cleanup": [
+          {
+            "label": "browser-context",
+            "startedAt": "2026-10-05T03:43:46.475Z",
+            "timeoutMs": 30000,
+            "status": "closed",
+            "finishedAt": "2026-10-05T03:43:46.492Z",
+            "elapsedMs": 17
+          },
+          {
+            "label": "browser-connection",
+            "startedAt": "2026-10-05T03:43:46.492Z",
+            "timeoutMs": 29983,
+            "status": "closed",
+            "finishedAt": "2026-10-05T03:43:46.498Z",
+            "elapsedMs": 6
+          },
+          {
+            "label": "owned-browser-server",
+            "startedAt": "2026-10-05T03:43:46.498Z",
+            "timeoutMs": 35000,
+            "status": "closed",
+            "finishedAt": "2026-10-05T03:44:16.549Z",
+            "elapsedMs": 30051
+          },
+          {
+            "label": "static-server",
+            "startedAt": "2026-10-05T03:44:16.549Z",
+            "timeoutMs": 1,
+            "status": "closed",
+            "finishedAt": "2026-10-05T03:44:16.549Z",
+            "elapsedMs": 0
+          }
+        ],
+        "ownedBrowserClose": {
+          "before": {
+            "pid": 4090,
+            "state": "S",
+            "ppid": 4067,
+            "startTicks": "390729"
+          },
+          "current": null,
+          "apiCloseResolved": true,
+          "outerCapMs": 35000,
+          "providerDefaultInnerCloseMs": 30000,
+          "apiCloseElapsedMs": 30051,
+          "exitCode": null,
+          "signalCode": "SIGKILL",
+          "forcedExit": true,
+          "graceful": false,
+          "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+          "providerInternalBranchIndependentlyObserved": false,
+          "callerForceInvoked": false,
+          "hardDeadlineReached": false,
+          "identityReadConfirmed": true,
+          "exactOwnedClosureConfirmed": true,
+          "exitModeEligible": true,
+          "withinOuterCap": true,
+          "boundedCloseAccepted": true
+        },
+        "browserProcessAfter": {
+          "pid": 4090,
+          "exitCode": null,
+          "signalCode": "SIGKILL"
+        },
+        "sourceFreeze": {
+          "completeDictionariesEqual": true,
+          "recordedFreezeUnchanged": true,
+          "assetDictionaryEntries": 192,
+          "sourceCount": 63,
+          "methodEntries": 4,
+          "dependencyEntries": 2,
+          "gitHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+          "gitStatus": ""
+        }
+      }
+    },
+    "captureComparison": [
+      {
+        "label": "east-lobby-office",
+        "authoredMinusBaselinePosition": {
+          "x": 0.05333333333328483,
+          "y": 0.0,
+          "z": 0.11999999999937927
+        },
+        "allPositionAxesUnderOriginalPoint15": true,
+        "wrappedYawDifferenceRadians": 0.019709167480469247,
+        "meetsOriginalYawPoint003": false,
+        "pitchDifference": 0.0,
+        "fovEqual": true,
+        "pixelsEqual": true
+      },
+      {
+        "label": "east-lobby-conference",
+        "authoredMinusBaselinePosition": {
+          "x": 8.33035232972179e-06,
+          "y": 0.0,
+          "z": 0.08005630101544625
+        },
+        "allPositionAxesUnderOriginalPoint15": true,
+        "wrappedYawDifferenceRadians": 0.01305023193359478,
+        "meetsOriginalYawPoint003": false,
+        "pitchDifference": 0.0,
+        "fovEqual": true,
+        "pixelsEqual": true
+      },
+      {
+        "label": "east-upper-elevator-cabin",
+        "authoredMinusBaselinePosition": {
+          "x": -0.013313357462948261,
+          "y": 0.0,
+          "z": 0.08005900405288457
+        },
+        "allPositionAxesUnderOriginalPoint15": true,
+        "wrappedYawDifferenceRadians": 5.8812551273490505e-08,
+        "meetsOriginalYawPoint003": true,
+        "pitchDifference": 0.0,
+        "fovEqual": true,
+        "pixelsEqual": true
+      },
+      {
+        "label": "east-upper-lookout",
+        "authoredMinusBaselinePosition": {
+          "x": 1.7741734382070717e-05,
+          "y": 0.0,
+          "z": -0.026608183299572374
+        },
+        "allPositionAxesUnderOriginalPoint15": true,
+        "wrappedYawDifferenceRadians": 0.0031102927499486732,
+        "meetsOriginalYawPoint003": false,
+        "pitchDifference": 0.0,
+        "fovEqual": true,
+        "pixelsEqual": true
+      },
+      {
+        "label": "east-observation-waterfront-view",
+        "authoredMinusBaselinePosition": {
+          "x": 1.7741734382070717e-05,
+          "y": 0.0,
+          "z": -0.026608183299572374
+        },
+        "allPositionAxesUnderOriginalPoint15": true,
+        "wrappedYawDifferenceRadians": 5.8812551273490505e-08,
+        "meetsOriginalYawPoint003": true,
+        "pitchDifference": 0.0,
+        "fovEqual": true,
+        "pixelsEqual": true
+      }
+    ],
+    "actualMethodHashes": {
+      "capture-scenic-east.mjs": {
+        "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac",
+        "actualBaselineAuthoredPreparedBytesEqual": true,
+        "matchesEachRecordedFreeze": true
+      },
+      "input.mjs": {
+        "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+        "actualBaselineAuthoredPreparedBytesEqual": true,
+        "matchesEachRecordedFreeze": true
+      },
+      "render-readiness.mjs": {
+        "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+        "actualBaselineAuthoredPreparedBytesEqual": true,
+        "matchesEachRecordedFreeze": true
+      },
+      "server.mjs": {
+        "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "actualBaselineAuthoredPreparedBytesEqual": true,
+        "matchesEachRecordedFreeze": true
+      }
+    },
+    "provenMethodInconsistency": {
+      "source": "Actual capture-scenic-east.mjs:223-231, especially line 229. It requests atan2(room center minus each achieved physical endpoint). Actual input.mjs:17-39 attains each requested target using public pointer input. The same method later requires inter-run yaw difference < .003 at capture-scenic-east.mjs:307, despite accepting independent physical endpoint differences < .15.",
+      "traceSupport": "Each stored room yaw matches the angle computed from its own achieved endpoint within 1.99e-7 radians. All room canonical angles computed from the sealed source arrival are -pi/2. The two explicit fixed-direction views (cabin and waterfront) already differ only 5.8813e-8 radians.",
+      "narrowCandidateRepair": "For a future separately authorized method revision, use the immutable same-source room arrival r.arrival to define the common room-facing yaw, rather than the achieved endpoint. Retain public pointer input and the original .15 position and .003 inter-run yaw checks; add explicit common-yaw capture readiness if needed. No original status is changed, no deadline is enlarged, and success is not presumed."
+    },
+    "conclusions": [
+      "The authored first failure is the post-route yaw comparison for east-lobby-office (0.01970916748 radians > .003), not the 60-minute whole-case deadline, phase deadline, primary screenshot, walking route, or browser close.",
+      "Both originals contain five hash-verified full 1280x800 PNG files and poses, 50 recorded events (46 current-render observations and four prompt events), 11 completed route plans, successful physical room/elevator/lobby/street exit progression, and a final exterior walk.",
+      "Authored failure-photo timeout 15000 ms is secondary to the yaw assertion and does not invalidate the already retained five capture files.",
+      "Both variants confirmed exact owned child exit by SIGKILL after supported BrowserServer.close resolved within the 35000 ms envelope (~30050 ms); this is accepted resource closure under the original policy, not graceful teardown.",
+      "All before/after source/asset/method/dependency freeze dictionaries match in each variant; no original source drift was recorded."
+    ],
+    "limits": [
+      "The recorded route completion does not turn the failed authored case into a pass. The method sets playableComplete only after reference comparison, and authored remains failed.",
+      "No visual art approval, hardware GPU performance conclusion, or fresh native attempt was made. Pending-human-native-review and published=false remain intact.",
+      "The setup is one public harbor-start plus Atlas address setup, followed by physical indoor route; it is not evidence of a continuous journey from the harbor to EAST.",
+      "Provider internal forced-close branch was not independently observed; SIGKILL is provider-fallback-consistent, exactly as recorded."
+    ]
+  },
+  "allOriginalFileHashes": "ALL_ORIGINAL_FILE_HASHES.tsv",
+  "verification": "Every original ZIP file entry was SHA256 hashed and compared with the extracted bytes; evidence-files inventory entries also checked. All preserved PNGs were verified on CPU without image editing or visual acceptance."
+}
