@@ -1,0 +1,43 @@
+{
+  "status": "EXACT_DECLARED_SOURCE_LINE_REVERSAL_AND_BUS_TRAM_CPU_IDENTITY",
+  "originalMethodSHA256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+  "candidateMethodSHA256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f",
+  "changedLineCount": 6,
+  "changes": [
+    {
+      "line": 292,
+      "original": "    const initial=await read(), revision=initial.teleportRevision, localDeadline=Date.now()+remaining(150000), samples=[initial];let current=initial,held=0,metres=0;",
+      "candidate": "    const initial=await read(), revision=initial.teleportRevision, initialLocal=transit(initial).passengerLocal, localBudget=kind==='ferry'&&!precision&&Math.abs(target.x-initialLocal.x)<.06&&Math.abs(target.z-initialLocal.z)>=12?300000:150000, localDeadline=Date.now()+remaining(localBudget), samples=[initial];let current=initial,held=0,metres=0;"
+    },
+    {
+      "line": 299,
+      "original": "        // An ordinary public gait covers only a far bus/tram precision approach.",
+      "candidate": "        // Public normal gait covers original far bus/tram longitudinal and Ferry straight-axis approaches."
+    },
+    {
+      "line": 301,
+      "original": "        const ordinaryApproach=precision&&(kind==='bus'||kind==='tram')&&!precisionModifier.downAttempted&&Math.abs(dx)<.06&&Math.abs(dz)>.7;",
+      "candidate": "        const ordinaryApproach=precision&&!precisionModifier.downAttempted&&((kind==='bus'||kind==='tram')&&Math.abs(dx)<.06&&Math.abs(dz)>.7||kind==='ferry'&&(Math.abs(dx)<.06||Math.abs(dz)<.06)&&distance(target,before)>.7);"
+    },
+    {
+      "line": 320,
+      "original": "        current=await read();assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);",
+      "candidate": "        current=await read();if(kind==='ferry')assert.ok(Date.now()<localDeadline,'declared finite Ferry local deadline after confirmed release');assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);"
+    },
+    {
+      "line": 332,
+      "original": "      if(first&&(kind==='bus'||kind==='tram')) {",
+      "candidate": "      if(first&&(kind==='bus'||kind==='tram'||kind==='ferry')) {"
+    },
+    {
+      "line": 347,
+      "original": "      record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,...(kind==='bus'||kind==='tram'?{failureDiagnostic}:{}),firstError:first?err(first,'local movement'):null});",
+      "candidate": "      record.motion.push({stage,target,precision,localBudget,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,...((kind==='bus'||kind==='tram'||kind==='ferry')?{failureDiagnostic}:{}),firstError:first?err(first,'local movement'):null});"
+    }
+  ],
+  "reverseEntireMethodBytesExactlyOriginal": true,
+  "allFunctionsOutsideWalkLocalLiteral": true,
+  "canonicalPlansAndRoutesInUnchangedSuffixLiteral": true,
+  "heldObservationAndRadiusGuardsLiteralUnchangedPrefix": true,
+  "BusTramPublicInputAndAll12MotionSerializedIdentity": "Both kind rows in source-axis-and-longhall-cpu-receipt.json compare entire JSON bytes across independently executed original/candidate VM contexts, retaining all fields."
+}

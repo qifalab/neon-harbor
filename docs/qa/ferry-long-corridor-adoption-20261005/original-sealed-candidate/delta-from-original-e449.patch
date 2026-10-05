@@ -1,0 +1,49 @@
+--- original-e449
++++ candidate-ferry-axis-longhall
+@@ -289,16 +289,16 @@
+     return false;
+   }
+   async function walkLocal(target,p,layout,stage,{precision=true}={}) {
+-    const initial=await read(), revision=initial.teleportRevision, localDeadline=Date.now()+remaining(150000), samples=[initial];let current=initial,held=0,metres=0;
++    const initial=await read(), revision=initial.teleportRevision, initialLocal=transit(initial).passengerLocal, localBudget=kind==='ferry'&&!precision&&Math.abs(target.x-initialLocal.x)<.06&&Math.abs(target.z-initialLocal.z)>=12?300000:150000, localDeadline=Date.now()+remaining(localBudget), samples=[initial];let current=initial,held=0,metres=0;
+     let first=null,allMovementReleased=true,failureDiagnostic=null;const precisionModifier={key:'z',scope:'precision-local-leg-only',downAttempted:false,downConfirmed:false,releaseConfirmed:null,inputs:[]};
+     try {
+       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
+         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
+         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
+         const desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=await aim(p,desired,.15,{acceptCurrent:true});
+-        // An ordinary public gait covers only a far bus/tram precision approach.
++        // Public normal gait covers original far bus/tram longitudinal and Ferry straight-axis approaches.
+         // Source max .25s step at 2.25m/s is .5625m, below twice the .7m handoff.
+-        const ordinaryApproach=precision&&(kind==='bus'||kind==='tram')&&!precisionModifier.downAttempted&&Math.abs(dx)<.06&&Math.abs(dz)>.7;
++        const ordinaryApproach=precision&&!precisionModifier.downAttempted&&((kind==='bus'||kind==='tram')&&Math.abs(dx)<.06&&Math.abs(dz)>.7||kind==='ferry'&&(Math.abs(dx)<.06||Math.abs(dz)<.06)&&distance(target,before)>.7);
+         const slow=ordinaryApproach?false:precision||distance(target,before)<1.2;
+         // Ferry long centre-hall input retains the original ordinary/near1.2 gait.
+         const ferryLongitudinalHold=kind==='ferry'&&!precision&&Math.abs(dx)<.06&&Math.abs(dz)>1.2;
+@@ -317,7 +317,7 @@
+           finally{try{await heldProbe.dispose();}catch(error){if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,'held RAF handle dispose'));}}
+         }
+         if(cycleError){cycle.firstError ||= err(cycleError,'release');samples.push(cycle);throw cycleError;}
+-        current=await read();assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
++        current=await read();if(kind==='ferry')assert.ok(Date.now()<localDeadline,'declared finite Ferry local deadline after confirmed release');assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
+         held+=Math.max(0,current.simulationTime-guardBeforeAction.simulationTime);metres+=distance(before,transit(current).passengerLocal);
+         assert.ok(held<metres/.3+3,'original real held-input stall guard');cycle.after=transit(current).passengerLocal;cycle.heldSeconds=held;cycle.geometricMetres=metres;samples.push(cycle);
+       }
+@@ -329,7 +329,7 @@
+         try{await page.keyboard.up('z');precisionModifier.releaseConfirmed=true;precisionModifier.inputs.push({action:'up',key:'z',confirmed:true});}
+         catch(error){precisionModifier.releaseConfirmed=false;precisionModifier.inputs.push({action:'up',key:'z',confirmed:false,error:err(error,'precision modifier keyup')});modifierReleaseError=error;if(!first)first=error;else record.secondaryErrors.push(err(error,'precision modifier keyup'));}
+       }
+-      if(first&&(kind==='bus'||kind==='tram')) {
++      if(first&&(kind==='bus'||kind==='tram'||kind==='ferry')) {
+         const cap=Math.min(4900,deadline-Date.now());
+         const modifierReleased=!precisionModifier.downAttempted||precisionModifier.releaseConfirmed===true;
+         if(!allMovementReleased||!modifierReleased)failureDiagnostic={status:'SKIPPED_RELEASE_UNCONFIRMED'};
+@@ -344,7 +344,7 @@
+           failureDiagnostic={status:'OBSERVED_AFTER_CONFIRMED_KEYUP',budgetMs:cap,observed};
+         }catch(error){failureDiagnostic={status:'FAILED_SECONDARY',budgetMs:cap,error:err(error,'released first-failure diagnostic')};record.secondaryErrors.push(err(error,'released first-failure diagnostic'));}
+       }
+-      record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,...(kind==='bus'||kind==='tram'?{failureDiagnostic}:{}),firstError:first?err(first,'local movement'):null});
++      record.motion.push({stage,target,precision,localBudget,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,...((kind==='bus'||kind==='tram'||kind==='ferry')?{failureDiagnostic}:{}),firstError:first?err(first,'local movement'):null});
+       if(modifierReleaseError&&first===modifierReleaseError)throw modifierReleaseError;
+     }
+   }

@@ -317,7 +317,7 @@ async function captureCase(kind) {
           finally{try{await heldProbe.dispose();}catch(error){if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,'held RAF handle dispose'));}}
         }
         if(cycleError){cycle.firstError ||= err(cycleError,'release');samples.push(cycle);throw cycleError;}
-        current=await read();if(kind==='ferry')assert.ok(Date.now()<localDeadline,'declared finite Ferry local deadline after confirmed release');assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
+        current=await read();assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
         held+=Math.max(0,current.simulationTime-guardBeforeAction.simulationTime);metres+=distance(before,transit(current).passengerLocal);
         assert.ok(held<metres/.3+3,'original real held-input stall guard');cycle.after=transit(current).passengerLocal;cycle.heldSeconds=held;cycle.geometricMetres=metres;samples.push(cycle);
       }

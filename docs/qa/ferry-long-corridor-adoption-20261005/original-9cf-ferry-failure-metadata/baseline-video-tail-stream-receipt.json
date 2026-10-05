@@ -1,0 +1,107 @@
+{
+  "status": "CPU_READ_ONLY_ORIGINAL_VIDEO_KEYFRAME_SAMPLES_NOT_NATIVE_RUN",
+  "archivePath": "/workspace/neon-evidence/9cf-ferry-high-first-failure-original-11335559241/original.zip",
+  "member": "native/baseline/ferry/video/page@0e897b01121c4baef8144b2dd9bb64fc.webm",
+  "bytes": 74964617,
+  "memberSHA256": "d5bb26d37a7245a8d4252b8ec7209fd782205b7070f93849a13cb2dcc213f332",
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-threads",
+    "1",
+    "-skip_frame",
+    "nokey",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "select=gte(t\\,880),fps=1/10",
+    "-vsync",
+    "vfr",
+    "/workspace/neon-candidates/9cf-ferry-high-first-failure-readonly-review-20261005/baseline-original-video-tail-keyframes/tail-%03d.png"
+  ],
+  "fullVideoExtracted": false,
+  "filter": "Original video keyframe samples only at t>=880s; fps one/10s. PNG output times are selected visual samples, not instrumented simulation timestamps.",
+  "elapsedCPUSeconds": 1.8012968949915376,
+  "exitCode": 0,
+  "stderr": "-vsync is deprecated. Use -fps_mode\n",
+  "samples": [
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-001.png",
+      "sha256": "68c4cc59973e0857e52d053d29432af6ac443a61366d03a84f170cfbbcab705f"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-002.png",
+      "sha256": "f4097c5c98d7997d861eac12a3cfce4ed0b6939d8cf7891c5da10f0e39a84ed5"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-003.png",
+      "sha256": "23f4f489f05f69010e2292193cc1742aada7becdaa47add8fd1e5f3ededa91ee"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-004.png",
+      "sha256": "2a32a2528b8f2de37db9d524c03c63d29829df96ea7efad422c5e845dbde706d"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-005.png",
+      "sha256": "ceef7cdccd638242e3f29105d796d74f7cbb675248ecc70a075e3af5dd844c3e"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-006.png",
+      "sha256": "8ff983d0eb6e595f1d125f27a6e26bf30a59705d721852a6c548215e56d2932e"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-007.png",
+      "sha256": "43128ab2ecdfc678d4b370f6f027992e83f0b0bfc7e60a48fdb718cd217b2fb8"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-008.png",
+      "sha256": "d21a320e099e34cfb6fd56c8b7f134f6943be597e45774d98ac7a8a6b2bb424b"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-009.png",
+      "sha256": "eb6c8a9a3990bfa6d069582e7d751f9ae40e6e41de6be2dad0c7ecea166bba2a"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-010.png",
+      "sha256": "305472517abdc83bde72466d454c5989f9adbe8505d5f1aab84eddbdbde73125"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-011.png",
+      "sha256": "a7d6581ad470bfd6dec0021cdde33560decf659523acbb4a5586523458d5fe40"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-012.png",
+      "sha256": "a1f4f6bb26ffd88650ea7966b2b7849eceb0917f9105f1a7c67c198e053c690e"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-013.png",
+      "sha256": "7aad9cf5efd7ef3cda54fb6f62eca7bd5011c5cf81e4b25b8c1cfe881040b749"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-014.png",
+      "sha256": "9e26ba586a62b6a34b66d46136f4327aa61075af02e091529d1709409eeb924d"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-015.png",
+      "sha256": "ac604b274a42ed84c25b4ee76050e9d25f5115c7ead5a98b7b8a49023bb87bdb"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-016.png",
+      "sha256": "b263689aa7c265a4de303542be4c8990c48e8f247fce583e60857fcd742d7abc"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-017.png",
+      "sha256": "e5f41a3e93e866f30042187a3f0a14d1748a9cc8068d6052af5c56a92c691cd4"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-018.png",
+      "sha256": "b3ec748a2f87068ac0faacf540c50a0c309441ec3657837de90215f39a31e405"
+    },
+    {
+      "path": "baseline-original-video-tail-keyframes/tail-019.png",
+      "sha256": "eb62f65a9d0bcad73a5dd97d7b0985ab49fd7eab58f00119ba4d88d138400fb9"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
-  "status": "EXPLICIT_FINITE_FERRY_PUBLIC_AXIS_PROTOCOL_CPU_READY_NATIVE_HIGH_REQUIRED",
+  "status": "EXPLICIT_ALL_THREE_PUBLIC_INPUT_FINITE_FERRY_BERTH_SOURCE_CPU_READY_NATIVE_HIGH_REQUIRED",
   "tool": {
     "path": "native-transport-high.mjs",
-    "bytes": 56756,
-    "sha256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f"
+    "bytes": 56319,
+    "sha256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4"
   },
   "canonical": {
     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
@@ -61,9 +61,7 @@
     "aimPhaseMs": 60000,
     "phaseProgressDiagnosticMs": 10000,
     "tramScheduledBerthMs": 1200000,
-    "ferryScheduledBerthMs": 1200000,
-    "ferryLongCentreHallMs": 300000,
-    "ferryLongCentreHallInitialLongitudinalMetres": 12
+    "ferryScheduledBerthMs": 1200000
   },
   "preservedGuards": {
     "localEndpointMetres": 0.06,
@@ -346,11 +344,5 @@
     "path": "ALL_THREE_PUBLIC_LONGITUDINAL_AND_FINITE_FERRY_BERTH_AMENDMENT-20261005.json",
     "bytes": 6751,
     "sha256": "88b69f0e6842a12811662ae2d3e120384a7d1791be4b14a4a4fca71e4ac2547f"
-  },
-  "ferrySourceAxisAndLongCentreHallAmendment": {
-    "path": "tools/native-review/runtime-amendments/ferry-source-axis-long-centre-hall-20261005/active-source-amendment.json",
-    "sha256": "36827f18a712a5154a1c0772a09de1d52a64894bcc852565a29b6d21534b9d77",
-    "status": "EXPLICIT_FINITE_FERRY_PUBLIC_AXIS_PROTOCOL_CPU_READY_NATIVE_HIGH_REQUIRED",
-    "nativeExecuted": false
   }
 }

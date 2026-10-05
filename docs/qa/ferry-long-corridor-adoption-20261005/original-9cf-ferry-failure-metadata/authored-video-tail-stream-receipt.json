@@ -1,0 +1,147 @@
+{
+  "status": "CPU_READ_ONLY_ORIGINAL_VIDEO_KEYFRAME_SAMPLES_NOT_NATIVE_RUN",
+  "archivePath": "/workspace/neon-evidence/9cf-ferry-high-first-failure-original-11335559241/original.zip",
+  "member": "native/authored/ferry/video/page@489da5be1b710e87d2a1a5f2e2dad8d2.webm",
+  "bytes": 87209458,
+  "memberSHA256": "0e8fc865cb790fc2231ae2e7f2eea3d2addb88d2c0cf57a3717c265e2da260c1",
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-threads",
+    "1",
+    "-skip_frame",
+    "nokey",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "select=gte(t\\,880),fps=1/10",
+    "-vsync",
+    "vfr",
+    "/workspace/neon-candidates/9cf-ferry-high-first-failure-readonly-review-20261005/authored-original-video-tail-keyframes/tail-%03d.png"
+  ],
+  "fullVideoExtracted": false,
+  "filter": "Original video keyframe samples only at t>=880s; fps one/10s. PNG output times are selected visual samples, not instrumented simulation timestamps.",
+  "elapsedCPUSeconds": 1.9109589459985727,
+  "exitCode": 0,
+  "stderr": "-vsync is deprecated. Use -fps_mode\n",
+  "samples": [
+    {
+      "path": "authored-original-video-tail-keyframes/tail-001.png",
+      "sha256": "10d893cd18c6452e2f37b39c4c027b2f3154caab394929218368cfafa1bac707"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-002.png",
+      "sha256": "6b211b3809f0a5712bc521bb7f67998fe4b3970611cba4c747ad643bc7fdbd5e"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-003.png",
+      "sha256": "f9267b864affa4af80841de2a259be4c8ec35b896cee6803b5aed268fb12bf45"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-004.png",
+      "sha256": "9bc3fd9c779e257fb9c7ab28eeece4f4f60351f31bd3ff0573a8a1af2264b090"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-005.png",
+      "sha256": "4f38f55598f44b85df63bf47af86216c6f43f4d2a358615f86ca14c1bcd1cd8b"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-006.png",
+      "sha256": "253adc2d3a5f0488c7d8aee85f601f2216fb11909a494d5d6cb6d96af15d341c"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-007.png",
+      "sha256": "bf79a007f4cd533b2b4b5380bdb1dd3ecdd8023ea606fb55d25e81d9bf4571ed"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-008.png",
+      "sha256": "50a2e722f699149bc508a5d28a52a39e215871b5c5ce603aec98244ecc3f80f1"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-009.png",
+      "sha256": "4ac0e262282eab4b0bc2afdc38dd38a0992b21df94f0c2f794d4c21989757ce4"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-010.png",
+      "sha256": "976c39801a532557853220e0d83c10ba48e6cfd1988a89ec4b3dab93e86bfaf0"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-011.png",
+      "sha256": "b6968bacbdd0db9cbe9775712f22ed82a22363fe7a9805b009879fe1078b6ff1"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-012.png",
+      "sha256": "aa2b37505f1ac307feab3299337c10b82bfdff779b58a9340f7537829fe7a54b"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-013.png",
+      "sha256": "7f515b1c750a638b74ccf45210d8d5687a21cc0526285aa5875c9f6dffadbc45"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-014.png",
+      "sha256": "f5ffe9edc8741a082d833c47068b210d011d7b14d6d9910341c23a57b495a500"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-015.png",
+      "sha256": "1ce53636381658a0463f37f0ed2a8dd006c33b6407c3a18908bf67dd2b5e22eb"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-016.png",
+      "sha256": "0a7d3336edc9bde1983c568ebda74c0a3f72d5f3aa929ce0429a4bd4fc975c7b"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-017.png",
+      "sha256": "218360aa0758e7e3841021cdf1fd9d92ddca73b215cd1b955508969aab08d36f"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-018.png",
+      "sha256": "c1899c5f794a9adbfe1ff9e27ee1d7061cf60dd94ff4064c6bf7bcf2ef36b234"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-019.png",
+      "sha256": "792a8531992d2e36aebb79653790f6e66f61eaf065efedc518262009eb5b718b"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-020.png",
+      "sha256": "792a8531992d2e36aebb79653790f6e66f61eaf065efedc518262009eb5b718b"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-021.png",
+      "sha256": "bee3bfdff4bec83964c0e38ba7b958694f20829818491f6fd1fb257f9207c764"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-022.png",
+      "sha256": "29a62ad46086eb4fda3c87407e553127faeece97416ded4f478922385b017e40"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-023.png",
+      "sha256": "798fe0a2192cc8c379fa5c57e95bb637cdc595950c14ef632d807929f70c1715"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-024.png",
+      "sha256": "ca3d1722eb9cd76f7aa8c721a3e2fb9408d5423699378714991c3e1178316076"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-025.png",
+      "sha256": "5eb7303115ce9fae36b2583b544a5b39783b5d825104f34e895af569e6de037c"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-026.png",
+      "sha256": "fff6377332e896ff2096a2ff581d6a1548d77b66bd30d80b7257c4bb26b4f448"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-027.png",
+      "sha256": "3bf91baf4d64a6dad50f2bc9c7b4b146ef3065b217120d4884432a0f1236588d"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-028.png",
+      "sha256": "12c68286d7cefaa72b5e255635d112e45f7f97f67e92d6b22da20cc7d8e7d2e2"
+    },
+    {
+      "path": "authored-original-video-tail-keyframes/tail-029.png",
+      "sha256": "b83d03a0e468a0c8191e654c2139b20ded05d8ba955a64151a12c6a5312dd9b0"
+    }
+  ]
+}
