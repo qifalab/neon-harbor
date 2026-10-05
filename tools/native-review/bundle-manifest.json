@@ -7,8 +7,8 @@
       "sha256": "b5316b8736890ecccbbf6fe2f1aa0068a6e4e5ba2d2345aa95a103fc72b4ca6d"
     },
     "cases.json": {
-      "bytes": 8956,
-      "sha256": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655"
+      "bytes": 11013,
+      "sha256": "c6276962c153440eb004cce67b36038b49e6315795879933280ab143b01b1a78"
     },
     "curated-original-provenance.json": {
       "bytes": 16726,
@@ -17,6 +17,14 @@
     "expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json": {
       "bytes": 20512,
       "sha256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4"
+    },
+    "expected-build-provenance/authored-build-info-home-soft-finish-20261005-d8a75b8f28cb.json": {
+      "bytes": 20512,
+      "sha256": "d8a75b8f28cb735dc5036a8cf15709adafee7cdea8dced7385b2b9b4150683a8"
+    },
+    "expected-build-provenance/authored-build-info-home-storefront-finish-20261005-c2c266636447.json": {
+      "bytes": 20512,
+      "sha256": "c2c2666364473fae80905c28288bb16703eebb31fb00dcbd5bf7429702df2939"
     },
     "expected-build-provenance/authored-build-info-original.json": {
       "bytes": 20302,
@@ -27,8 +35,16 @@
       "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
     },
     "expected-runtime-dictionaries.json": {
-      "bytes": 39048,
-      "sha256": "a137b0b64cdc534f5826091a90a6454348587ad3ed5390bf8f31b083db04ee2c"
+      "bytes": 39086,
+      "sha256": "5f97873e6c14cc2760f2f96e56e1403aedca2af81d68521d72b496463a9c4463"
+    },
+    "methods/continuous-tour-original/provenance/SAVE_SCHEMA_AMENDMENT-20261005.json": {
+      "bytes": 2705,
+      "sha256": "e4fb3310bc01679bf39f11393a832e51d5bbf30e62001d747d338e3691850877"
+    },
+    "methods/continuous-tour-original/provenance/capture-harbor-tour-v1-original-a8ff1a10.mjs": {
+      "bytes": 60171,
+      "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
     },
     "methods/continuous-tour-original/tests/e2e/helpers/occupied.js": {
       "bytes": 5321,
@@ -39,40 +55,44 @@
       "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
     },
     "methods/continuous-tour-original/tools/capture-harbor-tour.mjs": {
-      "bytes": 60171,
-      "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+      "bytes": 60705,
+      "sha256": "4663fd4ee24ac729b2016b0f39575a612ba309c55828595d0ae4eaa27e386097"
+    },
+    "methods/continuous-tour-original/tools/harbor-tour-save-validation.mjs": {
+      "bytes": 3673,
+      "sha256": "1ef97f4037029c538c339255819509f3e8fa60fa6ef3de441640394928151088"
     },
     "methods/continuous-tour-original/tools/server.mjs": {
       "bytes": 4529,
       "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
     },
     "methods/harbor/capture-authored-harbor-native.mjs": {
-      "bytes": 37885,
-      "sha256": "806f83e31713250e01379567c82b7b8c13781103bc92eab6663ada3d6c42d15e"
+      "bytes": 37920,
+      "sha256": "ab9f32867939b2c8dc41a30b9c4dd64e0d73c5cc3da71ff2ff35b29f801d919e"
     },
     "methods/harbor/evidence/captured-buildings.json": {
       "bytes": 14628,
       "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
     },
     "methods/harbor/evidence/common-pose-proof.json": {
-      "bytes": 37158,
-      "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+      "bytes": 51135,
+      "sha256": "8ad2273299c7e6560e9225b88fa0617080c8516c40e65318dbe67bb8f29adb14"
     },
     "methods/harbor/evidence/frontage-wide-static-proof.json": {
-      "bytes": 34688,
-      "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+      "bytes": 38625,
+      "sha256": "4c309a822fff97f65f3d186cde6c36a75e766fa9855e44248df1d917b2531be4"
     },
     "methods/harbor/expectations.mjs": {
       "bytes": 2016,
-      "sha256": "bbfa361068edd9402c0134e1f7a4c51eac700aad6a59eb32f33c0e93af482e82"
+      "sha256": "691e2654673c8ea8565d38f98dd6201295438c303f7480f64d7759268c18ea34"
     },
     "methods/harbor/frontage-wide-plans.mjs": {
-      "bytes": 5690,
-      "sha256": "d3f8c5410d96ab1565084b00c6e4861960443c3e8ae8e6a47a85b7d9182f12b2"
+      "bytes": 5968,
+      "sha256": "a736afcbf01b1829b9e82d8880fe0f03c077560b611ba2e65dda054c53a95b56"
     },
     "methods/harbor/input.mjs": {
-      "bytes": 7087,
-      "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+      "bytes": 7178,
+      "sha256": "e921b42737b79dabdbc787db195b31805aad8787e4449188b82b655b3f1d064f"
     },
     "methods/harbor/plans.mjs": {
       "bytes": 6752,
@@ -107,12 +127,12 @@
       "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
     },
     "methods/resident/SEALED_SHA256.json": {
-      "bytes": 486,
-      "sha256": "bd919991070ba2664d0a660d914d0d0a489357bbc44ad4ba36a3e0b4d9f5521e"
+      "bytes": 594,
+      "sha256": "354beb18a17a57558c1d15335930cfe391f02234daee229cc2be56ddd1f4d5f3"
     },
     "methods/resident/docs/CURRENT_METHOD_AMENDMENT.json": {
       "bytes": 550,
-      "sha256": "430b294b44ed32fde56cbba267f3a72d2a8dbb2114f421d87e87c019adff2f57"
+      "sha256": "341cfc3857f2f06261ad6051a316ed89bb4e620e238d831974ccd4d81123d1b2"
     },
     "methods/resident/docs/METHOD_SHA256.json": {
       "bytes": 404,
@@ -135,20 +155,24 @@
       "sha256": "6256c9e98cb815d11e6c4efc0662a6cf7a78dddf6b77efe5e4ac2e1813e6b10c"
     },
     "methods/resident/tools/capture-resident-native.mjs": {
-      "bytes": 27364,
-      "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b"
+      "bytes": 32276,
+      "sha256": "c5bae3eafd9fa65c8040bc3f19fb16f9c5480e5f98ef1a28d2daa1ce49c3c15b"
     },
     "methods/resident-extra/SEALED_SHA256.json": {
-      "bytes": 616,
-      "sha256": "7b4abc691039c43cab1f2635c6a2dc6c921693f09fa19b05b4548b0bb475157f"
+      "bytes": 1099,
+      "sha256": "daf8766482e78e819d4ca2693e5659bf6b2d92f803d05a3e6097f5ec360b3551"
     },
     "methods/resident-extra/docs/CURRENT_METHOD_AMENDMENT.json": {
-      "bytes": 1321,
-      "sha256": "7d777ee88cd5ce05bfb805e6324b9835221d4e3925ff7c367e40da7233e4d707"
+      "bytes": 3558,
+      "sha256": "4987c78bc795ba0f75506cc4b6453b5b2c9ff7f5be47eb71561e95011836f75b"
     },
     "methods/resident-extra/docs/METHOD_PROVENANCE.json": {
       "bytes": 1813,
       "sha256": "bfe1af5cff721614e6e755989e821fa5452dac6d134dbc5954c4ba82f2b4953c"
+    },
+    "methods/resident-extra/docs/NORTH_OWNER_OBSERVATION_AMENDMENT-20261005.json": {
+      "bytes": 4495,
+      "sha256": "913e1e39a62fcde813344e315af79c2ea98e01d1a79501868b0ca12944bbc757"
     },
     "methods/resident-extra/docs/README.md": {
       "bytes": 6308,
@@ -166,9 +190,17 @@
       "bytes": 384,
       "sha256": "309d5b028810b883cedce978c633c74399ec4f789c749266bf4f1b4895dc8a41"
     },
+    "methods/resident-extra/provenance/capture-resident-extra-cc038-north-owner-original.mjs": {
+      "bytes": 52095,
+      "sha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5"
+    },
     "methods/resident-extra/tools/capture-resident-extra.mjs": {
-      "bytes": 52689,
-      "sha256": "260b9118c280f117b253d3cbbe5154afafafa9f1081b399aa1e48e21faafd6ff"
+      "bytes": 57570,
+      "sha256": "728cd6e76191d5becc48bd0d1b050f7f445b46ce32c2b000f399f66539aaf2f3"
+    },
+    "methods/resident-extra/tools/continuous-owner-idle-guard.mjs": {
+      "bytes": 1502,
+      "sha256": "17757372101eeb05b0b6c5e9c1d7f7466c2d25f1cd1607fb105cb08a91d2f5c9"
     },
     "methods/resident-extra/tools/resident-loop-functional-guards.mjs": {
       "bytes": 6012,
@@ -235,12 +267,12 @@
       "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
     },
     "methods/transport/method-manifest.json": {
-      "bytes": 14442,
-      "sha256": "42679942a3ec5e33f1aa7f7450b819095468ac0869c20d12f6b5e1a4d677b99c"
+      "bytes": 18263,
+      "sha256": "40a533da8423ed0328c1c64a3fec9f3b6cd0e6abb0ae1cc432fba7530f06ced3"
     },
     "methods/transport/native-transport-high.mjs": {
-      "bytes": 47346,
-      "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
+      "bytes": 48169,
+      "sha256": "e082e9cc860bae05286eb85d77037174db82b3872b4aea6a3ed67363ed98fca4"
     },
     "methods/transport/runtime-resources.json": {
       "bytes": 3799,
@@ -271,24 +303,32 @@
       "sha256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3"
     },
     "methods/transport-owner/method-manifest.json": {
-      "bytes": 7968,
-      "sha256": "3f02043e1f8fb539ca4d66a8fd0ed00061eb589b95ea05d9b3f58e72210a655b"
+      "bytes": 8795,
+      "sha256": "a7726eea60eb96c3649f55251f2a28d7103c3c7cb39e76647e8b12cb77988d36"
     },
     "methods/transport-owner/native-transport-ownership-extra.mjs": {
-      "bytes": 42916,
-      "sha256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2"
+      "bytes": 43644,
+      "sha256": "20713be5c1f23ea9604bfb54a15852a585ec431fe191ebba8b167a3ab36ac440"
     },
     "methods/transport-owner/runtime-resources.json": {
       "bytes": 3805,
       "sha256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb"
     },
+    "native-matrix.json": {
+      "bytes": 2757,
+      "sha256": "841038866a544e7d5a0dc987f76ba7a778b2979de30c07d1dd79eead27c295fb"
+    },
     "run-paired-native.py": {
       "bytes": 34285,
       "sha256": "c9ca521c91edb9d2720c913bc7bf9e3a5cf6fcf6909c66fe74c0acb139951cd6"
+    },
+    "select-native-cases.py": {
+      "bytes": 6038,
+      "sha256": "704de6a6c504f670b414ea2809ac969764fca2feb9b436f0b5015bd73f0e389d"
     }
   },
-  "nativeWorkflowSha256": "d123cdbffee84c86e4ea35a4770fac09c1d32e92ed1dee24c8c583e0468853b5",
-  "ciWorkflowSha256": "fcd203f94d6c77481ee36dfe5a31c1ae7160eba73e5756725e6b89d4c5926347",
+  "nativeWorkflowSha256": "c50cdc8dd0b6622430ada81d6ee59b6f3d73063c99199d278627cb6fe9237720",
+  "ciWorkflowSha256": "5fb9a4cda8726d17c3b0eae49a579f7cd8949cf976664d0740427d4d706cd028",
   "unchangedPagesSha256": "cd09551e40a576172cf21c42871c10245056c94fa99d7be115f21c2efdc11fcb",
   "processAdapter": {
     "packageVersion": "1.62.1",
@@ -301,7 +341,7 @@
   "pairedHighCases": 15,
   "authoredOnlyHighCases": 7,
   "authoredOnlyLowFunctionalCases": 2,
-  "maxParallelNativeVMs": 6,
+  "maxParallelNativeVMs": 12,
   "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
   "sourceExecutionDuringPreparation": {
     "runner": false,
@@ -316,11 +356,11 @@
   "currentRuntimeProvenance": {
     "authoredAssetCount": 192,
     "baselineAssetCount": 156,
-    "currentLocalBuildInfoPath": "expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json",
-    "currentLocalBuildInfoSHA256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4",
+    "currentLocalBuildInfoPath": "expected-build-provenance/authored-build-info-home-storefront-finish-20261005-c2c266636447.json",
+    "currentLocalBuildInfoSHA256": "c2c2666364473fae80905c28288bb16703eebb31fb00dcbd5bf7429702df2939",
     "historicalBaselineAndAuthoredOriginalFilesUnchanged": true,
     "nativeCaptureAndArtApproval": "PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW",
-    "refreshChangedRuntimeSource": false
+    "refreshChangedRuntimeSource": true
   },
   "activeCases": {
     "home": {
@@ -348,9 +388,9 @@
       "paired": true
     },
     "south-092": {
-      "activeBudgetSeconds": 1440,
+      "activeBudgetSeconds": 1800,
       "historicalBudgetSeconds": 720,
-      "jobTimeoutMinutes": 75,
+      "jobTimeoutMinutes": 95,
       "paired": true
     },
     "south-094": {
@@ -378,9 +418,9 @@
       "paired": true
     },
     "bus": {
-      "activeBudgetSeconds": 600,
+      "activeBudgetSeconds": 2400,
       "historicalBudgetSeconds": 600,
-      "jobTimeoutMinutes": 75,
+      "jobTimeoutMinutes": 110,
       "paired": true
     },
     "tram": {
@@ -426,15 +466,15 @@
       "paired": false
     },
     "north-cup-owner": {
-      "activeBudgetSeconds": 1080,
+      "activeBudgetSeconds": 2400,
       "historicalBudgetSeconds": 1080,
       "jobTimeoutMinutes": 75,
       "paired": false
     },
     "south-parcel": {
-      "activeBudgetSeconds": 2700,
+      "activeBudgetSeconds": 3600,
       "historicalBudgetSeconds": 1080,
-      "jobTimeoutMinutes": 75,
+      "jobTimeoutMinutes": 95,
       "paired": false
     },
     "ownership-bus": {
@@ -467,5 +507,15 @@
       "jobTimeoutMinutes": 210,
       "paired": false
     }
+  },
+  "activityPinRefresh": {
+    "status": "SOURCE_ONLY_ACTIVITY_PINS_NO_NATIVE_ACCEPTANCE",
+    "at": "2026-10-05T03:23:11.638188+00:00",
+    "historicalRecordBytesPreserved": true,
+    "actualCurrentBuildInfoSHA256": "c2c2666364473fae80905c28288bb16703eebb31fb00dcbd5bf7429702df2939",
+    "caseCount": 24,
+    "nativeOnlyNoInputDefault": "false",
+    "dispatchActivationActuallyExecutedBySealer": false,
+    "productTestsBuildBrowserGpuExecutedBySealer": false
   }
 }

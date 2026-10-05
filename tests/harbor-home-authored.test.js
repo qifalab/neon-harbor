@@ -36,7 +36,7 @@ test('home system snapshot cannot rewrite its saved before/after/difference audi
  system.exit();assert.equal(owner.snapshot().assetCount,0);assert.equal(reads,6);assert.deepEqual(memory,{geometries:99,textures:101});
  const before=system.snapshot().homeAssetEvents.filter(e=>e.kind==='asset-released');assert.equal(before.length,3);
  assert.ok(before.every(e=>e.rendererRelease.available));
- assert.deepEqual(before.map(e=>e.rendererRelease.difference),[{geometries:2,textures:6},{geometries:1,textures:3},{geometries:14,textures:7}]);
+ assert.deepEqual(before.map(e=>e.rendererRelease.difference),[{geometries:2,textures:6},{geometries:1,textures:3},{geometries:19,textures:7}]);
  const expected=JSON.parse(JSON.stringify(before));
  for(const event of before){event.rendererRelease.before.geometries=-11;event.rendererRelease.before.textures=-12;
   event.rendererRelease.after.geometries=-21;event.rendererRelease.after.textures=-22;

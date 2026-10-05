@@ -1,0 +1,94 @@
+{
+  "status": "SOURCE_ONLY_BOUNDED_STARTUP_CANDIDATE_NATIVE_UNRUN_ORIGINAL_FAIL_PRESERVED",
+  "files": {
+    "ADOPTION.md": {
+      "bytes": 2726,
+      "sha256": "4baef8bda57bd8538eb930deb5e6d0c151d60370714e91cf59056ed70911cbc1"
+    },
+    "compact-observations.json": {
+      "bytes": 1550503,
+      "sha256": "4811b98018fe8ae9e8ff217faa331b9d3c299650a41837b7b0eaed24b7cfae6a"
+    },
+    "diagnostic-initial.json": {
+      "bytes": 12711,
+      "sha256": "3d41cb22e223ea551db4ee2b24a8e57900997b2ddb91d66b174e73c838d88659"
+    },
+    "diagnostic.json": {
+      "bytes": 14950,
+      "sha256": "edf124e33bf3c572dc3d83f40643cc61c98f12a4feb15123cac0b779f6b28ec3"
+    },
+    "payload/tools/native-review/cases.json": {
+      "bytes": 10543,
+      "sha256": "7c7c6fc00f2976396aa522fda65e737e2666334b0ff5dcf0f5797ca8871f760a"
+    },
+    "payload/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs": {
+      "bytes": 53745,
+      "sha256": "0786b94d99e81f8770923f9433c01146bfaadef6eb3b8de9fdd7b7ebe4805dc1"
+    },
+    "payload/tools/native-review/native-matrix.json": {
+      "bytes": 2757,
+      "sha256": "841038866a544e7d5a0dc987f76ba7a778b2979de30c07d1dd79eead27c295fb"
+    },
+    "prepare-bounded-candidate.py": {
+      "bytes": 8569,
+      "sha256": "e603d14c3a6174d8447d98f499028d1dd8aa74f49582f9c0c24e4d79ecbb9268"
+    },
+    "proposal-only/extra-active-seal-only.patch": {
+      "bytes": 880,
+      "sha256": "513335de4a14580b149a3f2e593c48eb507b513ceb850d03f30556d182610c79"
+    },
+    "proposal-only/tools/native-review/methods/resident-extra/SEALED_SHA256.json": {
+      "bytes": 616,
+      "sha256": "90ecf1ac43a049ff8f6c57e45b7c47f908cad2c04b0632f2b92f2811e70bfd4a"
+    },
+    "provenance/tools/native-review/cases.json": {
+      "bytes": 10212,
+      "sha256": "2e1dafb3cd00ca62a23d2078a9aa1e59e885a60b88fc3f60244119148012c385"
+    },
+    "provenance/tools/native-review/methods/resident-extra/SEALED_SHA256.json": {
+      "bytes": 616,
+      "sha256": "018f14693f6592cd6ac38b18f7c87d9676a6a0c22d13e4eb2b04edad2b42dab9"
+    },
+    "provenance/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs": {
+      "bytes": 53708,
+      "sha256": "6bea518a18bf6efd1a4cbdb537abf48a8ad23bd5afa12cfd3a384ccf9994d1de"
+    },
+    "provenance/tools/native-review/native-matrix.json": {
+      "bytes": 2757,
+      "sha256": "334b77269c54576ba032f168706ae1d6cba3fb91f1102c103d30f7e3bfa8a4ee"
+    },
+    "pure-bounded-scope-receipt.json": {
+      "bytes": 3030,
+      "sha256": "cc4b579c0871a4faf14780dbe4cee0df9f6843b3a50a8028a00981491b85c955"
+    },
+    "source-contract/neon-cc038-south-parcel-source-contract.md": {
+      "bytes": 5084,
+      "sha256": "55495ac952d1eb703aa13b64524c5776372041a5ff971ac4c8f3b6c7ce18304f"
+    },
+    "source-contract/neon-cc038-south-parcel-source-sha-proof.json": {
+      "bytes": 1287,
+      "sha256": "3b843920ffa44d3851df0f17f722db5a848a39f5f28ecaa500502efca66b1972"
+    },
+    "south-parcel-bounded-only.patch": {
+      "bytes": 4329,
+      "sha256": "c91b107e75bc226bedd99cbb1cbb215f5ee58b08f539877bccd8609a727a9750"
+    },
+    "test-bounded-scope.py": {
+      "bytes": 4174,
+      "sha256": "406081f56633fcc64c93d9cbe3c09a87e0c2f872c94715025dd6f1c21482a88c"
+    }
+  },
+  "methodOnlyHunks": "south-parcel-bounded-only.patch",
+  "activeFamilySealProposalOnly": "proposal-only/extra-active-seal-only.patch; recompute combined SHA after merging any other authorized extra-method hunks",
+  "checks": {
+    "sourceScopeAndActualOriginalObservationClassification": 20,
+    "nodeSyntaxExitCode": 0,
+    "nativeExecuted": false,
+    "rootOrCentralCandidateWritten": false,
+    "runtimeChanged": false
+  },
+  "historicalOriginalPinsPreserved": true,
+  "methodbase": "central recapture candidate6bea518a18bf6efd1a4cbdb537abf48a8ad23bd5afa12cfd3a384ccf9994d1de",
+  "originalActualMethod": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "originalMetadataSHA256": "bebf6020ed4423b0e34f56c6bc818c8bce0dcdcb57e6ecc1452dd402500417a5"
+}

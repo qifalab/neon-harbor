@@ -168,8 +168,18 @@ function collectAudit(bridge) {
   for(const p of [...bridge.pools,...bridge.pending])assert.ok(!p.failed&&!p.failure,`actual pool failure ${JSON.stringify(p)}`);
   for(const f of bridge.fleet)assert.ok(!f.failed&&!f.failure,`actual fleet attach failure ${JSON.stringify(f)}`);
 }
+function readOwnershipObservation(afterSequence) {
+  // __NEON__.snapshot still constructs its full read-only state. This reduces
+  // repeated protocol serialization; no CPU scheduling or speedup is claimed.
+  const s=window.__NEON__.snapshot(),t=s.city.sample.transit,b=t.authored;
+  const authored=b?{...b,audit:{...b.audit,events:b.audit.events.filter(row=>afterSequence===null||row.sequence>afterSequence)}}:b;
+  // All actual pool/instance ownership, resource fields and current fleet data
+  // remain complete. Source recursively freezes audit rows; consumed rows were
+  // already collected into record.auditEvents and sequence gaps still fail.
+  return {ready:s.ready,started:s.started,paused:s.paused,settings:s.settings,position:s.position,camera:s.camera,inCar:s.inCar,simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,presentation:s.presentation,streaming:s.streaming,renderer:s.renderer,timing:s.timing,city:{sample:{transit:{...t,authored}}}};
+}
 async function read(stage) {
-  const s=await bounded(()=>page.evaluate(()=>{const s=window.__NEON__.snapshot();return {ready:s.ready,started:s.started,paused:s.paused,settings:s.settings,position:s.position,camera:s.camera,inCar:s.inCar,simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,presentation:s.presentation,streaming:s.streaming,renderer:s.renderer,timing:s.timing,city:{sample:{transit:s.city.sample.transit}}};}),actionRemaining(30000),'read-only actual snapshot');
+  const s=await bounded(()=>page.evaluate(readOwnershipObservation,lastSequence),actionRemaining(30000),'read-only actual snapshot');
   const b=s.city.sample.transit.authored;assert.ok(b,'actual sealed C bridge required');collectAudit(b);
   assert.equal(s.renderer.contextLost,false);assert.equal(s.settings.hour,16.5);assert.equal(s.settings.dayCycle,false);assert.equal(s.inCar,null);
   assert.deepEqual(runtimeErrors,[],'actual page/console/HTTP/response errors');
@@ -257,7 +267,7 @@ async function caseActions() {
   await page.goto(`http://127.0.0.1:${port}/`);await page.waitForFunction(()=>window.__NEON__?.snapshot().ready&&!document.querySelector('#start').disabled,null,{timeout:actionRemaining(300000)});
   await page.locator('#welcome-settings').click();await page.locator('#quality').selectOption('high');await page.locator('#cycle').uncheck();assert.equal(Number(await page.locator('#time').inputValue()),16.5);await page.locator('#time').press('ArrowRight');await page.locator('#time').press('ArrowLeft');await page.locator('#resume').click();
   await page.locator('#welcome-sample').click();await page.locator('#sample-stops').waitFor({state:'visible'});
-  const available=await bounded(()=>page.evaluate(()=>window.__NEON__.snapshot()),actionRemaining(30000),'public stop listing');const stop=transit(available).stops.find(s=>s.kind===kind);assert.ok(stop);
+  const available=await bounded(()=>page.evaluate(()=>{const s=window.__NEON__.snapshot();return {city:{sample:{transit:{stops:s.city.sample.transit.stops}}}};}),actionRemaining(30000),'public stop listing');const stop=transit(available).stops.find(s=>s.kind===kind);assert.ok(stop);
   const expectedStop={bus:'harbor-bus-courtyard',tram:'harbor-tram-lantern',ferry:'harbor-ferry-south'}[kind];assert.equal(stop.id,expectedStop);record.publicStop=stop;
   await page.locator(`[data-sample-stop="${stop.id}"]`).click();
   const high=await settledHigh('initial-high-all-current-pools-settled',300000), revision=high.teleportRevision;record.initialHigh=high;

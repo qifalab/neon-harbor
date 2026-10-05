@@ -8,7 +8,7 @@ export const MODELS=Object.freeze({
  'workshop-fittings':{folder:'workshop',geometries:11,textures:4,images:4,bones:0,sha256:'9c548499c87b71cac2ed44b18803fdd9221359a7017da65e03420f77d816ebf0'},
  sofa_03:{folder:'home',geometries:2,textures:4,images:4,bones:0,sha256:'8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b'},
  old_bed_frame:{folder:'home',geometries:1,textures:3,images:3,bones:0,sha256:'910cc9d69a03285ffa6b66fd7734be68a7f6a045f14ae5922aa4e5946fdefa9f'},
- 'home-lobby-fittings':{folder:'home',geometries:14,textures:7,images:7,bones:0,sha256:'9db26832bae72c3f1f96e2b1a093a748ac0cee0ac864f6b1b8ac96d8da9d4ced'},
+ 'home-lobby-fittings':{folder:'home',geometries:19,textures:7,images:7,bones:0,sha256:'515db55f4f10259f0260d0ee9f015b53494ee7fd54f2289d7a6a579e21b78625'},
  'home-gallery-fittings':{folder:'home',geometries:16,textures:4,images:4,bones:0,sha256:'d0aee01ed0d4cd04080ecf1058f0e4ff699f22edc14d49b2889d6c110c936bba'},
 });
 export function expectedIds(mode,channel,floorId){

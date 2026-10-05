@@ -1,0 +1,43 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -186,14 +186,36 @@
+   const phases=[];
+   async function hold(stage,endpoint,precision) {
+     let first=null;const row={stage,endpoint,precision,key:choice.key,inputs:[]};phases.push(row);
++    const phoneProbe=options.case==='north-phone',phoneSprint=phoneProbe&&stage==='coarse'&&axis==='x'&&Math.abs(target-before.position[axis])>30;
++    const probeTag=`NEON-PHONE-WALK:${axis}:${endpoint}:${stage}:`;
++    let lastProgressAt=0;
++    const recordPhoneProgress=message=>{
++      const text=message.text();if(!text.startsWith(probeTag))return;
++      try {
++        const state=JSON.parse(text.slice(probeTag.length)),now=Date.now();
++        if(!row.progress.length||now-lastProgressAt>=2000||sign*(state.position[axis]-endpoint)>=0){
++          assert.ok(row.progress.length<256,'finite original phone leg progress');
++          const receipt={at:new Date(now).toISOString(),wallSeconds:(now-row.startedWall)/1000,axis,endpoint,stage,precision,requestedKeys:[choice.key,...(phoneSprint?['Shift']:[]),...(precision?['z']:[])],state};
++          row.progress.push(receipt);lastProgressAt=now;console.log('PHONE-WALK-PROGRESS '+JSON.stringify(receipt));
++        }
++      }catch(error){row.progressError={name:error.name,message:error.message};first ||= error;}
++    };
++    if(phoneProbe){row.startedWall=Date.now();row.startedAt=new Date(row.startedWall).toISOString();row.progress=[];
++      metadata.coverage.phonePhysicalLegs ||= [];metadata.coverage.phonePhysicalLegs.push({axis,target,before:{position:before.position,simulationTime:before.simulationTime,teleportRevision:before.teleportRevision},stage:row});
++      page.on('console',recordPhoneProgress);await persist();
++    }
+     try {
+-      if(precision){row.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}
+-      row.inputs.push({action:'down',key:choice.key});await page.keyboard.down(choice.key);
+-      await page.waitForFunction(({axis,endpoint,sign})=>{const s=window.__NEON__.snapshot();if(s.paused)throw new Error('Paused during physical walk');return sign*(s.position[axis]-endpoint)>=0;},{axis,endpoint,sign},{polling:'raf',timeout:legRemaining()});
++      if(phoneSprint){row.inputs.push({action:'down',key:'Shift',at:new Date().toISOString()});await page.keyboard.down('Shift');Object.assign(row.inputs.at(-1),{confirmed:true,confirmedAt:new Date().toISOString()});}
++      if(precision){row.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');if(phoneProbe)Object.assign(row.inputs.at(-1),{confirmed:true,confirmedAt:new Date().toISOString()});}
++      row.inputs.push({action:'down',key:choice.key});await page.keyboard.down(choice.key);if(phoneProbe)Object.assign(row.inputs.at(-1),{confirmed:true,confirmedAt:new Date().toISOString()});
++      await page.waitForFunction(({axis,endpoint,sign,phoneProbe,probeTag,id})=>{const s=window.__NEON__.snapshot();if(s.paused)throw new Error('Paused during physical walk');
++        if(phoneProbe){const n=s.city.people?.people.find(p=>p.id===id);console.debug(probeTag+JSON.stringify({position:s.position,simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,paused:s.paused,quality:s.settings.quality,fps:s.fps,timing:s.timing,target:n?{id:n.id,x:n.x,y:n.y,z:n.z,state:n.state,materialized:n.materialized,insideBuildingId:n.insideBuildingId}:null}));}
++        return sign*(s.position[axis]-endpoint)>=0;},{axis,endpoint,sign,phoneProbe,probeTag,id:selectedCase.id},{polling:'raf',timeout:legRemaining()});
+     } catch(error){first=error;row.firstError={name:error.name,message:error.message};}
+     finally {
+-      for(const key of [choice.key,...(precision?['z']:[])])try{await page.keyboard.up(key);row.inputs.push({action:'up',key,confirmed:true});}
++      for(const key of [choice.key,...(phoneSprint?['Shift']:[]),...(precision?['z']:[])])try{await page.keyboard.up(key);row.inputs.push({action:'up',key,confirmed:true,...(phoneProbe?{at:new Date().toISOString()}: {})});}
+       catch(error){row.inputs.push({action:'up',key,confirmed:false,error:{name:error.name,message:error.message}});if(!first)first=error;else (metadata.secondaryMovementErrors ||= []).push({name:error.name,message:error.message});}
++      if(phoneProbe){page.off('console',recordPhoneProgress);row.endedAt=new Date().toISOString();row.status=first?'first-failure-preserved':'input-completed';await persist();}
+     }
+     if(first)throw first; // No read/RPC or second hold after unconfirmed key-up.
+     legRemaining();

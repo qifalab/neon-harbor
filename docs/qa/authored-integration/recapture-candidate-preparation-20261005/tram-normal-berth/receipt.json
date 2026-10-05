@@ -1,0 +1,38 @@
+{
+  "status": "TRAM_FINITE_BERTH_ONLY_CANDIDATE_SOURCE_AND_ORIGINAL_TIMING_CPU_PROVEN_NATIVE_PENDING",
+  "originalZip": {
+    "path": "/tmp/neon-cc038-tram-11322804818/original.zip",
+    "bytes": 160668914,
+    "sha256": "60ea4e47a63b8a9a35af3e85b20a487245afdd971d0e327f36c73da4386d6360"
+  },
+  "originalArtifactId": 11322804818,
+  "currentCombinedBUSFERRYMethodSHA256": "571c19a0931d85ef26ad7be462eb2adb5749f580d8f085ea6b8a696dfb4abd80",
+  "originalFailureLedgerSHA256": "a5cb918d0259a220ffbcf448c6256688665ab08b00b86bcd0c5cdba41091d05d",
+  "cpuProofSHA256": "118b86eff4a7f747cc63c5e1e83f4fe1c6eb7553adf6722f4bff55cede0d46ec",
+  "videoProvenanceSHA256": "20d3c0b26c318baad8e91972e5e40ecd522fb89b2a728c66f12a53bbc88cc494",
+  "payload": [
+    {
+      "path": "tools/native-review/methods/transport/method-manifest.json",
+      "source": "/tmp/neon-tram-berth-diagnosis-20261005/payload/tools/native-review/methods/transport/method-manifest.json",
+      "bytes": 18420,
+      "sha256": "8d90591131e5bc4536d471d5d7a688cf8f45dcc21bc3f57ceb2c9147e5f7c6c2"
+    },
+    {
+      "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "source": "/tmp/neon-tram-berth-diagnosis-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 48169,
+      "sha256": "e082e9cc860bae05286eb85d77037174db82b3872b4aea6a3ed67363ed98fca4"
+    }
+  ],
+  "productionSourceChanged": false,
+  "onlyMethodRegionChanged": "waitBerth TRAM finite cap/transparent record",
+  "originalPredicateAndGuardTailByteIdentical": true,
+  "BUSAndFERRYAmendmentsPreserved": true,
+  "originalTRAMWhole2400sUnchanged": true,
+  "originalFailuresRemainFailed": true,
+  "rootWritten": false,
+  "parentCandidateWritten": false,
+  "gpuLaunched": false,
+  "nativePass": false,
+  "adoption": "Proposal prepared on exact current combined571c main and snapshotted parent manifest. Only apply waitBerth method-only hunk to the final centrally composed method; preserve BUS/FERRY/any ownership amendments, add explicit TRAM budget amendment and rehash final method/bundle. Do not overwrite later owner-only cleanup changes with this snapshot. Native full route/photos/owner closure under original whole2400s remains required."
+}

@@ -1,0 +1,1407 @@
+{
+  "status": "PASSED",
+  "scope": "Pure original source world/physics/NPC CPU instance; no browser, render, public input RPC timing or hardware performance proof. Source transit clock advances by its own update. Motor vehicles are deliberately omitted from NPC walk fixture; original browser guards must reject any real-world obstruction/departure.",
+  "colliderCount": 1856,
+  "catalogueCount": 220,
+  "routeProof": {
+    "worker": {
+      "path": [
+        {
+          "x": -560,
+          "z": -455
+        },
+        {
+          "x": -560,
+          "z": -440.8
+        },
+        {
+          "x": -571,
+          "z": -440.8
+        }
+      ],
+      "samples": 506,
+      "hits": []
+    },
+    "shopFrontage": {
+      "path": [
+        {
+          "x": -560,
+          "z": -455
+        },
+        {
+          "x": -510,
+          "z": -455
+        },
+        {
+          "x": -498,
+          "z": -463.3
+        }
+      ],
+      "samples": 1294,
+      "hits": []
+    }
+  },
+  "controllerStartSimulationTime": 19.233333333333523,
+  "readyTime": 31.983333333332798,
+  "approachSimulationSeconds": 12.749999999999275,
+  "minimumPhotographicGap": 2.043023679720647,
+  "maximumPhotographicGap": 3.0971791612839654,
+  "playerPhysicalTravel": 68.21333333334623,
+  "naturalNPCFinal": {
+    "id": "resident-tide-museum-1",
+    "x": -499.79637028021824,
+    "z": -441.74900121708197,
+    "state": "walking",
+    "journeyPhase": "walking-to-building"
+  },
+  "sources": {
+    "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+    "src/citizen-journeys.js": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a",
+    "src/simulation.js": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+    "src/metropolis-people.js": "6e4dbf3b39de25c5939da373b4e2b3554bf54698572f2fde7cf96e795dc7c52e",
+    "src/metropolis-world.js": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+    "vendor/three/three.module.js": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+  },
+  "rows": [
+    {
+      "name": "worker .05metre samples/radius.6 clear of all 1856 original ground colliders",
+      "passed": true
+    },
+    {
+      "name": "shopFrontage .05metre samples/radius.6 clear of all 1856 original ground colliders",
+      "passed": true
+    },
+    {
+      "name": "Exact proposed public controller reaches selected original source NPC using unchanged source physical movement",
+      "passed": true
+    },
+    {
+      "name": "Continuous controls retain original3.5m distance for five natural simulation seconds after readiness",
+      "passed": true
+    },
+    {
+      "name": "NPC naturally leaves initial shopping phase without reset/pause during CPU check",
+      "passed": true
+    }
+  ],
+  "trace": [
+    {
+      "simTime": 19.25000000000019,
+      "player": {
+        "x": -559.9066666666666,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 62.87634990819501,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 19.500000000000174,
+      "player": {
+        "x": -558.5066666666662,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 61.49842852554084,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 19.75000000000016,
+      "player": {
+        "x": -557.1066666666658,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 60.12152729633819,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 20.000000000000146,
+      "player": {
+        "x": -555.7066666666653,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 58.74571795269529,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 20.25000000000013,
+      "player": {
+        "x": -554.3066666666649,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 57.37107904781741,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 20.500000000000117,
+      "player": {
+        "x": -552.9066666666645,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 55.99769677803012,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 20.750000000000103,
+      "player": {
+        "x": -551.506666666664,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "shopping",
+        "phase": "street-activity"
+      },
+      "distance": 54.62566592525438,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 21.00000000000009,
+      "player": {
+        "x": -550.1066666666636,
+        "z": -455
+      },
+      "npc": {
+        "x": -498,
+        "z": -466,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 53.25509094078043,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 21.250000000000075,
+      "player": {
+        "x": -548.7066666666632,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.02806828562854,
+        "z": -465.6210781440169,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 51.77960636010592,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 21.50000000000006,
+      "player": {
+        "x": -547.3066666666627,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.05613657125707,
+        "z": -465.2421562880338,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 50.30423918624524,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 21.750000000000046,
+      "player": {
+        "x": -545.9066666666623,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.0842048568856,
+        "z": -464.8632344320507,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 48.82900006153252,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 22.000000000000032,
+      "player": {
+        "x": -544.5066666666619,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.11227314251414,
+        "z": -464.4843125760676,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 47.353900953501565,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 22.250000000000018,
+      "player": {
+        "x": -543.1066666666615,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.1403414281427,
+        "z": -464.10539072008453,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 45.87895536759367,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 22.500000000000004,
+      "player": {
+        "x": -541.706666666661,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.1684097137712,
+        "z": -463.72646886410143,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 44.40417860215398,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 22.74999999999999,
+      "player": {
+        "x": -540.3066666666606,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.19647799939975,
+        "z": -463.34754700811834,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 42.92958805585082,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 22.999999999999975,
+      "player": {
+        "x": -538.9066666666602,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.2245462850283,
+        "z": -462.96862515213525,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 41.455203600523184,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 23.24999999999996,
+      "player": {
+        "x": -537.5066666666597,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.2526145706568,
+        "z": -462.58970329615215,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 39.98104803628005,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 23.499999999999947,
+      "player": {
+        "x": -536.1066666666593,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.28068285628535,
+        "z": -462.21078144016906,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 38.5071476508006,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 23.749999999999932,
+      "player": {
+        "x": -534.7066666666589,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.3087511419139,
+        "z": -461.83185958418596,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 37.03353291173426,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 23.99999999999992,
+      "player": {
+        "x": -533.3066666666584,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.3368194275424,
+        "z": -461.45293772820287,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 35.56023933062281,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 24.249999999999904,
+      "player": {
+        "x": -531.906666666658,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.36488771317096,
+        "z": -461.0740158722198,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 34.08730854996569,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 24.49999999999989,
+      "player": {
+        "x": -530.5066666666576,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.3929559987995,
+        "z": -460.6950940162367,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 32.614789723569835,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 24.749999999999876,
+      "player": {
+        "x": -529.1066666666571,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.42102428442803,
+        "z": -460.3161721602536,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 31.14274128665475,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 24.99999999999986,
+      "player": {
+        "x": -527.7066666666567,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.44909257005656,
+        "z": -459.9372503042705,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 29.671233250154376,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 25.249999999999847,
+      "player": {
+        "x": -526.3066666666563,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.4771608556851,
+        "z": -459.5583284482874,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 28.200350209267693,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 25.499999999999833,
+      "player": {
+        "x": -524.9066666666558,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.50522914131363,
+        "z": -459.1794065923043,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 26.730195339135552,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 25.74999999999982,
+      "player": {
+        "x": -523.5066666666554,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.53329742694217,
+        "z": -458.8004847363212,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 25.260895776160943,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 25.999999999999805,
+      "player": {
+        "x": -522.106666666655,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.5613657125707,
+        "z": -458.4215628803381,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 23.792609977942924,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 26.24999999999979,
+      "player": {
+        "x": -520.7066666666545,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.58943399819924,
+        "z": -458.042641024355,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 22.325537962469678,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 26.499999999999776,
+      "player": {
+        "x": -519.3066666666541,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.6175022838278,
+        "z": -457.6637191683719,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 20.85993582606528,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 26.749999999999762,
+      "player": {
+        "x": -517.9066666666537,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.6455705694563,
+        "z": -457.28479731238883,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 19.396136770609008,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 26.999999999999748,
+      "player": {
+        "x": -516.5066666666532,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.67363885508485,
+        "z": -456.90587545640574,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 17.934582297435917,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 27.249999999999734,
+      "player": {
+        "x": -515.1066666666528,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.7017071407134,
+        "z": -456.52695360042264,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 16.47586975991115,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 27.49999999999972,
+      "player": {
+        "x": -513.7066666666524,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.7297754263419,
+        "z": -456.14803174443955,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 15.020827144679126,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 27.749999999999705,
+      "player": {
+        "x": -512.386666666652,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.75784371197045,
+        "z": -455.76910988845646,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 13.650507138951868,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 27.99999999999969,
+      "player": {
+        "x": -512.1866666666522,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.785911997599,
+        "z": -455.39018803247336,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 13.406433992707985,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 28.249999999999677,
+      "player": {
+        "x": -511.98666666665235,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.8139802832275,
+        "z": -455.01126617649027,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 13.172691201223792,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 28.499999999999662,
+      "player": {
+        "x": -511.78666666665254,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.84204856885606,
+        "z": -454.6323443205072,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 12.949838161014348,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 28.74999999999965,
+      "player": {
+        "x": -511.5866666666527,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.8701168544846,
+        "z": -454.2534224645241,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 12.738446417904754,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 28.999999999999634,
+      "player": {
+        "x": -511.3866666666529,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.8981851401131,
+        "z": -453.874500608541,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 12.539095649962153,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 29.24999999999962,
+      "player": {
+        "x": -511.1866666666531,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.92625342574166,
+        "z": -453.4955787525579,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 12.352368846811178,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 29.499999999999606,
+      "player": {
+        "x": -510.98666666665326,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.9543217113702,
+        "z": -453.1166568965748,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 12.178846676436365,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 29.74999999999959,
+      "player": {
+        "x": -510.78666666665345,
+        "z": -455
+      },
+      "npc": {
+        "x": -498.98238999699873,
+        "z": -452.7377350405917,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 12.019101066232913,
+      "keys": [
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 29.999999999999577,
+      "player": {
+        "x": -510.50666666665364,
+        "z": -455
+      },
+      "npc": {
+        "x": -499.01045828262727,
+        "z": -452.3588131846086,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 11.795705786546037,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 30.249999999999563,
+      "player": {
+        "x": -509.10666666665406,
+        "z": -455
+      },
+      "npc": {
+        "x": -499.0385265682558,
+        "z": -451.9798913286255,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 10.511351075284582,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 30.49999999999955,
+      "player": {
+        "x": -507.7066666666545,
+        "z": -455
+      },
+      "npc": {
+        "x": -499.06659485388434,
+        "z": -451.6009694726424,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 9.284624357276602,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 30.749999999999535,
+      "player": {
+        "x": -506.33400336707746,
+        "z": -454.93400336708925
+      },
+      "npc": {
+        "x": -499.0946631395129,
+        "z": -451.2220476166593,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 8.135518571276485,
+      "keys": [
+        "s",
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 30.99999999999952,
+      "player": {
+        "x": -505.34405387341616,
+        "z": -453.94405387342795
+      },
+      "npc": {
+        "x": -499.1227314251414,
+        "z": -450.84312576067623,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 6.951302623671424,
+      "keys": [
+        "s",
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 31.249999999999506,
+      "player": {
+        "x": -504.35410437975486,
+        "z": -452.95410437976665
+      },
+      "npc": {
+        "x": -499.15079971076995,
+        "z": -450.46420390469314,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 5.768360586340931,
+      "keys": [
+        "s",
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 31.499999999999492,
+      "player": {
+        "x": -503.36415488609356,
+        "z": -451.96415488610535
+      },
+      "npc": {
+        "x": -499.1788679963985,
+        "z": -450.08528204871004,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 4.587678006154681,
+      "keys": [
+        "s",
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 31.749999999999478,
+      "player": {
+        "x": -502.3468686920097,
+        "z": -451.0402020253548
+      },
+      "npc": {
+        "x": -499.206936282027,
+        "z": -449.70636019272695,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 3.411496676493727,
+      "keys": [
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 31.999999999999464,
+      "player": {
+        "x": -501.0535275611198,
+        "z": -451.0397460932862
+      },
+      "npc": {
+        "x": -499.23500456765555,
+        "z": -449.32743833674385,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.4978037814995138,
+      "keys": [
+        "s",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 32.24999999999945,
+      "player": {
+        "x": -501.2303400926208,
+        "z": -451.0242628602732
+      },
+      "npc": {
+        "x": -499.2630728532841,
+        "z": -448.94851648076076,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.859871224902709,
+      "keys": [
+        "w"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 32.49999999999944,
+      "player": {
+        "x": -501.08416555210334,
+        "z": -450.8877600994789
+      },
+      "npc": {
+        "x": -499.2911411389126,
+        "z": -448.56959462477766,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.9306701817834635,
+      "keys": [
+        "w"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 32.749999999999424,
+      "player": {
+        "x": -500.87952119537886,
+        "z": -450.69665623436686
+      },
+      "npc": {
+        "x": -499.31920942454076,
+        "z": -448.19067276879457,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.952037593245994,
+      "keys": [
+        "w"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 32.99999999999941,
+      "player": {
+        "x": -499.92405826526215,
+        "z": -449.791512661401
+      },
+      "npc": {
+        "x": -499.3472777101689,
+        "z": -447.8117509128115,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.0620699284728135,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 33.249999999999396,
+      "player": {
+        "x": -499.9172192842335,
+        "z": -449.5916296247558
+      },
+      "npc": {
+        "x": -499.375345995797,
+        "z": -447.4328290568284,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.2257687554651207,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 33.49999999999938,
+      "player": {
+        "x": -499.9103803032049,
+        "z": -449.3917465881106
+      },
+      "npc": {
+        "x": -499.40341428142506,
+        "z": -447.0539072008453,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.3921763204012234,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 33.74999999999937,
+      "player": {
+        "x": -499.90354132217624,
+        "z": -449.1918635514654
+      },
+      "npc": {
+        "x": -499.43148256705314,
+        "z": -446.6749853448622,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.5607646075269455,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 33.99999999999935,
+      "player": {
+        "x": -499.8967023411476,
+        "z": -448.9919805148202
+      },
+      "npc": {
+        "x": -499.4595508526812,
+        "z": -446.2960634888791,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.7311298091865996,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 34.24999999999934,
+      "player": {
+        "x": -499.88986336011897,
+        "z": -448.79209747817504
+      },
+      "npc": {
+        "x": -499.4876191383093,
+        "z": -445.917141632896,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.902959098279433,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 34.499999999999325,
+      "player": {
+        "x": -499.88028878667893,
+        "z": -448.5122612268718
+      },
+      "npc": {
+        "x": -499.5156874239374,
+        "z": -445.5382197769129,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.9963071771409555,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 34.74999999999931,
+      "player": {
+        "x": -499.83515151189073,
+        "z": -447.1930331850135
+      },
+      "npc": {
+        "x": -499.54375570956546,
+        "z": -445.1592979209298,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.054504961782861,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 34.9999999999993,
+      "player": {
+        "x": -499.8283125308621,
+        "z": -446.99315014836833
+      },
+      "npc": {
+        "x": -499.57182399519354,
+        "z": -444.7803760649467,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.2275896195645486,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 35.24999999999928,
+      "player": {
+        "x": -499.82147354983346,
+        "z": -446.79326711172314
+      },
+      "npc": {
+        "x": -499.5998922808217,
+        "z": -444.4014542089636,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.402054791336732,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 35.49999999999927,
+      "player": {
+        "x": -499.8146345688048,
+        "z": -446.59338407507795
+      },
+      "npc": {
+        "x": -499.62796056644976,
+        "z": -444.02253235298053,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.5776201737584428,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 35.749999999999254,
+      "player": {
+        "x": -499.8077955877762,
+        "z": -446.39350103843276
+      },
+      "npc": {
+        "x": -499.65602885207784,
+        "z": -443.64361049699744,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.754075367875754,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 35.99999999999924,
+      "player": {
+        "x": -499.80095660674755,
+        "z": -446.19361800178757
+      },
+      "npc": {
+        "x": -499.6840971377059,
+        "z": -443.26468864101435,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.9312596841467564,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 36.249999999999226,
+      "player": {
+        "x": -499.7913820333075,
+        "z": -445.9137817504843
+      },
+      "npc": {
+        "x": -499.712165423334,
+        "z": -442.88576678503125,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 3.029050990376912,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": false
+    },
+    {
+      "simTime": 36.49999999999921,
+      "player": {
+        "x": -499.7462447585193,
+        "z": -444.59455370862605
+      },
+      "npc": {
+        "x": -499.7402337089621,
+        "z": -442.50684492904816,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.087717433237411,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 36.7499999999992,
+      "player": {
+        "x": -499.7394057774907,
+        "z": -444.39467067198086
+      },
+      "npc": {
+        "x": -499.76830199459016,
+        "z": -442.12792307306506,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.2669317741284587,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    },
+    {
+      "simTime": 36.99999999999918,
+      "player": {
+        "x": -499.73256679646204,
+        "z": -444.1947876353357
+      },
+      "npc": {
+        "x": -499.79637028021824,
+        "z": -441.74900121708197,
+        "state": "walking",
+        "phase": "walking-to-building"
+      },
+      "distance": 2.4466185007584875,
+      "keys": [
+        "w",
+        "d"
+      ],
+      "slow": true
+    }
+  ]
+}

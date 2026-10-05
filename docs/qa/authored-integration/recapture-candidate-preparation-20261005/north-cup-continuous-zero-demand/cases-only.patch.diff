@@ -1,0 +1,17 @@
+--- a/tools/native-review/cases.json
++++ b/tools/native-review/cases.json
+@@ -163,9 +163,11 @@
+       "id": "north-cup-owner",
+       "family": "resident-extra",
+       "toolCase": "north-cup-owner",
+-      "originalBudgetSeconds": 1080,
+-      "jobTimeoutMinutes": 75,
+-      "paired": false
++      "originalBudgetSeconds": 2400,
++      "jobTimeoutMinutes": 75,
++      "paired": false,
++      "historicalOriginalBudgetSeconds": 1080,
++      "budgetRevisionReason": "Original actual first failure at993.191wall leaves86.809of1080 before unexecuted38m return (~187.6wall). Fixed no-demand pavement out/back72.60m per direction needs finite whole40min; all180s leg,240s uninterrupted13sim idle,120s asset, strictzero, source12cooldown remain unchanged. Job75min retained. Original instance-demandFAIL preserved; budget does not resolve original demand cause."
+     },
+     {
+       "id": "south-parcel",

@@ -1,14 +1,14 @@
 {
-  "status": "SOURCE_CATALOGUE_INPUT_CORRECTED_NEW_RESIDENT_DAY_PENDING",
+  "status": "SOURCE_CATALOGUE_FOCUS_PHONE_AND_PARCEL_BOUNDS_CORRECTED_PENDING_NATIVE",
   "at": "2026-10-05T01:35:19.214226+00:00",
   "activeMethod": "tools/capture-resident-extra.mjs",
-  "activeMethodSha256": "260b9118c280f117b253d3cbbe5154afafafa9f1081b399aa1e48e21faafd6ff",
+  "activeMethodSha256": "728cd6e76191d5becc48bd0d1b050f7f445b46ce32c2b000f399f66539aaf2f3",
   "historicalSeal": "provenance/SEALED_SHA256-original-ef92.json",
   "preservesOriginalFailures": true,
   "changes": "One fixed coarse + Z fine hold per same180s leg, original endpoint .75/teleport/simulation guard; supported owner35 clamped whole, context/static old shared30 first. Extra also includes South75sim startup1200 + original360 watch, South-only whole2700; original firstPerson15 shared readiness.",
   "additionalLowFunctionalCase": "resident-loop",
   "additionalCaseAmendment": "RESIDENT_DAY_FUNCTIONAL_AMENDMENT.json",
-  "previousMethodSHA256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "previousMethodSHA256": "260b9118c280f117b253d3cbbe5154afafafa9f1081b399aa1e48e21faafd6ff",
   "sourceCatalogueCorrection": {
     "originalRun": 37254103874,
     "originalArtifact": 11322287652,
@@ -16,5 +16,50 @@
     "evidence": "docs/qa/authored-integration/resident-loop-catalogue-correction-20261005",
     "CPUChecks": 8,
     "browserResult": "NOT_RUN"
+  },
+  "independentFocusAmendment": {
+    "originalRun": 37254103874,
+    "originalArtifact": 11322399100,
+    "reason": "Current cheap phase incorrectly included public focus within15s; original ef92 had independent locator focus inheriting explicit page.setDefaultTimeout(180000). Restore only independent focus180000 clamped whole, then unchanged settings/camera phase15000.",
+    "originalMethodSHA256": "1d5e1b813531d13488d06c85cd4442b50f48396c9717ae2867e1caf7cd9027f1",
+    "originalCurrentMethodSHA256": "260b9118c280f117b253d3cbbe5154afafafa9f1081b399aa1e48e21faafd6ff",
+    "originalFirstFailurePreserved": true,
+    "firstPersonSettingCameraBudgetMs": 15000,
+    "independentFocusCapMs": 180000,
+    "wholeBudgetsUnchanged": true,
+    "cleanupUntouched": true,
+    "browserResult": "NOT_RUN"
+  },
+  "phonePublicSprintAmendment": {
+    "originalRun": 37254103874,
+    "originalArtifact": 11322793245,
+    "scope": "Ordinary public Shift only first long x coarse hold; original Z fine, endpoint .75m, 180s legs, 1080s whole and simulation/stall guards unchanged. Readonly progress logging records actual physical input.",
+    "cpuInputAndSourceReceipt": "docs/qa/authored-integration/recapture-candidate-preparation-20261005/phone-public-input",
+    "browserResult": "NOT_RUN",
+    "originalFirstFailurePreserved": true
+  },
+  "southParcelNaturalStartupAmendment": {
+    "originalRun": 37254103874,
+    "originalArtifact": 11323103018,
+    "startupMs": 2100000,
+    "wholeMs": 3600000,
+    "jobTimeoutMinutes": 95,
+    "simulationGate": 75,
+    "watchMs": 360000,
+    "reason": "642 actual High active observations advanced only sim5 to49.75 in1201s; finite wall cap addresses slow natural progress. Original order/courier/prop/input/quality/closure predicates unchanged.",
+    "nativeResult": "NOT_RUN",
+    "originalFirstFailurePreserved": true
+  },
+  "northCupOwnerObservationAmendment": {
+    "reference": "NORTH_OWNER_OBSERVATION_AMENDMENT-20261005.json",
+    "originalFirstFailurePreserved": true,
+    "wholeMs": 2400000,
+    "fixedEmptyPavement": {
+      "x": -521,
+      "z": -602
+    },
+    "continuousAbsentDemandSimulationSeconds": 13,
+    "zeroOwnerGuardsUnchanged": true,
+    "nativeResult": "NOT_RUN"
   }
 }

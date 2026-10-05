@@ -1,7 +1,7 @@
 {
   "schema": "frontage-wide-static-preparation-v1",
   "status": "SOURCE_ONLY_STATIC_GEOMETRY_REVIEW",
-  "scope": "Six revised complete planned outdoor cardinal paths and added wide paths in source-derived static model, including authored lower solid envelopes; not instantiated full-world, native/timing/dynamic visibility or art acceptance; narrow 2026-10-05 shop-display art amendment updates only two authored source pins using exact bounded geometry and collider/fixture source identity, without rerunning the original navigation model",
+  "scope": "Six revised complete planned outdoor cardinal paths and added wide paths in source-derived static model, including authored lower solid envelopes; not instantiated full-world, native/timing/dynamic visibility or art acceptance; narrow 2026-10-05 shop-display art amendment updates only two authored source pins using exact bounded geometry and collider/fixture source identity, without rerunning the original navigation model; additional 2026-10-05 south094/south096 baked-loaf/ceramic/sign-face refinement updates the same two source pins using CPU physical bounds and unchanged collision identities only, with original route model retained",
   "bodyRadius": 0.65,
   "axisTolerance": 0.15,
   "sourceHashes": {
@@ -33,8 +33,8 @@
       "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
       "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
       "src/expansion-programmes.js": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
-      "src/harbor-district.js": "0e00bc483ece05f73e5711aa7a6e1ee59de2ebe415a9405d94211c66b5dd696d",
-      "src/harbor-frontage-profiles.js": "bdc48b86d9043e5fa263a0db23e15ce27415b2aef9d8d3d7ce50c70ded4231c0",
+      "src/harbor-district.js": "7e454501bfb4d99edcf8dd2017b5e210f06086b53484623920087b1e0ca4b6fe",
+      "src/harbor-frontage-profiles.js": "215c498d178c8133fdb1f58fe18744c72c9d6df401b9658016a1a7879e5bb7fe",
       "src/harbor-skyline.js": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
       "src/harbor-terrain.js": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49",
       "src/harbor-transit-renderer.js": "5fb7ade1a232883759576c706b30a96d665b3ed4a0a425a92c6eba6f5bcc9422",
@@ -1002,5 +1002,52 @@
       "No new timing/frame-rate evidence",
       "No native screenshot or visual acceptance"
     ]
+  },
+  "shopDisplayCraftRefinementAmendment": {
+    "schema": "two-shop-actual-geometry-bounds-amendment-v1",
+    "status": "CPU_ONLY_SOURCE_BOUNDS_COLLIDER_IDENTITY_NATIVE_PENDING",
+    "amendedAtUTC": "2026-10-05T03:19:41.870030+00:00",
+    "candidateBaseHead": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+    "sourceHashesBefore": {
+      "src/harbor-district.js": "0e00bc483ece05f73e5711aa7a6e1ee59de2ebe415a9405d94211c66b5dd696d",
+      "src/harbor-frontage-profiles.js": "bdc48b86d9043e5fa263a0db23e15ce27415b2aef9d8d3d7ce50c70ded4231c0"
+    },
+    "actualSourceHashesAfter": {
+      "src/harbor-district.js": "7e454501bfb4d99edcf8dd2017b5e210f06086b53484623920087b1e0ca4b6fe",
+      "src/harbor-frontage-profiles.js": "215c498d178c8133fdb1f58fe18744c72c9d6df401b9658016a1a7879e5bb7fe"
+    },
+    "previousProofPreserved": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/history/previous-wide-proof/frontage-wide-static-proof.json",
+      "bytes": 34688,
+      "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+    },
+    "previousShopDisplayArtAmendmentRetainedUnmodified": true,
+    "oldSourceAndNativePngLedger": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/original-history-ledger.json",
+      "bytes": 8797,
+      "sha256": "5ee8123d5b709e4ebfcdfdd57bf72d8fb9074ca046b9b30b53513970cb9bceb2"
+    },
+    "cpuBoundsMaterialIdentityAndDisposal": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-final-b-proof.json",
+      "bytes": 14517,
+      "sha256": "efb51faa99e8b685304e35bd78d23fc02da55b7480a46a59f0d237f0bd297602"
+    },
+    "cpuActualTrianglePhysicalDetailProof": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-physical-detail-proof.json",
+      "bytes": 1383,
+      "sha256": "f84af57d15f2754a8d22364d51b1453703e0a7ee2b2b1675fee2120303725a2e"
+    },
+    "limits": {
+      "sixFrontagesDrawCalls": 99,
+      "sixFrontagesTriangles": 84830,
+      "drawLimit": 100,
+      "triangleLimit": 85000,
+      "countsIncludeAllActualCanvasLabelBranches": true,
+      "canvasAndTextureDecodeAreCpuPlaceholders": true
+    },
+    "geometryScope": "Only south094 bakery loaves and south096 craft vessel/cup detail, material separation, fewer craft display items positioned clear of middle mullions; public south096 original coffee sign face repainted exactly coplanar at out .205 with an non-emissive original studio name texture. All other four frontages attribute hashes unchanged. Public opaque doors and transparent display glazing unchanged. No world/chunk source or collision/navigation coordinates changed.",
+    "boundsScope": "All 38 actual new window piece transformed AABBs checked inside their original specific window x/y boundaries and out .18-.69. New loaf radii/height stay inside prior per-loaf maxima; exterior craft vessels stay within old display rack including shelf-top. South096 repaint lies entirely in original south sign face x/y bounds at exact front out .205 and behind actual opaque door front out .43. The old shell/profile horizontal union still covers these new pieces; retained original lower-body/navigation proof cases are not re-run or promoted.",
+    "realTriangleDetailScope": "All 338 score vertices ray-tested above triangulated recessed crust; ceramic rays verify open mouth, real inner floor and real bottom. These are CPU geometry checks, not rendered aesthetic acceptance.",
+    "pending": "Parent final build/rules, exact runtime/source dictionary refresh, bundle proof byte/hash refresh, new south094/south096 High native captures and actual art review; old captures are historical and cannot accept this revision."
   }
 }

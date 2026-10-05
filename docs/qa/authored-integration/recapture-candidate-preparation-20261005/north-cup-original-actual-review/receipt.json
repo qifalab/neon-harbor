@@ -1,0 +1,75 @@
+{
+  "status": "READONLY-DIAGNOSIS-CPU-CANDIDATE-PREPARED-NOT-NATIVE-PASS",
+  "rootHEADReadOnly": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+  "rootSourceOrRefsChangedByThisTask": false,
+  "gpuStarted": false,
+  "originalNativeFailPreserved": true,
+  "originalFirstFailureExpression": "instances===0 actual1; bitmap===0 not reached, actual6",
+  "allFourOriginalPNGActuallyViewed": true,
+  "reportSha256": "dcd3717b6bec25011c2694c7af6b51a401e62327e1fbf805d687fd360848e754",
+  "attachments": {
+    "candidate-final-structural-checks.json": {
+      "bytes": 715,
+      "sha256": "c9741202758d920da67d94990f7acefa29500e1e67e8340de8762cf1d3614abd"
+    },
+    "candidate-plan-only.json": {
+      "bytes": 1883,
+      "sha256": "9a42756b49cac28429fdf07cab944e6bf9f371a22b8e06cac3efc27061115680"
+    },
+    "cpu-fixture-asynchronous-preparation-first-failure.json": {
+      "bytes": 701,
+      "sha256": "991b315a89da84892b4afd0404b21fec9c1f2b9a3839fd5aedd0d96074fee38f"
+    },
+    "cpu-source-residency-proof.json": {
+      "bytes": 71064,
+      "sha256": "abf3e7d33ee89121fed61fe31c6c87034c74cb3ac8913550f8a3d75804c911e8"
+    },
+    "cpu-source-residency-proof.mjs": {
+      "bytes": 8914,
+      "sha256": "ef3270f1cdcf7418c69999ef34339b99c5b1e6ba4a669b8015d76048d089597f"
+    },
+    "cpu-source-residency-proof.repeat.stdout.json": {
+      "bytes": 1573,
+      "sha256": "f0fbc5b91efcb1ccfca05e6f0900e5c03a6551956826e411ab66f1f1d38cb4fe"
+    },
+    "cpu-source-residency-proof.stdout.json": {
+      "bytes": 1573,
+      "sha256": "f0fbc5b91efcb1ccfca05e6f0900e5c03a6551956826e411ab66f1f1d38cb4fe"
+    },
+    "original-failure-provenance.json": {
+      "bytes": 95611,
+      "sha256": "49fe9ec98226cd6ea7a37ec84d62bd4b3d6cefdf61e79f042e84110a7be23565"
+    },
+    "original-video-preservation.json": {
+      "bytes": 290,
+      "sha256": "8d6459871e045803587cd03b6c724d689dbc347bc5eba68d26020b42a28e4a3e"
+    },
+    "png-sha256-ledger.json": {
+      "bytes": 5230,
+      "sha256": "67c4b8e8f55d75733c28a93083409414f519da7533b76122e13bc160efd15b7b"
+    },
+    "report.md": {
+      "bytes": 8407,
+      "sha256": "dcd3717b6bec25011c2694c7af6b51a401e62327e1fbf805d687fd360848e754"
+    },
+    "static-route-proof.json": {
+      "bytes": 63159,
+      "sha256": "5b31b4796e69a19739c9be4b333a206abdbda8dc0ed39823f76820475cb7ca66"
+    },
+    "static-route-proof.mjs": {
+      "bytes": 3813,
+      "sha256": "d090672f12638c8982da910fee1edf557e43e522a5f5e1f4ba0d1754fc53595e"
+    },
+    "whole-budget-limitation.json": {
+      "bytes": 1289,
+      "sha256": "0ac84f67d476618d70739ea0659be0d669ec262e00edbc9c611e118344c4e6ce"
+    }
+  },
+  "candidateDirectory": "/tmp/neon-north-cup-owner-method-candidate-20261005",
+  "candidateReceiptSha256": "1afb5fc05da12e193e6f61cf7a2fa1fb4395968802024d1fe7a3a06c03e669b8",
+  "candidateCollectorSha256": "5de16997445ea8fe6b80a7b7dccfc8fee5101c55f2fb023da5dda9ca2c7990ae",
+  "wholeBudgetSeconds": 2400,
+  "jobTimeoutMinutesUnchanged": 75,
+  "cpuTests": "actual GLB geometry/source residency and six source collision legs PASS; async fixture first failure retained separately; no image decode or GPU",
+  "acceptance": "Original native overallFAIL; no new native or art/AAA acceptance."
+}

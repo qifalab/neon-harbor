@@ -1,0 +1,6 @@
+{
+  "status": "FAILED_HELPER_ATTEMPT_PRESERVED",
+  "helper": "phone-hold-contract-cpu-check.failed-attempt1.mjs",
+  "actualVisibleError": "TypeError: Cannot read properties of undefined (reading 'polling') at phone-hold-contract-cpu-check.mjs:24",
+  "cause": "Synthetic helper omitted sign from factory dependency binding; hold raised before mock wait. Added sign:-1 to helper deps/destructure only, then all five protocol cases passed. Candidate collector was unchanged."
+}

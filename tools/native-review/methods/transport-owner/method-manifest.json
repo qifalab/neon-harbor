@@ -2,8 +2,8 @@
   "status": "SOURCE_CANDIDATE_SYNTAX_AND_CPU_PASSED_NATIVE_UNRUN",
   "tool": {
     "path": "native-transport-ownership-extra.mjs",
-    "bytes": 42916,
-    "sha256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2"
+    "bytes": 43644,
+    "sha256": "20713be5c1f23ea9604bfb54a15852a585ec431fe191ebba8b167a3ab36ac440"
   },
   "resources": {
     "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/payload/tools/native-review/methods/transport-owner/runtime-resources.json",
@@ -139,5 +139,19 @@
     "changedRuntimeAssetCount": 6,
     "ferryResourcesAndAllMethodCodeUnchanged": true,
     "historicalProvenanceAndOtherGuardsPreserved": true
+  },
+  "snapshotObserverAmendment": {
+    "preparedUTC": "2026-10-05T02:54:44.419585+00:00",
+    "status": "SOURCE_ONLY_NATIVE_UNRUN",
+    "basedOnOriginalFailedCase": "ownership-bus artifact11322937962",
+    "originalToolSHA256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2",
+    "localReadCapMsUnchanged": 30000,
+    "wholeBudgetMsUnchanged": 1200000,
+    "allPoolFleetResourceFieldsRetained": true,
+    "auditTransport": "All retained rows on first observation; only source-frozen rows newer than lastSequence thereafter; existing sequence/controller/drop guards and full record.auditEvents unchanged",
+    "fullSnapshotCPUConstructionStillRequired": true,
+    "verifiedNativeSpeedup": false,
+    "publicStopListingOnlyProjectsActualStopArray": true,
+    "productionSourceOrRuntimeAssetChanged": false
   }
 }

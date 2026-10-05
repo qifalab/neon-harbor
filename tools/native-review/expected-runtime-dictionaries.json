@@ -231,9 +231,9 @@
       "assets/city/chunks/7_6.json": "54d42d0c9d213ca5c9ff95d9015e24ea5e99b378dcc5ac0202691698c33777b3",
       "assets/city/chunks/7_7.json": "427bcfae58eb7f423fed32361f7d55bb8fde01cda83aceb95cac044dc597b60d",
       "assets/city/chunks/manifest.json": "4e28111e3beaaee91a8f9b1d07512a6e54144c2a1cde7ccd213c00b9a2abc525",
-      "assets/harbor/home/asset-manifest.json": "8b0e9d3c1f83a2bb555bb56f2f86e938317a0e712e4120b1a1347a16647e49b9",
+      "assets/harbor/home/asset-manifest.json": "b2754a355f278e53d48cceb33ea766f81db60bdfb6e111c85033c9dac5ca0d74",
       "assets/harbor/home/home-gallery-fittings.glb": "d0aee01ed0d4cd04080ecf1058f0e4ff699f22edc14d49b2889d6c110c936bba",
-      "assets/harbor/home/home-lobby-fittings.glb": "9db26832bae72c3f1f96e2b1a093a748ac0cee0ac864f6b1b8ac96d8da9d4ced",
+      "assets/harbor/home/home-lobby-fittings.glb": "515db55f4f10259f0260d0ee9f015b53494ee7fd54f2289d7a6a579e21b78625",
       "assets/harbor/home/LICENSE-AND-SOURCES.txt": "c10f4bce62e90415552a7144806e4221d4f6879e8e9f9d316e78248a34371421",
       "assets/harbor/home/LICENSE-NEON-AUTHORED.txt": "e1b45324609e6520df846ee96c5b81ae191d39c4eea93599d86d95bb3ad695d7",
       "assets/harbor/home/old_bed_frame.glb": "910cc9d69a03285ffa6b66fd7734be68a7f6a045f14ae5922aa4e5946fdefa9f",
@@ -313,10 +313,10 @@
       "src/harbor-authored-transit-snapshot.js": "ad658d129d4b5de7eae93eaae1540c6db1a892a0df75b7e528cb26a09493ab6e",
       "src/harbor-authored-transport-assets.js": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848",
       "src/harbor-authored-transport.js": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
-      "src/harbor-district.js": "0e00bc483ece05f73e5711aa7a6e1ee59de2ebe415a9405d94211c66b5dd696d",
-      "src/harbor-frontage-profiles.js": "bdc48b86d9043e5fa263a0db23e15ce27415b2aef9d8d3d7ce50c70ded4231c0",
+      "src/harbor-district.js": "7e454501bfb4d99edcf8dd2017b5e210f06086b53484623920087b1e0ca4b6fe",
+      "src/harbor-frontage-profiles.js": "215c498d178c8133fdb1f58fe18744c72c9d6df401b9658016a1a7879e5bb7fe",
       "src/harbor-home-assets.js": "c67b48be36a5765349d199fbab25bc5c898644259d4501c2a0de07a1ba767159",
-      "src/harbor-home-authored.js": "d227f261dea4a57c3fc5736761dc3dc149735048cf5dd5633505b21bfe857edc",
+      "src/harbor-home-authored.js": "e7a7310625e1f29ab6ad50065ab040a6f7b3f9e599a9b8ab001c185337af8a80",
       "src/harbor-life-renderer.js": "f753caff6ebcb452834923631cae35fd3971a5a1bb76b877d321168ec4f815e9",
       "src/harbor-life.js": "bcc290a78efce8246c09ba61e26382c2734c82f64f8df32f684e38a6c239a21c",
       "src/harbor-resident-diary-ui.js": "a8003a5c42cdd9d5243f68f3302dd07f4c69c153b7d9db77239c5f0f03fcd0f1",
@@ -371,15 +371,16 @@
       "bytes": 20302,
       "revision": null
     },
-    "actualCommittedBuildRevision": "Require actual corresponding checked out HEAD and that HEAD in its own remote build-info revision; historical/current local whole build-info SHA is provenance, not an asserted remote byte equality.",
+    "actualCommittedBuildRevision": "REQUIRE_ACTUAL_DISPATCH_HEAD_FROM_GIT_AND_BUILD",
     "currentBuildInfo": {
-      "sourcePath": "dist/build-info.json",
-      "archivedPath": "expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json",
-      "bytes": 20512,
-      "sha256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4",
-      "revision": null,
+      "path": "expected-build-provenance/authored-build-info-home-storefront-finish-20261005-c2c266636447.json",
+      "sha256": "c2c2666364473fae80905c28288bb16703eebb31fb00dcbd5bf7429702df2939",
+      "version": "0.8.0",
       "assetCount": 192,
-      "meaning": "Actual completed local candidate build provenance; revision metadata is not used to infer a committed source. Remote build must use its own exact checked-out HEAD and equal entire runtime dictionary."
+      "revision": null,
+      "scope": "Actual composed HOME soft finish and south094/south096 storefront refinement; exact five runtime asset delta from472. Actual dispatched Git HEAD/revision separately verified by owned runner; native acceptance pending.",
+      "bytes": 20512,
+      "note": "Actual local composed HOME soft finish +094/096 storefront build; revisionnull. Actual remote dispatch must match Git HEAD/build revision separately; pending native."
     }
   }
 }

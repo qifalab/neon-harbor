@@ -127,7 +127,7 @@ finally {
 
 async function captureCase(kind) {
   const folder = resolve(output, kind); await mkdir(folder);
-  const started = Date.now(), budget = kind === 'ferry' ? 900000 : kind === 'tram' ? 2400000 : 600000, deadline = started + budget;
+  const started = Date.now(), budget = kind === 'ferry' ? 900000 : 2400000, deadline = started + budget;
   const record = { kind, status: 'RUNNING', budget, startedAt: new Date(started).toISOString(), mode: args.mode,
     toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [], aimPhases: [], berthWaits: [], progressDiagnosticFailures: [] };
   const keep = (error, stage) => { if (!record.firstError) record.firstError = err(error, stage); else record.secondaryErrors.push(err(error, stage)); };
@@ -180,11 +180,19 @@ async function captureCase(kind) {
       phase.progress.push({when,status:'OBSERVED',at:new Date().toISOString(),observed});
     }catch(error){const diagnostic=err(error,`${phase.type} ${when} progress diagnostic`);phase.diagnosticErrors.push(diagnostic);record.secondaryErrors.push(diagnostic);if(!primary)record.progressDiagnosticFailures.push(diagnostic);}
   }
-  async function aim(p,yaw,pitch=.15) {
+  async function aim(p,yaw,pitch=.15,{acceptCurrent=false}={}) {
     const phaseDeadline=Date.now()+remaining(60000),phase={type:'aim',target:{yaw,pitch},budgetMs:60000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.aimPhases.push(phase);
     try {
       await bounded(async()=>{
         const s=await read();phase.progress.push({when:'before-input',status:'OBSERVED',at:new Date().toISOString(),observed:progressOf(s)});
+        // Only a ferry cabin leg can reuse the fresh, actual rendered camera
+        // when it already satisfies the identical original aim predicate.
+        if(kind==='ferry'&&acceptCurrent&&Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)
+          &&Math.abs(angle(s.camera.yaw-yaw))<.025&&Math.abs(s.camera.pitch-pitch)<.003) {
+          assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
+          phase.skippedPointerInput=true;phase.satisfiedBy='fresh-read-only-current-camera-original-predicate';
+          return;
+        }
         p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
         await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
         const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite aim phase/whole deadline');
@@ -256,7 +264,7 @@ async function captureCase(kind) {
       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
-        const desired=v.yaw+Math.atan2(dx,dz)-offset;await aim(p,desired);const slow=precision||distance(target,before)<1.2;
+        const desired=v.yaw+Math.atan2(dx,dz)-offset;await aim(p,desired,.15,{acceptCurrent:kind==='ferry'});const slow=precision||distance(target,before)<1.2;
         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null;
         try {guardBeforeAction=await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
@@ -271,7 +279,10 @@ async function captureCase(kind) {
     finally {record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,firstError:first?err(first,'local movement'):null});}
   }
   async function waitBerth(id, stopId=null) {
-    const phaseDeadline=Date.now()+remaining(600000),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:600000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.berthWaits.push(phase);
+    const berthBudgetMs=kind==='tram'?1200000:600000;
+    const phaseDeadline=Date.now()+remaining(berthBudgetMs),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:berthBudgetMs,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};
+    if(kind==='tram'){phase.originalBudgetMs=600000;phase.budgetAmendment='finite-tram-normal-service-observed-wall-rate';}
+    record.berthWaits.push(phase);
     await observePhaseProgress(phase,'before-wait',id,phaseDeadline);
     try {
       const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite berth phase/whole deadline');

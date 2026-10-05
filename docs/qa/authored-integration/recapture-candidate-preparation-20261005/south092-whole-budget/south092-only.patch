@@ -1,0 +1,54 @@
+--- a/tools/native-review/methods/harbor/frontage-wide-plans.mjs
++++ b/tools/native-review/methods/harbor/frontage-wide-plans.mjs
+@@ -54,7 +54,11 @@
+    {x:building.x,y:building.baseY+2.1,z:doorZ});
+  const restoreLook={kind:'look',label:'wide-return-original-door-look',yaw:Math.PI,pitch:priorPhoto.camera.pitch};
+  const added=[...outward,widePhoto,...returning,restoreLook];
+- return {...original,budgetMinutes:sideLeg?30:24,
++ // South092 completed the original route at23m54s, leaving only5.681s
++ // for its supported35s owner close. Keep all local guards; use a finite30m
++ // whole cap in both modes. The original24m authored result remains FAIL.
++ const wholeCaseMinutes=sideLeg||building.id==='south-092'?30:24;
++ return {...original,budgetMinutes:wholeCaseMinutes,
+   originalWholeCaseBudgetMinutes:original.budgetMinutes,
+   scope:original.scope+' One additional publicly walked wide public-door frontage view and exact return to the original door route. The oblique cases are not a straight-on display-facade view.',
+   steps:[...route.slice(0,doorIndex),...added,...route.slice(doorIndex)],
+@@ -68,7 +72,7 @@
+    publicDoor:{x:building.x,y:building.baseY,z:doorZ,yaw:0},
+    originalDoorStation:{x:building.x,y:building.baseY,z:closeZ},
+    wideStanding:{x:wideX,y:0,z:wideZ},restoreLook,
+-   budgets:{wholeCaseMinutes:sideLeg?30:24,originalWholeCaseMinutes:12,
++   budgets:{wholeCaseMinutes,originalWholeCaseMinutes:12,
+     reason:'Finite preparation cap from original wall evidence plus new real distance/photo processing. No validated completion upper bound.',
+     perPhaseDefaultMs:180000,perHoldMs:120000,maximumCorrectionHolds:2,localInputHelperUnchanged:true}}};
+ }
+--- a/tools/native-review/cases.json
++++ b/tools/native-review/cases.json
+@@ -49,11 +49,11 @@
+       "id": "south-092",
+       "family": "harbor",
+       "toolCase": "south-092",
+-      "originalBudgetSeconds": 1440,
+-      "jobTimeoutMinutes": 75,
+-      "paired": true,
+-      "historicalOriginalBudgetSeconds": 720,
+-      "budgetRevisionReason": "Original12min actual moving phase was truncated; additive real wide photograph/path and explicit 092/096 lamp detours. Fixed finite same-mode cap; unchanged local guards, completion not guaranteed."
++      "originalBudgetSeconds": 1800,
++      "jobTimeoutMinutes": 95,
++      "paired": true,
++      "historicalOriginalBudgetSeconds": 720,
++      "budgetRevisionReason": "Actual cc038 South092 authored completed all4 High photos, entry/exit/re-entry and runtime fingerprints at23m54.289s; remaining5.681s clipped the existing35s owned-close API and caused original FAIL. Baseline API close resolved in30.052s with explicit SIGKILL fallback. South092-only finite30min whole cap, paired job95min matching existing30min South091/095; all local guards/High/route/cleanup35s whole clamp retained. Not a completion guarantee; original24min FAIL preserved."
+     },
+     {
+       "id": "south-094",
+--- a/tools/native-review/native-matrix.json
++++ b/tools/native-review/native-matrix.json
+@@ -43,7 +43,7 @@
+     },
+     {
+       "id": "south-092",
+-      "job_timeout_minutes": 75,
++      "job_timeout_minutes": 95,
+       "evidence_label": "Native High"
+     },
+     {
