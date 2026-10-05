@@ -1,0 +1,61 @@
+{
+  "status": "PREPARED_SOURCE_ONLY_SYNTAX_AND27_CPU_GUARDS_PASSED_NATIVE_UNRUN",
+  "baseMethodSHA256": "95ba2b45e92f73d80cf729dc29117c6cd204496a82de8fb28b320be5ec33eeb8",
+  "activeMethodSHA256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "helperSHA256": "7b88081258339c184901f871dd7d40b2c71ee47655531f7cbec9cd5768997b3f",
+  "caseID": "resident-loop",
+  "family": "resident-extra",
+  "paired": false,
+  "wholeWallSeconds": 10800,
+  "workflowJobMinutes": 210,
+  "viewport": {
+    "width": 512,
+    "height": 320
+  },
+  "deviceScaleFactor": 1,
+  "lowCanvas": {
+    "width": 409,
+    "height": 256
+  },
+  "initialPublicQuality": "high",
+  "publicObservationQuality": "low",
+  "artAcceptance": "NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY",
+  "expectedFinalWrapperStatus": "FUNCTIONAL_RESIDENT_DAY_COMPLETE",
+  "residentID": "harbor-resident-07",
+  "clockUnchanged": {
+    "secondsPerHour": 120,
+    "startHour": 6.5
+  },
+  "proof": {
+    "effectiveWorkTicks": 700,
+    "fundedWagePeriods": 2,
+    "wageEach": 3,
+    "actualPurchaseQuantity": 1,
+    "actualPurchaseAmount": 6,
+    "homeBuildingID": "south-083",
+    "workBuildingID": "south-086",
+    "sameSharedTram": true,
+    "realWorkAvatarAndChangedJoints": true,
+    "publicSaveExports": "period1 actual wage ledger, period2 actual wage ledger, completed day jobs/receipts/purchase/home",
+    "ledgerRingBoundary": 96
+  },
+  "observation": {
+    "fixedPlayerObserver": "actual workshop room; no player follow of complete route",
+    "pollMilliseconds": 2000,
+    "snapshotMaximumWallMilliseconds": 15000,
+    "lightweightSnapshots": true,
+    "publicMenuPauseResumeRecorded": true,
+    "directClockPoseNPCStorageWrites": false,
+    "retry": false
+  },
+  "scope": {
+    "oldNorthSouthHighRouteBodiesByteIdentical": true,
+    "oldWalkByteIdentical": true,
+    "oldOwnedCleanupTailByteIdentical": true,
+    "original23CaseObjectsIdentical": true,
+    "runnerChanges": "case ID Low classification + final functional status only; success sets/kernel/ports/ffprobe/launch untouched",
+    "runtimeChanged": false,
+    "rootChanged": false,
+    "nativeExecuted": false
+  }
+}

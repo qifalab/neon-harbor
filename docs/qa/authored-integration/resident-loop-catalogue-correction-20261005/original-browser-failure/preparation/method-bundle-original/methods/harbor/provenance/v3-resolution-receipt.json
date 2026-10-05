@@ -1,0 +1,45 @@
+{
+  "status": "V3_PREPARED_RENDER_READINESS_ONLY_NATIVE_NOT_EXECUTED",
+  "basePackage": "/tmp/neon-harbor-final-native-method-v2",
+  "baseLedgerSha256": "69f67f850ffdb331add022be10e2a5edb46ae00b6a21e76c81980bffd94cdfb9",
+  "baseToolSha256": "817463f1d404e445f5aa9b366929abd3a8ad8f633a9e8db8ee69fb9613a39e33",
+  "v3ToolSha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+  "addedRuntimeHelperSha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+  "codeChanges": [
+    "finite/current rendered-camera predicate at events",
+    "same existing E phase deadline shared with render readiness",
+    "owned-browser-process close cap 15s to30s, same whole-case deadline",
+    "method hash dictionary includes new helper"
+  ],
+  "sameRuntimeFiles": [
+    "input.mjs",
+    "plans.mjs",
+    "expectations.mjs",
+    "server.mjs",
+    "evidence/captured-buildings.json",
+    "evidence/common-pose-proof.json"
+  ],
+  "priorFailureFilesPreserved": [
+    {
+      "path": "/tmp/neon-native-baseline-home-method-v2-20261004/build-info.json",
+      "bytes": 16323,
+      "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+    },
+    {
+      "path": "/tmp/neon-native-baseline-home-method-v2-20261004/metadata.json",
+      "bytes": 99380,
+      "sha256": "8a2e8b5ab47ecce6e4d1885c4f52f5c9b0f7664725b5bd1f9d60ec5204aff2ec"
+    }
+  ],
+  "syntaxCheckPassed": true,
+  "cpuChecks": {
+    "status": "CPU_PREPARATION_CHECK_PASSED",
+    "checks": 11,
+    "browserLaunched": false,
+    "gpuUsed": false,
+    "scope": "Only the exact native readiness predicate and timeout clipping on CPU snapshots, no native acceptance"
+  },
+  "browserLaunched": false,
+  "gpuUsed": false,
+  "sourceOrPriorTestsChanged": false
+}

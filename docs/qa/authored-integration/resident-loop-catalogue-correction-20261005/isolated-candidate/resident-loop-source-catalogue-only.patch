@@ -1,0 +1,24 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -380,6 +380,7 @@
+   metadata.functionalScope='One natural resident day; fixed workshop observer; Low512x320 viewport/409x256 buffer. Public save menus pause/resume; player does not follow the route.';
+   const {auditResidentDayState,auditResidentDaySave}=await import('./resident-loop-functional-guards.mjs');
+   const {createInteriorLayout}=await import(pathToFileURL(resolve(projectRoot,'src/metropolis-interiors.js')).href);
++  const {expansionBuilding}=await import(pathToFileURL(resolve(projectRoot,'src/expansion-programmes.js')).href);
+   const {planHarborWorkshopPilot}=await import(pathToFileURL(resolve(projectRoot,'src/harbor-workshop-pilot.js')).href);
+   const {circleOBB}=await import(pathToFileURL(resolve(projectRoot,'src/collision.js')).href);
+   const {createHarborVehicleLayout}=await import(pathToFileURL(resolve(projectRoot,'src/harbor-vehicle-models.js')).href);
+@@ -393,6 +394,13 @@
+   let s=await read();const room=s.interior.rooms.find(r=>r.type==='workshop');assert.ok(room);
+   await walk('x',s.workBuilding.x);await walk('z',room.entrance.z);await walk('x',room.arrival.x);await walk('z',room.arrival.z);
+   s=await read();assert.equal(s.interior.currentRoomId,room.id);
++  // The CPU layout module has its own programme registry. Assemble the same
++  // complete public addresses before deriving layouts, as the live city does.
++  for (const [building,index] of [[s.workBuilding,85],[s.homeBuilding,82]]) {
++    const sourceBuilding=expansionBuilding(building,'south',index);
++    assert.equal(sourceBuilding.id,building.id);assert.equal(sourceBuilding.programmeUse,building.programmeUse);
++    assert.deepEqual(sourceBuilding.floors,building.floors);
++  }
+   const floor=s.workBuilding.floors.find(f=>f.id==='lobby'),layout=createInteriorLayout(s.workBuilding,floor);
+   const bench=layout.parts.find(p=>p.roomId===room.id&&p.kind==='workbench-top');assert.ok(bench);
+   const work={roomId:room.id,anchor:{x:bench.x+bench.sx/2+.6+.12,y:floor.y,z:bench.z},colliders:[...layout.colliders,...(planHarborWorkshopPilot(s.workBuilding,floor,layout)?.colliders||[])].filter(c=>c.physics!==false&&c.minY<floor.y+1.8&&c.maxY>floor.y+.05)};

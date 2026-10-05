@@ -1,0 +1,93 @@
+--- 7247/native-transport-high.mjs
++++ camera-cleanup-postseal/native-transport-high.mjs
+@@ -37,6 +37,8 @@
+ assert.equal(sha(resourcesBytes), bundle.resources.sha256);
+ const resources = JSON.parse(resourcesBytes);
+ const require = createRequire(resolve(args['playwright-root'] || '/workspace/scratch/neon-harbor', 'package.json'));
++const pwPackagePath=require.resolve('playwright-core/package.json'),pwBundlePath=require.resolve('playwright-core/lib/coreBundle');
++assert.equal(JSON.parse(await readFile(pwPackagePath,'utf8')).version,bundle.processAdapter.packageVersion);assert.equal(sha(await readFile(pwPackagePath)),bundle.processAdapter.packageSha256);assert.equal(sha(await readFile(pwBundlePath)),bundle.processAdapter.coreBundleSha256,'verified owner-only launch process API source');
+ const { chromium } = require('@playwright/test');
+ assert.equal(sha(await readFile(resolve(sourceRoot, 'tools/server.mjs'))), bundle.sourcePins['tools/server.mjs']);
+ const { createStaticServer } = await import(pathToFileURL(resolve(sourceRoot, 'tools/server.mjs')).href);
+@@ -82,11 +84,26 @@
+   try { return await Promise.race([Promise.resolve().then(operation), new Promise((_,reject) => { timer = setTimeout(() => reject(new Error(`${label} exceeded ${ms} ms`)), ms); })]); }
+   finally { clearTimeout(timer); }
+ }
+-let server, browser;
++let server, browser, ownedBrowser = null;
++function captureOwnedLaunch(browser) {
++  const impl=browser._connection?.toImpl?.(browser),browserProcess=impl?.options?.browserProcess,child=browserProcess?.process;
++  assert.ok(child&&Number.isInteger(child.pid)&&child.pid>0&&child.pid!==process.pid&&typeof browserProcess.kill==='function','actual owned launch child required');
++  ownedBrowser={browserProcess,child,pid:child.pid,kill:()=>browserProcess.kill()};return {pid:child.pid,adapter:'pinned1.62.1 in-process toImpl(browser).options.browserProcess',scope:'this exact actual chromium.launch child and its owned descendants'};
++}
++async function killOwnedLaunchAfterCloseFailure() {
++  const start=Date.now();let error=null,confirmed=false;
++  try {
++    assert.ok(ownedBrowser&&ownedBrowser.browserProcess.process===ownedBrowser.child&&ownedBrowser.child.pid===ownedBrowser.pid,'captured launch ownership remains exact');
++    if(ownedBrowser.child.exitCode!==null||ownedBrowser.child.signalCode!==null)confirmed=true;
++    else {await bounded(()=>ownedBrowser.kill(),5000,'owned launch force-kill');confirmed=ownedBrowser.child.exitCode!==null||ownedBrowser.child.signalCode!==null;assert.ok(confirmed,'owned launch child exit confirmed after kill');}
++  }catch(problem){error=err(problem,'owned launch force-kill');preserve(problem,'owned launch force-kill');}
++  (run.cleanup ||= []).push({label:'owned launch force-kill after browser.close failure',pid:ownedBrowser?.pid??null,limit:5000,elapsedMs:Date.now()-start,confirmed,error,scope:'captured actual launch only; no process search or global kill'});
++}
+ try {
+   server = await createStaticServer({ root });
+   await bounded(() => new Promise((ok,reject) => { server.once('error', reject); server.listen(port, '127.0.0.1', ok); }), 15000, 'server.listen');
+   browser = await chromium.launch({ headless: true, ...(args['executable-path'] ? { executablePath: args['executable-path'] } : {}), args: ['--use-angle=swiftshader','--enable-unsafe-swiftshader','--enable-webgl'], timeout: 30000 });
++  run.ownedLaunch=captureOwnedLaunch(browser);
+   run.actualBrowser = { version: browser.version(), executable: args['executable-path'] || chromium.executablePath(), node: process.version };
+   assert.equal(browser.version(), version);
+   for (const kind of kinds) {
+@@ -99,6 +116,8 @@
+     const start = Date.now(); let failure = null;
+     try { await bounded(close, limit, label); } catch (error) { failure = err(error, label); preserve(error, label); }
+     (run.cleanup ||= []).push({ label, limit, startedAt: new Date(start).toISOString(), elapsedMs: Date.now() - start, confirmed: !failure, error: failure });
++    if(failure&&label==='browser.close')await killOwnedLaunchAfterCloseFailure();
++    if(failure&&label==='server.close')try{server?.closeAllConnections();(run.cleanup ||= []).push({label:'owned server.closeAllConnections',called:true,scope:'this run static server only'});}catch(error){preserve(error,'owned server.closeAllConnections');}
+   }
+   try { const after = {}; await fingerprint(resolve(root, 'src'), after);await fingerprint(resolve(root,'vendor'),after); for (const path of ['index.html','styles.css','favicon.svg']) after[path] = sha(await readFile(resolve(root,path))); run.servedSourceHashesAfter = after;run.buildInfoSha256After=sha(await readFile(resolve(root,'build-info.json')));assert.equal(run.buildInfoSha256After,sha(buildInfoBytes),'build-info exact bytes unchanged'); assert.deepEqual(after,sourceFiles,'frozen served source remains exact through run'); } catch(error) { preserve(error,'source closure'); }
+   run.status = run.firstError || run.cases.length !== kinds.length ? 'FAILED' : 'PASSED';
+@@ -116,8 +135,14 @@
+   const events = [], responseJobs = []; let context, page, video, activePointer = null;
+   async function event(stage, data = {}) {
+     const row = { at: new Date().toISOString(), stage, ...data }; record.events.push(row);
+-    try { await appendFile(resolve(folder, 'events.jsonl'), JSON.stringify(row) + '\n'); }
+-    catch (error) { record.diagnostics.push(err(error, 'write event')); try { console.error(JSON.stringify(row)); } catch {} }
++    try { await bounded(()=>appendFile(resolve(folder, 'events.jsonl'), JSON.stringify(row) + '\n'),2000,'host event diagnostic'); }
++    catch (error) { const diagnostic=err(error,'write event');record.diagnostics.push(diagnostic);if(record.firstError)record.secondaryErrors.push(diagnostic);try { console.error(JSON.stringify(row)); } catch {} }
++  }
++  async function renderedCameraReady(phase,phaseDeadline) {
++    const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original transition phase deadline');
++    await page.waitForFunction(()=>{const s=window.__NEON__.snapshot(),c=s.camera,finitePoint=p=>p&&['x','y','z'].every(k=>Number.isFinite(p[k]));return s.started&&!s.paused&&!s.streaming?.preparing&&c&&finitePoint(c.position)&&finitePoint(c.target)&&finitePoint(c.focus)&&[c.yaw,c.pitch,c.fov].every(Number.isFinite)&&c.fov===65;},null,{polling:'raf',timeout:cap});
++    const observed=await page.evaluate(()=>{const s=window.__NEON__.snapshot();return {camera:s.camera,simulationTime:s.simulationTime,revision:s.teleportRevision,stationID:s.city.sample.transit.stationId,ridingVehicleId:s.city.sample.transit.ridingVehicleId};});
++    assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'camera observation retains original phase/whole deadline');record.events.push({stage:phase,at:new Date().toISOString(),meaning:'current finite post-transition rendered first-person camera; ChaseCamera.reset returns null until next actual frame',observed});
+   }
+   const read = () => page.evaluate(() => window.__NEON__.snapshot());
+   const transit = s => s.city.sample.transit;
+@@ -235,15 +260,15 @@
+       await page.locator('#welcome-sample').click();await page.locator('#sample-stops').waitFor({state:'visible'});
+       const setup=await read(),stop=transit(setup).stops.find(s=>s.kind===kind);assert.ok(stop);const route=transit(setup).routes.find(r=>r.id===stop.routeId),toId=route.stops[(route.stops.indexOf(stop.id)+(kind==='ferry'?1:2))%route.stops.length],to=transit(setup).stops.find(s=>s.id===toId);
+       const publicPlan={bus:['harbor-bus-courtyard','harbor-bus-lantern'],tram:['harbor-tram-lantern','harbor-tram-quay'],ferry:['harbor-ferry-south','harbor-ferry-north']}[kind];assert.equal(stop.id,publicPlan[0]);assert.equal(to.id,publicPlan[1]);record.publicPlan=publicPlan;
+-      record.publicInitialStop=stop;record.destinationStop=to;record.canonical=canonical[kind];await page.locator(`[data-sample-stop="${stop.id}"]`).click();await page.waitForFunction(()=>{const s=window.__NEON__.snapshot();return s.started&&!s.paused&&!s.streaming?.preparing;},null,{timeout:remaining(90000)});
+-      if(!(await read()).settings.firstPerson)await page.keyboard.press('v');healthy(await read());await page.locator('#game').focus();
++      record.publicInitialStop=stop;record.destinationStop=to;record.canonical=canonical[kind];const publicSetupDeadline=Date.now()+remaining(90000);await page.locator(`[data-sample-stop="${stop.id}"]`).click();await page.waitForFunction(()=>{const s=window.__NEON__.snapshot();return s.started&&!s.paused&&!s.streaming?.preparing;},null,{timeout:Math.max(1,publicSetupDeadline-Date.now())});
++      if(!(await read()).settings.firstPerson)await page.keyboard.press('v');await renderedCameraReady('public-stop-current-rendered-camera',publicSetupDeadline);healthy(await read());await page.locator('#game').focus();
+       record.actualGraphics=await page.locator('#game').evaluate(canvas=>{const g=canvas.getContext('webgl2'),d=g.getExtension('WEBGL_debug_renderer_info');return {width:g.drawingBufferWidth,height:g.drawingBufferHeight,renderer:g.getParameter(g.RENDERER),unmaskedRenderer:d?g.getParameter(d.UNMASKED_RENDERER_WEBGL):null,lost:g.isContextLost()};});assert.equal(record.actualGraphics.width,1280);assert.equal(record.actualGraphics.height,800);assert.equal(record.actualGraphics.lost,false);
+       let p=await pointer();await aim(p,0);await groundAxis('x',stop.board.x);await groundAxis('z',stop.board.z);await releasePointer(null);
+       const {layout,spec}=canonical[kind],door=layout.doors.find(d=>d.id===stop.doorId),outerGap=kind==='ferry'?2.0:1.0,outLocal={x:door.side*(spec.halfWidth+outerGap),y:stop.board.y-(stop.berth.y||0),z:door.z},outWorld=worldOf(outLocal,stop.berth);
+       if(kind==='ferry')assert.ok(distance(outWorld,stop.board)<.001,'ferry exterior photo remains on actual public pier board point');record.exteriorMethod={outerGap,outLocal,outWorld,outdoorRadius:.65};
+       assert.ok(outerGap>=.65+.20+.06,'unchanged outdoor radius .65 plus margin and endpoint allowance');p=await pointer();await aim(p,0);await groundAxis('x',outWorld.x);await groundAxis('z',outWorld.z);
+       await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.vehicles.some(v=>v.stopId===id&&v.doorsOpen&&v.remaining>2),stop.id,{polling:'raf',timeout:remaining(180000)});const boardingState=await read(),boardingVehicle=transit(boardingState).vehicles.find(v=>v.stopId===stop.id&&v.doorsOpen);assert.ok(boardingVehicle);
+-      await photo('exterior',boardingVehicle.id,outLocal,door.side<0?Math.PI/2:-Math.PI/2,-door.side*Math.PI/2,p);await releasePointer(null);const beforeE=await read(),open=vehicle(beforeE,boardingVehicle.id);assert.equal(open.stopId,stop.id);assert.ok(open.doorsOpen&&open.remaining>.6);assert.ok(distance(beforeE.position,stop.board)<2.6);await page.keyboard.press('e');await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.ridingVehicleId===id,boardingVehicle.id,{timeout:remaining(30000)});
++      await photo('exterior',boardingVehicle.id,outLocal,door.side<0?Math.PI/2:-Math.PI/2,-door.side*Math.PI/2,p);await releasePointer(null);const beforeE=await read(),open=vehicle(beforeE,boardingVehicle.id);assert.equal(open.stopId,stop.id);assert.ok(open.doorsOpen&&open.remaining>.6);assert.ok(distance(beforeE.position,stop.board)<2.6);const boardingDeadline=Date.now()+remaining(30000);await page.keyboard.press('e');await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.ridingVehicleId===id,boardingVehicle.id,{timeout:Math.max(1,boardingDeadline-Date.now())});await renderedCameraReady('boarding-E-current-rendered-camera',boardingDeadline);
+       const boarded=await read(),id=transit(boarded).ridingVehicleId,revision=boarded.teleportRevision,stair=layout.stairs[0];assert.equal(transit(boarded).passengerDeck,'lower');record.boarded=boarded;
+       const upperRoute=[{x:0,z:door.z,y:stair.fromY},{x:0,z:stair.bottom.z,y:stair.fromY},stair.bottom,{x:stair.x,z:(stair.startZ+stair.endZ)/2,y:(stair.fromY+stair.toY)/2},stair.top,{x:0,z:stair.top.z,y:stair.toY}];
+       p=await pointer();let routeError=null;
+@@ -259,7 +284,7 @@
+   }catch(error){keep(error,'case');}
+   finally {
+     try{await releasePointer(record.firstError);}catch(error){keep(error,'pointer cleanup');}
+-    if(record.firstError)await event('first-error-before-context-close',{firstError:record.firstError,secondaryErrors:record.secondaryErrors});
++    if(record.firstError)try{await bounded(()=>event('first-error-before-context-close',{firstError:record.firstError,secondaryErrors:record.secondaryErrors}),2000,'first-error diagnostic before context.close');}catch(error){record.diagnostics.push(err(error,'first-error diagnostic before context.close'));keep(error,'first-error diagnostic before context.close');}
+     const closeStart=Date.now();let closeError=null;
+     try{await bounded(()=>context?.close(),30000,'context.close');}catch(error){closeError=err(error,'context.close');keep(error,'context.close');}
+     record.cleanup.push({operation:'context.close',budget:30000,elapsedMs:Date.now()-closeStart,confirmed:!closeError,error:closeError,originalFirstError:record.firstError});
