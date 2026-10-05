@@ -1,0 +1,9 @@
+{
+  "status": "ADOPTER_METADATA_ONLY_ASSERTION_REJECTION_PAYLOAD_ALREADY_EXACT_NO_PRODUCT_TEST_EXECUTED",
+  "error": "Original adopter reused row for sealed proof-copy loop, then compared adopted test SHA to final proof script SHA. Target test bytes were the authorized literal48bacdf payload, not modified incorrectly. No syntax/browser/full test/build/GPU had run.",
+  "originalAdopterSHA256": "4898cfa59bf266db54395da8504e053523b68496ee77e497e2aaab9b11f006da",
+  "actualPayloadTestSHA256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f",
+  "expectedPayloadTestSHA256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f",
+  "originalFailure": "AssertionError at adopt-compact-transit-test.py:38 after literal target write",
+  "correction": "Separate new verification-only continuation loads original recorded before hashes, fixes row to explicit payload, and does not re-adopt or restore/reset any file."
+}

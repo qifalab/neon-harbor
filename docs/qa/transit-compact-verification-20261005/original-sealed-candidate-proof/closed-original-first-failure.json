@@ -1,0 +1,286 @@
+{
+  "scope": "Closed original required CI first failure, not a new native pass",
+  "run": 37276412421,
+  "job": 111654306750,
+  "artifact": 11331208345,
+  "sourceCommit": "8b6a577529ade0a45aadc499db3181d165043a9d",
+  "originalZIP": {
+    "path": "/workspace/neon-evidence/8b6-required-ferry-original-fail-11331208345/original.zip",
+    "bytes": 55699161,
+    "sha256": "22309a9fb19f5cebb99ab23cb1108f21caffc33a3c7c6a895e7f5d157650ca89"
+  },
+  "originalLog": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-north-held-8b6/monitor-2026-10-05T07-13-17Z/logs/job-111654306750-original.log",
+    "bytes": 225421,
+    "sha256": "e6dfc07686f1f50217390a2523fff20b0abd4d9e2c34d2d2c46fdca808781d2d"
+  },
+  "traceZIP": {
+    "path": "/workspace/neon-evidence/8b6-required-ferry-original-fail-11331208345/extracted/test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/trace.zip",
+    "sha256": "a81860c8e3f868a940288e0f04c91a1f9862a48237d0ab44dc6bc5bec6bfeaf6"
+  },
+  "executedTestSourceSHA256": "9f0dd470f17cfa8ec5b84e1079b64429de976fc06caaa501662e11e454ce5476",
+  "firstFailure": {
+    "message": "Test timeout of 900000ms exceeded",
+    "line": 392,
+    "originalStatus": "FAILED",
+    "assertionFalseWasObserved": false
+  },
+  "arrival": {
+    "position": {
+      "x": 220.00095491685875,
+      "y": 1.3,
+      "z": -377.6740762252476,
+      "yaw": -3.105085042820886
+    },
+    "simulationTime": 123.36666666666095,
+    "teleportRevision": 3,
+    "paused": false,
+    "transit": {
+      "riding": true,
+      "ridingVehicleId": "harbor-ferry-1",
+      "passengerLocal": {
+        "x": -2.6740762252475685,
+        "y": 1.3,
+        "z": -7.2009549168587474,
+        "yaw": -1.5342887160259893
+      },
+      "passengerDeck": "lower",
+      "currentStopId": "harbor-ferry-north",
+      "boardedStopId": "harbor-ferry-south"
+    },
+    "interiorBuildingId": null
+  },
+  "arrivalVehicle": {
+    "id": "harbor-ferry-1",
+    "routeId": "harbor-ferry",
+    "kind": "ferry",
+    "x": 212.8,
+    "y": 0,
+    "z": -375,
+    "yaw": -1.5707963267948966,
+    "stopId": "harbor-ferry-north",
+    "doorsOpen": true,
+    "remaining": 14.54703504105155,
+    "nextStopId": "harbor-ferry-north",
+    "secondsToArrival": 0,
+    "speed": 0,
+    "delay": 0,
+    "serviceTime": 123.36666666666095,
+    "held": null,
+    "trafficState": "dwell",
+    "junction": null
+  },
+  "postEOriginalResult": {
+    "position": {
+      "x": 220,
+      "y": 1.3,
+      "z": -380.5,
+      "yaw": 0
+    },
+    "simulationTime": 123.36666666666095,
+    "teleportRevision": 4,
+    "paused": false,
+    "transit": {
+      "riding": false,
+      "ridingVehicleId": null,
+      "passengerLocal": null,
+      "passengerDeck": null,
+      "currentStopId": null,
+      "boardedStopId": "harbor-ferry-south"
+    },
+    "interiorBuildingId": null
+  },
+  "calls": {
+    "call@3777": {
+      "before": {
+        "type": "before",
+        "callId": "call@3777",
+        "startTime": 898861.444,
+        "class": "Frame",
+        "method": "waitForFunction",
+        "params": {
+          "expression": "({\n      id,\n      from\n    }) => {\n      const v = window.__NEON__.snapshot().city.sample.transit.vehicles.find(v => v.id === id);\n      return v.stopId && v.stopId !== from && v.doorsOpen && v.remaining > 2;\n    }",
+          "isFunction": true,
+          "arg": {
+            "value": {
+              "o": [
+                {
+                  "k": "id",
+                  "v": {
+                    "s": "harbor-ferry-1"
+                  }
+                },
+                {
+                  "k": "from",
+                  "v": {
+                    "s": "harbor-ferry-south"
+                  }
+                }
+              ],
+              "id": 1
+            },
+            "handles": []
+          },
+          "timeout": 180000
+        },
+        "stepId": "pw:api@2338",
+        "pageId": "page@e68cc25bebf0042f5d41f5010af97e8e",
+        "beforeSnapshot": "before@call@3777"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@3777",
+        "endTime": 898868.06,
+        "afterSnapshot": "after@call@3777"
+      },
+      "originalResultJSONBytes": 24
+    },
+    "call@3781": {
+      "before": {
+        "type": "before",
+        "callId": "call@3781",
+        "startTime": 899721.318,
+        "class": "Page",
+        "method": "keyboardPress",
+        "params": {
+          "key": "e"
+        },
+        "stepId": "pw:api@2343",
+        "pageId": "page@e68cc25bebf0042f5d41f5010af97e8e"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@3781",
+        "endTime": 899736.578,
+        "afterSnapshot": "after@call@3781"
+      },
+      "originalResultJSONBytes": 2
+    },
+    "call@3783": {
+      "before": {
+        "type": "before",
+        "callId": "call@3783",
+        "startTime": 899742.311,
+        "class": "Frame",
+        "method": "evaluateExpression",
+        "params": {
+          "expression": "() => window.__NEON__.snapshot()",
+          "isFunction": true,
+          "arg": {
+            "value": {
+              "v": "undefined"
+            },
+            "handles": []
+          }
+        },
+        "stepId": "pw:api@2345",
+        "pageId": "page@e68cc25bebf0042f5d41f5010af97e8e",
+        "beforeSnapshot": "before@call@3783"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@3783",
+        "endTime": 900336.438,
+        "afterSnapshot": "after@call@3783"
+      },
+      "originalResultJSONBytes": 2344504
+    }
+  },
+  "worker": {
+    "pw:api@2343": {
+      "before": {
+        "type": "before",
+        "callId": "pw:api@2343",
+        "stepId": "pw:api@2343",
+        "startTime": 899721.102,
+        "class": "Test",
+        "method": "pw:api",
+        "title": "Press \"e\"",
+        "params": {
+          "key": "e"
+        },
+        "stack": [
+          {
+            "file": "/home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js",
+            "line": 391,
+            "column": 25
+          }
+        ]
+      },
+      "after": {
+        "type": "after",
+        "callId": "pw:api@2343",
+        "endTime": 899739.374,
+        "annotations": []
+      }
+    },
+    "expect@2344": {
+      "before": {
+        "type": "before",
+        "callId": "expect@2344",
+        "stepId": "expect@2344",
+        "startTime": 899740.653,
+        "class": "Test",
+        "method": "expect",
+        "title": "Expect \"poll toBe\"",
+        "params": {},
+        "stack": [
+          {
+            "file": "/home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js",
+            "line": 392,
+            "column": 86
+          }
+        ]
+      },
+      "after": {
+        "type": "after",
+        "callId": "expect@2344",
+        "endTime": 901511.57,
+        "annotations": [],
+        "error": {
+          "name": "",
+          "message": "Error: Test timeout of 900000ms exceeded",
+          "stack": "Error: Test timeout of 900000ms exceeded\n    at /home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js:392:86"
+        }
+      }
+    },
+    "pw:api@2345": {
+      "before": {
+        "type": "before",
+        "callId": "pw:api@2345",
+        "stepId": "pw:api@2345",
+        "parentId": "expect@2344",
+        "startTime": 899742.114,
+        "class": "Test",
+        "method": "pw:api",
+        "title": "Evaluate",
+        "params": {
+          "expression": "() => window.__NEON__.snapshot()",
+          "isFunction": "true",
+          "arg": "Object"
+        },
+        "stack": [
+          {
+            "file": "/home/runner/work/neon-harbor/neon-harbor/tests/e2e/helpers/walking.js",
+            "line": 3,
+            "column": 38,
+            "function": "snapshot"
+          }
+        ]
+      },
+      "after": {
+        "type": "after",
+        "callId": "pw:api@2345",
+        "endTime": 905321.75,
+        "annotations": []
+      }
+    }
+  },
+  "actualCause": "The original public E interaction successfully alighted at the northern berth. The whole-test deadline interrupted the final expect.poll while the worker awaited completion of a full-world snapshot operation whose trace result serialized 2344504 bytes; the returned state already had riding=false. This is a whole-scenario confirmation deadline failure, not evidence of a blocked runtime exit.",
+  "candidate": "Return only consumed fields inside this transit scenario; preserve full transit, position/time/revision/interior buildingId and every input/route/assertion/deadline. No new result or wall-time savings are claimed.",
+  "upperHighOriginalAttachment": {
+    "sha256": "8d6031a6451f79855b88c773fe55cf4bdaa3060de3496199f8af30251135db27",
+    "poseSHA256": "960fffc30c2490a37260569946027491f7041c27bf511e3b7ffa694450035103",
+    "claim": "Actual original upper High capture exists; this failed scenario is not accepted as complete transit or art."
+  }
+}
