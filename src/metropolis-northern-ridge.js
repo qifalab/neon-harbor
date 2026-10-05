@@ -30,10 +30,10 @@ function createNorthMaterial(THREE,maps){
  material.name='metropolis-original-northern-ridge';applySurfaceFinish(material,'mineral',{scale:.015,strength:.30});
  let disposed=false;const dispose=()=>{if(disposed)return;disposed=true;maps.normal.dispose();maps.roughness.dispose();};material.addEventListener('dispose',dispose);return{material,maps,dispose};
 }
-/** Preserve the first ten western surfaces byte-for-byte, replace only the
- * twelve northern cone ranges, and use one separate standard-material draw for the northern ridge. */
+/** Extract the explicit coherent western component, replace only the
+ * twelve northern source cone ranges, and use one separate standard-material draw for the northern ridge. */
 export function createNorthernHarborRidgeBatch(THREE,batch,sourceGeometry,sourceMaterial){
- const mesh=createWesternMountainBatch(THREE,batch,sourceGeometry,sourceMaterial),old=mesh.geometry,west=mesh.userData.westernRidge.hillRanges.slice(0,10),westVertices=west.at(-1).firstVertex+west.at(-1).vertices,westIndices=mesh.userData.westernRidge.westernTriangles*3,r=NORTHERN_RIDGE_RECIPE;
+ const mesh=createWesternMountainBatch(THREE,batch,sourceGeometry,sourceMaterial),old=mesh.geometry,west=[mesh.userData.westernRidge.westernRange],westVertices=west[0].firstVertex+west[0].vertices,westIndices=mesh.userData.westernRidge.westernTriangles*3,r=NORTHERN_RIDGE_RECIPE;
  const nx=r.xSegments,nz=r.zSegments,grid=(nx+1)*(nz+1),edgeVertices=2*(nx+1)+2*(nz-1),northVertices=grid+edgeVertices+1,count=westVertices+northVertices;
  const positions=new Float32Array(count*3),normals=new Float32Array(count*3),colors=new Float32Array(count*3),surface=new Float32Array(count*2),uv=new Float32Array(count*2),mask=new Float32Array(count),indices=[];
  for(const [key,array]of[['position',positions],['normal',normals],['color',colors],['mountainSurface',surface]])array.set(old.attributes[key].array.subarray(0,westVertices*old.attributes[key].itemSize));

@@ -1,0 +1,43 @@
+{
+  "status": "LITERAL_SURROUNDING_BYTES_AND_ALL_NONFERRY_CASE_MATRIX_VALUES_IDENTICAL",
+  "originalMethodSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+  "candidateMethodSHA256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308",
+  "methodChangesExactlyReversibleToOriginal": true,
+  "changedExecutableLiterals": [
+    "Ferry whole900000->2400000",
+    "precision>.3 held eligibility explicitly adds kind ferry"
+  ],
+  "allOtherExecutableBytesIdentical": true,
+  "originalCasesSHA256": "c6276962c153440eb004cce67b36038b49e6315795879933280ab143b01b1a78",
+  "candidateCasesSHA256": "a55b698e7b64c4091e806a992199c22d995e6c1d83e59abbff4e537080ad8ed3",
+  "caseCount": 24,
+  "unchangedNonFerryCaseObjects": 23,
+  "onlyCaseIdChanged": "ferry",
+  "oldFerryCase": {
+    "id": "ferry",
+    "family": "transport",
+    "toolCase": "ferry",
+    "originalBudgetSeconds": 900,
+    "jobTimeoutMinutes": 80,
+    "paired": true
+  },
+  "newFerryCase": {
+    "id": "ferry",
+    "family": "transport",
+    "toolCase": "ferry",
+    "originalBudgetSeconds": 2400,
+    "jobTimeoutMinutes": 110,
+    "paired": true,
+    "historicalOriginalBudgetSeconds": 900,
+    "budgetRevisionReason": "Actual original6ad paired Ferry900s whole failed at lower photo: baseline normal next-berth wait514.530wall seconds then screenshot limited26248ms failed; authored whole-clamped531341ms wait failed. Initial setup/local approach had already used349.722/368.644wall seconds. Source normal ferry replay matches original service16.75/16.85 and still needs23.8833/23.7833simulation seconds to next open north berth. Fixed40min bound leaves finite headroom for original three High photos, both continuous stair routes, upperE-refusal and destination lowerE-exit; remaining software render/boat/cleanup costs are unmeasured, so this is a declared estimate and not native completion. Local150s/berth600s/.06xz/.15y/.3radius/gait/High/camera/destination/source/resource guards unchanged."
+  },
+  "originalMatrixSHA256": "841038866a544e7d5a0dc987f76ba7a778b2979de30c07d1dd79eead27c295fb",
+  "candidateMatrixSHA256": "efb4643dd76a4440886049b28ad011319018de149750edb9d1bba29ad0a62611",
+  "unchangedNonFerryMatrixRows": 23,
+  "onlyMatrixFieldChanged": "ferry.job_timeout_minutes80->110",
+  "casesAndMatrixAllRowsBudgetConsistent": true,
+  "selectorSourceSHA256Unchanged": "704de6a6c504f670b414ea2809ac969764fca2feb9b436f0b5015bd73f0e389d",
+  "ciWorkflowSHA256Unchanged": "5fb9a4cda8726d17c3b0eae49a579f7cd8949cf976664d0740427d4d706cd028",
+  "nativeWorkflowSHA256Unchanged": "c50cdc8dd0b6622430ada81d6ee59b6f3d73063c99199d278627cb6fe9237720",
+  "globalBundleRefresh": "Adopter must derive actual final child full inventory/activeCases (including Ferry2400/110) and current runtime dictionary; do not copy frozen8b175 bundle manifest to future West source."
+}

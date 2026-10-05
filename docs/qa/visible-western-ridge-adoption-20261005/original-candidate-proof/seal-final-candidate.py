@@ -1,0 +1,37 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import json,hashlib,shutil,subprocess
+root=Path(__file__).parent;repo=root/'repo';basis=Path('/workspace/neon-candidates/harbor-northern-ridge-final-20261005');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip()=='8b6a577529ade0a45aadc499db3181d165043a9d'
+paths=['src/metropolis-western-ridge.js','src/metropolis-northern-ridge.js','tests/metropolis-western-ridge.test.js',*[f'art-source/visible-western-harbor-ridge/{n}' for n in ['README.md','geometry-material-recipe.json','LICENSE-ASSETS-CC0.txt','LICENSE-CODE-MIT.txt']]]
+assert sha(repo/'src/metropolis-world.js')==sha(basis/'src/metropolis-world.js')=='99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b'
+changed=subprocess.check_output(['git','diff','--name-only'],cwd=repo,text=True).splitlines();assert set(changed)==set(paths[:3])
+assets=json.loads((basis/'dist/build-info.json').read_text())['assets'];delta={n:{'basisSHA256':pin,'candidateSHA256':sha(repo/n)} for n,pin in assets.items() if sha(repo/n)!=pin};assert set(delta)==set(paths[:2]);same=[n for n,pin in assets.items() if sha(repo/n)==pin];assert len(same)==205
+assert sha(repo/paths[0])=='d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208';assert sha(repo/paths[1])=='763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0'
+proofroot=Path('/workspace/neon-candidates/final-near-shop-art-review-20261005/west-v2-projection-independent');proof=proofroot/'projection-proof.json';assert sha(proof)=='674f309f57d526a7884f4f46d9349f0e107b5fe8cedba8ed90f0119f965c84b8';assert sha(proofroot/'seal.json')=='27c51c227eb7d5013e7d3a6c86620c6fd09f402347cf7c1f218088ee55fb83a0'
+originalseal=json.loads((proofroot/'seal.json').read_text());originalseal['files']={str(Path(v['path']).relative_to(proofroot)):v for v in originalseal['files']};actual={str(p.relative_to(proofroot)) for p in proofroot.rglob('*') if p.is_file()};assert actual==set(originalseal['files'])|{'seal.json'}
+for n,pin in originalseal['files'].items():assert sha(proofroot/n)==pin['sha256'] and (proofroot/n).stat().st_size==pin['bytes']
+evidence=root/'evidence';evidence.mkdir();shutil.copytree(proofroot,evidence/'independent-v2-projection-original')
+for name in ['north-day-8b6a577-frustum-proof.json','western-day-8b6a577-visible-hill-ids-proof.json']:shutil.copyfile(proofroot.parent/name,evidence/name)
+# Keep original target/case failure evidence literal; do not relabel the firstDay capture.
+closed=Path('/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005');refs=[]
+for p in [closed/'local-summary.json',closed/'native/metadata.json',*[closed/'native'/n for n in ['05-west-ridge-original-camera-high.png','05-west-ridge-original-camera-pose.json','06-near-quay-tree-whole-high.png','06-near-quay-tree-whole-pose.json']]]:refs.append({'path':str(p),'bytes':p.stat().st_size,'sha256':sha(p)})
+correction={'basisCommit':'8b6a577529ade0a45aadc499db3181d165043a9d','originalNorthDayNativeCapture':'capture-complete-art-review-pending','originalNorthDayComponentArt':'FAIL_visibleWesternConesStillPresent','targetError':'Earlier refinedNorthern12 geometry was entirely outside both actual cameras. Visible hills areWestern0–2 in05/Western0–5 in06. This is a new explicitWest refinement.','originalClosedNativeFiles':refs,'originalNight8bStatus':'UNEXECUTED','unseenNativeArt':'NewWest currentcandidate High originalpixels PENDING','oldOriginalsEdited':False,'GPUStartedByCandidate':False};(evidence/'target-correction-closed-original-pins.json').write_text(json.dumps(correction,indent=2)+'\n')
+payload=root/'payload';payload.mkdir();manifest={}
+for n in paths:
+ p=payload/n;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(repo/n,p);manifest[n]={'bytes':p.stat().st_size,'sha256':sha(p),'originalTargetSHA256':sha(basis/n) if (basis/n).exists() else None}
+assert set(manifest)==set(paths)
+mp=root/'payload-manifest.json';mp.write_text(json.dumps({'status':'FINAL_SELECTIVE_PAYLOAD_READY_FOR_PARENT_ADOPTION_NO_GPU','basisCommit':'8b6a577529ade0a45aadc499db3181d165043a9d','files':manifest,'fileCount':len(manifest),'bytes':sum(x['bytes'] for x in manifest.values()),'sourceWorldAndOther205RuntimeFilesUnchanged':True,'runtimeChangedOnly':delta,'nativeArtAccepted':False},indent=2)+'\n')
+# Complete literal deliverable-package inventory excludes unchanged clone repo/.git;
+# delivered source is duplicated in payload and independently checked vseditedrepo.
+files={}
+for p in sorted(root.rglob('*')):
+ if 'repo' in p.relative_to(root).parts:continue
+ assert not p.is_symlink();assert '__pycache__' not in p.parts and p.suffix not in ['.pyc','.pyo']
+ if p.is_file():files[str(p.relative_to(root))]={'bytes':p.stat().st_size,'sha256':sha(p)}
+ledger={'status':'FINAL_LITERAL_PAYLOAD_AND_CPU_PACKAGE','createdAtUTC':datetime.now(timezone.utc).isoformat(),'payloadManifestSHA256':sha(mp),'candidateFiles':files,'candidateEditedRepoFiles':{n:{'bytes':(repo/n).stat().st_size,'sha256':sha(repo/n)} for n in paths},'scope':'Exhaustive external deliverable files before ledger/seal; unchangedclone repo and gitadministration explicitlyexcluded. Literalpayload duplicatesandpins allseven source/test/art files. No production/privateREF changes.','actualCPUProofSHA256':sha(root/'cpu-visible-west-proof.json'),'actualFullCityPhysicsProofSHA256':sha(root/'full-city-collider-proof.json'),'independentActualTwoCameraProjectionProofSHA256':sha(proof),'targetedFiveContractOriginalStdoutSHA256':sha(root/'targeted-five-contracts-original.stdout.txt'),'actualRuntimeSourceComparison':{'same':205,'changed':delta,'added':0,'removed':0},'wholeMetropolisWorldSourceUnchangedSHA256':sha(repo/'src/metropolis-world.js'),'CPUFirstOriginalFailureKept':{'stderrPath':'cpu-visible-west-original.stderr.txt','reason':'Comparison helper assumed everyotherpermanent geometrywasindexed; originalotherunindexedgeometrycausedTypeError. Helpernullindexhandlingfixed; sourcegeometryand5contractsunchanged.'},'fullProjectTestsExecutedByCandidate':False,'buildExecutedByCandidate':False,'gpuExecutedByCandidate':False,'nativeArtAccepted':False};lp=root/'candidate-ledger.json';lp.write_text(json.dumps(ledger,indent=2)+'\n')
+package={}
+for p in sorted(root.rglob('*')):
+ if 'repo' in p.relative_to(root).parts:continue
+ if p.is_file():package[str(p.relative_to(root))]={'bytes':p.stat().st_size,'sha256':sha(p)}
+seal={'status':'FINAL_SEALED_SELECTIVE_DELIVERY_READY','createdAtUTC':datetime.now(timezone.utc).isoformat(),'payloadManifestSHA256':sha(mp),'candidateLedgerSHA256':sha(lp),'scope':'Complete external literaldelivery package includespayload,rawFAIL/PASSCPU,independentoriginalprojectionseal,scripts andreceipts; unchangedclone repo/.git explicitlyexcluded frompackage. Excludesonlythis top-levelseal withinpackage.','files':package,'gpuExecuted':False,'nativeArtAcceptance':'PENDING'};sp=root/'seal-final.json';sp.write_text(json.dumps(seal,indent=2)+'\n');print(json.dumps({'payloadPath':str(payload),'payloadFiles':paths,'payloadManifestSHA256':sha(mp),'candidateLedgerSHA256':sha(lp),'sealPath':str(sp),'sealSHA256':sha(sp),'CPUProofSHA256':sha(root/'cpu-visible-west-proof.json'),'fullCityPhysicsProofSHA256':sha(root/'full-city-collider-proof.json'),'independentProjectionSHA256':sha(proof),'fileCount':len(manifest),'payloadBytes':sum(x['bytes'] for x in manifest.values())},indent=2))

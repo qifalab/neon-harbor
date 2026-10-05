@@ -1,0 +1,95 @@
+--- immutable-north-a8ee-source-sealer.py
++++ new-visible-west-source-sealer.py
+@@ -99,43 +99,41 @@
+  info_path=contained(w,info['path']) if info['path'].startswith('tools/native-review/') else contained(b,info['path'])
+  info['path']=str(info_path.relative_to(b));build=load(info_path)
+  problem(build.get('version')=='0.8.0' and authored['version']=='0.8.0','Current authored version must be0.8.0')
+- # Strict actual northern-ridge source bridge; count from original build, exact one add/one change.
+- final_receipt_path=Path('/workspace/neon-candidates/harbor-northern-ridge-final-20261005-review/metadata-refresh-receipt.json')
+- problem(digest(final_receipt_path)=='60a26191322712d540447dd6deedfa0c2bd18760dbcd4477d03c395f816233cf','Supplied actual northern-ridge metadata receipt changed')
++ # Strict visible-west bridge: actual raw build, exact two named decorative changes.
++ final_receipt_path=Path('/workspace/neon-candidates/harbor-visible-west-ridge-final-20261005-review/metadata-refresh-receipt.json')
++ problem(digest(final_receipt_path)=='d6b3efc63b92eb2159d8e0f081a3d6c0ced62e78ec94c8bf896f7d8d6181fce1','Actual visible-west metadata receipt changed')
+  final_receipt=load(final_receipt_path)
+- problem(final_receipt.get('status')=='ACTUAL_NORTHERN_RIDGE_RUNTIME_METADATA_PREPARED_NATIVE_HIGH_PENDING','Actual northern-ridge source-only receipt missing')
+- problem(digest(info_path)=='21bd6afa8ef7ab1ac59bf2f8ccb9941bf9a5e986c707d9ef04ffefd99ea66ece','Actual original northern-ridge raw build changed')
+- problem(build.get('revision') is None and len(build['assets'])==len(authored['assets'])==207,'Runtime count or nullrevision differs from actual northern build')
+- parent_build_path=b/'runtime-amendments/northern-ridge-20261005/original-committed-crisp058-build-info.json'
+- parent_null_path=b/'expected-build-provenance/authored-build-info-crisp-bread-20261005-6acbaae2fd80.json'
+- problem(digest(parent_build_path)=='92909a5f385c7b34918b3d5cf53375a06ef841f1cce530fe50f6a9c63c087fed','Original committedCRISP058 raw build changed')
+- problem(digest(parent_null_path)=='6acbaae2fd803671b312890c058be973a8afb9c3f9c7bb7d0ad869bf383b7917','Original CRISP null6ac provenance changed')
++ problem(final_receipt.get('status')=='ACTUAL_VISIBLE_WESTERN_SOURCE_RUNTIME_METADATA_PREPARED_NATIVE_ART_PENDING','Actual visible-west source-only receipt missing')
++ problem(digest(info_path)=='874d306d0e71a2761e9d238923571a4abca75e8da5cf65680a9130f0815744c0','Actual original visible-west raw build changed')
++ problem(build.get('revision') is None and len(build['assets'])==len(authored['assets'])==207,'Runtime count/nullrevision differs from actual visible-west build')
++ parent_build_path=b/'runtime-amendments/visible-western-ridge-20261005/original-committed-north8b-build-info.json'
++ problem(digest(parent_build_path)=='d4a3281c321fbe833add6130fdb2eefded49b943f7270846399339dbccc1b7bd','Original committedNorth8b raw build changed')
+  parent_assets=load(parent_build_path)['assets']
+- problem(len(parent_assets)==206 and parent_assets==load(parent_null_path)['assets']==final_receipt['parentRuntimeAssets'],'ParentCRISP206 entire dictionary changed')
++ problem(parent_assets==final_receipt['parentRuntimeAssets'],'Actual entire North8b dictionary changed')
+  delta={'added':{p:build['assets'][p] for p in sorted(build['assets'].keys()-parent_assets.keys())},'changed':{p:{'before':parent_assets[p],'after':build['assets'][p]} for p in sorted(build['assets'].keys()&parent_assets.keys()) if build['assets'][p]!=parent_assets[p]},'removed':sorted(parent_assets.keys()-build['assets'].keys()),'unchangedCount':sum(build['assets'][p]==parent_assets[p] for p in build['assets'].keys()&parent_assets.keys())}
+- problem(delta==final_receipt['exactRuntimeDeltaFromCrisp058'],'Actual north runtime differs from supplied exact source delta')
+- problem(set(delta['changed'])=={'src/metropolis-world.js'} and set(delta['added'])=={'src/metropolis-northern-ridge.js'} and not delta['removed'] and delta['unchangedCount']==205,'North delta exceeds one changed world/one new north/205same/0remove')
+- problem(build['assets']==final_receipt['actualRuntimeAssets'],'Entire actual north runtime dictionary changed')
++ problem(delta==final_receipt['exactRuntimeDeltaFromNorth8b'],'Actual visible-west runtime differs from supplied exact delta')
++ problem(set(delta['changed'])=={'src/metropolis-western-ridge.js','src/metropolis-northern-ridge.js'} and not delta['added'] and not delta['removed'] and delta['unchangedCount']==205,'Visible-west delta exceeds two named decorative sources')
++ problem(build['assets']==final_receipt['actualRuntimeAssets'],'Entire actual visible-west runtime dictionary changed')
+  for rel,pin in final_receipt['actualRuntimeAssets'].items():
+-  problem(digest(contained(w,rel))==pin,'Actual north source/asset changed:'+rel)
+-  problem(digest(contained(w/'dist',rel))==pin,'Actual north served dist changed:'+rel)
+- actual_native_files=[p for p in b.rglob('*') if p.is_file() and p!=b/'bundle-manifest.json']
+- actual_native_map={str(p.relative_to(b)):{'bytes':p.stat().st_size,'sha256':digest(p)} for p in actual_native_files}
+- problem(len(actual_native_map)==final_receipt['expectedNativeBundleFileCount']==175 and actual_native_map==final_receipt['expectedNativeBundleFiles'],'Full exact native inventory differs from supplied actual ledger')
+- problem(not any(p.is_symlink() or '__pycache__' in p.parts or p.suffix=='.pyc' for p in b.rglob('*')),'No bundle symlink/cache may be admitted')
+- original_expected=load(b/'runtime-amendments/northern-ridge-20261005/original-expected-runtime-dictionaries-crisp058.json')
++  problem(digest(contained(w,rel))==pin,'Actual visible-west source/asset changed:'+rel)
++  problem(digest(contained(w/'dist',rel))==pin,'Actual visible-west served resource changed:'+rel)
++ actual_native_map={str(p.relative_to(b)):{'bytes':p.stat().st_size,'sha256':digest(p)} for p in b.rglob('*') if p.is_file() and p!=b/'bundle-manifest.json'}
++ problem(len(actual_native_map)==final_receipt['expectedNativeBundleFileCount']==184 and actual_native_map==final_receipt['expectedNativeBundleFiles'],'Full strict native inventory differs from actual visible-west ledger')
++ problem(not any(p.is_symlink() or '__pycache__' in p.parts or p.suffix=='.pyc' for p in b.rglob('*')),'Bundle cannot admit caches or symlinks')
++ original_expected=load(b/'runtime-amendments/visible-western-ridge-20261005/original-expected-runtime-dictionaries-north8b.json')
+  problem(original_expected['baseline']==baseline and len(baseline['assets'])==156,'Entire baseline156 object changed')
+- original_catalog=load(b/'runtime-amendments/northern-ridge-20261005/original-native164-bundle-manifest-crisp058.json')
+- problem(digest(b/'runtime-amendments/northern-ridge-20261005/original-native164-bundle-manifest-crisp058.json')==final_receipt['parentNative164ManifestSHA256'],'Original native164 catalog changed')
+- permitted_method_changes={'methods/harbor/evidence/frontage-wide-static-proof.json','methods/transport/native-transport-high.mjs','methods/transport/method-manifest.json'}
++ original_catalog=load(b/'runtime-amendments/visible-western-ridge-20261005/original-native175-bundle-manifest-north8b.json')
++ problem(digest(b/'runtime-amendments/visible-western-ridge-20261005/original-native175-bundle-manifest-north8b.json')==final_receipt['parentNative175ManifestSHA256'],'Original native175 catalog changed')
++ protocol_paths={str(Path(p).relative_to('tools/native-review')) for p in final_receipt['explicitFinalFerryPayloadFiles']}
++ permitted_changes={'README.md','expected-runtime-dictionaries.json','methods/harbor/evidence/frontage-wide-static-proof.json'}|protocol_paths
+  for rel,pin in original_catalog['files'].items():
+-  if rel.startswith('methods/') and rel not in permitted_method_changes:problem(digest(contained(b,rel))==pin['sha256'],'Unapproved functional method/input/plan/seal changed:'+rel)
+- for rel,pin in final_receipt['explicitHeldProtocolAdoptedPayloadFiles'].items():problem(digest(contained(w,rel))==pin['sha256'],'Explicit held-public protocol payload changed:'+rel)
+- original_wide=load(b/'runtime-amendments/northern-ridge-20261005/original-frontage-wide-static-proof-crisp058.json')
++  if rel not in permitted_changes:problem(digest(contained(b,rel))==pin['sha256'],'Unapproved original native method/input/plan/seal/case/budget changed:'+rel)
++ for rel,pin in final_receipt['explicitFinalFerryPayloadFiles'].items():problem(digest(contained(w,rel))==pin['sha256'],'Explicit FINAL ferry payload changed:'+rel)
++ original_wide=load(b/'runtime-amendments/visible-western-ridge-20261005/original-frontage-wide-static-proof-north8b.json')
+  current_wide=load(b/'methods/harbor/evidence/frontage-wide-static-proof.json')
+  for key,value in original_wide.items():
+-  if key!='sourceHashes':problem(current_wide.get(key)==value,'Original B geometry/amendment history changed:'+key)
+- notes.append('Strict north source bridge binds actual full runtime/native inventory, one world change/one north addition/205same. Separate explicit held-public method revision retained; original cases/history and FAILs remain. No CPU geometry/native/art execution by sealer.')
++  if key!='sourceHashes':problem(current_wide.get(key)==value,'Original B cases/preparedheads/historical amendments changed:'+key)
++ notes.append('Exact two decorative source changes and complete native inventory. Original physical cases/history and FAILs preserved; no producer CPU reexecution or native/art acceptance by sealer.')
+  problem(build['assets']==authored['assets'],'Current actual build-info and authored expected dictionary disagree; supply actual final build, never infer a receipt')
+  problem(digest(info_path)==info['sha256'],'Current original build-info bytes do not match declared SHA')
+  problem(len(baseline['assets'])==156,'Fixed baseline156 dictionary changed')
+@@ -162,7 +160,7 @@
+  problem(homepins==[authored['assets'][home_source]],'Active common-pose HOME source pin is stale; its approved source-only amendment must be supplied')
+  wide_path=b/'methods/harbor/evidence/frontage-wide-static-proof.json';wide=load(wide_path);old_wide=copy.deepcopy(wide)
+  updated={rel:authored['assets'][rel] for rel in B_SOURCES};stale={rel:{'before':wide['sourceHashes']['authored'].get(rel),'after':pin} for rel,pin in updated.items() if wide['sourceHashes']['authored'].get(rel)!=pin}
+- active_b_amendment=wide.get('northernRidgeGraphicsSourceAmendment',wide.get('crispBreadArtRefinementAmendment',wide.get('breadCeramicFinishAmendment',wide.get('shopDisplayCraftRefinementAmendment'))))
++ active_b_amendment=wide.get('visibleWesternRidgeGraphicsSourceAmendment',wide.get('northernRidgeGraphicsSourceAmendment',wide.get('crispBreadArtRefinementAmendment',wide.get('breadCeramicFinishAmendment',wide.get('shopDisplayCraftRefinementAmendment')))))
+  if active_b_amendment:
+   after_pins=active_b_amendment.get('sourceHashesAfter',active_b_amendment.get('actualSourceHashesAfter',{}))
+   problem(all(after_pins.get(rel)==pin for rel,pin in updated.items()),'B current amendment source hashes do not match both final source pins')
+@@ -208,8 +206,10 @@
+  catalog.update(nativeWorkflowSha256=digest(native_path),ciWorkflowSha256=digest(ci_path),unchangedPagesSha256=PAGES_PIN,caseCount=len(rows),pairedHighCases=paired,authoredOnlyHighCases=author_only-len(low),authoredOnlyLowFunctionalCases=len(low),maxParallelNativeVMs=max_parallel,artAcceptance='PENDING_HUMAN_NATIVE_REVIEW')
+  catalog['activeCases']={r['id']:{'activeBudgetSeconds':r['originalBudgetSeconds'],'historicalBudgetSeconds':r.get('historicalOriginalBudgetSeconds',r['originalBudgetSeconds']),'jobTimeoutMinutes':r['jobTimeoutMinutes'],'paired':r['paired']} for r in rows}
+  catalog['currentRuntimeProvenance'].update(authoredAssetCount=len(authored['assets']),baselineAssetCount=len(baseline['assets']),currentLocalBuildInfoPath=info['path'],currentLocalBuildInfoSHA256=info['sha256'],historicalBaselineAndAuthoredOriginalFilesUnchanged=True,nativeCaptureAndArtApproval='PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW',refreshChangedRuntimeSource=True)
+- catalog['northernRidgeRuntimeAmendment']={'status':'ACTUAL_NORTH_SOURCE_METADATA_NATIVE_HIGH_ART_PENDING','parentNativeBundleFileCount':164,'parentNativeBundleManifestSHA256':final_receipt['parentNative164ManifestSHA256'],'actualBuildInfoSHA256':info['sha256'],'actualResourceCount':len(authored['assets']),'exactRuntimeDeltaFromCrisp058':final_receipt['exactRuntimeDeltaFromCrisp058'],'currentExactNativeBundleFileCount':final_receipt['expectedNativeBundleFileCount'],'sourceAmendmentPath':'runtime-amendments/northern-ridge-20261005/northern-ridge-source-amendment.json','functionalMethodsInputsBudgetsUnchangedExceptExplicitHeldPublicPrecisionRevision':True,'oldProofsAndFailuresPreserved':True,'physicalCaseCPUReexecutedBySealer':False,'nativeArtAccepted':False}
+- catalog['heldPublicSlowCabinProtocolAmendment']={'status':'EXPLICIT_SOURCE_CPU_PROTOCOL_REVISION_NATIVE_REQUIRED','adoptedPayloadFiles':final_receipt['explicitHeldProtocolAdoptedPayloadFiles'],'adoptionReceiptSHA256':final_receipt['heldProtocolAdoptionReceiptSHA256'],'runtimeSourceChanged':False,'nativeExecutedBySealer':False}
++ problem(catalog['northernRidgeRuntimeAmendment']==original_catalog['northernRidgeRuntimeAmendment'],'Historical northernRidgeRuntimeAmendment changed')
++ problem(catalog['heldPublicSlowCabinProtocolAmendment']==original_catalog['heldPublicSlowCabinProtocolAmendment'],'Historical heldPublicSlowCabinProtocolAmendment changed')
++ catalog['visibleWesternRidgeRuntimeAmendment']={'status':'ACTUAL_VISIBLE_WEST_SOURCE_METADATA_NATIVE_HIGH_ART_PENDING','parentNativeBundleFileCount':175,'parentNativeBundleManifestSHA256':final_receipt['parentNative175ManifestSHA256'],'actualBuildInfoSHA256':info['sha256'],'actualResourceCount':len(authored['assets']),'exactRuntimeDeltaFromNorth8b':final_receipt['exactRuntimeDeltaFromNorth8b'],'currentExactNativeBundleFileCount':final_receipt['expectedNativeBundleFileCount'],'sourceAmendmentPath':'runtime-amendments/visible-western-ridge-20261005/visible-western-source-amendment.json','originalHistoryPreserved':True,'physicalCPUReexecutedBySealer':False,'nativeArtAccepted':False}
++ catalog['ferryWholeAndHeldPublicPrecisionProtocolAmendment']={'status':'EXPLICIT_FINAL_CPU_PROTOCOL_NATIVE_REQUIRED','adoptedPayloadFiles':final_receipt['explicitFinalFerryPayloadFiles'],'adoptionReceiptSHA256':final_receipt['ferryAdoptionReceiptSHA256'],'runtimeSourceChanged':False,'nativeExecutedBySealer':False}
+  catalog['activityPinRefresh']={'status':'SOURCE_ONLY_ACTIVITY_PINS_NO_NATIVE_ACCEPTANCE','at':utc(),'historicalRecordBytesPreserved':True,'actualCurrentBuildInfoSHA256':info['sha256'],'caseCount':len(rows),'nativeOnlyNoInputDefault':cn['native_only'].get('default'),'dispatchActivationActuallyExecutedBySealer':False,'productTestsBuildBrowserGpuExecutedBySealer':False}
+  planjson(catalog_path,catalog)
+  inventory={'trackedBefore':subprocess.check_output(['git','ls-files','--','tools/native-review','.github/workflows'],cwd=w,text=True).splitlines(),'allActualBundleFiles':[str(p.relative_to(w)) for p in sorted(actual_files)],'untrackedBundleFiles':subprocess.check_output(['git','ls-files','--others','--exclude-standard','--','tools/native-review'],cwd=w,text=True).splitlines()}

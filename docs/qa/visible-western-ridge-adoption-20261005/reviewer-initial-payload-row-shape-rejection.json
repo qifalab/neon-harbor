@@ -1,0 +1,6 @@
+{
+  "status": "REVIEWER_PREFLIGHT_SHAPE_REJECTION_NO_PRODUCT_OR_WORKTREE_WRITE",
+  "error": "TypeError: assumed manifest files list; actual sealed manifest files is dictionary. First failed external read had not created child, adopted files or executed tests/build.",
+  "correction": "Normalize path-keyed dictionary records to unique path-bearing rows; independently validate final seal complete files and candidate edited repo bytes; do not modify sealed payload.",
+  "originalManifestSHA256": "47a4e3958ec2fc5532309a75c4cae47bb0c8d53a708ee1f6b9f1790c6c0e2290"
+}

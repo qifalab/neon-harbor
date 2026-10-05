@@ -1,0 +1,11 @@
+# Visible western decorative ridge adoption, 2026-10-05
+
+The immutable parent is actual northern-ridge commit `8b6a577529ade0a45aadc499db3181d165043a9d`. Its day High images still show the visible western cone silhouettes; the previously added northern surface falls outside both review frusta. Those actual images and CPU receipts remain historical. The prepared 8b night wrapper was never executed and is not a failed native capture.
+
+Only the final sealed selective West source/minimal North extraction adapter, original meaningful ridge test contracts and editable recipe/licences are adopted. The source adopter verifies literal payload and all outside-payload production/test/build-input bytes; producer original CPU geometry, camera-frustum and full-city identity evidence is archived without claiming the adopter reran those cases. No physics/default High/bread/tree/lighting/transit/resident production source is changed.
+
+The original full rules and build each ran once. Actual rules: 378 passed, 0 failed. Actual build: 207 resources, null revision, raw SHA `874d306d0e71a2761e9d238923571a4abca75e8da5cf65680a9130f0815744c0`. Exact runtime delta: 2 changed decorative sources, 205 unchanged, no additions/removals. All 396 production/test/art/build-input hashes remain identical before/after execution and metadata.
+
+The final explicitly authorized Ferry tools-only protocol, if included, is a separate literal-payload amendment with its original source/CPU diagnostics, deadlines and original failure evidence preserved. It does not cause rules/build to repeat and grants no native acceptance. All other collector source, plans, input tables, physical B cases, prepared heads, historical amendments and baseline156 remain unchanged. Complete actual source/dist/native inventories are sealed by a new strict source-only script; original guards are replaced with the exact actual delta rather than blindly carried forward.
+
+No GPU/native capture, art acceptance, staging, commit, dispatch, deployment or release occurs in this package. Running 8b tour/resident/transport results stay source-bound to their original run; a future explicit decorative identity bridge does not transfer pixel acceptance. New final-source day/night High images and publication checks remain pending.

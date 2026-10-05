@@ -1,0 +1,101 @@
+{
+  "status": "READY_ROOT_REVIEW_ACTUAL_VISIBLE_WEST_CPU_BUILD_SOURCE_METADATA_NATIVE_ART_PENDING",
+  "atUTC": "2026-10-05T07:39:32.153505+00:00",
+  "worktree": "/workspace/neon-candidates/harbor-visible-west-ridge-final-20261005",
+  "parentCommit": "8b6a577529ade0a45aadc499db3181d165043a9d",
+  "actualBuildInfoSHA256": "874d306d0e71a2761e9d238923571a4abca75e8da5cf65680a9130f0815744c0",
+  "actualResourceCount": 207,
+  "actualEntireSourceAndDistDictionaryVerified": true,
+  "exactRuntimeDeltaFromNorth8b": {
+    "added": {},
+    "changed": {
+      "src/metropolis-northern-ridge.js": {
+        "before": "aa6fede027694bc5b787446e04f22fac0fe3c21a8ad3431fd5561b193c23a518",
+        "after": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0"
+      },
+      "src/metropolis-western-ridge.js": {
+        "before": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c",
+        "after": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208"
+      }
+    },
+    "removed": [],
+    "unchangedCount": 205
+  },
+  "productionTestArtBuildInputSourceFileCount": 396,
+  "allSourceBeforeAfterMetadataEqual": true,
+  "fullRulesActualSummary": {
+    "tests": 378,
+    "suites": 0,
+    "pass": 378,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "duration_ms": 136228.509531
+  },
+  "baseline156EntireObjectUnchanged": true,
+  "nativeBundleFileCount": 184,
+  "nativeBundleManifestSHA256": "b7c421a8022bf41f8c4300cf80da96921fd8416ea61f66a4cf0ea85417706fcd",
+  "expectedRuntimeDictionariesSHA256": "63cf25597866e386374841d5f53341f79edf6375ad0d80e9449a0b066a291ce1",
+  "otherFunctionalMethodFileCount": 71,
+  "allOtherFunctionalCollectorsInputsPlansSealsByteIdenticalToNorth175": true,
+  "explicitFinalFerryPayloadFiles": {
+    "tools/native-review/cases.json": {
+      "bytes": 11873,
+      "sha256": "a55b698e7b64c4091e806a992199c22d995e6c1d83e59abbff4e537080ad8ed3"
+    },
+    "tools/native-review/methods/transport/FERRY_FULL_HIGH_FINITE_BUDGET_AND_PRECISION_AMENDMENT-20261005.json": {
+      "bytes": 7217,
+      "sha256": "c684e8a2eca9226488fecbb3d067de698e8010e28871d87dd068096440eef17b"
+    },
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "bytes": 20559,
+      "sha256": "6c55d70a5248c28291c9f4941caa83ca3c43e537e026d7ad53217c453b6b0914"
+    },
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "bytes": 53778,
+      "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308"
+    },
+    "tools/native-review/native-matrix.json": {
+      "bytes": 2758,
+      "sha256": "efb4643dd76a4440886049b28ad011319018de149750edb9d1bba29ad0a62611"
+    }
+  },
+  "activeCasesOnlyExplicitFerryChanged": true,
+  "oldWidePhysicalCasesPreparedHeadsAndHistoricalAmendmentsUnchanged": true,
+  "nativeBundleOld175ChangedFilePaths": [
+    "README.md",
+    "cases.json",
+    "expected-runtime-dictionaries.json",
+    "methods/harbor/evidence/frontage-wide-static-proof.json",
+    "methods/transport/method-manifest.json",
+    "methods/transport/native-transport-high.mjs",
+    "native-matrix.json"
+  ],
+  "nativeBundleAddedFilePaths": [
+    "expected-build-provenance/authored-build-info-visible-western-ridge-20261005-874d306d0e71.json",
+    "methods/transport/FERRY_FULL_HIGH_FINITE_BUDGET_AND_PRECISION_AMENDMENT-20261005.json",
+    "runtime-amendments/visible-western-ridge-20261005/actual-source-payload-bridge-receipt.json",
+    "runtime-amendments/visible-western-ridge-20261005/original-committed-north8b-build-info.json",
+    "runtime-amendments/visible-western-ridge-20261005/original-expected-runtime-dictionaries-north8b.json",
+    "runtime-amendments/visible-western-ridge-20261005/original-final-payload-manifest.json",
+    "runtime-amendments/visible-western-ridge-20261005/original-frontage-wide-static-proof-north8b.json",
+    "runtime-amendments/visible-western-ridge-20261005/original-native175-bundle-manifest-north8b.json",
+    "runtime-amendments/visible-western-ridge-20261005/visible-western-source-amendment.json"
+  ],
+  "allBundleFilesStrictInventoriedNoCacheSymlinkVendor": true,
+  "producerOriginalCPUCasesNotReplayedByAdopterOrSealer": true,
+  "fullOriginalRuleTestReceiptSHA256": "5eac1a3af6495024f64d3e986f0129f237dce42c0cb05d8e321d545e1b58824f",
+  "buildReceiptSHA256": "dd6066d727e64af2067e75861c924ca90c23b02a275c4ed9a73c730017730c5d",
+  "strictSealerSHA256": "2932e6cb36516800712e87eba1e1d2e786c6cbb2a3f3782e66a4b7ad1aba89b1",
+  "strictDrySHA256": "93cef359131b7feb162550eda1ca53a790fb220cd262a686ce64e396408d51cc",
+  "strictApplySHA256": "09e52003cd4404eba59ad74f0e4a9d7eea5b095599a115b6b58a0657ee134939",
+  "sourceAmendmentSHA256": "d3dee3b899476c34d6b929016223bc04a1cbb9b0b937e135f441b59296dad405",
+  "nativeGpuExecuted": false,
+  "nativeArtAccepted": false,
+  "gitStageCommitDispatchPerformed": false,
+  "frozen8bCrownCrispNextOrRootWritten": false,
+  "original8bDayConeArtFailurePreserved": true,
+  "oldNight8bPreparedWrapperUnexecutedNotFailure": true,
+  "sourceScope": "Literal selective decorative West+North adapter source, meaningful five-rule ridge contract, editable licence payload. Old 8b functional/native outcomes stay original. Any shared-physics bridge cannot imply new decorative pixel acceptance."
+}

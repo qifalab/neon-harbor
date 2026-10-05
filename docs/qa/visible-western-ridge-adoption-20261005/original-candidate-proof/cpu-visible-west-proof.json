@@ -1,0 +1,211 @@
+{
+  "status": "CPU_VISIBLE_WEST_CONNECTED_SOURCE_PASS_NATIVE_ART_PENDING",
+  "basisCommit": "8b6a577529ade0a45aadc499db3181d165043a9d",
+  "originalWestSourceTargetMistakePreserved": "North12 bounds entirely outside two closed actualDay cameras; visible old hills wereWest10. This candidate changesWest, never reclassifies oldDay aspass.",
+  "west": {
+    "recipeVersion": 2,
+    "sourceHills": 22,
+    "authoredWesternHills": 10,
+    "coherentSurface": true,
+    "retainedNorthernHills": 0,
+    "decorativeOnly": true,
+    "preparedBytes": 224984,
+    "producerTypedArrayBytes": 283472,
+    "producerScratchBytes": 29832,
+    "triangles": 8032,
+    "westernTriangles": 8032,
+    "westernRange": {
+      "component": "continuous-western-ridge",
+      "sourceHills": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "firstVertex": 0,
+      "vertices": 4018,
+      "firstTriangle": 0,
+      "triangles": 8032
+    },
+    "hillRanges": [
+      {
+        "component": "continuous-western-ridge",
+        "sourceHills": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "firstVertex": 0,
+        "vertices": 4018,
+        "firstTriangle": 0,
+        "triangles": 8032
+      }
+    ]
+  },
+  "actualUnionBounds": {
+    "min": [
+      -1076,
+      -18.5,
+      -1439
+    ],
+    "max": [
+      -790,
+      160.5,
+      -495
+    ]
+  },
+  "actualFinalCost": {
+    "oldWestTriangles": 8320,
+    "newWestTriangles": 8032,
+    "deltaWestTriangles": -288,
+    "oldNorthTriangles": 16752,
+    "newNorthTriangles": 16752,
+    "totalBackdropTriangles": 24784,
+    "drawCalls": 2,
+    "deltaDrawCalls": 0,
+    "newWestTextures": 0,
+    "originalWholeWestTriangleCap": 30000,
+    "originalProducerBytesCap": 300000
+  },
+  "zeroAreaTriangles": 0,
+  "closedEdgeIncidencesAllTwo": true,
+  "topUpwardTriangles": 7168,
+  "unitInteriorNormals": true,
+  "unequalCrossSections": [
+    {
+      "row": 13,
+      "min": -17.5,
+      "max": 94.25989532470703,
+      "heightSHA256": "fdd3810c1a3becbaf0a2c1c61a6e799c0ccb8d7827dfd84e04e6336158307def"
+    },
+    {
+      "row": 49,
+      "min": -17.5,
+      "max": 110.49401092529297,
+      "heightSHA256": "7b39ba55a3c432cde0356abd4d4fedc51e0487975fa3c91c398e97afd1f222f4"
+    },
+    {
+      "row": 95,
+      "min": -17.5,
+      "max": 160.5,
+      "heightSHA256": "09a67bf97600409197ca32d5d645a8f333771e12697ff967d61e879466a4d2c7"
+    }
+  ],
+  "oldNorthGeometryMaterialAndTwoMapsByteIdentical": true,
+  "intermediateOriginalNorth12ConeVerticesWorldNormalsIndicesExact": true,
+  "allOtherPermanentMeshesAndStreamedPayloadsIdentical": true,
+  "metropolisColliderCount": 274,
+  "metropolisBuildingCount": 48,
+  "sixTreeSitesExact": [
+    {
+      "id": "sample-quay-tree-0",
+      "buildingId": "tide-museum",
+      "x": -617,
+      "z": -445
+    },
+    {
+      "id": "sample-quay-tree-1",
+      "buildingId": "tide-museum",
+      "x": -503,
+      "z": -445
+    },
+    {
+      "id": "sample-quay-tree-2",
+      "buildingId": "harbor-market",
+      "x": -457,
+      "z": -445
+    },
+    {
+      "id": "sample-quay-tree-3",
+      "buildingId": "harbor-market",
+      "x": -343,
+      "z": -445
+    },
+    {
+      "id": "sample-quay-tree-4",
+      "buildingId": "ferry-house",
+      "x": -297,
+      "z": -445
+    },
+    {
+      "id": "sample-quay-tree-5",
+      "buildingId": "ferry-house",
+      "x": -183,
+      "z": -445
+    }
+  ],
+  "deterministicSecondGenerationBytesEqual": true,
+  "westSignatures": {
+    "geometry": {
+      "attributes": {
+        "position": "c191d83d36ca22ac6a1651dde9bb39c62baf7ad9e663bd48fc1c440137ac5bfd",
+        "normal": "67d8849f926659449b69b33ee1bd0dd70833af4b729dfdbc7ea628436e37dfa4",
+        "color": "06c9cd40d25e6da5b0cff60f582aac4ade132ab8dfe66dd555737dec69405a4c",
+        "mountainSurface": "954d06ec9ae81206fe3d49719f4ec015ed494775ea48897e77e18b47be510a49"
+      },
+      "index": "a2c38e00de4a32f51bdc82158201af5acbfe82836790bf71a5d840b12ea57e3a"
+    },
+    "material": {
+      "name": "metropolis-western-ridge",
+      "color": 16777215,
+      "roughness": 0.93,
+      "metalness": 0,
+      "vertexColors": true,
+      "opacity": 1,
+      "transparent": false,
+      "depthWrite": true,
+      "side": 2,
+      "normalScale": [
+        1,
+        1
+      ],
+      "onBeforeCompile": "shader => {\n    previousCompile(shader);\n    shader.vertexShader = shader.vertexShader.replace('#include <common>',\n      '#include <common>\\nattribute vec2 mountainSurface;\\nvarying vec2 vMountainSurface;');\n    shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',\n      '#include <begin_vertex>\\nvMountainSurface = mountainSurface;');\n    shader.fragmentShader = shader.fragmentShader.replace('#include <common>',\n      '#include <common>\\nvarying vec2 vMountainSurface;');\n    // Surface response is per vertex. Northern originals have mask zero,\n    // so their uniform .93 response receives no extra grain/tone/relief.\n    shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>',\n      '#include <roughnessmap_fragment>\\nroughnessFactor = vMountainSurface.x;');\n    shader.fragmentShader = shader.fragmentShader.replace('roughnessFactor = clamp(roughnessFactor +',\n      'roughnessFactor = clamp(roughnessFactor + vMountainSurface.y *');\n    shader.fragmentShader = shader.fragmentShader.replace('diffuseColor.rgb *= 1.0 +',\n      'diffuseColor.rgb *= 1.0 + vMountainSurface.y *');\n    shader.fragmentShader = shader.fragmentShader.replace('float nhRelief = nhDetail *',\n      'float nhRelief = vMountainSurface.y * nhDetail *');\n  }",
+      "customKey": "nh-surface-v1:mineral:0.015:0.45:western-ridge-v2:surface-mask",
+      "userData": {
+        "surfaceFinish": {
+          "kind": "mineral",
+          "scale": 0.015,
+          "strength": 0.45
+        },
+        "westernMountainSurface": {
+          "recipeVersion": 2,
+          "worldBaked": true,
+          "northernFinishMask": 0
+        }
+      },
+      "maps": {
+        "map": null,
+        "normalMap": null,
+        "roughnessMap": null
+      }
+    }
+  },
+  "northSignatures": {
+    "attributes": {
+      "position": "2a1d998a12ab1f743b1206b67e6139428a34bdbb59271ab2d6bb78cad116bbe0",
+      "normal": "670cc4a5355acd2ce17d375bedf773ee0e18146b680edd10484448522f2f4f4a",
+      "color": "967ab92314169af8753bda3cabdb1d4ebf9ba59c9bbe0feefc9105df035718cb",
+      "uv": "33adc2901cad08267dd9e3e91001c3d6168671479d5155b785918ac8d6008e00"
+    },
+    "index": "4ecf943d8af0f851e77682f20b82d1d90e1d02bedd096eb5468e2abc2be63f8a"
+  },
+  "directWorldDispose": {
+    "geometryEvents": 1,
+    "materialEvents": 1
+  },
+  "gpuOrBrowserLaunched": false,
+  "nativeVisualAcceptance": "PENDING_ACTUAL_NEW_SOURCE_HIGH_ORIGINALS"
+}

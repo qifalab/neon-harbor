@@ -1,0 +1,705 @@
+{
+  "type": "READ_ONLY_CPU_ACTUAL_SOURCE_CURRENT_WEST_HILL_VISIBILITY_IDS_NO_GPU",
+  "sourceHead": "8b6a577529ade0a45aadc499db3181d165043a9d",
+  "currentWesternModuleSHA256": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c",
+  "sameWesternModuleAsCROWN": true,
+  "sourceTransformBasis": "Exact src/metropolis-world.js lines172/175 stamp loops; first10 west transforms, last12 northern source transforms. Source western generator b4fd was used unchanged.",
+  "inputs": [
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/src/metropolis-world.js",
+      "sha256": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/src/metropolis-western-ridge.js",
+      "sha256": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/vendor/three/three.module.js",
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/vendor/three/three.core.min.js",
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90"
+    }
+  ],
+  "results": [
+    {
+      "poseFile": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/05-west-ridge-original-camera-pose.json",
+      "poseSha256": "d40fa2ba8b7822074839b1d3c84c858b1bd04f4ae9e902296b8c8d8504c7e548",
+      "afterCamera": {
+        "position": {
+          "x": -568.2266666666671,
+          "y": 1.62,
+          "z": -438.09333333333933
+        },
+        "target": {
+          "x": -578.1998937127904,
+          "y": 1.3633500222863233,
+          "z": -437.3620725819824
+        },
+        "focus": {
+          "x": -568.2266666666671,
+          "y": 1.62,
+          "z": -438.09333333333933
+        },
+        "yaw": 4.785580385523387,
+        "pitch": 0.17566781616210936,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "hills": [
+        {
+          "hillId": 0,
+          "sourceStampTransform": [
+            -860,
+            35,
+            -580,
+            70,
+            95,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -12.5,
+              "z": -665
+            },
+            "max": {
+              "x": -790,
+              "y": 82.5,
+              "z": -495
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 418,
+          "visibleTriangleCentroids": 832,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 1,
+          "sourceStampTransform": [
+            -915,
+            47,
+            -666,
+            88,
+            123,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1003,
+              "y": -14.5,
+              "z": -751
+            },
+            "max": {
+              "x": -827,
+              "y": 108.5,
+              "z": -581
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 383,
+          "visibleTriangleCentroids": 769,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 2,
+          "sourceStampTransform": [
+            -970,
+            59,
+            -752,
+            106,
+            151,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1076,
+              "y": -16.5,
+              "z": -837
+            },
+            "max": {
+              "x": -864,
+              "y": 134.5,
+              "z": -667
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 312,
+          "visibleTriangleCentroids": 629,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 3,
+          "sourceStampTransform": [
+            -860,
+            71,
+            -838,
+            70,
+            179,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -18.5,
+              "z": -923
+            },
+            "max": {
+              "x": -790,
+              "y": 160.5,
+              "z": -753
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 4,
+          "sourceStampTransform": [
+            -915,
+            35,
+            -924,
+            88,
+            95,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1003,
+              "y": -12.5,
+              "z": -1009
+            },
+            "max": {
+              "x": -827,
+              "y": 82.5,
+              "z": -839
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 5,
+          "sourceStampTransform": [
+            -970,
+            47,
+            -1010,
+            106,
+            123,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1076,
+              "y": -14.5,
+              "z": -1095
+            },
+            "max": {
+              "x": -864,
+              "y": 108.5,
+              "z": -925
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 6,
+          "sourceStampTransform": [
+            -860,
+            59,
+            -1096,
+            70,
+            151,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -16.5,
+              "z": -1181
+            },
+            "max": {
+              "x": -790,
+              "y": 134.5,
+              "z": -1011
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 7,
+          "sourceStampTransform": [
+            -915,
+            71,
+            -1182,
+            88,
+            179,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1003,
+              "y": -18.5,
+              "z": -1267
+            },
+            "max": {
+              "x": -827,
+              "y": 160.5,
+              "z": -1097
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 8,
+          "sourceStampTransform": [
+            -970,
+            35,
+            -1268,
+            106,
+            95,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1076,
+              "y": -12.5,
+              "z": -1353
+            },
+            "max": {
+              "x": -864,
+              "y": 82.5,
+              "z": -1183
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 9,
+          "sourceStampTransform": [
+            -860,
+            47,
+            -1354,
+            70,
+            123,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -14.5,
+              "z": -1439
+            },
+            "max": {
+              "x": -790,
+              "y": 108.5,
+              "z": -1269
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        }
+      ],
+      "nonzeroInFrustumTriangleCentroidHillIds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "poseFile": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/06-near-quay-tree-whole-pose.json",
+      "poseSha256": "86bd1806181f093aaf9d40a59f717324d5e1540793debffbd8dd202342c59ada",
+      "afterCamera": {
+        "position": {
+          "x": -599.9466689367857,
+          "y": 1.62,
+          "z": -440.9066763468346
+        },
+        "target": {
+          "x": -609.6547749062385,
+          "y": 3.63585959778707,
+          "z": -443.30515054637823
+        },
+        "focus": {
+          "x": -599.9466689367857,
+          "y": 1.62,
+          "z": -440.9066763468346
+        },
+        "yaw": 4.470180300074167,
+        "pitch": -0.05297685241699221,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "hills": [
+        {
+          "hillId": 0,
+          "sourceStampTransform": [
+            -860,
+            35,
+            -580,
+            70,
+            95,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -12.5,
+              "z": -665
+            },
+            "max": {
+              "x": -790,
+              "y": 82.5,
+              "z": -495
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 418,
+          "visibleTriangleCentroids": 832,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 1,
+          "sourceStampTransform": [
+            -915,
+            47,
+            -666,
+            88,
+            123,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1003,
+              "y": -14.5,
+              "z": -751
+            },
+            "max": {
+              "x": -827,
+              "y": 108.5,
+              "z": -581
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 418,
+          "visibleTriangleCentroids": 832,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 2,
+          "sourceStampTransform": [
+            -970,
+            59,
+            -752,
+            106,
+            151,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1076,
+              "y": -16.5,
+              "z": -837
+            },
+            "max": {
+              "x": -864,
+              "y": 134.5,
+              "z": -667
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 418,
+          "visibleTriangleCentroids": 832,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 3,
+          "sourceStampTransform": [
+            -860,
+            71,
+            -838,
+            70,
+            179,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -18.5,
+              "z": -923
+            },
+            "max": {
+              "x": -790,
+              "y": 160.5,
+              "z": -753
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 318,
+          "visibleTriangleCentroids": 634,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 4,
+          "sourceStampTransform": [
+            -915,
+            35,
+            -924,
+            88,
+            95,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1003,
+              "y": -12.5,
+              "z": -1009
+            },
+            "max": {
+              "x": -827,
+              "y": 82.5,
+              "z": -839
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 303,
+          "visibleTriangleCentroids": 608,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 5,
+          "sourceStampTransform": [
+            -970,
+            47,
+            -1010,
+            106,
+            123,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1076,
+              "y": -14.5,
+              "z": -1095
+            },
+            "max": {
+              "x": -864,
+              "y": 108.5,
+              "z": -925
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 302,
+          "visibleTriangleCentroids": 605,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 6,
+          "sourceStampTransform": [
+            -860,
+            59,
+            -1096,
+            70,
+            151,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -16.5,
+              "z": -1181
+            },
+            "max": {
+              "x": -790,
+              "y": 134.5,
+              "z": -1011
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 7,
+          "sourceStampTransform": [
+            -915,
+            71,
+            -1182,
+            88,
+            179,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1003,
+              "y": -18.5,
+              "z": -1267
+            },
+            "max": {
+              "x": -827,
+              "y": 160.5,
+              "z": -1097
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 8,
+          "sourceStampTransform": [
+            -970,
+            35,
+            -1268,
+            106,
+            95,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -1076,
+              "y": -12.5,
+              "z": -1353
+            },
+            "max": {
+              "x": -864,
+              "y": 82.5,
+              "z": -1183
+            }
+          },
+          "intersectsFrustum": true,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        },
+        {
+          "hillId": 9,
+          "sourceStampTransform": [
+            -860,
+            47,
+            -1354,
+            70,
+            123,
+            85,
+            0,
+            0,
+            0
+          ],
+          "actualCurrentGeometryBounds": {
+            "min": {
+              "x": -930,
+              "y": -14.5,
+              "z": -1439
+            },
+            "max": {
+              "x": -790,
+              "y": 108.5,
+              "z": -1269
+            }
+          },
+          "intersectsFrustum": false,
+          "visibleVertices": 0,
+          "visibleTriangleCentroids": 0,
+          "triangleCount": 832
+        }
+      ],
+      "nonzeroInFrustumTriangleCentroidHillIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "limitation": "In-frustum source triangle centroids establish camera coverage, not native occlusion/material quality. Use actual PNG to judge final art. No source/method/native image mutation."
+}

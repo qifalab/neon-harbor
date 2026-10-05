@@ -1,0 +1,198 @@
+{
+  "type": "READONLY_CPU_ACTUAL_NATIVE_CAMERA_FRUSTUM_PROOF_NO_GPU",
+  "sourceHead": "8b6a577529ade0a45aadc499db3181d165043a9d",
+  "northernSourceConservativeEnvelope": {
+    "min": {
+      "x": -912,
+      "y": -57,
+      "z": -1673
+    },
+    "max": {
+      "x": 914,
+      "y": 173,
+      "z": -1342
+    }
+  },
+  "constructionBasis": "Source aa6 positions use minX/maxX/minZ/maxZ and normalized height within minY/maxY; bottom vertices use minY. The conservative declared envelope contains all northern mesh positions.",
+  "inputs": [
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/src/metropolis-northern-ridge.js",
+      "sha256": "aa6fede027694bc5b787446e04f22fac0fe3c21a8ad3431fd5561b193c23a518"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/src/metropolis-western-ridge.js",
+      "sha256": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/src/metropolis-world.js",
+      "sha256": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/src/main.js",
+      "sha256": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/vendor/three/three.module.js",
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/vendor/three/three.core.min.js",
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90"
+    }
+  ],
+  "cameras": [
+    {
+      "poseFile": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/05-west-ridge-original-camera-pose.json",
+      "poseSha256": "d40fa2ba8b7822074839b1d3c84c858b1bd04f4ae9e902296b8c8d8504c7e548",
+      "afterCamera": {
+        "position": {
+          "x": -568.2266666666671,
+          "y": 1.62,
+          "z": -438.09333333333933
+        },
+        "target": {
+          "x": -578.1998937127904,
+          "y": 1.3633500222863233,
+          "z": -437.3620725819824
+        },
+        "focus": {
+          "x": -568.2266666666671,
+          "y": 1.62,
+          "z": -438.09333333333933
+        },
+        "yaw": 4.785580385523387,
+        "pitch": 0.17566781616210936,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "projection": {
+        "fov": 65,
+        "aspect": 1.6,
+        "near": 0.15,
+        "far": 3200,
+        "actualNearFarFrom": "src/main.js line411"
+      },
+      "intersectsFrustum": false,
+      "planeProof": [
+        {
+          "planeIndex": 0,
+          "minSignedDistance": -1909.065850868235,
+          "maxSignedDistance": -450.3613717743403,
+          "wholeBoundsOutside": true
+        },
+        {
+          "planeIndex": 1,
+          "minSignedDistance": -549.7794766604048,
+          "maxSignedDistance": 1061.4027652072177,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 2,
+          "minSignedDistance": -925.0670116490428,
+          "maxSignedDistance": 296.7696308503335,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 3,
+          "minSignedDistance": -955.4244236247031,
+          "maxSignedDistance": 192.89364320789724,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 4,
+          "minSignedDistance": 2921.833312100784,
+          "maxSignedDistance": 4772.442860459244,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 5,
+          "minSignedDistance": -1572.5928604579692,
+          "maxSignedDistance": 278.01668790049393,
+          "wholeBoundsOutside": false
+        }
+      ]
+    },
+    {
+      "poseFile": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/06-near-quay-tree-whole-pose.json",
+      "poseSha256": "86bd1806181f093aaf9d40a59f717324d5e1540793debffbd8dd202342c59ada",
+      "afterCamera": {
+        "position": {
+          "x": -599.9466689367857,
+          "y": 1.62,
+          "z": -440.9066763468346
+        },
+        "target": {
+          "x": -609.6547749062385,
+          "y": 3.63585959778707,
+          "z": -443.30515054637823
+        },
+        "focus": {
+          "x": -599.9466689367857,
+          "y": 1.62,
+          "z": -440.9066763468346
+        },
+        "yaw": 4.470180300074167,
+        "pitch": -0.05297685241699221,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "projection": {
+        "fov": 65,
+        "aspect": 1.6,
+        "near": 0.15,
+        "far": 3200,
+        "actualNearFarFrom": "src/main.js line411"
+      },
+      "intersectsFrustum": false,
+      "planeProof": [
+        {
+          "planeIndex": 0,
+          "minSignedDistance": -1921.9148118212743,
+          "maxSignedDistance": -172.8121894713321,
+          "wholeBoundsOutside": true
+        },
+        {
+          "planeIndex": 1,
+          "minSignedDistance": -18.58865750528389,
+          "maxSignedDistance": 1228.201899556966,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 2,
+          "minSignedDistance": -506.0472653075678,
+          "maxSignedDistance": 375.35651715248923,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 3,
+          "minSignedDistance": -992.7205247220122,
+          "maxSignedDistance": 457.1927853436575,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 4,
+          "minSignedDistance": 2579.4756552404815,
+          "maxSignedDistance": 4440.493610685325,
+          "wholeBoundsOutside": false
+        },
+        {
+          "planeIndex": 5,
+          "minSignedDistance": -1240.6436106831954,
+          "maxSignedDistance": 620.3743447616457,
+          "wholeBoundsOutside": false
+        }
+      ]
+    }
+  ],
+  "conclusion": "The entire new northern decorative ridge envelope lies outside both actual daylight capture frusta; the two westward images cannot visually accept northern ridge silhouette/material changes. This does not prove the unseen northern asset is bad."
+}
