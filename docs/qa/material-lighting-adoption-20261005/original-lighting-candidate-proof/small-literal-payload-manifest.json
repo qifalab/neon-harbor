@@ -1,0 +1,116 @@
+{
+  "status": "FINAL_CPU_READY_NATIVE_REVIEW_PENDING",
+  "candidateRoot": "/workspace/neon-candidates/harbor-night-fixture-lighting-candidate-20261005",
+  "baselineRoot": "/workspace/neon-candidates/harbor-transit-compact-verification-final-20261005",
+  "baselineCommit": "ef4112bed4624c9c969b5b5f3746ccbfb64817aa",
+  "selectivePayload": [
+    {
+      "path": "src/harbor-street-lighting.js",
+      "bytes": 8939,
+      "sha256": "83878d797ede3eaef86617613a5e8f819457fd2348be3953f7586b589515bfc4",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "src/metropolis-world.js",
+      "bytes": 57388,
+      "sha256": "f1492146c023a068666d1a445c7a019c39b5685a717139337fda70cb26864ec5",
+      "originalTargetSHA256": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b"
+    },
+    {
+      "path": "src/city-exploration.js",
+      "bytes": 22549,
+      "sha256": "0286096f15732b65c14956e1bad495ff721acc6a4b563fa0c5733d170d0a1f4b",
+      "originalTargetSHA256": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da"
+    },
+    {
+      "path": "tests/harbor-street-lighting.test.js",
+      "bytes": 5735,
+      "sha256": "70e3877ef000f450d1f9332803be38e460e46c03a5303041b2bfa1aaee1b66d6",
+      "originalTargetSHA256": null
+    }
+  ],
+  "candidateEvidence": [
+    {
+      "path": "evidence/actual-full-runtime-before-after.json",
+      "bytes": 45592,
+      "sha256": "df0257f47a91b8db9e884a1fdd1fe97075aa2182b60e7ee718b3b6c62434c194",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/cpu-identity-proof.json",
+      "bytes": 1091061,
+      "sha256": "0c5d6fc496c4e6e556614c2783684b8e876fdbbd3b1389b892fc68d5e794a818",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/cpu-identity-proof.mjs",
+      "bytes": 21423,
+      "sha256": "57259c5f1b493a409da9d04e9f16cdce4e76de26a38382cc9e79882b835940d1",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/cpu-identity-proof.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/cpu-identity-proof.stdout.txt",
+      "bytes": 2306,
+      "sha256": "7847f41b6ce29c7409a0e50e862b9ce016df10d233a3f1f0c14b48bb425b5e50",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/cpu-identity-receipt.json",
+      "bytes": 15218,
+      "sha256": "4f0c0e68fe8b7bb3a5aee10e997d6d1ee08932701721afd4829cb3d6f5aad23c",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/cpu-identity-seal.sha256",
+      "bytes": 92,
+      "sha256": "c71e897ec9edc6c5bc7978f3ba9548c60f5a768b30bc95c457843f2ccdc65af0",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/fixture-recipe.json",
+      "bytes": 5813,
+      "sha256": "c2f7483c98391baec709e7bf7f7ba2a7bc429344986e820e0c3473559ed39a3c",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/original-authoring-and-license.txt",
+      "bytes": 418,
+      "sha256": "aa69aaa1ca1fcf6ad6c2b67d81bd12f65e518c6f503b31de0427a2c697f72c98",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/targeted-cpu-tests-receipt.json",
+      "bytes": 1240,
+      "sha256": "67ea67d76926bbde79c2352a2f008742b5c8a112d26565c2e6424c02a72a387b",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/targeted-cpu-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "originalTargetSHA256": null
+    },
+    {
+      "path": "evidence/targeted-cpu-tests.stdout.txt",
+      "bytes": 1453,
+      "sha256": "763b27e984b5c2efbbde3fa51a3ed5524a631bdf67b17184a4abd13e7db4312c",
+      "originalTargetSHA256": null
+    }
+  ],
+  "sourceRuntimeCount": 208,
+  "sourceRuntimeDelta": [
+    "src/city-exploration.js",
+    "src/harbor-street-lighting.js",
+    "src/metropolis-world.js"
+  ],
+  "unchangedOriginalRuntimeAssets": 205,
+  "nativeInventory": "Final combined child derives its actual native resource map; old native184 inputs/method files remain literal. No guessed185 claim.",
+  "readOnlySourceBridge": "Only updateStreetLighting/getstreetLightingStats renderer methods and snapshot().streetLighting added. Public gameplay/input/source __NEON state behavior remains original; extra snapshot data only reports owned rendering resources.",
+  "adoption": "Copy only selectivePayload after checking originalTargetSHA256 (absent target required for new module/test). Keep evidence+recipe/license as candidate provenance. Do not copy candidate source directories wholesale over independently sealed West/North mineral surface modules. Run fullnpm/build/actualdict once in final combined child; ROOT owns GPU and publish."
+}

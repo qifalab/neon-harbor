@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: FERRY-actual-source-seat-still-blocks: {"name":"Error","message":"actual original-radius body does not occupy a seat/driver blocker"}
+    at Object.leg (file:///workspace/neon-candidates/all-three-transport-public-longitudinal-and-ferry-berth-candidate-20261005/verify-all-three-real-fixedstep-source-cpu.mjs:18:261)
+    at async file:///workspace/neon-candidates/all-three-transport-public-longitudinal-and-ferry-berth-candidate-20261005/verify-all-three-real-fixedstep-source-cpu.mjs:30:215 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

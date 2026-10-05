@@ -1,0 +1,114 @@
+{
+  "status": "EXPLICIT_PUBLIC_INPUT_AND_FINITE_FERRY_BERTH_ACTUAL_SOURCE_CPU_READY_NATIVE_ALL_THREE_PAIRS_REQUIRED",
+  "sourceParent": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "originalExecutedMethod": {
+    "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308",
+    "bytes": 53778,
+    "manifestSHA256": "6c55d70a5248c28291c9f4941caa83ca3c43e537e026d7ad53217c453b6b0914"
+  },
+  "candidateMethod": {
+    "sha256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+    "bytes": 56319
+  },
+  "preservedPreparedBusTram": {
+    "sealSHA256": "e3777802f6e7fe7ac5e269b66282e861ebe87ccfdcc9c2b8bf70ca3d0c6f3d69",
+    "provenancePath": "sealed-bus-tram-e377-provenance",
+    "actualFixedStepAddendumSealSHA256": "6a3d13fa87616904be20be7c4483f82c5a2968df5e05d32335739dd520a0ffb5",
+    "provenanceAddendumPath": "sealed-fixedstep-6a3d-provenance",
+    "busTramChanges": "Same precision longitudinal abs(dx)<.06,abs(dz)>.7,not yet leg-Z held; real ordinary2.25 public WASD until.7 handoff, originalslow .3 near correction; readonly failure diagnosis once<=4900 after confirmedkey releases. Sideways unchangedslow."
+  },
+  "newFerryInputProtocol": {
+    "scope": "NONPRECISION original straight centre hall only: kind ferry,!precision,abs(dx)<.06,abs(dz)>1.2",
+    "gait": "Existing unmodified ordinary public keyboard/inputState2.25m/s and original near<1.2 slowZ .3m/s; no sprint/Jump/directworld/clock writes",
+    "held": "Real public W/S held; actual existing radius/height/revision/stall/finite-local/whole guarded RAF observer until1.2; public release before handle/read and original near correction",
+    "precisionLegs": "Original a308 Ferry slow precision branches unchanged",
+    "handoffMetres": 1.2,
+    "sourceMaximumVisibleFrameAdvance": 0.5625,
+    "bodyRadius": 0.3,
+    "bodyHeight": 1.8,
+    "release": "finally up even faults; extra15fixedsource substeps between observedhandoff and keyup CPU verified"
+  },
+  "newFerryFiniteBerthBudget": {
+    "originalMs": 600000,
+    "newMs": 1200000,
+    "wholeCaseMs": 2400000,
+    "reason": "Closed original authoredFerry lowerphoto wait ran full600s with actual service time15.95\u219239.683333; beforewait south berth remaining.05 was below original>2guard, aftertimeout still north approach .946003simseconds from arrival/doorsclosed. Explicit finite cap revision; observed slow render simulation progress is not a gameclock/gait adjustment or guarantee of future success.",
+    "originalArtifactID": 11332109451,
+    "originalArtifactSHA256": "99ac41259ad270cc9d5b671855fc16b90eae52483d726d63a67bb12aeecee4d1",
+    "originalFailureStatus": "FAILED",
+    "realOpenBerthPredicateLiteralUnchanged": {
+      "path": "ORIGINAL_BERTH_GUARD_LITERAL_IDENTITY.json",
+      "sha256": "759a7a38ae5b9372e904125e9f8a1a8339d2eb16a2e83df07ca28c0047d82e5f"
+    },
+    "budgetInterpretation": "Upper limit only, always min(original whole deadline,finite phase deadline). Does not assert sufficient time/native pass."
+  },
+  "meaningfulCPU": {
+    "path": "ordinary-source-cpu-receipt.json",
+    "sha256": "4178c0d8d60ad4a03776d0730abe391cb920b8aae52f7c121c08b3fbf7992c85",
+    "testCount": 18,
+    "sourceHashes": {
+      "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+      "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "src/frame-clock.js": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "src/presentation.js": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+      "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da"
+    },
+    "order": "Actual service update thenstepPlayer each1/60,15 fixed substeps per .25s visible frame; public source keyboard/inputState handlers; source support/collisions/route yaw",
+    "scenarios": "Original Bus/Tram suite12 plus Ferry original12normal/extra source releaseframe, actual movingboat reaim, real seatblocking originaldeadlinefailure+radiusoutside, original150deadlinefailure, public key faultcleanup",
+    "limitations": "Camera aim/CPU wall frame timestamps are explicitly isolated fixtures, not native timing/render/image/predicted savings; no browser/GPU executed; all3 real High paired journeys still required."
+  },
+  "originalFailures": {
+    "factsPath": "sealed-bus-tram-e377-provenance/ORIGINAL_HIGH_FAILURE_FACTS.json",
+    "sha256": "f406d253dd957bad36170e015fa29288d768a7c1f84264e6420c1a08c503481c",
+    "bus": {
+      "artifactID": 11332299667,
+      "status": "FAILED",
+      "photos": 3,
+      "first": "lower2 original150 nearwait"
+    },
+    "tram": {
+      "artifactID": 11331992420,
+      "status": "FAILED",
+      "photos": 2,
+      "first": "upper3 original150 slowheld"
+    },
+    "ferry": {
+      "artifactID": 11332109451,
+      "status": "FAILED",
+      "baselinePhotos": 2,
+      "authoredPhotos": 1,
+      "baselineFirst": "NONPRECISION upper1 original150 per-pulse9mprogress",
+      "authoredFirst": "lowerphoto original600 realberthwait"
+    },
+    "originalReadonlyFerryReviewSealSHA256": "f4fd8abc9a0563cc0e298502b193cae7aaaed2f6d37d3575c92fe4514450f2ba",
+    "noPassInheritance": true
+  },
+  "negativePreparationHistory": {
+    "wideSidewaysOrdinaryCPUFAILPreserved": true,
+    "firstFerryBlockerFixtureInitialOverlap": "Original radius correctly rejected invalid initialfixture; preserved stderr/script; fixedonlyisolated fixture start toclear real boardingrow",
+    "secondFerryBlockerExpectation": "Actual originalnonprecision blocked pulse failsfinitewaitdeadline, notheldobserverstall. Preserved stderr/script; onlyexpectednegative reason corrected, guard unchanged."
+  },
+  "identity": {
+    "allTargetsCameraPhotosHighActualBrowserRevisionPositionStairSupportCollisionAndEndpoint": true,
+    "originalEndpointXZ": 0.06,
+    "originalEndpointY": 0.15,
+    "originalLocalMs": 150000,
+    "originalLocalIterations": 1800,
+    "originalWholeMs": 2400000,
+    "gameGaitClockDt": true,
+    "casesAndMatrixExactB80": {
+      "tools/native-review/cases.json": "a55b698e7b64c4091e806a992199c22d995e6c1d83e59abbff4e537080ad8ed3",
+      "tools/native-review/native-matrix.json": "efb4643dd76a4440886049b28ad011319018de149750edb9d1bba29ad0a62611"
+    },
+    "selectorWorkflowsRuntimeResourcesUnchanged": true,
+    "BusTramNewChangesAfterE377": false,
+    "reverseDeltaToE377AndB80Exact": true
+  },
+  "preparedOnly": true,
+  "nativePass": null,
+  "GPUExecuted": false,
+  "productionWritten": false,
+  "published": false
+}

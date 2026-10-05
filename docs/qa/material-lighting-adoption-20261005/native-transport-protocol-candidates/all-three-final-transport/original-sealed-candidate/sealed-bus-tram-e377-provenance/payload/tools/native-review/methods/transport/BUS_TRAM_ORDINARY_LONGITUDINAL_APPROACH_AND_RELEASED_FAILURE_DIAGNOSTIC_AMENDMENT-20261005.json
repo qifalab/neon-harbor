@@ -1,0 +1,128 @@
+{
+  "status": "ACTUAL_SOURCE_CPU_PREPARED_NEW_NATIVE_PAIR_REQUIRED",
+  "parentSourceHead": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "parentMethod": {
+    "path": "/workspace/neon-candidates/bus-tram-ordinary-far-public-input-candidate-20261005/original-executed-b80-a308-method.mjs",
+    "bytes": 53778,
+    "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308"
+  },
+  "parentManifest": {
+    "sha256": "6c55d70a5248c28291c9f4941caa83ca3c43e537e026d7ad53217c453b6b0914",
+    "path": "/workspace/neon-candidates/harbor-visible-west-ridge-final-20261005/tools/native-review/methods/transport/method-manifest.json"
+  },
+  "candidateMethod": {
+    "bytes": 55745,
+    "sha256": "ea866c7f0e20c3f3b6163f1186b7f5bc4c7ab2c25cf633ff2c2020a3ec5a8e46"
+  },
+  "scope": [
+    "bus",
+    "tram"
+  ],
+  "inputAmendment": {
+    "eligibility": "precision bus/tram leg, no prior leg-owned Z down attempt, abs(dx)<.06 AND abs(dz)>.7; longitudinal only",
+    "farGait": "Unmodified real public ordinary WASD without Z, as selected by actual source keyboard/inputState handlers",
+    "nearGait": "Original leg-owned Z slow input after <=.7 handoff, original .3 held observer/near-tail correction and .06XZ/.15height endpoint",
+    "sourceOrdinaryMetresPerSecond": 2.25,
+    "sourceSlowMetresPerSecond": 0.3,
+    "sourceMaxDtSeconds": 0.25,
+    "sourceMaxNormalAdvanceMetres": 0.5625,
+    "handoffMetres": 0.7,
+    "handoffBound": ".5625 < 2*.7; meaningful actual full up/down and one extra source release frame verify original radius/blockers/endpoints",
+    "sourceHashes": {
+      "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+      "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0"
+    }
+  },
+  "firstFailureDiagnostic": {
+    "scope": [
+      "bus",
+      "tram"
+    ],
+    "when": "First original local leg error, after movement keys and any owned Z release are confirmed",
+    "readOnly": true,
+    "attempts": 1,
+    "capMs": 4900,
+    "originalWholeDeadlineStillApplies": true,
+    "serializedFields": [
+      "ready",
+      "paused",
+      "position",
+      "camera",
+      "timing",
+      "simulationTime",
+      "teleportRevision",
+      "ridingVehicleId",
+      "local",
+      "deck",
+      "vehicle.id/yaw/stopId/remaining"
+    ],
+    "missingRelease": "Skip diagnostic; retain original first error",
+    "expiredWhole": "Skip diagnostic; retain original first error",
+    "failure": "Secondary only; retain original first error; no route retry or new movement"
+  },
+  "preserved": {
+    "budgets": {
+      "busCaseIncludingContextMs": 2400000,
+      "tramCaseIncludingContextMs": 2400000,
+      "ferryCaseIncludingContextMs": 2400000,
+      "localWaypointMs": 150000,
+      "maxLocalIterations": 1800,
+      "scheduledBerthMs": 600000,
+      "contextCloseMs": 30000,
+      "browserCloseMs": 30000,
+      "groundWaypointMs": 120000,
+      "pointerCleanupMs": 5000,
+      "aimPhaseMs": 60000,
+      "phaseProgressDiagnosticMs": 10000,
+      "tramScheduledBerthMs": 1200000
+    },
+    "canonicalRoutesCamerasPhotosHighUI": true,
+    "bodyRadius": {
+      "bus": 0.22,
+      "tram": 0.22,
+      "ferry": 0.3
+    },
+    "bodyHeight": 1.8,
+    "endpointXZ": 0.06,
+    "endpointY": 0.15,
+    "localMaxIterations": 1800,
+    "revisionClockCollisionStallRenderedCameraOpenBerthGuards": true,
+    "casesAndMatrixExactParent": {
+      "tools/native-review/cases.json": "a55b698e7b64c4091e806a992199c22d995e6c1d83e59abbff4e537080ad8ed3",
+      "tools/native-review/native-matrix.json": "efb4643dd76a4440886049b28ad011319018de149750edb9d1bba29ad0a62611"
+    },
+    "ferryExecutedBehavior": "Exact a308 in actual-source all12 CPU event/motion/observation serialization; no Ferry budget/branch/camera/guard changes"
+  },
+  "cpu": {
+    "path": "ordinary-source-cpu-receipt.json",
+    "sha256": "9bfeefec8a610bb8f3510e7007d820448afd420314e2ca24ea8b642e78092ce7",
+    "testCount": 13,
+    "nativeExecuted": false,
+    "browserGpuExecuted": false,
+    "resultScope": "CPU source-backed preparation only, explicit fixed wall-frame fixtures; no observed native speed estimate or acceptance"
+  },
+  "originalFailures": {
+    "factsPath": "ORIGINAL_HIGH_FAILURE_FACTS.json",
+    "sha256": "f406d253dd957bad36170e015fa29288d768a7c1f84264e6420c1a08c503481c",
+    "busArtifactID": 11332299667,
+    "tramArtifactID": 11331992420,
+    "ferryArtifactID": 11332109451,
+    "allRemain": "FAILED; partial High photos not full journey PASS; no after-failed-wait numeric Bus/Tram pose inferred"
+  },
+  "rejectedInitialProposal": {
+    "path": "FIRST_BROAD_APPROACH_CPU_FAILURE.json",
+    "sha256": "6623a932e24d131900c57433b4ff4cb87ed97f98c66c12d884c72f0f40729e8f",
+    "reason": "Broad distance>.7 ordinary sideways Bus upper-2 plus extra source frame violated unchanged shell radius; retained as FAILURE. Current proposal eligibility is longitudinal only."
+  },
+  "deltaLedger": {
+    "path": "REVERSIBLE_CHANGE_LEDGER.json",
+    "sha256": "f4084ea4c588fdc37b3be0521226cd4497ed5607238be5093a6a38e103064343",
+    "reverseToParentExact": true
+  },
+  "ferryLimit": "New b80 authored Ferry has independent berth600 FAIL and baseline nonprecision upper-1 per-pulse150 FAIL. This bus/tram-only proposal does not claim to fix Ferry; any Ferry scope amendment requires a distinct source CPU payload and new native pairs.",
+  "rootWritten": false,
+  "runtimeSourceChanged": false,
+  "published": false
+}

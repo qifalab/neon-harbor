@@ -1,0 +1,12 @@
+独立 CPU 审查通过。基线和候选实际 createCityExploration 创建路径已执行，冻结三文件前后 SHA 一致。
+West 8,032 三角／4,018 顶点，其 POSITION、NORMAL、index、AABB 和 sphere 与 b80 字节一致；颜色有明确更改。
+几何常驻 224,984 B、producer typed arrays 283,472 B 与原来一致；旧 mountainSurface 2float 槽改为 uv，没有追加槽。
+两张实际 128² RGBA8 图：roughness G 208–249，标准 roughness scalar1 所得 0.815686–0.976471；10,083 个法线 texel 的 XY 倾斜大于 0.08。
+标准 ShaderLib 经过真实 onBeforeCompile 后未改变；粗糙度 G 与 normalMap 的标准路径保留。
+实际 top 7,168、skirt 576、bottom 288 UV 三角均非退化；top UV 使用 16m 世界比例。
+地图 CPU pixels 131,072 B + full-mip theoretical GPU 174,760 B = 新增 305,832 B；这不是实际 VRAM 或整堆内存测量。
+North 所有最终属性、索引、边界、shader、材质响应与两图字节保持。West 和 North 的资源 owner 独立。
+先独立重复释放 West，再 world owner 释放，West geometry/material/两图各一次，North geometry/material/两图各一次；第一次 West 释放时 North 全部仍为零。
+完整 4,178 个 collider 所有字段严格相等，SHA 7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30；原 72 支持坐标、220 入口、6 树位置和支持高度都严格相等。
+北岸 permanent visible 70 draws／106,164 submitted triangles，前后一致，没有新增网络资源。
+尚未做新 GPU 渲染、shader GPU compile、画面材质验收或实际性能测量。

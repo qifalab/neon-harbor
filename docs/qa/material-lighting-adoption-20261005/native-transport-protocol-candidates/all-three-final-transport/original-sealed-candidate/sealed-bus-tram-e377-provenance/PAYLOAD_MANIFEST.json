@@ -1,0 +1,31 @@
+{
+  "status": "SELECTIVE_THREE_FILES_CPU_READY_NOT_NATIVE_PASS",
+  "sourceParent": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "files": [
+    {
+      "path": "tools/native-review/methods/transport/BUS_TRAM_ORDINARY_LONGITUDINAL_APPROACH_AND_RELEASED_FAILURE_DIAGNOSTIC_AMENDMENT-20261005.json",
+      "bytes": 5664,
+      "sha256": "8b0b269953e94906fd8d93003deaed4556ce3f3b0f830b98d7b459915372ca2d",
+      "previous": null
+    },
+    {
+      "path": "tools/native-review/methods/transport/method-manifest.json",
+      "bytes": 20873,
+      "sha256": "6d61e20d7e8c3bc0c028884d3794864d9e99feb6925c499c4aafe59f3f55960b",
+      "previous": {
+        "bytes": 20559,
+        "sha256": "6c55d70a5248c28291c9f4941caa83ca3c43e537e026d7ad53217c453b6b0914"
+      }
+    },
+    {
+      "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 55745,
+      "sha256": "ea866c7f0e20c3f3b6163f1186b7f5bc4c7ab2c25cf633ff2c2020a3ec5a8e46",
+      "previous": {
+        "bytes": 53778,
+        "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308"
+      }
+    }
+  ],
+  "adoption": "Literal isolated tools-only candidate; runtime/cases/matrix unchanged. Original sealed candidate files must be retained; adopter refreshes outer native ledger in NEW authorized child only."
+}

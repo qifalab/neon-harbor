@@ -1,0 +1,178 @@
+{
+  "status": "FINAL_CPU_SOURCE_CANDIDATE_READY_NATIVE_ART_PENDING",
+  "createdAtUtc": "2026-10-05T08:08:52.030592+00:00",
+  "sourceBaseHead": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "candidateCommittedOrPushed": false,
+  "candidateRepo": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/repo",
+  "candidateEditedRepoFiles": [
+    {
+      "path": "src/metropolis-western-ridge.js",
+      "bytes": 14412,
+      "sha256": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78"
+    },
+    {
+      "path": "src/metropolis-northern-ridge.js",
+      "bytes": 10139,
+      "sha256": "fb4e04bf7d0f23bc24aea6a4e1ddeaaf276cf4fec0203b0433c725a0e6a3dd68"
+    },
+    {
+      "path": "tests/metropolis-western-ridge.test.js",
+      "bytes": 9657,
+      "sha256": "6e69c0073256d0e03c35459cfe5ea10202184bf70cfbae3a7e7c049a85593fdc"
+    },
+    {
+      "path": "art-source/visible-western-ridge-mineral-surface/README.md",
+      "bytes": 2780,
+      "sha256": "632f3c98813b0da7b807516bde2d9ab61f2e4aa8dc7aba27e09c8a86e6ae5ad5"
+    },
+    {
+      "path": "art-source/visible-western-ridge-mineral-surface/recipe.json",
+      "bytes": 2054,
+      "sha256": "3853ce52a8ed2be41e2989f6224cb5c005e0441e0b09b02618cabaa27d7a8a00"
+    },
+    {
+      "path": "art-source/visible-western-ridge-mineral-surface/LICENSE.md",
+      "bytes": 510,
+      "sha256": "0dcd1241d7ce613218d7445fddba7c7020b156daea88767764eab56acef5d00c"
+    }
+  ],
+  "payloadTotalBytes": 39552,
+  "actualRuntimeSourceComparison": {
+    "comparison": "Actual immutable closed b80 Day runtime dictionary vs actual CPU-built uncommitted candidate dictionary",
+    "basisBuildInfoPath": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/build-info.json",
+    "basisBuildInfoSHA256": "3efed9961a04efbb051b3dc0785f8f15bda9e3c4e60834c3aca585e38260c9c0",
+    "candidateBuildInfoPath": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/repo/dist/build-info.json",
+    "candidateBuildInfoSHA256": "134539b5541071fb633d0f8d32f7666175819a1e0612743e6c7c0137df27773b",
+    "basisCount": 207,
+    "candidateCount": 207,
+    "candidateRevision": null,
+    "changed": [
+      {
+        "path": "src/metropolis-northern-ridge.js",
+        "basisSHA256": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0",
+        "candidateSHA256": "fb4e04bf7d0f23bc24aea6a4e1ddeaaf276cf4fec0203b0433c725a0e6a3dd68"
+      },
+      {
+        "path": "src/metropolis-western-ridge.js",
+        "basisSHA256": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208",
+        "candidateSHA256": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78"
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "unchangedCount": 205,
+    "newMapFilesOrNetworkRequests": 0,
+    "nativeRenderedArtAcceptance": false
+  },
+  "actualFullCityPhysicsProof": {
+    "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/evidence/independent-cpu/actual-independent-proof.json",
+    "bytes": 146216,
+    "sha256": "3a551701aaaaec8c89259c83b616c5c930fbf4c93c4749cac520264c47ffc581"
+  },
+  "actualFullCityPhysicsProofSHA256": "3a551701aaaaec8c89259c83b616c5c930fbf4c93c4749cac520264c47ffc581",
+  "independentCPUReceipt": {
+    "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/evidence/independent-cpu/receipt.json",
+    "bytes": 2763,
+    "sha256": "d632a1b7ad54af12385c295c58cb3ccc5f41bb70c4af5dcfdd2e43837b893701"
+  },
+  "independentCPUSeal": {
+    "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/evidence/independent-cpu/seal.json",
+    "bytes": 1734,
+    "sha256": "07794bb35cb9cae1213f517cfcafd589f28bb79284bb45b5d893e5cddf2b1a54"
+  },
+  "physicsProofScope": "Actual b80 vs frozen candidate full City factory:4178collider literal fields;original72same support coordinates;220entries;6tree sites. The proof retains its original baseline/candidate paths, not rewritten into final HEAD.",
+  "targetedRuleValidation": {
+    "command": "node --test tests/metropolis-western-ridge.test.js",
+    "exitCode": 0,
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "stdout": {
+      "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/targeted-5-contracts.stdout.log",
+      "bytes": 684,
+      "sha256": "1ed210bd8ba18307c6708b36fe269fd6611a29ea57e58bb089b665cf41eb6138"
+    },
+    "stderr": {
+      "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/targeted-5-contracts.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "full378RuleRunClaimed": false
+  },
+  "actualBuild": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "stdout": {
+      "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/build.stdout.log",
+      "bytes": 473,
+      "sha256": "7a0023f54e13aafdbb7a7e15d17d92c303c9a6773cfa63b20adb411ad59de98c"
+    },
+    "stderr": {
+      "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/build.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "buildInfo": {
+      "path": "/workspace/neon-candidates/visible-western-ridge-mineral-surface-candidate-20261005/repo/dist/build-info.json",
+      "bytes": 22204,
+      "sha256": "134539b5541071fb633d0f8d32f7666175819a1e0612743e6c7c0137df27773b"
+    },
+    "revision": null,
+    "sourceHeadsRewritten": false
+  },
+  "geometryAndRuntime": {
+    "westPositionNormalIndexBoundsLiteralIdentity": true,
+    "westVertices": 4018,
+    "westTriangles": 8032,
+    "westGeometryBytes": 224984,
+    "producerTypedArrayBytes": 283472,
+    "unchangedProducerCap": 300000,
+    "northTriangles": 16752,
+    "northAllAttributesMaterialShaderAndTwo256MapPixelsIdentity": true,
+    "initialBackdropDraws": 2,
+    "initialWorldDrawsBeforeAndAfter": 70,
+    "initialWorldTrianglesBeforeAndAfter": 106164,
+    "all207AssetsOnlyTwoJsChanged": true,
+    "runtimeRequestsAdded": 0
+  },
+  "mapsBudget": {
+    "actualMaps": 2,
+    "actualDimensions": [
+      128,
+      128
+    ],
+    "CPUBasePixelBytes": 131072,
+    "completeMipmapGPUTheoreticalBytes": 174760,
+    "geometryAttributeBytesDelta": 0,
+    "conservativeAddedTextureResidentCPUPlusGPUTheoreticalBytes": 305832,
+    "maxBytes": 524288,
+    "actualMeasuredVRAM": false,
+    "driverAndV8ObjectOverheadIncluded": false
+  },
+  "ownership": "Actual independent events:West geometry/material/normalmap/roughnessmap each exactlyonce after repeated West dispose and world.dispose;North geometry/material/maps preserved, not released by West owner, eachonce atworlddispose.",
+  "actualBeforeArtEvidence": [
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/west-b80-day-review.json",
+      "bytes": 23098,
+      "sha256": "36b7071caeeeda2377622c4ad88a3cb49a913dafca9211413a61bca1a7a68f7d"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/west-b80-day-review-seal.json",
+      "bytes": 762,
+      "sha256": "aa064e97441c58f6ed240f897175e315725f92368854ff460c6c7d0e26e86606"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/west-b80-night-review.json",
+      "bytes": 11168,
+      "sha256": "121dd5acbe7b2b4a1f3a5f21a1e101973d5fb573fbdb82ed6503bd92aea32c53"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/west-b80-night-review-seal.json",
+      "bytes": 440,
+      "sha256": "cb1e40ce393cc42c06e3bd4ab0a156560ff35fd3c57437f665bc3d33a1486823"
+    }
+  ],
+  "nativeCandidateRuns": 0,
+  "candidateNativeArtAccepted": false,
+  "remaining": "Root adoption/real commit, source-bound same-plan High Day/Night native renders and independent pixel art judgement;final source fullrequiredregression once. No AAA or wholeharbour acceptance."
+}

@@ -1,0 +1,64 @@
+--- original-b80-a308
++++ candidate-normal-public-far
+@@ -283,27 +283,31 @@
+     const held=a.heldBefore+Math.max(0,s.simulationTime-a.baseSimulationTime),metres=a.metresBefore+a.geometricMetres,gap=Math.hypot(a.target.x-p.x,a.target.z-p.z);
+     a.observations.push({local:{x:p.x,y:p.y,z:p.z},simulationTime:s.simulationTime,revision:s.teleportRevision,heldSeconds:held,geometricMetres:metres,horizontalGap:gap});
+     if(!(held<metres/.3+3))return finish('stall-failure','original real held-input stall guard');
+-    if(gap<=.3)return finish('public-near-endpoint-correction');
++    if(gap<=(a.ordinaryApproach?.7:.3))return finish('public-near-endpoint-correction');
+     const angle=n=>Math.atan2(Math.sin(n),Math.cos(n));
+     if(!Number.isFinite(s.camera?.yaw)||Math.abs(angle(s.camera.yaw-(v.yaw+a.localHeading-a.offset)))>=.025)return finish('public-direction-reaim');
+     return false;
+   }
+   async function walkLocal(target,p,layout,stage,{precision=true}={}) {
+     const initial=await read(), revision=initial.teleportRevision, localDeadline=Date.now()+remaining(150000), samples=[initial];let current=initial,held=0,metres=0;
+-    let first=null;const precisionModifier={key:'z',scope:'precision-local-leg-only',downAttempted:false,downConfirmed:false,releaseConfirmed:null,inputs:[]};
++    let first=null,allMovementReleased=true,failureDiagnostic=null;const precisionModifier={key:'z',scope:'precision-local-leg-only',downAttempted:false,downConfirmed:false,releaseConfirmed:null,inputs:[]};
+     try {
+       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
+         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
+         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
+-        const desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
++        const desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=await aim(p,desired,.15,{acceptCurrent:true});
++        // An ordinary public gait covers only a far bus/tram precision approach.
++        // Source max .25s step at 2.25m/s is .5625m, below twice the .7m handoff.
++        const ordinaryApproach=precision&&(kind==='bus'||kind==='tram')&&!precisionModifier.downAttempted&&Math.abs(dx)<.06&&Math.abs(dz)>.7;
++        const slow=ordinaryApproach?false:precision||distance(target,before)<1.2;
+         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null,heldProbe=null;
+         try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);if(precision&&distance(target,before)>.3&&(kind==='bus'||kind==='tram'||kind==='ferry')){
+-          cycle.publicHeldControl='ordinary slow key through actual RAF observations, then original near correction';
++          cycle.publicHeldControl=ordinaryApproach?'ordinary public gait to .7m, then original slow near correction':'ordinary slow key through actual RAF observations, then original near correction';
+           const cap=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original finite local/whole movement deadline');
+-          heldProbe=await page.waitForFunction(cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[]},{polling:'raf',timeout:cap});
++          heldProbe=await page.waitForFunction(cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[],...(ordinaryApproach?{ordinaryApproach:true}:{})},{polling:'raf',timeout:cap});
+         }else await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
+         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
+-        finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
++        finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;allMovementReleased=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
+         // Release the actual movement key before any handle/diagnostic RPC.
+         if(heldProbe&&cycle.releaseConfirmed){
+           try{cycle.actualHeldObservation=await heldProbe.jsonValue();if(cycle.actualHeldObservation.failure)throw new Error(cycle.actualHeldObservation.failure);}
+@@ -323,7 +327,22 @@
+         try{await page.keyboard.up('z');precisionModifier.releaseConfirmed=true;precisionModifier.inputs.push({action:'up',key:'z',confirmed:true});}
+         catch(error){precisionModifier.releaseConfirmed=false;precisionModifier.inputs.push({action:'up',key:'z',confirmed:false,error:err(error,'precision modifier keyup')});modifierReleaseError=error;if(!first)first=error;else record.secondaryErrors.push(err(error,'precision modifier keyup'));}
+       }
+-      record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,firstError:first?err(first,'local movement'):null});
++      if(first&&(kind==='bus'||kind==='tram')) {
++        const cap=Math.min(4900,deadline-Date.now());
++        const modifierReleased=!precisionModifier.downAttempted||precisionModifier.releaseConfirmed===true;
++        if(!allMovementReleased||!modifierReleased)failureDiagnostic={status:'SKIPPED_RELEASE_UNCONFIRMED'};
++        else if(cap<=0)failureDiagnostic={status:'SKIPPED_ORIGINAL_WHOLE_DEADLINE'};
++        else try {
++          const observed=await bounded(()=>page.evaluate(()=>{
++            const s=window.__NEON__.snapshot(),t=s.city.sample.transit,v=t.vehicles.find(v=>v.id===t.ridingVehicleId);
++            return {ready:s.ready,paused:s.paused,position:s.position,camera:s.camera,timing:s.timing,
++              simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,ridingVehicleId:t.ridingVehicleId,
++              local:t.passengerLocal,deck:t.passengerDeck,vehicle:v?{id:v.id,yaw:v.yaw,stopId:v.stopId,remaining:v.remaining}:null};
++          }),cap,'released cabin first-failure readonly diagnostic');
++          failureDiagnostic={status:'OBSERVED_AFTER_CONFIRMED_KEYUP',budgetMs:cap,observed};
++        }catch(error){failureDiagnostic={status:'FAILED_SECONDARY',budgetMs:cap,error:err(error,'released first-failure diagnostic')};record.secondaryErrors.push(err(error,'released first-failure diagnostic'));}
++      }
++      record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,...(kind==='bus'||kind==='tram'?{failureDiagnostic}:{}),firstError:first?err(first,'local movement'):null});
+       if(modifierReleaseError&&first===modifierReleaseError)throw modifierReleaseError;
+     }
+   }

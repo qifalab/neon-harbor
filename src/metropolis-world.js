@@ -7,6 +7,7 @@ import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
 import { subtractGroundRect } from './terrain-openings.js';
 import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
 import { createNorthernHarborRidgeBatch } from './metropolis-northern-ridge.js';
+import { createHarborStreetLighting } from './harbor-street-lighting.js';
 
 /** North shore: permanent terrain/collision/silhouettes, independently fetched detail. */
 export function createMetropolisWorld(THREE, scene, {
@@ -803,6 +804,7 @@ export function createMetropolisWorld(THREE, scene, {
   }
   const permanent=buildBatches([...staticPool.values()],'North shore silhouettes');root.add(permanent);
   const liveGroups=new Map();
+  const streetLighting=createHarborStreetLighting(THREE,root,{buildings:METROPOLIS_BUILDINGS,isResident:id=>liveGroups.has(id),quality});
   const sampleTrees=createSampleStreetTrees(THREE,root,{...sampleTreeOptions,quality});
   function applyInteriorVisibility(group) {
     group.traverse(mesh=>{
@@ -846,6 +848,8 @@ export function createMetropolisWorld(THREE, scene, {
     root,colliders,buildings:METROPOLIS_BUILDINGS,districts:METROPOLIS_DISTRICTS,
     landmarks:METROPOLIS_BUILDINGS.map(b=>({id:b.id,name:b.name,x:b.entrance.x,z:b.entrance.z,y:0,type:'building'})),
     updateWater(dt,hour){waterTime+=Math.max(0,dt||0);const m=materials.get('water');if(m)updateHarborWaterMaterial(m,waterTime,hour);},
+    updateStreetLighting(position,viewerPosition,hour,dt,enabled){streetLighting.update(position,viewerPosition,hour,dt,enabled);},
+    get streetLightingStats(){return streetLighting.snapshot();},
     groundHeightAt(x,z) {
       if(Math.abs(x)<=14&&z>=bridgeMin&&z<=bridgeMax)return bridgeHeight(z);
       if(x>=-740&&x<=740&&z>=-1380&&z<=-390)return 0;
@@ -864,11 +868,11 @@ export function createMetropolisWorld(THREE, scene, {
       interiorId=id;applyInteriorVisibility(permanent);for(const group of liveGroups.values())applyInteriorVisibility(group);
       for(const label of labels)if(label.userData.buildingId===id)label.visible=false;
     },
-    setQuality(value) {currentQuality=value;sampleTrees.setQuality(value);root.traverse(mesh=>{if(mesh.isMesh)mesh.castShadow=value==='high'&&!mesh.userData.noShadow;});},
+    setQuality(value) {currentQuality=value;sampleTrees.setQuality(value);streetLighting.setQuality(value);root.traverse(mesh=>{if(mesh.isMesh)mesh.castShadow=value==='high'&&!mesh.userData.noShadow;});},
     get sampleTreeStats(){return sampleTrees.snapshot();},
     get streamingStats(){const stats=streamer?streamer.stats:{ready:true,loaded:12,pending:0,failed:0,residentInstances:[...liveGroups.values()].reduce((n,g)=>n+g.userData.instances,0),activeChunks:chunks.map(c=>c.id)};return{...stats,sampleTrees:sampleTrees.snapshot()};},
     exportCity(){return {version:1,chunkSize:320,chunks,payloads:[...detailPools].map(([id,pool])=>({version:1,id,batches:[...pool.values()]}))};},
-    dispose(){streamer?.dispose();sampleTrees.dispose();root.removeFromParent();root.traverse(mesh=>{if(mesh.isInstancedMesh)mesh.dispose();});for(const geo of Object.values(geometries))geo.dispose();for(const m of materials.values())m.dispose();for(const texture of signTextures)texture.dispose();for(const label of labels){label.material.map?.dispose();label.material.dispose();}},
+    dispose(){streamer?.dispose();sampleTrees.dispose();streetLighting.dispose();root.removeFromParent();root.traverse(mesh=>{if(mesh.isInstancedMesh)mesh.dispose();});for(const geo of Object.values(geometries))geo.dispose();for(const m of materials.values())m.dispose();for(const texture of signTextures)texture.dispose();for(const label of labels){label.material.map?.dispose();label.material.dispose();}},
   };
 }
 

@@ -1,0 +1,5 @@
+{
+  "status": "CPU_NEGATIVE_EXPECTED_REASON_CORRECTION_ORIGINAL_RETAINED",
+  "reason": "Real nonprecision original near-tail pulse waits for movement >.009; a seat blocks it and the original finite wait deadline fires rather than held observer stall guard. Do not change production guard or retry.",
+  "correction": "Expect actual existing deadline, verify keys all released, actual body outside expanded seat and endpoint still not reached."
+}
