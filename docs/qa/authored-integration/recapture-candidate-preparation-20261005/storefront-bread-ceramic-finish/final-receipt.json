@@ -1,0 +1,64 @@
+{
+  "schema": "two-shop-cpu-seal-receipt-v1",
+  "status": "TWO_SOURCE_FROZEN_CPU_PASS_NATIVE_PENDING",
+  "sealedAtUTC": "2026-10-05T03:19:41.871232+00:00",
+  "sourcePayloadLedger": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/payload-ledger.json",
+    "bytes": 1903,
+    "sha256": "6b56ca22f5509347bb09e83bc5c17c709d2d4ff8b94f94f0a30ccd935db70ae0"
+  },
+  "narrowPatch": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/narrow-source.patch",
+    "bytes": 31570,
+    "sha256": "d562ccf0504b69d00ef6b4370de9239b43ba91666888b0a0d846cdbd97595949"
+  },
+  "boundsProof": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-final-b-proof.json",
+    "bytes": 14517,
+    "sha256": "efb51faa99e8b685304e35bd78d23fc02da55b7480a46a59f0d237f0bd297602"
+  },
+  "physicalDetailProof": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-physical-detail-proof.json",
+    "bytes": 1383,
+    "sha256": "f84af57d15f2754a8d22364d51b1453703e0a7ee2b2b1675fee2120303725a2e"
+  },
+  "wideProofCandidate": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/proof-candidate/tools/native-review/methods/harbor/evidence/frontage-wide-static-proof.json",
+    "bytes": 38625,
+    "sha256": "4c309a822fff97f65f3d186cde6c36a75e766fa9855e44248df1d917b2531be4"
+  },
+  "existingSevenRulePass": {
+    "stdout": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-harbor-district-final.stdout.txt",
+      "bytes": 850,
+      "sha256": "5d5864ed7aa40ea36930f1a438a1e5b1ba0a0a254eee2a5ae15ef50ae33bd8b9"
+    },
+    "stderr": {
+      "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/cpu-harbor-district-final.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "pass": 7,
+    "fail": 0,
+    "durationMs": 1071.808071,
+    "sourceScope": "Passed on preceding candidate revision before same-budget closed-bottom and 1.1mm score clearance corrections. That revision profile/source and CPU results are preserved in history/initial-cpu-seal. Final narrow CPU proof passed after corrections; parent full rules/build will verify final exact source."
+  },
+  "originalHistoryLedger": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/original-history-ledger.json",
+    "bytes": 8797,
+    "sha256": "5ee8123d5b709e4ebfcdfdd57bf72d8fb9074ca046b9b30b53513970cb9bceb2"
+  },
+  "rootBeforeAfterTwoSourceByteIdentity": true,
+  "noGpuBrowserNetworkRootMutations": true,
+  "requiredParentPinRefresh": [
+    "tools/native-review/expected-runtime-dictionaries.json authored.assets exact two sources, with fresh build dictionary",
+    "tools/native-review/methods/harbor/evidence/frontage-wide-static-proof.json sourceHashes.authored exact two sources plus explicit new amendment; preserve previous shopDisplayArtAmendment fields as historical",
+    "tools/native-review/bundle-manifest.json methods/harbor/evidence/frontage-wide-static-proof.json actual bytes/sha256",
+    "Fresh authored build-info and expected-build provenance from parent build; historical captured/prepared dictionaries stay unchanged"
+  ],
+  "originalSourceNativeAndFailedAttemptArchive": {
+    "path": "/tmp/neon-storefront-bread-ceramic-finish-candidate-20261005/original-source-and-native-history.tar.gz",
+    "bytes": 9018180,
+    "sha256": "e6c8eed4b3d28ba539dafcfa36f9993c03d297cafb228e4c0b5d44ad3a4a269b"
+  }
+}

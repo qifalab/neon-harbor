@@ -1,0 +1,94 @@
+{
+  "status": "ORIGINAL_OWNERSHIP_BUS_FAIL_DIAGNOSED_NATIVE_PROJECTION_CANDIDATE_UNRUN",
+  "originalArtifact": {
+    "id": 11322937962,
+    "originalZip": "/workspace/attachments/c657de40-1e32-4048-b1d2-c136785533f6/neon-cc038-ownership-bus-original.zip",
+    "bytes": 16098198,
+    "sha256": "b0188984544d705a57d74595061e403c88e8a3706f296fb90cd82d62277fa0bb",
+    "digestVerification": "Provided by parent verified download; this source review does not rehash ZIP or original WebM"
+  },
+  "originalSourceHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+  "originalToolSHA256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2",
+  "originalInputPins": {
+    "pair-summary.json": {
+      "bytes": 53635,
+      "sha256": "19485176d03c74497b024c7dd6ef7a84dde844f136c8ae3450e14e2c80c4ed2d"
+    },
+    "native/authored/case.json": {
+      "bytes": 3666078,
+      "sha256": "78c548580eb3cac5e147d5c57ba3c702653f808b5c4075ba0aae081cd5dd3dff"
+    },
+    "native/authored/completion.json": {
+      "bytes": 1140,
+      "sha256": "f70bcc583c0f8c2038ed1d621c2bdca7e45ba65af737d21701f5e72f67c7c546"
+    },
+    "native/authored/late-failure.json": {
+      "bytes": 936,
+      "sha256": "cec90716fed685f8410cecdc61072493530fe8540eb899dff3e023c5cd730614"
+    },
+    "logs/native-authored.stdout.log": {
+      "bytes": 635,
+      "sha256": "4e267a1490eca5bd45eb36d18a80a88005b94819025c6e67323e23afec1670af"
+    },
+    "logs/native-authored.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/native-authored.owned-process-receipt.json": {
+      "bytes": 4535,
+      "sha256": "67e752107e40d6c8e5e4f39e5ef964fa5b388df2123029cb0d52f5390a139836"
+    }
+  },
+  "originalFailure": {
+    "stage": "ownership case",
+    "name": "Error",
+    "message": "read-only actual snapshot exceeded 30000 ms",
+    "stack": "Error: read-only actual snapshot exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs:85:134)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+  },
+  "lastSuccessfulStage": "public-low-selected-paused",
+  "lastSuccessfulAt": "2026-10-05T02:48:09.225Z",
+  "lastSuccessfulState": {
+    "paused": true,
+    "quality": "low",
+    "sim": 4.616666666666656,
+    "auditSequence": 16,
+    "pools": 2,
+    "authoredInstances": 2
+  },
+  "failureMethodPhase": "Resume completed, read failed inside actual-low-ordinary-frames; unlabeled intermediate polls not journalled, so failing poll ordinal is unknown",
+  "unreached": [
+    "low release guards",
+    "02-low-released PNG",
+    "high new-generation guards",
+    "03-high-reloaded PNG",
+    "final no-late-failure guard"
+  ],
+  "photos": [
+    {
+      "stage": "01-high-loaded",
+      "file": "01-high-loaded.png",
+      "sha256": "c1fdd9b1bbb59d927f50d6e76326d89ddee2cf49c0246363d2bcaadabfa0ebe7"
+    }
+  ],
+  "runtimeErrors": [],
+  "actualOwnedChildExit": {
+    "pid": 3187,
+    "confirmed": true,
+    "exitCode": 0,
+    "signalCode": null
+  },
+  "readCapMsUnchanged": 30000,
+  "wholeBudgetMsUnchanged": 1200000,
+  "compactJSONMeasurementLast": {
+    "stage": "public-low-selected-paused",
+    "originalCompactJSONBytes": 115173,
+    "afterKnownAudit16CompactJSONBytes": 43352,
+    "removedBytes": 71821,
+    "exactProtocolBytesNotMeasured": true
+  },
+  "causeConclusion": "Repeated audit payload and full CPU snapshot construction are source-backed overhead. No original RPC trace/timing isolates queue/render/construction/serialization, and no failed callback payload exists. Size alone does not prove timeout cause; candidate speedup unmeasured.",
+  "pureCPUChecks": 14,
+  "nodeSyntaxExitCode": 0,
+  "actualNativeExecution": false,
+  "rootOrRecaptureWorktreeWritten": false
+}

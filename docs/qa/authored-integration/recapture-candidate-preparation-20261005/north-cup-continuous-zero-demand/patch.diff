@@ -1,0 +1,55 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -1,5 +1,6 @@
+ /** Real-game photographs and active observation. Preparation alone runs no browser. */
+ import assert from 'node:assert/strict';
++import { continuousOwnerIdleGuard } from './continuous-owner-idle-guard.mjs';
+ import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
+ import { createHash } from 'node:crypto';
+ import { createRequire } from 'node:module';
+@@ -34,9 +35,9 @@
+   selectedCase: { name:options.case, ...selectedCase },
+   routePolicy: 'Independent public Atlas for the named address; one pre-planned pavement approach from actual read-only starting NPC coordinates, no chase or endpoint retry. South uses shipped harbor supply UI.',
+   actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment' },
+-  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?2700:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
++  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?2700:options.case==='north-cup-owner'?2400:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
+     ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:1200,naturalSouthParcelWallSeconds:360}:{}) },
+-  ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + physical far walk and real cooldown/return' : null,
++  ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + fixed pavement x=-544, x=-521, z=-602 out/back and one uninterrupted real 13-simulation-second zero-demand cooldown' : null,
+   limits: ['Each separate case records its actual visible target only. Hidden book/phone/cup references are not visible action coverage; all 240 residents are not accepted.',
+     'NPCs keep original journeys. A target leaving the planned viewpoint or parcel not appearing in the bounded window is recorded as a first failure, with no correction/relaunch/retry.',
+     'Native visual quality requires manual inspection of raw frames; rule counts and transfer budgets do not certify art quality.',
+@@ -292,10 +293,21 @@
+     const target=actorIn(high,id);metadata.coverage.originalTargetAfterQuality=target?{id,retainedOriginalPropUUIDs:beforeUUIDs.every(uuid=>target.props.some(p=>p.uuid===uuid)),coreVisible:target.coreVisible,props:target.props,hands:target.hands}:{status:'not-materialized-after-natural-journey'};
+     if(target)assert.ok(beforeUUIDs.every(uuid=>target.props.some(p=>p.uuid===uuid)),'original props must not be replaced by new objects');
+   }
+-  await captureRaw('04-high-owner-restored');await firstPerson(true);await walk('x',-530);const far=await event('physical-far');
+-  if(options.mode==='authored')await page.waitForFunction(()=>window.__NEON__.snapshot().residentAssets.instances===0,null,{polling:'raf',timeout:180000});
++  await captureRaw('04-high-owner-restored');await firstPerson(true);
++  // One source/collider-reviewed fixed pavement route. The old x=-530 point
++  // lies beside the architect's natural route and cannot prove absent demand.
++  // Split x at -544 to retain the original finite 180-second limit per leg.
++  const farRoute=[{axis:'x',target:-544},{axis:'x',target:-521},{axis:'z',target:-602}];
++  for(const leg of farRoute)await walk(leg.axis,leg.target);
++  const far=await event('physical-far',{route:farRoute});
++  if(options.mode==='authored')await page.waitForFunction(()=>{const a=window.__NEON__.snapshot().residentAssets;return a.instances===0&&!a.pending&&a.selected.length===0;},null,{polling:'raf',timeout:180000});
+   const idleStart=await event('far-zero-instance-cooldown-start');
+-  await page.waitForFunction(time=>window.__NEON__.snapshot().simulationTime-time>=13,idleStart.simulationTime,{polling:'raf',timeout:240000});
++  if(options.mode==='authored'){
++    assert.equal(idleStart.residentAssets.residencyCooldown,12,'actual frozen source cooldown remains 12');
++    continuousOwnerIdleGuard({startTime:idleStart.simulationTime,teleportRevision:idleStart.teleportRevision},()=>idleStart);
++    // First observed demand aborts; no restart, deadline extension or retry.
++    await page.waitForFunction(continuousOwnerIdleGuard,{startTime:idleStart.simulationTime,teleportRevision:idleStart.teleportRevision},{polling:'raf',timeout:240000});
++  } else await page.waitForFunction(time=>window.__NEON__.snapshot().simulationTime-time>=13,idleStart.simulationTime,{polling:'raf',timeout:240000});
+   const evicted=await event('far-real-cooldown-complete');
+   if(options.mode==='authored'){
+     assert.equal(evicted.residentAssets.instances,0);assert.equal(evicted.residentAssets.review.templateOwners.imageBitmaps,0);
+@@ -303,7 +315,7 @@
+   }
+   // A local visible player guarantees a real returning actor even if the NPC
+   // naturally enters a room during this window; no journey or prop is forced.
+-  await walk('x',before.position.x);await firstPerson(false);await awaitRole('commuter','local-player');const returned=await event('physical-return-real-role-reload');
++  await walk('z',before.position.z);await walk('x',-544);await walk('x',before.position.x);await firstPerson(false);await awaitRole('commuter','local-player');const returned=await event('physical-return-real-role-reload');
+   if(options.mode==='authored'){assert.ok(returned.residentAssets.review.templateOwners.imageBitmaps>0);assert.ok(returned.residentAssets.requests>evicted.residentAssets.requests);}
+   metadata.coverage.owners={status:options.mode==='authored'?'actual-readbacks-recorded':'probe-unavailable-in-baseline',before,low,high,far,idleStart,evicted,returned,
+     driverVRAMMeasured:false,note:'CPU owner references and successful bitmap.close/dispose calls; renderer counts retained separately.'};await captureRaw('05-real-return');

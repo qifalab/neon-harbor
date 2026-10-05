@@ -1,0 +1,116 @@
+--- a/.github/workflows/native-art.yml
++++ b/.github/workflows/native-art.yml
+@@ -2,13 +2,79 @@
+ 
+ on:
+   workflow_call:
++    inputs:
++      selected_case_ids:
++        description: 'all or unique existing case IDs separated by commas'
++        type: string
++        required: false
++        default: all
+   workflow_dispatch:
++    inputs:
++      selected_case_ids:
++        description: 'all or unique existing case IDs separated by commas'
++        type: string
++        required: false
++        default: all
+ 
+ permissions:
+   contents: read
+ 
+ jobs:
++  select:
++    name: Validate native capture selection
++    runs-on: ubuntu-latest
++    timeout-minutes: 5
++    outputs:
++      matrix: ${{ steps.selection.outputs.matrix }}
++      case_ids: ${{ steps.selection.outputs.case_ids }}
++      count: ${{ steps.selection.outputs.count }}
++    steps:
++      - name: Initialize selection evidence
++        env:
++          AUTHORED_SHA: ${{ github.sha }}
++          SELECTED_CASE_IDS: ${{ inputs.selected_case_ids }}
++        shell: bash
++        run: |
++          mkdir -p "$GITHUB_WORKSPACE/native-selection"
++          python3 - <<'PY_SELECTION_ENVELOPE'
++          import json, os
++          from pathlib import Path
++          target = Path(os.environ['GITHUB_WORKSPACE']) / 'native-selection' / 'job-envelope.json'
++          with target.open('x') as output:
++              json.dump({'status':'INITIALIZED_NOT_EXECUTED','captureExecuted':False,'authoredDispatchSha':os.environ['AUTHORED_SHA'],'rawSelection':os.environ['SELECTED_CASE_IDS'],'runId':os.environ['GITHUB_RUN_ID'],'runAttempt':os.environ['GITHUB_RUN_ATTEMPT']}, output, indent=2)
++              output.write('\n')
++          PY_SELECTION_ENVELOPE
++      - name: Check out the exact selector and policy
++        uses: actions/checkout@v4
++        with:
++          ref: ${{ github.sha }}
++          path: source/selection
++          persist-credentials: false
++      - uses: actions/setup-python@v5
++        with:
++          python-version: '3.12'
++      - name: Validate existing IDs and emit bounded matrix
++        id: selection
++        env:
++          AUTHORED_SHA: ${{ github.sha }}
++          SELECTED_CASE_IDS: ${{ inputs.selected_case_ids }}
++        shell: bash
++        run: |
++          python3 "$GITHUB_WORKSPACE/source/selection/tools/native-review/select-native-cases.py" \
++            --source-root "$GITHUB_WORKSPACE/source/selection" \
++            --output "$GITHUB_WORKSPACE/native-selection/selection.json" \
++            --github-output "$GITHUB_OUTPUT"
++      - name: Preserve selection including validation failure
++        if: always()
++        uses: actions/upload-artifact@v4
++        with:
++          name: native-selection-${{ github.run_id }}-${{ github.run_attempt }}
++          path: native-selection/
++          if-no-files-found: error
++          retention-days: 30
++
+   capture:
++    needs: select
+     name: ${{ matrix.evidence_label }} (${{ matrix.id }})
+     runs-on: ubuntu-latest
+     timeout-minutes: ${{ matrix.job_timeout_minutes }}
+@@ -16,32 +82,7 @@
+       fail-fast: false
+       # Each job has its own VM; each pair still closes its owned browser before the next mode.
+       max-parallel: 12
+-      matrix:
+-        include:
+-          - { id: continuous-tour, job_timeout_minutes: 300, evidence_label: 'Low functional tour' }
+-          - { id: resident-loop, job_timeout_minutes: 210, evidence_label: 'Low functional resident day' }
+-          - { id: east-interior, job_timeout_minutes: 180, evidence_label: 'Native High' }
+-          - { id: home, job_timeout_minutes: 260, evidence_label: 'Native High' }
+-          - { id: workshop, job_timeout_minutes: 160, evidence_label: 'Native High' }
+-          - { id: resident-core, job_timeout_minutes: 85, evidence_label: 'Native High' }
+-          - { id: south-090, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: south-091, job_timeout_minutes: 95, evidence_label: 'Native High' }
+-          - { id: south-092, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: south-094, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: south-095, job_timeout_minutes: 95, evidence_label: 'Native High' }
+-          - { id: south-096, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: bus, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: tram, job_timeout_minutes: 110, evidence_label: 'Native High' }
+-          - { id: ferry, job_timeout_minutes: 80, evidence_label: 'Native High' }
+-          - { id: waterfront-day, job_timeout_minutes: 80, evidence_label: 'Native High' }
+-          - { id: waterfront-night, job_timeout_minutes: 80, evidence_label: 'Native High' }
+-          - { id: north-book, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: north-phone, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: north-cup-owner, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: south-parcel, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: ownership-bus, job_timeout_minutes: 80, evidence_label: 'Native High' }
+-          - { id: ownership-tram, job_timeout_minutes: 80, evidence_label: 'Native High' }
+-          - { id: ownership-ferry, job_timeout_minutes: 80, evidence_label: 'Native High' }
++      matrix: ${{ fromJSON(needs.select.outputs.matrix) }}
+     steps:
+       - name: Initialize failure-preserving job envelope
+         env:

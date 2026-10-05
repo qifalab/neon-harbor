@@ -1,0 +1,13 @@
+# South parcel: bounded method revision only
+
+Original cc038 failure remains FAIL; zero PNGs, no parcel visibility or role-motion acceptance. No native rerun occurred.
+
+Apply `south-parcel-bounded-only.patch` as hunks to the central recapture worktree. Only South-parcel startup1200→2100 seconds, whole2700→3600 seconds, case/job95 and selector job95 change. The assertion predicate remains exactly `(found || last.simulationTime >= eligibleSimulationTime)`; only its error message interpolates the actual finite wall cap.75sim, later360s watch, High1280×800, public supply and2.4m initial viewpoint,3.5m visibility, exact original cargo/role/hand checks,45s observation/4m out-return and local/owned guards remain unchanged. All other cases are unchanged.
+
+Actual642 active High observations progressed sim5→49.75. Three createdTick0 orders existed and remained funded/available/unassigned before their75sim courier-age gate. Fixed-frame dt.25 discards wall delay; droppedTotal114.895→1264.048. FPS0 is rounded and does not mean zero rendered frames. We cannot judge cargo after75 because the original never reached it. Orders themselves already existed;75 is reservation eligibility, not generation or guaranteed camera visibility.
+
+Aggregate26.7959wall/sim projects startup1875.8s; slowest quarter27.2376 projects1906.7s for70sim. Fixed2100s has ~10% observed-rate headroom, not a completion guarantee. Keeping2700whole would leave445.648s after maxstartup,85.648s after360watch—insufficient justified room for all remaining photos/movement/observation/close. Fixed3600 leaves1345.648s; deducting360watch,2×180 legs, conservative45 observation and35 owner leaves545.648s for unexecuted camera/PNG/reading/context stages. Those stages are not yet measured.95min job contains20min preparation+62min executor with13min headroom.
+
+`proposal-only/extra-active-seal-only.patch` updates the family SHA for this exact central method base. If the NORTH-PHONE or other already authorized method hunks merge into the same module, ROOT must recompute the final actual combined method SHA; do not copy this full method or seal over their changes. Refresh the outer bundle dictionary for actual final method/cases/matrix/active seal. Historical SEALED files/provenance stay unchanged.
+
+Possible separate efficiency work: the original writes the growing full observation history every poll (37MB final642 states). A full-state JSONL journal plus fixed checkpoint can remove repeated serialization while retaining all evidence. No original cost isolation proves its contribution; that storage change is not part of this narrow candidate. Product source, clocks, NPCs, renderer quality, pickup and retry policies are untouched.

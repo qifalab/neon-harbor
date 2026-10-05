@@ -1,0 +1,3519 @@
+{
+  "schema": "neon-harbor/current-native-original-release-plan/v1",
+  "status": "READ_ONLY_ATTACHMENT_PLAN_NOT_UPLOADED_NOT_DURABLE",
+  "preparedAtUTC": "2026-10-05T03:22:57.053868+00:00",
+  "repo": "qifalab/neon-harbor",
+  "runId": "37254103874",
+  "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+  "sourceScope": "These are original cc038 captures, including original failures, before later production and method corrections. They do not accept the current revision, establish High art approval, or inherit later retake outcomes.",
+  "scanScope": {
+    "tmpGlob": "/tmp/neon-cc038-*/original.zip",
+    "attachmentGlob": "/workspace/attachments/*/neon-cc038-*-original.zip",
+    "originalPathsFound": 25,
+    "uniqueOriginalZips": 24,
+    "allOriginalArchivesHashedSinglePass": true,
+    "duplicateCopiedZipNotRehashed": true,
+    "rootMutations": false,
+    "gpuBrowserNetworkReleaseWrites": false
+  },
+  "summary": {
+    "zipAssets": 24,
+    "bytes": 914414196,
+    "originalFailureAssets": 15,
+    "captureSuccessAssets": 9,
+    "unknownBlockedAssets": 0,
+    "readyForParentUpload": 24,
+    "maxZipBytes": 160668914,
+    "allUnder200MiB": true
+  },
+  "assets": [
+    {
+      "case": "bus",
+      "artifactId": 11322413692,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-bus-11322413692/fresh-attempt1.receipt.json",
+        "sha256": "e2e03a7bc4457a9cf332e5858bfaa6fdde688e0cd500f040441a66f1e42287cb"
+      },
+      "localPath": "/tmp/neon-cc038-bus-11322413692/original.zip",
+      "statBefore": {
+        "bytes": 130954316,
+        "mtimeNs": 1791168082868594009,
+        "inode": 113668
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "baseline",
+        "source": "original-native-record",
+        "error": {
+          "stage": "case",
+          "name": "Error",
+          "message": "fixed whole case exceeded 600000 ms",
+          "stack": "Error: fixed whole case exceeded 600000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)",
+          "kind": "bus"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "fee722beeac78cb4df2fe6151f81e3e1c14176b44a2e5d532a92b105f694b91f",
+      "archiveEntryCount": 120,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/bus/video/page@c09d91e26f7690c76904bd08f0ea8bee.webm",
+          "uncompressedBytes": 42754004,
+          "crc32": "b4d08079"
+        },
+        {
+          "path": "native/baseline/bus/video/page@7c5fe3197a7b84faf365d1c7d31a157b.webm",
+          "uncompressedBytes": 37488964,
+          "crc32": "ea4e0a89"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11322413692,
+        "expectedSize": 130954316,
+        "expectedSHA256": "87423e1d326f298817aa60fa021287c9804215a002512b3560123f36e3bee8ba",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 130954316,
+        "startedUnix": 1791168079.7659705,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "87423e1d326f298817aa60fa021287c9804215a002512b3560123f36e3bee8ba",
+        "archivePath": "/tmp/neon-cc038-bus-11322413692/original.zip",
+        "elapsedSeconds": 3.1106838260020595,
+        "finishedUnix": 1791168082.8766592,
+        "partialPath": null
+      },
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 130954316,
+        "mtimeNs": 1791168082868594009,
+        "inode": 113668
+      },
+      "bytes": 130954316,
+      "sha256": "87423e1d326f298817aa60fa021287c9804215a002512b3560123f36e3bee8ba",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-bus-87423e1d326f-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-bus-11322413692/original.zip",
+          "before": {
+            "bytes": 130954316,
+            "mtimeNs": 1791168082868594009,
+            "inode": 113668
+          },
+          "after": {
+            "bytes": 130954316,
+            "mtimeNs": 1791168082868594009,
+            "inode": 113668
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "city-materials",
+      "artifactId": 11322895269,
+      "artifactIdBasis": {
+        "type": "originalArchiveReceipt",
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/current-visible-evidence-20261005/city-materials-functional-pass/archive-receipt.json",
+        "sha256": "d6306fb064bd8b38b5826297559d7c3762817a742394a503464bfffdfdf1c1a4"
+      },
+      "localPath": "/workspace/attachments/039fd113-7dad-42a0-bf50-0676c07abf0c/neon-cc038-city-materials-original.zip",
+      "statBefore": {
+        "bytes": 2985138,
+        "mtimeNs": 1791167411953377191,
+        "inode": 1972747
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "SUCCESS functional browser regression; four unique 640x400 High images; not native art approval",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "NOT_NATIVE_ART_APPROVAL",
+      "acceptanceScope": "Functional browser regression only; original four 640x400 High images; not native art approval",
+      "firstError": null,
+      "secondaryErrors": null,
+      "pairSummaryPathInZip": null,
+      "pairSummarySha256": null,
+      "archiveEntryCount": 28,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": {
+        "schema": "neon-current-original-visible-evidence-v1",
+        "sourceRun": 37254103874,
+        "attempt": 1,
+        "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+        "case": "city-materials-functional-pass",
+        "artifactId": 11322895269,
+        "originalZip": {
+          "localPath": "/workspace/attachments/039fd113-7dad-42a0-bf50-0676c07abf0c/neon-cc038-city-materials-original.zip",
+          "bytes": 2985138,
+          "sha256": "71f96ed94c55ba5c9a46ce16d0189d6efa1f1cca968899298854b84941214e06"
+        },
+        "result": "SUCCESS functional browser regression; four unique 640x400 High images; not native art approval",
+        "copiedUnmodified": [
+          {
+            "path": "test-results/city-materials-a-northern--d9cd2-ty-changes-at-the-same-pose/north-bedroom-high-pose.json",
+            "bytes": 833,
+            "sha256": "05a22f8024041fcc4dd2d6097cb62738723decfd96b0f41a90cfd950739ceb4f"
+          },
+          {
+            "path": "test-results/city-materials-a-northern--d9cd2-ty-changes-at-the-same-pose/north-bedroom-high.png",
+            "bytes": 230370,
+            "sha256": "d80f279915bc5ac403c31a790dceecd7d4de7c648efc1c4b6d978107eb27e1c5"
+          },
+          {
+            "path": "test-results/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-enclosed-room-high-pose.json",
+            "bytes": 836,
+            "sha256": "4c6e67b5f4ee5d4f0122025ac30e9e9765c70c72ed85ed41e0c03654075e2e02"
+          },
+          {
+            "path": "test-results/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-enclosed-room-high.png",
+            "bytes": 183895,
+            "sha256": "ac6376e870f5893e3e90cc2c1a35e05b634ef85458f547df69cc9c745d7d318d"
+          },
+          {
+            "path": "test-results/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-observation-room-high-pose.json",
+            "bytes": 846,
+            "sha256": "1d87dcaaaf2b434cb77f94be5b4448034335acf00536eb218a3f8eef5c3730df"
+          },
+          {
+            "path": "test-results/city-materials-an-eastern--36538--terrace-and-reloads-safely/east-observation-room-high.png",
+            "bytes": 267122,
+            "sha256": "72e7797f2213b802935571fbe62440d24f5a943307600e32dce119dd0aca2af3"
+          },
+          {
+            "path": "test-results/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/input-timing.json",
+            "bytes": 372,
+            "sha256": "4dd34dd90d6c3d6332022fc264a6ac099b748e667e9efc385a6cf9e7c4256b1b"
+          },
+          {
+            "path": "test-results/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/old-quarter-upstairs-room-high-pose.json",
+            "bytes": 884,
+            "sha256": "566874960270bb996e3aa2fe9edd2698f0ef1611b5347587b4aa150dce6295bf"
+          },
+          {
+            "path": "test-results/city-materials-an-old-quar-1bb74-oorway-rides-down-and-exits/old-quarter-upstairs-room-high.png",
+            "bytes": 219817,
+            "sha256": "78bc3faa76dc1586714df4639531fc396699c84603e38cb700e783ec1410becb"
+          }
+        ],
+        "largeRawVideoPreservedOutsideGit": [],
+        "recordedAt": "2026-10-05T02:40:25.555171+00:00",
+        "interpretation": "Original result is immutable. Functional/capture completion does not imply overall art acceptance. Raw originals require durable release asset archiving before release."
+      },
+      "blockers": [],
+      "statAfter": {
+        "bytes": 2985138,
+        "mtimeNs": 1791167411953377191,
+        "inode": 1972747
+      },
+      "bytes": 2985138,
+      "sha256": "71f96ed94c55ba5c9a46ce16d0189d6efa1f1cca968899298854b84941214e06",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-city-materials-71f96ed94c55-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/039fd113-7dad-42a0-bf50-0676c07abf0c/neon-cc038-city-materials-original.zip",
+          "before": {
+            "bytes": 2985138,
+            "mtimeNs": 1791167411953377191,
+            "inode": 1972747
+          },
+          "after": {
+            "bytes": 2985138,
+            "mtimeNs": 1791167411953377191,
+            "inode": 1972747
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": true,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "continuous-tour",
+      "artifactId": 11322269735,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-continuous-tour-11322269735/fresh-attempt1.receipt.json",
+        "sha256": "dc8d87b449267e17678eeaeaf6a33230d3db2378a3cd1cde19a3f9cfe27943cd"
+      },
+      "localPath": "/tmp/neon-cc038-continuous-tour-11322269735/original.zip",
+      "statBefore": {
+        "bytes": 45995912,
+        "mtimeNs": 1791168494161192227,
+        "inode": 120905
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n\n    at savePublic (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/capture-harbor-tour.mjs:528:75)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/capture-harbor-tour.mjs:615:22"
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "c61e49425eefa053fba8edca1e5db8d24dc67dbda70e103b993253a62752e9cb",
+      "archiveEntryCount": 124,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/video/page@51d9d2f521864c2e9a37c8a6bd9aef3b.webm",
+          "uncompressedBytes": 39716226,
+          "crc32": "e8045edc"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11322269735,
+        "expectedSize": 45995912,
+        "expectedSHA256": "3ca8f99459536b1cc46c4e439029494361374f7371c56dfe3d3035e888bb788d",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 45995912,
+        "startedUnix": 1791168492.8678775,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "3ca8f99459536b1cc46c4e439029494361374f7371c56dfe3d3035e888bb788d",
+        "archivePath": "/tmp/neon-cc038-continuous-tour-11322269735/original.zip",
+        "elapsedSeconds": 1.2980525989987655,
+        "finishedUnix": 1791168494.1659346,
+        "partialPath": null
+      },
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 45995912,
+        "mtimeNs": 1791168494161192227,
+        "inode": 120905
+      },
+      "bytes": 45995912,
+      "sha256": "3ca8f99459536b1cc46c4e439029494361374f7371c56dfe3d3035e888bb788d",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-continuous-tour-3ca8f9945953-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-continuous-tour-11322269735/original.zip",
+          "before": {
+            "bytes": 45995912,
+            "mtimeNs": 1791168494161192227,
+            "inode": 120905
+          },
+          "after": {
+            "bytes": 45995912,
+            "mtimeNs": 1791168494161192227,
+            "inode": 120905
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "ferry",
+      "artifactId": 11323061213,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-ferry-11323061213/fresh-attempt1.receipt.json",
+        "sha256": "2e5c2876ecf7e0e5e19998cd36f9a6fe9fc629b60a315e4a583299a1c497335b"
+      },
+      "localPath": "/tmp/neon-cc038-ferry-11323061213/original.zip",
+      "statBefore": {
+        "bytes": 103421694,
+        "mtimeNs": 1791168411478678822,
+        "inode": 120668
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "baseline",
+        "source": "original-native-record",
+        "error": {
+          "stage": "case",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 1ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 1ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:261:380)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:340:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:318:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20",
+          "kind": "ferry"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "0bffa5adccc3dec091f11d8f80a165be09db2a9422f22372e198ce50c023210e",
+      "archiveEntryCount": 120,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/ferry/video/page@4da62d2f56fa2d23a4c528a1630e5afb.webm",
+          "uncompressedBytes": 26153574,
+          "crc32": "0a6db0ce"
+        },
+        {
+          "path": "native/baseline/ferry/video/page@09070112419c377e433c25e5610e69c9.webm",
+          "uncompressedBytes": 25229196,
+          "crc32": "1e52c07f"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11323061213,
+        "expectedSize": 103421694,
+        "expectedSHA256": "ff9c7e661f3c00a189acd5dbeaebb7a6e63d13ab00b0e686488b44a4f6ff42e1",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 103421694,
+        "startedUnix": 1791168409.0540166,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "ff9c7e661f3c00a189acd5dbeaebb7a6e63d13ab00b0e686488b44a4f6ff42e1",
+        "archivePath": "/tmp/neon-cc038-ferry-11323061213/original.zip",
+        "elapsedSeconds": 2.427497463999316,
+        "finishedUnix": 1791168411.48152,
+        "partialPath": null
+      },
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 103421694,
+        "mtimeNs": 1791168411478678822,
+        "inode": 120668
+      },
+      "bytes": 103421694,
+      "sha256": "ff9c7e661f3c00a189acd5dbeaebb7a6e63d13ab00b0e686488b44a4f6ff42e1",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-ferry-ff9c7e661f3c-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-ferry-11323061213/original.zip",
+          "before": {
+            "bytes": 103421694,
+            "mtimeNs": 1791168411478678822,
+            "inode": 120668
+          },
+          "after": {
+            "bytes": 103421694,
+            "mtimeNs": 1791168411478678822,
+            "inode": 120668
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "home",
+      "artifactId": 11322372615,
+      "artifactIdBasis": {
+        "type": "originalArchiveReceipt",
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/current-visible-evidence-20261005/home-original-fail/archive-receipt.json",
+        "sha256": "5ae07b2ab2238e8d2f8a07014b21772f73b99acac5332c57452691c83f7d16e5"
+      },
+      "localPath": "/workspace/attachments/575039c5-e398-4a99-8e30-d04bd07d9ea0/neon-cc038-home-original.zip",
+      "statBefore": {
+        "bytes": 4233878,
+        "mtimeNs": 1791167459975710140,
+        "inode": 1972817
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "baseline",
+        "source": "original-native-record",
+        "error": {
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 120000ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 120000ms exceeded.\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:53:16)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:313:25"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "ac9275103627c61b7e56967e7ee9923192097c0f4f9ea17c3515611f15f7f6d5",
+      "archiveEntryCount": 110,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": {
+        "schema": "neon-current-original-visible-evidence-v1",
+        "sourceRun": 37254103874,
+        "attempt": 1,
+        "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+        "case": "home-original-fail",
+        "artifactId": 11322372615,
+        "originalZip": {
+          "localPath": "/workspace/attachments/575039c5-e398-4a99-8e30-d04bd07d9ea0/neon-cc038-home-original.zip",
+          "bytes": 4233878,
+          "sha256": "52628f0dd482e6036f5d32ca33ecc5f0766c02c004509d8387d37492bc9b7a6d"
+        },
+        "result": "FAIL; original precision hold120s exceeded; two actual bedroom images",
+        "copiedUnmodified": [
+          {
+            "path": "evidence-files.json",
+            "bytes": 20278,
+            "sha256": "89099f82fdf3c9044316b3bf35dbd2c3634aa9df4a5d1d594e16e0d20e4f03ff"
+          },
+          {
+            "path": "job-envelope.json",
+            "bytes": 322,
+            "sha256": "92e0db5f5b93539edd0ab044d24f33a213fef0f83d60ad034c4e43b61b74a2be"
+          },
+          {
+            "path": "native/authored/build-info.json",
+            "bytes": 20550,
+            "sha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd"
+          },
+          {
+            "path": "native/authored/home-bedroom-whole-high.png",
+            "bytes": 1056365,
+            "sha256": "33ed9d0823748a1f48257e52d4f3b7c1a1b12a30e79862a85236737a10f7435a"
+          },
+          {
+            "path": "native/authored/home-bedroom-whole-pose.json",
+            "bytes": 186338,
+            "sha256": "979c88842069fc208d1c819f6bd7f53d3601338c9cb03afd54db304be0032b47"
+          },
+          {
+            "path": "native/authored/metadata.json",
+            "bytes": 327568,
+            "sha256": "10d499daae3c2de2bccde8b9d6066e02e85e2b9a8bd94f42fd2bd5496ba84211"
+          },
+          {
+            "path": "native/baseline/build-info.json",
+            "bytes": 16361,
+            "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4"
+          },
+          {
+            "path": "native/baseline/home-bedroom-whole-high.png",
+            "bytes": 956265,
+            "sha256": "7470b84fae7a22d58820041456ca92dfe4e2f578468f82ccbe7a35a59bc81661"
+          },
+          {
+            "path": "native/baseline/home-bedroom-whole-pose.json",
+            "bytes": 53499,
+            "sha256": "e73f9da64ed46d7eab3453a099a1089007ddbd752fbd9b044d39da8d3dad740a"
+          },
+          {
+            "path": "native/baseline/metadata.json",
+            "bytes": 165107,
+            "sha256": "cbdb9912600be68e07f368d2c0d13230ad8dac287da8618fff56a70ef2883fb7"
+          },
+          {
+            "path": "pair-summary.json",
+            "bytes": 93281,
+            "sha256": "ac9275103627c61b7e56967e7ee9923192097c0f4f9ea17c3515611f15f7f6d5"
+          },
+          {
+            "path": "preparation/authored-build-info-original.json",
+            "bytes": 20550,
+            "sha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd"
+          },
+          {
+            "path": "preparation/authored-build-receipt.json",
+            "bytes": 20745,
+            "sha256": "6c9ed4691bd61a4989be554e5713726045bb39c29adb305886f1b5a4b80ef27a"
+          },
+          {
+            "path": "preparation/authored-dependency-receipt.json",
+            "bytes": 2734,
+            "sha256": "0a98b770ad9ea253b36be89c82a95ee359984bdaf272baa875d8136bda6fcddb"
+          },
+          {
+            "path": "preparation/baseline-build-info-original.json",
+            "bytes": 16361,
+            "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4"
+          },
+          {
+            "path": "preparation/baseline-build-receipt.json",
+            "bytes": 16556,
+            "sha256": "c2181510ec449aa4ff4d667114f5e194a749a4362fcef508284d3ee4f10143f8"
+          },
+          {
+            "path": "preparation/baseline-dependency-receipt.json",
+            "bytes": 2734,
+            "sha256": "0a98b770ad9ea253b36be89c82a95ee359984bdaf272baa875d8136bda6fcddb"
+          },
+          {
+            "path": "preparation/method-bundle-original/README.md",
+            "bytes": 10355,
+            "sha256": "b5316b8736890ecccbbf6fe2f1aa0068a6e4e5ba2d2345aa95a103fc72b4ca6d"
+          },
+          {
+            "path": "preparation/method-bundle-original/bundle-manifest.json",
+            "bytes": 17089,
+            "sha256": "ec762a6bf43eb19179927b1e17760dc864e610e8448e9815d393b129d8a791f6"
+          },
+          {
+            "path": "preparation/method-bundle-original/cases.json",
+            "bytes": 8956,
+            "sha256": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655"
+          },
+          {
+            "path": "preparation/method-bundle-original/curated-original-provenance.json",
+            "bytes": 16726,
+            "sha256": "5bfa0b0d2b816735471295651d2ae6957202ad23e78b8158e3d61ad565370cea"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json",
+            "bytes": 20512,
+            "sha256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/authored-build-info-original.json",
+            "bytes": 20302,
+            "sha256": "e45cdf73c892a8e79c0977a7cc2f4b873cbcf7653cb920026d054191eb749c9d"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/baseline-build-info-original.json",
+            "bytes": 16323,
+            "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-runtime-dictionaries.json",
+            "bytes": 39048,
+            "sha256": "a137b0b64cdc534f5826091a90a6454348587ad3ed5390bf8f31b083db04ee2c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tests/e2e/helpers/occupied.js",
+            "bytes": 5321,
+            "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tests/e2e/helpers/walking.js",
+            "bytes": 7277,
+            "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tools/capture-harbor-tour.mjs",
+            "bytes": 60171,
+            "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tools/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/capture-authored-harbor-native.mjs",
+            "bytes": 37885,
+            "sha256": "806f83e31713250e01379567c82b7b8c13781103bc92eab6663ada3d6c42d15e"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/captured-buildings.json",
+            "bytes": 14628,
+            "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/common-pose-proof.json",
+            "bytes": 37158,
+            "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/frontage-wide-static-proof.json",
+            "bytes": 34688,
+            "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/expectations.mjs",
+            "bytes": 2016,
+            "sha256": "bbfa361068edd9402c0134e1f7a4c51eac700aad6a59eb32f33c0e93af482e82"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/frontage-wide-plans.mjs",
+            "bytes": 5690,
+            "sha256": "d3f8c5410d96ab1565084b00c6e4861960443c3e8ae8e6a47a85b7d9182f12b2"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/input.mjs",
+            "bytes": 7087,
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/plans.mjs",
+            "bytes": 6752,
+            "sha256": "5129f5e505da5e0237edfa17c36cb694795696cedb6a9787bdf0673cf3ec85bc"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/README.md",
+            "bytes": 7381,
+            "sha256": "a44c4f74b136d10fdc56133f1e7cc23663136cef4bc0961f31984550bf12ab82"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/V3_CHANGE.md",
+            "bytes": 2177,
+            "sha256": "40fc6752f34ee1ecd1296f532e2758cc0e309b246e84076f52ead1d7eb8d3acd"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/candidate-files.json",
+            "bytes": 2120,
+            "sha256": "779fecdaea871b9cc2f058088e4e1e3d2abceea2adcd45ea87d335ac23bcca22"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/sealed-file-ledger.json",
+            "bytes": 4286,
+            "sha256": "9ebf8af42b57f64143f3e525c1c0dbba058ccc53d77292404f79bcec64833001"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/v3-resolution-receipt.json",
+            "bytes": 1758,
+            "sha256": "6a1ac16f61ee4fe0cb95a445c81e2ec9c1db872c1f209474fd665408c9eac5d8"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/render-readiness.mjs",
+            "bytes": 1091,
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/SEALED_SHA256.json",
+            "bytes": 486,
+            "sha256": "bd919991070ba2664d0a660d914d0d0a489357bbc44ad4ba36a3e0b4d9f5521e"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/CURRENT_METHOD_AMENDMENT.json",
+            "bytes": 550,
+            "sha256": "430b294b44ed32fde56cbba267f3a72d2a8dbb2114f421d87e87c019adff2f57"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/METHOD_SHA256.json",
+            "bytes": 404,
+            "sha256": "37eb2ec721158d04792b660c0941e7bf88dc0f2777b0163ed22cbb74681202fb"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/README.md",
+            "bytes": 2174,
+            "sha256": "c5ffcc665bf319b5e3c31dc25c1ae48ca45f63f8c5372fbcc5c043a0387b0699"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/package.json",
+            "bytes": 33,
+            "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/patches/core-v2-after-7bb.patch",
+            "bytes": 7491,
+            "sha256": "72621c972147294446ad53b4b36e77401b8dd003f23ff0c68d6bc59ec5c5345d"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/provenance/SEALED_SHA256-original-ef92.json",
+            "bytes": 486,
+            "sha256": "6256c9e98cb815d11e6c4efc0662a6cf7a78dddf6b77efe5e4ac2e1813e6b10c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/tools/capture-resident-native.mjs",
+            "bytes": 27364,
+            "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/SEALED_SHA256.json",
+            "bytes": 616,
+            "sha256": "b6ea36043b3cbc080a49b13eb48b701a1094976f8dd8415602b59276df0b6cff"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/CURRENT_METHOD_AMENDMENT.json",
+            "bytes": 776,
+            "sha256": "510ee8730e2e92296546cade9bfa68475e25a4ca972eea3cce6cef1eebc7acb7"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/METHOD_PROVENANCE.json",
+            "bytes": 1813,
+            "sha256": "bfe1af5cff721614e6e755989e821fa5452dac6d134dbc5954c4ba82f2b4953c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/README.md",
+            "bytes": 6308,
+            "sha256": "23cea2f4e0701c2ba6971000349f921ecadb116be1a03b8c518c160949bc7156"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/RESIDENT_DAY_FUNCTIONAL_AMENDMENT.json",
+            "bytes": 2137,
+            "sha256": "39ea3d56afc02ace23db494b361ae642e669fcec032993349cf18005d984fac6"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/package.json",
+            "bytes": 33,
+            "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/provenance/SEALED_SHA256-original-ef92.json",
+            "bytes": 384,
+            "sha256": "309d5b028810b883cedce978c633c74399ec4f789c749266bf4f1b4895dc8a41"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/tools/capture-resident-extra.mjs",
+            "bytes": 52095,
+            "sha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/tools/resident-loop-functional-guards.mjs",
+            "bytes": 6012,
+            "sha256": "7b88081258339c184901f871dd7d40b2c71ee47655531f7cbec9cd5768997b3f"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/README.md",
+            "bytes": 5506,
+            "sha256": "054224d76cd8f10a20a0c246897df11e2599e3b0660e4ac3f9e0149f4ab093b0"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/STATIC_REVIEW.md",
+            "bytes": 2333,
+            "sha256": "1182926abbe85f29a5ea7c2f2f6c13b9136e3b4189fe1a69734bcec2457573ee"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/capture-scenic-east.mjs",
+            "bytes": 32756,
+            "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/input.mjs",
+            "bytes": 7087,
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/prepared-files.json",
+            "bytes": 1203,
+            "sha256": "98cfe3c269c8ac333ac31688f25a6536f15dbdcca8fe8ff272f7e95188b5448f"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/render-readiness.mjs",
+            "bytes": 1091,
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/API-SOURCE-REVIEW.md",
+            "bytes": 3776,
+            "sha256": "6c00227e98c7ddcfdf190dbdb0c6c0b71ad48de61f3dc6704745b66d5117de12"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/FINAL-LEDGER.json",
+            "bytes": 1843,
+            "sha256": "f4c25782f2bafe7699a320b54cba4a740bb54683628eca85541b6502927c83e9"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/INDEPENDENT-STATIC-REVIEW.json",
+            "bytes": 559,
+            "sha256": "3facb79d9937c8c250474b57028eca6c0eb4ee7125bcfd8db650da7f33d80f01"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/POSTSEAL-PROVENANCE.json",
+            "bytes": 3132,
+            "sha256": "f73a7ef657fb5e5b7cdf93ff250f1ed083d957642c18694ff6948f3401bfdcf4"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/README.md",
+            "bytes": 8180,
+            "sha256": "441ffbabc42e02ea233e1ae0272fc6f14ef26ee2c6ca7aad523d848863a060a1"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/SYNTAX-ONLY-RECEIPT.json",
+            "bytes": 498,
+            "sha256": "d90489568af8aaa6fdee31673e9b68d831d5e9b08878bed2fdf7942d8097e234"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/canonical-layouts.json",
+            "bytes": 379831,
+            "sha256": "c9df5f63bc88d241720dbfefd8c0476eb3b92a4302bff3293e74f198d1d28de8"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/delta-from-7247.patch",
+            "bytes": 13264,
+            "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/method-manifest.json",
+            "bytes": 14442,
+            "sha256": "42679942a3ec5e33f1aa7f7450b819095468ac0869c20d12f6b5e1a4d677b99c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/native-transport-high.mjs",
+            "bytes": 47346,
+            "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/runtime-resources.json",
+            "bytes": 3799,
+            "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/API-SOURCE-REVIEW.md",
+            "bytes": 3776,
+            "sha256": "6c00227e98c7ddcfdf190dbdb0c6c0b71ad48de61f3dc6704745b66d5117de12"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/FINAL-LEDGER.json",
+            "bytes": 1551,
+            "sha256": "dc1405bba1099e30f0553096343466cccf03f5493339cbff4495efb4f5a8d3f7"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/PREPARATION-PROVENANCE.json",
+            "bytes": 2727,
+            "sha256": "6334c3234ac5ede01d226500895b10e989e76b1d0943a2de2a3d3ca329c3f0a5"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/README.md",
+            "bytes": 8242,
+            "sha256": "f2d3bf66e0c6f867c8a1aa5054c19b71f2e377f32874849d9e024801899e31ce"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/STATIC-READONLY-REVIEW.json",
+            "bytes": 1055,
+            "sha256": "052a8d9fff80dddcd228c7919a18e1a4823fa73929717437c840a645825a003a"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/base-fc22-native-transport-high-original.mjs",
+            "bytes": 39643,
+            "sha256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/method-manifest.json",
+            "bytes": 7968,
+            "sha256": "3f02043e1f8fb539ca4d66a8fd0ed00061eb589b95ea05d9b3f58e72210a655b"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/native-transport-ownership-extra.mjs",
+            "bytes": 42916,
+            "sha256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/runtime-resources.json",
+            "bytes": 3805,
+            "sha256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb"
+          },
+          {
+            "path": "preparation/method-bundle-original/run-paired-native.py",
+            "bytes": 34285,
+            "sha256": "c9ca521c91edb9d2720c913bc7bf9e3a5cf6fcf6909c66fe74c0acb139951cd6"
+          }
+        ],
+        "largeRawVideoPreservedOutsideGit": [],
+        "recordedAt": "2026-10-05T02:40:25.259939+00:00",
+        "interpretation": "Original result is immutable. Functional/capture completion does not imply overall art acceptance. Raw originals require durable release asset archiving before release."
+      },
+      "blockers": [],
+      "statAfter": {
+        "bytes": 4233878,
+        "mtimeNs": 1791167459975710140,
+        "inode": 1972817
+      },
+      "bytes": 4233878,
+      "sha256": "52628f0dd482e6036f5d32ca33ecc5f0766c02c004509d8387d37492bc9b7a6d",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-home-52628f0dd482-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/575039c5-e398-4a99-8e30-d04bd07d9ea0/neon-cc038-home-original.zip",
+          "before": {
+            "bytes": 4233878,
+            "mtimeNs": 1791167459975710140,
+            "inode": 1972817
+          },
+          "after": {
+            "bytes": 4233878,
+            "mtimeNs": 1791167459975710140,
+            "inode": 1972817
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": true,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "north-book",
+      "artifactId": 11322399100,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-north-book-11322399100",
+        "pairSummarySha256": "896a86a08540dececa542f1341a522965db1836e40351059bf9e58d9ebc8f544"
+      },
+      "localPath": "/workspace/attachments/23753484-2a15-47e0-86ca-cc0f10776bbc/neon-cc038-north-book-original.zip",
+      "statBefore": {
+        "bytes": 7226496,
+        "mtimeNs": 1791168249268964295,
+        "inode": 1973365
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "at": "2026-10-05T02:42:38.496Z",
+          "type": "method",
+          "message": "Error: Original first-person phase deadline during public game focus\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:150:118)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "896a86a08540dececa542f1341a522965db1836e40351059bf9e58d9ebc8f544",
+      "archiveEntryCount": 93,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/raw-video/page@0b408161802643e9ad2d2aa620514c19.webm",
+          "uncompressedBytes": 5760215,
+          "crc32": "5c0fca9c"
+        }
+      ],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 7226496,
+        "mtimeNs": 1791168249268964295,
+        "inode": 1973365
+      },
+      "bytes": 7226496,
+      "sha256": "3b746e027ba8293e23c601c575b9553d4547752289ac6d699c600aa1d7014292",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-north-book-3b746e027ba8-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/23753484-2a15-47e0-86ca-cc0f10776bbc/neon-cc038-north-book-original.zip",
+          "before": {
+            "bytes": 7226496,
+            "mtimeNs": 1791168249268964295,
+            "inode": 1973365
+          },
+          "after": {
+            "bytes": 7226496,
+            "mtimeNs": 1791168249268964295,
+            "inode": 1973365
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "north-cup-owner",
+      "artifactId": 11323004105,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-north-cup-owner-11323004105/fresh-attempt1.receipt.json",
+        "sha256": "4568b535b7fe30a2953aac353d724e63a24ad0a41515b4b0d22df99f3a06da17"
+      },
+      "localPath": "/tmp/neon-cc038-north-cup-owner-11323004105/original.zip",
+      "statBefore": {
+        "bytes": 91556531,
+        "mtimeNs": 1791169346803275222,
+        "inode": 123124
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "at": "2026-10-05T03:00:07.105Z",
+          "type": "method",
+          "message": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at ownerCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:301:12)\n    at async northCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:332:68)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:107)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "94e2d6564bdb816da9e3f53e025c96f5d0ca3e2ff4be531c790a07bfd1a6b3b7",
+      "archiveEntryCount": 97,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/raw-video/page@ef5adc5dfd1ce6a640682f66d63557a0.webm",
+          "uncompressedBytes": 82942010,
+          "crc32": "bcf80d44"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11323004105,
+        "expectedSize": 91556531,
+        "expectedSHA256": "ae81c5db2a6ea1199fc928f2c04720c29520e1264ab07416489df1aab6236c7c",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 91556531,
+        "startedUnix": 1791169344.740357,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "ae81c5db2a6ea1199fc928f2c04720c29520e1264ab07416489df1aab6236c7c",
+        "archivePath": "/tmp/neon-cc038-north-cup-owner-11323004105/original.zip",
+        "elapsedSeconds": 2.0671719029996893,
+        "finishedUnix": 1791169346.8075333,
+        "partialPath": null
+      },
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 91556531,
+        "mtimeNs": 1791169346803275222,
+        "inode": 123124
+      },
+      "bytes": 91556531,
+      "sha256": "ae81c5db2a6ea1199fc928f2c04720c29520e1264ab07416489df1aab6236c7c",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-north-cup-owner-ae81c5db2a6e-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-north-cup-owner-11323004105/original.zip",
+          "before": {
+            "bytes": 91556531,
+            "mtimeNs": 1791169346803275222,
+            "inode": 123124
+          },
+          "after": {
+            "bytes": 91556531,
+            "mtimeNs": 1791169346803275222,
+            "inode": 123124
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "north-phone",
+      "artifactId": 11322793245,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-north-phone-11322793245",
+        "pairSummarySha256": "33bfefbea153ec5d6dd6c49c66087cf698077641a30e92e797b7389c41e69d79"
+      },
+      "localPath": "/workspace/attachments/cd83a3cd-4030-48c6-ab55-bdaa0c6bb727/neon-cc038-north-phone-original.zip",
+      "statBefore": {
+        "bytes": 17885123,
+        "mtimeNs": 1791168641181895061,
+        "inode": 1973442
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "at": "2026-10-05T02:47:24.598Z",
+          "type": "method",
+          "message": "page.waitForFunction: Timeout 176430ms exceeded.\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:192:18)\n    at async walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:203:5)\n    at async northCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:321:5)\n    at async core (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:107)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "33bfefbea153ec5d6dd6c49c66087cf698077641a30e92e797b7389c41e69d79",
+      "archiveEntryCount": 93,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/raw-video/page@35e4fcc379dff4fcc94a1ee48d995b4b.webm",
+          "uncompressedBytes": 16292699,
+          "crc32": "5c331e31"
+        }
+      ],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 17885123,
+        "mtimeNs": 1791168641181895061,
+        "inode": 1973442
+      },
+      "bytes": 17885123,
+      "sha256": "4dcdb0825a3dca719061ebfca27d8965ed527021756fa6c1d262625513bc8862",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-north-phone-4dcdb0825a3d-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/cd83a3cd-4030-48c6-ab55-bdaa0c6bb727/neon-cc038-north-phone-original.zip",
+          "before": {
+            "bytes": 17885123,
+            "mtimeNs": 1791168641181895061,
+            "inode": 1973442
+          },
+          "after": {
+            "bytes": 17885123,
+            "mtimeNs": 1791168641181895061,
+            "inode": 1973442
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "ownership-bus",
+      "artifactId": 11322937962,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-ownership-bus-11322937962",
+        "pairSummarySha256": "19485176d03c74497b024c7dd6ef7a84dde844f136c8ae3450e14e2c80c4ed2d"
+      },
+      "localPath": "/workspace/attachments/c657de40-1e32-4048-b1d2-c136785533f6/neon-cc038-ownership-bus-original.zip",
+      "statBefore": {
+        "bytes": 16098198,
+        "mtimeNs": 1791168641811057055,
+        "inode": 1973449
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "stage": "ownership case",
+          "name": "Error",
+          "message": "read-only actual snapshot exceeded 30000 ms",
+          "stack": "Error: read-only actual snapshot exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs:85:134)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "19485176d03c74497b024c7dd6ef7a84dde844f136c8ae3450e14e2c80c4ed2d",
+      "archiveEntryCount": 98,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/video/page@a1ec407dbdc8e437649e7df1c2484d35.webm",
+          "uncompressedBytes": 10279397,
+          "crc32": "6eddc813"
+        }
+      ],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 16098198,
+        "mtimeNs": 1791168641811057055,
+        "inode": 1973449
+      },
+      "bytes": 16098198,
+      "sha256": "b0188984544d705a57d74595061e403c88e8a3706f296fb90cd82d62277fa0bb",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-ownership-bus-b0188984544d-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/c657de40-1e32-4048-b1d2-c136785533f6/neon-cc038-ownership-bus-original.zip",
+          "before": {
+            "bytes": 16098198,
+            "mtimeNs": 1791168641811057055,
+            "inode": 1973449
+          },
+          "after": {
+            "bytes": 16098198,
+            "mtimeNs": 1791168641811057055,
+            "inode": 1973449
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "ownership-ferry",
+      "artifactId": 11322599264,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-ownership-ferry-11322599264",
+        "pairSummarySha256": "aec680fca345e612c4874d48f55652331fb73369582dff0565e95a8ef7a333b0"
+      },
+      "localPath": "/workspace/attachments/7d4960ba-3cf1-4d7d-8d02-43cd463dab7f/neon-cc038-ownership-ferry-original.zip",
+      "statBefore": {
+        "bytes": 32162377,
+        "mtimeNs": 1791169201152049415,
+        "inode": 1973537
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "aec680fca345e612c4874d48f55652331fb73369582dff0565e95a8ef7a333b0",
+      "archiveEntryCount": 99,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/video/page@d0555c48d56577abfe7e468d5476c7eb.webm",
+          "uncompressedBytes": 17946927,
+          "crc32": "d12adb20"
+        }
+      ],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 32162377,
+        "mtimeNs": 1791169201152049415,
+        "inode": 1973537
+      },
+      "bytes": 32162377,
+      "sha256": "0c61f1526ab43bc49bf9f719d4c51b074b3f3129eb0f3a038b46bd465c18add0",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-ownership-ferry-0c61f1526ab4-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/7d4960ba-3cf1-4d7d-8d02-43cd463dab7f/neon-cc038-ownership-ferry-original.zip",
+          "before": {
+            "bytes": 32162377,
+            "mtimeNs": 1791169201152049415,
+            "inode": 1973537
+          },
+          "after": {
+            "bytes": 32162377,
+            "mtimeNs": 1791169201152049415,
+            "inode": 1973537
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "ownership-tram",
+      "artifactId": 11323315863,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-ownership-tram-11323315863",
+        "pairSummarySha256": "bc3a14d957d820de75cb819571d5880832336242b8a66fe8095756ca79078696"
+      },
+      "localPath": "/workspace/attachments/39f61a70-0073-4625-ae80-0fc1e737b15c/neon-cc038-ownership-tram-original.zip",
+      "statBefore": {
+        "bytes": 18181405,
+        "mtimeNs": 1791169200233255816,
+        "inode": 1973535
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "stage": "ownership case",
+          "name": "Error",
+          "message": "read-only actual snapshot exceeded 30000 ms",
+          "stack": "Error: read-only actual snapshot exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs:85:134)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "bc3a14d957d820de75cb819571d5880832336242b8a66fe8095756ca79078696",
+      "archiveEntryCount": 98,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/video/page@19d124fb134e2644d1da8f4a00955671.webm",
+          "uncompressedBytes": 12679932,
+          "crc32": "aa9392f1"
+        }
+      ],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 18181405,
+        "mtimeNs": 1791169200233255816,
+        "inode": 1973535
+      },
+      "bytes": 18181405,
+      "sha256": "799922d07e7009bd6076854fdc5a18dc07318902db9f552d21bfe64d7bcb199e",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-ownership-tram-799922d07e70-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/39f61a70-0073-4625-ae80-0fc1e737b15c/neon-cc038-ownership-tram-original.zip",
+          "before": {
+            "bytes": 18181405,
+            "mtimeNs": 1791169200233255816,
+            "inode": 1973535
+          },
+          "after": {
+            "bytes": 18181405,
+            "mtimeNs": 1791169200233255816,
+            "inode": 1973535
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "resident-core",
+      "artifactId": 11321599687,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-resident-core-11321599687/fresh-attempt1.receipt.json",
+        "sha256": "a7138fb50c946e7fc43574d44227e54a0287970cbc23da59c4fa88fe0817dc76"
+      },
+      "localPath": "/tmp/neon-cc038-resident-core-11321599687/original.zip",
+      "statBefore": {
+        "bytes": 129731991,
+        "mtimeNs": 1791167691884641326,
+        "inode": 113087
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "baseline",
+        "source": "original-native-record",
+        "error": {
+          "at": "2026-10-05T02:21:06.084Z",
+          "type": "method",
+          "message": "AssertionError [ERR_ASSERTION]: actual NPC remains in fixed close viewpoint\n    at capture (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:200:12)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:240:3)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:305:3"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "a66e8ad409dd5d687a38fc1a63f33226c55d7f47e307b345cb190f391d5cfcbe",
+      "archiveEntryCount": 112,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/raw-video/page@4ab1ef3e27b98c4b67556789cbb49c3f.webm",
+          "uncompressedBytes": 55083554,
+          "crc32": "90fc40e9"
+        },
+        {
+          "path": "native/baseline/raw-video/page@dd8241dcf5ad4e21b3a767acbd988050.webm",
+          "uncompressedBytes": 66125030,
+          "crc32": "acc84ceb"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11321599687,
+        "expectedSize": 129731991,
+        "expectedSHA256": "fa5e4485b51434de844ed67c6d0cdd41ea364347bf5b14196785785af1765f19",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 129731991,
+        "startedUnix": 1791167689.0611126,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "fa5e4485b51434de844ed67c6d0cdd41ea364347bf5b14196785785af1765f19",
+        "archivePath": "/tmp/neon-cc038-resident-core-11321599687/original.zip",
+        "elapsedSeconds": 2.827332433000265,
+        "finishedUnix": 1791167691.8884501,
+        "partialPath": null
+      },
+      "archiveReceipt": {
+        "schema": "neon-current-original-visible-evidence-v1",
+        "sourceRun": 37254103874,
+        "attempt": 1,
+        "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+        "case": "resident-core-original-fail",
+        "artifactId": 11321599687,
+        "originalZip": {
+          "localPath": "/tmp/neon-cc038-resident-core-11321599687/original.zip",
+          "bytes": 129731991,
+          "sha256": "fa5e4485b51434de844ed67c6d0cdd41ea364347bf5b14196785785af1765f19"
+        },
+        "result": "FAIL; original moving merchant guard and second x walk; four actual images",
+        "copiedUnmodified": [
+          {
+            "path": "evidence-files.json",
+            "bytes": 20643,
+            "sha256": "e65a4c3c999a2147690c029511fbbed411eab8856c6c8aebe31952e94affb024"
+          },
+          {
+            "path": "job-envelope.json",
+            "bytes": 331,
+            "sha256": "d86d2f8c549b27967dfb440397788206692f9a5035e31e3fbda39ae00c94a242"
+          },
+          {
+            "path": "native/authored/01-worker-close.png",
+            "bytes": 1067846,
+            "sha256": "918ffeadf41b318aa06742a4ee78bd6e10db5aae672ec4724c05364fcdc9417b"
+          },
+          {
+            "path": "native/authored/02-commuter-player.png",
+            "bytes": 1341857,
+            "sha256": "11c3d73d181e77621727a7330dccec1cdcebb8ec6f417ad8ab541c42bb0ffd57"
+          },
+          {
+            "path": "native/authored/build-info.json",
+            "bytes": 20550,
+            "sha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd"
+          },
+          {
+            "path": "native/authored/metadata.json",
+            "bytes": 2062273,
+            "sha256": "514330ad322e3700a9759cba5dde6bc107c226c245720b8549858e22f39fdf9a"
+          },
+          {
+            "path": "native/baseline/01-worker-close.png",
+            "bytes": 1026465,
+            "sha256": "e1faa0adf95ae22430ef7d2be79ef0d67fbc44fad77e8b1a40da848fbc35db6b"
+          },
+          {
+            "path": "native/baseline/02-commuter-player.png",
+            "bytes": 1325148,
+            "sha256": "7893c865a8bb81082124eb0a7aa3a332c8ce83491e7904977567bd7b75ae5338"
+          },
+          {
+            "path": "native/baseline/build-info.json",
+            "bytes": 16361,
+            "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4"
+          },
+          {
+            "path": "native/baseline/metadata.json",
+            "bytes": 199626,
+            "sha256": "66e21b8a8c4279bdfd206e1903bf635b778c3db0b23045136e0c6f0f43a318a0"
+          },
+          {
+            "path": "pair-summary.json",
+            "bytes": 94852,
+            "sha256": "a66e8ad409dd5d687a38fc1a63f33226c55d7f47e307b345cb190f391d5cfcbe"
+          },
+          {
+            "path": "preparation/authored-build-info-original.json",
+            "bytes": 20550,
+            "sha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd"
+          },
+          {
+            "path": "preparation/authored-build-receipt.json",
+            "bytes": 20745,
+            "sha256": "6c9ed4691bd61a4989be554e5713726045bb39c29adb305886f1b5a4b80ef27a"
+          },
+          {
+            "path": "preparation/authored-dependency-receipt.json",
+            "bytes": 2734,
+            "sha256": "0a98b770ad9ea253b36be89c82a95ee359984bdaf272baa875d8136bda6fcddb"
+          },
+          {
+            "path": "preparation/baseline-build-info-original.json",
+            "bytes": 16361,
+            "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4"
+          },
+          {
+            "path": "preparation/baseline-build-receipt.json",
+            "bytes": 16556,
+            "sha256": "c2181510ec449aa4ff4d667114f5e194a749a4362fcef508284d3ee4f10143f8"
+          },
+          {
+            "path": "preparation/baseline-dependency-receipt.json",
+            "bytes": 2734,
+            "sha256": "0a98b770ad9ea253b36be89c82a95ee359984bdaf272baa875d8136bda6fcddb"
+          },
+          {
+            "path": "preparation/method-bundle-original/README.md",
+            "bytes": 10355,
+            "sha256": "b5316b8736890ecccbbf6fe2f1aa0068a6e4e5ba2d2345aa95a103fc72b4ca6d"
+          },
+          {
+            "path": "preparation/method-bundle-original/bundle-manifest.json",
+            "bytes": 17089,
+            "sha256": "ec762a6bf43eb19179927b1e17760dc864e610e8448e9815d393b129d8a791f6"
+          },
+          {
+            "path": "preparation/method-bundle-original/cases.json",
+            "bytes": 8956,
+            "sha256": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655"
+          },
+          {
+            "path": "preparation/method-bundle-original/curated-original-provenance.json",
+            "bytes": 16726,
+            "sha256": "5bfa0b0d2b816735471295651d2ae6957202ad23e78b8158e3d61ad565370cea"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json",
+            "bytes": 20512,
+            "sha256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/authored-build-info-original.json",
+            "bytes": 20302,
+            "sha256": "e45cdf73c892a8e79c0977a7cc2f4b873cbcf7653cb920026d054191eb749c9d"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/baseline-build-info-original.json",
+            "bytes": 16323,
+            "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-runtime-dictionaries.json",
+            "bytes": 39048,
+            "sha256": "a137b0b64cdc534f5826091a90a6454348587ad3ed5390bf8f31b083db04ee2c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tests/e2e/helpers/occupied.js",
+            "bytes": 5321,
+            "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tests/e2e/helpers/walking.js",
+            "bytes": 7277,
+            "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tools/capture-harbor-tour.mjs",
+            "bytes": 60171,
+            "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tools/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/capture-authored-harbor-native.mjs",
+            "bytes": 37885,
+            "sha256": "806f83e31713250e01379567c82b7b8c13781103bc92eab6663ada3d6c42d15e"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/captured-buildings.json",
+            "bytes": 14628,
+            "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/common-pose-proof.json",
+            "bytes": 37158,
+            "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/frontage-wide-static-proof.json",
+            "bytes": 34688,
+            "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/expectations.mjs",
+            "bytes": 2016,
+            "sha256": "bbfa361068edd9402c0134e1f7a4c51eac700aad6a59eb32f33c0e93af482e82"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/frontage-wide-plans.mjs",
+            "bytes": 5690,
+            "sha256": "d3f8c5410d96ab1565084b00c6e4861960443c3e8ae8e6a47a85b7d9182f12b2"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/input.mjs",
+            "bytes": 7087,
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/plans.mjs",
+            "bytes": 6752,
+            "sha256": "5129f5e505da5e0237edfa17c36cb694795696cedb6a9787bdf0673cf3ec85bc"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/README.md",
+            "bytes": 7381,
+            "sha256": "a44c4f74b136d10fdc56133f1e7cc23663136cef4bc0961f31984550bf12ab82"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/V3_CHANGE.md",
+            "bytes": 2177,
+            "sha256": "40fc6752f34ee1ecd1296f532e2758cc0e309b246e84076f52ead1d7eb8d3acd"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/candidate-files.json",
+            "bytes": 2120,
+            "sha256": "779fecdaea871b9cc2f058088e4e1e3d2abceea2adcd45ea87d335ac23bcca22"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/sealed-file-ledger.json",
+            "bytes": 4286,
+            "sha256": "9ebf8af42b57f64143f3e525c1c0dbba058ccc53d77292404f79bcec64833001"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/v3-resolution-receipt.json",
+            "bytes": 1758,
+            "sha256": "6a1ac16f61ee4fe0cb95a445c81e2ec9c1db872c1f209474fd665408c9eac5d8"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/render-readiness.mjs",
+            "bytes": 1091,
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/SEALED_SHA256.json",
+            "bytes": 486,
+            "sha256": "bd919991070ba2664d0a660d914d0d0a489357bbc44ad4ba36a3e0b4d9f5521e"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/CURRENT_METHOD_AMENDMENT.json",
+            "bytes": 550,
+            "sha256": "430b294b44ed32fde56cbba267f3a72d2a8dbb2114f421d87e87c019adff2f57"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/METHOD_SHA256.json",
+            "bytes": 404,
+            "sha256": "37eb2ec721158d04792b660c0941e7bf88dc0f2777b0163ed22cbb74681202fb"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/README.md",
+            "bytes": 2174,
+            "sha256": "c5ffcc665bf319b5e3c31dc25c1ae48ca45f63f8c5372fbcc5c043a0387b0699"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/package.json",
+            "bytes": 33,
+            "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/patches/core-v2-after-7bb.patch",
+            "bytes": 7491,
+            "sha256": "72621c972147294446ad53b4b36e77401b8dd003f23ff0c68d6bc59ec5c5345d"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/provenance/SEALED_SHA256-original-ef92.json",
+            "bytes": 486,
+            "sha256": "6256c9e98cb815d11e6c4efc0662a6cf7a78dddf6b77efe5e4ac2e1813e6b10c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/tools/capture-resident-native.mjs",
+            "bytes": 27364,
+            "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/SEALED_SHA256.json",
+            "bytes": 616,
+            "sha256": "b6ea36043b3cbc080a49b13eb48b701a1094976f8dd8415602b59276df0b6cff"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/CURRENT_METHOD_AMENDMENT.json",
+            "bytes": 776,
+            "sha256": "510ee8730e2e92296546cade9bfa68475e25a4ca972eea3cce6cef1eebc7acb7"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/METHOD_PROVENANCE.json",
+            "bytes": 1813,
+            "sha256": "bfe1af5cff721614e6e755989e821fa5452dac6d134dbc5954c4ba82f2b4953c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/README.md",
+            "bytes": 6308,
+            "sha256": "23cea2f4e0701c2ba6971000349f921ecadb116be1a03b8c518c160949bc7156"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/RESIDENT_DAY_FUNCTIONAL_AMENDMENT.json",
+            "bytes": 2137,
+            "sha256": "39ea3d56afc02ace23db494b361ae642e669fcec032993349cf18005d984fac6"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/package.json",
+            "bytes": 33,
+            "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/provenance/SEALED_SHA256-original-ef92.json",
+            "bytes": 384,
+            "sha256": "309d5b028810b883cedce978c633c74399ec4f789c749266bf4f1b4895dc8a41"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/tools/capture-resident-extra.mjs",
+            "bytes": 52095,
+            "sha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/tools/resident-loop-functional-guards.mjs",
+            "bytes": 6012,
+            "sha256": "7b88081258339c184901f871dd7d40b2c71ee47655531f7cbec9cd5768997b3f"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/README.md",
+            "bytes": 5506,
+            "sha256": "054224d76cd8f10a20a0c246897df11e2599e3b0660e4ac3f9e0149f4ab093b0"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/STATIC_REVIEW.md",
+            "bytes": 2333,
+            "sha256": "1182926abbe85f29a5ea7c2f2f6c13b9136e3b4189fe1a69734bcec2457573ee"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/capture-scenic-east.mjs",
+            "bytes": 32756,
+            "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/input.mjs",
+            "bytes": 7087,
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/prepared-files.json",
+            "bytes": 1203,
+            "sha256": "98cfe3c269c8ac333ac31688f25a6536f15dbdcca8fe8ff272f7e95188b5448f"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/render-readiness.mjs",
+            "bytes": 1091,
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/API-SOURCE-REVIEW.md",
+            "bytes": 3776,
+            "sha256": "6c00227e98c7ddcfdf190dbdb0c6c0b71ad48de61f3dc6704745b66d5117de12"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/FINAL-LEDGER.json",
+            "bytes": 1843,
+            "sha256": "f4c25782f2bafe7699a320b54cba4a740bb54683628eca85541b6502927c83e9"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/INDEPENDENT-STATIC-REVIEW.json",
+            "bytes": 559,
+            "sha256": "3facb79d9937c8c250474b57028eca6c0eb4ee7125bcfd8db650da7f33d80f01"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/POSTSEAL-PROVENANCE.json",
+            "bytes": 3132,
+            "sha256": "f73a7ef657fb5e5b7cdf93ff250f1ed083d957642c18694ff6948f3401bfdcf4"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/README.md",
+            "bytes": 8180,
+            "sha256": "441ffbabc42e02ea233e1ae0272fc6f14ef26ee2c6ca7aad523d848863a060a1"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/SYNTAX-ONLY-RECEIPT.json",
+            "bytes": 498,
+            "sha256": "d90489568af8aaa6fdee31673e9b68d831d5e9b08878bed2fdf7942d8097e234"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/canonical-layouts.json",
+            "bytes": 379831,
+            "sha256": "c9df5f63bc88d241720dbfefd8c0476eb3b92a4302bff3293e74f198d1d28de8"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/delta-from-7247.patch",
+            "bytes": 13264,
+            "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/method-manifest.json",
+            "bytes": 14442,
+            "sha256": "42679942a3ec5e33f1aa7f7450b819095468ac0869c20d12f6b5e1a4d677b99c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/native-transport-high.mjs",
+            "bytes": 47346,
+            "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/runtime-resources.json",
+            "bytes": 3799,
+            "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/API-SOURCE-REVIEW.md",
+            "bytes": 3776,
+            "sha256": "6c00227e98c7ddcfdf190dbdb0c6c0b71ad48de61f3dc6704745b66d5117de12"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/FINAL-LEDGER.json",
+            "bytes": 1551,
+            "sha256": "dc1405bba1099e30f0553096343466cccf03f5493339cbff4495efb4f5a8d3f7"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/PREPARATION-PROVENANCE.json",
+            "bytes": 2727,
+            "sha256": "6334c3234ac5ede01d226500895b10e989e76b1d0943a2de2a3d3ca329c3f0a5"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/README.md",
+            "bytes": 8242,
+            "sha256": "f2d3bf66e0c6f867c8a1aa5054c19b71f2e377f32874849d9e024801899e31ce"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/STATIC-READONLY-REVIEW.json",
+            "bytes": 1055,
+            "sha256": "052a8d9fff80dddcd228c7919a18e1a4823fa73929717437c840a645825a003a"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/base-fc22-native-transport-high-original.mjs",
+            "bytes": 39643,
+            "sha256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/method-manifest.json",
+            "bytes": 7968,
+            "sha256": "3f02043e1f8fb539ca4d66a8fd0ed00061eb589b95ea05d9b3f58e72210a655b"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/native-transport-ownership-extra.mjs",
+            "bytes": 42916,
+            "sha256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/runtime-resources.json",
+            "bytes": 3805,
+            "sha256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb"
+          },
+          {
+            "path": "preparation/method-bundle-original/run-paired-native.py",
+            "bytes": 34285,
+            "sha256": "c9ca521c91edb9d2720c913bc7bf9e3a5cf6fcf6909c66fe74c0acb139951cd6"
+          }
+        ],
+        "largeRawVideoPreservedOutsideGit": [
+          {
+            "path": "native/authored/raw-video/page@4ab1ef3e27b98c4b67556789cbb49c3f.webm",
+            "bytes": 55083554,
+            "sha256": "8bcd7133dc31b08dae475363c0119d96528b2719270c74653f2dd1bc52b03a64"
+          },
+          {
+            "path": "native/baseline/raw-video/page@dd8241dcf5ad4e21b3a767acbd988050.webm",
+            "bytes": 66125030,
+            "sha256": "f2e5bde67c0ebf87985d8ce00b8f98be4870a49628f3ad3c6f4dd2f0d8399f92"
+          }
+        ],
+        "recordedAt": "2026-10-05T02:40:25.525193+00:00",
+        "interpretation": "Original result is immutable. Functional/capture completion does not imply overall art acceptance. Raw originals require durable release asset archiving before release."
+      },
+      "blockers": [],
+      "statAfter": {
+        "bytes": 129731991,
+        "mtimeNs": 1791167691884641326,
+        "inode": 113087
+      },
+      "bytes": 129731991,
+      "sha256": "fa5e4485b51434de844ed67c6d0cdd41ea364347bf5b14196785785af1765f19",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-resident-core-fa5e4485b514-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-resident-core-11321599687/original.zip",
+          "before": {
+            "bytes": 129731991,
+            "mtimeNs": 1791167691884641326,
+            "inode": 113087
+          },
+          "after": {
+            "bytes": 129731991,
+            "mtimeNs": 1791167691884641326,
+            "inode": 113087
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": true,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "resident-loop",
+      "artifactId": 11322287652,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-resident-loop-11322287652",
+        "pairSummarySha256": "1a7610f07d9736af6487a14db12af733f49eca8ff15c0ea36ad80c27b3d25045"
+      },
+      "localPath": "/workspace/attachments/4645bc86-7b5b-47e9-b48e-1ce8cfa0a71d/neon-cc038-resident-loop-original.zip",
+      "statBefore": {
+        "bytes": 3799545,
+        "mtimeNs": 1791166378275038426,
+        "inode": 1972090
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "at": "2026-10-05T02:12:13.519Z",
+          "type": "method",
+          "message": "Error: Authored workshop requires the stable archive room\n    at applyAuthoredWorkshopLayout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/src/harbor-workshop-authored.js:13:21)\n    at createInteriorLayout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/src/metropolis-interiors.js:62:73)\n    at residentLoopCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:396:68)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:21)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "1a7610f07d9736af6487a14db12af733f49eca8ff15c0ea36ad80c27b3d25045",
+      "archiveEntryCount": 93,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/raw-video/page@1972ff6dfb666dc98de305a206b021de.webm",
+          "uncompressedBytes": 2337906,
+          "crc32": "ae2e6e6b"
+        }
+      ],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 3799545,
+        "mtimeNs": 1791166378275038426,
+        "inode": 1972090
+      },
+      "bytes": 3799545,
+      "sha256": "1e1c49101ba70b372f479687185dd7995172b3561a17732c5a437585da6b9afb",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-resident-loop-1e1c49101ba7-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/4645bc86-7b5b-47e9-b48e-1ce8cfa0a71d/neon-cc038-resident-loop-original.zip",
+          "before": {
+            "bytes": 3799545,
+            "mtimeNs": 1791166378275038426,
+            "inode": 1972090
+          },
+          "after": {
+            "bytes": 3799545,
+            "mtimeNs": 1791166378275038426,
+            "inode": 1972090
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-090",
+      "artifactId": 11322099456,
+      "artifactIdBasis": {
+        "type": "originalArchiveReceipt",
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/current-visible-evidence-20261005/south090-high-capture/archive-receipt.json",
+        "sha256": "d987408d21d51904a56529fa556bb2835edbee727a1462684bb530111f04d4e9"
+      },
+      "localPath": "/workspace/attachments/2e0248ce-49f6-44f9-84ef-eb66ebc49a42/neon-cc038-south090-original.zip",
+      "statBefore": {
+        "bytes": 5799079,
+        "mtimeNs": 1791167946139527085,
+        "inode": 1972844
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "518678f2870ba7722ccf027d7f85a4edbe387b3efcbc7307806d40cd1ff14102",
+      "archiveEntryCount": 118,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": {
+        "schema": "neon-current-original-visible-evidence-v1",
+        "sourceRun": 37254103874,
+        "attempt": 1,
+        "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+        "case": "south090-high-capture",
+        "artifactId": 11322099456,
+        "originalZip": {
+          "localPath": "/workspace/attachments/2e0248ce-49f6-44f9-84ef-eb66ebc49a42/neon-cc038-south090-original.zip",
+          "bytes": 5799079,
+          "sha256": "a7bf1013748fb2342bd02a2efd87f6809fd97298f0fd76a0c36583108abcfc6a"
+        },
+        "result": "SUCCESS capture-complete-art-review-pending; six actual High images; not overall art approval",
+        "copiedUnmodified": [
+          {
+            "path": "evidence-files.json",
+            "bytes": 21765,
+            "sha256": "8b35b90ad1bb0546b9a87b0a8b3815cbdf4dc327ba2480a45a7f68e8d3f21c13"
+          },
+          {
+            "path": "job-envelope.json",
+            "bytes": 327,
+            "sha256": "73dc9ce113aeed1891c1969037529b8fd051c10e03e636a93f981a1f4fe467c0"
+          },
+          {
+            "path": "native/authored/build-info.json",
+            "bytes": 20550,
+            "sha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd"
+          },
+          {
+            "path": "native/authored/metadata.json",
+            "bytes": 274294,
+            "sha256": "f273ca332f5b5709328a8fad1a9fc75ff74b0a35e60a7cb8998d0cb0568e2c98"
+          },
+          {
+            "path": "native/authored/south-090-actual-public-door-high.png",
+            "bytes": 542372,
+            "sha256": "b11bcb4a4a6ecdfe6783ad033247d719a40b43644c62190f7316b145bc64131c"
+          },
+          {
+            "path": "native/authored/south-090-actual-public-door-pose.json",
+            "bytes": 19448,
+            "sha256": "8bc172423be12452822faaba3eda805f4d75f8c763a937ad93e3c6faf567a9fd"
+          },
+          {
+            "path": "native/authored/south-090-public-door-frontage-wide-high.png",
+            "bytes": 765507,
+            "sha256": "3292e799da77a8b4fab1787be7fd9f49e31bb9708c3f689de3c7a05d194bfa67"
+          },
+          {
+            "path": "native/authored/south-090-public-door-frontage-wide-pose.json",
+            "bytes": 19378,
+            "sha256": "bedc520f765b80f675d00b0e400720e8873282aec1ae95cf517b0d73e06a7913"
+          },
+          {
+            "path": "native/authored/south-090-south-frontage-high.png",
+            "bytes": 633888,
+            "sha256": "1e30405eec075f9ad97398c0fd211a79e1b082950d0d9f92ac6c87e839228fdf"
+          },
+          {
+            "path": "native/authored/south-090-south-frontage-pose.json",
+            "bytes": 19446,
+            "sha256": "9273514f651a9886e1cddfa82ee58152a456c7fde43888f01a4dbf7eeb58bb45"
+          },
+          {
+            "path": "native/baseline/build-info.json",
+            "bytes": 16361,
+            "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4"
+          },
+          {
+            "path": "native/baseline/metadata.json",
+            "bytes": 256476,
+            "sha256": "295dd0c3e3fe919431a650bd7e5e70c017e75ffe60f98837484baef1b79f7a70"
+          },
+          {
+            "path": "native/baseline/south-090-actual-public-door-high.png",
+            "bytes": 385723,
+            "sha256": "e9a915ca8e7e33c24836b4335dcb39918616d3d3c29b4582aa847978cd78bbd6"
+          },
+          {
+            "path": "native/baseline/south-090-actual-public-door-pose.json",
+            "bytes": 17169,
+            "sha256": "894f3e1af1ec17319ca1165935841f9011a4df7cec8765d45752ac93b091dd34"
+          },
+          {
+            "path": "native/baseline/south-090-public-door-frontage-wide-high.png",
+            "bytes": 754512,
+            "sha256": "1415195d35b312e9402fceb40b571252b10b23f21f733f8448a3f4bb1d46c027"
+          },
+          {
+            "path": "native/baseline/south-090-public-door-frontage-wide-pose.json",
+            "bytes": 17097,
+            "sha256": "55f2ac7c64f2398c465f2745c8c892afc93d1d3a685a11341a1b54cff030684b"
+          },
+          {
+            "path": "native/baseline/south-090-south-frontage-high.png",
+            "bytes": 586080,
+            "sha256": "f3878c6a232328b5996f79c082dcf7c82023443601e8411ba2dc796a1a29b590"
+          },
+          {
+            "path": "native/baseline/south-090-south-frontage-pose.json",
+            "bytes": 17288,
+            "sha256": "93aa752de8328d49c37e6bc251103159ea45340e6db4c96e22de6a0664cf4f98"
+          },
+          {
+            "path": "pair-summary.json",
+            "bytes": 91534,
+            "sha256": "518678f2870ba7722ccf027d7f85a4edbe387b3efcbc7307806d40cd1ff14102"
+          },
+          {
+            "path": "preparation/authored-build-info-original.json",
+            "bytes": 20550,
+            "sha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd"
+          },
+          {
+            "path": "preparation/authored-build-receipt.json",
+            "bytes": 20745,
+            "sha256": "6c9ed4691bd61a4989be554e5713726045bb39c29adb305886f1b5a4b80ef27a"
+          },
+          {
+            "path": "preparation/authored-dependency-receipt.json",
+            "bytes": 2734,
+            "sha256": "0a98b770ad9ea253b36be89c82a95ee359984bdaf272baa875d8136bda6fcddb"
+          },
+          {
+            "path": "preparation/baseline-build-info-original.json",
+            "bytes": 16361,
+            "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4"
+          },
+          {
+            "path": "preparation/baseline-build-receipt.json",
+            "bytes": 16556,
+            "sha256": "c2181510ec449aa4ff4d667114f5e194a749a4362fcef508284d3ee4f10143f8"
+          },
+          {
+            "path": "preparation/baseline-dependency-receipt.json",
+            "bytes": 2734,
+            "sha256": "0a98b770ad9ea253b36be89c82a95ee359984bdaf272baa875d8136bda6fcddb"
+          },
+          {
+            "path": "preparation/method-bundle-original/README.md",
+            "bytes": 10355,
+            "sha256": "b5316b8736890ecccbbf6fe2f1aa0068a6e4e5ba2d2345aa95a103fc72b4ca6d"
+          },
+          {
+            "path": "preparation/method-bundle-original/bundle-manifest.json",
+            "bytes": 17089,
+            "sha256": "ec762a6bf43eb19179927b1e17760dc864e610e8448e9815d393b129d8a791f6"
+          },
+          {
+            "path": "preparation/method-bundle-original/cases.json",
+            "bytes": 8956,
+            "sha256": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655"
+          },
+          {
+            "path": "preparation/method-bundle-original/curated-original-provenance.json",
+            "bytes": 16726,
+            "sha256": "5bfa0b0d2b816735471295651d2ae6957202ad23e78b8158e3d61ad565370cea"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json",
+            "bytes": 20512,
+            "sha256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/authored-build-info-original.json",
+            "bytes": 20302,
+            "sha256": "e45cdf73c892a8e79c0977a7cc2f4b873cbcf7653cb920026d054191eb749c9d"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-build-provenance/baseline-build-info-original.json",
+            "bytes": 16323,
+            "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+          },
+          {
+            "path": "preparation/method-bundle-original/expected-runtime-dictionaries.json",
+            "bytes": 39048,
+            "sha256": "a137b0b64cdc534f5826091a90a6454348587ad3ed5390bf8f31b083db04ee2c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tests/e2e/helpers/occupied.js",
+            "bytes": 5321,
+            "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tests/e2e/helpers/walking.js",
+            "bytes": 7277,
+            "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tools/capture-harbor-tour.mjs",
+            "bytes": 60171,
+            "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/continuous-tour-original/tools/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/capture-authored-harbor-native.mjs",
+            "bytes": 37885,
+            "sha256": "806f83e31713250e01379567c82b7b8c13781103bc92eab6663ada3d6c42d15e"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/captured-buildings.json",
+            "bytes": 14628,
+            "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/common-pose-proof.json",
+            "bytes": 37158,
+            "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/evidence/frontage-wide-static-proof.json",
+            "bytes": 34688,
+            "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/expectations.mjs",
+            "bytes": 2016,
+            "sha256": "bbfa361068edd9402c0134e1f7a4c51eac700aad6a59eb32f33c0e93af482e82"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/frontage-wide-plans.mjs",
+            "bytes": 5690,
+            "sha256": "d3f8c5410d96ab1565084b00c6e4861960443c3e8ae8e6a47a85b7d9182f12b2"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/input.mjs",
+            "bytes": 7087,
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/plans.mjs",
+            "bytes": 6752,
+            "sha256": "5129f5e505da5e0237edfa17c36cb694795696cedb6a9787bdf0673cf3ec85bc"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/README.md",
+            "bytes": 7381,
+            "sha256": "a44c4f74b136d10fdc56133f1e7cc23663136cef4bc0961f31984550bf12ab82"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/V3_CHANGE.md",
+            "bytes": 2177,
+            "sha256": "40fc6752f34ee1ecd1296f532e2758cc0e309b246e84076f52ead1d7eb8d3acd"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/candidate-files.json",
+            "bytes": 2120,
+            "sha256": "779fecdaea871b9cc2f058088e4e1e3d2abceea2adcd45ea87d335ac23bcca22"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/sealed-file-ledger.json",
+            "bytes": 4286,
+            "sha256": "9ebf8af42b57f64143f3e525c1c0dbba058ccc53d77292404f79bcec64833001"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/provenance/v3-resolution-receipt.json",
+            "bytes": 1758,
+            "sha256": "6a1ac16f61ee4fe0cb95a445c81e2ec9c1db872c1f209474fd665408c9eac5d8"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/render-readiness.mjs",
+            "bytes": 1091,
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/harbor/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/SEALED_SHA256.json",
+            "bytes": 486,
+            "sha256": "bd919991070ba2664d0a660d914d0d0a489357bbc44ad4ba36a3e0b4d9f5521e"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/CURRENT_METHOD_AMENDMENT.json",
+            "bytes": 550,
+            "sha256": "430b294b44ed32fde56cbba267f3a72d2a8dbb2114f421d87e87c019adff2f57"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/METHOD_SHA256.json",
+            "bytes": 404,
+            "sha256": "37eb2ec721158d04792b660c0941e7bf88dc0f2777b0163ed22cbb74681202fb"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/docs/README.md",
+            "bytes": 2174,
+            "sha256": "c5ffcc665bf319b5e3c31dc25c1ae48ca45f63f8c5372fbcc5c043a0387b0699"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/package.json",
+            "bytes": 33,
+            "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/patches/core-v2-after-7bb.patch",
+            "bytes": 7491,
+            "sha256": "72621c972147294446ad53b4b36e77401b8dd003f23ff0c68d6bc59ec5c5345d"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/provenance/SEALED_SHA256-original-ef92.json",
+            "bytes": 486,
+            "sha256": "6256c9e98cb815d11e6c4efc0662a6cf7a78dddf6b77efe5e4ac2e1813e6b10c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident/tools/capture-resident-native.mjs",
+            "bytes": 27364,
+            "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/SEALED_SHA256.json",
+            "bytes": 616,
+            "sha256": "b6ea36043b3cbc080a49b13eb48b701a1094976f8dd8415602b59276df0b6cff"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/CURRENT_METHOD_AMENDMENT.json",
+            "bytes": 776,
+            "sha256": "510ee8730e2e92296546cade9bfa68475e25a4ca972eea3cce6cef1eebc7acb7"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/METHOD_PROVENANCE.json",
+            "bytes": 1813,
+            "sha256": "bfe1af5cff721614e6e755989e821fa5452dac6d134dbc5954c4ba82f2b4953c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/README.md",
+            "bytes": 6308,
+            "sha256": "23cea2f4e0701c2ba6971000349f921ecadb116be1a03b8c518c160949bc7156"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/docs/RESIDENT_DAY_FUNCTIONAL_AMENDMENT.json",
+            "bytes": 2137,
+            "sha256": "39ea3d56afc02ace23db494b361ae642e669fcec032993349cf18005d984fac6"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/package.json",
+            "bytes": 33,
+            "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/provenance/SEALED_SHA256-original-ef92.json",
+            "bytes": 384,
+            "sha256": "309d5b028810b883cedce978c633c74399ec4f789c749266bf4f1b4895dc8a41"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/tools/capture-resident-extra.mjs",
+            "bytes": 52095,
+            "sha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/resident-extra/tools/resident-loop-functional-guards.mjs",
+            "bytes": 6012,
+            "sha256": "7b88081258339c184901f871dd7d40b2c71ee47655531f7cbec9cd5768997b3f"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/README.md",
+            "bytes": 5506,
+            "sha256": "054224d76cd8f10a20a0c246897df11e2599e3b0660e4ac3f9e0149f4ab093b0"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/STATIC_REVIEW.md",
+            "bytes": 2333,
+            "sha256": "1182926abbe85f29a5ea7c2f2f6c13b9136e3b4189fe1a69734bcec2457573ee"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/capture-scenic-east.mjs",
+            "bytes": 32756,
+            "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/input.mjs",
+            "bytes": 7087,
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/prepared-files.json",
+            "bytes": 1203,
+            "sha256": "98cfe3c269c8ac333ac31688f25a6536f15dbdcca8fe8ff272f7e95188b5448f"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/render-readiness.mjs",
+            "bytes": 1091,
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/scenic/server.mjs",
+            "bytes": 4529,
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/API-SOURCE-REVIEW.md",
+            "bytes": 3776,
+            "sha256": "6c00227e98c7ddcfdf190dbdb0c6c0b71ad48de61f3dc6704745b66d5117de12"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/FINAL-LEDGER.json",
+            "bytes": 1843,
+            "sha256": "f4c25782f2bafe7699a320b54cba4a740bb54683628eca85541b6502927c83e9"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/INDEPENDENT-STATIC-REVIEW.json",
+            "bytes": 559,
+            "sha256": "3facb79d9937c8c250474b57028eca6c0eb4ee7125bcfd8db650da7f33d80f01"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/POSTSEAL-PROVENANCE.json",
+            "bytes": 3132,
+            "sha256": "f73a7ef657fb5e5b7cdf93ff250f1ed083d957642c18694ff6948f3401bfdcf4"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/README.md",
+            "bytes": 8180,
+            "sha256": "441ffbabc42e02ea233e1ae0272fc6f14ef26ee2c6ca7aad523d848863a060a1"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/SYNTAX-ONLY-RECEIPT.json",
+            "bytes": 498,
+            "sha256": "d90489568af8aaa6fdee31673e9b68d831d5e9b08878bed2fdf7942d8097e234"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/canonical-layouts.json",
+            "bytes": 379831,
+            "sha256": "c9df5f63bc88d241720dbfefd8c0476eb3b92a4302bff3293e74f198d1d28de8"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/delta-from-7247.patch",
+            "bytes": 13264,
+            "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/method-manifest.json",
+            "bytes": 14442,
+            "sha256": "42679942a3ec5e33f1aa7f7450b819095468ac0869c20d12f6b5e1a4d677b99c"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/native-transport-high.mjs",
+            "bytes": 47346,
+            "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport/runtime-resources.json",
+            "bytes": 3799,
+            "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/API-SOURCE-REVIEW.md",
+            "bytes": 3776,
+            "sha256": "6c00227e98c7ddcfdf190dbdb0c6c0b71ad48de61f3dc6704745b66d5117de12"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/FINAL-LEDGER.json",
+            "bytes": 1551,
+            "sha256": "dc1405bba1099e30f0553096343466cccf03f5493339cbff4495efb4f5a8d3f7"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/PREPARATION-PROVENANCE.json",
+            "bytes": 2727,
+            "sha256": "6334c3234ac5ede01d226500895b10e989e76b1d0943a2de2a3d3ca329c3f0a5"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/README.md",
+            "bytes": 8242,
+            "sha256": "f2d3bf66e0c6f867c8a1aa5054c19b71f2e377f32874849d9e024801899e31ce"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/STATIC-READONLY-REVIEW.json",
+            "bytes": 1055,
+            "sha256": "052a8d9fff80dddcd228c7919a18e1a4823fa73929717437c840a645825a003a"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/base-fc22-native-transport-high-original.mjs",
+            "bytes": 39643,
+            "sha256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/method-manifest.json",
+            "bytes": 7968,
+            "sha256": "3f02043e1f8fb539ca4d66a8fd0ed00061eb589b95ea05d9b3f58e72210a655b"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/native-transport-ownership-extra.mjs",
+            "bytes": 42916,
+            "sha256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2"
+          },
+          {
+            "path": "preparation/method-bundle-original/methods/transport-owner/runtime-resources.json",
+            "bytes": 3805,
+            "sha256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb"
+          },
+          {
+            "path": "preparation/method-bundle-original/run-paired-native.py",
+            "bytes": 34285,
+            "sha256": "c9ca521c91edb9d2720c913bc7bf9e3a5cf6fcf6909c66fe74c0acb139951cd6"
+          }
+        ],
+        "largeRawVideoPreservedOutsideGit": [],
+        "recordedAt": "2026-10-05T02:40:25.548336+00:00",
+        "interpretation": "Original result is immutable. Functional/capture completion does not imply overall art acceptance. Raw originals require durable release asset archiving before release."
+      },
+      "blockers": [],
+      "statAfter": {
+        "bytes": 5799079,
+        "mtimeNs": 1791167946139527085,
+        "inode": 1972844
+      },
+      "bytes": 5799079,
+      "sha256": "a7bf1013748fb2342bd02a2efd87f6809fd97298f0fd76a0c36583108abcfc6a",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-090-a7bf1013748f-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/2e0248ce-49f6-44f9-84ef-eb66ebc49a42/neon-cc038-south090-original.zip",
+          "before": {
+            "bytes": 5799079,
+            "mtimeNs": 1791167946139527085,
+            "inode": 1972844
+          },
+          "after": {
+            "bytes": 5799079,
+            "mtimeNs": 1791167946139527085,
+            "inode": 1972844
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": true,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-091",
+      "artifactId": 11323601836,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-south091-11323601836",
+        "pairSummarySha256": "e3c2b060d75ef832b7b7748c9571694b8da42d93631f9dae605030c6d597c877"
+      },
+      "localPath": "/workspace/attachments/59f8b25a-3797-44fd-8b78-d1aba281d2e2/neon-cc038-south091-original.zip",
+      "statBefore": {
+        "bytes": 7069430,
+        "mtimeNs": 1791169806058123722,
+        "inode": 1973570
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "e3c2b060d75ef832b7b7748c9571694b8da42d93631f9dae605030c6d597c877",
+      "archiveEntryCount": 122,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 7069430,
+        "mtimeNs": 1791169806058123722,
+        "inode": 1973570
+      },
+      "bytes": 7069430,
+      "sha256": "9f9194bc7d7c9b81ebb567a9d6097b5dc7bbb96acab62ee77d62ef1f744f603d",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-091-9f9194bc7d7c-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/59f8b25a-3797-44fd-8b78-d1aba281d2e2/neon-cc038-south091-original.zip",
+          "before": {
+            "bytes": 7069430,
+            "mtimeNs": 1791169806058123722,
+            "inode": 1973570
+          },
+          "after": {
+            "bytes": 7069430,
+            "mtimeNs": 1791169806058123722,
+            "inode": 1973570
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-092",
+      "artifactId": 11323222842,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-south092-11323222842",
+        "pairSummarySha256": "724d91d4da5321acf6f94dde69c5df09321b94cffe4a53fe18131440c0b7662b"
+      },
+      "localPath": "/workspace/attachments/a44ed497-c943-452c-9263-9a11eacb7350/neon-cc038-south092-original.zip",
+      "statBefore": {
+        "bytes": 6720012,
+        "mtimeNs": 1791169199590669801,
+        "inode": 1973482
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "name": "Error",
+          "message": "owned-browser-process cleanup deadline",
+          "stack": "Error: owned-browser-process cleanup deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:346:58)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "724d91d4da5321acf6f94dde69c5df09321b94cffe4a53fe18131440c0b7662b",
+      "archiveEntryCount": 122,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 6720012,
+        "mtimeNs": 1791169199590669801,
+        "inode": 1973482
+      },
+      "bytes": 6720012,
+      "sha256": "010126fdd44c83058875e9104fc75c390d06c65885b273193ad85f416130e699",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-092-010126fdd44c-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/a44ed497-c943-452c-9263-9a11eacb7350/neon-cc038-south092-original.zip",
+          "before": {
+            "bytes": 6720012,
+            "mtimeNs": 1791169199590669801,
+            "inode": 1973482
+          },
+          "after": {
+            "bytes": 6720012,
+            "mtimeNs": 1791169199590669801,
+            "inode": 1973482
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-094",
+      "artifactId": 11322503687,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-south094-11322503687",
+        "pairSummarySha256": "2a0cfceed22864f649f9c1171e094f4259dfd8b1608406d8e52aec612d2a7a5f"
+      },
+      "localPath": "/workspace/attachments/5b4a06c3-fe14-4d56-b3c5-367b72af65f4/neon-cc038-south094-original.zip",
+      "statBefore": {
+        "bytes": 5941212,
+        "mtimeNs": 1791168640142468874,
+        "inode": 1973359
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "2a0cfceed22864f649f9c1171e094f4259dfd8b1608406d8e52aec612d2a7a5f",
+      "archiveEntryCount": 118,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 5941212,
+        "mtimeNs": 1791168640142468874,
+        "inode": 1973359
+      },
+      "bytes": 5941212,
+      "sha256": "425230c49f4cc63993571d1cdd23cdb5be3aea5ad955ae87f600688388970394",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-094-425230c49f4c-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/5b4a06c3-fe14-4d56-b3c5-367b72af65f4/neon-cc038-south094-original.zip",
+          "before": {
+            "bytes": 5941212,
+            "mtimeNs": 1791168640142468874,
+            "inode": 1973359
+          },
+          "after": {
+            "bytes": 5941212,
+            "mtimeNs": 1791168640142468874,
+            "inode": 1973359
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-095",
+      "artifactId": 11324080986,
+      "artifactIdBasis": {
+        "type": "downloadedOriginalArtifactDirectory",
+        "path": "/tmp/neon-cc038-south095-11324080986"
+      },
+      "localPath": "/tmp/neon-cc038-south095-11324080986/original.zip",
+      "statBefore": {
+        "bytes": 6852545,
+        "mtimeNs": 1791170233851453444,
+        "inode": 124786
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "ddf389f6fc9eb894ff4604b07055cf03578141fd9ba893d9550734b6117f2f6b",
+      "archiveEntryCount": 122,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 6852545,
+        "mtimeNs": 1791170233851453444,
+        "inode": 124786
+      },
+      "bytes": 6852545,
+      "sha256": "476694b90ae147bf8d1e733dca088e7dff4224879e476a5963a2f752e6c69d90",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-095-476694b90ae1-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [
+        "/workspace/attachments/0f81b892-0c93-47cb-976b-1b56729b8dec/neon-cc038-south095-original.zip"
+      ],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-south095-11324080986/original.zip",
+          "before": {
+            "bytes": 6852545,
+            "mtimeNs": 1791170233851453444,
+            "inode": 124786
+          },
+          "after": {
+            "bytes": 6852545,
+            "mtimeNs": 1791170233851453444,
+            "inode": 124786
+          }
+        },
+        {
+          "path": "/workspace/attachments/0f81b892-0c93-47cb-976b-1b56729b8dec/neon-cc038-south095-original.zip",
+          "before": {
+            "bytes": 6852545,
+            "mtimeNs": 1791170233851453444,
+            "inode": 1973700
+          },
+          "after": {
+            "bytes": 6852545,
+            "mtimeNs": 1791170233851453444,
+            "inode": 1973700
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-096",
+      "artifactId": 11322484157,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-south096-11322484157",
+        "pairSummarySha256": "732e5f6e582cf6acb7c72738018f4194d7640d8f9f78d4fc6de803b92eaea1bd"
+      },
+      "localPath": "/workspace/attachments/38c4e700-9735-48e9-b61a-41d992b29352/neon-cc038-south096-original.zip",
+      "statBefore": {
+        "bytes": 7203518,
+        "mtimeNs": 1791168640535812855,
+        "inode": 1973383
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "732e5f6e582cf6acb7c72738018f4194d7640d8f9f78d4fc6de803b92eaea1bd",
+      "archiveEntryCount": 122,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 7203518,
+        "mtimeNs": 1791168640535812855,
+        "inode": 1973383
+      },
+      "bytes": 7203518,
+      "sha256": "470293e14ef9b9246c831e7d2cd22cbc4758000d4fa467b3a31ffd706ae3fc56",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-096-470293e14ef9-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/38c4e700-9735-48e9-b61a-41d992b29352/neon-cc038-south096-original.zip",
+          "before": {
+            "bytes": 7203518,
+            "mtimeNs": 1791168640535812855,
+            "inode": 1973383
+          },
+          "after": {
+            "bytes": 7203518,
+            "mtimeNs": 1791168640535812855,
+            "inode": 1973383
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "south-parcel",
+      "artifactId": 11323103018,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-south-parcel-11323103018/fresh-attempt1.receipt.json",
+        "sha256": "4818a7d5ccd63389d650ea57368d57e3f8a59ac13610aa9a12bae1006c8aa794"
+      },
+      "localPath": "/tmp/neon-cc038-south-parcel-11323103018/original.zip",
+      "statBefore": {
+        "bytes": 98249781,
+        "mtimeNs": 1791169808365462933,
+        "inode": 124175
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "at": "2026-10-05T03:07:51.225Z",
+          "type": "method",
+          "message": "AssertionError [ERR_ASSERTION]: natural75sim order startup exceeded1200 wall seconds; no forced pickup or retry\n    at southCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:364:10)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:84)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "63d76015f4d48960844565f07fe399a4ac9b8ffdb37825dff01f19b71cb8543a",
+      "archiveEntryCount": 93,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/raw-video/page@06e28ad8786ad7816cf015ecd5e08abc.webm",
+          "uncompressedBytes": 58759424,
+          "crc32": "f038ce74"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11323103018,
+        "expectedSize": 98249781,
+        "expectedSHA256": "4dd6a331cfccf4fe897d671aee51d12551e710741c4f26717973d3192f6463c2",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 98249781,
+        "startedUnix": 1791169806.153513,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "4dd6a331cfccf4fe897d671aee51d12551e710741c4f26717973d3192f6463c2",
+        "archivePath": "/tmp/neon-cc038-south-parcel-11323103018/original.zip",
+        "elapsedSeconds": 2.21544233700115,
+        "finishedUnix": 1791169808.3689592,
+        "partialPath": null
+      },
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 98249781,
+        "mtimeNs": 1791169808365462933,
+        "inode": 124175
+      },
+      "bytes": 98249781,
+      "sha256": "4dd6a331cfccf4fe897d671aee51d12551e710741c4f26717973d3192f6463c2",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-south-parcel-4dd6a331cfcc-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-south-parcel-11323103018/original.zip",
+          "before": {
+            "bytes": 98249781,
+            "mtimeNs": 1791169808365462933,
+            "inode": 124175
+          },
+          "after": {
+            "bytes": 98249781,
+            "mtimeNs": 1791169808365462933,
+            "inode": 124175
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "tram",
+      "artifactId": 11322804818,
+      "artifactIdBasis": {
+        "type": "originalSafeDownloadReceipt",
+        "path": "/tmp/neon-cc038-tram-11322804818/fresh-attempt1.receipt.json",
+        "sha256": "06fe5e33379d9befd03da53091749be972da311a6380b2158c3e0e2188d1a599"
+      },
+      "localPath": "/tmp/neon-cc038-tram-11322804818/original.zip",
+      "statBefore": {
+        "bytes": 160668914,
+        "mtimeNs": 1791169457234662052,
+        "inode": 123289
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "baseline",
+        "source": "original-native-record",
+        "error": {
+          "stage": "case",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 599995ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 599995ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:278:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:308:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:340:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:318:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20",
+          "kind": "tram"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "436a93b316947e6509ac6dfcc85b53c4ba10c14205235d105174e8b25f9d3a80",
+      "archiveEntryCount": 120,
+      "rawVideosInOriginalZip": [
+        {
+          "path": "native/authored/tram/video/page@2f58245bed587717c5d7cec49e06f6bc.webm",
+          "uncompressedBytes": 56712057,
+          "crc32": "0461596a"
+        },
+        {
+          "path": "native/baseline/tram/video/page@f9b58d8b70a7c436831d68a623b19fef.webm",
+          "uncompressedBytes": 53399517,
+          "crc32": "cef3587d"
+        }
+      ],
+      "downloadReceipt": {
+        "artifactID": 11322804818,
+        "expectedSize": 160668914,
+        "expectedSHA256": "60ea4e47a63b8a9a35af3e85b20a487245afdd971d0e327f36c73da4386d6360",
+        "TLSVerification": true,
+        "proxyEnvironmentPreserved": true,
+        "URLHost": "sdmntprwestus.oaiusercontent.com",
+        "status": "HASH_VERIFIED",
+        "bytes": 160668914,
+        "startedUnix": 1791169453.767237,
+        "httpStatus": 200,
+        "responseHost": "sdmntprwestus.oaiusercontent.com",
+        "actualSHA256": "60ea4e47a63b8a9a35af3e85b20a487245afdd971d0e327f36c73da4386d6360",
+        "archivePath": "/tmp/neon-cc038-tram-11322804818/original.zip",
+        "elapsedSeconds": 3.4704349120002007,
+        "finishedUnix": 1791169457.2376757,
+        "partialPath": null
+      },
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 160668914,
+        "mtimeNs": 1791169457234662052,
+        "inode": 123289
+      },
+      "bytes": 160668914,
+      "sha256": "60ea4e47a63b8a9a35af3e85b20a487245afdd971d0e327f36c73da4386d6360",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-tram-60ea4e47a63b-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/tmp/neon-cc038-tram-11322804818/original.zip",
+          "before": {
+            "bytes": 160668914,
+            "mtimeNs": 1791169457234662052,
+            "inode": 123289
+          },
+          "after": {
+            "bytes": 160668914,
+            "mtimeNs": 1791169457234662052,
+            "inode": 123289
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": true,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "waterfront-day",
+      "artifactId": 11323096628,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-day-11323096628",
+        "pairSummarySha256": "d32b863870b53652014d32dcde966c349a876f2c80977eb70110958c92c569b8"
+      },
+      "localPath": "/workspace/attachments/b3a9b1a8-4d47-4497-8778-9fba9ac32913/neon-cc038-day-original.zip",
+      "statBefore": {
+        "bytes": 3073750,
+        "mtimeNs": 1791168248883193807,
+        "inode": 1973364
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "d32b863870b53652014d32dcde966c349a876f2c80977eb70110958c92c569b8",
+      "archiveEntryCount": 118,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 3073750,
+        "mtimeNs": 1791168248883193807,
+        "inode": 1973364
+      },
+      "bytes": 3073750,
+      "sha256": "f646fbeb550c8369b95b26f1b863dfc2ac8e0100cb05fc8d558d8924955b121d",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-waterfront-day-f646fbeb550c-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/b3a9b1a8-4d47-4497-8778-9fba9ac32913/neon-cc038-day-original.zip",
+          "before": {
+            "bytes": 3073750,
+            "mtimeNs": 1791168248883193807,
+            "inode": 1973364
+          },
+          "after": {
+            "bytes": 3073750,
+            "mtimeNs": 1791168248883193807,
+            "inode": 1973364
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "waterfront-night",
+      "artifactId": 11323270385,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-night-11323270385",
+        "pairSummarySha256": "668978b1725961770f541989157d6123c91bc33c27ea224f97bec596ae0b8442"
+      },
+      "localPath": "/workspace/attachments/5692e972-b954-4aea-8b07-b4831a6b176c/neon-cc038-night-original.zip",
+      "statBefore": {
+        "bytes": 2831601,
+        "mtimeNs": 1791168343314147184,
+        "inode": 1972906
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "releaseOutcomeToken": "CAPTURE_SUCCESS",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": null,
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "668978b1725961770f541989157d6123c91bc33c27ea224f97bec596ae0b8442",
+      "archiveEntryCount": 118,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 2831601,
+        "mtimeNs": 1791168343314147184,
+        "inode": 1972906
+      },
+      "bytes": 2831601,
+      "sha256": "ebc625b84011e5f489fa9d47e7ed11506df7c71a4c297c71fefa24b384c8e936",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-waterfront-night-ebc625b84011-CAPTURE_SUCCESS.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/5692e972-b954-4aea-8b07-b4831a6b176c/neon-cc038-night-original.zip",
+          "before": {
+            "bytes": 2831601,
+            "mtimeNs": 1791168343314147184,
+            "inode": 1972906
+          },
+          "after": {
+            "bytes": 2831601,
+            "mtimeNs": 1791168343314147184,
+            "inode": 1972906
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    },
+    {
+      "case": "workshop",
+      "artifactId": 11322319618,
+      "artifactIdBasis": {
+        "type": "downloadedArtifactDirectoryAndExactOriginalPairSummaryByteMatch",
+        "path": "/tmp/neon-cc038-workshop-11322319618",
+        "pairSummarySha256": "4896f3e659aa370be5d4c3d7c25671404217c0643ffb818262f8c5289447a078"
+      },
+      "localPath": "/workspace/attachments/d7dbeb23-4433-4aa5-a229-ae40b42ee50a/neon-cc038-workshop-original.zip",
+      "statBefore": {
+        "bytes": 5771750,
+        "mtimeNs": 1791168031809795431,
+        "inode": 1973284
+      },
+      "runId": "37254103874",
+      "runAttempt": "1",
+      "authoredHead": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+      "originalOutcome": "FAILED",
+      "releaseOutcomeToken": "ORIGINAL_FAILURE",
+      "artAcceptanceRecorded": "PENDING_HUMAN_NATIVE_REVIEW",
+      "acceptanceScope": "Native capture status only; no High art approval",
+      "firstError": {
+        "mode": "authored",
+        "source": "original-native-record",
+        "error": {
+          "name": "AssertionError",
+          "message": "Layout or collision changed after common-route preparation: src/harbor-workshop-pilot.js\n+ actual - expected\n\n+ '1667d7e1f0b3777725e1531290ef736c4ad563d56dba241eb7abaf2160698011'\n- 'a6d3d59f5ab3a3b349a2c2efdeb55c14542865251adf7c7a2684882a3a860c28'\n",
+          "stack": "AssertionError [ERR_ASSERTION]: Layout or collision changed after common-route preparation: src/harbor-workshop-pilot.js\n+ actual - expected\n\n+ '1667d7e1f0b3777725e1531290ef736c4ad563d56dba241eb7abaf2160698011'\n- 'a6d3d59f5ab3a3b349a2c2efdeb55c14542865251adf7c7a2684882a3a860c28'\n\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:285:77"
+        }
+      },
+      "secondaryErrors": [],
+      "pairSummaryPathInZip": "pair-summary.json",
+      "pairSummarySha256": "4896f3e659aa370be5d4c3d7c25671404217c0643ffb818262f8c5289447a078",
+      "archiveEntryCount": 116,
+      "rawVideosInOriginalZip": [],
+      "downloadReceipt": null,
+      "archiveReceipt": null,
+      "blockers": [],
+      "statAfter": {
+        "bytes": 5771750,
+        "mtimeNs": 1791168031809795431,
+        "inode": 1973284
+      },
+      "bytes": 5771750,
+      "sha256": "1ad78d50ecc5a1f016d7a4565b3fb33ddce0ba5f3da3145734bac08e493985cd",
+      "singlePassStreamHash": "SHA256 exactly once on canonical original ZIP; duplicate copies compared in same pass",
+      "sourceFilesStableDuringHash": true,
+      "under200MiB": true,
+      "recommendedReleaseAssetName": "neon-harbor-run37254103874-headcc038-workshop-1ad78d50ecc5-ORIGINAL_FAILURE.zip",
+      "duplicateOriginalPaths": [],
+      "duplicateOriginalCopiesByteEqual": true,
+      "allOriginalPathStats": [
+        {
+          "path": "/workspace/attachments/d7dbeb23-4433-4aa5-a229-ae40b42ee50a/neon-cc038-workshop-original.zip",
+          "before": {
+            "bytes": 5771750,
+            "mtimeNs": 1791168031809795431,
+            "inode": 1973284
+          },
+          "after": {
+            "bytes": 5771750,
+            "mtimeNs": 1791168031809795431,
+            "inode": 1973284
+          }
+        }
+      ],
+      "verifiedAgainstExistingDownloadReceipt": false,
+      "verifiedAgainstExistingArchiveReceipt": false,
+      "readyForParentUpload": true,
+      "uploaded": false,
+      "durableReleaseAssetId": null,
+      "durableReleaseAssetUrl": null,
+      "isDurablyArchived": false
+    }
+  ],
+  "localResidentLoopFinalVideo": {
+    "case": "resident-loop-local-final",
+    "status": "PENDING_CAPTURE_FINALIZATION_AND_OWNED_PROCESS_CLOSURE",
+    "localCaptureRoot": "/tmp/neon-resident-loop-local-472e3a5a2566-20261005",
+    "observedRawVideoPathsOnly": [
+      "/tmp/neon-resident-loop-local-472e3a5a2566-20261005/native/authored/raw-video/page@c6c2bb4ac3ac48723cf71ad74ba6bc88.webm"
+    ],
+    "bytes": null,
+    "sha256": null,
+    "runId": null,
+    "githubArtifactId": null,
+    "knownSourceHint": "472e3a5a2566 from local capture directory only; must bind actual final build/source receipt after closure",
+    "hashWasAttempted": false,
+    "uploadReady": false,
+    "blockers": [
+      "active local video must finish and receive owned-process closure receipt",
+      "final raw video stable bytes/SHA and functional outcome must be recorded",
+      "actual local build/source dictionary must bind to that finished capture"
+    ],
+    "durableReleaseAssetUrl": null,
+    "isDurablyArchived": false
+  },
+  "oldFourOriginalVideoPlan": {
+    "path": "/tmp/neon-release-four-original-video-plan.json",
+    "bytes": 7115,
+    "sha256": "fc9ae34ec7117a38356bb23a5da8771d111417e77873b5c37b3bb8b62eb07c58",
+    "preservedUnmodifiedAndIndependent": true,
+    "notMergedIntoTheseCurrentCcNativeZipAssets": true
+  },
+  "durabilityRequirements": [
+    "Parent uploads every intended original ZIP as a GitHub Release asset under its recommended outcome-bearing filename",
+    "Record actual asset ID, release URL, uploaded bytes and SHA binding after upload; localhost/tmp/attachment paths alone are not durable evidence",
+    "Retain ORIGINAL_FAILURE as failure even if a later corrected capture succeeds",
+    "Do not label capture completion or functional High screenshots as art approval",
+    "Add the final local resident-loop raw video separately only after it is closed, stable, hashed and source-bound"
+  ],
+  "blockingMissingEntitiesOrUnknownStatuses": [
+    {
+      "case": "resident-loop-local-final",
+      "blockers": [
+        "active local video must finish and receive owned-process closure receipt",
+        "final raw video stable bytes/SHA and functional outcome must be recorded",
+        "actual local build/source dictionary must bind to that finished capture"
+      ]
+    }
+  ]
+}

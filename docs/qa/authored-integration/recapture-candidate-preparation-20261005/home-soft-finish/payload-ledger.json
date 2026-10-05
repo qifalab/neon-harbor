@@ -1,0 +1,92 @@
+{
+  "status": "SEALED_HOME_SOFT_FURNISHINGS_CPU_PASS_NEW_NATIVE_HIGH_PENDING",
+  "baseHead": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+  "noRootMutation": true,
+  "noGpuOrBrowser": true,
+  "files": [
+    {
+      "target": "tools/create-authored-home-glbs.mjs",
+      "bytes": 24698,
+      "sha256": "10679f534a5c410bcfe4b88526f0c91846ccc5e351008506885c84fecaa2f4e7",
+      "beforeBytes": 21017,
+      "beforeSha256": "0bf0caaebc632f3b0ed910b44f9b4bef33b4c011b1c5eaf9b0ccabbc479a46a0"
+    },
+    {
+      "target": "src/harbor-home-authored.js",
+      "bytes": 5646,
+      "sha256": "e7a7310625e1f29ab6ad50065ab040a6f7b3f9e599a9b8ab001c185337af8a80",
+      "beforeBytes": 5646,
+      "beforeSha256": "d227f261dea4a57c3fc5736761dc3dc149735048cf5dd5633505b21bfe857edc"
+    },
+    {
+      "target": "assets/harbor/home/home-lobby-fittings.glb",
+      "bytes": 5015196,
+      "sha256": "515db55f4f10259f0260d0ee9f015b53494ee7fd54f2289d7a6a579e21b78625",
+      "beforeBytes": 3948944,
+      "beforeSha256": "9db26832bae72c3f1f96e2b1a093a748ac0cee0ac864f6b1b8ac96d8da9d4ced"
+    },
+    {
+      "target": "assets/harbor/home/asset-manifest.json",
+      "bytes": 28313,
+      "sha256": "b2754a355f278e53d48cceb33ea766f81db60bdfb6e111c85033c9dac5ca0d74",
+      "beforeBytes": 28311,
+      "beforeSha256": "8b0e9d3c1f83a2bb555bb56f2f86e938317a0e712e4120b1a1347a16647e49b9"
+    },
+    {
+      "target": "docs/qa/authored-home/authored-source/home-lobby-fittings.json",
+      "bytes": 68213,
+      "sha256": "e1131bbba59324263ad48d0268e03087b1c3cde5e58995bc54eca54f723df834",
+      "beforeBytes": 67768,
+      "beforeSha256": "5c5c8d0ab0b8af340e0b10f64e00adc31215612ef97217830ac77e57a38ab06f"
+    },
+    {
+      "target": "tests/harbor-home-authored.test.js",
+      "bytes": 4924,
+      "sha256": "f3ae79a0c1d90ea3401ec8974514902f39f59342a1e77b5d9e57fea3beafe6bb",
+      "beforeBytes": 4924,
+      "beforeSha256": "8dfcf5a63600005518e165f2d6deee97e950f4b1157866eb1fb4e97b1a71345f"
+    }
+  ],
+  "wholeHomeVisibleNear": {
+    "meshes": 31,
+    "triangles": 94272
+  },
+  "wholeHomeVisibleMiddle": {
+    "meshes": 21,
+    "triangles": 89904
+  },
+  "wholeHomeVisibleFar": {
+    "meshes": 7,
+    "triangles": 1100
+  },
+  "runtimeBytes": 11559104,
+  "staticProofSha256": "d7c182f2b84bb9ca16846bcc332a8820ef182d812ec8f825aae2581bb9ce9323",
+  "originalArchive": {
+    "path": "/tmp/neon-home-soft-finish-candidate-20261005/home-original-source-asset-png-history.tar.gz",
+    "bytes": 9076391,
+    "sha256": "3b81a4ea7f161660a34023da59970fe57ec93358b7b341bbd64f087a624ea58c"
+  },
+  "unchangedRuntimeAssets": [
+    {
+      "path": "assets/harbor/home/home-gallery-fittings.glb",
+      "bytes": 1685316,
+      "sha256": "d0aee01ed0d4cd04080ecf1058f0e4ff699f22edc14d49b2889d6c110c936bba"
+    },
+    {
+      "path": "assets/harbor/home/sofa_03.glb",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b"
+    },
+    {
+      "path": "assets/harbor/home/old_bed_frame.glb",
+      "bytes": 4040420,
+      "sha256": "910cc9d69a03285ffa6b66fd7734be68a7f6a045f14ae5922aa4e5946fdefa9f"
+    }
+  ],
+  "parentMustRegenerate": [
+    "authored expected-runtime dictionaries from final build",
+    "any current native source pins for tools/create-authored-home-glbs.mjs or src/harbor-home-authored.js",
+    "current asset/resource pins if those ledgers include home-lobby-fittings.glb"
+  ],
+  "noHistoricalCaptureAcceptanceInherited": true
+}

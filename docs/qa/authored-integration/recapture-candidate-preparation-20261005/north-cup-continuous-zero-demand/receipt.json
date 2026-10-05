@@ -1,0 +1,61 @@
+{
+  "status": "PREPARED-CPU-ONLY",
+  "rootHEADReadOnly": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+  "rootFilesMutatedByThisTask": false,
+  "newGPUStarted": false,
+  "originalFailPreserved": true,
+  "currentMethodBaseSha256": "260b9118c280f117b253d3cbbe5154afafafa9f1081b399aa1e48e21faafd6ff",
+  "files": {
+    "tools/native-review/cases.json": {
+      "bytes": 9426,
+      "sha256": "bcdf197bba6cafbd132393f8e6e72f55ec489971d419c5cb9ab6a4767d7a98bc"
+    },
+    "tools/native-review/methods/resident-extra/SEALED_SHA256.json": {
+      "bytes": 991,
+      "sha256": "0a8a33be1b076eb98b1eba6ffc99f388a20876d497ea786dfc596293364f6a00"
+    },
+    "tools/native-review/methods/resident-extra/docs/NORTH_OWNER_OBSERVATION_AMENDMENT-20261005.json": {
+      "bytes": 4495,
+      "sha256": "913e1e39a62fcde813344e315af79c2ea98e01d1a79501868b0ca12944bbc757"
+    },
+    "tools/native-review/methods/resident-extra/provenance/capture-resident-extra-cc038-north-owner-original.mjs": {
+      "bytes": 52095,
+      "sha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5"
+    },
+    "tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs": {
+      "bytes": 53892,
+      "sha256": "5de16997445ea8fe6b80a7b7dccfc8fee5101c55f2fb023da5dda9ca2c7990ae"
+    },
+    "tools/native-review/methods/resident-extra/tools/continuous-owner-idle-guard.mjs": {
+      "bytes": 1502,
+      "sha256": "17757372101eeb05b0b6c5e9c1d7f7466c2d25f1cd1607fb105cb08a91d2f5c9"
+    }
+  },
+  "patchSha256": "30a494fa98549c3261ddc823c0df027502699473d55c17883f485e0cabeb4040",
+  "cpuProofSha256": "56452cfd903ac904eb5fc3f8eb323e3ee2ab32d9c7b2f253b222c80de767cfc3",
+  "staticRouteProofSha256": "5b31b4796e69a19739c9be4b333a206abdbda8dc0ed39823f76820475cb7ca66",
+  "wholeBudget": {
+    "originalWholeSeconds": 1080,
+    "candidateWholeSeconds": 2400,
+    "changed": true,
+    "firstFailureElapsedSeconds": 993.191,
+    "originalRemainingAtFirstFailureSeconds": 86.80899999999997,
+    "originalReturnNotRun": true,
+    "measuredCombinedHighRestoredToFarWallSeconds": 187.823,
+    "actualOriginalWalkMeters": 37.75999459358013,
+    "plannedOneWayFixedRouteMeters": 72.59981665943792,
+    "combinedPhotoTransitionWalkWallPerMeterUpperApproximation": 4.974126771510005,
+    "illustrativeWholeForecastSeconds": 1587.6093833048567,
+    "illustrativeSeparateFiniteWholeBudgetProposalSeconds": 2400,
+    "proposalApplied": true,
+    "limits": "Forecast includes timing already spent on the High screenshot and V transition in its per-metre estimate, so is conservative, not hardware throughput or native completion. Original 180-second per-leg, 180-second zero-demand arrival, 240-second uninterrupted 13sim cooldown, 120-second role-load and all assertions are unchanged. A larger whole budget is a separate plan decision, not the cause/fix of this original resource FAIL.",
+    "parentAuthorization": "Root explicitly authorized only cup-owner whole1080→2400; keep job75 and all inner guards/zero demand.",
+    "appliedLocation": "Only isolated payload; ROOT and active composed candidate not modified"
+  },
+  "bundleManifestUpdated": false,
+  "nativePass": false,
+  "casesOnlyPatchSha256": "69bf3064928d89c11924f3f27381a7262e1a47f9f6582173291f751c7b8cb723",
+  "onlyCaseObjectChanged": "north-cup-owner",
+  "other23CaseObjectsByteSemanticallyUnchanged": true,
+  "preparationErrorCorrected": "Local receipt generation briefly failed with IndexError while updating non-code metadata; no ROOT/GPU action occurred. Rerun regenerated complete amendment/seal/receipt."
+}

@@ -1,0 +1,1301 @@
+{
+  "schema": "neon-ferry-local-aim-cpu-proof-v1",
+  "status": "CPU_ONLY_CANDIDATE_NOT_NATIVE_PASS",
+  "sourceCommit": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+  "originalMethodSha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598",
+  "candidateMethodSha256": "f6cb18afbbf916f8a3227448387d0534f909a7f743a80a004ac44817927fcd66",
+  "originalFailureArtifactsPreserved": true,
+  "wholeAndLocalBudgetsUnchanged": true,
+  "endpointsAndPhysicsUnchanged": true,
+  "assertions": 427,
+  "summaries": [
+    {
+      "mode": "baseline",
+      "status": "FAILED",
+      "originalFirstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 1ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:261:380)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:340:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:318:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "wholeBudgetMs": 900000,
+      "wholeElapsedMs": 368513,
+      "localBudgetMs": 150000,
+      "firstLocalAimAt": "2026-10-05T02:35:36.647Z",
+      "lastLocalAimFinishedAt": "2026-10-05T02:38:08.908Z",
+      "completedCycles": 14,
+      "attemptedCycles": 15,
+      "coarseCycles": 3,
+      "fineCycles": 11,
+      "initialLocal": {
+        "x": -2.7,
+        "y": 1.3,
+        "z": -7.2,
+        "yaw": 0
+      },
+      "lastObservedLocal": {
+        "x": -0.1875001874813753,
+        "y": 1.3,
+        "z": -7.199722545613458,
+        "yaw": 1.568895213000168
+      },
+      "originalTarget": {
+        "x": 0,
+        "z": -7.2,
+        "y": 1.3
+      },
+      "originalMetres": 2.5124999920086033,
+      "actualHeldSimulationSeconds": 4.000000000000091,
+      "aimTotalWallMs": 83974,
+      "originalFreshReadTotalWallMs": 12301,
+      "observedPointerAndRafWallMs": 71673,
+      "aims": [
+        {
+          "startedAt": "2026-10-05T02:35:36.647Z",
+          "finishedAt": "2026-10-05T02:35:42.381Z",
+          "wallMs": 5734,
+          "freshReadWallMs": 718,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:35:44.949Z",
+          "finishedAt": "2026-10-05T02:35:50.791Z",
+          "wallMs": 5842,
+          "freshReadWallMs": 825,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:35:54.055Z",
+          "finishedAt": "2026-10-05T02:36:00.006Z",
+          "wallMs": 5951,
+          "freshReadWallMs": 936,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:36:02.180Z",
+          "finishedAt": "2026-10-05T02:36:07.940Z",
+          "wallMs": 5760,
+          "freshReadWallMs": 746,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:36:10.336Z",
+          "finishedAt": "2026-10-05T02:36:16.183Z",
+          "wallMs": 5847,
+          "freshReadWallMs": 831,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:36:18.546Z",
+          "finishedAt": "2026-10-05T02:36:21.779Z",
+          "wallMs": 3233,
+          "freshReadWallMs": 755,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:36:26.900Z",
+          "finishedAt": "2026-10-05T02:36:32.725Z",
+          "wallMs": 5825,
+          "freshReadWallMs": 813,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:36:35.441Z",
+          "finishedAt": "2026-10-05T02:36:40.923Z",
+          "wallMs": 5482,
+          "freshReadWallMs": 806,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:36:48.410Z",
+          "finishedAt": "2026-10-05T02:36:54.349Z",
+          "wallMs": 5939,
+          "freshReadWallMs": 921,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:37:00.691Z",
+          "finishedAt": "2026-10-05T02:37:06.534Z",
+          "wallMs": 5843,
+          "freshReadWallMs": 773,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:37:08.881Z",
+          "finishedAt": "2026-10-05T02:37:14.713Z",
+          "wallMs": 5832,
+          "freshReadWallMs": 821,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:37:22.359Z",
+          "finishedAt": "2026-10-05T02:37:27.574Z",
+          "wallMs": 5215,
+          "freshReadWallMs": 916,
+          "yawResidual": 0.00014786375616271386,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:37:35.999Z",
+          "finishedAt": "2026-10-05T02:37:41.911Z",
+          "wallMs": 5912,
+          "freshReadWallMs": 899,
+          "yawResidual": 0.001248316597390664,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:37:49.677Z",
+          "finishedAt": "2026-10-05T02:37:55.504Z",
+          "wallMs": 5827,
+          "freshReadWallMs": 816,
+          "yawResidual": 0.0014568077523231526,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:38:03.176Z",
+          "finishedAt": "2026-10-05T02:38:08.908Z",
+          "wallMs": 5732,
+          "freshReadWallMs": 725,
+          "yawResidual": 0.001996584179759786,
+          "pitchResidual": 0
+        }
+      ],
+      "sourcePins": {
+        "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+        "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+        "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+        "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+        "src/surface-finish.js": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0"
+      },
+      "layoutSha256": "6f765d7ba20b17f86f237f6ea4011b60545507385e26975dc1a5692c50a0dd9f",
+      "fullLocalColliderCount": 224,
+      "colliderSha256": "76b72e419af7c1e50b5ac028d6086ca36b413783b4588d78d95ef39c6f7061b5",
+      "cpuPathSamples": 2723,
+      "cpuContacts": 0,
+      "cpuMinimumColliderClearanceMetres": 0.4399999999999998,
+      "cpuTail": [
+        {
+          "before": {
+            "x": -0.1875001874813753,
+            "y": 1.3,
+            "z": -7.199722545613458,
+            "yaw": 1.568895213000168
+          },
+          "after": {
+            "x": -0.11250018748137532,
+            "y": 1.3,
+            "z": -7.199722545613458,
+            "yaw": 1.5707963267948966
+          },
+          "simulationSeconds": 0.25,
+          "metres": 0.075
+        },
+        {
+          "before": {
+            "x": -0.11250018748137532,
+            "y": 1.3,
+            "z": -7.199722545613458,
+            "yaw": 1.5707963267948966
+          },
+          "after": {
+            "x": -0.03750018748137532,
+            "y": 1.3,
+            "z": -7.199722545613458,
+            "yaw": 1.5707963267948966
+          },
+          "simulationSeconds": 0.25,
+          "metres": 0.075
+        }
+      ],
+      "cpuTailEndpointDistance": 0.03750121387468557,
+      "secondaryCleanupUnchanged": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T02:38:13.301Z",
+          "elapsedMs": 30008,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3433,
+          "limit": 5000,
+          "elapsedMs": 42,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T02:38:43.351Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "mode": "authored",
+      "status": "FAILED",
+      "originalFirstError": {
+        "stage": "case",
+        "name": "AssertionError",
+        "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n",
+        "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n\n    at walkLocal (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:257:16)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:340:56\n    at async bounded (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:318:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "wholeBudgetMs": 900000,
+      "wholeElapsedMs": 365029,
+      "localBudgetMs": 150000,
+      "firstLocalAimAt": "2026-10-05T02:42:13.118Z",
+      "lastLocalAimFinishedAt": "2026-10-05T02:44:38.473Z",
+      "completedCycles": 14,
+      "attemptedCycles": 14,
+      "coarseCycles": 3,
+      "fineCycles": 11,
+      "initialLocal": {
+        "x": -2.7,
+        "y": 1.3,
+        "z": -7.2,
+        "yaw": 0
+      },
+      "lastObservedLocal": {
+        "x": -0.18750008285875588,
+        "y": 1.3,
+        "z": -7.19982656968886,
+        "yaw": 1.569264819763728
+      },
+      "originalTarget": {
+        "x": 0,
+        "z": -7.2,
+        "y": 1.3
+      },
+      "originalMetres": 2.512499995414442,
+      "actualHeldSimulationSeconds": 4.250000000000103,
+      "aimTotalWallMs": 73361,
+      "originalFreshReadTotalWallMs": 12757,
+      "observedPointerAndRafWallMs": 60604,
+      "aims": [
+        {
+          "startedAt": "2026-10-05T02:42:13.118Z",
+          "finishedAt": "2026-10-05T02:42:18.027Z",
+          "wallMs": 4909,
+          "freshReadWallMs": 807,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:42:27.239Z",
+          "finishedAt": "2026-10-05T02:42:33.075Z",
+          "wallMs": 5836,
+          "freshReadWallMs": 813,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:42:37.786Z",
+          "finishedAt": "2026-10-05T02:42:41.745Z",
+          "wallMs": 3959,
+          "freshReadWallMs": 831,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:42:44.734Z",
+          "finishedAt": "2026-10-05T02:42:50.618Z",
+          "wallMs": 5884,
+          "freshReadWallMs": 864,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:42:53.131Z",
+          "finishedAt": "2026-10-05T02:42:58.943Z",
+          "wallMs": 5812,
+          "freshReadWallMs": 798,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:01.631Z",
+          "finishedAt": "2026-10-05T02:43:07.504Z",
+          "wallMs": 5873,
+          "freshReadWallMs": 860,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:10.210Z",
+          "finishedAt": "2026-10-05T02:43:11.657Z",
+          "wallMs": 1447,
+          "freshReadWallMs": 993,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:13.934Z",
+          "finishedAt": "2026-10-05T02:43:17.833Z",
+          "wallMs": 3899,
+          "freshReadWallMs": 1167,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:25.909Z",
+          "finishedAt": "2026-10-05T02:43:31.782Z",
+          "wallMs": 5873,
+          "freshReadWallMs": 857,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:40.956Z",
+          "finishedAt": "2026-10-05T02:43:46.963Z",
+          "wallMs": 6007,
+          "freshReadWallMs": 990,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:50.104Z",
+          "finishedAt": "2026-10-05T02:43:55.917Z",
+          "wallMs": 5813,
+          "freshReadWallMs": 798,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:43:58.755Z",
+          "finishedAt": "2026-10-05T02:44:04.860Z",
+          "wallMs": 6105,
+          "freshReadWallMs": 1081,
+          "yawResidual": 0,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:44:12.681Z",
+          "finishedAt": "2026-10-05T02:44:18.676Z",
+          "wallMs": 5995,
+          "freshReadWallMs": 981,
+          "yawResidual": 0.0006242785990271393,
+          "pitchResidual": 0
+        },
+        {
+          "startedAt": "2026-10-05T02:44:32.524Z",
+          "finishedAt": "2026-10-05T02:44:38.473Z",
+          "wallMs": 5949,
+          "freshReadWallMs": 917,
+          "yawResidual": 0.0009751253211967014,
+          "pitchResidual": 0
+        }
+      ],
+      "sourcePins": {
+        "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+        "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+        "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+        "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+        "src/surface-finish.js": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0"
+      },
+      "layoutSha256": "6f765d7ba20b17f86f237f6ea4011b60545507385e26975dc1a5692c50a0dd9f",
+      "fullLocalColliderCount": 224,
+      "colliderSha256": "76b72e419af7c1e50b5ac028d6086ca36b413783b4588d78d95ef39c6f7061b5",
+      "cpuPathSamples": 2724,
+      "cpuContacts": 0,
+      "cpuMinimumColliderClearanceMetres": 0.4399999999999998,
+      "cpuTail": [
+        {
+          "before": {
+            "x": -0.18750008285875588,
+            "y": 1.3,
+            "z": -7.19982656968886,
+            "yaw": 1.569264819763728
+          },
+          "after": {
+            "x": -0.11250008285875589,
+            "y": 1.3,
+            "z": -7.19982656968886,
+            "yaw": 1.5707963267948966
+          },
+          "simulationSeconds": 0.25,
+          "metres": 0.075
+        },
+        {
+          "before": {
+            "x": -0.11250008285875589,
+            "y": 1.3,
+            "z": -7.19982656968886,
+            "yaw": 1.5707963267948966
+          },
+          "after": {
+            "x": -0.03750008285875589,
+            "y": 1.3,
+            "z": -7.19982656968886,
+            "yaw": 1.5707963267948966
+          },
+          "simulationSeconds": 0.25,
+          "metres": 0.075
+        }
+      ],
+      "cpuTailEndpointDistance": 0.037500483896696316,
+      "secondaryCleanupUnchanged": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T02:44:49.890Z",
+          "elapsedMs": 30004,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3619,
+          "limit": 5000,
+          "elapsedMs": 45,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T02:45:19.939Z",
+          "elapsedMs": 1,
+          "confirmed": true,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "classifications": [
+    {
+      "name": "ferry-local-original-predicate-current",
+      "options": {
+        "camera": {
+          "yaw": 0,
+          "pitch": 0.15
+        }
+      },
+      "observed": {
+        "clock": 500,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "skippedPointerInput": true,
+          "satisfiedBy": "fresh-read-only-current-camera-original-predicate",
+          "finishedAt": "1970-01-01T00:00:00.500Z"
+        }
+      }
+    },
+    {
+      "name": "yaw-inside-strict-limit",
+      "options": {
+        "camera": {
+          "yaw": 0.024999,
+          "pitch": 0.15
+        }
+      },
+      "observed": {
+        "clock": 500,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0.024999,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "skippedPointerInput": true,
+          "satisfiedBy": "fresh-read-only-current-camera-original-predicate",
+          "finishedAt": "1970-01-01T00:00:00.500Z"
+        }
+      }
+    },
+    {
+      "name": "yaw-at-original-limit",
+      "options": {
+        "camera": {
+          "yaw": 0.025,
+          "pitch": 0.15
+        }
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0.025,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "pitch-inside-strict-limit",
+      "options": {
+        "camera": {
+          "yaw": 0,
+          "pitch": 0.152999
+        }
+      },
+      "observed": {
+        "clock": 500,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.152999
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "skippedPointerInput": true,
+          "satisfiedBy": "fresh-read-only-current-camera-original-predicate",
+          "finishedAt": "1970-01-01T00:00:00.500Z"
+        }
+      }
+    },
+    {
+      "name": "pitch-at-original-limit-exact-zero-base",
+      "options": {
+        "camera": {
+          "yaw": 0,
+          "pitch": 0.003
+        },
+        "pitch": 0
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.003
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "pitch-outside-original-limit",
+      "options": {
+        "camera": {
+          "yaw": 0,
+          "pitch": 0.153001
+        }
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.153001
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "wraparound-original-angle",
+      "options": {
+        "camera": {
+          "yaw": 6.283185307179586,
+          "pitch": 0.15
+        }
+      },
+      "observed": {
+        "clock": 500,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 6.283185307179586,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "skippedPointerInput": true,
+          "satisfiedBy": "fresh-read-only-current-camera-original-predicate",
+          "finishedAt": "1970-01-01T00:00:00.500Z"
+        }
+      }
+    },
+    {
+      "name": "nan-camera-does-not-shortcut",
+      "options": {
+        "camera": {
+          "yaw": null,
+          "pitch": 0.15
+        }
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": null,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "infinite-camera-does-not-shortcut",
+      "options": {
+        "camera": {
+          "yaw": null,
+          "pitch": 0.15
+        }
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": null,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "photo-default-option-unchanged",
+      "options": {
+        "acceptCurrent": false
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "bus-unchanged",
+      "options": {
+        "kind": "bus"
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "tram-unchanged",
+      "options": {
+        "kind": "tram"
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "original-even-matched-performs-pointer-raf",
+      "options": {
+        "originalMode": true
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 0,
+        "diagnostics": 0,
+        "firstError": null,
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "SATISFIED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": null,
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    },
+    {
+      "name": "read-consumes-original-60s-cap",
+      "options": {
+        "readMs": 60001
+      },
+      "observed": {
+        "clock": 60001,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 1,
+        "diagnostics": 1,
+        "firstError": {
+          "name": "AssertionError",
+          "message": "finite aim phase/whole deadline"
+        },
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "FAILED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:01:00.001Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": {
+            "stage": "aim",
+            "name": "AssertionError",
+            "message": "finite aim phase/whole deadline"
+          },
+          "finishedAt": "1970-01-01T00:01:00.001Z"
+        }
+      }
+    },
+    {
+      "name": "whole-clamps-original-60s-cap",
+      "options": {
+        "wholeMs": 100,
+        "readMs": 101
+      },
+      "observed": {
+        "clock": 101,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 1,
+        "diagnostics": 1,
+        "firstError": {
+          "name": "AssertionError",
+          "message": "finite aim phase/whole deadline"
+        },
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "FAILED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.101Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": {
+            "stage": "aim",
+            "name": "AssertionError",
+            "message": "finite aim phase/whole deadline"
+          },
+          "finishedAt": "1970-01-01T00:00:00.101Z"
+        }
+      }
+    },
+    {
+      "name": "read-first-error-preserved",
+      "options": {
+        "readError": {}
+      },
+      "observed": {
+        "clock": 500,
+        "reads": 1,
+        "moves": 0,
+        "waits": 0,
+        "releases": 1,
+        "diagnostics": 1,
+        "firstError": {
+          "name": "Error",
+          "message": "original read first failure"
+        },
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "FAILED",
+          "progress": [],
+          "diagnosticErrors": [],
+          "firstError": {
+            "stage": "aim",
+            "name": "Error",
+            "message": "original read first failure"
+          },
+          "finishedAt": "1970-01-01T00:00:00.500Z"
+        }
+      }
+    },
+    {
+      "name": "unmatched-original-wait-error-preserved",
+      "options": {
+        "camera": {
+          "yaw": 0.05,
+          "pitch": 0.15
+        },
+        "waitError": {}
+      },
+      "observed": {
+        "clock": 700,
+        "reads": 1,
+        "moves": 1,
+        "waits": 1,
+        "releases": 1,
+        "diagnostics": 1,
+        "firstError": {
+          "name": "Error",
+          "message": "original predicate timeout"
+        },
+        "phase": {
+          "type": "aim",
+          "target": {
+            "yaw": 0,
+            "pitch": 0.15
+          },
+          "budgetMs": 60000,
+          "startedAt": "1970-01-01T00:00:00.000Z",
+          "status": "FAILED",
+          "progress": [
+            {
+              "when": "before-input",
+              "status": "OBSERVED",
+              "at": "1970-01-01T00:00:00.500Z",
+              "observed": {
+                "camera": {
+                  "yaw": 0.05,
+                  "pitch": 0.15
+                },
+                "settings": {
+                  "sensitivity": 1
+                }
+              }
+            }
+          ],
+          "diagnosticErrors": [],
+          "firstError": {
+            "stage": "aim",
+            "name": "Error",
+            "message": "original predicate timeout"
+          },
+          "finishedAt": "1970-01-01T00:00:00.700Z"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "No native browser launched or rerun",
+    "Actual timing savings depend on future browser execution; measured original mouse/RAF duration is explanatory, not a PASS",
+    "Both original native cases and their browser.close failures remain FAILED",
+    "CPU body contacts use all original 224 local colliders and the actual source support/movement; successful CPU tail is not a native completion"
+  ]
+}

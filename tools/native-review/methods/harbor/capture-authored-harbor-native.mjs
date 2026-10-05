@@ -307,7 +307,7 @@ try{
  page.on('response',response=>{if(response.status()>=400)record.errors.push({kind:'http',status:response.status(),url:response.url()});});
  page.on('requestfailed',request=>{const item={kind:'requestfailed',url:request.url(),failure:request.failure()};
   if(closing&&item.failure?.errorText==='net::ERR_ABORTED')record.teardownEvents.push(item);else record.errors.push(item);});
- const input=createInput(page,{remaining,record,persist});await boot(input);
+ const input=createInput(page,{remaining,record,persist,homePrecisionHold:plan.id==='home'});await boot(input);
  for(const [index,step]of plan.steps.entries()){
   record.activeStep={index,...step};await persist();
   if(step.kind==='walk')await input.walk(step.axis,step.target);

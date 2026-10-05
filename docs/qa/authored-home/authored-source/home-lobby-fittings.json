@@ -2,25 +2,25 @@
   "id": "home-lobby-fittings",
   "output": {
     "path": "assets/harbor/home/home-lobby-fittings.glb",
-    "bytes": 3948944,
-    "sha256": "9db26832bae72c3f1f96e2b1a093a748ac0cee0ac864f6b1b8ac96d8da9d4ced"
+    "bytes": 5015196,
+    "sha256": "515db55f4f10259f0260d0ee9f015b53494ee7fd54f2289d7a6a579e21b78625"
   },
-  "meshCount": 14,
+  "meshCount": 19,
   "tiers": {
     "core": {
-      "triangles": 12830,
-      "drawCalls": 7
+      "triangles": 23166,
+      "drawCalls": 10
     },
     "near": {
-      "triangles": 1828,
-      "drawCalls": 4
+      "triangles": 2548,
+      "drawCalls": 6
     },
     "far": {
       "triangles": 572,
       "drawCalls": 3
     }
   },
-  "totalPackedTriangles": 15230,
+  "totalPackedTriangles": 26286,
   "records": [
     {
       "name": "edged furniture panel",
@@ -2087,10 +2087,10 @@
       ]
     },
     {
-      "name": "fitted mattress with round edges",
+      "name": "full-thickness rounded fitted mattress",
       "tier": "core",
-      "material": 4,
-      "triangles": 288,
+      "material": 8,
+      "triangles": 1920,
       "min": [
         -7.650000095367432,
         0.4000000059604645,
@@ -2103,26 +2103,42 @@
       ]
     },
     {
-      "name": "draped cotton duvet with uneven folds",
+      "name": "mattress stitched side piping",
+      "tier": "near",
+      "material": 8,
+      "triangles": 720,
+      "min": [
+        -7.647514343261719,
+        0.5935437679290771,
+        4.383577823638916
+      ],
+      "max": [
+        -6.852485656738281,
+        0.5968000292778015,
+        6.216422080993652
+      ]
+    },
+    {
+      "name": "filled linen duvet with compressed fold and hanging hems",
       "tier": "core",
-      "material": 4,
-      "triangles": 1200,
+      "material": 9,
+      "triangles": 3696,
       "min": [
         -7.644999980926514,
-        0.5936144590377808,
+        0.5990911722183228,
         4.789999961853027
       ],
       "max": [
         -6.855000019073486,
-        0.6826742887496948,
+        0.6729783415794373,
         6.210000038146973
       ]
     },
     {
-      "name": "soft pillow",
+      "name": "plump cotton pillow",
       "tier": "core",
-      "material": 4,
-      "triangles": 288,
+      "material": 8,
+      "triangles": 1920,
       "min": [
         -7.559999942779541,
         0.6200000047683716,
@@ -2137,7 +2153,7 @@
     {
       "name": "duvet turned-down hem",
       "tier": "near",
-      "material": 4,
+      "material": 9,
       "triangles": 44,
       "min": [
         -7.635000228881836,
@@ -3047,17 +3063,17 @@
       ]
     },
     {
-      "name": "gathered window curtain",
+      "name": "bedroom linen curtain with gravity spread and uneven hem",
       "tier": "core",
-      "material": 4,
-      "triangles": 400,
+      "material": 10,
+      "triangles": 2688,
       "min": [
-        -8.387999534606934,
-        1.1200000047683716,
+        -8.375910758972168,
+        1.1200268268585205,
         3.815000057220459
       ],
       "max": [
-        -8.312000274658203,
+        -8.317946434020996,
         2.640000104904175,
         4.284999847412109
       ]
@@ -3079,17 +3095,17 @@
       ]
     },
     {
-      "name": "gathered window curtain",
+      "name": "bedroom linen curtain with gravity spread and uneven hem",
       "tier": "core",
-      "material": 4,
-      "triangles": 400,
+      "material": 10,
+      "triangles": 2688,
       "min": [
-        -8.387999534606934,
-        1.1200000047683716,
+        -8.375910758972168,
+        1.1200268268585205,
         6.40500020980835
       ],
       "max": [
-        -8.312000274658203,
+        -8.317946434020996,
         2.640000104904175,
         6.894999980926514
       ]
@@ -3319,7 +3335,7 @@
       ]
     }
   ],
-  "materialCount": 8,
+  "materialCount": 11,
   "textureCount": 7,
   "texturePaths": [
     "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg",

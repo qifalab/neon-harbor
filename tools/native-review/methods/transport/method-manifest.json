@@ -2,8 +2,8 @@
   "status": "PREPARED_SYNTAX_CHECKED_API_SOURCE_REVIEWED_NATIVE_UNRUN",
   "tool": {
     "path": "native-transport-high.mjs",
-    "bytes": 47346,
-    "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
+    "bytes": 48169,
+    "sha256": "e082e9cc860bae05286eb85d77037174db82b3872b4aea6a3ed67363ed98fca4"
   },
   "canonical": {
     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
@@ -48,7 +48,7 @@
   },
   "settings": "High; public UI 16.5; dayCycle false; actual first-person V; sensitivity1",
   "budgets": {
-    "busCaseIncludingContextMs": 600000,
+    "busCaseIncludingContextMs": 2400000,
     "tramCaseIncludingContextMs": 2400000,
     "ferryCaseIncludingContextMs": 900000,
     "localWaypointMs": 150000,
@@ -59,7 +59,8 @@
     "groundWaypointMs": 120000,
     "pointerCleanupMs": 5000,
     "aimPhaseMs": 60000,
-    "phaseProgressDiagnosticMs": 10000
+    "phaseProgressDiagnosticMs": 10000,
+    "tramScheduledBerthMs": 1200000
   },
   "preservedGuards": {
     "localEndpointMetres": 0.06,
@@ -226,5 +227,71 @@
     "changedRuntimeAssetCount": 6,
     "ferryResourcesAndAllMethodCodeUnchanged": true,
     "historicalProvenanceAndOtherGuardsPreserved": true
+  },
+  "busWholeBudgetAmendment": {
+    "originalWholeMs": 600000,
+    "activeWholeMs": 2400000,
+    "reason": "BUS original600s expired during first lower-photo berth wait. Baseline had0.5sim left at courtyard and328.525wall available; authored alreadycruising to market with10.894649sim ETA and290.826wall available. Original400/580s videos show ETA11/4 baseline and10/3 authored with moving street scene. Fixed40min BUS-only cap leaves original150s local/600s berth/collision/endpoint/camera/source/resource guards unchanged; no guarantee of later stairs completion.",
+    "sourceRuntimeChanged": false,
+    "originalGuardsAndLocalBudgetsUnchanged": true,
+    "nativeExecuted": false,
+    "originalFailurePreserved": true
+  },
+  "ferryCurrentCameraPredicateAmendment": {
+    "status": "SOURCE_ONLY_CPU_PREPARED_PENDING_NATIVE_RECAPTURE",
+    "originalRunId": 37254103874,
+    "originalArtifactId": 11323061213,
+    "previousMethodSHA256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598",
+    "onlyFerryCabinLocalAimEligible": true,
+    "actualFreshReadonlyCameraRequired": true,
+    "originalYawToleranceRadians": 0.025,
+    "originalPitchToleranceRadians": 0.003,
+    "originalEndpointMetres": 0.06,
+    "originalLocalBudgetMs": 150000,
+    "originalFerryWholeBudgetMs": 900000,
+    "otherVehiclesAndPhotoAimUnchanged": true,
+    "originalFailurePreserved": true,
+    "browserAcceptance": false,
+    "cpuProofSHA256": "677b90db36ce34e338d1a3bee7f355856563eeb64c42c1c263461fc20a9e79cd",
+    "actualCollisionGeometryUnchanged": true
+  },
+  "tramScheduledBerthBudgetAmendment": {
+    "status": "FINITE_SOURCE_AND_ORIGINAL_WALL_TIMING_CPU_CANDIDATE_NATIVE_PENDING",
+    "originalRunId": 37254103874,
+    "originalArtifactId": 11322804818,
+    "originalMethodSHA256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598",
+    "baseCurrentCombinedMethodSHA256": "571c19a0931d85ef26ad7be462eb2adb5749f580d8f085ea6b8a696dfb4abd80",
+    "originalTRAMBerthMs": 600000,
+    "candidateTRAMBerthMs": 1200000,
+    "unchangedBUSAndFERRYBerthMs": 600000,
+    "unchangedTRAMWholeMs": 2400000,
+    "defaultScheduledBerthMsRemainsLegacy600000": true,
+    "activeScheduledBerthMsByKindIsExplicit": true,
+    "evidence": "Both actual lower-photo waits began with only0.500/0.483sim left at correct initial tram berth, below originalremaining>2. 600wall seconds progressed23.25/22.75sim; exact served-source1/60sim-step replay reproduces every recorded vehicle field at normal x240/z0 red signal. Original source subsequently reaches correct workshop berth atsim46.3333333; observed-wall-rate wait estimates898.950/918.275 seconds. 1200s is a fixed TRAM-only finite bound with whole2400 clamp, not a successful result or guaranteed later-case budget.",
+    "sourceProductionChanged": false,
+    "predicateAndWaitTailByteIdentical": true,
+    "noVehicleOrStopSubstitution": true,
+    "unchangedGuards": [
+      "actual public boardingE",
+      "same selected specific vehicle",
+      "original stopIds",
+      "doorsOpen && remaining>2",
+      "body/camera/endpoint/radius/collision/physics",
+      "source and asset fingerprint",
+      "original first errors/release/diagnostics",
+      "all photo payload conditions",
+      "owned process and port closure"
+    ],
+    "cpuProof": {
+      "path": "/tmp/neon-tram-berth-diagnosis-20261005/cpu-proof.json",
+      "sha256": "118b86eff4a7f747cc63c5e1e83f4fe1c6eb7553adf6722f4bff55cede0d46ec",
+      "classificationCount": 12,
+      "original600ReproducesFailure": true,
+      "normalSourceReplayMatchesBothActualVehicleStatesExactly": true
+    },
+    "fullSnapshotRAFObserverCostNotIndependentlyMeasured": true,
+    "originalFailuresPermanentlyPreserved": true,
+    "nativeExecuted": false,
+    "browserAcceptance": false
   }
 }

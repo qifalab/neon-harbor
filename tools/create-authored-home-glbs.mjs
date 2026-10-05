@@ -45,12 +45,53 @@ function chair(x,z,yaw=0){
 function book(x,y,z,w=.22,d=.15,th=.035,row=3){box(5,x,y+th/2,z,w,th,d,'core','book cloth cover');box(2,x,y+th/2,z+.003,w-.015,th*.65,d-.015,'core','book pages');print(row,x,y+th+.001,z,w-.009,d*.65,0,-Math.PI/2);}
 function cup(x,y,z,s=.65){const pts=[[.034,0],[.057,.014],[.064,.096],[.057,.112],[.051,.096],[.040,.014]].map(p=>new THREE.Vector2(...p));const g=new THREE.LatheGeometry(pts,14);g.scale(s,s,s);add(g,2,x,y,z,'core',[0,0,0],'open ceramic cup');tube(5,x,y+.080*s,z,.047*s,.005,'near',0,0,'tea surface');const h=new THREE.TorusGeometry(.030*s,.008*s,6,10,Math.PI*1.7);add(h,2,x+.064*s,y+.058*s,z,'near',[0,0,0],'cup handle');}
 function lamp(x,y,z){tube(3,x,y+.009,z,.065,.018);tube(3,x,y+.17,z,.006,.32);add(new THREE.ConeGeometry(.105,.11,14,1,true),2,x,y+.33,z,'core',[0,0,0],'reading lamp shade');}
+// Bedroom-only cloth revision. These closed soft forms stay inside the
+// original per-piece metric AABBs; layout/collision and CC0 iron bed are fixed.
+function softVolume(material,x,y,z,w,h,l,name,exponent=.27){
+ const nx=48,ny=20,p=[],u=[],ix=[],signed=(v,e)=>Math.sign(v)*Math.pow(Math.abs(v),e);
+ for(let j=0;j<=ny;j++)for(let i=0;i<=nx;i++){
+  const a=i/nx*Math.PI*2,b=-Math.PI/2+j/ny*Math.PI;
+  p.push(w/2*signed(Math.cos(b),exponent)*signed(Math.sin(a),exponent),h/2*signed(Math.sin(b),exponent),l/2*signed(Math.cos(b),exponent)*signed(Math.cos(a),exponent));
+  u.push(i/nx*w/1.5,j/ny*l/1.5);
+  if(i<nx&&j<ny){const q=j*(nx+1)+i;ix.push(q,q+1,q+nx+1,q+1,q+nx+2,q+nx+1);}
+ }
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(u,2));g.setIndex(ix);g.computeVertexNormals();add(g,material,x,y,z,'core',[0,0,0],name);
+}
+function mattressPiping(){
+ const points=[],w=.786,l=1.826,r=.044;
+ for(const [cx,cz,begin]of[[w/2-r,l/2-r,0],[-w/2+r,l/2-r,Math.PI/2],[-w/2+r,-l/2+r,Math.PI],[w/2-r,-l/2+r,Math.PI*1.5]])
+  for(let i=0;i<9;i++){const a=begin+i/8*Math.PI/2;points.push(new THREE.Vector3(cx+r*Math.cos(a),.595,cz+r*Math.sin(a)));}
+ const curve=new THREE.CatmullRomCurve3(points,true,'centripetal');add(new THREE.TubeGeometry(curve,72,.0018,5,true),8,-7.25,0,5.30,'near',[0,0,0],'mattress stitched side piping');
+}
 function softDuvet(){
- const w=.79,l=1.42,nx=20,nz=30,p=[],u=[],ix=[];
- for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const a=i/nx,b=j/nz,xx=(a-.5)*w,zz=(b-.5)*l;
-  const fold=.018*Math.sin(a*Math.PI*10+b*5)+.012*Math.sin(b*Math.PI*9+a*6),edge=Math.pow(Math.abs(a-.5)*2,5)*.032;
-  p.push(xx,.653+fold-edge,zz);u.push(a*w/1.5,b*l/1.5);if(i<nx&&j<nz){const q=j*(nx+1)+i;ix.push(q,q+nx+1,q+1,q+1,q+nx+1,q+nx+2);}}
- const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(u,2));g.setIndex(ix);g.computeVertexNormals();add(g,4,-7.25,0,5.50,'core',[0,0,0],'draped cotton duvet with uneven folds');
+ const w=.79,l=1.42,nx=24,nz=36,p=[],u=[],ix=[],layer=(nx+1)*(nz+1);
+ // Filled cover: broad gentle loft, one local compressed fold and gravity
+ // at the side/foot hems, rather than a repetitive sine-wave sheet.
+ for(let face=0;face<2;face++)for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
+  const a=i/nx,b=j/nz,xx=(a-.5)*w,zz=(b-.5)*l;
+  const edge=Math.pow(Math.abs(2*a-1),8)*.031+Math.pow(Math.abs(2*b-1),10)*.019;
+  const loft=.014*Math.exp(-((a-.46)**2/.080+(b-.50)**2/.18));
+  const fold=.007*Math.exp(-((a-.67)**2/.008))*Math.sin(b*7+.6)*Math.sin(Math.PI*b);
+  const fill=.010+.023*Math.sin(Math.PI*a)*Math.sin(Math.PI*b);
+  const y=.659+loft+fold-edge-(face?fill:0);
+  p.push(xx,y,zz);u.push(a*w/1.5,b*l/1.5);
+  if(i<nx&&j<nz){const q=face*layer+j*(nx+1)+i;if(face)ix.push(q,q+1,q+nx+1,q+1,q+nx+2,q+nx+1);else ix.push(q,q+nx+1,q+1,q+1,q+nx+1,q+nx+2);}
+ }
+ const border=[];for(let i=0;i<=nx;i++)border.push(i);for(let j=1;j<=nz;j++)border.push(j*(nx+1)+nx);for(let i=nx-1;i>=0;i--)border.push(nz*(nx+1)+i);for(let j=nz-1;j>0;j--)border.push(j*(nx+1));
+ for(let i=0;i<border.length;i++){const a=border[i],b=border[(i+1)%border.length];ix.push(a,b,a+layer,b,b+layer,a+layer);}
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(u,2));g.setIndex(ix);g.computeVertexNormals();add(g,9,-7.25,0,5.50,'core',[0,0,0],'filled linen duvet with compressed fold and hanging hems');
+}
+function bedroomCurtain(x,z,width,height){
+ const nx=48,ny=28,p=[],u=[],ix=[];
+ for(let j=0;j<=ny;j++)for(let i=0;i<=nx;i++){
+  const a=i/nx,b=j/ny,phase=a*Math.PI*13+.22*Math.sin(a*11);
+  const spread=.80+.20*b,pleat=.029*(.80+.20*Math.sin(a*7+1.2));
+  const depth=pleat*Math.sin(phase+.18*b*b)*(.75+.25*b)+.004*Math.sin(phase*2-.35)*b;
+  const hem=.014*(.5+.5*Math.sin(a*9+.3))*b*b*b;
+  p.push(depth,2.64-b*height+hem,(a-.5)*width*spread);u.push(a*width/1.5,b*height/1.5);
+  if(i<nx&&j<ny){const q=j*(nx+1)+i;ix.push(q,q+1,q+nx+1,q+1,q+nx+2,q+nx+1);}
+ }
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(u,2));g.setIndex(ix);g.computeVertexNormals();add(g,10,x,0,z,'core',[0,0,0],'bedroom linen curtain with gravity spread and uneven hem');tube(3,x,2.70,z,.015,width+.10,'core',Math.PI/2,0,'curtain rail');
 }
 function curtain(x,z,width,height=1.8){
  const n=40,m=5,p=[],u=[],ix=[];
@@ -79,8 +120,8 @@ function lobby(){
  curtain(-8.35,.10,.52,1.62);curtain(-8.35,2.64,.48,1.62);
  // Mattress sits on the real bed rails at about 0.40 m; no scaling distortion.
  for(const dz of[-.72,-.36,0,.36,.72])box(0,-7.25,.395,5.30+dz,.80,.025,.09,'core','bed timber support slat');
- oval(4,-7.25,.52,5.30,.80,.24,1.85,'core','fitted mattress with round edges');softDuvet();
- oval(4,-7.25,.695,4.63,.62,.15,.35,'core','soft pillow');box(4,-7.25,.651,6.0,.77,.02,.16,'near','duvet turned-down hem');
+ softVolume(8,-7.25,.52,5.30,.80,.24,1.85,'full-thickness rounded fitted mattress');mattressPiping();softDuvet();
+ softVolume(8,-7.25,.695,4.63,.62,.15,.35,'plump cotton pillow',.52);box(9,-7.25,.651,6.0,.77,.02,.16,'near','duvet turned-down hem');
  table(-6.37,4.56,.42,.42,.55);lamp(-6.37,.551,4.56);book(-6.34,.552,4.64,.20,.13,.025,3);
  cabinet(-5.2,7.72,1.70,.50,2.12,'-z');box(4,-5.62,2.15,7.71,.41,.045,.34,'core','folded blanket on wardrobe');box(4,-5.16,2.15,7.71,.37,.045,.33,'core','folded linen on wardrobe');
  table(-5.15,4.22,1.20,.55,.77);chair(-5.15,4.77,0);book(-5.35,.771,4.23,.32,.23,.027,6);lamp(-4.70,.771,4.23);
@@ -91,7 +132,7 @@ function lobby(){
  for(const dx of[-.10,.10])oval(5,-4.45+dx,.425,7.07,.14,.07,.28,'core','worn shoes');
  tube(0,-4.45,1.05,6.89,.024,1.2);tube(3,-4.45,1.63,6.89,.012,.35,'core',0,Math.PI/2,'coat hanger');
  box(4,-4.45,1.29,6.93,.36,.55,.08,'core','hung canvas tote');
- curtain(-8.35,4.05,.47,1.52);curtain(-8.35,6.65,.49,1.52);
+ bedroomCurtain(-8.35,4.05,.47,1.52);bedroomCurtain(-8.35,6.65,.49,1.52);
 }
 function gallery(){
  // Continuous L kitchen with separate fronts, edged worktops and an actual
@@ -154,6 +195,11 @@ async function exportFloor(floor){
  }
  const materials=structuredClone(baseMaterials);
  if(floor==='lobby')materials[4]={...materials[4],pbrMetallicRoughness:{baseColorTexture:{index:4},metallicRoughnessTexture:{index:6},metallicFactor:0,roughnessFactor:1},normalTexture:{index:5,scale:.48},occlusionTexture:{index:6}};
+ if(floor==='lobby')for(const [name,color,normalScale]of[
+  ['Fine ivory cotton mattress and pillow',[.74,.70,.61,1],.12],
+  ['Quiet blue-grey filled linen duvet',[.24,.34,.36,1],.16],
+  ['Warm oat bedroom linen curtains',[.58,.53,.44,1],.10],
+ ])materials.push({name,pbrMetallicRoughness:{baseColorFactor:color,metallicRoughnessTexture:{index:6},metallicFactor:0,roughnessFactor:1},normalTexture:{index:5,scale:normalScale},occlusionTexture:{index:6,strength:.70},doubleSided:true});
  const binary=[],views=[],accessors=[],meshes=[],nodes=[],sceneNodes=[];let binaryLength=0;
  function buffer(payload,target){const pad=(-binaryLength)&3;if(pad){binary.push(Buffer.alloc(pad));binaryLength+=pad;}const index=views.length;views.push({buffer:0,byteOffset:binaryLength,byteLength:payload.length,...(target?{target}:{})});binary.push(payload);binaryLength+=payload.length;return index;}
  function attribute(a,type){const index=accessors.length,record={bufferView:buffer(Buffer.from(a.array.buffer,a.array.byteOffset,a.array.byteLength),34962),componentType:5126,count:a.count,type};if(type==='VEC3'){record.min=[0,1,2].map(k=>{let v=Infinity;for(let i=k;i<a.array.length;i+=3)v=Math.min(v,a.array[i]);return v;});record.max=[0,1,2].map(k=>{let v=-Infinity;for(let i=k;i<a.array.length;i+=3)v=Math.max(v,a.array[i]);return v;});}accessors.push(record);return index;}

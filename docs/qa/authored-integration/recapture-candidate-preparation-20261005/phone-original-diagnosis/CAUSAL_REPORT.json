@@ -1,0 +1,478 @@
+{
+  "status": "ORIGINAL_NATIVE_FAIL_PRESERVED",
+  "runID": 37254103874,
+  "artifactID": 11322793245,
+  "sourceRevision": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+  "ZIP": {
+    "path": "/workspace/attachments/cd83a3cd-4030-48c6-ab55-bdaa0c6bb727/neon-cc038-north-phone-original.zip",
+    "bytes": 17885123,
+    "sha256": "4dcdb0825a3dca719061ebfca27d8965ed527021756fa6c1d262625513bc8862"
+  },
+  "metadataSHA256": "f1bd6c90e68b28e43a84e67d4fa43a09ba27b513d9b92bd4d4fc9b599a6b6c24",
+  "originalMethodSHA256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "firstFailure": {
+    "at": "2026-10-05T02:47:24.598Z",
+    "type": "method",
+    "message": "page.waitForFunction: Timeout 176430ms exceeded.\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:192:18)\n    at async walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:203:5)\n    at async northCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:321:5)\n    at async core (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:107)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+  },
+  "originalBudgets": {
+    "totalWallSeconds": 1080,
+    "legWallSeconds": 180,
+    "readyWallSeconds": 180,
+    "assetWallSeconds": 120
+  },
+  "startedAt": "2026-10-05T02:43:14.278Z",
+  "endedAt": "2026-10-05T02:47:24.598Z",
+  "originalElapsedWallSeconds": 250.32,
+  "originalCaptures": [],
+  "originalObservations": [],
+  "events": [
+    {
+      "kind": "visible-settings-ready",
+      "at": "2026-10-05T02:44:04.792Z",
+      "state": {
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 174,
+          "yaw": 3.141592653589793
+        },
+        "camera": {
+          "position": {
+            "x": 8,
+            "y": 1.62,
+            "z": 174
+          },
+          "target": {
+            "x": 8.000000000000002,
+            "y": 1.62,
+            "z": 164
+          },
+          "focus": {
+            "x": 8,
+            "y": 1.62,
+            "z": 174
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "simulationTime": 0.49999999999999994,
+        "teleportRevision": 1,
+        "fps": 0,
+        "frameTiming": {
+          "wallDt": 0.516699999999997,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 0.26669999999999705,
+          "droppedTotal": 23.715799999999998
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null
+        },
+        "settings": {
+          "quality": "high",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 16.5,
+          "sensitivity": 1,
+          "firstPerson": true,
+          "touch": false
+        },
+        "target": {
+          "id": "resident-lantern-tower-1",
+          "x": 498,
+          "y": 0,
+          "z": -597,
+          "yaw": -3.141592653589793,
+          "state": "shopping",
+          "style": "office",
+          "groupId": null,
+          "buildingId": "lantern-tower",
+          "name": "叶安禾",
+          "role": "银行职员",
+          "district": "星汇金融区",
+          "purpose": "休息喝杯咖啡",
+          "event": "职员出来买咖啡、吃午饭",
+          "period": 2,
+          "activity": "检查采购物品",
+          "cycle": 0,
+          "destination": 22.23,
+          "streetStop": null,
+          "insideBuildingId": null,
+          "floorId": null,
+          "roomId": null,
+          "journey": {
+            "phase": "street-activity",
+            "home": {
+              "buildingId": "blue-house",
+              "floorId": "level-04",
+              "kind": "home"
+            },
+            "work": {
+              "buildingId": "lantern-tower",
+              "floorId": "gallery",
+              "kind": "work"
+            },
+            "destinationBuildingId": null,
+            "destinationFloorId": null,
+            "destinationRoomId": null,
+            "stationId": null,
+            "vehicleId": null,
+            "routeId": null,
+            "crossingId": null,
+            "visits": 0,
+            "history": []
+          },
+          "materialized": false
+        }
+      }
+    },
+    {
+      "kind": "independent-public-atlas-setup",
+      "at": "2026-10-05T02:44:24.364Z",
+      "state": {
+        "position": {
+          "x": 560,
+          "y": 0,
+          "z": -595,
+          "yaw": 3.141592653589793
+        },
+        "camera": {
+          "position": {
+            "x": 560,
+            "y": 1.62,
+            "z": -595
+          },
+          "target": {
+            "x": 560,
+            "y": 1.62,
+            "z": -605
+          },
+          "focus": {
+            "x": 560,
+            "y": 1.62,
+            "z": -595
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "simulationTime": 1.2500000000000004,
+        "teleportRevision": 2,
+        "fps": 0,
+        "frameTiming": {
+          "wallDt": 4.549900000000002,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 4.299900000000002,
+          "droppedTotal": 34.4487
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null
+        },
+        "settings": {
+          "quality": "high",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 16.5,
+          "sensitivity": 1,
+          "firstPerson": true,
+          "touch": false
+        },
+        "target": {
+          "id": "resident-lantern-tower-1",
+          "x": 498,
+          "y": 0,
+          "z": -597,
+          "yaw": -3.141592653589793,
+          "state": "shopping",
+          "style": "office",
+          "groupId": null,
+          "buildingId": "lantern-tower",
+          "name": "叶安禾",
+          "role": "银行职员",
+          "district": "星汇金融区",
+          "purpose": "休息喝杯咖啡",
+          "event": "职员出来买咖啡、吃午饭",
+          "period": 2,
+          "activity": "检查采购物品",
+          "cycle": 0,
+          "destination": 22.23,
+          "streetStop": null,
+          "insideBuildingId": null,
+          "floorId": null,
+          "roomId": null,
+          "journey": {
+            "phase": "street-activity",
+            "home": {
+              "buildingId": "blue-house",
+              "floorId": "level-04",
+              "kind": "home"
+            },
+            "work": {
+              "buildingId": "lantern-tower",
+              "floorId": "gallery",
+              "kind": "work"
+            },
+            "destinationBuildingId": null,
+            "destinationFloorId": null,
+            "destinationRoomId": null,
+            "stationId": null,
+            "vehicleId": null,
+            "routeId": null,
+            "crossingId": null,
+            "visits": 0,
+            "history": []
+          },
+          "materialized": true
+        }
+      }
+    }
+  ],
+  "failureState": {
+    "position": {
+      "x": 510.9999999999855,
+      "y": 0,
+      "z": -595,
+      "yaw": -1.5707963267948968
+    },
+    "camera": {
+      "position": {
+        "x": 511.0933333333188,
+        "y": 1.62,
+        "z": -595
+      },
+      "target": {
+        "x": 511.0933333333188,
+        "y": 1.62,
+        "z": -605
+      },
+      "focus": {
+        "x": 511.0933333333188,
+        "y": 1.62,
+        "z": -595
+      },
+      "yaw": 3.141592653589793,
+      "pitch": 0.15,
+      "fov": 65,
+      "boomLength": 0,
+      "desiredBoomLength": 0,
+      "obstructed": false,
+      "overheadFallback": false,
+      "colliderId": null,
+      "clearanceRadius": 0.45
+    },
+    "simulationTime": 10.750000000000114,
+    "teleportRevision": 2,
+    "fps": 0,
+    "frameTiming": {
+      "wallDt": 3.9665,
+      "dt": 0.25,
+      "steps": 15,
+      "alpha": 0,
+      "simulationDelta": 0.25,
+      "droppedSeconds": 3.7165,
+      "droppedTotal": 204.60810000000004
+    },
+    "interior": {
+      "buildingId": null,
+      "floorId": null
+    },
+    "settings": {
+      "quality": "high",
+      "volume": 0,
+      "dayCycle": false,
+      "hour": 16.5,
+      "sensitivity": 1,
+      "firstPerson": true,
+      "touch": false
+    },
+    "target": {
+      "id": "resident-lantern-tower-1",
+      "x": 498,
+      "y": 0,
+      "z": -597,
+      "yaw": -3.141592653589793,
+      "state": "shopping",
+      "style": "office",
+      "groupId": null,
+      "buildingId": "lantern-tower",
+      "name": "叶安禾",
+      "role": "银行职员",
+      "district": "星汇金融区",
+      "purpose": "休息喝杯咖啡",
+      "event": "职员出来买咖啡、吃午饭",
+      "period": 2,
+      "activity": "检查采购物品",
+      "cycle": 0,
+      "destination": 22.23,
+      "streetStop": null,
+      "insideBuildingId": null,
+      "floorId": null,
+      "roomId": null,
+      "journey": {
+        "phase": "street-activity",
+        "home": {
+          "buildingId": "blue-house",
+          "floorId": "level-04",
+          "kind": "home"
+        },
+        "work": {
+          "buildingId": "lantern-tower",
+          "floorId": "gallery",
+          "kind": "work"
+        },
+        "destinationBuildingId": null,
+        "destinationFloorId": null,
+        "destinationRoomId": null,
+        "stationId": null,
+        "vehicleId": null,
+        "routeId": null,
+        "crossingId": null,
+        "visits": 0,
+        "history": []
+      },
+      "materialized": true
+    }
+  },
+  "normalPhysicalMovement": {
+    "startX": 560,
+    "endX": 510.9999999999855,
+    "distanceMeters": 49.000000000014495,
+    "sourceNormalSpeedMetersPerSimSecond": 5.6,
+    "movingSimulationSeconds": 8.75,
+    "observedSimulationDelta": 9.500000000000114,
+    "coarseEndpointX": 503.8,
+    "remainingToCoarseEndpointMeters": 7.199999999985494
+  },
+  "video": {
+    "path": "/tmp/neon-cc038-north-phone-11322793245/native/authored/raw-video/page@35e4fcc379dff4fcc94a1ee48d995b4b.webm",
+    "sha256": "d3eb7cc8cc269cea58a9a3840bde6d1278648a85a884a9ce0ffb732a79381a61",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "252.640000"
+      }
+    },
+    "inspectedExtracts": [
+      {
+        "originalVideoSecond": 220,
+        "path": "/tmp/neon-cc038-north-phone-diagnosis-20261005/video-220s.png",
+        "sha256": "ea139b94e9c52185fdfc78879c5845590595515d317e2fb23392f359bc239a98"
+      },
+      {
+        "originalVideoSecond": 230,
+        "path": "/tmp/neon-cc038-north-phone-diagnosis-20261005/video-230s.png",
+        "sha256": "d7c60d682223e18edec8ffbd64890b2e8c62f8196057f062e746c8e3876c50e9"
+      },
+      {
+        "originalVideoSecond": 240,
+        "path": "/tmp/neon-cc038-north-phone-diagnosis-20261005/video-240s.png",
+        "sha256": "0b9393bbf919fc873627b0d6806f11b6ce4188bfdcea868bcd24232c75eba01c"
+      },
+      {
+        "originalVideoSecond": 250,
+        "path": "/tmp/neon-cc038-north-phone-diagnosis-20261005/video-250s.png",
+        "sha256": "afa69ef857aa7cb66f658ada137ee5ae2f82113ebde8d38381dc8f1992dd2328"
+      }
+    ],
+    "actualObservation": "Viewed four original-video terminal extracts. Exterior window/column/corner shift successively right as the player walks left; final view opens the side pavement. No terminal stationary collision is visible. These are diagnostic video extracts, not collector PNGs or native art acceptance."
+  },
+  "causalFinding": "The first x coarse wait exhausts its original 180 second leg while player still advances normally. Whole 1080 was not exhausted, target phone resident remains at x498/z-597/shopping/outdoors at failure. Original failureState exists; two original checkpoint events contain no per-input acknowledgement/position progress. Source motor independently reproduces the 49m endpoint; full 1856 ground collider catalogue has no intersections on planned radius0.6 approach. Software rendering/clock advances slowly; no basis for a runtime collider repair or NPC freeze. Public Shift coarse is an isolated input-efficiency candidate; it cannot guarantee real wall-time/RPC capture success.",
+  "closure": {
+    "budgetSeconds": 30,
+    "ownedBrowserPID": 3525,
+    "steps": [
+      {
+        "kind": "failure-snapshot",
+        "status": "closed",
+        "at": "2026-10-05T02:47:24.665Z",
+        "actualCapMs": 5000,
+        "outerCapMs": null,
+        "elapsedMs": 66
+      },
+      {
+        "kind": "context-close",
+        "status": "closed",
+        "at": "2026-10-05T02:47:26.830Z",
+        "actualCapMs": 29933,
+        "outerCapMs": null,
+        "elapsedMs": 2164
+      },
+      {
+        "kind": "server-close",
+        "status": "closed",
+        "at": "2026-10-05T02:47:26.830Z",
+        "actualCapMs": 27769,
+        "outerCapMs": null,
+        "elapsedMs": 0
+      },
+      {
+        "kind": "browser-close",
+        "status": "closed",
+        "at": "2026-10-05T02:47:49.912Z",
+        "actualCapMs": 35000,
+        "outerCapMs": 35000,
+        "elapsedMs": 23082
+      }
+    ],
+    "hardStop": false
+  },
+  "ownedBrowserClose": {
+    "before": {
+      "pid": 3525,
+      "state": "S",
+      "ppid": 3501,
+      "startTicks": "67325"
+    },
+    "current": null,
+    "apiCloseResolved": true,
+    "outerCapMs": 35000,
+    "providerDefaultInnerCloseMs": 30000,
+    "apiCloseElapsedMs": 23082,
+    "exitCode": 0,
+    "signalCode": null,
+    "forcedExit": false,
+    "graceful": true,
+    "forceAttribution": "none-or-not-eligible",
+    "providerInternalBranchIndependentlyObserved": false,
+    "callerForceInvoked": false,
+    "hardDeadlineReached": false,
+    "identityReadConfirmed": true,
+    "exactOwnedClosureConfirmed": true,
+    "exitModeEligible": true,
+    "withinOuterCap": true,
+    "boundedCloseAccepted": true,
+    "api": "supported in-process browser.close → pinned browserProcess.close"
+  },
+  "firstFailurePreserved": true,
+  "collectorPNGCount": 0
+}

@@ -54,7 +54,11 @@ export function compileWideFrontagePlan(building,original){
    {x:building.x,y:building.baseY+2.1,z:doorZ});
  const restoreLook={kind:'look',label:'wide-return-original-door-look',yaw:Math.PI,pitch:priorPhoto.camera.pitch};
  const added=[...outward,widePhoto,...returning,restoreLook];
- return {...original,budgetMinutes:sideLeg?30:24,
+ // South092 completed the original route at23m54s, leaving only5.681s
+ // for its supported35s owner close. Keep all local guards; use a finite30m
+ // whole cap in both modes. The original24m authored result remains FAIL.
+ const wholeCaseMinutes=sideLeg||building.id==='south-092'?30:24;
+ return {...original,budgetMinutes:wholeCaseMinutes,
   originalWholeCaseBudgetMinutes:original.budgetMinutes,
   scope:original.scope+' One additional publicly walked wide public-door frontage view and exact return to the original door route. The oblique cases are not a straight-on display-facade view.',
   steps:[...route.slice(0,doorIndex),...added,...route.slice(doorIndex)],
@@ -68,7 +72,7 @@ export function compileWideFrontagePlan(building,original){
    publicDoor:{x:building.x,y:building.baseY,z:doorZ,yaw:0},
    originalDoorStation:{x:building.x,y:building.baseY,z:closeZ},
    wideStanding:{x:wideX,y:0,z:wideZ},restoreLook,
-   budgets:{wholeCaseMinutes:sideLeg?30:24,originalWholeCaseMinutes:12,
+   budgets:{wholeCaseMinutes,originalWholeCaseMinutes:12,
     reason:'Finite preparation cap from original wall evidence plus new real distance/photo processing. No validated completion upper bound.',
     perPhaseDefaultMs:180000,perHoldMs:120000,maximumCorrectionHolds:2,localInputHelperUnchanged:true}}};
 }

@@ -1,0 +1,14 @@
+--- a/tools/native-review/methods/transport/native-transport-high.mjs
++++ b/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -279,7 +279,10 @@
+     finally {record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,firstError:first?err(first,'local movement'):null});}
+   }
+   async function waitBerth(id, stopId=null) {
+-    const phaseDeadline=Date.now()+remaining(600000),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:600000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.berthWaits.push(phase);
++    const berthBudgetMs=kind==='tram'?1200000:600000;
++    const phaseDeadline=Date.now()+remaining(berthBudgetMs),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:berthBudgetMs,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};
++    if(kind==='tram'){phase.originalBudgetMs=600000;phase.budgetAmendment='finite-tram-normal-service-observed-wall-rate';}
++    record.berthWaits.push(phase);
+     await observePhaseProgress(phase,'before-wait',id,phaseDeadline);
+     try {
+       const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite berth phase/whole deadline');

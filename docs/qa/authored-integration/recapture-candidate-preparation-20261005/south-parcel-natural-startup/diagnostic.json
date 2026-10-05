@@ -1,0 +1,493 @@
+{
+  "status": "ORIGINAL_FAIL_PRESERVED_NATURAL_PROGRESS_NOT_YET_ELIGIBLE",
+  "originalZIP": {
+    "path": "/tmp/neon-cc038-south-parcel-11323103018/original.zip",
+    "bytes": 98249781,
+    "sha256": "4dd6a331cfccf4fe897d671aee51d12551e710741c4f26717973d3192f6463c2",
+    "hashVerificationSource": "parent verified; not rehashed98MB ZIP"
+  },
+  "originalGit": {
+    "head": "cc038f20b3d26028dae9d9c3a86e4c2183a183b5",
+    "status": ""
+  },
+  "originalMethodSha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "originalManifestSha256": "9528ef5c6f07ce82e71acada81a6823ade35fae46dc50b5e3362f383560539bd",
+  "originalMetadata": {
+    "bytes": 38108449,
+    "sha256": "bebf6020ed4423b0e34f56c6bc818c8bce0dcdcb57e6ecc1452dd402500417a5"
+  },
+  "firstFailure": {
+    "at": "2026-10-05T03:07:51.225Z",
+    "type": "method",
+    "message": "AssertionError [ERR_ASSERTION]: natural75sim order startup exceeded1200 wall seconds; no forced pickup or retry\n    at southCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:364:10)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:84)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+  },
+  "originalStatus": "first-failure-preserved",
+  "budgets": {
+    "totalWallSeconds": 2700,
+    "legWallSeconds": 180,
+    "readyWallSeconds": 180,
+    "assetWallSeconds": 120,
+    "naturalStartupSimulationSeconds": 75,
+    "naturalStartupWallSeconds": 1200,
+    "naturalSouthParcelWallSeconds": 360
+  },
+  "startedAt": "2026-10-05T02:45:14.964Z",
+  "endedAt": "2026-10-05T03:07:51.225Z",
+  "closedAt": "2026-10-05T03:08:24.233Z",
+  "events": [
+    {
+      "kind": "visible-settings-ready",
+      "at": "2026-10-05T02:46:06.381Z",
+      "simulationTime": 0.7500000000000007
+    },
+    {
+      "kind": "public-real-supply-counter",
+      "at": "2026-10-05T02:46:31.767Z",
+      "simulationTime": 1.4999999999999996
+    },
+    {
+      "kind": "physical-walk",
+      "at": "2026-10-05T02:47:49.268Z",
+      "simulationTime": 4.999999999999988
+    },
+    {
+      "kind": "physical-counter-viewpoint",
+      "at": "2026-10-05T02:47:49.311Z",
+      "simulationTime": 4.999999999999988
+    }
+  ],
+  "coverageNaturalStartup": {
+    "sourceSHA256": "bcc290a78efce8246c09ba61e26382c2734c82f64f8df32f684e38a6c239a21c",
+    "sourceContract": "real order createdTick*.1+75 simulation seconds",
+    "actualOrderIds": [
+      "harbor-order-1",
+      "harbor-order-2",
+      "harbor-order-3"
+    ],
+    "actualCreatedTicks": [
+      0,
+      0,
+      0
+    ],
+    "eligibleSimulationTime": 75,
+    "initialSimulationTime": 1.4999999999999996,
+    "endSimulationTime": 49.74999999999846,
+    "wallSeconds": 1201.114,
+    "maximumWallSeconds": 1200,
+    "worldClockWritten": false
+  },
+  "sampleCount": 642,
+  "firstObservation": {
+    "index": 0,
+    "at": "2026-10-05T02:47:49.365Z",
+    "wallSeconds": 0.049,
+    "simulationTime": 4.999999999999988,
+    "ready": true,
+    "started": true,
+    "paused": false,
+    "quality": "high",
+    "hour": 16.5,
+    "dayCycle": false,
+    "teleportRevision": 2,
+    "fps": 0,
+    "frameTiming": {
+      "wallDt": 6.333100000000006,
+      "dt": 0.25,
+      "steps": 15,
+      "alpha": 0,
+      "simulationDelta": 0.25,
+      "droppedSeconds": 6.083100000000006,
+      "droppedTotal": 114.89520000000002
+    },
+    "streamingPending": 0,
+    "streamingFailed": 0,
+    "contextLost": false,
+    "canvas": {
+      "width": 1280,
+      "height": 800
+    },
+    "couriers": [
+      {
+        "id": "harbor-resident-11",
+        "role": "街坊送货员",
+        "phase": "walking",
+        "activity": "走去上班",
+        "x": 141.02295189325068,
+        "y": 0.18,
+        "z": 224,
+        "transit": null,
+        "insideBuildingId": null,
+        "floorId": null
+      },
+      {
+        "id": "harbor-resident-12",
+        "role": "街坊送货员",
+        "phase": "walking",
+        "activity": "走去上班",
+        "x": 141.89683299830202,
+        "y": 0.18,
+        "z": 144,
+        "transit": null,
+        "insideBuildingId": null,
+        "floorId": null
+      }
+    ],
+    "orders": [
+      {
+        "id": "harbor-order-1",
+        "createdTick": 0,
+        "status": "available",
+        "carrierId": null,
+        "pickedTick": null,
+        "deliveredTick": null,
+        "quantity": 8,
+        "wholesale": 16,
+        "reward": 12
+      },
+      {
+        "id": "harbor-order-2",
+        "createdTick": 0,
+        "status": "available",
+        "carrierId": null,
+        "pickedTick": null,
+        "deliveredTick": null,
+        "quantity": 8,
+        "wholesale": 8,
+        "reward": 12
+      },
+      {
+        "id": "harbor-order-3",
+        "createdTick": 0,
+        "status": "available",
+        "carrierId": null,
+        "pickedTick": null,
+        "deliveredTick": null,
+        "quantity": 8,
+        "wholesale": 24,
+        "reward": 12
+      }
+    ],
+    "activeDelivery": null,
+    "stats": {
+      "purchases": 0,
+      "playerPurchases": 0,
+      "missedPurchases": 0,
+      "wages": 0,
+      "deliveries": 0,
+      "consumed": 0,
+      "boarded": 0,
+      "alighted": 0
+    },
+    "totalMoney": 2972,
+    "totalGoods": 300,
+    "visibleCargoActors": []
+  },
+  "lastObservation": {
+    "index": 641,
+    "at": "2026-10-05T03:07:48.483Z",
+    "wallSeconds": 1199.167,
+    "simulationTime": 49.74999999999846,
+    "ready": true,
+    "started": true,
+    "paused": false,
+    "quality": "high",
+    "hour": 16.5,
+    "dayCycle": false,
+    "teleportRevision": 2,
+    "fps": 0,
+    "frameTiming": {
+      "wallDt": 3.4331999999999536,
+      "dt": 0.25,
+      "steps": 15,
+      "alpha": 0,
+      "simulationDelta": 0.25,
+      "droppedSeconds": 3.1831999999999536,
+      "droppedTotal": 1264.0475000000001
+    },
+    "streamingPending": 0,
+    "streamingFailed": 0,
+    "contextLost": false,
+    "canvas": {
+      "width": 1280,
+      "height": 800
+    },
+    "couriers": [
+      {
+        "id": "harbor-resident-11",
+        "role": "街坊送货员",
+        "phase": "walking",
+        "activity": "走去上班",
+        "x": 148,
+        "y": 0.18,
+        "z": 154.54004810675278,
+        "transit": null,
+        "insideBuildingId": null,
+        "floorId": null
+      },
+      {
+        "id": "harbor-resident-12",
+        "role": "街坊送货员",
+        "phase": "walking",
+        "activity": "在斑马线前等灯",
+        "x": 176,
+        "y": 0.18,
+        "z": 120.44799999999941,
+        "transit": null,
+        "insideBuildingId": null,
+        "floorId": null
+      }
+    ],
+    "orders": [
+      {
+        "id": "harbor-order-1",
+        "createdTick": 0,
+        "status": "available",
+        "carrierId": null,
+        "pickedTick": null,
+        "deliveredTick": null,
+        "quantity": 8,
+        "wholesale": 16,
+        "reward": 12
+      },
+      {
+        "id": "harbor-order-2",
+        "createdTick": 0,
+        "status": "available",
+        "carrierId": null,
+        "pickedTick": null,
+        "deliveredTick": null,
+        "quantity": 8,
+        "wholesale": 8,
+        "reward": 12
+      },
+      {
+        "id": "harbor-order-3",
+        "createdTick": 0,
+        "status": "available",
+        "carrierId": null,
+        "pickedTick": null,
+        "deliveredTick": null,
+        "quantity": 8,
+        "wholesale": 24,
+        "reward": 12
+      }
+    ],
+    "activeDelivery": null,
+    "stats": {
+      "purchases": 0,
+      "playerPurchases": 0,
+      "missedPurchases": 0,
+      "wages": 3,
+      "deliveries": 0,
+      "consumed": 0,
+      "boarded": 0,
+      "alighted": 0
+    },
+    "totalMoney": 2972,
+    "totalGoods": 300,
+    "visibleCargoActors": []
+  },
+  "elapsedBeforeFirstStartupObservationSeconds": 154.401,
+  "elapsedBeforePrimaryFailureSeconds": 1356.261,
+  "elapsedBeforeClosedAtSeconds": 1389.269,
+  "wholeRemainingAtPrimaryFailureSeconds": 1343.739,
+  "monotonicSimulationTime": true,
+  "positiveProgressIntervals": 174,
+  "duplicateSimIntervals": 467,
+  "distinctSimTimes": 175,
+  "allObservedStartedReadyActiveHigh": true,
+  "allObservedCanvasHigh": true,
+  "allObservedNoStreamingFailure": true,
+  "allObservedNoCargo": true,
+  "allObservedUnassignedOrders": true,
+  "fpsSummary": {
+    "min": 0,
+    "max": 0,
+    "median": 0.0,
+    "integerRoundedFPSNotActualZeroFrames": true
+  },
+  "observedAggregateRate": {
+    "wallSeconds": 1199.118,
+    "simSeconds": 44.74999999999847,
+    "wallSecondsPerSimSecond": 26.795932960894767
+  },
+  "quarterWindows": [
+    {
+      "indices": [
+        0,
+        160
+      ],
+      "wallSeconds": 262.58700000000005,
+      "simSeconds": 9.750000000000325,
+      "wallPerSimSeconds": 26.931999999999107,
+      "observedAtStart": "2026-10-05T02:47:49.365Z",
+      "observedAtEnd": "2026-10-05T02:52:11.952Z"
+    },
+    {
+      "indices": [
+        160,
+        321
+      ],
+      "wallSeconds": 298.656,
+      "simSeconds": 10.999999999999506,
+      "wallPerSimSeconds": 27.150545454546673,
+      "observedAtStart": "2026-10-05T02:52:11.952Z",
+      "observedAtEnd": "2026-10-05T02:57:10.608Z"
+    },
+    {
+      "indices": [
+        321,
+        481
+      ],
+      "wallSeconds": 299.6139999999999,
+      "simSeconds": 10.999999999999378,
+      "wallPerSimSeconds": 27.237636363637897,
+      "observedAtStart": "2026-10-05T02:57:10.608Z",
+      "observedAtEnd": "2026-10-05T03:02:10.222Z"
+    },
+    {
+      "indices": [
+        481,
+        641
+      ],
+      "wallSeconds": 338.26099999999997,
+      "simSeconds": 12.999999999999261,
+      "wallPerSimSeconds": 26.0200769230784,
+      "observedAtStart": "2026-10-05T03:02:10.222Z",
+      "observedAtEnd": "2026-10-05T03:07:48.483Z"
+    }
+  ],
+  "projectionAtObservedAggregateRate": {
+    "remainingSimAtLast": 25.250000000001542,
+    "estimatedAdditionalWallSeconds": 676.5973072626342,
+    "estimatedStartupTotalWallSeconds": 1875.7643072626342,
+    "guaranteed": false
+  },
+  "cleanup": {
+    "budgetSeconds": 30,
+    "ownedBrowserPID": 3388,
+    "steps": [
+      {
+        "kind": "failure-snapshot",
+        "status": "closed",
+        "at": "2026-10-05T03:07:51.289Z",
+        "actualCapMs": 5000,
+        "outerCapMs": null,
+        "elapsedMs": 64
+      },
+      {
+        "kind": "context-close",
+        "status": "closed",
+        "at": "2026-10-05T03:07:54.176Z",
+        "actualCapMs": 29935,
+        "outerCapMs": null,
+        "elapsedMs": 2886
+      },
+      {
+        "kind": "server-close",
+        "status": "closed",
+        "at": "2026-10-05T03:07:54.177Z",
+        "actualCapMs": 27049,
+        "outerCapMs": null,
+        "elapsedMs": 1
+      },
+      {
+        "kind": "browser-close",
+        "status": "closed",
+        "at": "2026-10-05T03:08:24.233Z",
+        "actualCapMs": 35000,
+        "outerCapMs": 35000,
+        "elapsedMs": 30056
+      }
+    ],
+    "hardStop": false
+  },
+  "ownedBrowserClose": {
+    "before": {
+      "pid": 3388,
+      "state": "S",
+      "ppid": 3365,
+      "startTicks": "25236"
+    },
+    "current": null,
+    "apiCloseResolved": true,
+    "outerCapMs": 35000,
+    "providerDefaultInnerCloseMs": 30000,
+    "apiCloseElapsedMs": 30056,
+    "exitCode": null,
+    "signalCode": "SIGKILL",
+    "forcedExit": true,
+    "graceful": false,
+    "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+    "providerInternalBranchIndependentlyObserved": false,
+    "callerForceInvoked": false,
+    "hardDeadlineReached": false,
+    "identityReadConfirmed": true,
+    "exactOwnedClosureConfirmed": true,
+    "exitModeEligible": true,
+    "withinOuterCap": true,
+    "boundedCloseAccepted": true,
+    "api": "supported in-process browser.close → pinned browserProcess.close"
+  },
+  "executor": {
+    "exitCode": 1,
+    "signals": [],
+    "ownedClosureConfirmed": true,
+    "remainingOwnedProcesses": [],
+    "portClosure": {
+      "port": 5240,
+      "connectErrno": 111,
+      "confirmedRefused": true
+    },
+    "launchRootIdentity": {
+      "pid": 3365,
+      "state": "R",
+      "ppid": 2640,
+      "pgid": 3365,
+      "session": 3365,
+      "startTicks": 25056,
+      "firstObservedAt": "2026-10-05T02:45:14.944976+00:00",
+      "lastObservedAt": "2026-10-05T02:45:14.944987+00:00",
+      "lastState": "R",
+      "pidfdBound": true,
+      "launchRoot": true
+    }
+  },
+  "imagesCaptured": 0,
+  "nativePass": false,
+  "artAcceptance": false,
+  "productRuntimeWritten": false,
+  "browserExecuted": false,
+  "gpuExecuted": false,
+  "candidate": {
+    "startupWallSeconds": 2100,
+    "wholeWallSeconds": 3600,
+    "jobMinutes": 95,
+    "slowestQuarterRateSecondsPerSimSecond": 27.237636363637897,
+    "startupTo75ProjectedAtSlowestQuarterSeconds": 1906.6835454546529,
+    "marginStartupAtSlowestQuarterSeconds": 193.31645454534714,
+    "sourceContractPrecise": "75 is courier reservation age for an available unassigned job subject to shift and pickup resources; not an order generation or visible parcel deadline. SimulationTime tracks a common active dt path with Life.time .1 quantization and separate restore; no exact-equality claim.",
+    "postStartupWatchUnchangedSeconds": 360,
+    "physicalLegUnchangedSecondsEach": 180,
+    "minimumObservationUnchangedSeconds": 45,
+    "ownedCloseUnchangedSeconds": 35,
+    "original2700RemainingAfterCandidateMaxStartupSeconds": 445.64800000000014,
+    "original2700AfterMaxStartupAndWatchSeconds": 85.64800000000014,
+    "whole3600RemainingAfterCandidateMaxStartupSeconds": 1345.6480000000001,
+    "whole3600AfterStartupWatchTwoFullLegsConservative45AndOwnerSeconds": 545.6480000000001,
+    "remainingAllowanceMeaning": "Finite headroom for unexecuted camera/PNG/snapshot/context/persistence phases, not a measured or guaranteed end-to-end upper bound.45 minimum overlaps walking; subtracting it separately is conservative arithmetic, not a new guard.",
+    "workflowBudgetSeconds": 5700,
+    "preparationPlusWholePlusWrapperSeconds": 4920,
+    "runtimeGuardChanged": false,
+    "naturalStartupAssertionPredicateChanged": false,
+    "newNativeRun": false,
+    "originalFAILReclassified": false
+  },
+  "observerCost": {
+    "source": "original observeParcel appends the whole real state then awaits persist of the complete cumulative metadata on every one of642 observations",
+    "finalMetadataBytes": 38108449,
+    "repeatedSerializationOrIOMeasuredDurationAvailable": false,
+    "uniqueCauseClaim": false,
+    "concretePossibleSeparateOptimization": "append each unchanged full observation as JSONL, checkpoint cumulative metadata every fixed15s, still final persist on failure/closure; retain exact all642 states and first error. Not implemented or necessary for the bounded-only candidate; no performance promise."
+  }
+}

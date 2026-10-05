@@ -1,0 +1,52 @@
+{
+  "status": "ISOLATED_SOURCE_BOUND_SAVE_VALIDATOR_CPU_CHECKED_NATIVE_UNRUN",
+  "rootWritten": false,
+  "gpuStarted": false,
+  "before": {
+    "tools/capture-harbor-tour.mjs": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+    "tools/native-review/cases.json": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655",
+    "tools/native-review/methods/continuous-tour-original/tools/capture-harbor-tour.mjs": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+  },
+  "payload": {
+    "tools/capture-harbor-tour.mjs": {
+      "bytes": 60705,
+      "sha256": "4663fd4ee24ac729b2016b0f39575a612ba309c55828595d0ae4eaa27e386097"
+    },
+    "tools/harbor-tour-save-validation.mjs": {
+      "bytes": 3673,
+      "sha256": "1ef97f4037029c538c339255819509f3e8fa60fa6ef3de441640394928151088"
+    },
+    "tools/native-review/cases.json": {
+      "bytes": 9392,
+      "sha256": "9558deebe185aa6812ef803fd1bf88aa583a3b449e0d24f6965106d67db54b5d"
+    },
+    "tools/native-review/methods/continuous-tour-original/provenance/SAVE_SCHEMA_AMENDMENT-20261005.json": {
+      "bytes": 2705,
+      "sha256": "e4fb3310bc01679bf39f11393a832e51d5bbf30e62001d747d338e3691850877"
+    },
+    "tools/native-review/methods/continuous-tour-original/provenance/capture-harbor-tour-v1-original-a8ff1a10.mjs": {
+      "bytes": 60171,
+      "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+    },
+    "tools/native-review/methods/continuous-tour-original/tools/harbor-tour-save-validation.mjs": {
+      "bytes": 3673,
+      "sha256": "1ef97f4037029c538c339255819509f3e8fa60fa6ef3de441640394928151088"
+    },
+    "tools/native-review/methods/continuous-tour-original/tools/capture-harbor-tour.mjs": {
+      "bytes": 60705,
+      "sha256": "4663fd4ee24ac729b2016b0f39575a612ba309c55828595d0ae4eaa27e386097"
+    }
+  },
+  "checks": {
+    "completeRoutePurchaseReturnReloadAndCleanupByteIdenticalSha256": "3bb6ff4c2038010e885de3b2c817d7c47a401f8b1689e48facb8ffa22f3c6cfe",
+    "savePublicOnlyExactSchemaAndAdditiveValidation": true,
+    "originalThreeInputServerHelperPinsUnchanged": true,
+    "other23CaseObjectsUnchanged": true,
+    "syntax:tools/capture-harbor-tour.mjs": 0,
+    "syntax:tools/harbor-tour-save-validation.mjs": 0
+  },
+  "cpuTestCount": 30,
+  "cpuProofPath": "/tmp/neon-current-tour-save-schema-readonly-20261005/cpu-full-save-validator-tests.json",
+  "cpuProofSha256": "c16a64c6e11490ed82ed50a3402a6857795ca623d348f57071ee90fda9373c16",
+  "bundleInventoryNotRewritten": "Parent must refresh final active composite inventory after adoption; do not overwrite simultaneous unrelated case changes."
+}

@@ -1,0 +1,76 @@
+--- a/tools/native-review/methods/transport/native-transport-high.mjs
++++ b/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -127,7 +127,7 @@
+ 
+ async function captureCase(kind) {
+   const folder = resolve(output, kind); await mkdir(folder);
+-  const started = Date.now(), budget = kind === 'ferry' ? 900000 : kind === 'tram' ? 2400000 : 600000, deadline = started + budget;
++  const started = Date.now(), budget = kind === 'ferry' ? 900000 : 2400000, deadline = started + budget;
+   const record = { kind, status: 'RUNNING', budget, startedAt: new Date(started).toISOString(), mode: args.mode,
+     toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [], aimPhases: [], berthWaits: [], progressDiagnosticFailures: [] };
+   const keep = (error, stage) => { if (!record.firstError) record.firstError = err(error, stage); else record.secondaryErrors.push(err(error, stage)); };
+--- a/tools/native-review/methods/transport/method-manifest.json
++++ b/tools/native-review/methods/transport/method-manifest.json
+@@ -2,8 +2,8 @@
+   "status": "PREPARED_SYNTAX_CHECKED_API_SOURCE_REVIEWED_NATIVE_UNRUN",
+   "tool": {
+     "path": "native-transport-high.mjs",
+-    "bytes": 47346,
+-    "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
++    "bytes": 47319,
++    "sha256": "148a6172900537ea78a48ea30a7eafa54dc73508fa95f92a8bf457b1a269b3c9"
+   },
+   "canonical": {
+     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
+@@ -48,7 +48,7 @@
+   },
+   "settings": "High; public UI 16.5; dayCycle false; actual first-person V; sensitivity1",
+   "budgets": {
+-    "busCaseIncludingContextMs": 600000,
++    "busCaseIncludingContextMs": 2400000,
+     "tramCaseIncludingContextMs": 2400000,
+     "ferryCaseIncludingContextMs": 900000,
+     "localWaypointMs": 150000,
+@@ -226,5 +226,14 @@
+     "changedRuntimeAssetCount": 6,
+     "ferryResourcesAndAllMethodCodeUnchanged": true,
+     "historicalProvenanceAndOtherGuardsPreserved": true
++  },
++  "busWholeBudgetAmendment": {
++    "originalWholeMs": 600000,
++    "activeWholeMs": 2400000,
++    "reason": "BUS original600s expired during first lower-photo berth wait. Baseline had0.5sim left at courtyard and328.525wall available; authored alreadycruising to market with10.894649sim ETA and290.826wall available. Original400/580s videos show ETA11/4 baseline and10/3 authored with moving street scene. Fixed40min BUS-only cap leaves original150s local/600s berth/collision/endpoint/camera/source/resource guards unchanged; no guarantee of later stairs completion.",
++    "sourceRuntimeChanged": false,
++    "originalGuardsAndLocalBudgetsUnchanged": true,
++    "nativeExecuted": false,
++    "originalFailurePreserved": true
+   }
+ }
+--- a/tools/native-review/cases.json
++++ b/tools/native-review/cases.json
+@@ -97,9 +97,11 @@
+       "id": "bus",
+       "family": "transport",
+       "toolCase": "bus",
+-      "originalBudgetSeconds": 600,
+-      "jobTimeoutMinutes": 75,
+-      "paired": true
++      "originalBudgetSeconds": 2400,
++      "jobTimeoutMinutes": 110,
++      "paired": true,
++      "historicalOriginalBudgetSeconds": 600,
++      "budgetRevisionReason": "BUS original600s expired during first lower-photo berth wait. Baseline had0.5sim left at courtyard and328.525wall available; authored alreadycruising to market with10.894649sim ETA and290.826wall available. Original400/580s videos show ETA11/4 baseline and10/3 authored with moving street scene. Fixed40min BUS-only cap leaves original150s local/600s berth/collision/endpoint/camera/source/resource guards unchanged; no guarantee of later stairs completion."
+     },
+     {
+       "id": "tram",
+--- a/.github/workflows/native-art.yml
++++ b/.github/workflows/native-art.yml
+@@ -30,7 +30,7 @@
+           - { id: south-094, job_timeout_minutes: 75, evidence_label: 'Native High' }
+           - { id: south-095, job_timeout_minutes: 95, evidence_label: 'Native High' }
+           - { id: south-096, job_timeout_minutes: 75, evidence_label: 'Native High' }
+-          - { id: bus, job_timeout_minutes: 75, evidence_label: 'Native High' }
++          - { id: bus, job_timeout_minutes: 110, evidence_label: 'Native High' }
+           - { id: tram, job_timeout_minutes: 110, evidence_label: 'Native High' }
+           - { id: ferry, job_timeout_minutes: 80, evidence_label: 'Native High' }
+           - { id: waterfront-day, job_timeout_minutes: 80, evidence_label: 'Native High' }

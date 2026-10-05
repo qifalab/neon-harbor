@@ -11,6 +11,7 @@ import { execFileSync } from 'node:child_process';
 import { resolve, basename } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createStaticServer } from './server.mjs';
+import { createPublicSaveValidator } from './harbor-tour-save-validation.mjs';
 import { walkAxis } from '../tests/e2e/helpers/walking.js';
 import { faceRoom } from '../tests/e2e/helpers/occupied.js';
 
@@ -44,7 +45,7 @@ for (const [path, expected] of Object.entries(manifest.assets)) {
   sourceHashes[path] = sha256(await readFile(resolve(projectRoot, path)));
   assert.equal(sourceHashes[path], expected, `source must match the build: ${path}`);
 }
-const methodFiles = ['tools/capture-harbor-tour.mjs', 'tools/server.mjs',
+const methodFiles = ['tools/capture-harbor-tour.mjs', 'tools/server.mjs', 'tools/harbor-tour-save-validation.mjs',
   'tests/e2e/helpers/walking.js', 'tests/e2e/helpers/occupied.js'];
 const methodHashes = Object.fromEntries(await Promise.all(methodFiles.map(async p => [p, sha256(await readFile(resolve(projectRoot, p)))])));
 const metadata = { status: 'planning', startedAt: new Date().toISOString(), output, root,
@@ -79,6 +80,9 @@ const [THREE, { createCityExploration }, { SpatialIndex, circleOBB }, { PLAYER_D
   fromBuild('src/metropolis-interiors.js'),
 ]);
 const city = createCityExploration(THREE, new THREE.Scene(), { quality: 'low', streaming: true });
+const publicSaveValidator = createPublicSaveValidator({ city, sourceHashes });
+metadata.publicSaveExpectedSchema = publicSaveValidator.expected;
+metadata.publicSaveValidations = [];
 const stops = city.sample.transit.stops;
 const stop = id => { const s = stops.find(s => s.id === id); assert.ok(s, id); return s; };
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
@@ -525,7 +529,9 @@ const savePublic = async (label,{resume=true,welcome=false}={}) => {
   assert.deepEqual(saved,persisted,'the retained download is the actual public save, matching browser persistence');
   assert.equal(saved.version,1); assert.ok(Number.isSafeInteger(saved.cash));
   assert.ok([saved.player?.x,saved.player?.z,saved.player?.yaw].every(Number.isFinite));
-  assert.equal(saved.harborLife?.schema,'neon-harbor/daily-life'); assert.equal(saved.harborLife.version,1); assert.equal(saved.harborTransit?.version,1);
+  assert.equal(saved.harborLife?.schema,'neon-harbor/daily-life'); assert.equal(saved.harborLife.version,publicSaveValidator.expected.lifeVersion); assert.equal(saved.harborTransit?.version,1);
+  const sourceValidation = publicSaveValidator.validate(saved);
+  metadata.publicSaveValidations.push({ label, file:basename(path), sha256:sha256(await readFile(path)), ...sourceValidation });
   await phase(`${label}-public-save`,{file:basename(path),sha256:sha256(await readFile(path)),resume,welcome});
   if(resume){await page.locator('#resume').click();if(!welcome)await focusPlayable();}return saved;
 };

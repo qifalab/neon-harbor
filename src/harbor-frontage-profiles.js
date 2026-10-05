@@ -35,21 +35,60 @@ export function createFrontageFrame(THREE,width,height,radius=.08) {
   g.computeBoundingBox();g.computeBoundingSphere();return g;
 }
 
+// Only the two inspected shop programmes opt into these original forms.
+// Closed baked crust has real recessed scores, not paper marks on an ellipsoid.
+export function createBakedDisplayLoaf(THREE,variant=0) {
+ const a=.143+(variant%3)*.009,b=.086+((variant+1)%3)*.006,h=.123+(variant%2)*.009;
+ const cuts=variant%2?[-.065,.040]:[-.078,0,.078],nx=24,nz=12,p=[],uv=[],colors=[],ix=[];
+ const tone=new THREE.Color([0xb4763d,0xc18b4c,0xae6b35][variant%3]);
+ const top=(x,z)=>{
+  const dome=Math.pow(Math.max(0,1-(x/a)**2-(z/b)**2),.44),wave=1+.025*Math.sin(x*37+variant)*Math.sin(z*29+.7);
+  const score=cuts.reduce((n,c)=>n+.007*Math.exp(-(((x+.32*z-c)/.011)**2)),0)*dome*dome;
+  return Math.max(0,h*dome*wave-score);
+ };
+ for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
+  const z=(j/nz*2-1)*b,x=(i/nx*2-1)*a*Math.sqrt(Math.max(0,1-(z/b)**2)),y=top(x,z),shade=.88+.12*Math.sin(x*87+z*64+variant)**2;
+  p.push(x,y,z);uv.push(i/nx,j/nz);colors.push(tone.r*shade,tone.g*shade,tone.b*shade);
+  if(i<nx&&j<nz){const q=j*(nx+1)+i;ix.push(q,q+nx+1,q+1,q+1,q+nx+1,q+nx+2);}
+ }
+ const edge=[];for(let i=0;i<=nx;i++)edge.push(i);for(let j=1;j<=nz;j++)edge.push(j*(nx+1)+nx);for(let i=nx-1;i>=0;i--)edge.push(nz*(nx+1)+i);for(let j=nz-1;j>0;j--)edge.push(j*(nx+1));
+ const centre=p.length/3;p.push(0,0,0);uv.push(.5,.5);colors.push(tone.r*.85,tone.g*.85,tone.b*.85);
+ for(let i=0;i<edge.length;i++)ix.push(centre,edge[(i+1)%edge.length],edge[i]);
+ const make=(positions,uvs,tints,indices)=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));g.setAttribute('color',new THREE.Float32BufferAttribute(tints,3));g.setIndex(indices);g.computeVertexNormals();g.computeBoundingBox();return g;};
+ const sp=[],su=[],sc=[],si=[],crumb=new THREE.Color(0xd8bd88);
+ for(const cut of cuts){const begin=sp.length/3;for(let j=0;j<=12;j++)for(const side of[-1,1]){
+  const z=(j/12*2-1)*b*.68,x=cut-.32*z+side*.006;
+  sp.push(x,top(x,z)+.0011,z);su.push(side<0?0:1,j/12);sc.push(crumb.r,crumb.g,crumb.b);
+  if(j<12&&side===-1){const q=begin+j*2;si.push(q,q+2,q+1,q+1,q+2,q+3);}
+ }}
+ return {crust:make(p,uv,colors,ix),scores:make(sp,su,sc,si),variant,halfWidth:a,halfDepth:b,height:h,cutDepth:.007};
+}
+
+// Smooth continuous thrown profile, closed foot, inner wall and rounded thick
+// mouth. Old ceramic display maximum radius/height are explicit arguments.
+export function createCraftVesselGeometry(THREE,radius=.096,height=.29) {
+ const control=[[.54,0],[.88,.19],[1,.44],[.94,.63],[.62,.82],[.43,.94],[.51,.978]].map(([r,y])=>new THREE.Vector2(r*radius,y*height));
+ const curve=new THREE.SplineCurve(control),outer=curve.getPoints(7).map(v=>new THREE.Vector2(Math.min(radius,Math.max(radius*.43,v.x)),Math.min(height*.978,Math.max(0,v.y))));
+ outer[0].y=0;const points=[...outer,new THREE.Vector2(radius*.46,height),...outer.slice().reverse().map(v=>new THREE.Vector2(Math.max(radius*.28,v.x-radius*.11),Math.max(height*.035,v.y-height*.018))),new THREE.Vector2(0,height*.035),new THREE.Vector2(0,0),outer[0].clone()];
+ const g=new THREE.LatheGeometry(points,32);g.computeBoundingBox();g.computeBoundingSphere();return g;
+}
+
 // A shallow, real display fits inside the existing window frame. None of
 // these goods supplies stock or collision; the occupied shop counter remains
 // the only source of finite purchases.
-function addWindowDisplay(THREE,{programme,u,width,bottom,height,add,b,materials:m}) {
+function addWindowDisplay(THREE,{site,programme,u,width,bottom,height,add,b,materials:m}) {
   const inner=width-.30, shelfY=bottom+.30, depth=.39;
   b(m.dark,u,bottom+height/2,.20,width-.17,height-.16,.04);
   b(m.wood,u,shelfY,depth,inner,.045,.30);
   if(height>1.7)b(m.wood,u,shelfY+.66,depth,inner,.035,.28);
-  const count=inner>3?5:3, step=Math.min(.53,(inner-.38)/(count-1));
+  const refinedCraft=site?.shellId==='south-096'&&programme==='gallery',refinedBake=site?.shellId==='south-094'&&programme==='bakery';
+  const count=refinedCraft?2:inner>3?5:3, step=Math.min(.53,(inner-.38)/(count-1));
   const at=i=>u+(i-(count-1)/2)*step;
   const curved=(material,geometry,x,y,z,sx=1,sy=1,sz=1)=>add(material,geometry,x,y,z,sx,sy,sz);
   const cup=(x,y,z)=>{
     const points=[[.054,0],[.068,.014],[.077,.12],[.069,.135],[.060,.118],[.047,.016]].map(([x,y])=>new THREE.Vector2(x,y));
-    curved(m.ceramic,new THREE.LatheGeometry(points,10),x,y,z);
-    curved(m.ceramic,new THREE.TorusGeometry(.040,.011,5,10),x+.088,y+.075,z,1,1,1);
+    curved(m.ceramic,new THREE.LatheGeometry(points,refinedCraft?32:10),x,y,z);
+    curved(m.ceramic,new THREE.TorusGeometry(.040,.011,5,refinedCraft?16:10),x+.088,y+.075,z,1,1,1);
   };
   for(let i=0;i<count;i++) {
     const x=at(i),y=shelfY+.025,z=.405;
@@ -60,9 +99,12 @@ function addWindowDisplay(THREE,{programme,u,width,bottom,height,add,b,materials
       for(const dz of[-.105,.105])for(const dy of[.065,.13])b(m.wood,x,y+dy,z+dz,.37,.034,.024);
       for(const dx of[-.092,.092])for(const dz of[-.054,.054])curved(m.fruit,new THREE.SphereGeometry(1,10,6),x+dx,y+.114,z+dz,.079,.074,.074);
     } else if(programme==='gallery') {
-      const points=[[.052,0],[.091,.07],[.096,.16],[.043,.25],[.049,.29]].map(([x,y])=>new THREE.Vector2(x,y));
-      curved(i%2?m.brick:m.ceramic,new THREE.LatheGeometry(points,12),x,y,z,1,1+(i%2)*.22,1);
-      add(m.ceramic,new THREE.TorusGeometry(.045,.009,5,10),x,y+.29*(1+(i%2)*.22),z,1,1,1,Math.PI/2);
+      if(refinedCraft)curved(i%2?m.clayForm:m.glaze,createCraftVesselGeometry(THREE),x,shelfY+.0225,z,1,i%2?1.16:1,1);
+      else {
+        const points=[[.052,0],[.091,.07],[.096,.16],[.043,.25],[.049,.29]].map(([x,y])=>new THREE.Vector2(x,y));
+        curved(i%2?m.brick:m.ceramic,new THREE.LatheGeometry(points,12),x,y,z,1,1+(i%2)*.22,1);
+        add(m.ceramic,new THREE.TorusGeometry(.045,.009,5,10),x,y+.29*(1+(i%2)*.22),z,1,1,1,Math.PI/2);
+      }
     } else if(programme==='books') {
       for(let k=0;k<3;k++) {
         const h=.22+(k%2)*.07,bx=x-.105+k*.105;
@@ -72,8 +114,8 @@ function addWindowDisplay(THREE,{programme,u,width,bottom,height,add,b,materials
       }
     } else if(programme==='bakery') {
       b(m.wood,x,y+.012,z,.38,.024,.26);
-      curved(m.fruit,new THREE.SphereGeometry(1,12,7),x,y+.087,z,.165,.074,.101);
-      for(const dx of[-.062,0,.062])b(m.paper,x+dx,y+.150,z,.014,.006,.080);
+      if(refinedBake){const loaf=createBakedDisplayLoaf(THREE,i);curved(m.breadCrust,loaf.crust,x,y+.024,z);curved(m.breadCrust,loaf.scores,x,y+.024,z);}
+      else {curved(m.fruit,new THREE.SphereGeometry(1,12,7),x,y+.087,z,.165,.074,.101);for(const dx of[-.062,0,.062])b(m.paper,x+dx,y+.150,z,.014,.006,.080);}
     } else {
       if(programme==='noodles') {
         curved(m.ceramic,new THREE.SphereGeometry(.105,12,7,0,Math.PI*2,Math.PI/2,Math.PI/2),x,y+.105,z);
@@ -83,7 +125,7 @@ function addWindowDisplay(THREE,{programme,u,width,bottom,height,add,b,materials
     if(height>1.7) {
       if(programme==='books')for(let k=0;k<2;k++){b(k?m.brick:m.grout,x,shelfY+.69+k*.064,z,.32,.055,.23);b(m.paper,x,shelfY+.69+k*.064,z+.12,.28,.031,.01);}
       else if(programme==='market')curved(m.fruit,new THREE.SphereGeometry(1,10,6),x,shelfY+.77,z,.091,.083,.088);
-      else cup(x,shelfY+.68,z);
+      else cup(x,shelfY+(refinedCraft?.6775:.68),z);
     }
   }
   // The separate glazing does not write depth or cast an opaque shadow over
@@ -117,7 +159,7 @@ export function addAuthoredGroundElevation(THREE,{site,add,b,c,materials:m,clay,
     if(publicDoor) {
       b(m.dark,u,bottom+height/2,.43,width-.17,height-.16,.07);
       b(m.glass,u,bottom+height/2,.505,width-.23,height-.22,.025);
-    } else addWindowDisplay(THREE,{programme:site.programme,u,width,bottom,height,add,b,materials:m});
+    } else addWindowDisplay(THREE,{site,programme:site.programme,u,width,bottom,height,add,b,materials:m});
     b(stone,u,bottom+.022,.66,width+.10,.044,.35);
     b(frame,u,bottom+height+.022,.61,width+.13,.07,.23);
     if(width>3||!publicDoor){

@@ -1,0 +1,40 @@
+{
+  "status": "SOURCE_ONLY_CPU_CANDIDATE_NATIVE_RECAPTURE_REQUIRED",
+  "sourceCommit": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+  "originalRunId": 37254103874,
+  "originalArtifactId": 11323061213,
+  "originalZip": {
+    "path": "/tmp/neon-cc038-ferry-11323061213/original.zip",
+    "bytes": 103421694,
+    "sha256": "ff9c7e661f3c00a189acd5dbeaebb7a6e63d13ab00b0e686488b44a4f6ff42e1"
+  },
+  "originalMethodSHA256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598",
+  "cpuProofSHA256": "677b90db36ce34e338d1a3bee7f355856563eeb64c42c1c263461fc20a9e79cd",
+  "originalFailureLedgerSHA256": "bf95e4caa7928c2d61af226a96be48bec4352f7e00b292affcfb63d555b74cf0",
+  "originalCasesPermanentlyFailed": true,
+  "nativePass": false,
+  "rootWritten": false,
+  "gpuLaunched": false,
+  "payload": [
+    {
+      "path": "tools/native-review/methods/transport/method-manifest.json",
+      "source": "/tmp/neon-ferry-local-aim-candidate-20261005/payload/tools/native-review/methods/transport/method-manifest.json",
+      "bytes": 15271,
+      "sha256": "5de83077aa1dcc80e3a58ac1e7fcfa11f976bfb1df7abe6a1faedeb60641eace"
+    },
+    {
+      "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "source": "/tmp/neon-ferry-local-aim-candidate-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 47999,
+      "sha256": "f6cb18afbbf916f8a3227448387d0534f909a7f743a80a004ac44817927fcd66"
+    }
+  ],
+  "busComposition": {
+    "busCandidatePath": "/tmp/neon-bus-whole-budget-candidate-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+    "busMethodSHA256": "148a6172900537ea78a48ea30a7eafa54dc73508fa95f92a8bf457b1a269b3c9",
+    "onlyOriginalBUSSelectorChanged": true,
+    "composedMainPath": "/tmp/neon-ferry-local-aim-candidate-20261005/compatible-bus-composed-native-transport-high.mjs",
+    "composedMainSHA256": "571c19a0931d85ef26ad7be462eb2adb5749f580d8f085ea6b8a696dfb4abd80",
+    "usage": "Apply FERRY method-only hunks to the BUS candidate main, then centrally recompute method tool pin; preserve BUS manifest/cases/workflow amendment and append the FERRY amendment. Do not overwrite the BUS manifest with the FERRY-only payload manifest. Other owner-only cleanup hunks must also be composed before final sealing."
+  }
+}

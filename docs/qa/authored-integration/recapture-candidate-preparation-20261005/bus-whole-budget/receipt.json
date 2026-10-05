@@ -1,0 +1,71 @@
+{
+  "status": "ISOLATED_BUDGET_CANDIDATE_CPU_CHECKED_NATIVE_UNRUN",
+  "rootWritten": false,
+  "gpuStarted": false,
+  "runtimeChanged": false,
+  "before": {
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "bytes": 47346,
+      "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
+    },
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "bytes": 14442,
+      "sha256": "42679942a3ec5e33f1aa7f7450b819095468ac0869c20d12f6b5e1a4d677b99c"
+    },
+    "tools/native-review/cases.json": {
+      "bytes": 8956,
+      "sha256": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655"
+    },
+    ".github/workflows/native-art.yml": {
+      "bytes": 5248,
+      "sha256": "d123cdbffee84c86e4ea35a4770fac09c1d32e92ed1dee24c8c583e0468853b5"
+    }
+  },
+  "payload": {
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "bytes": 47319,
+      "sha256": "148a6172900537ea78a48ea30a7eafa54dc73508fa95f92a8bf457b1a269b3c9"
+    },
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "bytes": 15168,
+      "sha256": "902a67152852076958c00360708cf46544421819feea34af4320001a5f92206b"
+    },
+    "tools/native-review/cases.json": {
+      "bytes": 9495,
+      "sha256": "e9b904ca6cc84c34ad959b2eaf096e547d919a90038fbf1a2427c81f7bf5cffa"
+    },
+    ".github/workflows/native-art.yml": {
+      "bytes": 5249,
+      "sha256": "dc9ae23c668256a41137a5637d4594b76345cb706185adef8627dc065a8bc104"
+    }
+  },
+  "checks": {
+    "methodExactOneWholeSelectionChange": true,
+    "walkLocalByteIdenticalSha256": "9b632a9e1b86b53ba37a6c4c570a7f93201d245fb3460f97a14add32b227b985",
+    "waitBerthByteIdenticalSha256": "09235bc53cb3c938c7dc6c408caf9ba4fd8a955c882c3261754cad9ed9b05934",
+    "radiusGuardByteIdenticalSha256": "1283bc9358c83e21eb79101507707c64b11a8d812f2ae0292eb13f7b440deb44",
+    "photoPoseByteIdenticalSha256": "4a93375380713cab99467da6b0e8fbc1cfd2e90ee88043d8b5abcf59687fe10c",
+    "photoByteIdenticalSha256": "ed2959a6705e5949ec9d18eab03212d31c36408c59ec93bb2186686552d1daff",
+    "other23CasesUnchanged": true,
+    "manifestGuardDescriptionsUnchanged": true,
+    "nodeCheck": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "deliveryFiles": [
+    "tools/native-review/methods/transport/native-transport-high.mjs",
+    "tools/native-review/methods/transport/method-manifest.json",
+    "tools/native-review/cases.json",
+    ".github/workflows/native-art.yml"
+  ],
+  "candidateRoot": "/tmp/neon-bus-whole-budget-candidate-20261005",
+  "rootHeadAtPreparation": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+  "bundleManifestNotRewritten": "Parent must refresh final combined inventory after any adopted collector / ownership changes; this payload does not overwrite the root catalog.",
+  "limitations": [
+    "Only current first BUS whole-deadline failure is addressed.",
+    "150s local waypoint may still fail during later unobserved stair steps.",
+    "No images or FAIL statuses amended."
+  ]
+}

@@ -1,0 +1,50 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -34,8 +34,8 @@
+   selectedCase: { name:options.case, ...selectedCase },
+   routePolicy: 'Independent public Atlas for the named address; one pre-planned pavement approach from actual read-only starting NPC coordinates, no chase or endpoint retry. South uses shipped harbor supply UI.',
+   actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment' },
+-  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?2700:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
+-    ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:1200,naturalSouthParcelWallSeconds:360}:{}) },
++  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?3600:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
++    ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:2100,naturalSouthParcelWallSeconds:360}:{}) },
+   ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + physical far walk and real cooldown/return' : null,
+   limits: ['Each separate case records its actual visible target only. Hidden book/phone/cup references are not visible action coverage; all 240 residents are not accepted.',
+     'NPCs keep original journeys. A target leaving the planned viewpoint or parcel not appearing in the bounded window is recorded as a first failure, with no correction/relaunch/retry.',
+@@ -375,7 +375,7 @@
+     actualOrderIds:actualOrders.map(j=>j.id),actualCreatedTicks:actualOrders.map(j=>j.createdTick),eligibleSimulationTime,
+     initialSimulationTime:start.simulationTime,endSimulationTime:last?.simulationTime,wallSeconds:(Date.now()-startupBegan)/1000,
+     maximumWallSeconds:plan.budgets.naturalStartupWallSeconds,worldClockWritten:false};await persist();
+-  assert.ok(last&&(found||last.simulationTime>=eligibleSimulationTime),'natural75sim order startup exceeded1200 wall seconds; no forced pickup or retry');
++  assert.ok(last&&(found||last.simulationTime>=eligibleSimulationTime),`natural75sim order startup exceeded${plan.budgets.naturalStartupWallSeconds} wall seconds; no forced pickup or retry`);
+   const began=Date.now();
+   while(!found&&Date.now()-began<plan.budgets.naturalSouthParcelWallSeconds*1000){
+     await observeParcel('natural-supply-watch',began);
+--- a/tools/native-review/cases.json
++++ b/tools/native-review/cases.json
+@@ -173,11 +173,11 @@
+       "id": "south-parcel",
+       "family": "resident-extra",
+       "toolCase": "south-parcel",
+-      "originalBudgetSeconds": 2700,
+-      "jobTimeoutMinutes": 75,
++      "originalBudgetSeconds": 3600,
++      "jobTimeoutMinutes": 95,
+       "paired": false,
+       "historicalOriginalBudgetSeconds": 1080,
+-      "budgetRevisionReason": "original358.887wall advanced26.833333sim, neverreached75sim guard; observed13.375667wall/sim gives ~1003wall for75sim;1200 startupfiniteheadroom;45min whole preserves existing setup/2PNG/45s observation/real2legs/closure under distinct finite limits"
++      "budgetRevisionReason": "Actual cc038 High1201.114wall startup advanced onlysim5→49.75;642 active samples and3 real createdTick0 funded unassigned orders, still before actual75sim eligibility. Observed26.7959wall/sim and slowest quarter27.2376 project~1876–1907wall startup; fixed2100 startup. Whole60min preserves post-startup360 watch,2 original180s movement legs,45s observation,2PNG and35s owned close with finite unmeasured-stage headroom; job95 includes20min prep+62min executor. No completion guarantee, no forced pickup/retry/clock or High change; original1200startup/2700whole FAIL preserved."
+     },
+     {
+       "id": "ownership-bus",
+--- a/tools/native-review/native-matrix.json
++++ b/tools/native-review/native-matrix.json
+@@ -103,7 +103,7 @@
+     },
+     {
+       "id": "south-parcel",
+-      "job_timeout_minutes": 75,
++      "job_timeout_minutes": 95,
+       "evidence_label": "Native High"
+     },
+     {

@@ -1,5 +1,6 @@
 /** Real-game photographs and active observation. Preparation alone runs no browser. */
 import assert from 'node:assert/strict';
+import { continuousOwnerIdleGuard } from './continuous-owner-idle-guard.mjs';
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
@@ -34,9 +35,9 @@ const plan = {
   selectedCase: { name:options.case, ...selectedCase },
   routePolicy: 'Independent public Atlas for the named address; one pre-planned pavement approach from actual read-only starting NPC coordinates, no chase or endpoint retry. South uses shipped harbor supply UI.',
   actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment' },
-  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?2700:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
-    ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:1200,naturalSouthParcelWallSeconds:360}:{}) },
-  ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + physical far walk and real cooldown/return' : null,
+  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?3600:options.case==='north-cup-owner'?2400:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
+    ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:2100,naturalSouthParcelWallSeconds:360}:{}) },
+  ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + fixed pavement x=-544, x=-521, z=-602 out/back and one uninterrupted real 13-simulation-second zero-demand cooldown' : null,
   limits: ['Each separate case records its actual visible target only. Hidden book/phone/cup references are not visible action coverage; all 240 residents are not accepted.',
     'NPCs keep original journeys. A target leaving the planned viewpoint or parcel not appearing in the bounded window is recorded as a first failure, with no correction/relaunch/retry.',
     'Native visual quality requires manual inspection of raw frames; rule counts and transfer budgets do not certify art quality.',
@@ -144,6 +145,21 @@ const face = async (yaw,pitch) => {
   },{yaw,pitch},{polling:'raf',timeout:15000}); checkErrors();
 };
 const firstPerson = async enabled => {
+  // The original ef92 locator focus inherited page.setDefaultTimeout(180000).
+  // Keep that independent public-input bound, clamped to the whole case; the
+  // unchanged 15-second setting/camera phase starts only after focus resolves.
+  const focusCap=Math.min(180000,(totalDeadlineAt||Infinity)-Date.now());
+  assert.ok(focusCap>0,'whole deadline before independent public game focus');
+  const focusRecord={enabled,timeoutMs:focusCap,originalPageDefaultTimeoutMs:180000,
+    startedAt:new Date().toISOString(),status:'running',firstError:null};
+  (metadata.firstPersonFocusPhases ||= []).push(focusRecord);
+  let focusTimer;
+  try {
+    await Promise.race([Promise.resolve().then(()=>page.locator('#game').focus({timeout:focusCap})),
+      new Promise((_,bad)=>{focusTimer=setTimeout(()=>bad(new Error('Independent original public game focus deadline')),focusCap);})]);
+    focusRecord.status='completed';
+  } catch(error) {focusRecord.status='failed';focusRecord.firstError={name:error.name,message:error.message};throw error;}
+  finally {clearTimeout(focusTimer);focusRecord.finishedAt=new Date().toISOString();}
   const phaseDeadline=Math.min(Date.now()+15000,totalDeadlineAt || Infinity);
   const phaseRemaining=()=>{const ms=phaseDeadline-Date.now();assert.ok(ms>0,'original first-person 15-second phase deadline');return ms;};
   const phaseStep=async(operation,label)=>{const ms=phaseRemaining();let timer;try {
@@ -153,7 +169,6 @@ const firstPerson = async enabled => {
   const finiteCamera=state=>{const camera=state.camera,point=p=>p&&['x','y','z'].every(k=>Number.isFinite(p[k]));
     return !!camera&&point(camera.position)&&point(camera.target)&&point(camera.focus)&&
       [camera.yaw,camera.pitch,camera.fov].every(Number.isFinite)&&(!enabled||camera.fov===65);};
-  await phaseStep(()=>page.locator('#game').focus({timeout:phaseRemaining()}),'public game focus');
   let state=await phaseStep(()=>read(),'initial read-only setting/camera');
   const toggled=state.settings.firstPerson!==enabled;
   if(toggled)await phaseStep(()=>page.keyboard.press('v'),'single public V');
@@ -186,14 +201,36 @@ const walk = async (axis,target) => {
   const phases=[];
   async function hold(stage,endpoint,precision) {
     let first=null;const row={stage,endpoint,precision,key:choice.key,inputs:[]};phases.push(row);
+    const phoneProbe=options.case==='north-phone',phoneSprint=phoneProbe&&stage==='coarse'&&axis==='x'&&Math.abs(target-before.position[axis])>30;
+    const probeTag=`NEON-PHONE-WALK:${axis}:${endpoint}:${stage}:`;
+    let lastProgressAt=0;
+    const recordPhoneProgress=message=>{
+      const text=message.text();if(!text.startsWith(probeTag))return;
+      try {
+        const state=JSON.parse(text.slice(probeTag.length)),now=Date.now();
+        if(!row.progress.length||now-lastProgressAt>=2000||sign*(state.position[axis]-endpoint)>=0){
+          assert.ok(row.progress.length<256,'finite original phone leg progress');
+          const receipt={at:new Date(now).toISOString(),wallSeconds:(now-row.startedWall)/1000,axis,endpoint,stage,precision,requestedKeys:[choice.key,...(phoneSprint?['Shift']:[]),...(precision?['z']:[])],state};
+          row.progress.push(receipt);lastProgressAt=now;console.log('PHONE-WALK-PROGRESS '+JSON.stringify(receipt));
+        }
+      }catch(error){row.progressError={name:error.name,message:error.message};first ||= error;}
+    };
+    if(phoneProbe){row.startedWall=Date.now();row.startedAt=new Date(row.startedWall).toISOString();row.progress=[];
+      metadata.coverage.phonePhysicalLegs ||= [];metadata.coverage.phonePhysicalLegs.push({axis,target,before:{position:before.position,simulationTime:before.simulationTime,teleportRevision:before.teleportRevision},stage:row});
+      page.on('console',recordPhoneProgress);await persist();
+    }
     try {
-      if(precision){row.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}
-      row.inputs.push({action:'down',key:choice.key});await page.keyboard.down(choice.key);
-      await page.waitForFunction(({axis,endpoint,sign})=>{const s=window.__NEON__.snapshot();if(s.paused)throw new Error('Paused during physical walk');return sign*(s.position[axis]-endpoint)>=0;},{axis,endpoint,sign},{polling:'raf',timeout:legRemaining()});
+      if(phoneSprint){row.inputs.push({action:'down',key:'Shift',at:new Date().toISOString()});await page.keyboard.down('Shift');Object.assign(row.inputs.at(-1),{confirmed:true,confirmedAt:new Date().toISOString()});}
+      if(precision){row.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');if(phoneProbe)Object.assign(row.inputs.at(-1),{confirmed:true,confirmedAt:new Date().toISOString()});}
+      row.inputs.push({action:'down',key:choice.key});await page.keyboard.down(choice.key);if(phoneProbe)Object.assign(row.inputs.at(-1),{confirmed:true,confirmedAt:new Date().toISOString()});
+      await page.waitForFunction(({axis,endpoint,sign,phoneProbe,probeTag,id})=>{const s=window.__NEON__.snapshot();if(s.paused)throw new Error('Paused during physical walk');
+        if(phoneProbe){const n=s.city.people?.people.find(p=>p.id===id);console.debug(probeTag+JSON.stringify({position:s.position,simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,paused:s.paused,quality:s.settings.quality,fps:s.fps,timing:s.timing,target:n?{id:n.id,x:n.x,y:n.y,z:n.z,state:n.state,materialized:n.materialized,insideBuildingId:n.insideBuildingId}:null}));}
+        return sign*(s.position[axis]-endpoint)>=0;},{axis,endpoint,sign,phoneProbe,probeTag,id:selectedCase.id},{polling:'raf',timeout:legRemaining()});
     } catch(error){first=error;row.firstError={name:error.name,message:error.message};}
     finally {
-      for(const key of [choice.key,...(precision?['z']:[])])try{await page.keyboard.up(key);row.inputs.push({action:'up',key,confirmed:true});}
+      for(const key of [choice.key,...(phoneSprint?['Shift']:[]),...(precision?['z']:[])])try{await page.keyboard.up(key);row.inputs.push({action:'up',key,confirmed:true,...(phoneProbe?{at:new Date().toISOString()}: {})});}
       catch(error){row.inputs.push({action:'up',key,confirmed:false,error:{name:error.name,message:error.message}});if(!first)first=error;else (metadata.secondaryMovementErrors ||= []).push({name:error.name,message:error.message});}
+      if(phoneProbe){page.off('console',recordPhoneProgress);row.endedAt=new Date().toISOString();row.status=first?'first-failure-preserved':'input-completed';await persist();}
     }
     if(first)throw first; // No read/RPC or second hold after unconfirmed key-up.
     legRemaining();
@@ -292,10 +329,21 @@ async function ownerCase(id) {
     const target=actorIn(high,id);metadata.coverage.originalTargetAfterQuality=target?{id,retainedOriginalPropUUIDs:beforeUUIDs.every(uuid=>target.props.some(p=>p.uuid===uuid)),coreVisible:target.coreVisible,props:target.props,hands:target.hands}:{status:'not-materialized-after-natural-journey'};
     if(target)assert.ok(beforeUUIDs.every(uuid=>target.props.some(p=>p.uuid===uuid)),'original props must not be replaced by new objects');
   }
-  await captureRaw('04-high-owner-restored');await firstPerson(true);await walk('x',-530);const far=await event('physical-far');
-  if(options.mode==='authored')await page.waitForFunction(()=>window.__NEON__.snapshot().residentAssets.instances===0,null,{polling:'raf',timeout:180000});
+  await captureRaw('04-high-owner-restored');await firstPerson(true);
+  // One source/collider-reviewed fixed pavement route. The old x=-530 point
+  // lies beside the architect's natural route and cannot prove absent demand.
+  // Split x at -544 to retain the original finite 180-second limit per leg.
+  const farRoute=[{axis:'x',target:-544},{axis:'x',target:-521},{axis:'z',target:-602}];
+  for(const leg of farRoute)await walk(leg.axis,leg.target);
+  const far=await event('physical-far',{route:farRoute});
+  if(options.mode==='authored')await page.waitForFunction(()=>{const a=window.__NEON__.snapshot().residentAssets;return a.instances===0&&!a.pending&&a.selected.length===0;},null,{polling:'raf',timeout:180000});
   const idleStart=await event('far-zero-instance-cooldown-start');
-  await page.waitForFunction(time=>window.__NEON__.snapshot().simulationTime-time>=13,idleStart.simulationTime,{polling:'raf',timeout:240000});
+  if(options.mode==='authored'){
+    assert.equal(idleStart.residentAssets.residencyCooldown,12,'actual frozen source cooldown remains 12');
+    continuousOwnerIdleGuard({startTime:idleStart.simulationTime,teleportRevision:idleStart.teleportRevision},()=>idleStart);
+    // First observed demand aborts; no restart, deadline extension or retry.
+    await page.waitForFunction(continuousOwnerIdleGuard,{startTime:idleStart.simulationTime,teleportRevision:idleStart.teleportRevision},{polling:'raf',timeout:240000});
+  } else await page.waitForFunction(time=>window.__NEON__.snapshot().simulationTime-time>=13,idleStart.simulationTime,{polling:'raf',timeout:240000});
   const evicted=await event('far-real-cooldown-complete');
   if(options.mode==='authored'){
     assert.equal(evicted.residentAssets.instances,0);assert.equal(evicted.residentAssets.review.templateOwners.imageBitmaps,0);
@@ -303,7 +351,7 @@ async function ownerCase(id) {
   }
   // A local visible player guarantees a real returning actor even if the NPC
   // naturally enters a room during this window; no journey or prop is forced.
-  await walk('x',before.position.x);await firstPerson(false);await awaitRole('commuter','local-player');const returned=await event('physical-return-real-role-reload');
+  await walk('z',before.position.z);await walk('x',-544);await walk('x',before.position.x);await firstPerson(false);await awaitRole('commuter','local-player');const returned=await event('physical-return-real-role-reload');
   if(options.mode==='authored'){assert.ok(returned.residentAssets.review.templateOwners.imageBitmaps>0);assert.ok(returned.residentAssets.requests>evicted.residentAssets.requests);}
   metadata.coverage.owners={status:options.mode==='authored'?'actual-readbacks-recorded':'probe-unavailable-in-baseline',before,low,high,far,idleStart,evicted,returned,
     driverVRAMMeasured:false,note:'CPU owner references and successful bitmap.close/dispose calls; renderer counts retained separately.'};await captureRaw('05-real-return');
@@ -361,7 +409,7 @@ async function southCase() {
     actualOrderIds:actualOrders.map(j=>j.id),actualCreatedTicks:actualOrders.map(j=>j.createdTick),eligibleSimulationTime,
     initialSimulationTime:start.simulationTime,endSimulationTime:last?.simulationTime,wallSeconds:(Date.now()-startupBegan)/1000,
     maximumWallSeconds:plan.budgets.naturalStartupWallSeconds,worldClockWritten:false};await persist();
-  assert.ok(last&&(found||last.simulationTime>=eligibleSimulationTime),'natural75sim order startup exceeded1200 wall seconds; no forced pickup or retry');
+  assert.ok(last&&(found||last.simulationTime>=eligibleSimulationTime),`natural75sim order startup exceeded${plan.budgets.naturalStartupWallSeconds} wall seconds; no forced pickup or retry`);
   const began=Date.now();
   while(!found&&Date.now()-began<plan.budgets.naturalSouthParcelWallSeconds*1000){
     await observeParcel('natural-supply-watch',began);

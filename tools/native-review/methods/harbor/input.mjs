@@ -13,7 +13,7 @@ function axisKey(yaw,axis,positive){
 /** No imported legacy 24-tap retry loop. Every actual key hold is recorded.
  * A leg has one coarse hold, one precision approach and at most TWO explicitly
  * logged corrective holds. A blocked or inaccurate leg stops the case. */
-export function createInput(page,{remaining,record,persist}){
+export function createInput(page,{remaining,record,persist,homePrecisionHold=false}){
  async function face(yaw,pitch=null){
   await page.waitForFunction(()=>Number.isFinite(window.__NEON__.snapshot().camera?.yaw),null,{polling:'raf',timeout:remaining(30000)});
   const before=await snapshot(page),delta=angular(yaw,before.camera.yaw),box=await page.locator('#game').boundingBox();
@@ -50,7 +50,8 @@ export function createInput(page,{remaining,record,persist}){
    try{
     if(h.precision)await page.keyboard.down('z');
     await page.keyboard.down(key);
-    await page.waitForFunction(predicate,args,{polling:'raf',timeout:remaining(120000)});
+    h.timeoutMs=remaining(h.precision&&homePrecisionHold?180000:120000);
+    await page.waitForFunction(predicate,args,{polling:'raf',timeout:h.timeoutMs});
    }catch(error){holdError=error;}finally{
     for(const releaseKey of[key,...(h.precision?['z']:[])])try{await page.keyboard.up(releaseKey);}catch(error){h.secondaryErrors.push({stage:'keyup-'+releaseKey,...errorRecord(error)});holdError ||=error;}
     try{current=await snapshot(page);h.after=motion(current);}catch(error){h.secondaryErrors.push({stage:'hold-after-snapshot',...errorRecord(error)});holdError ||=error;}

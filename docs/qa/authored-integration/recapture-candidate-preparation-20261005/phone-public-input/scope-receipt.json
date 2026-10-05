@@ -1,0 +1,16 @@
+{
+  "status": "PASSED",
+  "baseSHA256": "260b9118c280f117b253d3cbbe5154afafafa9f1081b399aa1e48e21faafd6ff",
+  "candidateSHA256": "92981ad63af2e4613ace6c502348093f78f4212412e40256c0abc578c3d9de8b",
+  "artifactMethodSHA256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "checks": {
+    "all_code_before_hold_byte_equal": true,
+    "all_code_after_hold_byte_equal": true,
+    "artifact_walk_byte_equal_to_candidate_base": true,
+    "root_collector_still_matches_original_base": true
+  },
+  "changedLocalMethodPinEntries": [
+    "tools/capture-resident-extra.mjs"
+  ],
+  "scope": "Only hold conditional in existing resident-extra collector. Non-phone inputs/guards unchanged; existing North/South setup, original budget, target/action pose capture, 45 wall observation and exact owner/shared30/API35 teardown lie outside changed bytes. No runtime/ROOT/index/refs or browser modification."
+}

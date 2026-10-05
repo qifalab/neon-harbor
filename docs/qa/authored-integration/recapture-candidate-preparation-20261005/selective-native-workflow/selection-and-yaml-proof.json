@@ -1,0 +1,296 @@
+{
+  "status": "SOURCE_ONLY_SELECTION_AND_SYNTAX_PASS",
+  "checks": [
+    {
+      "name": "default all retains exact 24 ordered matrix rows",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: continuous-tour",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: resident-loop",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: east-interior",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: home",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: workshop",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: resident-core",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-090",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-091",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-092",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-094",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-095",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-096",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: bus",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: tram",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: ferry",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: waterfront-day",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: waterfront-night",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: north-book",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: north-phone",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: north-cup-owner",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: south-parcel",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: ownership-bus",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: ownership-tram",
+      "result": "PASS"
+    },
+    {
+      "name": "single allowed case: ownership-ferry",
+      "result": "PASS"
+    },
+    {
+      "name": "subset uses original matrix order and complete unchanged rows",
+      "result": "PASS"
+    },
+    {
+      "name": "CSV whitespace normalizes only canonical IDs",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: ''",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: ' '",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: ','",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'home,'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: ',home'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'home,,bus'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'home,home'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'home, home'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'unknown'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'Home'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'all,home'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: '[\"home\"]'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: 'home;echo data'",
+      "result": "PASS"
+    },
+    {
+      "name": "reject invalid selection: None",
+      "result": "PASS"
+    },
+    {
+      "name": "reject timeout drift",
+      "result": "PASS"
+    },
+    {
+      "name": "reject unknown policy ID",
+      "result": "PASS"
+    },
+    {
+      "name": "reject duplicated policy ID",
+      "result": "PASS"
+    },
+    {
+      "name": "reject empty or reduced default matrix",
+      "result": "PASS"
+    },
+    {
+      "name": "copied matrix equals original static 24-case matrix",
+      "result": "PASS"
+    },
+    {
+      "name": "capture steps remain identical",
+      "result": "PASS"
+    },
+    {
+      "name": "capture budget expression unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "max parallel unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "capture needs successful select job",
+      "result": "PASS"
+    },
+    {
+      "name": "dynamic matrix from validated job output",
+      "result": "PASS"
+    },
+    {
+      "name": "native default all: workflow_dispatch",
+      "result": "PASS"
+    },
+    {
+      "name": "CI native-only default false: workflow_dispatch",
+      "result": "PASS"
+    },
+    {
+      "name": "native default all: workflow_call",
+      "result": "PASS"
+    },
+    {
+      "name": "CI native-only default false: workflow_call",
+      "result": "PASS"
+    },
+    {
+      "name": "original functional/PR job body retained: verify",
+      "result": "PASS"
+    },
+    {
+      "name": "original functional/PR job body retained: multiplayer",
+      "result": "PASS"
+    },
+    {
+      "name": "original functional/PR job body retained: room-art",
+      "result": "PASS"
+    },
+    {
+      "name": "original functional/PR job body retained: room-detail",
+      "result": "PASS"
+    },
+    {
+      "name": "all workflow bash blocks parse without execution",
+      "result": "PASS"
+    }
+  ],
+  "checkCount": 60,
+  "defaultMatrixCount": 24,
+  "actualCaptureRun": false,
+  "productTestsOrBuildRun": false,
+  "gpuRun": false,
+  "workflowDispatched": false,
+  "githubGraphOrSchemaAcceptance": "PENDING_ACTUAL_DISPATCH",
+  "additionalProof": {
+    "exactCaptureStepsBytesUnchanged": true,
+    "noInputProfileOnlyDispatchDefaultsChanged": true,
+    "noInputProfileWorkflowCallDefaultsFalseAllUnchanged": true,
+    "profileHelperPythonSyntaxPass": true,
+    "rootInputFilesStillEqualSnapshots": true
+  },
+  "nativeDirectWorkflowReadOnlyRemoteResult": {
+    "endpoint": "repos/qifalab/neon-harbor/actions/workflows/native-art.yml",
+    "exitCode": 1,
+    "status": "404",
+    "message": "Not Found"
+  },
+  "existingNativeBundleFileCount": 71,
+  "originalRootPins": {
+    ".github/workflows/native-art.yml": {
+      "bytes": 5248,
+      "sha256": "d123cdbffee84c86e4ea35a4770fac09c1d32e92ed1dee24c8c583e0468853b5"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 5651,
+      "sha256": "fcd203f94d6c77481ee36dfe5a31c1ae7160eba73e5756725e6b89d4c5926347"
+    },
+    ".github/workflows/pages.yml": {
+      "bytes": 1806,
+      "sha256": "cd09551e40a576172cf21c42871c10245056c94fa99d7be115f21c2efdc11fcb"
+    },
+    "tools/native-review/run-paired-native.py": {
+      "bytes": 34285,
+      "sha256": "c9ca521c91edb9d2720c913bc7bf9e3a5cf6fcf6909c66fe74c0acb139951cd6"
+    },
+    "tools/native-review/cases.json": {
+      "bytes": 8956,
+      "sha256": "e2efd8a0343d405a056008f8107752211b7f3e956eeb24d40f130b9df6dcf655"
+    },
+    "tools/native-review/expected-runtime-dictionaries.json": {
+      "bytes": 39048,
+      "sha256": "a137b0b64cdc534f5826091a90a6454348587ad3ed5390bf8f31b083db04ee2c"
+    },
+    "tools/native-review/bundle-manifest.json": {
+      "bytes": 17090,
+      "sha256": "bab3ae4704b64c1925e9c822d20ac2678d5615613ce499f444f6beccb0545783"
+    }
+  }
+}

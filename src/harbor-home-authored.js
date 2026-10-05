@@ -6,7 +6,7 @@ export const AUTHORED_HOME = Object.freeze({buildingId:'south-079', floors:['lob
   nearDistance:24, farDistance:32, lod:{near:6,middle:14,hysteresis:.75}});
 export const HOME_MODELS = Object.freeze({
   sofa_03:{meshes:2,textured:true}, old_bed_frame:{meshes:1,textured:true},
-  'home-lobby-fittings':{meshes:14,textured:false,original:true},
+  'home-lobby-fittings':{meshes:19,textured:false,original:true},
   'home-gallery-fittings':{meshes:16,textured:false,original:true},
 });
 export const isAuthoredHome = (building,floor) => building?.id===AUTHORED_HOME.buildingId && AUTHORED_HOME.floors.includes(floor?.id);

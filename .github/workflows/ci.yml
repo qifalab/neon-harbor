@@ -11,6 +11,16 @@ on:
         type: boolean
         required: false
         default: true
+      native_only:
+        description: 'Explicitly run native evidence without repeating functional jobs'
+        type: boolean
+        required: false
+        default: false
+      selected_case_ids:
+        description: 'all or unique existing native case IDs separated by commas'
+        type: string
+        required: false
+        default: all
   workflow_call:
     inputs:
       capture_native:
@@ -18,6 +28,16 @@ on:
         type: boolean
         required: false
         default: false
+      native_only:
+        description: 'Explicitly run native evidence without repeating functional jobs'
+        type: boolean
+        required: false
+        default: false
+      selected_case_ids:
+        description: 'all or unique existing native case IDs separated by commas'
+        type: string
+        required: false
+        default: all
 
 permissions:
   contents: read
@@ -28,6 +48,7 @@ concurrency:
 
 jobs:
   verify:
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.native_only == true) }}
     name: Build and gameplay tests (${{ matrix.id }})
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -68,6 +89,7 @@ jobs:
           if-no-files-found: ignore
 
   multiplayer:
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.native_only == true) }}
     name: Multiplayer rooms in two browsers
     runs-on: ubuntu-latest
     # Shared vehicles and expanded-world elevator synchronization are separate
@@ -160,7 +182,9 @@ jobs:
 
   native-art:
     name: Optional native and route evidence
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.capture_native == true }}
+    if: ${{ github.event_name == 'workflow_dispatch' && (inputs.capture_native == true || inputs.native_only == true) }}
     uses: ./.github/workflows/native-art.yml
+    with:
+      selected_case_ids: ${{ inputs.selected_case_ids }}
     permissions:
       contents: read

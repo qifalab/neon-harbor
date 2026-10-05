@@ -1,0 +1,266 @@
+{
+  "status": "PASSED",
+  "scope": "Original source CPU motor/static geometry/schedule only; no GPU, browser, protocol wall-time or successful phone photograph inferred. One-frame release delay is explicitly a test fixture; larger delays must still trigger unchanged original guards.",
+  "actualMetadataSHA256": "f1bd6c90e68b28e43a84e67d4fa43a09ba27b513d9b92bd4d4fc9b599a6b6c24",
+  "originalActual": {
+    "firstFailure": {
+      "at": "2026-10-05T02:47:24.598Z",
+      "type": "method",
+      "message": "page.waitForFunction: Timeout 176430ms exceeded.\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:192:18)\n    at async walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:203:5)\n    at async northCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:321:5)\n    at async core (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:479:107)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:528:3"
+    },
+    "player": {
+      "x": 510.9999999999855,
+      "y": 0,
+      "z": -595,
+      "yaw": -1.5707963267948968
+    },
+    "simulationTime": 10.750000000000114,
+    "normalMovingSimulationSeconds": 8.75,
+    "sourceReproducedPlayer": {
+      "x": 510.9999999999855,
+      "z": -595,
+      "yaw": -1.5707963267948968,
+      "y": 0,
+      "health": 100,
+      "stamina": 100,
+      "vy": 0,
+      "groundY": 0,
+      "jumpY": 0
+    }
+  },
+  "colliderCount": 1856,
+  "path": [
+    {
+      "x": 560,
+      "z": -595
+    },
+    {
+      "x": 500.6,
+      "z": -595
+    },
+    {
+      "x": 500.6,
+      "z": -597
+    }
+  ],
+  "samples": 1230,
+  "hits": [],
+  "phoneIdentity": {
+    "id": "resident-lantern-tower-1",
+    "seed": 202,
+    "initialNaturalStreetDwell": 32
+  },
+  "cases": [
+    {
+      "frameSeconds": 0.05,
+      "keyupFrames": 0,
+      "sprint": false,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.7199999999877,
+        "time": 10.050000000000079,
+        "stamina": 100
+      },
+      "endpoint": {
+        "x": 500.8799999999903,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 13.600000000000255,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.05,
+      "keyupFrames": 0,
+      "sprint": true,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.66166666667976,
+        "time": 5.699999999999985,
+        "stamina": 1.116666666667248
+      },
+      "endpoint": {
+        "x": 500.8616666666823,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 9.200000000000037,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.05,
+      "keyupFrames": 1,
+      "sprint": false,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.4399999999878,
+        "time": 10.100000000000081,
+        "stamina": 100
+      },
+      "endpoint": {
+        "x": 500.83999999999014,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 13.350000000000243,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.05,
+      "keyupFrames": 1,
+      "sprint": true,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.21833333334644,
+        "time": 5.749999999999985,
+        "stamina": 0.6333333333339146
+      },
+      "endpoint": {
+        "x": 500.8583333333486,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 8.700000000000012,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.1,
+      "keyupFrames": 0,
+      "sprint": false,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.4399999999878,
+        "time": 10.100000000000081,
+        "stamina": 100
+      },
+      "endpoint": {
+        "x": 500.8799999999901,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 13.30000000000024,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.1,
+      "keyupFrames": 0,
+      "sprint": true,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.66166666667976,
+        "time": 5.699999999999985,
+        "stamina": 1.116666666667248
+      },
+      "endpoint": {
+        "x": 500.8616666666823,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 9.200000000000037,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.1,
+      "keyupFrames": 1,
+      "sprint": false,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 502.87999999998794,
+        "time": 10.200000000000086,
+        "stamina": 100
+      },
+      "endpoint": {
+        "x": 500.79999999998984,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 12.800000000000216,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.1,
+      "keyupFrames": 1,
+      "sprint": true,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 502.8566666666798,
+        "time": 5.799999999999985,
+        "stamina": 0.7666666666672479
+      },
+      "endpoint": {
+        "x": 500.7766666666817,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 8.399999999999997,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.25,
+      "keyupFrames": 0,
+      "sprint": false,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 502.59999999998803,
+        "time": 10.250000000000089,
+        "stamina": 100
+      },
+      "endpoint": {
+        "x": 500.79999999998967,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 12.5000000000002,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.25,
+      "keyupFrames": 0,
+      "sprint": true,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 503.21833333334644,
+        "time": 5.749999999999985,
+        "stamina": 0.6333333333339146
+      },
+      "endpoint": {
+        "x": 500.8183333333486,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 8.750000000000014,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.25,
+      "keyupFrames": 1,
+      "sprint": false,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 501.19999999998845,
+        "time": 10.500000000000101,
+        "stamina": 100
+      },
+      "endpoint": {
+        "x": 500.599999999989,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 11.250000000000139,
+      "originalGuardsPass": true
+    },
+    {
+      "frameSeconds": 0.25,
+      "keyupFrames": 1,
+      "sprint": true,
+      "initialStamina": 100,
+      "coarse": {
+        "x": 501.3283333333466,
+        "time": 5.999999999999984,
+        "stamina": 0.6833333333339144
+      },
+      "endpoint": {
+        "x": 500.52833333334735,
+        "z": -595
+      },
+      "physicalSimulationSeconds": 6.9999999999999805,
+      "originalGuardsPass": true
+    }
+  ],
+  "sources": {
+    "src/simulation.js": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+    "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+    "src/metropolis-world.js": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+    "src/citizen-life.js": "59bfdeaf9aa783dee276a5a8c40f1b90166a15ba835895a3b17023fac7f448da",
+    "src/citizen-journeys.js": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a"
+  }
+}

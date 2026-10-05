@@ -1438,9 +1438,9 @@
     "/workspace/scratch/neon-harbor/src/expansion-programmes.js": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
     "/workspace/scratch/neon-harbor/src/metropolis-room-designs.js": "adc33a9c57af6a38a461686d210099346aeebfef41b20cac9f0616cfbf5c32c6",
     "/workspace/scratch/neon-harbor/src/harbor-workshop-pilot.js": "0e46506ba9b84dba07a244c0912e0b463a5d44c3e2ea813a3d1cb6141613d6b7",
-    "/tmp/neon-harbor-authored-integration/src/harbor-workshop-pilot.js": "a6d3d59f5ab3a3b349a2c2efdeb55c14542865251adf7c7a2684882a3a860c28",
-    "/tmp/neon-harbor-authored-integration/src/harbor-workshop-authored.js": "dc05326a6a31f0b1d040f89e0533fff96a10ed3c969c18f8d0ab05656c5daf3b",
-    "/tmp/neon-harbor-authored-integration/src/harbor-home-authored.js": "d227f261dea4a57c3fc5736761dc3dc149735048cf5dd5633505b21bfe857edc"
+    "/tmp/neon-harbor-authored-integration/src/harbor-workshop-pilot.js": "1667d7e1f0b3777725e1531290ef736c4ad563d56dba241eb7abaf2160698011",
+    "/tmp/neon-harbor-authored-integration/src/harbor-workshop-authored.js": "08ed7ca54fc9adc0768e4d31e795ec7181596ea3a0e6300cccd495c137955d9e",
+    "/tmp/neon-harbor-authored-integration/src/harbor-home-authored.js": "e7a7310625e1f29ab6ad50065ab040a6f7b3f9e599a9b8ab001c185337af8a80"
   },
   "stairPreparation": {
     "flightId": "south-079-lobby-stairs",
@@ -1463,5 +1463,351 @@
       }
     ]
   },
-  "clear": true
+  "clear": true,
+  "workshopAuthoredSourcePinAmendment": {
+    "status": "SOURCE_ONLY_CPU_REDERIVED_LAYOUT_IDENTITY_AMENDMENT",
+    "createdAt": "2026-10-05T02:44:42.380268+00:00",
+    "originalProofSha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57",
+    "scope": "Only two active authored-workshop source pins updated after complete old/new layout and plan identity and fresh route/pose geometry re-derivation. Historical standing/path/layout summaries remain verbatim.",
+    "previousAuthoredCommit": "ef92c25980f1da12b508971170b72b9dd6230059",
+    "currentAuthoredCommit": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+    "originalFailure": {
+      "runId": 37254103874,
+      "artifactId": 11322319618,
+      "mode": "authored",
+      "outcome": "FAIL_BEFORE_BROWSER_SOURCE_PIN_ASSERTION_PRESERVED",
+      "originalCaptures": 0
+    },
+    "sourceChanges": {
+      "/tmp/neon-harbor-authored-integration/src/harbor-workshop-pilot.js": {
+        "previous": "a6d3d59f5ab3a3b349a2c2efdeb55c14542865251adf7c7a2684882a3a860c28",
+        "current": "1667d7e1f0b3777725e1531290ef736c4ad563d56dba241eb7abaf2160698011"
+      },
+      "/tmp/neon-harbor-authored-integration/src/harbor-workshop-authored.js": {
+        "previous": "dc05326a6a31f0b1d040f89e0533fff96a10ed3c969c18f8d0ab05656c5daf3b",
+        "current": "08ed7ca54fc9adc0768e4d31e795ec7181596ea3a0e6300cccd495c137955d9e"
+      }
+    },
+    "cpuEvidence": {
+      "fullProofSha256": "34004d085484586157d01613611bfa7df2973e540cffba01c00902a5975e8cb1",
+      "fullOldNewFloorsPayloadSHA256": "6893f3f79e47bec7de42c45275de791eb71053e6ec320f4e75a52f6ab55dff8e",
+      "fullOldNewLayoutsPartsCollidersPlansRoomsEntrancesStairsLiftDeepEqual": true,
+      "exactLobbyPlanSHA256": "e066ccf3f0607ec06a62872f73d4afe6f2e2d2b4eb15e451ff6f044c210794eb",
+      "all34ActualCurrentPlanStepsAndOriginalPhotosUnchanged": true,
+      "currentWorkshopWholeCaseMinutes": 65,
+      "bodyRadius": 0.65,
+      "bodyHeight": 1.8,
+      "axisTolerance": 0.15,
+      "routes": [
+        {
+          "version": "baseline",
+          "name": "workshop-whole-and-assembly",
+          "scope": "Entire original path plus +/- .15m X/Z band, .65m radius and full 1.8m body height",
+          "samples": 26694,
+          "minClearance": 0.1999999999999934,
+          "nearest": "south-086:lobby:260",
+          "clear": true
+        },
+        {
+          "version": "baseline",
+          "name": "archive-whole-and-retrieval",
+          "scope": "Entire original path plus +/- .15m X/Z band, .65m radius and full 1.8m body height",
+          "samples": 22194,
+          "minClearance": 0.1999999999999934,
+          "nearest": "south-086:lobby:289",
+          "clear": true
+        },
+        {
+          "version": "baseline",
+          "name": "all-34-workshop-plan-steps-physical-legs-including-exit-and-re-entry",
+          "samples": 110097,
+          "minClearance": 0.1999999999999934,
+          "clear": true,
+          "activeThreeFloorsPlusCabinColliderCount": 221
+        },
+        {
+          "version": "previous-authored",
+          "name": "workshop-whole-and-assembly",
+          "scope": "Entire original path plus +/- .15m X/Z band, .65m radius and full 1.8m body height",
+          "samples": 26694,
+          "minClearance": 0.1999999999999934,
+          "nearest": "south-086:lobby:260",
+          "clear": true
+        },
+        {
+          "version": "previous-authored",
+          "name": "archive-whole-and-retrieval",
+          "scope": "Entire original path plus +/- .15m X/Z band, .65m radius and full 1.8m body height",
+          "samples": 22194,
+          "minClearance": 0.19999982118605997,
+          "nearest": "south-086:lobby:retrieval-desk",
+          "clear": true
+        },
+        {
+          "version": "previous-authored",
+          "name": "all-34-workshop-plan-steps-physical-legs-including-exit-and-re-entry",
+          "samples": 110097,
+          "minClearance": 0.19999982118605997,
+          "clear": true,
+          "activeThreeFloorsPlusCabinColliderCount": 223
+        },
+        {
+          "version": "current-authored",
+          "name": "workshop-whole-and-assembly",
+          "scope": "Entire original path plus +/- .15m X/Z band, .65m radius and full 1.8m body height",
+          "samples": 26694,
+          "minClearance": 0.1999999999999934,
+          "nearest": "south-086:lobby:260",
+          "clear": true
+        },
+        {
+          "version": "current-authored",
+          "name": "archive-whole-and-retrieval",
+          "scope": "Entire original path plus +/- .15m X/Z band, .65m radius and full 1.8m body height",
+          "samples": 22194,
+          "minClearance": 0.19999982118605997,
+          "nearest": "south-086:lobby:retrieval-desk",
+          "clear": true
+        },
+        {
+          "version": "current-authored",
+          "name": "all-34-workshop-plan-steps-physical-legs-including-exit-and-re-entry",
+          "samples": 110097,
+          "minClearance": 0.19999982118605997,
+          "clear": true,
+          "activeThreeFloorsPlusCabinColliderCount": 223
+        }
+      ],
+      "photos": [
+        {
+          "version": "baseline",
+          "name": "workshop-whole",
+          "samples": 49,
+          "minClearance": 0.5663058825805264,
+          "nearest": "south-086:lobby:256",
+          "clear": true
+        },
+        {
+          "version": "baseline",
+          "name": "workshop-assembly-close",
+          "samples": 49,
+          "minClearance": 1.3700000000000085,
+          "nearest": "south-086:lobby:261",
+          "clear": true
+        },
+        {
+          "version": "baseline",
+          "name": "archive-whole",
+          "samples": 49,
+          "minClearance": 1.1199999999999943,
+          "nearest": "south-086:lobby:289",
+          "clear": true
+        },
+        {
+          "version": "baseline",
+          "name": "archive-retrieval-close",
+          "samples": 49,
+          "minClearance": 3.8700000000000085,
+          "nearest": "south-086:lobby:294",
+          "clear": true
+        },
+        {
+          "version": "previous-authored",
+          "name": "workshop-whole",
+          "samples": 49,
+          "minClearance": 0.5663058825805264,
+          "nearest": "south-086:lobby:256",
+          "clear": true
+        },
+        {
+          "version": "previous-authored",
+          "name": "workshop-assembly-close",
+          "samples": 49,
+          "minClearance": 0.6000000000000171,
+          "nearest": "south-086:lobby:repair-assembly-table",
+          "clear": true
+        },
+        {
+          "version": "previous-authored",
+          "name": "archive-whole",
+          "samples": 49,
+          "minClearance": 1.1199999999999943,
+          "nearest": "south-086:lobby:289",
+          "clear": true
+        },
+        {
+          "version": "previous-authored",
+          "name": "archive-retrieval-close",
+          "samples": 49,
+          "minClearance": 0.19999982118605997,
+          "nearest": "south-086:lobby:retrieval-desk",
+          "clear": true
+        },
+        {
+          "version": "current-authored",
+          "name": "workshop-whole",
+          "samples": 49,
+          "minClearance": 0.5663058825805264,
+          "nearest": "south-086:lobby:256",
+          "clear": true
+        },
+        {
+          "version": "current-authored",
+          "name": "workshop-assembly-close",
+          "samples": 49,
+          "minClearance": 0.6000000000000171,
+          "nearest": "south-086:lobby:repair-assembly-table",
+          "clear": true
+        },
+        {
+          "version": "current-authored",
+          "name": "archive-whole",
+          "samples": 49,
+          "minClearance": 1.1199999999999943,
+          "nearest": "south-086:lobby:289",
+          "clear": true
+        },
+        {
+          "version": "current-authored",
+          "name": "archive-retrieval-close",
+          "samples": 49,
+          "minClearance": 0.19999982118605997,
+          "nearest": "south-086:lobby:retrieval-desk",
+          "clear": true
+        }
+      ]
+    },
+    "historicalCountDiscrepancy": {
+      "originalLayoutSummaryAuthoredColliderCount": 175,
+      "freshPreviousAuthoredLobbyLayoutColliders": 167,
+      "freshCurrentAuthoredLobbyLayoutColliders": 167,
+      "unchangedPilotAdditionalColliders": 12,
+      "freshPreviousAndCurrentAuthoredLobbyTotal": 179,
+      "freshBaselineLobbyTotal": 177,
+      "freshAuthoredActiveFloorsPlusIdleCabinTotal": 223,
+      "actualBaselineNativeActiveFloorsPlusIdleCabinTotal": 221,
+      "note": "Historical summary 175 is preserved as historical data, not treated as the current recomputed total. The complete previous/current authored source objects are deep-equal, and all current routes were independently re-derived against all current colliders."
+    },
+    "baselineAndSharedAndHomePinsUnchanged": true,
+    "originalPhotosRoutesStairPreparationLayoutSummariesUnchanged": true,
+    "gpuLaunched": false,
+    "nativeAcceptance": false,
+    "artAcceptance": false
+  },
+  "homeSoftFinishSourcePinAmendment": {
+    "status": "SOURCE_ONLY_CPU_FULL_LAYOUT_AND_ROUTE_IDENTITY_NATIVE_HIGH_PENDING",
+    "createdAt": "2026-10-05T03:03:00.981766+00:00",
+    "baseProofSha256": "7b9cb4881e3ea34abf10f57e89018043a4e21d7238276332c602e4efa485d136",
+    "baseProofIncludesPreservedWorkshopAmendment": true,
+    "previousAuthoredCommit": "472e3a5a2566a87bab72dbcebad71cddb5ab2b53",
+    "currentAuthoredSource": "Isolated ROOT recapture candidate with the six sealed HOME soft-finish payload files; not a new Git commit or native accepted capture",
+    "scope": "One active authored HOME source pin updated after full old/new source, layout, collider, placement/core and all 57 original route steps/poses identity; all historical baseline, workshop, home route/photo/layout and stair summaries remain verbatim. This pin amendment does not approve new asset art, timing or native owner closure.",
+    "sourcePinChanges": {
+      "/tmp/neon-harbor-authored-integration/src/harbor-home-authored.js": {
+        "previous": "d227f261dea4a57c3fc5736761dc3dc149735048cf5dd5633505b21bfe857edc",
+        "current": "e7a7310625e1f29ab6ad50065ab040a6f7b3f9e599a9b8ab001c185337af8a80"
+      }
+    },
+    "uniqueSourceByteDifference": {
+      "object": "HOME_MODELS.home-lobby-fittings.meshes",
+      "previous": 14,
+      "current": 19,
+      "meaning": "Actual new furniture asset mesh-count guard; all layout/collision/placement/owner/LOD and route source bytes remain identical"
+    },
+    "allOtherSourceFilesByteIdentical": true,
+    "sourceFileCount": 63,
+    "cpuProof": {
+      "path": "/tmp/neon-home-soft-finish-proof-pin-candidate-20261005/cpu-proof.json",
+      "sha256": "7779b7258ab110e0f9173cdb4e6d2fc5057b6711514311c6c60b96c0ee876a5f",
+      "fullOldNewFloorCount": 6,
+      "fullFloorsPayloadSha256": "0f390fc5350a663d01eb2198895eadaab5e2c1ece127d448942fec96922cb828",
+      "authoredFloors": [
+        "lobby",
+        "gallery"
+      ],
+      "fullLobbyAndGalleryColliderCounts": [
+        138,
+        138
+      ],
+      "fullActiveThreeFloorPlusCabinColliderCount": 416,
+      "originalPlanStepCount": 57,
+      "originalPlanWalkLegCount": 36,
+      "originalPhotoPoseCount": 8,
+      "originalPlanSha256": "063a66d21f8820bcdbf24b7a2542a34cb8c63148c0d00be94ed3803b12c000d7",
+      "sameEndpointsAndCameraPoses": true,
+      "sameCompleteLayoutAndCollidersAndPlacementsAndStairsAndLiftAndRoomsAndEntrances": true,
+      "allOriginalRoutesAndPhotoStandingBandsCPUClear": true,
+      "all57StepsPhysicalGeometrySamplesPerVersion": 103779,
+      "oldAndNewAuthoredMinimumFullBodyClearanceMetres": 0.04980283000005681,
+      "originalBodyRadiusMetres": 0.65,
+      "originalBodyHeightMetres": 1.8,
+      "originalAxisToleranceMetres": 0.15,
+      "originalWholeCaseBudgetMinutes": 110,
+      "originalPhysicalInputAndStallAndTeleportGuardsUnchanged": true
+    },
+    "actualAssetGeometryChanges": {
+      "proofPath": "/tmp/neon-home-soft-finish-proof-pin-candidate-20261005/actual-glb-counts.json",
+      "proofSha256": "052fee40792e8715704a8b0334daaf8e0c33f7720eac984fedb369320b30f201",
+      "oldWholeHome": {
+        "near": {
+          "primitiveDrawCount": 26,
+          "triangles": 83216
+        },
+        "middle": {
+          "primitiveDrawCount": 18,
+          "triangles": 79568
+        },
+        "far": {
+          "primitiveDrawCount": 7,
+          "triangles": 1100
+        }
+      },
+      "newWholeHome": {
+        "near": {
+          "primitiveDrawCount": 31,
+          "triangles": 94272
+        },
+        "middle": {
+          "primitiveDrawCount": 21,
+          "triangles": 89904
+        },
+        "far": {
+          "primitiveDrawCount": 7,
+          "triangles": 1100
+        }
+      },
+      "delta": {
+        "near": {
+          "primitiveDrawCount": 5,
+          "triangles": 11056
+        },
+        "middle": {
+          "primitiveDrawCount": 3,
+          "triangles": 10336
+        },
+        "far": {
+          "primitiveDrawCount": 0,
+          "triangles": 0
+        }
+      },
+      "cpuPrimitiveDrawCountIsNotGPUMeasuredDrawCalls": true,
+      "onlyChangedRuntimeAsset": "assets/harbor/home/home-lobby-fittings.glb",
+      "oldLobbyGlbSha256": "9db26832bae72c3f1f96e2b1a093a748ac0cee0ac864f6b1b8ac96d8da9d4ced",
+      "newLobbyGlbSha256": "515db55f4f10259f0260d0ee9f015b53494ee7fd54f2289d7a6a579e21b78625",
+      "nativeHighArtAccepted": false,
+      "nativeCapturePending": true
+    },
+    "adoptedSixPayloadFilesVerified": true,
+    "adoptedStaticChecksSha256": "1e71c4cd6edb04f869fce990aeb307566dc965fb35d6c3522b508ba813c6d91a",
+    "originalFailures": {
+      "runId": 37254103874,
+      "artifactId": 11322372615,
+      "baselineOutcome": "FAILED",
+      "authoredOutcome": "FAILED",
+      "firstNativeTimeoutAndSecondaryClosureFailuresPreserved": true,
+      "originalPNGsNotAcceptanceForNewAsset": true
+    },
+    "rootOrGpuWrittenOrLaunched": false,
+    "browserAcceptance": false
+  }
 }

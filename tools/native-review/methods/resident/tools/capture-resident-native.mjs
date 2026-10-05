@@ -22,9 +22,9 @@ const plan = {
   mode: options.mode, browserVersion: '151.0.7922.34', viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1,
   quality: 'high', hour: 16.5, dayCycle: false,
   core: [
-    { case: 'worker', setup: 'Public Atlas tide-museum entrance', walk: [['z',-438],['x',-568.4]], target: 'resident-tide-museum-3', maxHorizontalDistance: 3.5 },
+    { case: 'worker', setup: 'Public Atlas tide-museum entrance', walk: [['z',-440.8],['x',-571]], target: 'resident-tide-museum-3', maxHorizontalDistance: 3.5 },
     { case: 'commuter-player', setup: 'Same street position, public V to third person and ordinary pointer orbit', target: 'local-player', note: 'Shipped chase camera has no public close zoom. This is a body/wardrobe view, not a facial close-up.' },
-    { case: 'shopkeeper', setup: 'Independent public Atlas tide-museum entrance', walk: [['z',-438],['x',-498],['z',-463.3]], target: 'resident-tide-museum-1', maxHorizontalDistance: 3.5 },
+    { case: 'shopkeeper', setup: 'Independent public Atlas tide-museum entrance', walk: 'One continuous ordinary WASD/Z approach via outside frontage x=-510,z=-455, then track the actual moving NPC through the original3.5m close photograph; no NPC or clock pause', target: 'resident-tide-museum-1', maxHorizontalDistance: 3.5 },
     { case: 'active-observation', setup: 'Independent public Atlas tide-museum entrance; walk to front pavement', minimumWallSeconds: 45,
       activeInputs: 'Walk 4 m west and back using ordinary WASD; then release input, remain unpaused and read actual NPC motion/activities.',
       excluded: 'No Atlas/settings, position/clock writes or pause during the observation segment.' }
@@ -32,7 +32,7 @@ const plan = {
   budgets: { totalWallSeconds: 1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120 },
   plannedExtensions: ['North original book / phone / cup hand-anchor observations', 'South courier actual cargo', 'near / far / Low / High template and bitmap ownership'],
   limits: ['Core completion does not establish two held-prop types or all 240 residents.',
-    'NPCs keep moving. A target which leaves the fixed viewpoint causes a preserved first failure; there is no correction, relaunch or retry.',
+    'NPCs keep moving. The shopkeeper interview follows the actual public pose once through ordinary WASD/Z; indoor departure or any failed input/resource/application guard is preserved, with no correction, relaunch or retry.',
     'Native visual quality requires manual inspection of raw frames; rule counts and transfer budgets do not certify art quality.',
     '45 wall seconds are reported separately from actual simulation seconds. Software GPU speed is not hardware performance evidence.']
 };
@@ -209,6 +209,60 @@ const capture = async (label,role,id,{player=false}={}) => {
     assetProbe: options.mode==='authored' ? after.residentAssets : {available:false,reason:'Legacy baseline core probe unavailable'}});
   metadata.coverage[label]={status:'captured-pending-manual-visual-review',role,id}; await persist(); console.log(`Captured ${label}`);
 };
+function publicInterviewInput(s,corridorReached) {
+  const p=s.position,n=s.target,distance=Math.hypot(n.x-p.x,n.z-p.z);
+  const passedCorridor=corridorReached||p.x>=-510.6;
+  const goal=passedCorridor?n:{x:-510,z:-455};
+  const dx=goal.x-p.x,dz=goal.z-p.z,goalDistance=Math.hypot(dx,dz);
+  if(passedCorridor&&distance<=2)return {keys:[],slow:false,passedCorridor,distance};
+  const yaw=s.camera.yaw,candidates=[
+    {keys:['w'],forward:1,strafe:0},{keys:['s'],forward:-1,strafe:0},
+    {keys:['d'],forward:0,strafe:1},{keys:['a'],forward:0,strafe:-1},
+    {keys:['w','d'],forward:1,strafe:1},{keys:['w','a'],forward:1,strafe:-1},
+    {keys:['s','d'],forward:-1,strafe:1},{keys:['s','a'],forward:-1,strafe:-1}];
+  for(const c of candidates){const q=Math.hypot(c.forward,c.strafe);c.x=(Math.sin(yaw)*c.forward-Math.cos(yaw)*c.strafe)/q;c.z=(Math.cos(yaw)*c.forward+Math.sin(yaw)*c.strafe)/q;c.dot=c.x*dx+c.z*dz;}
+  const choice=candidates.sort((a,b)=>b.dot-a.dot)[0];
+  return {keys:choice.keys,slow:passedCorridor?distance<=3:goalDistance<=3.2,passedCorridor,distance};
+}
+async function dynamicShopkeeperCapture() {
+  const id='resident-tide-museum-1',started=await read(),startWall=Date.now();
+  const approachDeadline=Math.min(totalDeadlineAt,startWall+plan.budgets.legWallSeconds*1000);
+  let stop=false,phase='approach',phaseDeadline=approachDeadline,passedCorridor=false,first=null;
+  const held=new Set(),trace=[],inputEvents=[];let lastSim=-1;
+  let readyResolve,readyReject;const ready=new Promise((ok,bad)=>{readyResolve=ok;readyReject=bad;});
+  const remaining=()=>{const ms=Math.min(totalDeadlineAt,phaseDeadline)-Date.now();assert.ok(ms>0,`original public interview ${phase} deadline`);return ms;};
+  async function setHeld(next) {
+    for(const key of [...held])if(!next.includes(key)){await page.keyboard.up(key);held.delete(key);inputEvents.push({action:'up',key,at:new Date().toISOString()});}
+    for(const key of next)if(!held.has(key)){await page.keyboard.down(key);held.add(key);inputEvents.push({action:'down',key,at:new Date().toISOString()});}
+  }
+  const tracking=(async()=>{
+    try {
+      while(!stop) {
+        remaining();const s=await read();validate(s);
+        assert.equal(s.teleportRevision,started.teleportRevision,'ordinary interview input cannot teleport');
+        const target=s.north.find(n=>n.id===id);assert.ok(target?.materialized&&!target.insideBuildingId,'actual shopkeeper must remain visible on its real pavement');
+        const input=publicInterviewInput({...s,target},passedCorridor);passedCorridor=input.passedCorridor;
+        if(s.simulationTime-lastSim>=.1){assert.ok(trace.length<2048,'finite interview pose record');trace.push({at:new Date().toISOString(),phase,simulationTime:s.simulationTime,player:s.position,target:{id,x:target.x,y:target.y,z:target.z,yaw:target.yaw,state:target.state,insideBuildingId:target.insideBuildingId},distance:input.distance,keys:input.keys,slow:input.slow});lastSim=s.simulationTime;}
+        await setHeld([...input.keys,...(input.slow?['z']:[])]);
+        if(phase==='approach'&&passedCorridor&&input.distance<=3)readyResolve();
+        await new Promise(ok=>setTimeout(ok,Math.min(100,remaining())));
+      }
+    } catch(error){first ||= error;readyReject(error);}
+    finally {
+      for(const key of [...held])try{await page.keyboard.up(key);held.delete(key);inputEvents.push({action:'up',key,confirmed:true,at:new Date().toISOString()});}
+      catch(error){first ||= error;inputEvents.push({action:'up',key,confirmed:false,message:error.message});}
+    }
+  })();
+  try {
+    await ready;phase='capture';phaseDeadline=Math.min(totalDeadlineAt,Date.now()+plan.budgets.assetWallSeconds*1000);
+    await capture('03-shopkeeper-close','shopkeeper',id);
+    const photo=metadata.captures.at(-1);
+    for(const s of [photo.before,photo.after]){const target=s.north.find(n=>n.id===id);assert.ok(target?.materialized&&!target.insideBuildingId);assert.ok(Math.hypot(target.x-s.position.x,target.z-s.position.z)<=3.5,'actual moving NPC remains within original close range during photograph');}
+  } catch(error){first ||= error;}
+  finally {stop=true;await tracking;metadata.coverage.dynamicShopkeeper={status:first?'first-failure-preserved':'recorded-pending-manual-review',method:'One continuous public WASD/Z approach and tracking photograph; NPC and world clock advance normally; new moving poses are not fixed original viewpoint equivalents',startedAt:new Date(startWall).toISOString(),endedAt:new Date().toISOString(),startSimulationTime:started.simulationTime,trace,inputEvents};await persist();}
+  if(first)throw first;
+  await event('dynamic-public-interview-complete',{id,continuousPublicInputs:true,approachWallCapSeconds:plan.budgets.legWallSeconds,captureWallCapSeconds:plan.budgets.assetWallSeconds});
+}
 const core = async () => {
   server=await createStaticServer({root}); await new Promise((ok,bad)=>{server.once('error',bad);server.listen(port,'127.0.0.1',ok);});
   browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
@@ -233,11 +287,10 @@ const core = async () => {
   await page.locator('#volume').press('Home'); await page.locator('#resume').click(); await page.locator('#start').click();
   await page.waitForFunction(()=>{const s=window.__NEON__.snapshot();return s.started&&!s.paused&&!s.streaming?.preparing&&!s.streaming?.pending;});
   await page.locator('#game').focus(); await firstPerson(true); metadata.status='running'; await event('visible-settings-ready');
-  await atlas(); await walk('z',-438); await walk('x',-568.4); await capture('01-worker-close','worker','resident-tide-museum-3');
+  await atlas(); await walk('z',-440.8); await walk('x',-571); await capture('01-worker-close','worker','resident-tide-museum-3');
   await firstPerson(false); const s=await read(); await face(s.position.yaw+Math.PI,.18);
   await capture('02-commuter-player','commuter','local-player',{player:true});
-  await atlas(); await walk('z',-438); await walk('x',-498); await walk('z',-463.3);
-  await capture('03-shopkeeper-close','shopkeeper','resident-tide-museum-1');
+  await atlas(); await dynamicShopkeeperCapture();
   await atlas(); await walk('z',-438); await firstPerson(false);
   const start=await event('active-observation-start'), startWall=Date.now(), teleport=start.teleportRevision;
   const sample=async phase=>{const state=await read();validate(state);assert.equal(state.teleportRevision,teleport);

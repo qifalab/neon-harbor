@@ -1,0 +1,1458 @@
+{
+  "status": "CPU_REPLAY_CONFIRMS_NORMAL_TRAM_SIGNAL_AND_OBSERVED_WALL_RATE_FINITE_CANDIDATE_ONLY",
+  "originalArtifactId": 11322804818,
+  "originalMethodSha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598",
+  "currentCombinedMethodSha256": "571c19a0931d85ef26ad7be462eb2adb5749f580d8f085ea6b8a696dfb4abd80",
+  "candidateMethodSha256": "e082e9cc860bae05286eb85d77037174db82b3872b4aea6a3ed67363ed98fca4",
+  "originalFailuresPreserved": true,
+  "rootWritten": false,
+  "parentCandidateWritten": false,
+  "gpuLaunched": false,
+  "productionSourceChanged": false,
+  "modeEvidence": [
+    {
+      "mode": "baseline",
+      "status": "FAILED",
+      "firstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 599995ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 599995ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:278:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:308:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:340:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:318:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "primaryFailureFinishedAt": "2026-10-05T02:45:41.498Z",
+      "wholeElapsedMs": 880028,
+      "wholeCapMs": 2400000,
+      "originalBerthCapMs": 600000,
+      "actualGraphics": {
+        "width": 1280,
+        "height": 800,
+        "renderer": "WebKit WebGL",
+        "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "lost": false
+      },
+      "originalBefore": {
+        "ready": true,
+        "started": true,
+        "paused": false,
+        "simulationTime": 11.500000000000151,
+        "timing": {
+          "wallDt": 6.666400000000023,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0.9960000000003499,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 6.416400000000023,
+          "droppedTotal": 223.65730000000002
+        },
+        "teleportRevision": 3,
+        "position": {
+          "x": 248.025,
+          "y": 0.44,
+          "z": 103.45,
+          "yaw": 4.71238898038469
+        },
+        "camera": {
+          "position": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 103.45
+          },
+          "target": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 93.45
+          },
+          "focus": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 103.45
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "stationID": "harbor-tram-lantern",
+        "ridingVehicleId": "harbor-tram-1",
+        "passengerLocal": {
+          "x": -0.024999999999999627,
+          "y": 0.44,
+          "z": -3.45,
+          "yaw": 1.5707963267948966
+        },
+        "passengerDeck": "lower",
+        "vehicle": {
+          "id": "harbor-tram-1",
+          "x": 248,
+          "y": 0,
+          "z": 100,
+          "yaw": 3.141592653589793,
+          "stopId": "harbor-tram-lantern",
+          "doorsOpen": true,
+          "remaining": 0.4999999999998437,
+          "nextStopId": "harbor-tram-lantern",
+          "secondsToArrival": 0,
+          "serviceTime": 11.500000000000151,
+          "delay": 0,
+          "held": null,
+          "trafficState": "dwell",
+          "speed": 0
+        },
+        "fleet": null
+      },
+      "originalAfter": {
+        "ready": true,
+        "started": true,
+        "paused": false,
+        "simulationTime": 34.74999999999931,
+        "timing": {
+          "wallDt": 6.316400000000023,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0.9960000000003499,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 6.066400000000023,
+          "droppedTotal": 798.5666999999999
+        },
+        "teleportRevision": 3,
+        "position": {
+          "x": 248.025,
+          "y": 0.44,
+          "z": 23.031006399281377,
+          "yaw": 4.71238898038469
+        },
+        "camera": {
+          "position": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 23.031006399281377
+          },
+          "target": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 13.031006399281377
+          },
+          "focus": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 23.031006399281377
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "stationID": null,
+        "ridingVehicleId": "harbor-tram-1",
+        "passengerLocal": {
+          "x": -0.024999999999999627,
+          "y": 0.44,
+          "z": -3.45,
+          "yaw": 1.5707963267948966
+        },
+        "passengerDeck": "lower",
+        "vehicle": {
+          "id": "harbor-tram-1",
+          "x": 248,
+          "y": 0,
+          "z": 19.581006399281378,
+          "yaw": 3.141592653589793,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 8.287287394205709,
+          "nextStopId": "harbor-tram-workshop",
+          "secondsToArrival": 8.287287394205705,
+          "serviceTime": 22.029379272460954,
+          "delay": 12.720620727539272,
+          "held": "signal",
+          "trafficState": "signal",
+          "speed": 0
+        },
+        "fleet": null
+      },
+      "sourcePins": {
+        "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+        "src/traffic.js": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101",
+        "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+        "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+        "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c"
+      },
+      "productionContextSources": {
+        "src/city-exploration.js": "4bcee64c1fd0141a62ce7ca09f5511b6f648ea518e44f0201a622f6b83ffa28f",
+        "src/harbor-life.js": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+        "src/citizen-journeys.js": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a",
+        "src/frame-clock.js": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+        "src/main.js": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d"
+      },
+      "boardedInterior": {
+        "buildingId": null,
+        "buildingName": null,
+        "floorId": null,
+        "floorLabel": null,
+        "floorName": null,
+        "floorType": null,
+        "design": null,
+        "rooms": [],
+        "roomCount": 0,
+        "currentRoomId": null,
+        "currentRoomName": null,
+        "moving": false,
+        "elevator": {
+          "phase": "idle",
+          "y": 0,
+          "targetFloorId": null,
+          "elapsed": 0,
+          "duration": 0,
+          "doorOpen": 1
+        },
+        "colliderCount": 0,
+        "furnitureCount": 0,
+        "entrance": null,
+        "cabin": null,
+        "stairs": [],
+        "navigation": null,
+        "activeFloors": 0,
+        "totalFloors": 0,
+        "residentFloors": [],
+        "ownedSignTextures": 0,
+        "visibleFloors": [],
+        "workshopPilot": null,
+        "workshopPilotEvents": [],
+        "version": 0
+      },
+      "boardedSettings": {
+        "quality": "high",
+        "volume": 0.3,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "initialDiagnosticWallMs": 5,
+      "sourceReplayWithoutExternalNPCOrTrafficExactForAllObservedVehicleFields": true,
+      "sourceReplayedJunction": {
+        "x": 240,
+        "z": 0,
+        "axis": "z",
+        "direction": -1,
+        "committed": false
+      },
+      "normalSignalPeriodSeconds": 28,
+      "signalAtFailure": "red",
+      "signalNextGreenAtSimulationTime": 36,
+      "firstSubsequentLegalBerth": {
+        "simulationTime": 46.333333333331986,
+        "vehicle": {
+          "id": "harbor-tram-1",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "x": 248,
+          "y": 0,
+          "z": -40,
+          "yaw": 3.141592653589793,
+          "stopId": "harbor-tram-workshop",
+          "doorsOpen": true,
+          "remaining": 11.99112040201858,
+          "nextStopId": "harbor-tram-workshop",
+          "secondsToArrival": 0,
+          "speed": 0.003746054592284054,
+          "delay": 16.00778706868516,
+          "serviceTime": 30.325546264648075,
+          "held": null,
+          "trafficState": "dwell",
+          "junction": {
+            "x": 240,
+            "z": -80,
+            "axis": "z",
+            "direction": -1,
+            "committed": false
+          }
+        }
+      },
+      "additionalSimulationSeconds": 11.583333333332675,
+      "observedSimulationSecondsDuringWait": 23.24999999999916,
+      "observedWaitWallMs": 600017,
+      "observedWallPerSimulationSecond": 25.80718279569986,
+      "estimatedOriginalWaitUntilNextBerthWallSeconds": 898.9502007168398,
+      "estimateIsNotNativeFutureTimingGuarantee": true,
+      "originalRuntimeErrors": [],
+      "originalCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T02:45:45.308Z",
+          "elapsedMs": 29040,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T02:46:14.348Z",
+          "elapsedMs": 1,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "originalVideo": {
+        "path": "/home/runner/work/neon-harbor/neon-harbor/native-evidence/tram/native/baseline/tram/video/page@f9b58d8b70a7c436831d68a623b19fef.webm",
+        "bytes": 53399517,
+        "sha256": "02e7297ed3bdbd3c3ab40b156743619414c46752ae48fe05c68d89a803c3caf9"
+      }
+    },
+    {
+      "mode": "authored",
+      "status": "FAILED",
+      "firstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 599991ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 599991ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:278:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:308:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:340:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:318:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "primaryFailureFinishedAt": "2026-10-05T03:00:39.530Z",
+      "wholeElapsedMs": 867034,
+      "wholeCapMs": 2400000,
+      "originalBerthCapMs": 600000,
+      "actualGraphics": {
+        "width": 1280,
+        "height": 800,
+        "renderer": "WebKit WebGL",
+        "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "lost": false
+      },
+      "originalBefore": {
+        "ready": true,
+        "started": true,
+        "paused": false,
+        "simulationTime": 11.516666666666818,
+        "timing": {
+          "wallDt": 6.7163999999999655,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0.9980000000010492,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 6.4663999999999655,
+          "droppedTotal": 215.6076
+        },
+        "teleportRevision": 3,
+        "position": {
+          "x": 248.025,
+          "y": 0.44,
+          "z": 103.45,
+          "yaw": 4.71238898038469
+        },
+        "camera": {
+          "position": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 103.45
+          },
+          "target": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 93.45
+          },
+          "focus": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 103.45
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "stationID": "harbor-tram-lantern",
+        "ridingVehicleId": "harbor-tram-1",
+        "passengerLocal": {
+          "x": -0.024999999999999627,
+          "y": 0.44,
+          "z": -3.45,
+          "yaw": 1.5707963267948966
+        },
+        "passengerDeck": "lower",
+        "vehicle": {
+          "id": "harbor-tram-1",
+          "x": 248,
+          "y": 0,
+          "z": 100,
+          "yaw": 3.141592653589793,
+          "stopId": "harbor-tram-lantern",
+          "doorsOpen": true,
+          "remaining": 0.48333333333319217,
+          "nextStopId": "harbor-tram-lantern",
+          "secondsToArrival": 0,
+          "serviceTime": 11.516666666666818,
+          "delay": 0,
+          "held": null,
+          "trafficState": "dwell",
+          "speed": 0
+        },
+        "fleet": null
+      },
+      "originalAfter": {
+        "ready": true,
+        "started": true,
+        "paused": false,
+        "simulationTime": 34.266666666666005,
+        "timing": {
+          "wallDt": 6.366400000000024,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0.9980000000010492,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 6.116400000000024,
+          "droppedTotal": 793.2502999999998
+        },
+        "teleportRevision": 3,
+        "position": {
+          "x": 248.025,
+          "y": 0.44,
+          "z": 23.031006399281377,
+          "yaw": 4.71238898038469
+        },
+        "camera": {
+          "position": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 23.031006399281377
+          },
+          "target": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 13.031006399281377
+          },
+          "focus": {
+            "x": 248.025,
+            "y": 2.06,
+            "z": 23.031006399281377
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "stationID": null,
+        "ridingVehicleId": "harbor-tram-1",
+        "passengerLocal": {
+          "x": -0.024999999999999627,
+          "y": 0.44,
+          "z": -3.45,
+          "yaw": 1.5707963267948966
+        },
+        "passengerDeck": "lower",
+        "vehicle": {
+          "id": "harbor-tram-1",
+          "x": 248,
+          "y": 0,
+          "z": 19.581006399281378,
+          "yaw": 3.141592653589793,
+          "stopId": null,
+          "doorsOpen": false,
+          "remaining": 8.287287394205709,
+          "nextStopId": "harbor-tram-workshop",
+          "secondsToArrival": 8.287287394205705,
+          "serviceTime": 22.029379272460954,
+          "delay": 12.237287394205914,
+          "held": "signal",
+          "trafficState": "signal",
+          "speed": 0
+        },
+        "fleet": null
+      },
+      "sourcePins": {
+        "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+        "src/traffic.js": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101",
+        "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+        "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+        "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c"
+      },
+      "productionContextSources": {
+        "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+        "src/harbor-life.js": "bcc290a78efce8246c09ba61e26382c2734c82f64f8df32f684e38a6c239a21c",
+        "src/citizen-journeys.js": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a",
+        "src/frame-clock.js": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+        "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850"
+      },
+      "boardedInterior": {
+        "buildingId": null,
+        "buildingName": null,
+        "floorId": null,
+        "floorLabel": null,
+        "floorName": null,
+        "floorType": null,
+        "design": null,
+        "rooms": [],
+        "roomCount": 0,
+        "currentRoomId": null,
+        "currentRoomName": null,
+        "moving": false,
+        "elevator": {
+          "phase": "idle",
+          "y": 0,
+          "targetFloorId": null,
+          "elapsed": 0,
+          "duration": 0,
+          "doorOpen": 1
+        },
+        "colliderCount": 0,
+        "furnitureCount": 0,
+        "entrance": null,
+        "cabin": null,
+        "stairs": [],
+        "navigation": null,
+        "activeFloors": 0,
+        "totalFloors": 0,
+        "residentFloors": [],
+        "ownedSignTextures": 0,
+        "visibleFloors": [],
+        "workshopPilot": null,
+        "authoredHome": [],
+        "homeAssetEvents": [],
+        "workshopPilotEvents": [],
+        "version": 0
+      },
+      "boardedSettings": {
+        "quality": "high",
+        "volume": 0.3,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "initialDiagnosticWallMs": 9,
+      "sourceReplayWithoutExternalNPCOrTrafficExactForAllObservedVehicleFields": true,
+      "sourceReplayedJunction": {
+        "x": 240,
+        "z": 0,
+        "axis": "z",
+        "direction": -1,
+        "committed": false
+      },
+      "normalSignalPeriodSeconds": 28,
+      "signalAtFailure": "red",
+      "signalNextGreenAtSimulationTime": 36,
+      "firstSubsequentLegalBerth": {
+        "simulationTime": 46.333333333331986,
+        "vehicle": {
+          "id": "harbor-tram-1",
+          "routeId": "harbor-tram",
+          "kind": "tram",
+          "x": 248,
+          "y": 0,
+          "z": -40,
+          "yaw": 3.141592653589793,
+          "stopId": "harbor-tram-workshop",
+          "doorsOpen": true,
+          "remaining": 11.99112040201858,
+          "nextStopId": "harbor-tram-workshop",
+          "secondsToArrival": 0,
+          "speed": 0.003746054592284054,
+          "delay": 16.00778706868516,
+          "serviceTime": 30.325546264648075,
+          "held": null,
+          "trafficState": "dwell",
+          "junction": {
+            "x": 240,
+            "z": -80,
+            "axis": "z",
+            "direction": -1,
+            "committed": false
+          }
+        }
+      },
+      "additionalSimulationSeconds": 12.06666666666598,
+      "observedSimulationSecondsDuringWait": 22.749999999999186,
+      "observedWaitWallMs": 600022,
+      "observedWallPerSimulationSecond": 26.37459340659435,
+      "estimatedOriginalWaitUntilNextBerthWallSeconds": 918.2754271062204,
+      "estimateIsNotNativeFutureTimingGuarantee": true,
+      "originalRuntimeErrors": [],
+      "originalCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T03:00:42.889Z",
+          "elapsedMs": 27747,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T03:01:10.636Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "originalVideo": {
+        "path": "/home/runner/work/neon-harbor/neon-harbor/native-evidence/tram/native/authored/tram/video/page@2f58245bed587717c5d7cec49e06f6bc.webm",
+        "bytes": 56712057,
+        "sha256": "5fa33cf5a6e2d592cb0451efb8f46c37112bcf81bf7a53b8e9716cb7fc15e755"
+      }
+    }
+  ],
+  "classifications": [
+    {
+      "name": "baseline-original600-fails-before-actual-next-service",
+      "options": {
+        "mode": "baseline",
+        "proposed": false,
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 600005,
+      "simulationTime": 34.499999999999325,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 19.581006399281378,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 8.287287394205709,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 8.287287394205705,
+        "speed": 0,
+        "delay": 12.47062072753926,
+        "serviceTime": 22.029379272460954,
+        "held": "signal",
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": 0,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 599995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 600000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 34.499999999999325,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 599995ms exceeded."
+        },
+        "finishedAt": "1970-01-01T00:10:00.005Z"
+      }
+    },
+    {
+      "name": "baseline-tram1200-reaches-unchanged-legal-berth",
+      "options": {
+        "mode": "baseline",
+        "apiError": null
+      },
+      "pass": true,
+      "wallMsModeled": 903230.8064516467,
+      "simulationTime": 46.49999999999864,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -40,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-workshop",
+        "doorsOpen": true,
+        "remaining": 11.824453735351923,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 16.00778706868516,
+        "serviceTime": 30.492212931314732,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": null,
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "SATISFIED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": null,
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:15:03.230Z"
+      }
+    },
+    {
+      "name": "authored-original600-fails-before-actual-next-service",
+      "options": {
+        "mode": "authored",
+        "proposed": false,
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 600009,
+      "simulationTime": 34.01666666666602,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 19.581006399281378,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 8.287287394205709,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 8.287287394205705,
+        "speed": 0,
+        "delay": 11.987287394205902,
+        "serviceTime": 22.029379272460954,
+        "held": "signal",
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": 0,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 599991ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 600000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.516666666666818,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 34.01666666666602,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 599991ms exceeded."
+        },
+        "finishedAt": "1970-01-01T00:10:00.009Z"
+      }
+    },
+    {
+      "name": "authored-tram1200-reaches-unchanged-legal-berth",
+      "options": {
+        "mode": "authored",
+        "apiError": null
+      },
+      "pass": true,
+      "wallMsModeled": 923085.923076954,
+      "simulationTime": 46.51666666666531,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -40,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-workshop",
+        "doorsOpen": true,
+        "remaining": 11.807787068685272,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 16.00778706868516,
+        "serviceTime": 30.508879597981398,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": null,
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "SATISFIED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.516666666666818,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": null,
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:15:23.085Z"
+      }
+    },
+    {
+      "name": "BUS original600 phase unchanged",
+      "options": {
+        "kind": "bus",
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 600005,
+      "simulationTime": 34.499999999999325,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 19.581006399281378,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 8.287287394205709,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 8.287287394205705,
+        "speed": 0,
+        "delay": 12.47062072753926,
+        "serviceTime": 22.029379272460954,
+        "held": "signal",
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": 0,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 599995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 600000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 34.499999999999325,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 599995ms exceeded."
+        },
+        "finishedAt": "1970-01-01T00:10:00.005Z"
+      }
+    },
+    {
+      "name": "FERRY original600 phase unchanged",
+      "options": {
+        "kind": "ferry",
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 600005,
+      "simulationTime": 34.499999999999325,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 19.581006399281378,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 8.287287394205709,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 8.287287394205705,
+        "speed": 0,
+        "delay": 12.47062072753926,
+        "serviceTime": 22.029379272460954,
+        "held": "signal",
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": 0,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 599995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 600000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 34.499999999999325,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 599995ms exceeded."
+        },
+        "finishedAt": "1970-01-01T00:10:00.005Z"
+      }
+    },
+    {
+      "name": "whole deadline still clamps1200",
+      "options": {
+        "wholeMs": 300000,
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 300005,
+      "simulationTime": 22.999999999999975,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 19.590595778737708,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 8.288095092773421,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 8.288095092773418,
+        "speed": 0.33913631443340364,
+        "delay": 0.9714284261067705,
+        "serviceTime": 22.028571573893245,
+        "held": null,
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": 0,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 299995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 22.999999999999975,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 299995ms exceeded."
+        },
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:05:00.005Z"
+      }
+    },
+    {
+      "name": "pedestrian obstruction still fails",
+      "options": {
+        "blocked": true,
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 1200005,
+      "simulationTime": 57.749999999998,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 99.99997926965068,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 18.312179565430217,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 18.312179565430213,
+        "speed": 5.638992206513649e-7,
+        "delay": 45.745512898764474,
+        "serviceTime": 12.004487101236458,
+        "held": null,
+        "trafficState": "pedestrian",
+        "junction": {
+          "x": 240,
+          "z": 80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 57.749999999998,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+        },
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:20:00.005Z"
+      }
+    },
+    {
+      "name": "paused simulation still expires",
+      "options": {
+        "paused": true,
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 1200005,
+      "simulationTime": 11.500000000000151,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 100,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-lantern",
+        "doorsOpen": true,
+        "remaining": 0.4999999999998437,
+        "nextStopId": "harbor-tram-lantern",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 0,
+        "serviceTime": 11.500000000000151,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": 80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+        },
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:20:00.005Z"
+      }
+    },
+    {
+      "name": "wrong specific vehicle never substituted",
+      "options": {
+        "vehicleId": "nonexistent-tram",
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 1200005,
+      "simulationTime": 57.749999999998,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -40,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-workshop",
+        "doorsOpen": true,
+        "remaining": 0.5744537353525772,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 16.00778706868516,
+        "serviceTime": 41.74221293131409,
+        "held": null,
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": -80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "nonexistent-tram",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "nonexistent-tram"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 57.749999999998,
+            "vehicleId": "nonexistent-tram"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+        },
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:20:00.005Z"
+      }
+    },
+    {
+      "name": "wrong required stop never substituted",
+      "options": {
+        "requiredStopId": "nonexistent-stop",
+        "apiError": null
+      },
+      "pass": false,
+      "wallMsModeled": 1200005,
+      "simulationTime": 57.749999999998,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -40,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-workshop",
+        "doorsOpen": true,
+        "remaining": 0.5744537353525772,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 16.00778706868516,
+        "serviceTime": 41.74221293131409,
+        "held": null,
+        "trafficState": "signal",
+        "junction": {
+          "x": 240,
+          "z": -80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": "nonexistent-stop",
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 57.749999999998,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 1199995ms exceeded."
+        },
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:20:00.005Z"
+      }
+    },
+    {
+      "name": "original API error object preserved",
+      "options": {
+        "apiError": {
+          "name": "Error",
+          "message": "original wait API error"
+        }
+      },
+      "pass": false,
+      "wallMsModeled": 10,
+      "simulationTime": 11.500000000000151,
+      "vehicle": {
+        "id": "harbor-tram-1",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": 100,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-lantern",
+        "doorsOpen": true,
+        "remaining": 0.4999999999998437,
+        "nextStopId": "harbor-tram-lantern",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 0,
+        "serviceTime": 11.500000000000151,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": 80,
+          "axis": "z",
+          "direction": -1,
+          "committed": false
+        }
+      },
+      "firstError": {
+        "name": "Error",
+        "message": "original wait API error"
+      },
+      "phase": {
+        "type": "berth",
+        "vehicleId": "harbor-tram-1",
+        "requiredStopId": null,
+        "budgetMs": 1200000,
+        "startedAt": "1970-01-01T00:00:00.000Z",
+        "status": "FAILED",
+        "progress": [
+          {
+            "when": "before-wait",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          },
+          {
+            "when": "timeout",
+            "status": "OBSERVED",
+            "simulationTime": 11.500000000000151,
+            "vehicleId": "harbor-tram-1"
+          }
+        ],
+        "diagnosticErrors": [],
+        "firstError": {
+          "stage": "scheduled berth",
+          "name": "Error",
+          "message": "original wait API error"
+        },
+        "originalBudgetMs": 600000,
+        "budgetAmendment": "finite-tram-normal-service-observed-wall-rate",
+        "finishedAt": "1970-01-01T00:00:00.010Z"
+      }
+    }
+  ],
+  "originalPredicateAndAllTailBytesUnchanged": true,
+  "onlyCurrentCombinedMethodRegionChanged": "waitBerth finite TRAM-only budget/record",
+  "wholeBudgetsUnchanged": {
+    "tramMs": 2400000,
+    "busMs": 2400000,
+    "ferryMs": 900000
+  },
+  "originalBUSAndFERRYBerthMs": 600000,
+  "candidateTRAMBerthMs": 1200000,
+  "limitations": [
+    "Original TRAM cases remain FAILED; candidate has not executed in a native browser",
+    "Exact source-only service replay reproduces both observed failures without an external NPC/traffic obstruction; it does not prove unseen full street state every frame",
+    "Full snapshot RAF predicate remains original; its independent CPU/RAF cost was not measured and no observer optimization is claimed",
+    "1200s TRAM berth cap is supported by actual observed wall rate and normal signal service, not a guarantee of subsequent phases or the unchanged whole2400s case",
+    "All body positions, camera, source/resources, strict doorsOpen/remaining>2 and owned closure requirements remain unchanged"
+  ]
+}
