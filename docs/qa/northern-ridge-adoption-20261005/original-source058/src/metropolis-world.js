@@ -6,7 +6,7 @@ import { architectureDesignFor, architectureSignLayout, architectureStalls } fro
 import { METRO_STAIR_OPENINGS } from './metropolis-transit.js';
 import { subtractGroundRect } from './terrain-openings.js';
 import { createHarborWaterMaterial, updateHarborWaterMaterial } from './harbor-water.js';
-import { createNorthernHarborRidgeBatch } from './metropolis-northern-ridge.js';
+import { createWesternMountainBatch } from './metropolis-western-ridge.js';
 
 /** North shore: permanent terrain/collision/silhouettes, independently fetched detail. */
 export function createMetropolisWorld(THREE, scene, {
@@ -782,12 +782,8 @@ export function createMetropolisWorld(THREE, scene, {
       const geo=geometries[batch.kind];if(!geo)throw new Error(`Unknown metropolis geometry ${batch.kind}`);
       if(batch.buildings && (batch.buildings.length!==batch.transforms.length||batch.buildings.some(id=>id!==null&&!chunkByBuilding.has(id))))throw new Error('Invalid metropolis building membership');
       const mountainBatch=name==='North shore silhouettes'&&batch.kind==='cone'&&batch.material==='leaves';
-      const mesh=mountainBatch?createNorthernHarborRidgeBatch(THREE,batch,geo,material(batch.material)):new THREE.InstancedMesh(geo,material(batch.material),batch.transforms.length);
-      if(mountainBatch){
-        geometries.westernRidge=mesh.geometry;materials.set('western-ridge',mesh.material);
-        const north=mesh.northernRidgeMesh;geometries.northernRidge=north.geometry;materials.set('northern-ridge',north.material);
-        north.name='Northern harbor coherent decorative ridge';north.castShadow=currentQuality==='high';north.receiveShadow=true;group.add(north);
-      }
+      const mesh=mountainBatch?createWesternMountainBatch(THREE,batch,geo,material(batch.material)):new THREE.InstancedMesh(geo,material(batch.material),batch.transforms.length);
+      if(mountainBatch){geometries.westernRidge=mesh.geometry;materials.set('western-ridge',mesh.material);}
       // Window panes/paint and streamed trim do not need their own shadow map
       // pass; the permanent shell supplies the building's full silhouette.
       mesh.userData.noShadow=['glass','glassDark','light','line','white','water'].includes(batch.material)||(name!=='North shore silhouettes'&&!['leaves','trunk'].includes(batch.material));

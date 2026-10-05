@@ -1,0 +1,13 @@
+{
+  "status": "CPU_HARNESS_FAILURE_PRESERVED_NOT_NATIVE",
+  "exitCode": 1,
+  "message": "AssertionError: original full passenger radius stays inside shell",
+  "source": {
+    "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/verify-original-tram-first-harness-ground-scope.mjs",
+    "bytes": 4582,
+    "sha256": "29e47f5b663208a07b499b063cd2b8cdcbbf64691bdaee556ba1d728eae03082"
+  },
+  "cause": "The first replay harness incorrectly passed scalar ground-axis cycle.after values to the cabin-radius function. Production method was unchanged. Corrected replay scope to actual cabin motions having initialLocal; every 77 actual completed cabin cycle and two no-after failed cycles then retained.",
+  "productionMethodSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+  "originalNativeFailuresRetained": true
+}

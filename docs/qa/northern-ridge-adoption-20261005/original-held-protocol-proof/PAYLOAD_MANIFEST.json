@@ -1,0 +1,32 @@
+{
+  "status": "FINAL_CPU_VERIFIED_THREE_FILE_METHOD_ONLY_PAYLOAD_NATIVE_UNRUN",
+  "files": [
+    {
+      "path": "tools/native-review/methods/transport/HELD_PUBLIC_PRECISION_LEG_AMENDMENT-20261005.json",
+      "bytes": 7423,
+      "sha256": "0d971dd2d403d8243db03ca2272b167467caacf0fbb744e4b1adafcf885efdc0"
+    },
+    {
+      "path": "tools/native-review/methods/transport/method-manifest.json",
+      "bytes": 19898,
+      "sha256": "cc1dfdd55bea8a5a24d7d5e03b17435c9222ad9c357521301b98273ff7de6a0e"
+    },
+    {
+      "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 53761,
+      "sha256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636"
+    }
+  ],
+  "adoption": "Copy these exact three paths into the independent Northern child, verify original tool hash cfcf before replacement, then explicitly recompute global native bundle inventory/source metadata. No application runtime/source changes. Current tested North207 null source/build already read-only verified; committed revision binding pending owner.",
+  "cpuLedger": {
+    "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/FINAL_CPU_LEDGER.json",
+    "bytes": 3885,
+    "sha256": "f87e73b1c89d92afbbe1b954c36eb6194ea3d170a5b3285eac765f1615358140"
+  },
+  "originalActiveManifest": {
+    "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/original/transport-method-manifest-original-cfcf.json",
+    "bytes": 19310,
+    "sha256": "79900cd1332a9ab5c458f70d577c7d1ca34734e35b3c7db4f6369c63aba768f0"
+  },
+  "gpuExecuted": false
+}

@@ -1,0 +1,140 @@
+{
+  "status": "SOURCE_SYNTAX_REAL_FUNCTION_CPU_VERIFIED_EXPLICIT_NEW_HIGH_NATIVE_REQUIRED",
+  "createdAt": "2026-10-05T07:05:27.278093+00:00",
+  "originalExecutedMethod": {
+    "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/original/executed-native-transport-high-original-cfcf.mjs",
+    "bytes": 49904,
+    "sha256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+  },
+  "candidateMethod": {
+    "path": "native-transport-high.mjs",
+    "bytes": 53761,
+    "sha256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636"
+  },
+  "originalFailureEvidence": [
+    {
+      "kind": "bus",
+      "artifactId": 11329128028,
+      "originalZIPBytes": 250245565,
+      "originalZIPSHA256": "f66bda55ebc870ecf5e66e83d2c4db1049570bc10d407f3eff06c3c5258a6182",
+      "reviewSeal": {
+        "path": "/workspace/neon-candidates/3aa-bus-native-failure-review-20261005/SEAL.json",
+        "bytes": 3031,
+        "sha256": "1977e1eb8327dab92fb09d677aad76c9c353e0ad3ca7e42fcb689a9bb869b254"
+      },
+      "reviewSealCopy": {
+        "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/original/bus-native-failure-review-SEAL.json",
+        "bytes": 3031,
+        "sha256": "1977e1eb8327dab92fb09d677aad76c9c353e0ad3ca7e42fcb689a9bb869b254"
+      },
+      "originalStatus": "FAILED",
+      "firstFailedStage": "upper-3",
+      "observedPhotosPerMode": [
+        "exterior",
+        "lower"
+      ],
+      "upperObserved": false,
+      "remainingRouteAccepted": false
+    },
+    {
+      "kind": "tram",
+      "artifactId": 11330255217,
+      "originalZIPBytes": 297702658,
+      "originalZIPSHA256": "5a8ec12b34630df8d157a0f35fbfe605bb033c291541b79eb468e8ea30ddb91f",
+      "reviewSeal": {
+        "path": "/workspace/neon-candidates/3aa-tram-native-failure-review-20261005/SEAL.json",
+        "bytes": 2810,
+        "sha256": "e681b47bb0e7ebcb2d02c317f4dcd12b8275dfda217a91a55428572eca784a77"
+      },
+      "reviewSealCopy": {
+        "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/original/tram-native-failure-review-SEAL.json",
+        "bytes": 2810,
+        "sha256": "e681b47bb0e7ebcb2d02c317f4dcd12b8275dfda217a91a55428572eca784a77"
+      },
+      "originalStatus": "FAILED",
+      "firstFailedStage": "upper-3",
+      "observedPhotosPerMode": [
+        "exterior",
+        "lower"
+      ],
+      "upperObserved": false,
+      "remainingRouteAccepted": false
+    }
+  ],
+  "changeScope": "Only bus/tram precision local walk gaps > .3 m use one ordinary selected WASD hold, observed by actual browser RAF snapshots, then original near endpoint pulse correction. One original Z ownership per leg and original finally release retained. Ferry, nonprecision, <= .3 near, ground, camera/input/source/quality/photo/boarding/exit/cleanup code unchanged. No retry added.",
+  "actualRAFGuards": [
+    "original local150000ms and whole case deadline",
+    "same initial teleportRevision and ridingVehicleId",
+    "finite actual passenger local xyz/simulationTime",
+    "original full passenger radius inside shell and original seat/driver blocker vertical overlap",
+    "original heldSeconds < geometricMetres/.3 +3",
+    "ordinary direction aim still required at original .025 radians",
+    "<= .3m stops held leg for correction and does not accept the endpoint"
+  ],
+  "endpointGuards": {
+    "horizontalMetres": 0.06,
+    "heightMetres": 0.15,
+    "precisionMetresPerSimulationSecond": 0.3,
+    "localMs": 150000,
+    "maxIterations": 1800,
+    "aimPhaseMs": 60000,
+    "busWholeMs": 2400000,
+    "tramWholeMs": 2400000,
+    "ferryWholeMs": 900000
+  },
+  "release": "Public movement keyup completes before jsonValue/dispose/snapshot RPCs. If keyup is unconfirmed, skip handle RPC and enter original case cleanup. Z release still attempted finally on all failures; async JSON/dispose/down/up failure guards retain original primary/secondary semantics. Extra key-release frame may require bounded ordinary correction under the same150s/1800 limits.",
+  "sourcePublicKeyboardAndPhysicsUnchanged": {
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+    "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+    "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0"
+  },
+  "currentFrozenNorthernSourceProof": {
+    "sourceRoot": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005",
+    "rawNullBuildInfo": {
+      "path": "/workspace/neon-candidates/harbor-northern-ridge-final-20261005/dist/build-info.json",
+      "bytes": 22204,
+      "sha256": "21bd6afa8ef7ab1ac59bf2f8ccb9941bf9a5e986c707d9ef04ffefd99ea66ece"
+    },
+    "sourceCommitBinding": "PRECOMMIT_TESTED_NULL_BUILD_207; actual committed revision and complete runtime dictionary must be separately bound by root before execution",
+    "nativeExecuted": false
+  },
+  "cpuLedger": {
+    "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/FINAL_CPU_LEDGER.json",
+    "bytes": 3885,
+    "sha256": "f87e73b1c89d92afbbe1b954c36eb6194ea3d170a5b3285eac765f1615358140"
+  },
+  "cpuReceipts": [
+    {
+      "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/inherited-15-precision-modifier-cpu-receipt.json",
+      "bytes": 22577,
+      "sha256": "0c14fd06708535a08f6573750cc49b8122296a7b52fecfedf86db1335cf2000f"
+    },
+    {
+      "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/protocol-cpu-replay-receipt.json",
+      "bytes": 24770,
+      "sha256": "8cfff35ff9d27c8fc242aa4657fb98285ccc90fec6ae7f826f8896c3a6123b46"
+    },
+    {
+      "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/held-source-physical-cpu-receipt.json",
+      "bytes": 154888,
+      "sha256": "c3daf11a4aa9c2f4ce6efe1d8c669d330b9cee983d25fe8d9180e30705336a55"
+    },
+    {
+      "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/held-raf-original-guards-cpu-receipt.json",
+      "bytes": 26434,
+      "sha256": "c33311b8bbfe2d23d2bec54e28bae90e94e15a8f04248e4337ba6068d9334c8f"
+    },
+    {
+      "path": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005/original-tram-held-guards-cpu-receipt.json",
+      "bytes": 5766,
+      "sha256": "1d2b8267eb2208fb4932e4bc83c0d4cd09242ba8fc19ff61710362e4f13c195b"
+    }
+  ],
+  "timingEvidenceBoundary": "Saved aim-start intervals show cycle work spans; no exact old key wall timestamps. 25 bus .075m steps and 22/21 tram .075m steps still make positive progress but fail150s before actual upper endpoint. No source collision bug or successful new held native run is claimed. Protocol reduces repeated per-pulse RPC calls; observed native improvement remains to be measured.",
+  "history": "Existing 3aa cfcf and earlier5cd/6ad original FAIL evidence and manifests remain byte unchanged. Original two lower/exterior High pictures do not inherit upper/art PASS. All canonical goals/cameras/public routes/destination/photo guards/budgets unchanged.",
+  "sourceProductionChanged": false,
+  "browserGpuNativeExecuted": false,
+  "nativeHighUpperReturnRequired": true,
+  "oldFailuresReclassified": false
+}
