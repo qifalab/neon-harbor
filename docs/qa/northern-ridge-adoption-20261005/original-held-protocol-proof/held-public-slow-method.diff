@@ -1,0 +1,53 @@
+--- original/executed-native-transport-high-original-cfcf.mjs
++++ payload/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -267,6 +267,27 @@
+     assert.ok(p.x>=deck.minX+radius-.001&&p.x<=deck.maxX-radius+.001,'original full passenger radius stays inside shell');
+     for(const b of layout.blockers)if(p.y+layout.passengerHeight>b.minY+.02&&p.y<b.maxY-.02){const x=Math.max(b.minX,Math.min(p.x,b.maxX)),z=Math.max(b.minZ,Math.min(p.z,b.maxZ));assert.ok(Math.hypot(p.x-x,p.z-z)>=radius-.015,'actual original-radius body does not occupy a seat/driver blocker');}
+   }
++  // Read-only browser RAF observer. Its argument owns only protocol diagnostics;
++  // no world/input/clock/camera state is written from inside the page.
++  function cabinHeldObservation(a) {
++    const s=window.__NEON__.snapshot(),t=s.city.sample.transit,p=t.passengerLocal,v=t.vehicles.find(v=>v.id===t.ridingVehicleId);
++    const finish=(reason,failure=null)=>({reason,failure,observations:a.observations,initialSimulationTime:a.baseSimulationTime,lastObservedLocal:p,lastSimulationTime:s.simulationTime});
++    if(Date.now()>=a.localDeadline||Date.now()>=a.wholeDeadline)return finish('original-deadline','original local/whole deadline');
++    if(s.teleportRevision!==a.revision)return finish('revision-failure','original cabin teleport revision');
++    if(t.ridingVehicleId!==a.vehicleId||!p||!v)return finish('riding-failure','original riding vehicle/passenger unavailable');
++    if(!['x','y','z'].every(k=>Number.isFinite(p[k]))||!Number.isFinite(s.simulationTime))return finish('nonfinite-failure','actual finite passenger/elapsed snapshot');
++    const radius=a.layout.passengerRadius,deck=a.layout.decks.reduce((x,y)=>Math.abs(x.y-p.y)<=Math.abs(y.y-p.y)?x:y);
++    if(!(p.x>=deck.minX+radius-.001&&p.x<=deck.maxX-radius+.001))return finish('radius-failure','original full passenger radius stays inside shell');
++    for(const b of a.layout.blockers)if(p.y+a.layout.passengerHeight>b.minY+.02&&p.y<b.maxY-.02){const x=Math.max(b.minX,Math.min(p.x,b.maxX)),z=Math.max(b.minZ,Math.min(p.z,b.maxZ));if(!(Math.hypot(p.x-x,p.z-z)>=radius-.015))return finish('blocker-failure','actual original-radius body does not occupy a seat/driver blocker');}
++    a.geometricMetres+=Math.hypot(p.x-a.lastLocal.x,p.z-a.lastLocal.z);a.lastLocal={x:p.x,y:p.y,z:p.z};
++    const held=a.heldBefore+Math.max(0,s.simulationTime-a.baseSimulationTime),metres=a.metresBefore+a.geometricMetres,gap=Math.hypot(a.target.x-p.x,a.target.z-p.z);
++    a.observations.push({local:{x:p.x,y:p.y,z:p.z},simulationTime:s.simulationTime,revision:s.teleportRevision,heldSeconds:held,geometricMetres:metres,horizontalGap:gap});
++    if(!(held<metres/.3+3))return finish('stall-failure','original real held-input stall guard');
++    if(gap<=.3)return finish('public-near-endpoint-correction');
++    const angle=n=>Math.atan2(Math.sin(n),Math.cos(n));
++    if(!Number.isFinite(s.camera?.yaw)||Math.abs(angle(s.camera.yaw-(v.yaw+a.localHeading-a.offset)))>=.025)return finish('public-direction-reaim');
++    return false;
++  }
+   async function walkLocal(target,p,layout,stage,{precision=true}={}) {
+     const initial=await read(), revision=initial.teleportRevision, localDeadline=Date.now()+remaining(150000), samples=[initial];let current=initial,held=0,metres=0;
+     let first=null;const precisionModifier={key:'z',scope:'precision-local-leg-only',downAttempted:false,downConfirmed:false,releaseConfirmed:null,inputs:[]};
+@@ -275,10 +296,20 @@
+         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
+         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
+         const desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
+-        const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null;
+-        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
++        const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null,heldProbe=null;
++        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);if(precision&&distance(target,before)>.3&&(kind==='bus'||kind==='tram')){
++          cycle.publicHeldControl='ordinary slow key through actual RAF observations, then original near correction';
++          const cap=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original finite local/whole movement deadline');
++          heldProbe=await page.waitForFunction(cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[]},{polling:'raf',timeout:cap});
++        }else await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
+         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
+         finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
++        // Release the actual movement key before any handle/diagnostic RPC.
++        if(heldProbe&&cycle.releaseConfirmed){
++          try{cycle.actualHeldObservation=await heldProbe.jsonValue();if(cycle.actualHeldObservation.failure)throw new Error(cycle.actualHeldObservation.failure);}
++          catch(error){if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,'held RAF diagnostic'));}
++          finally{try{await heldProbe.dispose();}catch(error){if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,'held RAF handle dispose'));}}
++        }
+         if(cycleError){cycle.firstError ||= err(cycleError,'release');samples.push(cycle);throw cycleError;}
+         current=await read();assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
+         held+=Math.max(0,current.simulationTime-guardBeforeAction.simulationTime);metres+=distance(before,transit(current).passengerLocal);

@@ -1,0 +1,13 @@
+{
+  "status": "REVIEWER_PREFLIGHT_REJECTED_BEFORE_ANY_PAYLOAD_OR_METADATA_WRITES",
+  "initialHelperSHA256": "127cb4e160f4eea4533edcd4ffc2a09759bd3371f88fc2fc7c53f2ebc3df1d35",
+  "observedErrorType": "TypeError",
+  "observedError": "unhashable type: dict",
+  "cause": "Reviewer expected a SHA map; producer immutable SEAL.files is a list of path/bytes/sha256 records. Corrected reader explicitly normalizes all25 unique records and preserves full inventory/count/digest checks.",
+  "dependentMetadataHelperObservedFileNotFound": "held-protocol-adoption-receipt.json",
+  "nativeActiveToolStillOriginalCfcf": true,
+  "all392ProductionSourcesUnchanged": true,
+  "noCandidateSealManifestPayloadOrSourceModified": true,
+  "productTestsBuildOrNativeFailed": false,
+  "correctiveScope": "External reviewer parser only; neither payload nor invariants relaxed."
+}

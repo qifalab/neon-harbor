@@ -1,0 +1,4772 @@
+{
+  "status": "ACTUAL_SOURCE_PHYSICAL_HELD_PUBLIC_INPUT_CPU_CASES_PASS_NATIVE_REQUIRED",
+  "methodSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+  "originalArtifactMotionSHA256": "91bf85a45d80935ced87a1e0d3b371653b9151f4a5813a89bbae3ae25f770697",
+  "originalTramArtifactMotionSHA256": "1c0726ca7db650db6fc45305d7f0cc17d352499d5e57682b9a3840baccd06c06",
+  "sourceTransitSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+  "sourceMainSHA256": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+  "testCount": 12,
+  "rows": [
+    {
+      "name": "held-actual-upper3-source-five-second-CPU-frame",
+      "kind": "bus",
+      "fail": null,
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": null,
+      "frameCount": 26,
+      "heldFrames": 23,
+      "reads": 5,
+      "waits": 4,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 8,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7694037703272023,
+        "y": 1.3831362819549253,
+        "z": 1.1198095017261926,
+        "yaw": -3.1316241718900546
+      },
+      "horizontalGap": 0.05981247350309264,
+      "heightGap": 0.0368637180450746,
+      "elapsedFixtureWallMs": 130190,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 34930
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 29890
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 24850
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7694037703272023,
+          "y": 1.3831362819549253,
+          "z": 1.1198095017261926,
+          "yaw": -3.1316241718900546
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.7507131766931171,
+                    "y": 0.44,
+                    "z": 2.99471634253445
+                  },
+                  "simulationTime": 35.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07499999999999983,
+                  "horizontalGap": 1.9348124735030912
+                },
+                {
+                  "local": {
+                    "x": -0.7514608004384805,
+                    "y": 0.44,
+                    "z": 2.91972006890212
+                  },
+                  "simulationTime": 35.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.14999999999999966,
+                  "horizontalGap": 1.8598124735030914
+                },
+                {
+                  "local": {
+                    "x": -0.7522084241838439,
+                    "y": 0.44,
+                    "z": 2.8447237952697897
+                  },
+                  "simulationTime": 35.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22499999999999948,
+                  "horizontalGap": 1.7848124735030915
+                },
+                {
+                  "local": {
+                    "x": -0.7529560479292073,
+                    "y": 0.44,
+                    "z": 2.7697275216374595
+                  },
+                  "simulationTime": 36.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.2999999999999993,
+                  "horizontalGap": 1.7098124735030917
+                },
+                {
+                  "local": {
+                    "x": -0.7537036716745708,
+                    "y": 0.44,
+                    "z": 2.6947312480051293
+                  },
+                  "simulationTime": 36.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.37499999999999917,
+                  "horizontalGap": 1.6348124735030918
+                },
+                {
+                  "local": {
+                    "x": -0.7544512954199342,
+                    "y": 0.4586539151664508,
+                    "z": 2.619734974372799
+                  },
+                  "simulationTime": 36.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.449999999999999,
+                  "horizontalGap": 1.559812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.7551989191652976,
+                    "y": 0.5048780335058745,
+                    "z": 2.544738700740469
+                  },
+                  "simulationTime": 36.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5249999999999988,
+                  "horizontalGap": 1.484812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.755946542910661,
+                    "y": 0.5511021518452981,
+                    "z": 2.4697424271081387
+                  },
+                  "simulationTime": 37.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.5999999999999986,
+                  "horizontalGap": 1.4098124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7566941666560244,
+                    "y": 0.5973262701847217,
+                    "z": 2.3947461534758085
+                  },
+                  "simulationTime": 37.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6749999999999985,
+                  "horizontalGap": 1.3348124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7574417904013878,
+                    "y": 0.6435503885241454,
+                    "z": 2.3197498798434784
+                  },
+                  "simulationTime": 37.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7499999999999983,
+                  "horizontalGap": 1.2598124735030927
+                },
+                {
+                  "local": {
+                    "x": -0.7581894141467512,
+                    "y": 0.689774506863569,
+                    "z": 2.244753606211148
+                  },
+                  "simulationTime": 37.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8249999999999982,
+                  "horizontalGap": 1.184812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7589370378921146,
+                    "y": 0.7359986252029926,
+                    "z": 2.169757332578818
+                  },
+                  "simulationTime": 38.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.899999999999998,
+                  "horizontalGap": 1.109812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.759684661637478,
+                    "y": 0.7822227435424163,
+                    "z": 2.094761058946488
+                  },
+                  "simulationTime": 38.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9749999999999979,
+                  "horizontalGap": 1.0348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7604322853828415,
+                    "y": 0.8284468618818399,
+                    "z": 2.0197647853141576
+                  },
+                  "simulationTime": 38.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0499999999999976,
+                  "horizontalGap": 0.9598124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7611799091282049,
+                    "y": 0.8746709802212638,
+                    "z": 1.9447685116818272
+                  },
+                  "simulationTime": 38.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1249999999999976,
+                  "horizontalGap": 0.8848124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7619275328735683,
+                    "y": 0.9208950985606875,
+                    "z": 1.8697722380494968
+                  },
+                  "simulationTime": 39.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.1999999999999975,
+                  "horizontalGap": 0.8098124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7626751566189317,
+                    "y": 0.9671192169001113,
+                    "z": 1.7947759644171664
+                  },
+                  "simulationTime": 39.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2749999999999975,
+                  "horizontalGap": 0.7348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7634227803642951,
+                    "y": 1.0133433352395351,
+                    "z": 1.719779690784836
+                  },
+                  "simulationTime": 39.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3499999999999974,
+                  "horizontalGap": 0.6598124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7641704041096585,
+                    "y": 1.0595674535789588,
+                    "z": 1.6447834171525055
+                  },
+                  "simulationTime": 39.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4249999999999974,
+                  "horizontalGap": 0.5848124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7649180278550219,
+                    "y": 1.1057915719183826,
+                    "z": 1.5697871435201751
+                  },
+                  "simulationTime": 40.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.4999999999999973,
+                  "horizontalGap": 0.509812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7656656516003854,
+                    "y": 1.1520156902578065,
+                    "z": 1.4947908698878447
+                  },
+                  "simulationTime": 40.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5749999999999973,
+                  "horizontalGap": 0.43481247350309293
+                },
+                {
+                  "local": {
+                    "x": -0.7664132753457488,
+                    "y": 1.1982398085972301,
+                    "z": 1.4197945962555143
+                  },
+                  "simulationTime": 40.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6499999999999972,
+                  "horizontalGap": 0.35981247350309287
+                },
+                {
+                  "local": {
+                    "x": -0.7671608990911122,
+                    "y": 1.244463926936654,
+                    "z": 1.3447983226231839
+                  },
+                  "simulationTime": 40.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7249999999999972,
+                  "horizontalGap": 0.2848124735030928
+                }
+              ],
+              "initialSimulationTime": 35.24999999999928,
+              "lastObservedLocal": {
+                "x": -0.7671608990911122,
+                "y": 1.244463926936654,
+                "z": 1.3447983226231839,
+                "yaw": -3.1316241718900546
+              },
+              "lastSimulationTime": 40.99999999999928
+            },
+            "after": {
+              "x": -0.7671608990911122,
+              "y": 1.244463926936654,
+              "z": 1.3447983226231839,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 5.75,
+            "geometricMetres": 1.7249999999999983
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -0.7671608990911122,
+              "y": 1.244463926936654,
+              "z": 1.3447983226231839,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 40.99999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 6,
+            "geometricMetres": 1.7999999999999983
+          },
+          {
+            "n": 2,
+            "before": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684952,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 41.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7686561465818389,
+              "y": 1.3369121636155015,
+              "z": 1.194805775358523,
+              "yaw": -3.1316241718900555
+            },
+            "heldSeconds": 6.25,
+            "geometricMetres": 1.8749999999999982
+          },
+          {
+            "n": 3,
+            "before": {
+              "x": -0.7686561465818389,
+              "y": 1.3369121636155015,
+              "z": 1.194805775358523,
+              "yaw": -3.1316241718900555
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 41.49999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7694037703272023,
+              "y": 1.3831362819549253,
+              "z": 1.1198095017261926,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 6.5,
+            "geometricMetres": 1.9499999999999982
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": null
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-actual-source-extra-one-frame-keyup-correction",
+      "kind": "bus",
+      "fail": null,
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 1,
+      "failure": null,
+      "frameCount": 26,
+      "heldFrames": 23,
+      "reads": 3,
+      "waits": 2,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 4,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7694037703272022,
+        "y": 1.3831362819549253,
+        "z": 1.1198095017261926,
+        "yaw": -3.1316241718900555
+      },
+      "horizontalGap": 0.05981247350309264,
+      "heightGap": 0.0368637180450746,
+      "elapsedFixtureWallMs": 130110,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 29930
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7694037703272022,
+          "y": 1.3831362819549253,
+          "z": 1.1198095017261926,
+          "yaw": -3.1316241718900555
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.7507131766931171,
+                    "y": 0.44,
+                    "z": 2.99471634253445
+                  },
+                  "simulationTime": 35.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07499999999999983,
+                  "horizontalGap": 1.9348124735030912
+                },
+                {
+                  "local": {
+                    "x": -0.7514608004384805,
+                    "y": 0.44,
+                    "z": 2.91972006890212
+                  },
+                  "simulationTime": 35.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.14999999999999966,
+                  "horizontalGap": 1.8598124735030914
+                },
+                {
+                  "local": {
+                    "x": -0.7522084241838439,
+                    "y": 0.44,
+                    "z": 2.8447237952697897
+                  },
+                  "simulationTime": 35.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22499999999999948,
+                  "horizontalGap": 1.7848124735030915
+                },
+                {
+                  "local": {
+                    "x": -0.7529560479292073,
+                    "y": 0.44,
+                    "z": 2.7697275216374595
+                  },
+                  "simulationTime": 36.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.2999999999999993,
+                  "horizontalGap": 1.7098124735030917
+                },
+                {
+                  "local": {
+                    "x": -0.7537036716745708,
+                    "y": 0.44,
+                    "z": 2.6947312480051293
+                  },
+                  "simulationTime": 36.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.37499999999999917,
+                  "horizontalGap": 1.6348124735030918
+                },
+                {
+                  "local": {
+                    "x": -0.7544512954199342,
+                    "y": 0.4586539151664508,
+                    "z": 2.619734974372799
+                  },
+                  "simulationTime": 36.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.449999999999999,
+                  "horizontalGap": 1.559812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.7551989191652976,
+                    "y": 0.5048780335058745,
+                    "z": 2.544738700740469
+                  },
+                  "simulationTime": 36.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5249999999999988,
+                  "horizontalGap": 1.484812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.755946542910661,
+                    "y": 0.5511021518452981,
+                    "z": 2.4697424271081387
+                  },
+                  "simulationTime": 37.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.5999999999999986,
+                  "horizontalGap": 1.4098124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7566941666560244,
+                    "y": 0.5973262701847217,
+                    "z": 2.3947461534758085
+                  },
+                  "simulationTime": 37.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6749999999999985,
+                  "horizontalGap": 1.3348124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7574417904013878,
+                    "y": 0.6435503885241454,
+                    "z": 2.3197498798434784
+                  },
+                  "simulationTime": 37.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7499999999999983,
+                  "horizontalGap": 1.2598124735030927
+                },
+                {
+                  "local": {
+                    "x": -0.7581894141467512,
+                    "y": 0.689774506863569,
+                    "z": 2.244753606211148
+                  },
+                  "simulationTime": 37.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8249999999999982,
+                  "horizontalGap": 1.184812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7589370378921146,
+                    "y": 0.7359986252029926,
+                    "z": 2.169757332578818
+                  },
+                  "simulationTime": 38.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.899999999999998,
+                  "horizontalGap": 1.109812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.759684661637478,
+                    "y": 0.7822227435424163,
+                    "z": 2.094761058946488
+                  },
+                  "simulationTime": 38.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9749999999999979,
+                  "horizontalGap": 1.0348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7604322853828415,
+                    "y": 0.8284468618818399,
+                    "z": 2.0197647853141576
+                  },
+                  "simulationTime": 38.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0499999999999976,
+                  "horizontalGap": 0.9598124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7611799091282049,
+                    "y": 0.8746709802212638,
+                    "z": 1.9447685116818272
+                  },
+                  "simulationTime": 38.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1249999999999976,
+                  "horizontalGap": 0.8848124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7619275328735683,
+                    "y": 0.9208950985606875,
+                    "z": 1.8697722380494968
+                  },
+                  "simulationTime": 39.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.1999999999999975,
+                  "horizontalGap": 0.8098124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7626751566189317,
+                    "y": 0.9671192169001113,
+                    "z": 1.7947759644171664
+                  },
+                  "simulationTime": 39.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2749999999999975,
+                  "horizontalGap": 0.7348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7634227803642951,
+                    "y": 1.0133433352395351,
+                    "z": 1.719779690784836
+                  },
+                  "simulationTime": 39.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3499999999999974,
+                  "horizontalGap": 0.6598124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7641704041096585,
+                    "y": 1.0595674535789588,
+                    "z": 1.6447834171525055
+                  },
+                  "simulationTime": 39.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4249999999999974,
+                  "horizontalGap": 0.5848124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7649180278550219,
+                    "y": 1.1057915719183826,
+                    "z": 1.5697871435201751
+                  },
+                  "simulationTime": 40.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.4999999999999973,
+                  "horizontalGap": 0.509812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7656656516003854,
+                    "y": 1.1520156902578065,
+                    "z": 1.4947908698878447
+                  },
+                  "simulationTime": 40.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5749999999999973,
+                  "horizontalGap": 0.43481247350309293
+                },
+                {
+                  "local": {
+                    "x": -0.7664132753457488,
+                    "y": 1.1982398085972301,
+                    "z": 1.4197945962555143
+                  },
+                  "simulationTime": 40.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6499999999999972,
+                  "horizontalGap": 0.35981247350309287
+                },
+                {
+                  "local": {
+                    "x": -0.7671608990911122,
+                    "y": 1.244463926936654,
+                    "z": 1.3447983226231839
+                  },
+                  "simulationTime": 40.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7249999999999972,
+                  "horizontalGap": 0.2848124735030928
+                }
+              ],
+              "initialSimulationTime": 35.24999999999928,
+              "lastObservedLocal": {
+                "x": -0.7671608990911122,
+                "y": 1.244463926936654,
+                "z": 1.3447983226231839,
+                "yaw": -3.1316241718900546
+              },
+              "lastSimulationTime": 40.99999999999928
+            },
+            "after": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 6,
+            "geometricMetres": 1.7999999999999983
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684952,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 41.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7694037703272022,
+              "y": 1.3831362819549253,
+              "z": 1.1198095017261926,
+              "yaw": -3.1316241718900555
+            },
+            "heldSeconds": 6.5,
+            "geometricMetres": 1.9499999999999984
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": null
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "same150s-expiry-six-second-CPU-frame",
+      "kind": "bus",
+      "fail": null,
+      "precision": true,
+      "syntheticWallFrameMs": 6000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "AssertionError",
+        "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n"
+      },
+      "frameCount": 25,
+      "heldFrames": 23,
+      "reads": 4,
+      "waits": 3,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 6,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7686561465818389,
+        "y": 1.3369121636155015,
+        "z": 1.194805775358523,
+        "yaw": -3.1316241718900555
+      },
+      "horizontalGap": 0.1348124735030927,
+      "heightGap": 0.08308783638449846,
+      "elapsedFixtureWallMs": 150150,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 11930
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 5890
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7686561465818389,
+          "y": 1.3369121636155015,
+          "z": 1.194805775358523,
+          "yaw": -3.1316241718900555
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.7507131766931171,
+                    "y": 0.44,
+                    "z": 2.99471634253445
+                  },
+                  "simulationTime": 35.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07499999999999983,
+                  "horizontalGap": 1.9348124735030912
+                },
+                {
+                  "local": {
+                    "x": -0.7514608004384805,
+                    "y": 0.44,
+                    "z": 2.91972006890212
+                  },
+                  "simulationTime": 35.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.14999999999999966,
+                  "horizontalGap": 1.8598124735030914
+                },
+                {
+                  "local": {
+                    "x": -0.7522084241838439,
+                    "y": 0.44,
+                    "z": 2.8447237952697897
+                  },
+                  "simulationTime": 35.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22499999999999948,
+                  "horizontalGap": 1.7848124735030915
+                },
+                {
+                  "local": {
+                    "x": -0.7529560479292073,
+                    "y": 0.44,
+                    "z": 2.7697275216374595
+                  },
+                  "simulationTime": 36.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.2999999999999993,
+                  "horizontalGap": 1.7098124735030917
+                },
+                {
+                  "local": {
+                    "x": -0.7537036716745708,
+                    "y": 0.44,
+                    "z": 2.6947312480051293
+                  },
+                  "simulationTime": 36.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.37499999999999917,
+                  "horizontalGap": 1.6348124735030918
+                },
+                {
+                  "local": {
+                    "x": -0.7544512954199342,
+                    "y": 0.4586539151664508,
+                    "z": 2.619734974372799
+                  },
+                  "simulationTime": 36.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.449999999999999,
+                  "horizontalGap": 1.559812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.7551989191652976,
+                    "y": 0.5048780335058745,
+                    "z": 2.544738700740469
+                  },
+                  "simulationTime": 36.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5249999999999988,
+                  "horizontalGap": 1.484812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.755946542910661,
+                    "y": 0.5511021518452981,
+                    "z": 2.4697424271081387
+                  },
+                  "simulationTime": 37.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.5999999999999986,
+                  "horizontalGap": 1.4098124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7566941666560244,
+                    "y": 0.5973262701847217,
+                    "z": 2.3947461534758085
+                  },
+                  "simulationTime": 37.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6749999999999985,
+                  "horizontalGap": 1.3348124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7574417904013878,
+                    "y": 0.6435503885241454,
+                    "z": 2.3197498798434784
+                  },
+                  "simulationTime": 37.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7499999999999983,
+                  "horizontalGap": 1.2598124735030927
+                },
+                {
+                  "local": {
+                    "x": -0.7581894141467512,
+                    "y": 0.689774506863569,
+                    "z": 2.244753606211148
+                  },
+                  "simulationTime": 37.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8249999999999982,
+                  "horizontalGap": 1.184812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7589370378921146,
+                    "y": 0.7359986252029926,
+                    "z": 2.169757332578818
+                  },
+                  "simulationTime": 38.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.899999999999998,
+                  "horizontalGap": 1.109812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.759684661637478,
+                    "y": 0.7822227435424163,
+                    "z": 2.094761058946488
+                  },
+                  "simulationTime": 38.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9749999999999979,
+                  "horizontalGap": 1.0348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7604322853828415,
+                    "y": 0.8284468618818399,
+                    "z": 2.0197647853141576
+                  },
+                  "simulationTime": 38.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0499999999999976,
+                  "horizontalGap": 0.9598124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7611799091282049,
+                    "y": 0.8746709802212638,
+                    "z": 1.9447685116818272
+                  },
+                  "simulationTime": 38.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1249999999999976,
+                  "horizontalGap": 0.8848124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7619275328735683,
+                    "y": 0.9208950985606875,
+                    "z": 1.8697722380494968
+                  },
+                  "simulationTime": 39.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.1999999999999975,
+                  "horizontalGap": 0.8098124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7626751566189317,
+                    "y": 0.9671192169001113,
+                    "z": 1.7947759644171664
+                  },
+                  "simulationTime": 39.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2749999999999975,
+                  "horizontalGap": 0.7348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7634227803642951,
+                    "y": 1.0133433352395351,
+                    "z": 1.719779690784836
+                  },
+                  "simulationTime": 39.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3499999999999974,
+                  "horizontalGap": 0.6598124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7641704041096585,
+                    "y": 1.0595674535789588,
+                    "z": 1.6447834171525055
+                  },
+                  "simulationTime": 39.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4249999999999974,
+                  "horizontalGap": 0.5848124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7649180278550219,
+                    "y": 1.1057915719183826,
+                    "z": 1.5697871435201751
+                  },
+                  "simulationTime": 40.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.4999999999999973,
+                  "horizontalGap": 0.509812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7656656516003854,
+                    "y": 1.1520156902578065,
+                    "z": 1.4947908698878447
+                  },
+                  "simulationTime": 40.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5749999999999973,
+                  "horizontalGap": 0.43481247350309293
+                },
+                {
+                  "local": {
+                    "x": -0.7664132753457488,
+                    "y": 1.1982398085972301,
+                    "z": 1.4197945962555143
+                  },
+                  "simulationTime": 40.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6499999999999972,
+                  "horizontalGap": 0.35981247350309287
+                },
+                {
+                  "local": {
+                    "x": -0.7671608990911122,
+                    "y": 1.244463926936654,
+                    "z": 1.3447983226231839
+                  },
+                  "simulationTime": 40.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7249999999999972,
+                  "horizontalGap": 0.2848124735030928
+                }
+              ],
+              "initialSimulationTime": 35.24999999999928,
+              "lastObservedLocal": {
+                "x": -0.7671608990911122,
+                "y": 1.244463926936654,
+                "z": 1.3447983226231839,
+                "yaw": -3.1316241718900546
+              },
+              "lastSimulationTime": 40.99999999999928
+            },
+            "after": {
+              "x": -0.7671608990911122,
+              "y": 1.244463926936654,
+              "z": 1.3447983226231839,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 5.75,
+            "geometricMetres": 1.7249999999999983
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -0.7671608990911122,
+              "y": 1.244463926936654,
+              "z": 1.3447983226231839,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 40.99999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 6,
+            "geometricMetres": 1.7999999999999983
+          },
+          {
+            "n": 2,
+            "before": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684952,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 41.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7686561465818389,
+              "y": 1.3369121636155015,
+              "z": 1.194805775358523,
+              "yaw": -3.1316241718900555
+            },
+            "heldSeconds": 6.25,
+            "geometricMetres": 1.8749999999999982
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "AssertionError",
+          "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-down",
+      "kind": "bus",
+      "fail": "down",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture down rejection after public handler"
+      },
+      "frameCount": 0,
+      "heldFrames": 0,
+      "reads": 1,
+      "waits": 0,
+      "jsonReads": 0,
+      "disposed": 0,
+      "movementKeyEvents": 2,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7499655529477537,
+        "y": 0.44,
+        "z": 3.0697126161667803,
+        "yaw": -1.5649074729257346
+      },
+      "horizontalGap": 2.009812473503091,
+      "heightGap": 0.98,
+      "elapsedFixtureWallMs": 60,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "firstError": {
+              "stage": "movement",
+              "name": "Error",
+              "message": "actual fixture down rejection after public handler"
+            }
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture down rejection after public handler"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-z-down",
+      "kind": "bus",
+      "fail": "z-down",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture Z down rejection after public handler"
+      },
+      "frameCount": 0,
+      "heldFrames": 0,
+      "reads": 1,
+      "waits": 0,
+      "jsonReads": 0,
+      "disposed": 0,
+      "movementKeyEvents": 1,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7499655529477537,
+        "y": 0.44,
+        "z": 3.0697126161667803,
+        "yaw": -1.5649074729257346
+      },
+      "horizontalGap": 2.009812473503091,
+      "heightGap": 0.98,
+      "elapsedFixtureWallMs": 50,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "firstError": {
+              "stage": "movement",
+              "name": "Error",
+              "message": "actual fixture Z down rejection after public handler"
+            }
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": false,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture Z down rejection after public handler"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-wait",
+      "kind": "bus",
+      "fail": "wait",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture wait rejection"
+      },
+      "frameCount": 0,
+      "heldFrames": 0,
+      "reads": 1,
+      "waits": 1,
+      "jsonReads": 0,
+      "disposed": 0,
+      "movementKeyEvents": 2,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7499655529477537,
+        "y": 0.44,
+        "z": 3.0697126161667803,
+        "yaw": -1.5649074729257346
+      },
+      "horizontalGap": 2.009812473503091,
+      "heightGap": 0.98,
+      "elapsedFixtureWallMs": 60,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "firstError": {
+              "stage": "movement",
+              "name": "Error",
+              "message": "actual fixture wait rejection"
+            }
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture wait rejection"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-up",
+      "kind": "bus",
+      "fail": "up",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture movement keyup rejection"
+      },
+      "frameCount": 23,
+      "heldFrames": 23,
+      "reads": 1,
+      "waits": 1,
+      "jsonReads": 0,
+      "disposed": 0,
+      "movementKeyEvents": 2,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7671608990911122,
+        "y": 1.244463926936654,
+        "z": 1.3447983226231839,
+        "yaw": -3.1316241718900546
+      },
+      "horizontalGap": 0.2848124735030928,
+      "heightGap": 0.17553607306334595,
+      "elapsedFixtureWallMs": 115060,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": false,
+                "error": {
+                  "stage": "keyup",
+                  "name": "Error",
+                  "message": "actual fixture movement keyup rejection"
+                }
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": false,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "firstError": {
+              "stage": "release",
+              "name": "Error",
+              "message": "actual fixture movement keyup rejection"
+            }
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture movement keyup rejection"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-z-up",
+      "kind": "bus",
+      "fail": "z-up",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture Z keyup rejection"
+      },
+      "frameCount": 26,
+      "heldFrames": 23,
+      "reads": 5,
+      "waits": 4,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 8,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7694037703272023,
+        "y": 1.3831362819549253,
+        "z": 1.1198095017261926,
+        "yaw": -3.1316241718900546
+      },
+      "horizontalGap": 0.05981247350309264,
+      "heightGap": 0.0368637180450746,
+      "elapsedFixtureWallMs": 130190,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 34930
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 29890
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 24850
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7694037703272023,
+          "y": 1.3831362819549253,
+          "z": 1.1198095017261926,
+          "yaw": -3.1316241718900546
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.7507131766931171,
+                    "y": 0.44,
+                    "z": 2.99471634253445
+                  },
+                  "simulationTime": 35.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07499999999999983,
+                  "horizontalGap": 1.9348124735030912
+                },
+                {
+                  "local": {
+                    "x": -0.7514608004384805,
+                    "y": 0.44,
+                    "z": 2.91972006890212
+                  },
+                  "simulationTime": 35.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.14999999999999966,
+                  "horizontalGap": 1.8598124735030914
+                },
+                {
+                  "local": {
+                    "x": -0.7522084241838439,
+                    "y": 0.44,
+                    "z": 2.8447237952697897
+                  },
+                  "simulationTime": 35.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22499999999999948,
+                  "horizontalGap": 1.7848124735030915
+                },
+                {
+                  "local": {
+                    "x": -0.7529560479292073,
+                    "y": 0.44,
+                    "z": 2.7697275216374595
+                  },
+                  "simulationTime": 36.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.2999999999999993,
+                  "horizontalGap": 1.7098124735030917
+                },
+                {
+                  "local": {
+                    "x": -0.7537036716745708,
+                    "y": 0.44,
+                    "z": 2.6947312480051293
+                  },
+                  "simulationTime": 36.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.37499999999999917,
+                  "horizontalGap": 1.6348124735030918
+                },
+                {
+                  "local": {
+                    "x": -0.7544512954199342,
+                    "y": 0.4586539151664508,
+                    "z": 2.619734974372799
+                  },
+                  "simulationTime": 36.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.449999999999999,
+                  "horizontalGap": 1.559812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.7551989191652976,
+                    "y": 0.5048780335058745,
+                    "z": 2.544738700740469
+                  },
+                  "simulationTime": 36.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5249999999999988,
+                  "horizontalGap": 1.484812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.755946542910661,
+                    "y": 0.5511021518452981,
+                    "z": 2.4697424271081387
+                  },
+                  "simulationTime": 37.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.5999999999999986,
+                  "horizontalGap": 1.4098124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7566941666560244,
+                    "y": 0.5973262701847217,
+                    "z": 2.3947461534758085
+                  },
+                  "simulationTime": 37.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6749999999999985,
+                  "horizontalGap": 1.3348124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7574417904013878,
+                    "y": 0.6435503885241454,
+                    "z": 2.3197498798434784
+                  },
+                  "simulationTime": 37.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7499999999999983,
+                  "horizontalGap": 1.2598124735030927
+                },
+                {
+                  "local": {
+                    "x": -0.7581894141467512,
+                    "y": 0.689774506863569,
+                    "z": 2.244753606211148
+                  },
+                  "simulationTime": 37.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8249999999999982,
+                  "horizontalGap": 1.184812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7589370378921146,
+                    "y": 0.7359986252029926,
+                    "z": 2.169757332578818
+                  },
+                  "simulationTime": 38.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.899999999999998,
+                  "horizontalGap": 1.109812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.759684661637478,
+                    "y": 0.7822227435424163,
+                    "z": 2.094761058946488
+                  },
+                  "simulationTime": 38.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9749999999999979,
+                  "horizontalGap": 1.0348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7604322853828415,
+                    "y": 0.8284468618818399,
+                    "z": 2.0197647853141576
+                  },
+                  "simulationTime": 38.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0499999999999976,
+                  "horizontalGap": 0.9598124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7611799091282049,
+                    "y": 0.8746709802212638,
+                    "z": 1.9447685116818272
+                  },
+                  "simulationTime": 38.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1249999999999976,
+                  "horizontalGap": 0.8848124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7619275328735683,
+                    "y": 0.9208950985606875,
+                    "z": 1.8697722380494968
+                  },
+                  "simulationTime": 39.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.1999999999999975,
+                  "horizontalGap": 0.8098124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7626751566189317,
+                    "y": 0.9671192169001113,
+                    "z": 1.7947759644171664
+                  },
+                  "simulationTime": 39.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2749999999999975,
+                  "horizontalGap": 0.7348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7634227803642951,
+                    "y": 1.0133433352395351,
+                    "z": 1.719779690784836
+                  },
+                  "simulationTime": 39.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3499999999999974,
+                  "horizontalGap": 0.6598124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7641704041096585,
+                    "y": 1.0595674535789588,
+                    "z": 1.6447834171525055
+                  },
+                  "simulationTime": 39.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4249999999999974,
+                  "horizontalGap": 0.5848124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7649180278550219,
+                    "y": 1.1057915719183826,
+                    "z": 1.5697871435201751
+                  },
+                  "simulationTime": 40.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.4999999999999973,
+                  "horizontalGap": 0.509812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7656656516003854,
+                    "y": 1.1520156902578065,
+                    "z": 1.4947908698878447
+                  },
+                  "simulationTime": 40.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5749999999999973,
+                  "horizontalGap": 0.43481247350309293
+                },
+                {
+                  "local": {
+                    "x": -0.7664132753457488,
+                    "y": 1.1982398085972301,
+                    "z": 1.4197945962555143
+                  },
+                  "simulationTime": 40.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6499999999999972,
+                  "horizontalGap": 0.35981247350309287
+                },
+                {
+                  "local": {
+                    "x": -0.7671608990911122,
+                    "y": 1.244463926936654,
+                    "z": 1.3447983226231839
+                  },
+                  "simulationTime": 40.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7249999999999972,
+                  "horizontalGap": 0.2848124735030928
+                }
+              ],
+              "initialSimulationTime": 35.24999999999928,
+              "lastObservedLocal": {
+                "x": -0.7671608990911122,
+                "y": 1.244463926936654,
+                "z": 1.3447983226231839,
+                "yaw": -3.1316241718900546
+              },
+              "lastSimulationTime": 40.99999999999928
+            },
+            "after": {
+              "x": -0.7671608990911122,
+              "y": 1.244463926936654,
+              "z": 1.3447983226231839,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 5.75,
+            "geometricMetres": 1.7249999999999983
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -0.7671608990911122,
+              "y": 1.244463926936654,
+              "z": 1.3447983226231839,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 40.99999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 6,
+            "geometricMetres": 1.7999999999999983
+          },
+          {
+            "n": 2,
+            "before": {
+              "x": -0.7679085228364756,
+              "y": 1.2906880452760778,
+              "z": 1.2698020489908535,
+              "yaw": -3.1316241718900546
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684952,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 41.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7686561465818389,
+              "y": 1.3369121636155015,
+              "z": 1.194805775358523,
+              "yaw": -3.1316241718900555
+            },
+            "heldSeconds": 6.25,
+            "geometricMetres": 1.8749999999999982
+          },
+          {
+            "n": 3,
+            "before": {
+              "x": -0.7686561465818389,
+              "y": 1.3369121636155015,
+              "z": 1.194805775358523,
+              "yaw": -3.1316241718900555
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 41.49999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.7694037703272023,
+              "y": 1.3831362819549253,
+              "z": 1.1198095017261926,
+              "yaw": -3.1316241718900546
+            },
+            "heldSeconds": 6.5,
+            "geometricMetres": 1.9499999999999982
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": false,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": false,
+              "error": {
+                "stage": "precision modifier keyup",
+                "name": "Error",
+                "message": "actual fixture Z keyup rejection"
+              }
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture Z keyup rejection"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-json",
+      "kind": "bus",
+      "fail": "json",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture JSON rejection"
+      },
+      "frameCount": 23,
+      "heldFrames": 23,
+      "reads": 1,
+      "waits": 1,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 2,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7671608990911122,
+        "y": 1.244463926936654,
+        "z": 1.3447983226231839,
+        "yaw": -3.1316241718900546
+      },
+      "horizontalGap": 0.2848124735030928,
+      "heightGap": 0.17553607306334595,
+      "elapsedFixtureWallMs": 115060,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "firstError": {
+              "stage": "release",
+              "name": "Error",
+              "message": "actual fixture JSON rejection"
+            }
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture JSON rejection"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-public-release-dispose",
+      "kind": "bus",
+      "fail": "dispose",
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": {
+        "name": "Error",
+        "message": "actual fixture dispose rejection"
+      },
+      "frameCount": 23,
+      "heldFrames": 23,
+      "reads": 1,
+      "waits": 1,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 2,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.7671608990911122,
+        "y": 1.244463926936654,
+        "z": 1.3447983226231839,
+        "yaw": -3.1316241718900546
+      },
+      "horizontalGap": 0.2848124735030928,
+      "heightGap": 0.17553607306334595,
+      "elapsedFixtureWallMs": 115060,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "s"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "s"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.77,
+          "z": 1.06,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "lastObservedLocal": {
+          "x": -0.7499655529477537,
+          "y": 0.44,
+          "z": 3.0697126161667803,
+          "yaw": -1.5649074729257346
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 35.24999999999928,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-bus-1",
+                  "passengerLocal": {
+                    "x": -0.7499655529477537,
+                    "y": 0.44,
+                    "z": 3.0697126161667803,
+                    "yaw": -1.5649074729257346
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-bus-1",
+                      "yaw": 1.5707963267948966
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.7499655529477537,
+              "y": 0.44,
+              "z": 3.0697126161667803,
+              "yaw": -1.5649074729257346
+            },
+            "key": "s",
+            "slow": true,
+            "desired": -4.702420498684951,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "s"
+              },
+              {
+                "action": "up",
+                "key": "s",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 35.24999999999928,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.7507131766931171,
+                    "y": 0.44,
+                    "z": 2.99471634253445
+                  },
+                  "simulationTime": 35.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07499999999999983,
+                  "horizontalGap": 1.9348124735030912
+                },
+                {
+                  "local": {
+                    "x": -0.7514608004384805,
+                    "y": 0.44,
+                    "z": 2.91972006890212
+                  },
+                  "simulationTime": 35.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.14999999999999966,
+                  "horizontalGap": 1.8598124735030914
+                },
+                {
+                  "local": {
+                    "x": -0.7522084241838439,
+                    "y": 0.44,
+                    "z": 2.8447237952697897
+                  },
+                  "simulationTime": 35.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22499999999999948,
+                  "horizontalGap": 1.7848124735030915
+                },
+                {
+                  "local": {
+                    "x": -0.7529560479292073,
+                    "y": 0.44,
+                    "z": 2.7697275216374595
+                  },
+                  "simulationTime": 36.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.2999999999999993,
+                  "horizontalGap": 1.7098124735030917
+                },
+                {
+                  "local": {
+                    "x": -0.7537036716745708,
+                    "y": 0.44,
+                    "z": 2.6947312480051293
+                  },
+                  "simulationTime": 36.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.37499999999999917,
+                  "horizontalGap": 1.6348124735030918
+                },
+                {
+                  "local": {
+                    "x": -0.7544512954199342,
+                    "y": 0.4586539151664508,
+                    "z": 2.619734974372799
+                  },
+                  "simulationTime": 36.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.449999999999999,
+                  "horizontalGap": 1.559812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.7551989191652976,
+                    "y": 0.5048780335058745,
+                    "z": 2.544738700740469
+                  },
+                  "simulationTime": 36.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5249999999999988,
+                  "horizontalGap": 1.484812473503092
+                },
+                {
+                  "local": {
+                    "x": -0.755946542910661,
+                    "y": 0.5511021518452981,
+                    "z": 2.4697424271081387
+                  },
+                  "simulationTime": 37.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.5999999999999986,
+                  "horizontalGap": 1.4098124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7566941666560244,
+                    "y": 0.5973262701847217,
+                    "z": 2.3947461534758085
+                  },
+                  "simulationTime": 37.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6749999999999985,
+                  "horizontalGap": 1.3348124735030924
+                },
+                {
+                  "local": {
+                    "x": -0.7574417904013878,
+                    "y": 0.6435503885241454,
+                    "z": 2.3197498798434784
+                  },
+                  "simulationTime": 37.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7499999999999983,
+                  "horizontalGap": 1.2598124735030927
+                },
+                {
+                  "local": {
+                    "x": -0.7581894141467512,
+                    "y": 0.689774506863569,
+                    "z": 2.244753606211148
+                  },
+                  "simulationTime": 37.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8249999999999982,
+                  "horizontalGap": 1.184812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7589370378921146,
+                    "y": 0.7359986252029926,
+                    "z": 2.169757332578818
+                  },
+                  "simulationTime": 38.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.899999999999998,
+                  "horizontalGap": 1.109812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.759684661637478,
+                    "y": 0.7822227435424163,
+                    "z": 2.094761058946488
+                  },
+                  "simulationTime": 38.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9749999999999979,
+                  "horizontalGap": 1.0348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7604322853828415,
+                    "y": 0.8284468618818399,
+                    "z": 2.0197647853141576
+                  },
+                  "simulationTime": 38.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0499999999999976,
+                  "horizontalGap": 0.9598124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7611799091282049,
+                    "y": 0.8746709802212638,
+                    "z": 1.9447685116818272
+                  },
+                  "simulationTime": 38.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1249999999999976,
+                  "horizontalGap": 0.8848124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7619275328735683,
+                    "y": 0.9208950985606875,
+                    "z": 1.8697722380494968
+                  },
+                  "simulationTime": 39.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.1999999999999975,
+                  "horizontalGap": 0.8098124735030933
+                },
+                {
+                  "local": {
+                    "x": -0.7626751566189317,
+                    "y": 0.9671192169001113,
+                    "z": 1.7947759644171664
+                  },
+                  "simulationTime": 39.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2749999999999975,
+                  "horizontalGap": 0.7348124735030932
+                },
+                {
+                  "local": {
+                    "x": -0.7634227803642951,
+                    "y": 1.0133433352395351,
+                    "z": 1.719779690784836
+                  },
+                  "simulationTime": 39.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3499999999999974,
+                  "horizontalGap": 0.6598124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7641704041096585,
+                    "y": 1.0595674535789588,
+                    "z": 1.6447834171525055
+                  },
+                  "simulationTime": 39.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4249999999999974,
+                  "horizontalGap": 0.5848124735030931
+                },
+                {
+                  "local": {
+                    "x": -0.7649180278550219,
+                    "y": 1.1057915719183826,
+                    "z": 1.5697871435201751
+                  },
+                  "simulationTime": 40.24999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.4999999999999973,
+                  "horizontalGap": 0.509812473503093
+                },
+                {
+                  "local": {
+                    "x": -0.7656656516003854,
+                    "y": 1.1520156902578065,
+                    "z": 1.4947908698878447
+                  },
+                  "simulationTime": 40.49999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5749999999999973,
+                  "horizontalGap": 0.43481247350309293
+                },
+                {
+                  "local": {
+                    "x": -0.7664132753457488,
+                    "y": 1.1982398085972301,
+                    "z": 1.4197945962555143
+                  },
+                  "simulationTime": 40.74999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6499999999999972,
+                  "horizontalGap": 0.35981247350309287
+                },
+                {
+                  "local": {
+                    "x": -0.7671608990911122,
+                    "y": 1.244463926936654,
+                    "z": 1.3447983226231839
+                  },
+                  "simulationTime": 40.99999999999928,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7249999999999972,
+                  "horizontalGap": 0.2848124735030928
+                }
+              ],
+              "initialSimulationTime": 35.24999999999928,
+              "lastObservedLocal": {
+                "x": -0.7671608990911122,
+                "y": 1.244463926936654,
+                "z": 1.3447983226231839,
+                "yaw": -3.1316241718900546
+              },
+              "lastSimulationTime": 40.99999999999928
+            },
+            "firstError": {
+              "stage": "release",
+              "name": "Error",
+              "message": "actual fixture dispose rejection"
+            }
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "Error",
+          "message": "actual fixture dispose rejection"
+        }
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-actual-TRAM-upper3-source-five-second-CPU-frame",
+      "kind": "tram",
+      "fail": null,
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 0,
+      "failure": null,
+      "frameCount": 26,
+      "heldFrames": 23,
+      "reads": 5,
+      "waits": 4,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 8,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.6897775902361967,
+        "y": 1.4002614235271065,
+        "z": -1.5714205911201162,
+        "yaw": -0.007078353442451224
+      },
+      "horizontalGap": 0.031421378270861375,
+      "heightGap": 0.019738576472893454,
+      "elapsedFixtureWallMs": 130190,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "w"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "w"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "down",
+          "key": "w"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 34930
+        },
+        {
+          "kind": "up",
+          "key": "w"
+        },
+        {
+          "kind": "down",
+          "key": "w"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 29890
+        },
+        {
+          "kind": "up",
+          "key": "w"
+        },
+        {
+          "kind": "down",
+          "key": "w"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 24850
+        },
+        {
+          "kind": "up",
+          "key": "w"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.69,
+          "z": -1.54,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.6759749162835202,
+          "y": 0.44,
+          "z": -3.5213717408138105,
+          "yaw": -1.5692704478892927
+        },
+        "lastObservedLocal": {
+          "x": -0.6897775902361967,
+          "y": 1.4002614235271065,
+          "z": -1.5714205911201162,
+          "yaw": -0.007078353442451224
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 51.99999999999833,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-tram-1",
+                  "passengerLocal": {
+                    "x": -0.6759749162835202,
+                    "y": 0.44,
+                    "z": -3.5213717408138105,
+                    "yaw": -1.5692704478892927
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-tram-1",
+                      "yaw": 3.141592653589793
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.6759749162835202,
+              "y": 0.44,
+              "z": -3.5213717408138105,
+              "yaw": -1.5692704478892927
+            },
+            "key": "w",
+            "slow": true,
+            "desired": 3.134514300147342,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "w"
+              },
+              {
+                "action": "up",
+                "key": "w",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 51.99999999999833,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.6765057883586232,
+                    "y": 0.44,
+                    "z": -3.4463736196717454
+                  },
+                  "simulationTime": 52.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07500000000000004,
+                  "horizontalGap": 1.9064213782708623
+                },
+                {
+                  "local": {
+                    "x": -0.6770366604337261,
+                    "y": 0.44,
+                    "z": -3.37137549852968
+                  },
+                  "simulationTime": 52.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.15000000000000008,
+                  "horizontalGap": 1.8314213782708624
+                },
+                {
+                  "local": {
+                    "x": -0.6775675325088291,
+                    "y": 0.44,
+                    "z": -3.296377377387615
+                  },
+                  "simulationTime": 52.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22500000000000012,
+                  "horizontalGap": 1.7564213782708624
+                },
+                {
+                  "local": {
+                    "x": -0.678098404583932,
+                    "y": 0.44,
+                    "z": -3.22137925624555
+                  },
+                  "simulationTime": 52.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.30000000000000016,
+                  "horizontalGap": 1.6814213782708622
+                },
+                {
+                  "local": {
+                    "x": -0.6786292766590349,
+                    "y": 0.44,
+                    "z": -3.1463811351034847
+                  },
+                  "simulationTime": 53.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.3750000000000002,
+                  "horizontalGap": 1.6064213782708623
+                },
+                {
+                  "local": {
+                    "x": -0.6791601487341379,
+                    "y": 0.45797733738321084,
+                    "z": -3.0713830139614196
+                  },
+                  "simulationTime": 53.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.4500000000000003,
+                  "horizontalGap": 1.531421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6796910208092408,
+                    "y": 0.5050915416904056,
+                    "z": -2.9963848928193544
+                  },
+                  "simulationTime": 53.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5250000000000004,
+                  "horizontalGap": 1.4564213782708622
+                },
+                {
+                  "local": {
+                    "x": -0.6802218928843438,
+                    "y": 0.5522057459976004,
+                    "z": -2.921386771677289
+                  },
+                  "simulationTime": 53.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.6000000000000004,
+                  "horizontalGap": 1.3814213782708622
+                },
+                {
+                  "local": {
+                    "x": -0.6807527649594467,
+                    "y": 0.5993199503047952,
+                    "z": -2.846388650535224
+                  },
+                  "simulationTime": 54.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6750000000000005,
+                  "horizontalGap": 1.306421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6812836370345496,
+                    "y": 0.6464341546119899,
+                    "z": -2.771390529393159
+                  },
+                  "simulationTime": 54.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7500000000000006,
+                  "horizontalGap": 1.231421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6818145091096526,
+                    "y": 0.6935483589191848,
+                    "z": -2.6963924082510937
+                  },
+                  "simulationTime": 54.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8250000000000006,
+                  "horizontalGap": 1.1564213782708619
+                },
+                {
+                  "local": {
+                    "x": -0.6823453811847555,
+                    "y": 0.7406625632263795,
+                    "z": -2.6213942871090286
+                  },
+                  "simulationTime": 54.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.9000000000000007,
+                  "horizontalGap": 1.081421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6828762532598585,
+                    "y": 0.7877767675335743,
+                    "z": -2.5463961659669634
+                  },
+                  "simulationTime": 55.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9750000000000008,
+                  "horizontalGap": 1.006421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6834071253349614,
+                    "y": 0.8348909718407691,
+                    "z": -2.471398044824898
+                  },
+                  "simulationTime": 55.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0500000000000007,
+                  "horizontalGap": 0.9314213782708619
+                },
+                {
+                  "local": {
+                    "x": -0.6839379974100643,
+                    "y": 0.8820051761479639,
+                    "z": -2.396399923682833
+                  },
+                  "simulationTime": 55.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1250000000000007,
+                  "horizontalGap": 0.8564213782708618
+                },
+                {
+                  "local": {
+                    "x": -0.6844688694851673,
+                    "y": 0.9291193804551586,
+                    "z": -2.321401802540768
+                  },
+                  "simulationTime": 55.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.2000000000000006,
+                  "horizontalGap": 0.7814213782708618
+                },
+                {
+                  "local": {
+                    "x": -0.6849997415602702,
+                    "y": 0.9762335847623536,
+                    "z": -2.2464036813987027
+                  },
+                  "simulationTime": 56.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2750000000000006,
+                  "horizontalGap": 0.7064213782708617
+                },
+                {
+                  "local": {
+                    "x": -0.6855306136353732,
+                    "y": 1.0233477890695482,
+                    "z": -2.1714055602566376
+                  },
+                  "simulationTime": 56.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3500000000000005,
+                  "horizontalGap": 0.6314213782708618
+                },
+                {
+                  "local": {
+                    "x": -0.6860614857104761,
+                    "y": 1.070461993376743,
+                    "z": -2.0964074391145724
+                  },
+                  "simulationTime": 56.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4250000000000005,
+                  "horizontalGap": 0.5564213782708617
+                },
+                {
+                  "local": {
+                    "x": -0.686592357785579,
+                    "y": 1.1175761976839378,
+                    "z": -2.0214093179725072
+                  },
+                  "simulationTime": 56.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.5000000000000004,
+                  "horizontalGap": 0.4814213782708616
+                },
+                {
+                  "local": {
+                    "x": -0.687123229860682,
+                    "y": 1.1646904019911326,
+                    "z": -1.946411196830442
+                  },
+                  "simulationTime": 57.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5750000000000004,
+                  "horizontalGap": 0.40642137827086156
+                },
+                {
+                  "local": {
+                    "x": -0.6876541019357849,
+                    "y": 1.2118046062983274,
+                    "z": -1.871413075688377
+                  },
+                  "simulationTime": 57.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6500000000000004,
+                  "horizontalGap": 0.33142137827086154
+                },
+                {
+                  "local": {
+                    "x": -0.6881849740108879,
+                    "y": 1.258918810605522,
+                    "z": -1.7964149545463117
+                  },
+                  "simulationTime": 57.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7250000000000003,
+                  "horizontalGap": 0.2564213782708615
+                }
+              ],
+              "initialSimulationTime": 51.99999999999833,
+              "lastObservedLocal": {
+                "x": -0.6881849740108879,
+                "y": 1.258918810605522,
+                "z": -1.7964149545463117,
+                "yaw": -0.007078353442451224
+              },
+              "lastSimulationTime": 57.74999999999833
+            },
+            "after": {
+              "x": -0.6881849740108879,
+              "y": 1.258918810605522,
+              "z": -1.7964149545463117,
+              "yaw": -0.007078353442451224
+            },
+            "heldSeconds": 5.75,
+            "geometricMetres": 1.725000000000001
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -0.6881849740108879,
+              "y": 1.258918810605522,
+              "z": -1.7964149545463117,
+              "yaw": -0.007078353442451224
+            },
+            "key": "w",
+            "slow": true,
+            "desired": 3.134514300147342,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "w"
+              },
+              {
+                "action": "up",
+                "key": "w",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 57.74999999999833,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.6887158460859908,
+              "y": 1.3060330149127168,
+              "z": -1.7214168334042466,
+              "yaw": -0.007078353442451224
+            },
+            "heldSeconds": 6,
+            "geometricMetres": 1.800000000000001
+          },
+          {
+            "n": 2,
+            "before": {
+              "x": -0.6887158460859908,
+              "y": 1.3060330149127168,
+              "z": -1.7214168334042466,
+              "yaw": -0.007078353442451224
+            },
+            "key": "w",
+            "slow": true,
+            "desired": 3.134514300147342,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "w"
+              },
+              {
+                "action": "up",
+                "key": "w",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 57.99999999999833,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.6892467181610937,
+              "y": 1.3531472192199117,
+              "z": -1.6464187122621814,
+              "yaw": -0.007078353442451224
+            },
+            "heldSeconds": 6.25,
+            "geometricMetres": 1.8750000000000009
+          },
+          {
+            "n": 3,
+            "before": {
+              "x": -0.6892467181610937,
+              "y": 1.3531472192199117,
+              "z": -1.6464187122621814,
+              "yaw": -0.007078353442451224
+            },
+            "key": "w",
+            "slow": true,
+            "desired": 3.134514300147342,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "w"
+              },
+              {
+                "action": "up",
+                "key": "w",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 58.24999999999833,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.6897775902361967,
+              "y": 1.4002614235271065,
+              "z": -1.5714205911201162,
+              "yaw": -0.007078353442451224
+            },
+            "heldSeconds": 6.5,
+            "geometricMetres": 1.9500000000000008
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": null
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    },
+    {
+      "name": "held-actual-TRAM-extra-one-frame-keyup-correction",
+      "kind": "tram",
+      "fail": null,
+      "precision": true,
+      "syntheticWallFrameMs": 5000,
+      "syntheticKeyupExtraFrames": 1,
+      "failure": null,
+      "frameCount": 26,
+      "heldFrames": 23,
+      "reads": 3,
+      "waits": 2,
+      "jsonReads": 1,
+      "disposed": 1,
+      "movementKeyEvents": 4,
+      "zKeyEvents": 2,
+      "finalLocal": {
+        "x": -0.6897775902361967,
+        "y": 1.4002614235271065,
+        "z": -1.5714205911201162,
+        "yaw": -0.007078353442451224
+      },
+      "horizontalGap": 0.031421378270861375,
+      "heightGap": 0.019738576472893454,
+      "elapsedFixtureWallMs": 130110,
+      "events": [
+        {
+          "kind": "down",
+          "key": "z"
+        },
+        {
+          "kind": "down",
+          "key": "w"
+        },
+        {
+          "kind": "wait",
+          "held": true,
+          "timeout": 149970
+        },
+        {
+          "kind": "up",
+          "key": "w"
+        },
+        {
+          "kind": "jsonValue",
+          "movementHeld": false
+        },
+        {
+          "kind": "down",
+          "key": "w"
+        },
+        {
+          "kind": "wait",
+          "held": false,
+          "timeout": 29930
+        },
+        {
+          "kind": "up",
+          "key": "w"
+        },
+        {
+          "kind": "up",
+          "key": "z"
+        }
+      ],
+      "motion": {
+        "stage": "CPU-actual-source-upper3",
+        "target": {
+          "x": -0.69,
+          "z": -1.54,
+          "y": 1.42
+        },
+        "precision": true,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.6759749162835202,
+          "y": 0.44,
+          "z": -3.5213717408138105,
+          "yaw": -1.5692704478892927
+        },
+        "lastObservedLocal": {
+          "x": -0.6897775902361967,
+          "y": 1.4002614235271065,
+          "z": -1.5714205911201162,
+          "yaw": -0.007078353442451224
+        },
+        "samples": [
+          {
+            "started": true,
+            "paused": false,
+            "teleportRevision": 3,
+            "simulationTime": 51.99999999999833,
+            "camera": {
+              "yaw": 0,
+              "pitch": 0.15
+            },
+            "city": {
+              "sample": {
+                "transit": {
+                  "ridingVehicleId": "harbor-tram-1",
+                  "passengerLocal": {
+                    "x": -0.6759749162835202,
+                    "y": 0.44,
+                    "z": -3.5213717408138105,
+                    "yaw": -1.5692704478892927
+                  },
+                  "vehicles": [
+                    {
+                      "id": "harbor-tram-1",
+                      "yaw": 3.141592653589793
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "n": 0,
+            "before": {
+              "x": -0.6759749162835202,
+              "y": 0.44,
+              "z": -3.5213717408138105,
+              "yaw": -1.5692704478892927
+            },
+            "key": "w",
+            "slow": true,
+            "desired": 3.134514300147342,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "z",
+                "scope": "precision-local-leg"
+              },
+              {
+                "action": "down",
+                "key": "w"
+              },
+              {
+                "action": "up",
+                "key": "w",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 51.99999999999833,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+            "actualHeldObservation": {
+              "reason": "public-near-endpoint-correction",
+              "failure": null,
+              "observations": [
+                {
+                  "local": {
+                    "x": -0.6765057883586232,
+                    "y": 0.44,
+                    "z": -3.4463736196717454
+                  },
+                  "simulationTime": 52.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 0.25,
+                  "geometricMetres": 0.07500000000000004,
+                  "horizontalGap": 1.9064213782708623
+                },
+                {
+                  "local": {
+                    "x": -0.6770366604337261,
+                    "y": 0.44,
+                    "z": -3.37137549852968
+                  },
+                  "simulationTime": 52.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 0.5,
+                  "geometricMetres": 0.15000000000000008,
+                  "horizontalGap": 1.8314213782708624
+                },
+                {
+                  "local": {
+                    "x": -0.6775675325088291,
+                    "y": 0.44,
+                    "z": -3.296377377387615
+                  },
+                  "simulationTime": 52.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 0.75,
+                  "geometricMetres": 0.22500000000000012,
+                  "horizontalGap": 1.7564213782708624
+                },
+                {
+                  "local": {
+                    "x": -0.678098404583932,
+                    "y": 0.44,
+                    "z": -3.22137925624555
+                  },
+                  "simulationTime": 52.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1,
+                  "geometricMetres": 0.30000000000000016,
+                  "horizontalGap": 1.6814213782708622
+                },
+                {
+                  "local": {
+                    "x": -0.6786292766590349,
+                    "y": 0.44,
+                    "z": -3.1463811351034847
+                  },
+                  "simulationTime": 53.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1.25,
+                  "geometricMetres": 0.3750000000000002,
+                  "horizontalGap": 1.6064213782708623
+                },
+                {
+                  "local": {
+                    "x": -0.6791601487341379,
+                    "y": 0.45797733738321084,
+                    "z": -3.0713830139614196
+                  },
+                  "simulationTime": 53.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1.5,
+                  "geometricMetres": 0.4500000000000003,
+                  "horizontalGap": 1.531421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6796910208092408,
+                    "y": 0.5050915416904056,
+                    "z": -2.9963848928193544
+                  },
+                  "simulationTime": 53.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 1.75,
+                  "geometricMetres": 0.5250000000000004,
+                  "horizontalGap": 1.4564213782708622
+                },
+                {
+                  "local": {
+                    "x": -0.6802218928843438,
+                    "y": 0.5522057459976004,
+                    "z": -2.921386771677289
+                  },
+                  "simulationTime": 53.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2,
+                  "geometricMetres": 0.6000000000000004,
+                  "horizontalGap": 1.3814213782708622
+                },
+                {
+                  "local": {
+                    "x": -0.6807527649594467,
+                    "y": 0.5993199503047952,
+                    "z": -2.846388650535224
+                  },
+                  "simulationTime": 54.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2.25,
+                  "geometricMetres": 0.6750000000000005,
+                  "horizontalGap": 1.306421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6812836370345496,
+                    "y": 0.6464341546119899,
+                    "z": -2.771390529393159
+                  },
+                  "simulationTime": 54.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2.5,
+                  "geometricMetres": 0.7500000000000006,
+                  "horizontalGap": 1.231421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6818145091096526,
+                    "y": 0.6935483589191848,
+                    "z": -2.6963924082510937
+                  },
+                  "simulationTime": 54.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 2.75,
+                  "geometricMetres": 0.8250000000000006,
+                  "horizontalGap": 1.1564213782708619
+                },
+                {
+                  "local": {
+                    "x": -0.6823453811847555,
+                    "y": 0.7406625632263795,
+                    "z": -2.6213942871090286
+                  },
+                  "simulationTime": 54.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3,
+                  "geometricMetres": 0.9000000000000007,
+                  "horizontalGap": 1.081421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6828762532598585,
+                    "y": 0.7877767675335743,
+                    "z": -2.5463961659669634
+                  },
+                  "simulationTime": 55.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3.25,
+                  "geometricMetres": 0.9750000000000008,
+                  "horizontalGap": 1.006421378270862
+                },
+                {
+                  "local": {
+                    "x": -0.6834071253349614,
+                    "y": 0.8348909718407691,
+                    "z": -2.471398044824898
+                  },
+                  "simulationTime": 55.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3.5,
+                  "geometricMetres": 1.0500000000000007,
+                  "horizontalGap": 0.9314213782708619
+                },
+                {
+                  "local": {
+                    "x": -0.6839379974100643,
+                    "y": 0.8820051761479639,
+                    "z": -2.396399923682833
+                  },
+                  "simulationTime": 55.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 3.75,
+                  "geometricMetres": 1.1250000000000007,
+                  "horizontalGap": 0.8564213782708618
+                },
+                {
+                  "local": {
+                    "x": -0.6844688694851673,
+                    "y": 0.9291193804551586,
+                    "z": -2.321401802540768
+                  },
+                  "simulationTime": 55.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4,
+                  "geometricMetres": 1.2000000000000006,
+                  "horizontalGap": 0.7814213782708618
+                },
+                {
+                  "local": {
+                    "x": -0.6849997415602702,
+                    "y": 0.9762335847623536,
+                    "z": -2.2464036813987027
+                  },
+                  "simulationTime": 56.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4.25,
+                  "geometricMetres": 1.2750000000000006,
+                  "horizontalGap": 0.7064213782708617
+                },
+                {
+                  "local": {
+                    "x": -0.6855306136353732,
+                    "y": 1.0233477890695482,
+                    "z": -2.1714055602566376
+                  },
+                  "simulationTime": 56.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4.5,
+                  "geometricMetres": 1.3500000000000005,
+                  "horizontalGap": 0.6314213782708618
+                },
+                {
+                  "local": {
+                    "x": -0.6860614857104761,
+                    "y": 1.070461993376743,
+                    "z": -2.0964074391145724
+                  },
+                  "simulationTime": 56.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 4.75,
+                  "geometricMetres": 1.4250000000000005,
+                  "horizontalGap": 0.5564213782708617
+                },
+                {
+                  "local": {
+                    "x": -0.686592357785579,
+                    "y": 1.1175761976839378,
+                    "z": -2.0214093179725072
+                  },
+                  "simulationTime": 56.99999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5,
+                  "geometricMetres": 1.5000000000000004,
+                  "horizontalGap": 0.4814213782708616
+                },
+                {
+                  "local": {
+                    "x": -0.687123229860682,
+                    "y": 1.1646904019911326,
+                    "z": -1.946411196830442
+                  },
+                  "simulationTime": 57.24999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5.25,
+                  "geometricMetres": 1.5750000000000004,
+                  "horizontalGap": 0.40642137827086156
+                },
+                {
+                  "local": {
+                    "x": -0.6876541019357849,
+                    "y": 1.2118046062983274,
+                    "z": -1.871413075688377
+                  },
+                  "simulationTime": 57.49999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5.5,
+                  "geometricMetres": 1.6500000000000004,
+                  "horizontalGap": 0.33142137827086154
+                },
+                {
+                  "local": {
+                    "x": -0.6881849740108879,
+                    "y": 1.258918810605522,
+                    "z": -1.7964149545463117
+                  },
+                  "simulationTime": 57.74999999999833,
+                  "revision": 3,
+                  "heldSeconds": 5.75,
+                  "geometricMetres": 1.7250000000000003,
+                  "horizontalGap": 0.2564213782708615
+                }
+              ],
+              "initialSimulationTime": 51.99999999999833,
+              "lastObservedLocal": {
+                "x": -0.6881849740108879,
+                "y": 1.258918810605522,
+                "z": -1.7964149545463117,
+                "yaw": -0.007078353442451224
+              },
+              "lastSimulationTime": 57.74999999999833
+            },
+            "after": {
+              "x": -0.6887158460859908,
+              "y": 1.3060330149127168,
+              "z": -1.7214168334042466,
+              "yaw": -0.007078353442451224
+            },
+            "heldSeconds": 6,
+            "geometricMetres": 1.800000000000001
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -0.6887158460859908,
+              "y": 1.3060330149127168,
+              "z": -1.7214168334042466,
+              "yaw": -0.007078353442451224
+            },
+            "key": "w",
+            "slow": true,
+            "desired": 3.134514300147342,
+            "inputs": [
+              {
+                "action": "down",
+                "key": "w"
+              },
+              {
+                "action": "up",
+                "key": "w",
+                "confirmed": true
+              }
+            ],
+            "waits": [],
+            "releaseConfirmed": true,
+            "guardBaseline": {
+              "simulationTime": 57.99999999999833,
+              "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+            },
+            "slowModifierAlreadyHeld": true,
+            "after": {
+              "x": -0.6897775902361967,
+              "y": 1.4002614235271065,
+              "z": -1.5714205911201162,
+              "yaw": -0.007078353442451224
+            },
+            "heldSeconds": 6.5,
+            "geometricMetres": 1.950000000000001
+          }
+        ],
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": true,
+          "downConfirmed": true,
+          "releaseConfirmed": true,
+          "inputs": [
+            {
+              "action": "down",
+              "key": "z"
+            },
+            {
+              "action": "up",
+              "key": "z",
+              "confirmed": true
+            }
+          ]
+        },
+        "firstError": null
+      },
+      "secondaryErrors": [],
+      "boundary": "Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim."
+    }
+  ],
+  "gpuInvoked": false,
+  "productionSourceWritten": false,
+  "realWallTimeClaims": false,
+  "limits": "Wall frame/key release times and camera alignment are explicit CPU fixtures; original real failure remains. Importing real source movement proves sampled CPU physics only. Same150s local deadline/.06xz/.15y/radius/stall/keys guards; no native upper3/upper/return success or artistic acceptance."
+}

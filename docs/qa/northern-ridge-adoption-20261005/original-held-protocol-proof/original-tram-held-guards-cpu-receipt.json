@@ -1,0 +1,117 @@
+{
+  "status": "ORIGINAL_TRAM_ACTUAL_GUARD_REPLAY_PASS_OLD_FAILURE_RETAINED_NEW_NATIVE_REQUIRED",
+  "methodSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+  "sourceLayoutSHA256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+  "artifactId": 11330255217,
+  "originalZIPBytes": 297702658,
+  "originalZIPSHA256": "5a8ec12b34630df8d157a0f35fbfe605bb033c291541b79eb468e8ea30ddb91f",
+  "rows": [
+    {
+      "role": "baseline",
+      "rawMotionSHA256": "4f732a89bb7a07977c7a8262e77b16c94b2cc45e1edd0a8ece7b9343f4052334",
+      "originalCompletedCabinCyclesRadiusAndStallChecked": 39,
+      "originalFailedNoAfterCyclesRetained": 1,
+      "originalUpper3SuccessfulCycles": 22,
+      "actualObserverFramesChecked": 22,
+      "actualObserverResult": false,
+      "originalFirstError": {
+        "stage": "local movement",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1321ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 1321ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:279:722)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:369:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:347:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "originalFinalLocal": {
+        "x": -0.6814492746884757,
+        "y": 1.2117701114668709,
+        "z": -1.8714679858282464,
+        "yaw": -0.025470415182704542
+      },
+      "originalFinalHorizontalGap": 0.33157825702598115,
+      "originalCamera": {
+        "position": {
+          "x": 248.6759749162835,
+          "y": 2.06,
+          "z": -36.47862825918619
+        },
+        "target": {
+          "x": 248.66071613314253,
+          "y": 2.06,
+          "z": -46.478616617656265
+        },
+        "focus": {
+          "x": 248.6759749162835,
+          "y": 2.06,
+          "z": -36.47862825918619
+        },
+        "yaw": 3.143118532496011,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "originalVehicleYaw": 3.141592653589793,
+      "originalStatus": "FAILED_NOT_RECLASSIFIED",
+      "boundary": "Recorded original motion/camera and actual source guards only; after-sim derived from saved guardBaseline and cumulative held seconds. CPU wall1000 fixture. No exact original key wall duration or native held completion."
+    },
+    {
+      "role": "authored",
+      "rawMotionSHA256": "1c0726ca7db650db6fc45305d7f0cc17d352499d5e57682b9a3840baccd06c06",
+      "originalCompletedCabinCyclesRadiusAndStallChecked": 38,
+      "originalFailedNoAfterCyclesRetained": 1,
+      "originalUpper3SuccessfulCycles": 21,
+      "actualObserverFramesChecked": 21,
+      "actualObserverResult": false,
+      "originalFirstError": {
+        "stage": "local movement",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 5005ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 5005ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:279:722)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:369:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:347:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "originalFinalLocal": {
+        "x": -0.6795392000896897,
+        "y": 1.164670008890875,
+        "z": -1.9464436593165664,
+        "yaw": -0.025467249426852415
+      },
+      "originalFinalHorizontalGap": 0.4065782538865115,
+      "originalCamera": {
+        "position": {
+          "x": 248.6759749162835,
+          "y": 2.06,
+          "z": -36.47862825918619
+        },
+        "target": {
+          "x": 248.66071613314253,
+          "y": 2.06,
+          "z": -46.478616617656265
+        },
+        "focus": {
+          "x": 248.6759749162835,
+          "y": 2.06,
+          "z": -36.47862825918619
+        },
+        "yaw": 3.143118532496011,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "originalVehicleYaw": 3.141592653589793,
+      "originalStatus": "FAILED_NOT_RECLASSIFIED",
+      "boundary": "Recorded original motion/camera and actual source guards only; after-sim derived from saved guardBaseline and cumulative held seconds. CPU wall1000 fixture. No exact original key wall duration or native held completion."
+    }
+  ],
+  "completedCyclesChecked": 77,
+  "failedNoAfterRetained": 2,
+  "gpuInvoked": false,
+  "originalsModified": false,
+  "notUpperPhotos": true
+}

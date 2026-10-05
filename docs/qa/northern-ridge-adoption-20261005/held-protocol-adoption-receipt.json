@@ -1,0 +1,60 @@
+{
+  "status": "ACTUAL_SEALED_HELD_PUBLIC_PROTOCOL_ADOPTED_SOURCE_CPU_NATIVE_PENDING",
+  "candidatePath": "/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005",
+  "candidateSealSHA256": "ce767c12df5c04d924c38be30e94db34ff1f6ff70468adea7cfa363a5cf92e10",
+  "candidateManifestSHA256": "6e4d9cddd260512596691b7c1b3d424be134b8eb9d75f03e7b81407f8ba5d8f9",
+  "candidateFinalCPULedgerSHA256": "f87e73b1c89d92afbbe1b954c36eb6194ea3d170a5b3285eac765f1615358140",
+  "candidate25FullInventoryVerified": true,
+  "originalActiveToolSHA256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b",
+  "actualOriginalTargetHashes": {
+    "tools/native-review/methods/transport/HELD_PUBLIC_PRECISION_LEG_AMENDMENT-20261005.json": null,
+    "tools/native-review/methods/transport/method-manifest.json": "79900cd1332a9ab5c458f70d577c7d1ca34734e35b3c7db4f6369c63aba768f0",
+    "tools/native-review/methods/transport/native-transport-high.mjs": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+  },
+  "adoptedPayloadFiles": {
+    "tools/native-review/methods/transport/HELD_PUBLIC_PRECISION_LEG_AMENDMENT-20261005.json": {
+      "bytes": 7423,
+      "sha256": "0d971dd2d403d8243db03ca2272b167467caacf0fbb744e4b1adafcf885efdc0"
+    },
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "bytes": 19898,
+      "sha256": "cc1dfdd55bea8a5a24d7d5e03b17435c9222ad9c357521301b98273ff7de6a0e"
+    },
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "bytes": 53761,
+      "sha256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636"
+    }
+  },
+  "candidateNonPayload22ProofFilesAndOriginalSealArchived": true,
+  "payloadNotDuplicatedInQAButVerifiedAgainstCandidateSeal": true,
+  "independentManifestComparisonOnlyStatusToolAndNewExplicitAmendmentChanged": true,
+  "allOldManifestFieldsSourcePinsResourcesCanonicalBudgetsAndHistoryUnchanged": true,
+  "source207ActualNorthImportedPrimitivesSHAIdentity": {
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+    "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+    "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0"
+  },
+  "newMethodSyntaxExitCode": 0,
+  "all392SourceHashesUnchanged": true,
+  "fullTestBuildRepeatedForToolsOnly": false,
+  "originalActualCPUTracesCoverage": {
+    "inheritedModifierAndReleaseCases": 15,
+    "inheritedPointerOriginCases": 12,
+    "inheritedGuardTraceSamples": 25,
+    "actualImportedBusPhysicalCases": 10,
+    "actualImportedTramPhysicalCases": 2,
+    "actualBusCompletedCabinRadiusAndStallCycles": 102,
+    "actualBusMissingAfterFailuresRetained": 1,
+    "actualBusUpper3RAFRecordedReplays": 2,
+    "rafInitialAndNegativeGuards": 12,
+    "actualTramCompletedCabinRadiusAndStallCycles": 77,
+    "actualTramMissingAfterFailuresRetained": 2,
+    "actualTramUpper3RecordedRAFFrames": 43
+  },
+  "originalActualBusMissingAfter1AndTramMissingAfter2RemainFailures": true,
+  "originalTram43RecordedFramesDoNotProveFinalUpperOrReturn": true,
+  "nativeGpuExecuted": false,
+  "nativeArtAccepted": false,
+  "scope": "Only sealed public BUS/TRAM precision gap>.3 control strategy. Original .06 endpoint/.15 support/.3 physical-stall gait,150s/1800local/whole40min, public keys, source/resources/camera/floor/radius/revision guards and all other functions remain under original CPU/static evidence. New-source actual native validation is pending."
+}

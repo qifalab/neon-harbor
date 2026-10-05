@@ -1,0 +1,39 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';import crypto from 'node:crypto';
+const root='/workspace/neon-candidates/transport-held-public-slow-leg-candidate-20261005',project='/workspace/neon-candidates/transport-native-input-precision-final-20261005';
+const src=fs.readFileSync(root+'/payload/tools/native-review/methods/transport/native-transport-high.mjs','utf8');
+const extract=(s,a,b)=>{const i=s.indexOf(a),j=s.indexOf(b,i);assert.ok(i>=0&&j>i);return s.slice(i,j);};
+const kernel=extract(src,'  function radiusGuard(', '  async function waitBerth('),main=fs.readFileSync(project+'/src/main.js','utf8'),input=extract(main,'function inputState(){',"window.addEventListener('blur'");
+const {HarborTransitService}=await import(project+'/src/harbor-transit.js');
+const rawPath='/workspace/neon-evidence/3aa-bus-original-fail-11329128028/extracted/native/authored/bus/motion.json';const original=JSON.parse(fs.readFileSync(rawPath)),motion=original.motion.find(x=>x.stage==='upper-3');
+const rows=[];
+async function exercise({name,fail=null,wallFrame=5000,keyupFrames=0,precision=true,expectFailure=null}){
+ const service=new HarborTransitService(),v=service.vehicles.find(v=>v.kind==='bus'),initial=motion.samples[0],layout=service.layout('bus');
+ service.ridingVehicleId=v.id;service.passenger={...motion.initialLocal};v.pose.yaw=initial.city.sample.transit.vehicles.find(x=>x.id===initial.city.sample.transit.ridingVehicleId).yaw;
+ const sim={player:{},inCar:null};let simTime=initial.simulationTime,now=1000,reads=0,waits=0,frameCount=0,jsonReads=0,disposed=0,heldFrames=0;const events=[],keys=new Set(),listeners={};
+ const c=vm.createContext({assert,Math,Number,Date:{now:()=>now},record:{motion:[],secondaryErrors:[]},remaining:cap=>cap,deadline:now+2400000,
+  distance:(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),transit:s=>s.city.sample.transit,vehicle:s=>s.city.sample.transit.vehicles[0],err:(e,stage)=>({stage,name:e.name,message:e.message}),
+  keys,touchHeld:new Set(),cameraYaw:0,started:true,paused:false,panel:{open:false},action:()=>{throw Error('unexpected action')},toggleView:()=>{throw Error('unexpected view')},window:{addEventListener:(name,fn)=>listeners[name]=fn}});
+ const snapshot=()=>({started:true,paused:false,teleportRevision:3,simulationTime:simTime,camera:{yaw:c.cameraYaw,pitch:.15},city:{sample:{transit:{ridingVehicleId:v.id,passengerLocal:{...service.passenger},vehicles:[{id:v.id,yaw:v.pose.yaw}]}}}});
+ c.window.__NEON__={snapshot};c.read=async()=>{reads++;now+=10;return snapshot();};c.aim=async(_p,yaw)=>{now+=10;c.cameraYaw=yaw;return snapshot();};
+ const eventFor=key=>({code:'Key'+key.toUpperCase(),repeat:false,target:{matches:()=>false},preventDefault(){}});
+ const frame=()=>{const actualInput=c.actualInputState();assert.equal(actualInput.slow,true);assert.equal(actualInput.sprint,false);service.stepPlayer(sim,.25,actualInput);simTime+=.25;now+=wallFrame;frameCount++;};
+ c.page={keyboard:{down:async key=>{events.push({kind:'down',key});now+=10;listeners.keydown(eventFor(key));if(fail==='down'&&key!=='z')throw Error('actual fixture down rejection after public handler');if(fail==='z-down'&&key==='z')throw Error('actual fixture Z down rejection after public handler');},up:async key=>{events.push({kind:'up',key});now+=10;if(fail==='up'&&key!=='z')throw Error('actual fixture movement keyup rejection');if(fail==='z-up'&&key==='z')throw Error('actual fixture Z keyup rejection');if(key!=='z')for(let i=0;i<keyupFrames;i++)frame();listeners.keyup(eventFor(key));}},
+ waitForFunction:async(fn,arg,options)=>{waits++;events.push({kind:'wait',held:fn.name==='cabinHeldObservation',timeout:options.timeout});if(fail==='wait')throw Error('actual fixture wait rejection');let result;
+  for(let n=0;n<2000;n++){frame();if(fn.name==='cabinHeldObservation')heldFrames++;result=fn(arg);if(result)break;}
+  assert.ok(result,'finite CPU callback fixture');return {jsonValue:async()=>{jsonReads++;events.push({kind:'jsonValue',movementHeld:[...keys].some(k=>k!=='KeyZ')});if(fail==='json')throw Error('actual fixture JSON rejection');return result;},dispose:async()=>{disposed++;if(fail==='dispose')throw Error('actual fixture dispose rejection');}};
+ }};
+ vm.runInContext(input+'\nglobalThis.actualInputState=inputState;',c);vm.runInContext(kernel+'\nglobalThis.walk=walkLocal;',c);
+ let failure=null;try{await c.walk(motion.target,{},layout,'CPU-actual-source-upper3',{precision});}catch(e){failure={name:e.name,message:e.message};}
+ if(expectFailure)assert.ok(failure&&failure.message.includes(expectFailure),name+': '+JSON.stringify(failure));else assert.equal(failure,null,name);
+ const m=c.record.motion.at(-1);assert.equal(m.localBudget,150000);assert.equal(m.maxIterations,1800);assert.equal(events.filter(x=>x.kind==='down'&&x.key==='z').length,1);assert.equal(events.filter(x=>x.kind==='up'&&x.key==='z').length,1);
+ assert.ok(events.filter(x=>x.kind==='jsonValue').every(x=>!x.movementHeld),'actual keyup precedes diagnostic RPC');if(fail==='up'){assert.equal(jsonReads,0,'unconfirmed movement release skips handle RPC and goes to original case cleanup');assert.equal(keys.has('KeyS'),true);}else assert.equal([...keys].some(k=>k!=='KeyZ'),false,'movement released on async failure');
+ if(fail!=='z-up')assert.equal(keys.has('KeyZ'),false);
+ const gap=Math.hypot(service.passenger.x-motion.target.x,service.passenger.z-motion.target.z),heightGap=Math.abs(service.passenger.y-motion.target.y);
+ if(!failure){assert.ok(gap<.06&&heightGap<.15);assert.ok(now<151000,'same150s from initial fixture phase start');assert.ok(heldFrames>1);assert.ok(m.samples.some(s=>s.actualHeldObservation?.observations?.some(o=>o.local.y>.69&&o.local.y<1.42)),'actual continuous source stair heights');}
+ rows.push({name,fail,precision,syntheticWallFrameMs:wallFrame,syntheticKeyupExtraFrames:keyupFrames,failure,frameCount,heldFrames,reads,waits,jsonReads,disposed,movementKeyEvents:events.filter(x=>x.key&&x.key!=='z').length,zKeyEvents:events.filter(x=>x.key==='z').length,finalLocal:{...service.passenger},horizontalGap:gap,heightGap,elapsedFixtureWallMs:now-1000,events,motion:m,secondaryErrors:c.record.secondaryErrors,boundary:'Actual imported source stepPlayer/moveCircle/stair support + extracted public keyboard handlers and candidate walk/RAF functions; isolated CPU initial/camera/wall/keyup fixtures, no browser/GPU completion or savings claim.'});
+}
+await exercise({name:'held-actual-upper3-source-five-second-CPU-frame'});
+await exercise({name:'held-actual-source-extra-one-frame-keyup-correction',keyupFrames:1});
+await exercise({name:'same150s-expiry-six-second-CPU-frame',wallFrame:6000,expectFailure:'original local/whole deadline'});
+for(const fail of ['down','z-down','wait','up','z-up','json','dispose'])await exercise({name:'held-public-release-'+fail,fail,expectFailure:'fixture'});
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');const receipt={status:'ACTUAL_SOURCE_PHYSICAL_HELD_PUBLIC_INPUT_CPU_CASES_PASS_NATIVE_REQUIRED',methodSHA256:hash(src),originalArtifactMotionSHA256:hash(fs.readFileSync(rawPath)),sourceTransitSHA256:hash(fs.readFileSync(project+'/src/harbor-transit.js')),sourceMainSHA256:hash(main),testCount:rows.length,rows,gpuInvoked:false,productionSourceWritten:false,realWallTimeClaims:false,limits:'Wall frame/key release times and camera alignment are explicit CPU fixtures; original real failure remains. Importing real source movement proves sampled CPU physics only. Same150s local deadline/.06xz/.15y/radius/stall/keys guards; no native upper3/upper/return success or artistic acceptance.'};fs.writeFileSync(root+'/held-source-physical-cpu-receipt.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({status:receipt.status,testCount:rows.length,receiptSHA256:hash(fs.readFileSync(root+'/held-source-physical-cpu-receipt.json'))}));

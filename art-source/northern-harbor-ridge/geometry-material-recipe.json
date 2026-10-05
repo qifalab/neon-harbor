@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "id": "original-coherent-northern-harbor-ridge",
+  "editableSource": "src/metropolis-northern-ridge.js",
+  "sourceBaseline": "CROWN 91cdbc6; metropolis-world selective edits only, unrelated CRISP bread source is not included",
+  "original12NorthernTransforms": "src/metropolis-world.js unchanged stamp definitions",
+  "envelope": {
+    "min": [
+      -912,
+      -57,
+      -1673
+    ],
+    "max": [
+      914,
+      173,
+      -1342
+    ]
+  },
+  "geometry": {
+    "xSegments": 192,
+    "zSegments": 40,
+    "coherentLateralSpine": true,
+    "unequalBroadMassCentresFractionX": [
+      0.18,
+      0.62,
+      0.87
+    ],
+    "wanderingSpine": true,
+    "frontShoulder": true,
+    "sixUnequalBentDrainageIncisions": true,
+    "closedSubmergedSkirt": true,
+    "decorativeOnly": true,
+    "notExplorableTerrain": true,
+    "northernTriangles": 16752,
+    "northFinalBufferBytes": 469144
+  },
+  "westernPreservation": "Original first ten western position/normal/color/mountainSurface/index bytes and material response unchanged. Former 12 northern cone ranges are removed from that mesh.",
+  "drawCost": {
+    "triangles": 25072,
+    "drawCalls": 2,
+    "deltaTriangles": 16464,
+    "deltaDrawCalls": 1
+  },
+  "textureRecipe": {
+    "type": "original deterministic procedural DataTexture",
+    "count": 2,
+    "size": [
+      256,
+      256
+    ],
+    "channels": [
+      "tangent-space normal, linear RGBA8",
+      "roughness, linear RGBA8"
+    ],
+    "tileMetres": 24,
+    "normalScale": [
+      0.65,
+      0.65
+    ],
+    "mips": true,
+    "baseBytes": 524288,
+    "estimatedMipBytes": 699048,
+    "actualGPUUploadOrVRAMMeasured": false,
+    "noExternalAssets": true,
+    "bakedLighting": false
+  },
+  "physics": "All 4178 OBB fields, original ground support and all 220 building entries unchanged; no new terrain collider or ground callback",
+  "assetLicense": "CC0-1.0",
+  "codeLicense": "MIT",
+  "nativeArtAcceptance": "PENDING_ACTUAL_HIGH_QUAY_RECAPTURE"
+}

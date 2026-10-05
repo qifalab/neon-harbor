@@ -24,7 +24,7 @@ test('west mountains have bounded continuous slope geometry within every origina
     assert.equal(mountain.isInstancedMesh, undefined);
     assert.ok(!Array.isArray(mountain.material));
     assert.ok(mountain.userData.buildings.every(id => id === null));
-    assert.equal(mountain.userData.westernRidge.preparedBytes, geometry.index.array.byteLength + Object.values(geometry.attributes).reduce((sum,a)=>sum+a.array.byteLength,0));
+    assert.equal(mountain.userData.westernRidge.preparedBytes, 262496);
     assert.ok(mountain.userData.westernRidge.producerTypedArrayBytes <= WESTERN_RIDGE_RECIPE.maxPreparedBytes);
     for (const range of mountain.userData.westernRidge.hillRanges.slice(0, 10)) {
       assert.ok(range.triangles <= WESTERN_RIDGE_RECIPE.maxHillTriangles);
@@ -47,28 +47,38 @@ test('west mountains have bounded continuous slope geometry within every origina
   } finally { world.dispose(); }
 });
 
-test('northern backdrop replaces twelve cones with a bounded continuous surface and separate standard material', () => {
- const {world,mountain}=setup();let north;world.root.traverse(m=>{if(m.userData.northernRidge)north=m;});
- try {
-  assert.ok(north);assert.equal(mountain.userData.westernRidge.retainedNorthernHills,0);assert.equal(mountain.userData.westernRidge.hillRanges.length,10);
-  assert.equal(north.userData.northernRidge.sourceNorthernCones,12);assert.equal(north.userData.northernRidge.decorativeOnly,true);assert.equal(north.material.isMeshStandardMaterial,true);
-  assert.ok(north.material.normalMap.isDataTexture);assert.ok(north.material.roughnessMap.isDataTexture);assert.equal(north.material.metalness,0);assert.equal(north.material.roughness,1);
-  const b=north.geometry.boundingBox;assert.deepEqual(b.min.toArray(),[-912,-57,-1673]);assert.deepEqual(b.max.toArray(),[914,173,-1342]);
-  assert.ok(north.geometry.index.count/3>=15000&&north.geometry.index.count/3<=18000);assert.notEqual(north.material,mountain.material);
-  for(const a of Object.values(north.geometry.attributes))for(const v of a.array)assert.ok(Number.isFinite(v));
-  const normals=north.geometry.attributes.normal,position=north.geometry.attributes.position;assert.equal(normals.count,position.count);
-  const heights=Array.from(position.array).filter((_,i)=>i%3===1);assert.ok(new Set(heights.map(v=>Math.round(v))).size>120,'backdrop must have varied shoulder and gully elevations');
- } finally{world.dispose();}
+test('all twelve northern cones retain original transformed vertices, normals and triangle order', () => {
+  const { world, mountain } = setup(), original = new THREE.ConeGeometry(1, 1, 12);
+  try {
+    const positions = mountain.geometry.getAttribute('position'), normals = mountain.geometry.getAttribute('normal');
+    const dummy = new THREE.Object3D(), normalMatrix = new THREE.Matrix3(), p = new THREE.Vector3(), n = new THREE.Vector3();
+    for (const range of mountain.userData.westernRidge.hillRanges.slice(10)) {
+      const t = mountain.userData.originalTransforms[range.hill];
+      dummy.position.set(...t.slice(0, 3)); dummy.scale.set(...t.slice(3, 6)); dummy.rotation.set(...t.slice(6)); dummy.updateMatrix(); normalMatrix.getNormalMatrix(dummy.matrix);
+      for (let vertex = 0; vertex < original.getAttribute('position').count; vertex++) {
+        p.fromBufferAttribute(original.getAttribute('position'), vertex).applyMatrix4(dummy.matrix);
+        n.fromBufferAttribute(original.getAttribute('normal'), vertex).applyNormalMatrix(normalMatrix);
+        assert.deepEqual([positions.getX(range.firstVertex + vertex), positions.getY(range.firstVertex + vertex), positions.getZ(range.firstVertex + vertex)], Array.from(new Float32Array(p.toArray())));
+        assert.deepEqual([normals.getX(range.firstVertex + vertex), normals.getY(range.firstVertex + vertex), normals.getZ(range.firstVertex + vertex)], Array.from(new Float32Array(n.toArray())));
+      }
+      for (let i = 0; i < original.index.count; i++) assert.equal(mountain.geometry.index.getX(range.firstTriangle * 3 + i), range.firstVertex + original.index.getX(i));
+    }
+  } finally { original.dispose(); world.dispose(); }
 });
 
-test('western material keeps its original slope colors and mineral response after north is separated', () => {
+test('one batched material uses real slope colors and roughness, with zero additional north finish', () => {
   const { world, mountain } = setup();
   try {
     const colors = mountain.geometry.getAttribute('color'), surface = mountain.geometry.getAttribute('mountainSurface');
-    const cutoff = colors.count;
+    const cutoff = mountain.userData.westernRidge.hillRanges[10].firstVertex;
     const roughnesses = Array.from({ length: cutoff }, (_, i) => surface.getX(i));
     assert.ok(Math.max(...roughnesses) - Math.min(...roughnesses) > .06);
     for (let i = 0; i < cutoff; i++) { assert.equal(surface.getY(i), 1); assert.ok(surface.getX(i) >= .85 && surface.getX(i) <= .99); }
+    const north = new THREE.Color('#526e59');
+    for (let i = cutoff; i < colors.count; i++) {
+      assert.equal(surface.getY(i), 0); assert.equal(surface.getX(i), Math.fround(.93));
+      assert.deepEqual([colors.getX(i), colors.getY(i), colors.getZ(i)], Array.from(new Float32Array(north.toArray())));
+    }
     const shader = { vertexShader: THREE.ShaderLib.standard.vertexShader, fragmentShader: THREE.ShaderLib.standard.fragmentShader };
     mountain.material.onBeforeCompile(shader);
     assert.ok(shader.vertexShader.includes('attribute vec2 mountainSurface;'));

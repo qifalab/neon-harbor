@@ -1,0 +1,9 @@
+{
+  "status": "CPU_EXPECTATION_FAILED_ORIGINAL_LOCAL_DEADLINE_RETAINED",
+  "executedScriptSHA256": "6b5214a1c1b248901e950bb0e1432491a97c80201d16a831de613b9432b94fc1",
+  "exitCode": 1,
+  "actualObservedFailure": "AssertionError: same150s-expiry-six-second-CPU-frame: AssertionError assert.ok(Date.now()<localDeadline)",
+  "reason": "CPU fixture expected browser held-phase deadline wording, but actual original outer precision loop reached its unchanged Date.now()<localDeadline assertion during near-endpoint correction. Method deadline correctly failed; only test expected text is being corrected.",
+  "candidateMethodNotChanged": true,
+  "gpuInvoked": false
+}

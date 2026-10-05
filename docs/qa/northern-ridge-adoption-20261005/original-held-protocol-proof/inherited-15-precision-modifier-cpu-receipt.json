@@ -1,0 +1,906 @@
+{
+  "status": "ACTUAL_LOCAL_FUNCTION_AND_PUBLIC_MODIFIER_INPUT_CPU_REPLAY_PASSED_NATIVE_REQUIRED",
+  "baseMethodSha256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
+  "candidateMethodSha256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+  "publicMainSha256": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+  "testCount": 15,
+  "tests": [
+    {
+      "method": "base",
+      "precision": true,
+      "fail": null,
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": null,
+      "error": null,
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 4,
+      "waits": 3,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": null,
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": null,
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": null,
+      "error": null,
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 4,
+      "waits": 3,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": false,
+      "fail": null,
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": null,
+      "error": null,
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 4,
+      "waits": 3,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": false,
+        "downConfirmed": false,
+        "releaseConfirmed": null,
+        "inputs": []
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "z-down-before",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "z-down-before",
+      "error": "z-down-before",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 1,
+      "waits": 0,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": false,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "z-down-after",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "z-down-after",
+      "error": "z-down-after",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 1,
+      "waits": 0,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": false,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "w-down",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "w-down",
+      "error": "w-down",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 1,
+      "waits": 0,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "wait",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "wait",
+      "error": "wait",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 1,
+      "waits": 1,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "w-up",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "w-up",
+      "error": "w-up",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 1,
+      "waits": 1,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": false,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "z-up",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "z-up",
+      "error": "z-up",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 4,
+      "waits": 3,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": false,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": false,
+            "error": {
+              "stage": "precision modifier keyup",
+              "name": "Error",
+              "message": "z-up"
+            }
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": false,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": "wait-and-z-up",
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "wait",
+      "error": "wait",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 1,
+      "waits": 1,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": false,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": false,
+            "error": {
+              "stage": "precision modifier keyup",
+              "name": "Error",
+              "message": "z-up"
+            }
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": false,
+      "secondaryErrors": [
+        {
+          "stage": "precision modifier keyup",
+          "name": "Error",
+          "message": "z-up"
+        }
+      ],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": null,
+      "endpoint": true,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": null,
+      "error": null,
+      "events": [],
+      "reads": 1,
+      "waits": 0,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": false,
+        "downConfirmed": false,
+        "releaseConfirmed": null,
+        "inputs": []
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": null,
+      "endpoint": false,
+      "expired": true,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "Date.now()",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n",
+      "events": [],
+      "reads": 1,
+      "waits": 0,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": false,
+        "downConfirmed": false,
+        "releaseConfirmed": null,
+        "inputs": []
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": null,
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": true,
+      "badRevision": false,
+      "badRadius": false,
+      "expectedError": "Math.abs",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(Math.abs(transit(current).passengerLocal.y-target.y)<.15)\n",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 4,
+      "waits": 3,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": null,
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": true,
+      "badRadius": false,
+      "expectedError": "equal",
+      "error": "Expected values to be strictly equal:\n\n4 !== 3\n",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 2,
+      "waits": 1,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    },
+    {
+      "method": "candidate",
+      "precision": true,
+      "fail": null,
+      "endpoint": false,
+      "expired": false,
+      "wrongHeight": false,
+      "badRevision": false,
+      "badRadius": true,
+      "expectedError": "original full passenger radius",
+      "error": "original full passenger radius stays inside shell",
+      "events": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "w"
+        },
+        {
+          "action": "up",
+          "key": "z"
+        }
+      ],
+      "reads": 2,
+      "waits": 1,
+      "originalGait": 0.3,
+      "localBudgetMs": 150000,
+      "maxIterations": 1800,
+      "modifier": {
+        "key": "z",
+        "scope": "precision-local-leg-only",
+        "downAttempted": true,
+        "downConfirmed": true,
+        "releaseConfirmed": true,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "z"
+          },
+          {
+            "action": "up",
+            "key": "z",
+            "confirmed": true
+          }
+        ]
+      },
+      "movementReleaseConfirmed": true,
+      "modifierReleaseConfirmed": true,
+      "secondaryErrors": [],
+      "boundary": "Actual extracted walkLocal/radiusGuard/public inputState and key handlers; isolated recorded CPU endpoints, no browser/RPC timing or live state mutation."
+    }
+  ],
+  "noProductionSourceOrBrowserMutation": true,
+  "noNativeTimingSavingsClaim": true,
+  "limits": "CPU mock uses original recorded first-three physical endpoints, synthetic awaited RPC costs and injected faults. It neither proves 150s native completion nor unobserved stair/upper/return/exit or art acceptance."
+}
