@@ -1,0 +1,1036 @@
+{
+  "status": "CPU_CONTINUOUS_CROWN_WIDER_ENVELOPE_SAME_CAMERA_AND_ROUTE_PASS_NATIVE_PENDING",
+  "project": "/tmp/neon-harbor-street-refinement-candidate-20261005",
+  "sourceHashes": {
+    "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+    "src/camera.js": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+    "src/metropolis-world.js": "ba1bef7154840d60344413d9332d4119b908d8fa1bbf30c31b66941f5e2a9347",
+    "src/metropolis-western-ridge.js": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c",
+    "src/harbor-sample-trees.js": "9bfd3ee850e8d2cf0ad6c905f7e5c53b8f12c1334d68a0a67261a6e6f4e773ef",
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "9f391a319a8854fce05a8f6dba80a8bfcbb75b8e87fe62c775d429a1c0717b3e",
+    "src/metropolis-infrastructure.js": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2"
+  },
+  "colliders": {
+    "count": 4178,
+    "sha256": "7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30"
+  },
+  "bodyRadius": 0.65,
+  "axisTolerance": 0.15,
+  "stand": {
+    "x": -600,
+    "y": 0,
+    "z": -440.8
+  },
+  "target": {
+    "x": -617,
+    "y": 5.15,
+    "z": -445
+  },
+  "publicCameraControls": {
+    "yaw": -1.8130049139045166,
+    "pitch": -0.05297686261988355,
+    "fov": 65
+  },
+  "actualSourceChaseCamera": {
+    "position": {
+      "x": -600,
+      "y": 1.62,
+      "z": -440.8
+    },
+    "target": {
+      "x": -609.7081061929927,
+      "y": 3.6358596977214144,
+      "z": -443.19847329473936
+    },
+    "focus": {
+      "x": -600,
+      "y": 1.62,
+      "z": -440.8
+    },
+    "yaw": -1.8130049139045166,
+    "pitch": -0.05297686261988355,
+    "fov": 65,
+    "boomLength": 0,
+    "desiredBoomLength": 0,
+    "obstructed": false,
+    "overheadFallback": false,
+    "colliderId": null,
+    "clearanceRadius": 0.45
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "wholePhotoPlan": {
+    "kind": "photo",
+    "label": "06-near-quay-tree-whole",
+    "position": {
+      "x": -600,
+      "y": 0,
+      "z": -440.8
+    },
+    "target": {
+      "x": -617,
+      "y": 5.15,
+      "z": -445
+    },
+    "axisTolerance": 0.15,
+    "hud": "compact",
+    "camera": {
+      "yaw": -1.8130049139045166,
+      "pitch": -0.05297686261988355,
+      "fov": 65
+    },
+    "expectTrees": [
+      0
+    ]
+  },
+  "dayWalkDelta": {
+    "oldTargetX": -612,
+    "newTargetX": -600,
+    "oldApproachMetres": 43.72000000000037,
+    "newApproachMetres": 31.72000000000037,
+    "oldFarLegMetres": 108,
+    "newFarLegMetres": 120,
+    "farReturnXPreserved": -612,
+    "oldRidgeReferenceUnchanged": true
+  },
+  "routeLegs": [
+    {
+      "label": "old-ridge-to-inspection-pavement",
+      "start": {
+        "x": -568.2799999999996,
+        "z": -438.20000000000675
+      },
+      "end": {
+        "x": -568.2799999999996,
+        "z": -440.8
+      },
+      "distanceMetres": 2.5999999999932584,
+      "staticSampleCount": 27,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 16.54999999999999,
+      "samples": [
+        {
+          "position": {
+            "x": -568.2799999999996,
+            "z": -438.20000000000675,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -568.2799999999996,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -568.2799999999996,
+        "z": -440.8000000000001,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": 0,
+        "movedZ": -2.599999999993372,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "day-new-whole-tree-approach",
+      "start": {
+        "x": -568.2799999999996,
+        "z": -440.8
+      },
+      "end": {
+        "x": -600,
+        "z": -440.8
+      },
+      "distanceMetres": 31.72000000000037,
+      "staticSampleCount": 319,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 15.927063974057669,
+      "samples": [
+        {
+          "position": {
+            "x": -568.2799999999996,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -600,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -600.0000000000005,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": -31.720000000000823,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "old-whole-stand-to-new-whole-stand",
+      "start": {
+        "x": -612,
+        "z": -440.8
+      },
+      "end": {
+        "x": -600,
+        "z": -440.8
+      },
+      "distanceMetres": 12,
+      "staticSampleCount": 121,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 3.984549600554542,
+      "samples": [
+        {
+          "position": {
+            "x": -612,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -600,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -599.9999999999969,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": 12.00000000000307,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "new-whole-stand-to-far-release",
+      "start": {
+        "x": -600,
+        "z": -440.8
+      },
+      "end": {
+        "x": -720,
+        "z": -440.8
+      },
+      "distanceMetres": 120,
+      "staticSampleCount": 1201,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 0.20500000000003404,
+      "samples": [
+        {
+          "position": {
+            "x": -600,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -720,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -720.0000000000141,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": -120.0000000000141,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "unchanged-far-release-return",
+      "start": {
+        "x": -720,
+        "z": -440.8
+      },
+      "end": {
+        "x": -612,
+        "z": -440.8
+      },
+      "distanceMetres": 108,
+      "staticSampleCount": 1081,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 0.20500000000003404,
+      "samples": [
+        {
+          "position": {
+            "x": -720,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -612,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -612.00000000003,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": 107.99999999996999,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    }
+  ],
+  "standing": {
+    "position": {
+      "x": -600,
+      "y": 0,
+      "z": -440.8
+    },
+    "contacts": []
+  },
+  "standingNearestBlocker": {
+    "id": "pedestrian-signal-6",
+    "centreToSolidDistanceMetres": 16.57706397405767,
+    "bodyClearanceMetres": 15.927063974057669,
+    "standingToleranceClearanceMetres": 15.777063974057668
+  },
+  "standingFootprintSupportedSamples": [
+    {
+      "x": -599.2,
+      "z": -440.8,
+      "y": 0
+    },
+    {
+      "x": -599.2608963739909,
+      "z": -440.49385325410793,
+      "y": 0
+    },
+    {
+      "x": -599.4343145750507,
+      "z": -440.23431457505075,
+      "y": 0
+    },
+    {
+      "x": -599.6938532541079,
+      "z": -440.060896373991,
+      "y": 0
+    },
+    {
+      "x": -600,
+      "z": -440,
+      "y": 0
+    },
+    {
+      "x": -600.3061467458921,
+      "z": -440.060896373991,
+      "y": 0
+    },
+    {
+      "x": -600.5656854249493,
+      "z": -440.23431457505075,
+      "y": 0
+    },
+    {
+      "x": -600.7391036260091,
+      "z": -440.49385325410793,
+      "y": 0
+    },
+    {
+      "x": -600.8,
+      "z": -440.8,
+      "y": 0
+    },
+    {
+      "x": -600.7391036260091,
+      "z": -441.1061467458921,
+      "y": 0
+    },
+    {
+      "x": -600.5656854249493,
+      "z": -441.3656854249493,
+      "y": 0
+    },
+    {
+      "x": -600.3061467458921,
+      "z": -441.539103626009,
+      "y": 0
+    },
+    {
+      "x": -600,
+      "z": -441.6,
+      "y": 0
+    },
+    {
+      "x": -599.6938532541079,
+      "z": -441.539103626009,
+      "y": 0
+    },
+    {
+      "x": -599.4343145750507,
+      "z": -441.3656854249493,
+      "y": 0
+    },
+    {
+      "x": -599.2608963739909,
+      "z": -441.1061467458921,
+      "y": 0
+    }
+  ],
+  "actualCandidateBounds": {
+    "min": [
+      -3.300302267074585,
+      0.3207566738128662,
+      -3.6931045055389404
+    ],
+    "max": [
+      4.268263816833496,
+      11.769681930541992,
+      3.80644154548645
+    ]
+  },
+  "actualCandidateGLBSha256": "f71838f95dbf92ab3f3d0830c6367b97a4c39f21e2a2fb7d8e2b68554df98aca",
+  "widerCanopyClearance": [
+    {
+      "site": "sample-quay-tree-0",
+      "x": -617,
+      "z": -445,
+      "variant": 0,
+      "actualFoliageWorldBounds": {
+        "min": [
+          -620.3003022670746,
+          5.695289134979248,
+          -448.69310450553894
+        ],
+        "max": [
+          -612.7317361831665,
+          11.769681930541992,
+          -441.19355845451355
+        ]
+      },
+      "lowestLeafClearanceOver3_8MetreDoubleDeckBus": 1.8952891349792482,
+      "physicalBroadPhaseCandidates": [],
+      "limitations": "Broad-phase boxes only; listed candidates need actual triangle/OBB follow-up, not automatic collision."
+    },
+    {
+      "site": "sample-quay-tree-1",
+      "x": -503,
+      "z": -445,
+      "variant": 1,
+      "actualFoliageWorldBounds": {
+        "min": [
+          -506.30707120895386,
+          5.707276344299316,
+          -448.89198756217957
+        ],
+        "max": [
+          -498.7780108451843,
+          11.806548118591309,
+          -441.3033974170685
+        ]
+      },
+      "lowestLeafClearanceOver3_8MetreDoubleDeckBus": 1.9072763442993166,
+      "physicalBroadPhaseCandidates": [],
+      "limitations": "Broad-phase boxes only; listed candidates need actual triangle/OBB follow-up, not automatic collision."
+    },
+    {
+      "site": "sample-quay-tree-2",
+      "x": -457,
+      "z": -445,
+      "variant": 2,
+      "actualFoliageWorldBounds": {
+        "min": [
+          -460.34638142585754,
+          5.700746059417725,
+          -448.84650182724
+        ],
+        "max": [
+          -452.68264627456665,
+          11.797210693359375,
+          -441.21531558036804
+        ]
+      },
+      "lowestLeafClearanceOver3_8MetreDoubleDeckBus": 1.9007460594177248,
+      "physicalBroadPhaseCandidates": [],
+      "limitations": "Broad-phase boxes only; listed candidates need actual triangle/OBB follow-up, not automatic collision."
+    },
+    {
+      "site": "sample-quay-tree-3",
+      "x": -343,
+      "z": -445,
+      "variant": 0,
+      "actualFoliageWorldBounds": {
+        "min": [
+          -346.3003022670746,
+          5.695289134979248,
+          -448.69310450553894
+        ],
+        "max": [
+          -338.7317361831665,
+          11.769681930541992,
+          -441.19355845451355
+        ]
+      },
+      "lowestLeafClearanceOver3_8MetreDoubleDeckBus": 1.8952891349792482,
+      "physicalBroadPhaseCandidates": [],
+      "limitations": "Broad-phase boxes only; listed candidates need actual triangle/OBB follow-up, not automatic collision."
+    },
+    {
+      "site": "sample-quay-tree-4",
+      "x": -297,
+      "z": -445,
+      "variant": 1,
+      "actualFoliageWorldBounds": {
+        "min": [
+          -300.30707120895386,
+          5.707276344299316,
+          -448.89198756217957
+        ],
+        "max": [
+          -292.7780108451843,
+          11.806548118591309,
+          -441.3033974170685
+        ]
+      },
+      "lowestLeafClearanceOver3_8MetreDoubleDeckBus": 1.9072763442993166,
+      "physicalBroadPhaseCandidates": [],
+      "limitations": "Broad-phase boxes only; listed candidates need actual triangle/OBB follow-up, not automatic collision."
+    },
+    {
+      "site": "sample-quay-tree-5",
+      "x": -183,
+      "z": -445,
+      "variant": 2,
+      "actualFoliageWorldBounds": {
+        "min": [
+          -186.34638142585754,
+          5.700746059417725,
+          -448.84650182724
+        ],
+        "max": [
+          -178.68264627456665,
+          11.797210693359375,
+          -441.21531558036804
+        ]
+      },
+      "lowestLeafClearanceOver3_8MetreDoubleDeckBus": 1.9007460594177248,
+      "physicalBroadPhaseCandidates": [],
+      "limitations": "Broad-phase boxes only; listed candidates need actual triangle/OBB follow-up, not automatic collision."
+    }
+  ],
+  "declaredFoliageEnvelope": {
+    "min": [
+      -3.85,
+      0.3,
+      -4.2
+    ],
+    "max": [
+      4.5,
+      12,
+      4.2
+    ]
+  },
+  "originalBarkEnvelopePreserved": {
+    "min": [
+      -3.4,
+      0.3,
+      -3.4
+    ],
+    "max": [
+      4.5,
+      12,
+      3.4
+    ]
+  },
+  "actualCandidateBBoxCorners": [
+    {
+      "world": [
+        -620.3003022670746,
+        0.3207566738128662,
+        -448.69310450553894
+      ],
+      "ndc": [
+        0.1310249697266966,
+        -0.41588207267184046,
+        0.9904958132762857
+      ],
+      "pixel": [
+        723.8559806250857,
+        566.3528290687361
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        0.3207566738128662,
+        -448.69310450553894
+      ],
+      "ndc": [
+        0.32968052784827134,
+        -0.4681117914293274,
+        0.985474615617761
+      ],
+      "pixel": [
+        850.9955378228937,
+        587.2447165717309
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.3003022670746,
+        11.769681930541992,
+        -448.69310450553894
+      ],
+      "ndc": [
+        0.11823691571499882,
+        0.3846891145876355,
+        0.9914290004408218
+      ],
+      "pixel": [
+        715.6716260575992,
+        246.12435416494583
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        11.769681930541992,
+        -448.69310450553894
+      ],
+      "ndc": [
+        0.28299847490950863,
+        0.7007490505532197,
+        0.987539470309758
+      ],
+      "pixel": [
+        821.1190239420855,
+        119.70037977871213
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.3003022670746,
+        0.3207566738128662,
+        -441.19355845451355
+      ],
+      "ndc": [
+        -0.2298048448671525,
+        -0.4250372938700563,
+        0.9896156596714538
+      ],
+      "pixel": [
+        492.92489928502243,
+        570.0149175480226
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        0.3207566738128662,
+        -441.19355845451355
+      ],
+      "ndc": [
+        -0.21928965256200839,
+        -0.4904895780933256,
+        0.9833232869743515
+      ],
+      "pixel": [
+        499.65462236031465,
+        596.1958312373303
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.3003022670746,
+        11.769681930541992,
+        -441.19355845451355
+      ],
+      "ndc": [
+        -0.20552929876469953,
+        0.44241151245384736,
+        0.9907186509779835
+      ],
+      "pixel": [
+        508.4612487905923,
+        223.03539501846106
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        11.769681930541992,
+        -441.19355845451355
+      ],
+      "ndc": [
+        -0.18438693663339745,
+        0.8269265379769339,
+        0.9859866916011969
+      ],
+      "pixel": [
+        521.9923605546256,
+        69.22938480922642
+      ],
+      "inView": true
+    }
+  ],
+  "newConservativeFoliageEnvelopeBBoxCorners": [
+    {
+      "world": [
+        -620.85,
+        0.3,
+        -449.2
+      ],
+      "ndc": [
+        0.14354140859438375,
+        -0.4144794093916909,
+        0.9907788899518688
+      ],
+      "pixel": [
+        731.8665015004057,
+        565.7917637566763
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        0.3,
+        -449.2
+      ],
+      "ndc": [
+        0.37171376625467306,
+        -0.4717292239359871,
+        0.9853616224923494
+      ],
+      "pixel": [
+        877.8968104029907,
+        588.6916895743949
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.85,
+        12,
+        -449.2
+      ],
+      "ndc": [
+        0.12963709016130728,
+        0.3799362410090178,
+        0.9916776397054238
+      ],
+      "pixel": [
+        722.9677377032367,
+        248.0255035963929
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        12,
+        -449.2
+      ],
+      "ndc": [
+        0.3177369900343033,
+        0.7274793715978133,
+        0.9874955679479952
+      ],
+      "pixel": [
+        843.3516736219541,
+        109.00825136087468
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.85,
+        0.3,
+        -440.8
+      ],
+      "ndc": [
+        -0.2505473191751066,
+        -0.42436905614247505,
+        0.9898430814788527
+      ],
+      "pixel": [
+        479.6497157279317,
+        569.74762245699
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        0.3,
+        -440.8
+      ],
+      "ndc": [
+        -0.2527968339160661,
+        -0.4980911677637342,
+        0.9828671218270718
+      ],
+      "pixel": [
+        478.2100262937177,
+        599.2364671054936
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.85,
+        12,
+        -440.8
+      ],
+      "ndc": [
+        -0.2240884023355864,
+        0.4427544994859921,
+        0.9909217321891902
+      ],
+      "pixel": [
+        496.5834225052247,
+        222.89820020560316
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        12,
+        -440.8
+      ],
+      "ndc": [
+        -0.21088986045614747,
+        0.8753030664975584,
+        0.9857167691598517
+      ],
+      "pixel": [
+        505.0304893080656,
+        49.87877340097664
+      ],
+      "inView": true
+    }
+  ],
+  "toleranceCornerCases": [
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.36443072996588577,
+      "maxAbsNdcY": 0.8839969042825923
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3636038232039767,
+      "maxAbsNdcY": 0.8996314052845845
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3736898341370684,
+      "maxAbsNdcY": 0.8818692650012891
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3728410887781668,
+      "maxAbsNdcY": 0.8974855060257836
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.38362980328725416,
+      "maxAbsNdcY": 0.8777608636791704
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3827608622733957,
+      "maxAbsNdcY": 0.8933419697694037
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3930045732329686,
+      "maxAbsNdcY": 0.8758521664754271
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3921134849520932,
+      "maxAbsNdcY": 0.8914170052389915
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.35163345178547706,
+      "maxAbsNdcY": 0.859558781183878
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.35084107315164714,
+      "maxAbsNdcY": 0.8749861964364168
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3608148901410911,
+      "maxAbsNdcY": 0.8574691788195172
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3600010649960579,
+      "maxAbsNdcY": 0.8728791563034991
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.37050227408816944,
+      "maxAbsNdcY": 0.8535721676604335
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.36966879234606104,
+      "maxAbsNdcY": 0.8689497378304889
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.37979346581621753,
+      "maxAbsNdcY": 0.8516928197871151
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3789382479157256,
+      "maxAbsNdcY": 0.8670548141359056
+    }
+  ],
+  "limitations": [
+    "Actual source CPU world, collision sweeps, supported ground and actual camera implementation; no GPU, native pixel, moving NPC/traffic or hardware performance evidence.",
+    "All candidate actual AABB and conservative original-envelope corners fit the frozen public FOV; this does not establish artistic composition, lighting or native street owner release.",
+    "ROOT/NEXT, prior methods and original baselines unchanged."
+  ]
+}

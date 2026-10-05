@@ -1,0 +1,328 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "mode": "authored",
+  "plan": {
+    "id": "south-096",
+    "address": "south-096",
+    "englishName": "Old Quarter 96",
+    "budgetMinutes": 24,
+    "scope": "One shop south public entrance, actual E entry/exit/re-entry. Display geometry is photographed separately from the public entrance. This does not approve its shared interior art. One additional publicly walked wide public-door frontage view and exact return to the original door route. The oblique cases are not a straight-on display-facade view.",
+    "steps": [
+      {
+        "kind": "photo",
+        "label": "south-frontage",
+        "position": {
+          "x": 213,
+          "y": 0.18,
+          "z": 225.31897145090625
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 213,
+          "y": 1.78,
+          "z": 222.95897145090623
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 213,
+          "y": 1.8,
+          "z": 225.31897145090625
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294363,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.360084744241203
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 224.31897145090625
+      },
+      {
+        "kind": "photo",
+        "label": "actual-public-door",
+        "position": {
+          "x": 213,
+          "y": 0.18,
+          "z": 224.31897145090625
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 213,
+          "y": 1.68,
+          "z": 222.95897145090623
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 213,
+          "y": 1.8,
+          "z": 224.31897145090625
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880613,
+          "fov": 65
+        },
+        "nominalEyeDistance": 1.3652838532700946
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 225.31897145090625
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 224.11897145090626
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 225.37591856345534
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 213
+      },
+      {
+        "kind": "photo",
+        "label": "east-display-face-close",
+        "position": {
+          "x": 225.37591856345534,
+          "y": 0.18,
+          "z": 213
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 223.01591856345533,
+          "y": 1.78,
+          "z": 213
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 225.37591856345534,
+          "y": 1.8,
+          "z": 213
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.360084744241203
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 224.11897145090626
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 213
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 225.31897145090625
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 213
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 224.31897145090625
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 231.95897145090623
+      },
+      {
+        "kind": "photo",
+        "label": "public-door-frontage-wide",
+        "position": {
+          "x": 213,
+          "y": 0,
+          "z": 231.95897145090623
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 213,
+          "y": 2.2800000000000002,
+          "z": 222.95897145090623
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 213,
+          "y": 1.62,
+          "z": 231.95897145090623
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.07660077869784895,
+          "fov": 65
+        },
+        "nominalEyeDistance": 9.024167551635994
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 224.31897145090625
+      },
+      {
+        "kind": "look",
+        "label": "wide-return-original-door-look",
+        "yaw": 3.141592653589793,
+        "pitch": 0.15847467771294363
+      },
+      {
+        "kind": "door",
+        "label": "apparent-south-door-and-actual-public-prompt"
+      },
+      {
+        "kind": "enter"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 213
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 220.71897145090625
+      },
+      {
+        "kind": "event",
+        "label": "real-target-building-interior"
+      },
+      {
+        "kind": "exit",
+        "label": "first-normal-exit"
+      },
+      {
+        "kind": "frontage",
+        "label": "shell-restored-after-exit"
+      },
+      {
+        "kind": "enter",
+        "label": "physical-re-entry"
+      },
+      {
+        "kind": "exit",
+        "label": "second-normal-exit"
+      },
+      {
+        "kind": "frontage",
+        "label": "shell-restored-after-re-entry"
+      }
+    ],
+    "knownBaselineIssue": "Baseline east display facade has apparent central door hardware, but actual public entry is south. Its absent authored publicDoor metadata is recorded unavailable, never claimed as fixed.",
+    "originalWholeCaseBudgetMinutes": 12,
+    "fixtureDetour": {
+      "label": "south-096-real-outside-lamp-corner-detour",
+      "outbound": {
+        "insertedBeforeOriginalStep": 4,
+        "originalStep": {
+          "kind": "walk",
+          "axis": "x",
+          "target": 225.37591856345534
+        },
+        "waypoints": [
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 224.11897145090626
+          }
+        ],
+        "originalEntranceAlignmentRetained": true
+      },
+      "returning": {
+        "replacesOriginalStep": 7,
+        "originalStep": {
+          "kind": "walk",
+          "axis": "z",
+          "target": 225.31897145090625
+        },
+        "waypoints": [
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 224.11897145090626
+          },
+          {
+            "kind": "walk",
+            "axis": "x",
+            "target": 213
+          },
+          {
+            "kind": "walk",
+            "axis": "z",
+            "target": 225.31897145090625
+          }
+        ]
+      },
+      "standingGround": 0.18,
+      "sourceFaceOffset": 1.8,
+      "reason": "Original cardinal approach/return target region intersects a real lamp. No lamp/physics disable or assumption of collision-driven sideways escape."
+    },
+    "wideExtension": {
+      "schema": "public-frontage-wide-v1",
+      "originalStepCount": 20,
+      "originalPhotoLabels": [
+        "south-frontage",
+        "actual-public-door",
+        "east-display-face-close"
+      ],
+      "insertedBeforeOriginalStep": 10,
+      "addedSteps": 4,
+      "addedPhotos": 1,
+      "bodyRadiusForStaticProof": 0.65,
+      "axisTolerance": 0.15,
+      "publicDoorPlaneDistanceMetres": 9,
+      "actualHorizontalDoorPointDistanceMetres": 9,
+      "view": "south-facing public-door front",
+      "publicDoor": {
+        "x": 213,
+        "y": 0.18,
+        "z": 222.95897145090623,
+        "yaw": 0
+      },
+      "originalDoorStation": {
+        "x": 213,
+        "y": 0.18,
+        "z": 224.31897145090625
+      },
+      "wideStanding": {
+        "x": 213,
+        "y": 0,
+        "z": 231.95897145090623
+      },
+      "restoreLook": {
+        "kind": "look",
+        "label": "wide-return-original-door-look",
+        "yaw": 3.141592653589793,
+        "pitch": 0.15847467771294363
+      },
+      "budgets": {
+        "wholeCaseMinutes": 24,
+        "originalWholeCaseMinutes": 12,
+        "reason": "Finite preparation cap from original wall evidence plus new real distance/photo processing. No validated completion upper bound.",
+        "perPhaseDefaultMs": 180000,
+        "perHoldMs": 120000,
+        "maximumCorrectionHolds": 2,
+        "localInputHelperUnchanged": true
+      }
+    }
+  },
+  "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+  "unavailableBaselineOwner": false,
+  "planPhotographsIdenticalAcrossModes": true
+}

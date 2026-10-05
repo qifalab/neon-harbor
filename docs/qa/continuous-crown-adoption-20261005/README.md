@@ -1,0 +1,21 @@
+Continuous crown candidate was adopted only in this independent worktree, on exact parent3aa100daf7cd497b0c6f167c4c8b5f86233fbc62. No commit, native browser or GPU was executed by this adoption. The original frozen AEC/NEXT worktrees remain untouched.
+
+The sealed13-file payload has7 actual changes and6 identical files. Actual changed production paths are author source, recipe, vegetation manifest,3GLBs and tree runtime. Runtime source differs solely in the two explicit triangle caps:45000/tree and270000/all six. Tree sites,80/100m hysteresis, original roots/bark/materials/PNGs, previous1728 leaf prefixes and lifecycle code retain original bytes.
+
+Actual original full `npm test` passed378 tests,0fail/skipped/cancelled,216505.951539ms. Tests were unchanged and not retried. The one actual build passed,206 assets/nullrevision/raw build-infoa8c05e366a39f1330e3f1036add0cebb9b1b49df2f72070394815c5e4b60f8c1. Exactly5 runtime assets changed vsAEC206:tree module,vegetation manifest and3GLBs;201 remain unchanged with0add/remove. All382 tracked production/art-source/assets/tests/vendor/build-input file hashes are identical before and after this test/build execution. Raw original outputs, first receipts and the spec-summary parsing addendum are retained.
+
+No tree-specific count/cap tests existed in the parent tests directory. All existing tests remain intact. Tree-root geometry, deterministic reproduction,3456closed manifold leaves, original1728prefix and real instance-owner lifecycle evidence is separately preserved from the verified producer CPU proofs. This adoption verifies its actual source/GLB identity to those proofs; it does not claim those geometry/16tolerance/4178collision cases were reexecuted by the npm suite or this adopter.
+
+Three raw GLBs total17794272bytes. Each has43504triangles and3456 closed leaves; six visible instance submissions remain6draws, now261024triangles. Decoded geometry attributes17227584bytes and CPU instance disposal24actual calls are producer evidence, not nativeBitmap or hardwareVRAM closure. Native performance and art acceptance remain pending.
+
+The wider foliage envelope changes toX[-3.85,4.5]/Z[-4.2,4.2], while original bark stays unchanged. The independently measured candidate fits the original-600/65FOV camera and16tolerance cases; original physics world/camera source remains exact and4178colliderSHA7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30 is original CPU evidence. Its original source proof retains the old tree runtime pin explicitly; the adopted identity receipt documents the two-budget-only amendment. Do not treat that preserved old pin as an undisclosed actual final source pin.
+
+The original vehicle-clearance proof used a generic3.8m height incorrectly. Its original bytes are preserved and a separate correction uses actual bus4.4/tram4.7 at flat roadground0, with minimum geometry-reference gaps1.295/0.995m. That is not a dynamic route/vehicle clearance test.
+
+Original AEC1728High whole-tree art image remains FAILED for separated sparse brush-like lobes. Its original external PNG path/bytes/SHA are archived as a verified reference; the image is not duplicated here. The new continuous crown has not received native art acceptance.
+
+The existing130native bundle, expected runtime dictionary and native bus3aa method remain byte-identical historicalAEC206 protocol scope. This adoption intentionally does not refresh their active runtime pins; ROOT must refresh them from this actual new206build before a new tree native run. Existing bus/tram evidence does not cover these new tree GLBs.
+
+Only the13payload regular files were adopted. Candidate CPU execution scripts, vendor and node_modules were not copied. A local root node_modules symlink supplied existing dependencies for CPU test/build and must never be staged; the exact proposed file list explicitly excludes it,dist and generated chunks.
+
+Producer candidate seal is retained as an immutable complete external inventory; this QA folder copies only selected proof receipts and actual source history, not every execution/payload entry from that inventory. The current QA seal covers exactly files present here and excludes only itself.

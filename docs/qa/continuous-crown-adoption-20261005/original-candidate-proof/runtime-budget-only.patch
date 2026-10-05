@@ -1,0 +1,11 @@
+--- a/src/harbor-sample-trees.js
++++ b/src/harbor-sample-trees.js
+@@ -5,7 +5,7 @@
+  ['harbor-market',-457,-445,2],['harbor-market',-343,-445,0],
+  ['ferry-house',-297,-445,1],['ferry-house',-183,-445,2],
+ ].map(([buildingId,x,z,variant],i)=>Object.freeze({id:`sample-quay-tree-${i}`,buildingId,x,z,variant})));
+-export const SAMPLE_TREE_LIMITS=Object.freeze({near:80,far:100,maxDrawCalls:6,maxTriangles:150000,maxTreeTriangles:25000});
++export const SAMPLE_TREE_LIMITS=Object.freeze({near:80,far:100,maxDrawCalls:6,maxTriangles:270000,maxTreeTriangles:45000});
+ const FILES=['quay-banyan-a.glb','quay-banyan-b.glb','quay-banyan-c.glb'];
+ async function loadOriginalTree(variant,signal){const{GLTFLoader}=await import('../vendor/three/addons/loaders/GLTFLoader.js');const response=await fetch(new URL(`../assets/harbor/vegetation/${FILES[variant]}`,import.meta.url),{signal});if(!response.ok)throw Error(`Sample tree: HTTP ${response.status}`);return new GLTFLoader().parseAsync(await response.arrayBuffer(),'');}
+ function disposeTemplate(template){const gs=new Set(),ms=new Set(),ts=new Set();template?.traverse(o=>{if(!o.isMesh)return;gs.add(o.geometry);for(const m of(Array.isArray(o.material)?o.material:[o.material])){ms.add(m);for(const v of Object.values(m))if(v?.isTexture)ts.add(v);}});for(const t of ts){t.dispose();t.source?.data?.close?.();}for(const g of gs)g.dispose();for(const m of ms)m.dispose();}
