@@ -1,0 +1,83 @@
+{
+  "status": "EXPLICIT_FINITE_FERRY_PUBLIC_AXIS_PROTOCOL_CPU_READY_NATIVE_HIGH_REQUIRED",
+  "parentMethodSHA256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+  "parentManifestSHA256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c",
+  "candidateMethodSHA256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f",
+  "sourceHEAD": "986db512e6268ea5228da4fd360db4317134dd2e",
+  "rawBuildSHA256": "2c6d318d93909e786406c1c1b1ca8aea3d64f84d9fbe832c53219510ba91a3a7",
+  "runtimeCount": 208,
+  "noRuntimeAssetChanged": true,
+  "actualFirstFailure": {
+    "reviewSealPath": "/workspace/neon-candidates/9cf-ferry-high-first-failure-readonly-review-20261005/SEAL.json",
+    "sha256": "1b2b3132ee29df577471830cf00bf9d42e60a186fdcdf2b35bc93e59cb6e1b95",
+    "artifactID": 11335559241,
+    "originalFailedMethod": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+    "bothFailedStage": "upper-1",
+    "failedLocalMs": 150000,
+    "timeoutsMs": [
+      149110,
+      149114
+    ],
+    "completedPhotosEach": 2,
+    "finalPoseUnknown": true,
+    "nativeOriginalStatus": "FAILED_PRESERVED"
+  },
+  "finiteScope": {
+    "changedOnly": "Ferry nonprecision longitudinal original centre-hall leg whose initial abs dx<.06 and abs dz>=12",
+    "canonicalAffectedLegs": [
+      "upper-1",
+      "lower-4"
+    ],
+    "newLocalMs": 300000,
+    "oldLocalMs": 150000,
+    "allOtherLocalMs": 150000,
+    "originalWholeMs": 2400000,
+    "berthMs": 1200000,
+    "maxIterations": 1800,
+    "noHiddenRetry": true,
+    "scopeEstimateNotGuarantee": "Original12.77m hall needs at least21 capped ordinary visible frames to1.2m handoff, plus original slow near correction. Native pre-action single wallDt5.3498/7.6664s vs.25sim shows150 cannot be guaranteed;300 is an explicit finite new upper bound only for these two long hall legs. Single-frame stress assumptions are not observed whole-leg averages or promised completion."
+  },
+  "publicPrecisionApproach": {
+    "FerryOnlyNewEligibility": "precision, no leg Z acquired, distance>.7 and one current axis offset<.06; original other-axis/body/collision and target guards continue",
+    "gait": "Original publicWASD2.25m/s until.7m then originalZ.3m/s; no source speed, dt or clock change",
+    "BusTram": "Existing longitudinal-only eligible branch retained; no sideways expansion",
+    "FerryNonprecision": "Existing1.2m far/near threshold unchanged",
+    "maximumNormalStepMetres": 0.5625,
+    "maximumMovementSeconds": 0.25
+  },
+  "additionalFiniteGuards": {
+    "FerryOnlyPostReleaseLocalDeadline": true,
+    "firstFailureReadonlyDiagnostic": "Same existing BusTram <=4900ms/whole bounded one public read-only snapshot, only after all confirmed keyups; now includesFerry. No movement retry or firstError replacement."
+  },
+  "unchanged": [
+    "source401/runtime208",
+    "High default/time16.5/FOV/cameras/graphics",
+    "original canonical targets/route order/photos/support heights",
+    "xz.06/y.15/body.3/shell/blocker/stall/revision",
+    "all23 other cases/cases.json/native-matrix.json",
+    "BusTram controls/whole40min/local150/berth policies",
+    "all public world/clock/input setter restrictions"
+  ],
+  "CPU": {
+    "receiptPath": "/workspace/neon-candidates/ferry-source-axis-and-long-hall-finite-candidate-20261005/source-axis-and-longhall-cpu-receipt.json",
+    "receiptSHA256": "5fc21cc60ea0052bce07de33da33d213c6eda7975beedd8d37c67e5a897e3e84",
+    "count": 17,
+    "completeOriginalDoorRouteFixtures": {
+      "fourVariants": "15actual60Hz substeps and oneactualmax.25, with/without one extra source frame before confirmed keyup; all original12 up/down targets, seededactualnorthvehicle",
+      "explicitWallFrameMs": 2500,
+      "notNativeWallPrediction": true
+    },
+    "actualFailedHallPreActionStressFixturesMs": [
+      5349.8,
+      7666.4
+    ],
+    "retainedNegative": "Original-door max.25+extra-release+turn at7.6664s pressure still violates150 on later stairs; strict Ferry postrelease guard rejects. Original150 samehall rejection remains. Does not prove new native journey completes.",
+    "failedInitialScriptsAndStderrPreserved": true,
+    "rejectedBroadBusSidewaysReference": "/workspace/neon-candidates/all-three-transport-public-longitudinal-and-ferry-berth-candidate-20261005/sealed-bus-tram-e377-provenance/FIRST_BROAD_APPROACH_verify-ordinary-source-cpu.mjs"
+  },
+  "exactSourceReversalProofSHA256": "8c89d83865be3defa837a3b457d8394cd55115e9666b5843d9547a09be8d3459",
+  "preparedOnly": true,
+  "GPUExecuted": false,
+  "nativePass": false,
+  "requiredNext": "New paired baseline/authored explicitHigh Ferry on actualnew committedtestedHEAD must complete3photos/fullupper/lower/voyage/alighting/all originalguards; original failures remainFAILED."
+}

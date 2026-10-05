@@ -1,0 +1,577 @@
+{
+  "status": "ORIGINAL_PAIRED_HIGH_FERRY_FAILED_NOT_ACCEPTED",
+  "sourceScope": "9cf authored/7a90f baseline; no inherited pass to986",
+  "run": 37285849047,
+  "job": 111684541829,
+  "artifact": 11335559241,
+  "wholeZIP": {
+    "path": "/workspace/neon-evidence/9cf-ferry-high-first-failure-original-11335559241/original.zip",
+    "bytes": 258057414,
+    "sha256": "527f093b63088cbfe30726c04340e3e8f28a617a4563eab441c74604704da15d"
+  },
+  "originalClosedJobLog": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-final-material-lighting-9cf/monitor-2026-10-05T08-54-50Z/logs/job-111684541829-original.log",
+    "bytes": 35414,
+    "sha256": "30be2dbe120471fd027b2b89346f207340f65944c826f7a83ebc623655799d05"
+  },
+  "variants": {
+    "baseline": {
+      "actualSourceGit": {
+        "head": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+        "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+      },
+      "rawBuildSHA256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+      "rawBuildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "rawAssetsCount": 156,
+      "originalToolSHA256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+      "manifestSHA256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c",
+      "firstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 149110ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 149110ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "failedLocalLeg": {
+        "stage": "upper-1",
+        "target": {
+          "x": 0,
+          "z": 5.57,
+          "y": 1.3
+        },
+        "precision": false,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.03749999999999558,
+          "y": 1.3,
+          "z": -7.2,
+          "yaw": 1.5707963267948966
+        },
+        "lastObservedLocal": {
+          "x": -0.03749999999999558,
+          "y": 1.3,
+          "z": -7.2,
+          "yaw": 1.5707963267948966
+        },
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": false,
+          "downConfirmed": false,
+          "releaseConfirmed": null,
+          "inputs": []
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 149110ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 149110ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+        }
+      },
+      "preActionSnapshot": {
+        "local": {
+          "x": -0.03749999999999558,
+          "y": 1.3,
+          "z": -7.2,
+          "yaw": 1.5707963267948966
+        },
+        "simulationTime": 43.46666666666548,
+        "timing": {
+          "wallDt": 7.666400000000023,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 7.416400000000023,
+          "droppedTotal": 828.2318000000006
+        },
+        "camera": {
+          "position": {
+            "x": 220,
+            "y": 2.92,
+            "z": -375.0375
+          },
+          "target": {
+            "x": 210.0000000000003,
+            "y": 2.92,
+            "z": -375.0374975363676
+          },
+          "focus": {
+            "x": 220,
+            "y": 2.92,
+            "z": -375.0375
+          },
+          "yaw": -1.5707960804316512,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "vehicle": {
+          "id": "harbor-ferry-1",
+          "routeId": "harbor-ferry",
+          "kind": "ferry",
+          "x": 212.8,
+          "y": 0,
+          "z": -375,
+          "yaw": -1.5707963267948966,
+          "stopId": "harbor-ferry-north",
+          "doorsOpen": true,
+          "remaining": 13.162670072311464,
+          "nextStopId": "harbor-ferry-north",
+          "secondsToArrival": 0,
+          "speed": 0,
+          "delay": 0,
+          "serviceTime": 43.46666666666548,
+          "held": null,
+          "trafficState": "dwell",
+          "junction": null
+        },
+        "revision": 3
+      },
+      "failedCycle": {
+        "n": 0,
+        "before": {
+          "x": -0.03749999999999558,
+          "y": 1.3,
+          "z": -7.2,
+          "yaw": 1.5707963267948966
+        },
+        "key": "w",
+        "slow": false,
+        "desired": -1.5678597651498296,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "w"
+          },
+          {
+            "action": "up",
+            "key": "w",
+            "confirmed": true
+          }
+        ],
+        "waits": [],
+        "releaseConfirmed": true,
+        "guardBaseline": {
+          "simulationTime": 43.46666666666548,
+          "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+        },
+        "publicHeldControl": "original ordinary public Ferry centre-hall gait to1.2m, then original slow near correction",
+        "firstError": {
+          "stage": "movement",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 149110ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 149110ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+        }
+      },
+      "lastAim": {
+        "target": {
+          "yaw": -1.5678597651498296,
+          "pitch": 0.15
+        },
+        "startedAt": "2026-10-05T09:04:05.302Z",
+        "finishedAt": "2026-10-05T09:04:06.153Z",
+        "status": "SATISFIED",
+        "skippedPointerInput": true,
+        "satisfiedBy": "fresh-read-only-current-camera-original-predicate"
+      },
+      "berthWaits": [
+        {
+          "startedAt": "2026-10-05T08:51:18.166Z",
+          "finishedAt": "2026-10-05T08:51:18.190Z",
+          "status": "SATISFIED",
+          "budgetMs": 1200000
+        },
+        {
+          "startedAt": "2026-10-05T08:51:18.986Z",
+          "finishedAt": "2026-10-05T08:51:18.996Z",
+          "status": "SATISFIED",
+          "budgetMs": 1200000
+        },
+        {
+          "startedAt": "2026-10-05T08:53:48.739Z",
+          "finishedAt": "2026-10-05T09:03:03.860Z",
+          "status": "SATISFIED",
+          "budgetMs": 1200000
+        }
+      ],
+      "wholeBudgetMs": 2400000,
+      "elapsedMs": 1070885,
+      "completedPhotos": [
+        {
+          "stage": "exterior",
+          "file": "exterior.png",
+          "imageSha256": "594ac37926e468a9c280169d20280167e2b31399ef10163923f51f5d07e3b982",
+          "poseFile": "exterior-pose.json"
+        },
+        {
+          "stage": "lower",
+          "file": "lower.png",
+          "imageSha256": "bf320f3258ebecac99597c693ea0f71e0d04d424e73f56a55b37960cf381f49c",
+          "poseFile": "lower-pose.json"
+        }
+      ],
+      "photoAttemptsCount": 2,
+      "runtimeErrors": [],
+      "caseSecondaryErrors": [],
+      "caseCleanup": [
+        {
+          "operation": "context.close",
+          "budget": 30000,
+          "elapsedMs": 3648,
+          "confirmed": true,
+          "error": null,
+          "originalFirstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 149110ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 149110ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          }
+        }
+      ],
+      "runCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T09:06:39.728Z",
+          "elapsedMs": 30005,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3426,
+          "limit": 5000,
+          "elapsedMs": 43,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T09:07:09.776Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "runSecondaryErrors": [
+        {
+          "stage": "browser.close",
+          "name": "Error",
+          "message": "browser.close exceeded 30000 ms",
+          "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+        }
+      ],
+      "sourceHashesBeforeAfterEqual": true,
+      "buildInfoAfterEqual": true,
+      "finalNativePoseAfterFailedWait": null,
+      "finalPoseLimitation": "Original failed held wait returned no observation; lastObservedLocal is the pre-action value, not a final/blocked position."
+    },
+    "authored": {
+      "actualSourceGit": {
+        "head": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+        "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+      },
+      "rawBuildSHA256": "b7fff54990d24db3441124ee822d188b12531f3336667aa896e070e5beaade88",
+      "rawBuildRevision": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+      "rawAssetsCount": 208,
+      "originalToolSHA256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+      "manifestSHA256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c",
+      "firstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 149114ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 149114ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "failedLocalLeg": {
+        "stage": "upper-1",
+        "target": {
+          "x": 0,
+          "z": 5.57,
+          "y": 1.3
+        },
+        "precision": false,
+        "localBudget": 150000,
+        "maxIterations": 1800,
+        "initialLocal": {
+          "x": -0.03750000295698342,
+          "y": 1.3,
+          "z": -7.199978717543089,
+          "yaw": 1.5703501209426975
+        },
+        "lastObservedLocal": {
+          "x": -0.03750000295698342,
+          "y": 1.3,
+          "z": -7.199978717543089,
+          "yaw": 1.5703501209426975
+        },
+        "precisionModifier": {
+          "key": "z",
+          "scope": "precision-local-leg-only",
+          "downAttempted": false,
+          "downConfirmed": false,
+          "releaseConfirmed": null,
+          "inputs": []
+        },
+        "firstError": {
+          "stage": "local movement",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 149114ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 149114ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+        }
+      },
+      "preActionSnapshot": {
+        "local": {
+          "x": -0.03750000295698342,
+          "y": 1.3,
+          "z": -7.199978717543089,
+          "yaw": 1.5703501209426975
+        },
+        "simulationTime": 43.6999999999988,
+        "timing": {
+          "wallDt": 5.349800000000046,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 5.099800000000046,
+          "droppedTotal": 931.4277000000001
+        },
+        "camera": {
+          "position": {
+            "x": 219.9999787175431,
+            "y": 2.92,
+            "z": -375.03750000295696
+          },
+          "target": {
+            "x": 209.9999787175434,
+            "y": 2.92,
+            "z": -375.03749753932465
+          },
+          "focus": {
+            "x": 219.9999787175431,
+            "y": 2.92,
+            "z": -375.03750000295696
+          },
+          "yaw": -1.5707960804316652,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "vehicle": {
+          "id": "harbor-ferry-1",
+          "routeId": "harbor-ferry",
+          "kind": "ferry",
+          "x": 212.8,
+          "y": 0,
+          "z": -375,
+          "yaw": -1.5707963267948966,
+          "stopId": "harbor-ferry-north",
+          "doorsOpen": true,
+          "remaining": 12.929336738978144,
+          "nextStopId": "harbor-ferry-north",
+          "secondsToArrival": 0,
+          "speed": 0,
+          "delay": 0,
+          "serviceTime": 43.6999999999988,
+          "held": null,
+          "trafficState": "dwell",
+          "junction": null
+        },
+        "revision": 3
+      },
+      "failedCycle": {
+        "n": 0,
+        "before": {
+          "x": -0.03750000295698342,
+          "y": 1.3,
+          "z": -7.199978717543089,
+          "yaw": 1.5703501209426975
+        },
+        "key": "w",
+        "slow": false,
+        "desired": -1.567859760024226,
+        "inputs": [
+          {
+            "action": "down",
+            "key": "w"
+          },
+          {
+            "action": "up",
+            "key": "w",
+            "confirmed": true
+          }
+        ],
+        "waits": [],
+        "releaseConfirmed": true,
+        "guardBaseline": {
+          "simulationTime": 43.6999999999988,
+          "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+        },
+        "publicHeldControl": "original ordinary public Ferry centre-hall gait to1.2m, then original slow near correction",
+        "firstError": {
+          "stage": "movement",
+          "name": "TimeoutError",
+          "message": "page.waitForFunction: Timeout 149114ms exceeded.",
+          "stack": "page.waitForFunction: Timeout 149114ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+        }
+      },
+      "lastAim": {
+        "target": {
+          "yaw": -1.567859760024226,
+          "pitch": 0.15
+        },
+        "startedAt": "2026-10-05T09:24:05.836Z",
+        "finishedAt": "2026-10-05T09:24:06.719Z",
+        "status": "SATISFIED",
+        "skippedPointerInput": true,
+        "satisfiedBy": "fresh-read-only-current-camera-original-predicate"
+      },
+      "berthWaits": [
+        {
+          "startedAt": "2026-10-05T09:09:52.001Z",
+          "finishedAt": "2026-10-05T09:09:52.028Z",
+          "status": "SATISFIED",
+          "budgetMs": 1200000
+        },
+        {
+          "startedAt": "2026-10-05T09:09:52.934Z",
+          "finishedAt": "2026-10-05T09:09:52.943Z",
+          "status": "SATISFIED",
+          "budgetMs": 1200000
+        },
+        {
+          "startedAt": "2026-10-05T09:12:51.731Z",
+          "finishedAt": "2026-10-05T09:22:50.433Z",
+          "status": "SATISFIED",
+          "budgetMs": 1200000
+        }
+      ],
+      "wholeBudgetMs": 2400000,
+      "elapsedMs": 1169628,
+      "completedPhotos": [
+        {
+          "stage": "exterior",
+          "file": "exterior.png",
+          "imageSha256": "5159923d107195846a86b4167bbfb3be94ceb8b3235913194ac5cff39b170cc8",
+          "poseFile": "exterior-pose.json"
+        },
+        {
+          "stage": "lower",
+          "file": "lower.png",
+          "imageSha256": "02bf1a87766a1672a0a0908dc2a8ac0c61f1493007556ad2c1e7c72b765c1150",
+          "poseFile": "lower-pose.json"
+        }
+      ],
+      "photoAttemptsCount": 2,
+      "runtimeErrors": [],
+      "caseSecondaryErrors": [],
+      "caseCleanup": [
+        {
+          "operation": "context.close",
+          "budget": 30000,
+          "elapsedMs": 4768,
+          "confirmed": true,
+          "error": null,
+          "originalFirstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 149114ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 149114ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:309:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:422:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          }
+        }
+      ],
+      "runCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T09:26:41.192Z",
+          "elapsedMs": 30024,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3715,
+          "limit": 5000,
+          "elapsedMs": 46,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T09:27:11.262Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "runSecondaryErrors": [
+        {
+          "stage": "browser.close",
+          "name": "Error",
+          "message": "browser.close exceeded 30000 ms",
+          "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+        }
+      ],
+      "sourceHashesBeforeAfterEqual": true,
+      "buildInfoAfterEqual": true,
+      "finalNativePoseAfterFailedWait": null,
+      "finalPoseLimitation": "Original failed held wait returned no observation; lastObservedLocal is the pre-action value, not a final/blocked position."
+    }
+  },
+  "sourceReadOnlyFacts": {
+    "ordinarySpeed": 2.25,
+    "slowSpeed": 0.3,
+    "maximumAcceptedSimulationFrameSeconds": 0.25,
+    "maximumOrdinaryVisibleFrameMetres": 0.5625,
+    "originalEndpointXZ": 0.06,
+    "originalEndpointY": 0.15,
+    "passengerRadius": 0.3,
+    "failedCentreHallMetres": 12.77,
+    "originalNearHandoffMetres": 1.2,
+    "minimumIdealVisibleFramesToHandoff": 21,
+    "singlePreActionWallDtNotWholeLegMean": true
+  },
+  "directVideoReview": {
+    "method": "Full original member streamed to CPU ffmpeg keyframe selector, no video extract/copy, no GPU/new browser or image colour processing. Video stream receipts and sampled originals in this sealed directory.",
+    "observation": "Both originals visibly advance from the rear centre hallway towards the front staircase; last keyframe still shows the lower deck. No numeric simulation/final pose inferred from images.",
+    "notProven": [
+      "collision/stall/input failure",
+      "final numeric local pose",
+      "whole-leg average wall/simulation ratio",
+      "arrival at original endpoint",
+      "remaining stairs/voyage completed",
+      "render or art acceptance"
+    ]
+  },
+  "firstFailureConclusion": "Original 150s local centre-hall held wait expired in both variants. Berth1200 completed; whole2400 remained. Original High frames visibly move forward; actual pre-action capped timing shows multi-second visible frames but does not prove the entire failed leg timing. No gameplay/source root cause proven from the missing final pose. A new explicitly scoped public protocol/budget candidate would require separate CPU safety and new paired High evidence.",
+  "budgetOrProtocolEdited": false,
+  "GPUExecuted": false,
+  "originalsPreserved": true,
+  "nativePass": false
+}

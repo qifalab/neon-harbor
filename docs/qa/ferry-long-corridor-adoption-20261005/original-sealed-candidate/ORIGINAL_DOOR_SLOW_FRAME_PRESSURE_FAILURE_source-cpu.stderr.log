@@ -1,0 +1,28 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: lower-1
++ actual - expected
+
++ {
++   message: 'declared finite Ferry local deadline after confirmed release',
++   name: 'AssertionError'
++ }
+- null
+
+    at leg (file:///workspace/neon-candidates/ferry-source-axis-and-long-hall-finite-candidate-20261005/verify-actual-source-axis-and-longhall-cpu.mjs:19:360)
+    at async Object.full (file:///workspace/neon-candidates/ferry-source-axis-and-long-hall-finite-candidate-20261005/verify-actual-source-axis-and-longhall-cpu.mjs:20:137)
+    at async file:///workspace/neon-candidates/ferry-source-axis-and-long-hall-finite-candidate-20261005/verify-actual-source-axis-and-longhall-cpu.mjs:26:213 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    name: 'AssertionError',
+    message: 'declared finite Ferry local deadline after confirmed release'
+  },
+  expected: null,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

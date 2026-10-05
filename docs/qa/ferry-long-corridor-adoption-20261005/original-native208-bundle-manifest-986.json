@@ -3,8 +3,8 @@
   "rootPrivateRefsUntouched": true,
   "files": {
     "README.md": {
-      "bytes": 14942,
-      "sha256": "68dca9b6aa54a3a7decd2e889269282a9f7d7ca41f50b2f398ca442e2f1bc464"
+      "bytes": 14384,
+      "sha256": "684567c195ec1cefea7ef6703fca66212866ef2c7966417e5bcfaa47b2afe349"
     },
     "cases.json": {
       "bytes": 11873,
@@ -331,12 +331,12 @@
       "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
     },
     "methods/transport/method-manifest.json": {
-      "bytes": 21328,
-      "sha256": "6dcee5818971ebb9c70c035b2cbbfe94ea2479f13d3c4b5c92088f0c4cb2995d"
+      "bytes": 20868,
+      "sha256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c"
     },
     "methods/transport/native-transport-high.mjs": {
-      "bytes": 56756,
-      "sha256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f"
+      "bytes": 56319,
+      "sha256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4"
     },
     "methods/transport/runtime-resources.json": {
       "bytes": 3799,
@@ -537,26 +537,6 @@
     "runtime-amendments/east-immutable-arrival-20261005/capture-scenic-east-original.mjs": {
       "bytes": 32756,
       "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
-    },
-    "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/active-source-amendment.json": {
-      "bytes": 4786,
-      "sha256": "36827f18a712a5154a1c0772a09de1d52a64894bcc852565a29b6d21534b9d77"
-    },
-    "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/actual-literal-adoption-receipt.json": {
-      "bytes": 1927,
-      "sha256": "c037237c36f9dbee28b2b3951e5012e9940e44431557b6f025d6957231539f36"
-    },
-    "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/exact208-graphics-and401-source-bridge.json": {
-      "bytes": 24255,
-      "sha256": "038c4dc00c56eae1ed7c402aaa7dc0825ae2ef723ad6e725dbd7eec917411e32"
-    },
-    "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/original-native208-bundle-manifest-986.json": {
-      "bytes": 61454,
-      "sha256": "e57fda570e6f328824ac51c29a4366547e1f450c64d14c8667a7e6a41c1525b0"
-    },
-    "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/original-transport-method-manifest-986.json": {
-      "bytes": 20868,
-      "sha256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c"
     },
     "runtime-amendments/final-dense-bakery-ceramics-mp-css-20261005/combined-frontage-cpu-proof-original.json": {
       "bytes": 19660,
@@ -888,7 +868,7 @@
     "currentLocalBuildInfoSHA256": "18ba8b44486ce4f5bdcb188c58ac519c2feec165056d709001d72d35eb7b286f",
     "historicalBaselineAndAuthoredOriginalFilesUnchanged": true,
     "nativeCaptureAndArtApproval": "PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW",
-    "refreshChangedRuntimeSource": false
+    "refreshChangedRuntimeSource": true
   },
   "activeCases": {
     "home": {
@@ -1038,7 +1018,7 @@
   },
   "activityPinRefresh": {
     "status": "SOURCE_ONLY_ACTIVITY_PINS_NO_NATIVE_ACCEPTANCE",
-    "at": "2026-10-05T09:51:39.595981+00:00",
+    "at": "2026-10-05T09:09:04.376549+00:00",
     "historicalRecordBytesPreserved": true,
     "actualCurrentBuildInfoSHA256": "18ba8b44486ce4f5bdcb188c58ac519c2feec165056d709001d72d35eb7b286f",
     "caseCount": 24,
@@ -1329,30 +1309,5 @@
     "old9cfArtRejectionAndFailuresPreserved": true,
     "producerCPUReexecutedBySealer": false,
     "nativeArtAccepted": false
-  },
-  "ferrySourceAxisAndFiniteLongHallNativeMethodAmendment": {
-    "status": "EXPLICIT_NATIVE_METHOD_ONLY_CPU_SOURCE_PROOF_NATIVE_PENDING",
-    "parentNativeBundleFileCount": 208,
-    "parentNativeBundleManifestSHA256": "e57fda570e6f328824ac51c29a4366547e1f450c64d14c8667a7e6a41c1525b0",
-    "actualNativeBundleFileCount": 213,
-    "actual208GraphicsOnlyBridgePath": "runtime-amendments/ferry-source-axis-long-centre-hall-20261005/exact208-graphics-and401-source-bridge.json",
-    "actual208GraphicsOnlyBridgeSHA256": "038c4dc00c56eae1ed7c402aaa7dc0825ae2ef723ad6e725dbd7eec917411e32",
-    "explicitPayloadFiles": {
-      "tools/native-review/methods/transport/method-manifest.json": {
-        "sha256": "6dcee5818971ebb9c70c035b2cbbfe94ea2479f13d3c4b5c92088f0c4cb2995d",
-        "bytes": 21328
-      },
-      "tools/native-review/methods/transport/native-transport-high.mjs": {
-        "sha256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f",
-        "bytes": 56756
-      },
-      "tools/native-review/runtime-amendments/ferry-source-axis-long-centre-hall-20261005/active-source-amendment.json": {
-        "sha256": "36827f18a712a5154a1c0772a09de1d52a64894bcc852565a29b6d21534b9d77",
-        "bytes": 4786
-      }
-    },
-    "all208RuntimeAnd401GameplaySourcesUnchanged": true,
-    "oldFailuresPreserved": true,
-    "nativePass": false
   }
 }
