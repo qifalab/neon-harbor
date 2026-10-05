@@ -552,7 +552,7 @@ def main():
             save(evidence/'evidence-files.json', {'status':summary['status'],'artAcceptance':summary['artAcceptance'],
                 'integerSizePolicy':'Python unbounded integers; stream hashes; no 32MiB read cap','files':files})
     print(json.dumps({'case':args.case,'status':summary['status'],'artAcceptance':summary['artAcceptance']}))
-    return 0 if summary['status'] in ('CAPTURE_COMPLETE_ART_REVIEW_PENDING','FUNCTIONAL_TOUR_COMPLETE','FUNCTIONAL_RESIDENT_DAY_COMPLETE') else 1
+    return 0 if summary['status'] in ('CAPTURE_COMPLETE_ART_REVIEW_PENDING','FUNCTIONAL_TOUR_COMPLETE') else 1
 
 if __name__ == '__main__':
     raise SystemExit(main())
