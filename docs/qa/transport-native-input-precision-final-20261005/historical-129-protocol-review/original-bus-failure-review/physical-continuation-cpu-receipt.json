@@ -1,0 +1,39 @@
+{
+  "status": "ACTUAL_5CD_SOURCE_CPU_STAIR_CONTINUATION_CLEAR_NATIVE_WALL_TIMING_UNVERIFIED",
+  "pinnedSources": {
+    "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+    "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+    "src/traffic.js": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101",
+    "src/world-config.js": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c"
+  },
+  "fixture": "Explicitly synthetic continuation from original recorded lastLocal using byte-verified actual5cd HarborTransitService .3 slowgait/full passenger radius/blockers. Vehicle yaw is derived from recorded method desired formula, not a separate measured pose.",
+  "before": {
+    "x": -0.765843890625313,
+    "y": 1.3368755278908013,
+    "z": 1.1948652149526793,
+    "yaw": -3.117518469518292
+  },
+  "target": {
+    "x": -0.77,
+    "z": 1.06,
+    "y": 1.42
+  },
+  "vehicleYawDerived": 1.581161716785462,
+  "snapshots": [
+    {
+      "frame": 0,
+      "after": {
+        "x": -0.767649280029959,
+        "y": 1.3830885479950032,
+        "z": 1.11988694764076,
+        "yaw": -3.1175184694974414
+      },
+      "distance": 0.05993306584936796
+    }
+  ],
+  "completedAt": 0,
+  "mutatesOnlyIsolatedCPUSimulation": true,
+  "noServedWorldClockOrSourceChanges": true,
+  "limits": "No real browser, RPC wall timing, actual target attainment before150s, High upper image, subsequent return stair movement or native acceptance."
+}

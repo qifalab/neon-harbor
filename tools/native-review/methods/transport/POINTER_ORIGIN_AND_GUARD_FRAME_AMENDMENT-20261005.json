@@ -1,0 +1,98 @@
+{
+  "status": "SOURCE_SYNTAX_AND_CPU_FUNCTION_TRACE_CHECKS_PASSED_NATIVE_RECAPTURE_REQUIRED",
+  "at": "2026-10-05T05:46:38.162588+00:00",
+  "sourceProtocolParent": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
+  "activeToolSha256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
+  "metadataParentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
+  "metadataParentManifestSha256": "79b7b998bc7603b50cd32b714dc3bea674440fc12ca0221929075436ec788159",
+  "originalFailure": {
+    "runHead": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+    "artifactId": 11326904370,
+    "originalZipBytes": 322602146,
+    "originalZipSha256": "f450167d73e3dc4f77de8b8211f080d0385fe8ee0e74abbfef4a8368ffb150c2",
+    "baseline": {
+      "status": "FAILED",
+      "photoStages": [
+        "exterior",
+        "lower",
+        "upper"
+      ],
+      "firstError": "finite aim phase exceeded60000ms after actual upperE refused, first lower-0 leg",
+      "photoAfterYaw": 3.141592864995516,
+      "firstAimActualYaw": 4.843772752873229,
+      "targetYaw": 3.0956418557369787,
+      "failedFinalYaw": 4.797821825138854,
+      "wholeMs": 2400000,
+      "elapsedMs": 1512418
+    },
+    "authored": {
+      "status": "FAILED",
+      "photoStages": [
+        "exterior",
+        "lower"
+      ],
+      "authoredUpperPhotoExists": false,
+      "firstError": "Original upper-3 local150000ms movementwait563ms timeout",
+      "lastGapMetres": 0.13492923867482073,
+      "actualPhysicalProgressMetres": 1.8749999786733589,
+      "actualHeldSeconds": 6.4999999999996305,
+      "wholeMs": 2400000,
+      "elapsedMs": 901323
+    }
+  },
+  "changes": [
+    "Read actual current rendered camera after public pointerdown before caching gesture orbit origin. Public pointer handler initializes orbit at the input event; earlier camera snapshot can be stale after automatic passenger follow.",
+    "Only when existing guarded camera reuse succeeds, return its exact actual fresh snapshot for the same conservative before-action held-input clock baseline. All fallback pointer adjustment waits still take a new before-action read. No new global/game snapshot cache."
+  ],
+  "preserved": {
+    "quality": "high",
+    "hour": 16.5,
+    "samePublicUIStopsVehiclesRoutes": true,
+    "noRetryOrRelaunch": true,
+    "noTeleportClockWritesOrPhysicsChange": true,
+    "noDirectStorageOrActorWrites": true,
+    "aimPhaseMs": 60000,
+    "localWaypointMs": 150000,
+    "busTramWholeMs": 2400000,
+    "ferryWholeMs": 900000,
+    "endpointMetres": 0.06,
+    "photoYawRadians": 0.025,
+    "photoPitchRadians": 0.003,
+    "fullOriginalPassengerRadiusAndBlockers": true,
+    "precisionSpeedMetresPerSimSecond": 0.3,
+    "heldInputStall": "heldSeconds < geometricMetres / .3 + 3",
+    "confirmedInputReleaseBeforeRead": true,
+    "allPhotoResourcesAndFingerprintChecks": true,
+    "actualNativeFirstFailurePreserved": true
+  },
+  "cpu": {
+    "protocolFunctionCases": 12,
+    "actualReusedGuardCycles": 25,
+    "sameActualSimulationFrameCycles": 24,
+    "remainingCycleEarlierConservativeStartSeconds": 0.25,
+    "allOriginalStallThresholdsStillPass": true,
+    "originalWrongYawReplayed": 4.797821743614692,
+    "originalWrongYawObserved": 4.797821825138854,
+    "protocolReceiptSha256": "d95a47c94ba02e57f3593d2542fc6c74f464addf3aebb2ede0564dcb1d2ba299",
+    "protocolScriptSha256": "f110436e910564d67fb74b1fa579929307595d61bb1af742f14020ec3f2f31ed",
+    "physicalContinuationReceiptSha256": "2760de56dc3c2841e48e57d23d68fc172434ce4906c1c18536a249508f83b7ae",
+    "originalPhysicsLastRecordedPoseContinuesToOriginalEndpoint": {
+      "afterOne15x1over60SyntheticFrame": {
+        "x": -0.767649280029959,
+        "y": 1.3830885479950032,
+        "z": 1.11988694764076
+      },
+      "gapMetres": 0.05993306584936796
+    },
+    "checksAreSyntheticNoNativeClockChanges": true
+  },
+  "productionRuntimeSourceChanged": false,
+  "latestAECInputHandlerBytesEqualExecuted5cd": true,
+  "nativeExecuted": false,
+  "artAccepted": false,
+  "limits": [
+    "The25duplicateRPCcalls exist in source, but walltime saved is not independently measured; no promise original150000ms completion follows.",
+    "Synthetic pointer handler/physics replay is separate from a new nativeHigh capture. Baseline upper image cannot validate authored upper deck.",
+    "New protocol must be adopted in separate worktree/head, preserving AEC frozenlocalGPU and fullrequiredCI; runtime206 can retain byteidentity while buildrevision changes."
+  ]
+}

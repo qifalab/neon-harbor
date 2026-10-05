@@ -1,0 +1,28 @@
+{
+  "status": "INDEPENDENT_READONLY_LEDGER_AND_METHOD_PIN_REVIEW_PASSED_NATIVE_NOT_EXECUTED",
+  "reviewer": "/root/refresh_next_runtime_pins/transport_payload_readonly_review",
+  "payloadLedgerSHA256": "515c2ea11179b097ef0ec23ad55cee8ec6dacb2097a0c609a75ef7b93c14d59a",
+  "parentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
+  "checks": {
+    "threePayloadFilesExact": true,
+    "fourSourcePinsMatchAECGit": true,
+    "threeAuthoredSourcePinsMatchAECGit": true,
+    "canonicalAndResourcesPinsMatchAECGit": true,
+    "nineGLBResourcesMatchAECGit": true,
+    "methodManifestOnlyToolAndExplicitAmendmentChanged": true,
+    "methodDiffOnlyPublicPointerOriginAndQualifyingFrameReuse": true,
+    "originalBudgetsQualityHourPhysicsEndpointAimGuardsUnchanged": true
+  },
+  "actualSyntaxChecks": [
+    {
+      "command": "node --check tools/native-review/methods/transport/native-transport-high.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node tools/native-review/methods/transport/native-transport-high.mjs --help",
+      "exitCode": 0
+    }
+  ],
+  "runtimeTestsBuildGpuCommitDispatchExecutedByReviewer": false,
+  "limits": "Source and byte checks only. Existing producer12CPU/25cycle evidence archived unchanged; neither reviewer nor adopter reexecuted native browser cases."
+}

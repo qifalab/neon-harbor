@@ -1,0 +1,1059 @@
+{
+  "status": "ORIGINAL_TRAM_BOTH_FAILURES_RETAINED_READONLY",
+  "artifactId": 11328275235,
+  "originalZIPBytes": 314302916,
+  "originalZIPSHA256": "bb91e7da1f48930db02011b2cc03bec80ad60d16d8ede4b0dd47dabd4c599fa9",
+  "roles": {
+    "baseline": {
+      "status": "FAILED",
+      "head": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "assetCount": 156,
+      "buildSHA256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+      "firstError": {
+        "stage": "case",
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 1ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 1ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:269:380)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "firstFailureAt": "2026-10-05T05:21:21.107Z",
+      "motionStage": "upper-3",
+      "wholeBudgetMs": 2400000,
+      "elapsedMs": 1492273,
+      "localBudgetMs": 150000,
+      "target": {
+        "x": -0.69,
+        "z": -1.54,
+        "y": 1.42
+      },
+      "lastLocal": {
+        "x": -0.6739149757728107,
+        "y": 1.0233700457630828,
+        "z": -2.1713701312342764,
+        "yaw": 0.0015258789062499998
+      },
+      "gapMetres": 0.6315749920786735,
+      "attemptedCycles": 19,
+      "completeCycles": 18,
+      "lastHeldSeconds": 4.999999999999716,
+      "lastGeometricMetres": 1.350000000000026,
+      "photos": [
+        {
+          "stage": "exterior",
+          "file": "exterior.png",
+          "imageSha256": "c9401e321f772b8b19dc9989d15a25046d002b85070bd33b431c8080554143b4",
+          "poseFile": "exterior-pose.json"
+        },
+        {
+          "stage": "lower",
+          "file": "lower.png",
+          "imageSha256": "ee60ca677e1bb3480633d5bb140e6a6a616037bb9b7454da567b0ad7fb14493c",
+          "poseFile": "lower-pose.json"
+        }
+      ],
+      "runtimeErrors": [],
+      "secondaryErrors": [],
+      "sourceStable": true,
+      "buildStable": true,
+      "cleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T05:21:24.964Z",
+          "elapsedMs": 30022,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3448,
+          "limit": 5000,
+          "elapsedMs": 42,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T05:21:55.028Z",
+          "elapsedMs": 1,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "guardTrace": [
+        {
+          "n": 0,
+          "reuse": true,
+          "freshSim": 52.449999999998305,
+          "guardSim": 52.449999999998305,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6758604706233183,
+            "y": 0.44,
+            "z": -3.4463686469392356,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 0.2499999999999858,
+          "metres": 0.07500000000000144,
+          "releaseConfirmed": true,
+          "aimMs": 1006
+        },
+        {
+          "n": 1,
+          "reuse": true,
+          "freshSim": 52.69999999999829,
+          "guardSim": 52.69999999999829,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6757460297497591,
+            "y": 0.44,
+            "z": -3.3713687342507086,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 0.4999999999999716,
+          "metres": 0.15000000000000288,
+          "releaseConfirmed": true,
+          "aimMs": 710
+        },
+        {
+          "n": 2,
+          "reuse": true,
+          "freshSim": 52.949999999998276,
+          "guardSim": 52.949999999998276,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6756315888761998,
+            "y": 0.44,
+            "z": -3.2963688215621816,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 0.7499999999999574,
+          "metres": 0.2250000000000043,
+          "releaseConfirmed": true,
+          "aimMs": 699
+        },
+        {
+          "n": 3,
+          "reuse": true,
+          "freshSim": 53.19999999999826,
+          "guardSim": 53.19999999999826,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6755171480026405,
+            "y": 0.44,
+            "z": -3.2213689088736546,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 1.249999999999929,
+          "metres": 0.30000000000000576,
+          "releaseConfirmed": true,
+          "aimMs": 1008
+        },
+        {
+          "n": 4,
+          "reuse": true,
+          "freshSim": 53.699999999998234,
+          "guardSim": 53.699999999998234,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6754027071290812,
+            "y": 0.44,
+            "z": -3.1463689961851276,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 1.4999999999999147,
+          "metres": 0.3750000000000072,
+          "releaseConfirmed": true,
+          "aimMs": 785
+        },
+        {
+          "n": 5,
+          "reuse": true,
+          "freshSim": 53.94999999999822,
+          "guardSim": 53.94999999999822,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.675288266255522,
+            "y": 0.45798608857264844,
+            "z": -3.0713690834966005,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 1.7499999999999005,
+          "metres": 0.45000000000000867,
+          "releaseConfirmed": true,
+          "aimMs": 738
+        },
+        {
+          "n": 6,
+          "reuse": true,
+          "freshSim": 54.199999999998205,
+          "guardSim": 54.199999999998205,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6751738253819627,
+            "y": 0.505101418338518,
+            "z": -2.9963691708080735,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 1.9999999999998863,
+          "metres": 0.5250000000000101,
+          "releaseConfirmed": true,
+          "aimMs": 704
+        },
+        {
+          "n": 7,
+          "reuse": true,
+          "freshSim": 54.44999999999819,
+          "guardSim": 54.69999999999818,
+          "sameFrame": false,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6750593845084034,
+            "y": 0.5522167481043875,
+            "z": -2.9213692581195465,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 2.249999999999872,
+          "metres": 0.6000000000000115,
+          "releaseConfirmed": true,
+          "aimMs": 790
+        },
+        {
+          "n": 8,
+          "reuse": true,
+          "freshSim": 54.94999999999816,
+          "guardSim": 54.94999999999816,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6749449436348441,
+            "y": 0.599332077870257,
+            "z": -2.8463693454310195,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 2.499999999999858,
+          "metres": 0.6750000000000129,
+          "releaseConfirmed": true,
+          "aimMs": 726
+        },
+        {
+          "n": 9,
+          "reuse": true,
+          "freshSim": 55.19999999999815,
+          "guardSim": 55.19999999999815,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6748305027612849,
+            "y": 0.6464474076361266,
+            "z": -2.7713694327424925,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 2.7499999999998437,
+          "metres": 0.7500000000000143,
+          "releaseConfirmed": true,
+          "aimMs": 708
+        },
+        {
+          "n": 10,
+          "reuse": true,
+          "freshSim": 55.449999999998134,
+          "guardSim": 55.449999999998134,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6747160618877256,
+            "y": 0.6935627374019961,
+            "z": -2.6963695200539655,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 2.9999999999998295,
+          "metres": 0.8250000000000157,
+          "releaseConfirmed": true,
+          "aimMs": 1048
+        },
+        {
+          "n": 11,
+          "reuse": true,
+          "freshSim": 55.69999999999812,
+          "guardSim": 55.69999999999812,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6746016210141663,
+            "y": 0.7406780671678657,
+            "z": -2.6213696073654384,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 3.2499999999998153,
+          "metres": 0.9000000000000171,
+          "releaseConfirmed": true,
+          "aimMs": 721
+        },
+        {
+          "n": 12,
+          "reuse": true,
+          "freshSim": 55.949999999998106,
+          "guardSim": 55.949999999998106,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.674487180140607,
+            "y": 0.7877933969337352,
+            "z": -2.5463696946769114,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 3.499999999999801,
+          "metres": 0.9750000000000185,
+          "releaseConfirmed": true,
+          "aimMs": 737
+        },
+        {
+          "n": 13,
+          "reuse": true,
+          "freshSim": 56.19999999999809,
+          "guardSim": 56.19999999999809,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6743727392670478,
+            "y": 0.8349087266996047,
+            "z": -2.4713697819883844,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 3.749999999999787,
+          "metres": 1.05000000000002,
+          "releaseConfirmed": true,
+          "aimMs": 705
+        },
+        {
+          "n": 14,
+          "reuse": true,
+          "freshSim": 56.44999999999808,
+          "guardSim": 56.44999999999808,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6742582983934885,
+            "y": 0.8820240564654742,
+            "z": -2.3963698692998574,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 4.249999999999758,
+          "metres": 1.1250000000000215,
+          "releaseConfirmed": true,
+          "aimMs": 911
+        },
+        {
+          "n": 15,
+          "reuse": true,
+          "freshSim": 56.94999999999805,
+          "guardSim": 56.94999999999805,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6741438575199292,
+            "y": 0.9291393862313437,
+            "z": -2.3213699566113304,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 4.499999999999744,
+          "metres": 1.200000000000023,
+          "releaseConfirmed": true,
+          "aimMs": 891
+        },
+        {
+          "n": 16,
+          "reuse": true,
+          "freshSim": 57.199999999998035,
+          "guardSim": 57.199999999998035,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.67402941664637,
+            "y": 0.9762547159972133,
+            "z": -2.2463700439228034,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 4.74999999999973,
+          "metres": 1.2750000000000246,
+          "releaseConfirmed": true,
+          "aimMs": 815
+        },
+        {
+          "n": 17,
+          "reuse": true,
+          "freshSim": 57.44999999999802,
+          "guardSim": 57.44999999999802,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6739149757728107,
+            "y": 1.0233700457630828,
+            "z": -2.1713701312342764,
+            "yaw": 0.0015258789062499998
+          },
+          "held": 4.999999999999716,
+          "metres": 1.350000000000026,
+          "releaseConfirmed": true,
+          "aimMs": 973
+        },
+        {
+          "n": 18,
+          "reuse": false,
+          "freshSim": 57.699999999998006,
+          "guardSim": 57.94999999999799,
+          "sameFrame": false,
+          "downUpCount": 4,
+          "after": null,
+          "held": null,
+          "metres": null,
+          "releaseConfirmed": true,
+          "aimMs": 5422
+        }
+      ]
+    },
+    "authored": {
+      "status": "FAILED",
+      "head": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+      "assetCount": 199,
+      "buildSHA256": "333332feb9191772e2a1d653c22c1c2827fd8198258fe7bb46cc3d1ee2e1de3d",
+      "firstError": {
+        "stage": "case",
+        "name": "AssertionError",
+        "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n",
+        "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(Date.now()<localDeadline)\n\n    at walkLocal (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:265:16)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:56\n    at async bounded (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+      },
+      "firstFailureAt": "2026-10-05T05:47:24.218Z",
+      "motionStage": "upper-3",
+      "wholeBudgetMs": 2400000,
+      "elapsedMs": 1531055,
+      "localBudgetMs": 150000,
+      "target": {
+        "x": -0.69,
+        "z": -1.54,
+        "y": 1.42
+      },
+      "lastLocal": {
+        "x": -0.6773505395657219,
+        "y": 1.1175728872346484,
+        "z": -2.0214145876672944,
+        "yaw": -0.025982891692339916
+      },
+      "gapMetres": 0.48158074511773147,
+      "attemptedCycles": 20,
+      "completeCycles": 20,
+      "lastHeldSeconds": 4.999999999999716,
+      "lastGeometricMetres": 1.500000000000015,
+      "photos": [
+        {
+          "stage": "exterior",
+          "file": "exterior.png",
+          "imageSha256": "e51c2ac354b0b8c1daff31e155afe78bb201823389df8c08b335d1862fcc6928",
+          "poseFile": "exterior-pose.json"
+        },
+        {
+          "stage": "lower",
+          "file": "lower.png",
+          "imageSha256": "bebdaf3abdc2408ea20c53986a05b04cba3bd4649afffb273c5932a5eb7f5260",
+          "poseFile": "lower-pose.json"
+        }
+      ],
+      "runtimeErrors": [],
+      "secondaryErrors": [],
+      "sourceStable": true,
+      "buildStable": true,
+      "cleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T05:47:28.359Z",
+          "elapsedMs": 30001,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3822,
+          "limit": 5000,
+          "elapsedMs": 48,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T05:47:58.408Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "guardTrace": [
+        {
+          "n": 0,
+          "reuse": true,
+          "freshSim": 52.916666666664945,
+          "guardSim": 52.916666666664945,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6747539445464605,
+            "y": 0.44,
+            "z": -3.4463658153542625,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 0.2499999999999858,
+          "metres": 0.07500000000000075,
+          "releaseConfirmed": true,
+          "aimMs": 1072
+        },
+        {
+          "n": 1,
+          "reuse": true,
+          "freshSim": 53.16666666666493,
+          "guardSim": 53.16666666666493,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6746830827405974,
+            "y": 0.44,
+            "z": -3.3713658488302394,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 0.4999999999999716,
+          "metres": 0.1500000000000015,
+          "releaseConfirmed": true,
+          "aimMs": 821
+        },
+        {
+          "n": 2,
+          "reuse": true,
+          "freshSim": 53.416666666664916,
+          "guardSim": 53.416666666664916,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6746122209347343,
+            "y": 0.44,
+            "z": -3.2963658823062163,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 0.7499999999999574,
+          "metres": 0.22500000000000225,
+          "releaseConfirmed": true,
+          "aimMs": 796
+        },
+        {
+          "n": 3,
+          "reuse": true,
+          "freshSim": 53.6666666666649,
+          "guardSim": 53.6666666666649,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6745413591288711,
+            "y": 0.44,
+            "z": -3.2213659157821932,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 0.9999999999999432,
+          "metres": 0.300000000000003,
+          "releaseConfirmed": true,
+          "aimMs": 840
+        },
+        {
+          "n": 4,
+          "reuse": true,
+          "freshSim": 53.91666666666489,
+          "guardSim": 53.91666666666489,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.674470497323008,
+            "y": 0.44,
+            "z": -3.14636594925817,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 1.249999999999929,
+          "metres": 0.3750000000000037,
+          "releaseConfirmed": true,
+          "aimMs": 851
+        },
+        {
+          "n": 5,
+          "reuse": true,
+          "freshSim": 54.166666666664874,
+          "guardSim": 54.166666666664874,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6743996355171449,
+            "y": 0.45798803648752306,
+            "z": -3.071365982734147,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 1.4999999999999147,
+          "metres": 0.45000000000000445,
+          "releaseConfirmed": true,
+          "aimMs": 817
+        },
+        {
+          "n": 6,
+          "reuse": true,
+          "freshSim": 54.41666666666486,
+          "guardSim": 54.41666666666486,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6743287737112817,
+            "y": 0.5051034000731273,
+            "z": -2.996366016210124,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 1.7499999999999005,
+          "metres": 0.5250000000000052,
+          "releaseConfirmed": true,
+          "aimMs": 841
+        },
+        {
+          "n": 7,
+          "reuse": true,
+          "freshSim": 54.666666666664845,
+          "guardSim": 54.666666666664845,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6742579119054186,
+            "y": 0.5522187636587316,
+            "z": -2.921366049686101,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 1.9999999999998863,
+          "metres": 0.600000000000006,
+          "releaseConfirmed": true,
+          "aimMs": 1285
+        },
+        {
+          "n": 8,
+          "reuse": true,
+          "freshSim": 54.91666666666483,
+          "guardSim": 54.91666666666483,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6741870500995555,
+            "y": 0.5993341272443358,
+            "z": -2.846366083162078,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 2.249999999999872,
+          "metres": 0.6750000000000067,
+          "releaseConfirmed": true,
+          "aimMs": 872
+        },
+        {
+          "n": 9,
+          "reuse": true,
+          "freshSim": 55.16666666666482,
+          "guardSim": 55.16666666666482,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6741161882936924,
+            "y": 0.64644949082994,
+            "z": -2.7713661166380548,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 2.499999999999858,
+          "metres": 0.7500000000000074,
+          "releaseConfirmed": true,
+          "aimMs": 745
+        },
+        {
+          "n": 10,
+          "reuse": true,
+          "freshSim": 55.4166666666648,
+          "guardSim": 55.4166666666648,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6740453264878292,
+            "y": 0.6935648544155442,
+            "z": -2.6963661501140317,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 2.7499999999998437,
+          "metres": 0.8250000000000082,
+          "releaseConfirmed": true,
+          "aimMs": 978
+        },
+        {
+          "n": 11,
+          "reuse": true,
+          "freshSim": 55.66666666666479,
+          "guardSim": 55.66666666666479,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6739744646819661,
+            "y": 0.7406802180011485,
+            "z": -2.6213661835900086,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 2.9999999999998295,
+          "metres": 0.9000000000000089,
+          "releaseConfirmed": true,
+          "aimMs": 1033
+        },
+        {
+          "n": 12,
+          "reuse": true,
+          "freshSim": 55.916666666664774,
+          "guardSim": 55.916666666664774,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.673903602876103,
+            "y": 0.7877955815867528,
+            "z": -2.5463662170659855,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 3.2499999999998153,
+          "metres": 0.9750000000000096,
+          "releaseConfirmed": true,
+          "aimMs": 923
+        },
+        {
+          "n": 13,
+          "reuse": true,
+          "freshSim": 56.16666666666476,
+          "guardSim": 56.16666666666476,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6738327410702398,
+            "y": 0.8349109451723569,
+            "z": -2.4713662505419625,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 3.499999999999801,
+          "metres": 1.0500000000000105,
+          "releaseConfirmed": true,
+          "aimMs": 1147
+        },
+        {
+          "n": 14,
+          "reuse": true,
+          "freshSim": 56.416666666664746,
+          "guardSim": 56.416666666664746,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6737618792643767,
+            "y": 0.8820263087579612,
+            "z": -2.3963662840179394,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 3.749999999999787,
+          "metres": 1.1250000000000113,
+          "releaseConfirmed": true,
+          "aimMs": 1233
+        },
+        {
+          "n": 15,
+          "reuse": true,
+          "freshSim": 56.66666666666473,
+          "guardSim": 56.66666666666473,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6736910174585136,
+            "y": 0.9291416723435655,
+            "z": -2.3213663174939163,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 3.9999999999997726,
+          "metres": 1.2000000000000122,
+          "releaseConfirmed": true,
+          "aimMs": 801
+        },
+        {
+          "n": 16,
+          "reuse": true,
+          "freshSim": 56.91666666666472,
+          "guardSim": 56.91666666666472,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6736201556526504,
+            "y": 0.9762570359291696,
+            "z": -2.2463663509698932,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 4.249999999999758,
+          "metres": 1.275000000000013,
+          "releaseConfirmed": true,
+          "aimMs": 872
+        },
+        {
+          "n": 17,
+          "reuse": true,
+          "freshSim": 57.1666666666647,
+          "guardSim": 57.1666666666647,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6735492938467873,
+            "y": 1.0233723995147739,
+            "z": -2.17136638444587,
+            "yaw": 0.0009448242187501955
+          },
+          "held": 4.499999999999744,
+          "metres": 1.3500000000000139,
+          "releaseConfirmed": true,
+          "aimMs": 896
+        },
+        {
+          "n": 18,
+          "reuse": false,
+          "freshSim": 57.41666666666469,
+          "guardSim": 57.666666666664675,
+          "sameFrame": false,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6754020419479844,
+            "y": 1.0704734057737513,
+            "z": -2.0963892724417836,
+            "yaw": -0.024705821252579252
+          },
+          "held": 4.74999999999973,
+          "metres": 1.4250000000000127,
+          "releaseConfirmed": true,
+          "aimMs": 3378
+        },
+        {
+          "n": 19,
+          "reuse": true,
+          "freshSim": 57.91666666666466,
+          "guardSim": 57.91666666666466,
+          "sameFrame": true,
+          "downUpCount": 4,
+          "after": {
+            "x": -0.6773505395657219,
+            "y": 1.1175728872346484,
+            "z": -2.0214145876672944,
+            "yaw": -0.025982891692339916
+          },
+          "held": 4.999999999999716,
+          "metres": 1.500000000000015,
+          "releaseConfirmed": true,
+          "aimMs": 971
+        }
+      ]
+    }
+  },
+  "originalSelectedMembers": [
+    {
+      "member": "evidence-files.json",
+      "bytes": 30909,
+      "sha256": "af017cdf6f5d120d3800c99d2b77b9a1a15f374054630c3736ec6ba8e491df03",
+      "extractedExact": true
+    },
+    {
+      "member": "job-envelope.json",
+      "bytes": 322,
+      "sha256": "a6eda22456d763cdd5695e344a9657a715a95c519a342dc6c94c7d67b4836ce1",
+      "extractedExact": true
+    },
+    {
+      "member": "logs/native-authored.owned-process-receipt.json",
+      "bytes": 4520,
+      "sha256": "f9103b2fadbf9cc3047be8ff799adea3c5b212458feec51e2faecc21b1ce2de2",
+      "extractedExact": true
+    },
+    {
+      "member": "logs/native-authored.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extractedExact": true
+    },
+    {
+      "member": "logs/native-authored.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extractedExact": true
+    },
+    {
+      "member": "logs/native-baseline.owned-process-receipt.json",
+      "bytes": 4510,
+      "sha256": "8b4c0b3e14bf65df60515780529a51eae50547cc3d97480924a3f0baf8a290ad",
+      "extractedExact": true
+    },
+    {
+      "member": "logs/native-baseline.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extractedExact": true
+    },
+    {
+      "member": "logs/native-baseline.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/assets-dictionary-derived.json",
+      "bytes": 20849,
+      "sha256": "2eef436520bb30a69c577f86cc11a70a98e8262cbddf3661da4b7343f90ac652",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/build-info-original.json",
+      "bytes": 21345,
+      "sha256": "333332feb9191772e2a1d653c22c1c2827fd8198258fe7bb46cc3d1ee2e1de3d",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/run.json",
+      "bytes": 23571301,
+      "sha256": "55d963818894c6927a29f642365f1ec819ac1d6818ad31cf996d9c28dfce211f",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/tram/case.json",
+      "bytes": 21175111,
+      "sha256": "30bd50b33bed1ea23632eea5877428a6a7e5294f778d3520b41d3bf567289da5",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/tram/events.jsonl",
+      "bytes": 1797,
+      "sha256": "8dfc46946831f9d423d78de102c2b5df1e72b73fc88006491bdb7670e78d6a26",
+      "extractedExact": null
+    },
+    {
+      "member": "native/authored/tram/exterior-pose.json",
+      "bytes": 4235026,
+      "sha256": "380804dd46c2e47409c92e812c4b3bdea6e148dacd0aafdc72aa49156dab99ac",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/tram/exterior.png",
+      "bytes": 745791,
+      "sha256": "e51c2ac354b0b8c1daff31e155afe78bb201823389df8c08b335d1862fcc6928",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/tram/lower-pose.json",
+      "bytes": 4324203,
+      "sha256": "c623cecf68c472f217ae23aa396ff2cfe60398fe42dd32346b5cb0bfc220eed8",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/tram/lower.png",
+      "bytes": 812913,
+      "sha256": "bebdaf3abdc2408ea20c53986a05b04cba3bd4649afffb273c5932a5eb7f5260",
+      "extractedExact": true
+    },
+    {
+      "member": "native/authored/tram/motion.json",
+      "bytes": 9356823,
+      "sha256": "7e6b34b0b68093c8843bb700c039472ff34de4be7c81d355aea896a267e4bc55",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/assets-dictionary-derived.json",
+      "bytes": 15951,
+      "sha256": "f41e0fa538479876505bf6fd2775e98c24724ee5d5fb4634e02add68a8c3dbca",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/build-info-original.json",
+      "bytes": 16361,
+      "sha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/run.json",
+      "bytes": 19967609,
+      "sha256": "96501c0fac3850ddc4dc5f3317953b949382eb3bb0bd4612fee62de7772d2be8",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/tram/case.json",
+      "bytes": 17856161,
+      "sha256": "83e98997f16c83b4f043ea162117175b3d5e73cec9c66a2f4e0de14e5a489492",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/tram/exterior-pose.json",
+      "bytes": 3398250,
+      "sha256": "4adc4454a92e5cd1ed1a28f4419bd2aa9089eed02b5689be1c29ee8ab2ab8d64",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/tram/events.jsonl",
+      "bytes": 1574,
+      "sha256": "63546dba9edf5e2a369ca832c61e5929966df5def1db5eee05b81f242508d6aa",
+      "extractedExact": null
+    },
+    {
+      "member": "native/baseline/tram/exterior.png",
+      "bytes": 678239,
+      "sha256": "c9401e321f772b8b19dc9989d15a25046d002b85070bd33b431c8080554143b4",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/tram/lower-pose.json",
+      "bytes": 3407091,
+      "sha256": "b3cbe09e76e751c89fdc633fa9361728987ec21f72deb4a80d9362e615bd998a",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/tram/lower.png",
+      "bytes": 672902,
+      "sha256": "ee60ca677e1bb3480633d5bb140e6a6a616037bb9b7454da567b0ad7fb14493c",
+      "extractedExact": true
+    },
+    {
+      "member": "native/baseline/tram/motion.json",
+      "bytes": 8200869,
+      "sha256": "ad77693b7ccb7ca2e27b064f59422fa1dcd38f1b6860e26dd0096b17037398e6",
+      "extractedExact": true
+    },
+    {
+      "member": "pair-summary.json",
+      "bytes": 96752,
+      "sha256": "e798f8f2ab6e43acef9e119ae39bfc30fab899b9bdd0cc28f61f28d16434580f",
+      "extractedExact": true
+    },
+    {
+      "member": "preparation/method-bundle-original/methods/transport/native-transport-high.mjs",
+      "bytes": 48131,
+      "sha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
+      "extractedExact": null
+    }
+  ],
+  "interpretation": "Both original upper-3 150000ms local phases expire during real continuous staircase progress, not a 60s stale-origin aim failure. No original upper PNG or return/exit verification. .3 slow gait remains; only unnecessary repeated modifier/RPC inputs are candidates, not increased time/tolerances or hidden retry. Exact no-stall samples do not prove later unobserved geometry clear.",
+  "reviewerNoSourceOrGPUWrites": true
+}

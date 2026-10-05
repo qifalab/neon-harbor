@@ -1,0 +1,1320 @@
+{
+  "status": "STRICT130_PROTOCOL_ADOPTION_READY_NOT_COMMITTED_NATIVE_ART_PENDING",
+  "atUTC": "2026-10-05T06:05:22.846705+00:00",
+  "worktree": "/workspace/neon-candidates/transport-native-input-precision-final-20261005",
+  "parentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
+  "payloadLedgers": [
+    {
+      "path": "/workspace/neon-candidates/5cd-bus-native-failure-review-20261005/payload-ledger.json",
+      "sha256": "515c2ea11179b097ef0ec23ad55cee8ec6dacb2097a0c609a75ef7b93c14d59a",
+      "files": [
+        {
+          "target": "tools/native-review/methods/transport/POINTER_ORIGIN_AND_GUARD_FRAME_AMENDMENT-20261005.json",
+          "bytes": 4501,
+          "sha256": "9733ad7f2320736867507d744a727ab9bcefb4a931c34afdf605f5d507bb2015"
+        },
+        {
+          "target": "tools/native-review/methods/transport/method-manifest.json",
+          "bytes": 18812,
+          "sha256": "860d5590fe60d58415224c65c81ba0903744d8b0acf2434cca4622d9003e8e07"
+        },
+        {
+          "target": "tools/native-review/methods/transport/native-transport-high.mjs",
+          "bytes": 48770,
+          "sha256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee"
+        }
+      ]
+    },
+    {
+      "path": "/workspace/neon-candidates/5cd-tram-native-failure-and-precision-modifier-20261005/payload-ledger.json",
+      "sha256": "c0f2aec03a30e30a1da46d67157720273d698604395de60d566de822b442fd4f",
+      "files": [
+        {
+          "target": "tools/native-review/methods/transport/PRECISION_SLOW_MODIFIER_LEG_AMENDMENT-20261005.json",
+          "bytes": 4906,
+          "sha256": "ddc5406a32008c25496e0b4f656dcb72cc6f92ee5503a20012c637e7f8282f92"
+        },
+        {
+          "target": "tools/native-review/methods/transport/method-manifest.json",
+          "bytes": 19310,
+          "sha256": "79900cd1332a9ab5c458f70d577c7d1ca34734e35b3c7db4f6369c63aba768f0"
+        },
+        {
+          "target": "tools/native-review/methods/transport/native-transport-high.mjs",
+          "bytes": 49904,
+          "sha256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+        }
+      ]
+    }
+  ],
+  "newProducer13FileSealSHA256": "ea1ffab66d839a2924582e6e6485f8e327ddfdbd158d4afb0a5c581c0b8b4761",
+  "actualBundleFiles": 130,
+  "bundleManifestSHA256": "3c24383f848bcf75e322ce9461cc2dd0938a9e32fcbfd2137f6a4efba90f827d",
+  "activeMethodSHA256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b",
+  "activeMethodManifestSHA256": "79900cd1332a9ab5c458f70d577c7d1ca34734e35b3c7db4f6369c63aba768f0",
+  "allActualBundleFilesCoveredExactly": true,
+  "nativeBundleAdditions": [
+    "methods/transport/POINTER_ORIGIN_AND_GUARD_FRAME_AMENDMENT-20261005.json",
+    "methods/transport/PRECISION_SLOW_MODIFIER_LEG_AMENDMENT-20261005.json"
+  ],
+  "nativeBundleChangedOriginalFiles": [
+    "methods/transport/method-manifest.json",
+    "methods/transport/native-transport-high.mjs"
+  ],
+  "nativeBundleUnchangedOriginalFiles": 126,
+  "actualFrozenAECDistBuildInfoSHA256": "0700334224a69f044f50814a0dee64aae07cad6fdf373905e5eb4681201f8a62",
+  "nullRevisionBuildInfoSHA256": "9519740965c34cb55fa95a8b601187eaac32cf231a75af8adb2058f07ccfd943",
+  "expectedRuntimeDictionarySHA256": "cde02c53d4cb942c7a3a0d9075973e20acc893871a68ff8507fdb945284813d2",
+  "runtime206Unchanged": true,
+  "trackedRuntimeSource134EqualsAECGit": true,
+  "generatedChunks72CopiedWithoutBuild": true,
+  "baseline156DictionaryUnchanged": true,
+  "producerCPUClaimsAreArchivedOriginalsNotReexecutedHere": true,
+  "nodeSyntaxAndHelpExitCodes": [
+    0,
+    0
+  ],
+  "buildTestGpuStageCommitDispatchExecuted": false,
+  "old129WorktreeAndSealUnchanged": true,
+  "originalBusAndTramNativeFailuresRemainFailed": true,
+  "laterQUAYStartupAndTreeArtFailuresAccepted": false,
+  "futureTreeRuntimeCovered": false,
+  "runtimeAssets": {
+    "assets/city/chunks/0_0.json": {
+      "bytes": 884,
+      "sha256": "652d015e2d037a5ad801ac6775bff3bbbefa724abbb7c63f1475d01a5dcaa48e",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/0_7.json": {
+      "bytes": 864,
+      "sha256": "57322819734745cea51d8cf55f4631564fa827662c95a09f10d160e1c368e9e0",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_0.json": {
+      "bytes": 1581,
+      "sha256": "0f776636fd6c4fe81cc194ec67dc5e76492e277041d82a069c3d84afe3c21dc1",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_1.json": {
+      "bytes": 267075,
+      "sha256": "4e1c8efa3a1a4db6c868a48d2f6c91a842a236983afb2394b6f29340a772207f",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_2.json": {
+      "bytes": 270745,
+      "sha256": "7f8462686dbe0086e28cfc0eac6fe76403e9787579bb83820766b48f0486a035",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_3.json": {
+      "bytes": 152785,
+      "sha256": "22c03d004955a448273a55a422f2930379c079e07db973bf8ca7cc6ea9fbb28d",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_4.json": {
+      "bytes": 181844,
+      "sha256": "2f66db93f700817d60a5fc05b95ecce1cd57555a2ce1e94cdbc04e7b8367e316",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_5.json": {
+      "bytes": 224254,
+      "sha256": "8d2f341daf1f3fae7758eb3c2ed4b5cdb4b881ee339663b703213c8fd18ec912",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_6.json": {
+      "bytes": 262870,
+      "sha256": "460872f6620dad480f3df77aef28bfa5f2b4ee48a31eca1331517b410afd2fa7",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/1_7.json": {
+      "bytes": 1568,
+      "sha256": "b854749371e150b1f89d71f119ee2f5dd397c07fa60499550109646138a0baf4",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_0.json": {
+      "bytes": 863,
+      "sha256": "fc70e74178bc63dca60af776632d8ebb523515bc14a2960b14e19e30ed57ef58",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_1.json": {
+      "bytes": 222525,
+      "sha256": "8b9fe1e354bd9f72c067821b31ac54f614a8a13fa94ec6b5b5e3cf163ba7f56c",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_2.json": {
+      "bytes": 236489,
+      "sha256": "2b71b8f4967923cd0148498427d13f5c21c865e3e77e953e87b6efa203ac6b35",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_3.json": {
+      "bytes": 208022,
+      "sha256": "bcf0f267b82a435a3b2715cf127af1d2d8f0d57bcbcc3759060a4cae8b9e1e44",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_4.json": {
+      "bytes": 247219,
+      "sha256": "81e1c8af1bf33d45644ee615b0db473aec24a3bb635a6ca373c888ec66a4abbf",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_5.json": {
+      "bytes": 243925,
+      "sha256": "8280d3541042e04f78d5f1aef30e083a80fd102f1edb1735ee07fbaf702c093b",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_6.json": {
+      "bytes": 211715,
+      "sha256": "3f603997a615dbadaf6ffb1f25bc507b227664624e651084c63015755e2fb692",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/2_7.json": {
+      "bytes": 875,
+      "sha256": "f777d5dc620ba826f89af489c00cc8ceb9d055993007ad1074e1d137af5b764c",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_0.json": {
+      "bytes": 1559,
+      "sha256": "0fb707ca8b0e4e461fe28591e690fc6e87e4e8c31c56ebdd6008b8f56c38c113",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_1.json": {
+      "bytes": 206305,
+      "sha256": "b2101407558bf817f477087864e1b4e4697095ca1d1123afe6041a846b3b3add",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_2.json": {
+      "bytes": 256289,
+      "sha256": "2137e9ad1b59795a96da33971486c40b788ec2e1359c72a02239b111f6c106ce",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_3.json": {
+      "bytes": 264515,
+      "sha256": "f9b82e9cc355ab604f570f251e6c1f003ec31bd7bdf280a9a485a62d2fb9a2df",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_4.json": {
+      "bytes": 189761,
+      "sha256": "a29ad6842766896e21c667facadef5ebcbdab08d9b7813443841b6362df13e83",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_5.json": {
+      "bytes": 5390,
+      "sha256": "c229b7ab2e23d3220c8bccd57dd77a13c5a8a3c28f577f2a3fe24ecd80f94289",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_6.json": {
+      "bytes": 186102,
+      "sha256": "27bdeebf40427dfc013a7261015e7e8bbbedc58e8d9c869231b3aaa3921b9112",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/3_7.json": {
+      "bytes": 1536,
+      "sha256": "2bfd63125fc927259bcc0d16ddc9f21abc7dc65d3542a77971140f7efd443511",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_0.json": {
+      "bytes": 853,
+      "sha256": "fb50e9f20463cef9a208ca67a76302a9fc7d01750e8491b5b8b0e7f35673ef48",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_1.json": {
+      "bytes": 338755,
+      "sha256": "319cf5fc591969e7bd0f71355ee41686650ccce431eab3f1b044051c9c5998b0",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_2.json": {
+      "bytes": 255887,
+      "sha256": "78d675340ebb9421a046280ae4176eb9d27f460483d3a1405a8d9788ebd683f5",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_3.json": {
+      "bytes": 290964,
+      "sha256": "d998e7f036526ceac3f1db45390ab44cb7724e47092f411930eb42748fd08a7f",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_4.json": {
+      "bytes": 4251,
+      "sha256": "2402657555d59ab7f38c35ab9c683c8b0b593b41df1805cd9a73e2499a397b53",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_5.json": {
+      "bytes": 211293,
+      "sha256": "4af877f8dc0ad1d3ad905fa08c455f20a2879a066ebb8b7bc1e1c26e0907596f",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_6.json": {
+      "bytes": 209279,
+      "sha256": "e8fbb9a1dfcc2e76d0bc4b10697f4feb628b1d6bd7da6d23dbc04385a5826712",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/4_7.json": {
+      "bytes": 853,
+      "sha256": "4ac5f4fd1a8880487adf80f575c4074fb2a13639caa4e9e7b3b17da32ace8fb8",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_0.json": {
+      "bytes": 1559,
+      "sha256": "8bdde7c7295da72600caaacf8eb6c1cc4df58f0c3f9bfabb12fd307d8433e6ce",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_1.json": {
+      "bytes": 256460,
+      "sha256": "c99a0f0e4a27195ba4da160cb5a75be1f805a2b2dfe83c43213e68f219c7dd0e",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_2.json": {
+      "bytes": 5323,
+      "sha256": "c4ae1d629e25725e651fb95e4f86126557e027ff9ad36ac2c34bcfac98cc6dc1",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_3.json": {
+      "bytes": 237674,
+      "sha256": "021cf8cd9f6c35c49ff4726a7bf591b2a01448f8070995c87e6a400af2adb884",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_4.json": {
+      "bytes": 262063,
+      "sha256": "86823542d32a59b7c988c187ac231ca7ed9de8516321915affe4d48569c0b5cc",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_5.json": {
+      "bytes": 270390,
+      "sha256": "6f552737ba5e7bf9928cf797d51453e808ecaf34e40666ea070425773616ae29",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_6.json": {
+      "bytes": 229643,
+      "sha256": "41216d1405f31db3a53cbb37712e87707e2568ad1f1411e644c8dff341a05c24",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/5_7.json": {
+      "bytes": 1558,
+      "sha256": "6a4761f1e2c18c662cc94f1e2119e089d6a5e35b8c00ed26023f88dda8bdd3b4",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_0.json": {
+      "bytes": 853,
+      "sha256": "e258674a926dde5202765ccc988b9627015a35d1de60f1e891fb0c6d64ad754d",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_1.json": {
+      "bytes": 60432,
+      "sha256": "a236d352d1c9144044aa3449f2e51439c04f6e99e92d3bfbd315f4a3d9639d35",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_2.json": {
+      "bytes": 41195,
+      "sha256": "cc73785300c0f712fff06052743ec6557f61c11287b7bfc14ebb696b63da4514",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_3.json": {
+      "bytes": 59717,
+      "sha256": "256d86a5f459a60d8d82ee728be2bfb636c548f7ab9c2392dab025f1c96886df",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_4.json": {
+      "bytes": 40173,
+      "sha256": "b24b797a3452d16b55d169cf95e003f7e889d597bdba69f0b436a177b3e53905",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_5.json": {
+      "bytes": 218485,
+      "sha256": "a21dce1c4ec132cbfe11f486ee7645636b5c8aacbc99f9a4e4e400f1cf726f12",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_6.json": {
+      "bytes": 184825,
+      "sha256": "3ccab93ffef23a15ffff04f48f140edc131f4d77368be9392de5db3ca88fffab",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/6_7.json": {
+      "bytes": 853,
+      "sha256": "6529bca60260308fd19f6cfec7028e9656eb6384cf2a7da3e389e0f38ce786dd",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_0.json": {
+      "bytes": 2889,
+      "sha256": "651bd1728f70015d221a688fbfec41eeca13ce54e96a45c8dcbedbb0403dab1f",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_1.json": {
+      "bytes": 3164,
+      "sha256": "0a022144701b50ee1cd9d13e9005fc428a859e41daeea1255520c8467cde6616",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_2.json": {
+      "bytes": 3059,
+      "sha256": "4489a062b1931d0e3b16ec178f6ce97df1c221e1ce056b9029bb257225f08260",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_3.json": {
+      "bytes": 2434,
+      "sha256": "4c0ae862386cc583f54e867c11f2a9fdeb519a5f733bd2d3156403515959edab",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_4.json": {
+      "bytes": 3090,
+      "sha256": "229cf17f217b5504eac1678f4edb07ca478fbb848e12554a9890a5d3ba8f6ea8",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_5.json": {
+      "bytes": 3151,
+      "sha256": "3a6c5b4ed9391ca58a348120843b674ca51920609c812176027a3f879188997b",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_6.json": {
+      "bytes": 3131,
+      "sha256": "54d42d0c9d213ca5c9ff95d9015e24ea5e99b378dcc5ac0202691698c33777b3",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/7_7.json": {
+      "bytes": 1968,
+      "sha256": "427bcfae58eb7f423fed32361f7d55bb8fde01cda83aceb95cac044dc597b60d",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/city/chunks/manifest.json": {
+      "bytes": 9766,
+      "sha256": "4e28111e3beaaee91a8f9b1d07512a6e54144c2a1cde7ccd213c00b9a2abc525",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/harbor/LICENSE-CC0.txt": {
+      "bytes": 391,
+      "sha256": "67e425af97d2d41d7e6043e95dc83527e628402e0f9a3496f188af27d760d695",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/bakery/LICENSE-ASSETS-CC0.txt": {
+      "bytes": 937,
+      "sha256": "1b0bb490b85725732ac3061f8347a9be50f557c59178e18afdc64a8bf867f8e5",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/bakery/bread-crust-albedo.png": {
+      "bytes": 55974,
+      "sha256": "f28b3a238049bc865d3c6b1781677584b2ea62e50d2782b337cbc01578f9c105",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/bakery/bread-crust-height.png": {
+      "bytes": 27755,
+      "sha256": "8d46fe5490d03a470536f27347d2113ce73b768a7ed69f55ab0a03a10b9be589",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/bakery/bread-crust-roughness.png": {
+      "bytes": 16330,
+      "sha256": "65b04aa5acb176519da041a9e6dd7a28d958b6a92e6ed08b2c02299cf562c6ae",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/bakery/manifest.json": {
+      "bytes": 2398,
+      "sha256": "9de13e4964eff09cc43e0592006f493a9495eb1c50af4dc7ff91425d944451e6",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/LICENSE-AND-SOURCES.txt": {
+      "bytes": 1352,
+      "sha256": "c10f4bce62e90415552a7144806e4221d4f6879e8e9f9d316e78248a34371421",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/LICENSE-NEON-AUTHORED.txt": {
+      "bytes": 1064,
+      "sha256": "e1b45324609e6520df846ee96c5b81ae191d39c4eea93599d86d95bb3ad695d7",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/asset-manifest.json": {
+      "bytes": 28313,
+      "sha256": "b2754a355f278e53d48cceb33ea766f81db60bdfb6e111c85033c9dac5ca0d74",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/home-gallery-fittings.glb": {
+      "bytes": 1685316,
+      "sha256": "d0aee01ed0d4cd04080ecf1058f0e4ff699f22edc14d49b2889d6c110c936bba",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/home-lobby-fittings.glb": {
+      "bytes": 5015196,
+      "sha256": "515db55f4f10259f0260d0ee9f015b53494ee7fd54f2289d7a6a579e21b78625",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/old_bed_frame.glb": {
+      "bytes": 4040420,
+      "sha256": "910cc9d69a03285ffa6b66fd7734be68a7f6a045f14ae5922aa4e5946fdefa9f",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/home/sofa_03.glb": {
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/material-manifest.json": {
+      "bytes": 6257,
+      "sha256": "c1e2ceb9b56ce1cf2f8ccb7dbdedcf30f73f9d974441cad1ef56a7cf364592c1",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/materials/pavement_03_diff_1k.jpg": {
+      "bytes": 472235,
+      "sha256": "c8454cc98fb04bc417ab70cc7db26df3e62d30dc8dc4bb17efa9da5b91f3e49e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/materials/pavement_03_nor_gl_1k.jpg": {
+      "bytes": 450088,
+      "sha256": "48c4d16a1cf84efd7c196cc7b5a8383d26691dd29434b511d2744fe7f269c487",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/materials/pavement_03_rough_1k.jpg": {
+      "bytes": 87671,
+      "sha256": "d346407cf734bf8bd3ef3ea142bf0b5bdd749ff121606f2f977b1769599b61dd",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/materials/plastered_wall_02_diff_1k.jpg": {
+      "bytes": 94766,
+      "sha256": "297c581bff18a26234869bc5596fa4da6bd7ef26d0f62c304816c2b2483834f8",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/materials/plastered_wall_02_nor_gl_1k.jpg": {
+      "bytes": 317769,
+      "sha256": "f21b85d2de0d6b366e2260b4c88724c4b2d323f407b2d2513359ad1e13ebb882",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/materials/plastered_wall_02_rough_1k.jpg": {
+      "bytes": 8569,
+      "sha256": "c0089d2ea7fc4b4a4d7ab625d6329511ec99b210d20ff356cf1b3d822a58adba",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/bus/serein-d11-lod0.glb": {
+      "bytes": 8283296,
+      "sha256": "818f3d4cfd73f33422e22d2acc13cedf2b3781b1b84012b91dc1e8c0773f04f9",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/bus/serein-d11-lod1.glb": {
+      "bytes": 2695460,
+      "sha256": "94b3b1ff29117d24edd6ffb6aad9b2da75b2e301aee36080ba6b61e4532e2a81",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/bus/serein-d11-lod2.glb": {
+      "bytes": 579816,
+      "sha256": "33019edb6c90de4130e975dc5c7a30b10bd59dcd0b4dd4008f29eb7aff6f4190",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/ferry/lacuna-f26-lod0.glb": {
+      "bytes": 7791044,
+      "sha256": "64e0db1bc9e8bf4412c184d3f33b24a0cfe73175ef5669f9cdaf26491ca2bd3c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/ferry/lacuna-f26-lod1.glb": {
+      "bytes": 2926468,
+      "sha256": "2ec39552082f70228790d830e8b3195ae5462b6a69c98bf359c1754a35180dc7",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/ferry/lacuna-f26-lod2.glb": {
+      "bytes": 942524,
+      "sha256": "37cdbda1263dc5e9aee75f31ffda194d3a1c4d7bc369397861790093774c029c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/tram/vesper-t9-lod0.glb": {
+      "bytes": 5982272,
+      "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/tram/vesper-t9-lod1.glb": {
+      "bytes": 2833376,
+      "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/transport/tram/vesper-t9-lod2.glb": {
+      "bytes": 899816,
+      "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/vegetation/LICENSE.txt": {
+      "bytes": 462,
+      "sha256": "1d03915a8b5c51b0635d43e393e255ac6d73d9d2e7bede151cf9669711fba6ee",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/vegetation/asset-manifest.json": {
+      "bytes": 5639,
+      "sha256": "70ed038946381054804928bcd23ac394ab1dd5ec11b26e7aaf647a0f00668fec",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/vegetation/quay-banyan-a.glb": {
+      "bytes": 3193516,
+      "sha256": "2cbde57d8510997cc21c41604bb561dad9258c3544c1a3beebe9d1783b97a23c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/vegetation/quay-banyan-b.glb": {
+      "bytes": 3193516,
+      "sha256": "e61ddea8ad0c97b136d37800211e72f481f0118743e0329fe058502dce026281",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/vegetation/quay-banyan-c.glb": {
+      "bytes": 3193520,
+      "sha256": "c559b15c63a70b4c8ab0387facef866e45b9d31077c7ffee64b1807dba94c7dc",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/LICENSE-CC0.txt": {
+      "bytes": 588,
+      "sha256": "ca6d5c8c7f289b766f0733776c145a729aa50695c20f901fcfac666b16ec1938",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/LICENSE-NEON-AUTHORED.txt": {
+      "bytes": 1064,
+      "sha256": "e1b45324609e6520df846ee96c5b81ae191d39c4eea93599d86d95bb3ad695d7",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/asset-manifest.json": {
+      "bytes": 25688,
+      "sha256": "02666474d255868e7c7f8b3c9e35f852156670dd60b73e7ccf8c8964437ef3c4",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/bench_vice_01.glb": {
+      "bytes": 2434304,
+      "sha256": "4dc3378d2d63e16e18dafaa82bb16eb59d4bcd7b57c1543f450da22c18141c1e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/metal_office_desk.glb": {
+      "bytes": 1601008,
+      "sha256": "75559afa2a66f018ff2aba92e47ce169783bb54d8f9799b8ce6671954111496a",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/metal_tool_chest.glb": {
+      "bytes": 2354472,
+      "sha256": "e1bcd07991c2c01df17bb628c5e621a0da170db2313b025aa2d918b156e27803",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/wooden_bookshelf_worn.glb": {
+      "bytes": 2776164,
+      "sha256": "3d73968cc71c317f139f1f7a4cbfbaaa5155b7ff286584f799140b5dfe7c6177",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/harbor/workshop/workshop-fittings.glb": {
+      "bytes": 2364880,
+      "sha256": "9c548499c87b71cac2ed44b18803fdd9221359a7017da65e03420f77d816ebf0",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/jade-tile.webp": {
+      "bytes": 43628,
+      "sha256": "5703c2af30ba4361b70354f36ce2224b9ef4e61eee08156a2dfd8852ca2366fe",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/lime-plaster.webp": {
+      "bytes": 59876,
+      "sha256": "58e78f32043551db36aa7ddd5c892b7f70d81d561645dd0e8920d85ff8b24cc2",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/limestone.webp": {
+      "bytes": 65144,
+      "sha256": "c36ad29ebb1e4c8b92fc58a3e61fa057952140d80b9ccbbd5ad8adc6c27616c4",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/metropolis-original-atlas.webp": {
+      "bytes": 307754,
+      "sha256": "7151beb441220b3e7473008f452325ba54286eedc828a72a7937e37aafa9fa74",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/oak.webp": {
+      "bytes": 35062,
+      "sha256": "5aef9f0f5a4c6e6fe6e795f7c00eea1252365d3464e4ad13cfb10826c12ac8a3",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/v04/aggregate-asphalt.webp": {
+      "bytes": 359508,
+      "sha256": "4356006469b8b2b039b8eced31d2513e2c62c6d62a4626812638e9b75eaad558",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/v04/weathered-plaster.webp": {
+      "bytes": 294122,
+      "sha256": "7b55b71ae8bad77235b7dab94f97c6a2fdf978b00c2a93eb3c1ef00c92e92212",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/materials/v04/woven-linen.webp": {
+      "bytes": 260678,
+      "sha256": "47b9043dd22a9a743bf630b4398181bad5f8416d34d2308c88223eba3546de24",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/metropolis/chunks/manifest.json": {
+      "bytes": 2278,
+      "sha256": "eaa1784ec0a02054e3ed1db1c07aa9116486e3d8b66f76c68fe33ab3b7f6fa96",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-0-0.json": {
+      "bytes": 535768,
+      "sha256": "c4fc8b18d422e7c38ce783090b08cc388f32b6f3962da7dd1943a1d688d435b2",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-0-1.json": {
+      "bytes": 394931,
+      "sha256": "4138dc8ec1d0259519cb0a4289e144b913d729a14dbd492e38a58d77a1417bd9",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-0-2.json": {
+      "bytes": 1037972,
+      "sha256": "c9b3badb85639732e470e4b44f1a2f9e40fe180f4263a9c2e99342bdaca7c616",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-1-0.json": {
+      "bytes": 721743,
+      "sha256": "ec355942804cae5c4c1460a94ae5b7288d1aee30a7341897cc01acd698452d9b",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-1-1.json": {
+      "bytes": 419699,
+      "sha256": "af6f2c92b36e44c1e307c482bc98cc0d8aace157ca7d1461e012ac906ceb5a35",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-1-2.json": {
+      "bytes": 741913,
+      "sha256": "b796d5c3f2ae1363267ab9dd29a1a4fbfd80cd80775dd1dd35036b1f7e373dee",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-2-0.json": {
+      "bytes": 627464,
+      "sha256": "8d42441f0214e434fee169fbe3fe5a42506e09f267859de6cb570aa0e13e8801",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-2-1.json": {
+      "bytes": 436232,
+      "sha256": "7eef046c1dc6b0f80c5691c0e0e28006863486ce177a98dbaa659019d80aa775",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-2-2.json": {
+      "bytes": 320165,
+      "sha256": "cacaca414d80934e59a9a6ebbe6571f1abb348ba4ad54599eaaf53d328d683a9",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-3-0.json": {
+      "bytes": 519786,
+      "sha256": "48b6de7147ce6a150adfc6a4c9cced8835124df9a4d74331b0d34c0124e56bc7",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-3-1.json": {
+      "bytes": 294382,
+      "sha256": "19ce279a78e2f4595672a2b4cf4ace4f9b5c615e6283d101f0d972d56c653105",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/metropolis/chunks/north-3-2.json": {
+      "bytes": 711188,
+      "sha256": "938fad1137277c2693a18a43a93b5065423bafe0c72821cd625af5ce901ac6d3",
+      "trackedSourceMatchesAECGit": null,
+      "copiedFrozenGeneratedChunk": true
+    },
+    "assets/resident/core-commuter/commuter.glb": {
+      "bytes": 3825084,
+      "sha256": "f5015fa97f5542f110afa302f48a44cde0bb9f504336ca48a99dd60ee4fb3b7a",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/resident/core-commuter/manifest.json": {
+      "bytes": 5324,
+      "sha256": "cf437068f021f0052749151db024f754daf214f22fdb9ccbf9b9ba9b52d36120",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/resident/core-shopkeeper/manifest.json": {
+      "bytes": 5464,
+      "sha256": "401b64341c060db0214817dc57c8ea7fbf4ff876579502dc2290ac2de67fe4cf",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/resident/core-shopkeeper/shopkeeper.glb": {
+      "bytes": 3038016,
+      "sha256": "d5d298b45ade48a6cdb4142b27712799d864fff23cef28bc979436e07afe3341",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/resident/core-worker/manifest.json": {
+      "bytes": 5256,
+      "sha256": "e5302d22e5ba724567316031e8bd705e461b735c1b8d772f3ed927c34a5aed4e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "assets/resident/core-worker/worker.glb": {
+      "bytes": 5953280,
+      "sha256": "f17553afc33a5a958843e08db0ecddc4dd27759ed4bba2dd6fd26d25c6eaacbe",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "favicon.svg": {
+      "bytes": 227,
+      "sha256": "787d0f7416250ddffb3469283a0b0ac2dcc823f4e3324fb9ff83f8e904ea607e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "index.html": {
+      "bytes": 6652,
+      "sha256": "4fca4a76a27849dca753ec34a8e4ba38bfdb4bb7e9ac57b6bfb64850df8c2f66",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/atmosphere.js": {
+      "bytes": 11001,
+      "sha256": "73d4cef1814ff96c4cc33853616a16d97b818539d9e7f8c0add3ba202f82b3be",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/audio.js": {
+      "bytes": 2163,
+      "sha256": "d8ec4adcf24bb8afb0aeeaf844f3d2f5a88c2752843e454ed23c7009f61eef43",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/camera.js": {
+      "bytes": 10656,
+      "sha256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/citizen-appearance.js": {
+      "bytes": 4921,
+      "sha256": "13be59279bb752e1bd2518de3aa40e5af8913659401035691175e06c9e0ead6b",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/citizen-crossings.js": {
+      "bytes": 2835,
+      "sha256": "cf9ae62c1141514dab849079655136d17762a8efa16b2dc378a1b0393b4d1caf",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/citizen-journeys.js": {
+      "bytes": 23964,
+      "sha256": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/citizen-life.js": {
+      "bytes": 7965,
+      "sha256": "59bfdeaf9aa783dee276a5a8c40f1b90166a15ba835895a3b17023fac7f448da",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/citizen-navigation.js": {
+      "bytes": 6318,
+      "sha256": "7ae2e7d47fdaf10355d81641f8e338745234cb2cfd30c7c2d1fcfc8ef267f9ed",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/city-exploration.js": {
+      "bytes": 22323,
+      "sha256": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/city-guide.js": {
+      "bytes": 8986,
+      "sha256": "3dd5f765838d46a392d5016819afae780376a1c606102f8b89b019c0c0608a9b",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/city-streaming.js": {
+      "bytes": 9416,
+      "sha256": "f4d6e7df86781280a24363c9de451abdc7d1dd47b4e753645c4ff2ad876609c3",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/collision.js": {
+      "bytes": 19179,
+      "sha256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/compact-interiors.js": {
+      "bytes": 23527,
+      "sha256": "9df0250b3b5382db775b7d69aca35e07da9ee6d0c8adaff1b7f81ef1c4dce92c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/contact-occlusion.js": {
+      "bytes": 12201,
+      "sha256": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/expansion-entrances.js": {
+      "bytes": 3634,
+      "sha256": "7a74062a03ca5ce0556b2fd600efc2e91c5d5f987b6fa74bbca1de46f4c3ee09",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/expansion-programmes.js": {
+      "bytes": 5673,
+      "sha256": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/frame-clock.js": {
+      "bytes": 1492,
+      "sha256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/ground-support.js": {
+      "bytes": 4354,
+      "sha256": "1b54d60edd1c456b6c4a24a11d084465a4d9f62636e9ac0dd3d8bcf3677e0823",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-authored-transit-snapshot.js": {
+      "bytes": 573,
+      "sha256": "ad658d129d4b5de7eae93eaae1540c6db1a892a0df75b7e528cb26a09493ab6e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-authored-transport-assets.js": {
+      "bytes": 4288,
+      "sha256": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-authored-transport.js": {
+      "bytes": 25400,
+      "sha256": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-bread-art.js": {
+      "bytes": 5100,
+      "sha256": "554bf94fd5723864062e27891c07869f5ee42fa0a423ea7d603575d1cd952f49",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-ceramic-art.js": {
+      "bytes": 3413,
+      "sha256": "480cbd60ab45f068a9154e826f5df73a140efb8ff1cf00267ec0aede0ec43b67",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-district.js": {
+      "bytes": 30674,
+      "sha256": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-frontage-profiles.js": {
+      "bytes": 18183,
+      "sha256": "9f391a319a8854fce05a8f6dba80a8bfcbb75b8e87fe62c775d429a1c0717b3e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-home-assets.js": {
+      "bytes": 11775,
+      "sha256": "c67b48be36a5765349d199fbab25bc5c898644259d4501c2a0de07a1ba767159",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-home-authored.js": {
+      "bytes": 5646,
+      "sha256": "e7a7310625e1f29ab6ad50065ab040a6f7b3f9e599a9b8ab001c185337af8a80",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-life-renderer.js": {
+      "bytes": 12095,
+      "sha256": "f753caff6ebcb452834923631cae35fd3971a5a1bb76b877d321168ec4f815e9",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-life.js": {
+      "bytes": 54897,
+      "sha256": "bcc290a78efce8246c09ba61e26382c2734c82f64f8df32f684e38a6c239a21c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-resident-diary-ui.js": {
+      "bytes": 3386,
+      "sha256": "a8003a5c42cdd9d5243f68f3302dd07f4c69c153b7d9db77239c5f0f03fcd0f1",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-resident-loop.js": {
+      "bytes": 29643,
+      "sha256": "a9abe02b3914761c42475c2e1576ecfacfa8cd5e4c84752138cacb48e4fd7d8a",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-room-dressing.js": {
+      "bytes": 10752,
+      "sha256": "6cb3e40ca9f51cae1860aaaa819c174852e2d1798510bab71b32c3b3b67cf85b",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-sample-trees.js": {
+      "bytes": 8246,
+      "sha256": "9bfd3ee850e8d2cf0ad6c905f7e5c53b8f12c1334d68a0a67261a6e6f4e773ef",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-sample-ui.js": {
+      "bytes": 4566,
+      "sha256": "735fe1d556649cdf42e4b71ce3686e7e5e1bc79ada4a84724b1be766e216fb3c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-shop-defs.js": {
+      "bytes": 726,
+      "sha256": "f6bbf2c0d4da08aaf7b241c53efc92fe9bf324eec46c4168376c86fbe71fb63d",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-skyline.js": {
+      "bytes": 36635,
+      "sha256": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-terrain.js": {
+      "bytes": 3460,
+      "sha256": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-transit-renderer.js": {
+      "bytes": 12313,
+      "sha256": "5fb7ade1a232883759576c706b30a96d665b3ed4a0a425a92c6eba6f5bcc9422",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-transit.js": {
+      "bytes": 38246,
+      "sha256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-vehicle-models.js": {
+      "bytes": 45167,
+      "sha256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-water.js": {
+      "bytes": 4074,
+      "sha256": "e0afd958019761ce05c956c5095f62c03170b19cfba913b39def218aa17dd4c1",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-workshop-authored.js": {
+      "bytes": 13844,
+      "sha256": "08ed7ca54fc9adc0768e4d31e795ec7181596ea3a0e6300cccd495c137955d9e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/harbor-workshop-pilot.js": {
+      "bytes": 17809,
+      "sha256": "1667d7e1f0b3777725e1531290ef736c4ad563d56dba241eb7abaf2160698011",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/main.js": {
+      "bytes": 54882,
+      "sha256": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-architecture-designs.js": {
+      "bytes": 12349,
+      "sha256": "d5a8370d3dd87b5faab2018ab11d53185df97a5d4a8549ce4807f69ae5ad179a",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-catalog.js": {
+      "bytes": 11081,
+      "sha256": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-infrastructure.js": {
+      "bytes": 25292,
+      "sha256": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-interiors.js": {
+      "bytes": 111695,
+      "sha256": "2e820311a2e646aad659176789ac9f2fca1257e47d25d73dc33f6aea24d9b6dc",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-materials.js": {
+      "bytes": 14641,
+      "sha256": "2963e82ed9c904dd65c427b80de93f260b3a38101f4b3b316ff1e01d7fb1e075",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-people.js": {
+      "bytes": 29162,
+      "sha256": "6e4dbf3b39de25c5939da373b4e2b3554bf54698572f2fde7cf96e795dc7c52e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-room-designs.js": {
+      "bytes": 32479,
+      "sha256": "adc33a9c57af6a38a461686d210099346aeebfef41b20cac9f0616cfbf5c32c6",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-transit.js": {
+      "bytes": 63073,
+      "sha256": "ca316720b79de2a15dfeaf41fb3109589612733b886d1566d91049d383fc8a1e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-western-ridge.js": {
+      "bytes": 13835,
+      "sha256": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/metropolis-world.js": {
+      "bytes": 56617,
+      "sha256": "ba1bef7154840d60344413d9332d4119b908d8fa1bbf30c31b66941f5e2a9347",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/models.js": {
+      "bytes": 36421,
+      "sha256": "cfc0a55d46a864acb9b8ca0206b7b841c1f6d6747bbda144dab60a24f96480db",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/multiplayer-protocol.js": {
+      "bytes": 1471,
+      "sha256": "0ae36169ad355c4595efaf718515084ae192e319ee9d75e53545e41906b55319",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/multiplayer-ui.js": {
+      "bytes": 4445,
+      "sha256": "27fb0552eb84e332ae689e75d14b884a7e6f62142b6629bada758a646c84f27f",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/multiplayer.js": {
+      "bytes": 6479,
+      "sha256": "db16cfb3634f527285d7e6200b48cc5fc55efdbe16da5a91f40fd04a9c4b50dc",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/occupied-programmes.js": {
+      "bytes": 11055,
+      "sha256": "464ae9b4bb35004f271ec6566474179063997b0a0b92d79de74f468629d3cb7e",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/presentation.js": {
+      "bytes": 4910,
+      "sha256": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/resident-core-assets.js": {
+      "bytes": 25581,
+      "sha256": "e0405daf9f082f1af5f09f18bea1f72c89b979befa5f3e92ffcc3f48aa431640",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/simulation.js": {
+      "bytes": 32947,
+      "sha256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/surface-finish.js": {
+      "bytes": 5812,
+      "sha256": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/terrain-openings.js": {
+      "bytes": 3037,
+      "sha256": "5c7ea45ce83f8b0f3e20c70d9fc2c3a6e4284fa7bb16af48e201c5c8968cdfea",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/traffic.js": {
+      "bytes": 5678,
+      "sha256": "465c29b416ed90b373f72626e2d79233a5f52041005e62f8263b5e42772c3101",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/world-config.js": {
+      "bytes": 467,
+      "sha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "src/world.js": {
+      "bytes": 51197,
+      "sha256": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "styles.css": {
+      "bytes": 25456,
+      "sha256": "f06efcf1804fa40f419d3475a8c203858a19d7868c22dcc4af9d1ae88ec3f418",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/LICENSE": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/addons/LICENSE": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/addons/loaders/GLTFLoader.js": {
+      "bytes": 114975,
+      "sha256": "23523ca91c475035c5cf8f5b9705b9abc796a71662d4a4872b885895bd00566d",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/addons/manifest.json": {
+      "bytes": 1974,
+      "sha256": "2a128c25c259e0e94c62bf82ca5a2611f2c80174dbaf544a3fb153691e3e4b14",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/addons/utils/BufferGeometryUtils.js": {
+      "bytes": 37637,
+      "sha256": "1b5f5a0b7dd8871762ccd3b7cfe34dac6ccd0f5f08d0f47dcb78e8450de9f41d",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/addons/utils/SkeletonUtils.js": {
+      "bytes": 11551,
+      "sha256": "28017bf37d0ecb0c4be6048db759ff14df729a562464830b064d4cc239c5af17",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/three.core.min.js": {
+      "bytes": 385386,
+      "sha256": "05b2609338c76cd65daf74f3ac515bc9a5045e1b3b33edc07d8c9bd55250fa90",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    },
+    "vendor/three/three.module.js": {
+      "bytes": 365552,
+      "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6",
+      "trackedSourceMatchesAECGit": true,
+      "copiedFrozenGeneratedChunk": false
+    }
+  }
+}

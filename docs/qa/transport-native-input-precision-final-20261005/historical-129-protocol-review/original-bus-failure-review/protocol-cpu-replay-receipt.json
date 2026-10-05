@@ -1,0 +1,1020 @@
+{
+  "status": "REAL_PROTOCOL_FUNCTION_AND_PUBLIC_HANDLER_CPU_REPLAY_PASSED_NATIVE_RECAPTURE_REQUIRED",
+  "sourceHashes": {
+    "executedMethod": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
+    "candidateMethod": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
+    "executedMain": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+  },
+  "actualWrongYawReproduced": 4.797821743614692,
+  "observedWrongYaw": 4.797821825138854,
+  "testCount": 12,
+  "tests": [
+    {
+      "methodName": "original",
+      "startYaw": 3.141592864995516,
+      "afterInitialMoveYaw": 4.843772752873229,
+      "targetYaw": 3.0956418557369787,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": true,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 3.0956418557369787,
+      "actualFinalYaw": 4.797821743614692,
+      "actualFinalPitch": 0.15,
+      "failure": "Synthetic native aim predicate not reached",
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 3.141592864995516,
+      "afterInitialMoveYaw": 4.843772752873229,
+      "targetYaw": 3.0956418557369787,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 3.0956418557369787,
+      "actualFinalYaw": 3.095641855736978,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 0,
+      "waits": 0,
+      "pointerOrigin": 1,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": true,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1.001,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 0,
+      "waits": 0,
+      "pointerOrigin": 1,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": true,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1.024,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 0,
+      "waits": 0,
+      "pointerOrigin": 1,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": true,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1.026,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 1.026,
+      "actualFinalYaw": 1.0260000000000002,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 0.7,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 0.7,
+      "actualFinalYaw": 0.7,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 4.141591653589793,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 4.141591653589793,
+      "actualFinalYaw": 4.141591653589793,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": false,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 1,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.15,
+      "failure": null,
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1,
+      "pitch": 0.15,
+      "initialPitch": 0.2,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": false,
+      "expectFailure": false,
+      "reads": 2,
+      "drags": 1,
+      "waits": 1,
+      "pointerOrigin": 1,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.14999999999999997,
+      "failure": null,
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": true,
+      "expired": false,
+      "expectFailure": true,
+      "reads": 1,
+      "drags": 0,
+      "waits": 0,
+      "pointerOrigin": null,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.15,
+      "failure": "actual unpaused pointer origin",
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    },
+    {
+      "methodName": "candidate",
+      "startYaw": 1,
+      "afterInitialMoveYaw": 1,
+      "targetYaw": 1,
+      "pitch": 0.15,
+      "initialPitch": 0.15,
+      "acceptCurrent": true,
+      "paused": false,
+      "expired": true,
+      "expectFailure": true,
+      "reads": 1,
+      "drags": 0,
+      "waits": 0,
+      "pointerOrigin": 1,
+      "actualFinalYaw": 1,
+      "actualFinalPitch": 0.15,
+      "failure": "fixed case wall deadline",
+      "reusableFrame": false,
+      "boundary": "Synthetic function/real-handler replay; not a native browser result"
+    }
+  ],
+  "cycleGuardCount": 25,
+  "cycleGuards": [
+    {
+      "n": 0,
+      "newStart": 35.749999999999254,
+      "oldStart": 35.749999999999254,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 0.2499999999999858,
+      "geometricMetres": 0.07499999999999844,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 1,
+      "newStart": 35.99999999999924,
+      "oldStart": 35.99999999999924,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 0.4999999999999716,
+      "geometricMetres": 0.14999999999999689,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "newStart": 36.49999999999921,
+      "oldStart": 36.49999999999921,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 0.7499999999999574,
+      "geometricMetres": 0.22499999999999531,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "newStart": 36.7499999999992,
+      "oldStart": 36.7499999999992,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 0.9999999999999432,
+      "geometricMetres": 0.29999999999999377,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "newStart": 36.99999999999918,
+      "oldStart": 36.99999999999918,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 1.249999999999929,
+      "geometricMetres": 0.37499999999999223,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "newStart": 37.24999999999917,
+      "oldStart": 37.24999999999917,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 1.4999999999999147,
+      "geometricMetres": 0.4499999999999907,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "newStart": 37.499999999999154,
+      "oldStart": 37.499999999999154,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 1.7499999999999005,
+      "geometricMetres": 0.5249999999999891,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "newStart": 37.74999999999914,
+      "oldStart": 37.74999999999914,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 1.9999999999998863,
+      "geometricMetres": 0.5999999999999552,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "newStart": 37.999999999999126,
+      "oldStart": 37.999999999999126,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 2.249999999999872,
+      "geometricMetres": 0.6749999999768124,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "newStart": 38.4999999999991,
+      "oldStart": 38.4999999999991,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 2.499999999999858,
+      "geometricMetres": 0.7499999996928131,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "newStart": 38.74999999999908,
+      "oldStart": 38.74999999999908,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 2.7499999999998437,
+      "geometricMetres": 0.8249999991692084,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "newStart": 38.99999999999907,
+      "oldStart": 38.99999999999907,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 2.9999999999998295,
+      "geometricMetres": 0.8999999983333735,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "newStart": 39.249999999999055,
+      "oldStart": 39.249999999999055,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 3.2499999999998153,
+      "geometricMetres": 0.9749999971129422,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "newStart": 39.49999999999904,
+      "oldStart": 39.49999999999904,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 3.499999999999801,
+      "geometricMetres": 1.0499999954355617,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "newStart": 39.74999999999903,
+      "oldStart": 39.74999999999903,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 3.749999999999787,
+      "geometricMetres": 1.1249999932292616,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "newStart": 39.99999999999901,
+      "oldStart": 39.99999999999901,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 3.9999999999997726,
+      "geometricMetres": 1.1999999904217837,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "newStart": 40.249999999999,
+      "oldStart": 40.499999999998984,
+      "sameActualSimulationFrame": false,
+      "conservativeExtraSeconds": 0.2499999999999858,
+      "oldHeld": 4.249999999999758,
+      "geometricMetres": 1.2749999861967785,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "newStart": 40.74999999999897,
+      "oldStart": 40.74999999999897,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 4.499999999999744,
+      "geometricMetres": 1.3499999820987114,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "newStart": 40.999999999998956,
+      "oldStart": 40.999999999998956,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 4.74999999999973,
+      "geometricMetres": 1.4249999794930408,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "newStart": 41.74999999999891,
+      "oldStart": 41.74999999999891,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 5.249999999999702,
+      "geometricMetres": 1.574999978677394,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "newStart": 41.9999999999989,
+      "oldStart": 41.9999999999989,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 5.499999999999687,
+      "geometricMetres": 1.6499999786734199,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "newStart": 42.249999999998884,
+      "oldStart": 42.249999999998884,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 5.749999999999673,
+      "geometricMetres": 1.7249999786733996,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "newStart": 42.49999999999887,
+      "oldStart": 42.49999999999887,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 5.999999999999659,
+      "geometricMetres": 1.799999978673379,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "newStart": 42.749999999998856,
+      "oldStart": 42.749999999998856,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "oldHeld": 6.4999999999996305,
+      "geometricMetres": 1.8749999786733589,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "newStart": 43.24999999999883,
+      "oldStart": 43.24999999999883,
+      "sameActualSimulationFrame": true,
+      "conservativeExtraSeconds": 0,
+      "geometricMetres": null,
+      "originalStallGuardIntact": true,
+      "originalReleaseEvents": [
+        {
+          "action": "down",
+          "key": "z"
+        },
+        {
+          "action": "down",
+          "key": "s"
+        },
+        {
+          "action": "up",
+          "key": "s",
+          "confirmed": true
+        },
+        {
+          "action": "up",
+          "key": "z",
+          "confirmed": true
+        }
+      ]
+    }
+  ],
+  "noRuntimeSourceMutation": true,
+  "noClockOrActorMutation": true,
+  "limits": "Mocked transport protocol uses byte-exact executed5cd public pointer handlers and actual trace endpoints. It neither measures RPC latency savings nor proves real150s movement, later steps, screenshots, boarding/berths or High art quality."
+}

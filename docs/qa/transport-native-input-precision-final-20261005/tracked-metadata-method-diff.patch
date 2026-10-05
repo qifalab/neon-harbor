@@ -1,0 +1,201 @@
+diff --git a/tools/native-review/bundle-manifest.json b/tools/native-review/bundle-manifest.json
+index 8c4005c..a724521 100644
+--- a/tools/native-review/bundle-manifest.json
++++ b/tools/native-review/bundle-manifest.json
+@@ -266,10 +266,18 @@
+       "bytes": 559,
+       "sha256": "3facb79d9937c8c250474b57028eca6c0eb4ee7125bcfd8db650da7f33d80f01"
+     },
++    "methods/transport/POINTER_ORIGIN_AND_GUARD_FRAME_AMENDMENT-20261005.json": {
++      "bytes": 4501,
++      "sha256": "9733ad7f2320736867507d744a727ab9bcefb4a931c34afdf605f5d507bb2015"
++    },
+     "methods/transport/POSTSEAL-PROVENANCE.json": {
+       "bytes": 3132,
+       "sha256": "f73a7ef657fb5e5b7cdf93ff250f1ed083d957642c18694ff6948f3401bfdcf4"
+     },
++    "methods/transport/PRECISION_SLOW_MODIFIER_LEG_AMENDMENT-20261005.json": {
++      "bytes": 4906,
++      "sha256": "ddc5406a32008c25496e0b4f656dcb72cc6f92ee5503a20012c637e7f8282f92"
++    },
+     "methods/transport/README.md": {
+       "bytes": 8180,
+       "sha256": "441ffbabc42e02ea233e1ae0272fc6f14ef26ee2c6ca7aad523d848863a060a1"
+@@ -287,12 +295,12 @@
+       "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
+     },
+     "methods/transport/method-manifest.json": {
+-      "bytes": 18263,
+-      "sha256": "79b7b998bc7603b50cd32b714dc3bea674440fc12ca0221929075436ec788159"
++      "bytes": 19310,
++      "sha256": "79900cd1332a9ab5c458f70d577c7d1ca34734e35b3c7db4f6369c63aba768f0"
+     },
+     "methods/transport/native-transport-high.mjs": {
+-      "bytes": 48131,
+-      "sha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a"
++      "bytes": 49904,
++      "sha256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+     },
+     "methods/transport/runtime-resources.json": {
+       "bytes": 3799,
+@@ -705,5 +713,30 @@
+     "nativeOnlyNoInputDefault": "false",
+     "dispatchActivationActuallyExecutedBySealer": false,
+     "productTestsBuildBrowserGpuExecutedBySealer": false
++  },
++  "transportPublicInputAndPrecisionModifierAmendment": {
++    "status": "EXACT_INHERITED_POINTER_AND_LEG_SCOPED_Z_PROTOCOL_ADOPTED_NATIVE_RECAPTURE_ART_PENDING",
++    "parentCommit": "aec53e145abb25d76f268a90ad4b52a69e2fe089",
++    "original128ManifestSHA256": "de0cf09ceac31cf985bb27285143cb6d048446793bac7b3885c55a412c97c7dd",
++    "historical129ManifestSHA256": "a3a68214a92392c723a112de0d2ceedbd4184f5fa2d61d23f78a3a63680cc27d",
++    "historical129ProofIsCurrent130Proof": false,
++    "oldPayloadLedgerSHA256": "515c2ea11179b097ef0ec23ad55cee8ec6dacb2097a0c609a75ef7b93c14d59a",
++    "precisionPayloadLedgerSHA256": "c0f2aec03a30e30a1da46d67157720273d698604395de60d566de822b442fd4f",
++    "originalMethodSHA256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
++    "priorPointerMethodSHA256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
++    "activeMethodSHA256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b",
++    "originalBundleFiles": 128,
++    "historicalPointerBundleFiles": 129,
++    "currentBundleFiles": 130,
++    "unchangedOriginalBundleFiles": 126,
++    "actualRuntimeAssetCount": 206,
++    "actualAECBuildInfoSHA256": "0700334224a69f044f50814a0dee64aae07cad6fdf373905e5eb4681201f8a62",
++    "originalNullRevisionBuildInfoSHA256": "9519740965c34cb55fa95a8b601187eaac32cf231a75af8adb2058f07ccfd943",
++    "productionSourceChanged": false,
++    "originalNativeFailuresPreserved": true,
++    "nativeExecutedByAdoption": false,
++    "humanArtAcceptance": false,
++    "futureTreeCandidateAssetsCovered": false,
++    "scope": "AEC206 runtime only. Public pointer-origin/current-camera qualifying-frame amendment retained; precision Z is held only across a forced-precision local leg with original directional per-cycle release, unchanged slow gait/budgets/guards and confirmed final Z release on normal and error paths. Does not accept later QUAY startup or current tree art failures."
+   }
+ }
+diff --git a/tools/native-review/methods/transport/method-manifest.json b/tools/native-review/methods/transport/method-manifest.json
+index 3d2a2f6..9adde48 100644
+--- a/tools/native-review/methods/transport/method-manifest.json
++++ b/tools/native-review/methods/transport/method-manifest.json
+@@ -2,8 +2,8 @@
+   "status": "PREPARED_SYNTAX_CHECKED_API_SOURCE_REVIEWED_NATIVE_UNRUN",
+   "tool": {
+     "path": "native-transport-high.mjs",
+-    "bytes": 48131,
+-    "sha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a"
++    "bytes": 49904,
++    "sha256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+   },
+   "canonical": {
+     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
+@@ -293,5 +293,24 @@
+     "originalFailuresPermanentlyPreserved": true,
+     "nativeExecuted": false,
+     "browserAcceptance": false
++  },
++  "pointerOriginAndGuardFrameAmendment": {
++    "path": "POINTER_ORIGIN_AND_GUARD_FRAME_AMENDMENT-20261005.json",
++    "sha256": "9733ad7f2320736867507d744a727ab9bcefb4a931c34afdf605f5d507bb2015",
++    "status": "SOURCE_SYNTAX_AND_CPU_FUNCTION_TRACE_CHECKS_PASSED_NATIVE_RECAPTURE_REQUIRED",
++    "previousActiveToolSha256": "e26e881d2a6237d034ec120ddf452226bdd3f70044349074cfc1dedee52e992a",
++    "originalFailureArtifactId": 11326904370,
++    "publicInputHandlerBytesUnchanged": true,
++    "nativeExecuted": false,
++    "runtimeSourceChanged": false
++  },
++  "precisionSlowModifierLegAmendment": {
++    "path": "PRECISION_SLOW_MODIFIER_LEG_AMENDMENT-20261005.json",
++    "sha256": "ddc5406a32008c25496e0b4f656dcb72cc6f92ee5503a20012c637e7f8282f92",
++    "status": "SOURCE_SYNTAX_AND_ACTUAL_FUNCTION_CPU_REPLAY_PASSED_NEW_HIGH_NATIVE_REQUIRED",
++    "previousActiveToolSha256": "2fdc400b65c62c9d0b3ea405a5644db63ee4f0387579a8d6be89eb4b57d74bee",
++    "originalFailureArtifactId": 11328275235,
++    "nativeExecuted": false,
++    "runtimeSourceChanged": false
+   }
+ }
+diff --git a/tools/native-review/methods/transport/native-transport-high.mjs b/tools/native-review/methods/transport/native-transport-high.mjs
+index 368d38c..740a323 100644
+--- a/tools/native-review/methods/transport/native-transport-high.mjs
++++ b/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -154,9 +154,18 @@ async function captureCase(kind) {
+   const distance = (a,b) => Math.hypot(a.x-b.x,a.z-b.z);
+   const healthy = s => { assert.equal(s.settings.quality,'high');assert.equal(s.settings.hour,16.5);assert.equal(s.settings.dayCycle,false);assert.equal(s.settings.firstPerson,true);assert.equal(s.renderer.contextLost,false);assert.equal(s.settings.sensitivity,1); };
+   async function pointer() {
+-    const box=await page.locator('#game').boundingBox(), s=await read();
+-    const p={x:box.x+box.width*.86,y:box.y+box.height*.30,orbitYaw:s.camera.yaw};
+-    await page.mouse.move(p.x,p.y);await page.mouse.down();activePointer=p;return p;
++    const box=await page.locator('#game').boundingBox();
++    const p={x:box.x+box.width*.86,y:box.y+box.height*.30,orbitYaw:null};
++    await page.mouse.move(p.x,p.y);await page.mouse.down();activePointer=p;
++    // The public pointerdown handler resets orbit to the camera rendered at
++    // that input event. Read its actual origin after the event, since an
++    // automatic passenger follow can advance between earlier RPCs.
++    const s=await read();healthy(s);
++    assert.ok(s.started&&!s.paused&&Number.isFinite(s.camera?.yaw),'actual unpaused pointer origin');
++    p.orbitYaw=s.camera.yaw;
++    record.events.push({stage:'public-pointerdown-fresh-origin',at:new Date().toISOString(),
++      camera:s.camera,simulationTime:s.simulationTime,revision:s.teleportRevision});
++    return p;
+   }
+   const progressOf = (s,id=null) => {
+     const t=transit(s),v=id?vehicle(s,id):null;
+@@ -181,6 +190,7 @@ async function captureCase(kind) {
+     }catch(error){const diagnostic=err(error,`${phase.type} ${when} progress diagnostic`);phase.diagnosticErrors.push(diagnostic);record.secondaryErrors.push(diagnostic);if(!primary)record.progressDiagnosticFailures.push(diagnostic);}
+   }
+   async function aim(p,yaw,pitch=.15,{acceptCurrent=false}={}) {
++    let currentFrame=null;
+     const phaseDeadline=Date.now()+remaining(60000),phase={type:'aim',target:{yaw,pitch},budgetMs:60000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.aimPhases.push(phase);
+     try {
+       await bounded(async()=>{
+@@ -191,7 +201,7 @@ async function captureCase(kind) {
+           &&Math.abs(angle(s.camera.yaw-yaw))<.025&&Math.abs(s.camera.pitch-pitch)<.003) {
+           assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
+           phase.skippedPointerInput=true;phase.satisfiedBy='fresh-read-only-current-camera-original-predicate';
+-          return;
++          currentFrame=s;return;
+         }
+         p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
+         await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
+@@ -199,7 +209,7 @@ async function captureCase(kind) {
+         await page.waitForFunction(({yaw,pitch})=>{const c=window.__NEON__.snapshot().camera;return Math.abs(Math.atan2(Math.sin(c.yaw-yaw),Math.cos(c.yaw-yaw)))<.025&&Math.abs(c.pitch-pitch)<.003;},{yaw,pitch},{polling:'raf',timeout:cap});
+         assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
+       },Math.max(1,Math.min(phaseDeadline-Date.now(),deadline-Date.now())),'finite aim phase');
+-      phase.status='SATISFIED';
++      phase.status='SATISFIED';return currentFrame;
+     }catch(error){phase.firstError=err(error,'aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',null,null,error);throw error;}
+     finally{phase.finishedAt=new Date().toISOString();}
+   }
+@@ -259,16 +269,16 @@ async function captureCase(kind) {
+   }
+   async function walkLocal(target,p,layout,stage,{precision=true}={}) {
+     const initial=await read(), revision=initial.teleportRevision, localDeadline=Date.now()+remaining(150000), samples=[initial];let current=initial,held=0,metres=0;
+-    let first=null;
++    let first=null;const precisionModifier={key:'z',scope:'precision-local-leg-only',downAttempted:false,downConfirmed:false,releaseConfirmed:null,inputs:[]};
+     try {
+       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
+         assert.ok(Date.now()<localDeadline);const before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
+         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
+-        const desired=v.yaw+Math.atan2(dx,dz)-offset;await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
++        const desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=await aim(p,desired,.15,{acceptCurrent:true});const slow=precision||distance(target,before)<1.2;
+         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null;
+-        try {guardBeforeAction=await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
++        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
+         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
+-        finally {for(const k of [key,...(slow?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
++        finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
+         if(cycleError){cycle.firstError ||= err(cycleError,'release');samples.push(cycle);throw cycleError;}
+         current=await read();assert.equal(current.teleportRevision,revision);radiusGuard(current,layout);
+         held+=Math.max(0,current.simulationTime-guardBeforeAction.simulationTime);metres+=distance(before,transit(current).passengerLocal);
+@@ -276,7 +286,15 @@ async function captureCase(kind) {
+       }
+       assert.ok(distance(target,transit(current).passengerLocal)<.06,'original physical local endpoint');if(target.y!=null)assert.ok(Math.abs(transit(current).passengerLocal.y-target.y)<.15);assert.equal(current.teleportRevision,revision);
+     } catch(error){first=error;throw error;}
+-    finally {record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,firstError:first?err(first,'local movement'):null});}
++    finally {
++      let modifierReleaseError=null;
++      if(precisionModifier.downAttempted){
++        try{await page.keyboard.up('z');precisionModifier.releaseConfirmed=true;precisionModifier.inputs.push({action:'up',key:'z',confirmed:true});}
++        catch(error){precisionModifier.releaseConfirmed=false;precisionModifier.inputs.push({action:'up',key:'z',confirmed:false,error:err(error,'precision modifier keyup')});modifierReleaseError=error;if(!first)first=error;else record.secondaryErrors.push(err(error,'precision modifier keyup'));}
++      }
++      record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,precisionModifier,firstError:first?err(first,'local movement'):null});
++      if(modifierReleaseError&&first===modifierReleaseError)throw modifierReleaseError;
++    }
+   }
+   async function waitBerth(id, stopId=null) {
+     const berthBudgetMs=kind==='tram'?1200000:600000;
