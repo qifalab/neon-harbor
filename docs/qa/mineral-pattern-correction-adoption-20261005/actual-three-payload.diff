@@ -1,0 +1,157 @@
+--- original9cf/art-source/visible-western-ridge-mineral-surface/README.md
++++ pattern-correction/art-source/visible-western-ridge-mineral-surface/README.md
+@@ -2,12 +2,14 @@
+ 
+ This original CPU-authored material candidate addresses the broad smooth grey-green, soft-clay surface seen in the closed b80 daylight originals. It does not change the existing connected mountain shape or declare photoreal/AAA acceptance.
+ 
+-The editable recipe lives in `src/metropolis-western-ridge.js`: seed 2026100521 creates 40 unequal periodic stone cells across a 16m sheet. Warped 2.3m strata, shallow fractured margins, and physical height gradients produce two inline 128×128 RGBA8 standard PBR maps. Normal and roughness maps use no colour space, repeat wrapping, linear mip filtering and generated mips. The standard Three roughness shader consumes the actual green channel, multiplied by material roughness 1. The West material has no custom shader hook; the shared surface-finish module and every other material retain their original hooks.
++The editable recipe lives in `src/metropolis-western-ridge.js`: seed 2026100521 creates 40 unequal periodic stone cells across a 16m sheet. Shallow irregular fractured margins and small unequal stone offsets produce two inline 128×128 RGBA8 standard PBR maps. Normal and roughness maps use no colour space, repeat wrapping, linear mip filtering and generated mips. The standard Three roughness shader consumes the actual green channel, multiplied by material roughness 1. The West material has no custom shader hook; the shared surface-finish module and every other material retain their original hooks.
+ 
+-Map texels span 12.5cm in world UVs. At the actual roughly 300m harbour cameras, the 0.8–4m surface structures can affect a few pixels; microscopic pores cannot be resolved reliably. Slope, drainage and height masks therefore also separate darker planted slopes, warmer soil, exposed stone and restrained 20–40m mineral strata in the existing vertex colours. This macro layer is intended to survive mip filtering; normal maps do not add silhouette relief or a displacement mesh.
++Map texels span 12.5cm in world UVs. At the actual roughly 300m harbour cameras, the irregular 0.8–4m surface structures can affect a few pixels; microscopic pores cannot be resolved reliably. Slope, drainage and height masks therefore also separate darker planted slopes, warmer soil, exposed stone and nonperiodic 17–41m mineral/planting patches in the existing vertex colours. This macro layer is intended to survive mip filtering; normal maps do not add silhouette relief or a displacement mesh.
+ 
+ West position, normals, indices and bounding envelope are preserved literally from b80: 4018 vertices, 8032 triangles, one draw. The unused West mountainSurface shader attribute is replaced by standard UV with the same two-float storage. Top UV is world XZ /16m; only below-ground closed-skirt UVs are radially expanded by 0.6% to avoid degenerate side triangles. No collision, entry, support, streaming, lighting, global postprocessing, or other model source changes are part of this candidate. The minimal North adapter copies these West UVs and preserves all actual North geometry attributes, standard-material inputs and original two 256² map pixels.
+ 
+ The West geometry and material owners have idempotent disposal; material disposal releases each inline texture exactly once. Temporary height/fracture arrays used during map creation are not retained by the material. Conservatively counting both retained CPU pixels (131072 B) and complete GPU mip pyramids (174760 B), additional texture memory is theoretically 305832 B, below 0.5 MiB. This is derived accounting, not measured GPU VRAM. West geometry bytes stay 224984 B and original producer arrays/scratch stay 283472 B, below the unchanged 300000 B cap.
+ 
+-No image has been edited or generated to serve as visual acceptance. Final native Day/Night comparisons and the final source regression run are pending adoption by the root agent.
++No image has been edited or generated to serve as visual acceptance. Final native Day/Night comparisons and the final source regression run for this correction are pending adoption by the root agent.
++
++The actual 9cf High harbour frame showed a woven/checker-like highlight pattern on the West mountain. Surface recipe v2 removes every coherent sine component from the mineral height field (previous strata, sheet and grain) and from roughness. It retains unequal Voronoi fracture margins and subtle stone-height offsets, and reduces the standard tangent normal scale from 1 to 0.35. Existing terrain vertex colours now use nonperiodic smoothed hashed patches at 17, 28, 37 and 41m scales, with less dark mineral mixing. This targets the actual repeated-highlight defect without changing geometry, UV, lights or display quality. The earlier native image and failed art judgement remain preserved; this candidate has no pixel acceptance yet.
+--- original9cf/art-source/visible-western-ridge-mineral-surface/recipe.json
++++ pattern-correction/art-source/visible-western-ridge-mineral-surface/recipe.json
+@@ -1,7 +1,7 @@
+ {
+-  "version": 1,
++  "version": 2,
+   "purpose": "Original dry rock/soil/vegetation surface for actual visible West ridge; no terrain shape changes",
+-  "sourceBaseHead": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
++  "sourceBaseHead": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+   "maps": {
+     "count": 2,
+     "dimensions": [
+@@ -13,14 +13,14 @@
+     "periodicStoneCells": 40,
+     "tileMetres": 16,
+     "worldTexelMetres": 0.125,
+-    "normal": "Finite differences of original metre-scale dry mineral height field; tangent-space standard PBR",
+-    "roughness": "Actual green channel .80\u2013.98 bounds, material scalar1; dry crevices rougher",
++    "normal": "Finite differences of unequal Voronoi fracture margins and small stone offsets ONLY; no sine strata/sheet/grain. Standard tangent normalScale0.35.",
++    "roughness": "Actual green channel bounded .80\u2013.98, scalar1; irregular fracture only, no sine wave.",
+     "colorSpace": "NoColorSpace",
+     "mips": "Generated complete pyramid, LinearMipmapLinearFilter",
+     "wrap": "RepeatWrapping",
+     "networkRequestsAdded": 0
+   },
+-  "macroLayers": "Existing vertex colours separate planted slopes, soil/gullies, exposed rock and restrained 20\u201340m strata. No new albedo texture.",
++  "macroLayers": "Nonperiodic smooth-hashed existing vertex-colour masks at17/28/37/41m, planting/soil/exposed warmer rock; no geometry or albedo map added.",
+   "geometry": {
+     "positionsNormalsIndicesAndBounds": "Literal original b80 bytes",
+     "vertices": 4018,
+@@ -30,7 +30,8 @@
+     "preparedBytes": 224984,
+     "producerTypedArrayBytes": 283472,
+     "producerCapBytes": 300000,
+-    "skirt": "Original underground geometry; radial UV expansion 1.006 only"
++    "skirt": "Original underground geometry; radial UV expansion 1.006 only",
++    "standardUV": "Literal9cf uv arrays, all8032triangles, unchanged"
+   },
+   "northernOwner": "Original 16752triangles, all geometry attributes/material inputs and two256\u00b2 map pixels unchanged; adapter only copies West UV and owner guard",
+   "budget": {
+@@ -46,5 +47,10 @@
+     "originalGeneratedTextureData": "CC0-1.0",
+     "externalAssetsUsed": false
+   },
+-  "visualAcceptance": "PENDING actual original same-plan source-bound Day/Night renders; CPU counts do not establish art acceptance"
++  "visualAcceptance": "PENDING actual original same-plan source-bound Day/Night renders; CPU counts do not establish art acceptance",
++  "actualDefectReference": {
++    "originalImage": "/workspace/neon-evidence/street-day-material-lighting-9cf1c86-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
++    "sha256": "bbb126a273417de623dda71820cedc1be1d66693cae8598e776976b3193dc517",
++    "observed": "Repeated woven/fish-scale highlight pattern; smooth dark grey-green terrain. Old image/FAIL preserved, no new native candidate acceptance."
++  }
+ }
+--- original9cf/src/metropolis-western-ridge.js
++++ pattern-correction/src/metropolis-western-ridge.js
+@@ -5,7 +5,7 @@
+   version: 2, xSegments: 32, zSegments: 112, sourceWesternHills: 10,
+   minX: -1076, maxX: -790, minZ: -1439, maxZ: -495, minY: -18.5, maxY: 160.5,
+   maxHillTriangles: 3000, maxWesternTriangles: 30000, maxPreparedBytes: 300000,
+-  surface: Object.freeze({ version: 1, mapSize: 128, textureTileMetres: 16, seed: 2026100521, maxAddedResidentBytes: 524288 }),
++  surface: Object.freeze({ version: 2, mapSize: 128, textureTileMetres: 16, seed: 2026100521, maxAddedResidentBytes: 524288 }),
+   palette: Object.freeze({ grass: '#38513e', grassWarm: '#5b6745', soil: '#78664c', rock: '#948b73', rockShade: '#555d55', rockLight: '#b0aa91' }),
+ });
+ const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+@@ -61,7 +61,7 @@
+ 
+ /** Original periodic dry mineral sheet, expressed in metres rather than
+  * screen pixels. Unequal ~2.5m stone cells, shallow fractured margins and
+- * warped ~2.3m strata form one continuous physical height field. Its finite
++ * irregular stone fractures form a restrained physical height field. Its finite
+  * differences generate tangent normals; the same fractures drive roughness.
+  * No photographs, downloaded textures, random per-frame samples or shader hooks. */
+ function createOriginalWesternMaps(THREE) {
+@@ -72,9 +72,11 @@
+   for(let j=0;j<size;j++)for(let i=0;i<size;i++){
+     const u=i/size,v=j/size,k=j*size+i;let nearest=Infinity,second=Infinity,stone=0;
+     for(const cell of cells){let x=Math.abs(u-cell[0]),y=Math.abs(v-cell[1]);x=Math.min(x,1-x);y=Math.min(y,1-y);const d=Math.hypot(x,y);if(d<nearest){second=nearest;nearest=d;stone=cell[2];}else if(d<second)second=d;}
+-    const fracture=Math.exp(-(second-nearest)/.018),warp=.13*Math.sin(v*4*Math.PI)+.075*Math.sin(u*6*Math.PI);
+-    const strata=Math.sin((v*7+warp)*2*Math.PI),sheet=Math.sin((u*3+v*2)*2*Math.PI),grain=Math.sin((u*29-v*23)*2*Math.PI)*Math.cos((u*17+v*19)*2*Math.PI);
+-    heights[k]=.045*strata+.025*sheet-.050*fracture+.006*grain+.010*(stone-.5)*(1-fracture);fractures[k]=fracture;
++    const fracture=Math.exp(-(second-nearest)/.018);
++    // No coherent sine sheet/strata/grain: those waves made a visible woven
++    // highlight grid in the actual9cf High harbour frame. Unequal cell edges
++    // and small stone offsets retain mineral response without periodic ridges.
++    heights[k]=-.050*fracture+.010*(stone-.5)*(1-fracture);fractures[k]=fracture;
+   }
+   const sample=(i,j)=>heights[((j+size)%size)*size+(i+size)%size],step=tile/size;
+   for(let j=0;j<size;j++)for(let i=0;i<size;i++){
+@@ -82,7 +84,7 @@
+     normalPixels[k]=Math.round((-.5*dx*inv+.5)*255);normalPixels[k+1]=Math.round((-.5*dy*inv+.5)*255);normalPixels[k+2]=Math.round((.5*inv+.5)*255);normalPixels[k+3]=255;
+     // Three's standard roughnessmap_fragment consumes G, multiplied by the
+     // material scalar1. Dry crevices are rougher than the exposed mineral sheet.
+-    const rough=Math.round(clamp(.84+.11*fractures[at]+.025*Math.sin((i*5+j*3)/size*2*Math.PI),.80,.98)*255);
++    const rough=Math.round(clamp(.84+.11*fractures[at]+.020*heights[at],.80,.98)*255);
+     roughPixels[k]=roughPixels[k+1]=roughPixels[k+2]=rough;roughPixels[k+3]=255;
+   }
+   const normal=new THREE.DataTexture(normalPixels,size,size),roughness=new THREE.DataTexture(roughPixels,size,size);
+@@ -90,14 +92,22 @@
+   return {normal,roughness};
+ }
+ function createWestMaterial(THREE) {
+-  const maps=createOriginalWesternMaps(THREE),material=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,normalMap:maps.normal,roughnessMap:maps.roughness,normalMapType:THREE.TangentSpaceNormalMap,normalScale:new THREE.Vector2(1,1)});
++  const maps=createOriginalWesternMaps(THREE),material=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,normalMap:maps.normal,roughnessMap:maps.roughness,normalMapType:THREE.TangentSpaceNormalMap,normalScale:new THREE.Vector2(.35,.35)});
+   material.name='metropolis-western-ridge';
+   const size=WESTERN_RIDGE_RECIPE.surface.mapSize,mipPixels=Array.from({length:Math.log2(size)+1},(_,i)=>(size>>i)**2).reduce((a,b)=>a+b,0),baseBytes=2*size*size*4,fullMipBytes=2*mipPixels*4;
+-  material.userData.westernMineralSurface={recipeVersion:1,originalProceduralMaps:true,mapSize:size,textureTileMetres:WESTERN_RIDGE_RECIPE.surface.textureTileMetres,basePixelCpuBytes:baseBytes,fullMipGpuTheoreticalBytes:fullMipBytes,addedResidentCpuAndGpuTheoreticalBytes:baseBytes+fullMipBytes,uvReplacesUnusedMountainSurface:true};
++  material.userData.westernMineralSurface={recipeVersion:2,originalProceduralMaps:true,mapSize:size,textureTileMetres:WESTERN_RIDGE_RECIPE.surface.textureTileMetres,basePixelCpuBytes:baseBytes,fullMipGpuTheoreticalBytes:fullMipBytes,addedResidentCpuAndGpuTheoreticalBytes:baseBytes+fullMipBytes,uvReplacesUnusedMountainSurface:true};
+   if(baseBytes+fullMipBytes>WESTERN_RIDGE_RECIPE.surface.maxAddedResidentBytes)throw Error('Western mineral maps exceed the added resident budget');
+   const original=material.dispose.bind(material);let disposed=false;
+   material.dispose=()=>{if(disposed)return;disposed=true;maps.normal.dispose();maps.roughness.dispose();original();};
+   return material;
++}
++
++/** Nonperiodic terrain-scale mineral/planting masks. Smoothed hashed cells
++ * are evaluated only while authoring existing vertex colours, not in a shader. */
++function terrainMask(x,z,metres,salt){
++ const u=x/metres,v=z/metres,ix=Math.floor(u),iz=Math.floor(v),fx=smoothstep(0,1,u-ix),fz=smoothstep(0,1,v-iz);
++ const hash=(a,b)=>{let h=(Math.imul(a,374761393)^Math.imul(b,668265263)^salt)>>>0;h=Math.imul(h^(h>>>13),1274126177)>>>0;return((h^(h>>>16))>>>0)/4294967296;};
++ const a=hash(ix,iz),b=hash(ix+1,iz),c=hash(ix,iz+1),d=hash(ix+1,iz+1);return(a+(b-a)*fx)*(1-fz)+(c+(d-c)*fx)*fz;
+ }
+ 
+ /** One static draw for the connected West surface and exact original North
+@@ -130,12 +140,12 @@
+   if(k>=westVertices){c.copy(sourceMaterial.color);const local=(k-westVertices)%sourcePosition.count,sourceUv=sourceGeometry.getAttribute('uv');uv[k*2]=sourceUv.getX(local);uv[k*2+1]=sourceUv.getY(local);}
+   else{const x=positions[k*3],y=positions[k*3+1],z=positions[k*3+2],u=(x-r.minX)/(r.maxX-r.minX),v=(z-r.minZ)/(r.maxZ-r.minZ),h=clamp((y-r.minY)/(r.maxY-r.minY)),slope=1-Math.abs(normals[k*3+1]);
+    const outcrop=clamp(smoothstep(.12,.48,slope)*.88+smoothstep(.59,.91,h)*.35),gully=westernRelief(u,v).drainage;
+-   const soil=clamp(gully*.60+(1-smoothstep(.04,.24,h))*.30),warm=.5+.5*Math.sin(z*.043+x*.027+Math.sin(z*.012)*2);
++   const soil=clamp(gully*.60+(1-smoothstep(.04,.24,h))*.30),warm=terrainMask(x,z,41,23);
+    // Terrain-scale masks span tens of metres; distant frames can read their
+    // warm exposed rock / cool planted slopes even after the small maps mip out.
+-   const layer=.5+.5*Math.sin(y*.16+z*.019+Math.sin(x*.047)*1.8),patch=.5+.5*Math.sin(z*.051+x*.038+Math.sin(z*.021)*2.1);
++   const layer=terrainMask(x+y*.31,z,28,61),patch=.65*terrainMask(x,z,37,97)+.35*terrainMask(x,z,17,131);
+    c.copy(palette.grass).lerp(palette.grassWarm,warm*.55).lerp(palette.soil,soil).lerp(palette.rock,outcrop);
+-   c.lerp(palette.rockShade,outcrop*smoothstep(.30,.77,layer)*.48).lerp(palette.rockLight,outcrop*smoothstep(.62,.94,patch)*.26);c.multiplyScalar(.88+.18*patch);
++   c.lerp(palette.rockShade,outcrop*smoothstep(.30,.77,layer)*.30).lerp(palette.rockLight,outcrop*smoothstep(.50,.88,patch)*.34);c.multiplyScalar(.95+.14*patch);
+    const tile=r.surface.textureTileMetres,cx=(r.minX+r.maxX)/2,cz=(r.minZ+r.maxZ)/2;
+    // Radially expand only below-ground skirt UVs, so vertical side triangles
+    // have nonzero texture area without changing any position or normal.

@@ -1,7 +1,7 @@
 {
-  "version": 2,
+  "version": 1,
   "purpose": "Original dry rock/soil/vegetation surface for actual visible West ridge; no terrain shape changes",
-  "sourceBaseHead": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+  "sourceBaseHead": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
   "maps": {
     "count": 2,
     "dimensions": [
@@ -13,14 +13,14 @@
     "periodicStoneCells": 40,
     "tileMetres": 16,
     "worldTexelMetres": 0.125,
-    "normal": "Finite differences of unequal Voronoi fracture margins and small stone offsets ONLY; no sine strata/sheet/grain. Standard tangent normalScale0.35.",
-    "roughness": "Actual green channel bounded .80\u2013.98, scalar1; irregular fracture only, no sine wave.",
+    "normal": "Finite differences of original metre-scale dry mineral height field; tangent-space standard PBR",
+    "roughness": "Actual green channel .80\u2013.98 bounds, material scalar1; dry crevices rougher",
     "colorSpace": "NoColorSpace",
     "mips": "Generated complete pyramid, LinearMipmapLinearFilter",
     "wrap": "RepeatWrapping",
     "networkRequestsAdded": 0
   },
-  "macroLayers": "Nonperiodic smooth-hashed existing vertex-colour masks at17/28/37/41m, planting/soil/exposed warmer rock; no geometry or albedo map added.",
+  "macroLayers": "Existing vertex colours separate planted slopes, soil/gullies, exposed rock and restrained 20\u201340m strata. No new albedo texture.",
   "geometry": {
     "positionsNormalsIndicesAndBounds": "Literal original b80 bytes",
     "vertices": 4018,
@@ -30,8 +30,7 @@
     "preparedBytes": 224984,
     "producerTypedArrayBytes": 283472,
     "producerCapBytes": 300000,
-    "skirt": "Original underground geometry; radial UV expansion 1.006 only",
-    "standardUV": "Literal9cf uv arrays, all8032triangles, unchanged"
+    "skirt": "Original underground geometry; radial UV expansion 1.006 only"
   },
   "northernOwner": "Original 16752triangles, all geometry attributes/material inputs and two256\u00b2 map pixels unchanged; adapter only copies West UV and owner guard",
   "budget": {
@@ -47,10 +46,5 @@
     "originalGeneratedTextureData": "CC0-1.0",
     "externalAssetsUsed": false
   },
-  "visualAcceptance": "PENDING actual original same-plan source-bound Day/Night renders; CPU counts do not establish art acceptance",
-  "actualDefectReference": {
-    "originalImage": "/workspace/neon-evidence/street-day-material-lighting-9cf1c86-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
-    "sha256": "bbb126a273417de623dda71820cedc1be1d66693cae8598e776976b3193dc517",
-    "observed": "Repeated woven/fish-scale highlight pattern; smooth dark grey-green terrain. Old image/FAIL preserved, no new native candidate acceptance."
-  }
+  "visualAcceptance": "PENDING actual original same-plan source-bound Day/Night renders; CPU counts do not establish art acceptance"
 }

@@ -1,0 +1,238 @@
+{
+  "status": "FINAL_NARROW_PATTERN_CORRECTION_SOURCE_READY_ART_PENDING",
+  "createdAtUtc": "2026-10-05T09:00:01.832332+00:00",
+  "sourceBaseHead": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+  "candidateRepo": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/repo",
+  "candidateEditedRepoFiles": [
+    {
+      "path": "src/metropolis-western-ridge.js",
+      "bytes": 14931,
+      "sha256": "c56b88dc552d90d3909383b0cdfc77fe884d0d4dac7b52ceaa60ffb2449b4960"
+    },
+    {
+      "path": "art-source/visible-western-ridge-mineral-surface/README.md",
+      "bytes": 3552,
+      "sha256": "6aed704d871a054bf800c4aacbecd1efa185b83b167305fb100b5974c5ed2f6d"
+    },
+    {
+      "path": "art-source/visible-western-ridge-mineral-surface/recipe.json",
+      "bytes": 2621,
+      "sha256": "52078539d11fd3959b48fb35d67d55c323365fb259d2deb1a6c105f2b31a798a"
+    }
+  ],
+  "payloadTotalBytes": 21104,
+  "committedOrPushed": false,
+  "originalDefectImageActuallyViewed": {
+    "path": "/workspace/neon-evidence/street-day-material-lighting-9cf1c86-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
+    "bytes": 1121403,
+    "sha256": "bbb126a273417de623dda71820cedc1be1d66693cae8598e776976b3193dc517"
+  },
+  "originalImageAndSourceOrPriorSealsEdited": false,
+  "sourceScope": "Only West material pixel recipe/standardnormalScale/existing macro vertex colours; existing North source, all lighting/models/inputs untouched.",
+  "specificCorrection": "Remove all coherent sine strata/sheet/grain from normal height and sine roughness; retained irregular Voronoi fractures/stone offsets;normalScale1to.35;nonperiodic hashed macro material masks instead of sine strips. No displayquality changes.",
+  "actualRuntimeSourceComparison": {
+    "basisBuildInfo": {
+      "path": "/workspace/neon-candidates/harbor-material-lighting-final-20261005/dist/build-info.json",
+      "bytes": 22347,
+      "sha256": "b7fff54990d24db3441124ee822d188b12531f3336667aa896e070e5beaade88"
+    },
+    "candidateBuildInfo": {
+      "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/repo/dist/build-info.json",
+      "bytes": 22309,
+      "sha256": "18ba8b44486ce4f5bdcb188c58ac519c2feec165056d709001d72d35eb7b286f"
+    },
+    "basisCount": 208,
+    "candidateCount": 208,
+    "unchangedCount": 207,
+    "changed": [
+      {
+        "path": "src/metropolis-western-ridge.js",
+        "basisSHA256": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78",
+        "candidateSHA256": "c56b88dc552d90d3909383b0cdfc77fe884d0d4dac7b52ceaa60ffb2449b4960"
+      }
+    ],
+    "added": [],
+    "removed": [],
+    "newNetworkRequestsOrDraws": 0,
+    "candidateRevision": null
+  },
+  "actualFullCityPhysicsProof": {
+    "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/evidence/actual-cpu/actual-cpu-proof.json",
+    "bytes": 146246,
+    "sha256": "56f2874794348faba97da104e1e7e7d51dd4c6912d0b5e4e814b7702e0e46df8"
+  },
+  "actualFullCityPhysicsProofSHA256": "56f2874794348faba97da104e1e7e7d51dd4c6912d0b5e4e814b7702e0e46df8",
+  "proofIsBySourceAuthor": true,
+  "independentProofClaimed": false,
+  "fullPhysicsActualChecks": {
+    "all4178LiteralFieldsIdentical": true,
+    "colliderSHA256": "7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30",
+    "original72CoordinatesSameSupports": true,
+    "all220LiteralBuildingsAndEntrancesExact": true,
+    "sixTreeSitesAndSupportsExact": true
+  },
+  "westCompleteGeometryIdentity": {
+    "position": {
+      "itemSize": 3,
+      "count": 4018,
+      "bytes": 48216,
+      "sha256": "c191d83d36ca22ac6a1651dde9bb39c62baf7ad9e663bd48fc1c440137ac5bfd"
+    },
+    "normal": {
+      "itemSize": 3,
+      "count": 4018,
+      "bytes": 48216,
+      "sha256": "67d8849f926659449b69b33ee1bd0dd70833af4b729dfdbc7ea628436e37dfa4"
+    },
+    "uv": {
+      "itemSize": 2,
+      "count": 4018,
+      "bytes": 32144,
+      "sha256": "5aafbea57829ddfb9a2f58215a622f685df93fd708a10b5199c1afd19aab6cbd"
+    },
+    "index": {
+      "count": 24096,
+      "bytes": 48192,
+      "sha256": "a2c38e00de4a32f51bdc82158201af5acbfe82836790bf71a5d840b12ea57e3a"
+    },
+    "AABB": {
+      "min": [
+        -1076,
+        -18.5,
+        -1439
+      ],
+      "max": [
+        -790,
+        160.5,
+        -495
+      ]
+    },
+    "sphere": {
+      "center": [
+        -933,
+        71,
+        -967
+      ],
+      "radius": 501.2417081608433
+    },
+    "vertices": 4018,
+    "triangles": 8032,
+    "geometryBytes": 224984,
+    "producerTypedArrayBytes": 283472,
+    "producerCapUnchanged": 300000
+  },
+  "northIdentity": true,
+  "materialProgramIdentity": {
+    "beforeType": "MeshStandardMaterial",
+    "afterType": "MeshStandardMaterial",
+    "standardProgramIdentity": true,
+    "onBeforeCompileFunctionIdentity": true,
+    "cacheKeyIdentity": true,
+    "normalScaleBefore": [
+      1,
+      1
+    ],
+    "normalScaleAfter": [
+      0.35,
+      0.35
+    ]
+  },
+  "actualMapsUnchangedCountDimensionsFormatBudget": {
+    "count": 2,
+    "dimensions": [
+      128,
+      128
+    ],
+    "CPUBasePixelBytes": 131072,
+    "fullMipGPUTheoreticalBytes": 174760,
+    "CPUPlusGPUTheoreticalResidentBytes": 305832,
+    "maxBytes": 524288,
+    "actualVRAMMeasured": false,
+    "actualShaderCompiledInNative": false
+  },
+  "draws": {
+    "before": {
+      "meshes": 72,
+      "draws": 72,
+      "triangles": 106284
+    },
+    "after": {
+      "meshes": 72,
+      "draws": 72,
+      "triangles": 106284
+    },
+    "increase": 0
+  },
+  "ownership": {
+    "beforeWorldDispose": {
+      "westGeometry": 1,
+      "westMaterial": 1,
+      "westNormal": 1,
+      "westRoughness": 1,
+      "northGeometry": 0,
+      "northMaterial": 0,
+      "northNormal": 0,
+      "northRoughness": 0
+    },
+    "afterWorldDisposeAndRepeatedWestDisposals": {
+      "westGeometry": 1,
+      "westMaterial": 1,
+      "westNormal": 1,
+      "westRoughness": 1,
+      "northGeometry": 1,
+      "northMaterial": 1,
+      "northNormal": 1,
+      "northRoughness": 1
+    },
+    "oldNorthWorldDisposal": {
+      "normal": 1,
+      "roughness": 1
+    },
+    "westAndNorthTextureOwnersIndependent": true
+  },
+  "originalFiveTestContracts": {
+    "testsSourceChanged": false,
+    "command": "node --test tests/metropolis-western-ridge.test.js",
+    "actualExitCode": 0,
+    "pass": 5,
+    "fail": 0,
+    "stdout": {
+      "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/targeted-5.stdout.log",
+      "bytes": 684,
+      "sha256": "b6973f7c00db52bdbd992b22fce5467adf68069f7772d78644924119c13dcb76"
+    },
+    "stderr": {
+      "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/targeted-5.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "actualBuild": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "stdout": {
+      "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/build.stdout.log",
+      "bytes": 449,
+      "sha256": "5ddcd862af7cd708fdf67eff29e0f504d751dea0ac746714dbdeb822e2e79f3e"
+    },
+    "stderr": {
+      "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/build.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "preparationFailuresPreserved": {
+    "prebuildCPUInventoryAttemptExitCode": 1,
+    "reason": "Fresh worktree omitted ignored generated city/metropolischunks;actualbuild regenerated exactbaseline chunks, then samechecker passed. No rule, native or art results were weakened.",
+    "log": {
+      "path": "/workspace/neon-candidates/west-mineral-irregular-normal-candidate-20261005/evidence/actual-cpu/attempt1-prebuild.stderr.log",
+      "bytes": 12436,
+      "sha256": "798d3625be0a8df6c5504e9d5baf71bf84bae3c7a0866ef2f3fb97044d7b42e6"
+    },
+    "relativeCommandAttempt": "An initial shell command addressed evidence relative to repo rather than candidate-root; redirection failed before checker ran. It did build successfully; logs preserved outside repo. Subsequent explicit absolute checker command completedexit0.",
+    "delegationAttempt": "Existing independent child followup rejected by agent thread limit; this proof is explicitly authored by this agent, not independent."
+  },
+  "newNativeRuns": 0,
+  "newNativeArtAccepted": false,
+  "remaining": "Root adopter realcommit/full381 once and new same-plan High Day/Night pixels; targetpatternremoved not yet visually validated, no wholecity/AAA claim."
+}

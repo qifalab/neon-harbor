@@ -5,7 +5,7 @@ export const WESTERN_RIDGE_RECIPE = Object.freeze({
   version: 2, xSegments: 32, zSegments: 112, sourceWesternHills: 10,
   minX: -1076, maxX: -790, minZ: -1439, maxZ: -495, minY: -18.5, maxY: 160.5,
   maxHillTriangles: 3000, maxWesternTriangles: 30000, maxPreparedBytes: 300000,
-  surface: Object.freeze({ version: 2, mapSize: 128, textureTileMetres: 16, seed: 2026100521, maxAddedResidentBytes: 524288 }),
+  surface: Object.freeze({ version: 1, mapSize: 128, textureTileMetres: 16, seed: 2026100521, maxAddedResidentBytes: 524288 }),
   palette: Object.freeze({ grass: '#38513e', grassWarm: '#5b6745', soil: '#78664c', rock: '#948b73', rockShade: '#555d55', rockLight: '#b0aa91' }),
 });
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
@@ -61,7 +61,7 @@ export function ownWesternRidgeGeometry(geometry) {
 
 /** Original periodic dry mineral sheet, expressed in metres rather than
  * screen pixels. Unequal ~2.5m stone cells, shallow fractured margins and
- * irregular stone fractures form a restrained physical height field. Its finite
+ * warped ~2.3m strata form one continuous physical height field. Its finite
  * differences generate tangent normals; the same fractures drive roughness.
  * No photographs, downloaded textures, random per-frame samples or shader hooks. */
 function createOriginalWesternMaps(THREE) {
@@ -72,11 +72,9 @@ function createOriginalWesternMaps(THREE) {
   for(let j=0;j<size;j++)for(let i=0;i<size;i++){
     const u=i/size,v=j/size,k=j*size+i;let nearest=Infinity,second=Infinity,stone=0;
     for(const cell of cells){let x=Math.abs(u-cell[0]),y=Math.abs(v-cell[1]);x=Math.min(x,1-x);y=Math.min(y,1-y);const d=Math.hypot(x,y);if(d<nearest){second=nearest;nearest=d;stone=cell[2];}else if(d<second)second=d;}
-    const fracture=Math.exp(-(second-nearest)/.018);
-    // No coherent sine sheet/strata/grain: those waves made a visible woven
-    // highlight grid in the actual9cf High harbour frame. Unequal cell edges
-    // and small stone offsets retain mineral response without periodic ridges.
-    heights[k]=-.050*fracture+.010*(stone-.5)*(1-fracture);fractures[k]=fracture;
+    const fracture=Math.exp(-(second-nearest)/.018),warp=.13*Math.sin(v*4*Math.PI)+.075*Math.sin(u*6*Math.PI);
+    const strata=Math.sin((v*7+warp)*2*Math.PI),sheet=Math.sin((u*3+v*2)*2*Math.PI),grain=Math.sin((u*29-v*23)*2*Math.PI)*Math.cos((u*17+v*19)*2*Math.PI);
+    heights[k]=.045*strata+.025*sheet-.050*fracture+.006*grain+.010*(stone-.5)*(1-fracture);fractures[k]=fracture;
   }
   const sample=(i,j)=>heights[((j+size)%size)*size+(i+size)%size],step=tile/size;
   for(let j=0;j<size;j++)for(let i=0;i<size;i++){
@@ -84,7 +82,7 @@ function createOriginalWesternMaps(THREE) {
     normalPixels[k]=Math.round((-.5*dx*inv+.5)*255);normalPixels[k+1]=Math.round((-.5*dy*inv+.5)*255);normalPixels[k+2]=Math.round((.5*inv+.5)*255);normalPixels[k+3]=255;
     // Three's standard roughnessmap_fragment consumes G, multiplied by the
     // material scalar1. Dry crevices are rougher than the exposed mineral sheet.
-    const rough=Math.round(clamp(.84+.11*fractures[at]+.020*heights[at],.80,.98)*255);
+    const rough=Math.round(clamp(.84+.11*fractures[at]+.025*Math.sin((i*5+j*3)/size*2*Math.PI),.80,.98)*255);
     roughPixels[k]=roughPixels[k+1]=roughPixels[k+2]=rough;roughPixels[k+3]=255;
   }
   const normal=new THREE.DataTexture(normalPixels,size,size),roughness=new THREE.DataTexture(roughPixels,size,size);
@@ -92,22 +90,14 @@ function createOriginalWesternMaps(THREE) {
   return {normal,roughness};
 }
 function createWestMaterial(THREE) {
-  const maps=createOriginalWesternMaps(THREE),material=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,normalMap:maps.normal,roughnessMap:maps.roughness,normalMapType:THREE.TangentSpaceNormalMap,normalScale:new THREE.Vector2(.35,.35)});
+  const maps=createOriginalWesternMaps(THREE),material=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,normalMap:maps.normal,roughnessMap:maps.roughness,normalMapType:THREE.TangentSpaceNormalMap,normalScale:new THREE.Vector2(1,1)});
   material.name='metropolis-western-ridge';
   const size=WESTERN_RIDGE_RECIPE.surface.mapSize,mipPixels=Array.from({length:Math.log2(size)+1},(_,i)=>(size>>i)**2).reduce((a,b)=>a+b,0),baseBytes=2*size*size*4,fullMipBytes=2*mipPixels*4;
-  material.userData.westernMineralSurface={recipeVersion:2,originalProceduralMaps:true,mapSize:size,textureTileMetres:WESTERN_RIDGE_RECIPE.surface.textureTileMetres,basePixelCpuBytes:baseBytes,fullMipGpuTheoreticalBytes:fullMipBytes,addedResidentCpuAndGpuTheoreticalBytes:baseBytes+fullMipBytes,uvReplacesUnusedMountainSurface:true};
+  material.userData.westernMineralSurface={recipeVersion:1,originalProceduralMaps:true,mapSize:size,textureTileMetres:WESTERN_RIDGE_RECIPE.surface.textureTileMetres,basePixelCpuBytes:baseBytes,fullMipGpuTheoreticalBytes:fullMipBytes,addedResidentCpuAndGpuTheoreticalBytes:baseBytes+fullMipBytes,uvReplacesUnusedMountainSurface:true};
   if(baseBytes+fullMipBytes>WESTERN_RIDGE_RECIPE.surface.maxAddedResidentBytes)throw Error('Western mineral maps exceed the added resident budget');
   const original=material.dispose.bind(material);let disposed=false;
   material.dispose=()=>{if(disposed)return;disposed=true;maps.normal.dispose();maps.roughness.dispose();original();};
   return material;
-}
-
-/** Nonperiodic terrain-scale mineral/planting masks. Smoothed hashed cells
- * are evaluated only while authoring existing vertex colours, not in a shader. */
-function terrainMask(x,z,metres,salt){
- const u=x/metres,v=z/metres,ix=Math.floor(u),iz=Math.floor(v),fx=smoothstep(0,1,u-ix),fz=smoothstep(0,1,v-iz);
- const hash=(a,b)=>{let h=(Math.imul(a,374761393)^Math.imul(b,668265263)^salt)>>>0;h=Math.imul(h^(h>>>13),1274126177)>>>0;return((h^(h>>>16))>>>0)/4294967296;};
- const a=hash(ix,iz),b=hash(ix+1,iz),c=hash(ix,iz+1),d=hash(ix+1,iz+1);return(a+(b-a)*fx)*(1-fz)+(c+(d-c)*fx)*fz;
 }
 
 /** One static draw for the connected West surface and exact original North
@@ -140,12 +130,12 @@ export function createWesternMountainBatch(THREE,batch,sourceGeometry,sourceMate
   if(k>=westVertices){c.copy(sourceMaterial.color);const local=(k-westVertices)%sourcePosition.count,sourceUv=sourceGeometry.getAttribute('uv');uv[k*2]=sourceUv.getX(local);uv[k*2+1]=sourceUv.getY(local);}
   else{const x=positions[k*3],y=positions[k*3+1],z=positions[k*3+2],u=(x-r.minX)/(r.maxX-r.minX),v=(z-r.minZ)/(r.maxZ-r.minZ),h=clamp((y-r.minY)/(r.maxY-r.minY)),slope=1-Math.abs(normals[k*3+1]);
    const outcrop=clamp(smoothstep(.12,.48,slope)*.88+smoothstep(.59,.91,h)*.35),gully=westernRelief(u,v).drainage;
-   const soil=clamp(gully*.60+(1-smoothstep(.04,.24,h))*.30),warm=terrainMask(x,z,41,23);
+   const soil=clamp(gully*.60+(1-smoothstep(.04,.24,h))*.30),warm=.5+.5*Math.sin(z*.043+x*.027+Math.sin(z*.012)*2);
    // Terrain-scale masks span tens of metres; distant frames can read their
    // warm exposed rock / cool planted slopes even after the small maps mip out.
-   const layer=terrainMask(x+y*.31,z,28,61),patch=.65*terrainMask(x,z,37,97)+.35*terrainMask(x,z,17,131);
+   const layer=.5+.5*Math.sin(y*.16+z*.019+Math.sin(x*.047)*1.8),patch=.5+.5*Math.sin(z*.051+x*.038+Math.sin(z*.021)*2.1);
    c.copy(palette.grass).lerp(palette.grassWarm,warm*.55).lerp(palette.soil,soil).lerp(palette.rock,outcrop);
-   c.lerp(palette.rockShade,outcrop*smoothstep(.30,.77,layer)*.30).lerp(palette.rockLight,outcrop*smoothstep(.50,.88,patch)*.34);c.multiplyScalar(.95+.14*patch);
+   c.lerp(palette.rockShade,outcrop*smoothstep(.30,.77,layer)*.48).lerp(palette.rockLight,outcrop*smoothstep(.62,.94,patch)*.26);c.multiplyScalar(.88+.18*patch);
    const tile=r.surface.textureTileMetres,cx=(r.minX+r.maxX)/2,cz=(r.minZ+r.maxZ)/2;
    // Radially expand only below-ground skirt UVs, so vertical side triangles
    // have nonzero texture area without changing any position or normal.
