@@ -117,9 +117,11 @@
       "id": "ferry",
       "family": "transport",
       "toolCase": "ferry",
-      "originalBudgetSeconds": 900,
-      "jobTimeoutMinutes": 80,
-      "paired": true
+      "originalBudgetSeconds": 2400,
+      "jobTimeoutMinutes": 110,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 900,
+      "budgetRevisionReason": "Actual original6ad paired Ferry900s whole failed at lower photo: baseline normal next-berth wait514.530wall seconds then screenshot limited26248ms failed; authored whole-clamped531341ms wait failed. Initial setup/local approach had already used349.722/368.644wall seconds. Source normal ferry replay matches original service16.75/16.85 and still needs23.8833/23.7833simulation seconds to next open north berth. Fixed40min bound leaves finite headroom for original three High photos, both continuous stair routes, upperE-refusal and destination lowerE-exit; remaining software render/boat/cleanup costs are unmeasured, so this is a declared estimate and not native completion. Local150s/berth600s/.06xz/.15y/.3radius/gait/High/camera/destination/source/resource guards unchanged."
     },
     {
       "id": "waterfront-day",

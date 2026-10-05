@@ -17,40 +17,28 @@ function hillBounds(positions, range) {
   return bounds;
 }
 
-test('west mountains have bounded continuous slope geometry within every original hill envelope', () => {
-  const { world, mountain } = setup();
-  try {
-    const geometry = mountain.geometry, positions = geometry.getAttribute('position'), normals = geometry.getAttribute('normal');
-    assert.equal(mountain.isInstancedMesh, undefined);
-    assert.ok(!Array.isArray(mountain.material));
-    assert.ok(mountain.userData.buildings.every(id => id === null));
-    assert.equal(mountain.userData.westernRidge.preparedBytes, geometry.index.array.byteLength + Object.values(geometry.attributes).reduce((sum,a)=>sum+a.array.byteLength,0));
-    assert.ok(mountain.userData.westernRidge.producerTypedArrayBytes <= WESTERN_RIDGE_RECIPE.maxPreparedBytes);
-    for (const range of mountain.userData.westernRidge.hillRanges.slice(0, 10)) {
-      assert.ok(range.triangles <= WESTERN_RIDGE_RECIPE.maxHillTriangles);
-      const t = mountain.userData.originalTransforms[range.hill], bounds = hillBounds(positions, range);
-      assert.deepEqual(bounds.min.toArray(), [t[0] - t[3], t[1] - t[4] / 2, t[2] - t[5]]);
-      assert.deepEqual(bounds.max.toArray(), [t[0] + t[3], t[1] + t[4] / 2, t[2] + t[5]]);
-      const ring = range.firstVertex + 1 + 5 * WESTERN_RIDGE_RECIPE.angularSegments;
-      const heights = Array.from({ length: WESTERN_RIDGE_RECIPE.angularSegments }, (_, i) => positions.getY(ring + i));
-      assert.ok(Math.max(...heights) - Math.min(...heights) > t[4] * .20, 'a circular ring must expose shoulder/ridge/valley rather than a symmetric cone');
-      assert.ok(positions.getY(range.firstVertex) < bounds.max.y - 1, 'the old central cone apex must be replaced by an offset broad spine');
-      for (let i = range.firstVertex; i < range.firstVertex + 1 + (WESTERN_RIDGE_RECIPE.radialRings - 1) * WESTERN_RIDGE_RECIPE.angularSegments; i++) {
-        assert.ok(normals.getY(i) > 0, 'top height-field triangles must point upwards');
-        const length = Math.hypot(normals.getX(i), normals.getY(i), normals.getZ(i));
-        assert.ok(Math.abs(length - 1) < 1e-6);
-      }
-    }
-    assert.ok(mountain.userData.westernRidge.westernTriangles <= WESTERN_RIDGE_RECIPE.maxWesternTriangles);
-    for (const attribute of Object.values(geometry.attributes)) assert.ok(attribute.array.every(Number.isFinite));
-    assert.ok(geometry.index.array.every(i => i < positions.count));
-  } finally { world.dispose(); }
+test('west mountains form one bounded connected ridge within the original union envelope', () => {
+ const {world,mountain}=setup();
+ try {
+  const g=mountain.geometry,p=g.attributes.position,n=g.attributes.normal,r=WESTERN_RIDGE_RECIPE,m=mountain.userData.westernRidge;
+  assert.equal(mountain.isInstancedMesh,undefined);assert.ok(!Array.isArray(mountain.material));assert.ok(mountain.userData.buildings.every(id=>id===null));
+  assert.equal(m.coherentSurface,true);assert.equal(m.hillRanges.length,1);assert.deepEqual(m.westernRange.sourceHills,[0,1,2,3,4,5,6,7,8,9]);
+  assert.deepEqual(g.boundingBox.min.toArray(),[r.minX,r.minY,r.minZ]);assert.deepEqual(g.boundingBox.max.toArray(),[r.maxX,r.maxY,r.maxZ]);
+  assert.equal(m.preparedBytes,g.index.array.byteLength+Object.values(g.attributes).reduce((sum,a)=>sum+a.array.byteLength,0));assert.ok(m.producerTypedArrayBytes<=r.maxPreparedBytes);assert.ok(m.westernTriangles<=r.maxWesternTriangles);
+  const rows=[13,49,95].map(row=>Array.from({length:r.xSegments+1},(_,i)=>p.getY(row*(r.xSegments+1)+i)));
+  assert.ok(rows.every(h=>Math.max(...h)-Math.min(...h)>50));assert.notDeepEqual(rows[0],rows[1]);assert.notDeepEqual(rows[1],rows[2]);
+  const edges=new Map();
+  for(let i=0;i<g.index.count;i+=3){const ids=[g.index.getX(i),g.index.getX(i+1),g.index.getX(i+2)],a=new THREE.Vector3().fromBufferAttribute(p,ids[0]),b=new THREE.Vector3().fromBufferAttribute(p,ids[1]),c=new THREE.Vector3().fromBufferAttribute(p,ids[2]),cross=b.sub(a).cross(c.sub(a));assert.ok(cross.lengthSq()>1e-12,'every top/skirt/bottom triangle has real area');if(i<r.xSegments*r.zSegments*6)assert.ok(cross.y>0);for(let e=0;e<3;e++){const x=ids[e],y=ids[(e+1)%3],key=Math.min(x,y)+':'+Math.max(x,y);edges.set(key,(edges.get(key)||0)+1);}}
+  assert.ok([...edges.values()].every(count=>count===2),'surface, closed skirt and bottom have exactly two incident faces per edge');
+  for(let j=1;j<r.zSegments;j++)for(let i=1;i<r.xSegments;i++){const k=j*(r.xSegments+1)+i;assert.ok(n.getY(k)>0);assert.ok(Math.abs(Math.hypot(n.getX(k),n.getY(k),n.getZ(k))-1)<1e-6);}
+  for(const a of Object.values(g.attributes))assert.ok(a.array.every(Number.isFinite));assert.ok(g.index.array.every(i=>i<p.count));
+ }finally{world.dispose();}
 });
 
 test('northern backdrop replaces twelve cones with a bounded continuous surface and separate standard material', () => {
  const {world,mountain}=setup();let north;world.root.traverse(m=>{if(m.userData.northernRidge)north=m;});
  try {
-  assert.ok(north);assert.equal(mountain.userData.westernRidge.retainedNorthernHills,0);assert.equal(mountain.userData.westernRidge.hillRanges.length,10);
+  assert.ok(north);assert.equal(mountain.userData.westernRidge.retainedNorthernHills,0);assert.equal(mountain.userData.westernRidge.hillRanges.length,1);
   assert.equal(north.userData.northernRidge.sourceNorthernCones,12);assert.equal(north.userData.northernRidge.decorativeOnly,true);assert.equal(north.material.isMeshStandardMaterial,true);
   assert.ok(north.material.normalMap.isDataTexture);assert.ok(north.material.roughnessMap.isDataTexture);assert.equal(north.material.metalness,0);assert.equal(north.material.roughness,1);
   const b=north.geometry.boundingBox;assert.deepEqual(b.min.toArray(),[-912,-57,-1673]);assert.deepEqual(b.max.toArray(),[914,173,-1342]);
@@ -61,7 +49,7 @@ test('northern backdrop replaces twelve cones with a bounded continuous surface 
  } finally{world.dispose();}
 });
 
-test('western material keeps its original slope colors and mineral response after north is separated', () => {
+test('western connected ridge has slope, soil and rock bands with the existing mineral response', () => {
   const { world, mountain } = setup();
   try {
     const colors = mountain.geometry.getAttribute('color'), surface = mountain.geometry.getAttribute('mountainSurface');

@@ -1,0 +1,246 @@
+{
+  "status": "SOURCE_ONLY_PREPARED_NATIVE_UNRUN",
+  "baselineHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "pairedCases": 15,
+  "authoredOnlyCases": 9,
+  "captureCompletionIsArtApproval": false,
+  "cases": [
+    {
+      "id": "home",
+      "family": "harbor",
+      "toolCase": "home",
+      "originalBudgetSeconds": 6600,
+      "jobTimeoutMinutes": 260,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 1920,
+      "budgetRevisionReason": "Actual original32min completed16of36physicallegs/4of8photos and stairascent; measured source-backed remaining movement/photos predicts89.395min before1.2 margin. Fixed110min estimate, unchanged local guards, not a completion guarantee."
+    },
+    {
+      "id": "workshop",
+      "family": "harbor",
+      "toolCase": "workshop",
+      "originalBudgetSeconds": 3900,
+      "jobTimeoutMinutes": 160,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 1500,
+      "budgetRevisionReason": "Actual original25min completed12of22physicallegs/4of5photos; source-backed remaining10legs and1photo predicts52.3681min before1.2 margin. Fixed65min estimate, unchanged local guards, completion not guaranteed."
+    },
+    {
+      "id": "south-090",
+      "family": "harbor",
+      "toolCase": "south-090",
+      "originalBudgetSeconds": 1440,
+      "jobTimeoutMinutes": 75,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 720,
+      "budgetRevisionReason": "Original12min actual moving phase was truncated; additive real wide photograph/path and explicit 092/096 lamp detours. Fixed finite same-mode cap; unchanged local guards, completion not guaranteed."
+    },
+    {
+      "id": "south-091",
+      "family": "harbor",
+      "toolCase": "south-091",
+      "originalBudgetSeconds": 1800,
+      "jobTimeoutMinutes": 95,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 720,
+      "budgetRevisionReason": "Original12min actual moving phase was truncated; additive real wide photograph/path and explicit 092/096 lamp detours. Fixed finite same-mode cap; unchanged local guards, completion not guaranteed."
+    },
+    {
+      "id": "south-092",
+      "family": "harbor",
+      "toolCase": "south-092",
+      "originalBudgetSeconds": 1800,
+      "jobTimeoutMinutes": 95,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 720,
+      "budgetRevisionReason": "Actual cc038 South092 authored completed all4 High photos, entry/exit/re-entry and runtime fingerprints at23m54.289s; remaining5.681s clipped the existing35s owned-close API and caused original FAIL. Baseline API close resolved in30.052s with explicit SIGKILL fallback. South092-only finite30min whole cap, paired job95min matching existing30min South091/095; all local guards/High/route/cleanup35s whole clamp retained. Not a completion guarantee; original24min FAIL preserved."
+    },
+    {
+      "id": "south-094",
+      "family": "harbor",
+      "toolCase": "south-094",
+      "originalBudgetSeconds": 1440,
+      "jobTimeoutMinutes": 75,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 720,
+      "budgetRevisionReason": "Original12min actual moving phase was truncated; additive real wide photograph/path and explicit 092/096 lamp detours. Fixed finite same-mode cap; unchanged local guards, completion not guaranteed."
+    },
+    {
+      "id": "south-095",
+      "family": "harbor",
+      "toolCase": "south-095",
+      "originalBudgetSeconds": 1800,
+      "jobTimeoutMinutes": 95,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 720,
+      "budgetRevisionReason": "Original12min actual moving phase was truncated; additive real wide photograph/path and explicit 092/096 lamp detours. Fixed finite same-mode cap; unchanged local guards, completion not guaranteed."
+    },
+    {
+      "id": "south-096",
+      "family": "harbor",
+      "toolCase": "south-096",
+      "originalBudgetSeconds": 1440,
+      "jobTimeoutMinutes": 75,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 720,
+      "budgetRevisionReason": "Original12min actual moving phase was truncated; additive real wide photograph/path and explicit 092/096 lamp detours. Fixed finite same-mode cap; unchanged local guards, completion not guaranteed."
+    },
+    {
+      "id": "resident-core",
+      "family": "resident",
+      "toolCase": "resident-core",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 85,
+      "paired": true
+    },
+    {
+      "id": "bus",
+      "family": "transport",
+      "toolCase": "bus",
+      "originalBudgetSeconds": 2400,
+      "jobTimeoutMinutes": 110,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 600,
+      "budgetRevisionReason": "BUS original600s expired during first lower-photo berth wait. Baseline had0.5sim left at courtyard and328.525wall available; authored alreadycruising to market with10.894649sim ETA and290.826wall available. Original400/580s videos show ETA11/4 baseline and10/3 authored with moving street scene. Fixed40min BUS-only cap leaves original150s local/600s berth/collision/endpoint/camera/source/resource guards unchanged; no guarantee of later stairs completion."
+    },
+    {
+      "id": "tram",
+      "family": "transport",
+      "toolCase": "tram",
+      "originalBudgetSeconds": 2400,
+      "jobTimeoutMinutes": 110,
+      "paired": true,
+      "historicalOriginalBudgetSeconds": 600,
+      "budgetRevisionReason": "Original TRAM600s whole left only309s at first interior open-berth wait. Actual nominalETA17.3167sim and measured31.57wall/sim project546.71wall for that wait. Fixed40min same-mode estimate includes remaining stairs, second berth photos and destination; unknown dynamic traffic and software rendering can still fail. No guard or route change."
+    },
+    {
+      "id": "ferry",
+      "family": "transport",
+      "toolCase": "ferry",
+      "originalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    {
+      "id": "waterfront-day",
+      "family": "scenic",
+      "toolCase": "waterfront-day",
+      "originalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    {
+      "id": "waterfront-night",
+      "family": "scenic",
+      "toolCase": "waterfront-night",
+      "originalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    {
+      "id": "east-interior",
+      "family": "scenic",
+      "toolCase": "east-interior",
+      "originalBudgetSeconds": 3600,
+      "jobTimeoutMinutes": 180,
+      "paired": true
+    },
+    {
+      "id": "north-book",
+      "family": "resident-extra",
+      "toolCase": "north-book",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    {
+      "id": "north-phone",
+      "family": "resident-extra",
+      "toolCase": "north-phone",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    {
+      "id": "north-cup-owner",
+      "family": "resident-extra",
+      "toolCase": "north-cup-owner",
+      "originalBudgetSeconds": 2400,
+      "jobTimeoutMinutes": 75,
+      "paired": false,
+      "historicalOriginalBudgetSeconds": 1080,
+      "budgetRevisionReason": "Original actual first failure at993.191wall leaves86.809of1080 before unexecuted38m return (~187.6wall). Fixed no-demand pavement out/back72.60m per direction needs finite whole40min; all180s leg,240s uninterrupted13sim idle,120s asset, strictzero, source12cooldown remain unchanged. Job75min retained. Original instance-demandFAIL preserved; budget does not resolve original demand cause."
+    },
+    {
+      "id": "south-parcel",
+      "family": "resident-extra",
+      "toolCase": "south-parcel",
+      "originalBudgetSeconds": 3600,
+      "jobTimeoutMinutes": 95,
+      "paired": false,
+      "historicalOriginalBudgetSeconds": 1080,
+      "budgetRevisionReason": "Actual cc038 High1201.114wall startup advanced onlysim5→49.75;642 active samples and3 real createdTick0 funded unassigned orders, still before actual75sim eligibility. Observed26.7959wall/sim and slowest quarter27.2376 project~1876–1907wall startup; fixed2100 startup. Whole60min preserves post-startup360 watch,2 original180s movement legs,45s observation,2PNG and35s owned close with finite unmeasured-stage headroom; job95 includes20min prep+62min executor. No completion guarantee, no forced pickup/retry/clock or High change; original1200startup/2700whole FAIL preserved."
+    },
+    {
+      "id": "ownership-bus",
+      "family": "transport-owner",
+      "toolCase": "bus",
+      "paired": false,
+      "originalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "port": 5198,
+      "qualityScope": "HIGH_NATIVE_WITH_PUBLIC_LOW_RELEASE_PHASE"
+    },
+    {
+      "id": "ownership-tram",
+      "family": "transport-owner",
+      "toolCase": "tram",
+      "paired": false,
+      "originalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "port": 5198,
+      "qualityScope": "HIGH_NATIVE_WITH_PUBLIC_LOW_RELEASE_PHASE"
+    },
+    {
+      "id": "ownership-ferry",
+      "family": "transport-owner",
+      "toolCase": "ferry",
+      "paired": false,
+      "originalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "port": 5198,
+      "qualityScope": "HIGH_NATIVE_WITH_PUBLIC_LOW_RELEASE_PHASE"
+    },
+    {
+      "id": "continuous-tour",
+      "family": "continuous-tour",
+      "toolCase": "continuous-tour",
+      "paired": false,
+      "originalBudgetSeconds": 14400,
+      "jobTimeoutMinutes": 300,
+      "port": 5193,
+      "qualityScope": "LOW_FUNCTIONAL_ONLY",
+      "actualCheckoutToolPins": {
+        "tools/capture-harbor-tour.mjs": "4663fd4ee24ac729b2016b0f39575a612ba309c55828595d0ae4eaa27e386097",
+        "tools/server.mjs": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "tests/e2e/helpers/walking.js": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969",
+        "tests/e2e/helpers/occupied.js": "6e2529d1997abdbbdccc692381d00f77a1f51e1b256b34e00437045a50b3b75b",
+        "tools/harbor-tour-save-validation.mjs": "1ef97f4037029c538c339255819509f3e8fa60fa6ef3de441640394928151088"
+      },
+      "sourceBoundSaveSchemaAmendment": "Original cc038 purchase export was schema2; sealed original fixed1 assertion failed. Active collector uses exact frozen writer version and full source restore round-trips. Originalv1 method and FAIL preserved; whole, route, stair, public player/clock/storage rules unchanged."
+    },
+    {
+      "id": "resident-loop",
+      "family": "resident-extra",
+      "toolCase": "resident-loop",
+      "originalBudgetSeconds": 10800,
+      "jobTimeoutMinutes": 210,
+      "paired": false,
+      "qualityScope": "LOW_FUNCTIONAL_NATURAL_RESIDENT_DAY_ONLY"
+    }
+  ],
+  "authoredOnlyFunctionalCases": 2,
+  "qualityBoundary": "15 High baseline/authored pairs; 7 authored-only High extras; two separate authored-only Low functional cases: continuous tour and resident day. No capture completion constitutes art approval.",
+  "caseCount": 24,
+  "highNativeCaseCount": 22
+}

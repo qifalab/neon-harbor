@@ -1,9 +1,9 @@
 {
-  "status": "SOURCE_SYNTAX_AND_REAL_FUNCTION_CPU_TRACE_VERIFIED_NEW_HIGH_NATIVE_REQUIRED",
+  "status": "EXPLICIT_FINITE_ESTIMATE_AND_ACTUAL_SOURCE_CPU_PREPARED_NATIVE_HIGH_REQUIRED",
   "tool": {
     "path": "native-transport-high.mjs",
-    "bytes": 53761,
-    "sha256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636"
+    "bytes": 53778,
+    "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308"
   },
   "canonical": {
     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
@@ -50,7 +50,7 @@
   "budgets": {
     "busCaseIncludingContextMs": 2400000,
     "tramCaseIncludingContextMs": 2400000,
-    "ferryCaseIncludingContextMs": 900000,
+    "ferryCaseIncludingContextMs": 2400000,
     "localWaypointMs": 150000,
     "maxLocalIterations": 1800,
     "scheduledBerthMs": 600000,
@@ -325,5 +325,18 @@
     "nativeExecuted": false,
     "runtimeSourceChanged": false,
     "sameFiniteBudgetsAndEndpoints": true
+  },
+  "ferryFullHighFiniteBudgetAndPrecisionAmendment": {
+    "path": "FERRY_FULL_HIGH_FINITE_BUDGET_AND_PRECISION_AMENDMENT-20261005.json",
+    "sha256": "c684e8a2eca9226488fecbb3d067de698e8010e28871d87dd068096440eef17b",
+    "previousActiveToolSha256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+    "newFerryWholeMs": 2400000,
+    "newFerryJobMinutes": 110,
+    "status": "EXPLICIT_FINITE_ESTIMATE_AND_ACTUAL_SOURCE_CPU_PREPARED_NATIVE_HIGH_REQUIRED",
+    "historicalWholeMs": 900000,
+    "originalFailureArtifactId": 11325086813,
+    "originalFailureRemains": true,
+    "nativeExecuted": false,
+    "runtimeSourceChanged": false
   }
 }

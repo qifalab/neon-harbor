@@ -1,40 +1,37 @@
 import { applySurfaceFinish } from './surface-finish.js';
 
-/** Original, editable recipe for the ten decorative west-channel mountains.
- * This mesh supplies no collision or walking support. All old hill bounds,
- * and the twelve northern cone vertices/world normals, remain unchanged.
- */
+/** Original editable continuous western channel ridge. Decorative only:
+ * preserve the original union envelope and original twelve northern source
+ * cones, never change collision, ground support or streaming. */
 export const WESTERN_RIDGE_RECIPE = Object.freeze({
-  version: 1, angularSegments: 32, radialRings: 12, hills: 10,
+  version: 2, xSegments: 32, zSegments: 112, sourceWesternHills: 10,
+  minX: -1076, maxX: -790, minZ: -1439, maxZ: -495, minY: -18.5, maxY: 160.5,
   maxHillTriangles: 3000, maxWesternTriangles: 30000, maxPreparedBytes: 300000,
   finish: Object.freeze({ kind: 'mineral', scale: .015, strength: .45 }),
-  palette: Object.freeze({ grass: '#50674e', grassWarm: '#657153', soil: '#71684f', rock: '#858879' }),
+  palette: Object.freeze({ grass: '#526849', grassWarm: '#6a7453', soil: '#82705d', rock: '#969387' }),
 });
-
-const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
-const smoothstep = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
-const gaussian = (v, width) => Math.exp(-((v / width) ** 2));
-
-/** Broad wandering spine, lower shoulder/spur and an incised curved drainage.
- * Every sample belongs to a continuous height field, rather than moving cone
- * vertices with independent random noise. The submerged skirt closes it.
- */
-function ridgeSample(u, v, hill) {
-  const phase = hill * .71, r2 = u * u + v * v;
-  const spineX = -.12 + .085 * Math.sin(v * 2.6 + phase) + .035 * Math.sin(v * 5.1 - phase);
-  const longitudinal = .72 + .28 * gaussian(v - .11 * Math.sin(phase), .66);
-  const spine = .62 * gaussian(u - spineX, .30) * longitudinal;
-  const shoulder = .27 * gaussian(u + .39, .30) * gaussian(v - .17, .61);
-  const spur = .30 * gaussian(u - .36, .25) * gaussian(v + .32 + .08 * Math.cos(phase), .49);
-  const drainageX = .13 + .085 * Math.sin(v * 3.3 + phase * .6);
-  const drainage = .16 * gaussian(u - drainageX, .075) * gaussian(v - .16, .71);
-  const foothill = .18 + .045 * Math.cos(v * 4.2 + phase) * Math.cos(u * 3.5 - phase);
-  return {
-    height: Math.max(0, .001 + foothill + spine + shoulder + spur - drainage) * Math.max(0, 1 - r2) ** .72,
-    drainage: clamp(drainage / .16),
-  };
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const smoothstep=(a,b,v)=>{const t=clamp((v-a)/(b-a));return t*t*(3-2*t);};
+const gauss=(v,w)=>Math.exp(-((v/w)**2));
+/** One wandering longitudinal mass; unequal broad outcrops share elevated
+ * saddles. Branching oblique drainage and stepped east shoulders break the
+ * silhouette without reproducing the former ten separate radial hills. */
+function westernRelief(u,v){
+ const spine=.42+.085*Math.sin(v*7.3+.4)+.045*Math.sin(v*18.1-.8);
+ const height=.26+.24*gauss(v-.12,.12)+.34*gauss(v-.44,.17)+.56*gauss(v-.84,.16);
+ const ridge=height*gauss(u-spine,.225);
+ const east=.26*gauss(u-.70-.03*Math.sin(v*13),.18)*(.50+.50*gauss(v-.75,.40));
+ const back=.18*gauss(u-.22,.19)*(.65+.35*Math.sin(v*10.4+.9)**2);
+ let drainage=0;
+ for(const [centre,width,depth,bend]of [[.17,.028,.12,.16],[.37,.022,.10,-.15],[.58,.035,.18,.21],[.77,.022,.14,-.11],[.93,.026,.11,.12]]){
+  const line=centre+bend*(u-spine)+.009*Math.sin(u*11+centre*13);
+  drainage+=depth*gauss(v-line,width)*gauss(u-.65,.25);
+ }
+ const raw=Math.max(0,.04+ridge+east+back-drainage);
+ const stepped=raw+.016*Math.sin(raw*31+v*4.3)*smoothstep(.23,.55,u);
+ const envelope=smoothstep(0,.075,u)*smoothstep(0,.075,1-u)*smoothstep(0,.04,v)*smoothstep(0,.04,1-v);
+ return {height:Math.max(0,stepped)*envelope,drainage:clamp(drainage/.18)};
 }
-
 function expectedTransform(i) {
   return i < 10
     ? [-860 - i % 3 * 55, 35 + i % 4 * 12, -580 - i * 86, 70 + i % 3 * 18, 95 + i % 4 * 28, 85, 0, 0, 0]
@@ -78,123 +75,50 @@ function installMountainSurface(material) {
     shader.fragmentShader = shader.fragmentShader.replace('float nhRelief = nhDetail *',
       'float nhRelief = vMountainSurface.y * nhDetail *');
   };
-  material.customProgramCacheKey = () => `${previousKey}:western-ridge-v1:surface-mask`;
-  material.userData.westernMountainSurface = { recipeVersion: 1, worldBaked: true, northernFinishMask: 0 };
+  material.customProgramCacheKey = () => `${previousKey}:western-ridge-v2:surface-mask`;
+  material.userData.westernMountainSurface = { recipeVersion: 2, worldBaked: true, northernFinishMask: 0 };
   material.needsUpdate = true;
 }
 
-/** One material and one static draw for west replacements + untouched north.
- * World-space baking is limited to this permanent, building-free batch. Shared
- * building cones, leaves on trees, and streamed chunk data are never changed.
- */
-export function createWesternMountainBatch(THREE, batch, sourceGeometry, sourceMaterial) {
-  validateSourceBatch(batch, sourceGeometry);
-  const angular = WESTERN_RIDGE_RECIPE.angularSegments, rings = WESTERN_RIDGE_RECIPE.radialRings;
-  const topVertices = 1 + angular * rings, hillVertices = topVertices + angular + 1;
-  const hillTriangles = angular + (rings - 1) * angular * 2 + angular * 3;
-  const vertexCount = 10 * hillVertices + 12 * sourceGeometry.getAttribute('position').count;
-  const triangleCount = 10 * hillTriangles + 12 * sourceGeometry.index.count / 3;
-  // Allocate final buffers once. No temporary full-mesh JS vertex/index arrays,
-  // normal copies, UVs, textures, or GPU resources are needed by this producer.
-  const positions = new Float32Array(vertexCount * 3), normals = new Float32Array(vertexCount * 3);
-  const colors = new Float32Array(vertexCount * 3), surface = new Float32Array(vertexCount * 2);
-  const indices = new Uint16Array(triangleCount * 3), heightScratch = new Float64Array(topVertices);
-  const hillRanges = []; let nextVertex = 0, nextIndex = 0;
-  const addVertex = (x, y, z) => { const index = nextVertex++; positions[index * 3] = x; positions[index * 3 + 1] = y; positions[index * 3 + 2] = z; return index; };
-  const triangle = (a, b, c) => { indices[nextIndex++] = a; indices[nextIndex++] = b; indices[nextIndex++] = c; };
-  const polarPoint = index => {
-    if (index === 0) return [0, 0];
-    const theta = ((index - 1) % angular) / angular * Math.PI * 2;
-    const r = (1 + Math.floor((index - 1) / angular)) / rings;
-    return [r * Math.cos(theta), r * Math.sin(theta)];
-  };
-  for (let hill = 0; hill < 10; hill++) {
-    const t = batch.transforms[hill], start = nextVertex, firstTriangle = nextIndex / 3;
-    let maxHeight = 0;
-    for (let sample = 0; sample < topVertices; sample++) {
-      const [u, v] = polarPoint(sample), h = ridgeSample(u, v, hill).height;
-      heightScratch[sample] = h; maxHeight = Math.max(maxHeight, h);
-    }
-    for (let sample = 0; sample < topVertices; sample++) {
-      const [u, v] = polarPoint(sample), h = heightScratch[sample] / maxHeight, minY = t[1] - t[4] / 2;
-      // Preserve exact submerged minimum and summit maximum. The top surface
-      // meets a skirt one metre above the old bottom, below the water plane.
-      addVertex(t[0] + u * t[3], minY + 1 + h * (t[4] - 1), t[2] + v * t[5]);
-    }
-    const circle = (ring, angle) => start + 1 + (ring - 1) * angular + (angle % angular);
-    for (let angle = 0; angle < angular; angle++) triangle(start, circle(1, angle + 1), circle(1, angle));
-    for (let ring = 1; ring < rings; ring++) for (let angle = 0; angle < angular; angle++) {
-      const a = circle(ring, angle), b = circle(ring, angle + 1), c = circle(ring + 1, angle), d = circle(ring + 1, angle + 1);
-      triangle(a, b, c); triangle(b, d, c);
-    }
-    const bottomRing = nextVertex;
-    for (let angle = 0; angle < angular; angle++) {
-      const theta = angle / angular * Math.PI * 2;
-      addVertex(t[0] + Math.cos(theta) * t[3], t[1] - t[4] / 2, t[2] + Math.sin(theta) * t[5]);
-    }
-    const bottomCenter = addVertex(t[0], t[1] - t[4] / 2, t[2]);
-    for (let angle = 0; angle < angular; angle++) {
-      const next = (angle + 1) % angular, a = circle(rings, angle), b = circle(rings, next), c = bottomRing + angle, d = bottomRing + next;
-      triangle(a, b, c); triangle(c, b, d); triangle(bottomCenter, c, d);
-    }
-    hillRanges.push({ hill, firstVertex: start, vertices: nextVertex - start, firstTriangle, triangles: nextIndex / 3 - firstTriangle });
-  }
-  const dummy = new THREE.Object3D(), normalMatrix = new THREE.Matrix3(), p = new THREE.Vector3(), n = new THREE.Vector3();
-  const sourcePosition = sourceGeometry.getAttribute('position'), sourceNormal = sourceGeometry.getAttribute('normal');
-  const setTransform = t => { dummy.position.set(t[0], t[1], t[2]); dummy.scale.set(t[3], t[4], t[5]); dummy.rotation.set(t[6], t[7], t[8]); dummy.updateMatrix(); normalMatrix.getNormalMatrix(dummy.matrix); };
-  for (let hill = 10; hill < 22; hill++) {
-    const start = nextVertex, firstTriangle = nextIndex / 3; setTransform(batch.transforms[hill]);
-    for (let vertex = 0; vertex < sourcePosition.count; vertex++) {
-      p.fromBufferAttribute(sourcePosition, vertex).applyMatrix4(dummy.matrix); addVertex(p.x, p.y, p.z);
-    }
-    for (const index of sourceGeometry.index.array) indices[nextIndex++] = start + index;
-    hillRanges.push({ hill, firstVertex: start, vertices: sourcePosition.count, firstTriangle, triangles: nextIndex / 3 - firstTriangle });
-  }
-  if (nextVertex !== vertexCount || nextIndex !== indices.length) throw new Error('Western ridge producer wrote an incomplete buffer');
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
-  geometry.setIndex(new THREE.BufferAttribute(indices, 1)); geometry.computeVertexNormals();
-  // Northern originals use their original transformed, smooth cone normals;
-  // recomputing normals on welded triangles would alter those twelve hills.
-  for (const range of hillRanges.slice(10)) {
-    setTransform(batch.transforms[range.hill]);
-    for (let vertex = 0; vertex < sourceNormal.count; vertex++) {
-      n.fromBufferAttribute(sourceNormal, vertex).applyNormalMatrix(normalMatrix);
-      n.toArray(normals, (range.firstVertex + vertex) * 3);
-    }
-  }
-  const palette = Object.fromEntries(Object.entries(WESTERN_RIDGE_RECIPE.palette).map(([key, value]) => [key, new THREE.Color(value)]));
-  const color = new THREE.Color(), northColor = sourceMaterial.color;
-  for (let vertex = 0; vertex < vertexCount; vertex++) {
-    if (vertex >= 10 * hillVertices) { color.copy(northColor); surface[vertex * 2] = sourceMaterial.roughness; surface[vertex * 2 + 1] = 0; }
-    else {
-      const hill = Math.floor(vertex / hillVertices), t = batch.transforms[hill];
-      const x = positions[vertex * 3], y = positions[vertex * 3 + 1], z = positions[vertex * 3 + 2];
-      const top = vertex % hillVertices < topVertices, h = top ? clamp((y - (t[1] - t[4] / 2) - 1) / (t[4] - 1)) : 0;
-      const drainage = top ? ridgeSample((x - t[0]) / t[3], (z - t[2]) / t[5], hill).drainage : 0;
-      const slope = 1 - Math.abs(normals[vertex * 3 + 1]);
-      const rock = clamp(smoothstep(.22, .66, slope) * .78 + smoothstep(.67, .96, h) * .44);
-      const soil = clamp(drainage * smoothstep(.13, .40, slope) * .66 + (1 - smoothstep(.04, .22, h)) * .42);
-      const warmth = .5 + .5 * Math.sin(x * .041 + z * .016) * Math.cos(z * .029 - x * .008);
-      color.copy(palette.grass).lerp(palette.grassWarm, warmth * .35).lerp(palette.soil, soil).lerp(palette.rock, rock);
-      color.multiplyScalar(.96 + .055 * Math.sin(x * .075 + z * .023));
-      surface[vertex * 2] = (.98 * (1 - soil) + .94 * soil) * (1 - rock) + .86 * rock;
-      surface[vertex * 2 + 1] = 1;
-    }
-    color.toArray(colors, vertex * 3);
-  }
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  geometry.setAttribute('mountainSurface', new THREE.BufferAttribute(surface, 2));
-  geometry.computeBoundingBox(); geometry.computeBoundingSphere();
-  const preparedBytes = indices.byteLength + Object.values(geometry.attributes).reduce((sum, attribute) => sum + attribute.array.byteLength, 0);
-  const westernTriangles = hillRanges.slice(0, 10).reduce((sum, h) => sum + h.triangles, 0);
-  if (preparedBytes + heightScratch.byteLength > WESTERN_RIDGE_RECIPE.maxPreparedBytes || westernTriangles > WESTERN_RIDGE_RECIPE.maxWesternTriangles || hillRanges.slice(0, 10).some(h => h.triangles > WESTERN_RIDGE_RECIPE.maxHillTriangles)) {
-    geometry.dispose(); throw new Error('Western ridge exceeds its finite geometry budget');
-  }
-  const material = sourceMaterial.clone(); material.name = 'metropolis-western-ridge'; material.color.set('#ffffff'); material.vertexColors = true;
-  installMountainSurface(material);
-  const mesh = new THREE.Mesh(geometry, material);
-  mesh.userData.westernRidge = { recipeVersion: 1, sourceHills: 22, authoredWesternHills: 10, retainedNorthernHills: 12, decorativeOnly: true, preparedBytes, producerTypedArrayBytes: preparedBytes + heightScratch.byteLength, producerScratchBytes: heightScratch.byteLength, triangles: triangleCount, westernTriangles, hillRanges };
-  return mesh;
+/** One static draw for the connected West surface and exact original North
+ * source cones. Northern owner extracts the explicit westernRange and replaces
+ * those twelve source cones with its existing, unchanged independent ridge. */
+export function createWesternMountainBatch(THREE,batch,sourceGeometry,sourceMaterial){
+ validateSourceBatch(batch,sourceGeometry);
+ const r=WESTERN_RIDGE_RECIPE,nx=r.xSegments,nz=r.zSegments,grid=(nx+1)*(nz+1),edgeCount=2*(nx+nz),westVertices=grid+edgeCount+1;
+ const sourcePosition=sourceGeometry.getAttribute('position'),sourceNormal=sourceGeometry.getAttribute('normal'),northVertices=12*sourcePosition.count,vertexCount=westVertices+northVertices,westernTriangles=nx*nz*2+edgeCount*3,triangleCount=westernTriangles+12*sourceGeometry.index.count/3;
+ const positions=new Float32Array(vertexCount*3),normals=new Float32Array(vertexCount*3),colors=new Float32Array(vertexCount*3),surface=new Float32Array(vertexCount*2),indices=new Uint16Array(triangleCount*3),heights=new Float64Array(grid);
+ let high=0;
+ for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const k=j*(nx+1)+i;heights[k]=westernRelief(i/nx,j/nz).height;high=Math.max(high,heights[k]);}
+ for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const k=j*(nx+1)+i;positions.set([r.minX+(r.maxX-r.minX)*i/nx,r.minY+1+heights[k]/high*(r.maxY-r.minY-1),r.minZ+(r.maxZ-r.minZ)*j/nz],k*3);}
+ let next=0;const tri=(a,b,c)=>{indices[next++]=a;indices[next++]=b;indices[next++]=c;};
+ for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){const a=j*(nx+1)+i;tri(a,a+nx+1,a+1);tri(a+1,a+nx+1,a+nx+2);}
+ const edge=[];for(let i=0;i<=nx;i++)edge.push(i);for(let j=1;j<=nz;j++)edge.push(j*(nx+1)+nx);for(let i=nx-1;i>=0;i--)edge.push(nz*(nx+1)+i);for(let j=nz-1;j>0;j--)edge.push(j*(nx+1));
+ for(let e=0;e<edge.length;e++){const top=edge[e];positions.set([positions[top*3],r.minY,positions[top*3+2]],(grid+e)*3);}
+ const centre=grid+edge.length;positions.set([(r.minX+r.maxX)/2,r.minY,(r.minZ+r.maxZ)/2],centre*3);
+ for(let e=0;e<edge.length;e++){const n=(e+1)%edge.length,a=edge[e],b=edge[n],c=grid+e,d=grid+n;tri(a,b,c);tri(b,d,c);tri(centre,c,d);}
+ const westernRange={component:'continuous-western-ridge',sourceHills:Array.from({length:10},(_,i)=>i),firstVertex:0,vertices:westVertices,firstTriangle:0,triangles:westernTriangles};
+ const ranges=[westernRange],dummy=new THREE.Object3D(),normalMatrix=new THREE.Matrix3(),p=new THREE.Vector3(),n=new THREE.Vector3();
+ const setTransform=t=>{dummy.position.set(t[0],t[1],t[2]);dummy.scale.set(t[3],t[4],t[5]);dummy.rotation.set(t[6],t[7],t[8]);dummy.updateMatrix();normalMatrix.getNormalMatrix(dummy.matrix);};
+ let vertex=westVertices;
+ for(let hill=10;hill<22;hill++){const start=vertex,firstTriangle=next/3;setTransform(batch.transforms[hill]);for(let k=0;k<sourcePosition.count;k++){p.fromBufferAttribute(sourcePosition,k).applyMatrix4(dummy.matrix);p.toArray(positions,vertex++*3);}for(const index of sourceGeometry.index.array)indices[next++]=start+index;ranges.push({hill,firstVertex:start,vertices:sourcePosition.count,firstTriangle,triangles:next/3-firstTriangle});}
+ if(vertex!==vertexCount||next!==indices.length)throw Error('Western continuous ridge producer wrote an incomplete buffer');
+ const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('normal',new THREE.BufferAttribute(normals,3));geometry.setIndex(new THREE.BufferAttribute(indices,1));geometry.computeVertexNormals();
+ for(const range of ranges.slice(1)){setTransform(batch.transforms[range.hill]);for(let k=0;k<sourceNormal.count;k++){n.fromBufferAttribute(sourceNormal,k).applyNormalMatrix(normalMatrix);n.toArray(normals,(range.firstVertex+k)*3);}}
+ const palette=Object.fromEntries(Object.entries(r.palette).map(([key,value])=>[key,new THREE.Color(value)])),c=new THREE.Color();
+ for(let k=0;k<vertexCount;k++){
+  if(k>=westVertices){c.copy(sourceMaterial.color);surface[k*2]=sourceMaterial.roughness;surface[k*2+1]=0;}
+  else{const x=positions[k*3],y=positions[k*3+1],z=positions[k*3+2],u=(x-r.minX)/(r.maxX-r.minX),v=(z-r.minZ)/(r.maxZ-r.minZ),h=clamp((y-r.minY)/(r.maxY-r.minY)),slope=1-Math.abs(normals[k*3+1]);
+   const outcrop=clamp(smoothstep(.19,.55,slope)*.90+smoothstep(.62,.94,h)*.43),gully=westernRelief(u,v).drainage;
+   const soil=clamp(gully*.60+(1-smoothstep(.04,.24,h))*.32),warm=.5+.5*Math.sin(z*.008+x*.017);
+   const band=.90+.13*smoothstep(-.45,.65,Math.sin(y*.21+z*.006));
+   c.copy(palette.grass).lerp(palette.grassWarm,warm*.25).lerp(palette.soil,soil).lerp(palette.rock,outcrop);c.multiplyScalar(band);
+   surface[k*2]=(.98*(1-soil)+.94*soil)*(1-outcrop)+.86*outcrop;surface[k*2+1]=1;
+  }c.toArray(colors,k*3);
+ }
+ geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));geometry.setAttribute('mountainSurface',new THREE.BufferAttribute(surface,2));geometry.computeBoundingBox();geometry.computeBoundingSphere();
+ const preparedBytes=indices.byteLength+Object.values(geometry.attributes).reduce((sum,a)=>sum+a.array.byteLength,0),producerTypedArrayBytes=preparedBytes+heights.byteLength;
+ if(producerTypedArrayBytes>r.maxPreparedBytes||westernTriangles>r.maxWesternTriangles){geometry.dispose();throw Error('Western ridge exceeds its original finite geometry budget');}
+ const material=sourceMaterial.clone();material.name='metropolis-western-ridge';material.color.set('#ffffff');material.vertexColors=true;installMountainSurface(material);const mesh=new THREE.Mesh(geometry,material);
+ mesh.userData.westernRidge={recipeVersion:2,sourceHills:22,authoredWesternHills:10,coherentSurface:true,retainedNorthernHills:12,decorativeOnly:true,preparedBytes,producerTypedArrayBytes,producerScratchBytes:heights.byteLength,triangles:triangleCount,westernTriangles,westernRange,hillRanges:ranges};return mesh;
 }

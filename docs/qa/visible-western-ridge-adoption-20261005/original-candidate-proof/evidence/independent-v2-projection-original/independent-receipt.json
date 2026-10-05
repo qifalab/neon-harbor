@@ -1,0 +1,86 @@
+{
+  "status": "CPU_ACTUAL_CAMERA_PROJECTION_COVERAGE_PROOF_COMPLETE_NATIVE_AND_ART_UNEXECUTED",
+  "executionExitCode": 0,
+  "sourceBeforeAfterEqual": true,
+  "productSourceModified": false,
+  "methodOrOriginalCapturesModified": false,
+  "gpuUsed": false,
+  "actualNearFar": [
+    0.15,
+    3200
+  ],
+  "actualViewport": [
+    1280,
+    800
+  ],
+  "fixedOriginalAfterCameraUsed": true,
+  "projectionMethod": "Actual old/new triangle geometry clipped against all6 homogeneous planes; upper silhouette envelope sampled at every screen column center;16\u00d780pixel bins.1px/5px counts descriptive only, not invented art thresholds.",
+  "sourceSnapshot": {
+    "old": {
+      "src/metropolis-western-ridge.js": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c",
+      "src/metropolis-northern-ridge.js": "aa6fede027694bc5b787446e04f22fac0fe3c21a8ad3431fd5561b193c23a518",
+      "src/metropolis-world.js": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b",
+      "src/surface-finish.js": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0",
+      "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+    },
+    "candidate": {
+      "src/metropolis-western-ridge.js": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208",
+      "src/metropolis-northern-ridge.js": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0",
+      "src/metropolis-world.js": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b",
+      "src/surface-finish.js": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0",
+      "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+    }
+  },
+  "cameras": [
+    {
+      "file": "05-west-ridge-original-camera-pose.json",
+      "candidateInFrustumVertices": 1142,
+      "candidateInFrustumTriangleCentroids": 2255,
+      "actualClippedSourceTriangles": 2348,
+      "silhouetteAbsolutePixelDelta": {
+        "count": 471,
+        "min": 0.16335709615196947,
+        "max": 153.134327787369,
+        "mean": 84.85366910462355,
+        "median": 94.43397030838744,
+        "rms": 95.99067252264116
+      },
+      "silhouetteSignedPixelDelta": {
+        "count": 471,
+        "min": -153.134327787369,
+        "max": 8.290551265721433,
+        "mean": -83.93431431580628,
+        "median": -94.43397030838744,
+        "rms": 95.99067252264116
+      }
+    },
+    {
+      "file": "06-near-quay-tree-whole-pose.json",
+      "candidateInFrustumVertices": 2160,
+      "candidateInFrustumTriangleCentroids": 4317,
+      "actualClippedSourceTriangles": 4546,
+      "silhouetteAbsolutePixelDelta": {
+        "count": 667,
+        "min": 0.9558312488277352,
+        "max": 142.28254198061182,
+        "mean": 76.96909420752469,
+        "median": 82.2459317518481,
+        "rms": 87.61615964063961
+      },
+      "silhouetteSignedPixelDelta": {
+        "count": 667,
+        "min": -142.28254198061182,
+        "max": 142.02638862156925,
+        "mean": -28.520024455768812,
+        "median": -48.76191192985954,
+        "rms": 87.61615964063961
+      }
+    }
+  ],
+  "limitations": [
+    "Projected source coverage proves geometry is in the actual camera and its screen-space silhouette changes. It does not prove actual rendered visibility after terrain/buildings/NPC occlusion, shader/material art quality or AAA completion.",
+    "All scene occluders are intentionally absent from this CPU geometry comparison. Native original PNGs remain required.",
+    "Pixel deltas are actual computed values, not an invented success threshold.1px and5px counts are descriptive statistics, not acceptance gates.",
+    "This analysis is bound to the source SHA snapshots shown. If candidate edits after it, run a separately declared new proof rather than treating the existing proof as valid for changed bytes."
+  ]
+}

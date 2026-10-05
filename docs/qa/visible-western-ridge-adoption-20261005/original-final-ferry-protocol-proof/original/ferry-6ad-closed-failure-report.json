@@ -1,0 +1,1748 @@
+{
+  "status": "CLOSED_ORIGINAL_FERRY_FAILURE_DIAGNOSED_READONLY_NOT_ACCEPTED",
+  "originalArtifactId": 11325086813,
+  "V4RowIndex": 27,
+  "zip": {
+    "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/original.zip",
+    "bytes": 190985213,
+    "sha256": "66d9b4bd52aeeb7009148e7441a51e9306a334bcda3c1939f17236e0f0bffa0d",
+    "independentEntireSHA256Recomputed": true
+  },
+  "selectedExtractedOriginalMembers": [
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/baseline/run.json",
+      "member": "native/baseline/run.json",
+      "bytes": 11148080,
+      "sha256": "7550ba4728d4728efc03765f05fbd3f8163075c0ae69e3b1ea1aeaea279358d4",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/baseline/ferry/case.json",
+      "member": "native/baseline/ferry/case.json",
+      "bytes": 9920443,
+      "sha256": "df29d63840b9e28ac33d79561f935db1405a9387034c8afa3b6535b28efcb1c0",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/baseline/ferry/motion.json",
+      "member": "native/baseline/ferry/motion.json",
+      "bytes": 2050583,
+      "sha256": "8d172ca1cfefe25a181cea65c02fa83f3c3d9e608a7cde8d760ef43e56bf0d8a",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/baseline/ferry/exterior.png",
+      "member": "native/baseline/ferry/exterior.png",
+      "bytes": 741003,
+      "sha256": "ed87dee747dda5d90eb786d7d9a40abedc51df201ec2b2a63247f175eca921b0",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/authored/run.json",
+      "member": "native/authored/run.json",
+      "bytes": 10577156,
+      "sha256": "67dacc9b359781947653260e51f52f368cc54973beb090e1fa00f69714e96e3b",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/authored/ferry/case.json",
+      "member": "native/authored/ferry/case.json",
+      "bytes": 9450844,
+      "sha256": "460e7a63ee5c60d25c4d44bc9cd3158beb73055e8dc35660a0fe8a523fb2d3de",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/authored/ferry/motion.json",
+      "member": "native/authored/ferry/motion.json",
+      "bytes": 2318767,
+      "sha256": "15fc5b1897adfb23b8e01c1d493e3b6a44a792544e1332e4d71b915ee0932bf2",
+      "originalZIPBytesMatched": true
+    },
+    {
+      "path": "/tmp/neon-6ad1-ferry-original-fail-11325086813/extracted/native/authored/ferry/exterior.png",
+      "member": "native/authored/ferry/exterior.png",
+      "bytes": 781692,
+      "sha256": "656a9c6efa61ed0899fd9cff4cc45eb25c6d7a0fd0b11019abd1671823a87ad9",
+      "originalZIPBytesMatched": true
+    }
+  ],
+  "executedOriginalMethod": {
+    "path": "/workspace/neon-candidates/ferry-6ad-closed-first-failure-readonly-review-20261005/executed-native-transport-high-original-e082.mjs",
+    "bytes": 48169,
+    "sha256": "e082e9cc860bae05286eb85d77037174db82b3872b4aea6a3ed67363ed98fca4"
+  },
+  "rows": [
+    {
+      "mode": "baseline",
+      "originalStatus": "FAILED",
+      "originalWholeBudgetMs": 900000,
+      "originalElapsedMs": 902927,
+      "originalFirstError": {
+        "stage": "case",
+        "name": "Error",
+        "message": "fixed whole case exceeded 900000 ms",
+        "stack": "Error: fixed whole case exceeded 900000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+      },
+      "originalSecondaryErrors": [
+        {
+          "stage": "case-budget",
+          "name": "Error",
+          "message": "full case including context finalization exceeded fixed budget",
+          "stack": "Error: full case including context finalization exceeded fixed budget\n    at captureCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:367:101)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+        }
+      ],
+      "originalRuntimeErrors": [],
+      "actualGraphics": {
+        "width": 1280,
+        "height": 800,
+        "renderer": "WebKit WebGL",
+        "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "lost": false
+      },
+      "photos": [
+        {
+          "stage": "exterior",
+          "status": "PASSED",
+          "target": {
+            "x": -5.5,
+            "y": 1.3,
+            "z": -7.2
+          },
+          "relativeYaw": 1.5707963267948966,
+          "firstError": null,
+          "hasBefore": true,
+          "hasAfter": true,
+          "screenshotCompleted": true,
+          "imageSHA256": "ed87dee747dda5d90eb786d7d9a40abedc51df201ec2b2a63247f175eca921b0",
+          "body": {
+            "x": -5.500000105628658,
+            "y": 1.3,
+            "z": -7.200577136906787,
+            "yaw": -4.712388734021459
+          },
+          "eye": {
+            "x": -5.500000105628658,
+            "y": 2.92,
+            "z": -7.200577136906787,
+            "yaw": null
+          },
+          "actualBerth": {
+            "id": "harbor-ferry-1",
+            "kind": "ferry",
+            "x": 227.2,
+            "y": 0,
+            "z": -309.5,
+            "yaw": 1.5707963267948966,
+            "stopId": "harbor-ferry-south",
+            "doorsOpen": true,
+            "remaining": 6.749999999999957,
+            "serviceTime": 9.250000000000039
+          },
+          "authoredActor": null
+        },
+        {
+          "stage": "lower",
+          "status": "FAILED",
+          "target": {
+            "x": 0,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "relativeYaw": 0,
+          "firstError": {
+            "stage": "photo-lower",
+            "name": "TimeoutError",
+            "message": "page.screenshot: Timeout 26248ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+            "stack": "page.screenshot: Timeout 26248ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n\n    at photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:321:93)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "hasBefore": true,
+          "hasAfter": false,
+          "screenshotCompleted": false,
+          "imageSHA256": null,
+          "body": {
+            "x": -0.03750003583225689,
+            "y": 1.3,
+            "z": -7.199904537143265,
+            "yaw": 1.5695770025210827
+          },
+          "eye": {
+            "x": -0.03750003583223771,
+            "y": 2.92,
+            "z": -7.199904537143254,
+            "yaw": null
+          },
+          "actualBerth": {
+            "id": "harbor-ferry-1",
+            "kind": "ferry",
+            "x": 212.8,
+            "y": 0,
+            "z": -375,
+            "yaw": -1.5707963267948966,
+            "stopId": "harbor-ferry-north",
+            "doorsOpen": true,
+            "remaining": 15.39600340564467,
+            "serviceTime": 41.233333333332276
+          },
+          "authoredActor": null
+        }
+      ],
+      "successfulCloseHighPhotoCount": 1,
+      "upperPhotoObserved": false,
+      "lowerPhotoCompleted": false,
+      "fullReturnOrAlightObserved": false,
+      "berthPhases": [
+        {
+          "startedAt": "2026-10-05T03:30:14.352Z",
+          "finishedAt": "2026-10-05T03:30:14.369Z",
+          "wallIntervalSeconds": 0.017,
+          "budgetMs": 600000,
+          "status": "SATISFIED",
+          "firstError": null,
+          "progress": [
+            {
+              "when": "before-wait",
+              "status": "OBSERVED",
+              "at": "2026-10-05T03:30:14.364Z",
+              "observed": {
+                "ready": true,
+                "started": true,
+                "paused": false,
+                "simulationTime": 8.500000000000002,
+                "timing": {
+                  "wallDt": 2.933200000000012,
+                  "dt": 0.25,
+                  "steps": 15,
+                  "alpha": 0,
+                  "simulationDelta": 0.25,
+                  "droppedSeconds": 2.683200000000012,
+                  "droppedTotal": 112.02850000000001
+                },
+                "teleportRevision": 2,
+                "position": {
+                  "x": 219.9994228630932,
+                  "y": 1.3,
+                  "z": -303.99999989437134,
+                  "yaw": -3.1415924072265624
+                },
+                "camera": {
+                  "position": {
+                    "x": 219.9994228630932,
+                    "y": 2.92,
+                    "z": -303.99999989437134
+                  },
+                  "target": {
+                    "x": 219.99942532672551,
+                    "y": 2.92,
+                    "z": -293.9999998943716
+                  },
+                  "focus": {
+                    "x": 219.9994228630932,
+                    "y": 2.92,
+                    "z": -303.99999989437134
+                  },
+                  "yaw": 2.463632307048158e-07,
+                  "pitch": 0.15,
+                  "fov": 65,
+                  "boomLength": 0,
+                  "desiredBoomLength": 0,
+                  "obstructed": false,
+                  "overheadFallback": false,
+                  "colliderId": null,
+                  "clearanceRadius": 0.45
+                },
+                "stationID": "harbor-ferry-south",
+                "ridingVehicleId": null,
+                "passengerLocal": null,
+                "passengerDeck": null,
+                "vehicle": null,
+                "fleet": [
+                  {
+                    "id": "harbor-bus-1",
+                    "kind": "bus",
+                    "stopId": "harbor-bus-courtyard",
+                    "doorsOpen": true,
+                    "remaining": 2.5,
+                    "nextStopId": "harbor-bus-courtyard",
+                    "secondsToArrival": 0,
+                    "serviceTime": 8.500000000000002,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-bus-2",
+                    "kind": "bus",
+                    "stopId": "harbor-bus-workshop",
+                    "doorsOpen": true,
+                    "remaining": 2.500000000000483,
+                    "nextStopId": "harbor-bus-workshop",
+                    "secondsToArrival": 0,
+                    "serviceTime": 89.58819154052549,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-tram-1",
+                    "kind": "tram",
+                    "stopId": "harbor-tram-lantern",
+                    "doorsOpen": true,
+                    "remaining": 3.499999999999986,
+                    "nextStopId": "harbor-tram-lantern",
+                    "secondsToArrival": 0,
+                    "serviceTime": 8.500000000000002,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-tram-2",
+                    "kind": "tram",
+                    "stopId": "harbor-tram-workshop",
+                    "doorsOpen": true,
+                    "remaining": 3.500000000000469,
+                    "nextStopId": "harbor-tram-workshop",
+                    "secondsToArrival": 0,
+                    "serviceTime": 38.81666666666619,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "signal",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-ferry-1",
+                    "kind": "ferry",
+                    "stopId": "harbor-ferry-south",
+                    "doorsOpen": true,
+                    "remaining": 7.5,
+                    "nextStopId": "harbor-ferry-south",
+                    "secondsToArrival": 0,
+                    "serviceTime": 8.500000000000002,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "startedAt": "2026-10-05T03:30:15.205Z",
+          "finishedAt": "2026-10-05T03:30:15.215Z",
+          "wallIntervalSeconds": 0.01,
+          "budgetMs": 600000,
+          "status": "SATISFIED",
+          "firstError": null,
+          "progress": [
+            {
+              "when": "before-wait",
+              "status": "OBSERVED",
+              "at": "2026-10-05T03:30:15.210Z",
+              "observed": {
+                "ready": true,
+                "started": true,
+                "paused": false,
+                "simulationTime": 8.500000000000002,
+                "timing": {
+                  "wallDt": 2.933200000000012,
+                  "dt": 0.25,
+                  "steps": 15,
+                  "alpha": 0,
+                  "simulationDelta": 0.25,
+                  "droppedSeconds": 2.683200000000012,
+                  "droppedTotal": 112.02850000000001
+                },
+                "teleportRevision": 2,
+                "position": {
+                  "x": 219.9994228630932,
+                  "y": 1.3,
+                  "z": -303.99999989437134,
+                  "yaw": -3.1415924072265624
+                },
+                "camera": {
+                  "position": {
+                    "x": 219.9994228630932,
+                    "y": 2.92,
+                    "z": -303.99999989437134
+                  },
+                  "target": {
+                    "x": 219.99942532672551,
+                    "y": 2.92,
+                    "z": -293.9999998943716
+                  },
+                  "focus": {
+                    "x": 219.9994228630932,
+                    "y": 2.92,
+                    "z": -303.99999989437134
+                  },
+                  "yaw": 2.463632307048158e-07,
+                  "pitch": 0.15,
+                  "fov": 65,
+                  "boomLength": 0,
+                  "desiredBoomLength": 0,
+                  "obstructed": false,
+                  "overheadFallback": false,
+                  "colliderId": null,
+                  "clearanceRadius": 0.45
+                },
+                "stationID": "harbor-ferry-south",
+                "ridingVehicleId": null,
+                "passengerLocal": null,
+                "passengerDeck": null,
+                "vehicle": {
+                  "id": "harbor-ferry-1",
+                  "x": 227.2,
+                  "y": 0,
+                  "z": -309.5,
+                  "yaw": 1.5707963267948966,
+                  "stopId": "harbor-ferry-south",
+                  "doorsOpen": true,
+                  "remaining": 7.5,
+                  "nextStopId": "harbor-ferry-south",
+                  "secondsToArrival": 0,
+                  "serviceTime": 8.500000000000002,
+                  "delay": 0,
+                  "held": null,
+                  "trafficState": "dwell",
+                  "speed": 0
+                },
+                "fleet": null
+              }
+            }
+          ]
+        },
+        {
+          "startedAt": "2026-10-05T03:33:26.902Z",
+          "finishedAt": "2026-10-05T03:42:01.432Z",
+          "wallIntervalSeconds": 514.53,
+          "budgetMs": 600000,
+          "status": "SATISFIED",
+          "firstError": null,
+          "progress": [
+            {
+              "when": "before-wait",
+              "status": "OBSERVED",
+              "at": "2026-10-05T03:33:26.909Z",
+              "observed": {
+                "ready": true,
+                "started": true,
+                "paused": false,
+                "simulationTime": 16.75000000000033,
+                "timing": {
+                  "wallDt": 7.349799999999989,
+                  "dt": 0.25,
+                  "steps": 15,
+                  "alpha": 0,
+                  "simulationDelta": 0.25,
+                  "droppedSeconds": 7.099799999999989,
+                  "droppedTotal": 287.72119999999995
+                },
+                "teleportRevision": 3,
+                "position": {
+                  "x": 221.41639801727442,
+                  "y": 1.3,
+                  "z": -309.45372097584846,
+                  "yaw": 3.141592653589793
+                },
+                "camera": {
+                  "position": {
+                    "x": 221.41639801727442,
+                    "y": 2.92,
+                    "z": -309.45372097584846
+                  },
+                  "target": {
+                    "x": 231.41639801727442,
+                    "y": 2.92,
+                    "z": -309.45372097584846
+                  },
+                  "focus": {
+                    "x": 221.41639801727442,
+                    "y": 2.92,
+                    "z": -309.45372097584846
+                  },
+                  "yaw": 1.5707963267948966,
+                  "pitch": 0.15,
+                  "fov": 65,
+                  "boomLength": 0,
+                  "desiredBoomLength": 0,
+                  "obstructed": false,
+                  "overheadFallback": false,
+                  "colliderId": null,
+                  "clearanceRadius": 0.45
+                },
+                "stationID": null,
+                "ridingVehicleId": "harbor-ferry-1",
+                "passengerLocal": {
+                  "x": -0.03750003583225689,
+                  "y": 1.3,
+                  "z": -7.199904537143265,
+                  "yaw": 1.5695770025210827
+                },
+                "passengerDeck": "lower",
+                "vehicle": {
+                  "id": "harbor-ferry-1",
+                  "x": 228.6162514774906,
+                  "y": 0,
+                  "z": -309.5,
+                  "yaw": 1.5720156510687104,
+                  "stopId": null,
+                  "doorsOpen": false,
+                  "remaining": 3.5090782684107253,
+                  "nextStopId": "harbor-ferry-north",
+                  "secondsToArrival": 23.879336738976605,
+                  "serviceTime": 16.75000000000033,
+                  "delay": 0,
+                  "held": null,
+                  "trafficState": "cruise",
+                  "speed": 3.643134474427825
+                },
+                "fleet": null
+              }
+            }
+          ]
+        }
+      ],
+      "completedLocalLeg": {
+        "stage": "upper-0",
+        "precision": false,
+        "localMs": 150000,
+        "maxIterations": 1800,
+        "initial": {
+          "x": -2.7,
+          "y": 1.3,
+          "z": -7.2,
+          "yaw": 0
+        },
+        "final": {
+          "x": -0.03750003583225689,
+          "y": 1.3,
+          "z": -7.199904537143265,
+          "yaw": 1.5695770025210827
+        },
+        "target": {
+          "x": 0,
+          "z": -7.2,
+          "y": 1.3
+        },
+        "horizontalGap": 0.037500157340704145,
+        "heightGap": 0.0,
+        "cycles": [
+          {
+            "n": 0,
+            "before": {
+              "x": -2.7,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 0
+            },
+            "after": {
+              "x": -2.137499999999999,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": false,
+            "heldSeconds": 0.25000000000001243,
+            "geometricMetres": 0.5625000000000013,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -2.137499999999999,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -1.5749999999999975,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": false,
+            "heldSeconds": 0.5000000000000249,
+            "geometricMetres": 1.1250000000000027,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 2,
+            "before": {
+              "x": -1.5749999999999975,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -1.0124999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": false,
+            "heldSeconds": 0.7500000000000373,
+            "geometricMetres": 1.687500000000004,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 3,
+            "before": {
+              "x": -1.0124999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.9374999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.0000000000000497,
+            "geometricMetres": 1.7625000000000037,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 4,
+            "before": {
+              "x": -0.9374999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.8624999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.2500000000000622,
+            "geometricMetres": 1.837500000000004,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 5,
+            "before": {
+              "x": -0.8624999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.7874999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.5000000000000746,
+            "geometricMetres": 1.912500000000004,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 6,
+            "before": {
+              "x": -0.7874999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.7124999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.750000000000087,
+            "geometricMetres": 1.9875000000000043,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 7,
+            "before": {
+              "x": -0.7124999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.6374999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.0000000000000995,
+            "geometricMetres": 2.0625000000000044,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 8,
+            "before": {
+              "x": -0.6374999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.562499999999996,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.250000000000112,
+            "geometricMetres": 2.1375000000000046,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 9,
+            "before": {
+              "x": -0.562499999999996,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.48749999999999594,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.5000000000001243,
+            "geometricMetres": 2.212500000000005,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 10,
+            "before": {
+              "x": -0.48749999999999594,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.41249999999999587,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.750000000000137,
+            "geometricMetres": 2.287500000000005,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 11,
+            "before": {
+              "x": -0.41249999999999587,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.3374999999999958,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.000000000000149,
+            "geometricMetres": 2.362500000000005,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 12,
+            "before": {
+              "x": -0.3374999999999958,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.26249999999999574,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.25000000000016,
+            "geometricMetres": 2.4375000000000053,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 13,
+            "before": {
+              "x": -0.26249999999999574,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.1875000001693703,
+              "y": 1.3,
+              "z": -7.1999961770029355,
+              "yaw": 1.5706577309104022
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.5000000000001457,
+            "geometricMetres": 2.512499999928066,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 14,
+            "before": {
+              "x": -0.1875000001693703,
+              "y": 1.3,
+              "z": -7.1999961770029355,
+              "yaw": 1.5706577309104022
+            },
+            "after": {
+              "x": -0.11250000494782579,
+              "y": 1.3,
+              "z": -7.199971001279182,
+              "yaw": 1.5702466429317232
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.7500000000001315,
+            "geometricMetres": 2.587499999375058,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 15,
+            "before": {
+              "x": -0.11250000494782579,
+              "y": 1.3,
+              "z": -7.199971001279182,
+              "yaw": 1.5702466429317232
+            },
+            "after": {
+              "x": -0.03750003583225689,
+              "y": 1.3,
+              "z": -7.199904537143265,
+              "yaw": 1.5695770025210827
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 4.000000000000117,
+            "geometricMetres": 2.662499997940509,
+            "originalFullRadiusAndStallPassed": true
+          }
+        ]
+      },
+      "runCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T03:42:40.358Z",
+          "elapsedMs": 30001,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3351,
+          "limit": 5000,
+          "elapsedMs": 43,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T03:43:10.402Z",
+          "elapsedMs": 1,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "servedAfterHashesEqualBefore": true,
+      "sourceBoatPhysicsLayoutCollisionExactlyMatchCurrentNorth": {
+        "src/harbor-transit.js": {
+          "originalServedSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+          "actualNorthSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+          "identical": true
+        },
+        "src/harbor-vehicle-models.js": {
+          "originalServedSHA256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+          "actualNorthSHA256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+          "identical": true
+        },
+        "src/collision.js": {
+          "originalServedSHA256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+          "actualNorthSHA256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+          "identical": true
+        }
+      }
+    },
+    {
+      "mode": "authored",
+      "originalStatus": "FAILED",
+      "originalWholeBudgetMs": 900000,
+      "originalElapsedMs": 902764,
+      "originalFirstError": {
+        "stage": "case",
+        "name": "Error",
+        "message": "fixed whole case exceeded 900000 ms",
+        "stack": "Error: fixed whole case exceeded 900000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+      },
+      "originalSecondaryErrors": [
+        {
+          "stage": "case-budget",
+          "name": "Error",
+          "message": "full case including context finalization exceeded fixed budget",
+          "stack": "Error: full case including context finalization exceeded fixed budget\n    at captureCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:367:101)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+        }
+      ],
+      "originalRuntimeErrors": [],
+      "actualGraphics": {
+        "width": 1280,
+        "height": 800,
+        "renderer": "WebKit WebGL",
+        "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "lost": false
+      },
+      "photos": [
+        {
+          "stage": "exterior",
+          "status": "PASSED",
+          "target": {
+            "x": -5.5,
+            "y": 1.3,
+            "z": -7.2
+          },
+          "relativeYaw": 1.5707963267948966,
+          "firstError": null,
+          "hasBefore": true,
+          "hasAfter": true,
+          "screenshotCompleted": true,
+          "imageSHA256": "656a9c6efa61ed0899fd9cff4cc45eb25c6d7a0fd0b11019abd1671823a87ad9",
+          "body": {
+            "x": -5.500042556754579,
+            "y": 1.3,
+            "z": -7.2114791473354956,
+            "yaw": -4.712388734021459
+          },
+          "eye": {
+            "x": -5.500042556754579,
+            "y": 2.92,
+            "z": -7.2114791473354956,
+            "yaw": null
+          },
+          "actualBerth": {
+            "id": "harbor-ferry-1",
+            "kind": "ferry",
+            "x": 227.2,
+            "y": 0,
+            "z": -309.5,
+            "yaw": 1.5707963267948966,
+            "stopId": "harbor-ferry-south",
+            "doorsOpen": true,
+            "remaining": 6.149999999999935,
+            "serviceTime": 9.850000000000069
+          },
+          "authoredActor": {
+            "kind": "ferry",
+            "visibleLod": 0,
+            "wanted": true,
+            "instanceGeneration": 3,
+            "poolGeneration": 2,
+            "failed": false,
+            "authored": true,
+            "quality": "high"
+          }
+        },
+        {
+          "stage": "lower",
+          "status": "FAILED",
+          "target": {
+            "x": 0,
+            "z": -7.2,
+            "y": 1.3
+          },
+          "relativeYaw": 0,
+          "firstError": {
+            "stage": "photo-lower",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 531341ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 531341ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:289:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:319:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "hasBefore": false,
+          "hasAfter": false,
+          "screenshotCompleted": false,
+          "imageSHA256": null,
+          "body": null,
+          "eye": null,
+          "actualBerth": null,
+          "authoredActor": null
+        }
+      ],
+      "successfulCloseHighPhotoCount": 1,
+      "upperPhotoObserved": false,
+      "lowerPhotoCompleted": false,
+      "fullReturnOrAlightObserved": false,
+      "berthPhases": [
+        {
+          "startedAt": "2026-10-05T03:45:59.665Z",
+          "finishedAt": "2026-10-05T03:45:59.685Z",
+          "wallIntervalSeconds": 0.02,
+          "budgetMs": 600000,
+          "status": "SATISFIED",
+          "firstError": null,
+          "progress": [
+            {
+              "when": "before-wait",
+              "status": "OBSERVED",
+              "at": "2026-10-05T03:45:59.679Z",
+              "observed": {
+                "ready": true,
+                "started": true,
+                "paused": false,
+                "simulationTime": 8.883333333333354,
+                "timing": {
+                  "wallDt": 4.749800000000017,
+                  "dt": 0.25,
+                  "steps": 15,
+                  "alpha": 0.00399999999965317,
+                  "simulationDelta": 0.25,
+                  "droppedSeconds": 4.499800000000017,
+                  "droppedTotal": 126.2611
+                },
+                "teleportRevision": 2,
+                "position": {
+                  "x": 219.9885208526645,
+                  "y": 1.3,
+                  "z": -303.9999574432454,
+                  "yaw": -3.1415924072265624
+                },
+                "camera": {
+                  "position": {
+                    "x": 219.9885208526645,
+                    "y": 2.92,
+                    "z": -303.9999574432454
+                  },
+                  "target": {
+                    "x": 219.9885233162968,
+                    "y": 2.92,
+                    "z": -293.9999574432457
+                  },
+                  "focus": {
+                    "x": 219.9885208526645,
+                    "y": 2.92,
+                    "z": -303.9999574432454
+                  },
+                  "yaw": 2.463632307048158e-07,
+                  "pitch": 0.15,
+                  "fov": 65,
+                  "boomLength": 0,
+                  "desiredBoomLength": 0,
+                  "obstructed": false,
+                  "overheadFallback": false,
+                  "colliderId": null,
+                  "clearanceRadius": 0.45
+                },
+                "stationID": "harbor-ferry-south",
+                "ridingVehicleId": null,
+                "passengerLocal": null,
+                "passengerDeck": null,
+                "vehicle": null,
+                "fleet": [
+                  {
+                    "id": "harbor-bus-1",
+                    "kind": "bus",
+                    "stopId": "harbor-bus-courtyard",
+                    "doorsOpen": true,
+                    "remaining": 2.116666666666646,
+                    "nextStopId": "harbor-bus-courtyard",
+                    "secondsToArrival": 0,
+                    "serviceTime": 8.883333333333354,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-bus-2",
+                    "kind": "bus",
+                    "stopId": "harbor-bus-workshop",
+                    "doorsOpen": true,
+                    "remaining": 2.1166666666671574,
+                    "nextStopId": "harbor-bus-workshop",
+                    "secondsToArrival": 0,
+                    "serviceTime": 89.9715248738588,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-tram-1",
+                    "kind": "tram",
+                    "stopId": "harbor-tram-lantern",
+                    "doorsOpen": true,
+                    "remaining": 3.1166666666666316,
+                    "nextStopId": "harbor-tram-lantern",
+                    "secondsToArrival": 0,
+                    "serviceTime": 8.883333333333354,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-tram-2",
+                    "kind": "tram",
+                    "stopId": "harbor-tram-workshop",
+                    "doorsOpen": true,
+                    "remaining": 3.1166666666671716,
+                    "nextStopId": "harbor-tram-workshop",
+                    "secondsToArrival": 0,
+                    "serviceTime": 39.1999999999995,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "signal",
+                    "speed": 0
+                  },
+                  {
+                    "id": "harbor-ferry-1",
+                    "kind": "ferry",
+                    "stopId": "harbor-ferry-south",
+                    "doorsOpen": true,
+                    "remaining": 7.116666666666646,
+                    "nextStopId": "harbor-ferry-south",
+                    "secondsToArrival": 0,
+                    "serviceTime": 8.883333333333354,
+                    "delay": 0,
+                    "held": null,
+                    "trafficState": "dwell",
+                    "speed": 0
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "startedAt": "2026-10-05T03:46:00.574Z",
+          "finishedAt": "2026-10-05T03:46:00.587Z",
+          "wallIntervalSeconds": 0.013,
+          "budgetMs": 600000,
+          "status": "SATISFIED",
+          "firstError": null,
+          "progress": [
+            {
+              "when": "before-wait",
+              "status": "OBSERVED",
+              "at": "2026-10-05T03:46:00.582Z",
+              "observed": {
+                "ready": true,
+                "started": true,
+                "paused": false,
+                "simulationTime": 8.883333333333354,
+                "timing": {
+                  "wallDt": 4.749800000000017,
+                  "dt": 0.25,
+                  "steps": 15,
+                  "alpha": 0.00399999999965317,
+                  "simulationDelta": 0.25,
+                  "droppedSeconds": 4.499800000000017,
+                  "droppedTotal": 126.2611
+                },
+                "teleportRevision": 2,
+                "position": {
+                  "x": 219.9885208526645,
+                  "y": 1.3,
+                  "z": -303.9999574432454,
+                  "yaw": -3.1415924072265624
+                },
+                "camera": {
+                  "position": {
+                    "x": 219.9885208526645,
+                    "y": 2.92,
+                    "z": -303.9999574432454
+                  },
+                  "target": {
+                    "x": 219.9885233162968,
+                    "y": 2.92,
+                    "z": -293.9999574432457
+                  },
+                  "focus": {
+                    "x": 219.9885208526645,
+                    "y": 2.92,
+                    "z": -303.9999574432454
+                  },
+                  "yaw": 2.463632307048158e-07,
+                  "pitch": 0.15,
+                  "fov": 65,
+                  "boomLength": 0,
+                  "desiredBoomLength": 0,
+                  "obstructed": false,
+                  "overheadFallback": false,
+                  "colliderId": null,
+                  "clearanceRadius": 0.45
+                },
+                "stationID": "harbor-ferry-south",
+                "ridingVehicleId": null,
+                "passengerLocal": null,
+                "passengerDeck": null,
+                "vehicle": {
+                  "id": "harbor-ferry-1",
+                  "x": 227.2,
+                  "y": 0,
+                  "z": -309.5,
+                  "yaw": 1.5707963267948966,
+                  "stopId": "harbor-ferry-south",
+                  "doorsOpen": true,
+                  "remaining": 7.116666666666646,
+                  "nextStopId": "harbor-ferry-south",
+                  "secondsToArrival": 0,
+                  "serviceTime": 8.883333333333354,
+                  "delay": 0,
+                  "held": null,
+                  "trafficState": "dwell",
+                  "speed": 0
+                },
+                "fleet": null
+              }
+            }
+          ]
+        },
+        {
+          "startedAt": "2026-10-05T03:49:20.253Z",
+          "finishedAt": "2026-10-05T03:58:11.628Z",
+          "wallIntervalSeconds": 531.375,
+          "budgetMs": 600000,
+          "status": "FAILED",
+          "firstError": {
+            "stage": "scheduled berth",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 531341ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 531341ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:289:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:319:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:351:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:329:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "progress": [
+            {
+              "when": "before-wait",
+              "status": "OBSERVED",
+              "at": "2026-10-05T03:49:20.268Z",
+              "observed": {
+                "ready": true,
+                "started": true,
+                "paused": false,
+                "simulationTime": 16.850000000000325,
+                "timing": {
+                  "wallDt": 8.233,
+                  "dt": 0.25,
+                  "steps": 15,
+                  "alpha": 0,
+                  "simulationDelta": 0.25,
+                  "droppedSeconds": 7.9830000000000005,
+                  "droppedTotal": 310.85350000000005
+                },
+                "teleportRevision": 3,
+                "position": {
+                  "x": 221.80607532215853,
+                  "y": 1.3,
+                  "z": -309.45130587244944,
+                  "yaw": 3.141592653589793
+                },
+                "camera": {
+                  "position": {
+                    "x": 221.80607532215853,
+                    "y": 2.92,
+                    "z": -309.45130587244944
+                  },
+                  "target": {
+                    "x": 231.80607532215853,
+                    "y": 2.92,
+                    "z": -309.45130587244944
+                  },
+                  "focus": {
+                    "x": 221.80607532215853,
+                    "y": 2.92,
+                    "z": -309.45130587244944
+                  },
+                  "yaw": 1.5707963267948966,
+                  "pitch": 0.15,
+                  "fov": 65,
+                  "boomLength": 0,
+                  "desiredBoomLength": 0,
+                  "obstructed": false,
+                  "overheadFallback": false,
+                  "colliderId": null,
+                  "clearanceRadius": 0.45
+                },
+                "stationID": null,
+                "ridingVehicleId": "harbor-ferry-1",
+                "passengerLocal": {
+                  "x": -0.037500065877973304,
+                  "y": 1.3,
+                  "z": -7.199862176982491,
+                  "yaw": 1.569241559324094
+                },
+                "passengerDeck": "lower",
+                "vehicle": {
+                  "id": "harbor-ferry-1",
+                  "x": 229.00587049316348,
+                  "y": 0,
+                  "z": -309.5,
+                  "yaw": 1.572351094265699,
+                  "stopId": null,
+                  "doorsOpen": false,
+                  "remaining": 3.409078268410731,
+                  "nextStopId": "harbor-ferry-north",
+                  "secondsToArrival": 23.77933673897661,
+                  "serviceTime": 16.850000000000325,
+                  "delay": 0,
+                  "held": null,
+                  "trafficState": "cruise",
+                  "speed": 4.074026781512998
+                },
+                "fleet": null
+              }
+            },
+            {
+              "when": "timeout",
+              "status": "SKIPPED_DEADLINE",
+              "at": "2026-10-05T03:58:11.628Z"
+            }
+          ]
+        }
+      ],
+      "completedLocalLeg": {
+        "stage": "upper-0",
+        "precision": false,
+        "localMs": 150000,
+        "maxIterations": 1800,
+        "initial": {
+          "x": -2.7,
+          "y": 1.3,
+          "z": -7.2,
+          "yaw": 0
+        },
+        "final": {
+          "x": -0.037500065877973304,
+          "y": 1.3,
+          "z": -7.199862176982491,
+          "yaw": 1.569241559324094
+        },
+        "target": {
+          "x": 0,
+          "z": -7.2,
+          "y": 1.3
+        },
+        "horizontalGap": 0.037500319145795186,
+        "heightGap": 0.0,
+        "cycles": [
+          {
+            "n": 0,
+            "before": {
+              "x": -2.7,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 0
+            },
+            "after": {
+              "x": -2.137499999999999,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": false,
+            "heldSeconds": 0.25000000000001243,
+            "geometricMetres": 0.5625000000000013,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 1,
+            "before": {
+              "x": -2.137499999999999,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -1.5749999999999975,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": false,
+            "heldSeconds": 0.5000000000000249,
+            "geometricMetres": 1.1250000000000027,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 2,
+            "before": {
+              "x": -1.5749999999999975,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -1.0124999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": false,
+            "heldSeconds": 0.7500000000000373,
+            "geometricMetres": 1.687500000000004,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 3,
+            "before": {
+              "x": -1.0124999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.9374999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.0000000000000497,
+            "geometricMetres": 1.7625000000000037,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 4,
+            "before": {
+              "x": -0.9374999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.8624999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.2500000000000622,
+            "geometricMetres": 1.837500000000004,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 5,
+            "before": {
+              "x": -0.8624999999999963,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.7874999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 1.5000000000000746,
+            "geometricMetres": 1.912500000000004,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 6,
+            "before": {
+              "x": -0.7874999999999962,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.7124999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.0000000000000995,
+            "geometricMetres": 1.9875000000000043,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 7,
+            "before": {
+              "x": -0.7124999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.6374999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.250000000000112,
+            "geometricMetres": 2.0625000000000044,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 8,
+            "before": {
+              "x": -0.6374999999999961,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.562499999999996,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.5000000000001243,
+            "geometricMetres": 2.1375000000000046,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 9,
+            "before": {
+              "x": -0.562499999999996,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.48749999999999594,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 2.750000000000137,
+            "geometricMetres": 2.212500000000005,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 10,
+            "before": {
+              "x": -0.48749999999999594,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.41249999999999587,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.000000000000149,
+            "geometricMetres": 2.287500000000005,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 11,
+            "before": {
+              "x": -0.41249999999999587,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.3374999999999958,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.2500000000001616,
+            "geometricMetres": 2.362500000000005,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 12,
+            "before": {
+              "x": -0.3374999999999958,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 1.5707963267948966
+            },
+            "after": {
+              "x": -0.26250000000216445,
+              "y": 1.3,
+              "z": -7.199999719021226,
+              "yaw": 1.5707740985873277
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.5000000000001616,
+            "geometricMetres": 2.4374999999983626,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 13,
+            "before": {
+              "x": -0.26250000000216445,
+              "y": 1.3,
+              "z": -7.199999719021226,
+              "yaw": 1.5707740985873277
+            },
+            "after": {
+              "x": -0.18750000086769966,
+              "y": 1.3,
+              "z": -7.199989809094079,
+              "yaw": 1.5705254174767624
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 3.7500000000001474,
+            "geometricMetres": 2.5124999997875386,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 14,
+            "before": {
+              "x": -0.18750000086769966,
+              "y": 1.3,
+              "z": -7.199989809094079,
+              "yaw": 1.5705254174767624
+            },
+            "after": {
+              "x": -0.11250001206020557,
+              "y": 1.3,
+              "z": -7.199950446619389,
+              "yaw": 1.5700087309139679
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 4.000000000000133,
+            "geometricMetres": 2.5874999989243963,
+            "originalFullRadiusAndStallPassed": true
+          },
+          {
+            "n": 15,
+            "before": {
+              "x": -0.11250001206020557,
+              "y": 1.3,
+              "z": -7.199950446619389,
+              "yaw": 1.5700087309139679
+            },
+            "after": {
+              "x": -0.037500065877973304,
+              "y": 1.3,
+              "z": -7.199862176982491,
+              "yaw": 1.569241559324094
+            },
+            "key": "a",
+            "slow": true,
+            "heldSeconds": 4.250000000000119,
+            "geometricMetres": 2.662499997050173,
+            "originalFullRadiusAndStallPassed": true
+          }
+        ]
+      },
+      "runCleanup": [
+        {
+          "label": "browser.close",
+          "limit": 30000,
+          "startedAt": "2026-10-05T03:58:14.653Z",
+          "elapsedMs": 30003,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "name": "Error",
+            "message": "browser.close exceeded 30000 ms",
+            "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          }
+        },
+        {
+          "label": "owned launch force-kill after browser.close failure",
+          "pid": 3682,
+          "limit": 5000,
+          "elapsedMs": 42,
+          "confirmed": true,
+          "error": null,
+          "scope": "captured actual launch only; no process search or global kill"
+        },
+        {
+          "label": "server.close",
+          "limit": 10000,
+          "startedAt": "2026-10-05T03:58:44.698Z",
+          "elapsedMs": 0,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "servedAfterHashesEqualBefore": true,
+      "sourceBoatPhysicsLayoutCollisionExactlyMatchCurrentNorth": {
+        "src/harbor-transit.js": {
+          "originalServedSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+          "actualNorthSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+          "identical": true
+        },
+        "src/harbor-vehicle-models.js": {
+          "originalServedSHA256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+          "actualNorthSHA256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+          "identical": true
+        },
+        "src/collision.js": {
+          "originalServedSHA256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+          "actualNorthSHA256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+          "identical": true
+        }
+      }
+    }
+  ],
+  "sourceReplayReceiptSHA256": "71b9430c193ea500c68765ca3c2ff7645cca2c4032a52497c00142904884502b",
+  "fact": "Both first errors are original900s whole timer. Lower local approach completed original endpoint/radius/stall. Normal next-berth wait dominates remaining time: baseline514.530s succeeds but screenshot receives26248ms and fails; authored531341ms wait is whole-clamped and expires. No upper stair route is observed, so no upper collision/clearance PASS or bug is inferred.",
+  "visualReview": "Actual original authored exterior1280x800 PNG viewed unchanged: close port doorway, timber seat/deck, glazing and lifebuoy at nominal2m from hull side. This is close High external component evidence with original LOD0/owned generation/bitmap guards. It is historical6ad192 source, not current8b207 or completed lower/upper voyage or AAA acceptance.",
+  "currentFrozenProtocolScope": "Current8b method0f07 adds held path onlyBUS/TRAM precision>.3. FERRY remains900s whole,150s local,original .06xz/.15y/.3radius,original open-berth photo/exit and canonical routes. No current file modified.",
+  "candidateAssessment": "Evidence does not justify a blind whole/phase/gait/radius/tolerance change or claiming generic bus/tram held control fixes ferry. Reducing repeated normal public-input RPCs on long ferry legs may warrant an isolated candidate only after explicit owner scope, but still cannot eliminate nominal next-berth simulation wait or guarantee full upper/return completion in900s. A separately declared close-photo component could retain High/native source/real E/WASD and original local targets while remaining distinct from the failed complete voyage; any changed photo berth prerequisite must be an explicit new scope, never a retroactive ordinary-case PASS. No candidate generated at this stage.",
+  "gpuInvoked": false,
+  "productionOrProtocolChanged": false,
+  "oldFailuresReclassified": false
+}

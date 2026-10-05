@@ -1,0 +1,223 @@
+{
+  "status": "READONLY_NORMAL_FERRY_SOURCE_BERTH_REPLAY_MATCHES_RECORDED_STATES_NO_NATIVE_PASS",
+  "sourceTransitSHA256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+  "rows": [
+    {
+      "role": "baseline",
+      "recordedPhaseStartedAt": "2026-10-05T03:33:26.902Z",
+      "recordedPhaseFinishedAt": "2026-10-05T03:42:01.432Z",
+      "recordedPhaseStatus": "SATISFIED",
+      "recordedWholeMs": 900000,
+      "recordedNominalETASeconds": 23.879336738976605,
+      "originalStepPlayerSourceUnchanged": true,
+      "sourceStateReplayedFromNormalConstructorWithoutStateRestore": true,
+      "sourceFieldsMatched": [
+        {
+          "field": "x",
+          "recorded": 228.6162514774906,
+          "actual": 228.6162514774906,
+          "equal": true
+        },
+        {
+          "field": "y",
+          "recorded": 0,
+          "actual": 0,
+          "equal": true
+        },
+        {
+          "field": "z",
+          "recorded": -309.5,
+          "actual": -309.5,
+          "equal": true
+        },
+        {
+          "field": "yaw",
+          "recorded": 1.5720156510687104,
+          "actual": 1.5720156510687104,
+          "equal": true
+        },
+        {
+          "field": "stopId",
+          "recorded": null,
+          "actual": null,
+          "equal": true
+        },
+        {
+          "field": "doorsOpen",
+          "recorded": false,
+          "actual": false,
+          "equal": true
+        },
+        {
+          "field": "remaining",
+          "recorded": 3.5090782684107253,
+          "actual": 3.5090782684107253,
+          "equal": true
+        },
+        {
+          "field": "nextStopId",
+          "recorded": "harbor-ferry-north",
+          "actual": "harbor-ferry-north",
+          "equal": true
+        },
+        {
+          "field": "secondsToArrival",
+          "recorded": 23.879336738976605,
+          "actual": 23.879336738976605,
+          "equal": true
+        },
+        {
+          "field": "speed",
+          "recorded": 3.643134474427825,
+          "actual": 3.643134474427825,
+          "equal": true
+        },
+        {
+          "field": "delay",
+          "recorded": 0,
+          "actual": 0,
+          "equal": true
+        },
+        {
+          "field": "serviceTime",
+          "recorded": 16.75000000000033,
+          "actual": 16.75000000000033,
+          "equal": true
+        }
+      ],
+      "sourceNextOriginalOpenBerth": {
+        "id": "harbor-ferry-1",
+        "routeId": "harbor-ferry",
+        "kind": "ferry",
+        "x": 212.8,
+        "y": 0,
+        "z": -375,
+        "yaw": -1.5707963267948966,
+        "stopId": "harbor-ferry-north",
+        "doorsOpen": true,
+        "remaining": 15.996003405644636,
+        "nextStopId": "harbor-ferry-north",
+        "secondsToArrival": 0,
+        "speed": 0.01817887063282342,
+        "delay": 0,
+        "serviceTime": 40.63333333333231,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": null
+      },
+      "additionalSourceSimulationSeconds": 23.88333333333198,
+      "originalFailedStage": "lower photo",
+      "boundary": "Imported source normal update at1/60 with default empty traffic context, ferry source pose reproduces every selected saved field; this is CPU source timing only and cannot supply missing authored native arrival, any upper photo, native speed savings, or complete route. No clock/vehicle/player live writes or GPU."
+    },
+    {
+      "role": "authored",
+      "recordedPhaseStartedAt": "2026-10-05T03:49:20.253Z",
+      "recordedPhaseFinishedAt": "2026-10-05T03:58:11.628Z",
+      "recordedPhaseStatus": "FAILED",
+      "recordedWholeMs": 900000,
+      "recordedNominalETASeconds": 23.77933673897661,
+      "originalStepPlayerSourceUnchanged": true,
+      "sourceStateReplayedFromNormalConstructorWithoutStateRestore": true,
+      "sourceFieldsMatched": [
+        {
+          "field": "x",
+          "recorded": 229.00587049316348,
+          "actual": 229.00587049316348,
+          "equal": true
+        },
+        {
+          "field": "y",
+          "recorded": 0,
+          "actual": 0,
+          "equal": true
+        },
+        {
+          "field": "z",
+          "recorded": -309.5,
+          "actual": -309.5,
+          "equal": true
+        },
+        {
+          "field": "yaw",
+          "recorded": 1.572351094265699,
+          "actual": 1.572351094265699,
+          "equal": true
+        },
+        {
+          "field": "stopId",
+          "recorded": null,
+          "actual": null,
+          "equal": true
+        },
+        {
+          "field": "doorsOpen",
+          "recorded": false,
+          "actual": false,
+          "equal": true
+        },
+        {
+          "field": "remaining",
+          "recorded": 3.409078268410731,
+          "actual": 3.409078268410731,
+          "equal": true
+        },
+        {
+          "field": "nextStopId",
+          "recorded": "harbor-ferry-north",
+          "actual": "harbor-ferry-north",
+          "equal": true
+        },
+        {
+          "field": "secondsToArrival",
+          "recorded": 23.77933673897661,
+          "actual": 23.77933673897661,
+          "equal": true
+        },
+        {
+          "field": "speed",
+          "recorded": 4.074026781512998,
+          "actual": 4.074026781512998,
+          "equal": true
+        },
+        {
+          "field": "delay",
+          "recorded": 0,
+          "actual": 0,
+          "equal": true
+        },
+        {
+          "field": "serviceTime",
+          "recorded": 16.850000000000325,
+          "actual": 16.850000000000325,
+          "equal": true
+        }
+      ],
+      "sourceNextOriginalOpenBerth": {
+        "id": "harbor-ferry-1",
+        "routeId": "harbor-ferry",
+        "kind": "ferry",
+        "x": 212.8,
+        "y": 0,
+        "z": -375,
+        "yaw": -1.5707963267948966,
+        "stopId": "harbor-ferry-north",
+        "doorsOpen": true,
+        "remaining": 15.996003405644636,
+        "nextStopId": "harbor-ferry-north",
+        "secondsToArrival": 0,
+        "speed": 0.01817887063282342,
+        "delay": 0,
+        "serviceTime": 40.63333333333231,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": null
+      },
+      "additionalSourceSimulationSeconds": 23.783333333331985,
+      "originalFailedStage": "lower photo",
+      "boundary": "Imported source normal update at1/60 with default empty traffic context, ferry source pose reproduces every selected saved field; this is CPU source timing only and cannot supply missing authored native arrival, any upper photo, native speed savings, or complete route. No clock/vehicle/player live writes or GPU."
+    }
+  ],
+  "gpuInvoked": false,
+  "productionWritten": false,
+  "wholeMsPreserved": 900000
+}
