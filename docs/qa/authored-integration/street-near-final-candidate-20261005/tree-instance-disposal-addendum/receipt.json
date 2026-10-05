@@ -1,0 +1,248 @@
+{
+  "status": "CPU_ACTUAL_THREE_INSTANCE_DISPOSE_CALLS_24_PASS_NATIVE_UNPROVEN",
+  "originalOwnerProof": {
+    "path": "/workspace/neon-candidates/tree-crown-density-candidate-20261005/cpu-owner-density-proof.json",
+    "sha256": "02a91c9a0120ffa1bcd87822c6b0516320d0201a0b72a31a4a2d0e2cc4486e73",
+    "originalInstanceDisposesCounter": 0
+  },
+  "originalCandidateSeal": {
+    "path": "/workspace/neon-candidates/tree-crown-density-candidate-20261005/SEALED_SHA256.json",
+    "sha256": "7224efbe9b0f308165cf51cbba415801aec405181135d1d265f344917cbd0474",
+    "unchanged": true
+  },
+  "instrumentation": "Wrapped actual THREE.InstancedMesh.prototype.dispose; increments only sampleStreetTree instances then invokes retained original method with original this.",
+  "actualInstanceDisposeCalls": 24,
+  "distinctDisposedInstanceUUIDs": 24,
+  "allDisposedExactlyOnce": true,
+  "stages": [
+    {
+      "stage": "load-all-three-real-variant-templates",
+      "actualInstanceDisposeCalls": 0,
+      "residentVariants": 3,
+      "drawCalls": 6,
+      "triangles": 136608,
+      "failures": [],
+      "allOriginalMatricesExact": "not expected while near replacements are active"
+    },
+    {
+      "stage": "Low-releases-six-instances",
+      "actualInstanceDisposeCalls": 6,
+      "residentVariants": 0,
+      "drawCalls": 0,
+      "triangles": 0,
+      "failures": [],
+      "allOriginalMatricesExact": true
+    },
+    {
+      "stage": "High-reloads-six-new-instances",
+      "actualInstanceDisposeCalls": 6,
+      "residentVariants": 3,
+      "drawCalls": 6,
+      "triangles": 136608,
+      "failures": [],
+      "allOriginalMatricesExact": "not expected while near replacements are active"
+    },
+    {
+      "stage": "far-releases-second-six-instances",
+      "actualInstanceDisposeCalls": 12,
+      "residentVariants": 0,
+      "drawCalls": 0,
+      "triangles": 0,
+      "failures": [],
+      "allOriginalMatricesExact": true
+    },
+    {
+      "stage": "reload-before-chunk-unregister",
+      "actualInstanceDisposeCalls": 12,
+      "residentVariants": 3,
+      "drawCalls": 6,
+      "triangles": 136608,
+      "failures": [],
+      "allOriginalMatricesExact": "not expected while near replacements are active"
+    },
+    {
+      "stage": "chunk-unregister-releases-third-six-instances",
+      "actualInstanceDisposeCalls": 18,
+      "residentVariants": 0,
+      "drawCalls": 0,
+      "triangles": 0,
+      "failures": [],
+      "allOriginalMatricesExact": true
+    },
+    {
+      "stage": "reload-before-owner-dispose",
+      "actualInstanceDisposeCalls": 18,
+      "residentVariants": 3,
+      "drawCalls": 6,
+      "triangles": 136608,
+      "failures": [],
+      "allOriginalMatricesExact": "not expected while near replacements are active"
+    },
+    {
+      "stage": "owner-dispose-releases-fourth-six-instances",
+      "actualInstanceDisposeCalls": 24,
+      "residentVariants": 0,
+      "drawCalls": 0,
+      "triangles": 0,
+      "failures": [],
+      "allOriginalMatricesExact": true
+    }
+  ],
+  "callRecords": [
+    {
+      "index": 1,
+      "name": "Near quay tree variant 0 \u00b7 bark",
+      "uuid": "5fccd3e3-bbd9-49ab-af18-e67fd69e92bf"
+    },
+    {
+      "index": 2,
+      "name": "Near quay tree variant 0 \u00b7 leaves",
+      "uuid": "a9c24f95-d6ad-49c1-977f-059fae00a609"
+    },
+    {
+      "index": 3,
+      "name": "Near quay tree variant 1 \u00b7 bark",
+      "uuid": "56832ab9-8c60-48ef-a229-49c7b94d79f5"
+    },
+    {
+      "index": 4,
+      "name": "Near quay tree variant 1 \u00b7 leaves",
+      "uuid": "ab0a3964-35a2-478b-ad6e-bbb85e684d1c"
+    },
+    {
+      "index": 5,
+      "name": "Near quay tree variant 2 \u00b7 bark",
+      "uuid": "3e46ddeb-959f-4dff-874a-5a17e6914b1b"
+    },
+    {
+      "index": 6,
+      "name": "Near quay tree variant 2 \u00b7 leaves",
+      "uuid": "1d7bb135-bb5e-422f-a251-24cbe1f63595"
+    },
+    {
+      "index": 7,
+      "name": "Near quay tree variant 0 \u00b7 bark",
+      "uuid": "e79f7b9c-6b49-45dd-b8f7-9afd022d09a1"
+    },
+    {
+      "index": 8,
+      "name": "Near quay tree variant 0 \u00b7 leaves",
+      "uuid": "7ed556e3-213b-4cd2-b157-d5a844b9a9d8"
+    },
+    {
+      "index": 9,
+      "name": "Near quay tree variant 1 \u00b7 bark",
+      "uuid": "1bfc57d5-9c81-4bb7-b695-1e99a610fa7d"
+    },
+    {
+      "index": 10,
+      "name": "Near quay tree variant 1 \u00b7 leaves",
+      "uuid": "a930d4b1-ef19-4c3b-ada2-7efd85005584"
+    },
+    {
+      "index": 11,
+      "name": "Near quay tree variant 2 \u00b7 bark",
+      "uuid": "715f17c0-e4f6-4b36-a4c7-2f24648c5220"
+    },
+    {
+      "index": 12,
+      "name": "Near quay tree variant 2 \u00b7 leaves",
+      "uuid": "f9045979-e1fc-4729-9e23-6a9f82e633f7"
+    },
+    {
+      "index": 13,
+      "name": "Near quay tree variant 0 \u00b7 bark",
+      "uuid": "9a817a3b-e7a2-4b55-a697-f2fd0c5de52e"
+    },
+    {
+      "index": 14,
+      "name": "Near quay tree variant 0 \u00b7 leaves",
+      "uuid": "261d5e40-ffee-4fee-9f67-4721c4a17c2d"
+    },
+    {
+      "index": 15,
+      "name": "Near quay tree variant 1 \u00b7 bark",
+      "uuid": "95eb2cc7-f055-4e12-b5a9-766ec9a22019"
+    },
+    {
+      "index": 16,
+      "name": "Near quay tree variant 1 \u00b7 leaves",
+      "uuid": "f3bd4f8d-8485-4456-8d62-e7dda3308cd9"
+    },
+    {
+      "index": 17,
+      "name": "Near quay tree variant 2 \u00b7 bark",
+      "uuid": "fa9cafb7-e360-467a-974c-5ac158378b17"
+    },
+    {
+      "index": 18,
+      "name": "Near quay tree variant 2 \u00b7 leaves",
+      "uuid": "78ad526a-adbf-40ab-9e96-faee9a2b7b88"
+    },
+    {
+      "index": 19,
+      "name": "Near quay tree variant 0 \u00b7 bark",
+      "uuid": "c1c8e050-8f22-4153-8f12-316b18c4ca34"
+    },
+    {
+      "index": 20,
+      "name": "Near quay tree variant 0 \u00b7 leaves",
+      "uuid": "a17e2f0f-10f5-42b3-bc30-d2823f8943ae"
+    },
+    {
+      "index": 21,
+      "name": "Near quay tree variant 1 \u00b7 bark",
+      "uuid": "f25abd5d-bff8-4b06-8bd1-6bfd705fbc43"
+    },
+    {
+      "index": 22,
+      "name": "Near quay tree variant 1 \u00b7 leaves",
+      "uuid": "bdde88e1-8c34-41e4-86c4-6a066a6c27d7"
+    },
+    {
+      "index": 23,
+      "name": "Near quay tree variant 2 \u00b7 bark",
+      "uuid": "f1534f28-295d-466a-b5dd-0fb96b6e4be5"
+    },
+    {
+      "index": 24,
+      "name": "Near quay tree variant 2 \u00b7 leaves",
+      "uuid": "0225f8dd-73ec-4901-929f-7e75615c9444"
+    }
+  ],
+  "otherDecoderSyntheticCounts": {
+    "geometryDisposes": 24,
+    "materialDisposes": 24,
+    "textureDisposes": 36,
+    "bitmapCloses": 36,
+    "instanceDisposes": 0
+  },
+  "sourceInputs": {
+    "runtimeSHA256": "9bfd3ee850e8d2cf0ad6c905f7e5c53b8f12c1334d68a0a67261a6e6f4e773ef",
+    "decoderSHA256": "683c518d43a226a1dec69056a3c103252361c92c7823c7fd9c2a77ff8da0d5df",
+    "threeModuleSHA256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+  },
+  "limitations": [
+    "Actual CPU Three.js method invocation counts with actual decoded new GLB geometry, not a native browser or hardware GPU release proof.",
+    "CPU decoder texture/image stand-ins do not prove real ImageBitmap.close calls or hardware VRAM recovery.",
+    "Original sealed owner-proof counter was not instrumented and stays zero; this separate receipt supplies the actual instance disposal call evidence."
+  ],
+  "executionWorkingDirectory": "/workspace/neon-candidates/tree-crown-density-candidate-20261005",
+  "actualGLBInputs": [
+    {
+      "path": "/workspace/neon-candidates/tree-crown-density-candidate-20261005/payload/assets/harbor/vegetation/quay-banyan-a.glb",
+      "bytes": 3193516,
+      "sha256": "2cbde57d8510997cc21c41604bb561dad9258c3544c1a3beebe9d1783b97a23c"
+    },
+    {
+      "path": "/workspace/neon-candidates/tree-crown-density-candidate-20261005/payload/assets/harbor/vegetation/quay-banyan-b.glb",
+      "bytes": 3193516,
+      "sha256": "e61ddea8ad0c97b136d37800211e72f481f0118743e0329fe058502dce026281"
+    },
+    {
+      "path": "/workspace/neon-candidates/tree-crown-density-candidate-20261005/payload/assets/harbor/vegetation/quay-banyan-c.glb",
+      "bytes": 3193520,
+      "sha256": "c559b15c63a70b4c8ab0387facef866e45b9d31077c7ffee64b1807dba94c7dc"
+    }
+  ]
+}

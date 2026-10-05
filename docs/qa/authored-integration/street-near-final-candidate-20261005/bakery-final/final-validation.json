@@ -1,0 +1,51 @@
+{
+  "status": "CPU_CHECKS_PASS_NATIVE_PENDING",
+  "checkedAtUtc": "2026-10-05T05:22:11.778272+00:00",
+  "productionSourceChangesAfterOwnerReview": false,
+  "syntaxCheck": {
+    "command": [
+      "node --check repo/src/harbor-bread-art.js",
+      "node --check repo/src/harbor-district.js",
+      "node --check repo/src/harbor-frontage-profiles.js"
+    ],
+    "exitCode": 0
+  },
+  "harborRules": {
+    "command": "node --test tests/harbor-district.test.js",
+    "cwd": "repo",
+    "exitCode": 0,
+    "pass": 7,
+    "fail": 0,
+    "stdout": {
+      "bytes": 848,
+      "sha256": "8ca682e114b656e22c7660df5fbedeeed9442c99b24c4229d4edaf4029ea64e0"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "cpuDifferential": {
+    "command": "node check-bread-candidate.mjs",
+    "exitCode": 0,
+    "stdout": {
+      "bytes": 581,
+      "sha256": "e603469e984d196ef0bc15deded00100e08304e5c63b979c35123c6508216de9"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "proof": {
+      "bytes": 5348,
+      "sha256": "3160afa3cee2ef5469c1ffbb674d6b073626c458881035a297ea3a6722dc58f8"
+    }
+  },
+  "payloadHashesAndPngDimensionsVerified": true,
+  "ownerIndependentReviewSeal": {
+    "bytes": 657,
+    "sha256": "c09aeabb1d0e358c4f314626eb4e2700b51063b49d61a4a68965f24308d4a9f3"
+  },
+  "gpuRun": false,
+  "finalNativeArtAccepted": false
+}

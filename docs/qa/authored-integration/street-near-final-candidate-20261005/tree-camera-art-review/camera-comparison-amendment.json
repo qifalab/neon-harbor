@@ -1,0 +1,90 @@
+{
+  "status": "CAMERA_COMPARISON_LIMIT_EXPLICIT",
+  "source": "/workspace/neon-evidence/5cd-resident-core-11326827515/extracted/native",
+  "observations": {
+    "baseline": {
+      "metadataSha256": "fb09f9834afb9f254b391a9fd8a803e451eb435e956dc3e4be133d199f0a1716",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "quality": "high",
+      "hour": 16.5,
+      "camera": {
+        "position": {
+          "x": -577.294707564052,
+          "y": 3.0878271767723247,
+          "z": -442.0203054215881
+        },
+        "target": {
+          "x": -570.8533333333331,
+          "y": 1.35,
+          "z": -441.0000000000059
+        },
+        "focus": {
+          "x": -570.8533333333331,
+          "y": 1.35,
+          "z": -441.0000000000059
+        },
+        "yaw": 7.850027447652024,
+        "pitch": 0.1802441393711866,
+        "fov": 55,
+        "boomLength": 7.001833744899786,
+        "desiredBoomLength": 7.001833744899786,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "player": {
+        "x": -570.8533333333331,
+        "y": 0,
+        "z": -441.0000000000059,
+        "yaw": -1.5707963267948968
+      }
+    },
+    "authored": {
+      "metadataSha256": "8d5d67e1dfaf25e5fe0da7d7894b70f1f3d4d3268b04e4327f6416c6509080c0",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "quality": "high",
+      "hour": 16.5,
+      "camera": {
+        "position": {
+          "x": -577.569844348963,
+          "y": 3.0236591900037926,
+          "z": -441.07924695421883
+        },
+        "target": {
+          "x": -570.8000000000004,
+          "y": 1.35,
+          "z": -440.9866666666727
+        },
+        "focus": {
+          "x": -570.8000000000004,
+          "y": 1.35,
+          "z": -440.9866666666727
+        },
+        "yaw": 7.853937036409628,
+        "pitch": 0.1800027272327086,
+        "fov": 55,
+        "boomLength": 7.001448940868357,
+        "desiredBoomLength": 7.001448940868357,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "player": {
+        "x": -570.8000000000004,
+        "y": 0,
+        "z": -440.9866666666727,
+        "yaw": -1.5707963267948968
+      }
+    }
+  },
+  "cameraPositionDistanceMetres": 0.9825521970584788,
+  "limit": "Both original High16:30 1280x800 frames were visually inspected. Baseline and authored chase cameras differ by approximately0.983 metres, so these are not strict matching-camera pixel comparisons. Old-vs-new CPU crown measurements and projection comparison both use the same actual authored camera and are exact for geometry. This file adds the explicit camera limit to read-only REVIEW.md without overwriting its sealed bytes."
+}

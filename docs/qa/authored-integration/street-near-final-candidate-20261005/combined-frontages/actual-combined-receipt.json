@@ -1,0 +1,178 @@
+{
+  "status": "ACTUAL_FINAL_COMBINED_SOURCE_CPU_PASS_NATIVE_ART_PENDING",
+  "verifiedAtUtc": "2026-10-05T05:27:46.286401+00:00",
+  "readOnlySourceDirectory": "/tmp/neon-harbor-street-refinement-candidate-20261005",
+  "sourceFilesFrozenBeforeAfter": 70,
+  "scope": "CPU production builder with real@napi-rs/canvas sign/menu rasterization/fontmetrics, verified original bread PNG hashes and CPU texture placeholders; no browser/native image decode/GPU/native art acceptance",
+  "sourceHashes": {
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "9f391a319a8854fce05a8f6dba80a8bfcbb75b8e87fe62c775d429a1c0717b3e",
+    "src/harbor-ceramic-art.js": "480cbd60ab45f068a9154e826f5df73a140efb8ff1cf00267ec0aede0ec43b67",
+    "src/harbor-bread-art.js": "554bf94fd5723864062e27891c07869f5ee42fa0a423ea7d603575d1cd952f49",
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+    "src/atmosphere.js": "73d4cef1814ff96c4cc33853616a16d97b818539d9e7f8c0add3ba202f82b3be",
+    "src/contact-occlusion.js": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8",
+    "src/surface-finish.js": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0"
+  },
+  "budgetBefore5cd": {
+    "drawCalls": 99,
+    "triangles": 84830
+  },
+  "actualCombinedBudget": {
+    "drawCalls": 102,
+    "triangles": 106814
+  },
+  "delta": {
+    "mergedMaterialDrawBuckets": 3,
+    "submittedGeometryTriangles": 21984
+  },
+  "fourOtherShopsByteIdentity": [
+    {
+      "id": "south-091",
+      "byteIdentical": true,
+      "sha256": "18dbb47c9c5d42a2c474cd2374adbaeb316f89a6bfa246eeb6cf6b1f301d62ed",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-092",
+      "byteIdentical": true,
+      "sha256": "b58ba4dcd80f9ee88585e7692acf9aeaa8760845a1749d97ed242c7e2970d447",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-095",
+      "byteIdentical": true,
+      "sha256": "c9eccdeab58f7c003cc3fc19b93d2dcd53a91828e12e7f51ef5757a65c90449c",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-090",
+      "byteIdentical": true,
+      "sha256": "d4641a574e4d172596878ef9ae81b3ccd9e7e002d870fb2c2bac8e2693254de4",
+      "drawCalls": 16
+    }
+  ],
+  "sixFarProxiesByteIdentity": true,
+  "relativeCandidateIdentity": {
+    "relativeToSealed096": "only south094 changed",
+    "relativeToSealed094": "only south096 changed",
+    "allOtherStoresAndResourcesByteIdentical": true
+  },
+  "displayGlassAllSixIdentity": true,
+  "lightingAndOutputSourceIdentity": true,
+  "collisionAndFixtureIdentity": {
+    "worldCount": 1874,
+    "frontageCount": 36,
+    "unchanged": true,
+    "sha256": "a759649ba8fc40df7a9a2259a50e3b739b7bae25165311b924077ee0264e8c18",
+    "fixturesSha256": "a01ddfe35bde830c5622a1e5f57a7127028e8c67a2eae57c1f676beddad7025a"
+  },
+  "vesselOldAABBIdentity": [
+    {
+      "radius": 0.096,
+      "height": 0.29,
+      "beforeTriangles": 1216,
+      "triangles": 2944,
+      "profilePoints": 49,
+      "radialSegments": 32,
+      "minimum": [
+        -0.0953618660569191,
+        0,
+        -0.0953618660569191
+      ],
+      "maximum": [
+        0.0953618660569191,
+        0.28999999165534973,
+        0.0953618660569191
+      ],
+      "sameActualPreviousFloat32AABB": true,
+      "zeroAreaTriangles": 0,
+      "inwardWallTriangles": 1152,
+      "closedFootTriangles": 128,
+      "openMouth": true
+    },
+    {
+      "radius": 0.16,
+      "height": 0.43,
+      "beforeTriangles": 1216,
+      "triangles": 2944,
+      "profilePoints": 49,
+      "radialSegments": 32,
+      "minimum": [
+        -0.15893644094467163,
+        0,
+        -0.15893644094467163
+      ],
+      "maximum": [
+        0.15893644094467163,
+        0.4300000071525574,
+        0.15893644094467163
+      ],
+      "sameActualPreviousFloat32AABB": true,
+      "zeroAreaTriangles": 0,
+      "inwardWallTriangles": 1152,
+      "closedFootTriangles": 128,
+      "openMouth": true
+    }
+  ],
+  "independentUnloads": {
+    "breadOnlyUnloadLeavesSixCeramicTexturesLive": true,
+    "ceramicOnlyUnloadLeavesThreeBreadTexturesLive": true
+  },
+  "resourceOwnership": [
+    {
+      "operation": "distance unload + double owner dispose",
+      "sixTextureDisposalsExactlyOnce": true,
+      "twoMaterialDisposalsExactlyOnce": true,
+      "nearGeometryDisposalsExactlyOnce": true,
+      "originalFarProxyRestored": true
+    },
+    {
+      "operation": "reload + whole-owner dispose",
+      "newDisjointTextureIdentities": true,
+      "reloadedTexturesDisposedExactlyOnce": true,
+      "rootDetachedAndEmpty": true
+    }
+  ],
+  "breadResourceOwnership": {
+    "firstThreeTextureDisposals": 3,
+    "firstTwoMaterialDisposals": 2,
+    "reloadedTexturesDisposals": 3,
+    "independentCeramicDisposalsUnchanged": true,
+    "scope": "Actual Three events on CPU textures with verified original PNG hashes, no native image decode or GPU"
+  },
+  "cpuTexelBytes": 1572864,
+  "mipmapTexelBytes": 2097144,
+  "hardwareVRAMMeasured": false,
+  "originalLogsPreserved": true,
+  "nativeArtAccepted": false,
+  "gpuRun": false,
+  "sourceEditedByChecker": false,
+  "files": [
+    {
+      "path": "verify-combined.mjs",
+      "bytes": 16923,
+      "sha256": "030b43a2c019e7178ac2616459c9ecd7170476cf9ac103775ccb3e1721811652"
+    },
+    {
+      "path": "cpu-proof.json",
+      "bytes": 19660,
+      "sha256": "97bb0f7d0e00dd272554196e0122bfd66db748a861caeb890e2de7de0b93734e"
+    },
+    {
+      "path": "actual-combined.stdout.txt",
+      "bytes": 12488,
+      "sha256": "d7a273f820d3bdb64ecebc30ead721cd99eab29991227c9a533f70715743d44e"
+    },
+    {
+      "path": "actual-combined.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "actual-full-source-hashes.json",
+      "bytes": 7081,
+      "sha256": "ce7cb9a9af888b3765499f1f08f3bcda2facb8f466ed2d1e311cf3820bc27498"
+    }
+  ]
+}

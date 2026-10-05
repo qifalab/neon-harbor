@@ -1,0 +1,120 @@
+{
+  "status": "SEALED_CPU_ONLY_NATIVE_ART_PENDING",
+  "createdAt": "2026-10-05T05:23:01.962922+00:00",
+  "baseSourceCommit": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "productionPayload": [
+    {
+      "path": "src/harbor-district.js",
+      "bytes": 29709,
+      "sha256": "2d040feae13890b9a1e03109d0d8f689bbebb2a17dc45fe0d460d2afc4b013b6"
+    },
+    {
+      "path": "src/harbor-frontage-profiles.js",
+      "bytes": 16280,
+      "sha256": "6f488a5151a99ed2119da22ed2e3d57407d4c68743f7d4846ae2456a3ec5eca1"
+    },
+    {
+      "path": "src/harbor-ceramic-art.js",
+      "bytes": 3413,
+      "sha256": "480cbd60ab45f068a9154e826f5df73a140efb8ff1cf00267ec0aede0ec43b67"
+    },
+    {
+      "path": "tests/harbor-ceramic-art.test.js",
+      "bytes": 3342,
+      "sha256": "0c5d1b00bdfb6fce00216cd48b911ef2dde2abbef3f264ecee4c6a170b67a7a6"
+    },
+    {
+      "path": "art-source/copper-reed-ceramics/LICENSE.txt",
+      "bytes": 474,
+      "sha256": "b772f4fb3855fd5c61c73b708f1920d0c6808df41e701b64abd6e5fb16d2e6cc"
+    },
+    {
+      "path": "art-source/copper-reed-ceramics/README.md",
+      "bytes": 1505,
+      "sha256": "866063c33b62c43f80fa4ce64a675bf53cd88d7183625293da9bf1cb813ab959"
+    },
+    {
+      "path": "art-source/copper-reed-ceramics/recipe.json",
+      "bytes": 3203,
+      "sha256": "99bfcb5d41653e05b28122bad6664713a2b5b67dd227dcb3f7873c0b41fbc36f"
+    }
+  ],
+  "patches": [
+    {
+      "path": "harbor-district.js.patch",
+      "bytes": 6126,
+      "sha256": "f8752c5180106b7882e41a44b001774f54969fe2809b0a9b80ab3cf056c1d71f"
+    },
+    {
+      "path": "harbor-frontage-profiles.js.patch",
+      "bytes": 4598,
+      "sha256": "0d16992fba156e70a86773c84ebcf2e933c75145f3b198dcb1efd2fffa103b57"
+    }
+  ],
+  "cpuProof": {
+    "path": "cpu-proof.json",
+    "sha256": "924a5e01c3d93fac9334c4c9e2869f5aa3da9a5936688a8769cea3606dec004d",
+    "before": {
+      "drawCalls": 99,
+      "triangles": 84830
+    },
+    "candidate": {
+      "drawCalls": 101,
+      "triangles": 102110
+    }
+  },
+  "meaningfulUnitTests": {
+    "count": 3,
+    "stdoutSha256": "4066a9b82f9f5b5b20e3a44644a3b5f01c6d40ede02489ed75530cd4b9cd6243",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "independentReview": {
+    "directory": "/workspace/neon-candidates/ceramic-independent-review-20261005",
+    "receiptSha256": "a77326c7bf450dfa6902d57bd327217fbb6c7d8a27f11deae5bbfaa0963cc99c"
+  },
+  "otherFiveStoresByteIdentity": [
+    {
+      "id": "south-091",
+      "byteIdentical": true,
+      "sha256": "18dbb47c9c5d42a2c474cd2374adbaeb316f89a6bfa246eeb6cf6b1f301d62ed",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-092",
+      "byteIdentical": true,
+      "sha256": "b58ba4dcd80f9ee88585e7692acf9aeaa8760845a1749d97ed242c7e2970d447",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-095",
+      "byteIdentical": true,
+      "sha256": "c9eccdeab58f7c003cc3fc19b93d2dcd53a91828e12e7f51ef5757a65c90449c",
+      "drawCalls": 17
+    },
+    {
+      "id": "south-090",
+      "byteIdentical": true,
+      "sha256": "d4641a574e4d172596878ef9ae81b3ccd9e7e002d870fb2c2bac8e2693254de4",
+      "drawCalls": 16
+    },
+    {
+      "id": "south-094",
+      "byteIdentical": true,
+      "sha256": "c5eb3a26a905264cda9f281d72f64a38c01e8ee3bef38861559d02ab1173309a",
+      "drawCalls": 17
+    }
+  ],
+  "allSixFarProxiesByteIdentity": true,
+  "collidersAndFixturesIdentity": {
+    "worldCount": 1874,
+    "frontageCount": 36,
+    "unchanged": true,
+    "sha256": "a759649ba8fc40df7a9a2259a50e3b739b7bae25165311b924077ee0264e8c18",
+    "fixturesSha256": "a01ddfe35bde830c5622a1e5f57a7127028e8c67a2eae57c1f676beddad7025a"
+  },
+  "canvases": "Actual @napi-rs/canvas CanvasElement with real 2D rasterization and font metrics; no browser, WebGL or GPU",
+  "gpuRun": false,
+  "nativeArtAccepted": false,
+  "publicDeploy": false,
+  "mergeGuidance": "Apply 096 hunks to combined district/profile. Keep094 bread patch; choose maxDrawCalls102/maxTriangles110000. Combine refinedCraft cup material selection with refinedBake geometry selection. Expected combined102draw/106814tri must be measured separately; not current proof."
+}

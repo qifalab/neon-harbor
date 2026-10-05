@@ -39,3 +39,6 @@ dialog{width:min(920px,94vw);max-height:88vh;overflow:auto;padding:32px;border:1
 
 /* Optional clear view keeps pause, view switching and interaction accessible. */
 .hud.details-hidden .mission-card,.hud.details-hidden .map-wrap,.hud.details-hidden .driving-info{display:none}
+
+#hud-detail-toggle{width:auto;min-width:76px;padding:0 10px;font-size:12px;white-space:nowrap}
+@media(max-width:600px){#hud-detail-toggle{min-width:64px;padding:0 6px;font-size:10px}}

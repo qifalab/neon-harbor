@@ -1,0 +1,884 @@
+{
+  "status": "CPU_SOURCE_GROUND_ROUTE_AND_ALL_BBOX_CAMERA_CORNERS_PASS_NATIVE_PENDING",
+  "project": "/tmp/neon-harbor-street-refinement-candidate-20261005",
+  "sourceHashes": {
+    "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+    "src/camera.js": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+    "src/metropolis-world.js": "ba1bef7154840d60344413d9332d4119b908d8fa1bbf30c31b66941f5e2a9347",
+    "src/metropolis-western-ridge.js": "b4fd9bb53de9894d67f795b981fb6094673ddd0085dd49ffea89125db720573c",
+    "src/harbor-sample-trees.js": "9bfd3ee850e8d2cf0ad6c905f7e5c53b8f12c1334d68a0a67261a6e6f4e773ef",
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "9f391a319a8854fce05a8f6dba80a8bfcbb75b8e87fe62c775d429a1c0717b3e",
+    "src/metropolis-infrastructure.js": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2"
+  },
+  "colliders": {
+    "count": 4178,
+    "sha256": "7bdfb9a064e0225ea07b641dae7ed363403c8d457c589eeefcde6d8c00e09e30"
+  },
+  "bodyRadius": 0.65,
+  "axisTolerance": 0.15,
+  "stand": {
+    "x": -600,
+    "y": 0,
+    "z": -440.8
+  },
+  "target": {
+    "x": -617,
+    "y": 5.15,
+    "z": -445
+  },
+  "publicCameraControls": {
+    "yaw": -1.8130049139045166,
+    "pitch": -0.05297686261988355,
+    "fov": 65
+  },
+  "actualSourceChaseCamera": {
+    "position": {
+      "x": -600,
+      "y": 1.62,
+      "z": -440.8
+    },
+    "target": {
+      "x": -609.7081061929927,
+      "y": 3.6358596977214144,
+      "z": -443.19847329473936
+    },
+    "focus": {
+      "x": -600,
+      "y": 1.62,
+      "z": -440.8
+    },
+    "yaw": -1.8130049139045166,
+    "pitch": -0.05297686261988355,
+    "fov": 65,
+    "boomLength": 0,
+    "desiredBoomLength": 0,
+    "obstructed": false,
+    "overheadFallback": false,
+    "colliderId": null,
+    "clearanceRadius": 0.45
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "wholePhotoPlan": {
+    "kind": "photo",
+    "label": "06-near-quay-tree-whole",
+    "position": {
+      "x": -600,
+      "y": 0,
+      "z": -440.8
+    },
+    "target": {
+      "x": -617,
+      "y": 5.15,
+      "z": -445
+    },
+    "axisTolerance": 0.15,
+    "hud": "compact",
+    "camera": {
+      "yaw": -1.8130049139045166,
+      "pitch": -0.05297686261988355,
+      "fov": 65
+    },
+    "expectTrees": [
+      0
+    ]
+  },
+  "dayWalkDelta": {
+    "oldTargetX": -612,
+    "newTargetX": -600,
+    "oldApproachMetres": 43.72000000000037,
+    "newApproachMetres": 31.72000000000037,
+    "oldFarLegMetres": 108,
+    "newFarLegMetres": 120,
+    "farReturnXPreserved": -612,
+    "oldRidgeReferenceUnchanged": true
+  },
+  "routeLegs": [
+    {
+      "label": "old-ridge-to-inspection-pavement",
+      "start": {
+        "x": -568.2799999999996,
+        "z": -438.20000000000675
+      },
+      "end": {
+        "x": -568.2799999999996,
+        "z": -440.8
+      },
+      "distanceMetres": 2.5999999999932584,
+      "staticSampleCount": 27,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 16.54999999999999,
+      "samples": [
+        {
+          "position": {
+            "x": -568.2799999999996,
+            "z": -438.20000000000675,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -568.2799999999996,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -568.2799999999996,
+        "z": -440.8000000000001,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": 0,
+        "movedZ": -2.599999999993372,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "day-new-whole-tree-approach",
+      "start": {
+        "x": -568.2799999999996,
+        "z": -440.8
+      },
+      "end": {
+        "x": -600,
+        "z": -440.8
+      },
+      "distanceMetres": 31.72000000000037,
+      "staticSampleCount": 319,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 15.927063974057669,
+      "samples": [
+        {
+          "position": {
+            "x": -568.2799999999996,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -600,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -600.0000000000005,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": -31.720000000000823,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "old-whole-stand-to-new-whole-stand",
+      "start": {
+        "x": -612,
+        "z": -440.8
+      },
+      "end": {
+        "x": -600,
+        "z": -440.8
+      },
+      "distanceMetres": 12,
+      "staticSampleCount": 121,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 3.984549600554542,
+      "samples": [
+        {
+          "position": {
+            "x": -612,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -600,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -599.9999999999969,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": 12.00000000000307,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "new-whole-stand-to-far-release",
+      "start": {
+        "x": -600,
+        "z": -440.8
+      },
+      "end": {
+        "x": -720,
+        "z": -440.8
+      },
+      "distanceMetres": 120,
+      "staticSampleCount": 1201,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 0.20500000000003404,
+      "samples": [
+        {
+          "position": {
+            "x": -600,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -720,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -720.0000000000141,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": -120.0000000000141,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    },
+    {
+      "label": "unchanged-far-release-return",
+      "start": {
+        "x": -720,
+        "z": -440.8
+      },
+      "end": {
+        "x": -612,
+        "z": -440.8
+      },
+      "distanceMetres": 108,
+      "staticSampleCount": 1081,
+      "minGround": 0,
+      "maxGround": 0,
+      "nearestBodyClearanceMetres": 0.20500000000003404,
+      "samples": [
+        {
+          "position": {
+            "x": -720,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        },
+        {
+          "position": {
+            "x": -612,
+            "z": -440.8,
+            "y": 0
+          },
+          "contacts": []
+        }
+      ],
+      "actualSourceMoveCircleFinal": {
+        "x": -612.00000000003,
+        "z": -440.8,
+        "y": 0
+      },
+      "actualSourceMoveCircleReport": {
+        "contacts": [],
+        "blockedRotation": false,
+        "movedX": 107.99999999996999,
+        "movedZ": 0,
+        "yawDelta": 0
+      }
+    }
+  ],
+  "standing": {
+    "position": {
+      "x": -600,
+      "y": 0,
+      "z": -440.8
+    },
+    "contacts": []
+  },
+  "standingNearestBlocker": {
+    "id": "pedestrian-signal-6",
+    "centreToSolidDistanceMetres": 16.57706397405767,
+    "bodyClearanceMetres": 15.927063974057669,
+    "standingToleranceClearanceMetres": 15.777063974057668
+  },
+  "standingFootprintSupportedSamples": [
+    {
+      "x": -599.2,
+      "z": -440.8,
+      "y": 0
+    },
+    {
+      "x": -599.2608963739909,
+      "z": -440.49385325410793,
+      "y": 0
+    },
+    {
+      "x": -599.4343145750507,
+      "z": -440.23431457505075,
+      "y": 0
+    },
+    {
+      "x": -599.6938532541079,
+      "z": -440.060896373991,
+      "y": 0
+    },
+    {
+      "x": -600,
+      "z": -440,
+      "y": 0
+    },
+    {
+      "x": -600.3061467458921,
+      "z": -440.060896373991,
+      "y": 0
+    },
+    {
+      "x": -600.5656854249493,
+      "z": -440.23431457505075,
+      "y": 0
+    },
+    {
+      "x": -600.7391036260091,
+      "z": -440.49385325410793,
+      "y": 0
+    },
+    {
+      "x": -600.8,
+      "z": -440.8,
+      "y": 0
+    },
+    {
+      "x": -600.7391036260091,
+      "z": -441.1061467458921,
+      "y": 0
+    },
+    {
+      "x": -600.5656854249493,
+      "z": -441.3656854249493,
+      "y": 0
+    },
+    {
+      "x": -600.3061467458921,
+      "z": -441.539103626009,
+      "y": 0
+    },
+    {
+      "x": -600,
+      "z": -441.6,
+      "y": 0
+    },
+    {
+      "x": -599.6938532541079,
+      "z": -441.539103626009,
+      "y": 0
+    },
+    {
+      "x": -599.4343145750507,
+      "z": -441.3656854249493,
+      "y": 0
+    },
+    {
+      "x": -599.2608963739909,
+      "z": -441.1061467458921,
+      "y": 0
+    }
+  ],
+  "actualCandidateBounds": {
+    "min": [
+      -3.2630279064178467,
+      0.3207566738128662,
+      -2.8599963188171387
+    ],
+    "max": [
+      4.268263816833496,
+      11.769681930541992,
+      2.2857513427734375
+    ]
+  },
+  "actualCandidateGLBSha256": "2cbde57d8510997cc21c41604bb561dad9258c3544c1a3beebe9d1783b97a23c",
+  "actualCandidateBBoxCorners": [
+    {
+      "world": [
+        -620.2630279064178,
+        0.3207566738128662,
+        -447.85999631881714
+      ],
+      "ndc": [
+        0.09455815735006513,
+        -0.4169943330760361,
+        0.9903888841280905
+      ],
+      "pixel": [
+        700.5172207040416,
+        566.7977332304145
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        0.3207566738128662,
+        -447.85999631881714
+      ],
+      "ndc": [
+        0.27576683265668606,
+        -0.47030948670006895,
+        0.9852633362425295
+      ],
+      "pixel": [
+        816.490772900279,
+        588.1237946800276
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.2630279064178,
+        11.769681930541992,
+        -447.85999631881714
+      ],
+      "ndc": [
+        0.0852362326582564,
+        0.3917570518312263,
+        0.9913420202457857
+      ],
+      "pixel": [
+        694.551188901284,
+        243.29717926750948
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        11.769681930541992,
+        -447.85999631881714
+      ],
+      "ndc": [
+        0.23623419794752717,
+        0.7133737470510658,
+        0.9873841069377003
+      ],
+      "pixel": [
+        791.1898866864174,
+        114.65050117957367
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.2630279064178,
+        0.3207566738128662,
+        -442.71424865722656
+      ],
+      "ndc": [
+        -0.15119332018074813,
+        -0.4232413237765408,
+        0.9897883184764957
+      ],
+      "pixel": [
+        543.2362750843212,
+        569.2965295106162
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        0.3207566738128662,
+        -442.71424865722656
+      ],
+      "ndc": [
+        -0.09526253935272584,
+        -0.4854338348508127,
+        0.9838093299157131
+      ],
+      "pixel": [
+        579.0319748142555,
+        594.1735339403251
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.2630279064178,
+        11.769681930541992,
+        -442.71424865722656
+      ],
+      "ndc": [
+        -0.13545855582088498,
+        0.4311693609066519,
+        0.9908570003294987
+      ],
+      "pixel": [
+        553.3065242746336,
+        227.53225563733923
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.7317361831665,
+        11.769681930541992,
+        -442.71424865722656
+      ],
+      "ndc": [
+        -0.08047232380012842,
+        0.7988732773699602,
+        0.9863319235967425
+      ],
+      "pixel": [
+        588.4977127679178,
+        80.45068905201593
+      ],
+      "inView": true
+    }
+  ],
+  "originalConservativeEnvelopeBBoxCorners": [
+    {
+      "world": [
+        -620.4,
+        0.3,
+        -448.4
+      ],
+      "ndc": [
+        0.11643658230061568,
+        -0.41736547150680187,
+        0.9905057961347659
+      ],
+      "pixel": [
+        714.5194126723941,
+        566.9461886027207
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        0.3,
+        -448.4
+      ],
+      "ndc": [
+        0.3201549390160631,
+        -0.4739056336031983,
+        0.9851556795847151
+      ],
+      "pixel": [
+        844.8991609702805,
+        589.5622534412794
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.4,
+        12,
+        -448.4
+      ],
+      "ndc": [
+        0.10485883991627827,
+        0.398394756320527,
+        0.9914555238620246
+      ],
+      "pixel": [
+        707.109657546418,
+        240.64209747178919
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        12,
+        -448.4
+      ],
+      "ndc": [
+        0.27310927875712177,
+        0.739958936663019,
+        0.9873453982797997
+      ],
+      "pixel": [
+        814.7899384045579,
+        104.01642533479239
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.4,
+        0.3,
+        -441.6
+      ],
+      "ndc": [
+        -0.20878943547804008,
+        -0.42570935323837183,
+        0.9897162557781672
+      ],
+      "pixel": [
+        506.37476129405434,
+        570.2837412953487
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        0.3,
+        -441.6
+      ],
+      "ndc": [
+        -0.18433048319497727,
+        -0.4952010549437033,
+        0.9831405989423941
+      ],
+      "pixel": [
+        522.0284907552145,
+        598.0804219774814
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -620.4,
+        12,
+        -441.6
+      ],
+      "ndc": [
+        -0.18649579208719783,
+        0.45117454882111846,
+        0.9908204116697458
+      ],
+      "pixel": [
+        520.6426930641934,
+        219.5301804715526
+      ],
+      "inView": true
+    },
+    {
+      "world": [
+        -612.5,
+        12,
+        -441.6
+      ],
+      "ndc": [
+        -0.1541800234888697,
+        0.8594448904894939,
+        0.9859075944824391
+      ],
+      "pixel": [
+        541.3247849671234,
+        56.222043804202436
+      ],
+      "inView": true
+    }
+  ],
+  "toleranceCornerCases": [
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.312218110800216,
+      "maxAbsNdcY": 0.8675094853034796
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3115062919662719,
+      "maxAbsNdcY": 0.8830036370684919
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3211926942082938,
+      "maxAbsNdcY": 0.8659561654141379
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.32045979403634006,
+      "maxAbsNdcY": 0.8814372306737928
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.33197335130116734,
+      "maxAbsNdcY": 0.8614422789447171
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3312178545053348,
+      "maxAbsNdcY": 0.8768854483669805
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3410504231231434,
+      "maxAbsNdcY": 0.8600966255883618
+    },
+    {
+      "offset": {
+        "dx": -0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.34027357270741904,
+      "maxAbsNdcY": 0.8755285360258064
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3003399767037371,
+      "maxAbsNdcY": 0.8437280959927852
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.2996600629296985,
+      "maxAbsNdcY": 0.859024460390705
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.30925204177250654,
+      "maxAbsNdcY": 0.8421902067212224
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": -0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3085513899926326,
+      "maxAbsNdcY": 0.8574739697589498
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.3197438359031352,
+      "maxAbsNdcY": 0.8379003546719902
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": -0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.3190212523194209,
+      "maxAbsNdcY": 0.8531490883513959
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": -0.004
+      },
+      "maxAbsNdcX": 0.32875282120783117,
+      "maxAbsNdcY": 0.8365621049830974
+    },
+    {
+      "offset": {
+        "dx": 0.15,
+        "dz": 0.15,
+        "dyaw": 0.004,
+        "dpitch": 0.004
+      },
+      "maxAbsNdcX": 0.32800924525458336,
+      "maxAbsNdcY": 0.8517999475787118
+    }
+  ],
+  "limitations": [
+    "Actual source CPU world, collision sweeps, supported ground and actual camera implementation; no GPU, native pixel, moving NPC/traffic or hardware performance evidence.",
+    "All candidate actual AABB and conservative original-envelope corners fit the frozen public FOV; this does not establish artistic composition, lighting or native street owner release.",
+    "ROOT/NEXT, prior methods and original baselines unchanged."
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "originalArtifactId": 11325999060,
+  "originalArchiveSha256": "812c1979d5eda3bd605e0920d169671057945218dd696c4ce2800bfe5f70540e",
+  "sourceCommit": "5cd20885881c5fd9d30b405eb267a25ec7752164",
+  "traces": [
+    {
+      "original": "/workspace/neon-evidence/5cd-multiplayer-original-fail-11325999060/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/independent-client-1-trace.zip",
+      "bytes": 8705560,
+      "sha256": "7450ce1f4b45b2fc3fbddaa78a17ca51030b8810b2954659573684af5630b979",
+      "stateRequestCount": 2194,
+      "http429Count": 1,
+      "sanitizedStateExcerpts": [
+        {
+          "startedDateTime": "2026-10-05T04:58:44.767Z",
+          "status": 200,
+          "packet": {
+            "pose": {
+              "x": 1192,
+              "y": 3.75,
+              "z": -151.81,
+              "yaw": -3.141592653589793
+            },
+            "scene": "outdoor",
+            "speed": 0,
+            "travel": true,
+            "revision": 3
+          },
+          "response": {
+            "ok": true
+          }
+        },
+        {
+          "startedDateTime": "2026-10-05T04:58:45.626Z",
+          "status": 429,
+          "packet": {
+            "pose": {
+              "x": 1192,
+              "y": 4.035,
+              "z": -167.65,
+              "yaw": 3.141592653589793
+            },
+            "scene": "interior:east-012:lobby",
+            "speed": 0,
+            "travel": true,
+            "revision": 4
+          },
+          "response": {
+            "error": "TRAVEL_RATE_LIMIT"
+          }
+        },
+        {
+          "startedDateTime": "2026-10-05T04:58:45.783Z",
+          "status": 200,
+          "packet": {
+            "pose": {
+              "x": 1192,
+              "y": 4.035,
+              "z": -167.65,
+              "yaw": 3.141592653589793
+            },
+            "scene": "interior:east-012:lobby",
+            "speed": 0,
+            "travel": true,
+            "revision": 4
+          },
+          "response": {
+            "ok": true
+          }
+        }
+      ]
+    },
+    {
+      "original": "/workspace/neon-evidence/5cd-multiplayer-original-fail-11325999060/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/independent-client-2-trace.zip",
+      "bytes": 12268485,
+      "sha256": "fef1814aa6f949102c7a9175464842be92b463eb441483219cea6aa1b7995687",
+      "stateRequestCount": 2049,
+      "http429Count": 0,
+      "sanitizedStateExcerpts": []
+    }
+  ],
+  "conclusion": "Client 1 atlas revision 3 accepted at 04:58:44.767Z; normal public entry revision 4 attempted 859 ms later and got TRAVEL_RATE_LIMIT; the same revision accepted 157 ms later. Client 2 had no HTTP 429."
+}

@@ -1,0 +1,23 @@
+✔ eight real room clients coalesce rapid atlas, entry and lift travel into the latest bounded position (199.959823ms)
+✔ the real service still rejects rapid direct travel, excessive movement and out-of-world positions (24.621723ms)
+✔ an acknowledged travel cannot clear a newer revision queued during the actual HTTP request (13.732399ms)
+✔ a throttled HTTP acknowledgement preserves the unsent travel until an actual accepted update (14.938165ms)
+✔ leaving discards the queued travel and ignores an old session acknowledgement (11.700111ms)
+✔ a rapid travel-to-car claim waits for the actual latest pose before requesting ownership (115.528528ms)
+✔ a claim awaits an existing actual HTTP state request without duplicating it (8.281814ms)
+✔ a failed actual state update aborts the claim without silently retrying HTTP (5.916071ms)
+✔ leaving during a queued claim prevents any later ownership request (106.151049ms)
+✔ a claim without a session fails before making an HTTP request (0.481459ms)
+✔ an old session acknowledgement cannot clear a new session state request or complete its old claim (12.390307ms)
+✔ a claim waiting on a hung state RPC has a 6500 ms bound and cannot claim after timeout (1.6043ms)
+✔ real room service joins two clients, streams movement/chat, isolates rooms and rejects invalid packets (271.528134ms)
+✔ vehicle claims are exclusive and leaving releases ownership (21.110524ms)
+✔ room capacity is enforced and peer interpolation follows shortest angles without interpolating travel (21.605975ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 615.410232

@@ -30,20 +30,57 @@ export class MultiplayerClient{
   }
   receive(snapshot){this.snapshot=snapshot;this.peers.push(snapshot,performance.now());this.onSnapshot(snapshot);}
   async sendState(){
-    if(!this.session||!this.pendingState||this.sending)return;
+    if(!this.session||!this.pendingState)return;
+    if(this.sending)return this.stateRequest;
+    // Atlas, entry and lift actions can replace each other before the service's
+    // one-second travel allowance renews. Keep the latest pose queued instead
+    // of sending a rejected travel or disguising it as ordinary movement.
+    if(this.pendingState.travel&&performance.now()<(this.nextTravelTime||0))return;
     if(performance.now()-(this.lastSendTime||0)<90)return;this.lastSendTime=performance.now();
     this.sending=true;const epoch=this.epoch,packet=this.pendingState;
-    try{await this.request('state',packet);if(epoch===this.epoch&&this.pendingState?.revision===packet.revision)this.pendingState.travel=false;}
-    catch(error){if(epoch===this.epoch)this.setStatus('reconnecting');}
-    finally{this.sending=false;}
+    const request=Promise.resolve().then(()=>this.request('state',packet)).then(result=>{
+      if(epoch===this.epoch&&!result.throttled){
+        if(packet.travel)this.nextTravelTime=performance.now()+1000;
+        if(this.pendingState?.revision===packet.revision)this.pendingState.travel=false;
+      }
+      return result;
+    },error=>{if(epoch===this.epoch)this.setStatus('reconnecting');return {error};}).finally(()=>{
+      if(this.stateRequest===request){this.sending=false;this.stateRequest=null;}
+    });
+    this.stateRequest=request;return request;
   }
   state(value){const travel=value.travel||this.pendingState?.travel;this.pendingState={...value,travel};this.lastSent=this.pendingState;}
-  async claim(carId){await this.sendState();return this.request('claim',{carId});}
+  async claim(carId){
+    const session=this.session,epoch=this.epoch;
+    if(!session)throw new Error(messages.SESSION_EXPIRED);
+    // A car claim must follow the accepted travel pose, including an already
+    // in-flight state request. Bound this wait and never claim after leaving.
+    const deadline=performance.now()+6500;
+    let expired=false,timer;
+    const timeoutMessage='位置同步未完成，请稍后再试。';
+    const current=()=>{
+      if(epoch!==this.epoch||this.session!==session)throw new Error(messages.SESSION_EXPIRED);
+      if(expired||performance.now()>=deadline)throw new Error(timeoutMessage);
+    };
+    const sync=async()=>{
+      while(true){
+        current();const result=await this.sendState();current();
+        if(result?.error)throw result.error;
+        if(!this.pendingState?.travel&&!this.sending)break;
+        const delay=Math.min(100,Math.max(10,(this.nextTravelTime||0)-performance.now()),deadline-performance.now());
+        await new Promise(resolve=>setTimeout(resolve,delay));
+      }
+      current();
+    };
+    const timeout=new Promise((_,reject)=>{timer=setTimeout(()=>{expired=true;reject(new Error(timeoutMessage));},6500);});
+    try{await Promise.race([sync(),timeout]);}finally{clearTimeout(timer);}
+    current();return this.request('claim',{carId},session);
+  }
   async release(){return this.request('release',{});}
   async chat(text){return this.request('chat',{text});}
   async leave(){
     ++this.epoch;clearInterval(this.timer);clearTimeout(this.failureTimer);this.failureTimer=null;this.source?.close();this.source=null;
-    const session=this.session;this.session=null;this.snapshot=null;this.pendingState=null;this.peers=new PeerSnapshots();this.setStatus('offline');
+    const session=this.session;this.session=null;this.snapshot=null;this.pendingState=null;this.nextTravelTime=0;this.stateRequest=null;this.sending=false;this.peers=new PeerSnapshots();this.setStatus('offline');
     if(session)await this.request('leave',{},session).catch(()=>{});
   }
 }

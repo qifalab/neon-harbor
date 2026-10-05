@@ -1,0 +1,83 @@
+{
+  "id": "morning-tin-original-bread-crust-v1",
+  "site": "south-094",
+  "author": "Neon Harbor contributors, original procedural work 2026",
+  "assetLicense": "CC0-1.0",
+  "authoringCodeLicense": "MIT",
+  "referenceDimensionsMetres": [
+    0.304,
+    0.196
+  ],
+  "originalProceduralInputsOnly": true,
+  "externalTextureOrPhotoInputs": false,
+  "seed": 2026100594,
+  "authoringSource": "art-source/morning-tin-bread/author_bread_crust.py",
+  "recipe": "art-source/morning-tin-bread/bread-crust-recipe.json",
+  "geometrySource": [
+    "src/harbor-frontage-profiles.js:createBakedDisplayLoaf",
+    "src/harbor-bread-art.js:createMorningTinCup/createMorningTinHandle/createMorningTinCoffee"
+  ],
+  "files": [
+    {
+      "file": "bread-crust-albedo.png",
+      "channel": "map",
+      "colorSpace": "sRGB",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 55974,
+      "sha256": "f28b3a238049bc865d3c6b1781677584b2ea62e50d2782b337cbc01578f9c105"
+    },
+    {
+      "file": "bread-crust-height.png",
+      "channel": "bumpMap",
+      "colorSpace": "linear",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 27755,
+      "sha256": "8d46fe5490d03a470536f27347d2113ce73b768a7ed69f55ab0a03a10b9be589"
+    },
+    {
+      "file": "bread-crust-roughness.png",
+      "channel": "roughnessMap",
+      "colorSpace": "linear",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 16330,
+      "sha256": "65b04aa5acb176519da041a9e6dd7a28d958b6a92e6ed08b2c02299cf562c6ae"
+    }
+  ],
+  "compressedMapBytes": 100059,
+  "material": {
+    "color": "#ffffff",
+    "metalness": 0,
+    "emissive": 0,
+    "scalarRoughness": 1,
+    "bumpScaleMetres": 0.0008,
+    "neutralCrustVertexTint": [
+      0.96,
+      1
+    ],
+    "crumbBumpScaleMetres": 0.00036,
+    "crumbDoesNotMultiplyCrustAlbedo": true
+  },
+  "ownership": {
+    "scope": "south-094 near resident only",
+    "loadDistanceMetres": 72,
+    "releaseDistanceMetres": 96,
+    "mapsPerOwner": 3,
+    "materialsPerOwner": 2,
+    "defaultDecoder": "Three TextureLoader / HTMLImageElement",
+    "disposeIsIdempotent": true,
+    "closableImageClosedOnceWhenAvailable": true,
+    "lateClosableImageCallbackClosedAfterDisposal": true,
+    "ownerReferencesDroppedWithUnloadedNearGroup": true,
+    "nativeDecodeGpuUploadAndMemoryMeasured": false
+  },
+  "artAcceptance": "PENDING_NATIVE_HIGH_SAME_VIEW_REVIEW"
+}
