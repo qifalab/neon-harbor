@@ -1,0 +1,208 @@
+{
+  "name": "NH near commuter core prototype",
+  "role": "commuter",
+  "macroTarget": "asian-male-young",
+  "wardrobeAsset": "male_casualsuit03",
+  "hairAsset": "short01",
+  "sources": {
+    "bodyCommit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+    "officialPack": "https://files.makehumancommunity.org/asset_packs/makehuman_system_assets/makehuman_system_assets_cc0.zip"
+  },
+  "materials": 4,
+  "bones": 71,
+  "triangles": 29074,
+  "meshes": [
+    {
+      "name": "skin",
+      "vertices": 8449,
+      "triangles": 15492,
+      "boundsMin": [
+        -0.29086536169052124,
+        0.6779518127441406,
+        -0.06545043736696243
+      ],
+      "boundsMax": [
+        0.29086536169052124,
+        1.762083888053894,
+        0.16527682542800903
+      ]
+    },
+    {
+      "name": "wardrobe",
+      "vertices": 4540,
+      "triangles": 7864,
+      "boundsMin": [
+        -0.29492542147636414,
+        0.0,
+        -0.13907478749752045
+      ],
+      "boundsMax": [
+        0.3028756082057953,
+        1.5322930812835693,
+        0.21014687418937683
+      ]
+    },
+    {
+      "name": "hair",
+      "vertices": 3177,
+      "triangles": 3678,
+      "boundsMin": [
+        -0.08385773748159409,
+        1.5519695281982422,
+        -0.07822240889072418
+      ],
+      "boundsMax": [
+        0.08082348853349686,
+        1.7799999713897705,
+        0.14303259551525116
+      ]
+    },
+    {
+      "name": "eyes",
+      "vertices": 1076,
+      "triangles": 2040,
+      "boundsMin": [
+        -0.04820745438337326,
+        1.6308708190917969,
+        0.11982903629541397
+      ],
+      "boundsMax": [
+        0.04820745438337326,
+        1.6625192165374756,
+        0.14471164345741272
+      ]
+    }
+  ],
+  "physicalHeightMetres": 1.78,
+  "rawSourceBodyTriangles": 26756,
+  "maskedBodyTriangles": 15492,
+  "restBounds": {
+    "min": [
+      -0.29492542147636414,
+      0.0,
+      -0.13907478749752045
+    ],
+    "max": [
+      0.3028756082057953,
+      1.7799999713897705,
+      0.21014687418937683
+    ]
+  },
+  "originalFKClips": [
+    "NH walk FK",
+    "NH stair FK",
+    "NH idle FK"
+  ],
+  "textures": [
+    {
+      "name": "skin-basecolor.jpg",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "bytes": 176260
+    },
+    {
+      "name": "wardrobe-basecolor.jpg",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 590548
+    },
+    {
+      "name": "wardrobe-normal.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 897181
+    },
+    {
+      "name": "wardrobe-orm.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 458489
+    },
+    {
+      "name": "hair-basecolor.png",
+      "pixels": [
+        512,
+        512
+      ],
+      "bytes": 329267
+    },
+    {
+      "name": "eyes-basecolor.png",
+      "pixels": [
+        512,
+        512
+      ],
+      "bytes": 200274
+    }
+  ],
+  "files": [
+    {
+      "path": "art-source/near-resident/editable-commuter/commuter.bin",
+      "bytes": 1149528,
+      "sha256": "37667a4543c9f39fdd2eec248b7b6b1407157d88f4b67a07ff929b585eebd5a0"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/commuter.gltf",
+      "bytes": 40623,
+      "sha256": "00f76bbac88a76211a4fa14f8512c3aa5206d7b2004f8c66e54bb1e8c9e3109e"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/eyes-basecolor.png",
+      "bytes": 200274,
+      "sha256": "65f912db7a220702d93fdd8c16a4010e76d92c6ae0dcdf77d278832631ebf183"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/hair-basecolor.png",
+      "bytes": 329267,
+      "sha256": "5dbfa929aa967f26a67085290be0dd384b21110c441621b3ae6d1a63442315b7"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/skin-basecolor.jpg",
+      "bytes": 176260,
+      "sha256": "e69aa6273571e94bdde1c1e2d84a72cba8025ca82b519a396ffb6dc1d296d351"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/wardrobe-basecolor.jpg",
+      "bytes": 590548,
+      "sha256": "2ba9bdf7caf7a062e567a8c6b05b8ee773bc08c085505f1fa1314162ad4c5cba"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/wardrobe-normal.png",
+      "bytes": 897181,
+      "sha256": "9ac7d02e6599b73305493543388336f8110064582815f4bfbf9b7b7de7d5e41c"
+    },
+    {
+      "path": "art-source/near-resident/editable-commuter/wardrobe-orm.png",
+      "bytes": 458489,
+      "sha256": "5555d5feb3760f25117b307992a6534b0e9f1be529852008b0a5787e021c9f7a"
+    },
+    {
+      "path": "assets/resident/core-commuter/commuter.glb",
+      "bytes": 3825084,
+      "sha256": "f5015fa97f5542f110afa302f48a44cde0bb9f504336ca48a99dd60ee4fb3b7a"
+    }
+  ],
+  "acceptance": {
+    "staticDataOnly": true,
+    "browserReviewed": false,
+    "nativeHighReviewed": false,
+    "runtimeActionChainReviewed": false,
+    "hardwarePerformanceMeasured": false,
+    "finalArtAccepted": false
+  },
+  "limitations": [
+    "One commuter body/wardrobe, part of a three-asset prototype; not the complete resident collection.",
+    "Original FK animation, no terrain IK, root-motion retarget or motion capture.",
+    "Hair card alpha, garment seams and shoulders require native High inspection.",
+    "Skin color source is a diffuse asset, not a complete calibrated scan-based PBR set.",
+    "Existing far LODs are intentionally retained by the candidate factory."
+  ]
+}

@@ -1,0 +1,1168 @@
+{
+  "schema": "neon-harbor/first-frozen-feature-ci-evidence/v1",
+  "generatedAt": "2026-10-04T21:40:46.329409+00:00",
+  "runId": 37235153499,
+  "runAttempt": 1,
+  "headSha": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "result": "failure",
+  "requiredJobs": {
+    "success": 11,
+    "failure": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "gameBrowserCases": {
+    "passed": 26,
+    "failed": 1
+  },
+  "multiplayerBrowserCases": {
+    "passed": 2,
+    "failed": 0
+  },
+  "ruleTestsEachGameMatrix": 311,
+  "gameRuleMatricesActuallyPassed": 11,
+  "mpNpmRulesNotRun": true,
+  "conditionalPrOnlySkippedNotCountedAsPass": 2,
+  "fullCiPassed": false,
+  "sourceIndexRefMutations": false,
+  "stageOrCommitPerformed": false,
+  "successfulArtifactZipBytesDownloaded": false,
+  "downloadedFailureArtifactId": 11315651048,
+  "scope": "All files currently closed in this directory except evidence-files.json itself, whose self-hash would be circular. Future candidates must use a new directory.",
+  "files": [
+    {
+      "file": "2026-10-04T21-14-27-040105Z-jobs-original.json",
+      "bytes": 31849,
+      "sha256": "221f8d46e89f761b3de5242e79f14e22318beb9342061d17e08fffcf37c02510",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-14-27-040105Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "dbca50aca171799cbda817a3091e21f42d6c5b4631dce53a074923dfe2c39159",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-14-27-040105Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-14-27-040105Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "cab3a95d543cfcc79a17442877da177bf4d86f1cbc6f275cff033d71658ef795",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-14-27-040105Z-summary.json",
+      "bytes": 4672,
+      "sha256": "92be1903bc01f27816b48f9bbc616986bb9eec1ed0aa19b72cd33906d6dda4f3",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-15-28-873395Z-jobs-original.json",
+      "bytes": 32064,
+      "sha256": "404e38a734e91a2b16a819bf9ae2a950ed6d150c2a0aa599e4e5768774991744",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-15-28-873395Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "8ec3e0dcd0672a199ee10e389f5129ee530a022ed4aebd6d5d44279790e79e34",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-15-28-873395Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-15-28-873395Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "a0d369bd4c4432114c0403f82b3897aa2a4b550baa70999a7e2f365cf27bf41d",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-15-28-873395Z-summary.json",
+      "bytes": 4770,
+      "sha256": "4d5093a5f4a3facb96000807290af49ad9b5dae97bd0971c54b6340e21d49680",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-16-56-444504Z-jobs-original.json",
+      "bytes": 32795,
+      "sha256": "3f481730f6a9ae51f4cd0f29c4f68e10525c1cde248f9990352255f578eee909",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-16-56-444504Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "462fef75636a4044b81bfebe89e1ca9e4f8eea3243d9be36828f194f5f4221c6",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-16-56-444504Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-16-56-444504Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "0caaa203dc1aff85b47e2d4c898a2797d8d960d74aaa5135f9a09c7eba4b79a3",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-16-56-444504Z-summary.json",
+      "bytes": 5155,
+      "sha256": "e339cfc2ed8915e02d7fac4852a31db45bdba89730e878a9348521cd8e85a1b7",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-17-51-673099Z-jobs-original.json",
+      "bytes": 33268,
+      "sha256": "49f58e7e06bccdf35956cad390f82fe440610a8ff9fe1a8f1c2199a2bfab54cc",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-17-51-673099Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "4f151a16930dfaaccf028c0059eb96c7a27e9a55edb04dc7b2e10ce662e23eff",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-17-51-673099Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-17-51-673099Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "326a9c4934d17903209fe3bc3737804ef330913e8dbd4a74a3dac9850ed2eef5",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-17-51-673099Z-summary.json",
+      "bytes": 5442,
+      "sha256": "30751728c2e1e4fa0d354be74670e21dd98940c44017fcbff8c05088bbf29d2c",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-19-03-830612Z-jobs-original.json",
+      "bytes": 33897,
+      "sha256": "ba32a0a9363d4c9a67c9d67d1ee076f7b13fdad83b86f15406462cf4be12ac33",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-19-03-830612Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "3d53262224b88a2a55c8175950229f5a9ef53d03210c91104713103a5b23f987",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-19-03-830612Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-19-03-830612Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "8e246774c0d28a1e0f8ad310cc25fffd3a45472ef105ff9a69495d0a8ac90504",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-19-03-830612Z-summary.json",
+      "bytes": 5327,
+      "sha256": "96c6a45a898c85119d38bd51f597da3183574af1772220f37a0f31b800e127af",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-19-57-430638Z-jobs-original.json",
+      "bytes": 33918,
+      "sha256": "3820fc6cc166fd9fe221698bf0d42fbcea4442fbba2a2284fa0b365fe873125b",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-19-57-430638Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "6739a515ddb604820581d623c7721d5f8c54a0485e9c911224cbccdb4c60e493",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-19-57-430638Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-19-57-430638Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "cec2babb6dd3adec80378efd88b31f298df4ee235a2ea118457b2e21e5a4b30c",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-19-57-430638Z-summary.json",
+      "bytes": 5348,
+      "sha256": "e95d1af9ab06adb3d2d388d14f8a79b4263df7a465b2df81d681185dfdea6945",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-21-33-510684Z-jobs-original.json",
+      "bytes": 34243,
+      "sha256": "7286bfbec6b01f824f56c3b0680753551f75ab2762748d1c2aebeb9ccf5b3071",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-21-33-510684Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "5deda370b115aabeb2e39032c4a42b4e5e1aa3256e18602c549770d798b6a02e",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-21-33-510684Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-21-33-510684Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "383ecef2136fb4dd259f02d5bd9af134d464086ee682f130b3bad9bcd7c2a86b",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-21-33-510684Z-summary.json",
+      "bytes": 5290,
+      "sha256": "530ac83e6268a338edd7313737ab1bd7a2cac6c259edbbe7154a16682e51f0c2",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-23-14-810524Z-jobs-original.json",
+      "bytes": 35218,
+      "sha256": "491ba4f055833c6a8f5646928244a7cad06288f8c4437361d16ffc0533ef0778",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-23-14-810524Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "c2d8a83f2010d14ac3a48c97a299dbfc2fd6b68b43c0207ad8e03d36e9aa2514",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-23-14-810524Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-23-14-810524Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "3b7899ad4ac24e3f1467d52adcd0d5152fb1f8774fc8fc5238214075ae88c842",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-23-14-810524Z-summary.json",
+      "bytes": 5302,
+      "sha256": "abcac5874cbda04bf3a139aaddb35b37e0ebdb75f9af8ac37c7c91948a31d107",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-24-52-868787Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "b4fcd1461106d9e80c8836be9b675f75f48841335e5feac65c80408e2e1f9029",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-24-52-868787Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "24fb735eb98cd723868dff88e143985da1220210cc6ea1bcda7425f28d86c5bc",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-24-52-868787Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-24-52-868787Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "dad62b502f2c80ba498e1327cdf5252fa44f88c6ca92434107c82d6024e27412",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-24-52-868787Z-summary.json",
+      "bytes": 5179,
+      "sha256": "c122861003a54a61a4d70e81125d4213748913bd137f2dba19e29a0f0a62d098",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-26-41-916690Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "b4fcd1461106d9e80c8836be9b675f75f48841335e5feac65c80408e2e1f9029",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-26-41-916690Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "0ba7f1e5f5cd9ef328140419eed683c1d5823f66ebe0b68f8bfcf8e50615ccd6",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-26-41-916690Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-26-41-916690Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "40fa9fdc99eac47b577b8cfe14d346a905d805f3bac699a46a632f01dadb0944",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-26-41-916690Z-summary.json",
+      "bytes": 5179,
+      "sha256": "46b6767401aa79f1b1088ba143fa642c14ff3aa9d9c772edc336012edc970f3a",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-26-52-150564Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "b4fcd1461106d9e80c8836be9b675f75f48841335e5feac65c80408e2e1f9029",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-26-52-150564Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "d99321d96f8b01d8f9a582f4e5e7df5aacf65a1bd8df13dfe0b2d43ece242ceb",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-26-52-150564Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-26-52-150564Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "886f4d82eee5ca1f9ad618e8d42b2ed8df967feaff39363a70c840a6df1ee6ea",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-26-52-150564Z-summary.json",
+      "bytes": 5179,
+      "sha256": "f10f7852641ee63b26812d42e981bb92834b25e65ce4baee697f922e870758e3",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-27-38-647123Z-artifacts-original.json",
+      "bytes": 5829,
+      "sha256": "0080966b2a57c175962e7166435072f14ead8d6bf3330dc4beb64266be2ba580",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-27-38-647123Z-artifacts-request-receipt.json",
+      "bytes": 83,
+      "sha256": "6d0b3f8f686bce280fe0a9c285f384ce15c99efc267041aee1af26555377e4df",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-27-54-016969Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "b4fcd1461106d9e80c8836be9b675f75f48841335e5feac65c80408e2e1f9029",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-27-54-016969Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "fed0a9c0ee0c1e69a63bbe16eceab4e7734176ce0aad9737a8e52804d146d06b",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-27-54-016969Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-27-54-016969Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "a59c3bc45d2cada42548c684bcfc146109812298ba46bd532c6d62021ba2a68d",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-27-54-016969Z-summary.json",
+      "bytes": 5179,
+      "sha256": "898cd4eb0d69ad4748d66d182a2d3e88f36bdbdf81448fb85596aff92e2c34cc",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-28-39-077380Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "b4fcd1461106d9e80c8836be9b675f75f48841335e5feac65c80408e2e1f9029",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-28-39-077380Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "f6b3ea963eb86e21efcda73345051bf89a0db6f1486ed2f48a12cafbee6b85a5",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-28-39-077380Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-28-39-077380Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "0cd6e59555a2f5c892fcf6acb9c1b2b4bfcdd07e34bec7bad7194d596d1253ed",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-28-39-077380Z-summary.json",
+      "bytes": 5179,
+      "sha256": "65bd75edfdc7814c257b23d25794ed31d3f2a06f571166b80d811288ab00d10d",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-29-24-145247Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "b4fcd1461106d9e80c8836be9b675f75f48841335e5feac65c80408e2e1f9029",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-29-24-145247Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "116adf51cb722d7ae7cf017d597d62c014a6c614b533bbe0b0eb47c094bfa043",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-29-24-145247Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-29-24-145247Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "3693f4a2d955c0c9fdc56324d1f8bb02ae74dfea92dd5826829cea437e38810c",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-29-24-145247Z-summary.json",
+      "bytes": 5179,
+      "sha256": "0245b9638139f9c87cf35d128447ab602f15e823488b9d07aee9331f2585bca8",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-30-09-217696Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-30-09-217696Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "f188f59472c5d0d243526dc749f5124c5e5eac8a490a8b2a0e9552c30d3ab219",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-30-09-217696Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-30-09-217696Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "484fcacf3ca9050dd0e8241f9bee699d76ace3809eae0a2c9c0fa721617bb43c",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-30-09-217696Z-summary.json",
+      "bytes": 5121,
+      "sha256": "6037cd32d366603a2caccf756d1ed9a17720be790a69207291aa2886ac96f4d2",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-30-54-286822Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-30-54-286822Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "dfd89cf0e6fb5c400e2057cad08a80c53acae0c34d310a0366240b5b47348018",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-30-54-286822Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-30-54-286822Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "74324a3ead046dd23179d7c86cc8c73675b0a5abacaa3bcd6344b423fd30ae21",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-30-54-286822Z-summary.json",
+      "bytes": 5121,
+      "sha256": "1bc6524065c91b58703bc64cd1ee3b937b4eafacefdf985af8beac8d6346868e",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-31-39-340883Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-31-39-340883Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "1ca57ea9a3c8c531194850b800e8e23f42d8b0d5a977456f1091294fe9a18285",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-31-39-340883Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-31-39-340883Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "9bb540a0a450f9fdfcf826ed3831578dc64b43829086260aee9894f5c8d5f7c4",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-31-39-340883Z-summary.json",
+      "bytes": 5121,
+      "sha256": "743424b0b7a5aa379d6e05bf9a0428c344515e791c38b6581d6d862af0d26d2d",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-32-24-408547Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-32-24-408547Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "e67ea9d09f8a725b90d7a964af00096490ebb992d1d8b015997682242c169139",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-32-24-408547Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-32-24-408547Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "7cfad8c3e5ed2df0c5693005f93159e348582aabdaaf2921f6eb1c467de877c9",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-32-24-408547Z-summary.json",
+      "bytes": 5121,
+      "sha256": "fe7debc38c1d4a23b04c9e6bfc53ee5baa776203c0f2c293f5fe770846cb847f",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-33-09-521416Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-33-09-521416Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "70ef87b67b7f87c2b7866527c82a827a4157d684ca0302ab8bb1052ac61154a4",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-33-09-521416Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-33-09-521416Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "90cd74d814e9111dae41a9d10cf8e36b933e5ae057b56774da7ea819d0b1d906",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-33-09-521416Z-summary.json",
+      "bytes": 5121,
+      "sha256": "a1c31c17afc0b6e33abd2103311f2d9adc4be56f14e0f97c8340fb26803ac03d",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-33-54-579218Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-33-54-579218Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "712776a7d1c6c5fb87f7b66b87b981eb9da7fc5bcb3a29b2bb2e20a1846a8ee1",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-33-54-579218Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-33-54-579218Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "24ae557334e62cf2dbb1fb157ba2d489c35e740ec8339164a4f4c923c3b6d7d4",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-33-54-579218Z-summary.json",
+      "bytes": 5121,
+      "sha256": "4d665973d222f47f0f7fc5811ce04f027c6549f3fe909986da34ef5d3e3bb26a",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-34-39-641046Z-jobs-original.json",
+      "bytes": 36193,
+      "sha256": "d326abbbf5e0e050486c06e1154a18ae95a8cb3a0ea26caf1862475959e6a967",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-34-39-641046Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "80c4c6483d1b9bd3df40b85d6b1a0e69a54cf3bb97f41e84257620564222eeee",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-34-39-641046Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-34-39-641046Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "e708cd21e71d37f8f372a10c812431c84aeb6c57c23259667b55ba48ddcc85c3",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-34-39-641046Z-summary.json",
+      "bytes": 5121,
+      "sha256": "d1cad878dc13039bf4b8a93cf3037c34497cc21f271df6285d93558d55852606",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-35-24-744149Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "e01e607e21d627fcbabb6e656754a48aa5da450d367a6981f31fb3308062f002",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-35-24-744149Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "d1f24fe489e0993096f7751d51a431419341ec8607adfa74c9e1441f2725113a",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-35-24-744149Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-35-24-744149Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "06848eedf6bd6965a0e12fc0e1674e54e7f8f0cc18771a2ba73c9a26571c6236",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-35-24-744149Z-summary.json",
+      "bytes": 4998,
+      "sha256": "d6201c19ce79ffbf4518c999b03a2ce8f5fecadcef396f73abb76b27fd8fb5ef",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-36-09-809558Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "e01e607e21d627fcbabb6e656754a48aa5da450d367a6981f31fb3308062f002",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-36-09-809558Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "7c0747b3f0b5bfecaa7bacea8ac87231a3921bb7637b2d7013decb74594be954",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-36-09-809558Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-36-09-809558Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "0ecb5840f30e0dcc2754581de5dbe4a058de547bb39caaf1a0b14137a8b91ea0",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-36-09-809558Z-summary.json",
+      "bytes": 4998,
+      "sha256": "e4adfa5a66c28042c5b6f5474fd86b97305a4cd4a347526105fe634b7ae918cf",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-36-54-860944Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "e01e607e21d627fcbabb6e656754a48aa5da450d367a6981f31fb3308062f002",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-36-54-860944Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "fae51b64188f40b12bceeebb569eeb995776b483c3e1df8086ae9f05d01ab0a1",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-36-54-860944Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-36-54-860944Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "006763d3e5919dec558beb32f4a4f72a362acade7219caa8e11654c41c554a71",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-36-54-860944Z-summary.json",
+      "bytes": 4998,
+      "sha256": "e6972d751c991b2a3efd6b3f102d83f130148ed01e1cb9d8672f6ee91f8d3b01",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-37-39-932958Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "e01e607e21d627fcbabb6e656754a48aa5da450d367a6981f31fb3308062f002",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-37-39-932958Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "a1e65315e373619458b4c83e75f480cf4ae11fcb24eaf11b6b95651f3ccae75f",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-37-39-932958Z-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-37-39-932958Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "44a7a6710a8dc9cdf8a1586811ffd299b68d4f3286f2b82464a64458f48f770b",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-37-39-932958Z-summary.json",
+      "bytes": 4998,
+      "sha256": "6a2cc18501d05d869aba31a393f1e05e285bec3211869d520bbb4441a284f9f2",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-38-25-007293Z-jobs-original.json",
+      "bytes": 37168,
+      "sha256": "9f0dda68c41f2fe3af771d849a0e14bbea4209ecf8214ac8458fe24dfff49372",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-38-25-007293Z-jobs-request-receipt.json",
+      "bytes": 169,
+      "sha256": "f47087bab14c741a66ba349bb469fb32c42acc3353e617a277d262924d10b61f",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-38-25-007293Z-run-original.json",
+      "bytes": 12185,
+      "sha256": "ff457f61f3be3e7771178b0bf49238810035518a07e24d3feef4e129cdcd218e",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-38-25-007293Z-run-request-receipt.json",
+      "bytes": 151,
+      "sha256": "245e14f3e9b868f14b7073a76de6265faee8e8b708fe61d102a37966cb631024",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "2026-10-04T21-38-25-007293Z-summary.json",
+      "bytes": 4940,
+      "sha256": "438d9578892f522b0a019fc9ba21cc636ac9da09fab72a8b45c65c02b1d6f5c5",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "README.md",
+      "bytes": 5137,
+      "sha256": "0765f2c27fbef50029a61518306efad949a14cd72c0993ef62317630cea101a5",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "artifacts/11315651048-browser-test-results-stability-original.zip",
+      "bytes": 27101931,
+      "sha256": "4058835317f58132a9f44eed88981b0bb9272c560c1487f70f83fd838b3a1d62",
+      "role": "immutable original downloaded artifact or byte-exact extracted entry"
+    },
+    {
+      "file": "artifacts/11315651048-download-verification.json",
+      "bytes": 8764,
+      "sha256": "a9d1fc69cfc31eb3342c638442aa4682f432b93a16f627eb492d7108be4339e3",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "artifacts/stability-failure-original/error-context.md",
+      "bytes": 15339,
+      "sha256": "a452a850c538e253c336e4f90297d6f5acad645d40976c05ac89100d6d00fa4f",
+      "role": "immutable original downloaded artifact or byte-exact extracted entry"
+    },
+    {
+      "file": "artifacts/stability-failure-original/last-trace-screencast-original.jpeg",
+      "bytes": 53363,
+      "sha256": "8c907e2d9ae794588fe8c32547c5c8a98833bfee59b259f1798e9be6a3ebfdf4",
+      "role": "immutable original downloaded artifact or byte-exact extracted entry"
+    },
+    {
+      "file": "artifacts/stability-failure-original/trace-actual-inputs-and-starter-samples.json",
+      "bytes": 6393,
+      "sha256": "59327ab7f044548b476513a6228beb32073bd9e938b5ab99e96be28989187f2a",
+      "role": "readonly derived diagnosis, not a new browser result"
+    },
+    {
+      "file": "artifacts/stability-failure-original/trace.zip",
+      "bytes": 3733182,
+      "sha256": "8748ba5bfe5e8def1823c074532382f23fb031359c65e7e194c18d9b18f3e6ac",
+      "role": "immutable original downloaded artifact or byte-exact extracted entry"
+    },
+    {
+      "file": "decoded-log-archive-method.txt",
+      "bytes": 1276,
+      "sha256": "c77444688b82ba52d69be0468f010839ee0c1cca78fe703e543ef054b58de2fa",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "final-artifacts-original.json",
+      "bytes": 8739,
+      "sha256": "6a3ac07d1a1e5f845ec1349b0224d64d4cf97c4a619679871b0c0995c0eb81fb",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "final-artifacts-request-receipt.json",
+      "bytes": 150,
+      "sha256": "ee9ca945f26786cd81c0504be5fcc113509db7fcf45a5f7d7461ed10cbaf1c03",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "final-run-summary.json",
+      "bytes": 21770,
+      "sha256": "2487566a067bb1dd2d3cfe4a2d2f8f630827ad9a8ffa787aa24be5476fdf43c1",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "independent-static-review/neon-ci-stability-first-failure-and-trigger-method-provenance.json",
+      "bytes": 5600,
+      "sha256": "05539cac4823ad49f05968b6669fecdb97590fac5b9709d1b307eec79d68d618",
+      "role": "readonly derived diagnosis, not a new browser result"
+    },
+    {
+      "file": "independent-static-review/neon-ci-stability-first-failure-and-trigger-method-review.md",
+      "bytes": 9424,
+      "sha256": "40027c510d907cb6ad25b4526df63455a5fe2d742a1cf959021b03dfdea29ac0",
+      "role": "readonly derived diagnosis, not a new browser result"
+    },
+    {
+      "file": "independent-static-review/original-copy-ledger.json",
+      "bytes": 726,
+      "sha256": "c741f9379afe2bbd2a8180cf3063870d3deff2325344370b31e9d4d9189f1d79",
+      "role": "readonly derived diagnosis, not a new browser result"
+    },
+    {
+      "file": "initial-jobs-original.json",
+      "bytes": 31849,
+      "sha256": "221f8d46e89f761b3de5242e79f14e22318beb9342061d17e08fffcf37c02510",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "initial-run-original.json",
+      "bytes": 12182,
+      "sha256": "19ca35d5a4b67855f2576668e191b84bab0cb5932f5c715ba0101ddd91d4b981",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "local-frozen-build-info-original.json",
+      "bytes": 16323,
+      "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532675829-connector-response-original.json",
+      "bytes": 43184,
+      "sha256": "504ae5dcd930dde64eab3c0cd2ff381e5e8b211c8493499d5fe95f59891efe68",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532675829-log-summary-final.json",
+      "bytes": 1196,
+      "sha256": "31ef9b97c3c3754f771ddc17b7c148f3edd7d029ac8bbd4eeacbfc5033ef6722",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532675829-original.log",
+      "bytes": 42492,
+      "sha256": "1a4e0e79a96f5c2ebef1db0b28dd2dadef7b28828fbab2d2b93c370b73214b78",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676078-connector-response-original.json",
+      "bytes": 185509,
+      "sha256": "a4e71ba204a44492a1ca5905729ebdc1a6f7063ac6e689b445cafc222531c39d",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676078-log-summary-final.json",
+      "bytes": 1275,
+      "sha256": "127069d73085cef1fb986d002e4879673578067fdf59f0a14a649f30d7caa455",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676078-original.log",
+      "bytes": 182157,
+      "sha256": "8a0346f0cd0cb5d2f6678ca8a90a0ab75c8c11de32629217fea3640334c65955",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676087-connector-response-original.json",
+      "bytes": 179007,
+      "sha256": "477c0e24a60bb4b14f48bea38175b6641e8550fbb7a5133dfccca08534e01c3d",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676087-log-summary-final.json",
+      "bytes": 1321,
+      "sha256": "846df59f3af067a93f8dc84b81144319863bfd530629f6567a4c18546e33299d",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676087-original.log",
+      "bytes": 176339,
+      "sha256": "d21f2e309f8d1e1ad4ca5cf591213a0e19de2a5115e552ed6d81de8d8ce81003",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676111-connector-response-original.json",
+      "bytes": 178681,
+      "sha256": "097f6c17a89232b090beb8cb0202f79a2491bf9a45cac18b92a589801932fcb1",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676111-log-summary-final.json",
+      "bytes": 1239,
+      "sha256": "3816f4a166eaf695effe6aaa9c9c62a016c80b5d1b07264f0f2501b2581e574b",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676111-original.log",
+      "bytes": 176015,
+      "sha256": "e0dee60cf38482ee9f699c4933357110f566ccb0a5603bef4e9e942f8625d79e",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676124-connector-response-original.json",
+      "bytes": 182526,
+      "sha256": "9bf67e573fc7f007015f389ddaaf5e643b41b0e919a4430f01d9152409a77ffd",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676124-log-summary-final.json",
+      "bytes": 10293,
+      "sha256": "83027d9cb5f814ddaed8477f6446c972328c4085f2f53578f3791c26d926fafb",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676124-original.log",
+      "bytes": 179823,
+      "sha256": "8bcaf7c68791687ab10533c915af304e30f14b47431f6d6004176b26c299e484",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676149-connector-response-original.json",
+      "bytes": 178883,
+      "sha256": "0667ddba536444503cb428fb9d40e07f2fa1c909f82625df722a773d3079e108",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676149-log-summary-final.json",
+      "bytes": 1247,
+      "sha256": "7b5bcf1a1c9f04451f0b34f2c233037592ea80c37e86ccbb9f4232f664c46fb9",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676149-original.log",
+      "bytes": 176215,
+      "sha256": "de0ed216ba77b382e8f76bbd0c54dfb1a37fd6b083e6745e94c359120b17a7df",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676168-connector-response-original.json",
+      "bytes": 182577,
+      "sha256": "d53a1566bb276fd865be34b38124884402e4fc80a4c0870b2606f32a30e08fa3",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676168-log-summary-final.json",
+      "bytes": 1304,
+      "sha256": "9a7ba1e3d359360ba8c1bafbb8008516a3efa016aa9b401e3fe30c1dc276741b",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676168-original.log",
+      "bytes": 179539,
+      "sha256": "e47b85d487c4e3400882fe4e58c51d45c12265d74083b088acd2a3309893f255",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676183-connector-response-original.json",
+      "bytes": 183788,
+      "sha256": "f626fff72dbc47b90db2cf80fe0b6bfdc60002b2d7f86b3740ab8932b65d5be1",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676183-log-summary-final.json",
+      "bytes": 1306,
+      "sha256": "0179452a9c1ad845f1c5311d875a66ef4f3611823ec7939c9fd17fcfe8fdd2a8",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676183-original.log",
+      "bytes": 180684,
+      "sha256": "ce1c2d47104713e9c1054808678fb4078a47e637c488991021f01071d0672f79",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676184-connector-response-original.json",
+      "bytes": 178759,
+      "sha256": "a15d0f47f5f82a9bd7008671480368de0f3e4f25fdc2760cd7a00105c276e944",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676184-log-summary-final.json",
+      "bytes": 1307,
+      "sha256": "6592fe1ccf1bdcd573c3f757fa3693646a92a7344a33ffe5574e48a79f6be6e4",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676184-original.log",
+      "bytes": 176093,
+      "sha256": "ccb0cfd700ef4de8277db74fe715d6f6ff4ed03cab3578018931d1d53bf2b960",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676202-connector-response-original.json",
+      "bytes": 178861,
+      "sha256": "7d653e8eca607c9581e123d29da9d5d56fd281af182ff631deea9463bff3f1f2",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676202-log-read.json",
+      "bytes": 4088,
+      "sha256": "366b4bb24fb952cf20e68c9b95174c886bc5f630d1b83904d0a20becefd58fe6",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676202-log-summary-final.json",
+      "bytes": 1490,
+      "sha256": "5d40792ed2c2b1c075a83ee62a47c9b6fdd63b16a5cf729ec264204841a606df",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676202-original.log",
+      "bytes": 176193,
+      "sha256": "b6adcc74dd5b9dfafe94d8f9ae4cc644efcafd7e41661439c2aa03c89bb62a04",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676214-connector-response-original.json",
+      "bytes": 179246,
+      "sha256": "e76bf7ad393d36994d267b9e52a43a5e3540d3f04446850f3541fd2d1702ec36",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676214-log-summary-final.json",
+      "bytes": 1494,
+      "sha256": "b405d2e1d8968851f37856a7b1d44830a92f17906334e5cc1b1d1e2f92922002",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676214-original.log",
+      "bytes": 176576,
+      "sha256": "f0dabe51ab048599806389357038ab895b497d5b58eb89566c1175276b12e705",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "logs/job-111532676235-connector-response-original.json",
+      "bytes": 178905,
+      "sha256": "34b55d98591eae7987dd7380f023c4955f419cf5c228c9b643a9431edea9190f",
+      "role": "immutable original GET/tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111532676235-log-summary-final.json",
+      "bytes": 1224,
+      "sha256": "e18797dce6aa263c5bc95ca4d15fc198023ee47f5f227c866ac0c5d85b9e5ce5",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "logs/job-111532676235-original.log",
+      "bytes": 176237,
+      "sha256": "dcd4701dee2d383b4f866584014f290e2d0dfbd96b2346662b23ef008af75b90",
+      "role": "immutable original connector-decoded UTF-8 log, not claimed server gzip wire bytes"
+    },
+    {
+      "file": "monitor-scope.json",
+      "bytes": 299,
+      "sha256": "4c2a93c68d6dd88f1ca481d99d5ae1f338e49e593934afb1df89cb5244e87622",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "neon-feature-ci-log-summary.py",
+      "bytes": 1402,
+      "sha256": "1aa5f50ece4c40df0018fc8797ae0a9ba176bcbdcc85ca315a3361436634b780",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    },
+    {
+      "file": "neon-feature-ci-readonly-poll.py",
+      "bytes": 2462,
+      "sha256": "008b6dcc15f2c0307bc1941be43479f6823515a44bda9cd5ecc7871f0f4c102c",
+      "role": "supplemental archival explanation, actual summaries, methods or receipts"
+    }
+  ]
+}

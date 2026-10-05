@@ -1,0 +1,211 @@
+{
+  "status": "SOURCE_ONLY_PREPARED_NATIVE_UNRUN",
+  "baselineHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "pairedCases": 15,
+  "authoredOnlyCases": 7,
+  "captureCompletionIsArtApproval": false,
+  "cases": [
+    {
+      "id": "home",
+      "family": "harbor",
+      "toolCase": "home",
+      "originalBudgetSeconds": 1920,
+      "jobTimeoutMinutes": 110,
+      "paired": true
+    },
+    {
+      "id": "workshop",
+      "family": "harbor",
+      "toolCase": "workshop",
+      "originalBudgetSeconds": 1500,
+      "jobTimeoutMinutes": 95,
+      "paired": true
+    },
+    {
+      "id": "south-090",
+      "family": "harbor",
+      "toolCase": "south-090",
+      "originalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "south-091",
+      "family": "harbor",
+      "toolCase": "south-091",
+      "originalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "south-092",
+      "family": "harbor",
+      "toolCase": "south-092",
+      "originalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "south-094",
+      "family": "harbor",
+      "toolCase": "south-094",
+      "originalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "south-095",
+      "family": "harbor",
+      "toolCase": "south-095",
+      "originalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "south-096",
+      "family": "harbor",
+      "toolCase": "south-096",
+      "originalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "resident-core",
+      "family": "resident",
+      "toolCase": "resident-core",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 85,
+      "paired": true
+    },
+    {
+      "id": "bus",
+      "family": "transport",
+      "toolCase": "bus",
+      "originalBudgetSeconds": 600,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "tram",
+      "family": "transport",
+      "toolCase": "tram",
+      "originalBudgetSeconds": 600,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    {
+      "id": "ferry",
+      "family": "transport",
+      "toolCase": "ferry",
+      "originalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    {
+      "id": "waterfront-day",
+      "family": "scenic",
+      "toolCase": "waterfront-day",
+      "originalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    {
+      "id": "waterfront-night",
+      "family": "scenic",
+      "toolCase": "waterfront-night",
+      "originalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    {
+      "id": "east-interior",
+      "family": "scenic",
+      "toolCase": "east-interior",
+      "originalBudgetSeconds": 3600,
+      "jobTimeoutMinutes": 180,
+      "paired": true
+    },
+    {
+      "id": "north-book",
+      "family": "resident-extra",
+      "toolCase": "north-book",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    {
+      "id": "north-phone",
+      "family": "resident-extra",
+      "toolCase": "north-phone",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    {
+      "id": "north-cup-owner",
+      "family": "resident-extra",
+      "toolCase": "north-cup-owner",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    {
+      "id": "south-parcel",
+      "family": "resident-extra",
+      "toolCase": "south-parcel",
+      "originalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    {
+      "id": "ownership-bus",
+      "family": "transport-owner",
+      "toolCase": "bus",
+      "paired": false,
+      "originalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "port": 5198,
+      "qualityScope": "HIGH_NATIVE_WITH_PUBLIC_LOW_RELEASE_PHASE"
+    },
+    {
+      "id": "ownership-tram",
+      "family": "transport-owner",
+      "toolCase": "tram",
+      "paired": false,
+      "originalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "port": 5198,
+      "qualityScope": "HIGH_NATIVE_WITH_PUBLIC_LOW_RELEASE_PHASE"
+    },
+    {
+      "id": "ownership-ferry",
+      "family": "transport-owner",
+      "toolCase": "ferry",
+      "paired": false,
+      "originalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "port": 5198,
+      "qualityScope": "HIGH_NATIVE_WITH_PUBLIC_LOW_RELEASE_PHASE"
+    },
+    {
+      "id": "continuous-tour",
+      "family": "continuous-tour",
+      "toolCase": "continuous-tour",
+      "paired": false,
+      "originalBudgetSeconds": 14400,
+      "jobTimeoutMinutes": 300,
+      "port": 5193,
+      "qualityScope": "LOW_FUNCTIONAL_ONLY",
+      "actualCheckoutToolPins": {
+        "tools/capture-harbor-tour.mjs": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+        "tools/server.mjs": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "tests/e2e/helpers/walking.js": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969",
+        "tests/e2e/helpers/occupied.js": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+      }
+    }
+  ],
+  "authoredOnlyFunctionalCases": 1,
+  "qualityBoundary": "15 High baseline/authored pairs; 7 authored-only High extras; one separate authored-only Low continuous functional tour. No capture completion constitutes art approval.",
+  "caseCount": 23,
+  "highNativeCaseCount": 22
+}

@@ -1,0 +1,209 @@
+{
+  "name": "NH near worker core prototype",
+  "role": "worker",
+  "macroTarget": "asian-male-young",
+  "fitEdits": [],
+  "wardrobeAsset": "male_worksuit01",
+  "hairAsset": "short01",
+  "sources": {
+    "bodyCommit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+    "officialPack": "https://files.makehumancommunity.org/asset_packs/makehuman_system_assets/makehuman_system_assets_cc0.zip"
+  },
+  "materials": 4,
+  "bones": 71,
+  "triangles": 32372,
+  "meshes": [
+    {
+      "name": "skin",
+      "vertices": 9035,
+      "triangles": 16604,
+      "boundsMin": [
+        -0.29086536169052124,
+        0.6779518127441406,
+        -0.06545043736696243
+      ],
+      "boundsMax": [
+        0.29086536169052124,
+        1.762083888053894,
+        0.16527682542800903
+      ]
+    },
+    {
+      "name": "wardrobe",
+      "vertices": 5910,
+      "triangles": 10050,
+      "boundsMin": [
+        -0.26286619901657104,
+        0.0,
+        -0.1187000647187233
+      ],
+      "boundsMax": [
+        0.2643151879310608,
+        1.5159651041030884,
+        0.21014687418937683
+      ]
+    },
+    {
+      "name": "hair",
+      "vertices": 3177,
+      "triangles": 3678,
+      "boundsMin": [
+        -0.08385773748159409,
+        1.5519695281982422,
+        -0.07822240889072418
+      ],
+      "boundsMax": [
+        0.08082348853349686,
+        1.7799999713897705,
+        0.14303259551525116
+      ]
+    },
+    {
+      "name": "eyes",
+      "vertices": 1076,
+      "triangles": 2040,
+      "boundsMin": [
+        -0.04820745438337326,
+        1.6308708190917969,
+        0.11982903629541397
+      ],
+      "boundsMax": [
+        0.04820745438337326,
+        1.6625192165374756,
+        0.14471164345741272
+      ]
+    }
+  ],
+  "physicalHeightMetres": 1.78,
+  "rawSourceBodyTriangles": 26756,
+  "maskedBodyTriangles": 16604,
+  "restBounds": {
+    "min": [
+      -0.29086536169052124,
+      0.0,
+      -0.1187000647187233
+    ],
+    "max": [
+      0.29086536169052124,
+      1.7799999713897705,
+      0.21014687418937683
+    ]
+  },
+  "originalFKClips": [
+    "NH walk FK",
+    "NH stair FK",
+    "NH idle FK"
+  ],
+  "textures": [
+    {
+      "name": "skin-basecolor.png",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "bytes": 989786
+    },
+    {
+      "name": "wardrobe-basecolor.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 2020657
+    },
+    {
+      "name": "wardrobe-normal.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 843783
+    },
+    {
+      "name": "wardrobe-orm.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 267097
+    },
+    {
+      "name": "hair-basecolor.png",
+      "pixels": [
+        512,
+        512
+      ],
+      "bytes": 329267
+    },
+    {
+      "name": "eyes-basecolor.png",
+      "pixels": [
+        512,
+        512
+      ],
+      "bytes": 200274
+    }
+  ],
+  "files": [
+    {
+      "path": "art-source/near-resident/editable/eyes-basecolor.png",
+      "bytes": 200274,
+      "sha256": "65f912db7a220702d93fdd8c16a4010e76d92c6ae0dcdf77d278832631ebf183"
+    },
+    {
+      "path": "art-source/near-resident/editable/hair-basecolor.png",
+      "bytes": 329267,
+      "sha256": "5dbfa929aa967f26a67085290be0dd384b21110c441621b3ae6d1a63442315b7"
+    },
+    {
+      "path": "art-source/near-resident/editable/skin-basecolor.png",
+      "bytes": 989786,
+      "sha256": "0fa4fc85843cb8aab2ca9a975baa260b9ce32f1218bf1dff5a396e90474ea1d7"
+    },
+    {
+      "path": "art-source/near-resident/editable/wardrobe-basecolor.png",
+      "bytes": 2020657,
+      "sha256": "50f84b29f7e8e821ad664fdf492a58def94bdc41686203687c700830ca459210"
+    },
+    {
+      "path": "art-source/near-resident/editable/wardrobe-normal.png",
+      "bytes": 843783,
+      "sha256": "70b87fef8d43b5786635c365f319056ab30c3675e2370ea418dff0a2a3c7547d"
+    },
+    {
+      "path": "art-source/near-resident/editable/wardrobe-orm.png",
+      "bytes": 267097,
+      "sha256": "c8d61d1a09a9366af7e14068cf29803f8761ced13f3a59a24e360c367e53e5a6"
+    },
+    {
+      "path": "art-source/near-resident/editable/worker.bin",
+      "bytes": 1278852,
+      "sha256": "847a57b4843f4742dc69c4f8ab90bb48d3e84d6194ccc68f9ddb2c5c32d3ac92"
+    },
+    {
+      "path": "art-source/near-resident/editable/worker.gltf",
+      "bytes": 40711,
+      "sha256": "807794985177d81ce1612a74829b20ba3c13fbdfedb9473a904fbff331cbc2ea"
+    },
+    {
+      "path": "assets/resident/core-worker/worker.glb",
+      "bytes": 5953280,
+      "sha256": "f17553afc33a5a958843e08db0ecddc4dd27759ed4bba2dd6fd26d25c6eaacbe"
+    }
+  ],
+  "acceptance": {
+    "staticDataOnly": true,
+    "browserReviewed": false,
+    "nativeHighReviewed": false,
+    "runtimeActionChainReviewed": false,
+    "hardwarePerformanceMeasured": false,
+    "finalArtAccepted": false
+  },
+  "limitations": [
+    "One worker body/wardrobe, part of a three-asset prototype; not the complete resident collection.",
+    "Original FK animation, no terrain IK, root-motion retarget or motion capture.",
+    "Hair card alpha, garment seams and shoulders require native High inspection.",
+    "Skin color source is a diffuse asset, not a complete calibrated scan-based PBR set.",
+    "Existing far LODs are intentionally retained by the candidate factory."
+  ]
+}

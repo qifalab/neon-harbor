@@ -1,0 +1,1748 @@
+{
+  "schema": "neon-harbor/second-tests-only-feature-ci-evidence/v1",
+  "generatedAt": "2026-10-04T22:29:20.960140+00:00",
+  "runId": 37237505203,
+  "runAttempt": 1,
+  "headSha": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "parentSha": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "result": "failure",
+  "requiredJobs": {
+    "success": 11,
+    "failure": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "total": 12
+  },
+  "gameBrowserCases": {
+    "passed": 26,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "interrupted": 0
+  },
+  "multiplayerBrowserCases": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "interrupted": 0
+  },
+  "ruleTestsEachGameMatrix": 311,
+  "gameRuleMatricesActuallyPassed": 11,
+  "mpNpmRulesNotRun": true,
+  "conditionalPrOnlySkippedNotCountedAsPass": 2,
+  "fullCiPassed": false,
+  "sourceIndexRefMutations": false,
+  "stageOrCommitPerformed": false,
+  "successfulArtifactZipBytesDownloaded": false,
+  "downloadedFailureArtifacts": [
+    "artifacts/11316409602-managed-supported-client-original.zip"
+  ],
+  "scope": "All files currently closed in this new directory except evidence-files.json itself; old D archive remains unchanged. Future candidates must use a new directory.",
+  "files": [
+    {
+      "file": "2026-10-04T21-48-06-577497Z-jobs-original.json",
+      "bytes": 31806,
+      "sha256": "841f242edb8750fc34cec702093cd265ef23943e9b8a372c1ade8fec49f29c09",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-48-06-577497Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "01508925ed61eed4a4cbf6d509c81d897c8381a5d2ce5d01a6e8d76daa0c7e30",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-48-06-577497Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-48-06-577497Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "73959216da69f32be30cadf4de94e541389bc875ab101874bd906477491363e3",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-48-06-577497Z-summary.json",
+      "bytes": 4800,
+      "sha256": "5db07c4b335a3088f00d6560861de6c628ac2d0f5675f8a973e29b657b7dc570",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-48-26-486880Z-jobs-original.json",
+      "bytes": 31849,
+      "sha256": "76819529eed0ed59e801dfc58ccb75a1356f915025fd1c10fe18780f18c5e47d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-48-26-486880Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "4b098e639ec55f70557211f073addab837a60672de0e1c323abacc77ed61f6c0",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-48-26-486880Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-48-26-486880Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "b2e4f74fc21d059f5273bd17c8c50f37f33ee899ca56a9ea5a1df8b4a53597ed",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-48-26-486880Z-summary.json",
+      "bytes": 4818,
+      "sha256": "245a15c772c51dc6a69048e0ee2ae52b28f1b3da170c011f00aac44d9c3ad6e1",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-49-11-547941Z-jobs-original.json",
+      "bytes": 31849,
+      "sha256": "76819529eed0ed59e801dfc58ccb75a1356f915025fd1c10fe18780f18c5e47d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-49-11-547941Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "06806139d8b9f93c6fcb5924a46d7e1fa9c9301cc5c407681b5aaeccdbb25aab",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-49-11-547941Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-49-11-547941Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "124e72639b1d9f5fe32179078fc285e192267ba99e0a5b62ec4cd18a2764ba88",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-49-11-547941Z-summary.json",
+      "bytes": 4818,
+      "sha256": "3dad180c90672a6eec10a5b89547a2015925841f1ff1939b8e74739269f3ba1d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-49-56-622670Z-jobs-original.json",
+      "bytes": 31935,
+      "sha256": "99a2eb46d2b043e09f302d3711aead51a28365461018dc2912954e10214c123f",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-49-56-622670Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "85721c3e4f5a0aa3e4657933d0cb8d08e368f15cc49be248e317bcc7cde55bb7",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-49-56-622670Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-49-56-622670Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "8a38d4e3e6235f44f998015f5e4ba3d45a1bbd57aab3d44fa58d257ef119505b",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-49-56-622670Z-summary.json",
+      "bytes": 4853,
+      "sha256": "8d0191a76c6b7dba76a15dd7ac55c7fafe730c25bed0770a4009326889afe366",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-50-41-732144Z-jobs-original.json",
+      "bytes": 32107,
+      "sha256": "1f6c41f3558449c81595ddb8b1da0c021ae0871abf508ad69a2750b819900774",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-50-41-732144Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "23ef91b99c697c321f5a1334a9f23e05d8c320ab8085491bb0045eeeab63b0b5",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-50-41-732144Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-50-41-732144Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "11313a900efaefc4fa2a2d3ef379dd62d0caeca15fd0656bb26f8bf24c0f1f62",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-50-41-732144Z-summary.json",
+      "bytes": 4963,
+      "sha256": "6ecf4b5047cf64a5072ad09f54af19329c0625c0da0d257e10b92e8eae099ff6",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-51-26-811250Z-jobs-original.json",
+      "bytes": 32322,
+      "sha256": "dae43a0476e6a4f2ed8622326ede6e9431f200e184655c2ef238b5f20812839f",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-51-26-811250Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "639da8d1211be6775d10e2ba6af6d689a639a1088c1a7442fa9d54f35829f077",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-51-26-811250Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-51-26-811250Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "aa08c77890b00023b3e274c07df2dea14bd8f1551954c88f59cb85d1666fcad2",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-51-26-811250Z-summary.json",
+      "bytes": 5068,
+      "sha256": "12ebed673967655d92f1d43d8b0963ec211628a63c2c613a1ee04ea817438336",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-52-11-869437Z-jobs-original.json",
+      "bytes": 33010,
+      "sha256": "35d9b455afb1549d80ba72257f443ad7c2137c698ff5b963cd065247245272f8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-52-11-869437Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "ea98a4f540cdc24dff22b9f092afdeb79c17ef6d52adb920dd1b5f00e20f7563",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-52-11-869437Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-52-11-869437Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "7c2e0cb95d4d88377d0911528423d725733b0fcf2bd62d5215a2e8d0c6bdd808",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-52-11-869437Z-summary.json",
+      "bytes": 5384,
+      "sha256": "43a2d0009b95dbede1e28c9ce5e8c65b2e5458f961bfe7bc8345eb7dfe62ec38",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-52-56-941741Z-jobs-original.json",
+      "bytes": 33268,
+      "sha256": "78e6344f874b1c4033fcf6080124fede11c1a5dc3a54b89a5ea800e68be90f2b",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-52-56-941741Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "40b7b1b569c33808543621505fe1c600b15879b2635244c7b443d4509a93952c",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-52-56-941741Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-52-56-941741Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "3535297c5d171e917c8f36b800b07ddca094f92f4fbff13d65d06c87575e878a",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-52-56-941741Z-summary.json",
+      "bytes": 5588,
+      "sha256": "413c585c8bc6a86e6af221ae1f5811b9b467d9bbfab753fc6c364bb2234096c5",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-53-42-025241Z-jobs-original.json",
+      "bytes": 33268,
+      "sha256": "78e6344f874b1c4033fcf6080124fede11c1a5dc3a54b89a5ea800e68be90f2b",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-53-42-025241Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "ebda2170c2c5177cfa46b22597978ae26797f183cefb8bc4ae447a81ae13ebfb",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-53-42-025241Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-53-42-025241Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "3275b48d406b9a89da7d76454683f2205dcce7ddc1e7b8cda1e93b67ad31a8c9",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-53-42-025241Z-summary.json",
+      "bytes": 5588,
+      "sha256": "a25363241ece210c60ce0e0402b222612e8c8fe68ed42c2fa5d64c74a2d2f60e",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-54-27-084420Z-jobs-original.json",
+      "bytes": 33268,
+      "sha256": "78e6344f874b1c4033fcf6080124fede11c1a5dc3a54b89a5ea800e68be90f2b",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-54-27-084420Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "aff84d63f2779ff48c96cbee2fdaa6eb43512863339363a42beb703378824408",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-54-27-084420Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-54-27-084420Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "de2c77dcd0f5787a2fb39709677b71cfc0ee8061134d01d28f75fa2d8d4d13e4",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-54-27-084420Z-summary.json",
+      "bytes": 5588,
+      "sha256": "99f30a4b23dc6719f70f82737b94f3f6972a39b7c0f63dee4867ec6e26ef7ffc",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-55-12-160111Z-jobs-original.json",
+      "bytes": 33268,
+      "sha256": "78e6344f874b1c4033fcf6080124fede11c1a5dc3a54b89a5ea800e68be90f2b",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-55-12-160111Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "6c348c7b83812f66411dadd5a80d5acd26823f0c6ebddf7d638b2c5bb87a0825",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-55-12-160111Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-55-12-160111Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "278c9126a9fe880f95b82edd51f323c119983e84a7941f0555a7277d27cc6f47",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-55-12-160111Z-summary.json",
+      "bytes": 5588,
+      "sha256": "e9c6618f89d41d3ed392669ec4b9acbabc923cc51aa599105ce53281f467bcc3",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-55-57-279203Z-jobs-original.json",
+      "bytes": 33918,
+      "sha256": "4a2df396cc5bb98d1f9664b23c4e1231c84459a5d753fb3ee29ccb121bc25ec3",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-55-57-279203Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "48f4326f39d37db1119d7d69a9599147156881fb50f8a2e57d87a9477db9a3f4",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-55-57-279203Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-55-57-279203Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "e63a8329b9e2b145b86726208464b323b08cfcb60518f49197c2942e9380330b",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-55-57-279203Z-summary.json",
+      "bytes": 5487,
+      "sha256": "497b236197c68d2f30f645fb37090987a333fa2f880d03078b8551e7a8e93d20",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-56-42-349449Z-jobs-original.json",
+      "bytes": 33918,
+      "sha256": "4a2df396cc5bb98d1f9664b23c4e1231c84459a5d753fb3ee29ccb121bc25ec3",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-56-42-349449Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "d61d55a083095236df8b1ba201d2ac91c291149e1f4bcb17c40d49ee979f9758",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-56-42-349449Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-56-42-349449Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "4017ea1a822bfcc5c13833d1c0f0049399ba628eeefe378a615b293e011381d4",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-56-42-349449Z-summary.json",
+      "bytes": 5487,
+      "sha256": "9d6b9e949c819bcc749d49ca1981cac8ba8980d28e9b758a63b2c84bebc4ee36",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-57-27-451771Z-jobs-original.json",
+      "bytes": 34243,
+      "sha256": "1a8a1ed5842da13357a9bf0c8bfc0f91a3a3c3c10ed48dbff94d4a04e9637c14",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-57-27-451771Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "3781ac24f1588a801bf48ef0eaaa43ff82ca426b3cf176a61e565d6cd21e3043",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-57-27-451771Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-57-27-451771Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "a986591b127c59a08b20ea7d7ddc1e73a6de856ca1a79a0c904fda8e5eaf5f57",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-57-27-451771Z-summary.json",
+      "bytes": 5429,
+      "sha256": "046fa4bff0d1fd387e0bbe51236af19895f2935e1fa1c1d64f4ea24eeacbbf37",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-58-12-529131Z-jobs-original.json",
+      "bytes": 34893,
+      "sha256": "03ba1ea598bb9b56b23f31c700a5c662821d007ab9ae91cda4290c4977934578",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-58-12-529131Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "d1da1fab266d820f371dda821f06bbbfbf6a7e6b9755ad12791102b829fad8bf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-58-12-529131Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-58-12-529131Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "fb256630b33a534ae092459eaa5e4f6755643041efee803dd02332b3b8b5deb7",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-58-12-529131Z-summary.json",
+      "bytes": 5319,
+      "sha256": "ebd86d5f8be8585d9b887cf507b43cff9c228d04dca65d1e72e66b8109517551",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-58-57-587773Z-jobs-original.json",
+      "bytes": 35218,
+      "sha256": "4df72d639520a3a2befae0292ed62e4a0ac02e4c00a225a156f3e43126c55048",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-58-57-587773Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "6b52c579876b3e6a7cb6abf0b5c3cd9b964ce7971a602d6922a1ad17ee07d202",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-58-57-587773Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-58-57-587773Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "dca2d42686d643740af1dcdf372331bd13b0bbe0cf05e7b61d529c1ed5993892",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-58-57-587773Z-summary.json",
+      "bytes": 5257,
+      "sha256": "849bdc6f413bea6df1c4f1c707f8021e3d2c8c7c366a4f2acc47c328de3afe1c",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-59-42-657476Z-jobs-original.json",
+      "bytes": 35218,
+      "sha256": "4df72d639520a3a2befae0292ed62e4a0ac02e4c00a225a156f3e43126c55048",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-59-42-657476Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "aa7f379af1af3e7b999347efb45afd213e3c50878480046d4033359d44cd04ba",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-59-42-657476Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T21-59-42-657476Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "604a8015f80d8c522045613e83204361eda940201b250ca62f72127630b8e73d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T21-59-42-657476Z-summary.json",
+      "bytes": 5257,
+      "sha256": "359fa56a7337b9617903c36676d6412655bd3b539293efcbd26d030a1eb07aa2",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-00-27-749456Z-jobs-original.json",
+      "bytes": 35543,
+      "sha256": "2259d90d22a320053d53040fb1e4522ab304eb2c061553bcee0e60e92e57b5a9",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-00-27-749456Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "31a72f76ec5e00aa8b8580ead1b5574a4d9d149519df15dd756117f1a9255e8c",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-00-27-749456Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-00-27-749456Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "b5bd0dddb2f2dca58fcf7ba85fe398610895168f92ca8243dce77a7c381248a0",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-00-27-749456Z-summary.json",
+      "bytes": 5200,
+      "sha256": "b2c4e39da003f4018ef5d96afb494f4b0f0749866f4fff18a8a7df1437a37cec",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-01-12-838579Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "991f333646fb5b9fbbe066efacddde01fba8892d579a1db132ac036025ecedc5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-01-12-838579Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "86bcc7dd3cd8cdc375b30e21f0c11be07bfce351dc4fff2cfd908d2461e57417",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-01-12-838579Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-01-12-838579Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "02448fbd287eb4654063c2b2db121fb94d3476881ab794c1003515c42d6658c0",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-01-12-838579Z-summary.json",
+      "bytes": 5138,
+      "sha256": "14038ea7952d7c00ae219dbe0d9e43566aefe52f933aeeb0b4fb8f0d8659fa67",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-01-57-919948Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "991f333646fb5b9fbbe066efacddde01fba8892d579a1db132ac036025ecedc5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-01-57-919948Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "02238f8029011c12fd0e4e8cdecc4301dc287025141ee2cbb4a7c0b34da9b5cc",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-01-57-919948Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-01-57-919948Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "26696b02044e5ec7c32a37024aa8dde7b7946455af62a921ba452a0f03704df1",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-01-57-919948Z-summary.json",
+      "bytes": 5138,
+      "sha256": "29f203835dc35a089e6fa219bfbc23e7b0072728f4dd2b42547e2a42353b16dc",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-02-42-977997Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "991f333646fb5b9fbbe066efacddde01fba8892d579a1db132ac036025ecedc5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-02-42-977997Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "fdc13271c1aebf89e9f708c87c90b896b25b144973ff2e09b105e9776e23d63c",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-02-42-977997Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-02-42-977997Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "ec1e8bd8ee34c730ec01b1811c21269d389dd16a0c2c735acafb6eb423e966cf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-02-42-977997Z-summary.json",
+      "bytes": 5138,
+      "sha256": "10abec1dee8f0d106ab9e4dcc38d0514886d2d91b9acc5592120a376fb9c7dae",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-03-28-071352Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "991f333646fb5b9fbbe066efacddde01fba8892d579a1db132ac036025ecedc5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-03-28-071352Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "eea8b05b3ecdad9f3c45b2e287e0065faba4040e805430d6abd98989585d8339",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-03-28-071352Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-03-28-071352Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "69d2b0739719112b457ec0ad14ed4cf603100f97b291962d0e061f59fd2f673d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-03-28-071352Z-summary.json",
+      "bytes": 5138,
+      "sha256": "1c2643e6f2d85e6b67126c0152ed5922e2a81623ac418700ba9a431385d3f544",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-04-13-162092Z-jobs-original.json",
+      "bytes": 35868,
+      "sha256": "991f333646fb5b9fbbe066efacddde01fba8892d579a1db132ac036025ecedc5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-04-13-162092Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "a4f8cf9b3fb394b5eb41301e098954e8e8669020bd2d50bf32745600c5205b9e",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-04-13-162092Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-04-13-162092Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "ce014361cb14a9767c4ebeb39a57fc3fb7b0befd59ecc44b39edb29941163518",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-04-13-162092Z-summary.json",
+      "bytes": 5138,
+      "sha256": "8b6bd6109227813041ec182f6f206ba456a69a0236f5498e5dc4d87707503670",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-04-58-255166Z-jobs-original.json",
+      "bytes": 36518,
+      "sha256": "aec37258d58c748a9bb6bd5f9ca603ad4fbb61ea4c6d8ab7d2b924b893b7dddd",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-04-58-255166Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "fbfd957752d465f8fb67700eb929b2ecb3d3f930c369d45921378535e52a129e",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-04-58-255166Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-04-58-255166Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "35415b146a142069d08f464b250eef0afc57e43a057a336af745843e573faa51",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-04-58-255166Z-summary.json",
+      "bytes": 5019,
+      "sha256": "35a9990636745407b0e5fd1724387300e6810d47d918bca4cfc1b1445a4baf43",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-05-43-329152Z-jobs-original.json",
+      "bytes": 36518,
+      "sha256": "aec37258d58c748a9bb6bd5f9ca603ad4fbb61ea4c6d8ab7d2b924b893b7dddd",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-05-43-329152Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "cfbe43bb3522509840f6f3eba606b8ed84c6c0fbfc95f38e009c04161cf5f5fe",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-05-43-329152Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-05-43-329152Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "d386e0ac7561b7959c2dc9ac7c741d99ac3967bf822942080a3a9b013deb7078",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-05-43-329152Z-summary.json",
+      "bytes": 5019,
+      "sha256": "84f5ef3e8ff3d40172a6fe9ee3767a32d770b8c771230a0893d9b257b9e9a6df",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-06-28-423675Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-06-28-423675Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "937013fcc1c52033c0beba5abc2e44314c2b90decdb5f2254ae31c1f25809bbe",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-06-28-423675Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-06-28-423675Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "16ccfc833effad650492e8900bd1bf4111ae756d631e0ad91309c1f2d5c083bb",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-06-28-423675Z-summary.json",
+      "bytes": 4958,
+      "sha256": "5d1c06bc1e098dbc86812e391fc21684f16e7e1c0c26af036c11e5689db0471b",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-07-13-485948Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-07-13-485948Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "33cb07f8c3efdce069308b88d283c2d30d58badfa9c52bfe8178a5c045caeee1",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-07-13-485948Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-07-13-485948Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "ae5cf1aed0b1529a67297d5b26a3e10b16bcdf5fb6b618e8e3318a67ab1dd814",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-07-13-485948Z-summary.json",
+      "bytes": 4958,
+      "sha256": "bac970beefc0d49e6be9305db34ead06d85247a69af1787f8a74edde4b1f3d37",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-07-58-625191Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-07-58-625191Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "9fc4f2c5d2ef67df64daae98c957ad4a5338188c583c67887cce02ac3eee50bf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-07-58-625191Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-07-58-625191Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "9bcdafbc8f8d49f57ff8104c345003e306db7d8f8baa3e0b2d78ded13953202d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-07-58-625191Z-summary.json",
+      "bytes": 4958,
+      "sha256": "b71e806ef1d02f705a7a1fb8f778c0d2ec6b588dff8b8830f2ff1b7a38be3e12",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-08-43-689099Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-08-43-689099Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "214409c5f29640ccc05844ed91f551ba6309191771bcc21ebfea723d2021ed7b",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-08-43-689099Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-08-43-689099Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "9cfd8c37dff19d2240c640953efbf8123100d00822b526c5aea4e1db1a5e830f",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-08-43-689099Z-summary.json",
+      "bytes": 4958,
+      "sha256": "56f54f1cf2fc56dd0ba7e983ee297b27f14685af4a281bf35282696f6c88139b",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-09-28-747232Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-09-28-747232Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "d1aed84fb47fcf84d5493e2a8f0245f66397ddb9db77a15966daee5c18020a27",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-09-28-747232Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-09-28-747232Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "144a4f8c34acf02e92c0b519e12c130b2cc34ce3ee5064aa82778885efeb69b1",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-09-28-747232Z-summary.json",
+      "bytes": 4958,
+      "sha256": "86dfb200d6b161abc4c0853a3f0382266378010bffdb89f51d47b1e39ef553fc",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-10-13-852800Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-10-13-852800Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "719ece1897eab8bf8b593621e4dc90d47bf9a02e70ca956454889fc16cfe9d96",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-10-13-852800Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-10-13-852800Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "4455b4f51c904a0276d19b5567a0b9c34db3fea12ce18387a0d12963f6c4bbfb",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-10-13-852800Z-summary.json",
+      "bytes": 4958,
+      "sha256": "8db049810f4a3bc9a9f6ac8e7b0e28fabd5f21e6d0f38b05d0a38538be6fc81a",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-10-58-941436Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-10-58-941436Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "141f8d62c96fe8f504c4827979f0f76d8c5f3cd9391306a8a3959261afdcb1b8",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-10-58-941436Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-10-58-941436Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "db2cc7ca462693eab9371e37e507fa2463c91adf7cee9d929fb93113247234b8",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-10-58-941436Z-summary.json",
+      "bytes": 4958,
+      "sha256": "8549d84109e933b7ee685d1c91f8f1d65f121035890f1a411298cb92bc6d8b94",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-11-44-016992Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-11-44-016992Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "7ae050ad3e22517da652db5f893cb5e124bc6a99af966e02e4a3725d013a4743",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-11-44-016992Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-11-44-016992Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "63cc5768df77028a7d173aab0ba9decddf29d1bc7ab6bae7fce79f7334b8915d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-11-44-016992Z-summary.json",
+      "bytes": 4958,
+      "sha256": "957e4c5620d8843c41df0d976302519a3e2b31381ce96ab445f37b35028f4373",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-12-29-075704Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-12-29-075704Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "5391cada1314b227f88189bdd793523c7b7c94e5eb42e137a15c3bd2f594e183",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-12-29-075704Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-12-29-075704Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "9ca68bb8f38e9b77435bbf0feec1e3cb2406684fa230166d47fa5e4dd151ccb6",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-12-29-075704Z-summary.json",
+      "bytes": 4958,
+      "sha256": "b03e82c7cd80faa4649c2f09cce6d8339143cdc720845cbf989d0254284e8efe",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-13-14-152771Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-13-14-152771Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "2a6e255efbebbaa4631fb2aefde952429cf686605f3a5cefb72ce8b1b0f9ac23",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-13-14-152771Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-13-14-152771Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "d7a1ddd09619360e3a2263bccfcb2f205e644cc5287ddc826c143dd0e3d18826",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-13-14-152771Z-summary.json",
+      "bytes": 4958,
+      "sha256": "cf85e6f12b9da51abedb717c7ba1dc9cac924e12d32d279b1aa142f9f45cadfd",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-13-59-250040Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-13-59-250040Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "dac5177addaa178e868b9749b0a7864dae5ee01197c4fcdf04f1ec49ffe5ea87",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-13-59-250040Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-13-59-250040Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "b5976054093a9b8401e65f13b728a7fd1f7a04db3509c1ae20dff533b122eaaf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-13-59-250040Z-summary.json",
+      "bytes": 4958,
+      "sha256": "dd4c46fc7ad0e49609da7fa5dc8fd293669f115717ba7b8de23a0d0082ab1b91",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-14-44-339653Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-14-44-339653Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "b45f4c691c2ad355bf66a73d577423253740c57843839c0f9f24a540237bb53d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-14-44-339653Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-14-44-339653Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "7c2d424d2dc806106f2a8d5ef42380c0e0bd158344de945255488511989b24e3",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-14-44-339653Z-summary.json",
+      "bytes": 4958,
+      "sha256": "92ddd66c1b1082eb4c3a795eb328e7895910bd6577edddccb4e801c210ea3584",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-15-29-407969Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-15-29-407969Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "6cec911ff4842ea509d9eda21588be850edc3f38dd8916b4f96a39de09af7a7b",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-15-29-407969Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-15-29-407969Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "856507f3f081f78817647248366ee18be8a48744e038b5a02f546d335b4bfbec",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-15-29-407969Z-summary.json",
+      "bytes": 4958,
+      "sha256": "c6511e4f6e0034673d65f029d4a1df21785eee73f3b1ad323d50ecb80c813d0f",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-16-14-467257Z-jobs-original.json",
+      "bytes": 36843,
+      "sha256": "a2526a23753132b815766681e2d2ae9b9b92f33ec7585bdbc659ff85d6d7fdd8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-16-14-467257Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "4a901a893236f04b9ef0b49132a30fcf01d8b6836cd822861a1d21b4a44119ef",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-16-14-467257Z-run-original.json",
+      "bytes": 12186,
+      "sha256": "d8a90cc485357d02fa658535afae4f1fe6b8c025e17c6439bdbeda6b8ec9ce9d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-16-14-467257Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "c6356d16998add79d90d4ab6e939aa0f03029980ae39ec789899116c472987f2",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-16-14-467257Z-summary.json",
+      "bytes": 4958,
+      "sha256": "2f63059b2cb5a4fad11c199cf916f6c43e9392236183b2a06a9b1effe0c3f4bd",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-16-59-553688Z-jobs-original.json",
+      "bytes": 37168,
+      "sha256": "66c9fb061152d89203f81d15fc50d642d0cdf041fc670ed29e636a2bb5be4c19",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-16-59-553688Z-jobs-request-receipt.json",
+      "bytes": 192,
+      "sha256": "d919e275f5203972d5f967ee701aa6947b065b3ee0e92d158cd92c3b34489599",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-16-59-553688Z-run-original.json",
+      "bytes": 12189,
+      "sha256": "289c2533f4d952ea1c9d81938e792235a941e374f21bca1ce4d5ff00e49b611b",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "2026-10-04T22-16-59-553688Z-run-request-receipt.json",
+      "bytes": 174,
+      "sha256": "89dba74b19343f196d31deea750b5da04eaac3ad1c9cb49af8ff3efa563785ed",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "2026-10-04T22-16-59-553688Z-summary.json",
+      "bytes": 5090,
+      "sha256": "4736ac954e5b00804fd982c2831d0d18a0121d5301c227bc09ff09d79a691a95",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "README.md",
+      "bytes": 4289,
+      "sha256": "d6e18b96ae0531ac8b93f3db198618e8b54c1e802217740baa45b4af99280a0f",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "artifacts/11316409602-browser-test-results-harbor-sample-2-original.zip",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/11316409602-download-actual-receipt.json",
+      "bytes": 929,
+      "sha256": "b0c8a99db0ebfeed26c4ee5ebec9d7fc2afeab6b268f73fec57a91ea223cabeb",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "artifacts/11316409602-gh-get-diagnostic-sanitized.json",
+      "bytes": 225,
+      "sha256": "a40dfcc9554fa356f65b795bb89c54bddf503ee207b211d09a93d5f7a1377995",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/11316409602-managed-stream-actual-receipt.json",
+      "bytes": 859,
+      "sha256": "834fbf0e199b5e57d5f22f88cb9e834f8fd81a7a7f6f98dc08cdf5090968b1ae",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "artifacts/11316409602-managed-supported-client-original.zip",
+      "bytes": 38768967,
+      "sha256": "6f46cdbcc5ad0b6a76306c3fe6ba3d6abeec2f9addcefe7b8eb52b923f67a024",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/11316409602-original-zip-entries.json",
+      "bytes": 7785,
+      "sha256": "4837e8ad4dede630a2945224439387bdd0a5488898bcebe2b14a11c611962179",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/11316409602-range-first-part-original.bin",
+      "bytes": 1048576,
+      "sha256": "735f292aa9a298c5c9e1f850ba8776be0a24863eb52c9b7ff5adefbe3d35a908",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/11316409602-range-request-receipt.json",
+      "bytes": 427,
+      "sha256": "77e25cd394f5e0b2d6f8eb387f50ef36c76421f7c2cdd9faca936d78d26c7706",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "artifacts/11316409602-supported-client-actual-receipt.json",
+      "bytes": 877,
+      "sha256": "12b8621b6ea7fef7acc88f42b83ebf138d4e998e20b9545fa9f4940f206d2a24",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "artifacts/11316409602-transfer-block-diagnostic.json",
+      "bytes": 531,
+      "sha256": "f9cb402c2d812f84b356a9126f37580cccd133a13b4427959adeb7f0d016c10a",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/ferry-failure-original/error-context.md",
+      "bytes": 18403,
+      "sha256": "88b12596f1103690806e8f296656ad7f1276382276859417b19fe1f16f671848",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/ferry-failure-original/trace.zip",
+      "bytes": 18392627,
+      "sha256": "cddf152efe2300116c2661470b6d6e5eb6f81c582b81910b3ac55d691b9b529f",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/ferry-failure-original/upper-deck-high-original.png",
+      "bytes": 136815,
+      "sha256": "ed80fbfdd4bb59cf871a809ea061a986864b1c95ed855a4af3f5ef472aff393a",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/ferry-failure-original/upper-deck-pose-original.json",
+      "bytes": 43087,
+      "sha256": "a82a6ab11fba7d1dd7fd013dd2726fe935c7feba7dee26bfd3b7c4faa646bd9e",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "artifacts/ferry-failure-original/zip-extraction-actual-receipt.json",
+      "bytes": 1648,
+      "sha256": "c6291a7031748675afa39cd48b0927e57fbe7557feeef86ada5e53df7b832598",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "dispatch-originals/copy-provenance.json",
+      "bytes": 1156,
+      "sha256": "70ef118f1af36cc5c3ab5476ab6a8227e60a6560a519de05a55da3543de26821",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "dispatch-originals/neon-D2-ci-dispatch-receipt.json",
+      "bytes": 436,
+      "sha256": "5b7cd4c1487baeb53ad31fa14718582e02f42e48fcddc3c19286996cc7b6c77d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "dispatch-originals/neon-D2-ci-dispatch-stderr-original.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "dispatch-originals/neon-D2-ci-dispatch-stdout-original.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "dispatch-originals/neon-D2-ci-run-confirmation.json",
+      "bytes": 353,
+      "sha256": "8001895655277d18dd5b09c699a7de86c6fd453896c15548f41228da06b2b0de",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "dispatch-originals/neon-D2-ci-runs-after-dispatch-original.json",
+      "bytes": 36913,
+      "sha256": "c61ee21422d70a7c27a1689ceb3d72606b7db5b94bc95d05541be54f9bdcfb15",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "failure-summary.json",
+      "bytes": 5361,
+      "sha256": "99fec162979b10fc568cbc7c0b540563fd052761a05ed83929803d37df9c255e",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "final-artifacts-original.json",
+      "bytes": 8740,
+      "sha256": "a85ef025b013f70f44373f3e4ec7b741d41c65796f79b04e81c9c82bc4d85a7a",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "final-artifacts-request-receipt.json",
+      "bytes": 522,
+      "sha256": "da6f330fc2913bff5e28e2f84cf1305fa284dfb9776b5876011f4200594b5388",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "final-artifacts-stderr-original.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "final-run-summary.json",
+      "bytes": 26908,
+      "sha256": "b79979c7efd46651ea6e07fe6c6d7be3da92eed2b7df7fff6e1dac98281b8b10",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "independent-ferry-review/copy-provenance.json",
+      "bytes": 2537,
+      "sha256": "eae749baee4db058267c0e80e79ed51c996fe709ea18a9e0f93f72f53798709a",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-control-method-candidate.js",
+      "bytes": 4490,
+      "sha256": "7c4e16770d6d7845db0e92600ff35d0db5d29ef4ce2f051bf637f6b50ea5ffd7",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-d2-door-end-original.jpeg",
+      "bytes": 34433,
+      "sha256": "27cb1e7f7970046d0eb6e2e9b35f488b16ede87be01dc0967b8f39d3a6e328b7",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-d2-door-middle-original.jpeg",
+      "bytes": 34863,
+      "sha256": "e3d8ea5aba572dfe51e51be4747572748e9ef279f96bd5c4fbf2a76d35210038",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-d2-door-start-original.jpeg",
+      "bytes": 35246,
+      "sha256": "166801e7f6587427a7c8d16ac04946e2f06a894f872b30f5e0bc56787a07f2e0",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-d2-readonly-diagnosis.md",
+      "bytes": 13692,
+      "sha256": "728e7c41dda153961f7a973261e0b8c2b2fec7fee4ced37f08fc9949c475e9e5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-d2-readonly-evidence.json",
+      "bytes": 167854,
+      "sha256": "407a9ac11be74911aed612e0818ddee7aafd63f1309441dd191c9a959f1e67a5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-d2-readonly-report-manifest.json",
+      "bytes": 1049,
+      "sha256": "f8fd2948a3f23bfefb503c312e0c8cbc2b87e43a6a301ffeed72d8047d4d2b15",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "independent-ferry-review/neon-ferry-readonly-d2-diagnose.py",
+      "bytes": 6849,
+      "sha256": "29b89d5e55cab41f452b2638f44b60ace491d4fb344f82e9d6370d9fd021db97",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469490-connector-response-original.json",
+      "bytes": 43184,
+      "sha256": "3ea2992c50b795a6fc9271dd144b072eeb9e76c563be1b7e48250c6f7ee99d35",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469490-log-summary-final.json",
+      "bytes": 1287,
+      "sha256": "bce6fe706ecea64d8e379b9130802d465501e0002a33e43aa5be42850126e14e",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469490-original.log",
+      "bytes": 42492,
+      "sha256": "32565e58e807b6ff4e5c1e68097256ef9b5787ffb64cf538d100eeea15de7873",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469593-connector-response-original.json",
+      "bytes": 178719,
+      "sha256": "f479fb42def6e696ac5ae2489040419a6e451ddb98f7fec07bc6e52ddc9e67b6",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469593-log-summary-final.json",
+      "bytes": 1374,
+      "sha256": "2fdc8af381a5217305955cf4ab22cc074bde0e2cd149f1d6ab183a541edc84bf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469593-original.log",
+      "bytes": 176053,
+      "sha256": "65a6e0da8dd5df6b3efec649a6f9949740a4221badaf269b0096968f3c90c874",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469705-connector-response-original.json",
+      "bytes": 179117,
+      "sha256": "d48a3b9350680e9b61d311a9c379476bd8e968ed496e4cb1d56ab7aa270b7648",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469705-log-summary-final.json",
+      "bytes": 1561,
+      "sha256": "dfc350b69509552f07b209ea9e540c6ce30579f79912ca4e2d3e424fb46ab254",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469705-original.log",
+      "bytes": 176448,
+      "sha256": "1acbd4675baafe832bb4aa08eaefec7232f370f50c4984f73b83afae98ad2207",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469719-connector-response-original.json",
+      "bytes": 182031,
+      "sha256": "2a46d53492f13897a6a1fd96aa83c41695b2574dc377da00e3c4db08e64b4048",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469719-log-summary-final.json",
+      "bytes": 1372,
+      "sha256": "cd969627434e81d2f4c527d3a0a9ea2a3145cde8908702dcbce6570ff5f98693",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469719-original.log",
+      "bytes": 179089,
+      "sha256": "caa56e15c437f8eba84ca5e64e45e3a11af423b3c03e33e485b283ffe20b626c",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469743-connector-response-original.json",
+      "bytes": 185575,
+      "sha256": "d62d3b5ccb8065d3b89887626f07f44ce02cbc427cc8a0197777e26f42d3669f",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469743-log-summary-final.json",
+      "bytes": 1342,
+      "sha256": "71d8bb022a863a85b007496f92c2ebbc6b5d3f9b2b5dd5964d75df9f498fd35c",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469743-original.log",
+      "bytes": 182223,
+      "sha256": "b3935829ae72bbb06f9f1e49543574452e06cd5eb2b72f1341b52f7372439c62",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469753-connector-response-original.json",
+      "bytes": 178707,
+      "sha256": "3a69a95c8df4a33e6a06894b6531c29b7aa6df5552e6373b55fcbe0ea365d095",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469753-log-summary-final.json",
+      "bytes": 1330,
+      "sha256": "4c2fcef6b28179dabbff7fd56d4630e2ab4c70f2eb6f7275b84a55a17d311c5d",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469753-original.log",
+      "bytes": 176041,
+      "sha256": "1c41cd4fb70dd429bacf261984241b612d973092328271b9f96e32b5fc6c7f05",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469761-connector-response-original.json",
+      "bytes": 179009,
+      "sha256": "48b9b2c3b2b5509202208c48e4441e42443ebe694c56fe9218583b4ab02818a3",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469761-log-summary-final.json",
+      "bytes": 1388,
+      "sha256": "19b331edd2fe130f04576729008ad4c3864848d9eeb28e28d69291b324237a7e",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469761-original.log",
+      "bytes": 176341,
+      "sha256": "bde1a081aa53af6dedb3d4465e887dabbdc747e3353c8582be93d6b19e8cc9b9",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469762-connector-response-original.json",
+      "bytes": 178971,
+      "sha256": "ae96914822e3c35606044c0fc79d1db518c43c087479beaf9957dde0c108b2e8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469762-log-summary-final.json",
+      "bytes": 1579,
+      "sha256": "04c7283fccb7d980a47c1ef3785bef9cb0b024adba3985bd44a09fd0a311f907",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469762-original.log",
+      "bytes": 176302,
+      "sha256": "1a7e719ed3f388308b4c739b6c226a83ce22bd5bf39e3fed1369dcd740ca167c",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469765-connector-response-original.json",
+      "bytes": 178880,
+      "sha256": "d83331fb2183cbe4981993cc66d8939c59e09e07e3f300cce775c4958ae845b2",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469765-log-summary-final.json",
+      "bytes": 1291,
+      "sha256": "bab91c90c6966c51906ad24307c355a1e7f6984adee42442d4e09301c6c7f0bf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469765-original.log",
+      "bytes": 176212,
+      "sha256": "98a1eff3d9d219d8eafbd34badc11117f560e539f6d9ad13707dd3d70a9175c7",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469766-connector-response-original.json",
+      "bytes": 185982,
+      "sha256": "18ebab45ec2481ab15d7a5f7510cbbd47b8484b78691040afd74b9a6347e083d",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469766-log-summary-final.json",
+      "bytes": 11108,
+      "sha256": "2f751845e49069e0474d43bc212e415653fe9e3124ef13c05cd68e49ae940aa4",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469766-original.log",
+      "bytes": 182955,
+      "sha256": "fadb7633aa3995494463fd3a081db865c114b0fbe6f5f55f53f6920ca6105bb8",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469771-connector-response-original.json",
+      "bytes": 179361,
+      "sha256": "72cf4fa3a801a8fe4f7b36cf7d79aa2b6712405ff3becf551fb463b753fd3b54",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469771-log-summary-final.json",
+      "bytes": 1674,
+      "sha256": "6b1bab49f1f83dc0226f86cf6d6c0bd27b86295fbc07f69f57ffd75777aa48a5",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469771-original.log",
+      "bytes": 176689,
+      "sha256": "e31144caacc4f4b908f0de189bbf3ea8f97a934f9929bc412fdd2ec20a694624",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469781-connector-response-original.json",
+      "bytes": 178961,
+      "sha256": "40d022e9fc01758f2d57a7f99306126c9e728ced9f69587525dbf66cfef07fa6",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "logs/job-111539469781-log-summary-final.json",
+      "bytes": 1314,
+      "sha256": "51106cf11ce10a8897b8811e4c40062df4fc0ccb8a0c7829bd85d06582d0d967",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "logs/job-111539469781-original.log",
+      "bytes": 176292,
+      "sha256": "a74f9e4bccfe3e6a82b866a3c8d05c0f2a0f01da8f0a76e56a147eaaf688deaf",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "provenance/closure-v3-copy-provenance.json",
+      "bytes": 558,
+      "sha256": "7220bcc3f6070ebd931316ba5f494cfb8478f4f56045862922f951578607c5f8",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "provenance/closure-v3-first-attempt-and-v4-correction.json",
+      "bytes": 797,
+      "sha256": "3303022f45b9b42e8b04954e6f5886d207458eee592e786a94b75459c7177808",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "provenance/decoded-log-archive-function-original.js",
+      "bytes": 1281,
+      "sha256": "b29b0b59a267b865eeb10a85f8e65f611f6a579764df9ae9cb93e5f648440c3c",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "provenance/helper-copy-provenance.json",
+      "bytes": 1210,
+      "sha256": "66455a045d55e24519e3291515ac1e967fc07ba4d98ed01e8db1bfe373b9f906",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "provenance/neon-ci-close-v2.py",
+      "bytes": 13768,
+      "sha256": "a4a5733fba6619108dfe084cde9f48dafb1bd16680071102840f80553c501418",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "provenance/neon-ci-close-v3.py",
+      "bytes": 15219,
+      "sha256": "ab9052c2827d1172c6518f674a64c419f328021a58a43e5e01b67fb753dcb551",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "provenance/neon-ci-close-v4.py",
+      "bytes": 15230,
+      "sha256": "b6035065aeaa13a174adca18808a5d8536c03e7e6d390ae0715f50ebd80f94a5",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "provenance/neon-ci-log-summary-v2.py",
+      "bytes": 1717,
+      "sha256": "cc83fd3425b55524990a305e2282704d3ec6ebe493f876f8b493b08d37a90cdf",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "provenance/neon-readonly-ci-poll-v2.py",
+      "bytes": 4983,
+      "sha256": "c02ddb9920988a7e6fec5573d4500126f305e87c6f8f1bda70ab401437013bba",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "remote-candidate-commit-original.json",
+      "bytes": 8222,
+      "sha256": "a9364fe8805dc604270d7f02efddad62fb4b63ba1be95b121902ef4a2afe2536",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    },
+    {
+      "file": "remote-candidate-commit-request-receipt.json",
+      "bytes": 107,
+      "sha256": "1636d027a472ee718c5df77b9ae76b88209f884eb23b9d1501a1ea3ff7ecbfb2",
+      "role": "derived summary/receipt/provenance"
+    },
+    {
+      "file": "watcher-config.json",
+      "bytes": 403,
+      "sha256": "e8cbd414e890f0a8b2ff18f2f08c4b4eb59d6106b64a4bc6f0667690f09bffbf",
+      "role": "original GET/decoded tool response or copied capture bytes"
+    }
+  ]
+}

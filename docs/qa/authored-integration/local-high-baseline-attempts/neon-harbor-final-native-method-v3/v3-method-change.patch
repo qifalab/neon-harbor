@@ -1,0 +1,62 @@
+--- v2/capture-authored-harbor-native.mjs
++++ v3/capture-authored-harbor-native.mjs
+@@ -13,6 +13,7 @@
+ import {CORE_PLANS,compileFrontagePlan} from './plans.mjs';
+ import {MODELS,expectedIds} from './expectations.mjs';
+ import {snapshot,errorRecord,createInput} from './input.mjs';
++import {currentRenderedCamera,phaseTimeout} from './render-readiness.mjs';
+ const methodRoot=dirname(fileURLToPath(import.meta.url));
+ const usage='cwd ACTUAL_REPO: node /tmp/neon-harbor-final-native-method/capture-authored-harbor-native.mjs --mode baseline|authored --case home|workshop|south-090|south-091|south-092|south-094|south-095|south-096 --output NEW_EMPTY_DIR --gpu-go yes [--root dist] [--port 5228]\nPreparation only: add --plan-only yes; no browser dependency is loaded, server started or GPU instantiated.';
+ const options={};
+@@ -71,7 +72,19 @@
+  assert.equal(s.renderer.contactOcclusion.enabled,true);assert.equal(s.renderer.contactOcclusion.passes,3);assert.equal(s.renderer.contactOcclusion.fallback,null);
+  assert.deepEqual(s.renderer.contactOcclusion.sceneSize,[1280,800]);assert.deepEqual(s.renderer.contactOcclusion.occlusionSize,[640,400]);
+ }
+-async function event(kind,detail={}){const s=await snapshot(page);assertSettings(s);record.events.push({kind,detail,at:new Date().toISOString(),state:diagnostic(s)});await persist();return s;}
++async function event(kind,detail={},options={}){
++ const initial=await snapshot(page),expectedRevision=options.expectedRevision??initial.teleportRevision;
++ const phaseDeadline=options.phaseDeadline??Math.min(deadline,Date.now()+60000);
++ const readiness={kind,expectedRevision,startedAt:new Date().toISOString(),phaseDeadlineAt:new Date(phaseDeadline).toISOString(),initialCamera:initial.camera,status:'waiting'};
++ (record.renderReadiness ||= []).push(readiness);await persist();
++ try{
++  const timeout=phaseTimeout(Date.now(),deadline,phaseDeadline);readiness.timeoutMs=timeout;
++  await page.waitForFunction(currentRenderedCamera,{expectedRevision},{polling:'raf',timeout});
++  const s=await snapshot(page);assert.equal(currentRenderedCamera({expectedRevision,state:s}),true,'Actual current camera, eye/FOV and expected transition revision');assertSettings(s);
++  readiness.status='observed-current-render';readiness.camera=s.camera;readiness.finishedAt=new Date().toISOString();
++  record.events.push({kind,detail,at:new Date().toISOString(),state:diagnostic(s)});await persist();return s;
++ }catch(error){readiness.status='failed';readiness.firstError=errorRecord(error);readiness.finishedAt=new Date().toISOString();throw error;}
++}
+ function ownerOf(s,channel,floorId){return channel==='workshop'?s.city.interior.workshopPilot:s.city.interior.authoredHome?.find(item=>item.floorId===floorId)?.owner;}
+ function ownerEvents(s,channel){return channel==='workshop'?s.city.interior.workshopPilotEvents:s.city.interior.homeAssetEvents;}
+ async function ready(channel,floorId,label){
+@@ -176,9 +189,10 @@
+  await input.face(Math.PI);const before=await snapshot(page),prompt=await page.locator('#interaction').textContent();
+  if(kind==='enter')assert.ok(prompt.includes('进入')&&prompt.includes(catalog.buildings[plan.address].name),'Actual public E entry label for intended address');
+  else assert.ok(prompt.includes('返回街道'),'Ground-floor actual E exit prompt');
++ const phaseDeadline=Math.min(deadline,Date.now()+60000),expectedRevision=before.teleportRevision+1;
+  await page.keyboard.press('e');
+- await page.waitForFunction(({kind,address})=>{const id=window.__NEON__.snapshot().city.interior.buildingId;return kind==='enter'?id===address:id===null;},{kind,address:plan.address},{polling:'raf',timeout:remaining(60000)});
+- const after=await event(label||('actual-E-'+kind),{prompt,teleportRevisionBefore:before.teleportRevision});
++ await page.waitForFunction(({kind,address})=>{const id=window.__NEON__.snapshot().city.interior.buildingId;return kind==='enter'?id===address:id===null;},{kind,address:plan.address},{polling:'raf',timeout:phaseTimeout(Date.now(),deadline,phaseDeadline)});
++ const after=await event(label||('actual-E-'+kind),{prompt,teleportRevisionBefore:before.teleportRevision},{expectedRevision,phaseDeadline});
+  assert.ok(after.teleportRevision>before.teleportRevision,'Only shipped E transition may replace the address position');
+  if(kind==='enter'){assert.equal(after.city.interior.floorId,'lobby');record.events.at(-1).detail.realRoomEntrance=after.city.interior.entrance;}
+  else{
+@@ -215,7 +229,7 @@
+  const runtime=await fingerprints();record.buildInfoSha256=runtime.sha256;record.buildRevision=runtime.manifest.revision;
+  record.manifestAssetDictionary=runtime.manifest.assets;record.sourceServedVerifiedAssetDictionary=runtime.hashes;
+  await writeFile(resolve(output,'build-info.json'),runtime.bytes);
+- const methodFiles=['capture-authored-harbor-native.mjs','input.mjs','plans.mjs','expectations.mjs','server.mjs','evidence/captured-buildings.json','evidence/common-pose-proof.json'];
++ const methodFiles=['capture-authored-harbor-native.mjs','input.mjs','plans.mjs','expectations.mjs','server.mjs','render-readiness.mjs','evidence/captured-buildings.json','evidence/common-pose-proof.json'];
+  record.methodHashes=Object.fromEntries(await Promise.all(methodFiles.map(async p=>[p,sha(await readFile(resolve(methodRoot,p)))])));
+  const proof=JSON.parse(await readFile(resolve(methodRoot,'evidence/common-pose-proof.json')));assert.equal(proof.clear,true,'Common-mode standing/path preparation');
+  const planningFiles=['src/compact-interiors.js','src/expansion-programmes.js','src/metropolis-room-designs.js'];
+@@ -281,7 +295,7 @@
+   catch(error){item.status='failed';item.error=errorRecord(error);}finally{clearTimeout(timer);item.finishedAt=new Date().toISOString();record.cleanup.push(item);}}
+  if(context)await close('browser-context',()=>context.close(),10000);
+  if(browser)await close('browser',()=>browser.close(),10000);
+- if(browserServer)await close('owned-browser-process',()=>browserServer.close(),15000);
++ if(browserServer)await close('owned-browser-process',()=>browserServer.close(),30000);
+  if(browserProcess&&browserProcess.exitCode===null&&browserProcess.signalCode===null&&browserServer)await close('owned-browser-process-kill',()=>browserServer.kill(),5000);
+  if(browserProcess)record.browserProcessAfterFinalization={pid:browserProcess.pid,exitCode:browserProcess.exitCode,signalCode:browserProcess.signalCode};
+  if(server)await close('static-server',()=>new Promise((done,reject)=>server.close(error=>error?reject(error):done())),5000);

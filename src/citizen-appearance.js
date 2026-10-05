@@ -4,8 +4,8 @@ const libraries = new WeakMap();
 
 /** Near citizens retain the existing smooth anatomical meshes, fingers and
  * eight animated joints. Shared small props give occupations a readable outline. */
-export function createCitizenCharacter(THREE, style) {
-  const person = createCharacter(THREE, { style }), library = getLibrary(THREE);
+export function createCitizenCharacter(THREE, style, { characterFactory = createCharacter } = {}) {
+  const person = characterFactory(THREE, { style }), library = getLibrary(THREE);
   const wear = new THREE.Group(); wear.name = 'Citizen occupational accessories'; person.add(wear);
   const glasses = library.glasses.clone(true), hat = library.hat.clone(true);
   wear.add(glasses, hat);

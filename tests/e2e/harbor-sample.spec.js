@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { writeFile } from 'node:fs/promises';
+import { appendFile, writeFile } from 'node:fs/promises';
 import { createHarborVehicleLayout } from '../../src/harbor-vehicle-models.js';
 import { snapshot, walkAxis } from './helpers/walking.js';
 import { faceRoom, frameOccupiedRoom } from './helpers/occupied.js';
@@ -90,46 +90,240 @@ async function cabinPointer(page) {
   return pointer;
 }
 
-async function walkLocal(page, target, pointer, { precision = true } = {}) {
-  const start = await cabinMotion(page), deadline = Date.now() + 150000, samples = [start];
-  let current = start;
+function cabinErrorRecord(error, stage) {
+  return { stage, name: error?.name || '', message: error?.message || String(error), stack: error?.stack || null };
+}
+
+// Write each cabin phase and input cycle while it happens. A failed attachment
+// still leaves the partial journal in test output for the CI artifact uploader.
+function createCabinEvidence(info, kind) {
+  let serial = 0;
+  const deferred = [];
+  const begin = (stage, waypoint, target = null) => ({
+    name: `${kind}-${stage}-${waypoint ?? 'route'}-${++serial}-cabin-evidence`,
+    stage, waypoint, target, diagnosticErrors: [],
+  });
+  async function write(phase, event) {
+    const row = { kind, stage: phase.stage, waypoint: phase.waypoint, wallTime: Date.now(), ...event };
+    try {
+      phase.path ||= info.outputPath(`${phase.name}.jsonl`);
+      await appendFile(phase.path, `${JSON.stringify(row)}\n`);
+    }
+    catch (error) {
+      phase.diagnosticErrors.push({ error, record: cabinErrorRecord(error, 'write cabin journal') });
+      try { console.log(JSON.stringify({ cabinDiagnosticWriteFailed: true, ...row,
+        diagnosticErrors: phase.diagnosticErrors.map(item => item.record) })); } catch {}
+    }
+  }
+  async function finish(phase, event) {
+    await write(phase, { event: 'cabin-end', ...event,
+      diagnosticErrors: phase.diagnosticErrors.map(item => item.record) });
+    try { await info.attach(phase.name, { path: phase.path, contentType: 'application/x-ndjson' }); }
+    catch (error) {
+      phase.diagnosticErrors.push({ error, record: cabinErrorRecord(error, 'attach cabin journal') });
+      await write(phase, { event: 'cabin-attachment-failed', firstError: event.firstError || null,
+        diagnosticErrors: phase.diagnosticErrors.map(item => item.record) });
+    }
+  }
+  // No serialization, file IO or browser RPC here: the original failure must
+  // reach route pointer cleanup promptly when a key release is unconfirmed.
+  const deferFinish = (phase, event) => deferred.push({ phase, event });
+  async function flushDeferred() {
+    const records = [];
+    for (const { phase, event } of deferred.splice(0)) {
+      await finish(phase, { ...event, deferredReleaseFailure: true });
+      records.push({ name: phase.name, path: phase.path,
+        diagnosticErrors: phase.diagnosticErrors });
+    }
+    return records;
+  }
+  return { begin, write, finish, deferFinish, flushDeferred };
+}
+
+function annotateCabinError(error, diagnostics) {
   try {
+    if (error && typeof error.message === 'string') error.message += `\nCabin diagnostics: ${JSON.stringify(diagnostics)}`;
+  } catch {
+    // Diagnostic encoding or annotation must not throw over the original error.
+  }
+}
+
+async function walkLocal(page, target, pointer, { precision = true, batchProgress = false, evidence, stage, waypoint } = {}) {
+  const phase = evidence.begin(stage, waypoint, target);
+  const samples = [], secondaryErrors = [];
+  let start = null, current = null, deadline = null, movementError = null, releaseUnconfirmed = false;
+  await evidence.write(phase, { event: 'cabin-start', target, precision, batchProgress });
+  try {
+    start = await cabinMotion(page); current = start; samples.push(start);
+    deadline = Date.now() + 150000;
+    await evidence.write(phase, { event: 'cabin-start-pose', target, start, deadline });
     for (let step = 0; Math.hypot(target.x - current.local.x, target.z - current.local.z) >= .06 && step < 1800; step++) {
       expect(Date.now(), 'local walking retains its wall-clock deadline').toBeLessThan(deadline);
-      const dx = target.x - current.local.x, dz = target.z - current.local.z;
+      const before = current, dx = target.x - current.local.x, dz = target.z - current.local.z;
+      const distance = Math.hypot(dx, dz);
       const key = Math.abs(dx) > Math.abs(dz) ? dx > 0 ? 'a' : 'd' : dz > 0 ? 'w' : 's';
       const offset = { w: 0, s: Math.PI, a: Math.PI / 2, d: -Math.PI / 2 }[key];
       const desired = current.vehicle.yaw + Math.atan2(dx, dz) - offset;
-      // Drag deltas apply to the intended orbit, not the still-easing camera.
       const delta = angle(desired - pointer.orbitYaw);
-      if (Math.abs(delta) > .002) {
-        pointer.x -= delta / (.005 * current.sensitivity);
-        await page.mouse.move(pointer.x, pointer.y);
-        pointer.orbitYaw = desired;
-        await page.waitForFunction(yaw => {
-          const actual = window.__NEON__.snapshot().camera.yaw;
-          return Math.abs(Math.atan2(Math.sin(actual - yaw), Math.cos(actual - yaw))) < .025;
-        }, desired, { polling: 'raf', timeout: Math.min(15000, Math.max(1, deadline - Date.now())) });
+      const slow = precision || distance < 1.2;
+      // Batch only precision ferry movement far from the endpoint. This is a
+      // small real-input stride, not a position or simulation-clock write.
+      const batched = batchProgress && precision && distance >= .45;
+      const stride = batched ? distance >= 1.2 ? .15 : .075 : .009;
+      const inputs = [], waits = [];
+      let cycleError = null, keyAttempted = false, slowAttempted = false, triggerHandle = null, trigger = null;
+      let keyReleaseConfirmed = false, slowReleaseConfirmed = false;
+      const preserve = (error, errorStage) => {
+        if (!cycleError) cycleError = error;
+        else if (error !== cycleError) secondaryErrors.push(cabinErrorRecord(error, errorStage));
+      };
+      async function input(action, params, operation) {
+        const record = { action, params, startedAt: Date.now(), completedAt: null, error: null };
+        inputs.push(record);
+        try { await operation(); record.completedAt = Date.now(); }
+        catch (error) { record.completedAt = Date.now(); record.error = cabinErrorRecord(error, action); throw error; }
       }
-      const slow = precision || Math.hypot(target.x - current.local.x, target.z - current.local.z) < 1.2;
-      if (slow) await page.keyboard.down('z');
-      await page.keyboard.down(key);
+      async function wait(label, operation) {
+        const record = { label, startedAt: Date.now(), completedAt: null, error: null };
+        waits.push(record);
+        try { const result = await operation(); record.completedAt = Date.now(); return result; }
+        catch (error) { record.completedAt = Date.now(); record.error = cabinErrorRecord(error, label); throw error; }
+      }
       try {
-        await page.waitForFunction(before => {
-          const p = window.__NEON__.snapshot().city.sample.transit.passengerLocal;
-          return p && Math.hypot(p.x - before.x, p.z - before.z) > .009;
-        }, current.local, { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) });
-      } finally { await page.keyboard.up(key); if (slow) await page.keyboard.up('z'); }
-      current = await cabinMotion(page); samples.push({ ...current, key, slow });
-      expect(current.teleportRevision, 'cabin movement must not relocate the player').toBe(start.teleportRevision);
+        if (Math.abs(delta) > .002) {
+          pointer.x -= delta / (.005 * current.sensitivity);
+          await input('mouse.move', { x: pointer.x, y: pointer.y }, () => page.mouse.move(pointer.x, pointer.y));
+          pointer.orbitYaw = desired;
+          await wait('camera yaw', () => page.waitForFunction(yaw => {
+            const actual = window.__NEON__.snapshot().camera.yaw;
+            return Math.abs(Math.atan2(Math.sin(actual - yaw), Math.cos(actual - yaw))) < .025;
+          }, desired, { polling: 'raf', timeout: Math.min(15000, Math.max(1, deadline - Date.now())) }));
+        }
+        if (slow) {
+          slowAttempted = true;
+          await input('keyboard.down', { key: 'z' }, () => page.keyboard.down('z'));
+        }
+        keyAttempted = true;
+        await input('keyboard.down', { key }, () => page.keyboard.down(key));
+        triggerHandle = await wait('real local progress', () => page.waitForFunction(({ before, target, stride, batched, direction, vehicleId }) => {
+          const s = window.__NEON__.snapshot(), transit = s.city.sample.transit;
+          const p = transit.passengerLocal, vehicle = transit.vehicles.find(v => v.id === vehicleId);
+          if (!p || !vehicle) return false;
+          const mx = p.x - before.local.x, mz = p.z - before.local.z;
+          const moved = Math.hypot(mx, mz), projected = mx * direction.x + mz * direction.z;
+          const remaining = Math.hypot(target.x - p.x, target.z - p.z);
+          const yawChange = Math.abs(Math.atan2(Math.sin(vehicle.yaw - before.vehicle.yaw), Math.cos(vehicle.yaw - before.vehicle.yaw)));
+          // A turning vessel may change the local direction while a real key is
+          // held. Release after small actual movement and steer again promptly.
+          const stopReason = remaining < .06 ? 'endpoint'
+            : batched && moved > .009 && yawChange > .05 ? 'vehicle-yaw-change'
+            : (batched ? projected > stride : moved > .009) ? 'real-progress' : null;
+          return stopReason && { local: { ...p }, vehicleYaw: vehicle.yaw, cameraYaw: s.camera?.yaw,
+            simulationTime: s.simulationTime, teleportRevision: s.teleportRevision, deck: transit.passengerDeck,
+            moved, projected, remaining, yawChange, stopReason };
+        }, { before, target, stride, batched, direction: { x: dx / distance, z: dz / distance }, vehicleId: current.vehicle.id },
+        { polling: 'raf', timeout: Math.max(1, deadline - Date.now()) }));
+      } catch (error) { preserve(error, 'movement'); }
+      finally {
+        if (keyAttempted) {
+          try { await input('keyboard.up', { key }, () => page.keyboard.up(key)); keyReleaseConfirmed = true; }
+          catch (error) { preserve(error, `release ${key}`); }
+        }
+        if (slowAttempted) {
+          try { await input('keyboard.up', { key: 'z' }, () => page.keyboard.up('z')); slowReleaseConfirmed = true; }
+          catch (error) { preserve(error, 'release z'); }
+        }
+      }
+      const releaseState = { direction: { key, attempted: keyAttempted, confirmed: keyAttempted ? keyReleaseConfirmed : null },
+        slow: { key: 'z', attempted: slowAttempted, confirmed: slowAttempted ? slowReleaseConfirmed : null },
+        allRequiredConfirmed: (!keyAttempted || keyReleaseConfirmed) && (!slowAttempted || slowReleaseConfirmed) };
+      releaseUnconfirmed = !releaseState.allRequiredConfirmed;
+      // A failed release leaves input state unknown. Do not spend another
+      // browser roundtrip on jsonValue, handle disposal or pose diagnostics;
+      // the failing test's context closure owns any remaining remote handle.
+      if (triggerHandle && !releaseUnconfirmed) {
+        try { trigger = await triggerHandle.jsonValue(); }
+        catch (error) { phase.diagnosticErrors.push({ error, record: cabinErrorRecord(error, 'read movement trigger') }); }
+        finally {
+          try { await triggerHandle.dispose(); }
+          catch (error) { phase.diagnosticErrors.push({ error, record: cabinErrorRecord(error, 'dispose movement trigger') }); }
+        }
+      }
+      if (!cycleError && !releaseUnconfirmed) {
+        try {
+          current = await cabinMotion(page);
+          expect(current.teleportRevision, 'cabin movement must not relocate the player').toBe(start.teleportRevision);
+        } catch (error) { preserve(error, 'post-release pose and revision'); }
+      }
+      const sample = { ...current, step, target, before, current, key, slow, stride, batched, desired, inputs, waits, trigger, releaseState,
+        triggerObservation: releaseUnconfirmed ? 'unread: key release unconfirmed; handle left to context closure' : triggerHandle ? 'actual trigger read after confirmed key releases' : 'no trigger handle',
+        endStateObservation: cycleError ? 'last successful cabinMotion; not a new failure-time read' : 'actual cabinMotion after key release' };
+      samples.push(sample);
+      if (releaseUnconfirmed) throw cycleError;
+      await evidence.write(phase, { event: cycleError ? 'input-cycle-failed' : 'input-cycle-complete', sample,
+        firstError: cycleError ? cabinErrorRecord(cycleError, 'first cycle error') : null, secondaryErrors });
+      if (cycleError) throw cycleError;
     }
     expect(Math.hypot(target.x - current.local.x, target.z - current.local.z), 'actual local waypoint reached').toBeLessThan(.06);
     if (target.y != null) expect(Math.abs(current.local.y - target.y)).toBeLessThan(.15);
-  } catch (error) {
-    error.message += `\nCabin movement diagnostics: ${JSON.stringify({ target, start, current, samples })}`;
-    throw error;
+  } catch (error) { movementError = error; }
+  const result = { target, start, current, deadline, samples,
+    status: releaseUnconfirmed ? 'release-unconfirmed' : movementError ? 'failed' : 'movement-complete',
+    firstError: movementError ? cabinErrorRecord(movementError, 'first movement error') : null, secondaryErrors };
+  if (releaseUnconfirmed) {
+    evidence.deferFinish(phase, result);
+    throw movementError;
+  }
+  await evidence.finish(phase, result);
+  const diagnosticErrors = phase.diagnosticErrors.map(item => item.record);
+  if (movementError) {
+    annotateCabinError(movementError, { target, start, current, samples, secondaryErrors, diagnosticErrors, evidencePath: phase.path });
+    throw movementError;
+  }
+  if (phase.diagnosticErrors.length) {
+    const firstDiagnosticError = phase.diagnosticErrors[0].error;
+    annotateCabinError(firstDiagnosticError, { movementSucceeded: true, diagnosticErrors, evidencePath: phase.path });
+    throw firstDiagnosticError;
   }
   return samples;
+}
+
+async function runCabinRoute(page, evidence, stage, routeBody) {
+  const phase = evidence.begin(`${stage}-route`, null);
+  let movementError = null, cleanupError = null;
+  const secondaryErrors = [];
+  await evidence.write(phase, { event: 'route-start' });
+  try { await routeBody(); } catch (error) { movementError = error; }
+  finally {
+    try { await page.mouse.up(); }
+    catch (error) {
+      if (movementError) secondaryErrors.push(cabinErrorRecord(error, 'release route pointer'));
+      else cleanupError = error;
+    }
+  }
+  const firstError = movementError || cleanupError;
+  let deferredJournals = [];
+  try {
+    const flushed = await evidence.flushDeferred();
+    deferredJournals = flushed.map(item => ({ name: item.name, path: item.path,
+      diagnosticErrors: item.diagnosticErrors.map(error => error.record) }));
+    for (const item of flushed) phase.diagnosticErrors.push(...item.diagnosticErrors);
+  } catch (error) {
+    phase.diagnosticErrors.push({ error, record: cabinErrorRecord(error, 'flush deferred cabin journal') });
+  }
+  await evidence.finish(phase, { event: 'route-end', status: firstError ? 'failed' : 'complete',
+    firstError: firstError ? cabinErrorRecord(firstError, movementError ? 'first movement error' : 'pointer cleanup error') : null,
+    secondaryErrors, deferredJournals });
+  const diagnosticErrors = phase.diagnosticErrors.map(item => item.record);
+  if (firstError) {
+    annotateCabinError(firstError, { route: stage, secondaryErrors, diagnosticErrors, deferredJournals, evidencePath: phase.path });
+    throw firstError;
+  }
+  if (phase.diagnosticErrors.length) {
+    const firstDiagnosticError = phase.diagnosticErrors[0].error;
+    annotateCabinError(firstDiagnosticError, { routeSucceeded: true, diagnosticErrors, evidencePath: phase.path });
+    throw firstDiagnosticError;
+  }
 }
 
 for (const kind of ['bus', 'tram', 'ferry']) {
@@ -157,14 +351,17 @@ for (const kind of ['bus', 'tram', 'ferry']) {
     expect(boarded.city.sample.transit.passengerLocal.y).toBeCloseTo(layout.deckLevels[0], 2);
     const samples = [], route = [{ x: 0, z: door.z }, { x: 0, z: stair.bottom.z }, stair.bottom,
       { x: stair.x, z: (stair.startZ + stair.endZ) / 2, y: (stair.fromY + stair.toY) / 2 }, stair.top, { x: 0, z: stair.top.z, y: stair.toY }];
-    let pointer = await cabinPointer(page);
-    try {
-      for (const target of route) {
-        const reached = await walkLocal(page, target, pointer, { precision: kind !== 'ferry' || target.x !== 0 });
+    const cabinEvidence = createCabinEvidence(info, kind);
+    let pointer;
+    await runCabinRoute(page, cabinEvidence, 'upper', async () => {
+      pointer = await cabinPointer(page);
+      for (const [waypoint, target] of route.entries()) {
+        const reached = await walkLocal(page, target, pointer, { precision: kind !== 'ferry' || target.x !== 0,
+          batchProgress: kind === 'ferry', evidence: cabinEvidence, stage: 'upper', waypoint });
         samples.push(...reached);
         console.log(JSON.stringify({ stage: `${kind}-upper-waypoint`, target, local: reached.at(-1).local, time: reached.at(-1).time }));
       }
-    } finally { await page.mouse.up(); }
+    });
     const upper = await snapshot(page);
     expect(upper.city.sample.transit.passengerDeck).toBe('upper');
     expect(samples.some(s => s.local.y > stair.fromY + .25 && s.local.y < stair.toY - .25)).toBe(true);
@@ -172,15 +369,16 @@ for (const kind of ['bus', 'tram', 'ferry']) {
     await page.keyboard.press('e');
     expect((await snapshot(page)).city.sample.transit.ridingVehicleId).toBe(vehicleId);
     await captureHigh(page, info, `${kind}-upper-deck-high`);
-    pointer = await cabinPointer(page);
-    try {
-      for (const target of [stair.top, { x: stair.x, z: (stair.startZ + stair.endZ) / 2, y: (stair.fromY + stair.toY) / 2 }, stair.bottom,
-        { x: 0, z: stair.bottom.z, y: stair.fromY }, { x: 0, z: door.z, y: stair.fromY }, door.inside]) {
-        const reached = await walkLocal(page, target, pointer, { precision: kind !== 'ferry' || target.x !== 0 });
+    await runCabinRoute(page, cabinEvidence, 'lower', async () => {
+      pointer = await cabinPointer(page);
+      for (const [waypoint, target] of [stair.top, { x: stair.x, z: (stair.startZ + stair.endZ) / 2, y: (stair.fromY + stair.toY) / 2 }, stair.bottom,
+        { x: 0, z: stair.bottom.z, y: stair.fromY }, { x: 0, z: door.z, y: stair.fromY }, door.inside].entries()) {
+        const reached = await walkLocal(page, target, pointer, { precision: kind !== 'ferry' || target.x !== 0,
+          batchProgress: kind === 'ferry', evidence: cabinEvidence, stage: 'lower', waypoint });
         samples.push(...reached);
         console.log(JSON.stringify({ stage: `${kind}-lower-waypoint`, target, local: reached.at(-1).local, time: reached.at(-1).time }));
       }
-    } finally { await page.mouse.up(); }
+    });
     expect((await snapshot(page)).city.sample.transit.passengerDeck).toBe('lower');
     await page.waitForFunction(({ id, from }) => {
       const v = window.__NEON__.snapshot().city.sample.transit.vehicles.find(v => v.id === id);

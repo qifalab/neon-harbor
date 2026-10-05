@@ -1,0 +1,294 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "mode": "baseline",
+  "plan": {
+    "id": "workshop",
+    "address": "south-086",
+    "englishName": "Old Quarter 86",
+    "budgetMinutes": 25,
+    "scope": "Existing workshop and archive rooms, whole-room and assembly/retrieval photographs, normal exit, physical re-entry and owner release. Existing independent vice close method is not duplicated.",
+    "steps": [
+      {
+        "kind": "enter"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 200
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -115
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 197.6
+      },
+      {
+        "kind": "photo",
+        "label": "workshop-whole",
+        "position": {
+          "x": 197.6,
+          "y": 0.215,
+          "z": -115
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 186.9,
+          "y": 1.38,
+          "z": -115
+        },
+        "roomId": "south-086-lobby-0",
+        "nominalEye": {
+          "x": 197.6,
+          "y": 1.8350000000000002,
+          "z": -115
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.1925361903086664,
+          "fov": 65
+        },
+        "nominalEyeDistance": 10.709669696120406
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 188.3
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -112
+      },
+      {
+        "kind": "photo",
+        "label": "assembly-close",
+        "position": {
+          "x": 188.3,
+          "y": 0.215,
+          "z": -112
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 185.7,
+          "y": 1.37,
+          "z": -111.5
+        },
+        "roomId": "south-086-lobby-0",
+        "nominalEye": {
+          "x": 188.3,
+          "y": 1.8350000000000002,
+          "z": -112
+        },
+        "camera": {
+          "yaw": -1.3808080388761825,
+          "pitch": 0.3265437245793503,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.6881638714929785
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -115
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 200
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -104.5
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 196.7
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -106
+      },
+      {
+        "kind": "photo",
+        "label": "archive-whole",
+        "position": {
+          "x": 196.7,
+          "y": 0.215,
+          "z": -106
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 186.5,
+          "y": 1.42,
+          "z": -106
+        },
+        "roomId": "south-086-lobby-1",
+        "nominalEye": {
+          "x": 196.7,
+          "y": 1.8350000000000002,
+          "z": -106
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.19069750803947194,
+          "fov": 65
+        },
+        "nominalEyeDistance": 10.208438911018655
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 189.4
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -104
+      },
+      {
+        "kind": "photo",
+        "label": "retrieval-close",
+        "position": {
+          "x": 189.4,
+          "y": 0.215,
+          "z": -104
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 187.4,
+          "y": 1.125,
+          "z": -104
+        },
+        "roomId": "south-086-lobby-1",
+        "nominalEye": {
+          "x": 189.4,
+          "y": 1.8350000000000002,
+          "z": -104
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.5129140672708886,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.122286502807762
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -106
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 196.7
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -104.5
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 200
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -100.1
+      },
+      {
+        "kind": "exit",
+        "label": "first-normal-exit"
+      },
+      {
+        "kind": "release",
+        "channel": "workshop",
+        "floorId": "lobby",
+        "label": "all-owned-assets-released-on-exit"
+      },
+      {
+        "kind": "enter",
+        "label": "physical-re-entry"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 200
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -115
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 197.6
+      },
+      {
+        "kind": "ready",
+        "channel": "workshop",
+        "floorId": "lobby",
+        "label": "re-entry-real-decoder-and-owner-ready"
+      },
+      {
+        "kind": "photo",
+        "label": "workshop-re-entry",
+        "position": {
+          "x": 197.6,
+          "y": 0.215,
+          "z": -115
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 186.9,
+          "y": 1.38,
+          "z": -115
+        },
+        "roomId": "south-086-lobby-0",
+        "nominalEye": {
+          "x": 197.6,
+          "y": 1.8350000000000002,
+          "z": -115
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.1925361903086664,
+          "fov": 65
+        },
+        "nominalEyeDistance": 10.709669696120406
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 200
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": -100.1
+      },
+      {
+        "kind": "exit",
+        "label": "second-normal-exit"
+      },
+      {
+        "kind": "release",
+        "channel": "workshop",
+        "floorId": "lobby",
+        "label": "re-entry-owner-released-on-second-exit"
+      }
+    ]
+  },
+  "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+  "unavailableBaselineOwner": false,
+  "planPhotographsIdenticalAcrossModes": true
+}

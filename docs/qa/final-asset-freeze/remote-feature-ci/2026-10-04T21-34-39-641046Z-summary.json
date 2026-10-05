@@ -1,0 +1,166 @@
+{
+  "observedAt": "2026-10-04T21-34-39-641046Z",
+  "run": {
+    "id": 37235153499,
+    "head_sha": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+    "head_branch": "codex/traffic-and-multiplayer",
+    "run_attempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-10-04T21:12:33Z",
+    "updated_at": "2026-10-04T21:12:38Z",
+    "html_url": "https://github.com/qifalab/neon-harbor/actions/runs/37235153499"
+  },
+  "required": [
+    {
+      "id": 111532675829,
+      "name": "Multiplayer rooms in two browsers",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:36Z",
+      "completedAt": "2026-10-04T21:19:05Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676078,
+      "name": "Build and gameplay tests (harbor-sample-1)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:23:47Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676087,
+      "name": "Build and gameplay tests (harbor-realism)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:23:26Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676111,
+      "name": "Build and gameplay tests (metropolis-1)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:36Z",
+      "completedAt": "2026-10-04T21:20:03Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676124,
+      "name": "Build and gameplay tests (stability)",
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:22:11Z",
+      "activeStep": null,
+      "failedSteps": [
+        {
+          "name": "Run npx playwright test tests/e2e/stability.spec.js --fully-parallel --shard=1/1",
+          "number": 8,
+          "conclusion": "failure"
+        }
+      ]
+    },
+    {
+      "id": 111532676149,
+      "name": "Build and gameplay tests (metropolis-2)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:21:52Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676168,
+      "name": "Build and gameplay tests (harbor-sample-2)",
+      "status": "in_progress",
+      "conclusion": null,
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": null,
+      "activeStep": "Run npx playwright test tests/e2e/harbor-sample.spec.js --fully-parallel --shard=2/2",
+      "failedSteps": []
+    },
+    {
+      "id": 111532676183,
+      "name": "Build and gameplay tests (occupied-city)",
+      "status": "in_progress",
+      "conclusion": null,
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": null,
+      "activeStep": "Run npx playwright test tests/e2e/occupied-city.spec.js --fully-parallel --shard=1/1",
+      "failedSteps": []
+    },
+    {
+      "id": 111532676184,
+      "name": "Build and gameplay tests (living-city)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:22:56Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676202,
+      "name": "Build and gameplay tests (game)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:18:34Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532676214,
+      "name": "Build and gameplay tests (city-materials)",
+      "status": "in_progress",
+      "conclusion": null,
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": null,
+      "activeStep": "Run npx playwright test tests/e2e/city-materials.spec.js --fully-parallel --shard=1/1",
+      "failedSteps": []
+    },
+    {
+      "id": 111532676235,
+      "name": "Build and gameplay tests (metropolis-3)",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:36Z",
+      "completedAt": "2026-10-04T21:29:38Z",
+      "activeStep": null,
+      "failedSteps": []
+    }
+  ],
+  "otherConditionalJobs": [
+    {
+      "id": 111532676646,
+      "name": "Rendered room evidence (${{ matrix.shard }}/48)",
+      "status": "completed",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-04T21:12:35Z",
+      "completedAt": "2026-10-04T21:12:35Z",
+      "activeStep": null,
+      "failedSteps": []
+    },
+    {
+      "id": 111532693490,
+      "name": "Native High room detail (${{ matrix.shard }}/6)",
+      "status": "completed",
+      "conclusion": "skipped",
+      "startedAt": "2026-10-04T21:12:41Z",
+      "completedAt": "2026-10-04T21:12:35Z",
+      "activeStep": null,
+      "failedSteps": []
+    }
+  ],
+  "rawRunFile": "2026-10-04T21-34-39-641046Z-run-original.json",
+  "rawJobsFile": "2026-10-04T21-34-39-641046Z-jobs-original.json"
+}

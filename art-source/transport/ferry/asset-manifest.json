@@ -1,0 +1,92 @@
+{
+  "id": "nh-lacuna-f26-authored-v1",
+  "version": 1,
+  "status": "AUTHORED_ASSET_CANDIDATE_NATIVE_PENDING",
+  "name": "Lacuna F26 / 澄弧",
+  "kind": "ferry",
+  "units": "metres",
+  "axis": "+Y up,+Z forward",
+  "engineeringSpec": {
+    "name": "Estuary harbor ferry",
+    "width": 7,
+    "length": 26,
+    "height": 8,
+    "minY": -1,
+    "maxY": 7,
+    "halfWidth": 3.5,
+    "halfLength": 13,
+    "passengerRadius": 0.3,
+    "clearAisleWidth": 1.35,
+    "routeCode": "03",
+    "floors": [
+      1.3,
+      3.7
+    ],
+    "color": "#405b56",
+    "accent": "#e4debf"
+  },
+  "physicsSource": "original unchanged runtime spec/layout supplied by caller",
+  "nativeValidated": false,
+  "totalGlbBytes": 11660036,
+  "assets": [
+    {
+      "file": "lacuna-f26-lod0.glb",
+      "path": "models/lacuna-f26-lod0.glb",
+      "tier": 0,
+      "sha256": "64e0db1bc9e8bf4412c184d3f33b24a0cfe73175ef5669f9cdaf26491ca2bd3c",
+      "bytes": 7791044,
+      "triangles": 97180,
+      "materialCount": 15,
+      "primitiveCount": 47,
+      "externalUris": 0
+    },
+    {
+      "file": "lacuna-f26-lod1.glb",
+      "path": "models/lacuna-f26-lod1.glb",
+      "tier": 1,
+      "sha256": "2ec39552082f70228790d830e8b3195ae5462b6a69c98bf359c1754a35180dc7",
+      "bytes": 2926468,
+      "triangles": 26020,
+      "materialCount": 14,
+      "primitiveCount": 46,
+      "externalUris": 0
+    },
+    {
+      "file": "lacuna-f26-lod2.glb",
+      "path": "models/lacuna-f26-lod2.glb",
+      "tier": 2,
+      "sha256": "37cdbda1263dc5e9aee75f31ffda194d3a1c4d7bc369397861790093774c029c",
+      "bytes": 942524,
+      "triangles": 7904,
+      "materialCount": 12,
+      "primitiveCount": 36,
+      "externalUris": 0
+    }
+  ],
+  "editableSource": {
+    "path": "/tmp/neon-authored-ferry-candidate/source/lacuna-f26-master.blend",
+    "bytes": 2904144,
+    "sha256": "9efc5b32e407a10b9c4e19dca2a85b6fcb67507302de3e7df425e5a0a861d531"
+  },
+  "designSource": {
+    "path": "/tmp/neon-authored-ferry-candidate/source/author_ferry.py",
+    "bytes": 8576,
+    "sha256": "90b2f96874623c4109289736ccc525105b734fddbd21cacbc64527edfc89184e"
+  },
+  "cpuProof": {
+    "path": "/tmp/neon-authored-ferry-candidate/review/cpu-asset-check.json",
+    "bytes": 44631,
+    "sha256": "8a765f4f069bf90e463d5d268e4a216b3a8b5143d3c4389b9349e8a3b9e7339c"
+  },
+  "sourceProvenance": {
+    "path": "/tmp/neon-authored-ferry-candidate/review/source-provenance.json",
+    "bytes": 3255,
+    "sha256": "b41195df65bfc2cb9c1369d353a0f1245089a7904c8a754aa65cc354654489f5"
+  },
+  "licenses": {
+    "originalArt": "CC0-1.0",
+    "codeAndRuntimeReferences": "MIT",
+    "fontNotice": "source/DejaVu-font-copyright.txt"
+  },
+  "optionalRuntimeAdapter": "/tmp/neon-authored-transport-runtime-candidate (separate candidate, not integrated)"
+}

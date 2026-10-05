@@ -1,0 +1,45 @@
+{
+  "jobId": 111539469762,
+  "expectedSourceSha": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "logBytes": 176302,
+  "logSha256": "1a7e719ed3f388308b4c739b6c226a83ce22bd5bf39e3fed1369dcd740ca167c",
+  "ruleSummaries": {
+    "tests": [
+      "311"
+    ],
+    "pass": [
+      "311"
+    ],
+    "fail": [
+      "0"
+    ],
+    "cancelled": [
+      "0"
+    ],
+    "skipped": [
+      "0"
+    ],
+    "todo": [
+      "0"
+    ]
+  },
+  "playwrightTotals": [
+    [
+      "4",
+      "passed"
+    ]
+  ],
+  "caseLines": [
+    "2026-10-04T21:54:23.1626110Z   ✓  1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (1.9m)",
+    "2026-10-04T21:55:35.1903638Z   ✓  2 tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets (1.2m)",
+    "2026-10-04T21:56:11.5045491Z   ✓  3 tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress (36.3s)",
+    "2026-10-04T21:57:17.9125368Z   ✓  4 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (1.1m)"
+  ],
+  "buildLines": [
+    "2026-10-04T21:51:57.0981979Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/",
+    "2026-10-04T21:51:57.3386822Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/",
+    "2026-10-04T21:51:57.4941057Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist"
+  ],
+  "expectedSourceCheckoutObserved": true,
+  "failureExcerpt": []
+}

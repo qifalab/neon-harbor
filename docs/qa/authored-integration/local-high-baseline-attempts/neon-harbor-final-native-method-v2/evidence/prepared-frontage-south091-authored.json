@@ -1,0 +1,174 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "mode": "authored",
+  "plan": {
+    "id": "south-091",
+    "address": "south-091",
+    "englishName": "Old Quarter 91",
+    "budgetMinutes": 12,
+    "scope": "One shop south public entrance, actual E entry/exit/re-entry. Display geometry is photographed separately from the public entrance. This does not approve its shared interior art.",
+    "steps": [
+      {
+        "kind": "photo",
+        "label": "south-frontage",
+        "position": {
+          "x": 213,
+          "y": 0.18,
+          "z": 118.67839586455375
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 213,
+          "y": 1.78,
+          "z": 116.31839586455375
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 213,
+          "y": 1.8,
+          "z": 118.67839586455375
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294368,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.3600847442411887
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 117.67839586455375
+      },
+      {
+        "kind": "photo",
+        "label": "actual-public-door",
+        "position": {
+          "x": 213,
+          "y": 0.18,
+          "z": 117.67839586455375
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 213,
+          "y": 1.68,
+          "z": 116.31839586455375
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 213,
+          "y": 1.8,
+          "z": 117.67839586455375
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880708,
+          "fov": 65
+        },
+        "nominalEyeDistance": 1.3652838532700804
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 118.67839586455375
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 225.6443515154533
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 107
+      },
+      {
+        "kind": "photo",
+        "label": "east-display-face-close",
+        "position": {
+          "x": 225.6443515154533,
+          "y": 0.18,
+          "z": 107
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 223.2843515154533,
+          "y": 1.78,
+          "z": 107
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 225.6443515154533,
+          "y": 1.8,
+          "z": 107
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.360084744241203
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 118.67839586455375
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 213
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 117.67839586455375
+      },
+      {
+        "kind": "door",
+        "label": "apparent-south-door-and-actual-public-prompt"
+      },
+      {
+        "kind": "enter"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 213
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 114.07839586455376
+      },
+      {
+        "kind": "event",
+        "label": "real-target-building-interior"
+      },
+      {
+        "kind": "exit",
+        "label": "first-normal-exit"
+      },
+      {
+        "kind": "frontage",
+        "label": "shell-restored-after-exit"
+      },
+      {
+        "kind": "enter",
+        "label": "physical-re-entry"
+      },
+      {
+        "kind": "exit",
+        "label": "second-normal-exit"
+      },
+      {
+        "kind": "frontage",
+        "label": "shell-restored-after-re-entry"
+      }
+    ],
+    "knownBaselineIssue": "Baseline east display facade has apparent central door hardware, but actual public entry is south. Its absent authored publicDoor metadata is recorded unavailable, never claimed as fixed."
+  },
+  "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+  "unavailableBaselineOwner": false,
+  "planPhotographsIdenticalAcrossModes": true
+}

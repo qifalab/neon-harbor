@@ -1,0 +1,211 @@
+{
+  "name": "NH near shopkeeper core prototype",
+  "role": "shopkeeper",
+  "macroTarget": "asian-female-young",
+  "fitEdits": [
+    "Additional hidden thigh coverage above actual skirt hem; bob02 material tinted brown."
+  ],
+  "wardrobeAsset": "female_elegantsuit01",
+  "hairAsset": "bob02",
+  "sources": {
+    "bodyCommit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+    "officialPack": "https://files.makehumancommunity.org/asset_packs/makehuman_system_assets/makehuman_system_assets_cc0.zip"
+  },
+  "materials": 4,
+  "bones": 71,
+  "triangles": 28112,
+  "meshes": [
+    {
+      "name": "skin",
+      "vertices": 9073,
+      "triangles": 16568,
+      "boundsMin": [
+        -0.26592886447906494,
+        0.23442034423351288,
+        -0.04604986310005188
+      ],
+      "boundsMax": [
+        0.26592886447906494,
+        1.771072506904602,
+        0.16840589046478271
+      ]
+    },
+    {
+      "name": "wardrobe",
+      "vertices": 4190,
+      "triangles": 7256,
+      "boundsMin": [
+        -0.270516037940979,
+        0.0,
+        -0.10562605410814285
+      ],
+      "boundsMax": [
+        0.2701415419578552,
+        1.5249698162078857,
+        0.2317623496055603
+      ]
+    },
+    {
+      "name": "hair",
+      "vertices": 1759,
+      "triangles": 2248,
+      "boundsMin": [
+        -0.10418189316987991,
+        1.5277822017669678,
+        -0.06344695389270782
+      ],
+      "boundsMax": [
+        0.10552261769771576,
+        1.7799999713897705,
+        0.16835139691829681
+      ]
+    },
+    {
+      "name": "eyes",
+      "vertices": 1076,
+      "triangles": 2040,
+      "boundsMin": [
+        -0.04971158504486084,
+        1.6397113800048828,
+        0.12330891191959381
+      ],
+      "boundsMax": [
+        0.04971158504486084,
+        1.6707133054733276,
+        0.1464405208826065
+      ]
+    }
+  ],
+  "physicalHeightMetres": 1.78,
+  "rawSourceBodyTriangles": 26756,
+  "maskedBodyTriangles": 16568,
+  "restBounds": {
+    "min": [
+      -0.270516037940979,
+      0.0,
+      -0.10562605410814285
+    ],
+    "max": [
+      0.2701415419578552,
+      1.7799999713897705,
+      0.2317623496055603
+    ]
+  },
+  "originalFKClips": [
+    "NH walk FK",
+    "NH stair FK",
+    "NH idle FK"
+  ],
+  "textures": [
+    {
+      "name": "skin-basecolor.jpg",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "bytes": 168702
+    },
+    {
+      "name": "wardrobe-basecolor.jpg",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 480398
+    },
+    {
+      "name": "wardrobe-normal.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 417254
+    },
+    {
+      "name": "wardrobe-orm.png",
+      "pixels": [
+        1024,
+        2048
+      ],
+      "bytes": 428183
+    },
+    {
+      "name": "hair-basecolor.png",
+      "pixels": [
+        512,
+        512
+      ],
+      "bytes": 240029
+    },
+    {
+      "name": "eyes-basecolor.png",
+      "pixels": [
+        512,
+        512
+      ],
+      "bytes": 200274
+    }
+  ],
+  "files": [
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/eyes-basecolor.png",
+      "bytes": 200274,
+      "sha256": "65f912db7a220702d93fdd8c16a4010e76d92c6ae0dcdf77d278832631ebf183"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/hair-basecolor.png",
+      "bytes": 240029,
+      "sha256": "00aa67d9f0948f61e77ff226dbb8438e321f30f09658cfbcd574b60dd8ca71dc"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/shopkeeper.bin",
+      "bytes": 1079692,
+      "sha256": "ea302115da557e147bd453a00b18fe5cdc23e5a6ddf1bc578ca2017fa618cd59"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/shopkeeper.gltf",
+      "bytes": 40635,
+      "sha256": "7797237388644007b5305580b733e8486b2024bb1b1e4b510cd2dc0cbdc51cba"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/skin-basecolor.jpg",
+      "bytes": 168702,
+      "sha256": "b2fb94fd599e3f806f02334a1847b6417426ab21c9bf05a77af376db5b8b2890"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/wardrobe-basecolor.jpg",
+      "bytes": 480398,
+      "sha256": "6c0936dd299ef984d00c60b9e02e6fe881ca6246f2787dcf48d4721fe3718aa9"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/wardrobe-normal.png",
+      "bytes": 417254,
+      "sha256": "352a46b4c7aba0dbfbf2808c54e3605483af33fb74f2cddf96146fb0e564cbea"
+    },
+    {
+      "path": "art-source/near-resident/editable-shopkeeper/wardrobe-orm.png",
+      "bytes": 428183,
+      "sha256": "248a9dcb7fce7f839bbc2f484f1ebae399d6d4ca49cae048d028d915154d4f50"
+    },
+    {
+      "path": "assets/resident/core-shopkeeper/shopkeeper.glb",
+      "bytes": 3038016,
+      "sha256": "d5d298b45ade48a6cdb4142b27712799d864fff23cef28bc979436e07afe3341"
+    }
+  ],
+  "acceptance": {
+    "staticDataOnly": true,
+    "browserReviewed": false,
+    "nativeHighReviewed": false,
+    "runtimeActionChainReviewed": false,
+    "hardwarePerformanceMeasured": false,
+    "finalArtAccepted": false
+  },
+  "limitations": [
+    "One shopkeeper body/wardrobe, part of a three-asset prototype; not the complete resident collection.",
+    "Original FK animation, no terrain IK, root-motion retarget or motion capture.",
+    "Hair card alpha, garment seams and shoulders require native High inspection.",
+    "Skin color source is a diffuse asset, not a complete calibrated scan-based PBR set.",
+    "Existing far LODs are intentionally retained by the candidate factory."
+  ]
+}

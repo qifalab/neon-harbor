@@ -5,6 +5,9 @@ import { createHarborRoomDressing } from './harbor-room-dressing.js';
 import { roomArtDirection } from './occupied-programmes.js';
 import { createCompactInteriorLayout, createCompactInteriorStairs } from './compact-interiors.js';
 import { createHarborWorkshopPilot, planHarborWorkshopPilot } from './harbor-workshop-pilot.js';
+import { applyAuthoredWorkshopLayout } from './harbor-workshop-authored.js';
+import { applyAuthoredHomeLayout } from './harbor-home-authored.js';
+import { createHarborHomeAssets } from './harbor-home-assets.js';
 
 const WALL = 0.3;
 const CABIN = { width: 4.4, depth: 4.6, height: 3.25 };
@@ -56,7 +59,7 @@ export function createInteriorStairs(building) {
  * Positions remain in city coordinates, including the actual elevation of each floor. */
 export function createInteriorLayout(building, floor) {
   if (!building || !floor) throw new Error('An interior requires a building and a floor.');
-  if (building.compact) return createCompactInteriorLayout(building, floor);
+  if (building.compact) return applyAuthoredHomeLayout(building, floor, applyAuthoredWorkshopLayout(building, floor, createCompactInteriorLayout(building, floor)));
   const { width, depth } = publicInteriorFootprint(building);
   const next = building.floors.find(candidate => candidate.y > floor.y);
   // Keep the painted soffit BELOW the next storey's 0.32 m stone slab.
@@ -901,7 +904,7 @@ export function createInteriorLayout(building, floor) {
  * The elevator cabin is retained while the
  * destination floor is assembled, so a ride has continuous world-space motion. */
 export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUILDINGS, materials = createMetropolisMaterials(THREE),
-  harborWorkshopPilot = true, workshopAssetLoader, readRendererMemory } = {}) {
+  harborWorkshopPilot = true, workshopAssetLoader, homeAssetLoader, readRendererMemory } = {}) {
   const root = new THREE.Group(); root.name = 'Metropolis · occupied interior'; root.visible = false; scene.add(root);
   const floorRoot = new THREE.Group(), cabinRoot = new THREE.Group(), floorGroups = new Map(), layoutCache = new Map(); root.add(floorRoot, cabinRoot);
   // Three includes the number of visible point lights in every material's shader
@@ -940,6 +943,11 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
   let layout = null, residentLayouts = [], floorColliders = [], cabinColliders = [], colliders = [], playerRef = null, journey = null;
   let leftDoor = null, rightDoor = null, doorCollider = null;
   const workshopPilotEvents = [];
+  const homeAssetEvents = [];
+  const recordHomeAssetEvent = event => {
+    homeAssetEvents.push({ ...event, sequence: (homeAssetEvents.at(-1)?.sequence || 0) + 1 });
+    if (homeAssetEvents.length > 64) homeAssetEvents.shift();
+  };
   const recordWorkshopPilotEvent = event => {
     workshopPilotEvents.push({ ...event, sequence: (workshopPilotEvents.at(-1)?.sequence || 0) + 1 });
     if (workshopPilotEvents.length > 64) workshopPilotEvents.shift();
@@ -1028,6 +1036,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     floorRoot.clear(); floorGroups.clear(); layoutCache.clear();
   }
   function releaseFloor(group) {
+    group.userData.homeAssets?.dispose();
     group.userData.workshopPilot?.dispose();
     group.userData.harborDressing?.dispose();
     group.traverse(object => { if (object.isInstancedMesh) object.dispose(); if (object.userData.ownedMaterial) { object.material.map?.dispose(); ownedTextures.delete(object.material.map); object.material.dispose(); } });
@@ -1132,13 +1141,26 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       }
       occupied.labels.forEach(data => sign(data, group));
       const dressedFloor = state.activeBuilding.floors.find(item => item.id === occupied.floorId);
-      const dressing = createHarborRoomDressing(THREE, { building: state.activeBuilding, floor: dressedFloor, layout: occupied });
+      const dressing = createHarborRoomDressing(THREE, { building: state.activeBuilding, floor: dressedFloor, layout: occupied.homeAuthored ? null : occupied });
       group.userData.harborDressing = dressing; group.add(dressing.group);
+      if (occupied.homeAuthored) {
+        const fallbackGroup = new THREE.Group(); fallbackGroup.name = 'Home · reversible furniture fallback';
+        for (const part of occupied.homeAuthored.fallbackParts) {
+          const fallback = new THREE.Mesh(geometries[part.geometry], material(part.material));
+          fallback.position.set(part.x, part.y, part.z); fallback.scale.set(part.sx, part.sy, part.sz);
+          fallback.castShadow = true; fallback.receiveShadow = true; fallbackGroup.add(fallback);
+        }
+        const owner = createHarborHomeAssets(THREE, { building: state.activeBuilding, floor: dressedFloor,
+          layout: occupied, fallbackGroup, readRendererMemory, onAudit: recordHomeAssetEvent,
+          ...(homeAssetLoader ? { loadAsset: homeAssetLoader, enabled: true } : {}) });
+        group.userData.homeAssets = owner; group.add(owner.group);
+      }
       if (occupied.workshopPilot) {
         const fallbackGroup = new THREE.Group(); fallbackGroup.name = 'Workshop · reversible primitive fallback';
         for (const part of occupied.workshopPilot.fallbackParts) {
           const fallback = new THREE.Mesh(geometries[part.geometry], material(part.material));
           fallback.position.set(part.x, part.y, part.z); fallback.scale.set(part.sx, part.sy, part.sz);
+          fallback.userData.workshopFallbackKind = part.kind;
           fallback.castShadow = true; fallback.receiveShadow = true; fallbackGroup.add(fallback);
         }
         const pilot = createHarborWorkshopPilot(THREE, { building: state.activeBuilding, floor: dressedFloor,
@@ -1327,6 +1349,8 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     if (player && state.activeBuilding) { playerRef = player; updateFloorVisibility(player); }
     for (const [floorId, group] of floorGroups) group.userData.workshopPilot?.update(player,
       { active: group.visible && !state.moving && floorId === state.floor?.id });
+    for (const [floorId, group] of floorGroups) group.userData.homeAssets?.update(player,
+      { active: group.visible && !state.moving && floorId === state.floor?.id });
     if (!state.moving && player && state.floor?.stairs) {
       const elevation = player.groundY ?? state.floor.y;
       const destination = residentLayouts.find(item => Math.abs(item.groundY - elevation) < 0.025);
@@ -1378,6 +1402,15 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     residentFloors: residentLayouts.map(item => item.floorId), ownedSignTextures: [...ownedTextures].filter(texture => texture.isCanvasTexture).length,
     visibleFloors: [...floorGroups].filter(([, group]) => group.visible).map(([id]) => id),
     workshopPilot: [...floorGroups.values()].find(group => group.userData.workshopPilot)?.userData.workshopPilot.snapshot() || null,
+    authoredHome: [...floorGroups].map(([floorId, group]) => ({ floorId, owner: group.userData.homeAssets?.snapshot() })).filter(item => item.owner),
+    homeAssetEvents: homeAssetEvents.map(event => ({ ...event,
+      ...(event.resources ? { resources: { ...event.resources, images: event.resources.images.map(image => ({ ...image })) } } : {}),
+      ...(event.resourceRelease ? { resourceRelease: { ...event.resourceRelease } } : {}),
+      ...(event.rendererRelease ? { rendererRelease: { ...event.rendererRelease,
+        readErrors: event.rendererRelease.readErrors.map(error => ({ ...error })),
+        before: event.rendererRelease.before ? { ...event.rendererRelease.before } : null,
+        after: event.rendererRelease.after ? { ...event.rendererRelease.after } : null,
+        difference: event.rendererRelease.difference ? { ...event.rendererRelease.difference } : null } } : {}) })),
     workshopPilotEvents: workshopPilotEvents.map(event => ({ ...event,
       ...(event.resources ? { resources: { ...event.resources, images: event.resources.images.map(image => ({ ...image })) } } : {}),
       ...(event.resourceRelease ? { resourceRelease: { ...event.resourceRelease } } : {}),

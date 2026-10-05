@@ -1,0 +1,178 @@
+{
+  "adoptedAt": "2026-10-05T00:08:48.306256+00:00",
+  "status": "SOURCE_ADOPTED_SYNTAX_CHECKED_NATIVE_PENDING",
+  "files": [
+    ".github/workflows/native-art.yml",
+    "tools/native-review/README.md",
+    "tools/native-review/bundle-manifest.json",
+    "tools/native-review/cases.json",
+    "tools/native-review/curated-original-provenance.json",
+    "tools/native-review/expected-build-provenance/authored-build-info-original.json",
+    "tools/native-review/expected-build-provenance/baseline-build-info-original.json",
+    "tools/native-review/expected-runtime-dictionaries.json",
+    "tools/native-review/methods/continuous-tour-original/tests/e2e/helpers/occupied.js",
+    "tools/native-review/methods/continuous-tour-original/tests/e2e/helpers/walking.js",
+    "tools/native-review/methods/continuous-tour-original/tools/capture-harbor-tour.mjs",
+    "tools/native-review/methods/continuous-tour-original/tools/server.mjs",
+    "tools/native-review/methods/harbor/capture-authored-harbor-native.mjs",
+    "tools/native-review/methods/harbor/evidence/captured-buildings.json",
+    "tools/native-review/methods/harbor/evidence/common-pose-proof.json",
+    "tools/native-review/methods/harbor/expectations.mjs",
+    "tools/native-review/methods/harbor/input.mjs",
+    "tools/native-review/methods/harbor/plans.mjs",
+    "tools/native-review/methods/harbor/provenance/README.md",
+    "tools/native-review/methods/harbor/provenance/V3_CHANGE.md",
+    "tools/native-review/methods/harbor/provenance/candidate-files.json",
+    "tools/native-review/methods/harbor/provenance/sealed-file-ledger.json",
+    "tools/native-review/methods/harbor/provenance/v3-resolution-receipt.json",
+    "tools/native-review/methods/harbor/render-readiness.mjs",
+    "tools/native-review/methods/harbor/server.mjs",
+    "tools/native-review/methods/resident/SEALED_SHA256.json",
+    "tools/native-review/methods/resident/docs/METHOD_SHA256.json",
+    "tools/native-review/methods/resident/docs/README.md",
+    "tools/native-review/methods/resident/package.json",
+    "tools/native-review/methods/resident/patches/core-v2-after-7bb.patch",
+    "tools/native-review/methods/resident/tools/capture-resident-native.mjs",
+    "tools/native-review/methods/resident-extra/SEALED_SHA256.json",
+    "tools/native-review/methods/resident-extra/docs/METHOD_PROVENANCE.json",
+    "tools/native-review/methods/resident-extra/docs/README.md",
+    "tools/native-review/methods/resident-extra/package.json",
+    "tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+    "tools/native-review/methods/scenic/README.md",
+    "tools/native-review/methods/scenic/STATIC_REVIEW.md",
+    "tools/native-review/methods/scenic/capture-scenic-east.mjs",
+    "tools/native-review/methods/scenic/input.mjs",
+    "tools/native-review/methods/scenic/prepared-files.json",
+    "tools/native-review/methods/scenic/render-readiness.mjs",
+    "tools/native-review/methods/scenic/server.mjs",
+    "tools/native-review/methods/transport/API-SOURCE-REVIEW.md",
+    "tools/native-review/methods/transport/FINAL-LEDGER.json",
+    "tools/native-review/methods/transport/INDEPENDENT-STATIC-REVIEW.json",
+    "tools/native-review/methods/transport/POSTSEAL-PROVENANCE.json",
+    "tools/native-review/methods/transport/README.md",
+    "tools/native-review/methods/transport/SYNTAX-ONLY-RECEIPT.json",
+    "tools/native-review/methods/transport/canonical-layouts.json",
+    "tools/native-review/methods/transport/delta-from-7247.patch",
+    "tools/native-review/methods/transport/method-manifest.json",
+    "tools/native-review/methods/transport/native-transport-high.mjs",
+    "tools/native-review/methods/transport/runtime-resources.json",
+    "tools/native-review/methods/transport-owner/API-SOURCE-REVIEW.md",
+    "tools/native-review/methods/transport-owner/FINAL-LEDGER.json",
+    "tools/native-review/methods/transport-owner/PREPARATION-PROVENANCE.json",
+    "tools/native-review/methods/transport-owner/README.md",
+    "tools/native-review/methods/transport-owner/STATIC-READONLY-REVIEW.json",
+    "tools/native-review/methods/transport-owner/base-fc22-native-transport-high-original.mjs",
+    "tools/native-review/methods/transport-owner/method-manifest.json",
+    "tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs",
+    "tools/native-review/methods/transport-owner/runtime-resources.json",
+    "tools/native-review/run-paired-native.py",
+    ".github/workflows/ci.yml"
+  ],
+  "syntaxChecks": [
+    {
+      "file": "tools/native-review/methods/continuous-tour-original/tests/e2e/helpers/occupied.js",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/continuous-tour-original/tests/e2e/helpers/walking.js",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/continuous-tour-original/tools/capture-harbor-tour.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/continuous-tour-original/tools/server.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/harbor/capture-authored-harbor-native.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/harbor/expectations.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/harbor/input.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/harbor/plans.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/harbor/render-readiness.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/harbor/server.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/resident/tools/capture-resident-native.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/scenic/capture-scenic-east.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/scenic/input.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/scenic/render-readiness.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/scenic/server.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/transport-owner/base-fc22-native-transport-high-original.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs",
+      "exitCode": 0,
+      "stderr": ""
+    }
+  ],
+  "pythonSyntax": "PASS_NOT_EXECUTED",
+  "originalJobsByteIdentical": true,
+  "pagesUnchanged": true,
+  "ciBeforeSHA256": "e1cd22497a252d0a4f73366af172be5e9487fb70e8f3de32adbb6ec10c25bffa",
+  "ciAfterSHA256": "fcd203f94d6c77481ee36dfe5a31c1ae7160eba73e5756725e6b89d4c5926347",
+  "pagesSHA256": "cd09551e40a576172cf21c42871c10245056c94fa99d7be115f21c2efdc11fcb",
+  "cases": 23,
+  "highCases": 22,
+  "lowFunctionalCases": 1,
+  "runtimeBuildInfoSHA256": "e45cdf73c892a8e79c0977a7cc2f4b873cbcf7653cb920026d054191eb749c9d"
+}

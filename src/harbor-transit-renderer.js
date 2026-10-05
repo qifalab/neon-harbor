@@ -1,5 +1,7 @@
 import { HarborTransitService, HARBOR_PIER_SEGMENTS } from './harbor-transit.js';
 import { createHarborVehicle } from './harbor-vehicle-models.js';
+import { createAuthoredTransportController } from './harbor-authored-transport.js';
+import { exposeAuthoredTransitSnapshot } from './harbor-authored-transit-snapshot.js';
 
 /** Five live vehicles, ordinary curb stops and two walkable shore piers. */
 export function createHarborTransitSystem(THREE, scene, options = {}) {
@@ -118,17 +120,20 @@ export function createHarborTransitSystem(THREE, scene, options = {}) {
     root.add(batch); staticBatches.push(batch); resources.add(batch);
   }
   pendingStatic.length = 0;
+  const authoredTransport = createAuthoredTransportController(THREE, { readRendererMemory: options.readRendererMemory });
   for (const vehicle of service.vehicles) {
     const mesh = createHarborVehicle(THREE, vehicle.kind, { color: service.route(vehicle.routeId).color });
     mesh.name = `${vehicle.id} · ${mesh.name}`; mesh.userData.vehicleId = vehicle.id; root.add(mesh); fleet.set(vehicle.id, mesh);
+    authoredTransport.register(mesh, { id: vehicle.id, color: service.route(vehicle.routeId).color });
   }
-  function render(camera = null, hour = 12) {
+  function render(camera = null, hour = 12, quality = 'high') {
     for (const v of service.vehicles) {
       const mesh = fleet.get(v.id); mesh.position.set(v.pose.x, v.pose.y, v.pose.z); mesh.rotation.y = v.pose.yaw;
       mesh.userData.update({ doorsOpen: v.pose.doorsOpen, distanceTravelled: v.distanceTravelled, timeOfDay: hour, camera });
       if (v.id === service.ridingVehicleId) mesh.userData.setDetail(0);
       else if (!camera) mesh.userData.setDetail(1);
     }
+    authoredTransport.update(camera, quality, service.ridingVehicleId);
     for (const [id, mesh] of gangways) mesh.visible = service.vehicles.some(v => v.pose.stopId === id);
     for (const label of labels) {
       const seconds = Math.ceil(service.nextArrival(label.stop.id)), text = `${seconds === 0 ? '停靠中 / BOARDING' : `下一班约 ${seconds} 秒`}`;
@@ -140,8 +145,9 @@ export function createHarborTransitSystem(THREE, scene, options = {}) {
     }
   }
   service.root = root; service.fleet = fleet; service.updateRender = render; service.railMesh = railMesh; service.wireMesh = wireMesh;
+  exposeAuthoredTransitSnapshot(service, authoredTransport.snapshot);
   service.staticBatches = staticBatches; service.staticParts = staticParts;
   let disposed = false;
-  service.dispose = () => { if (disposed) return; disposed = true; for (const mesh of fleet.values()) mesh.userData.disposeInstance(); resources.forEach(r => r.dispose()); root.removeFromParent(); };
+  service.dispose = () => { if (disposed) return; disposed = true; authoredTransport.dispose(); for (const mesh of fleet.values()) mesh.userData.disposeInstance(); resources.forEach(r => r.dispose()); root.removeFromParent(); };
   render(); return service;
 }

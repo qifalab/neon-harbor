@@ -1,9 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import * as THREE from '../vendor/three/three.module.js';
-import { createWorld } from '../src/world.js';
+import { createCompactInteriorLayout } from '../src/compact-interiors.js';
+import { applyAuthoredWorkshopLayout } from '../src/harbor-workshop-authored.js';
 import { expansionBuilding } from '../src/expansion-programmes.js';
 import { createInteriorLayout, createInteriorSystem } from '../src/metropolis-interiors.js';
 import { SpatialIndex, circleContacts, CHARACTER_RADIUS } from '../src/collision.js';
@@ -12,19 +14,127 @@ import { parseWorkshopAssetCPU, inspectScene } from '../tools/inspect-workshop-a
 
 const json = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
 const hash = (bytes, algorithm = 'sha256') => createHash(algorithm).update(bytes).digest('hex');
-const fixture = () => {
-  const source = createWorld(THREE, new THREE.Scene(), { streaming: true });
-  const building = expansionBuilding(source.buildings[85], 'south', 85), floor = building.floors[0];
-  return { building, floor, layout: createInteriorLayout(building, floor) };
+// Exact single-building catalogue captured before the frozen native tour.
+// Geometry unit checks need neither createWorld nor a global city fixture.
+const capturedBuilding = JSON.parse(readFileSync(new URL('../docs/qa/authored-workshop/source-building.json', import.meta.url), 'utf8'));
+const fixture = (authored = false) => {
+  const building = expansionBuilding(JSON.parse(JSON.stringify(capturedBuilding)), 'south', 85), floor = building.floors[0];
+  const original = createCompactInteriorLayout(building, floor);
+  return { building, floor, original, layout: authored ? applyAuthoredWorkshopLayout(building, floor, original) : original };
 };
 const loadCPU = async id => parseWorkshopAssetCPU(await readFile(new URL(`../assets/harbor/workshop/${id}.glb`, import.meta.url)));
 
+test('original fittings distinguish MIT geometry/prints from CC0 maps and embed exact checked texture bytes', async () => {
+  const manifest = await json('../assets/harbor/workshop/asset-manifest.json');
+  const record = manifest.models.find(model => model.id === 'workshop-fittings');
+  assert.match(record.license, /MIT.*CC0-1\.0/);
+  assert.match(await readFile(new URL('../assets/harbor/workshop/LICENSE-NEON-AUTHORED.txt', import.meta.url), 'utf8'), /MIT License/);
+  assert.ok(record.authors.QifaLab && record.authors['Rob Tuytel']);
+  const bytes = await readFile(new URL('../' + record.output.path, import.meta.url));
+  assert.equal(bytes.length, record.output.bytes); assert.equal(hash(bytes), record.output.sha256);
+  const len = bytes.readUInt32LE(12), packed = JSON.parse(bytes.subarray(20, 20 + len).toString()), binary = bytes.subarray(28 + len);
+  assert.equal(packed.meshes.length, 11); assert.equal(packed.images.length, 4); assert.equal(packed.skins, undefined);
+  for (const [index, source] of record.sourceTextures.entries()) {
+    const original = await readFile(new URL('../' + source.path, import.meta.url));
+    assert.equal(original.length, source.size); assert.equal(hash(original), source.sha256); assert.equal(hash(original, 'md5'), source.md5);
+    const view = packed.bufferViews[packed.images[index].bufferView];
+    assert.deepEqual(binary.subarray(view.byteOffset, view.byteOffset + view.byteLength), original);
+  }
+  const label = await readFile(new URL('../docs/qa/authored-workshop/authored-source/workshop-labels.png', import.meta.url));
+  assert.equal(label.length, record.labelRaster.bytes); assert.equal(hash(label), record.labelRaster.sha256);
+  const labelView = packed.bufferViews[packed.images[3].bufferView];
+  assert.deepEqual(binary.subarray(labelView.byteOffset, labelView.byteOffset + labelView.byteLength), label);
+  const asset = await loadCPU(record.id); let meshes = 0, triangles = 0;
+  asset.scene.traverse(object => { if (!object.isMesh) return; meshes++;
+    triangles += (object.geometry.index?.count ?? object.geometry.attributes.position.count) / 3;
+    for (const attribute of Object.values(object.geometry.attributes)) assert.ok(attribute.array.every(Number.isFinite));
+  });
+  assert.equal(meshes, 11); assert.equal(triangles, 17784);
+  for (const name of ['core', 'near', 'far']) assert.ok(asset.scene.getObjectByName('workshop-tier-' + name));
+});
+
+test('new official desk and shelf retain indexed geometry and complete PBR references', async () => {
+  for (const [id, triangles, meshes] of [['metal_office_desk', 6898, 9], ['wooden_bookshelf_worn', 10106, 1]]) {
+    const asset = await loadCPU(id), result = inspectScene(asset.scene);
+    assert.equal(result.triangles, triangles); assert.equal(result.meshes, meshes);
+    assert.equal(result.skinnedMeshes, 0); assert.equal(result.materialCount, 1); assert.equal(result.textureCount, 3);
+    asset.scene.traverse(object => { if (!object.isMesh) return;
+      for (const index of object.geometry.index.array) assert.ok(index < object.geometry.attributes.position.count);
+    });
+  }
+});
+
+test('authored five-model owner switches three tiers, shares three shelves and releases every unique resource once', async () => {
+  const data = fixture(true), fallback = new THREE.Group(), counts = { geometry: 0, material: 0, texture: 0, bitmap: 0, boneTexture: 0 };
+  for (const part of planHarborWorkshopPilot(data.building, data.floor, data.layout).fallbackParts) {
+    const child = new THREE.Object3D(); child.userData.workshopFallbackKind = part.kind; fallback.add(child);
+  }
+  const loadAsset = async id => {
+    const asset = await loadCPU(id), geometries = new Set(), materials = new Set(), textures = new Set(), skeletons = new Set();
+    asset.scene.traverse(object => { if (!object.isMesh) return;
+      geometries.add(object.geometry); materials.add(object.material); if (object.skeleton) skeletons.add(object.skeleton);
+      for (const value of Object.values(object.material)) if (value?.isTexture) textures.add(value);
+    });
+    for (const geometry of geometries) geometry.addEventListener('dispose', () => counts.geometry++);
+    for (const material of materials) material.addEventListener('dispose', () => counts.material++);
+    for (const texture of textures) { texture.addEventListener('dispose', () => counts.texture++); texture.source.data = { close: () => counts.bitmap++ }; }
+    for (const skeleton of skeletons) { skeleton.computeBoneTexture(); skeleton.boneTexture.addEventListener('dispose', () => counts.boneTexture++); }
+    return asset;
+  };
+  const owner = createHarborWorkshopPilot(THREE, { ...data, fallbackGroup: fallback, loadAsset, enabled: true });
+  owner.update({ x: 180.9, z: -114.58, groundY: data.floor.y }); await owner.whenSettled();
+  assert.equal(owner.snapshot().status, 'ready'); assert.equal(owner.snapshot().assetCount, 5); assert.equal(owner.snapshot().lodTier, 0);
+  const shelf = owner.group.children.find(child => child.userData.workshopAssetId === 'wooden_bookshelf_worn'), shelves = [];
+  shelf.traverse(object => { if (object.isMesh) shelves.push(object); });
+  assert.equal(shelves.length, 3); assert.equal(new Set(shelves.map(object => object.geometry)).size, 1);
+  assert.equal(new Set(shelves.map(object => object.material)).size, 1);
+  const visible = () => { let meshes = 0, triangles = 0; owner.group.traverseVisible(object => { if (!object.isMesh) return; meshes++;
+    triangles += (object.geometry.index?.count ?? object.geometry.attributes.position.count) / 3; }); return { meshes, triangles }; };
+  assert.deepEqual(visible(), { meshes: 32, triangles: 70740 });
+  owner.update({ x: 197.7, z: -105.5, groundY: data.floor.y }); assert.equal(owner.snapshot().lodTier, 1);
+  assert.deepEqual(visible(), { meshes: 29, triangles: 63224 });
+  owner.update({ x: 205, z: -105, groundY: data.floor.y }); assert.equal(owner.snapshot().lodTier, 2);
+  assert.deepEqual(visible(), { meshes: 2, triangles: 484 });
+  assert.ok(fallback.children.every(child => child.visible === ['bench-vice', 'tool-chest-fallback'].includes(child.userData.workshopFallbackKind)));
+  owner.update({ x: 230, z: -105, groundY: data.floor.y }); assert.equal(owner.snapshot().assetCount, 0);
+  assert.ok(fallback.visible && fallback.children.every(child => child.visible)); owner.dispose(); owner.dispose();
+  assert.deepEqual(counts, { geometry: 32, material: 10, texture: 16, bitmap: 16, boneTexture: 1 });
+});
+
+test('authored owner rejects partial/corrupt new models and never attaches five late results after floor release', async () => {
+  const data = fixture(true), plan = planHarborWorkshopPilot(data.building, data.floor, data.layout);
+  for (const mode of ['missing', 'corrupt']) {
+    const fallback = new THREE.Group(), owner = createHarborWorkshopPilot(THREE, { ...data, fallbackGroup: fallback, enabled: true,
+      loadAsset: async id => {
+        if (mode === 'missing' && id === 'wooden_bookshelf_worn') throw new Error('Expected missing new shelf');
+        const asset = await loadCPU(id);
+        if (mode === 'corrupt' && id === 'metal_office_desk') asset.scene.traverse(object => { if (object.isMesh) object.material.normalMap = null; });
+        return asset;
+      } });
+    owner.update(plan.centre); await owner.whenSettled();
+    assert.equal(owner.snapshot().status, 'failed'); assert.equal(owner.snapshot().assetCount, 0); assert.equal(fallback.visible, true);
+    assert.equal(owner.snapshot().releasedAssets, mode === 'missing' ? 4 : 5); owner.dispose();
+  }
+  const waits = [], owner = createHarborWorkshopPilot(THREE, { ...data, enabled: true,
+    loadAsset: (id, { signal }) => new Promise(resolve => waits.push({ id, signal, resolve })) });
+  owner.update(plan.centre); const pending = owner.whenSettled(); assert.equal(waits.length, 5); owner.dispose();
+  assert.ok(waits.every(wait => wait.signal.aborted)); for (const wait of waits) wait.resolve(await loadCPU(wait.id));
+  await pending; assert.equal(owner.snapshot().assetCount, 0); assert.equal(owner.snapshot().releasedAssets, 5); assert.equal(owner.group.children.length, 0);
+});
+
 test('GLBs contain exact official acquired BIN and 1K JPEG bytes, original scenes/skins/PBR and proven hashes', async () => {
   const manifest = await json('../assets/harbor/workshop/asset-manifest.json');
-  assert.equal(manifest.models.length, 2);
-  assert.ok(manifest.runtimeBytes < 12 * 1024 * 1024);
-  for (const record of manifest.models) {
+  assert.equal(manifest.models.length, 5);
+  assert.deepEqual(manifest.models.filter(r => r.license === 'CC0-1.0').map(r => r.id).sort(),
+    ['bench_vice_01','metal_office_desk','metal_tool_chest','wooden_bookshelf_worn']);
+  assert.ok(manifest.runtimeBytes <= 12000000);
+  for (const record of manifest.models.filter(record => record.license === 'CC0-1.0')) {
     assert.equal(record.license, 'CC0-1.0');
+    for (const download of record.metadataDownloads) {
+      assert.ok(download.url.startsWith('https://api.polyhaven.com/'));
+      const bytes = await readFile(new URL('../' + download.path, import.meta.url));
+      assert.equal(bytes.length, download.bytes); assert.equal(hash(bytes), download.sha256);
+    }
     for (const download of record.sourceDownloads) {
       assert.ok(download.url.startsWith('https://dl.polyhaven.org/file/ph-assets/'));
       const bytes = await readFile(new URL('../' + download.path, import.meta.url));
@@ -38,16 +148,19 @@ test('GLBs contain exact official acquired BIN and 1K JPEG bytes, original scene
     const binHeader = 20 + jsonLength, binary = bytes.subarray(binHeader + 8);
     assert.equal(bytes.readUInt32LE(binHeader + 4), 0x004e4942);
     assert.equal(bytes.readUInt32LE(binHeader), binary.length);
-    const original = await json(`../docs/qa/art-pilot/sources/${record.id}/${record.id}_1k.gltf`);
-    for (const key of ['meshes', 'accessors', 'nodes', 'scenes', 'scene', 'skins', 'materials', 'textures', 'samplers'])
+    const gltfSource = record.sourceDownloads.find(source => source.sourceUri === `${record.id}_1k.gltf`);
+    assert.ok(gltfSource);
+    const sourceUrl = new URL('../' + gltfSource.path, import.meta.url);
+    const original = JSON.parse(await readFile(sourceUrl, 'utf8'));
+    for (const key of ['meshes', 'accessors', 'nodes', 'scenes', 'scene', 'skins', 'animations', 'materials', 'textures', 'samplers'])
       assert.deepEqual(packed[key], original[key], `${record.id}/${key}: authored data changed`);
     assert.equal(packed.buffers.length, 1); assert.equal(packed.buffers[0].uri, undefined);
-    const originalBin = await readFile(new URL(`../docs/qa/art-pilot/sources/${record.id}/${original.buffers[0].uri}`, import.meta.url));
+    const originalBin = await readFile(new URL(original.buffers[0].uri, sourceUrl));
     assert.deepEqual(binary.subarray(0, originalBin.length), originalBin, 'Geometry BIN unchanged');
     for (const [index, image] of original.images.entries()) {
       assert.equal(packed.images[index].uri, undefined);
       const view = packed.bufferViews[packed.images[index].bufferView];
-      const source = await readFile(new URL(`../docs/qa/art-pilot/sources/${record.id}/${image.uri}`, import.meta.url));
+      const source = await readFile(new URL(image.uri, sourceUrl));
       assert.deepEqual(binary.subarray(view.byteOffset, view.byteOffset + view.byteLength), source, 'JPEG unchanged');
     }
   }
@@ -63,13 +176,18 @@ test('matching local r185 loader dependencies and source snapshot hashes are com
     if (item.path.endsWith('.js')) assert.ok(!bytes.toString().includes("} from 'three';"), 'No unresolved bare runtime imports');
   }
   const snapshot = await json('../docs/qa/art-pilot/base-snapshot.json');
-  for (const item of snapshot.files) assert.equal(hash(await readFile(new URL('../' + item.path, import.meta.url))), item.sha256);
+  for (const item of snapshot.files) {
+    const historical = await readFile(new URL('../docs/qa/art-pilot/base-source/' + item.path, import.meta.url));
+    assert.equal(historical.length, item.bytes); assert.equal(hash(historical), item.sha256);
+  }
+  // base-snapshot describes historical evidence, not mutable current sources.
+  assert.equal(snapshot.baseCommit, '0330df7ee1042d0f211304b042e01cdf6a0b4d44');
 });
 
 test('actual indexed geometry, retained vice skin, default-pose bounds and PBR references fit the two-model budget', async () => {
   const expected = { bench_vice_01: { triangles: 2864, meshes: 4, skin: 4 }, metal_tool_chest: { triangles: 13360, meshes: 7, skin: 0 } };
   let totalTriangles = 0, totalDraws = 0;
-  for (const id of WORKSHOP_PILOT.assets) {
+  for (const id of Object.keys(expected)) {
     const asset = await loadCPU(id), result = inspectScene(asset.scene);
     assert.equal(result.triangles, expected[id].triangles); assert.equal(result.meshes, expected[id].meshes);
     assert.equal(result.skinnedMeshes, expected[id].skin); assert.equal(result.materialCount, 1); assert.equal(result.textureCount, 3);
@@ -86,7 +204,7 @@ test('actual indexed geometry, retained vice skin, default-pose bounds and PBR r
   assert.equal(totalTriangles, 16224); assert.equal(totalDraws, 11, 'Potential main-colour pass calls; no GPU/shadow-pass claim');
 });
 
-test('single actual workshop scope keeps every existing collider, stairs and >2m main passage; tool box stays on its owner crate', () => {
+test('single workshop preserves original routes/unaffected colliders and >2m main passage; chest stays on its owner crate', () => {
   const data = fixture(), plan = planHarborWorkshopPilot(data.building, data.floor, data.layout);
   assert.equal(plan.placements.length, 2); assert.equal(plan.replacePartIds.length, 1);
   assert.equal(planHarborWorkshopPilot({ ...data.building, id: 'south-085' }, data.floor, data.layout), null);
@@ -98,7 +216,16 @@ test('single actual workshop scope keeps every existing collider, stairs and >2m
   const system = createInteriorSystem(THREE, new THREE.Scene(), { buildings: [data.building] });
   system.enter(data.building.id);
   const physics = system.collisionContext(), byId = new Map(physics.colliders.map(c => [c.id, c]));
-  for (const collider of data.layout.colliders) assert.deepEqual(byId.get(collider.id), collider, 'Original collider altered');
+  const authored = applyAuthoredWorkshopLayout(data.building, data.floor, data.layout);
+  const replacedArchiveIds = new Set(authored.workshopAuthored.replacedArchiveParts.map(part => part.id));
+  for (const collider of data.layout.colliders) {
+    if (replacedArchiveIds.has(collider.id)) assert.ok(!byId.has(collider.id), 'Replaced archive obstacle must be removed with its visible furnishing');
+    else assert.deepEqual(byId.get(collider.id), collider, 'Unrelated original collider altered');
+  }
+  assert.equal(system.snapshot().workshopPilot.placementPlan.placements.length, 5);
+  assert.deepEqual(authored.rooms, data.layout.rooms);
+  assert.deepEqual(authored.entrance, data.layout.entrance);
+  assert.deepEqual(authored.elevator, data.layout.elevator);
   assert.deepEqual(system.snapshot().stairs, data.layout.stairs);
   const partitionEdge = Math.max(...data.layout.parts.filter(p => p.kind === 'door-jamb').map(p => p.x + p.sx / 2));
   const stairEdge = Math.min(...data.layout.parts.filter(p => p.kind === 'stair-stringer').map(p => p.x - p.sx / 2));
@@ -120,7 +247,7 @@ test('single actual workshop scope keeps every existing collider, stairs and >2m
   system.dispose();
 });
 
-test('distance hysteresis loads once, unloads all GPU-owned resources and releases again on real building exit', async () => {
+test('distance hysteresis loads once, releases owned resource callbacks and releases again on building exit', async () => {
   const data = fixture(), fallback = new THREE.Group();
   const assets = [], counts = { geometry: 0, material: 0, texture: 0, bitmap: 0, boneTexture: 0 };
   const loadAsset = async id => {
@@ -267,8 +394,8 @@ test('throwing optional renderer diagnostics cannot prevent real GLB cleanup and
   system.enter(data.building.id); system.update(1 / 60, { ...planHarborWorkshopPilot(data.building, data.floor, data.layout).centre, groundY: data.floor.y });
   const live = system.root.children[0].children[0].userData.workshopPilot;
   await live.whenSettled(); system.exit();
-  assert.deepEqual(counts, { geometries: 11, textures: 6, closedImages: 6 });
-  assert.equal(reads, 4); assert.equal(live.snapshot().assetCount, 0);
+  assert.deepEqual(counts, { geometries: 32, textures: 16, closedImages: 16 });
+  assert.equal(reads, 10); assert.equal(live.snapshot().assetCount, 0);
   const released = system.snapshot().workshopPilotEvents.filter(event => event.kind === 'asset-released');
   for (const event of released) {
     assert.equal(event.rendererRelease.available, false);
@@ -280,5 +407,5 @@ test('throwing optional renderer diagnostics cannot prevent real GLB cleanup and
   released[0].rendererRelease.readErrors[0].message = 'mutated snapshot';
   assert.equal(system.snapshot().workshopPilotEvents.find(event => event.kind === 'asset-released')
     .rendererRelease.readErrors[0].message, 'controlled reader failure');
-  assert.equal(reads, 4, 'Repeated snapshots do not call the reader'); system.dispose();
+  assert.equal(reads, 10, 'Repeated snapshots do not call the reader'); system.dispose();
 });

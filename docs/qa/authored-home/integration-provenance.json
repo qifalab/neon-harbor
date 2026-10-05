@@ -1,0 +1,125 @@
+{
+  "sealedCandidate": "/tmp/neon-authored-home-candidate",
+  "sealedManifestSha256": "5f57055df121cf33b7ce8083aad104f60bf8903fe0581be84de0b512d84527f3",
+  "change": "Local source/metadata/tool paths and corresponding actual tool hashes; GLB bytes, acquired JPEG/BIN bytes, source URLs and MD5/SHA unchanged. Runtime snapshot-copy correction is a separate patch.",
+  "pathMap": [
+    {
+      "old": "evidence/acquisition/sources/sofa_03/sofa_03_1k.gltf",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/sofa_03_1k.gltf"
+    },
+    {
+      "old": "evidence/acquisition/sources/sofa_03/textures/sofa_03_rough_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/textures/sofa_03_rough_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/sources/sofa_03/sofa_03.bin",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/sofa_03.bin"
+    },
+    {
+      "old": "evidence/acquisition/sources/sofa_03/textures/sofa_03_diff_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/textures/sofa_03_diff_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/sources/sofa_03/textures/sofa_03_nor_gl_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/textures/sofa_03_nor_gl_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/sources/sofa_03/files.json",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/files.json"
+    },
+    {
+      "old": "evidence/acquisition/sources/sofa_03/info.json",
+      "new": "docs/qa/authored-home/acquisition/sources/sofa_03/info.json"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/old_bed_frame_1k.gltf",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/old_bed_frame_1k.gltf"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/textures/old_bed_frame_nor_gl_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/textures/old_bed_frame_nor_gl_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/textures/old_bed_frame_diff_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/textures/old_bed_frame_diff_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/textures/old_bed_frame_arm_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/textures/old_bed_frame_arm_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/old_bed_frame.bin",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/old_bed_frame.bin"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/files.json",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/files.json"
+    },
+    {
+      "old": "evidence/acquisition/sources/old_bed_frame/info.json",
+      "new": "docs/qa/authored-home/acquisition/sources/old_bed_frame/info.json"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg"
+    },
+    {
+      "old": "evidence/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg",
+      "new": "docs/qa/authored-home/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg"
+    }
+  ],
+  "authoringToolPathUpdates": [
+    {
+      "path": "tools/create-authored-home-glbs.mjs",
+      "sealedSourceSha256": "acde5c0f15fd532c3570b9e83024294abde4835ddeb299bb4d023746e9347da6",
+      "integratedSourceSha256": "0bf0caaebc632f3b0ed910b44f9b4bef33b4c011b1c5eaf9b0ccabbc479a46a0",
+      "change": "Final local provenance input/output paths only; geometry output remains byte-identical"
+    },
+    {
+      "path": "tools/create-home-label-atlas.py",
+      "sealedSourceSha256": "bfd5958a62fb9771cf8933fbf90481cfd240f39d85b0e489aab87eeb93523999",
+      "integratedSourceSha256": "24f724a679280ead8f0f84ef3d8557d5c7eb5a91bda9e1db5f3651f3195c3bce",
+      "change": "Final local provenance input/output paths only; geometry output remains byte-identical"
+    },
+    {
+      "path": "tools/create-authored-home-glbs.mjs",
+      "sealedSourceSha256": "acde5c0f15fd532c3570b9e83024294abde4835ddeb299bb4d023746e9347da6",
+      "integratedSourceSha256": "0bf0caaebc632f3b0ed910b44f9b4bef33b4c011b1c5eaf9b0ccabbc479a46a0",
+      "change": "Final local provenance input/output paths only; geometry output remains byte-identical"
+    },
+    {
+      "path": "tools/create-home-label-atlas.py",
+      "sealedSourceSha256": "bfd5958a62fb9771cf8933fbf90481cfd240f39d85b0e489aab87eeb93523999",
+      "integratedSourceSha256": "24f724a679280ead8f0f84ef3d8557d5c7eb5a91bda9e1db5f3651f3195c3bce",
+      "change": "Final local provenance input/output paths only; geometry output remains byte-identical"
+    }
+  ]
+}

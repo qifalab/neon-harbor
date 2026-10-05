@@ -1,0 +1,479 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "mode": "baseline",
+  "plan": {
+    "id": "home",
+    "address": "south-079",
+    "englishName": "Old Quarter 79",
+    "budgetMinutes": 32,
+    "scope": "Four existing dwelling rooms on two floors, a physical stair ascent/descent, normal exit, physical re-entry and owner release. Separate public Atlas setup; not a continuous city tour.",
+    "steps": [
+      {
+        "kind": "enter"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 112.72462385939434
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "photo",
+        "label": "bedroom-whole",
+        "position": {
+          "x": 130.3,
+          "y": 0.215,
+          "z": 112.72462385939434
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 126,
+          "y": 1.135,
+          "z": 112.72462385939434
+        },
+        "roomId": "south-079-lobby-1",
+        "nominalEye": {
+          "x": 130.3,
+          "y": 1.8350000000000002,
+          "z": 112.72462385939434
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.31351842418542564,
+          "fov": 65
+        },
+        "nominalEyeDistance": 4.356604182158405
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 112.9
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 127.5
+      },
+      {
+        "kind": "photo",
+        "label": "bed-close",
+        "position": {
+          "x": 127.5,
+          "y": 0.215,
+          "z": 112.9
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 125.75,
+          "y": 0.875,
+          "z": 112.3
+        },
+        "roomId": "south-079-lobby-1",
+        "nominalEye": {
+          "x": 127.5,
+          "y": 1.8350000000000002,
+          "z": 112.9
+        },
+        "camera": {
+          "yaw": -1.9010936816241548,
+          "pitch": 0.6955857810799656,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.0842504647954407
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 112.72462385939434
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 107.77537614060566
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "photo",
+        "label": "living-whole",
+        "position": {
+          "x": 130.3,
+          "y": 0.215,
+          "z": 107.77537614060566
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 126.3,
+          "y": 1.135,
+          "z": 107.77537614060566
+        },
+        "roomId": "south-079-lobby-0",
+        "nominalEye": {
+          "x": 130.3,
+          "y": 1.8350000000000002,
+          "z": 107.77537614060566
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.32590576816371575,
+          "fov": 65
+        },
+        "nominalEyeDistance": 4.060788100849405
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 128.9
+      },
+      {
+        "kind": "photo",
+        "label": "sofa-close",
+        "position": {
+          "x": 128.9,
+          "y": 0.215,
+          "z": 107.77537614060566
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 126.3,
+          "y": 1.075,
+          "z": 106.05
+        },
+        "roomId": "south-079-lobby-0",
+        "nominalEye": {
+          "x": 128.9,
+          "y": 1.8350000000000002,
+          "z": 107.77537614060566
+        },
+        "camera": {
+          "yaw": -2.1566771573477608,
+          "pitch": 0.39603283252510413,
+          "fov": 65
+        },
+        "nominalEyeDistance": 3.2116230828930306
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 114.44924771878868
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 135.3
+      },
+      {
+        "kind": "event",
+        "label": "actual-stair-bottom"
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 104.5007522812113
+      },
+      {
+        "kind": "floor",
+        "floorId": "gallery",
+        "y": 4.153408014029265,
+        "label": "physical-stair-ascent"
+      },
+      {
+        "kind": "release",
+        "channel": "home",
+        "floorId": "lobby",
+        "label": "lobby-owner-released-on-ascent"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 107.77537614060566
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "photo",
+        "label": "kitchen-whole",
+        "position": {
+          "x": 130.3,
+          "y": 4.153408014029265,
+          "z": 107.77537614060566
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 126.2,
+          "y": 5.183408014029265,
+          "z": 107.77537614060566
+        },
+        "roomId": "south-079-gallery-0",
+        "nominalEye": {
+          "x": 130.3,
+          "y": 5.773408014029265,
+          "z": 107.77537614060566
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.29440377815284413,
+          "fov": 65
+        },
+        "nominalEyeDistance": 4.142233696932136
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 112.72462385939434
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "photo",
+        "label": "bath-whole",
+        "position": {
+          "x": 130.3,
+          "y": 4.153408014029265,
+          "z": 112.72462385939434
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 126.2,
+          "y": 5.173408014029265,
+          "z": 112.72462385939434
+        },
+        "roomId": "south-079-gallery-1",
+        "nominalEye": {
+          "x": 130.3,
+          "y": 5.773408014029265,
+          "z": 112.72462385939434
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.2968688995286576,
+          "fov": 65
+        },
+        "nominalEyeDistance": 4.1436698710201405
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 113.42
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 127.5
+      },
+      {
+        "kind": "photo",
+        "label": "bath-laundry-close",
+        "position": {
+          "x": 127.5,
+          "y": 4.153408014029265,
+          "z": 113.42
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 125.7,
+          "y": 5.2034080140292645,
+          "z": 113.62
+        },
+        "roomId": "south-079-gallery-1",
+        "nominalEye": {
+          "x": 127.5,
+          "y": 5.773408014029265,
+          "z": 113.42
+        },
+        "camera": {
+          "yaw": -1.4601391056209994,
+          "pitch": 0.47017202619010623,
+          "fov": 65
+        },
+        "nominalEyeDistance": 1.8986574203894686
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 112.72462385939434
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 104.5007522812113
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 135.3
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 114.44924771878868
+      },
+      {
+        "kind": "floor",
+        "floorId": "lobby",
+        "y": 0.215,
+        "label": "physical-stair-descent"
+      },
+      {
+        "kind": "release",
+        "channel": "home",
+        "floorId": "gallery",
+        "label": "gallery-owner-released-on-descent"
+      },
+      {
+        "kind": "ready",
+        "channel": "home",
+        "floorId": "lobby",
+        "label": "returned-lobby-owner-ready-before-exit"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 114.34924771878869
+      },
+      {
+        "kind": "exit",
+        "label": "first-normal-exit"
+      },
+      {
+        "kind": "release",
+        "channel": "home",
+        "floorId": "lobby",
+        "label": "lobby-owner-released-on-exit"
+      },
+      {
+        "kind": "enter",
+        "label": "physical-re-entry"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 107.77537614060566
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 130.3
+      },
+      {
+        "kind": "ready",
+        "channel": "home",
+        "floorId": "lobby",
+        "label": "re-entry-real-decoder-and-owner-ready"
+      },
+      {
+        "kind": "photo",
+        "label": "living-re-entry",
+        "position": {
+          "x": 130.3,
+          "y": 0.215,
+          "z": 107.77537614060566
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 126.3,
+          "y": 1.135,
+          "z": 107.77537614060566
+        },
+        "roomId": "south-079-lobby-0",
+        "nominalEye": {
+          "x": 130.3,
+          "y": 1.8350000000000002,
+          "z": 107.77537614060566
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.32590576816371575,
+          "fov": 65
+        },
+        "nominalEyeDistance": 4.060788100849405
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 133
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 114.34924771878869
+      },
+      {
+        "kind": "exit",
+        "label": "second-normal-exit"
+      },
+      {
+        "kind": "release",
+        "channel": "home",
+        "floorId": "lobby",
+        "label": "re-entry-owner-released-on-second-exit"
+      }
+    ]
+  },
+  "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+  "unavailableBaselineOwner": true,
+  "planPhotographsIdenticalAcrossModes": true
+}

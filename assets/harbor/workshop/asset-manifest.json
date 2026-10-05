@@ -1,12 +1,10 @@
 {
-  "version": 1,
-  "generatedAt": "2026-10-04T18:23:32.136530+00:00",
+  "version": 3,
+  "generatedAt": "2026-10-04T22:10:21.847776+00:00",
   "sourceMode": "offline verified archive",
-  "scope": "Two real official assets for isolated south-086 workshop pilot; no visual approval yet",
-  "license": "CC0-1.0",
-  "licenseUrl": "https://polyhaven.com/license",
-  "generationTool": "tools/acquire-workshop-assets.py",
-  "runtimeBytes": 4788776,
+  "scope": "Authored south-086 workshop and archive candidate: four official CC0 models (shelf shared three times), original fittings, five same-origin GLBs; native visual/walking/decoded-resource acceptance pending",
+  "license": "Mixed; see per-model CC0-1.0 / original MIT attribution",
+  "runtimeBytes": 11530828,
   "models": [
     {
       "id": "bench_vice_01",
@@ -175,6 +173,371 @@
       "textureProcessing": "None; embedded original JPEG bytes",
       "geometryProcessing": "None; original accessors, vertex/index BIN, scene nodes and skin retained",
       "sourceBuffersNote": "Official 1K glTF intentionally references the shared 4K/8K BIN URL; texture resolution does not alter mesh geometry."
+    },
+    {
+      "id": "workshop-fittings",
+      "license": "MIT (original geometry and label design) + CC0-1.0 (Poly Haven wood JPEGs)",
+      "authors": {
+        "QifaLab": "Original geometry and labels",
+        "Rob Tuytel": "Wood Planks Grey texture"
+      },
+      "sourcePage": "https://polyhaven.com/a/wood_planks_grey",
+      "licenseUrls": [
+        "https://polyhaven.com/license",
+        "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
+      ],
+      "editableSource": "tools/create-authored-workshop-glb.mjs",
+      "labelSource": "tools/create-workshop-label-atlas.py",
+      "sourceTextures": [
+        {
+          "channel": "Diffuse",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_planks_grey/wood_planks_grey_diff_1k.jpg",
+          "size": 228279,
+          "md5": "f2b4a70fed329c13850917c5f2d1498c",
+          "sha256": "d758be23e8fe7bfbd73bc4ab257cfd59406e1835f6557c12a67cd4fdb15de0d8",
+          "path": "docs/qa/authored-workshop/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg"
+        },
+        {
+          "channel": "nor_gl",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_planks_grey/wood_planks_grey_nor_gl_1k.jpg",
+          "size": 157419,
+          "md5": "fe633ea606ac22b732d4204a7fa52b03",
+          "sha256": "5e570e57d688b016b217b9e8e0592f9a8b3364406e22bf6cd775da990452bdb6",
+          "path": "docs/qa/authored-workshop/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg"
+        },
+        {
+          "channel": "arm",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_planks_grey/wood_planks_grey_arm_1k.jpg",
+          "size": 155198,
+          "md5": "2da2c5b43105bd0b1bcc8712e8164406",
+          "sha256": "0464853147811dd6dcf9f286ca3753fb63fa654d081ae708070fbf0fd4614d97",
+          "path": "docs/qa/authored-workshop/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg"
+        }
+      ],
+      "labelRaster": {
+        "scope": "Original static environmental labels, not live job/inventory assertions",
+        "font": "Noto Sans CJK and DejaVu Sans installed system fonts; no font file redistributed",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "rows": [
+          [
+            "01  收件 · 待处理",
+            "RECEIVING / INSPECTION"
+          ],
+          [
+            "02  修缮工作台",
+            "REPAIR BENCH / RETURN TOOLS"
+          ],
+          [
+            "03  完成 · 待领",
+            "COMPLETED / COLLECTION"
+          ],
+          [
+            "货运档案 · 检索",
+            "CARGO RECORDS / REFERENCE"
+          ],
+          [
+            "登记簿  R-01",
+            "RECEIVING LOG / 2026"
+          ],
+          [
+            "零件  A-03",
+            "SPARES / FITTINGS"
+          ],
+          [
+            "航运资料  C-02",
+            "SHIPPING / REFERENCE"
+          ],
+          [
+            "工具归位 · 保持通道",
+            "RETURN TOOLS / KEEP AISLE CLEAR"
+          ]
+        ],
+        "bytes": 106707,
+        "sha256": "a5382b7b220dc92405536acbb1112e34dcda3309f9adb935fa3071a928bc9306"
+      },
+      "output": {
+        "path": "assets/harbor/workshop/workshop-fittings.glb",
+        "bytes": 2364880,
+        "sha256": "9c548499c87b71cac2ed44b18803fdd9221359a7017da65e03420f77d816ebf0"
+      },
+      "geometry": {
+        "triangles": 17784,
+        "primitives": 11,
+        "materials": 6,
+        "skins": 0,
+        "animations": 0
+      },
+      "visibleLOD": {
+        "core": {
+          "triangles": 9784,
+          "drawCalls": 6
+        },
+        "near": {
+          "triangles": 7516,
+          "drawCalls": 3
+        },
+        "far": {
+          "triangles": 484,
+          "drawCalls": 2
+        }
+      },
+      "textureResolution": "Four embedded 1024 x 1024 images",
+      "geometryProcessing": "New editable original fittings and three visibility tiers; not an export of old prototype furniture",
+      "textureProcessing": "Three unchanged official JPEGs plus one original static label PNG atlas"
+    },
+    {
+      "id": "metal_office_desk",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "authors": {
+        "Ulan Cabanilla": "All"
+      },
+      "sourcePage": "https://polyhaven.com/a/metal_office_desk",
+      "filesApi": "https://api.polyhaven.com/files/metal_office_desk",
+      "infoApi": "https://api.polyhaven.com/info/metal_office_desk",
+      "sourceDownloads": [
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/metal_office_desk_1k.gltf",
+          "sourceUri": "metal_office_desk_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_office_desk/metal_office_desk_1k.gltf",
+          "bytes": 13510,
+          "officialMd5": "723956efef6da35ad41494efa5c3b820",
+          "sha256": "f07032a5ee89aacceebf10fd9fa192c22775ae81861cfb0bdb1594497179373c"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/textures/metal_office_desk_nor_gl_1k.jpg",
+          "sourceUri": "textures/metal_office_desk_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_office_desk/metal_office_desk_nor_gl_1k.jpg",
+          "bytes": 170875,
+          "officialMd5": "bcf6793df61d9b5f097f2b9518866c45",
+          "sha256": "f57eb004937e46392151b803e0cb1d88983958d01ad11d93df78a82cfcc6c407"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/textures/metal_office_desk_diff_1k.jpg",
+          "sourceUri": "textures/metal_office_desk_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_office_desk/metal_office_desk_diff_1k.jpg",
+          "bytes": 470831,
+          "officialMd5": "6a27263c95811fa902ddea6476d610e9",
+          "sha256": "1f02e3e77e8f82a3600664c991bd45c1c187452d61e9ede4336c6f90f7fa3139"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/textures/metal_office_desk_arm_1k.jpg",
+          "sourceUri": "textures/metal_office_desk_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_office_desk/metal_office_desk_arm_1k.jpg",
+          "bytes": 721614,
+          "officialMd5": "fb76b1e17f07592608d3f144fce4bfce",
+          "sha256": "752916dd9bf8a163dc7e0d3673900791ee6d558bbe23894263ac92b42387f51b"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/metal_office_desk.bin",
+          "sourceUri": "metal_office_desk.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/metal_office_desk/metal_office_desk.bin",
+          "bytes": 229700,
+          "officialMd5": "96f258b9a64d36ca011f44de23da7c65",
+          "sha256": "65b558f41a75ad4822e31cc2a97eb34ed359199279a6bfbd650deb27cef78767"
+        }
+      ],
+      "metadataDownloads": [
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/files.json",
+          "url": "https://api.polyhaven.com/files/metal_office_desk",
+          "bytes": 31339,
+          "sha256": "bf88ed9675b082f0488e9ad6b4474a93c377c8f007907bea1cff820cc2aba127"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/info.json",
+          "url": "https://api.polyhaven.com/info/metal_office_desk",
+          "bytes": 1043,
+          "sha256": "e6759502719293e6f953fc07d4facb93d098df232fd5220175c8ea154755a9ad"
+        }
+      ],
+      "output": {
+        "path": "assets/harbor/workshop/metal_office_desk.glb",
+        "bytes": 1601008,
+        "sha256": "75559afa2a66f018ff2aba92e47ce169783bb54d8f9799b8ce6671954111496a"
+      },
+      "geometry": {
+        "triangles": 6898,
+        "primitives": 9,
+        "materials": 1,
+        "skins": 0,
+        "animations": 0
+      },
+      "textureResolution": "official 1K",
+      "textureProcessing": "None; embedded original JPEG bytes",
+      "geometryProcessing": "None; original accessors, vertex/index BIN, scene nodes and skin retained",
+      "sourceBuffersNote": "Official 1K glTF intentionally references the shared 4K/8K BIN URL; texture resolution does not alter mesh geometry."
+    },
+    {
+      "id": "wooden_bookshelf_worn",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "authors": {
+        "Ulan Cabanilla": "All"
+      },
+      "sourcePage": "https://polyhaven.com/a/wooden_bookshelf_worn",
+      "filesApi": "https://api.polyhaven.com/files/wooden_bookshelf_worn",
+      "infoApi": "https://api.polyhaven.com/info/wooden_bookshelf_worn",
+      "sourceDownloads": [
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/wooden_bookshelf_worn_1k.gltf",
+          "sourceUri": "wooden_bookshelf_worn_1k.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wooden_bookshelf_worn/wooden_bookshelf_worn_1k.gltf",
+          "bytes": 2849,
+          "officialMd5": "f8bb25dfb3c646e5c4f420d800276928",
+          "sha256": "a1c5b3f1e71ae0b5eb73047e8097bceaa5f17e5d2d0d7ae1b8053d5ec0878fc6"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_nor_gl_1k.jpg",
+          "sourceUri": "textures/wooden_bookshelf_worn_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_bookshelf_worn/wooden_bookshelf_worn_nor_gl_1k.jpg",
+          "bytes": 993276,
+          "officialMd5": "0e6f33c00eec432dd17178a4e5feb4f2",
+          "sha256": "90ffb1b3f7bb638d5a7e1a2b244a260d623e314a6010a6b8c23c57203e510ac9"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/wooden_bookshelf_worn.bin",
+          "sourceUri": "wooden_bookshelf_worn.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/wooden_bookshelf_worn/wooden_bookshelf_worn.bin",
+          "bytes": 267964,
+          "officialMd5": "3842de1943f58cdafb3a25d384b2400f",
+          "sha256": "170758113b50132380ab46943f6eab18f2714460dead065aae37241a94abf0f9"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_arm_1k.jpg",
+          "sourceUri": "textures/wooden_bookshelf_worn_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_bookshelf_worn/wooden_bookshelf_worn_arm_1k.jpg",
+          "bytes": 713979,
+          "officialMd5": "7252efe4bd18f6dfdc014a9f4ccdf065",
+          "sha256": "41b3aca38fb55cb300d971016a597c80425da3744a6d33d82fe78f9dbe609eaa"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_diff_1k.jpg",
+          "sourceUri": "textures/wooden_bookshelf_worn_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wooden_bookshelf_worn/wooden_bookshelf_worn_diff_1k.jpg",
+          "bytes": 799126,
+          "officialMd5": "8f92c92e6473010e7df9b11f32d1234a",
+          "sha256": "970f60178decadd0d8fb1e5872f718350a49b027fd69469210c41ead350cba56"
+        }
+      ],
+      "metadataDownloads": [
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/files.json",
+          "url": "https://api.polyhaven.com/files/wooden_bookshelf_worn",
+          "bytes": 24701,
+          "sha256": "3939b6a8dd4be539d6c2f7bbcbebb51b0b5ec13755266e8e3ea2b21c98411b43"
+        },
+        {
+          "path": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/info.json",
+          "url": "https://api.polyhaven.com/info/wooden_bookshelf_worn",
+          "bytes": 1166,
+          "sha256": "5d1d92a9ccc64101d623e7ecfc49944aeddbe34876489cdcc0580e7d2aad3253"
+        }
+      ],
+      "output": {
+        "path": "assets/harbor/workshop/wooden_bookshelf_worn.glb",
+        "bytes": 2776164,
+        "sha256": "3d73968cc71c317f139f1f7a4cbfbaaa5155b7ff286584f799140b5dfe7c6177"
+      },
+      "geometry": {
+        "triangles": 10106,
+        "primitives": 1,
+        "materials": 1,
+        "skins": 0,
+        "animations": 0
+      },
+      "textureResolution": "official 1K",
+      "textureProcessing": "None; embedded original JPEG bytes",
+      "geometryProcessing": "None; original accessors, vertex/index BIN, scene nodes and skin retained",
+      "sourceBuffersNote": "Official 1K glTF intentionally references the shared 4K/8K BIN URL; texture resolution does not alter mesh geometry."
     }
-  ]
+  ],
+  "licenseUrls": [
+    "https://polyhaven.com/license",
+    "LICENSE-NEON-AUTHORED.txt"
+  ],
+  "generationTools": [
+    "tools/acquire-workshop-assets.py (original two)",
+    "tools/acquire-authored-workshop-assets.py",
+    "tools/create-workshop-label-atlas.py",
+    "tools/create-authored-workshop-glb.mjs"
+  ],
+  "integrationProvenance": {
+    "sealedCandidate": "/tmp/neon-authored-workshop-candidate",
+    "sealedManifestSha256": "1b49993abf42c56bbf76f8ec30a31d6ca2bcce4f50608cf8075b3976d36e3b76",
+    "change": "Local source/metadata paths only, plus this provenance record. GLB bytes, original source bytes/URLs, MD5/SHA, licences and geometry remain unchanged.",
+    "pathMap": [
+      {
+        "old": "evidence/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/wood-planks/wood_planks_grey_diff_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/wood-planks/wood_planks_grey_nor_gl_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/wood-planks/wood_planks_grey_arm_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/metal_office_desk_1k.gltf",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/metal_office_desk_1k.gltf"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/textures/metal_office_desk_nor_gl_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/textures/metal_office_desk_nor_gl_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/textures/metal_office_desk_diff_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/textures/metal_office_desk_diff_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/textures/metal_office_desk_arm_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/textures/metal_office_desk_arm_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/metal_office_desk.bin",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/metal_office_desk.bin"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/files.json",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/files.json"
+      },
+      {
+        "old": "evidence/acquisition/sources/metal_office_desk/info.json",
+        "new": "docs/qa/authored-workshop/acquisition/sources/metal_office_desk/info.json"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/wooden_bookshelf_worn_1k.gltf",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/wooden_bookshelf_worn_1k.gltf"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_nor_gl_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_nor_gl_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/wooden_bookshelf_worn.bin",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/wooden_bookshelf_worn.bin"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_arm_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_arm_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_diff_1k.jpg",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/textures/wooden_bookshelf_worn_diff_1k.jpg"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/files.json",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/files.json"
+      },
+      {
+        "old": "evidence/acquisition/sources/wooden_bookshelf_worn/info.json",
+        "new": "docs/qa/authored-workshop/acquisition/sources/wooden_bookshelf_worn/info.json"
+      }
+    ]
+  }
 }

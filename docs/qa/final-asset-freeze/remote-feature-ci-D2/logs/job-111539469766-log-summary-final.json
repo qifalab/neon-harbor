@@ -1,0 +1,133 @@
+{
+  "jobId": 111539469766,
+  "expectedSourceSha": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "logBytes": 182955,
+  "logSha256": "fadb7633aa3995494463fd3a081db865c114b0fbe6f5f55f53f6920ca6105bb8",
+  "ruleSummaries": {
+    "tests": [
+      "311"
+    ],
+    "pass": [
+      "311"
+    ],
+    "fail": [
+      "0"
+    ],
+    "cancelled": [
+      "0"
+    ],
+    "skipped": [
+      "0"
+    ],
+    "todo": [
+      "0"
+    ]
+  },
+  "playwrightTotals": [
+    [
+      "1",
+      "failed"
+    ],
+    [
+      "1",
+      "passed"
+    ]
+  ],
+  "caseLines": [
+    "2026-10-04T22:07:44.0517913Z   ✘  1 tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting (15.1m)",
+    "2026-10-04T22:16:27.2132030Z   ✓  2 tests/e2e/harbor-sample.spec.js:213:1 › funded cargo and a real purchase persist across reload, with physical delivery and the actual High shop room (8.7m)",
+    "2026-10-04T22:16:34.0487824Z   1) tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting ",
+    "2026-10-04T22:16:34.0505568Z     tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting "
+  ],
+  "buildLines": [
+    "2026-10-04T21:51:47.9058065Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/",
+    "2026-10-04T21:51:48.1308890Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/",
+    "2026-10-04T21:51:48.2507110Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist"
+  ],
+  "expectedSourceCheckoutObserved": true,
+  "failureExcerpt": [
+    "2026-10-04T22:03:55.7682491Z {\"stage\":\"ferry-lower-waypoint\",\"target\":{\"x\":1.78,\"y\":1.3,\"z\":5.57},\"local\":{\"x\":1.780101736101544,\"y\":1.3,\"z\":5.535052292277286,\"yaw\":0.0005011267826684255},\"time\":92.26666666666272}",
+    "2026-10-04T22:04:14.6581711Z {\"stage\":\"ferry-lower-waypoint\",\"target\":{\"x\":0,\"z\":5.57,\"y\":1.3},\"local\":{\"x\":0.05543243040888017,\"y\":1.3,\"z\":5.568792630475649,\"yaw\":-1.549161261696134},\"time\":95.26666666666254}",
+    "2026-10-04T22:06:08.4374151Z {\"stage\":\"ferry-lower-waypoint\",\"target\":{\"x\":0,\"z\":-7.2,\"y\":1.3},\"local\":{\"x\":0.005593842678165364,\"y\":1.3,\"z\":-7.212945129234142,\"yaw\":-3.0077421792090253},\"time\":109.66666666666173}",
+    "2026-10-04T22:07:44.0517913Z   ✘  1 tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting (15.1m)",
+    "2026-10-04T22:08:20.0594772Z {\"stage\":\"cargo-funded-and-saved\",\"jobId\":\"harbor-order-1\",\"quantity\":8,\"escrow\":12,\"time\":0.24999999999999997}",
+    "2026-10-04T22:11:20.2738501Z {\"stage\":\"cargo-delivered-and-saved\",\"jobId\":\"harbor-order-1\",\"cash\":1212,\"time\":25.616666666666493}",
+    "2026-10-04T22:16:27.2132030Z   ✓  2 tests/e2e/harbor-sample.spec.js:213:1 › funded cargo and a real purchase persist across reload, with physical delivery and the actual High shop room (8.7m)",
+    "2026-10-04T22:16:34.0472732Z ",
+    "2026-10-04T22:16:34.0476750Z ",
+    "2026-10-04T22:16:34.0487824Z   1) tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting ",
+    "2026-10-04T22:16:34.0488538Z ",
+    "2026-10-04T22:16:34.0488718Z     Test timeout of 900000ms exceeded.",
+    "2026-10-04T22:16:34.0488998Z ",
+    "2026-10-04T22:16:34.0489634Z     Error: mouse.up: Target page, context or browser has been closed",
+    "2026-10-04T22:16:34.0489915Z ",
+    "2026-10-04T22:16:34.0490409Z       181 |         console.log(JSON.stringify({ stage: `${kind}-lower-waypoint`, target, local: reached.at(-1).local, time: reached.at(-1).time }));",
+    "2026-10-04T22:16:34.0491875Z       182 |       }",
+    "2026-10-04T22:16:34.0492199Z     > 183 |     } finally { await page.mouse.up(); }",
+    "2026-10-04T22:16:34.0492534Z           |                                  ^",
+    "2026-10-04T22:16:34.0493015Z       184 |     expect((await snapshot(page)).city.sample.transit.passengerDeck).toBe('lower');",
+    "2026-10-04T22:16:34.0493535Z       185 |     await page.waitForFunction(({ id, from }) => {",
+    "2026-10-04T22:16:34.0494088Z       186 |       const v = window.__NEON__.snapshot().city.sample.transit.vehicles.find(v => v.id === id);",
+    "2026-10-04T22:16:34.0494732Z         at /home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js:183:34",
+    "2026-10-04T22:16:34.0495074Z ",
+    "2026-10-04T22:16:34.0495565Z     attachment #1: ferry-upper-deck-high (image/png) ───────────────────────────────────────────────",
+    "2026-10-04T22:16:34.0496563Z     test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/attachments/ferry-upper-deck-high-7396fd7c2bfc047b785bbd67e5025ea67d18a7cd.png",
+    "2026-10-04T22:16:34.0497526Z     ────────────────────────────────────────────────────────────────────────────────────────────────",
+    "2026-10-04T22:16:34.0497804Z ",
+    "2026-10-04T22:16:34.0498212Z     attachment #2: ferry-upper-deck-high-pose (application/json) ───────────────────────────────────",
+    "2026-10-04T22:16:34.0499209Z     test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/attachments/ferry-upper-deck-high-pose-4ae1ff3cd8541720f4f43dea6cf3251f783fe653.json",
+    "2026-10-04T22:16:34.0500184Z     ────────────────────────────────────────────────────────────────────────────────────────────────",
+    "2026-10-04T22:16:34.0500466Z ",
+    "2026-10-04T22:16:34.0501101Z     Error Context: test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/error-context.md",
+    "2026-10-04T22:16:34.0501550Z ",
+    "2026-10-04T22:16:34.0501944Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────",
+    "2026-10-04T22:16:34.0502578Z     test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/trace.zip",
+    "2026-10-04T22:16:34.0503223Z     Usage:",
+    "2026-10-04T22:16:34.0503345Z ",
+    "2026-10-04T22:16:34.0503769Z         npx playwright show-trace test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/trace.zip",
+    "2026-10-04T22:16:34.0504225Z ",
+    "2026-10-04T22:16:34.0504552Z     ────────────────────────────────────────────────────────────────────────────────────────────────",
+    "2026-10-04T22:16:34.0504823Z ",
+    "2026-10-04T22:16:34.0504922Z   1 failed",
+    "2026-10-04T22:16:34.0505568Z     tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting ",
+    "2026-10-04T22:16:34.0506119Z   1 passed (24.4m)",
+    "2026-10-04T22:16:34.2135624Z ##[error]Process completed with exit code 1.",
+    "2026-10-04T22:16:34.2211889Z ##[group]Run actions/upload-artifact@v4",
+    "2026-10-04T22:16:34.2212182Z with:",
+    "2026-10-04T22:16:34.2212419Z   name: browser-test-results-harbor-sample-2",
+    "2026-10-04T22:16:34.2212752Z   path: playwright-report/",
+    "test-results/",
+    "",
+    "2026-10-04T22:16:34.2213053Z   if-no-files-found: ignore",
+    "2026-10-04T22:16:34.2213318Z   compression-level: 6",
+    "2026-10-04T22:16:34.2213550Z   overwrite: false",
+    "2026-10-04T22:16:34.2213769Z   include-hidden-files: false",
+    "2026-10-04T22:16:34.2214028Z ##[endgroup]",
+    "2026-10-04T22:16:34.3811129Z (node:4020) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+    "2026-10-04T22:16:34.3812485Z (Use `node --trace-deprecation ...` to show where the warning was created)",
+    "2026-10-04T22:16:34.3968537Z Multiple search paths detected. Calculating the least common ancestor of all paths",
+    "2026-10-04T22:16:34.3970504Z The least common ancestor is /home/runner/work/neon-harbor/neon-harbor. This will be the root directory of the artifact",
+    "2026-10-04T22:16:34.3973048Z With the provided path, there will be 44 files uploaded",
+    "2026-10-04T22:16:34.3978149Z Artifact name is valid!",
+    "2026-10-04T22:16:34.3978983Z Root directory input is valid!",
+    "2026-10-04T22:16:34.7420324Z Beginning upload of artifact content to blob storage",
+    "2026-10-04T22:16:35.0953882Z (node:4020) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.",
+    "2026-10-04T22:16:35.8181384Z Uploaded bytes 8388608",
+    "2026-10-04T22:16:36.0931415Z Uploaded bytes 16777216",
+    "2026-10-04T22:16:36.2067757Z Uploaded bytes 25165824",
+    "2026-10-04T22:16:36.4179514Z Uploaded bytes 33554432",
+    "2026-10-04T22:16:36.6677555Z Uploaded bytes 38768967",
+    "2026-10-04T22:16:36.7299408Z Finished uploading artifact content to blob storage!",
+    "2026-10-04T22:16:36.7302150Z SHA256 digest of uploaded artifact zip is 6f46cdbcc5ad0b6a76306c3fe6ba3d6abeec2f9addcefe7b8eb52b923f67a024",
+    "2026-10-04T22:16:36.7303849Z Finalizing artifact upload",
+    "2026-10-04T22:16:37.0196731Z Artifact browser-test-results-harbor-sample-2.zip successfully finalized. Artifact ID 11316409602",
+    "2026-10-04T22:16:37.0197905Z Artifact browser-test-results-harbor-sample-2 has been successfully uploaded! Final size is 38768967 bytes. Artifact ID is 11316409602",
+    "2026-10-04T22:16:37.0204727Z Artifact download URL: https://github.com/qifalab/neon-harbor/actions/runs/37237505203/artifacts/11316409602",
+    "2026-10-04T22:16:37.0414404Z Post job cleanup.",
+    "2026-10-04T22:16:37.1258248Z [command]/usr/bin/git version",
+    "2026-10-04T22:16:37.1297533Z git version 2.55.0",
+    "2026-10-04T22:16:37.1332069Z Temporarily overriding HOME='/home/runner/work/_temp/036974e5-01a4-492f-a58b-5322dfee8f77' before making global git config changes",
+    "2026-10-04T22:16:37.1333701Z Adding repository directory to the temporary git global config as a safe directory",
+    "2026-10-04T22:16:37.1339003Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/neon-harbor/neon-harbor"
+  ]
+}

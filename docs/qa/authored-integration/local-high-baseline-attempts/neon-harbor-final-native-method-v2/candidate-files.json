@@ -1,0 +1,67 @@
+{
+  "status": "PREPARED_NOT_NATIVE_EXECUTED",
+  "runtimeFiles": [
+    {
+      "path": "capture-authored-harbor-native.mjs",
+      "bytes": 30471,
+      "sha256": "817463f1d404e445f5aa9b366929abd3a8ad8f633a9e8db8ee69fb9613a39e33"
+    },
+    {
+      "path": "input.mjs",
+      "bytes": 7087,
+      "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+    },
+    {
+      "path": "plans.mjs",
+      "bytes": 6751,
+      "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95"
+    },
+    {
+      "path": "expectations.mjs",
+      "bytes": 2016,
+      "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1"
+    },
+    {
+      "path": "server.mjs",
+      "bytes": 4529,
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+    },
+    {
+      "path": "evidence/captured-buildings.json",
+      "bytes": 14628,
+      "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+    },
+    {
+      "path": "evidence/common-pose-proof.json",
+      "bytes": 37158,
+      "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+    }
+  ],
+  "documentation": "README.md",
+  "lightweightPreparation": [
+    "probe-common-poses.mjs",
+    "check-prepared-method.mjs"
+  ],
+  "coreCases": [
+    "home",
+    "workshop"
+  ],
+  "additionalCases": [
+    "south-090",
+    "south-091",
+    "south-092",
+    "south-094",
+    "south-095",
+    "south-096"
+  ],
+  "baselineOwnerUnavailable": "authored-home",
+  "frontageReleaseUnavailable": "72/96m normal residence, no per-owner transaction exposed",
+  "rootModified": false,
+  "browserStarted": false,
+  "serverStarted": false,
+  "gpuUsed": false,
+  "buildRun": false,
+  "fullSuiteRun": false,
+  "revision": "v2 CJS module resolution only",
+  "firstSourcePackage": "/tmp/neon-harbor-final-native-method"
+}

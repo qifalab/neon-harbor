@@ -17,7 +17,9 @@
 - **六家沿街小店**：双碗面家、芦岸印房、静潮茶室、晨罐烘焙、潮叶果铺和铜芦小馆有对应的外观与首层室内。加入曲面檐棚、店招、桌椅、货架及有来源记录的 CC0 扫描墙面与铺地；近处装配、远处回收。
 - **有限的街坊经济**：南岸样板新增 20 名逻辑居民，三家店铺实际交易果蔬、茶饮与热汤面；居民到沿街柜台岗位、采购、通勤、配送和返家，钱与货按实际转移记录。玩家可购物或在货栈领货、送到柜台赚取运费，库存不会因重进街区而无限恢复。新店员岗位尚未全部接入室内工作路线。
 
-**当前边界**：北岸 240 名居民继续使用既有链路；南岸新生活系统限于上述 20 人与三家交易店铺，没有覆盖全部新增建筑。4,150 层属于源码目录的结构范围，不代表每层画面和通行均已人工验收。工坊已接入两件 CC0 GLB 道具与本地 PBR 导入、按距驻留和释放；正式车船、蒙皮人物、逐场景精修、完整全城生活模拟和真实硬件帧率仍待制作或测量。首个样板的完整路线和上线仍在验证，功能、画面与性能分别记录。
+本轮五个工作包已选择性合入主工作区源码：`south-086` 工坊 / 档案的 **5 份 GLB**、`south-079` 四房住宅的 **4 份 GLB**、巴士 / 电车 / 小轮各三档共 **9 份 GLB**、worker / commuter / shopkeeper **三套近景蒙皮角色**，以及六套沿街立面。它们带有实际来源、许可、可编辑文件和运行时驻留 / 释放代码；**原生 High 近景与真实通行尚待验收，本候选尚未发布**。具体资产与状态见 [制作计划](docs/WORLD_SIMULATOR_PLAN.md#本轮五个制作工作包) 和 [样板验收表](docs/HARBOR_SAMPLE_ACCEPTANCE.md)。
+
+**当前边界**：北岸 240 名居民继续使用既有生活网络；南岸新生活系统限于上述 20 人与三家交易店铺，没有覆盖全部新增建筑。三角色资产共用全局最多 12 个近景实例，玩家优先；模型替换不增加居民数量或生活能力。4,150 层属于源码目录的结构范围，不代表每层画面和通行均已人工验收。样板之外仍主要使用程序生成资产与共享室内；完整人物动作库、全城生活模拟、移动画面稳定性和真实硬件帧率仍待制作或测量。功能、画面与性能分别记录，不宣称达到 GTA、《赛博朋克 2077》或商业 3A 的制作质量。
 
 ### 港湾生活入口与路线
 
@@ -127,7 +129,7 @@ cd neon-harbor
 npm start
 ```
 
-启动前会自动生成 `assets/city/chunks/` 和 `assets/metropolis/chunks/`，随后打开 `http://127.0.0.1:5173`。街区资源由源码生成，无需单独下载素材。ES Modules 需要通过 HTTP 服务加载，请勿双击 HTML 文件。
+启动前会自动生成 `assets/city/chunks/` 和 `assets/metropolis/chunks/`，随后打开 `http://127.0.0.1:5173`。街区数据由源码生成，运行所需 GLB、纹理和渲染库随仓库分发，无需启动时向第三方下载素材。美术的可编辑来源与复现依赖另见下列素材记录。ES Modules 需要通过 HTTP 服务加载，请勿双击 HTML 文件。
 
 允许局域网其他设备试玩：
 
@@ -174,13 +176,13 @@ GitHub Pages 承载静态客户端。仓库提供独立的多人房间服务，�
 
 「车库与补给」目前提供 $150 的路边维修服务，恢复生命值与当前/附近车辆，追捕期间不可使用；尚无车辆收藏与改装。失败救援最多扣除 $200 并结束当前委托。旧委托保留首通奖励；港湾配送另外提供由店铺实际出资的每单 $12 运费。货栈与雇主资源有限，没有无限补货或自动发薪；买到的物品目前保留在随身库存，没有饮食消耗或属性恢复操作。
 
-南岸保留原有氛围行人，样板另有 20 名持续模拟的街坊，近处最多驻留 12 个完整人物；北岸 240 名居民保留原有生活网络。三岸 220 栋、4,150 层以共享布局为主，尚无覆盖全城的同等生活模拟。多人当前是私人房间共同探索，尚无账号、共享任务或完整服务器物理反作弊；新店铺库存、居民经济与车队票据仍由客户端本地模拟，尚未由多人服务统一核算。画面使用原创程序化模型、授权扫描材质和两件正式 CC0 工坊道具，仍缺专业角色、完整骨骼动作库、正式车船与手工制作的高密度城区，接触阴影与环境代理也不等同于完成 3A 美术。
+南岸保留原有氛围行人，样板另有 20 名持续模拟的街坊，北岸 240 名居民保留原有生活网络；近景三角色由玩家与这些表现层共用全局 12 实例上限。三岸 220 栋、4,150 层以共享布局为主，尚无覆盖全城的同等生活模拟。多人当前是私人房间共同探索，尚无账号、共享任务或完整服务器物理反作弊；新店铺库存、居民经济与车队票据仍由客户端本地模拟，尚未由多人服务统一核算。本轮只制作选定工坊、住宅、六店立面、三种车船与近景角色；其他城区仍明显程序化，完整动作、手工高密度城区和真实设备测量仍待完成。接触阴影与环境代理不等同于完成 3A 美术。
 
 ## 质量检查
 
 本轮验证范围、实际结果、截图和设备限制见 [v0.8 验收记录](docs/QA_V08.md)。历史基线另见 [v0.6](docs/QA_V06.md)、[v0.3](docs/QA_V03.md) 和 [v0.2](docs/QA_V02.md) 验收记录；历史通过数量不代表当前源码通过。
 
-当前正式道具版本在隔离目录完整规则 **311/311 通过，0 失败、0 取消、0 跳过**；选择性合并后，主工作区全部 156 项运行资源、43 份 npm 测试与 package / lock 字节一致，构建通过，复用该次规则结果。[原始结果与主工作区核对](docs/qa/art-pilot/root-integration-2026-10-04/README.md)保留，未称为主工作区重新运行。此前居民通行修订的 [302/302 原始结果](docs/qa/transit-crossing-repair/final-checks/README.md)属于两件 GLB 合入前的版本。`0330df7` 候选的 11 个游戏分片、27 个真实浏览器场景全部通过；同轮多人因重复启动执行追踪在进入页面前失败，整轮仍失败。关闭测试框架自动执行追踪、保留两个实际浏览器各自的追踪后，本地多人 **2/2 通过，无重试**。[三地址实走 / 五张原生 High 图](docs/qa/art-final/native-review/README.md)已抽样审查，住宅起步连续路线正在核验，最终 Pages 门禁尚未通过，公开站点仍为 v0.7。历史规则、浏览器失败与后续复核各自保留在 QA，不追记成首轮全绿。
+五个制作工作包的最终隔离集成目录已实际运行完整规则 **342/342 通过，0 失败、0 取消、0 跳过，126.857 秒**，静态构建通过，**190 个运行资源指纹**，`build-info.json` SHA-256 为 `e45cdf73c892a8e79c0977a7cc2f4b873cbcf7653cb920026d054191eb749c9d`。该构建 `revision:null`，以原始规则输出、源码摘要和资源字典绑定；它不是已经提交、部署或通过浏览器的版本。原始 311 / 156 与 302 / 146 结果继续作为各自历史版本保存；原 D、D2 的远程 CI 均为 11 个必需分片成功、1 个失败，整轮失败。[完整验收与失败台账](docs/QA_V08.md)保留，最终完整 CI、原生 High 画面、连续路线和 Pages 门禁仍待闭合，公开站点尚未发布此候选。
 
 已查看并归档 [8 张车辆/人物图、3 张家具图及 AO 诊断、4 张昼夜海滨图](docs/QA_V08.md#已归档画面与待补范围)。局部软装和接触阴影有改善，但同机位家具场景三角形增加约 62.4%；海滨对照主要证明渲染稳定，未显示整体画质大幅提升。参数、画面限制及成本均见 QA，这些样本不能作为逐栋人工验收、硬件性能或 3A 品质证据。
 
@@ -218,7 +220,13 @@ npm run test:e2e
 | `src/metropolis-interiors.js`、`src/metropolis-room-designs.js` | 北岸 920 个连续楼层及东湾共享室内的用途、家具、房间、楼梯与电梯 |
 | `src/expansion-programmes.js`、`src/compact-interiors.js` | 新增两岸共享用途、自然楼层和旧城紧凑室内 |
 | `src/harbor-vehicle-models.js`、`src/harbor-transit.js`、`src/harbor-transit-renderer.js` | 三种双层车船、实体上下层通行、班次与居民票据 |
-| `src/harbor-district.js`、`src/harbor-room-dressing.js`、`assets/harbor/` | 六家样板商铺、室内陈设、CC0 扫描材质及按距回收 |
+| `src/harbor-district.js`、`src/harbor-frontage-profiles.js`、`src/harbor-room-dressing.js` | 六家样板商铺、逐店立面配置、室内陈设及按距回收 |
+| `src/harbor-workshop-authored.js`、`src/harbor-workshop-pilot.js` | 一处工坊 / 档案的实际陈设、模型所有权、加载失败恢复与释放 |
+| `src/harbor-home-authored.js`、`src/harbor-home-assets.js` | 一户四房住宅的陈设 / 碰撞与按距资产所有权 |
+| `src/harbor-authored-transport.js`、`src/harbor-authored-transport-assets.js` | 三种正式车船的挂点绑定、三档 LOD、实例及共享资源所有权 |
+| `src/resident-core-assets.js` | 三角色模型导入、蒙皮克隆、全局近景预算与回收 |
+| `assets/harbor/`、`assets/resident/` | 运行时 GLB、扫描纹理及逐件来源 / 许可清单 |
+| `art-source/`、`docs/qa/authored-*/` | 可编辑人物 / Blender 来源、原始取得文件、许可证与未改写的美术证据 |
 | `src/harbor-life.js`、`src/harbor-life-renderer.js`、`src/harbor-sample-ui.js` | 20 名街坊、有限货物与资金账、配送、购物和公开玩法入口 |
 | `src/metropolis-architecture-designs.js` | 48 栋外观、192 个沿街业态及辨识构件 |
 | `src/metropolis-infrastructure.js`、`src/metropolis-transit.js` | 分层道路、港口、站台与运营车船 |
@@ -231,8 +239,8 @@ npm run test:e2e
 | `src/main.js` | 渲染循环、输入、模块接线、HUD、菜单和浏览器存储 |
 | `src/audio.js` | Web Audio 引擎、警笛、射击与提示音 |
 | `vendor/three/` | 随项目分发的 Three.js 0.185.1 及其许可证 |
-| `tools/` | 无额外依赖的街区资源生成、静态构建、服务与线上验证 |
+| `tools/` | 街区生成、静态构建、服务与线上验证；美术复现工具另有明确的 Blender / Python 环境要求 |
 | `tests/` | 游戏规则与浏览器验收 |
 | `docs/` | 历史范围、本轮验收、美术与世界制作计划 |
 
-项目代码采用 MIT 许可证。Three.js 使用其原始 MIT 许可证，见 [`vendor/three/LICENSE`](vendor/three/LICENSE)。城市几何体与程序音效由项目代码生成，不包含 GTA 游戏资源。港湾扫描墙面与铺地来自 Poly Haven，采用 CC0；作者、原始文件与本地处理摘要见 [材质清单](assets/harbor/material-manifest.json) 及 [许可记录](assets/harbor/LICENSE-CC0.txt)。 工坊台钳与便携工具箱同样来自 Poly Haven CC0，作者、原始下载和网格 / 纹理记录见 [模型清单](assets/harbor/workshop/asset-manifest.json) 及 [模型许可](assets/harbor/workshop/LICENSE-CC0.txt)。
+项目代码采用 MIT 许可证。Three.js 保留其 [MIT 许可证](vendor/three/LICENSE)。扫描墙面、铺地、工坊四件取得模型及住宅沙发 / 床架来自 Poly Haven CC0，作者、官方文件、原始摘要与处理见 [材质清单](assets/harbor/material-manifest.json)、[工坊清单](assets/harbor/workshop/asset-manifest.json) 和 [住宅清单](assets/harbor/home/asset-manifest.json)。原创工坊 / 住宅几何与标签采用 MIT，嵌入的官方纹理仍是 CC0。原创交通美术采用 CC0，制作代码保留 MIT；真实可编辑 Blender 母模、贴图与字体许可见 [交通源档案](art-source/transport/README.md)。人物只使用已核对 CC0 的 MakeHuman 核心美术，原 MakeHuman 程序许可与独立转换代码许可分别保留，见 [人物源档案](art-source/near-resident/README.md)；未复制或运行其程序逻辑。素材不是统一一种许可，分发须保留逐件原件。`art-source/` 和 `docs/` 不属于静态运行构建条目；复现工具会写导出文件，应在可写副本中运行，不修改封存证据。

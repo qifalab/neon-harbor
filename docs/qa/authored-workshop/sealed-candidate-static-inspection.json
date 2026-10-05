@@ -1,0 +1,240 @@
+{
+  "scope": "One-building bounded CPU metadata, geometry, visibility and cleanup. JPEG/PNG decode, WebGL, actual walking and visual judgement excluded",
+  "passed": true,
+  "elapsedMs": 277.83183399999996,
+  "modelBytes": 11530828,
+  "strictRoomByteLimit": 12000000,
+  "visibleNear": {
+    "meshes": 32,
+    "triangles": 70740
+  },
+  "visibleMiddle": {
+    "meshes": 29,
+    "triangles": 63224
+  },
+  "visibleFar": {
+    "meshes": 2,
+    "triangles": 484
+  },
+  "nearTier": 0,
+  "middleTier": 1,
+  "farTier": 2,
+  "packedUniqueTriangles": 51012,
+  "additionalFarFallbackMeshes": 2,
+  "totalFarMainPassDrawCallEstimate": 4,
+  "failureFallbackMeshEstimate": 19,
+  "sharedShelf": {
+    "instances": 3,
+    "geometryOwners": 1,
+    "materialOwners": 1,
+    "sourceTextureOwners": 3
+  },
+  "textureBudgetEstimate": {
+    "uniqueTextures": 16,
+    "rgbaMipBytes": 89478485.33333333,
+    "scope": "Uncompressed RGBA plus full mip-chain estimate; actual GPU/decode overhead unmeasured"
+  },
+  "preservedViceCameraStandingRegion": {
+    "centre": {
+      "x": 180.35,
+      "z": -113.32
+    },
+    "halfExtent": 0.18,
+    "samplingStep": 0.01,
+    "samples": 1369,
+    "bodyRadius": 0.65,
+    "minBodyClearance": 0.04999999999999316
+  },
+  "unchangedViceAndChestPlacements": true,
+  "structuralCoreUnchanged": true,
+  "archiveReplacementPartIds": [
+    "south-086:lobby:299",
+    "south-086:lobby:300",
+    "south-086:lobby:301",
+    "south-086:lobby:302",
+    "south-086:lobby:303",
+    "south-086:lobby:304",
+    "south-086:lobby:305",
+    "south-086:lobby:306",
+    "south-086:lobby:307",
+    "south-086:lobby:308",
+    "south-086:lobby:309",
+    "south-086:lobby:310",
+    "south-086:lobby:311",
+    "south-086:lobby:312",
+    "south-086:lobby:313",
+    "south-086:lobby:314",
+    "south-086:lobby:315",
+    "south-086:lobby:316",
+    "south-086:lobby:317",
+    "south-086:lobby:318",
+    "south-086:lobby:319",
+    "south-086:lobby:320",
+    "south-086:lobby:321",
+    "south-086:lobby:322",
+    "south-086:lobby:323",
+    "south-086:lobby:324",
+    "south-086:lobby:325",
+    "south-086:lobby:326",
+    "south-086:lobby:327",
+    "south-086:lobby:328",
+    "south-086:lobby:329",
+    "south-086:lobby:330",
+    "south-086:lobby:331",
+    "south-086:lobby:332"
+  ],
+  "aisleChecks": [
+    {
+      "id": "workshop-main",
+      "minX": 183,
+      "maxX": 198.6,
+      "minZ": -116,
+      "maxZ": -114,
+      "minimumWidth": 2,
+      "blockers": []
+    },
+    {
+      "id": "archive-main",
+      "minX": 184,
+      "maxX": 198.6,
+      "minZ": -107,
+      "maxZ": -105,
+      "minimumWidth": 2,
+      "blockers": []
+    }
+  ],
+  "pathChecks": [
+    {
+      "name": "workshop",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 323,
+      "minBodyClearance": 0.3499999999999991
+    },
+    {
+      "name": "archive",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 334,
+      "minBodyClearance": 0.3499999999999991
+    },
+    {
+      "name": "lift",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 332,
+      "minBodyClearance": 0.5700000000000113
+    },
+    {
+      "name": "stairApproach",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 81,
+      "minBodyClearance": 0.38000000000000556
+    }
+  ],
+  "worldAABBs": [
+    {
+      "id": "bench_vice_01",
+      "min": [
+        180.16877265567263,
+        1.0894138837711236,
+        -114.6801245379448
+      ],
+      "max": [
+        180.56449435050558,
+        1.3745625650096913,
+        -114.47964216947557
+      ]
+    },
+    {
+      "id": "metal_tool_chest",
+      "min": [
+        180.14157521277667,
+        0.895,
+        -119.70321896698326
+      ],
+      "max": [
+        180.75842478722336,
+        1.4816520047187804,
+        -119.33678103301675
+      ]
+    },
+    {
+      "id": "metal_office_desk",
+      "min": [
+        186.39999916553498,
+        0.215,
+        -104.46911016106606
+      ],
+      "max": [
+        188.39999952316285,
+        1.002500023841858,
+        -103.52189663052559
+      ]
+    },
+    {
+      "id": "wooden_bookshelf_worn",
+      "min": [
+        180.5130241036415,
+        0.21499994039535522,
+        -109.49065102338791
+      ],
+      "max": [
+        185.48697589635847,
+        2.27844199180603,
+        -108.90934900641442
+      ]
+    },
+    {
+      "id": "workshop-fittings",
+      "min": [
+        179.97500038146973,
+        0.21350001814775169,
+        -120.03249979019165
+      ],
+      "max": [
+        192.59999990463257,
+        2.6850000286102294,
+        -102.68000030517578
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": "bench_vice_01",
+      "bytes": 2434304,
+      "sha256": "4dc3378d2d63e16e18dafaa82bb16eb59d4bcd7b57c1543f450da22c18141c1e"
+    },
+    {
+      "id": "metal_tool_chest",
+      "bytes": 2354472,
+      "sha256": "e1bcd07991c2c01df17bb628c5e621a0da170db2313b025aa2d918b156e27803"
+    },
+    {
+      "id": "metal_office_desk",
+      "bytes": 1601008,
+      "sha256": "75559afa2a66f018ff2aba92e47ce169783bb54d8f9799b8ce6671954111496a"
+    },
+    {
+      "id": "wooden_bookshelf_worn",
+      "bytes": 2776164,
+      "sha256": "3d73968cc71c317f139f1f7a4cbfbaaa5155b7ff286584f799140b5dfe7c6177"
+    },
+    {
+      "id": "workshop-fittings",
+      "bytes": 2364880,
+      "sha256": "9c548499c87b71cac2ed44b18803fdd9221359a7017da65e03420f77d816ebf0"
+    }
+  ],
+  "originalColliderCount": 176,
+  "candidateColliderCount": 179,
+  "lifecycle": {
+    "normalLoads": 10,
+    "normalReleases": 10,
+    "partialFailureDecodedReleases": 4,
+    "lateAfterDisposeReleases": 5,
+    "GPUReleaseConclusion": "Unmeasured; CPU parse placeholders never allocate GPU or decode images"
+  },
+  "assetLoads": 19
+}

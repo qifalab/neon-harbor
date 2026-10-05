@@ -1,4 +1,5 @@
 import { CHARACTER_STYLES } from './models.js';
+import { createNearResident } from './resident-core-assets.js';
 import { circleOBB, SpatialIndex } from './collision.js';
 import { createCitizenCharacter } from './citizen-appearance.js';
 import { createCitizenIdentity, citizenRoutine, citizenDayPeriod, citizenDialogue, CITIZEN_ACTIVITY_LABELS } from './citizen-life.js';
@@ -9,6 +10,11 @@ export const PEOPLE_BUDGET = Object.freeze({ logicalPerAddress: 5, detailed: 32,
   detailedDistance: 125, distantDistance: 320, spawnPerFrame: 2 });
 const wrap = (value, length) => ((value % length) + length) % length;
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
+/** Asset selection only; no resident identity or occupation is mutated. */
+export function citizenNearAssetRole(identity, style = identity?.style) {
+  const styleId = CHARACTER_STYLES[style]?.id || style;
+  return styleId === 'chef' ? 'shopkeeper' : styleId === 'courier' || identity?.prop === 'toolbag' ? 'worker' : 'commuter';
+}
 const turn = (from, to, amount) => from + Math.atan2(Math.sin(to - from), Math.cos(to - from)) * amount;
 
 /** The 26 m carriageways leave walking lanes 18 m from road centre. A route
@@ -50,7 +56,11 @@ export function createTransitWaitingRoute(stop) {
  * a district resumes its people, while only a bounded nearby set owns skeletons. */
 export function createPeopleSystem(THREE, scene, {
   buildings = [], groundHeightAt = () => 0, colliders = [], streetStops = [], transit = null,
+  residentAssets, quality: initialQuality = 'high',
 } = {}) {
+  let quality = initialQuality;
+  const nearWorldPosition = new THREE.Vector3();
+  let lastViewerPosition = { x: 0, y: 0, z: 0 };
   const root = new THREE.Group(); root.name = 'Metropolis street life'; scene.add(root);
   const routes = createPedestrianRoutes(buildings), residents = [], models = new Map(), pool = [];
   const residentsByBlock = routes.map(() => []), candidates = [], near = [], active = new Set();
@@ -116,14 +126,18 @@ export function createPeopleSystem(THREE, scene, {
   function release(id) {
     const model = models.get(id); if (!model) return;
     root.remove(model); models.delete(id); model.visible = false;
+    model.userData.setPresentation?.({ selectedForNear: false }); model.userData.setDetail?.(2);
     // Every mesh references immutable wardrobe geometry, so releasing an entity
     // must not dispose a template still used by another resident or the player.
-    if (pool.length < PEOPLE_BUDGET.detailed) pool.push(model);
+    if (pool.length < PEOPLE_BUDGET.detailed) pool.push(model); else model.userData.disposeInstance?.();
   }
   function materialize(resident) {
     const styleName = CHARACTER_STYLES[resident.style].id;
-    const reuse = pool.findIndex(model => model.userData.style === styleName);
-    const model = reuse < 0 ? createCitizenCharacter(THREE, resident.style) : pool.splice(reuse, 1)[0];
+    const role = citizenNearAssetRole(resident.identity, resident.style);
+    const reuse = pool.findIndex(model => model.userData.style === styleName && (!residentAssets || model.userData.residentCore?.role === role));
+    const model = reuse < 0 ? createCitizenCharacter(THREE, resident.style, residentAssets ? {
+      characterFactory: (T, options) => createNearResident(T, { ...options, role, quality, assetLibrary: residentAssets, presentationId: resident.id }),
+    } : {}) : pool.splice(reuse, 1)[0];
     model.name = `${resident.identity.name} · ${resident.identity.role} · ${resident.building.name}`;
     model.userData.residentId = resident.id; model.visible = true;
     model.userData.setCitizen(resident.identity); root.add(model); models.set(resident.id, model);
@@ -159,8 +173,13 @@ export function createPeopleSystem(THREE, scene, {
     model.position.set(resident.x, (journeys ? resident.y : groundHeightAt(resident.x, resident.z)) + Math.sin(resident.phase * 2) * resident.gait * .012, resident.z);
     model.rotation.set(resident.identity.age === 'elder' ? .025 : 0, resident.yaw,
       Math.sin(walking ? resident.phase : time * 1.7 + resident.phase) * (walking ? .012 : .0025));
-    model.userData.setDetail(nearDistance < 18 ? 0 : nearDistance < 52 ? 1 : 2);
-    model.userData.updateCitizenProps(resident.state, nearDistance);
+    // Logical selection/interaction stays at the subject position. Near art
+    // and held props are selected against the actual camera in world space.
+    model.getWorldPosition(nearWorldPosition);
+    const viewer = lastViewerPosition;
+    const renderDistance = Math.hypot(nearWorldPosition.x - viewer.x, nearWorldPosition.y - (viewer.y || 0), nearWorldPosition.z - viewer.z);
+    model.userData.setDetail(renderDistance < (model.userData.residentCoreActive?.() ? 21 : 18) ? 0 : renderDistance < 52 ? 1 : 2);
+    model.userData.updateCitizenProps(resident.state, renderDistance);
   }
 
   function chooseDestination(resident, hour, advance = false) {
@@ -194,9 +213,10 @@ export function createPeopleSystem(THREE, scene, {
     resident.pause = 0;
   }
 
-  function update(dt, { position = lastPosition, hour = lastHour, paused = false, vehicles = [], interior = null } = {}) {
+  function update(dt, { position = lastPosition, viewerPosition = position, hour = lastHour, paused = false, vehicles = [], interior = null } = {}) {
     if (released) return;
     dt = paused ? 0 : Math.max(0, Math.min(.1, Number.isFinite(dt) ? dt : 0));
+    lastViewerPosition = viewerPosition;
     lastPosition = position; lastHour = hour; lastInterior = interior; time += dt;
     if (journeys && !paused) {
       let elapsed = Math.max(0, Math.min(.25, transit.time - journeyClock));
@@ -320,7 +340,7 @@ export function createPeopleSystem(THREE, scene, {
       target: { x: building.entrance?.x ?? building.x, z: building.entrance?.z ?? building.z } };
   }
   function snapshot() {
-    return { logical: residents.length, detailed: models.size, distant: visibleFar, pooled: pool.length,
+    return { presentation: { quality, nearInstances: [...models.values()].filter(model => model.userData.residentCoreActive?.()).length }, logical: residents.length, detailed: models.size, distant: visibleFar, pooled: pool.length,
       conversations: new Set(residents.filter(person => person.social).map(person => person.groupId)).size,
       styles: new Set(residents.map(person => CHARACTER_STYLES[person.style].id)).size,
       identities: new Set(residents.map(person => person.identity.name)).size,
@@ -371,11 +391,17 @@ export function createPeopleSystem(THREE, scene, {
   }
   function dispose() {
     if (released) return;
-    released = true; journeys?.dispose(); scene.remove(root); root.clear(); models.clear(); pool.length = 0;
+    released = true; journeys?.dispose();
+    for (const model of [...models.values(), ...pool]) model.userData.disposeInstance?.();
+    scene.remove(root); root.clear(); models.clear(); pool.length = 0;
     distant.dispose(); farGeometry.dispose(); farMaterial.dispose();
     collisionGrid.clear(); collisionBucketPool.length = 0; candidates.length = 0; near.length = 0; active.clear();
   }
-  return { root, routes, update, snapshot, getPrompt, interact, getCollisionBodies, dispose,
+  function setQuality(value) {
+    quality = ['high', 'balanced', 'low'].includes(value) ? value : 'high';
+    for (const model of [...models.values(), ...pool]) model.userData.setPresentation?.({ quality });
+  }
+  return { root, routes, update, setQuality, snapshot, getPrompt, interact, getCollisionBodies, dispose,
     trafficYieldAt: car => journeys?.trafficYieldAt(car) || false, journeys };
 }
 

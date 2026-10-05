@@ -1,0 +1,57 @@
+{
+  "status": "SOURCE_ONLY_PREPARED_STATICALLY_REVIEWED_NATIVE_UNRUN",
+  "payloadRoot": "/tmp/neon-native-github-paired-candidate/payload",
+  "payloadFiles": 65,
+  "payloadBytes": 1049781,
+  "deliveryLedgerSha256": "5d617e6484b043a4102792975e7ef6131f7ea48c855ac98735385c39bc40a08c",
+  "bundleManifestSha256": "ffffbccb073ad0f3bc2c12c1908d666acf41c05db2ae2c85f32498a9cea96385",
+  "nativeWorkflowSha256": "d143b006d4d4c370d439b721a23d0172e34b639b8f603e0afac7243045f022c0",
+  "ciWorkflowSha256": "fcd203f94d6c77481ee36dfe5a31c1ae7160eba73e5756725e6b89d4c5926347",
+  "ciAdditivePatchSha256": "a9bd31669770f562409f6ada0678ad41e4488526a25fada4d133cddf00821d61",
+  "runnerSha256": "a6a42de4497d35e29aedbdc13ecf597c5a1aa057fd0f5cf47e91be46596e306e",
+  "casesSha256": "5b7e49a3e9485f8471f2511554bec630d9dbce6bc3363accedcc737cba3bdeb5",
+  "adoptionSha256": "3be9c948c31578bbaf1ce854616b097e6ac518cef3ccbd981bc779dbc19fd7a4",
+  "pagesUntouchedSha256": "cd09551e40a576172cf21c42871c10245056c94fa99d7be115f21c2efdc11fcb",
+  "cases": {
+    "pairedHigh": 15,
+    "authoredOnlyHigh": 7,
+    "authoredOnlyLowFunctional": 1,
+    "total": 23
+  },
+  "staticBlockersRemaining": false,
+  "independentReviews": [
+    {
+      "path": "review/neon-native-paired-runner-final-readonly-review.md",
+      "originalPath": "/tmp/neon-native-paired-runner-final-readonly-review.md",
+      "sha256": "913d26b9d3ddea432304790c1513dce8580f8d9556f5806f9ed27cc3c610cf2d",
+      "bytes": 5758
+    },
+    {
+      "path": "review/neon-native-github-workflow-pin-final-readonly.md",
+      "originalPath": "/tmp/neon-native-github-workflow-pin-final-readonly.md",
+      "sha256": "0d5ba725a61c859154c4107d360f70622861c29bc2e25e28e3189cb21dee1ca7",
+      "bytes": 5122
+    },
+    {
+      "path": "review/neon-native-github-workflow-pin-final-readonly.json",
+      "originalPath": "/tmp/neon-native-github-workflow-pin-final-readonly.json",
+      "sha256": "683f73855f33390b3a9cf2870f20e701ce3dd8189c777e02e52d2ccef846ca66",
+      "bytes": 45590
+    },
+    {
+      "path": "review/neon-native-paired-runner-draft-readonly-review.md",
+      "originalPath": "/tmp/neon-native-paired-runner-draft-readonly-review.md",
+      "sha256": "77a3de3fcbd18dfd522d6f26ae63694f657ee1ff49fd79b273e372c17c36773f",
+      "bytes": 4310,
+      "historicalDraftFindingsPreserved": true
+    }
+  ],
+  "runtimeBrowserArtPublicationAccepted": false,
+  "nextAuthorizedOwnerSteps": [
+    "Adopt exact payload to feature and validate source syntax under ROOT scheduling",
+    "Commit/push selected feature and manually dispatch existing registered ci.yml with no inputs",
+    "Verify actual run/head/attempt/job graph and preserve failures without automatic rerun",
+    "Inspect actual original High paired frames and separate authored Low continuous tour",
+    "Only after required functional/art decisions, keep unchanged Pages gate and verify actual live revision/assets before any publication claim"
+  ]
+}
