@@ -1,0 +1,50 @@
+{
+  "createdAt": "2026-10-05T10:55:12.681122+00:00",
+  "status": "SOURCE_ONLY_EXACT_PAYLOAD_IDENTITY_BUILD_NOT_EXECUTED",
+  "runtimeSourceChanges": [
+    {
+      "path": "assets/harbor/transport/tram/vesper-t9-lod0.glb",
+      "bytes": 5982272,
+      "sha256": "c92fff2e59645d22bf31ffda121098fff621979c135f9ee65e8087ef534f4560",
+      "action": "replace",
+      "expectedOldTargetSHA256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca",
+      "expectedOldTargetBytes": 5982272
+    },
+    {
+      "path": "assets/harbor/transport/tram/vesper-t9-lod1.glb",
+      "bytes": 2833376,
+      "sha256": "7e482d79badc3ad0cf39b94127c130b0651891d009af496885ff8dcc0409bf8d",
+      "action": "replace",
+      "expectedOldTargetSHA256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d",
+      "expectedOldTargetBytes": 2833376
+    },
+    {
+      "path": "assets/harbor/transport/tram/vesper-t9-lod2.glb",
+      "bytes": 899816,
+      "sha256": "35fce1bb92e11a87c471cb67f48f87d9ffb2e9b04cf35fa172f0e1e78ea68cf4",
+      "action": "replace",
+      "expectedOldTargetSHA256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5",
+      "expectedOldTargetBytes": 899816
+    },
+    {
+      "path": "src/harbor-authored-transport-assets.js",
+      "bytes": 4288,
+      "sha256": "c944cab0b90097d524c9de8a2b22e4242d306a524d2e1ee8c237699b7567b713",
+      "action": "replace",
+      "expectedOldTargetSHA256": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848",
+      "expectedOldTargetBytes": 4288
+    }
+  ],
+  "runtimeSourceChangeCount": 4,
+  "threeGLBsAndClientFingerprintModuleChanged": true,
+  "clientFingerprintModuleReverseThreeHashSubstitutionRestoresEntireOldFileByteExactly": true,
+  "clientFingerprintModuleNewSHA256": "c944cab0b90097d524c9de8a2b22e4242d306a524d2e1ee8c237699b7567b713",
+  "clientFingerprintModuleOldSHA256": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848",
+  "busFerryConfigAndAllOtherClientSourceBytesUnchangedByThisPayload": true,
+  "allGameJavaScriptLiteralUnchangedClaim": false,
+  "onlyThreeRuntimeChangesClaim": false,
+  "runtime208Only3Changed205SameClaim": false,
+  "actualFinalServedRuntimeManifestPendingRootBuild": true,
+  "nativeValidated": false,
+  "originalNativeFailuresRemainFailures": true
+}

@@ -91,19 +91,19 @@ export const AUTHORED_TRANSPORT_ASSETS = {
       {
         "file": "vesper-t9-lod0.glb",
         "tier": 0,
-        "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca",
+        "sha256": "c92fff2e59645d22bf31ffda121098fff621979c135f9ee65e8087ef534f4560",
         "bytes": 5982272
       },
       {
         "file": "vesper-t9-lod1.glb",
         "tier": 1,
-        "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d",
+        "sha256": "7e482d79badc3ad0cf39b94127c130b0651891d009af496885ff8dcc0409bf8d",
         "bytes": 2833376
       },
       {
         "file": "vesper-t9-lod2.glb",
         "tier": 2,
-        "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5",
+        "sha256": "35fce1bb92e11a87c471cb67f48f87d9ffb2e9b04cf35fa172f0e1e78ea68cf4",
         "bytes": 899816
       }
     ],

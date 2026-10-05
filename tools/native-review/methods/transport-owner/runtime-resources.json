@@ -25,24 +25,24 @@
     },
     {
       "kind": "tram",
-      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/models/vesper-t9-lod0.glb",
+      "source": "art-source/transport/tram/models/vesper-t9-lod0.glb",
       "target": "assets/harbor/transport/tram/vesper-t9-lod0.glb",
       "bytes": 5982272,
-      "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca"
+      "sha256": "c92fff2e59645d22bf31ffda121098fff621979c135f9ee65e8087ef534f4560"
     },
     {
       "kind": "tram",
-      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/models/vesper-t9-lod1.glb",
+      "source": "art-source/transport/tram/models/vesper-t9-lod1.glb",
       "target": "assets/harbor/transport/tram/vesper-t9-lod1.glb",
       "bytes": 2833376,
-      "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d"
+      "sha256": "7e482d79badc3ad0cf39b94127c130b0651891d009af496885ff8dcc0409bf8d"
     },
     {
       "kind": "tram",
-      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/models/vesper-t9-lod2.glb",
+      "source": "art-source/transport/tram/models/vesper-t9-lod2.glb",
       "target": "assets/harbor/transport/tram/vesper-t9-lod2.glb",
       "bytes": 899816,
-      "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5"
+      "sha256": "35fce1bb92e11a87c471cb67f48f87d9ffb2e9b04cf35fa172f0e1e78ea68cf4"
     },
     {
       "kind": "ferry",
@@ -83,5 +83,13 @@
     ],
     "ferryRecordsUnchanged": true,
     "noMethodCodeChanges": true
+  },
+  "tramWaistSpandrelSeamAssetPinAmendment": {
+    "path": "runtime-amendments/combined-transit-art-final-20261005/combined-source-amendment.json",
+    "sha256": "f69b8054f02c6091e89fab8b4d473c7bbf1aee58cfbb1eb574fda00e7201f292",
+    "oldResourcesPath": "runtime-amendments/combined-transit-art-final-20261005/original-transport-owner-runtime-resources-220.json",
+    "oldResourcesSHA256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb",
+    "oldSourceAndUpperEnclosureRecordsHistorical": true,
+    "nativePending": true
   }
 }

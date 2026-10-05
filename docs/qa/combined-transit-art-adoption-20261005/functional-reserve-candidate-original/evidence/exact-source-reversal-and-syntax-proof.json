@@ -1,0 +1,63 @@
+{
+  "status": "CPU_TEXT_REVERSAL_AND_NODE_SYNTAX_PASS_NOT_TEST_ACCEPTANCE",
+  "createdAtUTC": "2026-10-05T10:41:27.468844+00:00",
+  "source": {
+    "path": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/tests/e2e/harbor-sample.spec.js",
+    "bytes": 33729,
+    "sha256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f"
+  },
+  "headBefore": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "headAfter": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "payload": {
+    "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/payload/tests/e2e/harbor-sample.spec.js",
+    "bytes": 33802,
+    "sha256": "8fb39ca9c6de152db7dc24612d4f8335db74cd05e2d6e989931f4c3d2df5a99c"
+  },
+  "reverseWholeFileByteExact": true,
+  "reversedSHA256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f",
+  "executableChangeCount": 1,
+  "onlyExecutableChange": "if (kind === 'ferry') test.setTimeout(900000) -> test.setTimeout(1080000)",
+  "sourceReadOnlyAndUnchanged": true,
+  "preservedByteExactOutsideReplacementBlock": true,
+  "preserved": {
+    "aimPrecisionThreshold": 0.002,
+    "walkLocalMs": 150000,
+    "finalArrivalMs": 180000,
+    "expectMs": 20000,
+    "busTramAndGenericMs": 600000,
+    "all12PhysicalWaypoints": true,
+    "allMouseAndKeyActions": true,
+    "allAssertions": true,
+    "highCapture": true,
+    "allWorldCoordinatesCameraBodyCollisionTime": true,
+    "productionRuntime": true,
+    "nativeMethod": true
+  },
+  "syntax": {
+    "command": [
+      "node",
+      "--input-type=module",
+      "--check"
+    ],
+    "stdin": "exact payload bytes",
+    "nodeVersion": "v24.19.0",
+    "exitCode": 0,
+    "stdout": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/evidence/node-syntax.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/evidence/node-syntax.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "testsExecuted": false,
+  "buildExecuted": false,
+  "GPU": false,
+  "network": false,
+  "original220Failed": true,
+  "newCIPass": false,
+  "releaseReady": false
+}

@@ -1,0 +1,145 @@
+{
+  "status": "READY_FOR_SELECTIVE_TEST_ONLY_ADOPTION_NOT_CI_OR_NATIVE_ACCEPTANCE",
+  "reviewedAtUTC": "2026-10-05T10:42:49.933707+00:00",
+  "reviewer": "/root/authored_sample_art_acceptance/actual986_v6_publication_reader",
+  "candidateRoot": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005",
+  "inputs": {
+    "candidateSeal": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/SEAL.json",
+      "bytes": 2084,
+      "sha256": "87ecac8a4db36e0979cfccfaa104d81eef0b44d949b4de52fb120a5f17fa60ad"
+    },
+    "payloadManifest": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/payload-manifest.json",
+      "bytes": 539,
+      "sha256": "bb9ebb0c6bfb0063b6dd2afab4bfcb2c24945f81874b8da32809e030db452e44"
+    },
+    "candidateLedger": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/candidate-ledger.json",
+      "bytes": 3098,
+      "sha256": "e326297207d74a9dfaa1dbca36bb26375330fce3f2bad31cbe901b81cef08598"
+    },
+    "editableRecipe": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/editable-recipe.json",
+      "bytes": 1105,
+      "sha256": "e160b2183c15b84d334f9627c0fa2e483f4058acd14032c8e91ceab8358a0b91"
+    },
+    "payload": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/payload/tests/e2e/harbor-sample.spec.js",
+      "bytes": 33802,
+      "sha256": "8fb39ca9c6de152db7dc24612d4f8335db74cd05e2d6e989931f4c3d2df5a99c"
+    },
+    "actualExecutedSource": {
+      "path": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/tests/e2e/harbor-sample.spec.js",
+      "bytes": 33729,
+      "sha256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f"
+    },
+    "independentOriginalTraceReceipt": {
+      "path": "/workspace/neon-candidates/current220-ferry-first-failure-independent-readonly-reader-20261005/receipt.json",
+      "bytes": 18600,
+      "sha256": "13bdea047c511718ccf245c5f4d2fbea2dc3223ecf3f17e60c96c23563736177"
+    },
+    "independentOriginalTraceSeal": {
+      "path": "/workspace/neon-candidates/current220-ferry-first-failure-independent-readonly-reader-20261005/SEAL.json",
+      "bytes": 472,
+      "sha256": "6983909dc5b48b82a17c417ae7c260e0acc031a8df6349b30044123baec87820"
+    }
+  },
+  "exhaustiveSeal": {
+    "pass": true,
+    "excludedOnly": "SEAL.json",
+    "filesChecked": 10,
+    "sealedBytes": 76850,
+    "actualFileSetExactlyMatchesSeal": true,
+    "everySizeAndSHA256Matches": true,
+    "duplicatePaths": false,
+    "symlinks": false,
+    "unsafeMemberPaths": false
+  },
+  "selectivePayload": {
+    "pass": true,
+    "targetCount": 1,
+    "soleTarget": "tests/e2e/harbor-sample.spec.js",
+    "sourceHead": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+    "sourceAndPreservedOriginalByteExact": true,
+    "wholeFileForwardReplacementByteExact": true,
+    "wholeFileReverseReplacementByteExact": true,
+    "reversedSHA256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f",
+    "originalDiffByteExact": true
+  },
+  "executableChange": {
+    "count": 1,
+    "oldExactLine": "    if (kind === 'ferry') test.setTimeout(900000);",
+    "newExactLine": "    if (kind === 'ferry') test.setTimeout(1080000);",
+    "oldFerryWholeTestMs": 900000,
+    "newFerryWholeTestMs": 1080000,
+    "addedFiniteReserveMs": 180000,
+    "commentChangeTruthfulToOriginalTrace": true,
+    "everyOtherByteOutsideRecipeBlockUnchanged": true,
+    "recipeBlockOtherChangesAreCommentsOnly": true
+  },
+  "preservedByWholeFileByteIdentity": {
+    "precisionThreshold": 0.002,
+    "all12PhysicalWaypoints": true,
+    "allMouseAndKeyActions": true,
+    "walkLocalMs": 150000,
+    "finalArrivalMs": 180000,
+    "expectMs": 20000,
+    "allAssertions": true,
+    "HighCapture": true,
+    "allCoordinates": true,
+    "otherTestBudgets": true,
+    "productionAndNativeFilesAbsentFromPayload": true
+  },
+  "originalFailureBoundary": {
+    "originalRunId": 37293335056,
+    "originalJobId": 111708683046,
+    "result": "FAILED",
+    "arrivalElapsedMilliseconds": 42.565,
+    "finalPollElapsedMilliseconds": 1.746,
+    "finalPollIssuedBrowserRPC": false,
+    "postEOriginalDOMConsistentWithUniqueAlightingBranch": true,
+    "finalOutsideAssertionsExecuted": false,
+    "originalFailureNeverPromotedToPass": true
+  },
+  "syntaxEvidence": {
+    "sealedParentProof": {
+      "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/evidence/exact-source-reversal-and-syntax-proof.json",
+      "bytes": 2420,
+      "sha256": "94a27e351d1304fa5f2ddbfaf6e0926c0283f3ef014daf73e2b2674885233584"
+    },
+    "recordedCommand": [
+      "node",
+      "--input-type=module",
+      "--check"
+    ],
+    "recordedExitCode": 0,
+    "stdoutAndStderrEmpty": true,
+    "independentlyReexecuted": false
+  },
+  "adoptionAndAcceptance": {
+    "readyForAuthorizedSelectiveAdoption": true,
+    "alreadyAdoptedByThisReview": false,
+    "newActualCurrentFull12AndMultiplayerVerificationRequired": true,
+    "applicableNativeTransportCapturesRequired": true,
+    "newCIPass": false,
+    "nativeAcceptance": false,
+    "releaseReady": false,
+    "performanceProof": false,
+    "AAAClaim": false
+  },
+  "executionScope": {
+    "CPUReadOnlyReview": true,
+    "network": false,
+    "GPU": false,
+    "browser": false,
+    "tests": false,
+    "build": false,
+    "collector": false,
+    "sourceWrites": false,
+    "sealedCandidateChanged": false,
+    "diagnosisChanged": false,
+    "V7Changed": false,
+    "newExternalReceiptAndSealOnly": true
+  }
+}

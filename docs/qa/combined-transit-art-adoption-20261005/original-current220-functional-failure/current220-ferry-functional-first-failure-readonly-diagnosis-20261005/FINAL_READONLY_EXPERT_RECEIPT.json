@@ -1,0 +1,71 @@
+{
+  "status": "SEALED_READONLY_CURRENT220_FIRST_CAUSE_ORIGINAL_FAILED_NEXT_TEST_ONLY_CANDIDATE_AUTHORIZED",
+  "createdAtUTC": "2026-10-05T10:41:27.468844+00:00",
+  "sourceHead": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "runId": 37293335056,
+  "jobId": 111708683046,
+  "originalResult": "FAILED",
+  "expertReport": {
+    "path": "/workspace/neon-candidates/current220-ferry-functional-first-failure-readonly-diagnosis-20261005/READONLY_FIRST_CAUSE_AND_MINIMAL_METHOD_PROPOSAL.json",
+    "bytes": 4599,
+    "sha256": "2e67ec2d26eb90640667a132bf4e3876db0d3eda628f0faa7ecc9443ee3b2592"
+  },
+  "actualTraceProof": {
+    "path": "/workspace/neon-candidates/current220-ferry-functional-first-failure-readonly-diagnosis-20261005/original-trace-first-cause-proof.json",
+    "bytes": 2478996,
+    "sha256": "c948b3e7662c8abec54ec47eabb00c7b8fbe448e4023c8879b5d4b4ce0cbdebd"
+  },
+  "independentReceiptOriginal": {
+    "path": "/workspace/neon-candidates/current220-ferry-first-failure-independent-readonly-reader-20261005/receipt.json",
+    "bytes": 18600,
+    "sha256": "13bdea047c511718ccf245c5f4d2fbea2dc3223ecf3f17e60c96c23563736177"
+  },
+  "independentSealOriginal": {
+    "path": "/workspace/neon-candidates/current220-ferry-first-failure-independent-readonly-reader-20261005/SEAL.json",
+    "bytes": 472,
+    "sha256": "6983909dc5b48b82a17c417ae7c260e0acc031a8df6349b30044123baec87820"
+  },
+  "firstCause": "900000 ms enclosing test budget was exhausted before final riding=false poll issued its first browser RPC. All 12 physical legs completed; arrival wait and E completed; original post-E DOM and unique source branch support alighting. Final outside assertions and physical-route attachment did not run.",
+  "initialDerivedCounterCorrection": {
+    "preservedFile": {
+      "path": "/workspace/neon-candidates/current220-ferry-functional-first-failure-readonly-diagnosis-20261005/original-trace-first-cause-proof-initial-zero-cycle-counter.json",
+      "bytes": 2478985,
+      "sha256": "b59515dd0c381f636f021718592ff3e7ddca60b2e5956c3bd41ee3814ed8c5c6"
+    },
+    "initialWrongField": "input-cycle event name yielded zero completed cycles",
+    "correctedEventName": "input-cycle-complete",
+    "actualCorrectedCycles": 218,
+    "originalEvidenceUnchanged": true
+  },
+  "approvedNextStep": {
+    "scope": "isolated TEST-only candidate; not applied to tested source",
+    "file": "tests/e2e/harbor-sample.spec.js",
+    "FerryWholeTestBudgetOldMs": 900000,
+    "FerryWholeTestBudgetNewMs": 1080000,
+    "finiteAddedReserveMs": 180000,
+    "basis": "Equal to the existing final arrival cap; measured route completed at original deadline before final verification could sample.",
+    "newActualCIRequired": true
+  },
+  "bounds": {
+    "originalRunPass": false,
+    "newCandidatePass": false,
+    "finalRidingFalseSampleExecuted": false,
+    "finalOutsideAssertionsPassed": false,
+    "productionRegressionProven": false,
+    "GPUOrHardwareCauseProven": false,
+    "nativeHighAccepted": false,
+    "performanceAccepted": false,
+    "AAA": false,
+    "releaseReady": false
+  },
+  "execution": {
+    "GPU": false,
+    "network": false,
+    "testRun": false,
+    "build": false,
+    "collector": false,
+    "sourceEdits": false,
+    "V7Edits": false,
+    "outsideReportsOnly": true
+  }
+}

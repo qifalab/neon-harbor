@@ -1,0 +1,18 @@
+--- a/tests/e2e/harbor-sample.spec.js
++++ b/tests/e2e/harbor-sample.spec.js
+@@ -328,10 +328,11 @@
+ 
+ for (const kind of ['bus', 'tram', 'ferry']) {
+   test(`${kind}: public boarding, physical upper-deck stairs, travel and lower-door alighting`, async ({ page }, info) => {
+-    // The preserved first-run ferry trace reached its lower door approach at
+-    // simulation time 115.6 s when the 600 s software-rendering budget expired.
+-    // Increase this scenario only; local walking and arrival limits stay fixed.
+-    if (kind === 'ferry') test.setTimeout(900000);
++    // The preserved 220 trace completed all 12 waypoints and the alighting E,
++    // then its 900 s total expired before the first final assertion sampled.
++    // Add a finite 180 s reserve equal to the existing final arrival cap; local
++    // deadlines, real inputs, precision and assertions remain unchanged.
++    if (kind === 'ferry') test.setTimeout(1080000);
+     const errors = await boot(page), layout = createHarborVehicleLayout(kind), stair = layout.stairs[0], door = layout.doors[0];
+     // Return only the fields consumed by this transit scenario. The complete
+     // transit state and all physical alighting assertions remain unchanged.

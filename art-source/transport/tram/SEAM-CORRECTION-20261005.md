@@ -1,0 +1,11 @@
+# Tram waist/spandrel seam correction — 2026-10-05
+
+This revision removes a measured 20 mm overlap between the original opaque pearl waist and brown upper spandrels. The three generator lines raise the side/end/corner lower edge from 2.55 m to 2.57 m, retaining the existing upper edges, thickness and vehicle envelope.
+
+Blender 4.3.2 actually exported all three corrected LODs in a separate CPU-only workspace. A control execution of the unmodified recipe reproduced all three original GLBs byte for byte. Corrected and control glTF JSON, triangle indices, embedded images, materials, hook transforms and every other primitive remain exact. Only existing paint-batch spandrel positions and their normals/tangents change. Triangles remain 77,744 / 23,892 / 7,972; materials remain 15 / 14 / 11; primitives remain 39 / 38 / 31; total GLB size remains 9,715,464 bytes.
+
+The actual corrected buffers pass 84 sampled side/end material-presence checks: below the 2.57 m shared junction the original overlap band contains only pearl, and immediately above it only paint. The original CPU asset checker completed successfully, including its existing door, staircase, hook and engineering checks. These are CPU geometry findings. They establish neither temporal raster behavior nor a new native visual, journey or performance pass.
+
+All previous review JSONs, manifests and failed native evidence remain historical records. New reports use the `seam-correction-*` names. The preceding active manifest is preserved literally in `review/seam-correction-original-asset-manifest-20261005.json`; its upper-enclosure amendment and original provenance are retained. Art/code/font licence files and the runtime interface baseline are unchanged. The newly generated editable master is included; the control .blend is not claimed byte-identical to the previous archived master.
+
+The six original 9cf Bus/Tram images show only entry-adjacent and interior components. Both original journey cases failed; neither exterior image establishes the entire outside vehicle shape. The still-image triangular seam motivated this geometry correction, but a still alone did not prove its temporal cause. Root must inspect new-source actual High Tram images after adoption and re-capture the four Day/Night views. Whole-vehicle commercial-quality, AAA and whole-city claims remain unaccepted.

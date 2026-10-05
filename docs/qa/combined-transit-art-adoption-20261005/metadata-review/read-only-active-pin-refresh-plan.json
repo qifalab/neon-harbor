@@ -1,0 +1,61 @@
+{
+  "status": "READONLY_REFRESH_PLAN_PENDING_FINAL_TRAM_PAYLOAD_AND_ROOT_REVIEW",
+  "createdAtUTC": "2026-10-05T10:49:02.008764+00:00",
+  "worktree": "/workspace/neon-candidates/harbor-combined-transit-art-final-20261005",
+  "parentCommit": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "parentRuntimeCount": 208,
+  "parentNativeFileCount": 213,
+  "candidateRuntimeDelta": "Derive from actual finalized build; no asset count or changed set guessed. Expected three Tram GLB byte changes, served manifest delta included only if actual.",
+  "activeMetadataBeforePins": {
+    "expected-runtime-dictionaries.json": {
+      "sha256": "ade495c4b6a88c441f880f24e5f9ace0823fb236830e0337dc080a9a21c07abf",
+      "bytes": 40727
+    },
+    "methods/transport/runtime-resources.json": {
+      "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc",
+      "bytes": 3799
+    },
+    "methods/transport-owner/runtime-resources.json": {
+      "sha256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb",
+      "bytes": 3805
+    },
+    "methods/transport/method-manifest.json": {
+      "sha256": "6dcee5818971ebb9c70c035b2cbbfe94ea2479f13d3c4b5c92088f0c4cb2995d",
+      "bytes": 21328
+    },
+    "methods/transport-owner/method-manifest.json": {
+      "sha256": "d99d9d65da0f9739b4471f96028153b76ff36563b4f6865c29bf6fa6b0f5ad7a",
+      "bytes": 9815
+    },
+    "bundle-manifest.json": {
+      "sha256": "9b25b1b51db13a4ccb8f721ccc9651701c1fb43901fb24bb6618c6d7836ecddc",
+      "bytes": 63932
+    }
+  },
+  "baselineAssets": 156,
+  "baselineDictionaryPreserved": true,
+  "immutableHistoricalFiles": [
+    "all existing runtime-amendments except new unique amendment dirs",
+    "expected-build-provenance historical originals",
+    "all family provenance files",
+    "all original failure and capture decisions",
+    "frontage-wide-static-proof source/case geometry when runtime sourceJS untouched"
+  ],
+  "strictChecksRequired": [
+    "Entire actual runtime source and dist hash dictionary, not selected assets only",
+    "Explicit literal payload paths and old target identities, actual source401 delta plus any additions",
+    "Entire old native213 inventory unchanged except exact approved native method/manifest and declared active metadata resource pins",
+    "All executable inputs, case/matrix values, deadlines and camera plans unchanged except explicit approved lower-photo native method amendment",
+    "No symlinks/cache/vendor added inside native bundle",
+    "Full current bundle inventory and every nested SHA exact",
+    "Original baseline156 deep equality",
+    "No old EXACT208 graphics/native acceptance inherited onto new GLB bytes"
+  ],
+  "buildsPlanned": {
+    "nullRevision": 1,
+    "committedRevision": "Only ROOT authorizes after reviewed commit"
+  },
+  "testsPlanned": "No local381 repetition before actual contract need authorization; final actual full CI12 required",
+  "sourceRuntimeGlbChangesNeedNewArtEvidence": true,
+  "noGPUOrNetworkBySealer": true
+}

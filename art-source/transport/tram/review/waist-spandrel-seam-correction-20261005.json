@@ -1,0 +1,483 @@
+{
+  "createdAt": "2026-10-05T10:53:43.305453+00:00",
+  "status": "ACTUAL_CPU_EXPORTED_SAMPLED_OVERLAP_REMOVED_NATIVE_REVIEW_PENDING",
+  "originalSourceHead": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+  "targetParentHead": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "scope": "Raise only original opaque brown upper side/end/corner spandrel lower edge 2.55m to 2.57m to meet unchanged pearl waist; preserve original side upper3.058m/end upper3.088m, thickness, box bounds, layout, hooks, collision, materials, textures, licence and controls.",
+  "generatorChanges": [
+    [
+      "2.55+.508*u",
+      "2.57+.488*u",
+      2
+    ],
+    [
+      "y=2.55+.508*v",
+      "y=2.57+.488*v",
+      1
+    ],
+    [
+      "2.55+.538*v",
+      "2.57+.518*v",
+      2
+    ]
+  ],
+  "generatorChangedLines": 3,
+  "originalGeometryDiagnosis": {
+    "path": "/workspace/neon-candidates/tram-waist-spandrel-source-only-seam-candidate-20261005/original-three-lod-geometry-diagnostic.json",
+    "bytes": 108823,
+    "sha256": "d0a3dda5a8c32f70d3d1bae24d684d59c1af4a2c4e9cdf10686c1ccddc521554"
+  },
+  "originalSixImageReview": {
+    "path": "/workspace/neon-candidates/final-combined-independent-pixels-review-20261005/9cf1-bus-tram-six-original-pixels-review.json",
+    "sha256": "896d134907ca804c58aa829cc5bddb40d7759ec56591046e8ee44a50e4ae9198",
+    "status": "PARTIAL_VISIBLE_VEHICLE_COMPONENTS_REVIEWED_FULL_VEHICLE_ART_UNACCEPTED",
+    "originalBusAndTramNativeJourneyFailuresRemainFailures": true,
+    "triangleSeamVisualCauseNotEstablishedByStillImageAlone": true
+  },
+  "actualExports": [
+    {
+      "mode": "control-original-recipe",
+      "startedAt": "2026-10-05T10:45:16.647974+00:00",
+      "argv": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-expr",
+        "import sys,runpy;sys.dont_write_bytecode=True;runpy.run_path('/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/control-original-recipe/source/author_tram.py',run_name='__main__')"
+      ],
+      "cwd": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/control-original-recipe",
+      "boundedCpuExportSeconds": 300,
+      "GPUOrBrowserExecuted": false,
+      "sourceRootMutated": false,
+      "originalAssetsMutated": false,
+      "BlenderVersion": "4.3.2",
+      "blenderExecutable": "/usr/bin/blender",
+      "firstError": null,
+      "pid": 226692,
+      "returnCode": 0,
+      "elapsedSeconds": 5.636888759006979,
+      "finishedAt": "2026-10-05T10:45:22.284883+00:00",
+      "inputFilesUnchangedAfter": true,
+      "outputFiles": [
+        {
+          "path": "models/vesper-t9-lod0.glb",
+          "bytes": 5982272,
+          "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca"
+        },
+        {
+          "path": "models/vesper-t9-lod1.glb",
+          "bytes": 2833376,
+          "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d"
+        },
+        {
+          "path": "models/vesper-t9-lod2.glb",
+          "bytes": 899816,
+          "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5"
+        },
+        {
+          "path": "review/authoring-stats.json",
+          "bytes": 13466,
+          "sha256": "d622195f7a94b035271e71dbe92233531d400ffaef7c50bd7d1676daffe6eece"
+        },
+        {
+          "path": "review/export-tangent-hygiene.json",
+          "bytes": 2035,
+          "sha256": "722e62a46b756159d21d63e899c4f1362010d2265d82fdd528838556101c71bf"
+        },
+        {
+          "path": "source/vesper-t9-master.blend",
+          "bytes": 1989504,
+          "sha256": "ef40ad603ede94017d920de1384b9447c4145c9c3362bac704f4534dec99dd82"
+        }
+      ]
+    },
+    {
+      "mode": "corrected-recipe",
+      "startedAt": "2026-10-05T10:45:16.646990+00:00",
+      "argv": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--threads",
+        "1",
+        "--python-expr",
+        "import sys,runpy;sys.dont_write_bytecode=True;runpy.run_path('/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe/source/author_tram.py',run_name='__main__')"
+      ],
+      "cwd": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe",
+      "boundedCpuExportSeconds": 300,
+      "GPUOrBrowserExecuted": false,
+      "sourceRootMutated": false,
+      "originalAssetsMutated": false,
+      "BlenderVersion": "4.3.2",
+      "blenderExecutable": "/usr/bin/blender",
+      "firstError": null,
+      "pid": 226693,
+      "returnCode": 0,
+      "elapsedSeconds": 5.788823551003588,
+      "finishedAt": "2026-10-05T10:45:22.435839+00:00",
+      "inputFilesUnchangedAfter": true,
+      "outputFiles": [
+        {
+          "path": "models/vesper-t9-lod0.glb",
+          "bytes": 5982272,
+          "sha256": "c92fff2e59645d22bf31ffda121098fff621979c135f9ee65e8087ef534f4560"
+        },
+        {
+          "path": "models/vesper-t9-lod1.glb",
+          "bytes": 2833376,
+          "sha256": "7e482d79badc3ad0cf39b94127c130b0651891d009af496885ff8dcc0409bf8d"
+        },
+        {
+          "path": "models/vesper-t9-lod2.glb",
+          "bytes": 899816,
+          "sha256": "35fce1bb92e11a87c471cb67f48f87d9ffb2e9b04cf35fa172f0e1e78ea68cf4"
+        },
+        {
+          "path": "review/authoring-stats.json",
+          "bytes": 13466,
+          "sha256": "d622195f7a94b035271e71dbe92233531d400ffaef7c50bd7d1676daffe6eece"
+        },
+        {
+          "path": "review/export-tangent-hygiene.json",
+          "bytes": 2035,
+          "sha256": "bffc7e768fd6ae8b741f25852375e4857d57ad926e8c765d24e878e66726560d"
+        },
+        {
+          "path": "source/vesper-t9-master.blend",
+          "bytes": 1989113,
+          "sha256": "c40f614510e44885207855e824e187c05e40259e76b8cdf25d677c3afb2fbf99"
+        }
+      ]
+    }
+  ],
+  "actualCheckerObservation": {
+    "command": "python source/check_authored_transport.py",
+    "cwd": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe",
+    "observedCompletedExitCode": 0,
+    "staticChecksPassed": true,
+    "issues": [],
+    "wallSecondsReportedByActualChecker": 2.5823697399900993,
+    "scope": "three authored GLBs and immutable original transport layout; not a city/test/browser run",
+    "stdout": {
+      "path": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe/check.stdout.log",
+      "bytes": 371,
+      "sha256": "bf5fcf6e862ef9741f3fc4bcc7ec3427f075ee43fd724bc043f3dbc422c1442b"
+    },
+    "stderr": {
+      "path": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe/check.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "actualArrayComparison": {
+    "path": "art-source/transport/tram/review/seam-correction-array-comparison-20261005.json",
+    "bytes": 29975,
+    "sha256": "8b22825c97910f4b7dcec44be279d0198d8ee3e96a581770fe600a1878dc0ceb"
+  },
+  "actualSampledOverlapRemoval": {
+    "path": "art-source/transport/tram/review/seam-correction-sampled-overlap-removal-20261005.json",
+    "bytes": 26776,
+    "sha256": "24ef16c2fc05de5582929bbd2afa4b694ffa65796234edc4567f2cbc7844357f"
+  },
+  "sampledSurfaceCount": 84,
+  "actualChangedAttributeRowsByLOD": [
+    {
+      "tier": 0,
+      "changedPrimitives": [
+        {
+          "mesh": 10,
+          "nodeNames": [
+            "LOD0-tram-detail-0-paint-batch"
+          ],
+          "primitive": 0,
+          "changedAttributes": [
+            {
+              "attribute": "POSITION",
+              "accessor": 50,
+              "changedRows": 900,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.426000118255615
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                2.9535000324249268,
+                4.426000118255615
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.425680160522461
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                2.9584999084472656,
+                4.425680160522461
+              ]
+            },
+            {
+              "attribute": "NORMAL",
+              "accessor": 51,
+              "changedRows": 124,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.344743251800537
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                2.819000005722046,
+                4.344743251800537
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.344423294067383
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                2.8289999961853027,
+                4.344423294067383
+              ]
+            },
+            {
+              "attribute": "TANGENT",
+              "accessor": 53,
+              "changedRows": 125,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.25
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                3.0880000591278076,
+                4.369760990142822
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.25
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                3.0880000591278076,
+                4.369760990142822
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 1,
+      "changedPrimitives": [
+        {
+          "mesh": 9,
+          "nodeNames": [
+            "LOD1-tram-detail-1-paint-batch"
+          ],
+          "primitive": 0,
+          "changedAttributes": [
+            {
+              "attribute": "POSITION",
+              "accessor": 45,
+              "changedRows": 464,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.425980091094971
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                2.9535000324249268,
+                4.425980091094971
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.425660133361816
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                2.9584999084472656,
+                4.425660133361816
+              ]
+            },
+            {
+              "attribute": "NORMAL",
+              "accessor": 46,
+              "changedRows": 52,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.25
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                2.549999952316284,
+                4.25
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.25
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                2.569999933242798,
+                4.25
+              ]
+            },
+            {
+              "attribute": "TANGENT",
+              "accessor": 48,
+              "changedRows": 60,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.25
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                2.549999952316284,
+                4.25
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.25
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                2.569999933242798,
+                4.25
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "changedPrimitives": [
+        {
+          "mesh": 6,
+          "nodeNames": [
+            "LOD2-tram-detail-2-paintFar-batch"
+          ],
+          "primitive": 0,
+          "changedAttributes": [
+            {
+              "attribute": "POSITION",
+              "accessor": 30,
+              "changedRows": 90,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.426000118255615
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                2.9535000324249268,
+                4.426000118255615
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.425680160522461
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                2.9584999084472656,
+                4.425680160522461
+              ]
+            },
+            {
+              "attribute": "NORMAL",
+              "accessor": 31,
+              "changedRows": 30,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.29584264755249
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                3.058000087738037,
+                4.29584264755249
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.295522689819336
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                3.058000087738037,
+                4.295522689819336
+              ]
+            },
+            {
+              "attribute": "TANGENT",
+              "accessor": 33,
+              "changedRows": 30,
+              "oldAffectedPositionMin": [
+                -1.1279314756393433,
+                2.549999952316284,
+                -4.29584264755249
+              ],
+              "oldAffectedPositionMax": [
+                1.1279314756393433,
+                3.058000087738037,
+                4.29584264755249
+              ],
+              "newAffectedPositionMin": [
+                -1.1277886629104614,
+                2.569999933242798,
+                -4.295522689819336
+              ],
+              "newAffectedPositionMax": [
+                1.1277886629104614,
+                3.058000087738037,
+                4.295522689819336
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "noNewPrimitivesTrianglesMaterialsTexturesHooksOrPhysics": true,
+  "controlThreeGLBsByteExactlyReproduceOriginal": true,
+  "originalMasterReference": {
+    "path": "/workspace/neon-candidates/harbor-material-lighting-final-20261005/art-source/transport/tram/source/vesper-t9-master.blend",
+    "bytes": 1993587,
+    "sha256": "d2b47a649635907d9cccb5c685bcb88cfd9e940658a2c99e4fa76bdbd2831fca"
+  },
+  "controlMaster": {
+    "path": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/control-original-recipe/source/vesper-t9-master.blend",
+    "bytes": 1989504,
+    "sha256": "ef40ad603ede94017d920de1384b9447c4145c9c3362bac704f4534dec99dd82"
+  },
+  "controlMasterByteExactToOriginal": false,
+  "controlMasterLimitation": "Fresh .blend storage/path metadata is not asserted identical. Actual three control GLBs reproduce every original byte; corrected editable master is freshly generated from the minimally changed exact recipe with unchanged inputs.",
+  "correctedEditableMaster": {
+    "path": "art-source/transport/tram/source/vesper-t9-master.blend",
+    "bytes": 1989113,
+    "sha256": "c40f614510e44885207855e824e187c05e40259e76b8cdf25d677c3afb2fbf99"
+  },
+  "licencesAndOriginalReviewFilesUnchanged": true,
+  "originalRuntimeInterfaceBaselineUnchanged": true,
+  "GPUExecuted": false,
+  "nativeValidated": false,
+  "pixelSeamFixAccepted": false,
+  "journeyAccepted": false,
+  "performanceAccepted": false,
+  "aaaClaim": false,
+  "wholeCityClaim": false,
+  "requiredFutureEvidence": "After Root adoption/build, actual High Tram close view and new-source four Day/Night native images; new actual journey/performance verification. Previous native failures/old-source pixels remain original evidence."
+}

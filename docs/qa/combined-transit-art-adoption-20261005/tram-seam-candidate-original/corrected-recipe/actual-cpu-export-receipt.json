@@ -1,0 +1,58 @@
+{
+  "mode": "corrected-recipe",
+  "startedAt": "2026-10-05T10:45:16.646990+00:00",
+  "argv": [
+    "/usr/bin/blender",
+    "--background",
+    "--factory-startup",
+    "--threads",
+    "1",
+    "--python-expr",
+    "import sys,runpy;sys.dont_write_bytecode=True;runpy.run_path('/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe/source/author_tram.py',run_name='__main__')"
+  ],
+  "cwd": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/corrected-recipe",
+  "boundedCpuExportSeconds": 300,
+  "GPUOrBrowserExecuted": false,
+  "sourceRootMutated": false,
+  "originalAssetsMutated": false,
+  "BlenderVersion": "4.3.2",
+  "blenderExecutable": "/usr/bin/blender",
+  "firstError": null,
+  "pid": 226693,
+  "returnCode": 0,
+  "elapsedSeconds": 5.788823551003588,
+  "finishedAt": "2026-10-05T10:45:22.435839+00:00",
+  "inputFilesUnchangedAfter": true,
+  "outputFiles": [
+    {
+      "path": "models/vesper-t9-lod0.glb",
+      "bytes": 5982272,
+      "sha256": "c92fff2e59645d22bf31ffda121098fff621979c135f9ee65e8087ef534f4560"
+    },
+    {
+      "path": "models/vesper-t9-lod1.glb",
+      "bytes": 2833376,
+      "sha256": "7e482d79badc3ad0cf39b94127c130b0651891d009af496885ff8dcc0409bf8d"
+    },
+    {
+      "path": "models/vesper-t9-lod2.glb",
+      "bytes": 899816,
+      "sha256": "35fce1bb92e11a87c471cb67f48f87d9ffb2e9b04cf35fa172f0e1e78ea68cf4"
+    },
+    {
+      "path": "review/authoring-stats.json",
+      "bytes": 13466,
+      "sha256": "d622195f7a94b035271e71dbe92233531d400ffaef7c50bd7d1676daffe6eece"
+    },
+    {
+      "path": "review/export-tangent-hygiene.json",
+      "bytes": 2035,
+      "sha256": "bffc7e768fd6ae8b741f25852375e4857d57ad926e8c765d24e878e66726560d"
+    },
+    {
+      "path": "source/vesper-t9-master.blend",
+      "bytes": 1989113,
+      "sha256": "c40f614510e44885207855e824e187c05e40259e76b8cdf25d677c3afb2fbf99"
+    }
+  ]
+}

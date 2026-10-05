@@ -1,0 +1,58 @@
+{
+  "mode": "control-original-recipe",
+  "startedAt": "2026-10-05T10:45:16.647974+00:00",
+  "argv": [
+    "/usr/bin/blender",
+    "--background",
+    "--factory-startup",
+    "--threads",
+    "1",
+    "--python-expr",
+    "import sys,runpy;sys.dont_write_bytecode=True;runpy.run_path('/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/control-original-recipe/source/author_tram.py',run_name='__main__')"
+  ],
+  "cwd": "/workspace/neon-candidates/tram-waist-spandrel-seam-actual-cpu-export-20261005/control-original-recipe",
+  "boundedCpuExportSeconds": 300,
+  "GPUOrBrowserExecuted": false,
+  "sourceRootMutated": false,
+  "originalAssetsMutated": false,
+  "BlenderVersion": "4.3.2",
+  "blenderExecutable": "/usr/bin/blender",
+  "firstError": null,
+  "pid": 226692,
+  "returnCode": 0,
+  "elapsedSeconds": 5.636888759006979,
+  "finishedAt": "2026-10-05T10:45:22.284883+00:00",
+  "inputFilesUnchangedAfter": true,
+  "outputFiles": [
+    {
+      "path": "models/vesper-t9-lod0.glb",
+      "bytes": 5982272,
+      "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca"
+    },
+    {
+      "path": "models/vesper-t9-lod1.glb",
+      "bytes": 2833376,
+      "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d"
+    },
+    {
+      "path": "models/vesper-t9-lod2.glb",
+      "bytes": 899816,
+      "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5"
+    },
+    {
+      "path": "review/authoring-stats.json",
+      "bytes": 13466,
+      "sha256": "d622195f7a94b035271e71dbe92233531d400ffaef7c50bd7d1676daffe6eece"
+    },
+    {
+      "path": "review/export-tangent-hygiene.json",
+      "bytes": 2035,
+      "sha256": "722e62a46b756159d21d63e899c4f1362010d2265d82fdd528838556101c71bf"
+    },
+    {
+      "path": "source/vesper-t9-master.blend",
+      "bytes": 1989504,
+      "sha256": "ef40ad603ede94017d920de1384b9447c4145c9c3362bac704f4534dec99dd82"
+    }
+  ]
+}
