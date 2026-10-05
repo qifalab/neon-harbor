@@ -1,0 +1,200 @@
+{
+  "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
+  "parentHEAD": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+  "originalNativeToolSHA256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50",
+  "activeMergedTool": {
+    "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+    "bytes": 86526,
+    "sha256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6"
+  },
+  "standaloneInputs": [
+    {
+      "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/SEAL.json",
+      "bytes": 7649,
+      "sha256": "7cd892567a1b6bfe15e0f871ac63e67970ba53e1e3623d6e83cfc6bf9ebf4ec1"
+    },
+    {
+      "path": "/workspace/neon-candidates/tram-ground-public-point-precision-candidate-20261005/SEAL.json",
+      "bytes": 16333,
+      "sha256": "ed9043711e524efaeb3df343866f1b9c4c372a86ef0ac2a66a84f2e8b2cfdb1d"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-sp-ferry-controller-successor3-20261005-review/manifest.json",
+      "bytes": 3923,
+      "sha256": "8a785fd054b862f0dce7949a13b1fa4e98562c96326640962c4794dc8a647a03"
+    },
+    {
+      "path": "/workspace/neon-candidates/harbor-sp-ferry-controller-successor3-20261005-independent-readonly-review/READONLY_REVIEW.json",
+      "bytes": 5383,
+      "sha256": "f66b20e83ebc55d4dd557f2b7bbd03e56c5d62730d9c5d12dbc5a77a0bdf0b37"
+    }
+  ],
+  "literalNativeEdits": {
+    "busCandidate2": 5,
+    "tramGround": 3,
+    "bothForwardOrdersIdentical": true,
+    "inverseCompleteWholeBytesEqualsActual199": true,
+    "inverseProof": "/workspace/neon-candidates/public-controller-repair-successor-merge-evidence-20261005/COMBINED_EXACT_SOURCE_REVERSAL.json",
+    "ferrySuccessor": 19,
+    "FerryOnlyInverseCompleteWholeBytesEqualsFrozenCombinedF7": true,
+    "FerryOnlyInverseProof": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/EXACT_ALL_NINETEEN_NATIVE_SOURCE_REVERSAL.json",
+    "FerryWhole50BudgetSuccessor": 1,
+    "historicalWhole40FerryOnlyInverseProof": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/evidence/EXACT_FERRY_ONLY_SOURCE_REVERSAL.json"
+  },
+  "individualAmendments": [
+    {
+      "key": "busRelativeSameDeckOrdinaryPublicApproachAmendment",
+      "path": "tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+      "bytes": 8080,
+      "sha256": "d0e8aa820f7cdca7622ed16a8d4d5c6c8b614cbfcc77d7a04a9d49667aac8de3",
+      "originalInput": {
+        "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/payload/tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+        "bytes": 4543,
+        "sha256": "ef29afd74caddf1399fb4babbe7b42b1f954422296d1d116ba1dec725cf5aa84"
+      }
+    },
+    {
+      "key": "tramExteriorGroundPublicPointPrecisionAmendment",
+      "path": "tools/native-review/runtime-amendments/tram-exterior-ground-public-point-precision-20261005/active-source-amendment.json",
+      "bytes": 8346,
+      "sha256": "fa2e448767e42d4a9c8c914475f9ebaa3dfa76c3b5290d269723355ba1992197",
+      "originalInput": {
+        "path": "/workspace/neon-candidates/tram-ground-public-point-precision-candidate-20261005/payload/tools/native-review/runtime-amendments/tram-exterior-ground-public-point-precision-20261005/active-source-amendment.json",
+        "bytes": 4818,
+        "sha256": "893da4f41083e16b4f3fca039b9394116121dfd3e10cfd10e0e4f66de2808cce"
+      }
+    }
+  ],
+  "spSelectivePayload": [
+    {
+      "path": "tests/controller/ferry-control-source.test.js",
+      "operation": "add",
+      "parentSHA256": null,
+      "bytes": 17899,
+      "sha256": "dda0f680b8af907ed85a1fde4bcb66721dff15be04d547f77317968f55197e38",
+      "approvedCandidateFile": {
+        "path": "/workspace/neon-candidates/harbor-sp-ferry-controller-successor3-20261005-review/payload/tests/controller/ferry-control-source.test.js",
+        "bytes": 17899,
+        "sha256": "dda0f680b8af907ed85a1fde4bcb66721dff15be04d547f77317968f55197e38"
+      }
+    },
+    {
+      "path": "tests/e2e/harbor-sample.spec.js",
+      "operation": "replace",
+      "parentSHA256": "8fb39ca9c6de152db7dc24612d4f8335db74cd05e2d6e989931f4c3d2df5a99c",
+      "bytes": 41503,
+      "sha256": "bd5fa529f5919a24c08c6260ef1ffc3ee1a0c8ffd3f2b2306deaefd0188b9c89",
+      "approvedCandidateFile": {
+        "path": "/workspace/neon-candidates/harbor-sp-ferry-controller-successor3-20261005-review/payload/tests/e2e/harbor-sample.spec.js",
+        "bytes": 41503,
+        "sha256": "bd5fa529f5919a24c08c6260ef1ffc3ee1a0c8ffd3f2b2306deaefd0188b9c89"
+      }
+    },
+    {
+      "path": "tests/e2e/helpers/ferry-control.js",
+      "operation": "add",
+      "parentSHA256": null,
+      "bytes": 6129,
+      "sha256": "89507f17d25f91813097b56822db3ed5a8eaae56ac07847003a13cc8c0c1e4a1",
+      "approvedCandidateFile": {
+        "path": "/workspace/neon-candidates/harbor-sp-ferry-controller-successor3-20261005-review/payload/tests/e2e/helpers/ferry-control.js",
+        "bytes": 6129,
+        "sha256": "89507f17d25f91813097b56822db3ed5a8eaae56ac07847003a13cc8c0c1e4a1"
+      }
+    }
+  ],
+  "sourceRuntimeChanged": false,
+  "resourcePinsChanged": false,
+  "physicsPinsChanged": false,
+  "canonicalRoutesAndStrictArrivalFinalEChanged": false,
+  "nativeLocalMovementBudgetMs": 150000,
+  "nativeWholeBudgetMs": 3000000,
+  "spBudgetAmendment": "The previous SP one-shot 15-second aim is replaced by fresh relative direction checks within the original shared 150-second local movement deadline; this is a bounded controller conversion, not literal preservation of every old per-call cap. Overall local150s/whole-route assertions are not enlarged.",
+  "cpuEvidenceIsNotNativeReplay": true,
+  "nativeExecuted": false,
+  "gpuExecuted": false,
+  "built": false,
+  "newPairedHighAndFunctionalSPRequired": true,
+  "allOriginalFirstFailuresRetainedAtInputs": true,
+  "ferryLower4SuccessorComposition": {
+    "status": "FERRY_LOCAL_MECHANICS_CPU_READY_WHOLE40_TIMETABLE_PRESSURE_BLOCKED_NATIVE_UNREADY",
+    "historicalCombinedF7ActiveTool": {
+      "path": "/workspace/neon-candidates/harbor-public-controller-repair-successor-20261005/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 83268,
+      "sha256": "f7e240aa376debd77da42fa2524c56ccc2941cccd7458025c5c0ab20ed1073c8"
+    },
+    "FerryOnlySuccessorAmendment": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/payload/tools/native-review/runtime-amendments/ferry-actual-lower4-forecast-and-free-deck-public-control-20261005/active-source-amendment.json",
+      "bytes": 3842,
+      "sha256": "4412682210fc6726a01c114ffebbb37376763f4acbb89e9dd095fb2e547dd82d"
+    },
+    "originalBusOrTramMechanismAndEvidenceUnchanged": true,
+    "whole40NativeUnready": true,
+    "historicalOnly": true,
+    "historicalSourcePackagePath": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005"
+  },
+  "whole40SourcePressureBlocked": true,
+  "ferryWhole50SuccessorComposition": {
+    "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
+    "historicalWhole40ActiveTool": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 86526,
+      "sha256": "49d75a136afba3b991af91f7c794fde6e4e28aaacf3ccfc9ec5293b98dde809f"
+    },
+    "budgetAmendment": {
+      "path": "tools/native-review/runtime-amendments/ferry-whole50-calibrated-original-high-software-renderer-20261005/active-source-amendment.json",
+      "bytes": 8274,
+      "sha256": "447c7bbf3400f875888c1538166c345884e1be3cf5794ec03496bd49ad3d77ca"
+    },
+    "oldWhole40PacketPreservedBlocked": true,
+    "ferryWholeMs": 3000000,
+    "busTramWholeMs": 2400000,
+    "allMethodCodeExceptOneFerryWholeLiteralUnchangedFrom49d": true,
+    "nativeCaptureComplete": false,
+    "FerryJobMinutes": 130
+  },
+  "nativeBusTramWholeBudgetMs": 2400000,
+  "activeSuccessorAmendments": [
+    {
+      "path": "tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+      "bytes": 8080,
+      "sha256": "d0e8aa820f7cdca7622ed16a8d4d5c6c8b614cbfcc77d7a04a9d49667aac8de3"
+    },
+    {
+      "path": "tools/native-review/runtime-amendments/tram-exterior-ground-public-point-precision-20261005/active-source-amendment.json",
+      "bytes": 8346,
+      "sha256": "fa2e448767e42d4a9c8c914475f9ebaa3dfa76c3b5290d269723355ba1992197"
+    },
+    {
+      "path": "tools/native-review/runtime-amendments/ferry-actual-lower4-forecast-and-free-deck-public-control-20261005/active-source-amendment.json",
+      "bytes": 5312,
+      "sha256": "1c15cf805b714290403d62318f14dc7619c738305b1fa33dac0effb089d990e2"
+    }
+  ],
+  "historicalFrozenCombinedIndividualAmendments": [
+    {
+      "key": "busRelativeSameDeckOrdinaryPublicApproachAmendment",
+      "path": "/workspace/neon-candidates/harbor-public-controller-repair-successor-20261005/tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+      "bytes": 5480,
+      "sha256": "336c05849606997affce1f0474953d65c9ea280998e5ce5f6dfce9cdb67d08a8",
+      "originalInput": {
+        "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/payload/tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+        "bytes": 4543,
+        "sha256": "ef29afd74caddf1399fb4babbe7b42b1f954422296d1d116ba1dec725cf5aa84"
+      },
+      "historicalOnly": true
+    },
+    {
+      "key": "tramExteriorGroundPublicPointPrecisionAmendment",
+      "path": "/workspace/neon-candidates/harbor-public-controller-repair-successor-20261005/tools/native-review/runtime-amendments/tram-exterior-ground-public-point-precision-20261005/active-source-amendment.json",
+      "bytes": 5746,
+      "sha256": "c1d67e87ec2e1b52a1e171f59ea360bc1331189e19e7c2bd8dc57e5008625494",
+      "originalInput": {
+        "path": "/workspace/neon-candidates/tram-ground-public-point-precision-candidate-20261005/payload/tools/native-review/runtime-amendments/tram-exterior-ground-public-point-precision-20261005/active-source-amendment.json",
+        "bytes": 4818,
+        "sha256": "893da4f41083e16b4f3fca039b9394116121dfd3e10cfd10e0e4f66de2808cce"
+      },
+      "historicalOnly": true
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { appendFile, writeFile } from 'node:fs/promises';
 import { createHarborVehicleLayout } from '../../src/harbor-vehicle-models.js';
 import { snapshot, walkAxis } from './helpers/walking.js';
 import { faceRoom, frameOccupiedRoom } from './helpers/occupied.js';
+import { ferryControlSnapshot, waitFerryControlFrame, observedFerryMouseTarget } from './helpers/ferry-control.js';
 
 // Product menus establish the initial location only. Cabin/stair/pier travel
 // and carrying a funded delivery use real inputs and the unmodified game clock.
@@ -152,20 +153,31 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
   const phase = evidence.begin(stage, waypoint, target);
   const samples = [], secondaryErrors = [];
   let start = null, current = null, deadline = null, movementError = null, releaseUnconfirmed = false;
+  const ferryControl = batchProgress, ferryPrecision = ferryControl && precision;
+  const precisionModifier = { key: 'z', held: false, downAttempted: false, releaseConfirmed: null, inputs: [] };
+  const publicGait = { phase: null, transitions: [] };
+  const ferryLayout = ferryControl ? createHarborVehicleLayout('ferry') : null;
+  async function releasePrecisionModifier(inputs = precisionModifier.inputs) {
+    if (!precisionModifier.held) return;
+    const entry = { action: 'keyboard.up', params: { key: 'z' }, startedAt: Date.now(), completedAt: null, error: null };
+    inputs.push(entry);
+    try { await page.keyboard.up('z'); entry.completedAt = Date.now(); precisionModifier.held = false; precisionModifier.releaseConfirmed = true; }
+    catch (error) { entry.completedAt = Date.now(); entry.error = cabinErrorRecord(error, 'release z'); precisionModifier.releaseConfirmed = false; releaseUnconfirmed = true; throw error; }
+  }
   await evidence.write(phase, { event: 'cabin-start', target, precision, batchProgress });
   try {
-    start = await cabinMotion(page); current = start; samples.push(start);
+    start = ferryControl ? await page.evaluate(ferryControlSnapshot) : await cabinMotion(page); current = start; samples.push(start);
     deadline = Date.now() + 150000;
     await evidence.write(phase, { event: 'cabin-start-pose', target, start, deadline });
     for (let step = 0; Math.hypot(target.x - current.local.x, target.z - current.local.z) >= .06 && step < 1800; step++) {
       expect(Date.now(), 'local walking retains its wall-clock deadline').toBeLessThan(deadline);
-      const before = current, dx = target.x - current.local.x, dz = target.z - current.local.z;
+      let before = current, dx = target.x - current.local.x, dz = target.z - current.local.z;
       const distance = Math.hypot(dx, dz);
       const key = Math.abs(dx) > Math.abs(dz) ? dx > 0 ? 'a' : 'd' : dz > 0 ? 'w' : 's';
       const offset = { w: 0, s: Math.PI, a: Math.PI / 2, d: -Math.PI / 2 }[key];
-      const desired = current.vehicle.yaw + Math.atan2(dx, dz) - offset;
+      let desired = current.vehicle.yaw + Math.atan2(dx, dz) - offset;
       const delta = angle(desired - pointer.orbitYaw);
-      const slow = precision || distance < 1.2;
+      let slow = precision || distance < 1.2, ordinaryApproach = false;
       // Batch only precision ferry movement far from the endpoint. This is a
       // small real-input stride, not a position or simulation-clock write.
       const batched = batchProgress && precision && distance >= .45;
@@ -190,7 +202,63 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
         catch (error) { record.completedAt = Date.now(); record.error = cabinErrorRecord(error, label); throw error; }
       }
       try {
-        if (Math.abs(delta) > .002) {
+        if (ferryControl) {
+          // Native8a3 starts with one fresh compact frame. Only the actual
+          // matched frame returned by this aim becomes the action baseline;
+          // previous observed frames propose public mouse input only.
+          current = await wait('fresh-relative Ferry compact control', () => page.evaluate(ferryControlSnapshot));
+          expect(Date.now(), 'original finite Ferry local deadline before aim').toBeLessThan(deadline);
+          expect(current.teleportRevision, 'original cabin teleport revision').toBe(start.teleportRevision);
+          expect(current.riding && current.ridingVehicleId === start.vehicle.id && current.vehicle?.id === start.vehicle.id,
+            'original riding vehicle/passenger unavailable').toBe(true);
+          expect(current.started && !current.paused, 'actual unpaused Ferry cabin aim').toBe(true);
+          expect(current.local && ['x', 'y', 'z'].every(k => Number.isFinite(current.local[k])) &&
+            Number.isFinite(current.vehicle.yaw) && Number.isFinite(current.time), 'actual finite Ferry control frame').toBe(true);
+          dx = target.x - current.local.x; dz = target.z - current.local.z;
+          desired = current.vehicle.yaw + Math.atan2(dx, dz) - offset;
+          let frame = { current, desired, localHeading: Math.atan2(dx, dz),
+            status: Number.isFinite(current.cameraYaw) && Math.abs(angle(current.cameraYaw - desired)) < .025 &&
+              Number.isFinite(current.cameraPitch) && Math.abs(current.cameraPitch - .15) < .003
+              ? 'MATCHED_FRESH_RELATIVE' : 'PUBLIC_RELATIVE_REAIM_REQUIRED' };
+          let previous = pointer.ferryPreviousControlFrame || pointer.ferryObservedFrame || null;
+          while (frame.status !== 'MATCHED_FRESH_RELATIVE') {
+            // No directional key is held during reaim. Release Z as well when
+            // the fresh observation discovers stale direction/camera state.
+            await releasePrecisionModifier(inputs);
+            const forecast = observedFerryMouseTarget(previous, frame.current, frame.desired); previous = frame.current;
+            pointer.x -= angle(forecast.yaw - pointer.orbitYaw) / (.005 * frame.current.sensitivity);
+            pointer.y += (.15 - frame.current.cameraPitch) / (.003 * frame.current.sensitivity);
+            await input('mouse.move', { x: pointer.x, y: pointer.y, actualDesired: frame.desired, mouseTargetOnly: forecast }, () => page.mouse.move(pointer.x, pointer.y));
+            pointer.orbitYaw = forecast.yaw;
+            frame = await wait('fresh-relative Ferry camera', () => page.evaluate(waitFerryControlFrame,
+              { mode: 'aim', target, offset, pitch: .15, requestedYaw: frame.desired, revision: start.teleportRevision, vehicleId: start.vehicle.id, deadline }));
+          }
+          current = frame.current; before = current; desired = frame.desired;
+          dx = target.x - current.local.x; dz = target.z - current.local.z; pointer.ferryObservedFrame = current;
+          pointer.ferryPreviousControlFrame = frame.previousControlFrame || previous;
+          const gap = Math.hypot(dx, dz), sameFlatDeck = ferryLayout.decks.some(deck =>
+            Math.abs(current.local.y - deck.y) < .02 && target.y != null && Math.abs(target.y - deck.y) < .02);
+          const meetsStair = ferryLayout.stairs.some(stair => {
+            const minX = stair.x - stair.width / 2 - ferryLayout.passengerRadius;
+            const maxX = stair.x + stair.width / 2 + ferryLayout.passengerRadius;
+            const minZ = Math.min(stair.startZ, stair.endZ) - ferryLayout.passengerRadius;
+            const maxZ = Math.max(stair.startZ, stair.endZ) + ferryLayout.passengerRadius;
+            return Math.max(current.local.x, target.x) >= minX && Math.min(current.local.x, target.x) <= maxX &&
+              Math.max(current.local.z, target.z) >= minZ && Math.min(current.local.z, target.z) <= maxZ;
+          });
+          // Existing native8a3 public ordinary approach, limited to an aligned
+          // flat deck segment outside the stair envelope. Actual .7m handoff
+          // returns to original Z gait and the original .06m endpoint.
+          ordinaryApproach = ferryPrecision && !precisionModifier.downAttempted && sameFlatDeck && !meetsStair &&
+            (Math.abs(dx) < .06 || Math.abs(dz) < .06) && gap > .7;
+          slow = ferryPrecision ? !ordinaryApproach : precision || gap < 1.2;
+          const gait = slow ? 'original-Z-slow' : 'ordinary-public-WASD';
+          if (gait !== publicGait.phase) {
+            publicGait.transitions.push({ from: publicGait.phase, to: gait, local: { ...current.local },
+              gap, simulationTime: current.time, vehicleServiceTime: current.vehicle.serviceTime });
+            publicGait.phase = gait;
+          }
+        } else if (Math.abs(delta) > .002) {
           pointer.x -= delta / (.005 * current.sensitivity);
           await input('mouse.move', { x: pointer.x, y: pointer.y }, () => page.mouse.move(pointer.x, pointer.y));
           pointer.orbitYaw = desired;
@@ -199,13 +267,23 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
             return Math.abs(Math.atan2(Math.sin(actual - yaw), Math.cos(actual - yaw))) < .025;
           }, desired, { polling: 'raf', timeout: Math.min(15000, Math.max(1, deadline - Date.now())) }));
         }
+        if (ferryControl) expect(Date.now(), 'original finite Ferry local deadline before real input').toBeLessThan(deadline);
         if (slow) {
-          slowAttempted = true;
-          await input('keyboard.down', { key: 'z' }, () => page.keyboard.down('z'));
+          slowAttempted = !ferryPrecision;
+          if (!ferryPrecision || !precisionModifier.held) {
+            if (ferryPrecision) { precisionModifier.held = true; precisionModifier.downAttempted = true; precisionModifier.releaseConfirmed = null; }
+            await input('keyboard.down', { key: 'z' }, () => page.keyboard.down('z'));
+          }
         }
         keyAttempted = true;
         await input('keyboard.down', { key }, () => page.keyboard.down(key));
-        triggerHandle = await wait('real local progress', () => page.waitForFunction(({ before, target, stride, batched, direction, vehicleId }) => {
+        if (ferryControl) {
+          trigger = await wait('real current-relative local progress', () => page.evaluate(waitFerryControlFrame,
+            { mode: 'progress', before, target, stride, batched, direction: { x: dx / Math.hypot(dx, dz), z: dz / Math.hypot(dx, dz) },
+              localHeading: Math.atan2(dx, dz), ordinaryApproach, offset, pitch: .15, revision: start.teleportRevision, vehicleId: start.vehicle.id, deadline }));
+          pointer.ferryPreviousControlFrame = trigger.previousControlFrame || before;
+        }
+        else triggerHandle = await wait('real local progress', () => page.waitForFunction(({ before, target, stride, batched, direction, vehicleId }) => {
           const s = window.__NEON__.snapshot(), transit = s.city.sample.transit;
           const p = transit.passengerLocal, vehicle = transit.vehicles.find(v => v.id === vehicleId);
           if (!p || !vehicle) return false;
@@ -233,10 +311,14 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
           try { await input('keyboard.up', { key: 'z' }, () => page.keyboard.up('z')); slowReleaseConfirmed = true; }
           catch (error) { preserve(error, 'release z'); }
         }
+        if (ferryPrecision && (cycleError || trigger?.reaimRequired)) {
+          try { await releasePrecisionModifier(inputs); } catch (error) { preserve(error, 'release precision z after current-direction stop'); }
+        }
       }
       const releaseState = { direction: { key, attempted: keyAttempted, confirmed: keyAttempted ? keyReleaseConfirmed : null },
         slow: { key: 'z', attempted: slowAttempted, confirmed: slowAttempted ? slowReleaseConfirmed : null },
-        allRequiredConfirmed: (!keyAttempted || keyReleaseConfirmed) && (!slowAttempted || slowReleaseConfirmed) };
+        allRequiredConfirmed: (!keyAttempted || keyReleaseConfirmed) && (!slowAttempted || slowReleaseConfirmed) &&
+          (!ferryPrecision || precisionModifier.releaseConfirmed !== false) };
       releaseUnconfirmed = !releaseState.allRequiredConfirmed;
       // A failed release leaves input state unknown. Do not spend another
       // browser roundtrip on jsonValue, handle disposal or pose diagnostics;
@@ -251,12 +333,13 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
       }
       if (!cycleError && !releaseUnconfirmed) {
         try {
-          current = await cabinMotion(page);
+          current = ferryControl ? await page.evaluate(ferryControlSnapshot) : await cabinMotion(page);
           expect(current.teleportRevision, 'cabin movement must not relocate the player').toBe(start.teleportRevision);
         } catch (error) { preserve(error, 'post-release pose and revision'); }
       }
       const sample = { ...current, step, target, before, current, key, slow, stride, batched, desired, inputs, waits, trigger, releaseState,
-        triggerObservation: releaseUnconfirmed ? 'unread: key release unconfirmed; handle left to context closure' : triggerHandle ? 'actual trigger read after confirmed key releases' : 'no trigger handle',
+        ...(ferryControl ? { ordinaryApproach, publicGait: publicGait.phase } : {}),
+        triggerObservation: releaseUnconfirmed ? 'unread: key release unconfirmed; handle left to context closure' : triggerHandle ? 'actual trigger read after confirmed key releases' : trigger ? 'actual compact trigger returned; direction key then released before diagnostics' : 'no trigger handle',
         endStateObservation: cycleError ? 'last successful cabinMotion; not a new failure-time read' : 'actual cabinMotion after key release' };
       samples.push(sample);
       if (releaseUnconfirmed) throw cycleError;
@@ -267,9 +350,14 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
     expect(Math.hypot(target.x - current.local.x, target.z - current.local.z), 'actual local waypoint reached').toBeLessThan(.06);
     if (target.y != null) expect(Math.abs(current.local.y - target.y)).toBeLessThan(.15);
   } catch (error) { movementError = error; }
+  finally {
+    if (ferryPrecision) try { await releasePrecisionModifier(); }
+    catch (error) { if (!movementError) movementError = error; else secondaryErrors.push(cabinErrorRecord(error, 'final precision z release')); }
+  }
   const result = { target, start, current, deadline, samples,
     status: releaseUnconfirmed ? 'release-unconfirmed' : movementError ? 'failed' : 'movement-complete',
-    firstError: movementError ? cabinErrorRecord(movementError, 'first movement error') : null, secondaryErrors };
+    firstError: movementError ? cabinErrorRecord(movementError, 'first movement error') : null, secondaryErrors,
+    ...(ferryPrecision ? { precisionModifier } : {}), ...(ferryControl ? { publicGait } : {}) };
   if (releaseUnconfirmed) {
     evidence.deferFinish(phase, result);
     throw movementError;

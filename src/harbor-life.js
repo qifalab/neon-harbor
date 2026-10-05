@@ -4,9 +4,11 @@ import { createInteriorLayout } from './metropolis-interiors.js';
 import { intersectionSignal } from './traffic.js';
 import { harborRoutePose } from './harbor-transit.js';
 import { HarborResidentLoop, RESIDENT_LOOP } from './harbor-resident-loop.js';
+import { HARBOR_SECONDS_PER_HOUR, calendarHour, validCalendar } from './harbor-world-clock.js';
+import { HarborRoleRoutines } from './harbor-role-routines.js';
 
 export const HARBOR_LIFE_SCHEMA = 'neon-harbor/daily-life';
-export const HARBOR_LIFE_VERSION = 2;
+export const HARBOR_LIFE_VERSION = 3;
 export const HARBOR_LIFE_STEP = .1;
 export { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
 const HOME_IDS = ['south-077', 'south-078', 'south-079', 'south-080', 'south-081', 'south-082', 'south-083', 'south-084', 'south-093', 'south-083', 'south-084', 'south-080'];
@@ -23,12 +25,13 @@ const near = (a, b, radius = 3.6) => a && Number.isFinite(a.x) && Number.isFinit
  * schedules, stock, wages or cargo. All money transfers debit an actual account;
  * initial food is finite and every consumed portion remains in the audit. */
 export class HarborLife {
-  constructor({ buildings = [], colliders = [], transport = null, seed = 749213, hour = 18, secondsPerHour = 35, save = null,
-    residentLoop = !!transport } = {}) {
+  constructor({ buildings = [], colliders = [], transport = null, seed = 749213, hour = 18, secondsPerHour = HARBOR_SECONDS_PER_HOUR, save = null,
+    residentLoop = !!transport, roleRoutines = residentLoop } = {}) {
     this.buildings = buildings; this.transport = transport;
     this.seed = (Number.isSafeInteger(seed) ? seed : 749213) >>> 0;
-    this.secondsPerHour = Number.isFinite(secondsPerHour) && secondsPerHour > 0 ? secondsPerHour : 35;
+    this.secondsPerHour = Number.isFinite(secondsPerHour) && secondsPerHour > 0 ? secondsPerHour : HARBOR_SECONDS_PER_HOUR;
     this.startHour = Number.isFinite(hour) ? wrap(hour, 24) : 18;
+    this.clock = { version: 1, epochTick: 0, absoluteHour: this.startHour };
     this.ticks = 0; this.accumulator = 0; this.revision = 0; this.serial = 0; this.orderSerial = 0;
     this.transactions = []; this.jobs = []; this.player = { earnedCash: 0, spentCash: 0, inventory: Object.fromEntries(PRODUCTS.map(p => [p, 0])), purchaseRequests: [], activeJobId: null, completed: 0 };
     this.externalHour = null; this.consumedByProduct = Object.fromEntries(PRODUCTS.map(p => [p, 0]));
@@ -85,17 +88,18 @@ export class HarborLife {
     this._orders();
     this.residentLoop = residentLoop && transport
       ? new HarborResidentLoop(this, createHarborLifeNavigation(colliders, { radius: RESIDENT_LOOP.radius })) : null;
+    this.roleRoutines = roleRoutines ? new HarborRoleRoutines(this, this.navigation) : null;
     for (const agent of this.agents) this._chooseGoal(agent);
     this._freshSave = this.snapshot();
     this.restored = save ? this.restore(save) : false;
   }
   get time() { return this.ticks * HARBOR_LIFE_STEP; }
-  get absoluteHour() { return this.startHour + this.time / this.secondsPerHour; }
-  get hour() { return this.externalHour ?? wrap(this.absoluteHour, 24); }
+  get absoluteHour() { return calendarHour(this.clock, this.ticks, this.secondsPerHour); }
+  get hour() { return wrap(this.absoluteHour, 24); }
   get day() { return Math.floor(this.absoluteHour / 24); }
   get totalMoney() { return this.supply.money + this.shops.reduce((n, s) => n + s.money, 0) + this.agents.reduce((n, a) => n + a.money, 0) + this.player.earnedCash - this.player.spentCash + this.jobs.reduce((n, j) => n + (j.escrow || 0), 0); }
   get totalGoods() { return PRODUCTS.reduce((n, p) => n + this.supply.stock[p], 0) + this.shops.reduce((n, s) => n + s.stock, 0) + this.jobs.reduce((n, j) => n + (j.status === 'picked-up' ? j.quantity : 0), 0) + this.statistics.consumed + PRODUCTS.reduce((n, p) => n + this.player.inventory[p], 0); }
-  get availableJobs() { return this.jobs.filter(j => j.status === 'available' && this._canPickup(j)).map(j => this._jobView(j)); }
+  get availableJobs() { return this.jobs.filter(j => j.status === 'available' && !j.carrierId && this._canPickup(j)).map(j => this._jobView(j)); }
   get activeDelivery() { const job = this.jobs.find(j => j.id === this.player.activeJobId); return job ? this._jobView(job) : null; }
   get shopStatuses() { return this.shops.map(s => ({ ...copy(s), open: this.hour >= 6 && this.hour < 21,
     staff: this.agents.filter(a => a.work.employer === s.id && a.phase === 'working' && distance(a, s.anchor) < 2).length,
@@ -125,17 +129,20 @@ export class HarborLife {
   }
   _canPickup(job) { const shop = this.shops.find(s => s.id === job.shopId); return job.status === 'available' && this.supply.stock[job.product] >= job.quantity && shop.money >= job.wholesale + job.reward; }
   _pickup(job, carrier) {
-    if (!this._canPickup(job)) return false;
+    if (!this._canPickup(job) || job.carrierId && job.carrierId !== (carrier.id || 'player')) return false;
+    if (carrier !== this.player && this.roleRoutines?.participates(carrier) && !this.roleRoutines.claim(this.supply.id, carrier.id)) return false;
     const shop = this.shops.find(s => s.id === job.shopId);
     this._transfer(shop, this.supply, job.wholesale); shop.money -= job.reward; job.escrow = job.reward;
     this.supply.stock[job.product] -= job.quantity;
     Object.assign(job, { status: 'picked-up', carrierId: carrier.id || 'player', pickedTick: this.ticks });
     if (carrier === this.player) this.player.activeJobId = job.id; else carrier.cargoJobId = job.id;
     this._record('pickup', { jobId: job.id, shopId: shop.id, carrierId: job.carrierId, from: shop.id, to: this.supply.id, amount: job.wholesale, quantity: job.quantity, product: job.product, escrow: job.reward });
+    if (carrier !== this.player) this.roleRoutines?.release(this.supply.id, carrier.id, { completed: true });
     return true;
   }
   _deliver(job, carrier) {
     if (job.status !== 'picked-up' || job.carrierId !== (carrier.id || 'player')) return false;
+    if (carrier !== this.player && this.roleRoutines?.participates(carrier) && !this.roleRoutines.claim(job.shopId, carrier.id)) return false;
     const shop = this.shops.find(s => s.id === job.shopId), reward = job.escrow;
     shop.stock += job.quantity; shop.received += job.quantity;
     if (carrier === this.player) carrier.earnedCash += reward; else carrier.money += reward;
@@ -143,6 +150,7 @@ export class HarborLife {
     if (carrier === this.player) { this.player.activeJobId = null; this.player.completed++; } else carrier.cargoJobId = null;
     this.statistics.deliveries++;
     this._record('delivery', { jobId: job.id, shopId: shop.id, carrierId: job.carrierId, from: `escrow:${job.id}`, to: job.carrierId, amount: reward, quantity: job.quantity, product: job.product });
+    if (carrier !== this.player) this.roleRoutines?.release(shop.id, carrier.id, { completed: true });
     return reward;
   }
   acceptDelivery(id, position) {
@@ -233,6 +241,7 @@ export class HarborLife {
     return { kind: 'home', id: agent.home.buildingId, anchor: agent.home.anchor };
   }
   _chooseGoal(agent) {
+    if (this.roleRoutines?.owns(agent)) return;
     if (this.residentLoop?.owns(agent)) return;
     const target = this._desired(agent);
     if (agent.goal?.kind === target.kind && agent.goal.id === target.id && agent.phase !== 'route-blocked') return;
@@ -261,6 +270,7 @@ export class HarborLife {
         if (path) { agent.transit = { phase: 'approach', originStopId: origin.id, destinationStopId: target.id, ticket: null }; agent.path = path; agent.pathIndex = 0; agent.phase = 'walking'; agent.activity = '走向电车站'; return; }
       }
     }
+    if (this.roleRoutines?.contactResource(agent)) destination = this.roleRoutines.contactDestination(agent);
     const path = this.navigation.route(agent, destination);
     agent.path = path || []; agent.pathIndex = 0; agent.phase = path ? 'walking' : 'route-blocked';
     agent.activity = path ? (agent.goal.kind === 'work' ? '走去上班' : agent.goal.kind === 'home' ? '走回家' : agent.goal.kind === 'shop' ? '走去采购' : '运送补货') : '等待通路';
@@ -268,6 +278,7 @@ export class HarborLife {
   }
   _arrive(agent) {
     if (this.residentLoop?.owns(agent)) { this.residentLoop.arrive(agent); return; }
+    if (this.roleRoutines?.owns(agent)) { this.roleRoutines.arrive(agent); return; }
     agent.path = []; agent.pathIndex = 0; agent.crossingId = null;
     if (agent.transit?.phase === 'boarding') {
       this.transport.confirmCitizen?.(agent.id); agent.transit.phase = 'riding'; agent.phase = 'riding'; agent.activity = '乘坐港湾电车'; this.statistics.boarded++; this.revision++; return;
@@ -286,10 +297,17 @@ export class HarborLife {
     if (agent.goal.kind === 'shop') { agent.phase = 'shopping'; agent.activity = '等店员售货'; return; }
     if (agent.goal.kind === 'pickup') {
       const job = this.jobs.find(j => j.id === agent.goal.id);
+      if (job && this._canPickup(job) && this.roleRoutines?.participates(agent) && !this.roleRoutines.claim(this.supply.id, agent.id)) {
+        agent.phase = 'idle'; agent.activity = '在货栈等前一位街坊交接'; return;
+      }
       if (job && this._pickup(job, agent)) this._chooseGoal(agent); else { agent.goal = null; this._chooseGoal(agent); }
       return;
     }
-    if (agent.goal.kind === 'deliver') { const job = this.jobs.find(j => j.id === agent.goal.id); this._deliver(job, agent); agent.goal = null; this._chooseGoal(agent); }
+    if (agent.goal.kind === 'deliver') {
+      const job = this.jobs.find(j => j.id === agent.goal.id);
+      if (this._deliver(job, agent) === false) { agent.phase = 'idle'; agent.activity = '在店铺等前一位街坊交接'; return; }
+      agent.goal = null; this._chooseGoal(agent);
+    }
   }
   _crossingRun(agent, crossing) {
     const points = [point(agent)], edge = crossing.width / 2 - 2 + .6;
@@ -333,6 +351,15 @@ export class HarborLife {
       const step = Math.min(remaining, gap), t = gap > 1e-9 ? step / gap : 1;
       const next = { x: agent.x + (target.x - agent.x) * t, z: agent.z + (target.z - agent.z) * t, y: agent.y + ((target.y ?? .18) - agent.y) * t };
       if (!agent.insideBuildingId && vehicles.some(v => v.health !== 0 && Math.abs((v.y ?? 0) - next.y) < 1.5 && distance(v, next) < 7 && circleOBB({ ...next, radius: .6 }, v))) { agent.blockedFor += dt; agent.activity = '给车辆让行'; return; }
+      if (this.roleRoutines && !this.roleRoutines.contactStepClear(agent, next)) {
+        if (this.roleRoutines.contactBypass(agent, target)) {
+          agent.path.splice(agent.pathIndex, 1);
+          agent.activity = '沿原终点的真实通路走向交接柜台'; return;
+        }
+        const detour = this.roleRoutines.contactDetour(agent, target);
+        if (detour) agent.path.splice(agent.pathIndex, 1, ...detour);
+        agent.activity = detour ? '沿真实空位绕过柜台等候者' : '在实际柜台保持身体间距'; return;
+      }
       if (gap > 1e-7) agent.yaw = Math.atan2(target.x - agent.x, target.z - agent.z);
       Object.assign(agent, next); remaining -= step; agent.gait += step * 7; agent.blockedFor = 0;
       if (t === 1) {
@@ -380,7 +407,7 @@ export class HarborLife {
     agent.goal = null; this._chooseGoal(agent);
   }
   _wage(agent) {
-    if (this.residentLoop?.owns(agent)) return;
+    if (this.residentLoop?.owns(agent) || this.roleRoutines?.owns(agent)) return;
     const slot = Math.floor(this.absoluteHour);
     if (agent.lastWageSlot >= slot || !this._inShift(agent) || distance(agent, agent.work.anchor) > .4) return;
     const employer = agent.work.employer === this.supply.id ? this.supply : this.shops.find(s => s.id === agent.work.employer);
@@ -389,9 +416,8 @@ export class HarborLife {
     this.statistics.wages++;
     this._record('wage', { agentId: agent.id, from: employer.id, to: agent.id, amount: 3, slot });
   }
-  /** dt is elapsed simulation time, independent of the camera and interior.
-   * Optional hour only adjusts the daylight phase; elapsed economic days and
-   * wage slots remain monotonic, so dragging the city clock cannot mint cash. */
+  /** dt owns world progress. Optional hour records a light preview only;
+   * shifts, shop hours, diary dates and payroll all read the shared calendar. */
   update(dt, options = {}) {
     if (!Number.isFinite(dt) || dt <= 0) return;
     const vehicles = typeof options === 'object' ? options.vehicles || [] : [];
@@ -401,9 +427,13 @@ export class HarborLife {
     this.accumulator += dt;
     while (this.accumulator + 1e-9 >= HARBOR_LIFE_STEP) {
       this.accumulator = Math.max(0, this.accumulator - HARBOR_LIFE_STEP); this.ticks++;
+      this.roleRoutines?.pruneQueues();
       for (const agent of this.agents) {
         if (this.residentLoop?.owns(agent)) { this.residentLoop.updateTick(vehicles); continue; }
+        if (this.roleRoutines?.owns(agent)) { this.roleRoutines.updateTick(agent, vehicles); continue; }
         if (agent.transit && ['waiting', 'riding', 'boarding', 'alighting'].includes(agent.transit.phase)) { this._transit(agent, HARBOR_LIFE_STEP); continue; }
+        if (this.roleRoutines?.contactResource(agent)) this.roleRoutines.refreshContactRoute(agent);
+        if (agent.phase === 'idle' && ['pickup', 'deliver'].includes(agent.goal?.kind) && near(agent, agent.goal.anchor, .05)) this._arrive(agent);
         if (['walking', 'entering-home', 'leaving-home'].includes(agent.phase)) this._walk(agent, HARBOR_LIFE_STEP, vehicles);
         if (agent.phase === 'working') this._wage(agent);
         if (agent.phase === 'shopping') this._purchase(agent);
@@ -452,24 +482,28 @@ export class HarborLife {
   trafficYieldAt(car) { return Number.isFinite(this.trafficStopDistanceAt(car)); }
   summary() { return { schema: HARBOR_LIFE_SCHEMA, version: HARBOR_LIFE_VERSION, seed: this.seed, hour: this.hour, day: this.day, residents: this.agents.length,
     residentDiary: this.residentLoop?.publicStatus() || null,
+    residentRoutines: this.roleRoutines?.publicStatus() || null,
     activeDelivery: this.activeDelivery, availableJobs: this.availableJobs, shops: this.shopStatuses, statistics: { ...this.statistics },
     totalMoney: this.totalMoney, initialMoney: this.initialMoney, cashPaidToPlayer: this.player.earnedCash, cashPaidByPlayer: this.player.spentCash, playerInventory: { ...this.player.inventory }, totalGoods: this.totalGoods, initialGoods: this.initialGoods, consumedByProduct: { ...this.consumedByProduct },
     phases: Object.fromEntries([...new Set(this.agents.map(a => a.phase))].map(p => [p, this.agents.filter(a => a.phase === p).length])) }; }
   snapshot() {
-    return copy({ schema: HARBOR_LIFE_SCHEMA, version: HARBOR_LIFE_VERSION, seed: this.seed, secondsPerHour: this.secondsPerHour, startHour: this.startHour,
+    return copy({ schema: HARBOR_LIFE_SCHEMA, version: HARBOR_LIFE_VERSION, seed: this.seed, secondsPerHour: this.secondsPerHour, startHour: this.startHour, clock: this.clock,
       ticks: this.ticks, accumulator: this.accumulator, externalHour: this.externalHour, revision: this.revision, serial: this.serial, orderSerial: this.orderSerial,
       initialMoney: this.initialMoney, initialGoods: this.initialGoods, consumedByProduct: this.consumedByProduct, player: this.player, statistics: this.statistics,
       supply: { money: this.supply.money, stock: this.supply.stock },
       shops: this.shops.map(({ id, money, stock, sold, received, paidWages }) => ({ id, money, stock, sold, received, paidWages })),
       agents: this.agents.map(({ id, money, purchased, lastWageSlot, x, y, z, yaw, phase, activity, goal, path, pathIndex, insideBuildingId, floorId, roomId, crossingId, transit, cargoJobId, blockedFor, gait, visits }) =>
         ({ id, money, purchased, lastWageSlot, x, y, z, yaw, phase, activity, goal, path, pathIndex, insideBuildingId, floorId, roomId, crossingId, transit, cargoJobId, blockedFor, gait, visits })),
-      jobs: this.jobs, transactions: this.transactions, residentLoop: this.residentLoop?.snapshot() || null });
+      jobs: this.jobs, transactions: this.transactions, residentLoop: this.residentLoop?.snapshot() || null, roleRoutines: this.roleRoutines?.snapshot() || null });
   }
   reset({ hour = this._freshSave.startHour } = {}) {
     for (const a of this.agents) this.transport?.releaseCitizen?.(a.id);
     this.trafficTime = undefined;
     const state = copy(this._freshSave); state.startHour = wrap(hour, 24); state.externalHour = null;
-    this.restore(state);
+    state.clock = { version: 1, epochTick: 0, absoluteHour: state.startHour };
+    if (this.residentLoop) this.residentLoop.rebaseFreshCalendar(state);
+    if (this.roleRoutines) this.roleRoutines.rebaseFreshCalendar(state);
+    if (!this.restore(state)) return false;
     for (const agent of this.agents) { agent.goal = null; this._chooseGoal(agent); }
     this.restored = false; return true;
   }
@@ -480,18 +514,30 @@ export class HarborLife {
       // Version 1 exports made before player retail retain their untouched
       // inventory and have no imported payment; existing daily life resumes.
       if (s?.player && s.player.spentCash === undefined) { s.player.spentCash = 0; s.player.inventory = Object.fromEntries(PRODUCTS.map(p => [p, 0])); s.player.purchaseRequests = []; if (s.statistics) s.statistics.playerPurchases = 0; }
-      if (s?.version === 1) {
+      const legacyVersion = s?.version === 1 || s?.version === 2 ? s.version : null;
+      if (legacyVersion) {
+        if (!Number.isFinite(s.startHour) || s.startHour < 0 || s.startHour >= 24 || !Number.isFinite(s.secondsPerHour) || s.secondsPerHour <= 0 || !integer(s.ticks, 1e10)) return false;
+        if (legacyVersion === 2 && this.residentLoop && !this.residentLoop.validate(s.residentLoop, s.agents?.find(agent => this.residentLoop.owns(agent)), s, { legacy: true })) return false;
+        const oldRate = s.secondsPerHour;
+        s.clock = { version: 1, epochTick: s.ticks, absoluteHour: s.startHour + s.ticks * HARBOR_LIFE_STEP / oldRate, legacySecondsPerHour: oldRate };
+        s.secondsPerHour = this.secondsPerHour;
+      }
+      if (legacyVersion === 1) {
         if (this.residentLoop && !this.residentLoop.migrateLegacy(s)) return false;
         else if (!this.residentLoop) s.residentLoop = null;
-        s.version = HARBOR_LIFE_VERSION;
       }
+      if (legacyVersion === 2 && this.residentLoop) this.residentLoop.migrateCalendar(s);
+      if (legacyVersion) s.version = HARBOR_LIFE_VERSION;
       if (!s || s.schema !== HARBOR_LIFE_SCHEMA || s.version !== HARBOR_LIFE_VERSION || s.seed !== this.seed || s.secondsPerHour !== this.secondsPerHour || !Number.isFinite(s.startHour) || s.startHour < 0 || s.startHour >= 24 || (s.externalHour != null && (!Number.isFinite(s.externalHour) || s.externalHour < 0 || s.externalHour >= 24))) return false;
       if (!integer(s.ticks, 1e10) || !Number.isFinite(s.accumulator) || s.accumulator < 0 || s.accumulator >= HARBOR_LIFE_STEP + 1e-8 || !integer(s.serial) || !integer(s.orderSerial) || !integer(s.revision)) return false;
+      if (!validCalendar(s.clock, s.ticks)) return false;
+      if (this.roleRoutines && s.roleRoutines == null) this.roleRoutines.migrateMissing(s);
+      const savedAbsoluteHour = calendarHour(s.clock, s.ticks, this.secondsPerHour);
       if (s.initialMoney !== this.initialMoney || s.initialGoods !== this.initialGoods || !integer(s.player?.earnedCash) || !integer(s.player?.spentCash) || PRODUCTS.some(p => !integer(s.player?.inventory?.[p], 100)) || !integer(s.player?.completed)) return false;
       if (!integer(s.supply?.money) || PRODUCTS.some(p => !integer(s.supply.stock?.[p], 96))) return false;
       if (s.shops?.length !== this.shops.length || s.shops.some((a, i) => a.id !== this.shops[i].id || ['money', 'stock', 'sold', 'received', 'paidWages'].some(k => !integer(a[k])))) return false;
       const phases = new Set(['idle', 'walking', 'working', 'shopping', 'resting', 'waiting-transit', 'riding', 'boarding', 'alighting', 'entering-home', 'leaving-home', 'route-blocked']);
-      if (s.agents?.length !== this.agents.length || s.agents.some((a, i) => a.id !== this.agents[i].id || !integer(a.money) || (!Number.isSafeInteger(a.lastWageSlot) || a.lastWageSlot < -1 || a.lastWageSlot > Math.floor(s.startHour + s.ticks * HARBOR_LIFE_STEP / this.secondsPerHour)) ||
+      if (s.agents?.length !== this.agents.length || s.agents.some((a, i) => a.id !== this.agents[i].id || !integer(a.money) || (!Number.isSafeInteger(a.lastWageSlot) || a.lastWageSlot < -1 || a.lastWageSlot > Math.floor(savedAbsoluteHour)) ||
         ![a.x, a.y, a.z, a.yaw, a.gait, a.blockedFor].every(Number.isFinite) || Math.abs(a.x) > 300 || a.z < -300 || a.z > 300 || !phases.has(a.phase) ||
         !Array.isArray(a.path) || a.path.length > 100 || !integer(a.pathIndex, a.path.length) || a.path.some(p => ![p.x, p.z, p.y].every(Number.isFinite) || Math.abs(p.x) > 300 || p.z < -300 || p.z > 300 || (p.crossingId && !this.navigation.crossings.some(c => c.id === p.crossingId))) ||
         PRODUCTS.some(p => !Number.isSafeInteger(a.purchased?.[p]) || a.purchased[p] < -1) || (a.goal && !['home', 'work', 'shop', 'pickup', 'deliver'].includes(a.goal.kind)))) return false;
@@ -505,10 +551,11 @@ export class HarborLife {
       if (s.player.purchaseRequests.reduce((n, r) => n + r.price, 0) !== s.player.spentCash || PRODUCTS.some(p => s.player.purchaseRequests.filter(r => r.product === p).length !== s.player.inventory[p])) return false;
       const selected = s.agents.find(agent => this.residentLoop?.owns(agent));
       if (this.residentLoop ? !this.residentLoop.validate(s.residentLoop, selected, s) : s.residentLoop != null) return false;
-      const stateDay = Math.floor((s.startHour + s.ticks * HARBOR_LIFE_STEP / this.secondsPerHour) / 24);
+      if (this.roleRoutines ? !this.roleRoutines.validate(s.roleRoutines, s) : s.roleRoutines != null) return false;
+      const stateDay = Math.floor(savedAbsoluteHour / 24);
       for (const [i, state] of s.agents.entries()) {
         const authored = this.agents[i];
-        const loopResident = this.residentLoop?.owns(authored);
+        const loopResident = this.residentLoop?.owns(authored) || this.roleRoutines?.owns(authored);
         if (PRODUCTS.some(p => state.purchased[p] > stateDay)) return false;
         if (!loopResident && state.insideBuildingId && (state.insideBuildingId !== authored.home.buildingId || state.floorId !== 'lobby' || state.roomId !== this._homePath(authored).roomId || !['resting', 'entering-home', 'leaving-home'].includes(state.phase))) return false;
         if (!loopResident && !state.insideBuildingId && !['riding', 'boarding', 'alighting'].includes(state.phase) && !this.navigation.clear(state)) return false;
@@ -541,9 +588,10 @@ export class HarborLife {
       const goods = PRODUCTS.reduce((n, p) => n + s.supply.stock[p], 0) + s.shops.reduce((n, a) => n + a.stock, 0) + s.jobs.reduce((n, j) => n + (j.status === 'picked-up' ? j.quantity : 0), 0) + s.statistics.consumed + PRODUCTS.reduce((n, p) => n + s.player.inventory[p], 0);
       if (money !== this.initialMoney || goods !== this.initialGoods) return false;
       if (!Array.isArray(s.transactions) || s.transactions.length > 96 || new Set(s.transactions.map(t => t.id)).size !== s.transactions.length || s.transactions.some(t => !/^harbor-tx-\d+$/.test(t.id) || !integer(t.tick) || !integer(t.amount))) return false;
-      Object.assign(this, { startHour: s.startHour, externalHour: s.externalHour ?? null, ticks: s.ticks, accumulator: s.accumulator, revision: s.revision, serial: s.serial, orderSerial: s.orderSerial, player: s.player, statistics: s.statistics, consumedByProduct: s.consumedByProduct, jobs: s.jobs, transactions: s.transactions });
+      Object.assign(this, { startHour: s.startHour, clock: s.clock, externalHour: s.externalHour ?? null, ticks: s.ticks, accumulator: s.accumulator, revision: s.revision, serial: s.serial, orderSerial: s.orderSerial, player: s.player, statistics: s.statistics, consumedByProduct: s.consumedByProduct, jobs: s.jobs, transactions: s.transactions });
       Object.assign(this.supply, s.supply); s.shops.forEach((a, i) => Object.assign(this.shops[i], a)); s.agents.forEach((a, i) => Object.assign(this.agents[i], a));
       this.residentLoop?.restoreValidated(s.residentLoop);
+      this.roleRoutines?.restoreValidated(s.roleRoutines);
       // An external fleet restore must rehydrate tickets before the next tick.
       // If that service cannot restore them, a saved passenger resumes on the
       // actual origin platform rather than retaining an orphan vehicle token.

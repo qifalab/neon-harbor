@@ -3,6 +3,7 @@ import { addAuthoredGroundElevation,createCraftVesselGeometry } from './harbor-f
 import { applySurfaceFinish } from './surface-finish.js';
 import { createCraftCeramicOwner } from './harbor-ceramic-art.js';
 import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
+import { createArrivalWarehouseOwner } from './harbor-arrival-warehouse.js';
 
 /** Original small, walkable shopfronts fitted to the existing south-bank shells.
  * This layer does not invent buildings or replace their entrance/interior IDs.
@@ -126,6 +127,7 @@ function makeMaterialMaps(THREE,kind) {
 export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()=>.18,quality='high'}={}) {
   const root=new THREE.Group();root.name='Harbor sample · authored neighborhood frontages';scene.add(root);
   const resident=new Map(),colliders=[],fixtures=[],materialCache=new Map(),textureSet=new Set(),proxyGroups=new Map(),breadAssetEvents=[];
+  const arrivalWarehouse=createArrivalWarehouseOwner(THREE,root,{buildings,quality});colliders.push(...arrivalWarehouse.colliders);
   let currentQuality=quality,interiorId=null,loads=0,disposedMeshes=0,disposedTriangles=0,night=0,lastViewer={x:0,z:0};
   let scanGeneration=0,scanStarted=false,scannedMaps={},scannedMaterials=new Set(),scanLoaded=0,scanErrors=[];
   const assetBase=new URL('../assets/harbor/materials/',import.meta.url).href;
@@ -312,6 +314,7 @@ export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()
   function unload(id){const g=resident.get(id);if(!g)return;if(g.userData.breadOwner){const before=g.userData.breadOwner.snapshot();g.userData.breadOwner.dispose();breadAssetEvents.push({kind:'bakery-crust-owner-released',before,after:g.userData.breadOwner.snapshot()});if(breadAssetEvents.length>8)breadAssetEvents.shift();}g.traverse(m=>{if(m.isMesh){disposedMeshes++;disposedTriangles+=m.geometry.getAttribute('position').count/3;m.geometry.dispose();}});for(const t of g.userData.ownedTextures){t.dispose();textureSet.delete(t);}for(const m of g.userData.ownedMaterials){scannedMaterials.delete(m);m.dispose();}g.userData.craftCeramicOwner?.dispose();g.removeFromParent();g.clear();resident.delete(id);proxyGroups.get(id).visible=sites.find(s=>s.id===id).shellId!==interiorId;if(!resident.size)releaseScannedMaps();}
   function update(viewer,dt=0,time=.6){
     const v=viewer?.position||viewer;if(v&&Number.isFinite(v.x)&&Number.isFinite(v.z))lastViewer={x:v.x,z:v.z};
+    arrivalWarehouse.update(lastViewer);
     const hour=time<=1?time*24:time;night=1-clamp(Math.sin((hour-6)/12*Math.PI)*4,0,1);baseMaterials.glass.emissiveIntensity=.025+night*.18;
     for(const s of sites){const d=Math.hypot(lastViewer.x-s.x,lastViewer.z-s.z),near=currentQuality==='low'?50:HARBOR_ART_LIMITS.near;
       if(d<near&&!resident.has(s.id)){const g=buildSite(s,true);root.add(g);resident.set(s.id,g);proxyGroups.get(s.id).visible=false;loads++;}
@@ -319,7 +322,7 @@ export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()
     }
   }
   function snapshot(){let calls=0,triangles=0;root.traverse(m=>{if(m.isMesh&&m.parent.visible){calls++;triangles+=m.geometry.getAttribute('position').count/3;}});
-    return{quality:currentQuality,bakedCrust:resident.get('morning-tin')?.userData.breadOwner?.snapshot()||{status:'not-resident',expectedMaps:3,loadedMaps:0,pending:false},breadAssetEvents:[...breadAssetEvents],frontages:sites.map(s=>({id:s.id,shellId:s.shellId,name:s.name,programme:s.programme,x:s.x,z:s.z,baseY:s.baseY,width:s.width,angle:s.angle,publicDoor:{x:s.shell.x,z:s.shell.z+s.shell.depth/2+.64,y:s.baseY,yaw:0},displayFaceHasDoor:s.side===0})),residentFrontages:[...resident.keys()],loads,disposedMeshes,disposedTriangles,drawCalls:calls,triangles,night,interiorBuildingId:interiorId,near:HARBOR_ART_LIMITS.near,far:HARBOR_ART_LIMITS.far,originalMaterials:true,scannedMapsLoaded:scanLoaded,scannedMapsExpected:6,scannedMapErrors:scanErrors,materialSource:'Poly Haven CC0: plastered_wall_02 / pavement_03'};}
-  const api={root,colliders,fixtures,update,snapshot,get metadata(){return snapshot();},setQuality(value){currentQuality=value;root.traverse(m=>{if(m.isMesh)m.castShadow=value==='high'&&[...resident.values()].includes(m.parent)&&!m.material.userData.displayGlass&&!m.material.userData.surfacePaint;});},setInteriorBuilding(id){interiorId=id;for(const s of sites){const near=resident.get(s.id);if(near)near.visible=s.shellId!==id;proxyGroups.get(s.id).visible=!near&&s.shellId!==id;}},dispose(){for(const id of [...resident.keys()])unload(id);root.traverse(m=>{if(m.isMesh)m.geometry.dispose();});for(const g of sharedGeometry)g.dispose();for(const t of textureSet)t.dispose();for(const m of materialCache.values())m.dispose();root.removeFromParent();root.clear();}};
+    return{quality:currentQuality,arrivalWarehouse:arrivalWarehouse.snapshot(),bakedCrust:resident.get('morning-tin')?.userData.breadOwner?.snapshot()||{status:'not-resident',expectedMaps:3,loadedMaps:0,pending:false},breadAssetEvents:[...breadAssetEvents],frontages:sites.map(s=>({id:s.id,shellId:s.shellId,name:s.name,programme:s.programme,x:s.x,z:s.z,baseY:s.baseY,width:s.width,angle:s.angle,publicDoor:{x:s.shell.x,z:s.shell.z+s.shell.depth/2+.64,y:s.baseY,yaw:0},displayFaceHasDoor:s.side===0})),residentFrontages:[...resident.keys()],loads,disposedMeshes,disposedTriangles,drawCalls:calls,triangles,night,interiorBuildingId:interiorId,near:HARBOR_ART_LIMITS.near,far:HARBOR_ART_LIMITS.far,originalMaterials:true,scannedMapsLoaded:scanLoaded,scannedMapsExpected:6,scannedMapErrors:scanErrors,materialSource:'Poly Haven CC0: plastered_wall_02 / pavement_03'};}
+  const api={root,colliders,fixtures,update,snapshot,get metadata(){return snapshot();},setQuality(value){currentQuality=value;root.traverse(m=>{if(m.isMesh)m.castShadow=value==='high'&&[...resident.values()].includes(m.parent)&&!m.material.userData.displayGlass&&!m.material.userData.surfacePaint;});arrivalWarehouse.setQuality(value);},setInteriorBuilding(id){interiorId=id;arrivalWarehouse.setInteriorBuilding(id);for(const s of sites){const near=resident.get(s.id);if(near)near.visible=s.shellId!==id;proxyGroups.get(s.id).visible=!near&&s.shellId!==id;}},dispose(){arrivalWarehouse.dispose();for(const id of [...resident.keys()])unload(id);root.traverse(m=>{if(m.isMesh)m.geometry.dispose();});for(const g of sharedGeometry)g.dispose();for(const t of textureSet)t.dispose();for(const m of materialCache.values())m.dispose();root.removeFromParent();root.clear();}};
   return api;
 }

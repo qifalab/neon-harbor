@@ -1,9 +1,9 @@
 {
-  "status": "EXPLICIT_FERRY_OBSERVED_ONE_FRAME_PUBLIC_MOUSE_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
+  "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
   "tool": {
     "path": "native-transport-high.mjs",
-    "bytes": 66912,
-    "sha256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50"
+    "bytes": 86526,
+    "sha256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6"
   },
   "canonical": {
     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
@@ -24,11 +24,13 @@
         "bytes": 266163,
         "sha256": "175aeb23dd108ec9508b1e6b122f9f07778316b28bfd726f6b70ca369eeba6e0"
       }
-    ]
+    ],
+    "bytes": 379831
   },
   "resources": {
     "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/payload/tools/native-review/methods/transport/runtime-resources.json",
-    "sha256": "1edfe55e622a4ef1e33e6bf5c8afbf53a378af184ce8725829f18216407eeea6"
+    "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc",
+    "bytes": 3799
   },
   "sourcePins": {
     "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
@@ -50,7 +52,7 @@
   "budgets": {
     "busCaseIncludingContextMs": 2400000,
     "tramCaseIncludingContextMs": 2400000,
-    "ferryCaseIncludingContextMs": 2400000,
+    "ferryCaseIncludingContextMs": 3000000,
     "localWaypointMs": 150000,
     "maxLocalIterations": 1800,
     "scheduledBerthMs": 600000,
@@ -79,11 +81,13 @@
   "modeBoundary": "mode changes resource expectation checks only; public button/routes/local points/yaw/pitch/hour are identical",
   "oldLongTourMethodReference": {
     "path": "/workspace/scratch/neon-harbor/tools/capture-harbor-tour.mjs",
-    "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537"
+    "sha256": "4663fd4ee24ac729b2016b0f39575a612ba309c55828595d0ae4eaa27e386097",
+    "bytes": 60705
   },
   "errorControlReference": {
     "path": "/tmp/neon-ferry-control-release-confirmed-candidate.spec.js",
-    "sha256": "9f0dd470f17cfa8ec5b84e1079b64429de976fc06caaa501662e11e454ce5476"
+    "sha256": "9f0dd470f17cfa8ec5b84e1079b64429de976fc06caaa501662e11e454ce5476",
+    "bytes": 33209
   },
   "authoredSourcePins": {
     "src/harbor-authored-transport.js": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
@@ -379,5 +383,58 @@
     "runtimeSourceChanged": false,
     "previousActualToolSHA256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94",
     "actualCurrentPredicateNeverForecasted": true
-  }
+  },
+  "busRelativeSameDeckOrdinaryPublicApproachAmendment": {
+    "path": "tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+    "bytes": 8080,
+    "sha256": "d0e8aa820f7cdca7622ed16a8d4d5c6c8b614cbfcc77d7a04a9d49667aac8de3",
+    "status": "BUS_RELATIVE_SAME_REAL_DECK_PUBLIC_APPROACH_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
+    "nativeExecuted": false,
+    "runtimeSourceChanged": false,
+    "previousActualToolSHA256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50",
+    "activeMergedToolSHA256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6",
+    "isolatedProposalOnly": true
+  },
+  "tramExteriorGroundPublicPointPrecisionAmendment": {
+    "path": "tools/native-review/runtime-amendments/tram-exterior-ground-public-point-precision-20261005/active-source-amendment.json",
+    "bytes": 8346,
+    "sha256": "fa2e448767e42d4a9c8c914475f9ebaa3dfa76c3b5290d269723355ba1992197",
+    "status": "FINITE_PUBLIC_POINT_CONTROLLER_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
+    "nativeExecuted": false,
+    "runtimeSourceChanged": false,
+    "previousActualToolSHA256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50",
+    "extraPublicGroundWalkingDeclared": true,
+    "activeMergedToolSHA256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6",
+    "isolatedProposalOnly": true
+  },
+  "publicControllerRepairCombinedAmendment": {
+    "path": "tools/native-review/runtime-amendments/public-controller-repair-combined-20261005/active-source-amendment.json",
+    "bytes": 10717,
+    "sha256": "eedb0ee84628bf399c7ac0c5a9ab7673ac92dce0bd3c9e49268f4c5f83605197",
+    "status": "COMBINED_PUBLIC_CONTROLLER_CANDIDATE_STATIC_MERGE_NEW_NATIVE_AND_SP_RUNS_REQUIRED",
+    "runtimeSourceChanged": false,
+    "nativeExecuted": false
+  },
+  "ferryActualLower4ForecastAndFreeDeckPublicControlAmendment": {
+    "path": "tools/native-review/runtime-amendments/ferry-actual-lower4-forecast-and-free-deck-public-control-20261005/active-source-amendment.json",
+    "bytes": 5312,
+    "sha256": "1c15cf805b714290403d62318f14dc7619c738305b1fa33dac0effb089d990e2",
+    "activeMergedToolSHA256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6",
+    "historicalWhole40PacketPressureBlockedNativeUnready": true,
+    "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
+    "currentFerryWholeMs": 3000000,
+    "currentPairedFerryJobMinutes": 130
+  },
+  "ferryWhole50CalibratedOriginalHighSoftwareRendererAmendment": {
+    "path": "tools/native-review/runtime-amendments/ferry-whole50-calibrated-original-high-software-renderer-20261005/active-source-amendment.json",
+    "bytes": 8274,
+    "sha256": "447c7bbf3400f875888c1538166c345884e1be3cf5794ec03496bd49ad3d77ca",
+    "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
+    "ferryWholeMs": 3000000,
+    "busTramWholeMs": 2400000,
+    "historicalWhole40BlockedPreserved": true,
+    "nativeExecuted": false,
+    "FerryJobMinutes": 130
+  },
+  "historicalSealedWhole40Status": "FERRY_LOCAL_MECHANICS_CPU_READY_WHOLE40_TIMETABLE_PRESSURE_BLOCKED_NATIVE_UNREADY"
 }

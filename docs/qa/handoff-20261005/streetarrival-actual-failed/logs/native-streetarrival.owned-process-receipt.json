@@ -1,0 +1,151 @@
+{
+  "argv": [
+    "node",
+    "/workspace/neon-candidates/streetarrival-south085-two-originals-public-high-method-preparation-20261005/capture-streetarrival.mjs",
+    "--mode",
+    "before",
+    "--output",
+    "/workspace/neon-evidence/streetarrival-before213-owned-high-20261005/native",
+    "--gpu-go",
+    "yes",
+    "--port",
+    "5240"
+  ],
+  "cwd": "/workspace/neon-candidates/harbor-shared-clock-three-role-successor-20261005",
+  "startedAt": "2026-10-05T15:13:49.201729+00:00",
+  "timeoutSeconds": 1320,
+  "outerWatchdogOnly": true,
+  "originalPlayableBudgetUnchanged": true,
+  "signals": [],
+  "ownedRunnerPid": 264573,
+  "launchRootIdentity": {
+    "pid": 264573,
+    "state": "R",
+    "ppid": 264570,
+    "pgid": 264573,
+    "session": 264573,
+    "startTicks": 9674922,
+    "firstObservedAt": "2026-10-05T15:13:49.222708+00:00",
+    "lastObservedAt": "2026-10-05T15:13:49.222721+00:00",
+    "lastState": "R",
+    "pidfdBound": true,
+    "launchRoot": true
+  },
+  "launchRootBoundBeforeAnyPollWait": true,
+  "exitCode": 1,
+  "reportedBrowserProcessChecks": [
+    {
+      "pid": 264585,
+      "actualProcState": null,
+      "recordedPidAbsentOrZombie": true,
+      "observedIdentity": null
+    }
+  ],
+  "ownedProcesses": [
+    {
+      "pid": 264573,
+      "state": "R",
+      "ppid": 264570,
+      "pgid": 264573,
+      "session": 264573,
+      "startTicks": 9674922,
+      "firstObservedAt": "2026-10-05T15:13:49.222708+00:00",
+      "lastObservedAt": "2026-10-05T15:18:20.878790+00:00",
+      "lastState": "Z",
+      "pidfdBound": true,
+      "launchRoot": true
+    },
+    {
+      "pid": 264585,
+      "state": "S",
+      "ppid": 264573,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9675034,
+      "firstObservedAt": "2026-10-05T15:13:50.546270+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:18.607452+00:00"
+    },
+    {
+      "pid": 264587,
+      "state": "S",
+      "ppid": 264585,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9675036,
+      "firstObservedAt": "2026-10-05T15:13:50.558296+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:20.878766+00:00"
+    },
+    {
+      "pid": 264588,
+      "state": "S",
+      "ppid": 264585,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9675036,
+      "firstObservedAt": "2026-10-05T15:13:50.572211+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:20.878783+00:00"
+    },
+    {
+      "pid": 264630,
+      "state": "R",
+      "ppid": 264588,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9675044,
+      "firstObservedAt": "2026-10-05T15:13:50.584923+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:20.878787+00:00"
+    },
+    {
+      "pid": 264603,
+      "state": "S",
+      "ppid": 264587,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9675038,
+      "firstObservedAt": "2026-10-05T15:13:50.600236+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:20.878789+00:00"
+    },
+    {
+      "pid": 264605,
+      "state": "S",
+      "ppid": 264585,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9675039,
+      "firstObservedAt": "2026-10-05T15:13:50.614209+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:20.878792+00:00"
+    },
+    {
+      "pid": 264652,
+      "state": "R",
+      "ppid": 264585,
+      "pgid": 264585,
+      "session": 264585,
+      "startTicks": 9676319,
+      "firstObservedAt": "2026-10-05T15:14:03.183026+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T15:18:20.878785+00:00"
+    }
+  ],
+  "remainingOwnedProcesses": [],
+  "ownedClosureConfirmed": true,
+  "portClosure": {
+    "port": 5240,
+    "connectErrno": 111,
+    "confirmedRefused": true
+  },
+  "finishedAt": "2026-10-05T15:18:20.981508+00:00"
+}

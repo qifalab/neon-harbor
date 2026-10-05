@@ -8,6 +8,7 @@ import { createHarborWorkshopPilot, planHarborWorkshopPilot } from './harbor-wor
 import { applyAuthoredWorkshopLayout } from './harbor-workshop-authored.js';
 import { applyAuthoredHomeLayout } from './harbor-home-authored.js';
 import { createHarborHomeAssets } from './harbor-home-assets.js';
+import { createHarborOfficeCraft, planHarborOfficeCraft } from './harbor-office-craft.js';
 
 const WALL = 0.3;
 const CABIN = { width: 4.4, depth: 4.6, height: 3.25 };
@@ -904,7 +905,7 @@ export function createInteriorLayout(building, floor) {
  * The elevator cabin is retained while the
  * destination floor is assembled, so a ride has continuous world-space motion. */
 export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUILDINGS, materials = createMetropolisMaterials(THREE),
-  harborWorkshopPilot = true, workshopAssetLoader, homeAssetLoader, readRendererMemory } = {}) {
+  harborWorkshopPilot = true, harborOfficeCraft = true, workshopAssetLoader, homeAssetLoader, readRendererMemory } = {}) {
   const root = new THREE.Group(); root.name = 'Metropolis · occupied interior'; root.visible = false; scene.add(root);
   const floorRoot = new THREE.Group(), cabinRoot = new THREE.Group(), floorGroups = new Map(), layoutCache = new Map(); root.add(floorRoot, cabinRoot);
   // Three includes the number of visible point lights in every material's shader
@@ -1036,6 +1037,7 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     floorRoot.clear(); floorGroups.clear(); layoutCache.clear();
   }
   function releaseFloor(group) {
+    group.userData.officeCraft?.dispose();
     group.userData.homeAssets?.dispose();
     group.userData.workshopPilot?.dispose();
     group.userData.harborDressing?.dispose();
@@ -1127,20 +1129,28 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
       if (floorGroups.has(occupied.floorId)) continue;
       const group = new THREE.Group(); group.name = `Occupied floor · ${occupied.floorId}`;
       floorGroups.set(occupied.floorId, group); floorRoot.add(group);
-      const batches = new Map();
+      const dressedFloor = state.activeBuilding.floors.find(item => item.id === occupied.floorId);
+      const officePlan = harborOfficeCraft && planHarborOfficeCraft(state.activeBuilding, dressedFloor, occupied);
+      const officePartIds = new Set(officePlan?.replacePartIds || []);
+      const fallbackGroup = officePlan ? new THREE.Group() : null;
+      if (fallbackGroup) {
+        fallbackGroup.name = 'Office · unchanged inactive-floor furniture'; group.add(fallbackGroup);
+        group.userData.officeCraftPlan = officePlan; group.userData.officeCraftFallback = fallbackGroup;
+      }
+      const batches = new Map(), fallbackBatches = new Map();
       for (const part of occupied.parts) {
         if (occupied.workshopPilot?.replacePartIds.includes(part.id)) continue;
         const batchKey = `${part.material}:${part.geometry}`;
-        if (!batches.has(batchKey)) batches.set(batchKey, []); batches.get(batchKey).push(part);
+        const target = officePartIds.has(part.id) ? fallbackBatches : batches;
+        if (!target.has(batchKey)) target.set(batchKey, []); target.get(batchKey).push(part);
       }
-      for (const [batchKey, parts] of batches) {
+      for (const [target, source] of [[group, batches], [fallbackGroup, fallbackBatches]]) for (const [batchKey, parts] of source) {
         const key = parts[0].material, shape = parts[0].geometry;
         const batch = new THREE.InstancedMesh(geometries[shape], material(key), parts.length); batch.name = `interior · ${batchKey}`;
         parts.forEach((part, index) => { matrix.position.set(part.x, part.y, part.z); matrix.rotation.set(part.rotationX || 0, 0, 0); matrix.scale.set(part.sx, part.sy, part.sz); matrix.updateMatrix(); batch.setMatrixAt(index, matrix.matrix); });
-        batch.castShadow = key !== 'glass' && key !== 'light'; batch.receiveShadow = true; group.add(batch);
+        batch.castShadow = key !== 'glass' && key !== 'light'; batch.receiveShadow = true; target.add(batch);
       }
       occupied.labels.forEach(data => sign(data, group));
-      const dressedFloor = state.activeBuilding.floors.find(item => item.id === occupied.floorId);
       const dressing = createHarborRoomDressing(THREE, { building: state.activeBuilding, floor: dressedFloor, layout: occupied.homeAuthored ? null : occupied });
       group.userData.harborDressing = dressing; group.add(dressing.group);
       if (occupied.homeAuthored) {
@@ -1167,6 +1177,23 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
           layout: occupied, fallbackGroup, onAudit: recordWorkshopPilotEvent, readRendererMemory,
           ...(workshopAssetLoader ? { loadAsset: workshopAssetLoader, enabled: true } : {}) });
         group.userData.workshopPilot = pilot; group.add(pilot.group);
+      }
+    }
+    // Preserve the existing three-floor collision/streaming window. The custom
+    // office allocates geometry only on its current floor; adjacent floors use
+    // their original instanced furniture and retain no custom GPU resources.
+    for (const [id, group] of floorGroups) {
+      const plan = group.userData.officeCraftPlan;
+      if (!plan) continue;
+      if (id === floor.id) {
+        if (!group.userData.officeCraft) {
+          const owner = createHarborOfficeCraft(THREE, plan, { timberMaterial: material('timber'), ceramicMaterial: material('ceramic') });
+          group.userData.officeCraft = owner; group.add(owner.group);
+        }
+        group.userData.officeCraftFallback.visible = false;
+      } else {
+        group.userData.officeCraft?.dispose(); group.userData.officeCraft = null;
+        group.userData.officeCraftFallback.visible = true;
       }
     }
     updateFloorVisibility({ ...layout.entrance, groundY: floor.y });
@@ -1402,6 +1429,8 @@ export function createInteriorSystem(THREE, scene, { buildings = METROPOLIS_BUIL
     residentFloors: residentLayouts.map(item => item.floorId), ownedSignTextures: [...ownedTextures].filter(texture => texture.isCanvasTexture).length,
     visibleFloors: [...floorGroups].filter(([, group]) => group.visible).map(([id]) => id),
     workshopPilot: [...floorGroups.values()].find(group => group.userData.workshopPilot)?.userData.workshopPilot.snapshot() || null,
+    officeCraft: [...floorGroups].filter(([, group]) => group.userData.officeCraft).map(([floorId, group]) => ({
+      floorId, ...group.userData.officeCraft.summary })),
     authoredHome: [...floorGroups].map(([floorId, group]) => ({ floorId, owner: group.userData.homeAssets?.snapshot() })).filter(item => item.owner),
     homeAssetEvents: homeAssetEvents.map(event => ({ ...event,
       ...(event.resources ? { resources: { ...event.resources, images: event.resources.images.map(image => ({ ...image })) } } : {}),

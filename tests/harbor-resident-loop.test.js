@@ -10,10 +10,10 @@ import { circleOBB } from '../src/collision.js';
 import { readFileSync } from 'node:fs';
 
 const city = createCityExploration(THREE, new THREE.Scene(), { streaming: false });
-function fixture({ save, fleet, residentLoop = true } = {}) {
+function fixture({ save, fleet, residentLoop = true, hour = 7 } = {}) {
   const transport = new HarborTransitService({ groundHeightAt: city.groundHeightAt });
   if (fleet) assert.equal(transport.restoreState(fleet), true);
-  const life = new HarborLife({ buildings: city.buildings, colliders: city.colliders, transport, hour: 7, save, residentLoop });
+  const life = new HarborLife({ buildings: city.buildings, colliders: city.colliders, transport, hour, save, residentLoop });
   return { life, transport, loop: life.residentLoop };
 }
 function step(f, hour = 7, mutualTraffic = false) {
@@ -27,7 +27,7 @@ function until(f, condition, maximum = 12000, mutualTraffic = false) {
 function balanced(life) { assert.equal(life.totalMoney, life.initialMoney); assert.equal(life.totalGoods, life.initialGoods); }
 function resumed(f) { const copy = fixture({ save: f.life.snapshot(), fleet: f.transport.exportState() });
   assert.equal(copy.life.restored, true); assert.deepEqual(copy.life.snapshot(), f.life.snapshot()); return copy; }
-function onJob() { const f = fixture(); until(f, () => f.loop.state.stage === 'working'); return f; }
+function onJob() { const f = fixture(); until(f, () => f.loop.state.stage === 'working' && f.life._inShift(f.loop.agent)); return f; }
 
 test('one real resident walks home, shared tram doors, workshop, funded work, finite purchase and home', () => {
   const f = fixture(), ids = f.life.agents.map(agent => agent.id), money = f.loop.agent.money;
@@ -150,7 +150,9 @@ test('closed and empty public shops wait with unchanged goods, then transact onc
     { cash: 1200, requestId: `depletion:${portion}` }).success, true);
   const money = f.loop.agent.money; f.loop._purchase();
   assert.equal(f.loop.state.waitingReason, 'out-of-stock'); assert.equal(f.loop.agent.money, money); balanced(f.life);
-  step(f, 22); assert.equal(f.loop.state.waitingReason, 'shop-closed'); assert.equal(f.loop.state.purchases, 0);
+  step(f, 22); assert.equal(f.loop.state.waitingReason, 'out-of-stock', 'preview cannot close the shop'); assert.equal(f.loop.state.purchases, 0);
+  const closed = fixture({ hour: 21 });
+  assert.equal(closed.life.buyPlayer(closed.loop.shop.id, closed.loop.shop.anchor, { cash: 1200 }).reason, 'closed');
   const copy = resumed(f);
   until(copy, () => copy.loop.state.purchases === 1);
   assert.equal(copy.loop.state.purchases, 1); assert.equal(copy.loop.agent.money, money - copy.loop.shop.price);
@@ -166,7 +168,7 @@ test('version-one migration keeps the nineteen other identities and balances, wi
   assert.equal(migrated.loop.state.totalWages, 0); assert.equal(migrated.loop.state.ticks, 0);
   assert.equal(migrated.loop.agent.money, save.agents[6].money);
   for (let index = 0; index < 20; index++) if (index !== 6) assert.deepEqual(migrated.life.snapshot().agents[index], save.agents[index]);
-  balanced(migrated.life); assert.equal(migrated.life.snapshot().version, 2);
+  balanced(migrated.life); assert.equal(migrated.life.snapshot().version, 3);
 });
 
 test('the actual pre-repair public snapshot migrates its finite balances and nineteen routines unchanged', () => {

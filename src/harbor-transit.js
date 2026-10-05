@@ -371,8 +371,16 @@ export class HarborTransitService {
     // A previously admitted vehicle clears the whole junction even when the
     // light changes or the route bends. This admission survives save/load.
     if (vehicle.junction && gap < -.005) vehicle.junction.committed = true;
-    const red = !!vehicle.junction && !vehicle.junction.committed && intersectionSignal(this.time, vehicle.junction.x, vehicle.junction.z, vehicle.junction.axis) !== 'green';
-    let freeDistance = red ? Math.max(0, gap - .001) : Infinity, reason = red ? 'signal' : null;
+    // A green phase cannot admit a conflicting approach while an admitted
+    // bus/tram is still clearing this intersection. Same-approach followers
+    // retain the physical headway checks; conflicting turns could otherwise
+    // commit on successive phases and trap each other's rear body.
+    const occupied = vehicle.junction && !vehicle.junction.committed && this.vehicles.some(other =>
+      other !== vehicle && other.kind !== 'ferry' && other.junction?.committed &&
+      other.junction.x === vehicle.junction.x && other.junction.z === vehicle.junction.z &&
+      (other.junction.axis !== vehicle.junction.axis || other.junction.direction !== vehicle.junction.direction));
+    const red = !!vehicle.junction && !vehicle.junction.committed && (occupied || intersectionSignal(this.time, vehicle.junction.x, vehicle.junction.z, vehicle.junction.axis) !== 'green');
+    let freeDistance = red ? Math.max(0, gap - .001) : Infinity, reason = occupied ? 'junction' : red ? 'signal' : null;
     if (typeof pedestrianDistanceAt === 'function') {
       const body = { id: vehicle.id, kind: vehicle.kind, ...p, hx: spec.halfWidth, hz: spec.halfLength, speed: vehicle.motionSpeed, health: 100 };
       const pedestrian = pedestrianDistanceAt(body);

@@ -1,5 +1,6 @@
 import { createCharacter } from './models.js';
 import { clone as cloneSkeleton } from '../vendor/three/addons/utils/SkeletonUtils.js';
+import { createResidentNearMotion } from './resident-near-motion.js';
 
 export const RESIDENT_CORE_BUDGET = Object.freeze({ triangles: 35000, materials: 4, bones: 72,
   maximumInstances: 12, nearDistance: 18, height: 1.78 });
@@ -124,7 +125,7 @@ export function createResidentAssetLibrary(THREE, { loadGLTF, clone = cloneSkele
       if (!sharedSkeleton) sharedSkeleton = object.skeleton;
       else if (object.skeleton !== sharedSkeleton) { object.skeleton.dispose(); disposeCalls.discardedCloneSkeletons++; object.skeleton = sharedSkeleton; }
     });
-    const instance = { scene, rig, role, skeleton: sharedSkeleton, released: false, generation };
+    const instance = { scene, rig, role, skeleton: sharedSkeleton, released: false, generation, motion: createResidentNearMotion(THREE, scene) };
     instances.add(instance); caches.get(role).idleSeconds = 0; return instance;
   }
   function release(instance) {
@@ -275,6 +276,7 @@ export function createNearResident(THREE, options = {}) {
     }
     if (instance?.released) instance = null;
     if (instance && !disposed) for (const [api, bone] of Object.entries(instance.rig)) bone.rotation.copy(fallback.userData[api].rotation);
+    if (instance && !disposed) instance.motion?.update(fallback, fallback.userData.residentMotion);
     // Hand props have stable anchors outside both LODs. Existing callbacks and
     // userData limb controls retain their original object identities.
     fallback.updateWorldMatrix(true, true); inverseRoot.copy(fallback.matrixWorld).invert();
@@ -351,6 +353,7 @@ export function createNearResident(THREE, options = {}) {
     fallback.userData.residentCore.status = 'disposed'; originalDispose?.();
   };
   fallback.userData.residentCoreActive = () => !!instance?.scene.visible;
+  fallback.userData.setResidentMotion = motion => { fallback.userData.residentMotion = { ...motion }; };
   fallback.userData.residentCoreSnapshot = () => ({ ...fallback.userData.residentCore,
     visible: !!instance?.scene.visible, selected, selectedForNear, quality, firstPerson, dead, generation, library: library.snapshot() });
   /** Only reads cached matrices from the most recent real presentation frame. */
@@ -367,6 +370,11 @@ export function createNearResident(THREE, options = {}) {
       worldPosition: point(fallback), legacyLODVisible: !!fallback.userData.lod?.visible,
       coreVisible: !!instance && effectivelyVisible(instance.scene), bones: instance?.skeleton?.bones.length || 0,
       instanceSkeletonUUID: instance?.skeleton?.uuid || null, coreSceneUUID: instance?.scene.uuid || null,
+      motion: instance?.motion?.snapshot() || null,
+      poseBones: instance ? Object.fromEntries(['root', 'spine03', 'head', 'foot_L', 'foot_R'].map(name => {
+        const bone = instance.scene.getObjectByName(name);
+        return [name, bone ? { worldPosition: point(bone), quaternion: bone.quaternion.toArray() } : null];
+      })) : null,
       joints: Object.fromEntries(Object.keys(joints).map(name => [name, { x: fallback.userData[name].rotation.x,
         y: fallback.userData[name].rotation.y, z: fallback.userData[name].rotation.z }])),
       hands: Object.fromEntries(['left', 'right'].map(side => [side, { anchor: point(handAnchors[side]),

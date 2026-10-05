@@ -1,0 +1,20 @@
+{
+  "status": "EXACT_TWO_METADATA_REPORTING_EDITS_INVERSE_PASS",
+  "originalScriptPath": "/workspace/neon-candidates/world-sample-final213-runtime414-source-provenance-refresh-preparation-20261005/prepare-six-provenance-payloads.py",
+  "originalScriptSHA256": "5b9a218850c555395b99277b715572cbba35bf8e7da6aec803d50d0b636c2fd6",
+  "newScriptSHA256": "5ca662c6a064d475e3b1e9e29cea7121cdfedc0675ac4ccc26dab946434badc5",
+  "edits": [
+    {
+      "before": " expected['authored']['currentBuildInfo']={**pin(payload/RAW_REL,RAW_REL),'version':'0.8.0','assetCount':runtime_count,'revision':None,'scope':'ROOT actual closed null-preview build of the combined shared-clock/three-role/office/resident/ferry50 graph. Raw hash is preview evidence; future committed CI build revision must equal its actual checkout HEAD. Complete runtime assets, not raw build-info hash, are sealed for CI comparison. Native and art acceptance remain pending.'}",
+      "after": " expected['authored']['currentBuildInfo']={**pin(payload/RAW_REL,RAW_REL),'version':'0.8.0','assetCount':runtime_count,'revision':None,'scope':'ROOT actual closed null-preview build of the exact measured graph identified by the supplied build receipt and selected-source descriptor. Runtime change paths below are derived from the actual asset dictionaries, so future street/arrival-owner changes are included when present. Raw hash is preview evidence; future committed CI build revision must equal its actual checkout HEAD. Complete runtime assets, not raw build-info hash, are sealed for CI comparison. Native and art acceptance remain pending.','actualScopeInputs':{'buildReceiptSHA256':BUILD_RECEIPT_SHA,'selectedSourceDescriptorSHA256':SOURCE_SHA,'selectedSourcePathCount':source_count,'runtimeAssetCount':runtime_count,'addedOrChangedRuntimePathsFromProduction199':sorted(name for name,value in raw['assets'].items()if before['authored']['assets'].get(name)!=value),'removedRuntimePathsFromProduction199':sorted(set(before['authored']['assets'])-set(raw['assets']))}}"
+    },
+    {
+      "before": " refreshed['currentRuntimeProvenance']={**copy.deepcopy(seal['currentRuntimeProvenance']),'authoredAssetCount':runtime_count,'baselineAssetCount':156,'currentLocalBuildInfoPath':RAW_REL,'currentLocalBuildInfoSHA256':RAW_SHA,'currentSelectedSourceCatalogPath':SOURCE_REL,'currentSelectedSourceCatalogSHA256':SOURCE_SHA,'currentSelectedSourceFileCount':source_count,'historicalBaselineAndAuthoredOriginalFilesUnchanged':True,'refreshChangedRuntimeSource':False,'nativeCaptureAndArtApproval':'PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW'}",
+      "after": " refreshed['currentRuntimeProvenance']={**copy.deepcopy(seal['currentRuntimeProvenance']),'authoredAssetCount':runtime_count,'baselineAssetCount':156,'currentLocalBuildInfoPath':RAW_REL,'currentLocalBuildInfoSHA256':RAW_SHA,'currentSelectedSourceCatalogPath':SOURCE_REL,'currentSelectedSourceCatalogSHA256':SOURCE_SHA,'currentSelectedSourceFileCount':source_count,'historicalBaselineAndAuthoredOriginalFilesUnchanged':True,'changedFromProduction199':bool(delta['changed'] or delta['added'] or delta['removed']),'metadataGenerationChangedRuntimeSource':False,'nativeCaptureAndArtApproval':'PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW'}\n refreshed['currentRuntimeProvenance'].pop('refreshChangedRuntimeSource',None)"
+    }
+  ],
+  "completeByteInverseEqualsOriginal": true,
+  "dynamicCLIInputArgumentsAndAllSixPayloadMechanicsLiteral": true,
+  "generatorExecuted": false,
+  "sourceIntegrationOrOriginalOutputEdited": false
+}

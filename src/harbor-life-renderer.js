@@ -17,7 +17,7 @@ export function createHarborLifeRenderer(THREE, scene, life, { groundHeightAt = 
   const crateMaterial = new THREE.MeshStandardMaterial({ color: '#8b7857', roughness: .87 }); materials.push(crateMaterial);
   const supplyCrates = new THREE.InstancedMesh(crateGeometry, crateMaterial, 12); supplyCrates.count = 0; root.add(supplyCrates);
   const shopCrates = new THREE.InstancedMesh(crateGeometry, crateMaterial, 12); shopCrates.count = 0; root.add(shopCrates);
-  let lastRevision = -1, disposed = false, lastInterior = null;
+  let lastRevision = -1, disposed = false, lastInterior = null, presentationTime = 0;
   const role = a => a.index < 6 ? 'shopkeeper' : a.index < 12 ? 'worker' : 'commuter';
   const style = a => a.index < 6 ? 7 : a.index < 12 ? 0 : 1 + a.index % 6;
   function release(id) {
@@ -95,17 +95,19 @@ export function createHarborLifeRenderer(THREE, scene, life, { groundHeightAt = 
   }
   function update(view = {}, dt = 0) {
     if (disposed) return;
+    presentationTime += Math.max(0, Math.min(.3, dt));
     const viewer = view.viewerPosition || view.position || view, interior = view.interior?.buildingId || view.buildingId || null;
     if (!Number.isFinite(viewer.x) || !Number.isFinite(viewer.z)) return;
     lastInterior = interior;
     const visible = life.agents.filter(a => interior ? a.insideBuildingId === interior &&
       (!view.interior?.floorId || a.floorId === view.interior.floorId) &&
-      (!life.residentLoop?.owns(a) || a.roomId === (view.interior?.currentRoomId || null)) : !a.insideBuildingId);
+      (!(life.residentLoop?.owns(a) || life.roleRoutines?.owns(a)) || a.roomId === (view.interior?.currentRoomId || null)) : !a.insideBuildingId);
     const ranked = visible.map(a => ({ agent: a, distance: Math.hypot(a.x - viewer.x, (a.y || 0) - (viewer.y || 0), a.z - viewer.z) })).sort((a, b) => a.distance - b.distance || a.agent.index - b.agent.index);
     const near = ranked.filter(item => item.distance <= (models.has(item.agent.id) ? 145 : 125)).slice(0, 12), active = new Set(near.map(item => item.agent.id));
     for (const id of [...models.keys()]) if (!active.has(id)) release(id);
     for (const { agent: a, distance } of near) {
       const model = models.get(a.id) || acquire(a), walking = ['walking', 'boarding', 'alighting', 'entering-home', 'leaving-home'].includes(a.phase);
+      model.userData.setResidentMotion?.({ time: presentationTime, walking, activity: a.phase, groundY: Number.isFinite(a.y) ? a.y : groundHeightAt(a.x, a.z) });
       const swing = walking ? Math.sin(a.gait) * .42 : 0, joints = model.userData;
       joints.leftLeg.rotation.x = swing; joints.rightLeg.rotation.x = -swing;
       joints.leftKnee.rotation.x = Math.max(0, swing) * .9; joints.rightKnee.rotation.x = Math.max(0, -swing) * .9;
@@ -115,6 +117,12 @@ export function createHarborLifeRenderer(THREE, scene, life, { groundHeightAt = 
         const motion = Math.sin((life.residentLoop.state.activeJob?.validTicks || 0) * .38);
         joints.leftArm.rotation.x = -.48; joints.leftElbow.rotation.x = -.72;
         joints.rightArm.rotation.x = -.78 + motion * .09; joints.rightElbow.rotation.x = -.8 + motion * .16;
+      }
+      const routine = life.roleRoutines?.owns(a) && life.roleRoutines.role(a.id);
+      if (routine && ['working-counter', 'loading', 'unloading'].includes(routine.stage)) {
+        const motion = Math.sin((routine.stage === 'working-counter' ? routine.workTicks : routine.serviceTicks) * .3);
+        joints.leftArm.rotation.x = -.5 + motion * .08; joints.leftElbow.rotation.x = -.7;
+        joints.rightArm.rotation.x = -.6 - motion * .08; joints.rightElbow.rotation.x = -.8;
       }
       model.position.set(a.x, Number.isFinite(a.y) ? a.y : groundHeightAt(a.x, a.z), a.z); model.rotation.y = a.yaw;
       model.userData.harborCargo.visible = !!a.cargoJobId;

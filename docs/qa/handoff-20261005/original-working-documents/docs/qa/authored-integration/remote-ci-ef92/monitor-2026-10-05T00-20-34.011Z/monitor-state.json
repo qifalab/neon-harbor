@@ -1,0 +1,1152 @@
+{
+  "runId": 37247048989,
+  "head": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "attempt": 1,
+  "root": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z",
+  "sequence": 202,
+  "seenLogs": [
+    111566878121,
+    111566878194,
+    111566877625,
+    111566877854,
+    111566877977,
+    111566878149,
+    111566878252,
+    111566878127,
+    111566877909,
+    111566878019,
+    111566878132,
+    111566878105,
+    111566878128,
+    111566877986,
+    111566877992,
+    111566878095,
+    111566878049,
+    111566878006,
+    111566877997,
+    111566878039,
+    111566877962,
+    111566877983,
+    111566878021,
+    111566878062,
+    111566877988,
+    111566877964,
+    111566878927,
+    111566878930,
+    111566879066,
+    111566879010,
+    111566878998,
+    111566877996,
+    111566878051,
+    111566879039,
+    111566879107
+  ],
+  "seenArtifacts": [
+    11319915472,
+    11318639973,
+    11319935663,
+    11319850952,
+    11319493212,
+    11319458270,
+    11318944588,
+    11320095013,
+    11319503714,
+    11319668498,
+    11319079695,
+    11319803449,
+    11319484516,
+    11320017098,
+    11319753983,
+    11320760092,
+    11320765378,
+    11320646335,
+    11320940890,
+    11320541952,
+    11320737055,
+    11320592374,
+    11320182444,
+    11320007711,
+    11320891905,
+    11320513014,
+    11320473262,
+    11320663510,
+    11319854588,
+    11320893011,
+    11321067512,
+    11320178945,
+    11320594919,
+    11321092524,
+    11324411458
+  ],
+  "failures": [
+    {
+      "jobId": 111566877625,
+      "name": "Multiplayer rooms in two browsers",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:30:45.845Z",
+      "failedSteps": [
+        {
+          "name": "Run npx playwright test --config=playwright.multiplayer.config.js",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877625",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877625-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:29:03.1788961Z     TimeoutError: page.waitForFunction: Timeout 180000ms exceeded."
+    },
+    {
+      "jobId": 111566877909,
+      "name": "Optional native and route evidence / Native High (south-094)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:36:47.345Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877909",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877909-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:35:47.7283145Z {\"case\": \"south-094\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878019,
+      "name": "Optional native and route evidence / Native High (south-090)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:36:47.345Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878019",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878019-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:35:50.6481999Z {\"case\": \"south-090\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877986,
+      "name": "Optional native and route evidence / Native High (south-092)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:44:46.244Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877986",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877986-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:44:24.6244516Z {\"case\": \"south-092\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877992,
+      "name": "Optional native and route evidence / Native High (south-091)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:44:46.244Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877992",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877992-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:44:21.2054979Z {\"case\": \"south-091\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878049,
+      "name": "Optional native and route evidence / Native High (bus)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:51:58.042Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878049",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878049-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:51:38.9504466Z {\"case\": \"bus\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878006,
+      "name": "Optional native and route evidence / Native High (home)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:58:26.914Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878006",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878006-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:57:45.3381834Z {\"case\": \"home\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877997,
+      "name": "Optional native and route evidence / Native High (south-095)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:01:36.834Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877997",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877997-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:01:11.7856369Z {\"case\": \"south-095\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878039,
+      "name": "Optional native and route evidence / Native High (south-096)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:01:36.834Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878039",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878039-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:01:17.7514008Z {\"case\": \"south-096\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878021,
+      "name": "Optional native and route evidence / Native High (ferry)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:08:02.106Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878021",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878021-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:05:32.0285356Z {\"case\": \"ferry\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878062,
+      "name": "Optional native and route evidence / Native High (tram)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:08:02.106Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878062",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878062-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:03:18.8067621Z {\"case\": \"tram\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877988,
+      "name": "Optional native and route evidence / Native High (north-book)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:09:10.141Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877988",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877988-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:08:41.1815282Z {\"case\": \"north-book\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877964,
+      "name": "Optional native and route evidence / Native High (workshop)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:10:46.852Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877964",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877964-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:10:23.5655136Z {\"case\": \"workshop\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878927,
+      "name": "Optional native and route evidence / Native High (north-phone)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:12:37.387Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878927",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878927-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:12:15.9461128Z {\"case\": \"north-phone\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878930,
+      "name": "Optional native and route evidence / Native High (ownership-bus)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:17:59.109Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878930",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878930-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:17:21.2315907Z {\"case\": \"ownership-bus\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566879066,
+      "name": "Optional native and route evidence / Native High (south-parcel)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:17:59.109Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566879066",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566879066-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:17:20.0735955Z {\"case\": \"south-parcel\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566879010,
+      "name": "Optional native and route evidence / Native High (ownership-tram)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:18:48.592Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566879010",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566879010-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:18:35.3521958Z {\"case\": \"ownership-tram\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877996,
+      "name": "Optional native and route evidence / Native High (resident-core)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:27:05.371Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877996",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877996-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:25:51.8263851Z {\"case\": \"resident-core\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878051,
+      "name": "Optional native and route evidence / Native High (east-interior)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:28:42.226Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878051",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878051-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:27:48.8870544Z {\"case\": \"east-interior\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566879039,
+      "name": "Optional native and route evidence / Native High (north-cup-owner)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:28:42.226Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566879039",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566879039-original.log",
+      "firstErrorExcerpt": "2026-10-05T01:27:54.3759405Z {\"case\": \"north-cup-owner\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    }
+  ],
+  "startedAt": "2026-10-05T00:20:34.012Z",
+  "firstJobs": [
+    {
+      "id": 111566877625,
+      "name": "Multiplayer rooms in two browsers",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877854,
+      "name": "Build and gameplay tests (metropolis-1)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877909,
+      "name": "Optional native and route evidence / Native High (south-094)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877962,
+      "name": "Optional native and route evidence / Native High (waterfront-day)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566877964,
+      "name": "Optional native and route evidence / Native High (workshop)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877977,
+      "name": "Build and gameplay tests (harbor-sample-1)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877983,
+      "name": "Optional native and route evidence / Native High (waterfront-night)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566877986,
+      "name": "Optional native and route evidence / Native High (south-092)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877988,
+      "name": "Optional native and route evidence / Native High (north-book)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566877992,
+      "name": "Optional native and route evidence / Native High (south-091)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566877996,
+      "name": "Optional native and route evidence / Native High (resident-core)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566877997,
+      "name": "Optional native and route evidence / Native High (south-095)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878006,
+      "name": "Optional native and route evidence / Native High (home)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878019,
+      "name": "Optional native and route evidence / Native High (south-090)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878021,
+      "name": "Optional native and route evidence / Native High (ferry)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878039,
+      "name": "Optional native and route evidence / Native High (south-096)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878049,
+      "name": "Optional native and route evidence / Native High (bus)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878051,
+      "name": "Optional native and route evidence / Native High (east-interior)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878062,
+      "name": "Optional native and route evidence / Native High (tram)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878095,
+      "name": "Build and gameplay tests (occupied-city)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878105,
+      "name": "Build and gameplay tests (harbor-sample-2)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878121,
+      "name": "Build and gameplay tests (game)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878127,
+      "name": "Build and gameplay tests (metropolis-2)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878128,
+      "name": "Build and gameplay tests (city-materials)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878132,
+      "name": "Build and gameplay tests (metropolis-3)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878149,
+      "name": "Build and gameplay tests (harbor-realism)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878194,
+      "name": "Build and gameplay tests (stability)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878252,
+      "name": "Build and gameplay tests (living-city)",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 111566878600,
+      "name": "Native High room detail (${{ matrix.shard }}/6)",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 111566878624,
+      "name": "Rendered room evidence (${{ matrix.shard }}/48)",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 111566878927,
+      "name": "Optional native and route evidence / Native High (north-phone)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878930,
+      "name": "Optional native and route evidence / Native High (ownership-bus)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566878998,
+      "name": "Optional native and route evidence / Native High (ownership-ferry)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566879010,
+      "name": "Optional native and route evidence / Native High (ownership-tram)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566879039,
+      "name": "Optional native and route evidence / Native High (north-cup-owner)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566879066,
+      "name": "Optional native and route evidence / Native High (south-parcel)",
+      "status": "queued",
+      "conclusion": null
+    },
+    {
+      "id": 111566879107,
+      "name": "Optional native and route evidence / Low functional tour (continuous-tour)",
+      "status": "queued",
+      "conclusion": null
+    }
+  ],
+  "lastPollAt": "2026-10-05T03:40:43.748Z",
+  "cacheDistinctVerification": {
+    "observedAt": "2026-10-05T00:25:06.498Z",
+    "ignoredReadOnlyQueryParameter": "monitor_observed_at",
+    "nonce": "2026-10-05T00:24:49.823Z",
+    "status": "queued",
+    "jobCount": 37,
+    "artifacts": 0,
+    "reason": "Verify repeated queued overall status against a cache-distinct URL; no attempt/ref mutation"
+  },
+  "localMonitorContinuity": {
+    "status": "ACTIVE_READONLY",
+    "priorCellTerminatedOnlyToCheckCacheDistinctGET": true,
+    "remoteCancelOrRerunPerformed": false,
+    "stateCounterRestoredFromSavedSnapshotNames": 4,
+    "durableStateIsThisFile": true
+  },
+  "lastRun": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-10-05T03:40:33Z"
+  },
+  "lastTally": {
+    "required": {
+      "total": 12,
+      "success": 11,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 4,
+      "failure": 19,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "lastJobs": [
+    {
+      "id": 111566877625,
+      "name": "Multiplayer rooms in two browsers",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877854,
+      "name": "Build and gameplay tests (metropolis-1)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566877909,
+      "name": "Optional native and route evidence / Native High (south-094)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877962,
+      "name": "Optional native and route evidence / Native High (waterfront-day)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566877964,
+      "name": "Optional native and route evidence / Native High (workshop)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877977,
+      "name": "Build and gameplay tests (harbor-sample-1)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566877983,
+      "name": "Optional native and route evidence / Native High (waterfront-night)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566877986,
+      "name": "Optional native and route evidence / Native High (south-092)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877988,
+      "name": "Optional native and route evidence / Native High (north-book)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877992,
+      "name": "Optional native and route evidence / Native High (south-091)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877996,
+      "name": "Optional native and route evidence / Native High (resident-core)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566877997,
+      "name": "Optional native and route evidence / Native High (south-095)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878006,
+      "name": "Optional native and route evidence / Native High (home)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878019,
+      "name": "Optional native and route evidence / Native High (south-090)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878021,
+      "name": "Optional native and route evidence / Native High (ferry)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878039,
+      "name": "Optional native and route evidence / Native High (south-096)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878049,
+      "name": "Optional native and route evidence / Native High (bus)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878051,
+      "name": "Optional native and route evidence / Native High (east-interior)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878062,
+      "name": "Optional native and route evidence / Native High (tram)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878095,
+      "name": "Build and gameplay tests (occupied-city)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878105,
+      "name": "Build and gameplay tests (harbor-sample-2)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878121,
+      "name": "Build and gameplay tests (game)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878127,
+      "name": "Build and gameplay tests (metropolis-2)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878128,
+      "name": "Build and gameplay tests (city-materials)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878132,
+      "name": "Build and gameplay tests (metropolis-3)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878149,
+      "name": "Build and gameplay tests (harbor-realism)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878194,
+      "name": "Build and gameplay tests (stability)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878252,
+      "name": "Build and gameplay tests (living-city)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566878600,
+      "name": "Native High room detail (${{ matrix.shard }}/6)",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 111566878624,
+      "name": "Rendered room evidence (${{ matrix.shard }}/48)",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 111566878927,
+      "name": "Optional native and route evidence / Native High (north-phone)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878930,
+      "name": "Optional native and route evidence / Native High (ownership-bus)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566878998,
+      "name": "Optional native and route evidence / Native High (ownership-ferry)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 111566879010,
+      "name": "Optional native and route evidence / Native High (ownership-tram)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566879039,
+      "name": "Optional native and route evidence / Native High (north-cup-owner)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566879066,
+      "name": "Optional native and route evidence / Native High (south-parcel)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 111566879107,
+      "name": "Optional native and route evidence / Low functional tour (continuous-tour)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 11324411458,
+      "name": "native-evidence-continuous-tour-37247048989-1",
+      "bytes": 179293819,
+      "digest": "sha256:c3847a24fe20f03f57a7cd3589ac019c4ed1b08a44d5215112191355d0c6ccc7",
+      "expired": false
+    },
+    {
+      "id": 11321092524,
+      "name": "native-evidence-north-cup-owner-37247048989-1",
+      "bytes": 6489467,
+      "digest": "sha256:e2d973c20aa8aa0bfc66e8ad17a7814d9b0b7d4e2c6d38a7131427d523bbdb39",
+      "expired": false
+    },
+    {
+      "id": 11321067512,
+      "name": "native-evidence-ownership-ferry-37247048989-1",
+      "bytes": 25072257,
+      "digest": "sha256:956491098fe9bf4f5ab2cd17ac7c327dd53a3d835d53b572de27bb79e063442e",
+      "expired": false
+    },
+    {
+      "id": 11320940890,
+      "name": "native-evidence-south-096-37247048989-1",
+      "bytes": 5024782,
+      "digest": "sha256:ed5a5402c746096912b01edbef744a8934e463a7751795435346ec87f871e461",
+      "expired": false
+    },
+    {
+      "id": 11320893011,
+      "name": "native-evidence-ownership-tram-37247048989-1",
+      "bytes": 33025718,
+      "digest": "sha256:745cb858b382f1c4535dc09e47926b50c349c2f8ec81e0db79444016c5c3cdf7",
+      "expired": false
+    },
+    {
+      "id": 11320891905,
+      "name": "native-evidence-north-book-37247048989-1",
+      "bytes": 6871731,
+      "digest": "sha256:83d02d81c8cbb1b847efb17fd067870b4602430a34cc3d4d583f5d3a4a4f2505",
+      "expired": false
+    },
+    {
+      "id": 11320765378,
+      "name": "native-evidence-bus-37247048989-1",
+      "bytes": 30601665,
+      "digest": "sha256:bbd35f0907c5f8f4c415be6cc554c56ed1f2617f6f5c7dd1a2f99bc5811768da",
+      "expired": false
+    },
+    {
+      "id": 11320760092,
+      "name": "browser-test-results-occupied-city",
+      "bytes": 747081,
+      "digest": "sha256:1ea212540159d4a0f4d767924d185e82eabb0bd5cdfb337fd52939421565b1ab",
+      "expired": false
+    },
+    {
+      "id": 11320737055,
+      "name": "native-evidence-waterfront-day-37247048989-1",
+      "bytes": 2913923,
+      "digest": "sha256:802d0fc77695f0a52ec6160600e4b298ec33d951fcfb8983bd1830b67d4914c8",
+      "expired": false
+    },
+    {
+      "id": 11320663510,
+      "name": "native-evidence-ownership-bus-37247048989-1",
+      "bytes": 36084956,
+      "digest": "sha256:103ac9e0fb686d09d01d73fdea40ad9c2874bc0bddaaeea489134e51ab91918a",
+      "expired": false
+    },
+    {
+      "id": 11320646335,
+      "name": "native-evidence-home-37247048989-1",
+      "bytes": 6283317,
+      "digest": "sha256:311374fb7a51e23eca694d471247690872dc7a5d466ad11b0ea3ca8c8e7bf8bd",
+      "expired": false
+    },
+    {
+      "id": 11320594919,
+      "name": "native-evidence-east-interior-37247048989-1",
+      "bytes": 11393689,
+      "digest": "sha256:698aefe9bbab1f7b3460d13cb5f2097ef76acf10d292112c569e13298048b312",
+      "expired": false
+    },
+    {
+      "id": 11320592374,
+      "name": "native-evidence-ferry-37247048989-1",
+      "bytes": 29900928,
+      "digest": "sha256:84f7ecb6245187a68b03a7cbea6f25a91be19a7fa35e9e2ebd3d0f09fea25c9f",
+      "expired": false
+    },
+    {
+      "id": 11320541952,
+      "name": "native-evidence-south-095-37247048989-1",
+      "bytes": 4528263,
+      "digest": "sha256:ec845ace4fc2cb998f5b6e87023a79d7dcc4903829c0216e1a7053943c1a6a80",
+      "expired": false
+    },
+    {
+      "id": 11320513014,
+      "name": "native-evidence-workshop-37247048989-1",
+      "bytes": 8588375,
+      "digest": "sha256:76f9e01f2e7e42a6d077caf29a148e5ba0aa565840dd9b9df7811e7743d0d5d2",
+      "expired": false
+    },
+    {
+      "id": 11320473262,
+      "name": "native-evidence-north-phone-37247048989-1",
+      "bytes": 19423715,
+      "digest": "sha256:31b05dff7e559c08e91ae6c30ef3d67f374967589c8adbeaf55bff68b89eea16",
+      "expired": false
+    },
+    {
+      "id": 11320182444,
+      "name": "native-evidence-waterfront-night-37247048989-1",
+      "bytes": 2671880,
+      "digest": "sha256:1532c0887618795e0e2a6d5cb2022c35af2a56c8ca2783166ad4bbc5572ba3e4",
+      "expired": false
+    },
+    {
+      "id": 11320178945,
+      "name": "native-evidence-resident-core-37247048989-1",
+      "bytes": 16827002,
+      "digest": "sha256:17526ccc79e0c216571d7beefdfb307a90ee38070f9f09b329309a66f3e01735",
+      "expired": false
+    },
+    {
+      "id": 11320095013,
+      "name": "browser-test-results-metropolis-2",
+      "bytes": 755053,
+      "digest": "sha256:fca53fdb5ba99f3807eef3545dc26218938116d377460705f35185401118476e",
+      "expired": false
+    },
+    {
+      "id": 11320017098,
+      "name": "native-evidence-south-092-37247048989-1",
+      "bytes": 4114719,
+      "digest": "sha256:46b5ee9bfd3ffaab50030fae669340fbab5121200829e765d27ca14c40ba90b7",
+      "expired": false
+    },
+    {
+      "id": 11320007711,
+      "name": "native-evidence-tram-37247048989-1",
+      "bytes": 66920684,
+      "digest": "sha256:14a0c09063db6d29177b6e9dcaf6724235afac74651b303245c95e6351ab9576",
+      "expired": false
+    },
+    {
+      "id": 11319935663,
+      "name": "multiplayer-browser-test-results",
+      "bytes": 17698478,
+      "digest": "sha256:ce1d7bb4a814d2c3f6f91839727098f353d6089d4615911e4317d39d2485d305",
+      "expired": false
+    },
+    {
+      "id": 11319915472,
+      "name": "browser-test-results-stability",
+      "bytes": 18116289,
+      "digest": "sha256:efb5a4f4d18fda17c48b0c41e51b5f1c931e7ec56bae3a4521f1fb6334aac96c",
+      "expired": false
+    },
+    {
+      "id": 11319854588,
+      "name": "native-evidence-south-parcel-37247048989-1",
+      "bytes": 33793305,
+      "digest": "sha256:5b89ec9f7bfa9610ca629bf65dcd3d7e8615afb84752f1192b45bf7a47598eff",
+      "expired": false
+    },
+    {
+      "id": 11319850952,
+      "name": "browser-test-results-harbor-realism",
+      "bytes": 4406521,
+      "digest": "sha256:538bcbe58cf0e4f1dadfc1df415566f24e58c7231dfe2a8f4df762fd1eb300d1",
+      "expired": false
+    },
+    {
+      "id": 11319803449,
+      "name": "browser-test-results-harbor-sample-2",
+      "bytes": 2492258,
+      "digest": "sha256:6ce6dfd982b78ea84a07b9b89f09525530e2fd2543de7d3337f0bfa4347ba5bd",
+      "expired": false
+    },
+    {
+      "id": 11319753983,
+      "name": "native-evidence-south-091-37247048989-1",
+      "bytes": 4768031,
+      "digest": "sha256:8c636a3176e55aada3a78225a52fab51eb4204d8dd1497f06fc157585e4be689",
+      "expired": false
+    },
+    {
+      "id": 11319668498,
+      "name": "browser-test-results-metropolis-3",
+      "bytes": 1146005,
+      "digest": "sha256:26769d098be7774c29999627d000662512aabce1dc7b9668952c160ef7a2e3a3",
+      "expired": false
+    },
+    {
+      "id": 11319503714,
+      "name": "native-evidence-south-094-37247048989-1",
+      "bytes": 4058515,
+      "digest": "sha256:bbac9fcf1985a4c6337aae699552ce7c483ce2d78ea7763ceb61151d7d264146",
+      "expired": false
+    },
+    {
+      "id": 11319493212,
+      "name": "browser-test-results-harbor-sample-1",
+      "bytes": 2185357,
+      "digest": "sha256:eee5b65919d84cdabcaa92d4f0e878254ed5f2fff6fb892189e5b5b9931a8dec",
+      "expired": false
+    },
+    {
+      "id": 11319484516,
+      "name": "browser-test-results-city-materials",
+      "bytes": 3011045,
+      "digest": "sha256:e0809668e298f55e72bc4ce0d1b02eced24bdceadaacf2ee4457ba74e36d5516",
+      "expired": false
+    },
+    {
+      "id": 11319458270,
+      "name": "browser-test-results-living-city",
+      "bytes": 1657985,
+      "digest": "sha256:0421ea177b0499f20a11b92fe46a974941818a8b6fbae8d9bde37196c046a222",
+      "expired": false
+    },
+    {
+      "id": 11319079695,
+      "name": "native-evidence-south-090-37247048989-1",
+      "bytes": 4038045,
+      "digest": "sha256:e2b79d8c79a787625a152a7922d98554798c12dc7cecfc6fbbf301ab87f2d615",
+      "expired": false
+    },
+    {
+      "id": 11318944588,
+      "name": "browser-test-results-metropolis-1",
+      "bytes": 883072,
+      "digest": "sha256:8edbfb43467d971323379e2f24cd1f9fb11e0b3ad858564f5cbfd8342af4af98",
+      "expired": false
+    },
+    {
+      "id": 11318639973,
+      "name": "browser-test-results-game",
+      "bytes": 1675012,
+      "digest": "sha256:81f1f4309e4ff9e54a48249c06cde001bdddec1aab38c790fba5a3c97f5fd89c",
+      "expired": false
+    }
+  ],
+  "monitorFinishedAt": "2026-10-05T03:40:48.288Z",
+  "finalStatus": "failure"
+}

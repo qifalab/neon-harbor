@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "prepared_at": "2026-10-05T14:57:52.264381Z",
+  "status": "PREPARED_OBSERVER_NOT_EXECUTED",
+  "python_ast_parse": "PASS",
+  "static_review": [
+    "GET-only gh API invocation without shell",
+    "Exact full HEAD, run ID, repository and attempt binding",
+    "Original stdout/stderr retention without console stderr or credential dumps",
+    "60-second minimum polling cadence and bounded API/overall duration",
+    "No resumed polling after actual completion, closure or signal",
+    "No artifact payload downloads; complete job status preservation",
+    "Optional one-time closed-log TAP names set union without expected-count substitution"
+  ],
+  "network_api_calls": 0,
+  "observer_executions": 0,
+  "project_tests_builds_browser_gpu_runs": 0,
+  "repository_git_ref_release_pages_mutations": 0,
+  "limitations": [
+    "No forthcoming run exists in this packet.",
+    "No runtime behavior test or remote API compatibility test was executed.",
+    "TAP parsing conservatively exposes incomplete logs/reporters and leaves unique PASS count unset."
+  ],
+  "local_label_sources": [
+    {
+      "path": "/workspace/neon-candidates/harbor-shared-clock-three-role-successor-20261005/.github/workflows/ci.yml",
+      "sha256": "5fb9a4cda8726d17c3b0eae49a579f7cd8949cf976664d0740427d4d706cd028"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ferry-observed-public-aim-199/monitor-2026-10-05T12-11-31Z/monitor-state.json",
+      "sha256": "ea81a8bdeac0480b0aec45f19f743a0c7860c492115dc4119637ad5ac2907c8b"
+    }
+  ]
+}

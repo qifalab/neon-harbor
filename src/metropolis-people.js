@@ -145,6 +145,8 @@ export function createPeopleSystem(THREE, scene, {
   }
   function animate(model, resident, dt, nearDistance) {
     const walking = resident.state === 'walking', target = walking ? .42 * resident.identity.stride : 0;
+    const presentationGroundY = journeys ? resident.y : groundHeightAt(resident.x, resident.z);
+    model.userData.setResidentMotion?.({ time, walking, activity: resident.state, groundY: presentationGroundY });
     resident.gait += (target - resident.gait) * (1 - Math.exp(-dt * 9));
     const joints = model.userData, swing = Math.sin(resident.phase) * resident.gait;
     joints.leftLeg.rotation.x = swing; joints.rightLeg.rotation.x = -swing;
@@ -170,7 +172,7 @@ export function createPeopleSystem(THREE, scene, {
     } else if (walking && ['book', 'parcel'].includes(resident.identity.prop)) {
       joints.leftArm.rotation.x = -.12; joints.leftElbow.rotation.x = -.72;
     }
-    model.position.set(resident.x, (journeys ? resident.y : groundHeightAt(resident.x, resident.z)) + Math.sin(resident.phase * 2) * resident.gait * .012, resident.z);
+    model.position.set(resident.x, presentationGroundY + Math.sin(resident.phase * 2) * resident.gait * .012, resident.z);
     model.rotation.set(resident.identity.age === 'elder' ? .025 : 0, resident.yaw,
       Math.sin(walking ? resident.phase : time * 1.7 + resident.phase) * (walking ? .012 : .0025));
     // Logical selection/interaction stays at the subject position. Near art

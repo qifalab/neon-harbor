@@ -11,7 +11,7 @@ import { GameSimulation } from '../src/simulation.js';
 import { intersectionSignal } from '../src/traffic.js';
 
 const city = createCityExploration(THREE, new THREE.Scene(), { streaming: false });
-const fixture = (options = {}) => createHarborLife({ buildings: city.buildings, colliders: city.colliders, hour: 6, ...options });
+const fixture = (options = {}) => createHarborLife({ buildings: city.buildings, colliders: city.colliders, hour: 6, secondsPerHour: 35, residentLoop: false, ...options });
 const advance = (life, seconds, options = {}) => { for (let i = 0; i < Math.round(seconds * 10); i++) life.update(.1, options); };
 const assertBalanced = life => { assert.equal(life.totalMoney, life.initialMoney); assert.equal(life.totalGoods, life.initialGoods); assert.ok(life.agents.every(a => a.money >= 0)); assert.ok(life.shops.every(s => s.money >= 0 && s.stock >= 0)); };
 
@@ -215,6 +215,8 @@ test('remote, unfunded, unstaffed, closed and sold-out retail requests never deb
   assert.equal(life.buyPlayer(shop.id, shop.anchor, { cash: 1200 }).reason, 'out-of-stock');
   assert.equal(life.player.inventory.tea, 4); assertBalanced(life);
   life.update(.1, { hour: 22 });
+  assert.equal(life.hour < 21, true, 'light preview does not close the shop');
+  advance(life, (21 - life.absoluteHour) * life.secondsPerHour + .1);
   assert.equal(life.buyPlayer(shop.id, shop.anchor, { cash: 1200 }).reason, 'closed');
   const state = life.snapshot(), forged = structuredClone(state);
   forged.player.spentCash++; assert.equal(life.restore(forged), false);

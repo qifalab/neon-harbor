@@ -127,7 +127,7 @@ finally {
 
 async function captureCase(kind) {
   const folder = resolve(output, kind); await mkdir(folder);
-  const started = Date.now(), budget = kind === 'ferry' ? 2400000 : 2400000, deadline = started + budget;
+  const started = Date.now(), budget = kind === 'ferry' ? 3000000 : 2400000, deadline = started + budget;
   const record = { kind, status: 'RUNNING', budget, startedAt: new Date(started).toISOString(), mode: args.mode,
     toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [], aimPhases: [], berthWaits: [], progressDiagnosticFailures: [] };
   const keep = (error, stage) => { if (!record.firstError) record.firstError = err(error, stage); else record.secondaryErrors.push(err(error, stage)); };
@@ -236,6 +236,12 @@ async function captureCase(kind) {
     if(Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)&&Math.abs(angle(s.camera.yaw-desired))<.025&&Math.abs(s.camera.pitch-a.pitch)<.003)return {status:'MATCHED_FRESH_RELATIVE',state,localHeading,desired};
     // A moving ship can invalidate the requested absolute camera before it
     // settles. Return only for another real mouse aim; never for movement.
+    // A forecast is only a public mouse request. If the real camera reaches
+    // that request while the current vessel-relative predicate is still false,
+    // another public reaim is needed even when the vessel has stopped turning.
+    if(Number.isFinite(a.requestedMouseYaw)&&Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)
+        &&Math.abs(angle(s.camera.yaw-a.requestedMouseYaw))<.025&&Math.abs(s.camera.pitch-a.pitch)<.003)
+      return {status:'PUBLIC_RELATIVE_REAIM_REQUIRED',state,localHeading,desired};
     if(Math.abs(angle(desired-a.requestedYaw))>=.025)return {status:'PUBLIC_RELATIVE_REAIM_REQUIRED',state,localHeading,desired};
     return false;
   }
@@ -274,7 +280,7 @@ async function captureCase(kind) {
           p.x-=angle(mouseTarget.mouseYaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
           await page.mouse.move(p.x,p.y);p.orbitYaw=mouseTarget.mouseYaw;
           const waitCap=Math.min(phaseDeadline-Date.now(),localDeadline-Date.now(),deadline-Date.now());assert.ok(waitCap>0,'original finite Ferry aim/local/whole deadline');
-          const handle=await page.waitForFunction(ferryCabinRelativeAimObservation,{target,offset,pitch,requestedYaw:desired,revision,vehicleId,phaseDeadline,localDeadline,wholeDeadline:deadline},{polling:'raf',timeout:waitCap});
+          const handle=await page.waitForFunction(ferryCabinRelativeAimObservation,{target,offset,pitch,requestedYaw:desired,requestedMouseYaw:mouseTarget.mouseYaw,revision,vehicleId,phaseDeadline,localDeadline,wholeDeadline:deadline},{polling:'raf',timeout:waitCap});
           let observed;try{observed=await handle.jsonValue();}finally{await handle.dispose();}
           assert.ok(Date.now()<phaseDeadline&&Date.now()<localDeadline&&Date.now()<deadline,'original finite Ferry aim/local/whole deadline');
           assert.ok(!observed.failure,observed.failure||'fresh-relative Ferry aim');s=observed.state;checked(s);
@@ -287,12 +293,131 @@ async function captureCase(kind) {
     }catch(error){phase.firstError=err(error,'Ferry relative cabin aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',vehicleId,null,error);throw error;}
     finally{phase.finishedAt=new Date().toISOString();}
   }
+  // Bus-specific successor. The preceding Ferry helpers remain byte-identical.
+  function busCabinRelativeAimObservation(a) {
+    const s=window.__NEON__.snapshot(),t=s.city.sample.transit,p=t.passengerLocal,v=t.vehicles.find(v=>v.id===t.ridingVehicleId);
+    const state={ready:s.ready,started:s.started,paused:s.paused,settings:s.settings,renderer:{contextLost:s.renderer.contextLost},
+      position:s.position,camera:s.camera,timing:s.timing,simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,
+      city:{sample:{transit:{stationId:t.stationId,riding:t.riding,ridingVehicleId:t.ridingVehicleId,passengerLocal:p,
+        passengerDeck:t.passengerDeck,phase:t.phase,vehicles:v?[v]:[]}}}};
+    if(Date.now()>=a.phaseDeadline||Date.now()>=a.localDeadline||Date.now()>=a.wholeDeadline)return {status:'FAILED',failure:'original finite relative-cabin aim/local/whole deadline',state};
+    if(s.teleportRevision!==a.revision)return {status:'FAILED',failure:'original cabin teleport revision',state};
+    if(!t.riding||t.ridingVehicleId!==a.vehicleId||!p||!v)return {status:'FAILED',failure:'original riding vehicle/passenger unavailable',state};
+    if(!['x','y','z'].every(k=>Number.isFinite(p[k]))||!Number.isFinite(v.yaw)||!Number.isFinite(s.simulationTime))return {status:'FAILED',failure:'actual finite passenger/elapsed snapshot',state};
+    const angle=n=>Math.atan2(Math.sin(n),Math.cos(n)),localHeading=Math.atan2(a.target.x-p.x,a.target.z-p.z),desired=v.yaw+localHeading-a.offset;
+    if(Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)&&Math.abs(angle(s.camera.yaw-desired))<.025&&Math.abs(s.camera.pitch-a.pitch)<.003)return {status:'MATCHED_FRESH_RELATIVE',state,localHeading,desired};
+    // A moving vehicle can invalidate the requested absolute camera before it
+    // settles. Return only for another real mouse aim; never for movement.
+    if(Math.abs(angle(desired-a.requestedYaw))>=.025)return {status:'PUBLIC_RELATIVE_REAIM_REQUIRED',state,localHeading,desired};
+    // Bus turn exit can make a bounded one-frame mouse proposal overshoot.
+    // A later actual frame at that proposal is grounds for public reaim only.
+    // It cannot satisfy the unchanged fresh relative .025/.003 MATCHED guard.
+    if(Number.isFinite(a.busRequestedMouseYaw)&&s.simulationTime>a.requestedSimulationTime
+      &&Math.abs(angle(s.camera.yaw-a.busRequestedMouseYaw))<.025)
+      return {status:'PUBLIC_RELATIVE_REAIM_REQUIRED',state,localHeading,desired};
+    return false;
+  }
+  function busObservedOneFrameMouseTarget(previous,current,desired) {
+    const v=vehicle(current,transit(current).ridingVehicleId),dt=current.timing?.dt;
+    if(!previous)return {mouseYaw:desired,advance:0,compensation:0,basis:'unknown-first-sample-no-anticipation'};
+    const oldV=vehicle(previous,transit(previous).ridingVehicleId),elapsed=current.simulationTime-previous.simulationTime;
+    if(!oldV||oldV.id!==v.id||current.teleportRevision!==previous.teleportRevision||!Number.isFinite(elapsed)||elapsed<=0||elapsed>.250001||!Number.isFinite(dt)||dt<=0||dt>.250001)
+      return {mouseYaw:desired,advance:0,compensation:0,basis:'unavailable-discontinuous-control-sample-no-anticipation'};
+    // Bus harborRoutePose's piecewise derivative is <= .642262123 rad/s;
+    // at the unchanged .25s maximum frame its observed yaw advance is <= .161.
+    // This bounds a public mouse proposal, never camera/movement acceptance.
+    const proposalLimit=.161,observedDelta=angle(v.yaw-oldV.yaw);
+    if(!Number.isFinite(observedDelta)||Math.abs(observedDelta)>proposalLimit)return {mouseYaw:desired,advance:0,compensation:0,basis:'nonfinite-or-large-observed-yaw-jump-no-anticipation'};
+    const limit=Math.min(Math.abs(observedDelta),proposalLimit),advance=Math.max(-limit,Math.min(limit,observedDelta*Math.min(1,dt/elapsed))),weight=-Math.expm1(-12*dt),forecast=desired+advance,
+      correction=angle(forecast-current.camera.yaw)*(1/weight-1),compensation=Math.max(-limit,Math.min(limit,correction));
+    if(!Number.isFinite(advance)||!Number.isFinite(compensation)||!(weight>0))return {mouseYaw:desired,advance:0,compensation:0,basis:'nonfinite-source-response-no-anticipation'};
+    return {mouseYaw:forecast+compensation,advance,compensation,observedDelta,observedSimulationDelta:elapsed,actualFrameDt:dt,dampingWeight:weight,
+      basis:'two-observed-contiguous-same-vehicle-frames-one-frame-bounded-public-mouse',proposalLimit};
+  }
+  async function aimBusCabin(p,target,key,{revision,vehicleId,layout,localDeadline}) {
+    const pitch=.15,offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key],phaseDeadline=Math.min(Date.now()+remaining(60000),localDeadline),
+      phase={type:`${kind}-relative-cabin-aim`,target:{local:target,key,pitch},budgetMs:60000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.aimPhases.push(phase);
+    const checked=s=>{healthy(s);assert.ok(s.started&&!s.paused,'actual unpaused relative cabin aim');assert.equal(s.teleportRevision,revision,'original cabin teleport revision');assert.ok(transit(s).riding&&transit(s).ridingVehicleId===vehicleId&&vehicle(s,vehicleId),'original riding vehicle/passenger unavailable');radiusGuard(s,layout);assert.ok(Number.isFinite(s.simulationTime)&&Number.isFinite(vehicle(s,vehicleId).yaw),'actual finite relative cabin control state');};
+    try {
+      let matched=null;
+      await bounded(async()=>{
+        let s=await page.evaluate(ferryCabinControlSnapshot),previousControlFrame=p.busMatchedControlFrame||null;checked(s);
+        while(!matched) {
+          const cap=Math.min(phaseDeadline-Date.now(),localDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original finite relative-cabin aim/local/whole deadline');
+          const before=transit(s).passengerLocal,localHeading=Math.atan2(target.x-before.x,target.z-before.z),desired=vehicle(s,vehicleId).yaw+localHeading-offset;
+          phase.progress.push({when:'fresh-relative-before-public-input',status:'OBSERVED',at:new Date().toISOString(),desired,localHeading,observed:progressOf(s,vehicleId)});
+          if(Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)&&Math.abs(angle(s.camera.yaw-desired))<.025&&Math.abs(s.camera.pitch-pitch)<.003){phase.satisfiedBy='same-fresh-frame-original-relative-camera-predicate';matched=s;break;}
+          const mouseTarget=busObservedOneFrameMouseTarget(previousControlFrame,s,desired);
+          phase.progress.push({when:'bounded-observed-public-mouse-target',status:'PUBLIC_INPUT_ONLY_NOT_ACCEPTANCE',at:new Date().toISOString(),...mouseTarget,actualCurrentDesired:desired});
+          previousControlFrame=s;
+          p.x-=angle(mouseTarget.mouseYaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
+          await page.mouse.move(p.x,p.y);p.orbitYaw=mouseTarget.mouseYaw;
+          const waitCap=Math.min(phaseDeadline-Date.now(),localDeadline-Date.now(),deadline-Date.now());assert.ok(waitCap>0,'original finite relative-cabin aim/local/whole deadline');
+          const handle=await page.waitForFunction(busCabinRelativeAimObservation,{target,offset,pitch,requestedYaw:desired,revision,vehicleId,phaseDeadline,localDeadline,wholeDeadline:deadline,...(kind==='bus'?{busRequestedMouseYaw:mouseTarget.mouseYaw,requestedSimulationTime:s.simulationTime}:{})},{polling:'raf',timeout:waitCap});
+          let observed;try{observed=await handle.jsonValue();}finally{await handle.dispose();}
+          assert.ok(Date.now()<phaseDeadline&&Date.now()<localDeadline&&Date.now()<deadline,'original finite relative-cabin aim/local/whole deadline');
+          assert.ok(!observed.failure,observed.failure||'fresh-relative cabin aim');s=observed.state;checked(s);
+          phase.progress.push({when:'fresh-relative-readonly-waiter',status:observed.status,at:new Date().toISOString(),desired:observed.desired,localHeading:observed.localHeading,observed:progressOf(s,vehicleId)});
+          if(observed.status==='MATCHED_FRESH_RELATIVE'){assert.ok(Math.abs(angle(s.camera.yaw-observed.desired))<.025&&Math.abs(s.camera.pitch-pitch)<.003,'original relative-camera predicate on returned control frame');matched=s;}
+          else assert.equal(observed.status,'PUBLIC_RELATIVE_REAIM_REQUIRED','wrong camera requires public reaim before any movement');
+        }
+      },Math.max(1,Math.min(phaseDeadline-Date.now(),localDeadline-Date.now(),deadline-Date.now())),'finite relative cabin aim phase');
+      phase.status='SATISFIED';p.busMatchedControlFrame=matched;return matched;
+    }catch(error){phase.firstError=err(error,'relative cabin aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',vehicleId,null,error);throw error;}
+    finally{phase.finishedAt=new Date().toISOString();}
+  }
+  function busCabinHeldObservation(a) {
+    const s=window.__NEON__.snapshot(),t=s.city.sample.transit,p=t.passengerLocal,v=t.vehicles.find(v=>v.id===t.ridingVehicleId);
+    const finish=(reason,failure=null)=>({reason,failure,observations:a.observations,initialSimulationTime:a.baseSimulationTime,lastObservedLocal:p,lastSimulationTime:s.simulationTime});
+    if(Date.now()>=a.localDeadline||Date.now()>=a.wholeDeadline)return finish('original-deadline','original local/whole deadline');
+    if(s.teleportRevision!==a.revision)return finish('revision-failure','original cabin teleport revision');
+    if(t.ridingVehicleId!==a.vehicleId||!p||!v)return finish('riding-failure','original riding vehicle/passenger unavailable');
+    if(!['x','y','z'].every(k=>Number.isFinite(p[k]))||!Number.isFinite(s.simulationTime))return finish('nonfinite-failure','actual finite passenger/elapsed snapshot');
+    const radius=a.layout.passengerRadius,deck=a.layout.decks.reduce((x,y)=>Math.abs(x.y-p.y)<=Math.abs(y.y-p.y)?x:y);
+    if(!(p.x>=deck.minX+radius-.001&&p.x<=deck.maxX-radius+.001))return finish('radius-failure','original full passenger radius stays inside shell');
+    for(const b of a.layout.blockers)if(p.y+a.layout.passengerHeight>b.minY+.02&&p.y<b.maxY-.02){const x=Math.max(b.minX,Math.min(p.x,b.maxX)),z=Math.max(b.minZ,Math.min(p.z,b.maxZ));if(!(Math.hypot(p.x-x,p.z-z)>=radius-.015))return finish('blocker-failure','actual original-radius body does not occupy a seat/driver blocker');}
+    a.geometricMetres+=Math.hypot(p.x-a.lastLocal.x,p.z-a.lastLocal.z);a.lastLocal={x:p.x,y:p.y,z:p.z};
+    const held=a.heldBefore+Math.max(0,s.simulationTime-a.baseSimulationTime),metres=a.metresBefore+a.geometricMetres,gap=Math.hypot(a.target.x-p.x,a.target.z-p.z);
+    a.observations.push({local:{x:p.x,y:p.y,z:p.z},simulationTime:s.simulationTime,revision:s.teleportRevision,heldSeconds:held,geometricMetres:metres,horizontalGap:gap});
+    if(!(held<metres/.3+3))return finish('stall-failure','original real held-input stall guard');
+    if(a.busPrecisionNear?gap<.06:gap<=(a.ordinaryApproach?.7:.3))return finish('public-near-endpoint-correction');
+    const angle=n=>Math.atan2(Math.sin(n),Math.cos(n));
+    if(!Number.isFinite(s.camera?.yaw)||Math.abs(angle(s.camera.yaw-(v.yaw+a.localHeading-a.offset)))>=.025)return finish('public-direction-reaim');
+    return false;
+  }
   async function releasePointer(primary) {
     if (!activePointer) return;
     try { await bounded(()=>page.mouse.up(),5000,'mouse.up');activePointer=null; }
     catch (error) { if (primary) record.secondaryErrors.push(err(error,'mouse.up')); else throw error; }
   }
-  async function groundAxis(axis,target) {
+  // Only the Tram exterior can enter this finite public walking correction.
+  // A max catch-up ground step is .8*.25=.2m. Near a point it can jump across
+  // the original .06m ball. A short tangent step followed by an actual-heading
+  // step changes that lattice without changing gait, physics or the target.
+  async function groundPublicPointCorrection(target,p,initial,localDeadline) {
+    const revision=initial.teleportRevision,start=initial.position,restoreYaw=initial.camera.yaw,correction={type:'finite-public-two-dimensional-ground-precision',target,maxPublicPulses:8,initialPosition:start,samples:[],finalPosition:null};let current=initial;
+    const cap=()=>{const ms=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(ms>0,'original ground local/whole deadline');return ms;};
+    try {
+      for(let n=0;distance(current.position,target)>=.06&&n<8;n++) {
+        cap();healthy(current);assert.equal(current.teleportRevision,revision,'original ground teleport revision');
+        const before=current.position,dx=target.x-before.x,dz=target.z-before.z,gap=distance(before,target),longFrame=Number.isFinite(current.timing?.dt)&&.8*current.timing.dt>=.12,
+          tangent=longFrame&&gap<.75*(.8*current.timing.dt),yaw=Math.atan2(dx,dz)+(tangent?Math.PI/2:0),cycle={n,before,gap,tangent,publicYaw:yaw,inputs:[],after:null,firstError:null};let first=null;
+        await bounded(()=>aim(p,yaw),Math.min(60000,cap()),'original ground public mouse phase');cap();
+        const aligned=await read();healthy(aligned);assert.equal(aligned.teleportRevision,revision);assert.ok(Math.abs(angle(aligned.camera.yaw-yaw))<.025,'original actual ground public camera direction');
+        try {cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');cycle.inputs.push({action:'down',key:'w'});await page.keyboard.down('w');await page.waitForFunction(({before,revision})=>{const s=window.__NEON__.snapshot();if(s.teleportRevision!==revision)throw new Error('original ground teleport revision');return Math.hypot(s.position.x-before.x,s.position.z-before.z)>.009;},{before:aligned.position,revision},{polling:'raf',timeout:cap()});}
+        catch(error){first=error;cycle.firstError=err(error,'public ground point movement');}
+        finally {for(const k of ['w','z'])try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!first)first=error;else record.secondaryErrors.push(err(error,`public ground point keyup ${k}`));}}
+        correction.samples.push(cycle);if(first)throw first;
+        current=await read();cap();healthy(current);assert.equal(current.teleportRevision,revision);cycle.after=current.position;cycle.afterSimulationTime=current.simulationTime;
+        assert.ok(['x','y','z'].every(k=>Number.isFinite(current.position[k])),'actual finite ground position');
+        assert.ok(distance(start,current.position)<.65,'finite public ground correction stays within one original outdoor body radius of its start');
+      }
+      assert.ok(distance(current.position,target)<.06,'original final two-dimensional photo point precision');
+      await bounded(()=>aim(p,restoreYaw),Math.min(60000,cap()),'original ground camera restoration');cap();current=await read();assert.equal(current.teleportRevision,revision);assert.ok(distance(current.position,target)<.06,'original point remains precise after public camera restoration');correction.finalPosition=current.position;
+      return {current,correction};
+    }finally{record.groundPublicPointCorrections ||= [];record.groundPublicPointCorrections.push(correction);}
+  }
+  async function groundAxis(axis,target,p=null) {
     const initial=await read(), localDeadline=Date.now()+remaining(120000),samples=[];let current=initial,first=null,coarse=null,precisionStart=initial.position[axis],simulationBudgetSeconds=null;
     const localRemaining=()=>{const ms=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(ms>0,'original shared ground waypoint deadline');return ms;};
     try {
@@ -315,7 +440,12 @@ async function captureCase(kind) {
       }
       precisionStart=current.position[axis];
       for(let n=0;Math.abs(current.position[axis]-target)>=.06&&n<1800;n++) {
-        assert.ok(Date.now()<localDeadline);const sign=Math.sign(target-current.position[axis]),gap=Math.abs(target-current.position[axis]);
+        assert.ok(Date.now()<localDeadline);
+        const last=samples.at(-1),previous=samples.at(-2);
+        if(kind==='tram'&&axis==='x'&&p&&last?.after&&previous?.after&&Math.abs(current.position[axis]-previous.before)<.001&&Math.sign(last.after[axis]-target)!==Math.sign(previous.after[axis]-target)) {
+          const result=await groundPublicPointCorrection({x:target,z:initial.position.z},p,current,localDeadline);current=result.current;samples.push({stage:'finite-public-two-dimensional-ground-precision',...result.correction});break;
+        }
+        const sign=Math.sign(target-current.position[axis]),gap=Math.abs(target-current.position[axis]);
         const yaw=current.camera.yaw,choices=[{key:'w',x:Math.sin(yaw),z:Math.cos(yaw)},{key:'s',x:-Math.sin(yaw),z:-Math.cos(yaw)},{key:'d',x:-Math.cos(yaw),z:Math.sin(yaw)},{key:'a',x:Math.cos(yaw),z:-Math.sin(yaw)}].sort((a,b)=>sign*(b[axis]-a[axis]));
         assert.ok(Math.abs(choices[0][axis])>.995,'cardinal real walking');const key=choices[0].key,before=current.position[axis],step=Math.min(.15,Math.max(.009,gap-.03));let cycleError=null;
         const cycle={n,before,key,step,inputs:[]};
@@ -357,10 +487,25 @@ async function captureCase(kind) {
     const held=a.heldBefore+Math.max(0,s.simulationTime-a.baseSimulationTime),metres=a.metresBefore+a.geometricMetres,gap=Math.hypot(a.target.x-p.x,a.target.z-p.z);
     a.observations.push({local:{x:p.x,y:p.y,z:p.z},simulationTime:s.simulationTime,revision:s.teleportRevision,heldSeconds:held,geometricMetres:metres,horizontalGap:gap});
     if(!(held<metres/.3+3))return finish('stall-failure','original real held-input stall guard');
-    if(gap<=(a.ferryLongitudinalHold?1.2:a.ordinaryApproach?.7:.3))return finish('public-near-endpoint-correction');
+    if(a.ferryNearDeckHold?gap<.06:gap<=(a.ferryLongitudinalHold?1.2:a.ordinaryApproach?.7:.3))return finish('public-near-endpoint-correction');
     const angle=n=>Math.atan2(Math.sin(n),Math.cos(n));
-    if(!Number.isFinite(s.camera?.yaw)||Math.abs(angle(s.camera.yaw-(v.yaw+a.localHeading-a.offset)))>=.025)return finish('public-direction-reaim');
+    const checkedLocalHeading=a.ferryNearDeckHold?Math.atan2(a.target.x-p.x,a.target.z-p.z):a.localHeading;
+    if(!Number.isFinite(s.camera?.yaw)||Math.abs(angle(s.camera.yaw-(v.yaw+checkedLocalHeading-a.offset)))>=.025)return finish('public-direction-reaim');
     return false;
+  }
+  // Conservative actual-layout capsule bound: no same-height blocker may
+  // overlap the axis-aligned hull of this straight deck segment plus the full
+  // original passenger radius. No collision or target tolerance is relaxed.
+  function ferryFreeSameDeckSegment(layout,before,target) {
+    if(!['x','y','z'].every(k=>Number.isFinite(before[k])&&Number.isFinite(target[k])))return false;
+    const deck=layout.decks.find(d=>Math.abs(before.y-d.y)<.015&&Math.abs(target.y-d.y)<.015);
+    if(!deck)return false;
+    const r=layout.passengerRadius,minX=Math.min(before.x,target.x)-r,maxX=Math.max(before.x,target.x)+r,
+      minZ=Math.min(before.z,target.z)-r,maxZ=Math.max(before.z,target.z)+r;
+    if(minX<deck.minX-.001||maxX>deck.maxX+.001||minZ<deck.minZ-.001||maxZ>deck.maxZ+.001)return false;
+    if((deck.holes||[]).some(h=>maxX>h.minX&&minX<h.maxX&&maxZ>h.minZ&&minZ<h.maxZ))return false;
+    return layout.blockers.every(b=>!(before.y+layout.passengerHeight>b.minY+.02&&before.y<b.maxY-.02)
+      ||maxX<b.minX||minX>b.maxX||maxZ<b.minZ||minZ>b.maxZ);
   }
   async function walkLocal(target,p,layout,stage,{precision=true}={}) {
     const initial=await read(), revision=initial.teleportRevision, initialLocal=transit(initial).passengerLocal, localBudget=kind==='ferry'&&!precision&&Math.abs(target.x-initialLocal.x)<.06&&Math.abs(target.z-initialLocal.z)>=12?300000:150000, localDeadline=Date.now()+remaining(localBudget), samples=[initial];let current=initial,held=0,metres=0;
@@ -369,19 +514,27 @@ async function captureCase(kind) {
       for(let n=0;distance(target,transit(current).passengerLocal)>=.06&&n<1800;n++) {
         assert.ok(Date.now()<localDeadline);let before=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dx=target.x-before.x,dz=target.z-before.z;
         const key=Math.abs(dx)>Math.abs(dz)?dx>0?'a':'d':dz>0?'w':'s',offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key];
-        let desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=kind==='ferry'?await aimFerryCabin(p,target,key,{revision,vehicleId:transit(current).ridingVehicleId,layout,localDeadline}):await aim(p,desired,.15,{acceptCurrent:true});
-        if(kind==='ferry'){current=reusedFrame;before=transit(current).passengerLocal;v=vehicle(current,transit(current).ridingVehicleId);dx=target.x-before.x;dz=target.z-before.z;desired=v.yaw+Math.atan2(dx,dz)-offset;}
-        // Public normal gait covers original far bus/tram longitudinal and Ferry straight-axis approaches.
-        // Source max .25s step at 2.25m/s is .5625m, below twice the .7m handoff.
-        const ordinaryApproach=precision&&!precisionModifier.downAttempted&&((kind==='bus'||kind==='tram')&&Math.abs(dx)<.06&&Math.abs(dz)>.7||kind==='ferry'&&(Math.abs(dx)<.06||Math.abs(dz)<.06)&&distance(target,before)>.7);
+        let desired=v.yaw+Math.atan2(dx,dz)-offset;const reusedFrame=kind==='bus'?await aimBusCabin(p,target,key,{revision,vehicleId:transit(current).ridingVehicleId,layout,localDeadline}):kind==='ferry'?await aimFerryCabin(p,target,key,{revision,vehicleId:transit(current).ridingVehicleId,layout,localDeadline}):await aim(p,desired,.15,{acceptCurrent:true});
+        if(kind==='bus'||kind==='ferry'){current=reusedFrame;before=transit(current).passengerLocal;v=vehicle(current,transit(current).ridingVehicleId);dx=target.x-before.x;dz=target.z-before.z;desired=v.yaw+Math.atan2(dx,dz)-offset;}
+        // Bus ordinary input is only a far single-axis approach on one actual deck.
+        // Stair rise/descent targets retain slow gait. The source's unchanged
+        // 2.25m/s*.25s=.5625m max frame stays below twice the original .7m handoff.
+        const busSameDeckOrdinaryApproach=kind==='bus'&&(Math.abs(dx)<.06||Math.abs(dz)<.06)&&distance(target,before)>.7&&layout.decks.some(deck=>Math.abs(before.y-deck.y)<.015&&Math.abs(target.y-deck.y)<.015);
+        const ferryFlatDeckOrdinaryApproach=kind==='ferry'&&!precision&&!precisionModifier.downAttempted&&target.x===0&&distance(target,before)>.7&&ferryFreeSameDeckSegment(layout,before,target);
+        const ordinaryApproach=ferryFlatDeckOrdinaryApproach||precision&&!precisionModifier.downAttempted&&(busSameDeckOrdinaryApproach||kind==='tram'&&Math.abs(dx)<.06&&Math.abs(dz)>.7||kind==='ferry'&&(Math.abs(dx)<.06||Math.abs(dz)<.06)&&distance(target,before)>.7);
         const slow=ordinaryApproach?false:precision||distance(target,before)<1.2;
         // Ferry long centre-hall input retains the original ordinary/near1.2 gait.
-        const ferryLongitudinalHold=kind==='ferry'&&!precision&&Math.abs(dx)<.06&&Math.abs(dz)>1.2;
+        const ferryLongitudinalHold=kind==='ferry'&&!precision&&!ferryFlatDeckOrdinaryApproach&&Math.abs(dx)<.06&&Math.abs(dz)>1.2;
+        const ferryNearDeckHold=kind==='ferry'&&!precision&&slow&&distance(target,before)>.06&&ferryFreeSameDeckSegment(layout,before,target);
+        // Original Bus slow gait moves at most .075m/frame, less than twice
+        // the original .06m endpoint radius. Observe its near hold every RAF
+        // through the unchanged radius/revision/relative-direction/stall guards.
+        const busPrecisionNear=kind==='bus'&&precision&&distance(target,before)<=.3;
         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null,heldProbe=null;
-        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);if((precision&&distance(target,before)>.3&&(kind==='bus'||kind==='tram'||kind==='ferry'))||ferryLongitudinalHold){
-          cycle.publicHeldControl=ferryLongitudinalHold?'original ordinary public Ferry centre-hall gait to1.2m, then original slow near correction':ordinaryApproach?'ordinary public gait to .7m, then original slow near correction':'ordinary slow key through actual RAF observations, then original near correction';
+        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);if((precision&&distance(target,before)>.3&&(kind==='bus'||kind==='tram'||kind==='ferry'))||ferryFlatDeckOrdinaryApproach||ferryLongitudinalHold||ferryNearDeckHold||busPrecisionNear){
+          cycle.publicHeldControl=ferryFlatDeckOrdinaryApproach?'ordinary public Ferry free same-deck canonical centre approach to .7m, then original slow .3m/s':busPrecisionNear?'original public Bus precision gait to original .06m actual endpoint':ferryNearDeckHold?'original slow public Ferry same-deck free-segment gait through actual RAF to strict .06m endpoint':ferryLongitudinalHold?'original ordinary public Ferry centre-hall gait to1.2m, then original slow near correction':ordinaryApproach?'ordinary public gait to .7m, then original slow near correction':'ordinary slow key through actual RAF observations, then original near correction';
           const cap=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original finite local/whole movement deadline');
-          heldProbe=await page.waitForFunction(cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[],...(ordinaryApproach?{ordinaryApproach:true}:{}),...(ferryLongitudinalHold?{ferryLongitudinalHold:true}:{})},{polling:'raf',timeout:cap});
+          heldProbe=await page.waitForFunction(kind==='bus'?busCabinHeldObservation:cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[],...(ordinaryApproach?{ordinaryApproach:true}:{}),...(ferryLongitudinalHold?{ferryLongitudinalHold:true}:{}),...(ferryNearDeckHold?{ferryNearDeckHold:true}:{}),...(busPrecisionNear?{busPrecisionNear:true}:{})},{polling:'raf',timeout:cap});
         }else await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
         finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;allMovementReleased=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
@@ -423,16 +576,18 @@ async function captureCase(kind) {
       if(modifierReleaseError&&first===modifierReleaseError)throw modifierReleaseError;
     }
   }
-  async function waitBerth(id, stopId=null) {
+  async function waitBerth(id, stopId=null,{minimumRemaining=null}={}) {
+    assert.ok(minimumRemaining===null||kind==='ferry'&&minimumRemaining===3.25,'only the fixed Ferry photo OPEN reserve amendment');
     const berthBudgetMs=kind==='tram'||kind==='ferry'?1200000:600000;
     const phaseDeadline=Date.now()+remaining(berthBudgetMs),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:berthBudgetMs,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};
     if(kind==='tram'){phase.originalBudgetMs=600000;phase.budgetAmendment='finite-tram-normal-service-observed-wall-rate';}
     if(kind==='ferry'){phase.originalBudgetMs=600000;phase.budgetAmendment='explicit-finite-ferry-original600-failure-observed-service-progress';}
+    if(minimumRemaining!==null)phase.photoOpenReserve={minimumRemainingSeconds:minimumRemaining,originalGeneralBerthMinimumStrictlyGreaterThan:2,source:'actual recorded Ferry photo maximum3.0sim seconds plus one.25sim frame'};
     record.berthWaits.push(phase);
     await observePhaseProgress(phase,'before-wait',id,phaseDeadline);
     try {
       const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite berth phase/whole deadline');
-      await page.waitForFunction(({id,stopId})=>{const t=window.__NEON__.snapshot().city.sample.transit,v=id?t.vehicles.find(v=>v.id===id):t.vehicles.find(v=>v.stopId===stopId&&v.doorsOpen&&v.remaining>2);return v?.stopId&&(!stopId||v.stopId===stopId)&&v.doorsOpen&&v.remaining>2;},{id,stopId},{polling:'raf',timeout:cap});
+      await page.waitForFunction(({id,stopId,minimumRemaining})=>{const t=window.__NEON__.snapshot().city.sample.transit,enough=v=>minimumRemaining===null?v.remaining>2:v.remaining>=minimumRemaining,v=id?t.vehicles.find(v=>v.id===id):t.vehicles.find(v=>v.stopId===stopId&&v.doorsOpen&&enough(v));return v?.stopId&&(!stopId||v.stopId===stopId)&&v.doorsOpen&&enough(v);},{id,stopId,minimumRemaining},{polling:'raf',timeout:cap});
       assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite berth phase/whole deadline');phase.status='SATISFIED';
     }catch(error){phase.firstError=err(error,'scheduled berth');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',id,null,error);throw error;}
     finally{phase.finishedAt=new Date().toISOString();}
@@ -472,7 +627,7 @@ async function captureCase(kind) {
     const immediateBoardedLower=stage==='lower'&&(kind==='bus'||kind==='tram');
     if(immediateBoardedLower)attempt.phaseAmendment='same-boarded-lower-local-pose-current-dock-or-travel-no-extra-berth-wait';
     try {
-      if(!immediateBoardedLower)await waitBerth(id);await validateResources(id);const aligned=await read();await aim(p,vehicle(aligned,id).yaw+relativeYaw);
+      if(!immediateBoardedLower)await waitBerth(id,null,kind==='ferry'?{minimumRemaining:3.25}:{});await validateResources(id);const aligned=await read();if(kind==='ferry')attempt.photoOpenReserve={minimumRemainingSecondsAtWait:3.25,actualRemainingAtPostResourceCameraRead:vehicle(aligned,id).remaining,actualStopId:vehicle(aligned,id).stopId};await aim(p,vehicle(aligned,id).yaw+relativeYaw);
       const before=await read();attempt.before=before;const proofBefore=photoPose(before,id,target,relativeYaw,bodyYaw,immediateBoardedLower);attempt.proofBefore=proofBefore;
       const path=resolve(folder,`${stage}.png`);attempt.imageFile=`${stage}.png`;await page.screenshot({path,timeout:remaining(90000)});attempt.screenshotCompleted=true;
       const after=await read();attempt.after=after;const proofAfter=photoPose(after,id,target,relativeYaw,bodyYaw,immediateBoardedLower);attempt.proofAfter=proofAfter;
@@ -498,7 +653,7 @@ async function captureCase(kind) {
       let p=await pointer();await aim(p,0);await groundAxis('x',stop.board.x);await groundAxis('z',stop.board.z);await releasePointer(null);
       const {layout,spec}=canonical[kind],door=layout.doors.find(d=>d.id===stop.doorId),outerGap=kind==='ferry'?2.0:1.0,outLocal={x:door.side*(spec.halfWidth+outerGap),y:(kind==='ferry'?stop.board.y:0)-(stop.berth.y||0),z:door.z},outWorld=worldOf(outLocal,stop.berth);
       if(kind==='ferry')assert.ok(distance(outWorld,stop.board)<.001,'ferry exterior photo remains on actual public pier board point');record.exteriorMethod={outerGap,outLocal,outWorld,outdoorRadius:.65};
-      assert.ok(outerGap>=.65+.20+.06,'unchanged outdoor radius .65 plus margin and endpoint allowance');p=await pointer();await aim(p,0);await groundAxis('x',outWorld.x);await groundAxis('z',outWorld.z);
+      assert.ok(outerGap>=.65+.20+.06,'unchanged outdoor radius .65 plus margin and endpoint allowance');p=await pointer();await aim(p,0);await groundAxis('x',outWorld.x,p);await groundAxis('z',outWorld.z);
       await waitBerth(null,stop.id);const boardingState=await read(),boardingVehicle=transit(boardingState).vehicles.find(v=>v.stopId===stop.id&&v.doorsOpen);assert.ok(boardingVehicle);
       await photo('exterior',boardingVehicle.id,outLocal,door.side<0?Math.PI/2:-Math.PI/2,-door.side*Math.PI/2,p);await releasePointer(null);const beforeE=await read(),open=vehicle(beforeE,boardingVehicle.id);assert.equal(open.stopId,stop.id);assert.ok(open.doorsOpen&&open.remaining>.6);assert.ok(distance(beforeE.position,stop.board)<2.6);const boardingDeadline=Date.now()+remaining(30000);await page.keyboard.press('e');await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.ridingVehicleId===id,boardingVehicle.id,{timeout:Math.max(1,boardingDeadline-Date.now())});await renderedCameraReady('boarding-E-current-rendered-camera',boardingDeadline);
       const boarded=await read(),id=transit(boarded).ridingVehicleId,revision=boarded.teleportRevision,stair=layout.stairs[0];assert.equal(transit(boarded).passengerDeck,'lower');record.boarded=boarded;

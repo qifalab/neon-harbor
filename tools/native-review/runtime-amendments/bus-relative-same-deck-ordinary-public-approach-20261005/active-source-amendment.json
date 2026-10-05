@@ -1,0 +1,114 @@
+{
+  "status": "BUS_RELATIVE_SAME_REAL_DECK_PUBLIC_APPROACH_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
+  "parentHEAD": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+  "previousActualToolSHA256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50",
+  "intermediateFrozenBc6SHA256": "bc6c797acfe611f728a8930b60b2408ef25f7195b998118a3af5bdc500db4977",
+  "candidateToolSHA256": "d7c9c9d10709667bab1e3cf612f5485608b1b3b4d1202b9ecbd1ba9bdb1acce4",
+  "runtimeSourceChanged": false,
+  "nativeExecuted": false,
+  "originalFailurePreserved": true,
+  "newPairedHighRequired": true,
+  "publicGaitAmendment": "Bus precision without an alreadyheldZ may choose existing ordinaryWASD only when one localaxis error<.06, fullgap>.7, and actualcurrent/targetheight both within.015 of thesame actuallayoutdeck. At.7 handoff the originalZslow and strict.06 endpointresume. Unlike oldbus longitudinalpredicate, actual stairrise/descent and nondeckheight never qualify; allcanonical stairtargets remain. This changes publictest key choices, not sourcegamespeed.",
+  "sourceOrdinaryGaitUnchanged": {
+    "ordinaryMetresPerSecond": 2.25,
+    "originalSlowMetresPerSecond": 0.3,
+    "maxActualFrameSimSeconds": 0.25,
+    "ordinaryFrameMaxMetres": 0.5625,
+    "twiceHandoffMetres": 1.4,
+    "guardIsActualCurrentCameraNotMouseForecast": true
+  },
+  "originalBudgetsPrecisionsBodyCollisionEAndCanonicalRoutesPreserved": true,
+  "sourceScopeProof": {
+    "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/SOURCE_LITERAL_AND_REACHABLE_SCOPE_PROOF.json",
+    "bytes": 2358,
+    "sha256": "a3b2aa30475e60c7e4938a9241df146b42edbbea28d21c4ecd1ccc1827af7912"
+  },
+  "exactActualParentReversal": {
+    "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/EXACT_SOURCE_REVERSAL_TO_ACTUAL_199.json",
+    "bytes": 18017,
+    "sha256": "c06ca4c1756e6c2638d71441d75233102c433a4410d7ad697fc7b65d908c24aa"
+  },
+  "sourceCPUReceipt": {
+    "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/source-derived-control-receipt.json",
+    "bytes": 6216,
+    "sha256": "faeab236187787991b4e865a5ba591e23278ec377919ab1cd81af9588b66b405"
+  },
+  "closedReport": {
+    "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/CLOSED_CANDIDATE2_REPORT.json",
+    "bytes": 11189,
+    "sha256": "1aaaa560c668d2838fe7b697c8432c40dcf613351d0ed89ccd0a18ca289ad928"
+  },
+  "limitations": [
+    "Source CPU only; no native WebGL/browser execution, screenshots, resource/render/FPS acceptance or HighPASS.",
+    "Actual HarborTransitService, collision-supported movePassenger, stepPlayer, ChaseCamera and FixedStepClock are used. The public key/mouse and RPC/RAF adapter approximates their browser delivery; it does not execute the full webpage or dynamic world traffic/pedestrian timeline.",
+    "Capturedpressure uses exact originally recorded serviceTime/passenger/camera and the recorded wallDt list from original aimPhases14:27 repeated as an adapter sequence, plus explicit synthetic500ms for eachRPC. Native lacks a complete chronological frame/input delivery trace, so this is not exact native replay or a promise of wall-time performance.",
+    "The original bc6 candidate remains frozen with11passed checks and1captured-pressure failure. It had no priorSEAL.json; this package archives its bytes and does not invent an original seal or reclassify thatfailure.",
+    "Candidate2 first run incorrectly expected sustained17.3326s frames to fail as inbc6. The actual candidate2 succeeds; first11PASS/1expectationfailure script/receipt/log are retained. The new60s fixture still fails the unaltered150s phase and releases keys.",
+    "The inherited CPU full-route adapter used the firstdifferentStop market. The final fixture now selects the exact originalnative destinationLantern and originaldoor target. Both the intermediate16-check market receipt/script and final canonical16-check evidence are preserved. Runtime route and native publicplan were never edited.",
+    "A quartersecond of extra source frames before each directionkeyup is a deliberate adverseCPU release fixture. All12canonical endpoints/support/radius remain valid, but arbitrary native release delays are not guaranteed.",
+    "Original High baselinePASS/authoredFAIL remains the old actualpair; no pass transfers to this changed protocol. Fresh pairedHigh forBus is required. Source-defaultquality/gait/physics/body/collision/clock are unchanged."
+  ],
+  "combinedSuccessorIntegration": {
+    "role": "ISOLATED_CANDIDATE_PROPOSAL_PROVENANCE_NOT_ACTIVE_TOOL",
+    "isolatedCandidateToolSHA256": "d7c9c9d10709667bab1e3cf612f5485608b1b3b4d1202b9ecbd1ba9bdb1acce4",
+    "originalIsolatedAmendment": {
+      "path": "/workspace/neon-candidates/bus-same-deck-ordinary-public-approach-candidate2-20261005/payload/tools/native-review/runtime-amendments/bus-relative-same-deck-ordinary-public-approach-20261005/active-source-amendment.json",
+      "bytes": 4543,
+      "sha256": "ef29afd74caddf1399fb4babbe7b42b1f954422296d1d116ba1dec725cf5aa84"
+    },
+    "activeMergedTool": {
+      "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 86526,
+      "sha256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6"
+    },
+    "pairedHighPassTransferred": false,
+    "resourceAndPhysicsPinsChanged": false,
+    "productionRuntimeChanged": false,
+    "historicalWhole40MergedTool": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 86526,
+      "sha256": "49d75a136afba3b991af91f7c794fde6e4e28aaacf3ccfc9ec5293b98dde809f"
+    }
+  },
+  "ferryLower4SuccessorComposition": {
+    "status": "FERRY_LOCAL_MECHANICS_CPU_READY_WHOLE40_TIMETABLE_PRESSURE_BLOCKED_NATIVE_UNREADY",
+    "historicalCombinedF7ActiveTool": {
+      "path": "/workspace/neon-candidates/harbor-public-controller-repair-successor-20261005/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 83268,
+      "sha256": "f7e240aa376debd77da42fa2524c56ccc2941cccd7458025c5c0ab20ed1073c8"
+    },
+    "FerryOnlySuccessorAmendment": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/payload/tools/native-review/runtime-amendments/ferry-actual-lower4-forecast-and-free-deck-public-control-20261005/active-source-amendment.json",
+      "bytes": 3842,
+      "sha256": "4412682210fc6726a01c114ffebbb37376763f4acbb89e9dd095fb2e547dd82d"
+    },
+    "originalBusOrTramMechanismAndEvidenceUnchanged": true,
+    "whole40NativeUnready": true,
+    "historicalOnly": true,
+    "historicalSourcePackagePath": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005"
+  },
+  "activeMergedTool": {
+    "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+    "bytes": 86526,
+    "sha256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6"
+  },
+  "ferryWhole50SuccessorComposition": {
+    "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
+    "historicalWhole40ActiveTool": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/payload/tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 86526,
+      "sha256": "49d75a136afba3b991af91f7c794fde6e4e28aaacf3ccfc9ec5293b98dde809f"
+    },
+    "budgetAmendment": {
+      "path": "tools/native-review/runtime-amendments/ferry-whole50-calibrated-original-high-software-renderer-20261005/active-source-amendment.json",
+      "bytes": 8274,
+      "sha256": "447c7bbf3400f875888c1538166c345884e1be3cf5794ec03496bd49ad3d77ca"
+    },
+    "oldWhole40PacketPreservedBlocked": true,
+    "ferryWholeMs": 3000000,
+    "busTramWholeMs": 2400000,
+    "allMethodCodeExceptOneFerryWholeLiteralUnchangedFrom49d": true,
+    "nativeCaptureComplete": false,
+    "FerryJobMinutes": 130
+  }
+}

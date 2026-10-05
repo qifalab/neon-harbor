@@ -1,0 +1,168 @@
+{
+  "status": "FINAL_MECHANICS_READY_NATIVE_PENDING_50_CALIBRATED",
+  "parentProductionHEAD": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+  "activeMergedTool": {
+    "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+    "bytes": 86526,
+    "sha256": "63cfafcc388fd68fd4a4c442edc55563028530467f6dc3ed7d0c0070f7919ad6"
+  },
+  "authorization": "ROOT explicitly authorizes new Ferry-only50min variant cap; routine finite CI calibration, not a user product requirement or art/performance acceptance. Preserve original40min failures and defaultHigh. Final ROOT decision Ferry paired CI110\u2192130min; other23jobs unchanged.",
+  "originalWhole40Package": {
+    "manifest": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/PAYLOAD_MANIFEST.json",
+      "bytes": 2664,
+      "sha256": "51a16f4a10b6adcb5268fe7ec95cb80dbc91a7beb06dc2502c8ddaadd449c311"
+    },
+    "seal": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/SEAL.json",
+      "bytes": 8384,
+      "sha256": "c8f02f7f89854670a423397ccfdcb5d6d97531be4e21b8c282e4cb71df993422"
+    },
+    "status": "FERRY_LOCAL_MECHANICS_CPU_READY_WHOLE40_TIMETABLE_PRESSURE_BLOCKED_NATIVE_UNREADY",
+    "originalWhole40FailedPacketUnmodified": true
+  },
+  "actualCurrent199OriginalFailure": {
+    "runId": 37307587808,
+    "artifactId": 11348187182,
+    "originalZipBytes": 609426281,
+    "originalZipSHA256": "63cc3e86950cb5aa425f1a2af69d27761a0382a111372756f19ca0b66186e3b3",
+    "baselineFirstFailure": "actual lower-4 relative aim60000ms",
+    "authoredFirstFailure": "actual lower-4 whole2400000ms",
+    "originalFailuresRemainFAILED": true
+  },
+  "finiteCalibration": {
+    "oldFerryWholeMs": 2400000,
+    "newFerryWholeMs": 3000000,
+    "addedAllowanceMs": 600000,
+    "allowanceAsFractionOfOldBound": 0.25,
+    "allowanceAsFractionOfNewBound": 0.2,
+    "meaning": "Ten additional finite minutes allow measured CI software-rendering source timetable plus actual RPC/data/capture/resource/cleanup uncertainty; those costs are not measured by the CPU envelope and completion is not guaranteed. This changes a collector limit, not game simulation speed, FPS, quality, traffic or hardware performance.",
+    "sameControllerSourcePressureRows": [
+      {
+        "role": "baseline",
+        "wholeMs": 3000000,
+        "measuredBracketSourceCPUConsumedMs": 2343910.7746480093,
+        "remainingBoundMs": 656089.2253519907,
+        "sourceFinalNorthOpen": {
+          "sourceStopId": "harbor-ferry-north",
+          "sourceDoorsOpen": true,
+          "sourceServiceTime": 121.99999999999436,
+          "keysReleased": true,
+          "strictEndpointGap": 0.00830484639052532,
+          "actualPublicExitENotExecuted": true
+        },
+        "isNativePass": false
+      },
+      {
+        "role": "authored",
+        "wholeMs": 3000000,
+        "measuredBracketSourceCPUConsumedMs": 2431475.3108109348,
+        "remainingBoundMs": 568524.6891890652,
+        "sourceFinalNorthOpen": {
+          "sourceStopId": "harbor-ferry-north",
+          "sourceDoorsOpen": true,
+          "sourceServiceTime": 121.96666666666103,
+          "keysReleased": true,
+          "strictEndpointGap": 0.045182429726163716,
+          "actualPublicExitENotExecuted": true
+        },
+        "isNativePass": false
+      }
+    ],
+    "old40PressureReceipt": {
+      "path": "/workspace/neon-candidates/current199-ferry-lower4-public-controller-derivative-20261005/evidence/WHOLE40_ORIGINAL_OPEN_TIMETABLE_PRESSURE_RECEIPT.json",
+      "bytes": 24937,
+      "sha256": "574960f5149666b38048ea1c925f5a9250de45e82aa59d21ee18245dcd496088"
+    },
+    "new50PressureReceipt": {
+      "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/WHOLE50_ORIGINAL_OPEN_TIMETABLE_PRESSURE_RECEIPT.json",
+      "bytes": 25133,
+      "sha256": "fc57202d755cc3f0cd6fb5755441e94ad27a46f6b2440c9f0f65d1e647d811cb"
+    }
+  },
+  "finiteCI": {
+    "oldFerryJobMinutes": 110,
+    "newFerryJobMinutes": 130,
+    "busTramJobMinutesUnchanged": 110,
+    "preparationCapSecondsUnchanged": 1200,
+    "outerCleanupGracePerVariantSecondsUnchanged": 120,
+    "perVariantOwnedWatchdogSeconds": 3120,
+    "worstPreparationPlusBothWatchdogsSeconds": 7440,
+    "jobBoundSeconds": 7800,
+    "strictWorstUpperBoundFitsJob": true,
+    "limitation": "130min CI accommodates fixed20min CPU preparation plus two52min owned watchdogs and a finite6min checkout/upload allowance. This is a declared finite allowance, not proof of native completion or artifact upload duration. Actual CPU/GPU execution and human art review remain pending.",
+    "nativeWorkflowUnchanged": {
+      "path": "/workspace/neon-candidates/harbor-public-controller-repair-successor-20261005/.github/workflows/native-art.yml",
+      "bytes": 5779,
+      "sha256": "c50cdc8dd0b6622430ada81d6ee59b6f3d73063c99199d278627cb6fe9237720"
+    },
+    "runnerUnchanged": {
+      "path": "/workspace/neon-candidates/harbor-public-controller-repair-successor-20261005/tools/native-review/run-paired-native.py",
+      "bytes": 34285,
+      "sha256": "c9ca521c91edb9d2720c913bc7bf9e3a5cf6fcf6909c66fe74c0acb139951cd6"
+    },
+    "catalog": {
+      "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/payload/tools/native-review/cases.json",
+      "bytes": 12836,
+      "sha256": "ed894e9cd081676b142a86674c3c7c836ba4bfeb8a6b5a4c33186531091e3dc3"
+    },
+    "matrix": {
+      "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/payload/tools/native-review/native-matrix.json",
+      "bytes": 2758,
+      "sha256": "1d1dde4dcccd49d428a33590f73bf6b1d6e75bd8053222da61bfc4c7c608b451"
+    },
+    "checkoutUploadFiniteMarginSeconds": 360,
+    "first120MinuteJobPlanHistory": {
+      "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/FIRST_PLANNED_120_JOB_LIMITATION_HISTORY.json",
+      "bytes": 414,
+      "sha256": "a0348f3ace543f75e8d27364dff799e901095da28666dde359d6d6e0918afedd"
+    }
+  },
+  "preserved": {
+    "busWholeMs": 2400000,
+    "tramWholeMs": 2400000,
+    "aimMs": 60000,
+    "ferryLongHallMs": 300000,
+    "ordinaryLocalMs": 150000,
+    "maxLocalIterations": 1800,
+    "endpointXZ": 0.06,
+    "endpointY": 0.15,
+    "yawRadians": 0.025,
+    "pitchRadians": 0.003,
+    "radius": 0.3,
+    "FerryPhotoActualOpenReserveSeconds": 3.25,
+    "defaultBerthMinimumStrictlyGreaterThanSeconds": 2,
+    "all12OriginalCanonicalPoints": true,
+    "strictActualOpenPhotoPoseBeforeAndAfter": true,
+    "originalUpperOpenRefusedEAndFinalNorthE": true,
+    "originalHighRuntimeAssetResourcesAndPhysics": true
+  },
+  "sourceCPUReceipts": [
+    {
+      "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/FINAL_RESERVED_SOURCE_CPU_RECEIPT.json",
+      "bytes": 151887,
+      "sha256": "abf67312a7f5ad28bb0b7e4d21748be5e518a92e228473527ba4bbba0503e9b7"
+    },
+    {
+      "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/FINAL_RESERVED_OPEN_AND_IDENTITY_NEGATIVE_CPU_RECEIPT.json",
+      "bytes": 4379,
+      "sha256": "6de607b3fe0cc77258dc161cc070b0d570fb6534c81c2c7d19c6f7e3e178c71b"
+    }
+  ],
+  "sourceCPUPassedGroups": 20,
+  "literalBudgetInverseProof": {
+    "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/EXACT_WHOLE50_ONLY_SOURCE_REVERSAL.json",
+    "bytes": 958,
+    "sha256": "d440925afc1979bba46ef49e291521a978996f2da99fe1127ec48f6198b68d7c"
+  },
+  "literalCatalogMatrixInverseProof": {
+    "path": "/workspace/neon-candidates/current199-ferry-whole50-calibrated-public-controller-derivative-20261005/evidence/EXACT_FERRY_ONLY_CATALOG_MATRIX_REVERSAL.json",
+    "bytes": 4340,
+    "sha256": "fb9155113b8ed435f405c1c72132eb372173b97a4f161856967a1475eb04e4ff"
+  },
+  "nativeExecuted": false,
+  "GPUBuildNetworkCommitOrDispatchExecuted": false,
+  "nativeCaptureComplete": false,
+  "artAcceptance": false,
+  "runtimePerformanceImprovementClaim": false
+}

@@ -1,0 +1,4620 @@
+{
+  "status": "ACCEPT_LOCAL_SLOW_WALK_SHORTER_STRIDE_AND_SOFT_STOP_STANCE_ONLY_NO_FULL_MOTION_ACCEPTANCE",
+  "reviewer": "/root/south_method_review",
+  "reviewedAt": "2026-10-05T15:03:45.003667+00:00",
+  "actuallyViewedOriginalPNGCount": 20,
+  "actuallyViewedAllBefore10AndCandidate10": true,
+  "originalResolution": [
+    1280,
+    800
+  ],
+  "baselineFramework": {
+    "path": "/workspace/neon-candidates/resident-motion-before199-original-pixels-independent-comparison-framework-20261005",
+    "sealSHA256": "e96c825104076b1e9e235252c929f40af9e8a99b6d7e333056b3fa942a7ac7fb",
+    "baselineReceiptSHA256": "af5d34071110c733121aba50e005d5db2bd79d7d6cb50b6b8f6a7b5e1847b8e4"
+  },
+  "sourceAndClosureBothRoles": {
+    "before": {
+      "metadataPath": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/metadata.json",
+      "metadataSHA256": "82f6c29f86d60879cb1c97dd70e345744a002c22b0386641f7916cccf9346e90",
+      "summarySHA256": "bf26a72f9e4b8d67045b43c4e3f1efac53e00341fe06050494354ec0351b4afb",
+      "executor": {
+        "argv": [
+          "node",
+          "/workspace/neon-candidates/resident-motion-public-idle-slowwalk-stop-high-method-preparation-20261005/capture-resident-motion.mjs",
+          "--mode",
+          "before",
+          "--output",
+          "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native",
+          "--gpu-go",
+          "yes",
+          "--port",
+          "5240"
+        ],
+        "cwd": "/workspace/neon-candidates/harbor-ferry-relative-aim-final-20261005",
+        "startedAt": "2026-10-05T14:38:38.132715+00:00",
+        "timeoutSeconds": 1020,
+        "outerWatchdogOnly": true,
+        "originalPlayableBudgetUnchanged": true,
+        "signals": [],
+        "ownedRunnerPid": 260821,
+        "launchRootIdentity": {
+          "pid": 260821,
+          "state": "R",
+          "ppid": 260804,
+          "pgid": 260821,
+          "session": 260821,
+          "startTicks": 9463815,
+          "firstObservedAt": "2026-10-05T14:38:38.155035+00:00",
+          "lastObservedAt": "2026-10-05T14:38:38.155065+00:00",
+          "lastState": "R",
+          "pidfdBound": true,
+          "launchRoot": true
+        },
+        "launchRootBoundBeforeAnyPollWait": true,
+        "exitCode": 0,
+        "reportedBrowserProcessChecks": [
+          {
+            "pid": 260861,
+            "actualProcState": null,
+            "recordedPidAbsentOrZombie": true,
+            "observedIdentity": null
+          }
+        ],
+        "ownedProcesses": [
+          {
+            "pid": 260821,
+            "state": "R",
+            "ppid": 260804,
+            "pgid": 260821,
+            "session": 260821,
+            "startTicks": 9463815,
+            "firstObservedAt": "2026-10-05T14:38:38.155035+00:00",
+            "lastObservedAt": "2026-10-05T14:49:26.450557+00:00",
+            "lastState": "Z",
+            "pidfdBound": true,
+            "launchRoot": true
+          },
+          {
+            "pid": 260864,
+            "state": "S",
+            "ppid": 260861,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9463928,
+            "firstObservedAt": "2026-10-05T14:38:39.495919+00:00",
+            "pidfdBound": true,
+            "lastState": "Z",
+            "lastObservedAt": "2026-10-05T14:49:26.450539+00:00"
+          },
+          {
+            "pid": 260907,
+            "state": "R",
+            "ppid": 260864,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9463935,
+            "firstObservedAt": "2026-10-05T14:38:39.519807+00:00",
+            "pidfdBound": true,
+            "lastState": "Z",
+            "lastObservedAt": "2026-10-05T14:49:25.147611+00:00"
+          },
+          {
+            "pid": 260879,
+            "state": "S",
+            "ppid": 260863,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9463930,
+            "firstObservedAt": "2026-10-05T14:38:39.537942+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:49:25.147612+00:00"
+          },
+          {
+            "pid": 260881,
+            "state": "S",
+            "ppid": 260861,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9463930,
+            "firstObservedAt": "2026-10-05T14:38:39.548398+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:49:25.147614+00:00"
+          },
+          {
+            "pid": 260861,
+            "state": "S",
+            "ppid": 260821,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9463926,
+            "firstObservedAt": "2026-10-05T14:38:39.557726+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:49:25.147617+00:00"
+          },
+          {
+            "pid": 260863,
+            "state": "S",
+            "ppid": 260861,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9463928,
+            "firstObservedAt": "2026-10-05T14:38:39.566801+00:00",
+            "pidfdBound": true,
+            "lastState": "Z",
+            "lastObservedAt": "2026-10-05T14:49:26.450559+00:00"
+          },
+          {
+            "pid": 260929,
+            "state": "S",
+            "ppid": 260861,
+            "pgid": 260861,
+            "session": 260861,
+            "startTicks": 9464964,
+            "firstObservedAt": "2026-10-05T14:38:49.807711+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:49:25.147609+00:00"
+          }
+        ],
+        "remainingOwnedProcesses": [],
+        "ownedClosureConfirmed": true,
+        "portClosure": {
+          "port": 5240,
+          "connectErrno": 111,
+          "confirmedRefused": true
+        },
+        "finishedAt": "2026-10-05T14:49:26.519562+00:00"
+      },
+      "ownedBrowserClose": {
+        "before": {
+          "pid": 260861,
+          "state": "R",
+          "ppid": 260821,
+          "startTicks": "9463926"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 15524,
+        "exitCode": 0,
+        "signalCode": null,
+        "forcedExit": false,
+        "graceful": true,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true
+      },
+      "closedAt": "2026-10-05T14:49:26.131Z",
+      "summaryFinishedAt": "2026-10-05T14:49:26.905669+00:00",
+      "freezeBeforeAfterExact": true,
+      "actualSourceRuntimeMethodBytesRechecked": true,
+      "actualBuildRevision": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+      "uncommittedPreview": false,
+      "actualBuildInfoSHA256": "780ae30fd6085ae473e0c41873f02adc8d78abe7024ed302717181b8ab8b6639",
+      "selectedSourceInputSuperset": 711,
+      "actualSourceFiles": 709,
+      "runtimeCount": 208,
+      "runtimeSourceModules": 69,
+      "verifiedDeclaredEvidenceFiles": 47,
+      "originalWholeBudgetMinutes": 15,
+      "outerOwnedCleanupSeconds": 120,
+      "firstError": null,
+      "errors": [],
+      "secondaryErrors": [],
+      "finalizationErrors": [],
+      "playableComplete": true,
+      "finishedBeforeDeadline": true,
+      "originalSetupCount": 1,
+      "heroes": 2,
+      "motionFrames": 8,
+      "directPrivateWrites": 0,
+      "retry": false,
+      "noImagePostProcessing": true,
+      "sourceRoleRecordedGitHEAD": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+      "sourceRoleRecordedGitStatus": "?? node_modules\n",
+      "gitInvokedByIndependentReviewer": false,
+      "observations": [
+        {
+          "phase": "idle",
+          "rafSamples": 14,
+          "wallMilliseconds": 55877,
+          "simulationSeconds": 2.0666666666666895,
+          "traceRows": 14
+        },
+        {
+          "phase": "walk",
+          "rafSamples": 35,
+          "wallMilliseconds": 207590,
+          "simulationSeconds": 8.249999999999531,
+          "traceRows": 35
+        },
+        {
+          "phase": "stop",
+          "rafSamples": 9,
+          "wallMilliseconds": 45578,
+          "simulationSeconds": 2.016666666666552,
+          "traceRows": 9
+        }
+      ]
+    },
+    "candidate": {
+      "metadataPath": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/metadata.json",
+      "metadataSHA256": "10121a65f62ebe5789b7b665d85d110f3564418c898f5312fe5164e6fa354ed0",
+      "summarySHA256": "99ef5fe0ac440b9b2ecf67477a6fc279278da1c8c632326b504b9b6cddbd8d83",
+      "executor": {
+        "argv": [
+          "node",
+          "/workspace/neon-candidates/resident-motion-public-idle-slowwalk-stop-high-method-preparation-20261005/capture-resident-motion.mjs",
+          "--mode",
+          "candidate",
+          "--output",
+          "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native",
+          "--gpu-go",
+          "yes",
+          "--port",
+          "5240",
+          "--reference",
+          "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/metadata.json",
+          "--reference-sha256",
+          "82f6c29f86d60879cb1c97dd70e345744a002c22b0386641f7916cccf9346e90"
+        ],
+        "cwd": "/workspace/neon-candidates/harbor-resident-motion-craft-successor-20261005",
+        "startedAt": "2026-10-05T14:49:52.786703+00:00",
+        "timeoutSeconds": 1020,
+        "outerWatchdogOnly": true,
+        "originalPlayableBudgetUnchanged": true,
+        "signals": [],
+        "ownedRunnerPid": 261948,
+        "launchRootIdentity": {
+          "pid": 261948,
+          "state": "R",
+          "ppid": 261931,
+          "pgid": 261948,
+          "session": 261948,
+          "startTicks": 9531281,
+          "firstObservedAt": "2026-10-05T14:49:52.807227+00:00",
+          "lastObservedAt": "2026-10-05T14:49:52.807239+00:00",
+          "lastState": "R",
+          "pidfdBound": true,
+          "launchRoot": true
+        },
+        "launchRootBoundBeforeAnyPollWait": true,
+        "exitCode": 0,
+        "reportedBrowserProcessChecks": [
+          {
+            "pid": 261992,
+            "actualProcState": null,
+            "recordedPidAbsentOrZombie": true,
+            "observedIdentity": null
+          }
+        ],
+        "ownedProcesses": [
+          {
+            "pid": 261948,
+            "state": "R",
+            "ppid": 261931,
+            "pgid": 261948,
+            "session": 261948,
+            "startTicks": 9531281,
+            "firstObservedAt": "2026-10-05T14:49:52.807227+00:00",
+            "lastObservedAt": "2026-10-05T14:58:50.195351+00:00",
+            "lastState": "Z",
+            "pidfdBound": true,
+            "launchRoot": true
+          },
+          {
+            "pid": 262019,
+            "state": "S",
+            "ppid": 261992,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9531394,
+            "firstObservedAt": "2026-10-05T14:49:54.141730+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:58:49.150123+00:00"
+          },
+          {
+            "pid": 261992,
+            "state": "S",
+            "ppid": 261948,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9531389,
+            "firstObservedAt": "2026-10-05T14:49:54.155599+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:58:49.150142+00:00"
+          },
+          {
+            "pid": 261994,
+            "state": "S",
+            "ppid": 261992,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9531391,
+            "firstObservedAt": "2026-10-05T14:49:54.170657+00:00",
+            "pidfdBound": true,
+            "lastState": "Z",
+            "lastObservedAt": "2026-10-05T14:58:50.195307+00:00"
+          },
+          {
+            "pid": 261995,
+            "state": "S",
+            "ppid": 261992,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9531391,
+            "firstObservedAt": "2026-10-05T14:49:54.184751+00:00",
+            "pidfdBound": true,
+            "lastState": "Z",
+            "lastObservedAt": "2026-10-05T14:58:50.195348+00:00"
+          },
+          {
+            "pid": 262040,
+            "state": "S",
+            "ppid": 261995,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9531399,
+            "firstObservedAt": "2026-10-05T14:49:54.198892+00:00",
+            "pidfdBound": true,
+            "lastState": "Z",
+            "lastObservedAt": "2026-10-05T14:58:49.150146+00:00"
+          },
+          {
+            "pid": 262011,
+            "state": "S",
+            "ppid": 261994,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9531393,
+            "firstObservedAt": "2026-10-05T14:49:54.209931+00:00",
+            "pidfdBound": true,
+            "lastState": "R",
+            "lastObservedAt": "2026-10-05T14:58:49.150147+00:00"
+          },
+          {
+            "pid": 262083,
+            "state": "S",
+            "ppid": 261992,
+            "pgid": 261992,
+            "session": 261992,
+            "startTicks": 9532498,
+            "firstObservedAt": "2026-10-05T14:50:05.168111+00:00",
+            "pidfdBound": true,
+            "lastState": "S",
+            "lastObservedAt": "2026-10-05T14:58:49.150140+00:00"
+          }
+        ],
+        "remainingOwnedProcesses": [],
+        "ownedClosureConfirmed": true,
+        "portClosure": {
+          "port": 5240,
+          "connectErrno": 111,
+          "confirmedRefused": true
+        },
+        "finishedAt": "2026-10-05T14:58:50.275457+00:00"
+      },
+      "ownedBrowserClose": {
+        "before": {
+          "pid": 261992,
+          "state": "S",
+          "ppid": 261948,
+          "startTicks": "9531389"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 15785,
+        "exitCode": 0,
+        "signalCode": null,
+        "forcedExit": false,
+        "graceful": true,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true
+      },
+      "closedAt": "2026-10-05T14:58:50.082Z",
+      "summaryFinishedAt": "2026-10-05T14:58:50.665602+00:00",
+      "freezeBeforeAfterExact": true,
+      "actualSourceRuntimeMethodBytesRechecked": true,
+      "actualBuildRevision": null,
+      "uncommittedPreview": true,
+      "actualBuildInfoSHA256": "79afe441e4baaef89ce7e8b3f0562d24a076b4293d8398172ab83378c1f0dfef",
+      "selectedSourceInputSuperset": 711,
+      "actualSourceFiles": 711,
+      "runtimeCount": 209,
+      "runtimeSourceModules": 70,
+      "verifiedDeclaredEvidenceFiles": 47,
+      "originalWholeBudgetMinutes": 15,
+      "outerOwnedCleanupSeconds": 120,
+      "firstError": null,
+      "errors": [],
+      "secondaryErrors": [],
+      "finalizationErrors": [],
+      "playableComplete": true,
+      "finishedBeforeDeadline": true,
+      "originalSetupCount": 1,
+      "heroes": 2,
+      "motionFrames": 8,
+      "directPrivateWrites": 0,
+      "retry": false,
+      "noImagePostProcessing": true,
+      "sourceRoleRecordedGitHEAD": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+      "sourceRoleRecordedGitStatus": " M src/harbor-life-renderer.js\n M src/main.js\n M src/metropolis-people.js\n M src/resident-core-assets.js\n?? src/resident-near-motion.js\n?? tests/resident-near-motion.test.js\n",
+      "gitInvokedByIndependentReviewer": false,
+      "observations": [
+        {
+          "phase": "idle",
+          "rafSamples": 13,
+          "wallMilliseconds": 55528,
+          "simulationSeconds": 2.0666666666667695,
+          "traceRows": 13
+        },
+        {
+          "phase": "walk",
+          "rafSamples": 41,
+          "wallMilliseconds": 118100,
+          "simulationSeconds": 8.116666666666205,
+          "traceRows": 40
+        },
+        {
+          "phase": "stop",
+          "rafSamples": 12,
+          "wallMilliseconds": 50051,
+          "simulationSeconds": 2.066666666666549,
+          "traceRows": 12
+        }
+      ]
+    }
+  },
+  "originalFilesAndPoses": {
+    "before": {
+      "01-idle-front-fullbody": {
+        "kind": "hero",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/01-idle-front-fullbody-high.png",
+          "bytes": 1236838,
+          "sha256": "0e54147ae32fef07d36eb9f3473f242897a3f4f88ce37a6f1498a63f65b18e71",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/01-idle-front-fullbody-pose.json",
+          "bytes": 300590,
+          "sha256": "3dffce2afbc170d25900cf486269f25feb6c2e820540826e4251dd752a816a47"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466666666714,
+              "y": 2.3434199189903744,
+              "z": -436.02666790423393
+            },
+            "target": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "focus": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 17.633333333333614,
+          "renderedActorWorldPosition": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466666666714,
+              "y": 2.3434199189903744,
+              "z": -436.02666790423393
+            },
+            "target": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "focus": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 19.883333333333486,
+          "renderedActorWorldPosition": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null
+      },
+      "02-stopped-side-fullbody": {
+        "kind": "hero",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/02-stopped-side-fullbody-high.png",
+          "bytes": 1055114,
+          "sha256": "3809b4f1a79f2c6478d060de362eece246ba37e4d4fe9c3efecd359de54e7f60",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/02-stopped-side-fullbody-pose.json",
+          "bytes": 302402,
+          "sha256": "df4179ddf612bb87ec9758e2fe1be7c07447d2a03fcfd7922d80994a5b847f79"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.746667867861,
+              "y": 2.3434199189903744,
+              "z": -429.42666790423993
+            },
+            "target": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "focus": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 31.31666666666617,
+          "renderedActorWorldPosition": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.746667867861,
+              "y": 2.3434199189903744,
+              "z": -429.42666790423993
+            },
+            "target": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "focus": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 34.066666666666016,
+          "renderedActorWorldPosition": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null
+      },
+      "idle-05": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/idle-05-original-canvas-high.png",
+          "bytes": 1786643,
+          "sha256": "602d726a92034c35c00e77a2634dae31eeb1aeb90a815e0ec43b3ca7eb1a4feb",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/idle-05-pose.json",
+          "bytes": 25143,
+          "sha256": "702926538747f8d7f0c749e1e07059130817c79080d485170fbd0bdd0d462678"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466666581256,
+              "y": 2.343419922911758,
+              "z": -436.0266678765056
+            },
+            "target": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "focus": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "yaw": 1.570796144800799,
+            "pitch": 0.08000000000000002,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 15.166666666667,
+          "renderedActorWorldPosition": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466666581256,
+              "y": 2.343419922911758,
+              "z": -436.0266678765056
+            },
+            "target": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "focus": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "yaw": 1.570796144800799,
+            "pitch": 0.08000000000000002,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 15.166666666667,
+          "renderedActorWorldPosition": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "idle",
+        "planned": {
+          "label": "idle-05",
+          "phase": "idle",
+          "simulationOffset": 0.5
+        },
+        "threshold": 0.5,
+        "rafIndex": 2,
+        "wallOffsetMs": 31330
+      },
+      "idle-15": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/idle-15-original-canvas-high.png",
+          "bytes": 1786834,
+          "sha256": "28ad9ec3d12341d657d7ac4068e6df7cb238beb100287e575b47f3950a019413",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/idle-15-pose.json",
+          "bytes": 25112,
+          "sha256": "eab815a1df31f3813d689d747bb78b861bc2b3c328b8073d38211b3d99513692"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466666666711,
+              "y": 2.3434199189905254,
+              "z": -436.0266679042328
+            },
+            "target": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "focus": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "yaw": 1.5707961448007313,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 16.183333333333696,
+          "renderedActorWorldPosition": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466666666711,
+              "y": 2.3434199189905254,
+              "z": -436.0266679042328
+            },
+            "target": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "focus": {
+              "x": -579.9466666666716,
+              "y": 1.35,
+              "z": -436.0266666666736
+            },
+            "yaw": 1.5707961448007313,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 16.183333333333696,
+          "renderedActorWorldPosition": {
+            "x": -579.9466666666716,
+            "y": 0,
+            "z": -436.0266666666736
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "idle",
+        "planned": {
+          "label": "idle-15",
+          "phase": "idle",
+          "simulationOffset": 1.5
+        },
+        "threshold": 1.5,
+        "rafIndex": 10,
+        "wallOffsetMs": 55503
+      },
+      "walk-065": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-065-original-canvas-high.png",
+          "bytes": 1778780,
+          "sha256": "d7304672a8ff7f91587d01bc143fa68300defd57547cb2886a92bf04f8524daf",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-065-pose.json",
+          "bytes": 25241,
+          "sha256": "e91ac6f6b907c800b0b89d5370d35e047994db7a2bf4645cf91f5aa08fa91f72"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466668122703,
+            "y": 0,
+            "z": -435.2266666666743,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466667872382,
+              "y": 2.3434199189903744,
+              "z": -435.36420817714804
+            },
+            "target": {
+              "x": -579.9466668017938,
+              "y": 1.35,
+              "z": -435.2842311064891
+            },
+            "focus": {
+              "x": -579.9466668098826,
+              "y": 1.35,
+              "z": -435.23978666667426
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.88333333333343,
+          "renderedActorWorldPosition": {
+            "x": -579.9466668098826,
+            "y": 0,
+            "z": -435.23978666667426
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466668122703,
+            "y": 0,
+            "z": -435.2266666666743,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466667872382,
+              "y": 2.3434199189903744,
+              "z": -435.36420817714804
+            },
+            "target": {
+              "x": -579.9466668017938,
+              "y": 1.35,
+              "z": -435.2842311064891
+            },
+            "focus": {
+              "x": -579.9466668098826,
+              "y": 1.35,
+              "z": -435.23978666667426
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.88333333333343,
+          "renderedActorWorldPosition": {
+            "x": -579.9466668098826,
+            "y": 0,
+            "z": -435.23978666667426
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "walk",
+        "planned": {
+          "label": "walk-065",
+          "phase": "walk",
+          "metres": 0.65
+        },
+        "threshold": -435.3766666666736,
+        "rafIndex": 3,
+        "wallOffsetMs": 64992
+      },
+      "walk-090": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-090-original-canvas-high.png",
+          "bytes": 1773299,
+          "sha256": "02428db2c95af90c17a8440299752855504061f4027fc9dbb12f0306330c2163",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-090-pose.json",
+          "bytes": 25310,
+          "sha256": "c708df5081f8aa30e6f4417be3e2276cd3a686f6cd64df0b52930d62655c03d7"
+        },
+        "before": {
+          "position": {
+            "x": -579.94666684867,
+            "y": 0,
+            "z": -435.0266666666745,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466668236339,
+              "y": 2.3434199189903744,
+              "z": -435.1642303632067
+            },
+            "target": {
+              "x": -579.9466668381934,
+              "y": 1.35,
+              "z": -435.0842311110674
+            },
+            "focus": {
+              "x": -579.9466668462823,
+              "y": 1.35,
+              "z": -435.03978666667444
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.133333333333415,
+          "renderedActorWorldPosition": {
+            "x": -579.9466668462823,
+            "y": 0,
+            "z": -435.03978666667444
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.94666684867,
+            "y": 0,
+            "z": -435.0266666666745,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466668236339,
+              "y": 2.3434199189903744,
+              "z": -435.1642303632067
+            },
+            "target": {
+              "x": -579.9466668381934,
+              "y": 1.35,
+              "z": -435.0842311110674
+            },
+            "focus": {
+              "x": -579.9466668462823,
+              "y": 1.35,
+              "z": -435.03978666667444
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.133333333333415,
+          "renderedActorWorldPosition": {
+            "x": -579.9466668462823,
+            "y": 0,
+            "z": -435.03978666667444
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "walk",
+        "planned": {
+          "label": "walk-090",
+          "phase": "walk",
+          "metres": 0.9
+        },
+        "threshold": -435.1266666666736,
+        "rafIndex": 4,
+        "wallOffsetMs": 72186
+      },
+      "walk-115": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-115-original-canvas-high.png",
+          "bytes": 1766692,
+          "sha256": "22938ea31749270ffbbeca62ad58f4b91c47294498e478c0abc7c29cc880a6a3",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-115-pose.json",
+          "bytes": 25393,
+          "sha256": "bb4ccd79a5a023b299c5ae9a3c91d7e416754f0cc9ae77d8122208394ef6815e"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466668850697,
+            "y": 0,
+            "z": -434.82666666667467,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466668600332,
+              "y": 2.3434199189903744,
+              "z": -434.9642321856868
+            },
+            "target": {
+              "x": -579.9466668745931,
+              "y": 1.35,
+              "z": -434.8842311111185
+            },
+            "focus": {
+              "x": -579.9466668826819,
+              "y": 1.35,
+              "z": -434.8397866666746
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.3833333333334,
+          "renderedActorWorldPosition": {
+            "x": -579.9466668826819,
+            "y": 0,
+            "z": -434.8397866666746
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466668850697,
+            "y": 0,
+            "z": -434.82666666667467,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466668600332,
+              "y": 2.3434199189903744,
+              "z": -434.9642321856868
+            },
+            "target": {
+              "x": -579.9466668745931,
+              "y": 1.35,
+              "z": -434.8842311111185
+            },
+            "focus": {
+              "x": -579.9466668826819,
+              "y": 1.35,
+              "z": -434.8397866666746
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.3833333333334,
+          "renderedActorWorldPosition": {
+            "x": -579.9466668826819,
+            "y": 0,
+            "z": -434.8397866666746
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "walk",
+        "planned": {
+          "label": "walk-115",
+          "phase": "walk",
+          "metres": 1.15
+        },
+        "threshold": -434.8766666666736,
+        "rafIndex": 5,
+        "wallOffsetMs": 79583
+      },
+      "walk-140": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-140-original-canvas-high.png",
+          "bytes": 1758539,
+          "sha256": "84ee3d8556706d2f698a873f34023184a7346999b653e29a26cd3bc071fbb4c7",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/walk-140-pose.json",
+          "bytes": 25338,
+          "sha256": "01e4aa7794d7f0a341c11b69ce3e5a829c35fb6b9f65c2b8c39574dc2d68c1b8"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466669578691,
+            "y": 0,
+            "z": -434.42666666667503,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466669328325,
+              "y": 2.3434199189903744,
+              "z": -434.5642323475814
+            },
+            "target": {
+              "x": -579.9466669473925,
+              "y": 1.35,
+              "z": -434.4842311111194
+            },
+            "focus": {
+              "x": -579.9466669554813,
+              "y": 1.35,
+              "z": -434.439786666675
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.883333333333372,
+          "renderedActorWorldPosition": {
+            "x": -579.9466669554813,
+            "y": 0,
+            "z": -434.439786666675
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466669578691,
+            "y": 0,
+            "z": -434.42666666667503,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466669328325,
+              "y": 2.3434199189903744,
+              "z": -434.5642323475814
+            },
+            "target": {
+              "x": -579.9466669473925,
+              "y": 1.35,
+              "z": -434.4842311111194
+            },
+            "focus": {
+              "x": -579.9466669554813,
+              "y": 1.35,
+              "z": -434.439786666675
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.883333333333372,
+          "renderedActorWorldPosition": {
+            "x": -579.9466669554813,
+            "y": 0,
+            "z": -434.439786666675
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "walk",
+        "planned": {
+          "label": "walk-140",
+          "phase": "walk",
+          "metres": 1.4
+        },
+        "threshold": -434.6266666666736,
+        "rafIndex": 7,
+        "wallOffsetMs": 93218
+      },
+      "stop-05": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/stop-05-original-canvas-high.png",
+          "bytes": 1588183,
+          "sha256": "2b91ab85134684f054bb36a3d3ce110f4f4533489e1b408e484ea85bbedc4b9d",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/stop-05-pose.json",
+          "bytes": 25257,
+          "sha256": "12c56cc8746841ae84b8a186da88dec2d74a31610a18eae40b1ff9c7a327f7d3"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466678678567,
+              "y": 2.3434199189903744,
+              "z": -429.426692013453
+            },
+            "target": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666712851
+            },
+            "focus": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 29.13333333333296,
+          "renderedActorWorldPosition": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7466678678567,
+              "y": 2.3434199189903744,
+              "z": -429.426692013453
+            },
+            "target": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666712851
+            },
+            "focus": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 29.13333333333296,
+          "renderedActorWorldPosition": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "stop",
+        "planned": {
+          "label": "stop-05",
+          "phase": "stop",
+          "simulationOffset": 0.5
+        },
+        "threshold": 0.5,
+        "rafIndex": 3,
+        "wallOffsetMs": 33702
+      },
+      "stop-15": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/stop-15-original-canvas-high.png",
+          "bytes": 1586796,
+          "sha256": "97cf65e8fa98d396e3917381524d98b6155c5e289470941162a72fed631e6d8e",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-before199-owned-high-20261005/native/stop-15-pose.json",
+          "bytes": 25265,
+          "sha256": "95189a7d37831b049b1d44d7f60265482b028fa0b51d54ffdab2ffdb981525c2"
+        },
+        "before": {
+          "position": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.746667867861,
+              "y": 2.3434199189903744,
+              "z": -429.42666790775513
+            },
+            "target": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "focus": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 30.016666666666243,
+          "renderedActorWorldPosition": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.746667867861,
+              "y": 2.3434199189903744,
+              "z": -429.42666790775513
+            },
+            "target": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "focus": {
+              "x": -579.9466678678612,
+              "y": 1.35,
+              "z": -429.4266666666796
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 30.016666666666243,
+          "renderedActorWorldPosition": {
+            "x": -579.9466678678612,
+            "y": 0,
+            "z": -429.4266666666796
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [],
+        "candidateOnlyCachedPoseBones": null,
+        "sourceMotionMetadata": null,
+        "phase": "stop",
+        "planned": {
+          "label": "stop-15",
+          "phase": "stop",
+          "simulationOffset": 1.5
+        },
+        "threshold": 1.5,
+        "rafIndex": 7,
+        "wallOffsetMs": 45348
+      }
+    },
+    "candidate": {
+      "01-idle-front-fullbody": {
+        "kind": "hero",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/01-idle-front-fullbody-high.png",
+          "bytes": 1235295,
+          "sha256": "bb27f679541ebdd21c3a52ac08b9248a57d045fd60c12e856145a974bd7f6384",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/01-idle-front-fullbody-pose.json",
+          "bytes": 320562,
+          "sha256": "7518b1410e2e6c1fc759a5bbbca5d9f443d6f2b42b261e18048ef1d5c13a6cda"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333333333384,
+              "y": 2.3434199189903744,
+              "z": -436.0266679042332
+            },
+            "target": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "focus": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 16.616666666667005,
+          "renderedActorWorldPosition": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333333333384,
+              "y": 2.3434199189903744,
+              "z": -436.0266679042332
+            },
+            "target": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "focus": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 19.0500000000002,
+          "renderedActorWorldPosition": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.8586323700943,
+              "y": 0.9192058483390906,
+              "z": -436.0354922266701
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9041025216343,
+              "y": 1.0900136901094999,
+              "z": -436.0354922266701
+            },
+            "quaternion": [
+              0.0014521721664409206,
+              -4.984110018803654e-06,
+              0.003432151863924369,
+              0.9999930557282588
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.985012762921,
+              "y": 1.59284549212158,
+              "z": -436.0389454800431
+            },
+            "quaternion": [
+              0.0018152228677482233,
+              3.1150727327355484e-06,
+              -0.001716077441009404,
+              0.9999968800123594
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.9424069974776,
+              "y": 0.08794193113251147,
+              "z": -435.83335420841064
+            },
+            "quaternion": [
+              -0.034044956701937266,
+              -0.0032505345603331404,
+              -0.00849401900354433,
+              0.999378920424782
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -579.9424069974777,
+              "y": 0.08794193113251891,
+              "z": -436.21997912493504
+            },
+            "quaternion": [
+              -0.042230643325759154,
+              0.0022873136232614,
+              -0.002027512705289551,
+              0.9991032129629608
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-idle",
+          "distancePhase": 0,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.9424069974777,
+                0.08794193113252224,
+                -435.83335420841064
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.9424069974777,
+                0.08794193113252224,
+                -436.21997912493504
+              ]
+            }
+          ]
+        },
+        "limitedPixelFinding": "Both front hero views are clear full-body. Candidate remains close to baseline at this scale; no major idle facial/skin/wardrobe quality gain claimed."
+      },
+      "02-stopped-side-fullbody": {
+        "kind": "hero",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/02-stopped-side-fullbody-high.png",
+          "bytes": 1055968,
+          "sha256": "fd3a16f4e3aa64e5f0af268b169ff641ac41c475a286f40be81f4888bde37bae",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/02-stopped-side-fullbody-pose.json",
+          "bytes": 321185,
+          "sha256": "c1c5b482588e0c15ef84806ddcb6afbaaad0165dfdb0d1d4b632124d7d06806e"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333345151147,
+              "y": 2.3434199189903744,
+              "z": -429.5333345709058
+            },
+            "target": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "focus": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 30.38333333333289,
+          "renderedActorWorldPosition": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333345151147,
+              "y": 2.3434199189903744,
+              "z": -429.53333457090577
+            },
+            "target": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "focus": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 32.88333333333275,
+          "renderedActorWorldPosition": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9363524073534,
+              "y": 0.8902058483390906,
+              "z": -429.60803429713894
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9363524156288,
+              "y": 1.0610136901094998,
+              "z": -429.5625641455989
+            },
+            "quaternion": [
+              0.0019203359557259353,
+              -2.2537650116538143e-06,
+              0.001173627613000335,
+              0.999997467448275
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9375332808078,
+              "y": 1.563779980504534,
+              "z": -429.48118309117893
+            },
+            "quaternion": [
+              0.0024004203546635606,
+              1.4086028878261893e-06,
+              -0.000586813298911576,
+              0.9999969468104835
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400220617452,
+              "y": 0.08794193113250964,
+              "z": -429.506446300691
+            },
+            "quaternion": [
+              -0.1060435496495495,
+              -0.009376091675762154,
+              -0.006718874465503695,
+              0.994294579693829
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266469866958,
+              "y": 0.08794193113254084,
+              "z": -429.4601510999208
+            },
+            "quaternion": [
+              -0.07142489339320003,
+              0.0048853250481937175,
+              0.0030318521567412747,
+              0.9974294090688538
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-idle",
+          "distancePhase": 8.324034188026681,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400220617451,
+                0.08794193113252224,
+                -429.506446300691
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -580.1266469866958,
+                0.08794193113252224,
+                -429.4601510999208
+              ]
+            }
+          ]
+        },
+        "limitedPixelFinding": "Candidate shows slightly flexed knees and a softer lower-body stance compared with straight-legged baseline. Post-stop still image does not prove natural deceleration or smooth settling."
+      },
+      "idle-05": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/idle-05-original-canvas-high.png",
+          "bytes": 1786737,
+          "sha256": "8b65e43df80c5a4168ccfc4689de9c795aae69003a4dc76eeb2801946ecf4a5c",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/idle-05-pose.json",
+          "bytes": 29895,
+          "sha256": "77d94764ee2583d6a1d7ebfd5e3561aceb16bfbe0c7c198668ea3a5e5ab4f8d0"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333333314277,
+              "y": 2.3434199198670385,
+              "z": -436.02666789803436
+            },
+            "target": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "focus": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "yaw": 1.5707961448007364,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 14.183333333333618,
+          "renderedActorWorldPosition": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333333314277,
+              "y": 2.3434199198670385,
+              "z": -436.02666789803436
+            },
+            "target": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "focus": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "yaw": 1.5707961448007364,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 14.183333333333618,
+          "renderedActorWorldPosition": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.8586323700943,
+              "y": 0.9192058483390906,
+              "z": -436.0267656470305
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9041025216343,
+              "y": 1.0900136901094999,
+              "z": -436.0267656470305
+            },
+            "quaternion": [
+              -0.0018729663895053893,
+              7.20948990225775e-08,
+              3.849229378511729e-05,
+              0.9999982452560814
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9816669729563,
+              "y": 1.5933842967303193,
+              "z": -436.0268043762373
+            },
+            "quaternion": [
+              -0.0023412072182161037,
+              -4.5059297078542624e-08,
+              -1.9246127907335424e-05,
+              0.9999972591854169
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.9424069974779,
+              "y": 0.0879419311325334,
+              "z": -435.8333542084105
+            },
+            "quaternion": [
+              -0.038424429387510714,
+              -0.002843835243991122,
+              -0.0033003742325805503,
+              0.9992520119355648
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -579.9424069974779,
+              "y": 0.08794193113250365,
+              "z": -436.21997912493504
+            },
+            "quaternion": [
+              -0.038515789733186895,
+              0.0028329195471305524,
+              0.0031823638739675933,
+              0.999248908464874
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-idle",
+          "distancePhase": 0,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.9424069974777,
+                0.08794193113252224,
+                -435.83335420841064
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.9424069974777,
+                0.08794193113252224,
+                -436.21997912493504
+              ]
+            }
+          ]
+        },
+        "phase": "idle",
+        "planned": {
+          "label": "idle-05",
+          "phase": "idle",
+          "simulationOffset": 0.5
+        },
+        "threshold": 0.5,
+        "rafIndex": 3,
+        "wallOffsetMs": 31220,
+        "limitedPixelFinding": "Clear front full-body. Very similar upright silhouette to baseline, minor head/upper-body differences only; small movement not reliably established."
+      },
+      "idle-15": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/idle-15-original-canvas-high.png",
+          "bytes": 1786709,
+          "sha256": "ea052acf625e16dec3b6a91b9409083135d704987bce745c32ba7710c43f3ded",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/idle-15-pose.json",
+          "bytes": 29848,
+          "sha256": "978b490dcd66252e4500ec292d8c2823941dde24133ed22348e785970c66b660"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333333333382,
+              "y": 2.3434199189904144,
+              "z": -436.0266679042329
+            },
+            "target": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "focus": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "yaw": 1.5707961448007308,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 15.183333333333668,
+          "renderedActorWorldPosition": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333333333382,
+              "y": 2.3434199189904144,
+              "z": -436.0266679042329
+            },
+            "target": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "focus": {
+              "x": -579.9333333333385,
+              "y": 1.35,
+              "z": -436.02666666667284
+            },
+            "yaw": 1.5707961448007308,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 15.183333333333668,
+          "renderedActorWorldPosition": {
+            "x": -579.9333333333385,
+            "y": 0,
+            "z": -436.02666666667284
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.8586323700943,
+              "y": 0.9192058483390906,
+              "z": -436.0315309149432
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9041025216343,
+              "y": 1.0900136901094999,
+              "z": -436.0315309149432
+            },
+            "quaternion": [
+              -0.00035633966109023096,
+              6.740714740634166e-07,
+              0.00189165085686562,
+              0.9999981473375974
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9831934674462,
+              "y": 1.593143109849438,
+              "z": -436.0334342019407
+            },
+            "quaternion": [
+              -0.00044542516876769415,
+              -4.212948547168679e-07,
+              -0.0009458258177165208,
+              0.9999994535047327
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.9424069974777,
+              "y": 0.08794193113252191,
+              "z": -435.83335420841064
+            },
+            "quaternion": [
+              -0.03612145695879359,
+              -0.003084744733472977,
+              -0.006138561630289498,
+              0.9993237927509855
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -579.9424069974779,
+              "y": 0.0879419311325057,
+              "z": -436.219979124935
+            },
+            "quaternion": [
+              -0.04061779924221393,
+              0.002549985271653621,
+              0.0003392505017857858,
+              0.9991714451829228
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-idle",
+          "distancePhase": 0,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.9424069974777,
+                0.08794193113252224,
+                -435.83335420841064
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.9424069974777,
+                0.08794193113252224,
+                -436.21997912493504
+              ]
+            }
+          ]
+        },
+        "phase": "idle",
+        "planned": {
+          "label": "idle-15",
+          "phase": "idle",
+          "simulationOffset": 1.5
+        },
+        "threshold": 1.5,
+        "rafIndex": 10,
+        "wallOffsetMs": 55093,
+        "limitedPixelFinding": "Clear front full-body; candidate idle05/15 look nearly the same at this resolution. Two samples are insufficient for breathing or jitter acceptance."
+      },
+      "walk-065": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-065-original-canvas-high.png",
+          "bytes": 1775697,
+          "sha256": "bb1a791171a481862aa5cbaaabee80946fd9966a5326c2ce873ee9e6dab0b177",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-065-pose.json",
+          "bytes": 30193,
+          "sha256": "0f8543345abd54d8feafd9ae49c3763572fcf2be4ad6babbe51e6d049359da01"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333334789372,
+            "y": 0,
+            "z": -435.22666666667357,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.733333456223,
+              "y": 2.3434199189903744,
+              "z": -435.35147143979236
+            },
+            "target": {
+              "x": -579.9333334707804,
+              "y": 1.35,
+              "z": -435.2714844436619
+            },
+            "focus": {
+              "x": -579.9333334788693,
+              "y": 1.35,
+              "z": -435.22704000000687
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.30000000000013,
+          "renderedActorWorldPosition": {
+            "x": -579.9333334788693,
+            "y": 0,
+            "z": -435.22704000000687
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333334789372,
+            "y": 0,
+            "z": -435.22666666667357,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.733333456223,
+              "y": 2.3434199189903744,
+              "z": -435.35147143979236
+            },
+            "target": {
+              "x": -579.9333334707804,
+              "y": 1.35,
+              "z": -435.2714844436619
+            },
+            "focus": {
+              "x": -579.9333334788693,
+              "y": 1.35,
+              "z": -435.22704000000687
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.30000000000013,
+          "renderedActorWorldPosition": {
+            "x": -579.9333334788693,
+            "y": 0,
+            "z": -435.22704000000687
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9320739279333,
+              "y": 0.8902058483390906,
+              "z": -435.3017409630219
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9320739362087,
+              "y": 1.0610136901094998,
+              "z": -435.2562708114819
+            },
+            "quaternion": [
+              0.0012101405976290708,
+              7.621087359328725e-07,
+              -0.0006297681676533349,
+              0.9999990694751711
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9314403073878,
+              "y": 1.563896053340033,
+              "z": -435.17560396274683
+            },
+            "quaternion": [
+              0.0015126757643365318,
+              -4.7631791817765503e-07,
+              0.00031488396974469656,
+              0.9999988063292329
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400210620057,
+              "y": 0.08794193113253074,
+              "z": -434.9995663006859
+            },
+            "quaternion": [
+              0.13446050677286062,
+              0.013607734064138288,
+              -0.004319051664242655,
+              0.9908161017488294
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266459057312,
+              "y": 0.08794193113256826,
+              "z": -435.39956637104905
+            },
+            "quaternion": [
+              -0.19418769475316694,
+              0.018234250032603726,
+              0.005489933912533882,
+              0.9807795429951807
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-level-walk",
+          "distancePhase": 1.0251623931615197,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400210620059,
+                0.08794193113252224,
+                -434.9995663006859
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -580.126645905731,
+                0.08794193113252224,
+                -435.399566371049
+              ]
+            }
+          ]
+        },
+        "phase": "walk",
+        "planned": {
+          "label": "walk-065",
+          "phase": "walk",
+          "metres": 0.65
+        },
+        "threshold": -435.2266666666743,
+        "rafIndex": 4,
+        "wallOffsetMs": 31938,
+        "limitedPixelFinding": "Candidate has much shorter leg separation and shoes visually close to the paving; baseline has broad forward extension and high trailing-leg lift. Accept the more restrained slow-walk silhouette only."
+      },
+      "walk-090": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-090-original-canvas-high.png",
+          "bytes": 1770990,
+          "sha256": "779b931588b0acee63850527dffcf0ef48502390cf6e3eb280565db4df104d34",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-090-pose.json",
+          "bytes": 30172,
+          "sha256": "f656b109e6b174cf9abe7170cb53617c411dff651e94cd170e38c49da2cb36c9"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333335153369,
+            "y": 0,
+            "z": -435.02666666667375,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333334926203,
+              "y": 2.3434199189903744,
+              "z": -435.1514845127086
+            },
+            "target": {
+              "x": -579.9333335071801,
+              "y": 1.35,
+              "z": -435.07148444444266
+            },
+            "focus": {
+              "x": -579.9333335152689,
+              "y": 1.35,
+              "z": -435.02704000000705
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.550000000000114,
+          "renderedActorWorldPosition": {
+            "x": -579.9333335152689,
+            "y": 0,
+            "z": -435.02704000000705
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333335153369,
+            "y": 0,
+            "z": -435.02666666667375,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333334926203,
+              "y": 2.3434199189903744,
+              "z": -435.1514845127086
+            },
+            "target": {
+              "x": -579.9333335071801,
+              "y": 1.35,
+              "z": -435.07148444444266
+            },
+            "focus": {
+              "x": -579.9333335152689,
+              "y": 1.35,
+              "z": -435.02704000000705
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.550000000000114,
+          "renderedActorWorldPosition": {
+            "x": -579.9333335152689,
+            "y": 0,
+            "z": -435.02704000000705
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9254903995533,
+              "y": 0.8902058483390906,
+              "z": -435.10174096182396
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9254904078286,
+              "y": 1.0610136901094998,
+              "z": -435.05627081028393
+            },
+            "quaternion": [
+              0.0004215209271694386,
+              1.6530243125968626e-06,
+              -0.003921540660599116,
+              0.9999922218878619
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9215447822517,
+              "y": 1.56400758421987,
+              "z": -434.9763972367746
+            },
+            "quaternion": [
+              0.0005269041888217034,
+              -1.033142164192811e-06,
+              0.001960774001548042,
+              0.9999979388659875
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400210620058,
+              "y": 0.08794193113250642,
+              "z": -434.9995663006859
+            },
+            "quaternion": [
+              -0.10802014397328014,
+              -0.00745875669486023,
+              8.227652319176688e-05,
+              0.9941207213790146
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266459756084,
+              "y": 0.16293720305030673,
+              "z": -435.0156245927581
+            },
+            "quaternion": [
+              -0.22506174701284706,
+              0.024549707438010354,
+              0.015181191582613694,
+              0.9739168616049139
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-level-walk",
+          "distancePhase": 1.2815726495715472,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400210620059,
+                0.08794193113252224,
+                -434.9995663006859
+              ]
+            },
+            {
+              "side": "right",
+              "stance": false,
+              "reachable": true,
+              "ankleTarget": [
+                -580.1266459756087,
+                0.1629372030503159,
+                -435.0156245927581
+              ]
+            }
+          ]
+        },
+        "phase": "walk",
+        "planned": {
+          "label": "walk-090",
+          "phase": "walk",
+          "metres": 0.9
+        },
+        "threshold": -435.0266666666745,
+        "rafIndex": 5,
+        "wallOffsetMs": 35232,
+        "limitedPixelFinding": "Candidate shows an obvious bent-knee intermediate stance, smaller reach and lower arm swing than baseline. This does not quantify support, sole penetration, hip angle or sliding."
+      },
+      "walk-115": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-115-original-canvas-high.png",
+          "bytes": 1765974,
+          "sha256": "f6f4f2348ec2543c1ef99f75616deff0dafce0e1abeec435cb3dbd3b06d2789f",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-115-pose.json",
+          "bytes": 30108,
+          "sha256": "ad4cbc5bddeb2ade01976e314cacfaa2f299665d12eb9017ecc8e4e1e5c42664"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333335517366,
+            "y": 0,
+            "z": -434.82666666667393,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333335290199,
+              "y": 2.3434199189903744,
+              "z": -434.9514855860271
+            },
+            "target": {
+              "x": -579.9333335435798,
+              "y": 1.35,
+              "z": -434.87148444445154
+            },
+            "focus": {
+              "x": -579.9333335516686,
+              "y": 1.35,
+              "z": -434.82704000000723
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.8000000000001,
+          "renderedActorWorldPosition": {
+            "x": -579.9333335516686,
+            "y": 0,
+            "z": -434.82704000000723
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333335517366,
+            "y": 0,
+            "z": -434.82666666667393,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333335290199,
+              "y": 2.3434199189903744,
+              "z": -434.9514855860271
+            },
+            "target": {
+              "x": -579.9333335435798,
+              "y": 1.35,
+              "z": -434.87148444445154
+            },
+            "focus": {
+              "x": -579.9333335516686,
+              "y": 1.35,
+              "z": -434.82704000000723
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 20.8000000000001,
+          "renderedActorWorldPosition": {
+            "x": -579.9333335516686,
+            "y": 0,
+            "z": -434.82704000000723
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9352246951748,
+              "y": 0.8902058483390906,
+              "z": -434.9017409635957
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9352247034502,
+              "y": 1.0610136901094998,
+              "z": -434.8562708120557
+            },
+            "quaternion": [
+              -0.0004464961766758432,
+              4.221973334477025e-07,
+              0.0009455783154948296,
+              0.9999994532611681
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9361761140048,
+              "y": 1.5641600634704111,
+              "z": -434.7772705904714
+            },
+            "quaternion": [
+              -0.0005581203975483179,
+              -2.63873357964811e-07,
+              -0.00047278918407946547,
+              0.999999732485934
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400210620058,
+              "y": 0.08794193113252391,
+              "z": -434.99956630068596
+            },
+            "quaternion": [
+              -0.19400071775982494,
+              -0.01831460650886734,
+              -0.005874566731623209,
+              0.98081281912647
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266460513299,
+              "y": 0.08794193113253074,
+              "z": -434.5995663710497
+            },
+            "quaternion": [
+              0.13366738940927353,
+              -0.013569004109114829,
+              0.003946040679095148,
+              0.9909254966438977
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-level-walk",
+          "distancePhase": 1.5379829059815746,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400210620059,
+                0.08794193113252224,
+                -434.9995663006859
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -580.1266460513298,
+                0.08794193113252224,
+                -434.5995663710497
+              ]
+            }
+          ]
+        },
+        "phase": "walk",
+        "planned": {
+          "label": "walk-115",
+          "phase": "walk",
+          "metres": 1.15
+        },
+        "threshold": -434.82666666667467,
+        "rafIndex": 6,
+        "wallOffsetMs": 38648,
+        "limitedPixelFinding": "Candidate has a short separated stride with low shoe silhouettes, while baseline is near feet-together. Distinct pose progression is visible, but fixed motion phase equality is not established."
+      },
+      "walk-140": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-140-original-canvas-high.png",
+          "bytes": 1755707,
+          "sha256": "abb64c6a27fdc170b88f100c9e66aa3a5cd740218e78ffca6345208777b1550a",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/walk-140-pose.json",
+          "bytes": 30235,
+          "sha256": "23c629bd28ebd13fe8f53bf3494f35da12eb5f0fa7488a6f540da00b8b7356b4"
+        },
+        "before": {
+          "position": {
+            "x": -579.933333624536,
+            "y": 0,
+            "z": -434.4266666666743,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333336018046,
+              "y": 2.3434199189903744,
+              "z": -434.55156568136493
+            },
+            "target": {
+              "x": -579.9333336163646,
+              "y": 1.35,
+              "z": -434.47156444445204
+            },
+            "focus": {
+              "x": -579.9333336244534,
+              "y": 1.35,
+              "z": -434.4271200000076
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.30000000000007,
+          "renderedActorWorldPosition": {
+            "x": -579.9333336244534,
+            "y": 0,
+            "z": -434.4271200000076
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.933333624536,
+            "y": 0,
+            "z": -434.4266666666743,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333336018046,
+              "y": 2.3434199189903744,
+              "z": -434.55156568136493
+            },
+            "target": {
+              "x": -579.9333336163646,
+              "y": 1.35,
+              "z": -434.47156444445204
+            },
+            "focus": {
+              "x": -579.9333336244534,
+              "y": 1.35,
+              "z": -434.4271200000076
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 21.30000000000007,
+          "renderedActorWorldPosition": {
+            "x": -579.9333336244534,
+            "y": 0,
+            "z": -434.4271200000076
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9308279944016,
+              "y": 0.8902058483390906,
+              "z": -434.50182096279593
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.930828002677,
+              "y": 1.0610136901094998,
+              "z": -434.4563508112559
+            },
+            "quaternion": [
+              -0.00178238561769973,
+              -2.2329885361973946e-06,
+              -0.0012528059106061092,
+              0.9999976267841209
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9295675013069,
+              "y": 1.5643686592837864,
+              "z": -434.3786951652119
+            },
+            "quaternion": [
+              -0.0022279826698843883,
+              1.3956176932671615e-06,
+              0.0006264025185029102,
+              0.9999973218519936
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400212075901,
+              "y": 0.08794193113251464,
+              "z": -434.19964630068665
+            },
+            "quaternion": [
+              0.13292725396801125,
+              0.01353513282020855,
+              -0.0035829033819776814,
+              0.9910268957679294
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266460513298,
+              "y": 0.08794193113253784,
+              "z": -434.5995663710498
+            },
+            "quaternion": [
+              -0.19381044020435373,
+              0.018391281256698814,
+              0.006248613257540881,
+              0.9808466897909629
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-level-walk",
+          "distancePhase": 2.050700854699033,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400212075901,
+                0.08794193113252224,
+                -434.19964630068665
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -580.1266460513298,
+                0.08794193113252224,
+                -434.5995663710497
+              ]
+            }
+          ]
+        },
+        "phase": "walk",
+        "planned": {
+          "label": "walk-140",
+          "phase": "walk",
+          "metres": 1.4
+        },
+        "threshold": -434.42666666667503,
+        "rafIndex": 9,
+        "wallOffsetMs": 48951,
+        "limitedPixelFinding": "Candidate again keeps a short stride and low shoes, without the baseline large rear-leg lift/front-leg extension. Local visible stride improvement accepted."
+      },
+      "stop-05": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/stop-05-original-canvas-high.png",
+          "bytes": 1590351,
+          "sha256": "25e777956a3f024e44ed4c7d7a58acb76c9757779d55519f6e47a87dc4c958fb",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/stop-05-pose.json",
+          "bytes": 30051,
+          "sha256": "8501037c4c5c6ddab912c3ef3a8649b64037994be579d625fcc0865ccdabf1a1"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333345150829,
+              "y": 2.3434199189903744,
+              "z": -429.53350982770075
+            },
+            "target": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333334101872
+            },
+            "focus": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 28.166666666666348,
+          "renderedActorWorldPosition": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333345150829,
+              "y": 2.3434199189903744,
+              "z": -429.53350982770075
+            },
+            "target": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333334101872
+            },
+            "focus": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 28.166666666666348,
+          "renderedActorWorldPosition": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9423337979995,
+              "y": 0.8902058483390906,
+              "z": -429.60803429822755
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9423338062749,
+              "y": 1.0610136901094998,
+              "z": -429.5625641466875
+            },
+            "quaternion": [
+              -0.0010453250499765684,
+              3.658366619160923e-06,
+              0.003499717352515093,
+              0.9999933296080573
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9458550521961,
+              "y": 1.5642428950701373,
+              "z": -429.4841665617725
+            },
+            "quaternion": [
+              -0.0013066621801563244,
+              -2.2864824033712468e-06,
+              -0.0017498608175333576,
+              0.9999976153050757
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400220617452,
+              "y": 0.08794193113248622,
+              "z": -429.5064463006909
+            },
+            "quaternion": [
+              -0.10457549632610663,
+              -0.010368662283411507,
+              -0.010454269187128152,
+              0.9944079468037067
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266469866962,
+              "y": 0.08794193113256654,
+              "z": -429.4601510999208
+            },
+            "quaternion": [
+              -0.07272159796782975,
+              0.0038924043676821537,
+              -0.0007100325915338622,
+              0.9973444310923698
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-idle",
+          "distancePhase": 8.324034188026681,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400220617451,
+                0.08794193113252224,
+                -429.506446300691
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -580.1266469866958,
+                0.08794193113252224,
+                -429.4601510999208
+              ]
+            }
+          ]
+        },
+        "phase": "stop",
+        "planned": {
+          "label": "stop-05",
+          "phase": "stop",
+          "simulationOffset": 0.5
+        },
+        "threshold": 0.5,
+        "rafIndex": 3,
+        "wallOffsetMs": 34559,
+        "limitedPixelFinding": "Candidate holds a lightly bent-knee side stance after release; baseline is more straight-legged. No gross visual fold/hyperextension evident in this sampled pose."
+      },
+      "stop-15": {
+        "kind": "motion",
+        "image": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/stop-15-original-canvas-high.png",
+          "bytes": 1589484,
+          "sha256": "99b15e242acf663bac88206959b10abb4b8f1a61f1275e46553c2f0833ae608c",
+          "actuallyViewedOriginalResolution": true
+        },
+        "poseFile": {
+          "path": "/workspace/neon-evidence/resident-motion-candidate-null209-owned-high-20261005/native/stop-15-pose.json",
+          "bytes": 30143,
+          "sha256": "962bdabe2856662628e6c639bc5ddf75abae17bdf83c6717cb2851ecf6756fa8"
+        },
+        "before": {
+          "position": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333345151147,
+              "y": 2.3434199189903744,
+              "z": -429.53333465306696
+            },
+            "target": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.53333333334547
+            },
+            "focus": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 28.93333333333297,
+          "renderedActorWorldPosition": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454
+          }
+        },
+        "after": {
+          "position": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454,
+            "yaw": -1.8199416602099692e-07
+          },
+          "camera": {
+            "position": {
+              "x": -586.7333345151147,
+              "y": 2.3434199189903744,
+              "z": -429.53333465306696
+            },
+            "target": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.53333333334547
+            },
+            "focus": {
+              "x": -579.9333345151149,
+              "y": 1.35,
+              "z": -429.5333333333454
+            },
+            "yaw": 1.5707961448007306,
+            "pitch": 0.08,
+            "fov": 55,
+            "boomLength": 6.8721818322455785,
+            "desiredBoomLength": 6.8721818322455785,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 28.93333333333297,
+          "renderedActorWorldPosition": {
+            "x": -579.9333345151149,
+            "y": 0,
+            "z": -429.5333333333454
+          }
+        },
+        "actualRenderedActorY": {
+          "before": 0,
+          "after": 0
+        },
+        "poseBoneFields": [
+          "root",
+          "spine03",
+          "head",
+          "foot_L",
+          "foot_R"
+        ],
+        "candidateOnlyCachedPoseBones": {
+          "root": {
+            "worldPosition": {
+              "x": -579.9415638270129,
+              "y": 0.8902058483390906,
+              "z": -429.6080342980874
+            },
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          "spine03": {
+            "worldPosition": {
+              "x": -579.9415638352883,
+              "y": 1.0610136901094998,
+              "z": -429.56256414654734
+            },
+            "quaternion": [
+              -0.0018978907419634143,
+              6.073827661499178e-06,
+              0.0032002820207383664,
+              0.9999930780604573
+            ]
+          },
+          "head": {
+            "worldPosition": {
+              "x": -579.9447838122308,
+              "y": 1.5643778608107444,
+              "z": -429.48502475899886
+            },
+            "quaternion": [
+              -0.002372371737909056,
+              -3.796145866472441e-06,
+              -0.0016001414378669493,
+              0.9999959056842709
+            ]
+          },
+          "foot_L": {
+            "worldPosition": {
+              "x": -579.7400220617451,
+              "y": 0.08794193113252285,
+              "z": -429.50644630069104
+            },
+            "quaternion": [
+              -0.10477048264296981,
+              -0.010242646883779492,
+              -0.009973880805430543,
+              0.9943936624160739
+            ]
+          },
+          "foot_R": {
+            "worldPosition": {
+              "x": -580.1266469866956,
+              "y": 0.08794193113250776,
+              "z": -429.46015109992084
+            },
+            "quaternion": [
+              -0.07256069648610691,
+              0.004021743570965782,
+              -0.00022795381961781587,
+              0.9973558637423037
+            ]
+          }
+        },
+        "sourceMotionMetadata": {
+          "mode": "supported-idle",
+          "distancePhase": 8.324034188026681,
+          "resetCount": 0,
+          "contacts": [
+            {
+              "side": "left",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -579.7400220617451,
+                0.08794193113252224,
+                -429.506446300691
+              ]
+            },
+            {
+              "side": "right",
+              "stance": true,
+              "reachable": true,
+              "ankleTarget": [
+                -580.1266469866958,
+                0.08794193113252224,
+                -429.4601510999208
+              ]
+            }
+          ]
+        },
+        "phase": "stop",
+        "planned": {
+          "label": "stop-15",
+          "phase": "stop",
+          "simulationOffset": 1.5
+        },
+        "threshold": 1.5,
+        "rafIndex": 8,
+        "wallOffsetMs": 49689,
+        "limitedPixelFinding": "Candidate side stance remains visibly stable relative to stop05; two samples do not prove the full stop transition or continuous foot plant."
+      }
+    }
+  },
+  "independentlyRecomputedBothPhaseComparisons": [
+    {
+      "label": "01-idle-front-fullbody",
+      "kind": "hero",
+      "phase": "before",
+      "originalXZTolerance": 0.15,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "renderedActorXZDistance": 0.013333333333093833,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "01-idle-front-fullbody",
+      "kind": "hero",
+      "phase": "after",
+      "originalXZTolerance": 0.15,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "renderedActorXZDistance": 0.013333333333093833,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "02-stopped-side-fullbody",
+      "kind": "hero",
+      "phase": "before",
+      "originalXZTolerance": 0.15,
+      "physicalBodyDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "physicalBodyXZDistance": 0.10749677238436318,
+      "renderedActorDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "renderedActorXZDistance": 0.10749677238436318,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "02-stopped-side-fullbody",
+      "kind": "hero",
+      "phase": "after",
+      "originalXZTolerance": 0.15,
+      "physicalBodyDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "physicalBodyXZDistance": 0.10749677238436318,
+      "renderedActorDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "renderedActorXZDistance": 0.10749677238436318,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "idle-05",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "renderedActorXZDistance": 0.013333333333093833,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": -6.261657858885883e-14,
+        "pitch": -1.3877787807814457e-17
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "idle-05",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "renderedActorXZDistance": 0.013333333333093833,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": -6.261657858885883e-14,
+        "pitch": -1.3877787807814457e-17
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "idle-15",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "renderedActorXZDistance": 0.013333333333093833,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": -4.440892098500626e-16,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "idle-15",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "renderedActorXZDistance": 0.013333333333093833,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": -4.440892098500626e-16,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-065",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.01333333101331391,
+        "y": 0,
+        "z": 0.012746666667396767
+      },
+      "renderedActorXZDistance": 0.018446008431102983,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-065",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.01333333101331391,
+        "y": 0,
+        "z": 0.012746666667396767
+      },
+      "renderedActorXZDistance": 0.018446008431102983,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-090",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.01333333101331391,
+        "y": 0,
+        "z": 0.012746666667396767
+      },
+      "renderedActorXZDistance": 0.018446008431102983,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-090",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.01333333101331391,
+        "y": 0,
+        "z": 0.012746666667396767
+      },
+      "renderedActorXZDistance": 0.018446008431102983,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-115",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.01333333101331391,
+        "y": 0,
+        "z": 0.012746666667396767
+      },
+      "renderedActorXZDistance": 0.018446008431102983,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-115",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.01333333101331391,
+        "y": 0,
+        "z": 0.012746666667396767
+      },
+      "renderedActorXZDistance": 0.018446008431102983,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-140",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333331027865825,
+        "y": 0,
+        "z": 0.012666666667371373
+      },
+      "renderedActorXZDistance": 0.018390817294534425,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "walk-140",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333333333093833,
+        "y": 0,
+        "z": 7.389644451905042e-13
+      },
+      "physicalBodyXZDistance": 0.013333333333093833,
+      "renderedActorDelta": {
+        "x": 0.013333331027865825,
+        "y": 0,
+        "z": 0.012666666667371373
+      },
+      "renderedActorXZDistance": 0.018390817294534425,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "stop-05",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "physicalBodyXZDistance": 0.10749677238436318,
+      "renderedActorDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "renderedActorXZDistance": 0.10749677238436318,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "stop-05",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "physicalBodyXZDistance": 0.10749677238436318,
+      "renderedActorDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "renderedActorXZDistance": 0.10749677238436318,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "stop-15",
+      "kind": "motion",
+      "phase": "before",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "physicalBodyXZDistance": 0.10749677238436318,
+      "renderedActorDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "renderedActorXZDistance": 0.10749677238436318,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    },
+    {
+      "label": "stop-15",
+      "kind": "motion",
+      "phase": "after",
+      "originalXZTolerance": 0.25,
+      "physicalBodyDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "physicalBodyXZDistance": 0.10749677238436318,
+      "renderedActorDelta": {
+        "x": 0.013333352746258242,
+        "y": 0,
+        "z": -0.10666666666583069
+      },
+      "renderedActorXZDistance": 0.10749677238436318,
+      "recordedActorYOld": 0,
+      "recordedActorYNew": 0,
+      "renderedActorYGateAdded": false,
+      "cameraYawPitchDelta": {
+        "yaw": 0.0,
+        "pitch": 0.0
+      },
+      "originalProtocolPairPassed": true
+    }
+  ],
+  "pairedInventory": {
+    "before": {
+      "01-idle-front-fullbody:before": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-3",
+          "resident-tide-museum-4"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      },
+      "01-idle-front-fullbody:after": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-3",
+          "resident-tide-museum-4"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      },
+      "02-stopped-side-fullbody:before": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-4",
+          "resident-tide-museum-3"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      },
+      "02-stopped-side-fullbody:after": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-4",
+          "resident-tide-museum-3"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      }
+    },
+    "candidate": {
+      "01-idle-front-fullbody:before": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-3",
+          "resident-tide-museum-4"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      },
+      "01-idle-front-fullbody:after": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-3",
+          "resident-tide-museum-4"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      },
+      "02-stopped-side-fullbody:before": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-4",
+          "resident-tide-museum-3"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      },
+      "02-stopped-side-fullbody:after": {
+        "instances": 3,
+        "maximumInstances": 12,
+        "selected": [
+          "local-player",
+          "resident-tide-museum-4",
+          "resident-tide-museum-3"
+        ],
+        "templateOwners": {
+          "geometries": 8,
+          "materials": 8,
+          "textures": 12,
+          "skeletons": 2,
+          "images": 12,
+          "imageBitmaps": 12,
+          "bones": 142
+        },
+        "roles": {
+          "commuter": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          },
+          "worker": {
+            "geometries": 4,
+            "materials": 4,
+            "textures": 6,
+            "skeletons": 1,
+            "images": 6,
+            "imageBitmaps": 6,
+            "bones": 71
+          }
+        },
+        "instanceOwners": {
+          "skeletons": 3,
+          "bones": 213,
+          "boneTextures": 3
+        },
+        "countsAreCPUReferences": true,
+        "measuredDriverVRAM": false
+      }
+    }
+  },
+  "sourceAndRuntimeDelta": {
+    "exactChangedSelectedSourcePaths": [
+      "src/harbor-life-renderer.js",
+      "src/main.js",
+      "src/metropolis-people.js",
+      "src/resident-core-assets.js",
+      "src/resident-near-motion.js",
+      "tests/resident-near-motion.test.js"
+    ],
+    "exactChangedRuntimePaths": [
+      "src/harbor-life-renderer.js",
+      "src/main.js",
+      "src/metropolis-people.js",
+      "src/resident-core-assets.js",
+      "src/resident-near-motion.js"
+    ],
+    "sourceSelectedSuperset711IsNotHistoricalNativeCatalog": true,
+    "baseline709Present2CandidateOnlyAbsent": true,
+    "candidate711Present": true,
+    "sharedRuntimeUnchanged": 204,
+    "originalThreeLicensedResidentGLBHashesByteExact": {
+      "assets/resident/core-commuter/commuter.glb": "f5015fa97f5542f110afa302f48a44cde0bb9f504336ca48a99dd60ee4fb3b7a",
+      "assets/resident/core-shopkeeper/shopkeeper.glb": "d5d298b45ade48a6cdb4142b27712799d864fff23cef28bc979436e07afe3341",
+      "assets/resident/core-worker/worker.glb": "f17553afc33a5a958843e08db0ecddc4dd27759ed4bba2dd6fd26d25c6eaacbe"
+    },
+    "original12MaximumInstancesPreserved": true,
+    "actualHeroInstanceCountBoth": 3,
+    "sameCPUOwnersBothHeroes": true,
+    "driverVRAMMeasured": false
+  },
+  "limitedPixelAcceptance": {
+    "slowerShorterStrideSilhouetteImprovement": true,
+    "sampledBentKneeIntermediatePosesVisible": true,
+    "sampledSoftStopStanceVisible": true,
+    "noBlankOrGrossOccludedSubjectInTwentyOriginals": true,
+    "idleMajorImprovementClaimed": false,
+    "sameAnimationPhaseMatched": false,
+    "continuousSmoothStopVerified": false,
+    "continuousSoleSupportVerified": false,
+    "nativeQuantifiedSoleDistancePassed": false,
+    "nativeQuantifiedFootSlidingPassed": false,
+    "nativeQuantifiedPenetrationPassed": false,
+    "footBoneWorldYIsSoleDistance": false
+  },
+  "measurementFieldLimits": {
+    "baselineCommonFootWorldMatrices": false,
+    "candidateOnlyPoseBonesWorldPositionsPresent": true,
+    "candidatePoseBoneNames": [
+      "root",
+      "spine03",
+      "head",
+      "foot_L",
+      "foot_R"
+    ],
+    "candidatePoseBoneWorldPositionBasis": "Reads cached bone.matrixWorld translation from real presentation, source resident-core-assets.js lines361/374; no update triggered by read.",
+    "candidateQuaternionBasis": "bone.quaternion local quaternion, not a full world bone matrix",
+    "candidateAnkleTargetsBasis": "source solver goals, separate from actual cached bone positions",
+    "commonLegacyJointsBasis": "Local rotations on legacy fallback joints; not a paired full licensed core-bone matrix measurement.",
+    "actualRenderedActorYAcrossBothRolesAllPhases": [
+      0
+    ],
+    "actorYAddedAsNewGate": false,
+    "reasonNoNativeSoleDistancePass": "Baseline lacks common foot-bone world data; candidate-only foot joint/ankle locations are not sole mesh contact points and no paired native world-matrix/sole-ground distance or sliding acceptance protocol exists."
+  },
+  "limitations": [
+    "Eight selected continuous original canvas PNGs on each side are not videos: two idle, four walking, two post-stop. Native frames are sparsely sampled under software rendering with unequal actual simulation/wall time intervals. Temporal smoothness, contact continuity, foot sliding and settling cannot be certified.",
+    "Original page heroes include HUD; original motion canvas PNGs omit page HUD. Comparisons kept corresponding capture types.",
+    "Body and rendered actor comparisons preserve the original hero XZ<.15 and motion XZ<.25m plus physical Y<.03 and camera yaw/pitch<.004. ActorY is recorded without inventing a protocol threshold. Actual maximum displacement prevents any claim of pixel-identical registration.",
+    "Fixed lighting hour16.5 and High/FOV55 matched. Dynamic background citizens/vehicles are not deterministic or identical phase. Same positions and distances do not imply identical gait phase.",
+    "Only local commuter full-body slow0.8m/s level-ground pose is photographed. All resident roles, facial/skin/hair detail, carry/work/item transactions, normal5.6m/s movement, stairs and variable terrain are outside this scope.",
+    "Resident owner counts are CPU references, not measured driver VRAM. ANGLE SwiftShader evidence cannot establish production hardware FPS."
+  ],
+  "wholeCharacterAccepted": false,
+  "AAAClaim": false,
+  "wholeHarbourAccepted": false,
+  "publicationReady": false,
+  "entireGoalCompleted": false,
+  "ROOTReportedOuterCandidateSession": 59652,
+  "ROOTReportedOuterCandidateObservedExit": 0,
+  "ROOTReportedOuterObservedAt": "2026-10-05T14:59:04Z",
+  "outerSessionIndependentlyObservedByReviewer": false,
+  "operations": "Read-only source/runtime/method/evidence hashes, protocol source reading, metadata pair assertions and actual original-resolution viewing of all20 PNGs. No GPU/browser/factory/test/build/network/git execution, image crop/edit/redraw/video generation or source mutation. Only this new external review directory is written."
+}

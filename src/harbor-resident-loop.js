@@ -1,8 +1,9 @@
 import { circleOBB } from './collision.js';
 import { createInteriorLayout } from './metropolis-interiors.js';
 import { planHarborWorkshopPilot } from './harbor-workshop-pilot.js';
+import { calendarHour } from './harbor-world-clock.js';
 
-export const RESIDENT_LOOP = Object.freeze({ residentId: 'harbor-resident-07', version: 1,
+export const RESIDENT_LOOP = Object.freeze({ residentId: 'harbor-resident-07', version: 2,
   startHour: 6.5, secondsPerHour: 120, departureHour: 7, radius: .6, periodTicks: 350,
   workPeriods: 2, wage: 3, shopId: 'harbor-produce', fromStopId: 'harbor-tram-lantern',
   toStopId: 'harbor-tram-workshop', workBuildingId: 'south-086', floorId: 'lobby' });
@@ -29,11 +30,17 @@ export class HarborResidentLoop {
   }
   get agent() { return this.life.agents.find(agent => agent.id === RESIDENT_LOOP.residentId); }
   owns(agent) { return agent?.id === RESIDENT_LOOP.residentId; }
-  get absoluteHour() { return this.state.clock.startHour + this.state.ticks * .1 / this.state.clock.secondsPerHour; }
-  _freshState() { return { version: RESIDENT_LOOP.version, residentId: RESIDENT_LOOP.residentId,
-    clock: { startHour: RESIDENT_LOOP.startHour, secondsPerHour: RESIDENT_LOOP.secondsPerHour },
+  get absoluteHour() { return this.life.absoluteHour; }
+  _nextDepartureTick(hour, tick, rate = this.life.secondsPerHour, strictlyFuture = false) {
+    let departure = Math.floor(hour / 24) * 24 + RESIDENT_LOOP.departureHour;
+    if (strictlyFuture ? departure <= hour : departure < hour) departure += 24;
+    return tick + Math.ceil((departure - hour) * rate * 10);
+  }
+  _freshState(hour = this.life.absoluteHour) { return { version: RESIDENT_LOOP.version, residentId: RESIDENT_LOOP.residentId,
+    clock: { owner: 'harbor-life', epochTick: 0, absoluteHour: hour, secondsPerHour: this.life.secondsPerHour },
+    historyClock: null,
     ticks: 0, stage: 'initial-home', cycle: 0, completedCycles: 0,
-    nextDepartureTick: Math.ceil((RESIDENT_LOOP.departureHour - RESIDENT_LOOP.startHour) * RESIDENT_LOOP.secondsPerHour * 10),
+    nextDepartureTick: this._nextDepartureTick(hour, 0),
     activeJob: null, completedJobs: [], totalValidWorkTicks: 0, totalWages: 0,
     purchaseCycle: null, purchases: 0, waitingReason: null, eventSerial: 0, events: [] }; }
   _room(buildingId, type) {
@@ -165,9 +172,7 @@ export class HarborResidentLoop {
           if (this.state.completedJobs.length > 8) this.state.completedJobs.shift();
           this._event('returned-home', { cycle: this.state.cycle, buildingId: agent.insideBuildingId, roomId: agent.roomId });
           this.state.activeJob = null;
-          let nextDeparture = Math.floor(this.absoluteHour / 24) * 24 + RESIDENT_LOOP.departureHour;
-          if (nextDeparture <= this.absoluteHour) nextDeparture += 24;
-          this.state.nextDepartureTick = Math.ceil((nextDeparture - this.state.clock.startHour) * this.state.clock.secondsPerHour * 10);
+          this.state.nextDepartureTick = this._nextDepartureTick(this.absoluteHour, this.state.ticks, this.life.secondsPerHour, true);
         }
         break;
       }
@@ -186,11 +191,15 @@ export class HarborResidentLoop {
     const valid = agent.phase === 'working' && agent.insideBuildingId === this.work.building.id && agent.floorId === this.work.floor.id &&
       agent.roomId === this.work.room.id && gap(agent, this.work.anchor) <= .05 && this.work.clear(agent);
     if (!valid) { this.state.waitingReason = 'absent-from-workstation'; agent.activity = '尚未在工台到岗'; return; }
+    if (!this.life._inShift(agent)) { this.state.waitingReason = 'off-shift'; agent.activity = '等实际轮班开始再工作'; return; }
     if (job.validTicks < RESIDENT_LOOP.periodTicks * RESIDENT_LOOP.workPeriods) {
       job.validTicks++; this.state.totalValidWorkTicks++;
     }
     const earnedPeriods = Math.floor(job.validTicks / RESIDENT_LOOP.periodTicks);
-    if (job.paidPeriods < earnedPeriods) {
+    // Settle already earned periods together when funding returns. Splitting
+    // this debt across frames would let unrelated wages consume its balance
+    // halfway through settlement, despite both periods already being worked.
+    while (job.paidPeriods < earnedPeriods) {
       const employer = agent.work.employer === this.life.supply.id ? this.life.supply : this.life.shops.find(shop => shop.id === agent.work.employer);
       if (!this.life._transfer(employer, agent, RESIDENT_LOOP.wage)) {
         this.state.waitingReason = 'employer-unfunded'; agent.activity = '等雇主结清已完成的工作'; return;
@@ -263,15 +272,41 @@ export class HarborResidentLoop {
       transit: clone(this.agent.transit), currentRoomId: this.agent.roomId, events: clone(this.state.events) };
   }
   migrateLegacy(save) {
-    const state = this._freshState(), agent = save.agents.find(agent => this.owns(agent));
+    const state = this._freshState(calendarHour(save.clock, save.ticks, save.secondsPerHour)), agent = save.agents.find(agent => this.owns(agent));
     if (!agent) return false;
     if (!Object.hasOwn(agent, 'transit')) agent.transit = null;
     this._prepareHome(agent, state); this._setContext(agent, state); save.residentLoop = state; return true;
   }
-  validate(state, agent, save) {
+  rebaseFreshCalendar(save) {
+    const state = save.residentLoop;
+    state.clock = { owner: 'harbor-life', epochTick: 0, absoluteHour: save.clock.absoluteHour, secondsPerHour: save.secondsPerHour };
+    state.historyClock = null;
+    state.nextDepartureTick = this._nextDepartureTick(save.clock.absoluteHour, 0, save.secondsPerHour);
+  }
+  migrateCalendar(save) {
+    const state = save.residentLoop;
+    state.historyClock = { ...state.clock, untilTick: state.ticks };
+    state.clock = { owner: 'harbor-life', epochTick: state.ticks,
+      absoluteHour: calendarHour(save.clock, save.ticks, save.secondsPerHour), secondsPerHour: save.secondsPerHour };
+    state.version = RESIDENT_LOOP.version;
+    if (state.stage === 'resting-home' || state.cycle === 0) state.nextDepartureTick =
+      this._nextDepartureTick(state.clock.absoluteHour, state.ticks, save.secondsPerHour, state.completedCycles > 0);
+  }
+  validate(state, agent, save, { legacy = false } = {}) {
+    const clock = state?.clock, history = state?.historyClock;
+    const eventHour = tick => legacy || history && tick <= history.untilTick
+      ? (legacy ? clock : history).startHour + tick * .1 / (legacy ? clock : history).secondsPerHour
+      : clock.absoluteHour + (tick - clock.epochTick) * .1 / clock.secondsPerHour;
+    const clockValid = legacy
+      ? state?.version === 1 && clock?.startHour === RESIDENT_LOOP.startHour && clock?.secondsPerHour === RESIDENT_LOOP.secondsPerHour
+      : state?.version === RESIDENT_LOOP.version && clock?.owner === 'harbor-life' && clock.secondsPerHour === save.secondsPerHour &&
+        integer(clock.epochTick, state.ticks) && Number.isFinite(clock.absoluteHour) && clock.absoluteHour >= 0 &&
+        Math.abs(clock.absoluteHour + (state.ticks - clock.epochTick) * .1 / clock.secondsPerHour -
+          calendarHour(save.clock, save.ticks, save.secondsPerHour)) < 1e-8 &&
+        (history === null || history?.startHour === RESIDENT_LOOP.startHour && history?.secondsPerHour === RESIDENT_LOOP.secondsPerHour &&
+          integer(history.untilTick, state.ticks) && history.untilTick === clock.epochTick);
     if (!Object.hasOwn(agent, 'transit') || agent.transit !== null && (typeof agent.transit !== 'object' || Array.isArray(agent.transit))) return false;
-    if (!state || state.version !== RESIDENT_LOOP.version || state.residentId !== RESIDENT_LOOP.residentId ||
-      state.clock?.startHour !== RESIDENT_LOOP.startHour || state.clock?.secondsPerHour !== RESIDENT_LOOP.secondsPerHour ||
+    if (!state || !clockValid || state.residentId !== RESIDENT_LOOP.residentId ||
       !stages.has(state.stage) || !integer(state.ticks) || state.ticks > save.ticks || !integer(state.cycle) ||
       !integer(state.completedCycles, state.cycle) || state.cycle - state.completedCycles > 1 ||
       !integer(state.nextDepartureTick) || !integer(state.totalValidWorkTicks, state.ticks) ||
@@ -279,7 +314,7 @@ export class HarborResidentLoop {
       (state.purchaseCycle !== null && state.purchaseCycle !== state.cycle) || !integer(state.eventSerial) ||
       !Array.isArray(state.events) || state.events.length > 32 || state.events.some((event, index) =>
         !integer(event.sequence, state.eventSerial) || !integer(event.tick, state.ticks) ||
-        !Number.isFinite(event.hour) || Math.abs(event.hour - state.clock.startHour - event.tick * .1 / state.clock.secondsPerHour) > 1e-8 ||
+        !Number.isFinite(event.hour) || Math.abs(event.hour - eventHour(event.tick)) > 1e-8 ||
         typeof event.type !== 'string' || index && (event.sequence <= state.events[index - 1].sequence || event.tick < state.events[index - 1].tick)) ||
       !Array.isArray(state.completedJobs) || state.completedJobs.length > 8) return false;
     const validJob = job => job && typeof job.id === 'string' &&

@@ -89,15 +89,17 @@ test('passenger seats, closed doors and end walls reject movement rather than pi
 });
 
 test('ten minutes of independent timetables keep bus and tram bodies apart', () => {
-  const service = new HarborTransitService(), visits = new Set();
+  const service = new HarborTransitService(), visits = new Set(); let lastMinute;
   for (let n = 0; n < 6000; n++) {
+    if (n === 5400) lastMinute = new Map(service.vehicles.map(v => [v.id, v.serviceTime]));
     service.update(.1);
     const bodies = service.trafficBodies;
     for (let i = 0; i < bodies.length; i++) for (let j = i + 1; j < bodies.length; j++) assert.equal(overlapOBB(bodies[i], bodies[j]), null, `${bodies[i].id} intersects ${bodies[j].id}`);
     for (const v of service.vehicles) if (v.pose.stopId) visits.add(v.pose.stopId);
   }
   assert.equal(visits.size, service.stops.length); assert.ok(service.vehicles.some(v => v.delay > 0), 'shared street services must yield to one another');
-  assert.ok(service.vehicles.every(v => v.serviceTime > 400), 'yielding cannot permanently strand a service');
+  assert.ok(service.vehicles.every(v => v.serviceTime > lastMinute.get(v.id) + 1),
+    'every actual service keeps progressing in the final minute instead of becoming permanently stranded');
 });
 
 test('external traffic stops the bus before contact and the delayed timetable resumes', () => {
@@ -303,6 +305,36 @@ test('a vehicle already admitted through green clears a newly red junction after
   }
   assert.ok(moving.serviceTime > before + 3); assert.ok(moving.pose.x > 181.5, 'the rear must leave the full junction before admission resets');
   assert.ok(!moving.junction || moving.junction.x !== 160 || moving.junction.z !== 160);
+});
+
+test('a green approach waits for a saved admitted cabin to clear its full junction', () => {
+  const service = calendarFixture(14), owner = service.vehicle('harbor-bus-1');
+  for (let tick = 0; tick < 10000 && !(owner.junction?.committed && owner.junction.x === 240 && owner.junction.z === 160); tick++) service.update(.05);
+  assert.ok(owner.junction?.committed && owner.junction.x === 240 && owner.junction.z === 160);
+  const incoming = service.vehicle('harbor-tram-2'), route = service.route(incoming.routeId);
+  let arrival = 0;
+  while (arrival < route.duration) {
+    const pose = harborRoutePose(route, arrival);
+    if (Math.abs(pose.x - 232) < .1 && pose.z > 118 && pose.z < 119 && Math.abs(pose.yaw) < .03) break;
+    arrival += .025;
+  }
+  assert.ok(arrival < route.duration, 'the incoming tram uses its actual northbound track');
+  incoming.serviceTime = arrival; incoming.pose = harborRoutePose(route, arrival);
+  incoming.junction = { x: 240, z: 160, axis: 'z', direction: 1, committed: false };
+  while (intersectionSignal(service.time, 240, 160, 'z') !== 'green') service.time += .05;
+  const waiting = service.streetControl(incoming);
+  assert.equal(waiting.reason, 'junction'); assert.equal(waiting.red, true);
+  assert.ok(waiting.distance >= 0 && waiting.distance < 40, 'green does not reserve space already occupied by a long cabin');
+  const resumed = new HarborTransitService(); assert.equal(resumed.restoreState(service.exportState()), true);
+  assert.equal(resumed.streetControl(resumed.vehicle(incoming.id)).reason, 'junction');
+  const moving = resumed.vehicle(owner.id), ownerRoute = resumed.route(moving.routeId);
+  const clearStop = ownerRoute.arrivals.find(stop => stop.stopId === 'harbor-bus-lantern');
+  moving.serviceTime = clearStop.time; moving.pose = harborRoutePose(ownerRoute, clearStop.time);
+  resumed.streetControl(moving);
+  assert.ok(!moving.junction || moving.junction.x !== 240 || moving.junction.z !== 160,
+    'the owner releases the previous junction after its full rear leaves');
+  const allowed = resumed.streetControl(resumed.vehicle(incoming.id));
+  assert.equal(allowed.red, false); assert.equal(allowed.distance, Infinity);
 });
 
 test('the shared pedestrian stop-distance hook protects the bus front, persists its wait and excludes the ferry', () => {

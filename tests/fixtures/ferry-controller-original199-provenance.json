@@ -1,0 +1,28 @@
+{
+  "schema": "neon-harbor.ferry-controller-original-fixture.v1",
+  "sourceHead": "199b89c62b216b2a07f2eb7e7d5920430ac46473",
+  "artifact": {
+    "id": 11345399026,
+    "originalZipBytes": 52145404,
+    "originalZipSha256": "038cc9eb23de57a64815bbd1f30eda2d6b3d9e1dbc2258e09a80a642d3b76243",
+    "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-5-14-cabin-evidence.jsonl",
+    "memberBytes": 166247,
+    "memberSha256": "2b4c464899a12ce59f38d57057eacb8d5b183a990654e0e7fb0c1f3c3feae233"
+  },
+  "fixture": {
+    "path": "tests/fixtures/ferry-lower5-original199-compact.json",
+    "bytes": 10323,
+    "sha256": "665488c46e8115f07c7564fe6dc5a47d2fd901d2639fe806aa8e242d7edd4690",
+    "originalRows": 26,
+    "originalSampleRows": 23,
+    "projection": "Original row order and numbers are preserved. Target from row 0; each sample before/current simulation time, original mouse-move timestamps and all wait labels/timestamps; final start local/camera yaw/time, current local/time and unaltered first error. All other fields are omitted. No costs or expected passes are stored: tests recompute costs from these timestamps."
+  },
+  "originalControllerSource": {
+    "gitObject": "199b89c62b216b2a07f2eb7e7d5920430ac46473:tests/e2e/harbor-sample.spec.js",
+    "path": "tests/fixtures/ferry-harbor-sample-original199.spec.txt",
+    "bytes": 33802,
+    "sha256": "8fb39ca9c6de152db7dc24612d4f8335db74cd05e2d6e989931f4c3d2df5a99c"
+  },
+  "limitation": "Virtual source CPU model with observed event-cost envelopes, not measured hardware/browser performance or exact native scheduling replay. Original high-pressure failure remains an expected negative regression.",
+  "verifiedOriginalZipAndMember": true
+}

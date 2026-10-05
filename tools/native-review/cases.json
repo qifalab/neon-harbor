@@ -117,11 +117,14 @@
       "id": "ferry",
       "family": "transport",
       "toolCase": "ferry",
-      "originalBudgetSeconds": 2400,
-      "jobTimeoutMinutes": 110,
+      "originalBudgetSeconds": 3000,
+      "jobTimeoutMinutes": 130,
       "paired": true,
       "historicalOriginalBudgetSeconds": 900,
-      "budgetRevisionReason": "Actual original6ad paired Ferry900s whole failed at lower photo: baseline normal next-berth wait514.530wall seconds then screenshot limited26248ms failed; authored whole-clamped531341ms wait failed. Initial setup/local approach had already used349.722/368.644wall seconds. Source normal ferry replay matches original service16.75/16.85 and still needs23.8833/23.7833simulation seconds to next open north berth. Fixed40min bound leaves finite headroom for original three High photos, both continuous stair routes, upperE-refusal and destination lowerE-exit; remaining software render/boat/cleanup costs are unmeasured, so this is a declared estimate and not native completion. Local150s/berth600s/.06xz/.15y/.3radius/gait/High/camera/destination/source/resource guards unchanged."
+      "budgetRevisionReason": "Actual current199 baseline lower-4 aim60s failure and authored lower-4 whole40min failure remain FAILED. Repaired same-controller original service/source pressure still reaches finalNorth at2431.475s before real E/resources/cleanup. ROOT explicitly calibrates finite Ferry-only50min cap: +600s (25% of old40min,20% of new50min) for measured software-renderer timetable and unmeasured RPC/data/capture/cleanup allowance. No FPS/quality/runtime/physics improvement or native completion is claimed. Bus/Tram40min and local/aim/strict endpoint/OPEN/photo source guards remain unchanged. Paired Ferry CI110 to130min fits unchanged20min preparation and2x52min owned watchdogs plus finite6min checkout/upload allowance.",
+      "historicalWhole40OriginalBudgetSeconds": 2400,
+      "historicalWhole40BudgetRevisionReason": "Actual original6ad paired Ferry900s whole failed at lower photo: baseline normal next-berth wait514.530wall seconds then screenshot limited26248ms failed; authored whole-clamped531341ms wait failed. Initial setup/local approach had already used349.722/368.644wall seconds. Source normal ferry replay matches original service16.75/16.85 and still needs23.8833/23.7833simulation seconds to next open north berth. Fixed40min bound leaves finite headroom for original three High photos, both continuous stair routes, upperE-refusal and destination lowerE-exit; remaining software render/boat/cleanup costs are unmeasured, so this is a declared estimate and not native completion. Local150s/berth600s/.06xz/.15y/.3radius/gait/High/camera/destination/source/resource guards unchanged.",
+      "budgetAmendmentPath": "runtime-amendments/ferry-whole50-calibrated-original-high-software-renderer-20261005/active-source-amendment.json"
     },
     {
       "id": "waterfront-day",

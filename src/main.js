@@ -188,7 +188,7 @@ function renderPanel(){
     content.innerHTML=`<p class="panel-intro">路边维修服务可恢复生命值与附近车辆，每次 $150。追捕期间无法使用。已完成的委托与资金会自动保存。</p><div class="garage-stats"><div><small>可用资金</small><strong>$ ${sim.cash.toLocaleString()}</strong></div><div><small>车辆状态</small><strong>${Math.round((sim.activeVehicle||sim.nearestCar)?.health??100)}%</strong></div><div><small>已完成委托</small><strong>${sim.completed.size} / 3</strong></div></div><button id="repair" class="primary-button compact">呼叫维修 · $150 ↗</button>`;
     $('repair').addEventListener('click',()=>{sim.repair();drainMessages();save();renderPanel();});
   }else if(activeTab==='settings'){
-    content.innerHTML=`<div class="settings-grid"><label class="setting">画面质量<select id="quality"><option value="high">精细 · 动态阴影</option><option value="balanced">均衡 · 推荐</option><option value="low">流畅 · 低像素密度</option></select><small>调整渲染分辨率与阴影，立即生效。</small></label><label class="setting">音效音量<input id="volume" type="range" min="0" max="1" step=".05"><small>引擎、提示和追捕音效。</small></label><label class="setting">镜头灵敏度<input id="sensitivity" type="range" min=".3" max="2" step=".1"></label><label class="setting">城市时间<input id="time" type="range" min="0" max="23.9" step=".1"><small>拖动选择白昼、黄昏或夜晚。</small></label><label class="setting check"><input id="cycle" type="checkbox"> 自动昼夜交替</label><label class="setting check"><input id="touch-setting" type="checkbox"> 显示触屏控制</label></div><div class="settings-actions"><button id="reload-city" class="secondary-button">重新加载附近街区</button><button id="export-save" class="secondary-button">导出进度</button><button id="import-save" class="secondary-button">导入进度</button><input id="save-file" class="hidden" type="file" accept="application/json,.json"><button id="reset-save" class="secondary-button danger">开始新旅程</button></div><p class="panel-intro" style="margin-top:18px">存档仅保存在本机浏览器；重新载入回到步行状态。限时委托与追捕会结束，港湾随身物品、补货货物与街坊状态会保留。</p>`;
+    content.innerHTML=`<div class="settings-grid"><label class="setting">画面质量<select id="quality"><option value="high">精细 · 动态阴影</option><option value="balanced">均衡 · 推荐</option><option value="low">流畅 · 低像素密度</option></select><small>调整渲染分辨率与阴影，立即生效。</small></label><label class="setting">音效音量<input id="volume" type="range" min="0" max="1" step=".05"><small>引擎、提示和追捕音效。</small></label><label class="setting">镜头灵敏度<input id="sensitivity" type="range" min=".3" max="2" step=".1"></label><label class="setting">光照时段<input id="time" type="range" min="0" max="23.9" step=".1"><small>预览白昼、黄昏或夜晚，不改变港湾居民与商店时间。</small></label><label class="setting check"><input id="cycle" type="checkbox"> 跟随港湾时间交替昼夜</label><label class="setting check"><input id="touch-setting" type="checkbox"> 显示触屏控制</label></div><div class="settings-actions"><button id="reload-city" class="secondary-button">重新加载附近街区</button><button id="export-save" class="secondary-button">导出进度</button><button id="import-save" class="secondary-button">导入进度</button><input id="save-file" class="hidden" type="file" accept="application/json,.json"><button id="reset-save" class="secondary-button danger">开始新旅程</button></div><p class="panel-intro" style="margin-top:18px">存档仅保存在本机浏览器；重新载入回到步行状态。限时委托与追捕会结束，港湾随身物品、补货货物与街坊状态会保留。</p>`;
     if(multiplayer.session)for(const id of ['import-save','reset-save']){$(id).disabled=true;$(id).title='请先离开房间再修改存档';}
     $('quality').value=settings.quality;$('volume').value=settings.volume;$('sensitivity').value=settings.sensitivity;$('time').value=settings.hour;$('cycle').checked=settings.dayCycle;$('touch-setting').checked=settings.touch;
     $('quality').addEventListener('change',event=>{settings.quality=event.target.value;applyQuality();save();});
@@ -249,7 +249,7 @@ function drawMap(canvas,full=false){
   c.save();c.translate(px(p.x),pz(p.z));c.rotate(-p.yaw);c.fillStyle='#d4ffa3';c.strokeStyle='#112a2e';c.lineWidth=2;c.beginPath();c.moveTo(0,9);c.lineTo(-6,-6);c.lineTo(0,-3);c.lineTo(6,-6);c.closePath();c.stroke();c.fill();c.restore();
 }
 function updateHUD(){
-  const pos=sim.position,car=sim.activeVehicle,m=sim.mission,hour=Math.floor(settings.hour),minute=Math.floor((settings.hour-hour)*60);
+  const pos=sim.position,car=sim.activeVehicle,m=sim.mission,worldHour=world.sample.life.hour,hour=Math.floor(worldHour),minute=Math.floor((worldHour-hour)*60);
   const streaming=world.streamingStats;
   if(streaming){
     const failures=Array.isArray(streaming.failed)?streaming.failed.length:Number(streaming.failed)||0;
@@ -272,6 +272,7 @@ function updateHUD(){
 }
 
 function animateCharacter(model,phase,amount,sprinting=false){
+  model.userData.setResidentMotion?.({time:sceneTime,walking:amount>.01,sprinting,groundY:model.position.y});
   const joints=model.userData,swing=Math.sin(phase)*amount;
   joints.leftLeg.rotation.x=swing;joints.rightLeg.rotation.x=-swing;
   joints.leftArm.rotation.x=-swing*.8;joints.rightArm.rotation.x=swing*.8;
@@ -354,7 +355,7 @@ function updateCamera(dt){
 }
 function lighting(dt){
   if(multiplayer.session&&multiplayer.snapshot)settings.hour=(16.5+multiplayer.snapshot.time/35)%24;
-  if(!multiplayer.session&&settings.dayCycle&&started&&!paused)settings.hour=(settings.hour+dt/35)%24;
+  if(!multiplayer.session&&settings.dayCycle&&started&&!paused)settings.hour=world.sample.life.hour;
   const daylight=clamp(Math.sin((settings.hour-6)/12*Math.PI),0,1);
   const p=started?renderFrame.subject:menuFocus;
   atmosphere.update(settings.hour,p,hemi,sun);

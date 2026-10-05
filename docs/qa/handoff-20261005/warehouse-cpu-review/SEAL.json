@@ -1,0 +1,29 @@
+{
+  "sealedAt": "2026-10-05T15:15:50.943138+00:00",
+  "source3BeforeAfterReadonlyExact": true,
+  "old14AndNew11ArtifactPacketsExact": true,
+  "files": [
+    {
+      "path": "ACTUAL_FINITE_24_RAY_QUERY.json",
+      "bytes": 57740,
+      "sha256": "3e66466f29ad4a1c81420f55e74aa2399aa81a81d93a592649183bd2ce2bfd2a"
+    },
+    {
+      "path": "INDEPENDENT_FIXED_WAREHOUSE_READONLY_REVIEW.json",
+      "bytes": 11762,
+      "sha256": "2e0b2fae7ebbba4867ebd5415138f646f936ab853a0f726f7a1cb89a9d3cbf25"
+    },
+    {
+      "path": "INDEPENDENT_FIXED_WAREHOUSE_READONLY_REVIEW.md",
+      "bytes": 1101,
+      "sha256": "453247a8a1a9155dc866b3a26d0fb5df53ee6acdd7132131e34ebc5b7d0bdf00"
+    },
+    {
+      "path": "finite-readonly-warehouse-ray-query.mjs",
+      "bytes": 3018,
+      "sha256": "0b1cf634c9c21c99234938bd06bcccc34b44c202dc87e13f4b3431f80879c54a"
+    }
+  ],
+  "productionBlockersAfterFix": [],
+  "scope": "Finite source/artifact and actual private CPU ray query; no test/build/GPU/deviceFPS/art/native approval. New46combinedgraph remainsROOT."
+}

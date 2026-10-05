@@ -78,7 +78,7 @@ test('an actual pre-repair public save resumes to the market without collision o
   assert.equal(captured.path[captured.pathIndex].crossingId, 'harbor-crossing-x:160:146');
   const resumed = world(legacySave);
   const migrated = resumed.life.snapshot();
-  assert.equal(migrated.version, 2, 'old public saves migrate explicitly');
+  assert.equal(migrated.version, 3, 'old public saves migrate explicitly');
   for (const key of ['supply', 'shops', 'player', 'jobs', 'transactions', 'statistics'])
     assert.deepEqual(migrated[key], legacySave.harborLife[key], `migration preserves ${key}`);
   for (let index = 0; index < 20; index++) if (index !== 6)
