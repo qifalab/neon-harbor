@@ -1,0 +1,99 @@
+diff --git a/before/harbor-frontage-profiles.js b/src/harbor-frontage-profiles.js
+index 55c837c..b5abfb2 100644
+--- a/before/harbor-frontage-profiles.js
++++ b/src/harbor-frontage-profiles.js
+@@ -35,6 +35,63 @@ export function createFrontageFrame(THREE,width,height,radius=.08) {
+   g.computeBoundingBox();g.computeBoundingSphere();return g;
+ }
+ 
++// A shallow, real display fits inside the existing window frame. None of
++// these goods supplies stock or collision; the occupied shop counter remains
++// the only source of finite purchases.
++function addWindowDisplay(THREE,{programme,u,width,bottom,height,add,b,materials:m}) {
++  const inner=width-.30, shelfY=bottom+.30, depth=.39;
++  b(m.dark,u,bottom+height/2,.20,width-.17,height-.16,.04);
++  b(m.wood,u,shelfY,depth,inner,.045,.30);
++  if(height>1.7)b(m.wood,u,shelfY+.66,depth,inner,.035,.28);
++  const count=inner>3?5:3, step=Math.min(.53,(inner-.38)/(count-1));
++  const at=i=>u+(i-(count-1)/2)*step;
++  const curved=(material,geometry,x,y,z,sx=1,sy=1,sz=1)=>add(material,geometry,x,y,z,sx,sy,sz);
++  const cup=(x,y,z)=>{
++    const points=[[.054,0],[.068,.014],[.077,.12],[.069,.135],[.060,.118],[.047,.016]].map(([x,y])=>new THREE.Vector2(x,y));
++    curved(m.ceramic,new THREE.LatheGeometry(points,10),x,y,z);
++    curved(m.ceramic,new THREE.TorusGeometry(.040,.011,5,10),x+.088,y+.075,z,1,1,1);
++  };
++  for(let i=0;i<count;i++) {
++    const x=at(i),y=shelfY+.025,z=.405;
++    if(programme==='market') {
++      // Open, slatted produce crates leave the rounded fruit silhouettes visible.
++      b(m.wood,x,y+.018,z,.40,.036,.24);
++      for(const dx of[-.185,.185])b(m.wood,x+dx,y+.105,z,.030,.18,.24);
++      for(const dz of[-.105,.105])for(const dy of[.065,.13])b(m.wood,x,y+dy,z+dz,.37,.034,.024);
++      for(const dx of[-.092,.092])for(const dz of[-.054,.054])curved(m.fruit,new THREE.SphereGeometry(1,10,6),x+dx,y+.114,z+dz,.079,.074,.074);
++    } else if(programme==='gallery') {
++      const points=[[.052,0],[.091,.07],[.096,.16],[.043,.25],[.049,.29]].map(([x,y])=>new THREE.Vector2(x,y));
++      curved(i%2?m.brick:m.ceramic,new THREE.LatheGeometry(points,12),x,y,z,1,1+(i%2)*.22,1);
++      add(m.ceramic,new THREE.TorusGeometry(.045,.009,5,10),x,y+.29*(1+(i%2)*.22),z,1,1,1,Math.PI/2);
++    } else if(programme==='books') {
++      for(let k=0;k<3;k++) {
++        const h=.22+(k%2)*.07,bx=x-.105+k*.105;
++        b(k%2?m.brick:m.grout,bx,y+h/2,z,.086,h,.20);
++        b(m.paper,bx,y+h/2,z+.103,.064,h-.036,.010);
++        b(m.paper,bx,y+.040,z+.113,.045,.012,.010);
++      }
++    } else if(programme==='bakery') {
++      b(m.wood,x,y+.012,z,.38,.024,.26);
++      curved(m.fruit,new THREE.SphereGeometry(1,12,7),x,y+.087,z,.165,.074,.101);
++      for(const dx of[-.062,0,.062])b(m.paper,x+dx,y+.150,z,.014,.006,.080);
++    } else {
++      cup(x,y,z);
++      if(programme==='noodles') {
++        curved(m.ceramic,new THREE.SphereGeometry(.105,12,7,0,Math.PI*2,Math.PI/2,Math.PI/2),x,y+.30,z);
++        b(m.wood,x,y+.31,z,.26,.011,.018);
++      }
++    }
++    if(height>1.7) {
++      if(programme==='books')for(let k=0;k<2;k++){b(k?m.brick:m.grout,x,shelfY+.69+k*.064,z,.32,.055,.23);b(m.paper,x,shelfY+.69+k*.064,z+.12,.28,.031,.01);}
++      else if(programme==='market')curved(m.fruit,new THREE.SphereGeometry(1,10,6),x,shelfY+.77,z,.091,.083,.088);
++      else cup(x,shelfY+.68,z);
++    }
++  }
++  // The separate glazing does not write depth or cast an opaque shadow over
++  // the real objects behind it. It remains non-emissive in both day and night.
++  b(m.displayGlass,u,bottom+height/2,.675,width-.23,height-.22,.016);
++}
++
+ /** Geometry is merged by the owner and released with that storefront. No new
+  * global textures, lights, materials or invisible furniture colliders appear. */
+ export function addAuthoredGroundElevation(THREE,{site,add,b,c,materials:m,clay,stone}) {
+@@ -58,8 +115,10 @@ export function addAuthoredGroundElevation(THREE,{site,add,b,c,materials:m,clay,
+     // Set glazing back inside a solid, bevelled frame. A double sill, narrow
+     // muntins and hardware give the oblique view a depth cue rather than a decal.
+     add(frame,createFrontageFrame(THREE,width,height,profile.radius),u,bottom,.52);
+-    b(m.dark,u,bottom+height/2,.43,width-.17,height-.16,.07);
+-    b(m.glass,u,bottom+height/2,.505,width-.23,height-.22,.025);
++    if(publicDoor) {
++      b(m.dark,u,bottom+height/2,.43,width-.17,height-.16,.07);
++      b(m.glass,u,bottom+height/2,.505,width-.23,height-.22,.025);
++    } else addWindowDisplay(THREE,{programme:site.programme,u,width,bottom,height,add,b,materials:m});
+     b(stone,u,bottom+.022,.66,width+.10,.044,.35);
+     b(frame,u,bottom+height+.022,.61,width+.13,.07,.23);
+     if(width>3||!publicDoor){
+@@ -68,7 +127,7 @@ export function addAuthoredGroundElevation(THREE,{site,add,b,c,materials:m,clay,
+       if(profile.transom>bottom&&profile.transom<bottom+height-.12)b(frame,u,profile.transom,.638,width-.17,.044,.08);
+     } else {
+       b(frame,u,1.30,.64,.048,2.45,.095);
+-      for(const sign of [-1,1])c(m.metal,u+sign*.39,1.15,.74,.019,.27);
++      for(const sign of [-1,1])c(m.handle,u+sign*.39,1.15,.74,.019,.27);
+       b(m.metal,u,.10,.645,width-.23,.13,.055);
+     }
+     if(profile.blinds===2&&width>3){
+@@ -94,7 +153,7 @@ export function addAuthoredGroundElevation(THREE,{site,add,b,c,materials:m,clay,
+     panel(m.dark,0,1.55,.43,1.93,2.90,.07);
+     panel(m.glass,0,1.55,.505,1.87,2.84,.025);
+     panel(frame,0,1.50,.64,.048,2.84,.095);
+-    for(const sign of[-1,1])door(m.metal,new THREE.CylinderGeometry(1,1,1,10),sign*.39,1.15,.74,.019,.27,.019);
++    for(const sign of[-1,1])door(m.handle,new THREE.CylinderGeometry(1,1,1,10),sign*.39,1.15,.74,.019,.27,.019);
+     panel(stone,0,.042,.66,2.20,.044,.35);
+     panel(frame,0,3.102,.61,2.23,.07,.23);
+   }

@@ -1,0 +1,21 @@
+{
+  "status": "ACTUAL_NODE_CHECK_PASS",
+  "checks": [
+    {
+      "path": "tools/native-review/methods/resident/tools/capture-resident-native.mjs",
+      "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b",
+      "command": "node --check",
+      "exitCode": 0
+    },
+    {
+      "path": "tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+      "sha256": "95ba2b45e92f73d80cf729dc29117c6cd204496a82de8fb28b320be5ec33eeb8",
+      "command": "node --check",
+      "exitCode": 0
+    }
+  ],
+  "browserExecuted": false,
+  "productImported": false,
+  "gpuExecuted": false,
+  "rootWritten": false
+}

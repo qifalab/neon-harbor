@@ -1,0 +1,376 @@
+{
+  "scope": "READONLY_STATIC_REVIEW_NO_APPLICATION_EXECUTION",
+  "head": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "sourcePins": [
+    {
+      "path": "src/world.js",
+      "bytes": 51197,
+      "sha256": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/world-config.js",
+      "bytes": 467,
+      "sha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/city-exploration.js",
+      "bytes": 22323,
+      "sha256": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/collision.js",
+      "bytes": 19179,
+      "sha256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/simulation.js",
+      "bytes": 32947,
+      "sha256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/harbor-district.js",
+      "bytes": 26043,
+      "sha256": "82f786b881798a7c313654630b6c9e3fd307025ed9056c46a7945dc9e76d912f",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/harbor-frontage-profiles.js",
+      "bytes": 7298,
+      "sha256": "15825e008acd4af848ad681a80864c7e3c69d9456a15ec88b3632833e22137c6",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/harbor-terrain.js",
+      "bytes": 3460,
+      "sha256": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/metropolis-infrastructure.js",
+      "bytes": 25292,
+      "sha256": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/metropolis-world.js",
+      "bytes": 55617,
+      "sha256": "eb09ecce894d84bb58cdabef743dc2ab1f77a9db79e01286043ec378a34a952e",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/metropolis-transit.js",
+      "bytes": 63073,
+      "sha256": "ca316720b79de2a15dfeaf41fb3109589612733b886d1566d91049d383fc8a1e",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/harbor-transit.js",
+      "bytes": 38246,
+      "sha256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/harbor-transit-renderer.js",
+      "bytes": 12313,
+      "sha256": "5fb7ade1a232883759576c706b30a96d665b3ed4a0a425a92c6eba6f5bcc9422",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/harbor-vehicle-models.js",
+      "bytes": 45167,
+      "sha256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/citizen-crossings.js",
+      "bytes": 2835,
+      "sha256": "cf9ae62c1141514dab849079655136d17762a8efa16b2dc378a1b0393b4d1caf",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/citizen-navigation.js",
+      "bytes": 6318,
+      "sha256": "7ae2e7d47fdaf10355d81641f8e338745234cb2cfd30c7c2d1fcfc8ef267f9ed",
+      "sameBytesAsEf92": true
+    },
+    {
+      "path": "src/metropolis-catalog.js",
+      "bytes": 11081,
+      "sha256": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+      "sameBytesAsEf92": true
+    }
+  ],
+  "coordinateCatalogue": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/local-high-baseline-attempts/neon-harbor-final-native-method-v3/evidence/captured-buildings.json",
+    "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+    "origin": "closed historical native snapshot catalogue; frozen world.js is byte-identical to current ef92 world.js"
+  },
+  "routes": [
+    {
+      "id": "south-090",
+      "faceZ": 143.42007884336635,
+      "publicDoorPlaneZ": 144.06007884336634,
+      "close": {
+        "x": 187,
+        "z": 145.42007884336635
+      },
+      "target": {
+        "x": 187,
+        "z": 153.06007884336634
+      },
+      "legs": [
+        {
+          "x": 187,
+          "z": 146.42007884336635
+        },
+        {
+          "x": 187,
+          "z": 145.42007884336635
+        },
+        {
+          "x": 187,
+          "z": 153.06007884336634
+        }
+      ],
+      "return": "reverse outbound legs to close",
+      "targetGroundY": 0,
+      "radius": 0.65,
+      "axisTolerance": 0.15,
+      "effectiveConservativeRadius": 0.8,
+      "ownShellGapAtClose": 1.75
+    },
+    {
+      "id": "south-091",
+      "faceZ": 115.67839586455375,
+      "publicDoorPlaneZ": 116.31839586455375,
+      "close": {
+        "x": 213,
+        "z": 117.67839586455375
+      },
+      "target": {
+        "x": 233,
+        "z": 125.31839586455375
+      },
+      "legs": [
+        {
+          "x": 213,
+          "z": 118.67839586455375
+        },
+        {
+          "x": 213,
+          "z": 117.67839586455375
+        },
+        {
+          "x": 233,
+          "z": 117.67839586455375
+        },
+        {
+          "x": 233,
+          "z": 125.31839586455375
+        }
+      ],
+      "return": "reverse outbound legs to close",
+      "targetGroundY": 0,
+      "radius": 0.65,
+      "axisTolerance": 0.15,
+      "effectiveConservativeRadius": 0.8,
+      "ownShellGapAtClose": 1.75
+    },
+    {
+      "id": "south-092",
+      "faceZ": 142.11998675437644,
+      "publicDoorPlaneZ": 142.75998675437643,
+      "close": {
+        "x": 213,
+        "z": 144.11998675437644
+      },
+      "target": {
+        "x": 213,
+        "z": 151.75998675437643
+      },
+      "legs": [
+        {
+          "x": 213,
+          "z": 145.11998675437644
+        },
+        {
+          "x": 213,
+          "z": 144.11998675437644
+        },
+        {
+          "x": 213,
+          "z": 151.75998675437643
+        }
+      ],
+      "return": "reverse outbound legs to close",
+      "targetGroundY": 0,
+      "radius": 0.65,
+      "axisTolerance": 0.15,
+      "effectiveConservativeRadius": 0.8,
+      "ownShellGapAtClose": 1.75
+    },
+    {
+      "id": "south-094",
+      "faceZ": 221.75940199801698,
+      "publicDoorPlaneZ": 222.39940199801697,
+      "close": {
+        "x": 187,
+        "z": 223.75940199801698
+      },
+      "target": {
+        "x": 187,
+        "z": 231.39940199801697
+      },
+      "legs": [
+        {
+          "x": 187,
+          "z": 224.75940199801698
+        },
+        {
+          "x": 187,
+          "z": 223.75940199801698
+        },
+        {
+          "x": 187,
+          "z": 231.39940199801697
+        }
+      ],
+      "return": "reverse outbound legs to close",
+      "targetGroundY": 0,
+      "radius": 0.65,
+      "axisTolerance": 0.15,
+      "effectiveConservativeRadius": 0.8,
+      "ownShellGapAtClose": 1.75
+    },
+    {
+      "id": "south-095",
+      "faceZ": 196.95595548301935,
+      "publicDoorPlaneZ": 197.59595548301934,
+      "close": {
+        "x": 213,
+        "z": 198.95595548301935
+      },
+      "target": {
+        "x": 233,
+        "z": 206.59595548301934
+      },
+      "legs": [
+        {
+          "x": 213,
+          "z": 199.95595548301935
+        },
+        {
+          "x": 213,
+          "z": 198.95595548301935
+        },
+        {
+          "x": 233,
+          "z": 198.95595548301935
+        },
+        {
+          "x": 233,
+          "z": 206.59595548301934
+        }
+      ],
+      "return": "reverse outbound legs to close",
+      "targetGroundY": 0,
+      "radius": 0.65,
+      "axisTolerance": 0.15,
+      "effectiveConservativeRadius": 0.8,
+      "ownShellGapAtClose": 1.75
+    },
+    {
+      "id": "south-096",
+      "faceZ": 222.31897145090625,
+      "publicDoorPlaneZ": 222.95897145090623,
+      "close": {
+        "x": 213,
+        "z": 224.31897145090625
+      },
+      "target": {
+        "x": 213,
+        "z": 231.95897145090623
+      },
+      "legs": [
+        {
+          "x": 213,
+          "z": 225.31897145090625
+        },
+        {
+          "x": 213,
+          "z": 224.31897145090625
+        },
+        {
+          "x": 213,
+          "z": 231.95897145090623
+        }
+      ],
+      "return": "reverse outbound legs to close",
+      "targetGroundY": 0,
+      "radius": 0.65,
+      "axisTolerance": 0.15,
+      "effectiveConservativeRadius": 0.8,
+      "ownShellGapAtClose": 1.75
+    }
+  ],
+  "ground": {
+    "southSidewalkX": [
+      171.3,
+      228.7
+    ],
+    "southSidewalkFullHeightX": [
+      172.05,
+      227.95
+    ],
+    "sidewalkBlocksZ": [
+      [
+        91.3,
+        148.7
+      ],
+      [
+        171.3,
+        228.7
+      ]
+    ],
+    "fullSidewalkBlocksZ": [
+      [
+        92.05,
+        147.95
+      ],
+      [
+        172.05,
+        227.95
+      ]
+    ],
+    "roadX": [
+      229,
+      251
+    ],
+    "roadZ": [
+      [
+        149,
+        171
+      ],
+      [
+        229,
+        251
+      ]
+    ],
+    "sidewalkY": 0.18,
+    "rampWidth": 0.75,
+    "defaultGapY": -0.03,
+    "defaultGapWidth": 0.3,
+    "endpointY": 0
+  },
+  "limits": [
+    "No full runtime collider array was produced or claimed. Source equations and known historical catalogue bound nearby static colliders.",
+    "No live traffic, actual keyboard walking, camera rays, picture composition, renderer readiness or native art result was validated.",
+    "Player ordinary ground walk only; no jump.",
+    "x233 south091 longitudinal leg is within live tram traffic envelope around x232."
+  ]
+}

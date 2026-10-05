@@ -1,0 +1,211 @@
+{
+  "baseline": {
+    "status": "FAILED",
+    "firstError": {
+      "stage": "case",
+      "name": "TimeoutError",
+      "message": "page.waitForFunction: Timeout 15000ms exceeded.",
+      "stack": "page.waitForFunction: Timeout 15000ms exceeded.\n    at aim (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:164:16)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:266:29\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:253:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+    },
+    "secondaryErrors": [],
+    "runtimeErrors": [],
+    "budgetMs": 600000,
+    "elapsedMs": 98529,
+    "photos": [],
+    "motionStages": [],
+    "caseCleanup": [
+      {
+        "operation": "context.close",
+        "budget": 30000,
+        "elapsedMs": 2877,
+        "confirmed": true,
+        "error": null
+      }
+    ],
+    "runCleanup": [
+      {
+        "label": "browser.close",
+        "limit": 30000,
+        "startedAt": "2026-10-05T00:54:48.521Z",
+        "elapsedMs": 11268,
+        "confirmed": true,
+        "error": null
+      },
+      {
+        "label": "server.close",
+        "limit": 10000,
+        "startedAt": "2026-10-05T00:54:59.789Z",
+        "elapsedMs": 0,
+        "confirmed": true,
+        "error": null
+      }
+    ],
+    "actualHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+    "toolSHA256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3",
+    "buildAssetCount": 156,
+    "ownedLaunch": {
+      "pid": 3363,
+      "adapter": "pinned1.62.1 in-process toImpl(browser).options.browserProcess",
+      "scope": "this exact actual chromium.launch child and its owned descendants"
+    },
+    "executorExitCode": 1,
+    "executorSignals": [],
+    "ownedClosureConfirmed": true,
+    "portClosure": {
+      "port": 5240,
+      "connectErrno": 111,
+      "confirmedRefused": true
+    },
+    "timeoutSnapshotAvailable": false
+  },
+  "authored": {
+    "status": "FAILED",
+    "firstError": {
+      "stage": "case",
+      "name": "TimeoutError",
+      "message": "page.waitForFunction: Timeout 180000ms exceeded.",
+      "stack": "page.waitForFunction: Timeout 180000ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:216:16)\n    at photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:243:13)\n    at /home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:275:158\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:253:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+    },
+    "secondaryErrors": [],
+    "runtimeErrors": [],
+    "budgetMs": 600000,
+    "elapsedMs": 474848,
+    "photos": [
+      {
+        "stage": "exterior",
+        "file": "exterior.png",
+        "imageSha256": "25d87051172d39f73d53f5a5afb9cd955929ac9b5a400ab4da045bb9dbc21f4a",
+        "poseFile": "exterior-pose.json"
+      }
+    ],
+    "motionStages": [
+      {
+        "stage": "ground-x",
+        "samples": 0,
+        "firstError": null,
+        "target": 252.15
+      },
+      {
+        "stage": "ground-z",
+        "samples": 0,
+        "firstError": null,
+        "target": 103.45
+      },
+      {
+        "stage": "ground-x",
+        "samples": 10,
+        "firstError": null,
+        "target": 250.15
+      },
+      {
+        "stage": "ground-z",
+        "samples": 0,
+        "firstError": null,
+        "target": 103.45
+      },
+      {
+        "stage": "upper-0",
+        "samples": 8,
+        "firstError": null,
+        "target": {
+          "x": 0,
+          "z": -3.45,
+          "y": 0.44
+        }
+      }
+    ],
+    "caseCleanup": [
+      {
+        "operation": "context.close",
+        "budget": 30000,
+        "elapsedMs": 3844,
+        "confirmed": true,
+        "error": null
+      }
+    ],
+    "runCleanup": [
+      {
+        "label": "browser.close",
+        "limit": 30000,
+        "startedAt": "2026-10-05T01:02:56.005Z",
+        "elapsedMs": 22110,
+        "confirmed": true,
+        "error": null
+      },
+      {
+        "label": "server.close",
+        "limit": 10000,
+        "startedAt": "2026-10-05T01:03:18.115Z",
+        "elapsedMs": 0,
+        "confirmed": true,
+        "error": null
+      }
+    ],
+    "actualHead": "ef92c25980f1da12b508971170b72b9dd6230059",
+    "toolSHA256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3",
+    "buildAssetCount": 190,
+    "ownedLaunch": {
+      "pid": 3476,
+      "adapter": "pinned1.62.1 in-process toImpl(browser).options.browserProcess",
+      "scope": "this exact actual chromium.launch child and its owned descendants"
+    },
+    "executorExitCode": 1,
+    "executorSignals": [],
+    "ownedClosureConfirmed": true,
+    "portClosure": {
+      "port": 5240,
+      "connectErrno": 111,
+      "confirmedRefused": true
+    },
+    "timeoutSnapshotAvailable": false
+  },
+  "sourceCorrelation": {
+    "originalServiceTimeDwellEnd": 12,
+    "nextWorkshopNominalArrival": 30.316666666666666,
+    "lastExactSimulationTimeFromCumulativeHeld": 13.000000000000226,
+    "lastLocal": {
+      "x": -0.024999999999999627,
+      "y": 0.44,
+      "z": -3.45,
+      "yaw": 1.5707963267948966
+    },
+    "nextNominalETAAtLastWalkingSnapshot": 17.316666666666443,
+    "sourceTrafficCanIncreaseArrival": true,
+    "waitStartEstimatedFromErrorEventNotProtocolStart": "2026-10-05T00:59:51.843000+00:00",
+    "wallBoardingEventToEstimatedWaitStart": 118.39199995994568,
+    "simBoardedToLastRecordedWalk": 3.7500000000001865,
+    "localWallPerSimEstimate": 31.57119998931728,
+    "conditionalETAProjectionWallSeconds": 546.7079464816704,
+    "projectionIsNotRuntimeArrivalGuarantee": true,
+    "originalWholeRemainingAtEstimatedWaitStart": 308.9980001449585
+  },
+  "videoFrameObservation": {
+    "baseline90": "Camera looks along street, no numeric camera telemetry after original aim timeout; no exact yaw/pitch assertion can be reconstructed from this frame.",
+    "authored300": "HUD shows lower deck, initial Lantern stop and departure in 1 second.",
+    "authored465": "HUD shows lower deck and next Workshop stop in 13 seconds; shifted streetscape supports some actual route progress. Frames represent compositor presentation, not precise simulation state or exact first-error time."
+  },
+  "recommendation": {
+    "retainOriginalFAIL": true,
+    "groundPatchIsNotFixForTheseFirstErrors": true,
+    "aimFiniteProposalMs": 60000,
+    "aimCauseLimitation": "No original post-timeout camera snapshot; 60 seconds is a bounded phase tolerance proposal, not confirmed root-cause repair.",
+    "waitFiniteProposalMs": 600000,
+    "requireExplicitWholeBudgetAdoption": "Original 600-second whole case has only about 309 seconds left at this wait. A 600-second wait alone cannot take effect within that whole cap. Any new whole cap must be explicitly adopted, source-documented and verified with a fresh real run.",
+    "preserveGuards": [
+      "open berth",
+      "doorsOpen",
+      "remaining>2",
+      "local .06",
+      "height .15",
+      "camera yaw .025",
+      "eye height 1.62±.025",
+      "full stairs and destination"
+    ],
+    "addBoundedReadOnlyEvidence": [
+      "wait entry sim/paused/current vehicle/serviceTime/nextStop/ETA/timing",
+      "timeout same fields after all input released; preserve primary timeout if diagnostic fails"
+    ],
+    "noStateWrites": true,
+    "noRetry": true
+  }
+}

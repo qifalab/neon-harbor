@@ -1,0 +1,53 @@
+{
+  "status": "SOURCE_ONLY_TEXT_AND_IO_REVIEW_NO_EXECUTION",
+  "independentReviewer": "docs_claims_readonly",
+  "independentFinding": "No concrete mustfix in wide planner/main text; original photographs/E and mode-independent24/30 fixed caps retained",
+  "unchangedOriginalDependencies": {
+    "input.mjs": true,
+    "plans.mjs": true,
+    "expectations.mjs": true,
+    "server.mjs": true,
+    "render-readiness.mjs": true,
+    "evidence/captured-buildings.json": true,
+    "evidence/common-pose-proof.json": true
+  },
+  "originalCleanupTailByteIdentical": true,
+  "newProofJSONFinite": true,
+  "original720ArtifactsPreserved": true,
+  "boundedCloseMergeTarget": {
+    "path": "/tmp/neon-native-bounded-close-candidate-v2-20261005/payload/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs",
+    "sha256": "5572bad00477bb5fd05a472501ed6ab58c36087b5f273540c467efb63cc9a9ad"
+  },
+  "narrowDiffContextCompatibility": [
+    {
+      "originalContextPresentExactlyOnceIn5572": true,
+      "oldContextLines": 11
+    },
+    {
+      "originalContextPresentExactlyOnceIn5572": true,
+      "oldContextLines": 7
+    },
+    {
+      "originalContextPresentExactlyOnceIn5572": true,
+      "oldContextLines": 7
+    },
+    {
+      "originalContextPresentExactlyOnceIn5572": true,
+      "oldContextLines": 8
+    },
+    {
+      "originalContextPresentExactlyOnceIn5572": true,
+      "oldContextLines": 6
+    }
+  ],
+  "notRun": [
+    "node syntax/check",
+    "module import/plan-only",
+    "tests",
+    "build",
+    "browser",
+    "GPU",
+    "patch application"
+  ],
+  "sourceMethodStatus": "PREPARED_FOR_ROOT_REVIEW_NOT_NATIVE_PASS"
+}

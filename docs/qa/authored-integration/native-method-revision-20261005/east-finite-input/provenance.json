@@ -1,0 +1,47 @@
+{
+  "createdAt": "2026-10-05T01:34:00.631935+00:00",
+  "scope": "Prepared only in /tmp, no ROOT/runtime/index/ref/GPU/tests/build/browser action",
+  "path": "tools/native-review/methods/scenic/capture-scenic-east.mjs",
+  "base": {
+    "bytes": 32498,
+    "sha256": "2d87003fda9bc686a34f9f78586c07c26c27f1567efcd2be855b9aa427724c6f",
+    "containsParentAdoptedCleanupCorrection": true
+  },
+  "candidate": {
+    "bytes": 32756,
+    "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
+  },
+  "exactTwoReplacements": [
+    {
+      "before": "inputHold: 120000, pointerLook: 30000",
+      "after": "inputHold: options.case === 'east-interior' ? 180000 : 120000, pointerLook: options.case === 'east-interior' ? 60000 : 30000"
+    },
+    {
+      "before": "input = createInput(page, { remaining, record, persist }); await boot();",
+      "after": "input = createInput(page, { remaining: options.case === 'east-interior' ? cap => remaining(cap === 120000 ? record.phaseLimitsMs.inputHold : cap === 30000 ? record.phaseLimitsMs.pointerLook : cap) : remaining, record, persist }); await boot();"
+    }
+  ],
+  "unchangedHelper": {
+    "path": "tools/native-review/methods/scenic/input.mjs",
+    "bytes": 7087,
+    "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+  },
+  "retained": {
+    "eastWholeMinutes": 60,
+    "dayNightWholeMinutes": 15,
+    "dayNightInputHold": 120000,
+    "dayNightPointerLook": 30000,
+    "dayNightRemainingFunctionIdentity": true,
+    "geometryAndPose": true,
+    "allOriginalInputAssertions": true,
+    "originalCleanupBytes": true
+  },
+  "originalArtifact": {
+    "id": 11320594919,
+    "bytes": 11393689,
+    "sha256": "698aefe9bbab1f7b3460d13cb5f2097ef76acf10d292112c569e13298048b312"
+  },
+  "notApplied": true,
+  "originalBothModeFailuresPreserved": true,
+  "futurePassNotGuaranteed": true
+}

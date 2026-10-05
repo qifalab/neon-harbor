@@ -1,0 +1,1 @@
+First adoption verifier compared nested receipt object directly to sha string and raised AssertionError before any mutation. Corrected verifier to read receipt[path].sha256; original code/source bytes unchanged in failed attempt.

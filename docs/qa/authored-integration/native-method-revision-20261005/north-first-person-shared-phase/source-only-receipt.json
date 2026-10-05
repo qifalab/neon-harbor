@@ -1,0 +1,45 @@
+{
+  "status": "SOURCE_ONLY_PREPARED_NOT_EXECUTED",
+  "sourceFrozen": true,
+  "baseFile": "/workspace/scratch/neon-harbor/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+  "base": {
+    "bytes": 31184,
+    "sha256": "1d5e1b813531d13488d06c85cd4442b50f48396c9717ae2867e1caf7cd9027f1"
+  },
+  "candidate": {
+    "path": "/tmp/neon-native-north-first-person-phase-candidate-v2-20261005/capture-resident-extra.mjs",
+    "bytes": 33510,
+    "sha256": "d4f079332972e300f5d78a685e65274b3e28756cddba17627462007337ca80d8"
+  },
+  "patch": {
+    "path": "/tmp/neon-native-north-first-person-phase-candidate-v2-20261005/first-person-shared15-only.patch",
+    "bytes": 3268,
+    "sha256": "c9ec3ecfe4aef8993e651e4f557a65bb031c9ef1f948de1b9c3d745dbede7c0e"
+  },
+  "declaredAdoptionPath": "tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+  "scope": "Only firstPerson helper. One shared original15s deadline covers focus, read, at most one public V, light DOM aria-pressed gate, exact snapshot bool and finite current camera. No additional180s ready helper.",
+  "constants": {
+    "firstPersonPhaseMs": 15000,
+    "unchangedTotalWallSeconds": 1080,
+    "lightPollingMs": 100,
+    "firstPersonFov": 65
+  },
+  "sourceProof": "ef92 src/main.js:258 aria-pressed derives String(settings.firstPerson); first-person camera reset becomes null until actual next frame. Original failing helper predicate only bool; later failure snapshottrue does not prove timeout cause.",
+  "limits": "Source-only proposed fixture adjustment; no claim original failed north-book has images or book visual acceptance.",
+  "originalFailureArtifact": "/tmp/neon-native-ef92-north-book-11320891905/extracted/native/authored/metadata.json",
+  "originalFailurePreserved": true,
+  "syntaxCheckRun": false,
+  "testsRun": false,
+  "browserRun": false,
+  "gpuRun": false,
+  "buildRun": false,
+  "rootMutated": false,
+  "nativeAcceptance": "NOT_RUN",
+  "predecessorSourceOnlyDraft": {
+    "path": "/tmp/neon-native-north-first-person-phase-candidate-20261005/source-only-receipt.json",
+    "bytes": 1952,
+    "sha256": "432f68748ef8a28dc82c2e19b74379f757d7572c26b5c3f27a93f47fb176b291",
+    "unchanged": true
+  },
+  "phaseScheduling": "Remaining phase budget is checked before operation promise scheduling, so an exhausted phase starts no further operation."
+}

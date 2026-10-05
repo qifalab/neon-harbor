@@ -1,0 +1,118 @@
+{
+  "jobId": 111566878149,
+  "name": "Build and gameplay tests (harbor-realism)",
+  "bucket": "required",
+  "conclusion": "success",
+  "downloadedAt": "2026-10-05T00:30:48.635Z",
+  "raw": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878149-original.log",
+    "bytes": 192396,
+    "sha256": "12c8388e722158d593b555c7285fbecd59abd4b3741f4a0b0ea9650bb244a2e7"
+  },
+  "rules": {
+    "tests": 342,
+    "passed": 342,
+    "failed": 0,
+    "uniqueTestCountNotMultiplied": true
+  },
+  "errorLines": [],
+  "actualJobSteps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-05T00:19:11Z",
+      "completed_at": "2026-10-05T00:19:13Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-05T00:19:13Z",
+      "completed_at": "2026-10-05T00:19:48Z"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-05T00:19:48Z",
+      "completed_at": "2026-10-05T00:19:53Z"
+    },
+    {
+      "name": "Run npm ci",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-05T00:19:53Z",
+      "completed_at": "2026-10-05T00:19:55Z"
+    },
+    {
+      "name": "Run npm test",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-05T00:19:55Z",
+      "completed_at": "2026-10-05T00:23:02Z"
+    },
+    {
+      "name": "Run npm run build",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-05T00:23:02Z",
+      "completed_at": "2026-10-05T00:23:03Z"
+    },
+    {
+      "name": "Run npx playwright install --with-deps chromium",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-10-05T00:23:03Z",
+      "completed_at": "2026-10-05T00:23:30Z"
+    },
+    {
+      "name": "Run npx playwright test tests/e2e/harbor-realism.spec.js --fully-parallel --shard=1/1",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-05T00:23:30Z",
+      "completed_at": "2026-10-05T00:29:09Z"
+    },
+    {
+      "name": "Retain browser verification evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-10-05T00:29:09Z",
+      "completed_at": "2026-10-05T00:29:11Z"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17,
+      "started_at": "2026-10-05T00:29:11Z",
+      "completed_at": "2026-10-05T00:29:11Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 18,
+      "started_at": "2026-10-05T00:29:11Z",
+      "completed_at": "2026-10-05T00:29:11Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 19,
+      "started_at": "2026-10-05T00:29:11Z",
+      "completed_at": "2026-10-05T00:29:12Z"
+    }
+  ],
+  "captureIsManualArtApproval": false
+}

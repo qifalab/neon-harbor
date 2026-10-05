@@ -1,0 +1,515 @@
+{
+  "reviewedAt": "2026-10-05T00:39:34.875107+00:00",
+  "scope": "read-only south-094 original metadata/summary/stdoutstderr and exact archived collector plus pinned local provider source; no PNG/pose content or visual review, no full archive hash, no runner/tests/build/browser/GPU/API/source mutation",
+  "pairSummary": {
+    "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/pair-summary.json",
+    "bytes": 91773,
+    "sha256": "1afff96ca4e0a0454bdffb48a0df308d27d58d9cbec1a27daea4c88e4ace39bb",
+    "status": "FAILED",
+    "firstError": {
+      "mode": "baseline",
+      "source": "original-native-record",
+      "error": {
+        "name": "Error",
+        "message": "Owned cleanup failed",
+        "stack": "Error: Owned cleanup failed\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:309:66\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+      }
+    }
+  },
+  "collectorSource": {
+    "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/preparation/method-bundle-original/methods/harbor/capture-authored-harbor-native.mjs",
+    "bytes": 31770,
+    "sha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+    "cleanupSourceLines293through309": [
+      " async function close(label,operation,cap){let timer;const item={label,timeoutMs:Math.max(1,Math.min(cap,deadline-Date.now())),startedAt:new Date().toISOString()};",
+      "  try{await Promise.race([Promise.resolve().then(operation),new Promise((_,reject)=>timer=setTimeout(()=>reject(new Error(label+' cleanup deadline')),item.timeoutMs))]);item.status='closed';}",
+      "  catch(error){item.status='failed';item.error=errorRecord(error);}finally{clearTimeout(timer);item.finishedAt=new Date().toISOString();record.cleanup.push(item);}}",
+      " if(context)await close('browser-context',()=>context.close(),10000);",
+      " if(browser)await close('browser',()=>browser.close(),10000);",
+      " if(browserServer)await close('owned-browser-process',()=>browserServer.close(),30000);",
+      " if(browserProcess&&browserProcess.exitCode===null&&browserProcess.signalCode===null&&browserServer)await close('owned-browser-process-kill',()=>browserServer.kill(),5000);",
+      " if(browserProcess)record.browserProcessAfterFinalization={pid:browserProcess.pid,exitCode:browserProcess.exitCode,signalCode:browserProcess.signalCode};",
+      " if(server)await close('static-server',()=>new Promise((done,reject)=>server.close(error=>error?reject(error):done())),5000);",
+      " record.finalizationErrors=[];",
+      " if(record.cleanup.some(item=>item.status!=='closed'))record.finalizationErrors.push('Owned cleanup failed');",
+      " if(record.errors.length)record.finalizationErrors.push('Unexpected errors before or during teardown');",
+      " if(record.hardDeadlineReached||Date.now()>=deadline)record.finalizationErrors.push('Whole case deadline reached');",
+      " if(record.deadlineCloseError)record.finalizationErrors.push('Hard-deadline browser close failed');",
+      " if(browserProcess&&browserProcess.exitCode===null&&browserProcess.signalCode===null)record.finalizationErrors.push('Owned browser child remains alive after finalization');",
+      " if(!playableCompleted)record.finalizationErrors.push('Playable capture route incomplete');",
+      " if(record.finalizationErrors.length&&!primaryError)primaryError=new Error(record.finalizationErrors.join('; '));"
+    ]
+  },
+  "providerSource": {
+    "path": "/workspace/scratch/neon-harbor/node_modules/playwright-core/lib/coreBundle.js",
+    "bytes": 3425603,
+    "sha256": "9393fa79e1c67c74edc26b610d65a4f7ed73d345a762465cc88340a33a2454ac",
+    "shaMatchesArchivedProcessAdapter": true,
+    "selectedCloseSource": [
+      {
+        "needle": "DEFAULT_PLAYWRIGHT_TIMEOUT = 3e4;",
+        "characterOffset": 158148,
+        "excerpt": "\"use strict\";\n    _timeOrigin = performance.timeOrigin;\n    _timeShift = 0;\n    DEFAULT_PLAYWRIGHT_TIMEOUT = 3e4;\n    DEFAULT_PLAYWRIGHT_LAUNCH_TIMEOUT = 3 * 60 * 1e3;\n  }\n});\n\n// packages/isomorphic/timeoutRunner.ts\nasync function raceAgainstDeadline(cb, deadline) {\n  let timer;\n  return await Promise.race([\n    cb().then((result2) => {\n      return { result: result2, timedOut: false };\n    }),\n    new Promise((resolve) => {\n      if (!deadline)\n        return;\n      timer = setTimeout(() => resolve({ timedOut: true }), deadline - monotonicTime());\n    })\n  ]).finally(() => {\n    clearTimeout(timer);\n  });\n}\nasync function pollAgainstDeadline(callback, deadline, [...pollIntervals] = [100, 250, 500, 1e3]) {\n  const lastPollInterval = pollIntervals.pop() ?? 1e3;\n  let la"
+      },
+      {
+        "needle": "browserServer.close = () => browser.options.browserProcess.close();",
+        "characterOffset": 2710764,
+        "excerpt": "erProcess.process;\n        browserServer.wsEndpoint = () => wsEndpoint;\n        browserServer.close = () => browser.options.browserProcess.close();\n        browserServer[Symbol.asyncDispose] = browserServer.close;\n        browserServer.kill = () => browser.options.browserProcess.kill();\n        browserServer._disconnectForTest = () => server.close();\n        browserServer._userDataDirForTest = browser._userDataDirForTest;\n        browser.options.browserProcess.onclose = (exitCode, signal) => {\n          server.close();\n          browserServer.emit(\"close\", exitCode, signal);\n        };\n        return browserServer;\n      }\n    };\n  }\n});\n\n// packages/playwright-core/src/client/clientStackTrace.ts\nfunction captureLibraryStackTrace() {\n  const stack = captureRawStack();\n "
+      },
+      {
+        "needle": "async function closeOrKill(timeout)",
+        "characterOffset": 1978211,
+        "excerpt": "     browserProcess.onclose(exitCode, signal);\n          }\n        }));\n        async function closeOrKill(timeout) {\n          let timer;\n          try {\n            await Promise.race([\n              gracefullyClose(),\n              new Promise((resolve, reject) => timer = setTimeout(reject, timeout))\n            ]);\n          } catch (ignored) {\n            await kill().catch((ignored2) => {\n            });\n          } finally {\n            clearTimeout(timer);\n          }\n        }\n        browserProcess = {\n          onclose: void 0,\n          process: launchedProcess,\n          close: () => closeOrKill(options.__testHookBrowserCloseTimeout || DEFAULT_PLAYWRIGHT_TIMEOUT),\n          kill\n        };\n        try {\n          const { wsEndpoint } = await progress2.race("
+      },
+      {
+        "needle": "close: () => closeOrKill(options.__testHookBrowserCloseTimeout || DEFAULT_PLAYWRIGHT_TIMEOUT)",
+        "characterOffset": 1978722,
+        "excerpt": "ss = {\n          onclose: void 0,\n          process: launchedProcess,\n          close: () => closeOrKill(options.__testHookBrowserCloseTimeout || DEFAULT_PLAYWRIGHT_TIMEOUT),\n          kill\n        };\n        try {\n          const { wsEndpoint } = await progress2.race([\n            this.waitForReadyState(options, browserLogsCollector),\n            exitPromise.then(() => ({ wsEndpoint: void 0 }))\n          ]);\n          if (exitPromise.isDone()) {\n            const log2 = helper.formatBrowserLogs(browserLogsCollector.recentLogs());\n            const updatedLog = this.doRewriteStartupLog(log2);\n            throw new Error(`Failed to launch the browser process.\nBrowser logs:\n${updatedLog}`);\n          }\n          if (!this.supportsPipeTransport(options)) {\n            tran"
+      }
+    ]
+  },
+  "modes": [
+    {
+      "mode": "baseline",
+      "metadata": {
+        "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/native/baseline/metadata.json",
+        "bytes": 224464,
+        "sha256": "1bb4b1aa5282431327f2088a03c93ac439198de27ac37c1510214391c4dc90ce"
+      },
+      "status": "failed",
+      "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+      "primaryError": {
+        "name": "Error",
+        "message": "Owned cleanup failed",
+        "stack": "Error: Owned cleanup failed\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:309:66\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+      },
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "timeoutMs": 10000,
+          "startedAt": "2026-10-05T00:27:32.443Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:27:32.463Z"
+        },
+        {
+          "label": "browser",
+          "timeoutMs": 10000,
+          "startedAt": "2026-10-05T00:27:32.463Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:27:32.468Z"
+        },
+        {
+          "label": "owned-browser-process",
+          "timeoutMs": 30000,
+          "startedAt": "2026-10-05T00:27:32.468Z",
+          "status": "failed",
+          "error": {
+            "name": "Error",
+            "message": "owned-browser-process cleanup deadline",
+            "stack": "Error: owned-browser-process cleanup deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:294:113)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          },
+          "finishedAt": "2026-10-05T00:28:02.474Z"
+        },
+        {
+          "label": "owned-browser-process-kill",
+          "timeoutMs": 5000,
+          "startedAt": "2026-10-05T00:28:02.474Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:28:02.518Z"
+        },
+        {
+          "label": "static-server",
+          "timeoutMs": 5000,
+          "startedAt": "2026-10-05T00:28:02.519Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:28:02.519Z"
+        }
+      ],
+      "finalizationErrors": [
+        "Owned cleanup failed"
+      ],
+      "finishedBeforeDeadline": true,
+      "errors": [],
+      "errorsAfterFinalization": [],
+      "teardownEvents": [],
+      "browserProcessAfterFinalization": {
+        "pid": 3439,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      },
+      "completionEvidence": {
+        "planSteps": 13,
+        "lastActiveStep": {
+          "index": 12,
+          "kind": "frontage",
+          "label": "shell-restored-after-re-entry"
+        },
+        "runtimeRecheckedAfter": true,
+        "completedInputs": 6,
+        "inputCount": 6,
+        "eventKinds": [
+          "single-independent-public-Atlas-setup",
+          "apparent-south-door-and-actual-public-prompt",
+          "actual-E-enter",
+          "real-target-building-interior",
+          "first-normal-exit",
+          "shell-restored-after-exit",
+          "physical-re-entry",
+          "second-normal-exit",
+          "shell-restored-after-re-entry"
+        ],
+        "captureCount": 2,
+        "capturesMetadata": [
+          {
+            "label": "south-frontage",
+            "file": "south-094-south-frontage-high.png",
+            "sha256": "f015e0e6ef1da6b604b15c447d8a3291d616fbaa5081df058f76fe8d61d70e57",
+            "poseFile": "south-094-south-frontage-pose.json",
+            "poseSha256": "793de4b750cfa537f6c87abe1388901359aeedfc157a0aad2fda31d59f8648b0",
+            "originalPixels": [
+              1280,
+              800
+            ],
+            "gl": {
+              "width": 1280,
+              "height": 800,
+              "contextLost": false,
+              "errorAtCheckpoint": 0,
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+            }
+          },
+          {
+            "label": "actual-public-door",
+            "file": "south-094-actual-public-door-high.png",
+            "sha256": "d906653e6bc9028ddd99f1fe973bbfbedbf37ceb112827090f33127b02773930",
+            "poseFile": "south-094-actual-public-door-pose.json",
+            "poseSha256": "89c69554f8c6daf83a7889898941c37fe4bcb4f47974c1fce096e14388c19598",
+            "originalPixels": [
+              1280,
+              800
+            ],
+            "gl": {
+              "width": 1280,
+              "height": 800,
+              "contextLost": false,
+              "errorAtCheckpoint": 0,
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+            }
+          }
+        ],
+        "pngOrPoseContentInspected": false,
+        "noPerOwnerReleaseTransactionClaim": true
+      },
+      "sourceFingerprintEvidence": {
+        "actualHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+        "headAfter": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+        "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+        "buildInfoSha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+        "gitStatusEmptyAndUnchanged": true,
+        "dictionaryCount": 156,
+        "dictEqualsMetadataSourceServedAndSealedExpected": true,
+        "wrapperFreezeBeforeAfterExact": true,
+        "methodFileShaChecks": {
+          "capture-authored-harbor-native.mjs": {
+            "sha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+            "recorded": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+            "exact": true
+          },
+          "input.mjs": {
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+            "recorded": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+            "exact": true
+          },
+          "plans.mjs": {
+            "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+            "recorded": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+            "exact": true
+          },
+          "expectations.mjs": {
+            "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+            "recorded": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+            "exact": true
+          },
+          "server.mjs": {
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+            "recorded": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+            "exact": true
+          },
+          "render-readiness.mjs": {
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+            "recorded": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+            "exact": true
+          },
+          "evidence/captured-buildings.json": {
+            "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+            "recorded": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+            "exact": true
+          },
+          "evidence/common-pose-proof.json": {
+            "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57",
+            "recorded": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57",
+            "exact": true
+          }
+        },
+        "remoteSourceDistRehashedByThisReview": false
+      },
+      "wrapperEvidence": {
+        "exitCode": 1,
+        "signals": [],
+        "ownedClosureConfirmed": true,
+        "remainingOwnedProcesses": [],
+        "portClosure": {
+          "port": 5240,
+          "connectErrno": 111,
+          "confirmedRefused": true
+        },
+        "reportedBrowserProcessChecks": [
+          {
+            "pid": 3439,
+            "actualProcState": null,
+            "recordedPidAbsentOrZombie": true,
+            "observedIdentity": null
+          }
+        ],
+        "ownedRunnerPid": 3421,
+        "launchRootBoundBeforeAnyPollWait": true
+      },
+      "collectorComplete": false
+    },
+    {
+      "mode": "authored",
+      "metadata": {
+        "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/native/authored/metadata.json",
+        "bytes": 244427,
+        "sha256": "c1fa62c18ba72bb9c80e09f6ef86a4f4cd69fc3c8e96ca060701e939d6cecef7"
+      },
+      "status": "failed",
+      "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+      "primaryError": {
+        "name": "Error",
+        "message": "Owned cleanup failed",
+        "stack": "Error: Owned cleanup failed\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:309:66\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+      },
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "timeoutMs": 10000,
+          "startedAt": "2026-10-05T00:35:17.147Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:35:17.167Z"
+        },
+        {
+          "label": "browser",
+          "timeoutMs": 10000,
+          "startedAt": "2026-10-05T00:35:17.167Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:35:17.171Z"
+        },
+        {
+          "label": "owned-browser-process",
+          "timeoutMs": 30000,
+          "startedAt": "2026-10-05T00:35:17.171Z",
+          "status": "failed",
+          "error": {
+            "name": "Error",
+            "message": "owned-browser-process cleanup deadline",
+            "stack": "Error: owned-browser-process cleanup deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:294:113)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          },
+          "finishedAt": "2026-10-05T00:35:47.184Z"
+        },
+        {
+          "label": "owned-browser-process-kill",
+          "timeoutMs": 5000,
+          "startedAt": "2026-10-05T00:35:47.184Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:35:47.241Z"
+        },
+        {
+          "label": "static-server",
+          "timeoutMs": 5000,
+          "startedAt": "2026-10-05T00:35:47.242Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:35:47.242Z"
+        }
+      ],
+      "finalizationErrors": [
+        "Owned cleanup failed"
+      ],
+      "finishedBeforeDeadline": true,
+      "errors": [],
+      "errorsAfterFinalization": [],
+      "teardownEvents": [],
+      "browserProcessAfterFinalization": {
+        "pid": 3636,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      },
+      "completionEvidence": {
+        "planSteps": 13,
+        "lastActiveStep": {
+          "index": 12,
+          "kind": "frontage",
+          "label": "shell-restored-after-re-entry"
+        },
+        "runtimeRecheckedAfter": true,
+        "completedInputs": 6,
+        "inputCount": 6,
+        "eventKinds": [
+          "single-independent-public-Atlas-setup",
+          "apparent-south-door-and-actual-public-prompt",
+          "actual-E-enter",
+          "real-target-building-interior",
+          "first-normal-exit",
+          "shell-restored-after-exit",
+          "physical-re-entry",
+          "second-normal-exit",
+          "shell-restored-after-re-entry"
+        ],
+        "captureCount": 2,
+        "capturesMetadata": [
+          {
+            "label": "south-frontage",
+            "file": "south-094-south-frontage-high.png",
+            "sha256": "45b6c4d8ce5e4341c1a3597eb048b5879b95fb0b9617ed41db3f5c372d76de52",
+            "poseFile": "south-094-south-frontage-pose.json",
+            "poseSha256": "8be4f80089315a2db691e6b42d49b71ab81bd66fb99f5408afd1403ad87400f6",
+            "originalPixels": [
+              1280,
+              800
+            ],
+            "gl": {
+              "width": 1280,
+              "height": 800,
+              "contextLost": false,
+              "errorAtCheckpoint": 0,
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+            }
+          },
+          {
+            "label": "actual-public-door",
+            "file": "south-094-actual-public-door-high.png",
+            "sha256": "91c33d544616b899e46dacc9b40bf31c3aece7e4e1086d1aa2b040546eb6ca6f",
+            "poseFile": "south-094-actual-public-door-pose.json",
+            "poseSha256": "ad8772726cdeea64dd27fb7369eff367208595dd43db5c5a2002c9b585afb768",
+            "originalPixels": [
+              1280,
+              800
+            ],
+            "gl": {
+              "width": 1280,
+              "height": 800,
+              "contextLost": false,
+              "errorAtCheckpoint": 0,
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+            }
+          }
+        ],
+        "pngOrPoseContentInspected": false,
+        "noPerOwnerReleaseTransactionClaim": true
+      },
+      "sourceFingerprintEvidence": {
+        "actualHead": "ef92c25980f1da12b508971170b72b9dd6230059",
+        "headAfter": "ef92c25980f1da12b508971170b72b9dd6230059",
+        "buildRevision": "ef92c25980f1da12b508971170b72b9dd6230059",
+        "buildInfoSha256": "95087f264b7f52bb9d3cad03aefe2801aeb840806c1f63656c6e2b7036d4295e",
+        "gitStatusEmptyAndUnchanged": true,
+        "dictionaryCount": 190,
+        "dictEqualsMetadataSourceServedAndSealedExpected": true,
+        "wrapperFreezeBeforeAfterExact": true,
+        "methodFileShaChecks": {
+          "capture-authored-harbor-native.mjs": {
+            "sha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+            "recorded": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+            "exact": true
+          },
+          "input.mjs": {
+            "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+            "recorded": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+            "exact": true
+          },
+          "plans.mjs": {
+            "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+            "recorded": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+            "exact": true
+          },
+          "expectations.mjs": {
+            "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+            "recorded": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+            "exact": true
+          },
+          "server.mjs": {
+            "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+            "recorded": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+            "exact": true
+          },
+          "render-readiness.mjs": {
+            "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+            "recorded": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+            "exact": true
+          },
+          "evidence/captured-buildings.json": {
+            "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+            "recorded": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+            "exact": true
+          },
+          "evidence/common-pose-proof.json": {
+            "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57",
+            "recorded": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57",
+            "exact": true
+          }
+        },
+        "remoteSourceDistRehashedByThisReview": false
+      },
+      "wrapperEvidence": {
+        "exitCode": 1,
+        "signals": [],
+        "ownedClosureConfirmed": true,
+        "remainingOwnedProcesses": [],
+        "portClosure": {
+          "port": 5240,
+          "connectErrno": 111,
+          "confirmedRefused": true
+        },
+        "reportedBrowserProcessChecks": [
+          {
+            "pid": 3636,
+            "actualProcState": null,
+            "recordedPidAbsentOrZombie": true,
+            "observedIdentity": null
+          }
+        ],
+        "ownedRunnerPid": 3615,
+        "launchRootBoundBeforeAnyPollWait": true
+      },
+      "collectorComplete": false
+    }
+  ],
+  "findings": {
+    "productStepsCompleteBeforeFinalization": true,
+    "onlyRecordedFinalizationError": "Owned cleanup failed",
+    "collectorOuterCloseCapMs": 30000,
+    "providerCloseOrKillDefaultMs": 30000,
+    "deadlineCollision": "Outer timer is scheduled while Promise.resolve().then(operation) is pending; internal closeOrKill timer is scheduled only inside operation. Equal 30000ms caps therefore permit the outer deadline to record failure before the provider close/fallback settles. This does not establish why graceful child exit stalled.",
+    "actualPostCleanupSignalBothModes": "SIGKILL",
+    "overallRunMustRemain": "FAILED",
+    "methodPreservedArtAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+    "currentGuardGap": "Current line307 only rejects a browserProcess still alive (exitCode===null && signalCode===null); it has no explicit abnormal-signal/SIGKILL finalization guard. Increasing cap alone would permit provider closeOrKill SIGKILL then resolve to be labelled closed."
+  },
+  "minimalFutureCollectorOnlyRecommendation": {
+    "ownedCloseCapExampleMs": 35000,
+    "reason": "Allow pinned internal 30000ms process-close/fallback plus 5000ms bounded settling, clipped by the unchanged whole-case deadline.",
+    "requiredFailureGuard": "Explicitly preserve forced-cleanup/SIGKILL as a finalization failure even when provider close resolves within this extra settling margin; never treat final actual closure as art/case PASS.",
+    "mustPreserve": [
+      "route, inputs, 13 steps, 2 captures, High1280x800/DPR1, FOV/hour, real E transitions",
+      "original12min whole-case budget and hard timer through final persistence",
+      "context/browser caps10000/10000 and explicit fallback cap5000",
+      "original first failure, later cleanup/teardown failure precedence, source/method/assets fingerprint checks",
+      "source-only new candidate and resealed method/bundle provenance; original ef92 metadata, run and artifact untouched"
+    ],
+    "validationBoundary": "No repair was applied or run here. A fresh authorized run is required to learn whether graceful close completes; a surviving timeout or forced SIGKILL continues to FAIL."
+  }
+}

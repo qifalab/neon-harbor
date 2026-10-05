@@ -1,0 +1,291 @@
+{
+  "schema": "frontage-wide-whole-budget-evidence-v1",
+  "status": "SOURCE_ONLY_FIXED_CAP_PREPARATION_NOT_NATIVE_PASS",
+  "decision": "ROOT explicitly accepted fixed24min straight cases /30min L cases; no further speculative widening",
+  "historicalDiagnostic": {
+    "path": "/tmp/neon-native-frontage-original12-timing-diagnostic-2026-10-05/original12-diagnostic.json",
+    "sha256": "93399457ae7ac04b6cd4240861688a82d270175995f7a82063a1fedb2b7e6dc3",
+    "originalWholeMinutes": 12,
+    "originalFailuresPreserved": true
+  },
+  "originalCompletedLegMeasurements": [
+    {
+      "case": "south-091",
+      "mode": "baseline",
+      "axis": "z",
+      "target": 117.67839586455375,
+      "wallSeconds": 20.683,
+      "simulationSeconds": 1.2499999999999956,
+      "wallPerSimulationSecond": 16.54640000000006
+    },
+    {
+      "case": "south-091",
+      "mode": "baseline",
+      "axis": "z",
+      "target": 118.67839586455375,
+      "wallSeconds": 23.734,
+      "simulationSeconds": 1.5000000000000746,
+      "wallPerSimulationSecond": 15.822666666665882
+    },
+    {
+      "case": "south-091",
+      "mode": "baseline",
+      "axis": "x",
+      "target": 225.6443515154533,
+      "wallSeconds": 102.267,
+      "simulationSeconds": 4.100000000000204,
+      "wallPerSimulationSecond": 24.943170731706076
+    },
+    {
+      "case": "south-091",
+      "mode": "baseline",
+      "axis": "z",
+      "target": 107,
+      "wallSeconds": 90.795,
+      "simulationSeconds": 4.466666666666534,
+      "wallPerSimulationSecond": 20.327238805970754
+    },
+    {
+      "case": "south-091",
+      "mode": "authored",
+      "axis": "z",
+      "target": 117.67839586455375,
+      "wallSeconds": 25.412,
+      "simulationSeconds": 1.4999999999999947,
+      "wallPerSimulationSecond": 16.941333333333393
+    },
+    {
+      "case": "south-091",
+      "mode": "authored",
+      "axis": "z",
+      "target": 118.67839586455375,
+      "wallSeconds": 26.688,
+      "simulationSeconds": 1.5000000000000746,
+      "wallPerSimulationSecond": 17.791999999999113
+    },
+    {
+      "case": "south-091",
+      "mode": "authored",
+      "axis": "x",
+      "target": 225.6443515154533,
+      "wallSeconds": 106.853,
+      "simulationSeconds": 4.233333333333544,
+      "wallPerSimulationSecond": 25.240866141731026
+    },
+    {
+      "case": "south-091",
+      "mode": "authored",
+      "axis": "z",
+      "target": 107,
+      "wallSeconds": 64.069,
+      "simulationSeconds": 3.249999999999842,
+      "wallPerSimulationSecond": 19.71353846153942
+    },
+    {
+      "case": "south-092",
+      "mode": "baseline",
+      "axis": "z",
+      "target": 144.11998675437644,
+      "wallSeconds": 25.399,
+      "simulationSeconds": 1.4999999999999947,
+      "wallPerSimulationSecond": 16.932666666666726
+    },
+    {
+      "case": "south-092",
+      "mode": "baseline",
+      "axis": "z",
+      "target": 145.11998675437644,
+      "wallSeconds": 22.166,
+      "simulationSeconds": 1.2500000000000622,
+      "wallPerSimulationSecond": 17.73279999999912
+    },
+    {
+      "case": "south-092",
+      "mode": "baseline",
+      "axis": "x",
+      "target": 225.8373617986217,
+      "wallSeconds": 122.625,
+      "simulationSeconds": 4.500000000000222,
+      "wallPerSimulationSecond": 27.249999999998657
+    },
+    {
+      "case": "south-092",
+      "mode": "baseline",
+      "axis": "z",
+      "target": 133,
+      "wallSeconds": 88.183,
+      "simulationSeconds": 4.7166666666663986,
+      "wallPerSimulationSecond": 18.69604240282792
+    },
+    {
+      "case": "south-092",
+      "mode": "authored",
+      "axis": "z",
+      "target": 144.11998675437644,
+      "wallSeconds": 37.955,
+      "simulationSeconds": 1.4999999999999947,
+      "wallPerSimulationSecond": 25.303333333333423
+    },
+    {
+      "case": "south-092",
+      "mode": "authored",
+      "axis": "z",
+      "target": 145.11998675437644,
+      "wallSeconds": 35.955,
+      "simulationSeconds": 1.5000000000000746,
+      "wallPerSimulationSecond": 23.969999999998805
+    },
+    {
+      "case": "south-092",
+      "mode": "authored",
+      "axis": "x",
+      "target": 225.8373617986217,
+      "wallSeconds": 125.839,
+      "simulationSeconds": 4.700000000000184,
+      "wallPerSimulationSecond": 26.774255319147887
+    },
+    {
+      "case": "south-092",
+      "mode": "authored",
+      "axis": "z",
+      "target": 133,
+      "wallSeconds": 79.367,
+      "simulationSeconds": 3.499999999999801,
+      "wallPerSimulationSecond": 22.676285714287005
+    }
+  ],
+  "maximumObservedWallPerSimulationSecond": 27.249999999998657,
+  "maximumObservedCompletedPhotoProcessingBoundarySeconds": 123.774,
+  "photoBoundaryQualification": "real look finished → following walk started includes readiness/RAF/GL/screenshot/hash/persist; not exact screenshot duration or proven maximum",
+  "sourceNominalMovementModel": "sum((legMetres-2.2)/5.6+2.2/.8); old helper threshold3.2/coarse stopping2.2 and original physical speed denominators; this is arithmetic, not execution",
+  "originalCaseEstimateMinutes": 18,
+  "estimateQualification": "18 original-only minutes was a proposal based on actual partial progression and094 functional tail, not a measured completed-case upper bound. Adding wide motion/photo/restore-look puts L route close to30min and straight close to24min. New fixture leg RPC and unfinished092 screenshot may still fail; no guaranteed completion",
+  "localGuardsUnchanged": {
+    "defaultPhaseCapMs": 180000,
+    "actualHoldCapMs": 120000,
+    "axisEndpointToleranceMetres": 0.15,
+    "maximumCorrectionHolds": 2,
+    "simulationGuard": "abs(coarseDistance)/5.6 + abs(precisionDistance)/.8 +5",
+    "retries": 0
+  },
+  "cases": {
+    "south-090": {
+      "historicalOriginalBudgetSeconds": 720,
+      "activeOriginalBudgetSeconds": 1440,
+      "wholeCaseMinutes": 24,
+      "originalSteps": 13,
+      "candidateSteps": 17,
+      "preservedOriginalPhotoCount": 2,
+      "addedPhotoCount": 1,
+      "addedWideLegLengthsMetres": [
+        7.64,
+        7.64
+      ],
+      "addedWideWalkingDistanceMetres": 15.28,
+      "nominalWideMovingSimulationSeconds": 7.442857142857143,
+      "estimatedWideMovingWallSecondsFromObservedMaximumRatio": 202.81785714284715,
+      "sameBetweenModes": true,
+      "fixtureExtraSteps": 0,
+      "fixtureDistanceEffect": null
+    },
+    "south-091": {
+      "historicalOriginalBudgetSeconds": 720,
+      "activeOriginalBudgetSeconds": 1800,
+      "wholeCaseMinutes": 30,
+      "originalSteps": 20,
+      "candidateSteps": 26,
+      "preservedOriginalPhotoCount": 3,
+      "addedPhotoCount": 1,
+      "addedWideLegLengthsMetres": [
+        21.5,
+        7.64,
+        7.64,
+        21.5
+      ],
+      "addedWideWalkingDistanceMetres": 58.28,
+      "nominalWideMovingSimulationSeconds": 19.835714285714285,
+      "estimatedWideMovingWallSecondsFromObservedMaximumRatio": 540.5232142856877,
+      "sameBetweenModes": true,
+      "fixtureExtraSteps": 0,
+      "fixtureDistanceEffect": null
+    },
+    "south-092": {
+      "historicalOriginalBudgetSeconds": 720,
+      "activeOriginalBudgetSeconds": 1440,
+      "wholeCaseMinutes": 24,
+      "originalSteps": 20,
+      "candidateSteps": 27,
+      "preservedOriginalPhotoCount": 3,
+      "addedPhotoCount": 1,
+      "addedWideLegLengthsMetres": [
+        7.64,
+        7.64
+      ],
+      "addedWideWalkingDistanceMetres": 15.28,
+      "nominalWideMovingSimulationSeconds": 7.442857142857143,
+      "estimatedWideMovingWallSecondsFromObservedMaximumRatio": 202.81785714284715,
+      "sameBetweenModes": true,
+      "fixtureExtraSteps": 3,
+      "fixtureDistanceEffect": "reorders original cardinal distance on a safe standoff; additional snapshots/leg transitions remain unmeasured"
+    },
+    "south-094": {
+      "historicalOriginalBudgetSeconds": 720,
+      "activeOriginalBudgetSeconds": 1440,
+      "wholeCaseMinutes": 24,
+      "originalSteps": 13,
+      "candidateSteps": 17,
+      "preservedOriginalPhotoCount": 2,
+      "addedPhotoCount": 1,
+      "addedWideLegLengthsMetres": [
+        7.64,
+        7.64
+      ],
+      "addedWideWalkingDistanceMetres": 15.28,
+      "nominalWideMovingSimulationSeconds": 7.442857142857143,
+      "estimatedWideMovingWallSecondsFromObservedMaximumRatio": 202.81785714284715,
+      "sameBetweenModes": true,
+      "fixtureExtraSteps": 0,
+      "fixtureDistanceEffect": null
+    },
+    "south-095": {
+      "historicalOriginalBudgetSeconds": 720,
+      "activeOriginalBudgetSeconds": 1800,
+      "wholeCaseMinutes": 30,
+      "originalSteps": 20,
+      "candidateSteps": 26,
+      "preservedOriginalPhotoCount": 3,
+      "addedPhotoCount": 1,
+      "addedWideLegLengthsMetres": [
+        21.5,
+        7.64,
+        7.64,
+        21.5
+      ],
+      "addedWideWalkingDistanceMetres": 58.28,
+      "nominalWideMovingSimulationSeconds": 19.835714285714285,
+      "estimatedWideMovingWallSecondsFromObservedMaximumRatio": 540.5232142856877,
+      "sameBetweenModes": true,
+      "fixtureExtraSteps": 0,
+      "fixtureDistanceEffect": null
+    },
+    "south-096": {
+      "historicalOriginalBudgetSeconds": 720,
+      "activeOriginalBudgetSeconds": 1440,
+      "wholeCaseMinutes": 24,
+      "originalSteps": 20,
+      "candidateSteps": 27,
+      "preservedOriginalPhotoCount": 3,
+      "addedPhotoCount": 1,
+      "addedWideLegLengthsMetres": [
+        7.64,
+        7.64
+      ],
+      "addedWideWalkingDistanceMetres": 15.28,
+      "nominalWideMovingSimulationSeconds": 7.442857142857143,
+      "estimatedWideMovingWallSecondsFromObservedMaximumRatio": 202.81785714284715,
+      "sameBetweenModes": true,
+      "fixtureExtraSteps": 3,
+      "fixtureDistanceEffect": "reorders original cardinal distance on a safe standoff; additional snapshots/leg transitions remain unmeasured"
+    }
+  }
+}

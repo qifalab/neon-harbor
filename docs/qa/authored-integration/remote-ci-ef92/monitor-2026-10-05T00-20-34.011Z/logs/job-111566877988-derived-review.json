@@ -1,0 +1,129 @@
+{
+  "jobId": 111566877988,
+  "name": "Optional native and route evidence / Native High (north-book)",
+  "bucket": "native",
+  "conclusion": "failure",
+  "downloadedAt": "2026-10-05T01:09:11.566Z",
+  "raw": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877988-original.log",
+    "bytes": 32815,
+    "sha256": "c6ec0f32aecbab424e32e160939da27e29b7190da39efb20a86fd23438b30b54"
+  },
+  "rules": {
+    "tests": null,
+    "passed": null,
+    "failed": null,
+    "uniqueTestCountNotMultiplied": true
+  },
+  "errorLines": [
+    "2026-10-05T01:08:41.1815282Z {\"case\": \"north-book\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}",
+    "2026-10-05T01:08:41.1895655Z ##[error]Process completed with exit code 1."
+  ],
+  "actualJobSteps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-05T01:05:39Z",
+      "completed_at": "2026-10-05T01:05:39Z"
+    },
+    {
+      "name": "Initialize failure-preserving job envelope",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-05T01:05:39Z",
+      "completed_at": "2026-10-05T01:05:40Z"
+    },
+    {
+      "name": "Check out fixed previous runtime",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-05T01:05:40Z",
+      "completed_at": "2026-10-05T01:05:53Z"
+    },
+    {
+      "name": "Check out this authored candidate",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-05T01:05:53Z",
+      "completed_at": "2026-10-05T01:06:26Z"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-05T01:06:26Z",
+      "completed_at": "2026-10-05T01:06:27Z"
+    },
+    {
+      "name": "Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-05T01:06:27Z",
+      "completed_at": "2026-10-05T01:06:27Z"
+    },
+    {
+      "name": "Prepare CPU builds, then capture owned browsers in sequence",
+      "status": "completed",
+      "conclusion": "failure",
+      "number": 7,
+      "started_at": "2026-10-05T01:06:27Z",
+      "completed_at": "2026-10-05T01:08:41Z"
+    },
+    {
+      "name": "Preserve original evidence even when capture fails",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-05T01:08:41Z",
+      "completed_at": "2026-10-05T01:08:42Z"
+    },
+    {
+      "name": "Post Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 13,
+      "started_at": "2026-10-05T01:08:42Z",
+      "completed_at": "2026-10-05T01:08:42Z"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 14,
+      "started_at": "2026-10-05T01:08:42Z",
+      "completed_at": "2026-10-05T01:08:42Z"
+    },
+    {
+      "name": "Post Check out this authored candidate",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 15,
+      "started_at": "2026-10-05T01:08:42Z",
+      "completed_at": "2026-10-05T01:08:42Z"
+    },
+    {
+      "name": "Post Check out fixed previous runtime",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 16,
+      "started_at": "2026-10-05T01:08:42Z",
+      "completed_at": "2026-10-05T01:08:42Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17,
+      "started_at": "2026-10-05T01:08:42Z",
+      "completed_at": "2026-10-05T01:08:42Z"
+    }
+  ],
+  "captureIsManualArtApproval": false
+}

@@ -1,0 +1,109 @@
+{
+  "status": "PASSED",
+  "scope": "17 actual pure-CPU tests of classifier extracted from candidate source plus narrow static invariants; no native browser/game/run occurred",
+  "sourceSHA256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2",
+  "cases": [
+    {
+      "name": "normal exact owner exit",
+      "result": true,
+      "forced": false,
+      "graceful": true
+    },
+    {
+      "name": "resolved official30s forced fallback",
+      "result": true,
+      "forced": true,
+      "graceful": false
+    },
+    {
+      "name": "nonzero exit with SIGKILL metadata rejected",
+      "result": false,
+      "forced": true,
+      "graceful": false
+    },
+    {
+      "name": "invalid startTicks owner metadata rejected",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "old equal30s envelope",
+      "result": false,
+      "forced": true,
+      "graceful": false
+    },
+    {
+      "name": "outer35s timeout",
+      "result": false,
+      "forced": true,
+      "graceful": false
+    },
+    {
+      "name": "API rejection",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "nonzero exit",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "unexpected signal",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "missing owner identity",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "unknown readback",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "same owner still alive",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "unobserved child exit",
+      "result": false,
+      "forced": false,
+      "graceful": false
+    },
+    {
+      "name": "caller invoked forced rescue",
+      "result": false,
+      "forced": true,
+      "graceful": false
+    },
+    {
+      "name": "whole deadline reached",
+      "result": false,
+      "forced": false,
+      "graceful": true
+    },
+    {
+      "name": "whole deadline clamps owner cap",
+      "result": false,
+      "forced": true,
+      "graceful": false
+    },
+    {
+      "name": "elapsed cap not finite",
+      "result": false,
+      "forced": false,
+      "graceful": true
+    }
+  ]
+}

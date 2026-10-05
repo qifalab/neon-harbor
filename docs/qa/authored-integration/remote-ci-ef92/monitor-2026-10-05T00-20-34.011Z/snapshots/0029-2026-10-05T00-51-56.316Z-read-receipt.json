@@ -1,0 +1,80 @@
+{
+  "observedAt": "2026-10-05T00:51:58.043Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T00%3A51%3A56.316Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T00%3A51%3A56.316Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T00%3A51%3A56.316Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0029-2026-10-05T00-51-56.316Z-run-original.json",
+      "bytes": 12816,
+      "sha256": "50b5f936a54b392af9ce05697fe61074a227e9f9954492131278f8fb8e2db0a1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0029-2026-10-05T00-51-56.316Z-jobs-attempt1-original.json",
+      "bytes": 80251,
+      "sha256": "ebad94e297d1e7faebe5e5ee41fd72d309a281384a82321e6b04d84907469e21"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0029-2026-10-05T00-51-56.316Z-artifacts-original.json",
+      "bytes": 12396,
+      "sha256": "5519cbdb2b834964e316d71a04ec9b8a9093d01e8e5663264a38d1c2b4026433"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 11,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 0,
+      "failure": 5,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 12,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "FIRST_JOB_FAILURE_OBSERVED",
+      "jobId": 111566878049,
+      "name": "Optional native and route evidence / Native High (bus)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:51:58.042Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878049"
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320765378,
+      "name": "native-evidence-bus-37247048989-1",
+      "bytes": 30601665,
+      "digest": "sha256:bbd35f0907c5f8f4c415be6cc554c56ed1f2617f6f5c7dd1a2f99bc5811768da",
+      "expired": false
+    }
+  ]
+}

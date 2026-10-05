@@ -1,0 +1,29 @@
+{
+  "scope": "CPU only on six finite synthetic shell fixtures; full actual-world regression is separately recorded",
+  "baseline": {
+    "drawCalls": 74,
+    "triangles": 42292
+  },
+  "candidate": {
+    "drawCalls": 88,
+    "triangles": 70244
+  },
+  "limits": {
+    "near": 72,
+    "far": 96,
+    "maxDrawCalls": 100,
+    "maxTriangles": 85000,
+    "maxResidentFrontages": 6
+  },
+  "collidersUnchanged": true,
+  "fixturesUnchanged": true,
+  "publicFrontagesUnchanged": true,
+  "glazingMaterials": 6,
+  "handleMaterials": 6,
+  "transparentGlazingSurvivesOwnAndGlobalHighQualitySwitch": true,
+  "nearGeometryDisposals": 88,
+  "loadedNearMeshes": 88,
+  "dedicatedGlassFinalMaterialDisposals": 1,
+  "dedicatedHandleFinalMaterialDisposals": 1,
+  "rootDetachedAndEmpty": true
+}

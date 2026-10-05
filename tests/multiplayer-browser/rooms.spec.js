@@ -205,7 +205,11 @@ test('two browsers synchronize expanded east-bay addresses and elevator floors b
     const lobby = await snapshot(a);
     evidence.push({ label: 'east-bay lobby before actual corridor walk', state: await motionEvidence(a) });
     await assertRemotePose(lobby.position, `interior:${highAddress.id}:${highAddress.floors[0].id}`);
-    await chooseStorey(a, highFloor.id, { walkingTimeout: 180000 });
+    // The original ef92 run advanced 26.5 of 37.172 lift seconds during the
+    // 180-second wall-clock wait. Keep the actual ride and its intermediate
+    // network elevations; allow this long, software-rendered lift 300 seconds
+    // within the unchanged 900-second case. Other lifts retain 180 seconds.
+    await chooseStorey(a, highFloor.id, { walkingTimeout: 180000, arrivalTimeout: 300000 });
     const upstairs = await snapshot(a);
     evidence.push({ label: 'east-bay elevator arrival', state: await motionEvidence(a) });
     expect(upstairs.position.y).toBeGreaterThan(320);

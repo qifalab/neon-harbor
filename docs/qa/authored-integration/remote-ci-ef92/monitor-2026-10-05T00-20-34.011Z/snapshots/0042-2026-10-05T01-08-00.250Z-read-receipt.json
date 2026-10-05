@@ -1,0 +1,119 @@
+{
+  "observedAt": "2026-10-05T01:08:02.106Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T01%3A08%3A00.250Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T01%3A08%3A00.250Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T01%3A08%3A00.250Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0042-2026-10-05T01-08-00.250Z-run-original.json",
+      "bytes": 12816,
+      "sha256": "50b5f936a54b392af9ce05697fe61074a227e9f9954492131278f8fb8e2db0a1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0042-2026-10-05T01-08-00.250Z-jobs-attempt1-original.json",
+      "bytes": 97116,
+      "sha256": "563fcdcfef766a883eb02f96a7bbd9e3b01911579f8eedf24533cad1b5d53fdc"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0042-2026-10-05T01-08-00.250Z-artifacts-original.json",
+      "bytes": 17520,
+      "sha256": "b1eb5e67f82ef6f4374bbb99f7c7f24a24473ddd87cffd8096252c9df56dedf6"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 11,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 2,
+      "failure": 10,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 5,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "FIRST_JOB_FAILURE_OBSERVED",
+      "jobId": 111566878021,
+      "name": "Optional native and route evidence / Native High (ferry)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:08:02.106Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878021"
+    },
+    {
+      "type": "FIRST_JOB_FAILURE_OBSERVED",
+      "jobId": 111566878062,
+      "name": "Optional native and route evidence / Native High (tram)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T01:08:02.106Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878062"
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320737055,
+      "name": "native-evidence-waterfront-day-37247048989-1",
+      "bytes": 2913923,
+      "digest": "sha256:802d0fc77695f0a52ec6160600e4b298ec33d951fcfb8983bd1830b67d4914c8",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320592374,
+      "name": "native-evidence-ferry-37247048989-1",
+      "bytes": 29900928,
+      "digest": "sha256:84f7ecb6245187a68b03a7cbea6f25a91be19a7fa35e9e2ebd3d0f09fea25c9f",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320182444,
+      "name": "native-evidence-waterfront-night-37247048989-1",
+      "bytes": 2671880,
+      "digest": "sha256:1532c0887618795e0e2a6d5cb2022c35af2a56c8ca2783166ad4bbc5572ba3e4",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320007711,
+      "name": "native-evidence-tram-37247048989-1",
+      "bytes": 66920684,
+      "digest": "sha256:14a0c09063db6d29177b6e9dcaf6724235afac74651b303245c95e6351ab9576",
+      "expired": false
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -7,7 +7,7 @@
+ import { resolve } from 'node:path';
+ import { fileURLToPath, pathToFileURL } from 'node:url';
+ 
+-const usage = 'node tools/capture-resident-extra.mjs --mode baseline|authored --case north-book|north-phone|north-cup-owner|south-parcel --project-root PROJECT --root DIST --output NEW_DIR [--git-root GIT_PROJECT] [--port 5194] [--plan-only true]';
++const usage = 'node tools/capture-resident-extra.mjs --mode baseline|authored --case north-book|north-phone|north-cup-owner|south-parcel|resident-loop --project-root PROJECT --root DIST --output NEW_DIR [--git-root GIT_PROJECT] [--port 5194] [--plan-only true]';
+ const options = {};
+ for (let i = 2; i < process.argv.length; i += 2) {
+   const flag = process.argv[i], value = process.argv[i + 1];
+@@ -22,18 +22,19 @@
+   'north-book': { buildingId:'design-foundry', id:'resident-design-foundry-3', role:'commuter', prop:'book', x:80, z:-910, frontZ:-858, strategy:'front' },
+   'north-phone': { buildingId:'lantern-tower', id:'resident-lantern-tower-1', role:'commuter', prop:'phone', x:560, z:-630, frontZ:-578, strategy:'left-front' },
+   'north-cup-owner': { buildingId:'jade-bank', id:'resident-jade-bank-3', role:'shopkeeper', prop:'cup', x:-560, z:-630, frontZ:-578, strategy:'front', owners:true },
++  'resident-loop': { source:'actual selected resident diary, public wage saves and same shared tram', strategy:'fixed-workshop-observer' },
+   'south-parcel': { source:'Actual delivery cargo bound in harbor-life-renderer', strategy:'public-supply-watch' }
+ };
+ assert.ok(cases[options.case], usage);
+-assert.ok(options.mode==='authored'||options.case!=='south-parcel','South actual parcel probe is unavailable in the baseline; this extra case requires authored review');
+-const selectedCase=cases[options.case]; let expectedQuality='high';
++assert.ok(options.mode==='authored'||!['south-parcel','resident-loop'].includes(options.case),'South actual parcel probe is unavailable in the baseline; this extra case requires authored review');
++const selectedCase=cases[options.case],isResidentLoop=options.case==='resident-loop'; let expectedQuality='high';
+ const plan = {
+-  mode: options.mode, browserVersion: '151.0.7922.34', viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1,
+-  quality: 'high', hour: 16.5, dayCycle: false,
++  mode: options.mode, browserVersion: '151.0.7922.34', viewport: isResidentLoop?{width:512,height:320}:{ width: 1280, height: 800 }, deviceScaleFactor: 1,
++  quality: isResidentLoop?'low':'high', hour: 16.5, dayCycle: false,
+   selectedCase: { name:options.case, ...selectedCase },
+   routePolicy: 'Independent public Atlas for the named address; one pre-planned pavement approach from actual read-only starting NPC coordinates, no chase or endpoint retry. South uses shipped harbor supply UI.',
+   actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment' },
+-  budgets: { totalWallSeconds: options.case==='south-parcel'?2700:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
++  budgets: { totalWallSeconds: isResidentLoop?10800:options.case==='south-parcel'?2700:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
+     ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:1200,naturalSouthParcelWallSeconds:360}:{}) },
+   ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + physical far walk and real cooldown/return' : null,
+   limits: ['Each separate case records its actual visible target only. Hidden book/phone/cup references are not visible action coverage; all 240 residents are not accepted.',
+@@ -101,7 +102,7 @@
+ const recordError = detail => { const record = { at: new Date().toISOString(), ...detail }; metadata.errors.push(record);
+   metadata.firstFailure ||= record; rejectApplicationError?.(new Error(`Application error: ${JSON.stringify(record)}`)); };
+ const checkErrors = () => { assert.equal(metadata.errors.length,0,`first application error: ${JSON.stringify(metadata.firstFailure)}`); };
+-const read = () => page.evaluate(() => {
++const read = () => isResidentLoop?readResidentDay():page.evaluate(() => {
+   const s = window.__NEON__.snapshot();
+   return { ready:s.ready, started:s.started, paused:s.paused, settings:s.settings, position:s.position, camera:s.camera,
+     health:s.health, inCar:s.inCar, simulationTime:s.simulationTime, teleportRevision:s.teleportRevision,
+@@ -120,7 +121,7 @@
+   assert.equal(s.settings.dayCycle,false); assert.equal(s.settings.hour,16.5); assert.equal(s.inCar,null);
+   if (firstPerson !== undefined) assert.equal(s.settings.firstPerson,firstPerson);
+   assert.equal(s.streaming?.failed || 0,0); assert.equal(s.renderer?.contextLost,false);
+-  assert.equal(s.canvas.width,quality==='low'?1024:1280); assert.equal(s.canvas.height,quality==='low'?640:800);
++  assert.equal(s.canvas.width,isResidentLoop?(quality==='low'?409:512):(quality==='low'?1024:1280)); assert.equal(s.canvas.height,isResidentLoop?(quality==='low'?256:320):(quality==='low'?640:800));
+ };
+ const awaitRenderedCamera = () => page.waitForFunction(() => {
+   const camera=window.__NEON__?.snapshot().camera;
+@@ -233,7 +234,7 @@
+ const actualProp = (actor,name) => actor?.props.find(p=>p.name===name && p.effectivelyVisible);
+ const captureRaw = async (label,detail={}) => {
+   await awaitRenderedCamera(); const before=await read();validate(before);
+-  const path=resolve(output,`${label}.png`);await page.screenshot({path,fullPage:false});const after=await read();validate(after);
++  const path=resolve(output,`${label}.png`);await page.screenshot({path,fullPage:false,...(isResidentLoop?{timeout:residentDayRemaining(30000)}:{})});const after=await read();validate(after);
+   metadata.captures.push({label,file:`${label}.png`,sha256:sha(await readFile(path)),detail,before,after});await persist();return after;
+ };
+ async function aimAt(target) {
+@@ -374,6 +375,83 @@
+     jobId:{available:false,reason:'Public summary does not expose agent cargoJobId; original visible cargo source binds only an actual cargoJobId'}};
+   await captureRaw('01-actual-south-parcel',{id:found.id,uuid:prop.uuid});await observe45('south',found.id);await captureRaw('02-south-45-second-end');
+ }
++async function residentLoopCase() {
++  metadata.artAcceptance='NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY';
++  metadata.functionalScope='One natural resident day; fixed workshop observer; Low512x320 viewport/409x256 buffer. Public save menus pause/resume; player does not follow the route.';
++  const {auditResidentDayState,auditResidentDaySave}=await import('./resident-loop-functional-guards.mjs');
++  const {createInteriorLayout}=await import(pathToFileURL(resolve(projectRoot,'src/metropolis-interiors.js')).href);
++  const {planHarborWorkshopPilot}=await import(pathToFileURL(resolve(projectRoot,'src/harbor-workshop-pilot.js')).href);
++  const {circleOBB}=await import(pathToFileURL(resolve(projectRoot,'src/collision.js')).href);
++  const {createHarborVehicleLayout}=await import(pathToFileURL(resolve(projectRoot,'src/harbor-vehicle-models.js')).href);
++  const {harborLocalToWorld}=await import(pathToFileURL(resolve(projectRoot,'src/harbor-transit.js')).href);
++  const initial=await read();assert.equal(initial.settings.quality,'high');assert.equal(initial.diary.completedCycles,0);
++  await publicQuality('low');await page.locator('#harbor-life').click();
++  await page.locator('[data-resident-place="work"]').click();
++  await page.waitForFunction(()=>{const s=window.__NEON__.snapshot();return !s.paused&&!s.streaming?.pending&&!s.streaming?.preparing;},null,{timeout:residentDayRemaining(180000)});
++  await page.keyboard.press('e');
++  await page.waitForFunction(()=>{const i=window.__NEON__.snapshot().city.interior;return i.buildingId==='south-086'&&i.floorId==='lobby';},null,{timeout:residentDayRemaining(15000)});
++  let s=await read();const room=s.interior.rooms.find(r=>r.type==='workshop');assert.ok(room);
++  await walk('x',s.workBuilding.x);await walk('z',room.entrance.z);await walk('x',room.arrival.x);await walk('z',room.arrival.z);
++  s=await read();assert.equal(s.interior.currentRoomId,room.id);
++  const floor=s.workBuilding.floors.find(f=>f.id==='lobby'),layout=createInteriorLayout(s.workBuilding,floor);
++  const bench=layout.parts.find(p=>p.roomId===room.id&&p.kind==='workbench-top');assert.ok(bench);
++  const work={roomId:room.id,anchor:{x:bench.x+bench.sx/2+.6+.12,y:floor.y,z:bench.z},colliders:[...layout.colliders,...(planHarborWorkshopPilot(s.workBuilding,floor,layout)?.colliders||[])].filter(c=>c.physics!==false&&c.minY<floor.y+1.8&&c.maxY>floor.y+.05)};
++  const homeFloor=s.homeBuilding.floors.find(f=>f.id==='lobby'),homeLayout=createInteriorLayout(s.homeBuilding,homeFloor),homeRoom=homeLayout.rooms.find(r=>r.type==='bedroom');assert.ok(homeRoom);
++  await aimAt(work.anchor);const baseline=await read();metadata.coverage.residentDaySetup={initial,baseline,roomId:room.id,workAnchor:work.anchor,initialPublicNavigationOnly:true};
++  const tram=createHarborVehicleLayout('tram'),aisle=tram.aislePaths.find(p=>p.deckId==='lower');
++  const ticketPose=(t,v)=>harborLocalToWorld({x:0,y:tram.deckLevels[0],z:aisle.waypoints[0].z+(aisle.waypoints.at(-1).z-aisle.waypoints[0].z)*(.18+(t.slot%5)*.14)},v);
++  let priorStage=null,lastEvent=0,workFirst=null,workSecond=false,lastPersist=0;const exported=new Set();
++  metadata.coverage.residentDayEvents=[];metadata.coverage.ledgerExports=[];
++  const exportLedger=async(label,period=0,completed=false)=>{
++    const before=await read(),openedAt=new Date().toISOString();await page.locator('#pause').click();await page.locator('[data-tab="settings"]').click();
++    const paused=await read();assert.equal(paused.paused,true);
++    const downloadPromise=page.waitForEvent('download',{timeout:residentDayRemaining(15000)});await page.locator('#export-save').click();const download=await downloadPromise;
++    const file=`${label}-public-save-original.json`,path=resolve(output,file);await download.saveAs(path);const bytes=await readFile(path),value=JSON.parse(bytes);
++    const proof=auditResidentDaySave(value,{homeRoomId:homeRoom.id,requirePaidPeriod:period,requireCompleted:completed});
++    await page.locator('#resume').click();await page.waitForFunction(()=>!window.__NEON__.snapshot().paused,null,{timeout:residentDayRemaining(15000)});await page.locator('#game').focus();const resumed=await read();
++    metadata.coverage.ledgerExports.push({label,file,sha256:sha(bytes),bytes:bytes.length,openedAt,resumedAt:new Date().toISOString(),beforeSimulationTime:before.simulationTime,pausedSimulationTime:paused.simulationTime,resumedSimulationTime:resumed.simulationTime,proof,source:'actual public export-save download; no storage/clock/NPC setter'});await persist();
++  };
++  while(true){
++    assert.ok(residentDayRemaining(15000)>0);s=await read();validate(s);auditResidentDayState(s,baseline,work,circleOBB,ticketPose);
++    for(const e of s.diary.events.filter(e=>e.sequence>lastEvent)){metadata.coverage.residentDayEvents.push({observedAt:new Date().toISOString(),simulationTime:s.simulationTime,event:e,resident:s.resident,ticket:s.ticket,vehicle:s.vehicle});lastEvent=e.sequence;}
++    if(priorStage!==s.diary.stage){metadata.observations.push({at:new Date().toISOString(),phase:'natural-resident-stage',state:s});priorStage=s.diary.stage;await persist();}
++    if(s.diary.stage==='working'&&s.diary.workSeconds>0){
++      if(!workFirst){workFirst={workSeconds:s.diary.workSeconds,actor:s.actor};await captureRaw('01-actual-arrival-work',{scope:'Low functional real workroom actor'});}
++      else if(!workSecond&&s.diary.workSeconds-workFirst.workSeconds>=1&&Math.hypot(s.actor.joints.rightArm.x-workFirst.actor.joints.rightArm.x,s.actor.joints.rightElbow.x-workFirst.actor.joints.rightElbow.x)>.001){
++        const before=workFirst.actor.joints,after=s.actor.joints;assert.ok(Math.hypot(after.rightArm.x-before.rightArm.x,after.rightElbow.x-before.rightElbow.x)>.001,'actual working arm joints change across real work ticks');
++        metadata.coverage.actualWorkMotion={before:workFirst,after:{workSeconds:s.diary.workSeconds,actor:s.actor}};await captureRaw('02-actual-work-motion',{scope:'Low functional real changed joints'});workSecond=true;
++      }
++    }
++    if(s.diary.paidWorkPeriods>=1&&!exported.has(1)){await captureRaw('03-first-period-paid-state');await exportLedger('period1-wage',1);exported.add(1);}
++    if(s.diary.paidWorkPeriods===2&&!exported.has(2)){await captureRaw('04-two-periods-paid-state');await exportLedger('period2-wage',2);exported.add(2);}
++    if(s.diary.purchases===1&&!exported.has('purchase')){await captureRaw('05-purchase-observed-from-workshop',{scope:'readonly resident state; fixed observer did not photograph the distant shop'});exported.add('purchase');}
++    if(s.diary.completedCycles===1){
++      assert.ok(workFirst&&workSecond&&exported.has(1)&&exported.has(2));assert.equal(s.diary.workSeconds,70);assert.equal(s.diary.earnedWages,6);assert.equal(s.diary.purchases,1);assert.equal(s.diary.stage,'resting-home');assert.equal(s.diary.cash,baseline.diary.cash,'same resident earns6 and spends6 from finite accounts');
++      await captureRaw('06-return-home-state-observed-from-workshop',{scope:'readonly home state; fixed observer did not photograph the distant home'});await exportLedger('completed-resident-day',0,true);
++      metadata.coverage.residentDayComplete={status:'FUNCTIONAL_RESIDENT_DAY_COMPLETE',actualFinalState:s,workMotion:true,playerFollowedFullRoute:false,highArtAcceptance:false};break;
++    }
++    if(Date.now()-lastPersist>=15000){await persist();lastPersist=Date.now();}
++    await new Promise(ok=>setTimeout(ok,Math.min(2000,residentDayRemaining(2000))));
++  }
++}
++
++function residentDayRemaining(cap=15000){const remaining=Math.min(cap,totalDeadlineAt-Date.now());assert.ok(remaining>0,'resident day fixed10800wall deadline includes evidence and owned closure');return remaining;}
++async function readResidentDay(){
++  let timer;const cap=residentDayRemaining(15000);
++  try{return await Promise.race([page.evaluate(()=>{
++    const s=window.__NEON__.snapshot(),life=s.city.sample.life,d=life.residentDiary,a=life.agents.find(a=>a.id==='harbor-resident-07'),fleet=s.city.sample.transit;
++    const ticket=fleet.citizenPassengers.find(t=>t.id==='harbor-resident-07')||null,v=ticket?fleet.vehicles.find(v=>v.id===ticket.vehicleId):null;
++    const renderModel=s.city.sample.renderer.residentCore.states.find(m=>m.id==='harbor-resident-07');
++    const matches=(s.residentAssets.review?.actors||[]).filter(m=>m.visible&&m.role===renderModel?.role&&m.worldPosition&&a&&Math.hypot(m.worldPosition.x-a.x,m.worldPosition.y-a.y,m.worldPosition.z-a.z)<.08);
++    const actor=matches.length===1?matches[0]:null;
++    return{ready:s.ready,started:s.started,paused:s.paused,settings:s.settings,position:s.position,camera:s.camera,health:s.health,inCar:s.inCar,simulationTime:s.simulationTime,teleportRevision:s.teleportRevision,
++      streaming:{failed:s.streaming.failed,pending:s.streaming.pending,preparing:s.streaming.preparing},interior:{buildingId:s.city.interior.buildingId,floorId:s.city.interior.floorId,currentRoomId:s.city.interior.currentRoomId,rooms:s.city.interior.rooms},
++      diary:d,resident:a,ticket,vehicle:v,renderModel,actorMatchCount:matches.length,life:{initialMoney:life.initialMoney,totalMoney:life.totalMoney,initialGoods:life.initialGoods,totalGoods:life.totalGoods,statistics:life.statistics},
++      actor:actor?{id:actor.id,registeredId:actor.registeredId,association:'actual renderer models-key07 plus unique visible role/worldPose; pooled library registration may retain prior ID',visible:actor.visible,legacyLODVisible:actor.legacyLODVisible,coreVisible:actor.coreVisible,worldPosition:actor.worldPosition,joints:actor.joints}:null,
++      workBuilding:s.city.buildings.find(b=>b.id==='south-086'),homeBuilding:s.city.buildings.find(b=>b.id==='south-083'),renderer:{contextLost:s.renderer.contextLost},canvas:{width:document.getElementById('game').width,height:document.getElementById('game').height}};
++  }),new Promise((_,bad)=>{timer=setTimeout(()=>bad(new Error('resident read-only snapshot exceeded bounded15s/whole remaining')),cap);})]);}finally{clearTimeout(timer);}
++}
++
+ const core = async () => {
+   server=await createStaticServer({root}); await new Promise((ok,bad)=>{server.once('error',bad);server.listen(port,'127.0.0.1',ok);});
+   browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+@@ -398,7 +476,7 @@
+   await page.locator('#volume').press('Home'); await page.locator('#resume').click(); await page.locator('#start').click();
+   await page.waitForFunction(()=>{const s=window.__NEON__.snapshot();return s.started&&!s.paused&&!s.streaming?.preparing&&!s.streaming?.pending;});
+   await page.locator('#game').focus(); await firstPerson(true); metadata.status='running'; await event('visible-settings-ready');
+-  if(options.case==='south-parcel')await southCase();else await northCase();
++  if(isResidentLoop)await residentLoopCase();else if(options.case==='south-parcel')await southCase();else await northCase();
+   metadata.status='extra-recorded-pending-manual-review'; metadata.endedAt=new Date().toISOString(); await persist();
+ };
+ function beginCleanup() {

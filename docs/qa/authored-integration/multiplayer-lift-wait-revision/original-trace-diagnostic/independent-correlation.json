@@ -1,0 +1,199 @@
+{
+  "schema": "neon-ef92-mp-static-actual-correlation-v1",
+  "createdUTC": "2026-10-05T00:38:03.463248+00:00",
+  "head": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "sourceStaticReportSHA256": "d28af2deedf93e1c55223b9caae71799c82b8b48a73f675cd79749f466b4c1d8",
+  "originalProgress": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/artifacts/multiplayer-11319935663/extracted/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/independent-client-progress.json",
+    "bytes": 598627,
+    "sha256": "c21f82016e69f1c3b26f4fca9beb881f605b7f24c33b1ca0c0a60fd7182518ac",
+    "failed": true,
+    "phases": [
+      {
+        "label": "east-bay lobby before actual corridor walk",
+        "state": {
+          "simulationTime": 1.5833333333333326,
+          "position": {
+            "x": 1192,
+            "y": 4.035,
+            "z": -167.65,
+            "yaw": 3.141592653589793
+          },
+          "timing": {
+            "wallDt": 0.2665999999999913,
+            "dt": 0.25,
+            "steps": 15,
+            "alpha": 0,
+            "simulationDelta": 0.25,
+            "droppedSeconds": 0.01659999999999129,
+            "droppedTotal": 21.965799999999987
+          },
+          "teleportRevision": 4,
+          "interior": {
+            "buildingId": "east-012",
+            "floorId": "lobby",
+            "moving": false,
+            "elevator": {
+              "phase": "idle",
+              "y": 4.035,
+              "targetFloorId": "lobby",
+              "elapsed": 0,
+              "duration": 0,
+              "doorOpen": 1
+            },
+            "activeFloors": 3,
+            "totalFloors": 89,
+            "workshopPilot": null,
+            "authoredHome": [],
+            "homeAssetEvents": [],
+            "workshopPilotEvents": []
+          }
+        }
+      }
+    ],
+    "final": [
+      {
+        "client": 0,
+        "snapshotError": null,
+        "state": {
+          "simulationTime": 33.7833333333327,
+          "position": {
+            "x": 1192,
+            "y": 262.87309285381997,
+            "z": -216.79000000000315,
+            "yaw": 3.141592653589793
+          },
+          "timing": {
+            "wallDt": 6.733099999999976,
+            "dt": 0.25,
+            "steps": 15,
+            "alpha": 0.006000000003839601,
+            "simulationDelta": 0.25,
+            "droppedSeconds": 6.483099999999976,
+            "droppedTotal": 214.28999999999988
+          },
+          "teleportRevision": 5,
+          "interior": {
+            "buildingId": "east-012",
+            "floorId": "lobby",
+            "moving": true,
+            "elevator": {
+              "phase": "moving",
+              "y": 263.0503662956879,
+              "targetFloorId": "level-78",
+              "elapsed": 26.499999999999776,
+              "duration": 37.172222222222224,
+              "doorOpen": 0,
+              "anchor": {
+                "x": 1192,
+                "z": -216.79000000000315
+              }
+            },
+            "activeFloors": 3,
+            "totalFloors": 89,
+            "workshopPilot": null,
+            "authoredHome": [],
+            "homeAssetEvents": [],
+            "workshopPilotEvents": []
+          }
+        }
+      },
+      {
+        "client": 1,
+        "snapshotError": null,
+        "state": {
+          "simulationTime": 0.24999999999999997,
+          "position": {
+            "x": 8,
+            "y": 0,
+            "z": 174,
+            "yaw": 3.141592653589793
+          },
+          "timing": {
+            "wallDt": 0.016599999999976717,
+            "dt": 0.016599999999976717,
+            "steps": 0,
+            "alpha": 0,
+            "simulationDelta": 0,
+            "droppedSeconds": 0,
+            "droppedTotal": 20.7492
+          },
+          "teleportRevision": 1,
+          "interior": {
+            "buildingId": null,
+            "floorId": null,
+            "moving": false,
+            "elevator": {
+              "phase": "idle",
+              "y": 0,
+              "targetFloorId": null,
+              "elapsed": 0,
+              "duration": 0,
+              "doorOpen": 1
+            },
+            "activeFloors": 0,
+            "totalFloors": 0,
+            "workshopPilot": null,
+            "authoredHome": [],
+            "homeAssetEvents": [],
+            "workshopPilotEvents": []
+          }
+        }
+      }
+    ]
+  },
+  "parentSuppliedTraceSummary": {
+    "provenance": "Parent message supplied call IDs/timing; not independently parsed here",
+    "clickLevel78": {
+      "call": 420,
+      "start": 331578.75,
+      "end": 334887.958
+    },
+    "waitForNotMoving": {
+      "call": 422,
+      "start": 334907.422,
+      "errorEnd": 514920.141
+    },
+    "postFailureState": {
+      "call": 424
+    },
+    "walkingReleaseState": {
+      "call": 414,
+      "simulationTime": 6.583333333333315
+    },
+    "observerFinal": {
+      "call": 426,
+      "simulationTime": 0.25,
+      "description": "Parent observed multiplayer panel modal remained open; snapshot has zero simulation steps"
+    },
+    "startPaused": {
+      "call": 398,
+      "paused": false,
+      "started": true
+    },
+    "finalPausedField": "not included by narrowed motionEvidence; frameTiming.steps15 and continued height are actual positive simulation progress evidence"
+  },
+  "sourceArithmeticCorrelation": {
+    "predictedAuthoritativeYFromUnchangedSmoothstep": 263.0503662956879,
+    "actualAuthoritativeY": 263.0503662956879,
+    "absoluteResidualMetres": 0.0,
+    "presentedYMinusAuthoritativeY": -0.17727344186795335,
+    "simulationTimeBeforeClickFromParentTrace": 6.583333333333315,
+    "finalSimulationTimeFromOriginalJSON": 33.7833333333327,
+    "simulationDifference": 27.199999999999385,
+    "closingPlusMovingElapsed": 27.199999999999775,
+    "remainingMovingPlusOpeningSimulationSeconds": 11.372222222222447,
+    "waitForFunctionActualMillisecondsFromParentTrace": 180012.71899999998,
+    "naiveProjectionUsingMovingOnlyRateSeconds": 262.0185132111133,
+    "projectionStatus": "Rough conditional extrapolation only; final JSON is sampled after failure, not guaranteed at exact timeout boundary; does not prove a 300 s future run succeeds"
+  },
+  "findings": [
+    "Actual wait failed at 180012.719 ms; parent trace identifies helper RAF wait, not arrival/whole-case/cleanup boundary.",
+    "Original final JSON shows a positive simulation advance with wallDt6.7331/dt.25/steps15/drop6.4831; lift remains moving at elapsed26.5/duration37.1722, authoritative y263.050366.",
+    "Unchanged source smoothstep predicts final authoritative y within floating-point residual; total sim difference matches original .7 closing+26.5 moving. This is real slow progress evidence, not a frozen lift.",
+    "The final JSON captures after failure and sequentially before observer; do not label its state exact at timeout without original call capture times.",
+    "Observer sim .25 and steps0 are consistent with deliberate paused menu. The source sends local lift authoritative groundY+y; synchronization did not introduce a separate local lift clock.",
+    "Added per-frame/RAF diagnostics are possible contributors, but no timing comparison proves individual ef92 source costs or D2 performance regression.",
+    "Root-authorized case-only arrivalTimeout300000 with default180000/whole900000/no retry is a proposed method change. This read-only reviewer changes none of those guards and makes no pass guarantee."
+  ]
+}

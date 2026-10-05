@@ -1,0 +1,235 @@
+{
+  "observedAt": "2026-10-05T00:32:09.705829+00:00",
+  "scope": "read-only completed multiplayer original job log; no API/artifact download/tests/build/browser/GPU/git/ref; no original mutation",
+  "jobId": 111566877625,
+  "source": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877625-original.log",
+  "bytes": 48004,
+  "sha256": "84655ce5f274f65680a943a215b3bd6ad37812916a4f26e3af063807eaf5859d",
+  "parentExpectedShaExact": true,
+  "actualTests": 2,
+  "passed": 1,
+  "failed": 1,
+  "actualExitCode": 1,
+  "firstPrimaryError": {
+    "timestamp": "2026-10-05T00:29:03.1788961Z",
+    "type": "TimeoutError",
+    "message": "page.waitForFunction: Timeout 180000ms exceeded.",
+    "helper": "tests/e2e/helpers/occupied.js:39:14",
+    "caller": "tests/multiplayer-browser/rooms.spec.js:208:5",
+    "waitPredicate": "!window.__NEON__.snapshot().city.interior.moving",
+    "meaning": "Specific RAF-polled wait failed to complete within 180s; this log alone does not show whether actual elevator motion persisted or why observation stalled."
+  },
+  "cleanupSecondaryFailureReported": null,
+  "ordinaryPostJobCleanupReported": true,
+  "artifactUploadOriginalLogReceipt": {
+    "name": "multiplayer-browser-test-results",
+    "fileCount": 11,
+    "bytes": 17698478,
+    "artifactId": 11319935663,
+    "zipDigest": "ce1d7bb4a814d2c3f6f91839727098f353d6089d4615911e4317d39d2485d305",
+    "downloadedOrVerifiedByThisReview": false
+  },
+  "originalExcerpts": [
+    {
+      "line": 422,
+      "original": "2026-10-05T00:20:12.5694757Z Running 2 tests using 1 worker"
+    },
+    {
+      "line": 423,
+      "original": "2026-10-05T00:20:12.5711853Z "
+    },
+    {
+      "line": 424,
+      "original": "2026-10-05T00:23:19.2983228Z   ✓  1 tests/multiplayer-browser/rooms.spec.js:81:1 › two independent browsers share a room, rendered walking peers, chat and disconnect (3.1m)"
+    },
+    {
+      "line": 425,
+      "original": "2026-10-05T00:29:03.1003099Z   ✘  2 tests/multiplayer-browser/rooms.spec.js:122:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit (5.7m)"
+    },
+    {
+      "line": 426,
+      "original": "2026-10-05T00:29:03.1771577Z "
+    },
+    {
+      "line": 427,
+      "original": "2026-10-05T00:29:03.1776559Z "
+    },
+    {
+      "line": 428,
+      "original": "2026-10-05T00:29:03.1787484Z   1) tests/multiplayer-browser/rooms.spec.js:122:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit "
+    },
+    {
+      "line": 429,
+      "original": "2026-10-05T00:29:03.1788530Z "
+    },
+    {
+      "line": 430,
+      "original": "2026-10-05T00:29:03.1788961Z     TimeoutError: page.waitForFunction: Timeout 180000ms exceeded."
+    },
+    {
+      "line": 431,
+      "original": "2026-10-05T00:29:03.1789426Z "
+    },
+    {
+      "line": 432,
+      "original": "2026-10-05T00:29:03.1789656Z        at ../e2e/helpers/occupied.js:39"
+    },
+    {
+      "line": 433,
+      "original": "2026-10-05T00:29:03.1789965Z "
+    },
+    {
+      "line": 434,
+      "original": "2026-10-05T00:29:03.1790512Z       37 |   await expect(page.locator('[data-floor-id]')).toHaveCount(before.city.interior.totalFloors);"
+    },
+    {
+      "line": 435,
+      "original": "2026-10-05T00:29:03.1791494Z       38 |   await page.locator(`[data-floor-id=\"${id}\"]`).click();"
+    },
+    {
+      "line": 436,
+      "original": "2026-10-05T00:29:03.1792425Z     > 39 |   await page.waitForFunction(() => !window.__NEON__.snapshot().city.interior.moving, null,"
+    },
+    {
+      "line": 437,
+      "original": "2026-10-05T00:29:03.1793372Z          |              ^"
+    },
+    {
+      "line": 438,
+      "original": "2026-10-05T00:29:03.1793782Z       40 |     { polling: 'raf', timeout: 180000 });"
+    },
+    {
+      "line": 439,
+      "original": "2026-10-05T00:29:03.1794366Z       41 |   const arrived = await snapshot(page);"
+    },
+    {
+      "line": 440,
+      "original": "2026-10-05T00:29:03.1795013Z       42 |   expect(arrived.city.interior.floorId).toBe(id);"
+    },
+    {
+      "line": 441,
+      "original": "2026-10-05T00:29:03.1796002Z         at chooseStorey (/home/runner/work/neon-harbor/neon-harbor/tests/e2e/helpers/occupied.js:39:14)"
+    },
+    {
+      "line": 442,
+      "original": "2026-10-05T00:29:03.1797243Z         at /home/runner/work/neon-harbor/neon-harbor/tests/multiplayer-browser/rooms.spec.js:208:5"
+    },
+    {
+      "line": 443,
+      "original": "2026-10-05T00:29:03.1797855Z "
+    },
+    {
+      "line": 444,
+      "original": "2026-10-05T00:29:03.1798729Z     attachment #1: independent-client-progress (application/json) ──────────────────────────────────"
+    },
+    {
+      "line": 445,
+      "original": "2026-10-05T00:29:03.1800651Z     multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/attachments/independent-client-progress-8022888b528b460200ea16494f0d2f30c5dcdada.json"
+    },
+    {
+      "line": 446,
+      "original": "2026-10-05T00:29:03.1802747Z     ────────────────────────────────────────────────────────────────────────────────────────────────"
+    },
+    {
+      "line": 447,
+      "original": "2026-10-05T00:29:03.1803251Z "
+    },
+    {
+      "line": 448,
+      "original": "2026-10-05T00:29:03.1803979Z     attachment #2: independent-client-1-trace (application/zip) ────────────────────────────────────"
+    },
+    {
+      "line": 449,
+      "original": "2026-10-05T00:29:03.1805898Z     multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/attachments/independent-client-1-trace-7dde6ca2c66f60f4e0004d53a6c3cfcf6db3fcaf.zip"
+    },
+    {
+      "line": 450,
+      "original": "2026-10-05T00:29:03.1807469Z     ────────────────────────────────────────────────────────────────────────────────────────────────"
+    },
+    {
+      "line": 451,
+      "original": "2026-10-05T00:29:03.1808129Z "
+    },
+    {
+      "line": 452,
+      "original": "2026-10-05T00:29:03.1808788Z     attachment #3: independent-client-2-trace (application/zip) ────────────────────────────────────"
+    },
+    {
+      "line": 453,
+      "original": "2026-10-05T00:29:03.1809985Z     multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/attachments/independent-client-2-trace-345e2c8461330494a634d1251bfcf8ef31647347.zip"
+    },
+    {
+      "line": 454,
+      "original": "2026-10-05T00:29:03.1811054Z     ────────────────────────────────────────────────────────────────────────────────────────────────"
+    },
+    {
+      "line": 455,
+      "original": "2026-10-05T00:29:03.1811350Z "
+    },
+    {
+      "line": 456,
+      "original": "2026-10-05T00:29:03.1811821Z     Error Context: multiplayer-test-results/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/error-context.md"
+    },
+    {
+      "line": 457,
+      "original": "2026-10-05T00:29:03.1812303Z "
+    },
+    {
+      "line": 458,
+      "original": "2026-10-05T00:29:03.1812790Z   Slow test file: tests/multiplayer-browser/rooms.spec.js (8.8m)"
+    },
+    {
+      "line": 459,
+      "original": "2026-10-05T00:29:03.1813780Z   Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel"
+    },
+    {
+      "line": 460,
+      "original": "2026-10-05T00:29:03.1814282Z   1 failed"
+    },
+    {
+      "line": 461,
+      "original": "2026-10-05T00:29:03.1815108Z     tests/multiplayer-browser/rooms.spec.js:122:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit "
+    },
+    {
+      "line": 462,
+      "original": "2026-10-05T00:29:03.1815809Z   1 passed (8.8m)"
+    },
+    {
+      "line": 463,
+      "original": "2026-10-05T00:29:03.2029765Z ##[error]Process completed with exit code 1."
+    },
+    {
+      "line": 483,
+      "original": "2026-10-05T00:29:04.8136275Z Finished uploading artifact content to blob storage!"
+    },
+    {
+      "line": 484,
+      "original": "2026-10-05T00:29:04.8137481Z SHA256 digest of uploaded artifact zip is ce1d7bb4a814d2c3f6f91839727098f353d6089d4615911e4317d39d2485d305"
+    },
+    {
+      "line": 485,
+      "original": "2026-10-05T00:29:04.8138787Z Finalizing artifact upload"
+    },
+    {
+      "line": 486,
+      "original": "2026-10-05T00:29:05.0528532Z Artifact multiplayer-browser-test-results.zip successfully finalized. Artifact ID 11319935663"
+    },
+    {
+      "line": 487,
+      "original": "2026-10-05T00:29:05.0530067Z Artifact multiplayer-browser-test-results has been successfully uploaded! Final size is 17698478 bytes. Artifact ID is 11319935663"
+    },
+    {
+      "line": 488,
+      "original": "2026-10-05T00:29:05.0536299Z Artifact download URL: https://github.com/qifalab/neon-harbor/actions/runs/37247048989/artifacts/11319935663"
+    },
+    {
+      "line": 489,
+      "original": "2026-10-05T00:29:05.0765581Z Post job cleanup."
+    },
+    {
+      "line": 503,
+      "original": "2026-10-05T00:29:05.2925210Z Cleaning up orphan processes"
+    }
+  ],
+  "conclusion": "Real gameplay synchronization/elevator-floor test FAIL, not a cleanup-only FAIL; artifact progress/trace required for deeper cause, root owns that download; retain failed job/run status."
+}

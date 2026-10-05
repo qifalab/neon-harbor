@@ -36,24 +36,24 @@ export const AUTHORED_TRANSPORT_ASSETS = {
       {
         "file": "serein-d11-lod0.glb",
         "tier": 0,
-        "sha256": "d353e32dfb4899c0bf06d9263187e3f0a8208604450a24d365c2f1998ef6a3d4",
-        "bytes": 8240500
+        "sha256": "818f3d4cfd73f33422e22d2acc13cedf2b3781b1b84012b91dc1e8c0773f04f9",
+        "bytes": 8283296
       },
       {
         "file": "serein-d11-lod1.glb",
         "tier": 1,
-        "sha256": "e8a1f07cb99c23385687a71c3e1a38524b27890c7557e770196bb0f27a17709c",
-        "bytes": 2668124
+        "sha256": "94b3b1ff29117d24edd6ffb6aad9b2da75b2e301aee36080ba6b61e4532e2a81",
+        "bytes": 2695460
       },
       {
         "file": "serein-d11-lod2.glb",
         "tier": 2,
-        "sha256": "b3ae63d13526376b9edf3210bc62f45c6851690558f97bce2fb89e01e6c491ab",
-        "bytes": 573452
+        "sha256": "33019edb6c90de4130e975dc5c7a30b10bd59dcd0b4dd4008f29eb7aff6f4190",
+        "bytes": 579816
       }
     ],
     "encodedImageBytes": 1609487,
-    "totalGlbBytes": 11482076
+    "totalGlbBytes": 11558572
   },
   "tram": {
     "id": "nh-vesper-t9-authored-v1",
@@ -91,24 +91,24 @@ export const AUTHORED_TRANSPORT_ASSETS = {
       {
         "file": "vesper-t9-lod0.glb",
         "tier": 0,
-        "sha256": "05af52551f0e10cd1ac40bbcb084793bd56fd2fd253874340b55664f81dfe4ec",
-        "bytes": 5909012
+        "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca",
+        "bytes": 5982272
       },
       {
         "file": "vesper-t9-lod1.glb",
         "tier": 1,
-        "sha256": "e6a14b3ed3d08a286ff1ba98829150254619b8acee367e4aa1dc63a0d2c2b30d",
-        "bytes": 2795876
+        "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d",
+        "bytes": 2833376
       },
       {
         "file": "vesper-t9-lod2.glb",
         "tier": 2,
-        "sha256": "698049f94111666b3f8b72ff2a46aced6e0144e9b7572848e766e1920d8236bc",
-        "bytes": 892840
+        "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5",
+        "bytes": 899816
       }
     ],
     "encodedImageBytes": 2247015,
-    "totalGlbBytes": 9597728
+    "totalGlbBytes": 9715464
   },
   "ferry": {
     "id": "nh-lacuna-f26-authored-v1",

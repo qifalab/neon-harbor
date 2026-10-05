@@ -27,15 +27,15 @@
   },
   "physicsSource": "original unchanged runtime spec/layout supplied by caller",
   "nativeValidated": false,
-  "totalGlbBytes": 9597728,
+  "totalGlbBytes": 9715464,
   "assets": [
     {
       "file": "vesper-t9-lod0.glb",
       "path": "models/vesper-t9-lod0.glb",
       "tier": 0,
-      "sha256": "05af52551f0e10cd1ac40bbcb084793bd56fd2fd253874340b55664f81dfe4ec",
-      "bytes": 5909012,
-      "triangles": 76072,
+      "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca",
+      "bytes": 5982272,
+      "triangles": 77744,
       "materialCount": 15,
       "primitiveCount": 39,
       "externalUris": 0
@@ -44,9 +44,9 @@
       "file": "vesper-t9-lod1.glb",
       "path": "models/vesper-t9-lod1.glb",
       "tier": 1,
-      "sha256": "e6a14b3ed3d08a286ff1ba98829150254619b8acee367e4aa1dc63a0d2c2b30d",
-      "bytes": 2795876,
-      "triangles": 23092,
+      "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d",
+      "bytes": 2833376,
+      "triangles": 23892,
       "materialCount": 14,
       "primitiveCount": 38,
       "externalUris": 0
@@ -55,28 +55,28 @@
       "file": "vesper-t9-lod2.glb",
       "path": "models/vesper-t9-lod2.glb",
       "tier": 2,
-      "sha256": "698049f94111666b3f8b72ff2a46aced6e0144e9b7572848e766e1920d8236bc",
-      "bytes": 892840,
-      "triangles": 7828,
+      "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5",
+      "bytes": 899816,
+      "triangles": 7972,
       "materialCount": 11,
       "primitiveCount": 31,
       "externalUris": 0
     }
   ],
   "editableSource": {
-    "path": "/tmp/neon-authored-tram-candidate/source/vesper-t9-master.blend",
-    "bytes": 1961857,
-    "sha256": "c5aa6d7326bab393969995d2beda124eeef8b0d5bc8787dd6f62c36a21b86a5c"
+    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/source/vesper-t9-master.blend",
+    "bytes": 1993587,
+    "sha256": "d2b47a649635907d9cccb5c685bcb88cfd9e940658a2c99e4fa76bdbd2831fca"
   },
   "designSource": {
-    "path": "/tmp/neon-authored-tram-candidate/source/author_tram.py",
-    "bytes": 6430,
-    "sha256": "424f2cbc6426692d4e8bb0cd57a536da296738bdb86b75fc59719e79ffbe9d15"
+    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/source/author_tram.py",
+    "bytes": 7418,
+    "sha256": "638433ecaa5c4c06a48007484b82922ed1340d9aed3f3e2a2f87380becfa8513"
   },
   "cpuProof": {
-    "path": "/tmp/neon-authored-tram-candidate/review/cpu-asset-check.json",
+    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/review/cpu-asset-check.json",
     "bytes": 25712,
-    "sha256": "a7026e112fa05ef4396f7e7c51ab80e808d800000856f15faaae7db39059a139"
+    "sha256": "94538a465b56b3c6f84a7eafd6e198b3fb4b8ee168a730c8f1b3207aa2ec7729"
   },
   "sourceProvenance": {
     "path": "/tmp/neon-authored-tram-candidate/review/source-provenance.json",
@@ -88,5 +88,32 @@
     "codeAndRuntimeReferences": "MIT",
     "fontNotice": "source/DejaVu-font-copyright.txt"
   },
-  "optionalRuntimeAdapter": "/tmp/neon-authored-transport-runtime-candidate (separate candidate, not integrated)"
+  "optionalRuntimeAdapter": "/tmp/neon-authored-transport-runtime-candidate (separate candidate, not integrated)",
+  "upperEnclosureAmendment": {
+    "status": "CPU_GEOMETRY_CHECKED_NATIVE_ART_REVIEW_PENDING",
+    "revision": "upper-enclosure-2026-10-05",
+    "originalManifest": {
+      "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/history/ef92-before-enclosure/art-source/transport/tram/asset-manifest.json",
+      "bytes": 2768,
+      "sha256": "5c66247a7f8f755b0f8f4496a3fa93a932c9ac102cea541a87822cb5cd628aaf"
+    },
+    "originalEditableSource": {
+      "path": "/tmp/neon-authored-tram-candidate/source/vesper-t9-master.blend",
+      "bytes": 1961857,
+      "sha256": "c5aa6d7326bab393969995d2beda124eeef8b0d5bc8787dd6f62c36a21b86a5c"
+    },
+    "originalDesignSource": {
+      "path": "/tmp/neon-authored-tram-candidate/source/author_tram.py",
+      "bytes": 6430,
+      "sha256": "424f2cbc6426692d4e8bb0cd57a536da296738bdb86b75fc59719e79ffbe9d15"
+    },
+    "originalCpuProof": {
+      "path": "/tmp/neon-authored-tram-candidate/review/cpu-asset-check.json",
+      "bytes": 25712,
+      "sha256": "a7026e112fa05ef4396f7e7c51ab80e808d800000856f15faaae7db39059a139"
+    },
+    "scope": "Only original curved upper-deck side/end spandrels and 8 far-corner-return triangles; all original materials, textures, canonical layout/door/wheel/hook/physics unchanged",
+    "nativeValidated": false,
+    "originalSourceProvenanceRemainsHistorical": true
+  }
 }

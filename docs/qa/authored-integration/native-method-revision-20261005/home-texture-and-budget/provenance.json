@@ -1,0 +1,70 @@
+{
+  "createdAt": "2026-10-05T01:07:51.364160+00:00",
+  "scope": "Two collector method literal corrections prepared only in /tmp. No ROOT mutation, tests, build, browser, GPU, git/index/ref or remote action.",
+  "historicalArtifact": {
+    "id": 11320646335,
+    "bytes": 6283317,
+    "sha256": "311374fb7a51e23eca694d471247690872dc7a5d466ad11b0ea3ca8c8e7bf8bd"
+  },
+  "changes": [
+    {
+      "path": "tools/native-review/methods/harbor/expectations.mjs",
+      "original": {
+        "bytes": 2016,
+        "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1"
+      },
+      "candidate": {
+        "bytes": 2016,
+        "sha256": "bbfa361068edd9402c0134e1f7a4c51eac700aad6a59eb32f33c0e93af482e82"
+      },
+      "exactSingleReplacement": {
+        "before": "sofa_03:{folder:'home',geometries:2,textures:6,images:4",
+        "after": "sofa_03:{folder:'home',geometries:2,textures:4,images:4"
+      },
+      "rootReadonlyAtPreparation": {
+        "bytes": 2016,
+        "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+        "equalsOriginal": true,
+        "equalsCandidate": false
+      },
+      "notAppliedByThisPackage": true
+    },
+    {
+      "path": "tools/native-review/methods/harbor/plans.mjs",
+      "original": {
+        "bytes": 6751,
+        "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95"
+      },
+      "candidate": {
+        "bytes": 6752,
+        "sha256": "653f40b8f8295f5bd9d602a3f926a74eda7fc4d9f3b2746557823e9305371875"
+      },
+      "exactSingleReplacement": {
+        "before": "englishName:'Old Quarter 79',budgetMinutes:32",
+        "after": "englishName:'Old Quarter 79',budgetMinutes:110"
+      },
+      "rootReadonlyAtPreparation": {
+        "bytes": 6751,
+        "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+        "equalsOriginal": true,
+        "equalsCandidate": false
+      },
+      "notAppliedByThisPackage": true
+    }
+  ],
+  "expectedRemainingPlan": {
+    "steps": 57,
+    "walks": 36,
+    "photos": 8,
+    "localInputGuardsChanged": false,
+    "qualityChanged": false,
+    "runtimeOrPhysicsChanged": false,
+    "otherCaseBudgetsChanged": false
+  },
+  "adoptionByParent": {
+    "homePerModeMinutes": 110,
+    "pairedHomeJobMinutes": 260,
+    "casesAndWorkflowChangesNotIncludedHere": true
+  },
+  "result": "Prepared candidate, not an executed future native PASS. Historical baseline/authored remain FAILED."
+}

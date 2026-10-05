@@ -77,7 +77,14 @@ test('an actual pre-repair public save resumes to the market without collision o
   assert.equal(captured.crossingId, 'harbor-crossing-z:160:146');
   assert.equal(captured.path[captured.pathIndex].crossingId, 'harbor-crossing-x:160:146');
   const resumed = world(legacySave);
-  assert.deepEqual(resumed.life.snapshot(), legacySave.harborLife, 'the actual saved inventory, cargo, wage slots and ledger restore unchanged');
+  const migrated = resumed.life.snapshot();
+  assert.equal(migrated.version, 2, 'old public saves migrate explicitly');
+  for (const key of ['supply', 'shops', 'player', 'jobs', 'transactions', 'statistics'])
+    assert.deepEqual(migrated[key], legacySave.harborLife[key], `migration preserves ${key}`);
+  for (let index = 0; index < 20; index++) if (index !== 6)
+    assert.deepEqual(migrated.agents[index], legacySave.harborLife.agents[index], 'nineteen existing routines resume unchanged');
+  assert.equal(migrated.agents[6].money, legacySave.harborLife.agents[6].money);
+  assert.equal(migrated.residentLoop.totalWages, 0, 'the selected loop starts without retroactive salary');
   assert.equal(resumed.fleet.time, legacySave.harborTransit.time);
   runStreet(resumed, 90);
 });

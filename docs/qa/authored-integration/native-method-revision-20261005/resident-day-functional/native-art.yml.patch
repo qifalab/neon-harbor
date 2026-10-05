@@ -1,0 +1,19 @@
+--- a/.github/workflows/native-art.yml
++++ b/.github/workflows/native-art.yml
+@@ -19,6 +19,7 @@
+       matrix:
+         include:
+           - { id: continuous-tour, job_timeout_minutes: 300, evidence_label: 'Low functional tour' }
++          - { id: resident-loop, job_timeout_minutes: 210, evidence_label: 'Low functional resident day' }
+           - { id: east-interior, job_timeout_minutes: 180, evidence_label: 'Native High' }
+           - { id: home, job_timeout_minutes: 260, evidence_label: 'Native High' }
+           - { id: workshop, job_timeout_minutes: 160, evidence_label: 'Native High' }
+@@ -54,7 +55,7 @@
+           import json, os
+           from pathlib import Path
+           target = Path(os.environ['GITHUB_WORKSPACE']) / 'native-evidence' / os.environ['CASE_ID'] / 'job-envelope.json'
+-          target.write_text(json.dumps({'status':'INITIALIZED_NOT_EXECUTED','artAcceptance':'NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY' if os.environ['CASE_ID']=='continuous-tour' else 'PENDING_HUMAN_NATIVE_REVIEW','evidenceScope':os.environ['EVIDENCE_LABEL'],'case':os.environ['CASE_ID'],'authoredDispatchSha':os.environ['DISPATCHED_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'runAttempt':os.environ['GITHUB_RUN_ATTEMPT'],'baselineSha':'7a90f7934b7c9d1af5c4494bf08c4ec337c373e4'}, indent=2)+'\n')
++          target.write_text(json.dumps({'status':'INITIALIZED_NOT_EXECUTED','artAcceptance':'NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY' if os.environ['CASE_ID'] in ('continuous-tour','resident-loop') else 'PENDING_HUMAN_NATIVE_REVIEW','evidenceScope':os.environ['EVIDENCE_LABEL'],'case':os.environ['CASE_ID'],'authoredDispatchSha':os.environ['DISPATCHED_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'runAttempt':os.environ['GITHUB_RUN_ATTEMPT'],'baselineSha':'7a90f7934b7c9d1af5c4494bf08c4ec337c373e4'}, indent=2)+'\n')
+           PY_ENVELOPE
+       - name: Check out fixed previous runtime
+         uses: actions/checkout@v4

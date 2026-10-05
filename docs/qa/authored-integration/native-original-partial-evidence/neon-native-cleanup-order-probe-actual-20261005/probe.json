@@ -1,0 +1,244 @@
+{
+  "status": "TINY_PROBE_COMPLETE",
+  "startedAt": "2026-10-05T00:42:58.711Z",
+  "purpose": "Two serial tiny WebGL2 official launchServer/connect cleanup-order probes, not game/native art acceptance",
+  "playwright": "1.62.1",
+  "wholeBudgetMs": 120000,
+  "innerBudgetMs": 115000,
+  "serverCloseCapMs": 30000,
+  "launchArgs": [
+    "--enable-webgl",
+    "--use-angle=swiftshader",
+    "--enable-unsafe-swiftshader"
+  ],
+  "variants": [
+    {
+      "order": "context-client-owner",
+      "status": "probe-complete",
+      "startedAt": "2026-10-05T00:42:58.712Z",
+      "steps": [
+        {
+          "label": "browser-context",
+          "startedAt": "2026-10-05T00:42:59.072Z",
+          "capMs": 30000,
+          "clientConnectedBefore": true,
+          "ownerBefore": {
+            "pid": 101044,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101044,
+            "session": 101044,
+            "startTicks": "4449874"
+          },
+          "status": "closed",
+          "durationMs": 6.741649999999936,
+          "finishedAt": "2026-10-05T00:42:59.079Z",
+          "clientConnectedAfter": true,
+          "ownerAfter": {
+            "pid": 101044,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101044,
+            "session": 101044,
+            "startTicks": "4449874"
+          }
+        },
+        {
+          "label": "browser-client",
+          "startedAt": "2026-10-05T00:42:59.080Z",
+          "capMs": 29992,
+          "clientConnectedBefore": true,
+          "ownerBefore": {
+            "pid": 101044,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101044,
+            "session": 101044,
+            "startTicks": "4449874"
+          },
+          "status": "closed",
+          "durationMs": 1.1539880000000267,
+          "finishedAt": "2026-10-05T00:42:59.081Z",
+          "clientConnectedAfter": false,
+          "ownerAfter": {
+            "pid": 101044,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101044,
+            "session": 101044,
+            "startTicks": "4449874"
+          }
+        },
+        {
+          "label": "owned-browser-server",
+          "startedAt": "2026-10-05T00:42:59.084Z",
+          "capMs": 29988,
+          "clientConnectedBefore": false,
+          "ownerBefore": {
+            "pid": 101044,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101044,
+            "session": 101044,
+            "startTicks": "4449874"
+          },
+          "status": "closed",
+          "durationMs": 27.776487999999972,
+          "finishedAt": "2026-10-05T00:42:59.112Z",
+          "clientConnectedAfter": false,
+          "ownerAfter": null
+        }
+      ],
+      "secondaryErrors": [],
+      "owner": {
+        "pid": 101044,
+        "state": "R",
+        "ppid": 101032,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449874"
+      },
+      "ownerBindingRecordedBeforeClientConnect": true,
+      "chromium": "151.0.7922.34",
+      "webgl": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pixels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frames": 12,
+        "glError": 0,
+        "contextLost": false
+      },
+      "ownerAfter": null,
+      "ownerExit": {
+        "exitCode": 0,
+        "signalCode": null
+      },
+      "awaitWrapperClosureGate": true,
+      "wrapperClosureReceipt": {
+        "ownedClosureConfirmed": true,
+        "boundRoot": {
+          "pid": 101032,
+          "state": "R",
+          "ppid": 101029,
+          "pgid": 101032,
+          "session": 101032,
+          "startTicks": "4449840"
+        },
+        "observedOwnedProcesses": 6,
+        "verifiedAt": 1791160979.1349995,
+        "identityBoundPidfdOnly": true,
+        "liveOwnedBrowserProcesses": []
+      },
+      "finishedAt": "2026-10-05T00:42:59.139Z"
+    },
+    {
+      "order": "context-owner-client",
+      "status": "probe-complete",
+      "startedAt": "2026-10-05T00:42:59.139Z",
+      "steps": [
+        {
+          "label": "browser-context",
+          "startedAt": "2026-10-05T00:42:59.437Z",
+          "capMs": 30000,
+          "clientConnectedBefore": true,
+          "ownerBefore": {
+            "pid": 101099,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101099,
+            "session": 101099,
+            "startTicks": "4449916"
+          },
+          "status": "closed",
+          "durationMs": 6.0933880000000045,
+          "finishedAt": "2026-10-05T00:42:59.444Z",
+          "clientConnectedAfter": true,
+          "ownerAfter": {
+            "pid": 101099,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101099,
+            "session": 101099,
+            "startTicks": "4449916"
+          }
+        },
+        {
+          "label": "owned-browser-server",
+          "startedAt": "2026-10-05T00:42:59.444Z",
+          "capMs": 29993,
+          "clientConnectedBefore": true,
+          "ownerBefore": {
+            "pid": 101099,
+            "state": "S",
+            "ppid": 101032,
+            "pgid": 101099,
+            "session": 101099,
+            "startTicks": "4449916"
+          },
+          "status": "closed",
+          "durationMs": 42.18692799999985,
+          "finishedAt": "2026-10-05T00:42:59.487Z",
+          "clientConnectedAfter": false,
+          "ownerAfter": null
+        },
+        {
+          "label": "browser-client-if-connected",
+          "status": "already-disconnected-by-owner-close"
+        }
+      ],
+      "secondaryErrors": [],
+      "owner": {
+        "pid": 101099,
+        "state": "S",
+        "ppid": 101032,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449916"
+      },
+      "ownerBindingRecordedBeforeClientConnect": true,
+      "chromium": "151.0.7922.34",
+      "webgl": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "pixels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frames": 12,
+        "glError": 0,
+        "contextLost": false
+      },
+      "ownerAfter": null,
+      "ownerExit": {
+        "exitCode": 0,
+        "signalCode": null
+      },
+      "awaitWrapperClosureGate": true,
+      "wrapperClosureReceipt": {
+        "ownedClosureConfirmed": true,
+        "boundRoot": {
+          "pid": 101032,
+          "state": "R",
+          "ppid": 101029,
+          "pgid": 101032,
+          "session": 101032,
+          "startTicks": "4449840"
+        },
+        "observedOwnedProcesses": 12,
+        "verifiedAt": 1791160979.5150204,
+        "identityBoundPidfdOnly": true,
+        "liveOwnedBrowserProcesses": []
+      },
+      "finishedAt": "2026-10-05T00:42:59.543Z"
+    }
+  ],
+  "finishedAt": "2026-10-05T00:42:59.544Z",
+  "noGameAcceptance": true
+}

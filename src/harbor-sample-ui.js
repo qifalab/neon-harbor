@@ -1,3 +1,4 @@
+import { renderResidentDiary } from './harbor-resident-diary-ui.js';
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 /** Public city services read actual timetables, stock and delivery state. */
@@ -25,4 +26,5 @@ export function renderHarborSampleMenu(container, city, onTravel) {
   container.querySelector('#sample-delivery').textContent = delivery
     ? `把 ${delivery.quantity} 份${delivery.productName}送到${delivery.recipient}，到柜台按 E 交货。运费来自店铺，交货后实际补入库存。`
     : daily.availableJobs.length ? `芦岸货栈目前有 ${daily.availableJobs.length} 单补货委托。先走到货栈按 E 领取货物，再送到收货柜台。` : '小店的补货单正在处理。可以到货栈与店员聊聊，或者乘车去另一岸。';
+  renderResidentDiary(container, daily.residentDiary, { buildings: city.buildings, onTravel });
 }

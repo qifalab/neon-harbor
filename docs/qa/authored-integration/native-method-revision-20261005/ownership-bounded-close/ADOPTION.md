@@ -1,0 +1,11 @@
+# Ownership-only bounded close candidate
+
+Adopt only payload/tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs and its method-manifest.json, after verifying original ef92 e5fc7e1534929908c961038689d8b6ca76f351d55cdd31ab16148b4abec5a34d. No ROOT/index/ref/runtime/GPU changed here. The original ownership BUS/TRAM3PNG FAIL packets remain failures with pending art review.
+
+The actual API remains supported in-process browser.close, which pinned Playwright1.62.1 invokes through server Browser._close→browserProcess.close→closeOrKill(default30000). Context and static listener finish inside the original shared30s deadline before official browser close receives independent outer35s clipped to original whole20min. There are no game actions after teardown begins. The original last30s action reservation/whole deadline are unchanged; a late action can leave less than35s and closure can still fail.
+
+Capture binds actual child PID/startTicks at launch and validates the same process object and observed exit plus absence of that exact /proc identity inside the official close cap. Resolved API + exit0/no signal is graceful. Resolved API + null exitCode/SIGKILL is explicitly forced resource closure, never graceful; attribution is source-consistent provider fallback, not independently instrumented. API rejection/outer timeout/nonzero or unexpected exit/invalid or live owner/caller rescue/whole deadline/game failures remain failures. The external original kernel exact-owner descendant and port checks are unchanged. No numeric PID/global kill was introduced.
+
+Actual node --check passed.17 pureCPU cases execute the candidate classifier;11 virtual-duration API/identity shim cases execute its actual finally block. These are source checks, not native/game/kernel/art acceptance. Initial classifier test expectation failure and initial shim Date-constructor failure are retained; fixes changed only test expectations/shim mechanics. Native evidence must be collected anew on the final frozen source.
+
+Current source and manifest hashes are in delivery-seal.json. Regenerate bundle-manifest after all independent edits; retain original curated provenance/ledgers rather than rewriting historical evidence.

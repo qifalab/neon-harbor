@@ -1,0 +1,168 @@
+--- a/src/harbor-workshop-authored.js
++++ b/src/harbor-workshop-authored.js
+@@ -66,3 +66,119 @@
+       {id:'archive-main',minX:x(-16),maxX:x(-1.4),minZ:z(6),maxZ:z(8),minimumWidth:2}],
+     untouchedCore:{entrance:layout.entrance,elevator:layout.elevator,stairs:layout.stairs}};
+ }
++
++/** Local, reversible set dressing for the already authored furniture. All
++ * vertices stay inside an existing furniture collider, including its height.
++ * This owns no external asset or texture and never edits the collision plan. */
++export function createAuthoredWorkshopDetails(THREE, plan) {
++  const group = new THREE.Group(); group.name = 'Workshop · repair and archive detail';
++  const origin = plan.placements.find(p => p.id === 'workshop-fittings').position;
++  group.position.set(origin.x, origin.y, origin.z);
++  const buckets = new Map(), records = [], temporary = new THREE.Object3D();
++  const surfaces = [
++    { name:'Used brushed steel', color:0xffffff, metalness:.78, roughness:.65 },
++    { name:'Oxidised brass and fasteners', color:0xffffff, metalness:.60, roughness:.70 },
++    { name:'Rubber cable and seals', color:0xffffff, metalness:0, roughness:.94 },
++    { name:'Paper and woven shop cloth', color:0xffffff, metalness:0, roughness:.96 },
++    { name:'Worn enamel storage', color:0xffffff, metalness:.24, roughness:.79 },
++  ].map(p => new THREE.MeshStandardMaterial({...p, vertexColors:true}));
++  const colours = [[.34,.39,.38],[.54,.37,.20],[.025,.036,.032],[.64,.59,.45],[.12,.23,.20]];
++  const fit = name => {
++    const c = plan.colliders.find(p => p.id === `south-086:lobby:${name}`);
++    if (!c) throw new Error(`Workshop detail requires existing ${name} envelope`);
++    return { id:c.id, min:[c.x-c.hx-origin.x,c.minY-origin.y,c.z-c.hz-origin.z],
++      max:[c.x+c.hx-origin.x,c.maxY-origin.y,c.z+c.hz-origin.z] };
++  };
++  const add = (geometry, material, envelope, x,y,z, rotation=[0,0,0], name='detail', tint=colours[material]) => {
++    const g = geometry.index ? geometry.toNonIndexed() : geometry.clone(); geometry.dispose();
++    temporary.position.set(x,y,z);temporary.rotation.set(...rotation);temporary.updateMatrix();g.applyMatrix4(temporary.matrix);
++    g.computeBoundingBox(); const box=g.boundingBox;
++    for (let axis=0;axis<3;axis++) if(box.min.getComponent(axis)<envelope.min[axis]-1e-6||box.max.getComponent(axis)>envelope.max[axis]+1e-6) {
++      g.dispose(); throw new Error(`Workshop ${name} exceeds ${envelope.id} on axis ${axis}`);
++    }
++    const colour = new Float32Array(g.attributes.position.count*3);
++    for(let i=0;i<colour.length;i+=3)colour.set(tint,i);
++    g.setAttribute('color',new THREE.BufferAttribute(colour,3));
++    if(!buckets.has(material))buckets.set(material,[]);buckets.get(material).push(g);
++    records.push({name,envelope:envelope.id,min:box.min.toArray(),max:box.max.toArray(),triangles:g.attributes.position.count/3});
++  };
++  const box = (m,e,x,y,z,sx,sy,sz,name,tint) => add(new THREE.BoxGeometry(sx,sy,sz),m,e,x,y,z,[0,0,0],name,tint);
++  const tube = (m,e,x,y,z,r,h,rotation,name,segments=12) => add(new THREE.CylinderGeometry(r,r,h,segments,1),m,e,x,y,z,rotation,name);
++  const ring = (m,e,x,y,z,r,t,rotation,name) => add(new THREE.TorusGeometry(r,t,6,16),m,e,x,y,z,rotation,name);
++  const cable = (e,points,r,name) => add(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p))),24,r,7,false),2,e,0,0,0,[0,0,0],name);
++  let disposed=false, summary;
++  try {
++    const a=fit('repair-assembly-table'), ax=-14.3, az=1.5;
++    // Visible seals, hexagonal flange fixings and ribs break the former smooth
++    // cylinder. They describe one pump assembly instead of adding another box.
++    for(const side of[-1,1]) {
++      ring(2,a,ax+.1,1.135,az+side*.207,.143,.009,[0,0,0],'pump flange gasket');
++      for(let i=0;i<6;i++) {
++        const angle=i*Math.PI/3;
++        tube(1,a,ax+.1+Math.cos(angle)*.132,1.135+Math.sin(angle)*.132,az+side*.211,.017,.027,[Math.PI/2,0,0],'hexagonal flange nut',6);
++      }
++    }
++    for(const dz of[-.12,-.06,0,.06,.12])ring(0,a,ax+.1,1.135,az+dz,.133,.0045,[0,0,0],'pump cooling rib');
++    tube(1,a,ax+.285,1.025,az+.07,.028,.09,[0,0,Math.PI/2],'brass service union');
++    cable(a,[[ax+.33,1.025,az+.07],[ax+.48,.997,az+.14],[ax+.52,.966,az+.29],[ax+.72,.963,az+.24]],.012,'curved service hose');
++    tube(0,a,ax+.72,.963,az+.24,.020,.075,[0,0,Math.PI/2],'hose end coupling');
++    // Small hand tools and a used cloth occupy the original worktop footprint.
++    box(3,a,ax-.54,.937,az+.15,.30,.018,.19,'folded shop cloth',[.29,.34,.31]);
++    tube(0,a,ax-.64,.962,az+.10,.008,.21,[0,0,Math.PI/2],'spanner shaft');
++    for(const dx of[-.105,.105])ring(0,a,ax-.64+dx,.962,az+.10,.026,.006,[Math.PI/2,0,0],'spanner ring end');
++    tube(1,a,ax-.18,.964,az-.22,.027,.035,[0,0,0],'removed seal spacer');
++    // Open storage baskets below the existing table, rather than solid crates.
++    for(const dx of[-.57,.57]) {
++      box(4,a,ax+dx,.305,az,.48,.022,.54,'parts basket floor');
++      for(const edge of[-1,1]) {
++        for(const yy of[.35,.46,.57])box(4,a,ax+dx,yy,az+edge*.258,.48,.018,.016,'basket open horizontal rail');
++        for(const zz of[-.20,0,.20])tube(0,a,ax+dx+edge*.23,.45,az+zz,.008,.28,[0,0,0],'basket upright');
++      }
++      for(let j=0;j<3;j++)ring(0,a,ax+dx-.13+j*.13,.333,az+.04,.048,.012,[Math.PI/2,0,0],'stored coupling ring');
++    }
++    const c=fit('parts-cabinet');
++    box(4,c,-15.8,1.608,-6.6,.85,.018,.35,'cabinet shallow sorting tray');
++    for(let j=0;j<6;j++)ring(j%2,c,-16.07+j*.105,1.628,-6.6,.027,.006,[Math.PI/2,0,0],'sorted cabinet washer');
++    // Broken paint patches sit on the existing door surface, within the old
++    // envelope; no door geometry, hinge or interaction is replaced.
++    for(const [dx,yy,w,h]of[[-.40,.22,.12,.013],[.32,.51,.07,.017],[-.10,1.20,.11,.014]])
++      box(1,c,-15.8+dx,yy,-6.3405,w,h,.001,'cabinet worn edge',[.30,.25,.18]);
++    for(const [station,z]of[['receiving-station',-5.65],['collection-station',1.9]]) {
++      const e=fit(station);
++      for(let j=0;j<3;j++) {
++        tube(0,e,-9.48+j*.52,.34,z,.13,.20,[0,0,0],'lower shelf parts can');
++        ring(0,e,-9.48+j*.52,.442,z,.127,.010,[Math.PI/2,0,0],'can rolled rim');
++        tube(2,e,-9.48+j*.52,.444,z,.107,.009,[0,0,0],'dark can opening');
++      }
++      ring(1,e,-8.055,1.016,z-.16,.060,.017,[Math.PI/2,0,0],'ready service coupling');
++    }
++    // The archive desktop is already dressed in the GLB. Its cable hangs
++    // underneath, within the existing desk-height and footprint envelope.
++    const d=fit('retrieval-desk');
++    cable(d,[[-11.95,.735,8.70],[-11.89,.61,8.71],[-11.91,.40,8.74],[-12.06,.33,8.78],[-12.23,.42,8.78]],.009,'retrieval lamp supply cable');
++    const s=fit('document-sorting-table');
++    for(let j=0;j<3;j++)ring(0,s,-8.30+j*.11,.929,4.57,.020,.004,[Math.PI/2,0,0],'outgoing binder clip');
++    // Shallow coloured reference tabs distinguish collections; they are at
++    // real folder front surfaces inside each unchanged shelf's envelope.
++    for(let i=0;i<3;i++) {
++      const e=fit(`reference-shelf-${i}`);
++      for(let j=0;j<4;j++)box(3,e,-19.25+i*1.8+j*.23,.82+j*.01,4.016,.075,.028,.003,'reference folder index tab',j%2?[.57,.33,.25]:[.56,.58,.43]);
++    }
++    for(const [index,geometries]of buckets) {
++      const merged=new THREE.BufferGeometry();
++      for(const name of['position','normal','uv','color']) {
++        const size=name==='uv'?2:3,total=geometries.reduce((n,g)=>n+g.attributes[name].array.length,0),data=new Float32Array(total);
++        let offset=0;for(const g of geometries){data.set(g.attributes[name].array,offset);offset+=g.attributes[name].array.length;}
++        merged.setAttribute(name,new THREE.BufferAttribute(data,size));
++      }
++      merged.computeBoundingBox();merged.computeBoundingSphere();
++      const mesh=new THREE.Mesh(merged,surfaces[index]);mesh.name=surfaces[index].name;
++      mesh.castShadow=true;mesh.receiveShadow=true;group.add(mesh);
++    }
++    summary={meshes:group.children.length,triangles:records.reduce((n,r)=>n+r.triangles,0),textures:0,
++      envelopeCount:new Set(records.map(r=>r.envelope)).size,detailPieces:records.length};
++  } catch(error) {for(const mesh of group.children)mesh.geometry.dispose();for(const m of surfaces)m.dispose();throw error;
++  } finally {for(const geometries of buckets.values())for(const g of geometries)g.dispose();}
++  const dispose=()=>{if(disposed)return;disposed=true;for(const mesh of group.children)mesh.geometry.dispose();for(const material of surfaces)material.dispose();group.removeFromParent();group.clear();};
++  return {group,records,summary,dispose};
++}
+--- a/src/harbor-workshop-pilot.js
++++ b/src/harbor-workshop-pilot.js
+@@ -1,4 +1,4 @@
+-import { AUTHORED_WORKSHOP_MODELS, extendAuthoredWorkshopPlan } from './harbor-workshop-authored.js';
++import { AUTHORED_WORKSHOP_MODELS, extendAuthoredWorkshopPlan, createAuthoredWorkshopDetails } from './harbor-workshop-authored.js';
+ /** Authored workshop: real CC0 assets and original fittings at one room pair.
+  * Collision and furnishing metadata keep world metres, and loaders are local.
+  * This module never changes programmes, residents, vehicles or structural routes.
+@@ -112,7 +112,9 @@
+   let disposed = false, wanted = false, generation = 0, controller = null, pending = null;
+   let status = plan ? 'fallback' : 'inapplicable', releasedAssets = 0;
+   let lodTier = 2, nearestViewDistance = Infinity;
++  let detailOwner = null;
+   const applyLod = () => {
++    if(detailOwner)detailOwner.group.visible=status==='ready'&&lodTier<2;
+     if(!plan?.authored){for(const asset of loaded)asset.scene.visible=true;if(fallbackGroup)fallbackGroup.visible=status!=='ready';return;}
+     for (const asset of loaded) {
+       const fittings = asset.scene.userData.workshopAssetId === 'workshop-fittings';
+@@ -158,6 +160,7 @@
+   };
+   function unload() {
+     generation++; controller?.abort(); controller = null;
++    detailOwner?.dispose(); detailOwner=null;
+     for (const asset of loaded.splice(0)) release(asset);
+     cachedBounds = []; cachedResources = []; cachedSkeletons = [];
+     if (fallbackGroup) fallbackGroup.visible = true;
+@@ -225,9 +228,11 @@
+           visibleSourceMeshes:item.summary.meshes*(plan.placements[index].instances?.length||1),
+           visibleSourceTriangles:item.summary.triangles*(plan.placements[index].instances?.length||1) }));
+         cachedSkeletons = [...new Set(resources.flatMap(item => [...item.skeletons]))];
++        if(plan.authored){detailOwner=createAuthoredWorkshopDetails(THREE,plan);group.add(detailOwner.group);}
+         loaded.push(...assets); status = 'ready'; applyLod();
+         audit('ready');
+       } catch (error) {
++        detailOwner?.dispose();detailOwner=null;
+         for (const asset of assets) release(asset);
+         status = 'failed'; errors.push(String(error.message));
+         applyLod();
+@@ -255,6 +260,7 @@
+     return { enabled, status, wanted, assetCount: loaded.length, pending: status === 'loading', releasedAssets,
+       fallbackVisible: fallbackGroup?.visible ?? null,
+       authored: !!plan?.authored, lodTier, nearestViewDistance,
++      details: detailOwner ? {...detailOwner.summary} : null,
+       bounds: cachedBounds.map(box => ({ id: box.id, min: [...box.min], max: [...box.max] })),
+       resources: cachedResources.map(resource => ({ ...resource, images: resource.images.map(image => ({ ...image })) })),
+       boneTextureCount: cachedSkeletons.filter(skeleton => skeleton.boneTexture).length,

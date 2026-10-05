@@ -11,11 +11,12 @@ import {resolve,relative,isAbsolute,dirname} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createStaticServer} from './server.mjs';
 import {CORE_PLANS,compileFrontagePlan} from './plans.mjs';
+import {compileWideFrontagePlan} from './frontage-wide-plans.mjs';
 import {MODELS,expectedIds} from './expectations.mjs';
 import {snapshot,errorRecord,createInput} from './input.mjs';
 import {currentRenderedCamera,phaseTimeout} from './render-readiness.mjs';
 const methodRoot=dirname(fileURLToPath(import.meta.url));
-const usage='cwd ACTUAL_REPO: node /tmp/neon-harbor-final-native-method/capture-authored-harbor-native.mjs --mode baseline|authored --case home|workshop|south-090|south-091|south-092|south-094|south-095|south-096 --output NEW_EMPTY_DIR --gpu-go yes [--root dist] [--port 5228]\nPreparation only: add --plan-only yes; no browser dependency is loaded, server started or GPU instantiated.';
+const usage='cwd ACTUAL_REPO: node /tmp/neon-native-frontage-wide-method-candidate/capture-authored-harbor-native.mjs --mode baseline|authored --case home|workshop|south-090|south-091|south-092|south-094|south-095|south-096 --output NEW_EMPTY_DIR --gpu-go yes [--root dist] [--port 5228]\nPreparation only: add --plan-only yes; no browser dependency is loaded, server started or GPU instantiated.';
 const options={};
 for(let i=2;i<process.argv.length;i+=2){const flag=process.argv[i],value=process.argv[i+1];
  if(flag==='--help'){console.log(usage);process.exit(0);}
@@ -24,7 +25,7 @@ assert.ok(['baseline','authored'].includes(options.mode),usage);
 const catalog=JSON.parse(await readFile(resolve(methodRoot,'evidence/captured-buildings.json')));
 const shops=['south-090','south-091','south-092','south-094','south-095','south-096'];
 assert.ok(Object.hasOwn(CORE_PLANS,options.case)||shops.includes(options.case),usage);
-const plan=CORE_PLANS[options.case]||compileFrontagePlan(catalog.buildings[options.case]);
+const plan=CORE_PLANS[options.case]||compileWideFrontagePlan(catalog.buildings[options.case],compileFrontagePlan(catalog.buildings[options.case]));
 if(options['plan-only']==='yes'){
  console.log(JSON.stringify({status:'PREPARED_NOT_EXECUTED',mode:options.mode,plan,
   scope:'Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.',
@@ -45,18 +46,44 @@ const sha=data=>createHash('sha256').update(data).digest('hex');
 const record={status:'running',artAcceptance:'PENDING_HUMAN_NATIVE_REVIEW',mode:options.mode,case:plan.id,address:plan.address,
  startedAt:new Date().toISOString(),projectRoot,servedRoot:root,methodRoot,plan,
  viewport:{width:1280,height:800},deviceScaleFactor:1,pinnedChromium:'151.0.7922.34',
- wholeCaseBudgetMinutes:plan.budgetMinutes,inputs:[],events:[],captures:[],ownerProbes:[],releaseProbes:[],errors:[],teardownEvents:[],cleanup:[],
+ wholeCaseBudgetMinutes:plan.budgetMinutes,
+ ...(shops.includes(plan.id)?{historicalOriginalBudgetSeconds:720,activeOriginalBudgetSeconds:plan.budgetMinutes*60}:{}),inputs:[],events:[],captures:[],ownerProbes:[],releaseProbes:[],errors:[],teardownEvents:[],cleanup:[],
  limitations:['An independent public Atlas address setup is not a continuous city trip.',
  'High/default resolution/FOV, static hour 16.5 and all world metre poses are identical across modes.',
  'Only shipped public UI is used for initial settings and one Atlas setup. All later motion is actual mouse/WASD/Z/E/stairs.',
  'Snapshots are read-only diagnostics. No position/time/debug setters, direct storage writes, request interception, failure injection, hidden retry or image editing.',
  'Per-asset Three disposal and its synchronous renderer counter difference do not measure driver bytes or prove city-wide memory stability.',
  'Frontage short cases remain within their existing 72/96m residence window; no per-owner native release assertion is available there.',
+ 'Supported BrowserServer.close may resolve after its provider30s forced fallback; actual SIGKILL is recorded as forced resource closure, not graceful teardown or an art/performance pass. Rejected API close, outer timeout, unknown owned identity and every game/deadline failure remain failures.',
  'Capture completion is distinct from art approval. Furniture scale/material response, readable labels, seams, lived-in composition and entrance appearance require actual original-pixel human review.']};
+
+async function ownedBrowserIdentity(pid) {
+ try {
+  const text=await readFile(`/proc/${pid}/stat`,'utf8'),fields=text.slice(text.lastIndexOf(')')+2).trim().split(/\s+/);
+  return {pid,state:fields[0],ppid:Number(fields[1]),startTicks:fields[19]};
+ } catch(error) {if(error.code==='ENOENT')return null;throw error;}
+}
+function classifyOwnedBrowserClose({before,current,apiClose,exitCode,signalCode,callerForceInvoked,hardDeadlineReached}) {
+ const knownIdentity=Number.isInteger(before?.pid)&&typeof before?.startTicks==='string';
+ const exactIdentityStillPresent=Boolean(current&&current.pid===before?.pid&&current.startTicks===before?.startTicks);
+ const observedExit=exitCode!==null&&exitCode!==undefined||signalCode!==null&&signalCode!==undefined;
+ const identityReadConfirmed=current!==undefined;
+ const exactOwnedClosureConfirmed=knownIdentity&&identityReadConfirmed&&!exactIdentityStillPresent&&observedExit;
+ const apiCloseResolved=apiClose?.status==='closed',forcedExit=signalCode==='SIGKILL';
+ const exitModeEligible=exitCode===0&&!signalCode||signalCode==='SIGKILL';
+ const withinOuterCap=Number.isFinite(apiClose?.elapsedMs)&&Number.isFinite(apiClose?.timeoutMs)&&apiClose.elapsedMs<=apiClose.timeoutMs;
+ return {before,current,apiCloseResolved,outerCapMs:35000,providerDefaultInnerCloseMs:30000,
+  apiCloseElapsedMs:apiClose?.elapsedMs??null,exitCode,signalCode,forcedExit,
+  graceful:apiCloseResolved&&exactOwnedClosureConfirmed&&exitCode===0&&!signalCode,
+  forceAttribution:forcedExit&&apiCloseResolved&&!callerForceInvoked&&!hardDeadlineReached?'supported-API-close-resolved-SIGKILL-provider-fallback-consistent':'none-or-not-eligible',
+  providerInternalBranchIndependentlyObserved:false,callerForceInvoked:Boolean(callerForceInvoked),
+  hardDeadlineReached:Boolean(hardDeadlineReached),identityReadConfirmed,exactOwnedClosureConfirmed,exitModeEligible,withinOuterCap,
+  boundedCloseAccepted:apiCloseResolved&&exactOwnedClosureConfirmed&&exitModeEligible&&withinOuterCap&&!callerForceInvoked&&!hardDeadlineReached};
+}
 const persist=()=>writeFile(resolve(output,'metadata.json'),JSON.stringify(record,null,2)+'\n');
 const deadline=Date.now()+plan.budgetMinutes*60000;
 const remaining=(cap=180000)=>{const ms=Math.min(cap,deadline-Date.now());assert.ok(ms>0,'Whole native case deadline, including cleanup and final persistence');return ms;};
-let server,browserServer,browserProcess,browser,context,page,closing=false,primaryError=null,playableCompleted=false;
+let server,browserServer,browserProcess,browserOwnerIdentity,browser,context,page,closing=false,primaryError=null,playableCompleted=false;
 const hardStop=setTimeout(()=>{record.hardDeadlineReached=true;
  browserServer?.kill().catch(error=>record.deadlineCloseError=errorRecord(error));server?.closeAllConnections();
 },plan.budgetMinutes*60000);
@@ -229,8 +256,26 @@ try{
  const runtime=await fingerprints();record.buildInfoSha256=runtime.sha256;record.buildRevision=runtime.manifest.revision;
  record.manifestAssetDictionary=runtime.manifest.assets;record.sourceServedVerifiedAssetDictionary=runtime.hashes;
  await writeFile(resolve(output,'build-info.json'),runtime.bytes);
- const methodFiles=['capture-authored-harbor-native.mjs','input.mjs','plans.mjs','expectations.mjs','server.mjs','render-readiness.mjs','evidence/captured-buildings.json','evidence/common-pose-proof.json'];
+ const methodFiles=['capture-authored-harbor-native.mjs','input.mjs','plans.mjs','expectations.mjs','server.mjs','render-readiness.mjs','evidence/captured-buildings.json','evidence/common-pose-proof.json',...(shops.includes(plan.id)?['frontage-wide-plans.mjs','evidence/frontage-wide-static-proof.json']:[])];
  record.methodHashes=Object.fromEntries(await Promise.all(methodFiles.map(async p=>[p,sha(await readFile(resolve(methodRoot,p)))])));
+ if(shops.includes(plan.id)){
+  const wideProof=JSON.parse(await readFile(resolve(methodRoot,'evidence/frontage-wide-static-proof.json')));
+  const prepared=wideProof.cases[plan.id];
+  assert.equal(wideProof.status,'SOURCE_ONLY_STATIC_GEOMETRY_REVIEW');
+  assert.equal(prepared?.clear,true,'New wide path and approved fixture legs need their separate static preparation');
+  assert.equal(wideProof.bodyRadius,.65);assert.equal(wideProof.axisTolerance,.15);
+  assert.deepEqual(prepared.wideStanding,plan.wideExtension.wideStanding,'Prepared wide standing region');
+  assert.deepEqual(prepared.originalDoorStation,plan.wideExtension.originalDoorStation,'Return to original door route');
+  assert.deepEqual(prepared.fixtureDetour?.outboundWaypoints,plan.fixtureDetour?.outbound.waypoints,'Approved outward lamp detour waypoints');
+  assert.deepEqual(prepared.fixtureDetour?.returnWaypoints,plan.fixtureDetour?.returning.waypoints,'Approved return lamp detour waypoints');
+  for(const [p,expected]of Object.entries(wideProof.sourceHashes[options.mode]))assert.equal(runtime.hashes[p],expected,'Wide static collision/ground source changed: '+p);
+  for(const p of wideProof.sourceAbsent?.[options.mode]||[])assert.ok(!Object.hasOwn(runtime.hashes,p),'Source expected absent in prepared mode: '+p);
+  record.frontageWidePreparation={proofSHA256:record.methodHashes['evidence/frontage-wide-static-proof.json'],
+   scope:wideProof.scope,case:prepared,geometryOnly:true,nativeTimingValidated:false,
+   sharedWholeCaseBudgetMinutes:plan.budgetMinutes,originalWholeCaseBudgetMinutes:12,
+   originalClosePhotoObjectsPreserved:true,
+   originalRouteExceptExplicitFixtureDetoursPreserved:true,fixtureDetour:plan.fixtureDetour??null};
+ }
  const proof=JSON.parse(await readFile(resolve(methodRoot,'evidence/common-pose-proof.json')));assert.equal(proof.clear,true,'Common-mode standing/path preparation');
  const planningFiles=['src/compact-interiors.js','src/expansion-programmes.js','src/metropolis-room-designs.js'];
  if(plan.id==='workshop')planningFiles.push('src/harbor-workshop-pilot.js',...(options.mode==='authored'?['src/harbor-workshop-authored.js']:[]));
@@ -252,9 +297,9 @@ try{
  // Official BrowserServer exposes the owned child process and kill() method.
  // The hard timer can terminate exactly this fresh browser, never the frozen tour.
  browserServer=await chromium.launchServer({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader'],timeout:remaining(60000)});
- browserProcess=browserServer.process();browser=await chromium.connect(browserServer.wsEndpoint(),{timeout:remaining(30000)});
+ browserProcess=browserServer.process();browserOwnerIdentity=await ownedBrowserIdentity(browserProcess.pid);assert.equal(browserOwnerIdentity?.ppid,process.pid,'Exact launched browser owner identity');browser=await chromium.connect(browserServer.wsEndpoint(),{timeout:remaining(30000)});
  record.browser={version:browser.version(),executablePath:chromium.executablePath(),ownedPid:browserProcess.pid,
-  launchMethod:'official launchServer/connect with owned-process hard deadline',launchArgs:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']};
+  ownedStartTicks:browserOwnerIdentity.startTicks,launchMethod:'official launchServer/connect with owned-process hard deadline',launchArgs:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']};
  assert.equal(record.browser.version,record.pinnedChromium,'Pinned native comparison browser');
  context=await browser.newContext({viewport:record.viewport,deviceScaleFactor:1});page=await context.newPage();page.setDefaultTimeout(30000);
  page.on('pageerror',error=>record.errors.push({kind:'pageerror',...errorRecord(error)}));
@@ -266,6 +311,7 @@ try{
  for(const [index,step]of plan.steps.entries()){
   record.activeStep={index,...step};await persist();
   if(step.kind==='walk')await input.walk(step.axis,step.target);
+  else if(step.kind==='look')await input.face(step.yaw,step.pitch);
   else if(step.kind==='photo')await capture(step,input);
   else if(step.kind==='enter'||step.kind==='exit')await interact(step.kind,step.label,input);
   else if(step.kind==='ready')await ready(step.channel,step.floorId,step.label);
@@ -290,13 +336,23 @@ try{
  try{await persist();}catch(other){record.secondaryFailurePersistence=errorRecord(other);}
 }finally{
  closing=true;
- async function close(label,operation,cap){let timer;const item={label,timeoutMs:Math.max(1,Math.min(cap,deadline-Date.now())),startedAt:new Date().toISOString()};
-  try{await Promise.race([Promise.resolve().then(operation),new Promise((_,reject)=>timer=setTimeout(()=>reject(new Error(label+' cleanup deadline')),item.timeoutMs))]);item.status='closed';}
-  catch(error){item.status='failed';item.error=errorRecord(error);}finally{clearTimeout(timer);item.finishedAt=new Date().toISOString();record.cleanup.push(item);}}
+ async function close(label,operation,cap,verifyOwned=false){let timer;const item={label,timeoutMs:Math.max(1,Math.min(cap,deadline-Date.now())),startedAt:new Date().toISOString()};
+  try{await Promise.race([Promise.resolve().then(async()=>{
+   await operation();
+   if(verifyOwned){const current=await ownedBrowserIdentity(browserProcess.pid);
+    record.ownedBrowserClose=classifyOwnedBrowserClose({before:browserOwnerIdentity,current,apiClose:{status:'closed',timeoutMs:item.timeoutMs,elapsedMs:Date.now()-Date.parse(item.startedAt)},exitCode:browserProcess.exitCode,signalCode:browserProcess.signalCode,callerForceInvoked:record.callerOwnedForceInvoked,hardDeadlineReached:record.hardDeadlineReached});
+    assert.equal(record.ownedBrowserClose.boundedCloseAccepted,true,'Supported API close resolved within cap and exact owned browser identity exited');
+   }
+  }),new Promise((_,reject)=>timer=setTimeout(()=>reject(new Error(label+' cleanup deadline')),item.timeoutMs))]);item.status='closed';}
+  catch(error){item.status='failed';item.error=errorRecord(error);primaryError ||=error;}finally{clearTimeout(timer);item.finishedAt=new Date().toISOString();item.elapsedMs=Date.parse(item.finishedAt)-Date.parse(item.startedAt);record.cleanup.push(item);}}
  if(context)await close('browser-context',()=>context.close(),10000);
  if(browser)await close('browser',()=>browser.close(),10000);
- if(browserServer)await close('owned-browser-process',()=>browserServer.close(),30000);
- if(browserProcess&&browserProcess.exitCode===null&&browserProcess.signalCode===null&&browserServer)await close('owned-browser-process-kill',()=>browserServer.kill(),5000);
+ if(browserServer)await close('owned-browser-process',()=>browserServer.close(),35000,true);
+ if(browserProcess&&browserProcess.exitCode===null&&browserProcess.signalCode===null&&browserServer){record.callerOwnedForceInvoked=true;await close('owned-browser-process-kill',()=>browserServer.kill(),5000);}
+ if(browserProcess){
+  if(!record.ownedBrowserClose)record.ownedBrowserClose=classifyOwnedBrowserClose({before:browserOwnerIdentity,current:undefined,apiClose:record.cleanup.find(item=>item.label==='owned-browser-process'),exitCode:browserProcess.exitCode,signalCode:browserProcess.signalCode,callerForceInvoked:record.callerOwnedForceInvoked,hardDeadlineReached:record.hardDeadlineReached});
+  if(record.callerOwnedForceInvoked){record.ownedBrowserClose.callerForceInvoked=true;record.ownedBrowserClose.boundedCloseAccepted=false;record.ownedBrowserClose.forceAttribution='caller-resource-rescue-after-failed-close';}
+ }
  if(browserProcess)record.browserProcessAfterFinalization={pid:browserProcess.pid,exitCode:browserProcess.exitCode,signalCode:browserProcess.signalCode};
  if(server)await close('static-server',()=>new Promise((done,reject)=>server.close(error=>error?reject(error):done())),5000);
  record.finalizationErrors=[];

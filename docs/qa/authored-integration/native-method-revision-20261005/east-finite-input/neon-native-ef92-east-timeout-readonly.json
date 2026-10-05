@@ -1,0 +1,700 @@
+{
+  "scope": "Original saved records/static source/hash/arithmetic only; no world/layout construction, tests/build/browser/GPU/ROOT/ref or remote mutation",
+  "artifact": {
+    "id": 11320594919,
+    "bytes": 11393689,
+    "sha256": "698aefe9bbab1f7b3460d13cb5f2097ef76acf10d292112c569e13298048b312"
+  },
+  "records": {
+    "baseline": {
+      "metadataPin": {
+        "path": "native/baseline/metadata.json",
+        "bytes": 5573193,
+        "sha256": "ab34affa05cb7c896ac829b77166183a8bbc2bdce29e75dae3de654890057f6a"
+      },
+      "status": "failed",
+      "startedAt": "2026-10-05T01:04:55.614Z",
+      "closedAt": "2026-10-05T01:21:40.983Z",
+      "wholeCaseBudgetMinutes": 60,
+      "primaryError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 120000ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 120000ms exceeded.\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/input.mjs:53:16)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/input.mjs:68:5)\n    at async route (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:189:68)\n    at async elevator (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:213:3)\n    at async east (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:241:3)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:275:41"
+      },
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "startedAt": "2026-10-05T01:21:10.802Z",
+          "timeoutMs": 29999,
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:21:10.820Z"
+        },
+        {
+          "label": "browser-connection",
+          "startedAt": "2026-10-05T01:21:10.820Z",
+          "timeoutMs": 29981,
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:21:10.826Z"
+        },
+        {
+          "label": "owned-browser-server",
+          "startedAt": "2026-10-05T01:21:10.826Z",
+          "timeoutMs": 29975,
+          "status": "failed",
+          "error": {
+            "name": "Error",
+            "message": "owned-browser-server 30s closure deadline",
+            "stack": "Error: owned-browser-server 30s closure deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:298:125)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          },
+          "finishedAt": "2026-10-05T01:21:40.808Z"
+        },
+        {
+          "label": "static-server",
+          "startedAt": "2026-10-05T01:21:40.808Z",
+          "timeoutMs": 1,
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:21:40.809Z"
+        }
+      ],
+      "secondaryErrors": [
+        {
+          "stage": "failure-photo",
+          "name": "TimeoutError",
+          "message": "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+          "stack": "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n\n    at /home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:292:22"
+        },
+        {
+          "stage": "owned-child-hard-cleanup",
+          "name": "Error",
+          "message": "Owned browser process survived normal 30s cleanup",
+          "stack": "Error: Owned browser process survived normal 30s cleanup\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:305:19"
+        }
+      ],
+      "captures": [
+        {
+          "label": "east-lobby-office",
+          "detail": {
+            "buildingId": "east-012",
+            "room": {
+              "id": "east-012-lobby-0",
+              "type": "office",
+              "name": "项目工作室 101",
+              "furnishingVariant": 1,
+              "x": 1177,
+              "z": -206.575,
+              "width": 19,
+              "depth": 18,
+              "ceilingHeight": 3.624545454545453,
+              "enclosed": true,
+              "entrance": {
+                "x": 1186.5,
+                "z": -206.575
+              },
+              "arrival": {
+                "x": 1183.2,
+                "z": -206.575
+              },
+              "bounds": {
+                "minX": 1167.5,
+                "maxX": 1186.5,
+                "minZ": -215.575,
+                "maxZ": -197.575
+              },
+              "number": "101",
+              "art": {
+                "subject": "街巷与海风",
+                "ink": "#668983",
+                "paper": "#c8ac85",
+                "composition": -1,
+                "edition": 1,
+                "variant": -6
+              }
+            }
+          },
+          "image": "east-lobby-office-high.png",
+          "pose": "east-lobby-office-pose.json",
+          "imageSha256": "a9f4892302f8447694bb9d6678d49b979357620b01f06191672ed4adbfb017d3",
+          "poseSha256": "fa6ba4a97769a8a47682f8e8f1b793deff27c8081f1600565bcbe7832dae35e8",
+          "pixels": {
+            "width": 1280,
+            "height": 800,
+            "lost": false,
+            "error": 0,
+            "dpr": 1
+          },
+          "position": {
+            "x": 1183.240000000008,
+            "y": 4.035,
+            "z": -206.52999999999943,
+            "yaw": -1.5707963267948968
+          },
+          "camera": {
+            "position": {
+              "x": 1183.240000000008,
+              "y": 5.655,
+              "z": -206.52999999999943
+            },
+            "target": {
+              "x": 1173.2402600222701,
+              "y": 5.655,
+              "z": -206.60211364388005
+            },
+            "focus": {
+              "x": 1183.240000000008,
+              "y": 5.655,
+              "z": -206.52999999999943
+            },
+            "yaw": 4.7051775534921365,
+            "pitch": 0.15,
+            "fov": 65,
+            "boomLength": 0,
+            "desiredBoomLength": 0,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 18.61666666666689
+        },
+        {
+          "label": "east-lobby-conference",
+          "detail": {
+            "buildingId": "east-012",
+            "room": {
+              "id": "east-012-lobby-1",
+              "type": "conference",
+              "name": "圆桌会议室 102",
+              "furnishingVariant": 2,
+              "x": 1177,
+              "z": -179.425,
+              "width": 19,
+              "depth": 18,
+              "ceilingHeight": 3.624545454545453,
+              "enclosed": true,
+              "entrance": {
+                "x": 1186.5,
+                "z": -179.425
+              },
+              "arrival": {
+                "x": 1183.2,
+                "z": -179.425
+              },
+              "bounds": {
+                "minX": 1167.5,
+                "maxX": 1186.5,
+                "minZ": -188.425,
+                "maxZ": -170.425
+              },
+              "number": "102",
+              "art": {
+                "subject": "街巷与海风",
+                "ink": "#668983",
+                "paper": "#c8ac85",
+                "composition": -1,
+                "edition": 1,
+                "variant": -3
+              }
+            }
+          },
+          "image": "east-lobby-conference-high.png",
+          "pose": "east-lobby-conference-pose.json",
+          "imageSha256": "07a52d458844d0558105ab542754c52b3690a1e677476c01b51a275bd3712719",
+          "poseSha256": "0283e8013bc0f8f019e894d6117dc658acc8f455fd471ca5726eb99094da899c",
+          "pixels": {
+            "width": 1280,
+            "height": 800,
+            "lost": false,
+            "error": 0,
+            "dpr": 1
+          },
+          "position": {
+            "x": 1183.0933250610296,
+            "y": 4.035,
+            "z": -179.42333338021385,
+            "yaw": -1.5707966319706783
+          },
+          "camera": {
+            "position": {
+              "x": 1183.0933250610296,
+              "y": 5.655,
+              "z": -179.42333338021385
+            },
+            "target": {
+              "x": 1173.093325435207,
+              "y": 5.655,
+              "z": -179.4260689869959
+            },
+            "focus": {
+              "x": 1183.0933250610296,
+              "y": 5.655,
+              "z": -179.42333338021385
+            },
+            "yaw": 4.712115419703074,
+            "pitch": 0.15,
+            "fov": 65,
+            "boomLength": 0,
+            "desiredBoomLength": 0,
+            "obstructed": false,
+            "overheadFallback": false,
+            "colliderId": null,
+            "clearanceRadius": 0.45
+          },
+          "simulationTime": 39.09999999999906
+        }
+      ],
+      "wholeDeadlineNotReached": true
+    },
+    "authored": {
+      "metadataPin": {
+        "path": "native/authored/metadata.json",
+        "bytes": 1909326,
+        "sha256": "a59a5034c2ba8ef182befbb7978142b302decf66a47e753d531b3998ee9302ec"
+      },
+      "status": "failed",
+      "startedAt": "2026-10-05T01:21:41.599Z",
+      "closedAt": "2026-10-05T01:27:48.414Z",
+      "wholeCaseBudgetMinutes": 60,
+      "primaryError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 30000ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 30000ms exceeded.\n    at Object.face (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/input.mjs:30:15)\n    at async room (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:204:3)\n    at async east (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:240:3)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:275:41"
+      },
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "startedAt": "2026-10-05T01:27:18.068Z",
+          "timeoutMs": 30000,
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:27:18.090Z"
+        },
+        {
+          "label": "browser-connection",
+          "startedAt": "2026-10-05T01:27:18.091Z",
+          "timeoutMs": 29977,
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:27:18.095Z"
+        },
+        {
+          "label": "owned-browser-server",
+          "startedAt": "2026-10-05T01:27:18.095Z",
+          "timeoutMs": 29973,
+          "status": "failed",
+          "error": {
+            "name": "Error",
+            "message": "owned-browser-server 30s closure deadline",
+            "stack": "Error: owned-browser-server 30s closure deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:298:125)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          },
+          "finishedAt": "2026-10-05T01:27:48.072Z"
+        },
+        {
+          "label": "static-server",
+          "startedAt": "2026-10-05T01:27:48.072Z",
+          "timeoutMs": 1,
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:27:48.073Z"
+        }
+      ],
+      "secondaryErrors": [
+        {
+          "stage": "failure-photo",
+          "name": "TimeoutError",
+          "message": "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+          "stack": "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n\n    at /home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:292:22"
+        },
+        {
+          "stage": "owned-child-hard-cleanup",
+          "name": "Error",
+          "message": "Owned browser process survived normal 30s cleanup",
+          "stack": "Error: Owned browser process survived normal 30s cleanup\n    at file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:305:19"
+        }
+      ],
+      "captures": [],
+      "wholeDeadlineNotReached": true
+    }
+  },
+  "sourcePins": [
+    {
+      "path": "src/camera.js",
+      "bytes": 10656,
+      "sha256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+      "matchesAuthoredOriginal": true,
+      "baselineOriginalSha256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3"
+    },
+    {
+      "path": "src/frame-clock.js",
+      "bytes": 1492,
+      "sha256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "matchesAuthoredOriginal": true,
+      "baselineOriginalSha256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8"
+    },
+    {
+      "path": "src/main.js",
+      "bytes": 54440,
+      "sha256": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+      "matchesAuthoredOriginal": true,
+      "baselineOriginalSha256": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d"
+    },
+    {
+      "path": "src/metropolis-interiors.js",
+      "bytes": 111695,
+      "sha256": "2e820311a2e646aad659176789ac9f2fca1257e47d25d73dc33f6aea24d9b6dc",
+      "matchesAuthoredOriginal": true,
+      "baselineOriginalSha256": "6eaa1f76be34c795b76bda6f95c7c04cabc78a80867159aa9a8a122dd9b33573"
+    },
+    {
+      "path": "src/expansion-programmes.js",
+      "bytes": 5673,
+      "sha256": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+      "matchesAuthoredOriginal": true,
+      "baselineOriginalSha256": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a"
+    },
+    {
+      "path": "src/world-config.js",
+      "bytes": 467,
+      "sha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "matchesAuthoredOriginal": true,
+      "baselineOriginalSha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c"
+    }
+  ],
+  "originalMethodPins": [
+    {
+      "path": "capture-scenic-east.mjs",
+      "bytes": 28466,
+      "sha256": "01f830e99ddb2a32f467d8e5313c9d7717bd77158d14e6b85200657b389d393b"
+    },
+    {
+      "path": "input.mjs",
+      "bytes": 7087,
+      "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+    },
+    {
+      "path": "render-readiness.mjs",
+      "bytes": 1091,
+      "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+    },
+    {
+      "path": "server.mjs",
+      "bytes": 4529,
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+    }
+  ],
+  "baselineWalk": {
+    "actualBefore": {
+      "position": {
+        "x": 1192.0666583942934,
+        "y": 4.035,
+        "z": -179.4233448590807,
+        "yaw": 1.570796021619115
+      },
+      "camera": {
+        "position": {
+          "x": 1192.0666583942934,
+          "y": 5.655,
+          "z": -179.4233448590807
+        },
+        "target": {
+          "x": 1192.0666614460513,
+          "y": 5.655,
+          "z": -189.42334485908023
+        },
+        "focus": {
+          "x": 1192.0666583942934,
+          "y": 5.655,
+          "z": -179.4233448590807
+        },
+        "yaw": 3.1415923484140116,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "simulationTime": 46.566666666665306,
+      "teleportRevision": 5,
+      "buildingId": "east-012",
+      "floorId": "lobby",
+      "roomId": null
+    },
+    "actualAfter": {
+      "position": {
+        "x": 1192.066668220963,
+        "y": 4.035,
+        "z": -211.62334485908082,
+        "yaw": 3.1415923484140116
+      },
+      "camera": {
+        "position": {
+          "x": 1192.0666682202225,
+          "y": 5.655,
+          "z": -211.62091819241462
+        },
+        "target": {
+          "x": 1192.0666712719803,
+          "y": 5.655,
+          "z": -221.62091819241417
+        },
+        "focus": {
+          "x": 1192.0666682202225,
+          "y": 5.655,
+          "z": -211.62091819241462
+        },
+        "yaw": 3.1415923484140116,
+        "pitch": 0.15,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "simulationTime": 52.31666666666498,
+      "teleportRevision": 5,
+      "buildingId": "east-012",
+      "floorId": "lobby",
+      "roomId": null
+    },
+    "distanceMetres": 32.20000000000013,
+    "simulationDelta": 5.749999999999673,
+    "wallSecondsIncludingPostTimeoutObservations": 121.412,
+    "simulationWallRatio": 0.047359404342236955,
+    "speedMetresPerSimulationSecond": 5.600000000000341,
+    "coarseTargetZ": -215.25000000000003,
+    "coarseDistanceRemainingAtTimeout": 3.626655140919212,
+    "requiredCoarseSecondsAtObservedRatio": 135.08651720402318,
+    "actualRoutePlan": {
+      "label": "physical-cabin-entry-observation",
+      "buildingId": "east-012",
+      "floorId": "lobby",
+      "floorY": 4.035,
+      "routePoints": [
+        {
+          "x": 1192.0666583942934,
+          "z": -179.4233448590807
+        },
+        {
+          "x": 1192,
+          "z": -179.4233448590807
+        },
+        {
+          "x": 1192,
+          "z": -179.4233448590807
+        },
+        {
+          "x": 1192,
+          "z": -217.45000000000002
+        }
+      ],
+      "segments": [
+        {
+          "from": {
+            "x": 1192.0666583942934,
+            "z": -179.4233448590807
+          },
+          "to": {
+            "x": 1192,
+            "z": -179.4233448590807
+          },
+          "nearestCollider": {
+            "id": "east-012:lobby:240",
+            "kind": "interior-stair-stringer",
+            "distance": 4.553706216637116
+          },
+          "clearanceMargin": 3.691574182281152
+        },
+        {
+          "from": {
+            "x": 1192,
+            "z": -179.4233448590807
+          },
+          "to": {
+            "x": 1192,
+            "z": -179.4233448590807
+          },
+          "nearestCollider": {
+            "id": "east-012:lobby:240",
+            "kind": "interior-stair-stringer",
+            "distance": 4.580949559231663
+          },
+          "clearanceMargin": 3.718817524875699
+        },
+        {
+          "from": {
+            "x": 1192,
+            "z": -179.4233448590807
+          },
+          "to": {
+            "x": 1192,
+            "z": -217.45000000000002
+          },
+          "nearestCollider": {
+            "id": "east-012:lobby:629",
+            "kind": "interior-bench",
+            "distance": 2.2749999999998636
+          },
+          "clearanceMargin": 1.4128679656438994
+        }
+      ],
+      "actualEndpoints": [
+        {
+          "target": {
+            "x": 1192,
+            "z": -179.4233448590807
+          },
+          "actual": {
+            "x": 1192.0666583942934,
+            "y": 4.035,
+            "z": -179.4233448590807,
+            "yaw": 1.570796021619115
+          },
+          "error": {
+            "x": 0.06665839429342668,
+            "z": 0
+          },
+          "simulationTime": 46.066666666665334,
+          "teleportRevision": 5,
+          "floorId": "lobby",
+          "at": "2026-10-05T01:18:42.770Z"
+        },
+        {
+          "target": {
+            "x": 1192,
+            "z": -179.4233448590807
+          },
+          "actual": {
+            "x": 1192.0666583942934,
+            "y": 4.035,
+            "z": -179.4233448590807,
+            "yaw": 1.570796021619115
+          },
+          "error": {
+            "x": 0.06665839429342668,
+            "z": 0
+          },
+          "simulationTime": 46.31666666666532,
+          "teleportRevision": 5,
+          "floorId": "lobby",
+          "at": "2026-10-05T01:18:46.015Z"
+        }
+      ],
+      "limitation": "Static active-floor solids only; dynamic cabin safety doors are validated by real open-door input and actual traversal."
+    },
+    "longestKnownLobbyStraightDistance": 38.92499999999998,
+    "longestKnownCoarseSecondsAtRatio": 138.47377950311338,
+    "marginFactor": 1.2,
+    "longestKnownCoarseWithMarginSeconds": 166.16853540373606,
+    "proposedFiniteInputHoldMilliseconds": 180000,
+    "finding": "Actual average speed exactly equals 5.6 m/sim, with recorded clear full static segment and open elevator door; this timeout supplies no collision/physical-stall evidence."
+  },
+  "authoredPointer": {
+    "actualEvent": {
+      "kind": "real-pointer-look",
+      "yaw": -1.5759818698347843,
+      "pitch": 0.15,
+      "before": {
+        "position": {
+          "x": 1183.1066666666748,
+          "y": 4.035,
+          "z": -206.54333333333182,
+          "yaw": -1.5707963267948968
+        },
+        "camera": {
+          "position": {
+            "x": 1183.1066666666748,
+            "y": 5.655,
+            "z": -206.54333333333182
+          },
+          "target": {
+            "x": 1183.1066666666748,
+            "y": 5.655,
+            "z": -216.54333333333182
+          },
+          "focus": {
+            "x": 1183.1066666666748,
+            "y": 5.655,
+            "z": -206.54333333333182
+          },
+          "yaw": 3.141592653589793,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "simulationTime": 14.96666666666699,
+        "teleportRevision": 5,
+        "buildingId": "east-012",
+        "floorId": "lobby",
+        "roomId": "east-012-lobby-0"
+      },
+      "startedAt": "2026-10-05T01:26:22.032Z",
+      "firstError": {
+        "name": "TimeoutError",
+        "message": "page.waitForFunction: Timeout 30000ms exceeded.",
+        "stack": "page.waitForFunction: Timeout 30000ms exceeded.\n    at Object.face (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/input.mjs:30:15)\n    at async room (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:204:3)\n    at async east (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:240:3)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/scenic/capture-scenic-east.mjs:275:41"
+      },
+      "secondaryErrors": [],
+      "after": {
+        "position": {
+          "x": 1183.1066666666748,
+          "y": 4.035,
+          "z": -206.54333333333182,
+          "yaw": -1.5707963267948968
+        },
+        "camera": {
+          "position": {
+            "x": 1183.1066666666748,
+            "y": 5.655,
+            "z": -206.54333333333182
+          },
+          "target": {
+            "x": 1173.1070776647039,
+            "y": 5.655,
+            "z": -206.63399640003152
+          },
+          "focus": {
+            "x": 1183.1066666666748,
+            "y": 5.655,
+            "z": -206.54333333333182
+          },
+          "yaw": 4.703322549504872,
+          "pitch": 0.15,
+          "fov": 65,
+          "boomLength": 0,
+          "desiredBoomLength": 0,
+          "obstructed": false,
+          "overheadFallback": false,
+          "colliderId": null,
+          "clearanceRadius": 0.45
+        },
+        "simulationTime": 15.96666666666704,
+        "teleportRevision": 5,
+        "buildingId": "east-012",
+        "floorId": "lobby",
+        "roomId": "east-012-lobby-0"
+      },
+      "status": "failed",
+      "finishedAt": "2026-10-05T01:27:01.732Z"
+    },
+    "requestedAngularDelta": 1.565610783755009,
+    "remainingAngularError": 0.00388088783993037,
+    "beforeAfterSimulationDelta": 1.0000000000000497,
+    "sourceFirstPersonDampingRate": 12,
+    "sourceMaximumFrameDt": 0.25,
+    "cameraTimeNeededForOriginalAngularGuard": 0.521451584610631,
+    "equivalentDampingTimeFromObservedResidual": 0.4999972793177135,
+    "remainingEquivalentCameraTime": 0.02145430529291753,
+    "residualAfterOneAdditionalCappedFrame": 0.00019321802821462515,
+    "proposedFinitePointerWaitMilliseconds": 60000,
+    "finding": "Residual is consistent with two capped .25 s camera-damping updates and remains just above strict .003. Before/after simulation delta includes mouse RPC time; missing per-event onset/frame timing is not invented. This supports a finite wait, not a relaxed guard or synthetic camera write."
+  },
+  "proposedScope": "Only EAST-specific createInput remaining callback maps hold120000→180000 and pointer30000→60000; its original helper bytes and all tolerances/poses/keys/assertions remain. Both wrappers still clamp through original whole60min deadline. Day/night keep their original remaining function/caps/15min whole budgets.",
+  "originalFailuresPreserved": true,
+  "futurePassNotGuaranteed": true
+}

@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-10-05T01:15:02.895055+00:00",
+  "scope": "Prepared only /tmp, no ROOT mutation or executed replacement case",
+  "path": "tools/native-review/methods/harbor/plans.mjs",
+  "originalEf92Plan": {
+    "bytes": 6751,
+    "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95"
+  },
+  "currentRootBase": {
+    "bytes": 6752,
+    "sha256": "653f40b8f8295f5bd9d602a3f926a74eda7fc4d9f3b2746557823e9305371875",
+    "differenceFromOriginal": "Only HOME32\u2192110 previously adopted by parent"
+  },
+  "candidate": {
+    "bytes": 6752,
+    "sha256": "5129f5e505da5e0237edfa17c36cb694795696cedb6a9787bdf0673cf3ec85bc"
+  },
+  "exactSingleReplacement": {
+    "before": "englishName:'Old Quarter 86',budgetMinutes:25",
+    "after": "englishName:'Old Quarter 86',budgetMinutes:65"
+  },
+  "unchanged": {
+    "homeWholeMinutes": 110,
+    "workshopPlanSteps": 34,
+    "workshopWalks": 22,
+    "workshopPhotos": 5,
+    "frontageWholeMinutes": 12,
+    "inputKeys": true,
+    "localGuards": true,
+    "runtimePhysicsAndHigh": true
+  },
+  "originalArtifact": {
+    "id": 11320513014,
+    "bytes": 8588375,
+    "sha256": "76f9e01f2e7e42a6d077caf29a148e5ba0aa565840dd9b9df7811e7743d0d5d2"
+  },
+  "proposedParentSeparateCaseAndWorkflow": {
+    "workshopPerModeMinutes": 65,
+    "pairedWorkshopJobMinutes": 160
+  },
+  "notApplied": true,
+  "noFuturePassClaim": true,
+  "originalTwoModeFailuresPreserved": true
+}

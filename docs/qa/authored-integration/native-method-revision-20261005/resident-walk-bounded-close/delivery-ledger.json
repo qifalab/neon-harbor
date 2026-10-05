@@ -1,0 +1,162 @@
+{
+  "status": "SOURCE_ONLY_SYNTAX_AND_23_PURE_CPU_PASS_NATIVE_UNRUN",
+  "sourcePins": [
+    {
+      "path": "tools/native-review/methods/resident/tools/capture-resident-native.mjs",
+      "baseSHA256": "e537a4c7cc79018168c5d06511071d44f218dc2028f510385f244b247f69fa13",
+      "candidateSHA256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b",
+      "patch": "/tmp/neon-native-resident-walk-close-candidate-20261005/resident-walk-close.patch",
+      "patchSHA256": "017bc6befa88cd007bc907a8baff738d4c2dfd6eeb8d060727f68aebcea86566"
+    },
+    {
+      "path": "tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+      "baseSHA256": "8d742114980970f6b59006c60b1523c5e814102c63a01a5e6d38fc512ce1f7fb",
+      "candidateSHA256": "95ba2b45e92f73d80cf729dc29117c6cd204496a82de8fb28b320be5ec33eeb8",
+      "patch": "/tmp/neon-native-resident-walk-close-candidate-20261005/resident-extra-walk-close.patch",
+      "patchSHA256": "d24a794b76585f5d7c1368956af9bf23840af0e6f6ddca1d8f7de84c8a526c69"
+    }
+  ],
+  "actualFailures": [
+    {
+      "path": "/tmp/neon-native-ef92-resident-core-11320178945/extracted/native/baseline/metadata.json",
+      "sha256": "a051cb0dd8e5a20fc269e7c00bc13e54c768de765f9d725640ea4ddaab9f1973",
+      "historicalMethodSHA256": "e537a4c7cc79018168c5d06511071d44f218dc2028f510385f244b247f69fa13",
+      "firstFailure": {
+        "at": "2026-10-05T00:47:57.346Z",
+        "type": "method",
+        "message": "AssertionError [ERR_ASSERTION]: one-hold leg endpoint tolerance\n    at walk (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:132:10)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:191:18)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:249:3"
+      },
+      "axis": "z",
+      "before": -455,
+      "target": -438,
+      "after": -437.0800000000054,
+      "overshootMetres": 0.9199999999946158,
+      "crossedTarget": true,
+      "revisionUnchanged": true,
+      "originalFailurePreserved": true
+    },
+    {
+      "path": "/tmp/neon-native-ef92-resident-core-11320178945/extracted/native/authored/metadata.json",
+      "sha256": "f6aa23b5395eeed93c432766d9d8bf6d6ace321f0090272eda95e18bb36687ac",
+      "historicalMethodSHA256": "e537a4c7cc79018168c5d06511071d44f218dc2028f510385f244b247f69fa13",
+      "firstFailure": {
+        "at": "2026-10-05T01:08:01.774Z",
+        "type": "method",
+        "message": "AssertionError [ERR_ASSERTION]: one-hold leg endpoint tolerance\n    at walk (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:132:10)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:191:18)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident/tools/capture-resident-native.mjs:249:3"
+      },
+      "axis": "z",
+      "before": -455,
+      "target": -438,
+      "after": -436.9866666666721,
+      "overshootMetres": 1.013333333327921,
+      "crossedTarget": true,
+      "revisionUnchanged": true,
+      "originalFailurePreserved": true
+    },
+    {
+      "path": "/tmp/neon-native-ef92-north-phone-11320473262/extracted/native/authored/metadata.json",
+      "sha256": "a35381e92047d6862a8be1b8c10d58c8ed946f72e5285d4d8d2e4c1b858365ea",
+      "historicalMethodSHA256": "1d5e1b813531d13488d06c85cd4442b50f48396c9717ae2867e1caf7cd9027f1",
+      "firstFailure": {
+        "at": "2026-10-05T01:11:45.902Z",
+        "type": "method",
+        "message": "AssertionError [ERR_ASSERTION]: one-hold leg endpoint tolerance\n    at walk (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:140:10)\n    at async northCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:249:34)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:304:59)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:342:3"
+      },
+      "axis": "z",
+      "before": -595,
+      "target": -597,
+      "after": -597.8000000000009,
+      "overshootMetres": 0.800000000000864,
+      "crossedTarget": true,
+      "revisionUnchanged": true,
+      "originalFailurePreserved": true
+    },
+    {
+      "path": "/tmp/neon-native-ef92-north-cup-owner-11321092524/extracted/native/authored/metadata.json",
+      "sha256": "086bd3c2093c7c95ac77deaa18e4a0687d9bcd9de5ed9bb9270f0bc03c09209a",
+      "historicalMethodSHA256": "1d5e1b813531d13488d06c85cd4442b50f48396c9717ae2867e1caf7cd9027f1",
+      "firstFailure": {
+        "at": "2026-10-05T01:09:21.141Z",
+        "type": "method",
+        "message": "AssertionError [ERR_ASSERTION]: one-hold leg endpoint tolerance\n    at walk (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:140:10)\n    at async northCase (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:246:5)\n    at async core (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:304:59)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs:342:3"
+      },
+      "axis": "z",
+      "before": -592,
+      "target": -576.2,
+      "after": -575.3866666666615,
+      "overshootMetres": 0.8133333333385053,
+      "crossedTarget": true,
+      "revisionUnchanged": true,
+      "originalFailurePreserved": true
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3254,
+      "sha256": "1d9a2692ae11c03f5983b9d276e0f891528e57b166468ffe88c5f7f179c9df94"
+    },
+    {
+      "path": "actual-first-failure-diagnostic.json",
+      "bytes": 5076,
+      "sha256": "0ec16a504518e59bae69e3607cca2c8ddd08cc4851dbba8c3ab9ff7e25cc8e8c"
+    },
+    {
+      "path": "cpu-shim-first-verifier-error.txt",
+      "bytes": 295,
+      "sha256": "fb8247ffe9fc8e72e58f94ab472ccbcd2c1f83ac630fbc20bc6f7cf4bc5f073a"
+    },
+    {
+      "path": "cpu-shim-first-verifier-source.cjs",
+      "bytes": 4633,
+      "sha256": "6c15a19dc2ba169dbfd077465de47f02aa8b147a9bf8f4d1800ae774f28306b1"
+    },
+    {
+      "path": "cpu-shim-receipt.json",
+      "bytes": 2672,
+      "sha256": "fd1ce67088f45113e290fbdb9345e7ff03892585e39d543252ac529c262b56e9"
+    },
+    {
+      "path": "cpu-shim.cjs",
+      "bytes": 4672,
+      "sha256": "b91ec318ec02dc97bf7de20403b97af49502553574f54399bff2c3aad7e2d96e"
+    },
+    {
+      "path": "payload/tools/native-review/methods/resident/tools/capture-resident-native.mjs",
+      "bytes": 27364,
+      "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b"
+    },
+    {
+      "path": "payload/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+      "bytes": 41556,
+      "sha256": "95ba2b45e92f73d80cf729dc29117c6cd204496a82de8fb28b320be5ec33eeb8"
+    },
+    {
+      "path": "resident-extra-walk-close.patch",
+      "bytes": 12332,
+      "sha256": "d24a794b76585f5d7c1368956af9bf23840af0e6f6ddca1d8f7de84c8a526c69"
+    },
+    {
+      "path": "resident-walk-close.patch",
+      "bytes": 12226,
+      "sha256": "017bc6befa88cd007bc907a8baff738d4c2dfd6eeb8d060727f68aebcea86566"
+    },
+    {
+      "path": "source-pins.json",
+      "bytes": 926,
+      "sha256": "19530b734693f11bc792e6c534ce091d44a8d7ea6e0a80b09c68e88218696f86"
+    },
+    {
+      "path": "syntax-receipt.json",
+      "bytes": 644,
+      "sha256": "bfe622ca86167d40c0e232b6a73dcf78cf219475e88def8b044fd428afc2aadb"
+    }
+  ],
+  "nativeFailuresChanged": false,
+  "rootWritten": false,
+  "browserExecuted": false,
+  "gpuExecuted": false,
+  "buildExecuted": false,
+  "productImported": false,
+  "remoteAccessed": false
+}

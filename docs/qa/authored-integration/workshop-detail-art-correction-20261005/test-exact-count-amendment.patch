@@ -1,0 +1,31 @@
+--- a/tests/harbor-workshop-pilot.test.js
++++ b/tests/harbor-workshop-pilot.test.js
+@@ -90,15 +90,26 @@
+   assert.equal(new Set(shelves.map(object => object.material)).size, 1);
+   const visible = () => { let meshes = 0, triangles = 0; owner.group.traverseVisible(object => { if (!object.isMesh) return; meshes++;
+     triangles += (object.geometry.index?.count ?? object.geometry.attributes.position.count) / 3; }); return { meshes, triangles }; };
+-  assert.deepEqual(visible(), { meshes: 32, triangles: 70740 });
++  assert.deepEqual(visible(), { meshes: 37, triangles: 79560 });
++  assert.deepEqual(owner.snapshot().details, { meshes: 5, triangles: 8820, textures: 0, envelopeCount: 9, detailPieces: 105 });
++  const detailGroup = owner.group.children.find(child => child.name === 'Workshop · repair and archive detail');
++  const detailReleases = { geometry: 0, material: 0 };
++  for (const child of detailGroup.children) {
++    child.geometry.addEventListener('dispose', () => detailReleases.geometry++);
++    child.material.addEventListener('dispose', () => detailReleases.material++);
++  }
+   owner.update({ x: 197.7, z: -105.5, groundY: data.floor.y }); assert.equal(owner.snapshot().lodTier, 1);
+-  assert.deepEqual(visible(), { meshes: 29, triangles: 63224 });
++  assert.deepEqual(visible(), { meshes: 34, triangles: 72044 });
+   owner.update({ x: 205, z: -105, groundY: data.floor.y }); assert.equal(owner.snapshot().lodTier, 2);
+   assert.deepEqual(visible(), { meshes: 2, triangles: 484 });
+   assert.ok(fallback.children.every(child => child.visible === ['bench-vice', 'tool-chest-fallback'].includes(child.userData.workshopFallbackKind)));
+   owner.update({ x: 230, z: -105, groundY: data.floor.y }); assert.equal(owner.snapshot().assetCount, 0);
++  assert.equal(owner.snapshot().details, null);
++  assert.equal(detailGroup.parent, null);
++  assert.deepEqual(detailReleases, { geometry: 5, material: 5 });
+   assert.ok(fallback.visible && fallback.children.every(child => child.visible)); owner.dispose(); owner.dispose();
+   assert.deepEqual(counts, { geometry: 32, material: 10, texture: 16, bitmap: 16, boneTexture: 1 });
++  assert.deepEqual(detailReleases, { geometry: 5, material: 5 });
+ });
+ 
+ test('authored owner rejects partial/corrupt new models and never attaches five late results after floor release', async () => {

@@ -1,0 +1,72 @@
+--- a/src/harbor-resident-loop.js
++++ b/src/harbor-resident-loop.js
+@@ -303,6 +303,17 @@
+       state.totalWages !== state.completedCycles * 6 + (state.activeJob?.paidAmount || 0) ||
+       state.totalValidWorkTicks !== state.completedCycles * 700 + (state.activeJob?.validTicks || 0) ||
+       state.purchases !== state.completedCycles + (state.cycle > state.completedCycles && state.purchaseCycle === state.cycle ? 1 : 0)) return false;
++    const routeStage = state.stage === 'route-blocked' ? state.waitingReason : state.stage;
++    if (state.stage === 'route-blocked' && (!['initial-home', 'to-home', 'to-work', 'to-shop', 'to-origin', 'to-return-stop'].includes(routeStage) ||
++      agent.phase !== 'route-blocked')) return false;
++    if (['initial-home', 'legacy-transit'].includes(routeStage) && state.cycle !== 0 ||
++      state.stage === 'resting-home' && state.activeJob) return false;
++    const returningHome = routeStage === 'to-home' || routeStage === 'entering-home' && state.cycle > state.completedCycles;
++    const afterWork = returningHome || ['leaving-work', 'to-return-stop', 'return-tram', 'to-shop', 'shopping'].includes(routeStage);
++    if (afterWork && (!state.activeJob || state.activeJob.validTicks !== RESIDENT_LOOP.periodTicks * RESIDENT_LOOP.workPeriods ||
++      state.activeJob.paidPeriods !== RESIDENT_LOOP.workPeriods)) return false;
++    if (returningHome && state.purchaseCycle !== state.cycle) return false;
++    if (state.stage === 'shopping' && (agent.phase !== 'shopping' || gap(agent, this.shop.anchor) > .05)) return false;
+     const jobs = [...state.completedJobs, ...(state.activeJob ? [state.activeJob] : [])];
+     const receipts = jobs.flatMap(job => job.receipts);
+     if (!Array.isArray(save.transactions) || new Set(receipts.map(receipt => receipt.transactionId)).size !== receipts.length) return false;
+@@ -362,8 +373,8 @@
+     if (state.stage === 'resting-home' && (agent.phase !== 'resting' || agent.insideBuildingId !== this.home.building.id ||
+       agent.roomId !== this.home.room.id || gap(agent, this.home.anchor) > .05)) return false;
+     if (agent.transit) {
+-      const outbound = ['to-origin', 'outbound-tram'].includes(state.stage);
+-      const returning = ['to-return-stop', 'return-tram'].includes(state.stage);
++      const outbound = ['to-origin', 'outbound-tram'].includes(routeStage);
++      const returning = ['to-return-stop', 'return-tram'].includes(routeStage);
+       if (!outbound && !returning && state.stage !== 'legacy-transit') return false;
+       if (outbound || returning) {
+         if (agent.transit.originStopId !== (outbound ? RESIDENT_LOOP.fromStopId : RESIDENT_LOOP.toStopId) ||
+@@ -374,7 +385,7 @@
+         if (!ticket || ticket.vehicleId !== agent.transit.ticket?.vehicleId ||
+           ticket.fromStopId !== agent.transit.originStopId || ticket.toStopId !== agent.transit.destinationStopId) return false;
+       }
+-    } else if (['to-origin', 'outbound-tram', 'to-return-stop', 'return-tram', 'legacy-transit'].includes(state.stage)) return false;
++    } else if (['to-origin', 'outbound-tram', 'to-return-stop', 'return-tram', 'legacy-transit'].includes(routeStage)) return false;
+     if (agent.path.some(pose => context ? Math.abs(pose.y - context.floor.y) > .1 || !context.clear(pose)
+       : !agent.transit && !this.navigation.clear(pose))) return false;
+     if (!agent.transit || agent.transit.phase === 'approach') {
+--- a/tests/harbor-resident-loop.test.js
++++ b/tests/harbor-resident-loop.test.js
+@@ -228,6 +228,29 @@
+   assert.equal(migrated.life.restored, true); assert.equal(migrated.loop.agent.transit, null);
+ });
+ 
++test('premature shopping and home-return saves cannot skip actual funded work', () => {
++  const f = onJob(), saved = f.life.snapshot();
++  assert.equal(saved.residentLoop.activeJob.validTicks, 0);
++  for (const stage of ['shopping', 'to-shop', 'to-home', 'entering-home', 'route-blocked']) {
++    const bad = structuredClone(saved), agent = bad.agents[6];
++    bad.residentLoop.stage = stage;
++    bad.residentLoop.waitingReason = stage === 'route-blocked' ? 'to-shop' : null;
++    agent.phase = stage === 'shopping' ? 'shopping' : stage === 'entering-home' ? 'entering-home' : stage === 'route-blocked' ? 'route-blocked' : 'walking';
++    Object.assign(agent, stage === 'entering-home' ? f.loop.home.anchor : stage === 'to-home' ? f.loop.home.building.entrance : f.loop.shop.anchor);
++    agent.path = []; agent.pathIndex = 0; agent.crossingId = null; agent.transit = null;
++    f.loop._setContext(agent, bad.residentLoop);
++    assert.equal(f.life.restore(bad), false, stage + ' requires the genuinely completed paid work');
++    assert.deepEqual(f.life.snapshot(), saved);
++  }
++  until(f, () => f.loop.state.stage === 'shopping');
++  const paidSave = f.life.snapshot();
++  assert.equal(paidSave.residentLoop.activeJob.paidPeriods, 2);
++  const unpaidReturn = structuredClone(paidSave); unpaidReturn.residentLoop.stage = 'to-home';
++  unpaidReturn.agents[6].phase = 'walking';
++  assert.equal(f.life.restore(unpaidReturn), false, 'home return requires the current cycle purchase');
++  assert.deepEqual(f.life.snapshot(), paidSave); resumed(f);
++});
++
+ test('invalid payroll, interior ownership and clock saves are rejected atomically', () => {
+   const f = onJob(); for (let tick = 0; tick < 350; tick++) step(f);
+   const saved = f.life.snapshot();

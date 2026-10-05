@@ -1,0 +1,65 @@
+{
+  "observedAt": "2026-10-05T01:25:56.189Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T01%3A25%3A54.223Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T01%3A25%3A54.223Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T01%3A25%3A54.223Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0060-2026-10-05T01-25-54.223Z-run-original.json",
+      "bytes": 12821,
+      "sha256": "0c6177f1774516355c0ea2df250524356cfa36fdec9d6aa821292c5eec22a796"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0060-2026-10-05T01-25-54.223Z-jobs-attempt1-original.json",
+      "bytes": 109750,
+      "sha256": "b03c7ee51fd589f94a08e043e87a70548fc4aa51e76ffb9b632fed4660c94730"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0060-2026-10-05T01-25-54.223Z-artifacts-original.json",
+      "bytes": 23406,
+      "sha256": "5e222018f5000adf22b56341ef16feafdd69414955496ae227f92a4453a185ed"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 11,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 3,
+      "failure": 16,
+      "skipped": 0,
+      "inProgress": 4,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320178945,
+      "name": "native-evidence-resident-core-37247048989-1",
+      "bytes": 16827002,
+      "digest": "sha256:17526ccc79e0c216571d7beefdfb307a90ee38070f9f09b329309a66f3e01735",
+      "expired": false
+    }
+  ]
+}
