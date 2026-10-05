@@ -19,7 +19,7 @@ import { createHarborLifeRenderer } from './harbor-life-renderer.js';
  * The original driving district remains usable without the expansion module.
  * Interior and station collision contexts never replace persistent city data.
  */
-export function createCityExploration(THREE, scene, { quality = 'high', streaming = true, onContextChange = () => {}, readRendererMemory } = {}) {
+export function createCityExploration(THREE, scene, { quality = 'high', streaming = true, onContextChange = () => {}, readRendererMemory, residentAssets } = {}) {
   const south = createWorld(THREE, scene, { quality, streaming, openNorth: true });
   const north = createMetropolisWorld(THREE, scene, { quality, streaming });
   const transit = createTransitSystem(THREE, scene);
@@ -28,15 +28,15 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   const buildings = [...METROPOLIS_BUILDINGS, ...south.buildings.map((b, i) => expansionBuilding(b, 'south', i)), ...harbor.towers.map((b, i) => expansionBuilding(b, 'east', i))];
   const districts = [...METROPOLIS_DISTRICTS, { id: 'south-expansion', name: '南岸旧城', x: -120, z: 100 }, { id: 'east-expansion', name: '东湾天际线', x: 1300, z: -250 }];
   const streetGroundHeightAt = (x, z, currentY = 0) => infrastructure.groundHeightAt(x, z, currentY) ?? harbor.groundHeightAt(x, z) ?? north.groundHeightAt(x, z) ?? south.groundHeightAt(x, z);
-  const sampleTransit = createHarborTransitSystem(THREE, scene, { groundHeightAt: streetGroundHeightAt });
+  const sampleTransit = createHarborTransitSystem(THREE, scene, { groundHeightAt: streetGroundHeightAt, readRendererMemory });
   const groundHeightAt = (x, z, currentY = 0) => sampleTransit.groundHeightAt(x, z, currentY) ?? streetGroundHeightAt(x, z, currentY);
   const sampleDistrict = createHarborDistrict(THREE, scene, { buildings: south.buildings, groundHeightAt, quality });
   const colliders = [...south.colliders, ...north.colliders, ...transit.colliders, ...infrastructure.colliders, ...harbor.colliders, ...sampleTransit.colliders, ...sampleDistrict.colliders];
   for (const b of buildings.filter(b => b.shellId)) b.entrance = safeEntrance(b, colliders, groundHeightAt);
   const interiors = createInteriorSystem(THREE, scene, { buildings, readRendererMemory });
   const harborLife = new HarborLife({ buildings, colliders, transport: sampleTransit });
-  const lifeRenderer = createHarborLifeRenderer(THREE, scene, harborLife, { groundHeightAt });
-  const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, transit, streetStops: infrastructure.metadata.streetLifeStops || [] });
+  const lifeRenderer = createHarborLifeRenderer(THREE, scene, harborLife, { groundHeightAt, quality, assetLibrary: residentAssets });
+  const people = createPeopleSystem(THREE, scene, { buildings: METROPOLIS_BUILDINGS, groundHeightAt, colliders, transit, quality, residentAssets, streetStops: infrastructure.metadata.streetLifeStops || [] });
   const crossings = createCitizenCrossings(THREE, scene, people.journeys.navigation.crossings, colliders);
   const root = new THREE.Group(); root.name = 'Neon Harbor · two shores'; scene.add(root);
   root.add(south.root, north.root, infrastructure.root, harbor.root, crossings.root, sampleTransit.root, sampleDistrict.root, lifeRenderer.root);
@@ -256,9 +256,9 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       infrastructure.update(view?.position || south.spawn, dt);
       entryMarkers.update(view?.position || south.spawn);
       sampleDistrict.update(view?.position || south.spawn, dt, time);
-      lifeRenderer.update({ position: view?.position || south.spawn, interior: interiors.snapshot() }, dt);
+      lifeRenderer.update({ position: view?.position || south.spawn, viewerPosition: view?.viewerPosition, interior: interiors.snapshot() }, dt);
       crossings.update(transit.time, view?.position || south.spawn);
-      people.update(dt, { position: view?.position || south.spawn, hour: time * 24, vehicles: outdoorCars || simulation?.cars || [], paused: dt === 0, interior: interiors.snapshot() });
+      people.update(dt, { position: view?.position || south.spawn, viewerPosition: view?.viewerPosition, hour: time * 24, vehicles: outdoorCars || simulation?.cars || [], paused: dt === 0, interior: interiors.snapshot() });
       if (people.root) people.root.visible = !interiors.state.moving;
     },
     updateRenderVisibility(camera) {
@@ -269,7 +269,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       root.visible = !enclosed; transit.root.visible = !enclosed;
       return enclosed;
     },
-    setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); harbor.setQuality(value); sampleDistrict.setQuality(value); },
+    setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); harbor.setQuality(value); sampleDistrict.setQuality(value); lifeRenderer.setQuality(value); people.setQuality(value); },
     snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), sample: { transit: sampleTransit.snapshot(), life: { ...harborLife.summary(), agents: harborLife.agents.map(a => ({ id: a.id, name: a.name, role: a.role, phase: a.phase, activity: a.activity, x: a.x, y: a.y, z: a.z, insideBuildingId: a.insideBuildingId, floorId: a.floorId, transit: a.transit })) }, district: sampleDistrict.snapshot(), renderer: lifeRenderer.snapshot() }, infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings, exterior: { southInteriorId: south.interiorBuildingId, harborInteriorId: harbor.snapshot().interiorBuildingId }, streaming: north.streamingStats,
       renderVisibility: { outdoor: root.visible, transit: transit.root.visible } }; },
   };

@@ -1,0 +1,31 @@
+✔ mode selects expectations while fixed photo and physical route plans stay identical (1.327831ms)
+✔ original input error survives a second snapshot failure and final key-up failure (1.827748ms)
+✔ unmet endpoint stops after exactly two visibly logged correction holds (1.594094ms)
+✖ home/workshop common standing regions and existing stair tube are recorded only as CPU preparation (7.913456ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.179544
+
+✖ failing tests:
+
+test at ../../../tmp/neon-harbor-final-native-method/check-prepared-method.mjs:48:1
+✖ home/workshop common standing regions and existing stair tube are recorded only as CPU preparation (7.913456ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(mode.clear&&mode.minBodyClearance>=.079)
+  
+      at TestContext.<anonymous> (file:///tmp/neon-harbor-final-native-method/check-prepared-method.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,179 @@
+{
+  "schema": "neon-harbor-cabin-segment-v1",
+  "file": "cabin-segment-0025.json",
+  "status": "passed",
+  "context": {
+    "label": "ferry-return",
+    "kind": "ferry",
+    "vehicleId": "harbor-ferry-1",
+    "from": "harbor-ferry-north",
+    "to": "harbor-ferry-south",
+    "doorId": "ferry-door-0-port",
+    "role": "lower-door-approach"
+  },
+  "methodSha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+  "manifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "precision": true,
+  "target": {
+    "x": -2.7,
+    "y": 1.3,
+    "z": -7.2
+  },
+  "requestedAt": "2026-10-04T22:12:22.625Z",
+  "startedAt": "2026-10-04T22:12:22.626Z",
+  "deadlineAt": "2026-10-04T22:17:22.626Z",
+  "endedAt": "2026-10-04T22:12:22.626Z",
+  "wallBudgetMilliseconds": 300000,
+  "effectiveWallBudgetMilliseconds": 300000,
+  "elapsedWallMilliseconds": 0,
+  "initial": {
+    "local": {
+      "x": -2.7,
+      "y": 1.3,
+      "z": -7.2,
+      "yaw": 0
+    },
+    "vehicle": {
+      "id": "harbor-ferry-1",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "x": 212.8,
+      "y": 0,
+      "z": -375,
+      "yaw": -1.5707963267948966,
+      "stopId": "harbor-ferry-north",
+      "doorsOpen": true,
+      "remaining": 6.72298642678853,
+      "nextStopId": "harbor-ferry-north",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 0,
+      "serviceTime": 862.749999999544,
+      "held": null,
+      "trafficState": "dwell",
+      "junction": null
+    },
+    "cameraYaw": -1.5707963267948966,
+    "sensitivity": 1,
+    "time": 862.749999999544,
+    "revision": 15,
+    "deck": "lower"
+  },
+  "current": {
+    "local": {
+      "x": -2.7,
+      "y": 1.3,
+      "z": -7.2,
+      "yaw": 0
+    },
+    "vehicle": {
+      "id": "harbor-ferry-1",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "x": 212.8,
+      "y": 0,
+      "z": -375,
+      "yaw": -1.5707963267948966,
+      "stopId": "harbor-ferry-north",
+      "doorsOpen": true,
+      "remaining": 6.72298642678853,
+      "nextStopId": "harbor-ferry-north",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 0,
+      "serviceTime": 862.749999999544,
+      "held": null,
+      "trafficState": "dwell",
+      "junction": null
+    },
+    "cameraYaw": -1.5707963267948966,
+    "sensitivity": 1,
+    "time": 862.749999999544,
+    "revision": 15,
+    "deck": "lower"
+  },
+  "actualCurrent": {
+    "local": {
+      "x": -2.7,
+      "y": 1.3,
+      "z": -7.2,
+      "yaw": 0
+    },
+    "vehicle": {
+      "id": "harbor-ferry-1",
+      "routeId": "harbor-ferry",
+      "kind": "ferry",
+      "x": 212.8,
+      "y": 0,
+      "z": -375,
+      "yaw": -1.5707963267948966,
+      "stopId": "harbor-ferry-north",
+      "doorsOpen": true,
+      "remaining": 6.72298642678853,
+      "nextStopId": "harbor-ferry-north",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 0,
+      "serviceTime": 862.749999999544,
+      "held": null,
+      "trafficState": "dwell",
+      "junction": null
+    },
+    "cameraYaw": -1.5707963267948966,
+    "sensitivity": 1,
+    "time": 862.749999999544,
+    "revision": 15,
+    "deck": "lower"
+  },
+  "actualCurrentObservedAt": "2026-10-04T22:12:22.626Z",
+  "snapshotError": null,
+  "samples": [
+    {
+      "local": {
+        "x": -2.7,
+        "y": 1.3,
+        "z": -7.2,
+        "yaw": 0
+      },
+      "vehicle": {
+        "id": "harbor-ferry-1",
+        "routeId": "harbor-ferry",
+        "kind": "ferry",
+        "x": 212.8,
+        "y": 0,
+        "z": -375,
+        "yaw": -1.5707963267948966,
+        "stopId": "harbor-ferry-north",
+        "doorsOpen": true,
+        "remaining": 6.72298642678853,
+        "nextStopId": "harbor-ferry-north",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 0,
+        "serviceTime": 862.749999999544,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": null
+      },
+      "cameraYaw": -1.5707963267948966,
+      "sensitivity": 1,
+      "time": 862.749999999544,
+      "revision": 15,
+      "deck": "lower",
+      "observedAt": "2026-10-04T22:12:22.626Z"
+    }
+  ],
+  "heldSeconds": 0,
+  "geometricMetres": 0,
+  "completedInputIterations": {
+    "count": 0,
+    "heldSeconds": 0,
+    "geometricMetres": 0
+  },
+  "firstInput": null,
+  "lastInput": null,
+  "lastCommand": null,
+  "cleanupErrors": [],
+  "errorCaughtAt": null,
+  "error": null
+}

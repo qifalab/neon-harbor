@@ -1,0 +1,1295 @@
+{
+  "generatedAt": "2026-10-04T22:56:47.212009+00:00",
+  "status": "passed",
+  "captureBoundGitHead": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "actualLaunchGitHead": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "actualEndGitHead": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "afterClosureObservedGitHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "afterClosureHeadScope": "Observed after the original capture closed; never rebinds the native execution to later commits",
+  "methodSha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+  "supervisorSha256": "d66e61e90b5e0b686289dd2b8adf54d39ac9dea3fe57ac1056831e71d2be88d6",
+  "manifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "frozenAssetCount": 156,
+  "frozenSourceCount": 53,
+  "beforeAfterFrozenHashesEqual": true,
+  "previousFailedToursUnchanged": [
+    {
+      "directory": "docs/qa/art-final/continuous-tour",
+      "entries": 13,
+      "ledgerSha256": "f650a77276af2a7b386a3e7eb809c0aaf0ae5f71eb352cfde4797b7b97f46364",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour",
+      "entries": 15,
+      "ledgerSha256": "b5e6af022f617ad4da6be13fb56bd95e7e0c6601372d0f87cb2ea1d39a55ca70",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour-budget-review",
+      "entries": 19,
+      "ledgerSha256": "5b922d928e28e4dbb528241e841cb9454f6868a4e54785a131ee9a696bc1a317",
+      "mismatches": []
+    }
+  ],
+  "routeStartedAt": "2026-10-04T21:14:55.607Z",
+  "routeEndedAt": "2026-10-04T22:51:00.577Z",
+  "routeWallMilliseconds": 5764970,
+  "caseStartedAt": "2026-10-04T21:12:51.334Z",
+  "caseWallMilliseconds": 5985782,
+  "caseBudgetWallMilliseconds": 14400000,
+  "videoStoppedAt": "2026-10-04T22:52:37.116Z",
+  "methodCompletedAt": "2026-10-04T22:52:37.419Z",
+  "childExitedAt": "2026-10-04T22:52:37.514Z",
+  "supervisorCompletedAt": "2026-10-04T22:52:37.816Z",
+  "postReloadActual2F": {
+    "at": "2026-10-04T22:52:29.551Z",
+    "position": {
+      "x": 130.97333333333518,
+      "y": 4.153408014029265,
+      "z": 107.74924771878851,
+      "yaw": -1.5707963267948968
+    },
+    "cash": 1194,
+    "inventory": {
+      "produce": 1,
+      "tea": 0,
+      "meal": 0
+    }
+  },
+  "setup": "One public Atlas visit, real E entry and actual public elevator to 2F precede the route. The route itself uses physical stairs and no Atlas travel.",
+  "defaultQualityAsserted": "high",
+  "functionalCaptureQuality": "low",
+  "browser": {
+    "version": "151.0.7922.34",
+    "executable": "Playwright Chromium",
+    "node": "v24.19.0"
+  },
+  "viewport": {
+    "width": 512,
+    "height": 320
+  },
+  "drawingBuffer": {
+    "width": 409,
+    "height": 256
+  },
+  "actualWebGL": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "shadingLanguage": "WebGL GLSL ES 3.00 (OpenGL ES GLSL ES 3.0 Chromium)",
+    "vendor": "WebKit",
+    "renderer": "WebKit WebGL",
+    "unmaskedVendor": "Google Inc. (Google)",
+    "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "width": 409,
+    "height": 256
+  },
+  "video": {
+    "file": "video/page@347727de9ba598f4b9a93823b2b1ceaf.webm",
+    "path": "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/continuous-tour/video/page@347727de9ba598f4b9a93823b2b1ceaf.webm",
+    "bytes": 139422213,
+    "sha256": "6bfd526db0eed2c59fb25ee43c28b2632558fe97d52cc2ec72ba403c2ce42dab",
+    "durationSeconds": 5979.88,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 512,
+          "height": 320
+        }
+      ],
+      "format": {
+        "duration": "5979.880000"
+      }
+    },
+    "unedited": true,
+    "includesStartupAndSetup": true,
+    "published": false,
+    "publicationUrl": null,
+    "largeFilePolicy": "retain as local downloadable artifact; do not force into git"
+  },
+  "phaseCount": 116,
+  "completedCabinSegmentCount": 37,
+  "cabins": [
+    {
+      "file": "cabin-segment-0001.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": 3.74
+      },
+      "horizontalEndpointErrorMetres": 0.03499999999999963,
+      "verticalEndpointErrorMetres": null,
+      "elapsedWallMilliseconds": 4611,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 1.716666666666569,
+      "geometricMetres": 0.5150000000000005,
+      "completedInputIterations": {
+        "count": 7,
+        "heldSeconds": 1.716666666666569,
+        "geometricMetres": 0.5150000000000005
+      }
+    },
+    {
+      "file": "cabin-segment-0002.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": 3.07
+      },
+      "horizontalEndpointErrorMetres": 0.0040859067152957595,
+      "verticalEndpointErrorMetres": null,
+      "elapsedWallMilliseconds": 9373,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.249999999999872,
+      "geometricMetres": 0.6749999999999874,
+      "completedInputIterations": {
+        "count": 9,
+        "heldSeconds": 2.249999999999872,
+        "geometricMetres": 0.6749999999999874
+      }
+    },
+    {
+      "file": "cabin-segment-0003.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.77,
+        "y": 0.44,
+        "z": 3.07
+      },
+      "horizontalEndpointErrorMetres": 0.040225833365997304,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 9003,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.433333333333195,
+      "geometricMetres": 0.7300000000000025,
+      "completedInputIterations": {
+        "count": 10,
+        "heldSeconds": 2.433333333333195,
+        "geometricMetres": 0.7300000000000025
+      }
+    },
+    {
+      "file": "cabin-segment-0004.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.77,
+        "z": 1.06,
+        "y": 1.42
+      },
+      "horizontalEndpointErrorMetres": 0.04997948656839928,
+      "verticalEndpointErrorMetres": 0.030791936262944075,
+      "elapsedWallMilliseconds": 29138,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.966666666666612,
+      "geometricMetres": 1.9599998583497336,
+      "completedInputIterations": {
+        "count": 27,
+        "heldSeconds": 6.966666666666612,
+        "geometricMetres": 1.9599998583497336
+      }
+    },
+    {
+      "file": "cabin-segment-0005.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.77,
+        "y": 2.4,
+        "z": -0.95
+      },
+      "horizontalEndpointErrorMetres": 0.05531218752010483,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 36884,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.883333333338811,
+      "geometricMetres": 2.019824327353794,
+      "completedInputIterations": {
+        "count": 26,
+        "heldSeconds": 6.883333333338811,
+        "geometricMetres": 2.019824327353794
+      }
+    },
+    {
+      "file": "cabin-segment-0006.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": -0.95,
+        "y": 2.4
+      },
+      "horizontalEndpointErrorMetres": 0.05863342210920863,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 7479,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.600000000002069,
+      "geometricMetres": 0.7099999999999979,
+      "completedInputIterations": {
+        "count": 10,
+        "heldSeconds": 2.600000000002069,
+        "geometricMetres": 0.7099999999999979
+      }
+    },
+    {
+      "file": "cabin-segment-0007.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.77,
+        "y": 2.4,
+        "z": -0.95
+      },
+      "horizontalEndpointErrorMetres": 0.011535238763024886,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 9970,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.36666666666855,
+      "geometricMetres": 0.6999999999999996,
+      "completedInputIterations": {
+        "count": 9,
+        "heldSeconds": 2.36666666666855,
+        "geometricMetres": 0.6999999999999996
+      }
+    },
+    {
+      "file": "cabin-segment-0008.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.77,
+        "z": 1.06,
+        "y": 1.42
+      },
+      "horizontalEndpointErrorMetres": 0.004908539360291793,
+      "verticalEndpointErrorMetres": 0.0030253763237919618,
+      "elapsedWallMilliseconds": 21277,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.683333333338652,
+      "geometricMetres": 2.004999984258794,
+      "completedInputIterations": {
+        "count": 27,
+        "heldSeconds": 6.683333333338652,
+        "geometricMetres": 2.004999984258794
+      }
+    },
+    {
+      "file": "cabin-segment-0009.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.77,
+        "y": 0.44,
+        "z": 3.07
+      },
+      "horizontalEndpointErrorMetres": 0.01660064905048064,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 36000,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.833333333338771,
+      "geometricMetres": 2.0097433816169383,
+      "completedInputIterations": {
+        "count": 27,
+        "heldSeconds": 6.833333333338771,
+        "geometricMetres": 2.0097433816169383
+      }
+    },
+    {
+      "file": "cabin-segment-0010.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": 3.07,
+        "y": 0.44
+      },
+      "horizontalEndpointErrorMetres": 0.02304797173860637,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 15087,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.650000000002109,
+      "geometricMetres": 0.7499999901420032,
+      "completedInputIterations": {
+        "count": 10,
+        "heldSeconds": 2.650000000002109,
+        "geometricMetres": 0.7499999901420032
+      }
+    },
+    {
+      "file": "cabin-segment-0011.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": 3.74,
+        "y": 0.44
+      },
+      "horizontalEndpointErrorMetres": 0.004253286536715505,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 17900,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.2500000000017906,
+      "geometricMetres": 0.6749999903560926,
+      "completedInputIterations": {
+        "count": 9,
+        "heldSeconds": 2.2500000000017906,
+        "geometricMetres": 0.6749999903560926
+      }
+    },
+    {
+      "file": "cabin-segment-0012.json",
+      "status": "passed",
+      "context": {
+        "label": "bus",
+        "kind": "bus",
+        "vehicleId": "harbor-bus-2",
+        "from": "harbor-bus-courtyard",
+        "to": "harbor-bus-market",
+        "doorId": "bus-door-0-port",
+        "role": "lower-door-approach"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.55,
+        "y": 0.44,
+        "z": 3.74
+      },
+      "horizontalEndpointErrorMetres": 0.02510162779933598,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 9013,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 1.7500000000013927,
+      "geometricMetres": 0.524999996692118,
+      "completedInputIterations": {
+        "count": 7,
+        "heldSeconds": 1.7500000000013927,
+        "geometricMetres": 0.524999996692118
+      }
+    },
+    {
+      "file": "cabin-segment-0013.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": false,
+      "target": {
+        "x": 0,
+        "z": -7.2
+      },
+      "horizontalEndpointErrorMetres": 0.03749999999999558,
+      "verticalEndpointErrorMetres": null,
+      "elapsedWallMilliseconds": 20670,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 4.366666666662695,
+      "geometricMetres": 2.662500000000006,
+      "completedInputIterations": {
+        "count": 16,
+        "heldSeconds": 4.366666666662695,
+        "geometricMetres": 2.662500000000006
+      }
+    },
+    {
+      "file": "cabin-segment-0014.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": false,
+      "target": {
+        "x": 0,
+        "z": 5.57
+      },
+      "horizontalEndpointErrorMetres": 0.05755513180402621,
+      "verticalEndpointErrorMetres": null,
+      "elapsedWallMilliseconds": 36064,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 8.533333333325572,
+      "geometricMetres": 12.712500000000059,
+      "completedInputIterations": {
+        "count": 33,
+        "heldSeconds": 8.533333333325572,
+        "geometricMetres": 12.712500000000059
+      }
+    },
+    {
+      "file": "cabin-segment-0015.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 1.78,
+        "y": 1.3,
+        "z": 5.57
+      },
+      "horizontalEndpointErrorMetres": 0.017775055978773283,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 27268,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.116666666661104,
+      "geometricMetres": 1.7998741843084776,
+      "completedInputIterations": {
+        "count": 24,
+        "heldSeconds": 6.116666666661104,
+        "geometricMetres": 1.7998741843084776
+      }
+    },
+    {
+      "file": "cabin-segment-0016.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 1.78,
+        "z": 3.0900000000000003,
+        "y": 2.5
+      },
+      "horizontalEndpointErrorMetres": 0.006189454684473909,
+      "verticalEndpointErrorMetres": 0.003584407039630033,
+      "elapsedWallMilliseconds": 74607,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 8.633333333325481,
+      "geometricMetres": 2.5046577938763894,
+      "completedInputIterations": {
+        "count": 32,
+        "heldSeconds": 8.633333333325481,
+        "geometricMetres": 2.5046577938763894
+      }
+    },
+    {
+      "file": "cabin-segment-0017.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 1.78,
+        "y": 3.7,
+        "z": 0.6100000000000001
+      },
+      "horizontalEndpointErrorMetres": 0.021151134989013675,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 45814,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 8.666666666658784,
+      "geometricMetres": 2.4949999960362237,
+      "completedInputIterations": {
+        "count": 32,
+        "heldSeconds": 8.666666666658784,
+        "geometricMetres": 2.4949999960362237
+      }
+    },
+    {
+      "file": "cabin-segment-0018.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": false,
+      "target": {
+        "x": 0,
+        "z": 0.6100000000000001,
+        "y": 3.7
+      },
+      "horizontalEndpointErrorMetres": 0.05513039119028262,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 17400,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.4999999999977263,
+      "geometricMetres": 1.7250000000000012,
+      "completedInputIterations": {
+        "count": 10,
+        "heldSeconds": 2.4999999999977263,
+        "geometricMetres": 1.7250000000000012
+      }
+    },
+    {
+      "file": "cabin-segment-0019.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 1.78,
+        "y": 3.7,
+        "z": 0.6100000000000001
+      },
+      "horizontalEndpointErrorMetres": 0.014876797941803221,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 21624,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.116666666661104,
+      "geometricMetres": 1.7100000000000073,
+      "completedInputIterations": {
+        "count": 23,
+        "heldSeconds": 6.116666666661104,
+        "geometricMetres": 1.7100000000000073
+      }
+    },
+    {
+      "file": "cabin-segment-0020.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 1.78,
+        "z": 3.0900000000000003,
+        "y": 2.5
+      },
+      "horizontalEndpointErrorMetres": 0.039991086976749995,
+      "verticalEndpointErrorMetres": 0.02329531445730204,
+      "elapsedWallMilliseconds": 30453,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 8.266666666659148,
+      "geometricMetres": 2.440000000000013,
+      "completedInputIterations": {
+        "count": 32,
+        "heldSeconds": 8.266666666659148,
+        "geometricMetres": 2.440000000000013
+      }
+    },
+    {
+      "file": "cabin-segment-0021.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 1.78,
+        "y": 1.3,
+        "z": 5.57
+      },
+      "horizontalEndpointErrorMetres": 0.038501631614537596,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 72326,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 8.316666666659103,
+      "geometricMetres": 2.494635605918839,
+      "completedInputIterations": {
+        "count": 32,
+        "heldSeconds": 8.316666666659103,
+        "geometricMetres": 2.494635605918839
+      }
+    },
+    {
+      "file": "cabin-segment-0022.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": false,
+      "target": {
+        "x": 0,
+        "z": 5.57,
+        "y": 1.3
+      },
+      "horizontalEndpointErrorMetres": 0.0574617710603571,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 28793,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.64999999999759,
+      "geometricMetres": 1.7247361394738447,
+      "completedInputIterations": {
+        "count": 10,
+        "heldSeconds": 2.64999999999759,
+        "geometricMetres": 1.7247361394738447
+      }
+    },
+    {
+      "file": "cabin-segment-0023.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": false,
+      "target": {
+        "x": 0,
+        "z": -7.2,
+        "y": 1.3
+      },
+      "horizontalEndpointErrorMetres": 0.008365568999242848,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 47149,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 8.099999999992633,
+      "geometricMetres": 12.749999863025655,
+      "completedInputIterations": {
+        "count": 30,
+        "heldSeconds": 8.099999999992633,
+        "geometricMetres": 12.749999863025655
+      }
+    },
+    {
+      "file": "cabin-segment-0024.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-outbound",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-south",
+        "to": "harbor-ferry-north",
+        "doorId": "ferry-door-0-port",
+        "role": "lower-door-approach"
+      },
+      "precision": true,
+      "target": {
+        "x": -2.7,
+        "y": 1.3,
+        "z": -7.2
+      },
+      "horizontalEndpointErrorMetres": 0.00980034673159036,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 57198,
+      "wallBudgetMilliseconds": 300000,
+      "heldSeconds": 9.94999999999095,
+      "geometricMetres": 2.710000000000024,
+      "completedInputIterations": {
+        "count": 35,
+        "heldSeconds": 9.94999999999095,
+        "geometricMetres": 2.710000000000024
+      }
+    },
+    {
+      "file": "cabin-segment-0025.json",
+      "status": "passed",
+      "context": {
+        "label": "ferry-return",
+        "kind": "ferry",
+        "vehicleId": "harbor-ferry-1",
+        "from": "harbor-ferry-north",
+        "to": "harbor-ferry-south",
+        "doorId": "ferry-door-0-port",
+        "role": "lower-door-approach"
+      },
+      "precision": true,
+      "target": {
+        "x": -2.7,
+        "y": 1.3,
+        "z": -7.2
+      },
+      "horizontalEndpointErrorMetres": 0.0,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 0,
+      "wallBudgetMilliseconds": 300000,
+      "heldSeconds": 0,
+      "geometricMetres": 0,
+      "completedInputIterations": {
+        "count": 0,
+        "heldSeconds": 0,
+        "geometricMetres": 0
+      }
+    },
+    {
+      "file": "cabin-segment-0026.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": -3.45
+      },
+      "horizontalEndpointErrorMetres": 0.05499999999999962,
+      "verticalEndpointErrorMetres": null,
+      "elapsedWallMilliseconds": 10021,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 1.6499999999984993,
+      "geometricMetres": 0.49500000000000044,
+      "completedInputIterations": {
+        "count": 7,
+        "heldSeconds": 1.6499999999984993,
+        "geometricMetres": 0.49500000000000044
+      }
+    },
+    {
+      "file": "cabin-segment-0027.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": -3.52
+      },
+      "horizontalEndpointErrorMetres": 0.014023117813331702,
+      "verticalEndpointErrorMetres": null,
+      "elapsedWallMilliseconds": 5839,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 0.24999999999977263,
+      "geometricMetres": 0.0750000000000023,
+      "completedInputIterations": {
+        "count": 1,
+        "heldSeconds": 0.24999999999977263,
+        "geometricMetres": 0.0750000000000023
+      }
+    },
+    {
+      "file": "cabin-segment-0028.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.69,
+        "y": 0.44,
+        "z": -3.52
+      },
+      "horizontalEndpointErrorMetres": 0.031327549158491445,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 17227,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.166666666664696,
+      "geometricMetres": 0.6500000000000008,
+      "completedInputIterations": {
+        "count": 9,
+        "heldSeconds": 2.166666666664696,
+        "geometricMetres": 0.6500000000000008
+      }
+    },
+    {
+      "file": "cabin-segment-0029.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.69,
+        "z": -1.54,
+        "y": 1.42
+      },
+      "horizontalEndpointErrorMetres": 0.029872062721116303,
+      "verticalEndpointErrorMetres": 0.018764306994164537,
+      "elapsedWallMilliseconds": 47278,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.949999999993679,
+      "geometricMetres": 1.9499999999026079,
+      "completedInputIterations": {
+        "count": 26,
+        "heldSeconds": 6.949999999993679,
+        "geometricMetres": 1.9499999999026079
+      }
+    },
+    {
+      "file": "cabin-segment-0030.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.69,
+        "y": 2.4,
+        "z": 0.44
+      },
+      "horizontalEndpointErrorMetres": 0.0008515118429729483,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 76377,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 7.06666666666024,
+      "geometricMetres": 2.0588134729172882,
+      "completedInputIterations": {
+        "count": 28,
+        "heldSeconds": 7.06666666666024,
+        "geometricMetres": 2.0588134729172882
+      }
+    },
+    {
+      "file": "cabin-segment-0031.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": 0.44,
+        "y": 2.4
+      },
+      "horizontalEndpointErrorMetres": 0.03486077888940945,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 6500,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.1833333333313476,
+      "geometricMetres": 0.6549999981332366,
+      "completedInputIterations": {
+        "count": 9,
+        "heldSeconds": 2.1833333333313476,
+        "geometricMetres": 0.6549999981332366
+      }
+    },
+    {
+      "file": "cabin-segment-0032.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.69,
+        "y": 2.4,
+        "z": 0.44
+      },
+      "horizontalEndpointErrorMetres": 0.055140401063627956,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 14004,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 1.999999999998181,
+      "geometricMetres": 0.5999999999999991,
+      "completedInputIterations": {
+        "count": 8,
+        "heldSeconds": 1.999999999998181,
+        "geometricMetres": 0.5999999999999991
+      }
+    },
+    {
+      "file": "cabin-segment-0033.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.69,
+        "z": -1.54,
+        "y": 1.42
+      },
+      "horizontalEndpointErrorMetres": 0.010918047139727556,
+      "verticalEndpointErrorMetres": 0.006853615126371393,
+      "elapsedWallMilliseconds": 28964,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.733333333327209,
+      "geometricMetres": 1.969999999999997,
+      "completedInputIterations": {
+        "count": 26,
+        "heldSeconds": 6.733333333327209,
+        "geometricMetres": 1.969999999999997
+      }
+    },
+    {
+      "file": "cabin-segment-0034.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.69,
+        "y": 0.44,
+        "z": -3.52
+      },
+      "horizontalEndpointErrorMetres": 0.04090989434640969,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 30270,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 6.616666666660649,
+      "geometricMetres": 1.9499999999999449,
+      "completedInputIterations": {
+        "count": 26,
+        "heldSeconds": 6.616666666660649,
+        "geometricMetres": 1.9499999999999449
+      }
+    },
+    {
+      "file": "cabin-segment-0035.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": -3.52,
+        "y": 0.44
+      },
+      "horizontalEndpointErrorMetres": 0.016230262880080188,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 15044,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 2.2499999999979536,
+      "geometricMetres": 0.6750000000000003,
+      "completedInputIterations": {
+        "count": 9,
+        "heldSeconds": 2.2499999999979536,
+        "geometricMetres": 0.6750000000000003
+      }
+    },
+    {
+      "file": "cabin-segment-0036.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "cabin-waypoint"
+      },
+      "precision": true,
+      "target": {
+        "x": 0,
+        "z": -3.45,
+        "y": 0.44
+      },
+      "horizontalEndpointErrorMetres": 0.004141115939832217,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 2221,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 0.24999999999977263,
+      "geometricMetres": 0.07500000000000305,
+      "completedInputIterations": {
+        "count": 1,
+        "heldSeconds": 0.24999999999977263,
+        "geometricMetres": 0.07500000000000305
+      }
+    },
+    {
+      "file": "cabin-segment-0037.json",
+      "status": "passed",
+      "context": {
+        "label": "tram",
+        "kind": "tram",
+        "vehicleId": "harbor-tram-2",
+        "from": "harbor-tram-quay",
+        "to": "harbor-tram-lantern",
+        "doorId": "tram-door-0-port",
+        "role": "lower-door-approach"
+      },
+      "precision": true,
+      "target": {
+        "x": -0.55,
+        "y": 0.44,
+        "z": -3.45
+      },
+      "horizontalEndpointErrorMetres": 0.025740645237901327,
+      "verticalEndpointErrorMetres": 0.0,
+      "elapsedWallMilliseconds": 10377,
+      "wallBudgetMilliseconds": 150000,
+      "heldSeconds": 1.7499999999984084,
+      "geometricMetres": 0.5250000000000007,
+      "completedInputIterations": {
+        "count": 7,
+        "heldSeconds": 1.7499999999984084,
+        "geometricMetres": 0.5250000000000007
+      }
+    }
+  ],
+  "publicPurchase": {
+    "beforeAt": "2026-10-04T21:36:05.352Z",
+    "afterAt": "2026-10-04T21:36:05.374Z",
+    "cashBefore": 1200,
+    "cashAfter": 1194,
+    "inventoryBefore": {
+      "produce": 0,
+      "tea": 0,
+      "meal": 0
+    },
+    "inventoryAfter": {
+      "produce": 1,
+      "tea": 0,
+      "meal": 0
+    },
+    "transactionFile": "purchase-original-export.json",
+    "transaction": {
+      "id": "harbor-tx-143",
+      "tick": 3713,
+      "day": 1,
+      "hour": 16.5,
+      "type": "player-purchase",
+      "shopId": "harbor-produce",
+      "from": "player-external",
+      "to": "harbor-produce",
+      "amount": 6,
+      "quantity": 1,
+      "product": "produce",
+      "requestId": "harbor-buy-143"
+    },
+    "finalRecentTransactionsRetained": 96,
+    "purchaseHistoryRetention": "The final recent transaction ring contains tx348..443; tx143 is retained in the purchase export and referenced by final player.purchaseRequests, rather than being kept forever in the 96-entry recent ring."
+  },
+  "publicSaveReload": {
+    "exportFiles": [
+      {
+        "file": "purchase-original-export.json",
+        "bytes": 50090,
+        "sha256": "9e8f6a1f98c4f23b72858261f8264e296ec6ecc322fdcec4038e349a5f8e2258"
+      },
+      {
+        "file": "final-home-2F-original-export.json",
+        "bytes": 50058,
+        "sha256": "7865007fa034d8e0bdaf9dd91604bdf9f6cfc54335d3c8f8ee1187ab86ad7e92"
+      },
+      {
+        "file": "reload-restored-runtime-original-export.json",
+        "bytes": 50058,
+        "sha256": "7865007fa034d8e0bdaf9dd91604bdf9f6cfc54335d3c8f8ee1187ab86ad7e92"
+      }
+    ],
+    "finalAndRestoredExportsDeepEqual": true,
+    "restoredHarborTransitTime": 1384.383333332403,
+    "restoredRuntimeSimulationTime": 0,
+    "restoredPosition": {
+      "x": 133,
+      "y": 0.18,
+      "z": 118.94924771878868,
+      "yaw": -3.141592653589793
+    },
+    "productRule": "Interior saves recover safely at the building street door; accurate room recovery is future work. Actual E entry and physical stairs subsequently reached original 2F.",
+    "exactFieldScope": "The original top-level cash/player/completed/bestTimes/harborLife/harborTransit JSON fields were restored identically. Page-global simulationTime restarts at zero on reload; serialized harborTransit time and vehicles are preserved."
+  },
+  "errors": [],
+  "cleanupErrors": [],
+  "cabinCleanupErrors": [],
+  "cabinEvidenceErrors": [],
+  "closureErrors": [],
+  "childReturnCode": 0,
+  "supervisorReturnCode": 0,
+  "independentVideoVerificationPassed": true,
+  "hostProcessPortEvidence": "host-process-port-closure.json",
+  "published": false,
+  "publicationUrl": null,
+  "limits": "Functional software WebGL evidence. Does not establish AAA art, hardware FPS, memory-leak freedom, all rooms validation or a whole-city living simulation."
+}

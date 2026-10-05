@@ -1,0 +1,110 @@
+✖ home system snapshot cannot rewrite its saved before/after/difference audit counters (167.754846ms)
+✔ home unavailable diagnostic counters stay null and readErrors snapshots stay independent (46.631979ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 359.548786
+
+✖ failing tests:
+
+test at tests/harbor-home-authored.test.js:22:1
+✖ home system snapshot cannot rewrite its saved before/after/difference audit counters (167.754846ms)
+  AssertionError [ERR_ASSERTION]: Caller mutation must not replace original audit evidence
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        assetId: 'sofa_03',
+        buildingId: 'south-079',
+        disposed: true,
+  ...
+          after: {
+  +         geometries: -21,
+  +         textures: -22
+  -         geometries: 114,
+  -         textures: 111
+          },
+          attachedAtRelease: true,
+          available: true,
+          before: {
+  +         geometries: -11,
+  +         textures: -12
+  -         geometries: 116,
+  -         textures: 117
+          },
+          difference: {
+  +         geometries: -31,
+  +         textures: -32
+  -         geometries: 2,
+  -         textures: 6
+          },
+          readErrors: [],
+          scope: 'single synchronous asset disposal'
+        },
+        resourceRelease: {
+  ...
+          after: {
+  +         geometries: -21,
+  +         textures: -22
+  -         geometries: 113,
+  -         textures: 108
+          },
+          attachedAtRelease: true,
+          available: true,
+          before: {
+  +         geometries: -11,
+  +         textures: -12
+  -         geometries: 114,
+  -         textures: 111
+          },
+          difference: {
+  +         geometries: -31,
+  +         textures: -32
+  -         geometries: 1,
+  -         textures: 3
+          },
+          readErrors: [],
+          scope: 'single synchronous asset disposal'
+        },
+        resourceRelease: {
+  ...
+          after: {
+  +         geometries: -21,
+  +         textures: -22
+  -         geometries: 99,
+  -         textures: 101
+          },
+          attachedAtRelease: true,
+          available: true,
+          before: {
+  +         geometries: -11,
+  +         textures: -12
+  -         geometries: 113,
+  -         textures: 108
+          },
+          difference: {
+  +         geometries: -31,
+  +         textures: -32
+  -         geometries: 14,
+  -         textures: 7
+          },
+          readErrors: [],
+          scope: 'single synchronous asset disposal'
+        },
+        resourceRelease: {
+  
+      at TestContext.<anonymous> (file:///tmp/neon-authored-home-integration-package/tests/harbor-home-authored.test.js:45:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { kind: 'asset-released', buildingId: 'south-079', floorId: 'lobby', generation: 2, disposed: true, wanted: false, status: 'ready', loadedAssets: 0, releasedAssets: 1, assetId: 'sofa_03', resourceRelease: [Object], rendererRelease: [Object], sequence: 6 }, { kind: 'asset-released', buildingId: 'south-079', floorId: 'lobby', generation: 2, disposed: true, wanted: false, status: 'ready', loadedAssets: 0, releasedAssets: 2, assetId: 'old_bed_frame', resourceRelease: [Object], rendererRelease: [Object], sequence: 7 }, { kind: 'asset-released', buildingId: 'south-079', floorId: 'lobby', generation: 2, disposed: true, wanted: false, status: 'ready', loadedAssets: 0, releasedAssets: 3, assetId: 'home-lobby-fittings', resourceRelease: [Object], rendererRelease: [Object], sequence: 8 } ],
+    expected: [ { kind: 'asset-released', buildingId: 'south-079', floorId: 'lobby', generation: 2, disposed: true, wanted: false, status: 'ready', loadedAssets: 0, releasedAssets: 1, assetId: 'sofa_03', resourceRelease: [Object], rendererRelease: [Object], sequence: 6 }, { kind: 'asset-released', buildingId: 'south-079', floorId: 'lobby', generation: 2, disposed: true, wanted: false, status: 'ready', loadedAssets: 0, releasedAssets: 2, assetId: 'old_bed_frame', resourceRelease: [Object], rendererRelease: [Object], sequence: 7 }, { kind: 'asset-released', buildingId: 'south-079', floorId: 'lobby', generation: 2, disposed: true, wanted: false, status: 'ready', loadedAssets: 0, releasedAssets: 3, assetId: 'home-lobby-fittings', resourceRelease: [Object], rendererRelease: [Object], sequence: 8 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

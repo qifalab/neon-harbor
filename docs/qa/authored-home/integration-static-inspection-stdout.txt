@@ -1,0 +1,140 @@
+{
+  "scope": "One actual building, two original room layouts and four packed assets. CPU texture placeholders: native decode, WebGL, real movement and visual judgement excluded",
+  "passed": true,
+  "elapsedMs": 422.64601,
+  "runtimeBytes": 10492852,
+  "strictByteLimit": 12000000,
+  "wholeHomeVisibleNear": {
+    "meshes": 26,
+    "triangles": 83216
+  },
+  "wholeHomeVisibleMiddle": {
+    "meshes": 18,
+    "triangles": 79568
+  },
+  "wholeHomeVisibleFar": {
+    "meshes": 7,
+    "triangles": 1100
+  },
+  "packedAllTriangles": 84316,
+  "packedAllMeshes": 33,
+  "floors": [
+    {
+      "floorId": "lobby",
+      "roomIds": [
+        "south-079-lobby-0",
+        "south-079-lobby-1"
+      ],
+      "pathChecks": [
+        {
+          "name": "room0",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "room1",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "lift",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 393,
+          "minBodyClearance": 0.5700000000000113
+        },
+        {
+          "name": "stairApproach",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 99,
+          "minBodyClearance": 0.38000000000000556
+        },
+        {
+          "name": "sofaView",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 90,
+          "minBodyClearance": 0.19475508799557317
+        },
+        {
+          "name": "bedside",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 134,
+          "minBodyClearance": 0.10000000000000564
+        }
+      ],
+      "lifecycle": {
+        "normalLoads": 6,
+        "normalReleases": 6,
+        "failureReleases": 2,
+        "lateAfterDisposeReleases": 3,
+        "inactiveFloorReleased": true
+      }
+    },
+    {
+      "floorId": "gallery",
+      "roomIds": [
+        "south-079-gallery-0",
+        "south-079-gallery-1"
+      ],
+      "pathChecks": [
+        {
+          "name": "room0",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "room1",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "lift",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 393,
+          "minBodyClearance": 0.5499999999999999
+        },
+        {
+          "name": "stairApproach",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 99,
+          "minBodyClearance": 0.38000000000000556
+        },
+        {
+          "name": "fridgeApproach",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 129,
+          "minBodyClearance": 0.11999999999999544
+        },
+        {
+          "name": "openShower",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 203,
+          "minBodyClearance": 0.14999999999999714
+        }
+      ],
+      "lifecycle": {
+        "normalLoads": 2,
+        "normalReleases": 2,
+        "failureReleases": 0,
+        "lateAfterDisposeReleases": 1,
+        "inactiveFloorReleased": true
+      }
+    }
+  ],
+  "evidenceLimits": "No native art/walking acceptance. Textures use CPU placeholders. GPU allocation and actual owner VRAM release are unmeasured. Room labels/IDs/life/save are unaltered."
+}

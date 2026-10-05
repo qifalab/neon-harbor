@@ -1,0 +1,110 @@
+{
+  "scope": "One-building bounded CPU metadata, geometry, visibility and cleanup. JPEG/PNG decode, WebGL, actual walking and visual judgement excluded",
+  "passed": true,
+  "elapsedMs": 256.974921,
+  "modelBytes": 11530828,
+  "strictRoomByteLimit": 12000000,
+  "visibleNear": {
+    "meshes": 32,
+    "triangles": 70740
+  },
+  "visibleMiddle": {
+    "meshes": 29,
+    "triangles": 63224
+  },
+  "visibleFar": {
+    "meshes": 2,
+    "triangles": 484
+  },
+  "nearTier": 0,
+  "middleTier": 1,
+  "farTier": 2,
+  "packedUniqueTriangles": 51012,
+  "additionalFarFallbackMeshes": 2,
+  "totalFarMainPassDrawCallEstimate": 4,
+  "failureFallbackMeshEstimate": 19,
+  "sharedShelf": {
+    "instances": 3,
+    "geometryOwners": 1,
+    "materialOwners": 1,
+    "sourceTextureOwners": 3
+  },
+  "textureBudgetEstimate": {
+    "uniqueTextures": 16,
+    "rgbaMipBytes": 89478485.33333333,
+    "scope": "Uncompressed RGBA plus full mip-chain estimate; actual GPU/decode overhead unmeasured"
+  },
+  "preservedViceCameraStandingRegion": {
+    "centre": {
+      "x": 180.35,
+      "z": -113.32
+    },
+    "halfExtent": 0.18,
+    "samplingStep": 0.01,
+    "samples": 1369,
+    "bodyRadius": 0.65,
+    "minBodyClearance": 0.04999999999999316
+  },
+  "unchangedViceAndChestPlacements": true,
+  "structuralCoreUnchanged": true,
+  "aisleChecks": [
+    {
+      "id": "workshop-main",
+      "minX": 183,
+      "maxX": 198.6,
+      "minZ": -116,
+      "maxZ": -114,
+      "minimumWidth": 2,
+      "blockers": []
+    },
+    {
+      "id": "archive-main",
+      "minX": 184,
+      "maxX": 198.6,
+      "minZ": -107,
+      "maxZ": -105,
+      "minimumWidth": 2,
+      "blockers": []
+    }
+  ],
+  "pathChecks": [
+    {
+      "name": "workshop",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 323,
+      "minBodyClearance": 0.3499999999999991
+    },
+    {
+      "name": "archive",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 334,
+      "minBodyClearance": 0.3499999999999991
+    },
+    {
+      "name": "lift",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 332,
+      "minBodyClearance": 0.5700000000000113
+    },
+    {
+      "name": "stairApproach",
+      "actualBodyRadius": 0.65,
+      "spacing": 0.05,
+      "samples": 81,
+      "minBodyClearance": 0.38000000000000556
+    }
+  ],
+  "originalColliderCount": 176,
+  "candidateColliderCount": 179,
+  "lifecycle": {
+    "normalLoads": 10,
+    "normalReleases": 10,
+    "partialFailureDecodedReleases": 4,
+    "lateAfterDisposeReleases": 5,
+    "GPUReleaseConclusion": "Unmeasured; CPU parse placeholders never allocate GPU or decode images"
+  },
+  "assetLoads": 19
+}

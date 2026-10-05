@@ -1,0 +1,102 @@
+--- a/tools/capture-resident-native.mjs
++++ b/tools/capture-resident-native.mjs
+@@ -68,6 +68,7 @@
+ const requireProject = createRequire(resolve(projectRoot,'package.json'));
+ const { chromium } = requireProject('@playwright/test');
+ let browser, context, page, server, stopDeadline, rejectApplicationError;
++let ownedBrowserProcess, totalDeadlineAt, cleanupDeadlineAt, ownedKillStarted = false;
+ const recordError = detail => { const record = { at: new Date().toISOString(), ...detail }; metadata.errors.push(record);
+   metadata.firstFailure ||= record; rejectApplicationError?.(new Error(`Application error: ${JSON.stringify(record)}`)); };
+ const checkErrors = () => { assert.equal(metadata.errors.length,0,`first application error: ${JSON.stringify(metadata.firstFailure)}`); };
+@@ -88,9 +89,15 @@
+   assert.equal(s.streaming?.failed || 0,0); assert.equal(s.renderer?.contextLost,false);
+   assert.equal(s.canvas.width,1280); assert.equal(s.canvas.height,800);
+ };
+-const event = async (kind,detail={}) => { const state=await read(); validate(state); const row={kind,at:new Date().toISOString(),detail,state};
++const awaitRenderedCamera = () => page.waitForFunction(() => {
++  const camera=window.__NEON__?.snapshot().camera;
++  return !!camera && [camera.yaw,camera.pitch,camera.position?.x,camera.position?.y,camera.position?.z,
++    camera.focus?.x,camera.focus?.y,camera.focus?.z].every(Number.isFinite);
++},null,{polling:'raf',timeout:plan.budgets.readyWallSeconds*1000});
++const event = async (kind,detail={}) => { await awaitRenderedCamera(); const state=await read(); validate(state); const row={kind,at:new Date().toISOString(),detail,state};
+   metadata.events.push(row); await persist(); return state; };
+ const face = async (yaw,pitch) => {
++  await awaitRenderedCamera();
+   const s=await read(), delta=Math.atan2(Math.sin(yaw-s.camera.yaw),Math.cos(yaw-s.camera.yaw));
+   const sensitivity=s.settings.sensitivity, dp=pitch === undefined ? 0 : pitch-s.camera.pitch;
+   const b=await page.locator('#game').boundingBox(), x=b.x+b.width*.82,y=b.y+b.height*.35;
+@@ -162,6 +169,12 @@
+ const core = async () => {
+   server=await createStaticServer({root}); await new Promise((ok,bad)=>{server.once('error',bad);server.listen(port,'127.0.0.1',ok);});
+   browser=await chromium.launch({headless:true,args:['--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
++  // Pinned Playwright 1.62.1's in-process connection maps this exact browser
++  // to its launched ChildProcess. No PID search, global kill or other browser.
++  ownedBrowserProcess=browser._connection?.toImpl?.(browser)?.options?.browserProcess;
++  assert.ok(ownedBrowserProcess?.process?.pid && typeof ownedBrowserProcess.kill === 'function',
++    'pinned launcher must expose the owned browser process for bounded cleanup');
++  metadata.cleanup={budgetSeconds:30,ownedBrowserPID:ownedBrowserProcess.process.pid,steps:[],hardStop:false};
+   metadata.browser={version:browser.version(),executable:'Playwright Chromium',node:process.version,backend:'SwiftShader WebGL'};
+   assert.equal(browser.version(),plan.browserVersion); context=await browser.newContext({viewport:plan.viewport,deviceScaleFactor:1,
+     recordVideo:{dir:resolve(output,'raw-video'),size:plan.viewport}}); page=await context.newPage();
+@@ -198,16 +211,52 @@
+   await capture('04-observation-end-player','commuter','local-player',{player:true});
+   metadata.status='core-recorded-pending-manual-review'; metadata.endedAt=new Date().toISOString(); await persist();
+ };
++function beginCleanup() {
++  cleanupDeadlineAt ||= Math.min(Date.now()+30000,totalDeadlineAt || Infinity);
++  return cleanupDeadlineAt;
++}
++function stopOwnedBrowser(reason) {
++  if (ownedKillStarted || !ownedBrowserProcess) return;
++  ownedKillStarted=true;
++  metadata.cleanup ||= {budgetSeconds:30,steps:[]};
++  metadata.cleanup.hardStop={at:new Date().toISOString(),reason,pid:ownedBrowserProcess.process.pid};
++  // This bound kill closes only the process group spawned by our launch().
++  try { Promise.resolve(ownedBrowserProcess.kill()).catch(error=>recordError({type:'owned-browser-kill',message:error.message})); }
++  catch(error) { recordError({type:'owned-browser-kill',message:error.message}); }
++}
++async function boundedOwnedStep(kind,operation,maximumMs=Infinity) {
++  let timer;
++  const remaining=Math.min(maximumMs,beginCleanup()-Date.now());
++  try {
++    assert.ok(remaining>0,`Owned cleanup deadline reached before ${kind}`);
++    const result=await Promise.race([Promise.resolve().then(operation),new Promise((_,bad)=>{
++      timer=setTimeout(()=>bad(new Error(`Owned cleanup deadline while ${kind}`)),remaining);
++    })]);
++    metadata.cleanup ||= {budgetSeconds:30,steps:[]};
++    metadata.cleanup.steps.push({kind,status:'closed',at:new Date().toISOString()});return result;
++  } catch(error) {
++    recordError({type:kind,message:error.message});
++    metadata.status='first-failure-preserved';process.exitCode=1;
++    stopOwnedBrowser(`${kind}: ${error.message}`);server?.closeAllConnections?.();
++  } finally {clearTimeout(timer);}
++}
+ try {
+-  await Promise.race([core(),new Promise((_,bad)=>{rejectApplicationError=bad;}),new Promise((_,bad)=>{stopDeadline=setTimeout(()=>bad(new Error('Fixed total wall budget exceeded; no retry')),plan.budgets.totalWallSeconds*1000);})]);
++  totalDeadlineAt=Date.now()+plan.budgets.totalWallSeconds*1000;
++  const totalTimeout=new Promise((_,bad)=>{stopDeadline=setTimeout(()=>{
++    const error=new Error('Fixed total wall budget exceeded including owned cleanup; no retry');
++    recordError({type:'total-deadline',message:error.message});stopOwnedBrowser('total deadline');server?.closeAllConnections?.();bad(error);
++  },plan.budgets.totalWallSeconds*1000);});
++  await Promise.race([core(),new Promise((_,bad)=>{rejectApplicationError=bad;}),totalTimeout]);
+ } catch(error) {
+-  recordError({type:'method',message:error.stack||error.message}); metadata.status='first-failure-preserved';metadata.endedAt=new Date().toISOString();
+-  try { if(page&&!page.isClosed())metadata.failureState=await read(); } catch {}
++  recordError({type:'method',message:error.stack||error.message});metadata.status='first-failure-preserved';metadata.endedAt=new Date().toISOString();
++  if(page&&!page.isClosed())metadata.failureState=await boundedOwnedStep('failure-snapshot',()=>read(),5000);
+   console.error(error.stack||error.message);process.exitCode=1;
+ } finally {
+-  clearTimeout(stopDeadline);
+-  try { await context?.close(); } catch(error){recordError({type:'context-close',message:error.message});}
+-  try { await browser?.close(); } catch(error){recordError({type:'browser-close',message:error.message});}
+-  try { if(server)await new Promise(ok=>server.close(ok)); } catch(error){recordError({type:'server-close',message:error.message});}
+-  metadata.closedAt=new Date().toISOString();await persist();
+-}
++  // Both deadlines remain live during video/context/browser/server closure.
++  beginCleanup();
++  if(context)await boundedOwnedStep('context-close',()=>context.close());
++  if(browser)await boundedOwnedStep('browser-close',()=>browser.close());
++  if(server)await boundedOwnedStep('server-close',()=>new Promise((ok,bad)=>server.close(error=>error?bad(error):ok())));
++  if(Date.now()>=cleanupDeadlineAt){stopOwnedBrowser('30-second owned cleanup limit');server?.closeAllConnections?.();}
++  metadata.closedAt=new Date().toISOString();await persist();clearTimeout(stopDeadline);
++}

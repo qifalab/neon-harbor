@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-04T20:53:36.030Z",
+  "manifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "version": "0.8.0",
+  "revision": null,
+  "assetCount": 156,
+  "sourceCount": 53,
+  "mismatches": [],
+  "methodAndDependencies": [
+    {
+      "file": "tools/capture-harbor-tour.mjs",
+      "bytes": 60171,
+      "sha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+      "sameAsThird": false
+    },
+    {
+      "file": "tools/server.mjs",
+      "bytes": 4529,
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+      "sameAsThird": true
+    },
+    {
+      "file": "tests/e2e/helpers/walking.js",
+      "bytes": 7277,
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969",
+      "sameAsThird": true
+    },
+    {
+      "file": "tests/e2e/helpers/occupied.js",
+      "bytes": 5321,
+      "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1",
+      "sameAsThird": true
+    },
+    {
+      "file": "package.json",
+      "bytes": 652,
+      "sha256": "445222967a997007bd4b6d7bd8b2c22b88b0cf031fed4f2cefb08a6f04a7f028",
+      "sameAsThird": null
+    },
+    {
+      "file": "package-lock.json",
+      "bytes": 2305,
+      "sha256": "163259fc64f19ce8fa5bba80359eb97befc847648bb7f6454c0569d4867fc87d",
+      "sameAsThird": null
+    }
+  ],
+  "oldTours": [
+    {
+      "directory": "docs/qa/art-final/continuous-tour",
+      "entries": 13,
+      "ledgerSha256": "f650a77276af2a7b386a3e7eb809c0aaf0ae5f71eb352cfde4797b7b97f46364",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour",
+      "entries": 15,
+      "ledgerSha256": "b5e6af022f617ad4da6be13fb56bd95e7e0c6601372d0f87cb2ea1d39a55ca70",
+      "mismatches": []
+    },
+    {
+      "directory": "docs/qa/transit-crossing-repair/continuous-tour-budget-review",
+      "entries": 19,
+      "ledgerSha256": "5b922d928e28e4dbb528241e841cb9454f6868a4e54785a131ee9a696bc1a317",
+      "mismatches": []
+    }
+  ],
+  "suggestedOutput": "docs/qa/final-asset-freeze/continuous-tour",
+  "outputExists": false,
+  "chromiumPathEnvironmentPresent": false
+}

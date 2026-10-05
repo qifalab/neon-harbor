@@ -1,10 +1,11 @@
-/** Isolated art pilot: two real CC0 assets at one existing harbour workshop.
+import { AUTHORED_WORKSHOP_MODELS, extendAuthoredWorkshopPlan } from './harbor-workshop-authored.js';
+/** Authored workshop: real CC0 assets and original fittings at one room pair.
  * Collision and furnishing metadata keep world metres, and loaders are local.
  * This module never changes programmes, residents, vehicles or structural routes.
  */
 export const WORKSHOP_PILOT = Object.freeze({
   buildingId: 'south-086', floorId: 'lobby', nearDistance: 24, farDistance: 32,
-  assets: Object.freeze(['bench_vice_01', 'metal_tool_chest']),
+  assets: Object.freeze(Object.keys(AUTHORED_WORKSHOP_MODELS)),
   // CPU bounds of the unchanged official glTF default pose, including skin.
   chestBounds: Object.freeze({ min: [-.3694364447146654, .0008090436458587646, -.19742248207330704],
     max: [.3159519713371992, .6526446044445038, .20973077788949013] }),
@@ -36,13 +37,13 @@ export function planHarborWorkshopPilot(building, floor, layout) {
   const chestProxy = { id: collider.id + ':fallback', kind: 'tool-chest-fallback', geometry: 'box', material: 'metal',
     roomId: room.id, x: crate.x, y: (collider.minY + collider.maxY) / 2, z: crate.z,
     sx: size[0], sy: size[1], sz: size[2] };
-  return { roomId: room.id, placements, colliders: [collider], fallbackParts: [vice, chestProxy],
-    replacePartIds: [vice.id], centre: { x: (vice.x + crate.x) / 2, y: floor.y, z: (vice.z + crate.z) / 2 } };
+  return extendAuthoredWorkshopPlan(building, floor, layout, { roomId: room.id, placements, colliders: [collider], fallbackParts: [vice, chestProxy],
+    replacePartIds: [vice.id], centre: { x: (vice.x + crate.x) / 2, y: floor.y, z: (vice.z + crate.z) / 2 } });
 }
 
 /** Every fetch is same-origin at runtime. Embedded JPEGs require no extra URLs. */
 export async function loadWorkshopAsset(id, { signal } = {}) {
-  if (!WORKSHOP_PILOT.assets.includes(id)) throw new Error('Asset is outside the two-model pilot allowlist');
+  if (!WORKSHOP_PILOT.assets.includes(id)) throw new Error('Asset is outside the authored workshop allowlist');
   const { GLTFLoader } = await import('../vendor/three/addons/loaders/GLTFLoader.js');
   const response = await fetch(new URL(`../assets/harbor/workshop/${id}.glb`, import.meta.url), { signal });
   if (!response.ok) throw new Error(`Workshop ${id}: HTTP ${response.status}`);
@@ -110,6 +111,21 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
   const decodedResourceCache = new WeakMap();
   let disposed = false, wanted = false, generation = 0, controller = null, pending = null;
   let status = plan ? 'fallback' : 'inapplicable', releasedAssets = 0;
+  let lodTier = 2, nearestViewDistance = Infinity;
+  const applyLod = () => {
+    if(!plan?.authored){for(const asset of loaded)asset.scene.visible=true;if(fallbackGroup)fallbackGroup.visible=status!=='ready';return;}
+    for (const asset of loaded) {
+      const fittings = asset.scene.userData.workshopAssetId === 'workshop-fittings';
+      asset.scene.visible = fittings || lodTier < 2;
+      if (fittings) {
+        for (const [name,visible] of [['core',lodTier<2],['near',lodTier===0],['far',lodTier===2]]) {
+          const node=asset.scene.getObjectByName(`workshop-tier-${name}`); if(node)node.visible=visible;
+        }
+      }
+    }
+    if(fallbackGroup){fallbackGroup.visible=status!=='ready'||lodTier===2;
+      for(const part of fallbackGroup.children)part.visible=status!=='ready'||['bench-vice','tool-chest-fallback'].includes(part.userData.workshopFallbackKind);}
+  };
   const audit = (kind, detail = {}) => onAudit({ kind, buildingId: building?.id, floorId: floor?.id,
     generation, disposed, wanted, status, loadedAssets: loaded.length, releasedAssets, ...detail });
   // Read exactly two scalar counter pairs in this synchronous release. No
@@ -146,6 +162,7 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
     cachedBounds = []; cachedResources = []; cachedSkeletons = [];
     if (fallbackGroup) fallbackGroup.visible = true;
     status = plan ? 'fallback' : 'inapplicable';
+    applyLod();
     audit('unloaded');
   }
   function request() {
@@ -164,6 +181,7 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
         if (!disposed && wanted && ticket === generation && failure) {
           status = 'failed'; errors.push(String(failure.reason?.message || failure.reason));
           if (fallbackGroup) fallbackGroup.visible = true;
+          applyLod();
           audit('fallback', { requestGeneration: ticket, reason: errors.at(-1) });
         }
         if (disposed || ticket !== generation) audit('stale-result-released', { requestGeneration: ticket, count: assets.length });
@@ -178,10 +196,21 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
             if (!object.isMesh) return;
             meshes++;
             for (const material of Array.isArray(object.material) ? object.material : [object.material])
-              if (!material.map || !material.normalMap || !material.metalnessMap || !material.roughnessMap)
+              if (AUTHORED_WORKSHOP_MODELS[placement.id].textured && (!material.map || !material.normalMap || !material.metalnessMap || !material.roughnessMap))
                 throw new Error('Workshop PBR texture decoding did not complete');
           });
-          if (meshes !== (placement.id === 'bench_vice_01' ? 4 : 7)) throw new Error('Original workshop mesh set is incomplete');
+          if (meshes !== AUTHORED_WORKSHOP_MODELS[placement.id].meshes) throw new Error('Authored workshop mesh set is incomplete');
+          // Only the unskinned reference shelf is instanced. Clones share the
+          // original geometry/materials/textures inside a single asset owner;
+          // disposal visits them once through the existing resource sets.
+          if(placement.instances){
+            if(placement.id!=='wooden_bookshelf_worn')throw new Error('Only the unskinned reference shelf permits authored instances');
+            const roots=[...scene.children];
+            for(const offset of placement.instances.slice(1)){
+              const instance=new THREE.Group();instance.name='Archive reference shelf instance';
+              instance.position.set(offset.x,offset.y,offset.z);for(const child of roots)instance.add(child.clone(true));scene.add(instance);
+            }
+          }
           scene.position.set(placement.position.x, placement.position.y, placement.position.z);
           scene.scale.setScalar(placement.scale); scene.rotation.y = placement.rotationY;
           scene.userData.workshopAssetId = placement.id;
@@ -191,13 +220,17 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
         cachedBounds = assets.map(asset => { const box = new THREE.Box3().setFromObject(asset.scene, true);
           return { id: asset.scene.userData.workshopAssetId, min: box.min.toArray(), max: box.max.toArray() }; });
         const resources = assets.map(asset => decodedResourceCache.get(asset));
-        cachedResources = resources.map((item, index) => ({ assetId: plan.placements[index].id, ...item.summary }));
+        cachedResources = resources.map((item, index) => ({ assetId: plan.placements[index].id, ...item.summary,
+          instanceCount:plan.placements[index].instances?.length||1,
+          visibleSourceMeshes:item.summary.meshes*(plan.placements[index].instances?.length||1),
+          visibleSourceTriangles:item.summary.triangles*(plan.placements[index].instances?.length||1) }));
         cachedSkeletons = [...new Set(resources.flatMap(item => [...item.skeletons]))];
-        loaded.push(...assets); status = 'ready'; if (fallbackGroup) fallbackGroup.visible = false;
+        loaded.push(...assets); status = 'ready'; applyLod();
         audit('ready');
       } catch (error) {
         for (const asset of assets) release(asset);
         status = 'failed'; errors.push(String(error.message));
+        applyLod();
         audit('fallback', { requestGeneration: ticket, reason: errors.at(-1) });
       }
     }).finally(() => { if (ticket === generation) { pending = null; controller = null; } });
@@ -207,6 +240,12 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
     const eligible = enabled && active && player && Number.isFinite(player.x) && Number.isFinite(player.z) &&
       Math.abs((player.groundY ?? floor.y) - floor.y) < 1.8;
     const distance = eligible ? Math.hypot(player.x - plan.centre.x, player.z - plan.centre.z) : Infinity;
+    nearestViewDistance = eligible ? Math.min(...(plan.viewCentres || [plan.centre]).map(p=>Math.hypot(player.x-p.x,player.z-p.z))) : Infinity;
+    if(plan.authored){const {near,middle,hysteresis}=plan.lod;
+      if(lodTier===0&&nearestViewDistance>near+hysteresis)lodTier=nearestViewDistance>middle+hysteresis?2:1;
+      else if(lodTier===1){if(nearestViewDistance<near-hysteresis)lodTier=0;else if(nearestViewDistance>middle+hysteresis)lodTier=2;}
+      else if(lodTier===2&&nearestViewDistance<middle-hysteresis)lodTier=nearestViewDistance<near-hysteresis?0:1;
+      applyLod();}
     const next = eligible && distance <= (wanted ? WORKSHOP_PILOT.farDistance : WORKSHOP_PILOT.nearDistance);
     if (next === wanted) return;
     wanted = next;
@@ -215,6 +254,7 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
   function snapshot() {
     return { enabled, status, wanted, assetCount: loaded.length, pending: status === 'loading', releasedAssets,
       fallbackVisible: fallbackGroup?.visible ?? null,
+      authored: !!plan?.authored, lodTier, nearestViewDistance,
       bounds: cachedBounds.map(box => ({ id: box.id, min: [...box.min], max: [...box.max] })),
       resources: cachedResources.map(resource => ({ ...resource, images: resource.images.map(image => ({ ...image })) })),
       boneTextureCount: cachedSkeletons.filter(skeleton => skeleton.boneTexture).length,

@@ -1,3 +1,4 @@
+import { addAuthoredGroundElevation } from './harbor-frontage-profiles.js';
 import { applySurfaceFinish } from './surface-finish.js';
 import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
 
@@ -197,20 +198,13 @@ export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()
     if(detail){const paving=scannedMaterial('pavement','#d5c7ad',ownedMaterials);b(paving,0,.015,1.54,site.width,.022,2.47);}
     // Ground panel masks the existing generic shop skin, while the actual
     // original shell remains the collision and interior owner.
-    b(clay,0,1.58,.34,site.width,3.12,.20);b(baseMaterials.grout,0,.29,.49,site.width,.58,.12);
+    if(!detail){b(clay,0,1.58,.34,site.width,3.12,.20);b(baseMaterials.grout,0,.29,.49,site.width,.58,.12);}
     b(stone,0,3.51,.43,site.width+.15,.21,.35);
     if(!detail) {
       b(baseMaterials.dark,0,2.98,.56,site.width-.65,.56,.11);
       for(const u of[-4.8,0,4.8])b(baseMaterials.glass,u,1.7,.51,3.75,2.35,.08);
     } else {
-      const arch=createHarborArchGeometry(THREE);
-      for(const u of[-4.8,0,4.8]) {
-        add(stone,arch,u,.05,.55);b(baseMaterials.glass,u,1.56,.565,3.69,2.94,.055);
-        // Real timber mullions, counters, and narrow tile sills catch grazing light.
-        for(const q of[-1.75,1.75])b(baseMaterials.wood,u+q,1.57,.64,.07,2.91,.12);
-        b(baseMaterials.wood,u,2.24,.64,3.52,.065,.12);b(baseMaterials.wood,u,1.10,.64,.05,2.18,.12);
-        b(stone,u,.56,.70,3.63,.09,.22);
-      }
+      group.userData.elevationStyle=addAuthoredGroundElevation(THREE,{site,add,b,c,materials:baseMaterials,clay,stone});
       const awning=textileAwning(THREE,site.width-.3,1.82);add(canvas,awning,0,0,.31);
       // A scalloped fabric valance has a real curved lower edge.
       const scallop=new THREE.Shape();const w=site.width-.3,segments=22;scallop.moveTo(-w/2,0);scallop.lineTo(w/2,0);
@@ -298,7 +292,7 @@ export function createHarborDistrict(THREE,scene,{buildings=[],groundHeightAt=()
     }
   }
   function snapshot(){let calls=0,triangles=0;root.traverse(m=>{if(m.isMesh&&m.parent.visible){calls++;triangles+=m.geometry.getAttribute('position').count/3;}});
-    return{quality:currentQuality,frontages:sites.map(s=>({id:s.id,shellId:s.shellId,name:s.name,programme:s.programme,x:s.x,z:s.z,baseY:s.baseY,width:s.width,angle:s.angle})),residentFrontages:[...resident.keys()],loads,disposedMeshes,disposedTriangles,drawCalls:calls,triangles,night,interiorBuildingId:interiorId,near:HARBOR_ART_LIMITS.near,far:HARBOR_ART_LIMITS.far,originalMaterials:true,scannedMapsLoaded:scanLoaded,scannedMapsExpected:6,scannedMapErrors:scanErrors,materialSource:'Poly Haven CC0: plastered_wall_02 / pavement_03'};}
+    return{quality:currentQuality,frontages:sites.map(s=>({id:s.id,shellId:s.shellId,name:s.name,programme:s.programme,x:s.x,z:s.z,baseY:s.baseY,width:s.width,angle:s.angle,publicDoor:{x:s.shell.x,z:s.shell.z+s.shell.depth/2+.64,y:s.baseY,yaw:0},displayFaceHasDoor:s.side===0})),residentFrontages:[...resident.keys()],loads,disposedMeshes,disposedTriangles,drawCalls:calls,triangles,night,interiorBuildingId:interiorId,near:HARBOR_ART_LIMITS.near,far:HARBOR_ART_LIMITS.far,originalMaterials:true,scannedMapsLoaded:scanLoaded,scannedMapsExpected:6,scannedMapErrors:scanErrors,materialSource:'Poly Haven CC0: plastered_wall_02 / pavement_03'};}
   const api={root,colliders,fixtures,update,snapshot,get metadata(){return snapshot();},setQuality(value){currentQuality=value;root.traverse(m=>{if(m.isMesh)m.castShadow=value==='high'&&[...resident.values()].includes(m.parent);});},setInteriorBuilding(id){interiorId=id;for(const s of sites){const near=resident.get(s.id);if(near)near.visible=s.shellId!==id;proxyGroups.get(s.id).visible=!near&&s.shellId!==id;}},dispose(){for(const id of [...resident.keys()])unload(id);root.traverse(m=>{if(m.isMesh)m.geometry.dispose();});for(const g of sharedGeometry)g.dispose();for(const t of textureSet)t.dispose();for(const m of materialCache.values())m.dispose();root.removeFromParent();root.clear();}};
   return api;
 }

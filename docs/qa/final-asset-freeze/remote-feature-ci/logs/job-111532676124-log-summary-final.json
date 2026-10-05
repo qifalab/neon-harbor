@@ -1,0 +1,132 @@
+{
+  "jobId": 111532676124,
+  "logBytes": 179823,
+  "logSha256": "8bcaf7c68791687ab10533c915af304e30f14b47431f6d6004176b26c299e484",
+  "ruleSummaries": {
+    "tests": [
+      "311"
+    ],
+    "pass": [
+      "311"
+    ],
+    "fail": [
+      "0"
+    ],
+    "cancelled": [
+      "0"
+    ],
+    "skipped": [
+      "0"
+    ],
+    "todo": [
+      "0"
+    ]
+  },
+  "playwrightTotals": [
+    [
+      "1",
+      "failed"
+    ],
+    [
+      "3",
+      "passed"
+    ]
+  ],
+  "caseLines": [
+    "2026-10-04T21:17:43.5366723Z   ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.4m)",
+    "2026-10-04T21:18:45.5420461Z   ✘  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (49.6s)",
+    "2026-10-04T21:19:57.4360897Z   ✓  3 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.2m)",
+    "2026-10-04T21:21:50.3978098Z   ✓  4 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (1.9m)",
+    "2026-10-04T21:22:06.8575929Z   1) tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings ",
+    "2026-10-04T21:22:06.8589531Z     tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings "
+  ],
+  "buildLines": [
+    "2026-10-04T21:15:52.0215306Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/",
+    "2026-10-04T21:15:52.2168091Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/",
+    "2026-10-04T21:15:52.3853461Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist"
+  ],
+  "expectedSourceCheckoutObserved": true,
+  "failureExcerpt": [
+    "2026-10-04T21:16:21.3355573Z Running 4 tests using 1 worker, shard 1 of 1",
+    "2026-10-04T21:16:21.3356216Z ",
+    "2026-10-04T21:17:43.5366723Z   ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.4m)",
+    "2026-10-04T21:18:45.5420461Z   ✘  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (49.6s)",
+    "2026-10-04T21:19:57.4360897Z   ✓  3 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.2m)",
+    "2026-10-04T21:21:50.3978098Z   ✓  4 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (1.9m)",
+    "2026-10-04T21:22:06.8562720Z ",
+    "2026-10-04T21:22:06.8566897Z ",
+    "2026-10-04T21:22:06.8575929Z   1) tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings ",
+    "2026-10-04T21:22:06.8576427Z ",
+    "2026-10-04T21:22:06.8576811Z     Error: The route must actually contact a building, not just damage a roadside prop",
+    "2026-10-04T21:22:06.8577199Z ",
+    "2026-10-04T21:22:06.8577393Z     expect(received).toBeLessThan(expected)",
+    "2026-10-04T21:22:06.8577673Z ",
+    "2026-10-04T21:22:06.8577762Z     Expected: < 0.12",
+    "2026-10-04T21:22:06.8577990Z     Received:   3.607706203071066",
+    "2026-10-04T21:22:06.8578190Z ",
+    "2026-10-04T21:22:06.8578794Z       218 |     .map(box => ({ building: box.id, separation: -vehiclePenetration(frame.cars.find(c => c.id === 'starter'), box) })))",
+    "2026-10-04T21:22:06.8579630Z       219 |     .sort((a, b) => a.separation - b.separation)[0];",
+    "2026-10-04T21:22:06.8580277Z     > 220 |   expect(contact.separation, 'The route must actually contact a building, not just damage a roadside prop').toBeLessThan(.12);",
+    "2026-10-04T21:22:06.8580862Z           |                                                                                                             ^",
+    "2026-10-04T21:22:06.8581229Z       221 |   const metrics = assertPresentation(approach);",
+    "2026-10-04T21:22:06.8581813Z       222 |   expect(errors).toEqual([]);",
+    "2026-10-04T21:22:06.8582435Z       223 |   await attachMetrics(testInfo, 'wall-contact-metrics', { ...metrics, contact, peakSpeed, impactSpeed: approach.at(-1).speed, health: car.health });",
+    "2026-10-04T21:22:06.8583105Z         at /home/runner/work/neon-harbor/neon-harbor/tests/e2e/stability.spec.js:220:109",
+    "2026-10-04T21:22:06.8583376Z ",
+    "2026-10-04T21:22:06.8583792Z     attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────",
+    "2026-10-04T21:22:06.8584333Z     test-results/stability-a-fast-steering--d72f6-ide-the-generated-buildings/video.webm",
+    "2026-10-04T21:22:06.8585233Z     ────────────────────────────────────────────────────────────────────────────────────────────────",
+    "2026-10-04T21:22:06.8585472Z ",
+    "2026-10-04T21:22:06.8585818Z     Error Context: test-results/stability-a-fast-steering--d72f6-ide-the-generated-buildings/error-context.md",
+    "2026-10-04T21:22:06.8586170Z ",
+    "2026-10-04T21:22:06.8586493Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────",
+    "2026-10-04T21:22:06.8587039Z     test-results/stability-a-fast-steering--d72f6-ide-the-generated-buildings/trace.zip",
+    "2026-10-04T21:22:06.8587411Z     Usage:",
+    "2026-10-04T21:22:06.8587515Z ",
+    "2026-10-04T21:22:06.8587875Z         npx playwright show-trace test-results/stability-a-fast-steering--d72f6-ide-the-generated-buildings/trace.zip",
+    "2026-10-04T21:22:06.8588253Z ",
+    "2026-10-04T21:22:06.8588540Z     ────────────────────────────────────────────────────────────────────────────────────────────────",
+    "2026-10-04T21:22:06.8588764Z ",
+    "2026-10-04T21:22:06.8588833Z   1 failed",
+    "2026-10-04T21:22:06.8589531Z     tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings ",
+    "2026-10-04T21:22:06.8589965Z   3 passed (5.8m)",
+    "2026-10-04T21:22:06.9229949Z ##[error]Process completed with exit code 1.",
+    "2026-10-04T21:22:06.9294704Z ##[group]Run actions/upload-artifact@v4",
+    "2026-10-04T21:22:06.9294979Z with:",
+    "2026-10-04T21:22:06.9295159Z   name: browser-test-results-stability",
+    "2026-10-04T21:22:06.9295408Z   path: playwright-report/",
+    "test-results/",
+    "",
+    "2026-10-04T21:22:06.9295639Z   if-no-files-found: ignore",
+    "2026-10-04T21:22:06.9295832Z   compression-level: 6",
+    "2026-10-04T21:22:06.9296008Z   overwrite: false",
+    "2026-10-04T21:22:06.9296189Z   include-hidden-files: false",
+    "2026-10-04T21:22:06.9296386Z ##[endgroup]",
+    "2026-10-04T21:22:07.0701371Z (node:3630) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+    "2026-10-04T21:22:07.0702068Z (Use `node --trace-deprecation ...` to show where the warning was created)",
+    "2026-10-04T21:22:07.0846270Z Multiple search paths detected. Calculating the least common ancestor of all paths",
+    "2026-10-04T21:22:07.0847797Z The least common ancestor is /home/runner/work/neon-harbor/neon-harbor. This will be the root directory of the artifact",
+    "2026-10-04T21:22:07.0848825Z With the provided path, there will be 42 files uploaded",
+    "2026-10-04T21:22:07.0849886Z Artifact name is valid!",
+    "2026-10-04T21:22:07.0850247Z Root directory input is valid!",
+    "2026-10-04T21:22:07.4339055Z Beginning upload of artifact content to blob storage",
+    "2026-10-04T21:22:07.6969156Z (node:3630) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.",
+    "2026-10-04T21:22:08.4547463Z Uploaded bytes 8388608",
+    "2026-10-04T21:22:08.6928781Z Uploaded bytes 16777216",
+    "2026-10-04T21:22:08.9723053Z Uploaded bytes 25165824",
+    "2026-10-04T21:22:09.0585648Z Uploaded bytes 27101931",
+    "2026-10-04T21:22:09.1227858Z Finished uploading artifact content to blob storage!",
+    "2026-10-04T21:22:09.1228804Z SHA256 digest of uploaded artifact zip is 4058835317f58132a9f44eed88981b0bb9272c560c1487f70f83fd838b3a1d62",
+    "2026-10-04T21:22:09.1229685Z Finalizing artifact upload",
+    "2026-10-04T21:22:09.4005821Z Artifact browser-test-results-stability.zip successfully finalized. Artifact ID 11315651048",
+    "2026-10-04T21:22:09.4007053Z Artifact browser-test-results-stability has been successfully uploaded! Final size is 27101931 bytes. Artifact ID is 11315651048",
+    "2026-10-04T21:22:09.4011443Z Artifact download URL: https://github.com/qifalab/neon-harbor/actions/runs/37235153499/artifacts/11315651048",
+    "2026-10-04T21:22:09.4206935Z Post job cleanup.",
+    "2026-10-04T21:22:09.4940280Z [command]/usr/bin/git version",
+    "2026-10-04T21:22:09.4980867Z git version 2.55.0",
+    "2026-10-04T21:22:09.5016361Z Temporarily overriding HOME='/home/runner/work/_temp/f2c5a6df-212e-4540-8d4a-00e01d3f4010' before making global git config changes",
+    "2026-10-04T21:22:09.5017451Z Adding repository directory to the temporary git global config as a safe directory",
+    "2026-10-04T21:22:09.5021357Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/neon-harbor/neon-harbor",
+    "2026-10-04T21:22:09.5059381Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand"
+  ]
+}

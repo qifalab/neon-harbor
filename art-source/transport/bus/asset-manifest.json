@@ -1,0 +1,94 @@
+{
+  "id": "nh-serein-d11-authored-v1",
+  "version": 1,
+  "status": "AUTHORED_ASSET_CANDIDATE_NATIVE_PENDING",
+  "units": "metres",
+  "axis": "+Y up,+Z forward",
+  "engineeringSpec": {
+    "name": "Tide double-decker",
+    "width": 2.55,
+    "length": 11,
+    "height": 4.4,
+    "minY": 0,
+    "maxY": 4.4,
+    "halfWidth": 1.275,
+    "halfLength": 5.5,
+    "passengerRadius": 0.22,
+    "clearAisleWidth": 0.66,
+    "routeCode": "12",
+    "floors": [
+      0.44,
+      2.4
+    ],
+    "color": "#356b68",
+    "accent": "#d7c28c"
+  },
+  "physicsSource": "original unchanged runtime layout supplied by caller",
+  "nativeValidated": false,
+  "totalGlbBytes": 11482076,
+  "assets": [
+    {
+      "file": "serein-d11-lod0.glb",
+      "path": "models/serein-d11-lod0.glb",
+      "tier": 0,
+      "sha256": "d353e32dfb4899c0bf06d9263187e3f0a8208604450a24d365c2f1998ef6a3d4",
+      "bytes": 8240500,
+      "triangles": 119044,
+      "materialCount": 14,
+      "primitiveCount": 42,
+      "externalUris": 0
+    },
+    {
+      "file": "serein-d11-lod1.glb",
+      "path": "models/serein-d11-lod1.glb",
+      "tier": 1,
+      "sha256": "e8a1f07cb99c23385687a71c3e1a38524b27890c7557e770196bb0f27a17709c",
+      "bytes": 2668124,
+      "triangles": 24992,
+      "materialCount": 14,
+      "primitiveCount": 38,
+      "externalUris": 0
+    },
+    {
+      "file": "serein-d11-lod2.glb",
+      "path": "models/serein-d11-lod2.glb",
+      "tier": 2,
+      "sha256": "b3ae63d13526376b9edf3210bc62f45c6851690558f97bce2fb89e01e6c491ab",
+      "bytes": 573452,
+      "triangles": 6948,
+      "materialCount": 10,
+      "primitiveCount": 30,
+      "externalUris": 0
+    }
+  ],
+  "editableSource": {
+    "path": "/tmp/neon-authored-bus-candidate/source/serein-d11-master.blend",
+    "bytes": 2065049,
+    "sha256": "262fcb9f7bcd5e15b52b3594279c858539ca537e856286e9fe011a2ab1af8749"
+  },
+  "designSource": {
+    "path": "/tmp/neon-authored-bus-candidate/source/author_bus.py",
+    "bytes": 27689,
+    "sha256": "ff7268f39212b41b9e8cf33a5f243063cbbfeec9256e24f9936d675632daa049"
+  },
+  "binding": {
+    "path": "/tmp/neon-authored-bus-candidate/binding/authored-bus-candidate.mjs",
+    "bytes": 9702,
+    "sha256": "6123fee5f3504479bddc879f41eb731d53c7088ae4ed02370c85746c36b37dfe"
+  },
+  "cpuProof": {
+    "path": "/tmp/neon-authored-bus-candidate/review/cpu-asset-check.json",
+    "bytes": 25603,
+    "sha256": "9fa46b07534b08e5a06812059f5c1560642add860d6dcd53d43d2da44b29f72e"
+  },
+  "sourceProvenance": {
+    "path": "/tmp/neon-authored-bus-candidate/review/source-provenance.json",
+    "bytes": 3189,
+    "sha256": "19a8a8872be75a71ef94eb867b7149ba421fb3cde420bb2184348eae2e46d51b"
+  },
+  "licenses": {
+    "originalArt": "CC0-1.0",
+    "codeAndRuntimeReference": "MIT",
+    "glyphs": "DejaVu / Bitstream license in source/DejaVu-font-copyright.txt"
+  }
+}

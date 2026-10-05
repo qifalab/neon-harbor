@@ -1,0 +1,47 @@
+{
+  "status": "PREPARED_MODULE_RESOLUTION_FIX_NO_NATIVE_RUN",
+  "firstPackage": "/tmp/neon-harbor-final-native-method",
+  "firstSealedLedgerSha256": "6bb1c51f7aed4ee64fc11de8cce03449556f67a1d3b467adab3238ce54a380c6",
+  "firstToolSha256": "cbcd9d4d33e33e768e8b1137aa2a6245c52b554c04c4bfaba9f867ec908f042d",
+  "v2ToolSha256": "817463f1d404e445f5aa9b366929abd3a8ad8f633a9e8db8ee69fb9613a39e33",
+  "runtimeChanges": [
+    "capture-authored-harbor-native.mjs"
+  ],
+  "hunk": {
+    "before": "const {chromium}=await import(pathToFileURL(requireFromRoot.resolve('@playwright/test')));",
+    "after": "const {chromium}=requireFromRoot('@playwright/test');"
+  },
+  "actualRootApiVerification": {
+    "root": "/workspace/scratch/neon-harbor",
+    "module": "/workspace/scratch/neon-harbor/node_modules/@playwright/test/index.js",
+    "launchServer": "function",
+    "executablePath": "function",
+    "executablePathResult": "/home/agent/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+    "browserLaunched": false,
+    "gpuUsed": false
+  },
+  "syntaxCheckPassed": true,
+  "routeCameraGuardsChanged": false,
+  "firstFailure": {
+    "path": "/tmp/neon-native-baseline-home-20261004",
+    "preservedFiles": [
+      {
+        "path": "/tmp/neon-native-baseline-home-20261004/build-info.json",
+        "bytes": 16323,
+        "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
+      },
+      {
+        "path": "/tmp/neon-native-baseline-home-20261004/metadata.json",
+        "bytes": 46804,
+        "sha256": "b43b8a00191b53f935896086e2271979a66511506bd4ad872381b8d6839f795c"
+      }
+    ],
+    "status": "failed",
+    "primaryError": {
+      "name": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'launchServer')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'launchServer')\n    at file:///tmp/neon-harbor-final-native-method/capture-authored-harbor-native.mjs:240:31\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    }
+  },
+  "nextStep": "Parent may start a distinct new output from the v2 CLI after its existing GPU GO; original failure is never overwritten."
+}

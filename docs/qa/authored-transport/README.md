@@ -1,0 +1,3 @@
+# Authored transport archive evidence
+
+This directory holds exact raw C candidate ledgers, provenance, Blender/export logs and CPU geometry/clearance/budget results selected by the independent source archive supplement. Read `art-source/transport/README.md` and `source-archive-provenance.json` for source mapping, budgets, preserved failures, and native validation limits. The original bus excluded failure history is explicitly distinguished from its production seal entries. Original JSON/log status and paths were not edited. Empty geometric issues does not override a failed budget field. Current reports and logs are archival CPU evidence, not new runtime/native acceptance.

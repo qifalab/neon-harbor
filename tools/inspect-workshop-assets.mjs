@@ -10,8 +10,9 @@ export async function parseWorkshopAssetCPU(bytes) {
   loader.register(parser => ({ name: 'CPU_texture_reference_validation', loadTexture: async index => {
     const definition = parser.json.textures[index], image = parser.json.images[definition.source];
     const payload = await parser.getDependency('bufferView', image.bufferView);
-    if (image.mimeType !== 'image/jpeg' || new Uint8Array(payload)[0] !== 0xff || new Uint8Array(payload)[1] !== 0xd8)
-      throw new Error('The embedded texture must contain acquired JPEG bytes');
+    const header=new Uint8Array(payload),jpeg=image.mimeType==='image/jpeg'&&header[0]===0xff&&header[1]===0xd8,
+      png=image.mimeType==='image/png'&&header[0]===0x89&&header[1]===0x50&&header[2]===0x4e&&header[3]===0x47;
+    if (!jpeg && !png) throw new Error('Embedded acquired JPEG or authored PNG bytes are required');
     const texture = new THREE.Texture(); texture.flipY = false;
     texture.userData.cpuPlaceholder = true; texture.userData.embeddedBytes = payload.byteLength;
     parser.associations.set(texture, { textures: index });

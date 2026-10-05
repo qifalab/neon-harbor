@@ -1,0 +1,556 @@
+{
+  "schema": "neon-harbor-cabin-segment-v1",
+  "file": "cabin-segment-0027.json",
+  "status": "passed",
+  "context": {
+    "label": "tram",
+    "kind": "tram",
+    "vehicleId": "harbor-tram-2",
+    "from": "harbor-tram-quay",
+    "to": "harbor-tram-lantern",
+    "doorId": "tram-door-0-port",
+    "role": "cabin-waypoint"
+  },
+  "methodSha256": "a8ff1a10fb47c97d2385054e65503b3269ba1a44fc3d2f7318bf5fe39603e537",
+  "manifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "precision": true,
+  "target": {
+    "x": 0,
+    "z": -3.52
+  },
+  "requestedAt": "2026-10-04T22:31:05.481Z",
+  "startedAt": "2026-10-04T22:31:05.483Z",
+  "deadlineAt": "2026-10-04T22:33:35.483Z",
+  "endedAt": "2026-10-04T22:31:11.322Z",
+  "wallBudgetMilliseconds": 150000,
+  "effectiveWallBudgetMilliseconds": 150000,
+  "elapsedWallMilliseconds": 5839,
+  "initial": {
+    "local": {
+      "x": -0.05499999999999962,
+      "y": 0.44,
+      "z": -3.45,
+      "yaw": 1.5707963267948966
+    },
+    "vehicle": {
+      "id": "harbor-tram-2",
+      "routeId": "harbor-tram",
+      "kind": "tram",
+      "x": 248,
+      "y": 0,
+      "z": -180,
+      "yaw": 3.141592653589793,
+      "stopId": "harbor-tram-quay",
+      "doorsOpen": true,
+      "remaining": 10.08521992332335,
+      "nextStopId": "harbor-tram-quay",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 312.212435913122,
+      "serviceTime": 781.3208974199184,
+      "held": null,
+      "trafficState": "dwell",
+      "junction": {
+        "x": 240,
+        "z": -160,
+        "axis": "z",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "cameraYaw": 3.141592653589793,
+    "sensitivity": 1,
+    "time": 1063.2166666660285,
+    "revision": 17,
+    "deck": "lower"
+  },
+  "current": {
+    "local": {
+      "x": -0.008760799105898533,
+      "y": 0.44,
+      "z": -3.509050286203162,
+      "yaw": 2.4772741880075255
+    },
+    "vehicle": {
+      "id": "harbor-tram-2",
+      "routeId": "harbor-tram",
+      "kind": "tram",
+      "x": 248,
+      "y": 0,
+      "z": -180,
+      "yaw": 3.141592653589793,
+      "stopId": "harbor-tram-quay",
+      "doorsOpen": true,
+      "remaining": 9.335219923324033,
+      "nextStopId": "harbor-tram-quay",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 312.212435913122,
+      "serviceTime": 782.0708974199177,
+      "held": null,
+      "trafficState": "dwell",
+      "junction": {
+        "x": 240,
+        "z": -160,
+        "axis": "z",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "cameraYaw": 2.475705602441767,
+    "sensitivity": 1,
+    "time": 1063.9666666660278,
+    "revision": 17,
+    "deck": "lower"
+  },
+  "actualCurrent": {
+    "local": {
+      "x": -0.008760799105898533,
+      "y": 0.44,
+      "z": -3.509050286203162,
+      "yaw": 2.4772741880075255
+    },
+    "vehicle": {
+      "id": "harbor-tram-2",
+      "routeId": "harbor-tram",
+      "kind": "tram",
+      "x": 248,
+      "y": 0,
+      "z": -180,
+      "yaw": 3.141592653589793,
+      "stopId": "harbor-tram-quay",
+      "doorsOpen": true,
+      "remaining": 9.335219923324033,
+      "nextStopId": "harbor-tram-quay",
+      "secondsToArrival": 0,
+      "speed": 0,
+      "delay": 312.212435913122,
+      "serviceTime": 782.0708974199177,
+      "held": null,
+      "trafficState": "dwell",
+      "junction": {
+        "x": 240,
+        "z": -160,
+        "axis": "z",
+        "direction": -1,
+        "committed": true
+      }
+    },
+    "cameraYaw": 2.475705602441767,
+    "sensitivity": 1,
+    "time": 1063.9666666660278,
+    "revision": 17,
+    "deck": "lower"
+  },
+  "actualCurrentObservedAt": "2026-10-04T22:31:11.322Z",
+  "snapshotError": null,
+  "samples": [
+    {
+      "local": {
+        "x": -0.05499999999999962,
+        "y": 0.44,
+        "z": -3.45,
+        "yaw": 1.5707963267948966
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 10.08521992332335,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 781.3208974199184,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 3.141592653589793,
+      "sensitivity": 1,
+      "time": 1063.2166666660285,
+      "revision": 17,
+      "deck": "lower",
+      "observedAt": "2026-10-04T22:31:05.483Z"
+    },
+    {
+      "local": {
+        "x": -0.008760799105898533,
+        "y": 0.44,
+        "z": -3.509050286203162,
+        "yaw": 2.4772741880075255
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 9.335219923324033,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 782.0708974199177,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 2.475705602441767,
+      "sensitivity": 1,
+      "time": 1063.9666666660278,
+      "revision": 17,
+      "deck": "lower",
+      "key": "s",
+      "slow": true,
+      "observedAt": "2026-10-04T22:31:11.322Z",
+      "heldSeconds": 0.24999999999977263,
+      "geometricMetres": 0.0750000000000023
+    }
+  ],
+  "heldSeconds": 0.24999999999977263,
+  "geometricMetres": 0.0750000000000023,
+  "completedInputIterations": {
+    "count": 1,
+    "heldSeconds": 0.24999999999977263,
+    "geometricMetres": 0.0750000000000023
+  },
+  "firstInput": {
+    "iteration": 0,
+    "key": "s",
+    "slow": true,
+    "requestedAt": "2026-10-04T22:31:08.311Z",
+    "before": {
+      "local": {
+        "x": -0.05499999999999962,
+        "y": 0.44,
+        "z": -3.45,
+        "yaw": 1.5707963267948966
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 10.08521992332335,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 781.3208974199184,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 3.141592653589793,
+      "sensitivity": 1,
+      "time": 1063.2166666660285,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "keydown": {
+      "local": {
+        "x": -0.05499999999999962,
+        "y": 0.44,
+        "z": -3.45,
+        "yaw": 1.5707963267948966
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 9.585219923323805,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 781.820897419918,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 2.4772741880075255,
+      "sensitivity": 1,
+      "time": 1063.716666666028,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "slowDownDispatched": true,
+    "keyDownDispatched": true,
+    "releaseCompleted": true,
+    "collected": true,
+    "guardsPassed": true,
+    "terminalHeldObservation": null,
+    "error": null,
+    "keydownObservedAt": "2026-10-04T22:31:08.317Z",
+    "releasedAt": "2026-10-04T22:31:11.321Z",
+    "after": {
+      "local": {
+        "x": -0.008760799105898533,
+        "y": 0.44,
+        "z": -3.509050286203162,
+        "yaw": 2.4772741880075255
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 9.335219923324033,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 782.0708974199177,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 2.475705602441767,
+      "sensitivity": 1,
+      "time": 1063.9666666660278,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "collectedAt": "2026-10-04T22:31:11.322Z"
+  },
+  "lastInput": {
+    "iteration": 0,
+    "key": "s",
+    "slow": true,
+    "requestedAt": "2026-10-04T22:31:08.311Z",
+    "before": {
+      "local": {
+        "x": -0.05499999999999962,
+        "y": 0.44,
+        "z": -3.45,
+        "yaw": 1.5707963267948966
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 10.08521992332335,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 781.3208974199184,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 3.141592653589793,
+      "sensitivity": 1,
+      "time": 1063.2166666660285,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "keydown": {
+      "local": {
+        "x": -0.05499999999999962,
+        "y": 0.44,
+        "z": -3.45,
+        "yaw": 1.5707963267948966
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 9.585219923323805,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 781.820897419918,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 2.4772741880075255,
+      "sensitivity": 1,
+      "time": 1063.716666666028,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "slowDownDispatched": true,
+    "keyDownDispatched": true,
+    "releaseCompleted": true,
+    "collected": true,
+    "guardsPassed": true,
+    "terminalHeldObservation": null,
+    "error": null,
+    "keydownObservedAt": "2026-10-04T22:31:08.317Z",
+    "releasedAt": "2026-10-04T22:31:11.321Z",
+    "after": {
+      "local": {
+        "x": -0.008760799105898533,
+        "y": 0.44,
+        "z": -3.509050286203162,
+        "yaw": 2.4772741880075255
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 9.335219923324033,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 782.0708974199177,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 2.475705602441767,
+      "sensitivity": 1,
+      "time": 1063.9666666660278,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "collectedAt": "2026-10-04T22:31:11.322Z"
+  },
+  "lastCommand": {
+    "iteration": 0,
+    "key": "s",
+    "slow": true,
+    "desiredYaw": 2.475623416210686,
+    "before": {
+      "local": {
+        "x": -0.05499999999999962,
+        "y": 0.44,
+        "z": -3.45,
+        "yaw": 1.5707963267948966
+      },
+      "vehicle": {
+        "id": "harbor-tram-2",
+        "routeId": "harbor-tram",
+        "kind": "tram",
+        "x": 248,
+        "y": 0,
+        "z": -180,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-quay",
+        "doorsOpen": true,
+        "remaining": 10.08521992332335,
+        "nextStopId": "harbor-tram-quay",
+        "secondsToArrival": 0,
+        "speed": 0,
+        "delay": 312.212435913122,
+        "serviceTime": 781.3208974199184,
+        "held": null,
+        "trafficState": "dwell",
+        "junction": {
+          "x": 240,
+          "z": -160,
+          "axis": "z",
+          "direction": -1,
+          "committed": true
+        }
+      },
+      "cameraYaw": 3.141592653589793,
+      "sensitivity": 1,
+      "time": 1063.2166666660285,
+      "revision": 17,
+      "deck": "lower"
+    },
+    "pointerOrbitYaw": 3.141592653589793,
+    "requestedAt": "2026-10-04T22:31:05.483Z"
+  },
+  "cleanupErrors": [],
+  "errorCaughtAt": null,
+  "error": null
+}

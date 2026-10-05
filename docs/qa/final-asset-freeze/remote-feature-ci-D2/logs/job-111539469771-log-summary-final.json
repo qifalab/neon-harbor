@@ -1,0 +1,45 @@
+{
+  "jobId": 111539469771,
+  "expectedSourceSha": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "logBytes": 176689,
+  "logSha256": "e31144caacc4f4b908f0de189bbf3ea8f97a934f9929bc412fdd2ec20a694624",
+  "ruleSummaries": {
+    "tests": [
+      "311"
+    ],
+    "pass": [
+      "311"
+    ],
+    "fail": [
+      "0"
+    ],
+    "cancelled": [
+      "0"
+    ],
+    "skipped": [
+      "0"
+    ],
+    "todo": [
+      "0"
+    ]
+  },
+  "playwrightTotals": [
+    [
+      "4",
+      "passed"
+    ]
+  ],
+  "caseLines": [
+    "2026-10-04T21:54:07.0138163Z   ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.8m)",
+    "2026-10-04T21:55:16.2154668Z   ✓  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (1.2m)",
+    "2026-10-04T21:56:57.9500956Z   ✓  3 tests/e2e/stability.spec.js:259:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.7m)",
+    "2026-10-04T21:59:35.3332629Z   ✓  4 tests/e2e/stability.spec.js:296:1 › driving streams real city resources and evicts distant detail within the cache limit (2.6m)"
+  ],
+  "buildLines": [
+    "2026-10-04T21:51:51.3444867Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/",
+    "2026-10-04T21:51:51.5820378Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/",
+    "2026-10-04T21:51:51.7292646Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist"
+  ],
+  "expectedSourceCheckoutObserved": true,
+  "failureExcerpt": []
+}

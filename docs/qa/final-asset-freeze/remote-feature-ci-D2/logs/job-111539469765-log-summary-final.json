@@ -1,0 +1,43 @@
+{
+  "jobId": 111539469765,
+  "expectedSourceSha": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "logBytes": 176212,
+  "logSha256": "98a1eff3d9d219d8eafbd34badc11117f560e539f6d9ad13707dd3d70a9175c7",
+  "ruleSummaries": {
+    "tests": [
+      "311"
+    ],
+    "pass": [
+      "311"
+    ],
+    "fail": [
+      "0"
+    ],
+    "cancelled": [
+      "0"
+    ],
+    "skipped": [
+      "0"
+    ],
+    "todo": [
+      "0"
+    ]
+  },
+  "playwrightTotals": [
+    [
+      "2",
+      "passed"
+    ]
+  ],
+  "caseLines": [
+    "2026-10-04T21:59:48.6734445Z   ✓  1 tests/e2e/metropolis.spec.js:173:3 › metro: wait, board, travel and alight using public controls (7.4m)",
+    "2026-10-04T22:04:10.2243266Z   ✓  2 tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls (4.4m)"
+  ],
+  "buildLines": [
+    "2026-10-04T21:51:55.6753439Z Built 58 city districts (6888 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/city/chunks/",
+    "2026-10-04T21:51:55.9183145Z Built 12 north-shore districts (6603 KiB) at /home/runner/work/neon-harbor/neon-harbor/assets/metropolis/chunks/",
+    "2026-10-04T21:51:56.0749440Z Built static game at /home/runner/work/neon-harbor/neon-harbor/dist"
+  ],
+  "expectedSourceCheckoutObserved": true,
+  "failureExcerpt": []
+}

@@ -1,0 +1,42 @@
+{
+  "startedAt": "2026-10-04T22:47:26.024274+00:00",
+  "finishedAt": "2026-10-04T22:47:30.167683+00:00",
+  "argv": [
+    "nice",
+    "-n",
+    "15",
+    "node",
+    "--test",
+    "--test-concurrency=1",
+    "tests/harbor-workshop-pilot.test.js",
+    "tests/harbor-home-authored.test.js",
+    "tests/resident-core-assets.test.js",
+    "tests/resident-role-pool.test.js",
+    "tests/resident-north-integration.test.js"
+  ],
+  "cwd": "/tmp/neon-harbor-authored-integration",
+  "exitCode": 0,
+  "scope": "five bounded asset/one-building/North selected-address fixtures; no full createWorld, build, browser, GPU",
+  "inputs": [
+    {
+      "path": "tests/harbor-workshop-pilot.test.js",
+      "sha256": "7b5a9b9449483e178838ce789d069873b2801ccd201ee310aa3491244c011ac6"
+    },
+    {
+      "path": "tests/harbor-home-authored.test.js",
+      "sha256": "8dfcf5a63600005518e165f2d6deee97e950f4b1157866eb1fb4e97b1a71345f"
+    },
+    {
+      "path": "tests/resident-core-assets.test.js",
+      "sha256": "1a5e1bdbd37ac9ad5bf7e289ee08686be97a23eb33cac7f5b59ef41bc1e0f312"
+    },
+    {
+      "path": "tests/resident-role-pool.test.js",
+      "sha256": "786bda2e4a7be4fee60de8ba978dfbd2d861817f44b93d84ab8d7b3f50157444"
+    },
+    {
+      "path": "tests/resident-north-integration.test.js",
+      "sha256": "dd2f5a509bf62fbbe5ed95498d5354e324000f8566d5c207478f0c95afba999b"
+    }
+  ]
+}

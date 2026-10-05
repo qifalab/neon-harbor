@@ -3,7 +3,8 @@ import { renderMultiplayerMenu, refreshMultiplayerMenu } from './multiplayer-ui.
 import * as THREE from '../vendor/three/three.module.js';
 import { createCityExploration } from './city-exploration.js';
 import { renderCityGuide, renderElevatorPanel } from './city-guide.js';
-import { createCar, createCharacter } from './models.js';
+import { createCar } from './models.js';
+import { createNearResident as createCharacter, createResidentAssetLibrary } from './resident-core-assets.js';
 import { GameSimulation, MISSION_DEFS } from './simulation.js';
 import { CityAudio } from './audio.js';
 import { FIXED_STEP, captureSimulation, RenderSnapshots } from './presentation.js';
@@ -23,6 +24,8 @@ const SAVE_KEY='neon-harbor.progress.v1', SETTINGS_KEY='neon-harbor.settings.v1'
 const defaults={quality:'high',volume:.3,dayCycle:true,hour:16.5,sensitivity:1,firstPerson:false,touch:matchMedia('(pointer:coarse)').matches};
 let settings={...defaults},saved=null,storageOK=true;
 try{saved=localStorage.getItem(SAVE_KEY);const v=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'null');if(v&&typeof v==='object'){settings={quality:['high','balanced','low'].includes(v.quality)?v.quality:defaults.quality,volume:clamp(Number(v.volume)||0,0,1),dayCycle:typeof v.dayCycle==='boolean'?v.dayCycle:true,hour:Number.isFinite(v.hour)?clamp(v.hour,0,23.9):defaults.hour,sensitivity:Number.isFinite(v.sensitivity)?clamp(v.sensitivity,.3,2):1,firstPerson:v.firstPerson===true,touch:typeof v.touch==='boolean'?v.touch:defaults.touch};}}catch{storageOK=false;}
+let residentAssets;
+const residentViewerPosition=new THREE.Vector3();
 let renderer,scene,camera,world,sim,character,sun,hemi,marker,markerRing,tracer,atmosphere,contactOcclusion;
 let started=false,activeTab='jobs',paused=false,sceneTime=0,hudElapsed=0,saveElapsed=0,lastRevision=-1,lastShot=-1;
 const frameClock=new FixedStepClock(FIXED_STEP);
@@ -198,7 +201,7 @@ function renderPanel(){
   }
 }
 
-function applyQuality(){if(!renderer)return;world?.setQuality?.(settings.quality);const scale={high:2,balanced:1.2,low:.8}[settings.quality];renderer.setPixelRatio(Math.min(devicePixelRatio,scale));renderer.shadowMap.enabled=settings.quality==='high';renderer.setSize(innerWidth,innerHeight,false);contactOcclusion?.setQuality(settings.quality);if(world)world.root.traverse(n=>{if(n.isMesh&&!n.userData.noShadow)n.castShadow=settings.quality==='high';});}
+function applyQuality(){if(!renderer)return;residentAssets?.setQuality(settings.quality);world?.setQuality?.(settings.quality);const scale={high:2,balanced:1.2,low:.8}[settings.quality];renderer.setPixelRatio(Math.min(devicePixelRatio,scale));renderer.shadowMap.enabled=settings.quality==='high';renderer.setSize(innerWidth,innerHeight,false);contactOcclusion?.setQuality(settings.quality);if(world)world.root.traverse(n=>{if(n.isMesh&&!n.userData.noShadow)n.castShadow=settings.quality==='high';});}
 const mapExtent={x:-800,z:-1450,width:2600,depth:2500};
 function buildMap(){
   const canvas=document.createElement('canvas');canvas.width=1040;canvas.height=1000;const c=canvas.getContext('2d');
@@ -282,7 +285,7 @@ function updatePeers(dt){
   for(const peer of multiplayer.peers.sample(performance.now())){
     if(peer.id===multiplayer.session?.id)continue;
     alive.add(peer.id);let model=peerMeshes.get(peer.id);
-    if(!model){model=createCharacter(THREE,{style:peerMeshes.size%8});scene.add(model);peerMeshes.set(peer.id,model);}
+    if(!model){model=createCharacter(THREE,{style:peerMeshes.size%8,role:['commuter','worker','shopkeeper'][peerMeshes.size%3],quality:settings.quality,assetLibrary:residentAssets,presentationId:'peer:'+peer.id});scene.add(model);peerMeshes.set(peer.id,model);}
     const previous=model.position.clone(),moving=model.userData.peerPose&&previous.distanceTo(new THREE.Vector3(peer.x,peer.y,peer.z))>.002;
     model.position.set(peer.x,peer.y,peer.z);model.rotation.y=peer.yaw;model.userData.peerPose=true;
     model.visible=peer.scene===roomScene()&&!peer.carId&&Math.hypot(peer.x-sim.position.x,peer.z-sim.position.z)<600;
@@ -294,7 +297,7 @@ function updateVisuals(dt){
   updatePeers(dt);
   const visualCars=world.sample.transit.riding?world.vehicles:sim.cars;const alive=new Set();for(const car of visualCars){alive.add(car.id);let model=carMeshes.get(car.id);if(!model){model=createCar(THREE,car.color,car.police?'police':car.type);scene.add(model);carMeshes.set(car.id,model);}const pose=renderFrame.cars.get(car.id)||car;model.position.set(pose.x,pose.y||0,pose.z);model.rotation.order='YXZ';model.rotation.set(pose.pitch||0,pose.yaw,pose.roll||0);model.visible=car.health>0&&Math.hypot(pose.x-renderFrame.subject.x,pose.z-renderFrame.subject.z)<600;for(const wheel of model.userData.wheelsAll||model.userData.wheels||[])wheel.rotation.x+=(pose.speed||0)*dt/VEHICLE_DIMENSIONS.wheelRadius;for(const [i,light] of (model.userData.policeLights||[]).entries()){light.emissiveIntensity=(Math.sin(sceneTime*13+i*Math.PI)>0?4:.2);}}
   for(const [id,model] of carMeshes)if(!alive.has(id)){scene.remove(model);carMeshes.delete(id);model.userData.disposeInstance?.();}
-  character.position.set(renderFrame.player.x,renderFrame.player.y,renderFrame.player.z);character.rotation.y=renderFrame.player.yaw;character.visible=!sim.inCar&&!world.riding&&!settings.firstPerson;
+  character.position.set(renderFrame.player.x,renderFrame.player.y,renderFrame.player.z);character.rotation.y=renderFrame.player.yaw;character.visible=!sim.inCar&&!world.riding&&!settings.firstPerson;character.userData.setPresentation?.({quality:settings.quality,firstPerson:settings.firstPerson,dead:sim.player.health<=0});
   const moving=inputState(),walkAmount=Math.abs(moving.forward)+Math.abs(moving.strafe)>0&&!paused?.55:0;
   animateCharacter(character,renderFrame.elapsed*(moving.sprint?15:10),walkAmount,moving.sprint);
   for(const [i,walker] of walkers.entries()){
@@ -358,7 +361,7 @@ function lighting(dt){
     sunTarget.position.addScaledVector(sunRight,Math.round(right/texel)*texel-right);
     sunTarget.position.addScaledVector(sunUp,Math.round(up/texel)*texel-up);
   }
-  sun.position.copy(sunTarget.position).add(sunOffset);sunTarget.updateMatrixWorld();world.update(dt,settings.hour/24,{trafficTime:multiplayer.snapshot?.time??sim.elapsed,position:started?renderFrame.subject:menuFocus,velocity:{x:sim.activeVehicle?.vx||0,z:sim.activeVehicle?.vz||0}});
+  sun.position.copy(sunTarget.position).add(sunOffset);sunTarget.updateMatrixWorld();world.update(dt,settings.hour/24,{trafficTime:multiplayer.snapshot?.time??sim.elapsed,position:started?renderFrame.subject:menuFocus,viewerPosition:camera.getWorldPosition(residentViewerPosition),velocity:{x:sim.activeVehicle?.vx||0,z:sim.activeVehicle?.vz||0}});
 }
 function frame(time){
   requestAnimationFrame(frame);const active=started&&!paused&&!document.hidden;
@@ -382,7 +385,7 @@ function frame(time){
     saveElapsed+=dt;if(saveElapsed>8||lastRevision!==sim.saveRevision){save();saveElapsed=0;lastRevision=sim.saveRevision;}drainMessages();
   }
   if(multiplayer.session){multiplayer.state({pose:{x:sim.position.x,y:sim.inCar?sim.activeVehicle.y||0:sim.player.groundY+sim.player.y,z:sim.position.z,yaw:sim.position.yaw},scene:roomScene(),speed:sim.activeVehicle?.speed||0,travel:roomRevision!==sim.teleportRevision,revision:sim.teleportRevision});roomRevision=sim.teleportRevision;}
-  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);world.sample.transit.updateRender(camera,settings.hour);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);contactOcclusion.render(scene,camera);
+  updateVisuals(paused?0:dt);updateCamera(dt);updateModelDetail();lighting(paused&&started?0:dt);residentAssets.updatePresentation(camera,paused&&started?0:dt);world.sample.transit.updateRender(camera,settings.hour,settings.quality);world.updateRenderVisibility(camera);hudElapsed+=dt;if(hudElapsed>.12){hudElapsed=0;updateHUD();}audio.update(sim.speed,!!sim.inCar,sim.wanted,paused||!started);contactOcclusion.render(scene,camera);
 }
 
 // Isolated art-review instrumentation: counts and actual switches only. It
@@ -403,13 +406,14 @@ try{
   atmosphere=createAtmosphere(THREE,renderer,scene);
   contactOcclusion=createContactOcclusion(THREE,renderer);
   startupPhase='city';
-  world=createCityExploration(THREE,scene,{quality:settings.quality,readRendererMemory:()=>({geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}),onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim,{save:saved,hour:settings.hour});resetPresentation();await prepareLocation(false,menuFocus);
+  residentAssets=createResidentAssetLibrary(THREE,{quality:settings.quality,managed:true});
+  world=createCityExploration(THREE,scene,{quality:settings.quality,residentAssets,readRendererMemory:()=>({geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}),onContextChange:colliders=>{renderCollisionIndex=new SpatialIndex(colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(colliders.filter(box=>box.camera!==false));}});renderCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.physics!==false));cameraCollisionIndex=new SpatialIndex(world.colliders.filter(box=>box.camera!==false));sim=new GameSimulation({colliders:world.colliders,bounds:world.bounds,groundHeightAt:world.groundHeightAt,save:saved});world.bind(sim,{save:saved,hour:settings.hour});resetPresentation();await prepareLocation(false,menuFocus);
   atmosphere.setBuildings?.(world.buildings);
-  character=createCharacter(THREE);scene.add(character);
-  for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
+  character=createCharacter(THREE,{role:'commuter',quality:settings.quality,assetLibrary:residentAssets,firstPerson:settings.firstPerson,nearPriority:1,presentationId:'local-player'});scene.add(character);
+  for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8,role:['commuter','worker','shopkeeper'][i%3],quality:settings.quality,assetLibrary:residentAssets,presentationId:'walker:'+i});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
   marker=new THREE.Group();markerRing=new THREE.Mesh(new THREE.TorusGeometry(5,.12,6,48),new THREE.MeshBasicMaterial({color:'#e4ff9d'}));markerRing.rotation.x=Math.PI/2;marker.add(markerRing);const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.8),new THREE.MeshBasicMaterial({color:'#d5ff9a'}));diamond.position.y=4;marker.add(diamond);const beam=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,18,8),new THREE.MeshBasicMaterial({color:'#dcffa5',transparent:true,opacity:.38,depthWrite:false}));beam.position.y=9;marker.add(beam);scene.add(marker);
   tracer=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineBasicMaterial({color:'#ffeab1',transparent:true,opacity:.8}));tracer.visible=false;scene.add(tracer);
-  mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);world.updateRenderVisibility(camera);contactOcclusion.render(scene,camera);
+  mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);residentAssets.updatePresentation(camera,0);world.updateRenderVisibility(camera);contactOcclusion.render(scene,camera);
   bootCompleted=true;$('loading').classList.add('hidden');$('welcome').classList.remove('hidden');$('start').disabled=false;$('harbor-start').disabled=false;$('start').firstChild.textContent=saved?'继续上次旅程 ':'从旧城出发 ';
   if(!storageOK)toast('浏览器无法读取存储，可继续游玩并手动导出进度。','warning');
   // Diagnostics read actual mesh transforms, not just presentation bookkeeping.
@@ -420,8 +424,8 @@ try{
       renderedSubject:model?{x:model.position.x,y:model.position.y,z:model.position.z,yaw:model.rotation.y}:null};
   };
   // Read-only diagnostics help automated QA verify real input and renderer state.
-  Object.defineProperty(window,'__NEON__',{value:Object.freeze({snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},fps:Math.round(fps),timing:{...frameTiming},renderer:rendererReviewState()})})});
-  window.addEventListener('pagehide',event=>{multiplayer.leave();if(!event.persisted)contactOcclusion.dispose();});
+  Object.defineProperty(window,'__NEON__',{value:Object.freeze({snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},residentAssets:residentAssets.snapshot({includeReview:true}),fps:Math.round(fps),timing:{...frameTiming},renderer:rendererReviewState()})})});
+  window.addEventListener('pagehide',event=>{multiplayer.leave();if(!event.persisted){contactOcclusion.dispose();world?.sample?.lifeRenderer?.dispose();world?.people?.dispose();character?.userData.disposeInstance?.();for(const actor of [...walkers,...peerMeshes.values()])actor.userData.disposeInstance?.();residentAssets?.dispose();}});
   window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();applyQuality();});
   $('game').addEventListener('webglcontextlost',event=>{event.preventDefault();paused=true;save();toast('图形上下文中断，进度已保存。请刷新页面恢复。','warning');});
   requestAnimationFrame(frame);

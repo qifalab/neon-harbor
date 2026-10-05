@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-04T22:29:09.722338+00:00",
+  "previousArchivalHelperAttempt": {
+    "helper": "neon-ci-close-v3.py",
+    "exitCode": 1,
+    "error": "KeyError: rawRunFile",
+    "cause": "Snapshot glob also selected newly derived failure-summary.json",
+    "failedBeforeAnyClosureOutput": true,
+    "noCiRerunCancelOrGitMutation": true
+  },
+  "correctedArchivalHelper": {
+    "source": "/tmp/neon-ci-close-v4.py",
+    "copy": "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/remote-feature-ci-D2/provenance/neon-ci-close-v4.py",
+    "bytes": 15230,
+    "sha256": "b6035065aeaa13a174adca18808a5d8536c03e7e6d390ae0715f50ebd80f94a5",
+    "change": "Select only timestamped raw polling summary filenames; original v2/v3 helpers remain byte-identical",
+    "actualExecutedYet": false
+  }
+}

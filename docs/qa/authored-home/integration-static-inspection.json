@@ -1,0 +1,766 @@
+{
+  "scope": "One actual building, two original room layouts and four packed assets. CPU texture placeholders: native decode, WebGL, real movement and visual judgement excluded",
+  "passed": true,
+  "elapsedMs": 422.64601,
+  "runtimeBytes": 10492852,
+  "strictByteLimit": 12000000,
+  "wholeHomeVisibleNear": {
+    "meshes": 26,
+    "triangles": 83216
+  },
+  "wholeHomeVisibleMiddle": {
+    "meshes": 18,
+    "triangles": 79568
+  },
+  "wholeHomeVisibleFar": {
+    "meshes": 7,
+    "triangles": 1100
+  },
+  "packedAllTriangles": 84316,
+  "packedAllMeshes": 33,
+  "models": [
+    {
+      "id": "sofa_03",
+      "bytes": 818172,
+      "sha256": "8bf6e226b6add7aaf31479dd824e50c8ce6024df48cb609b900976f6991b5a3b",
+      "packedTriangles": 8004,
+      "packedMeshes": 2,
+      "bounds": {
+        "min": [
+          -1.365588665008545,
+          0.0006283945986069739,
+          -0.46388354897499084
+        ],
+        "max": [
+          1.365588665008545,
+          1.1188924312591553,
+          0.46120065450668335
+        ]
+      },
+      "officialPBRReferences": {
+        "triangles": 8004,
+        "meshes": 2,
+        "skinnedMeshes": 0,
+        "vertices": 5655,
+        "geometryCount": 2,
+        "materialCount": 2,
+        "textureCount": 6,
+        "potentialColourPassDrawCalls": 2,
+        "bounds": {
+          "min": [
+            -1.365588665008545,
+            0.0006283945986069739,
+            -0.46388354897499084
+          ],
+          "max": [
+            1.365588665008545,
+            1.1188924312591553,
+            0.46120065450668335
+          ],
+          "size": [
+            2.73117733001709,
+            1.1182640366605483,
+            0.9250842034816742
+          ]
+        },
+        "validationScope": "CPU geometry/skin/node/PBR references; JPEG decoding and WebGL excluded"
+      }
+    },
+    {
+      "id": "old_bed_frame",
+      "bytes": 4040420,
+      "sha256": "910cc9d69a03285ffa6b66fd7734be68a7f6a045f14ae5922aa4e5946fdefa9f",
+      "packedTriangles": 49990,
+      "packedMeshes": 1,
+      "bounds": {
+        "min": [
+          -0.44760647416114807,
+          5.0353154534832356e-8,
+          -0.9984514713287354
+        ],
+        "max": [
+          0.4570513665676117,
+          1.2014838457107544,
+          1.0032745599746704
+        ]
+      },
+      "officialPBRReferences": {
+        "triangles": 49990,
+        "meshes": 1,
+        "skinnedMeshes": 0,
+        "vertices": 35560,
+        "geometryCount": 1,
+        "materialCount": 1,
+        "textureCount": 3,
+        "potentialColourPassDrawCalls": 1,
+        "bounds": {
+          "min": [
+            -0.44760647416114807,
+            5.0353154534832356e-8,
+            -0.9984514713287354
+          ],
+          "max": [
+            0.4570513665676117,
+            1.2014838457107544,
+            1.0032745599746704
+          ],
+          "size": [
+            0.9046578407287598,
+            1.2014837953575999,
+            2.0017260313034058
+          ]
+        },
+        "validationScope": "CPU geometry/skin/node/PBR references; JPEG decoding and WebGL excluded"
+      }
+    },
+    {
+      "id": "home-lobby-fittings",
+      "bytes": 3948944,
+      "sha256": "9db26832bae72c3f1f96e2b1a093a748ac0cee0ac864f6b1b8ac96d8da9d4ced",
+      "packedTriangles": 15230,
+      "packedMeshes": 14,
+      "bounds": {
+        "min": [
+          -8.387999534606934,
+          -2.1046966836024694e-8,
+          -1.4125421047210693
+        ],
+        "max": [
+          -4.224999904632568,
+          2.7149999141693115,
+          7.980000019073486
+        ]
+      },
+      "officialPBRReferences": null
+    },
+    {
+      "id": "home-gallery-fittings",
+      "bytes": 1685316,
+      "sha256": "d0aee01ed0d4cd04080ecf1058f0e4ff699f22edc14d49b2889d6c110c936bba",
+      "packedTriangles": 11092,
+      "packedMeshes": 16,
+      "bounds": {
+        "min": [
+          -8.460000038146973,
+          -1.4305114426349519e-8,
+          -1.7100000381469727
+        ],
+        "max": [
+          -4.400000095367432,
+          2.7149999141693115,
+          7.820000171661377
+        ]
+      },
+      "officialPBRReferences": null
+    }
+  ],
+  "floors": [
+    {
+      "floorId": "lobby",
+      "roomIds": [
+        "south-079-lobby-0",
+        "south-079-lobby-1"
+      ],
+      "originalFurnitureRemoved": [
+        "south-079:lobby:196",
+        "south-079:lobby:197",
+        "south-079:lobby:198",
+        "south-079:lobby:199",
+        "south-079:lobby:200",
+        "south-079:lobby:201",
+        "south-079:lobby:202",
+        "south-079:lobby:207",
+        "south-079:lobby:209",
+        "south-079:lobby:210",
+        "south-079:lobby:211",
+        "south-079:lobby:224",
+        "south-079:lobby:225",
+        "south-079:lobby:226",
+        "south-079:lobby:227",
+        "south-079:lobby:228",
+        "south-079:lobby:229"
+      ],
+      "originalColliders": 132,
+      "candidateColliders": 138,
+      "physicalBodies": [
+        [
+          "sofa",
+          -6.7,
+          -0.95,
+          2.73117733,
+          0.925084204,
+          0,
+          1.118264037,
+          "fabric"
+        ],
+        [
+          "coffee-table",
+          -6.7,
+          0.48,
+          1.2,
+          0.65,
+          0,
+          0.46,
+          "timber"
+        ],
+        [
+          "reading-chair",
+          -5.05,
+          1.75,
+          0.62,
+          0.65,
+          0,
+          0.93,
+          "timber"
+        ],
+        [
+          "bookcase",
+          -8,
+          1.55,
+          0.45,
+          1.3,
+          0,
+          1.62,
+          "timber"
+        ],
+        [
+          "window-writing-desk",
+          -6.5,
+          2.57,
+          1.4,
+          0.56,
+          0,
+          0.765,
+          "timber"
+        ],
+        [
+          "writing-chair",
+          -6.5,
+          1.87,
+          0.52,
+          0.55,
+          0,
+          0.94,
+          "timber"
+        ],
+        [
+          "plant-pot",
+          -4.5,
+          2.49,
+          0.32,
+          0.32,
+          0,
+          0.43,
+          "terracotta"
+        ],
+        [
+          "bed-mattress",
+          -7.25,
+          5.3,
+          0.8,
+          1.85,
+          0,
+          0.64,
+          "fabric"
+        ],
+        [
+          "bed-head",
+          -7.25,
+          4.33,
+          0.905,
+          0.065,
+          0.38,
+          1.202,
+          "metal"
+        ],
+        [
+          "bed-foot",
+          -7.25,
+          6.27,
+          0.905,
+          0.065,
+          0.38,
+          0.8,
+          "metal"
+        ],
+        [
+          "bedside-table",
+          -6.37,
+          4.56,
+          0.42,
+          0.42,
+          0,
+          0.55,
+          "timber"
+        ],
+        [
+          "wardrobe",
+          -5.2,
+          7.72,
+          1.7,
+          0.52,
+          0,
+          2.195,
+          "timber"
+        ],
+        [
+          "bedroom-writing-desk",
+          -5.15,
+          4.22,
+          1.2,
+          0.55,
+          0,
+          0.77,
+          "timber"
+        ],
+        [
+          "bedroom-chair",
+          -5.15,
+          4.77,
+          0.53,
+          0.56,
+          0,
+          0.96,
+          "timber"
+        ],
+        [
+          "coat-and-shoes",
+          -4.45,
+          7.05,
+          0.45,
+          0.42,
+          0,
+          1.66,
+          "timber"
+        ]
+      ],
+      "clearAisles": [
+        {
+          "id": "south-079-lobby-0:entry-aisle",
+          "minX": 129.5,
+          "maxX": 131.5,
+          "minZ": 105.60075228121131,
+          "maxZ": 109.95,
+          "minimumWidth": 2
+        },
+        {
+          "id": "south-079-lobby-1:entry-aisle",
+          "minX": 129.5,
+          "maxX": 131.5,
+          "minZ": 110.55,
+          "maxZ": 114.89924771878869,
+          "minimumWidth": 2
+        }
+      ],
+      "pathChecks": [
+        {
+          "name": "room0",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "room1",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "lift",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 393,
+          "minBodyClearance": 0.5700000000000113
+        },
+        {
+          "name": "stairApproach",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 99,
+          "minBodyClearance": 0.38000000000000556
+        },
+        {
+          "name": "sofaView",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 90,
+          "minBodyClearance": 0.19475508799557317
+        },
+        {
+          "name": "bedside",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 134,
+          "minBodyClearance": 0.10000000000000564
+        }
+      ],
+      "placements": [
+        {
+          "id": "sofa_03",
+          "position": {
+            "x": 126.3,
+            "y": 0.214371605401,
+            "z": 106.051341447234
+          },
+          "scale": 1,
+          "rotationY": 0,
+          "purpose": "Real-size upholstered three-seat sofa, facing the reading space"
+        },
+        {
+          "id": "old_bed_frame",
+          "position": {
+            "x": 125.745277553797,
+            "y": 0.2149999496468455,
+            "z": 112.297588455677
+          },
+          "scale": 1,
+          "rotationY": 0,
+          "purpose": "Real-size single metal bed, fitted with a mattress, folded duvet and pillow"
+        },
+        {
+          "id": "home-lobby-fittings",
+          "position": {
+            "x": 133,
+            "y": 0.215,
+            "z": 107
+          },
+          "scale": 1,
+          "rotationY": 0,
+          "purpose": "Original metric furniture, kitchen/laundry fixtures, soft bedding and personal objects"
+        }
+      ],
+      "readyWorldAABBs": [
+        {
+          "id": "sofa_03",
+          "min": [
+            124.93441133499145,
+            0.21499999999960698,
+            105.587457898259
+          ],
+          "max": [
+            127.66558866500854,
+            1.3332640366601554,
+            106.51254210174068
+          ]
+        },
+        {
+          "id": "old_bed_frame",
+          "min": [
+            125.29767107963585,
+            0.21500000000000002,
+            111.29913698434827
+          ],
+          "max": [
+            126.20232892036461,
+            1.4164837953576,
+            113.30086301565167
+          ]
+        },
+        {
+          "id": "home-lobby-fittings",
+          "min": [
+            124.61200046539307,
+            0.21499997895303316,
+            105.58745789527893
+          ],
+          "max": [
+            128.77500009536743,
+            2.9299999141693114,
+            114.98000001907349
+          ]
+        }
+      ],
+      "near": {
+        "meshes": 14,
+        "triangles": 72652
+      },
+      "middle": {
+        "meshes": 10,
+        "triangles": 70824
+      },
+      "far": {
+        "meshes": 3,
+        "triangles": 572
+      },
+      "lifecycle": {
+        "normalLoads": 6,
+        "normalReleases": 6,
+        "failureReleases": 2,
+        "lateAfterDisposeReleases": 3,
+        "inactiveFloorReleased": true
+      }
+    },
+    {
+      "floorId": "gallery",
+      "roomIds": [
+        "south-079-gallery-0",
+        "south-079-gallery-1"
+      ],
+      "originalFurnitureRemoved": [
+        "south-079:gallery:200",
+        "south-079:gallery:201",
+        "south-079:gallery:212",
+        "south-079:gallery:227",
+        "south-079:gallery:228",
+        "south-079:gallery:229",
+        "south-079:gallery:231"
+      ],
+      "originalColliders": 128,
+      "candidateColliders": 138,
+      "physicalBodies": [
+        [
+          "kitchen-main-counter",
+          -8.12,
+          0.78,
+          0.65,
+          3.75,
+          0,
+          0.94,
+          "timber"
+        ],
+        [
+          "kitchen-return-counter",
+          -7.05,
+          -1.3,
+          1.8,
+          0.63,
+          0,
+          0.94,
+          "timber"
+        ],
+        [
+          "kitchen-wall-storage",
+          -7.05,
+          -1.57,
+          1.6,
+          0.28,
+          1.45,
+          2.36,
+          "timber"
+        ],
+        [
+          "fridge",
+          -5.4,
+          -1.08,
+          0.65,
+          0.72,
+          0,
+          1.79,
+          "metal"
+        ],
+        [
+          "dining-table",
+          -5.9,
+          2.05,
+          1.32,
+          0.75,
+          0,
+          0.77,
+          "timber"
+        ],
+        [
+          "dining-chair-rear",
+          -5.9,
+          1.16,
+          0.53,
+          0.55,
+          0,
+          0.96,
+          "timber"
+        ],
+        [
+          "dining-chair-front",
+          -5.9,
+          2.92,
+          0.53,
+          0.55,
+          0,
+          0.96,
+          "timber"
+        ],
+        [
+          "washing-machine",
+          -7.9,
+          4.02,
+          0.65,
+          0.67,
+          0,
+          0.88,
+          "metal"
+        ],
+        [
+          "laundry-basket",
+          -7.9,
+          4.83,
+          0.45,
+          0.43,
+          0,
+          0.58,
+          "fabric"
+        ],
+        [
+          "basin-vanity",
+          -6.7,
+          4.02,
+          0.91,
+          0.53,
+          0,
+          0.98,
+          "timber"
+        ],
+        [
+          "toilet",
+          -5.25,
+          4.19,
+          0.45,
+          0.72,
+          0,
+          0.83,
+          "porcelain"
+        ],
+        [
+          "bath-storage",
+          -5,
+          7.57,
+          1.2,
+          0.5,
+          0,
+          1.72,
+          "timber"
+        ],
+        [
+          "shower-back-glass",
+          -8.2,
+          6.62,
+          0.025,
+          1.55,
+          0.025,
+          2.03,
+          "glass"
+        ],
+        [
+          "shower-side-glass",
+          -7.3,
+          7.4,
+          1.8,
+          0.025,
+          0.025,
+          2.03,
+          "glass"
+        ]
+      ],
+      "clearAisles": [
+        {
+          "id": "south-079-gallery-0:entry-aisle",
+          "minX": 129.5,
+          "maxX": 131.5,
+          "minZ": 105.60075228121131,
+          "maxZ": 109.95,
+          "minimumWidth": 2
+        },
+        {
+          "id": "south-079-gallery-1:entry-aisle",
+          "minX": 129.5,
+          "maxX": 131.5,
+          "minZ": 110.55,
+          "maxZ": 114.89924771878869,
+          "minimumWidth": 2
+        }
+      ],
+      "pathChecks": [
+        {
+          "name": "room0",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "room1",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 123,
+          "minBodyClearance": 0.34999999999999887
+        },
+        {
+          "name": "lift",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 393,
+          "minBodyClearance": 0.5499999999999999
+        },
+        {
+          "name": "stairApproach",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 99,
+          "minBodyClearance": 0.38000000000000556
+        },
+        {
+          "name": "fridgeApproach",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 129,
+          "minBodyClearance": 0.11999999999999544
+        },
+        {
+          "name": "openShower",
+          "bodyRadius": 0.65,
+          "spacing": 0.025,
+          "samples": 203,
+          "minBodyClearance": 0.14999999999999714
+        }
+      ],
+      "placements": [
+        {
+          "id": "home-gallery-fittings",
+          "position": {
+            "x": 133,
+            "y": 4.153408014029265,
+            "z": 107
+          },
+          "scale": 1,
+          "rotationY": 0,
+          "purpose": "Original metric furniture, kitchen/laundry fixtures, soft bedding and personal objects"
+        }
+      ],
+      "readyWorldAABBs": [
+        {
+          "id": "home-gallery-fittings",
+          "min": [
+            124.53999996185303,
+            4.15340799972415,
+            105.28999996185303
+          ],
+          "max": [
+            128.59999990463257,
+            6.868407928198576,
+            114.82000017166138
+          ]
+        }
+      ],
+      "near": {
+        "meshes": 12,
+        "triangles": 10564
+      },
+      "middle": {
+        "meshes": 8,
+        "triangles": 8744
+      },
+      "far": {
+        "meshes": 4,
+        "triangles": 528
+      },
+      "lifecycle": {
+        "normalLoads": 2,
+        "normalReleases": 2,
+        "failureReleases": 0,
+        "lateAfterDisposeReleases": 1,
+        "inactiveFloorReleased": true
+      }
+    }
+  ],
+  "evidenceLimits": "No native art/walking acceptance. Textures use CPU placeholders. GPU allocation and actual owner VRAM release are unmeasured. Room labels/IDs/life/save are unaltered."
+}

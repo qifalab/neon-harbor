@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-04T22:32:31.132559+00:00",
+  "baseHead": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "candidateDirectory": "/tmp/neon-near-resident-roles-sealed",
+  "patchPath": "patches/near-role-integration.patch",
+  "patchSha256": "27c0a849d8f42507476ec3153b0ec0e1f8c65618f2fe04bfe63ba9e19c0ad616",
+  "selectiveAdditionalPaths": [
+    "assets/resident/core-worker",
+    "assets/resident/core-commuter",
+    "assets/resident/core-shopkeeper",
+    "art-source/near-resident",
+    "tools/build-resident-core.py",
+    "tools/fetch-official-assets.py",
+    "tools/static-resident-sheet.py",
+    "docs/NEAR_RESIDENT_CORE_CANDIDATE.md",
+    "docs/static-role-tests-pass.txt",
+    "docs/static-core-worker.png",
+    "docs/static-core-commuter.png",
+    "docs/static-core-shopkeeper.png",
+    "docs/NEAR_RESIDENT_DELIVERY.json"
+  ],
+  "existingSourceAppliedViaReviewedHunks": [
+    "src/harbor-life-renderer.js",
+    "src/city-exploration.js",
+    "src/main.js"
+  ],
+  "actualRuntimeAssets": {
+    "worker": {
+      "path": "assets/resident/core-worker/worker.glb",
+      "bytes": 5953280,
+      "sha256": "f17553afc33a5a958843e08db0ecddc4dd27759ed4bba2dd6fd26d25c6eaacbe"
+    },
+    "commuter": {
+      "path": "assets/resident/core-commuter/commuter.glb",
+      "bytes": 3825084,
+      "sha256": "f5015fa97f5542f110afa302f48a44cde0bb9f504336ca48a99dd60ee4fb3b7a"
+    },
+    "shopkeeper": {
+      "path": "assets/resident/core-shopkeeper/shopkeeper.glb",
+      "bytes": 3038016,
+      "sha256": "d5d298b45ade48a6cdb4142b27712799d864fff23cef28bc979436e07afe3341"
+    }
+  },
+  "native45sExecuted": false,
+  "runtimeBuilt": false,
+  "rootMutated": false,
+  "rootMainSha256": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d",
+  "historicalSealedCandidateUnchanged": true
+}

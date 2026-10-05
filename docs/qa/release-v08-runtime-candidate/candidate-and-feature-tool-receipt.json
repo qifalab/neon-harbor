@@ -1,0 +1,44 @@
+{
+  "recordedAtUtc": "2026-10-04T21:14:03.133911+00:00",
+  "runtimeCandidateCommit": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "parent": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+  "tree": "d8c572fea8f2005234e98dea335aff5b84e31ace",
+  "featureRefUpdate": {
+    "command": [
+      "gh",
+      "api",
+      "repos/qifalab/neon-harbor/git/refs/heads/codex/traffic-and-multiplayer",
+      "--method",
+      "PATCH",
+      "--input",
+      "/tmp/neon-feature-0c746b6-ref.json"
+    ],
+    "actualReturnedExitCode": 0,
+    "actualReturnedJson": {
+      "ref": "refs/heads/codex/traffic-and-multiplayer",
+      "sha": "0c746b6d1d5a8c1af8be8242982f3d378e564231"
+    },
+    "force": false
+  },
+  "fetchConfirmation": {
+    "actualReturnedExitCode": 0,
+    "trackingRef": "origin/codex/traffic-and-multiplayer",
+    "sha": "0c746b6d1d5a8c1af8be8242982f3d378e564231"
+  },
+  "mainRefAtThisStage": "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+  "ciDispatch": {
+    "actualReturnedExitCode": 0,
+    "workflow": "ci.yml",
+    "ref": "codex/traffic-and-multiplayer",
+    "observedRunId": 37235153499,
+    "observedHeadSha": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+    "observedStatus": "in_progress",
+    "createdAtUtc": "2026-10-04T21:12:33Z"
+  },
+  "publicationPerformed": false,
+  "continuousTourStartedAtUtc": "2026-10-04T21:12:49.568Z",
+  "continuousTourHead": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "localManifestRevision": null,
+  "localManifestSha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+  "publicBuildComparisonRule": "Compare exact 156 asset path/SHA dictionary; public build revision must be candidate commit, so manifest JSON SHA differs from local revision:null."
+}

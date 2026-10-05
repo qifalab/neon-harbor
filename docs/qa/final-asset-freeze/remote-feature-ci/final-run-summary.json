@@ -1,0 +1,517 @@
+{
+  "schema": "neon-harbor/frozen-runtime-first-feature-ci/v1",
+  "closedAt": "2026-10-04T21:39:57.560857+00:00",
+  "runId": 37235153499,
+  "runAttempt": 1,
+  "headSha": "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+  "headBranch": "codex/traffic-and-multiplayer",
+  "event": "workflow_dispatch",
+  "workflowName": "CI",
+  "workflowPath": ".github/workflows/ci.yml",
+  "createdAt": "2026-10-04T21:12:33Z",
+  "runStartedAt": "2026-10-04T21:12:33Z",
+  "updatedAt": "2026-10-04T21:38:21Z",
+  "status": "completed",
+  "conclusion": "failure",
+  "runUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37235153499",
+  "finalOriginalRunSnapshot": "2026-10-04T21-38-25-007293Z-run-original.json",
+  "finalOriginalJobsSnapshot": "2026-10-04T21-38-25-007293Z-jobs-original.json",
+  "requiredJobCounts": {
+    "total": 12,
+    "success": 11,
+    "failure": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "gameRuleCoverage": {
+    "matrixJobsEachActuallyRan311": 11,
+    "uniqueRuleTests": 311,
+    "eachPassed": 311,
+    "eachFailed": 0,
+    "eachCancelled": 0,
+    "eachSkipped": 0,
+    "multiplayerJobDidNotRunNpmTest": true
+  },
+  "browserCounts": {
+    "games": {
+      "passed": 26,
+      "failed": 1,
+      "total": 27
+    },
+    "multiplayer": {
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "overallCases": {
+      "passed": 28,
+      "failed": 1,
+      "total": 29
+    }
+  },
+  "jobs": [
+    {
+      "jobId": 111532675829,
+      "name": "Multiplayer rooms in two browsers",
+      "matrixId": null,
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:36Z",
+      "completedAt": "2026-10-04T21:19:05Z",
+      "npmRuleRun": false,
+      "npmRuleCounts": null,
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:14:51.9611361Z   ✓  1 tests/multiplayer-browser/rooms.spec.js:81:1 › two independent browsers share a room, rendered walking peers, chat and disconnect (1.6m)",
+        "2026-10-04T21:19:01.5680665Z   ✓  2 tests/multiplayer-browser/rooms.spec.js:122:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit (4.2m)"
+      ],
+      "originalDecodedLog": "logs/job-111532675829-original.log",
+      "originalDecodedLogBytes": 42492,
+      "originalDecodedLogSha256": "1a4e0e79a96f5c2ebef1db0b28dd2dadef7b28828fbab2d2b93c370b73214b78",
+      "rawConnectorResponse": "logs/job-111532675829-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532675829-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676078,
+      "name": "Build and gameplay tests (harbor-sample-1)",
+      "matrixId": "harbor-sample-1",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:23:47Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:19:55.1739641Z   ✓  1 tests/e2e/harbor-sample.spec.js:136:3 › bus: public boarding, physical upper-deck stairs, travel and lower-door alighting (4.3m)",
+        "2026-10-04T21:23:32.5879556Z   ✓  2 tests/e2e/harbor-sample.spec.js:136:3 › tram: public boarding, physical upper-deck stairs, travel and lower-door alighting (3.6m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676078-original.log",
+      "originalDecodedLogBytes": 182157,
+      "originalDecodedLogSha256": "8a0346f0cd0cb5d2f6678ca8a90a0ab75c8c11de32629217fea3640334c65955",
+      "rawConnectorResponse": "logs/job-111532676078-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676078-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676087,
+      "name": "Build and gameplay tests (harbor-realism)",
+      "matrixId": "harbor-realism",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:23:26Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:18:36.0379208Z   ✓  1 tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views (1.3m)",
+        "2026-10-04T21:23:09.3360872Z   ✓  2 tests/e2e/harbor-realism.spec.js:89:1 › a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street (4.6m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676087-original.log",
+      "originalDecodedLogBytes": 176339,
+      "originalDecodedLogSha256": "d21f2e309f8d1e1ad4ca5cf591213a0e19de2a5115e552ed6d81de8d8ce81003",
+      "rawConnectorResponse": "logs/job-111532676087-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676087-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676111,
+      "name": "Build and gameplay tests (metropolis-1)",
+      "matrixId": "metropolis-1",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:36Z",
+      "completedAt": "2026-10-04T21:20:03Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:17:25.2635025Z   ✓  1 tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail (1.0m)",
+        "2026-10-04T21:19:51.1425167Z   ✓  2 tests/e2e/metropolis.spec.js:113:3 › tide-museum: walk through the lobby, ride the elevator, return to the street (2.4m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676111-original.log",
+      "originalDecodedLogBytes": 176015,
+      "originalDecodedLogSha256": "e0dee60cf38482ee9f699c4933357110f566ccb0a5603bef4e9e942f8625d79e",
+      "rawConnectorResponse": "logs/job-111532676111-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676111-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676124,
+      "name": "Build and gameplay tests (stability)",
+      "matrixId": "stability",
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:22:11Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:17:43.5366723Z   ✓  1 tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable (1.4m)",
+        "2026-10-04T21:18:45.5420461Z   ✘  2 tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings (49.6s)",
+        "2026-10-04T21:19:57.4360897Z   ✓  3 tests/e2e/stability.spec.js:226:1 › orbiting beside a real façade retracts the camera and walking cannot enter it (1.2m)",
+        "2026-10-04T21:21:50.3978098Z   ✓  4 tests/e2e/stability.spec.js:263:1 › driving streams real city resources and evicts distant detail within the cache limit (1.9m)",
+        "2026-10-04T21:22:06.8575929Z   1) tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings ",
+        "2026-10-04T21:22:06.8589531Z     tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings "
+      ],
+      "originalDecodedLog": "logs/job-111532676124-original.log",
+      "originalDecodedLogBytes": 179823,
+      "originalDecodedLogSha256": "8bcaf7c68791687ab10533c915af304e30f14b47431f6d6004176b26c299e484",
+      "rawConnectorResponse": "logs/job-111532676124-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676124-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676149,
+      "name": "Build and gameplay tests (metropolis-2)",
+      "matrixId": "metropolis-2",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:21:52Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:19:25.3537796Z   ✓  1 tests/e2e/metropolis.spec.js:113:3 › apex-tower: ride to a high floor and travel back to the street (3.1m)",
+        "2026-10-04T21:21:38.5151042Z   ✓  2 tests/e2e/metropolis.spec.js:113:3 › camellia-court: walk through the lobby, ride the elevator, return to the street (2.2m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676149-original.log",
+      "originalDecodedLogBytes": 176215,
+      "originalDecodedLogSha256": "de0ed216ba77b382e8f76bbd0c54dfb1a37fd6b083e6745e94c359120b17a7df",
+      "rawConnectorResponse": "logs/job-111532676149-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676149-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676168,
+      "name": "Build and gameplay tests (harbor-sample-2)",
+      "matrixId": "harbor-sample-2",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:35:19Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:28:43.6990673Z   ✓  1 tests/e2e/harbor-sample.spec.js:136:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting (12.3m)",
+        "2026-10-04T21:35:09.4761193Z   ✓  2 tests/e2e/harbor-sample.spec.js:213:1 › funded cargo and a real purchase persist across reload, with physical delivery and the actual High shop room (6.4m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676168-original.log",
+      "originalDecodedLogBytes": 179539,
+      "originalDecodedLogSha256": "e47b85d487c4e3400882fe4e58c51d45c12265d74083b088acd2a3309893f255",
+      "rawConnectorResponse": "logs/job-111532676168-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676168-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676183,
+      "name": "Build and gameplay tests (occupied-city)",
+      "matrixId": "occupied-city",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:38:20Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:23:37.2777659Z   ✓  1 tests/e2e/occupied-city.spec.js:11:1 › all storeys are selectable and a visitor walks an upper stair flight without accumulating floors or sign textures (6.6m)",
+        "2026-10-04T21:38:08.6328746Z   ✓  2 tests/e2e/occupied-city.spec.js:54:1 › the rendered resident enters a real workplace and stays there during working hours (14.5m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676183-original.log",
+      "originalDecodedLogBytes": 180684,
+      "originalDecodedLogSha256": "ce1c2d47104713e9c1054808678fb4078a47e637c488991021f01071d0672f79",
+      "rawConnectorResponse": "logs/job-111532676183-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676183-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676184,
+      "name": "Build and gameplay tests (living-city)",
+      "matrixId": "living-city",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:22:56Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:21:02.3049213Z   ✓  1 tests/e2e/living-city.spec.js:102:1 › a resident rides to a furnished bedroom, walks through its doorway, and returns to the street (3.5m)",
+        "2026-10-04T21:22:31.2252072Z   ✓  2 tests/e2e/living-city.spec.js:146:1 › default high quality loads crafted materials and exposes walk-in viewing and real infrastructure entrances (1.5m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676184-original.log",
+      "originalDecodedLogBytes": 176093,
+      "originalDecodedLogSha256": "ccb0cfd700ef4de8277db74fe715d6f6ff4ed03cab3578018931d1d53bf2b960",
+      "rawConnectorResponse": "logs/job-111532676184-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676184-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676202,
+      "name": "Build and gameplay tests (game)",
+      "matrixId": "game",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:18:34Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:16:32.6170158Z   ✓  1 tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level (1.2m)",
+        "2026-10-04T21:17:13.0456651Z   ✓  2 tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets (40.4s)",
+        "2026-10-04T21:17:36.9667336Z   ✓  3 tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress (23.9s)",
+        "2026-10-04T21:18:20.9457168Z   ✓  4 tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport (44.0s)"
+      ],
+      "originalDecodedLog": "logs/job-111532676202-original.log",
+      "originalDecodedLogBytes": 176193,
+      "originalDecodedLogSha256": "b6adcc74dd5b9dfafe94d8f9ae4cc644efcafd7e41661439c2aa03c89bb62a04",
+      "rawConnectorResponse": "logs/job-111532676202-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676202-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676214,
+      "name": "Build and gameplay tests (city-materials)",
+      "matrixId": "city-materials",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:37Z",
+      "completedAt": "2026-10-04T21:34:49Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:20:42.1240367Z   ✓  1 tests/e2e/city-materials.spec.js:113:1 › a northern home renders its furnished bedroom in High and survives quality changes at the same pose (3.3m)",
+        "2026-10-04T21:28:14.7245232Z   ✓  2 tests/e2e/city-materials.spec.js:137:1 › an old-quarter visitor walks the compact stairs and a room doorway, rides down and exits (7.5m)",
+        "2026-10-04T21:34:30.7700903Z   ✓  3 tests/e2e/city-materials.spec.js:194:1 › an eastern visitor enters an enclosed office, rides to the observation terrace and reloads safely (6.3m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676214-original.log",
+      "originalDecodedLogBytes": 176576,
+      "originalDecodedLogSha256": "f0dabe51ab048599806389357038ab895b497d5b58eb89566c1175276b12e705",
+      "rawConnectorResponse": "logs/job-111532676214-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676214-log-summary-final.json"
+    },
+    {
+      "jobId": 111532676235,
+      "name": "Build and gameplay tests (metropolis-3)",
+      "matrixId": "metropolis-3",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-04T21:12:36Z",
+      "completedAt": "2026-10-04T21:29:38Z",
+      "npmRuleRun": true,
+      "npmRuleCounts": {
+        "tests": 311,
+        "passed": 311,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "browserCounts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "interrupted": 0
+      },
+      "caseResultLines": [
+        "2026-10-04T21:25:01.7711239Z   ✓  1 tests/e2e/metropolis.spec.js:173:3 › metro: wait, board, travel and alight using public controls (7.5m)",
+        "2026-10-04T21:29:21.5318675Z   ✓  2 tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls (4.3m)"
+      ],
+      "originalDecodedLog": "logs/job-111532676235-original.log",
+      "originalDecodedLogBytes": 176237,
+      "originalDecodedLogSha256": "dcd4701dee2d383b4f866584014f290e2d0dfbd96b2346662b23ef008af75b90",
+      "rawConnectorResponse": "logs/job-111532676235-connector-response-original.json",
+      "rawJobLogSummary": "logs/job-111532676235-log-summary-final.json"
+    }
+  ],
+  "conditionalJobsNotCountedAsPass": [
+    {
+      "id": 111532676646,
+      "name": "Rendered room evidence (${{ matrix.shard }}/48)",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-10-04T21:12:35Z",
+      "completed_at": "2026-10-04T21:12:35Z"
+    },
+    {
+      "id": 111532693490,
+      "name": "Native High room detail (${{ matrix.shard }}/6)",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-10-04T21:12:41Z",
+      "completed_at": "2026-10-04T21:12:35Z"
+    }
+  ],
+  "localFrozenBuildManifest": {
+    "file": "local-frozen-build-info-original.json",
+    "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3",
+    "version": "0.8.0",
+    "revision": null,
+    "assets": 156,
+    "srcModules": 53,
+    "scope": "Local frozen build. CI original job logs prove D checkout and build steps; this file is not claimed to be downloaded from a CI runner."
+  },
+  "failure": {
+    "jobId": 111532676124,
+    "test": "a fast steering approach stops the full car body outside the generated buildings",
+    "testLocation": "tests/e2e/stability.spec.js:182:1",
+    "assertionLocation": "tests/e2e/stability.spec.js:220:109",
+    "assertion": "actual building contact separation < 0.12",
+    "expectedLessThan": 0.12,
+    "actual": 3.607706203071066,
+    "testWallDuration": "49.6s",
+    "isTimeout": false,
+    "artifactId": 11315651048,
+    "artifactZip": "artifacts/11315651048-browser-test-results-stability-original.zip",
+    "artifactActualBytes": 27101931,
+    "artifactActualSha256": "4058835317f58132a9f44eed88981b0bb9272c560c1487f70f83fd838b3a1d62",
+    "artifactDownloadMatchesServer": true,
+    "traceOriginal": "artifacts/stability-failure-original/trace.zip",
+    "errorContextOriginal": "artifacts/stability-failure-original/error-context.md",
+    "derivedTraceInputs": "artifacts/stability-failure-original/trace-actual-inputs-and-starter-samples.json",
+    "derivedIndependentReview": "independent-static-review/neon-ci-stability-first-failure-and-trigger-method-review.md",
+    "evidenceLimits": "No contact collider ID was recorded; final screencast is a different presentation moment from the damaged-car sample. Line220 failed before presentation/error/wall-contact-metrics guards. Static diagnostic supports missed facade but does not uniquely identify the hit prop or constitute a new browser pass."
+  },
+  "artifacts": {
+    "originalApiMetadata": "final-artifacts-original.json",
+    "githubUploadedCount": 12,
+    "actualLocalZipDownloads": [
+      11315651048
+    ],
+    "successfulJobArtifactZipBytesNotDownloaded": true
+  },
+  "externalWriteActions": {
+    "rerun": false,
+    "cancel": false,
+    "sourceIndexOrRefMutation": false,
+    "stageOrCommit": false,
+    "pagesOrReleasePublication": false
+  },
+  "fullCiPassed": false,
+  "finalTourPassedClaimed": false,
+  "aaaOrHardwareAcceptanceClaimed": false
+}

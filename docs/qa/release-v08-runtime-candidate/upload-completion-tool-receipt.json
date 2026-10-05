@@ -1,0 +1,24 @@
+{
+  "receiptSource": "Actual final returned exec_command/write_stdin tool result; combined tool output, not a reconstructed original stdout/stderr log",
+  "command": [
+    "python3",
+    "/tmp/neon-upload-git-objects-safe.py",
+    "--repo",
+    "/workspace/scratch/neon-harbor",
+    "--remote",
+    "qifalab/neon-harbor",
+    "--commit",
+    "0c746b6d1d5a8c1af8be8242982f3d378e564231",
+    "--parent",
+    "0330df7ee1042d0f211304b042e01cdf6a0b4d44",
+    "--state",
+    "/tmp/neon-upload-0c746b6-state.json"
+  ],
+  "actualFinalResult": {
+    "chunk_id": "d8233a",
+    "wall_time_seconds": 0.000019895,
+    "exit_code": 0,
+    "original_token_count": 128,
+    "output": "{\"status\": \"blob-uploaded\", \"completed\": 779, \"total\": 779, \"sha\": \"b24f1b939029c39411ff1614e7f6909fa60c1fd7\", \"path\": \"tools/inspect-workshop-assets.mjs\"}\n{\"status\": \"transient-api-error\", \"endpoint\": \"git/trees\", \"http\": \"502\", \"attempt\": 1}\n{\"status\": \"tree-created\", \"sha\": \"d8c572fea8f2005234e98dea335aff5b84e31ace\", \"exact\": true}\n{\"status\": \"commit-created\", \"sha\": \"0c746b6d1d5a8c1af8be8242982f3d378e564231\", \"expected\": \"0c746b6d1d5a8c1af8be8242982f3d378e564231\", \"exact\": true, \"refsChanged\": false}\n"
+  }
+}

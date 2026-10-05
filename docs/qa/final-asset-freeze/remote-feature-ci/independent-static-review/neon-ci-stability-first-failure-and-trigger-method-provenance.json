@@ -1,0 +1,122 @@
+{
+  "scope": "Read-only static diagnosis + unexecuted test-only candidate",
+  "originalCIRun": 37235153499,
+  "originalCIJob": 111532676124,
+  "originalCIStatus": "FAIL retained",
+  "sourceFilesByteEqualTo0330": {
+    "tests/e2e/stability.spec.js": {
+      "bytes": 18111,
+      "Dsha256": "ef6dbcc77a06010f8e030b65c84174c5725968a242b56bf1a8f5e65b6f37b875",
+      "0330sha256": "ef6dbcc77a06010f8e030b65c84174c5725968a242b56bf1a8f5e65b6f37b875",
+      "byteEqual": true
+    },
+    "src/collision.js": {
+      "bytes": 19179,
+      "Dsha256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "0330sha256": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
+      "byteEqual": true
+    },
+    "src/simulation.js": {
+      "bytes": 32947,
+      "Dsha256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "0330sha256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "byteEqual": true
+    },
+    "src/world.js": {
+      "bytes": 51197,
+      "Dsha256": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6",
+      "0330sha256": "5d4892e1e9d7938d64973f6e028dd5614789ff3225829b0f7db973d7164092a6",
+      "byteEqual": true
+    },
+    "src/world-config.js": {
+      "bytes": 467,
+      "Dsha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "0330sha256": "f8082d9e93608428e89550dbcc6d88c2b215b361a2e7b5b65a30f90cf58eb19c",
+      "byteEqual": true
+    },
+    "src/presentation.js": {
+      "bytes": 4910,
+      "Dsha256": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+      "0330sha256": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+      "byteEqual": true
+    },
+    "src/frame-clock.js": {
+      "bytes": 1492,
+      "Dsha256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "0330sha256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "byteEqual": true
+    },
+    "src/camera.js": {
+      "bytes": 10656,
+      "Dsha256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+      "0330sha256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+      "byteEqual": true
+    }
+  },
+  "candidateReverseRecoversBaseline": true,
+  "candidateApplied": false,
+  "newTestsOrGPUExecuted": false,
+  "knownEvidenceGap": "Actual collision obstacle id and intermediate fixed-step contacts were not recorded. assertPresentation/wall-contact metrics were not reached. Last screencast is not synchronous with damage pose.",
+  "artifacts": {
+    "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/remote-feature-ci/artifacts/11315651048-browser-test-results-stability-original.zip": {
+      "bytes": 27101931,
+      "sha256": "4058835317f58132a9f44eed88981b0bb9272c560c1487f70f83fd838b3a1d62"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/remote-feature-ci/artifacts/stability-failure-original/trace.zip": {
+      "bytes": 3733182,
+      "sha256": "8748ba5bfe5e8def1823c074532382f23fb031359c65e7e194c18d9b18f3e6ac"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/remote-feature-ci/artifacts/stability-failure-original/error-context.md": {
+      "bytes": 15339,
+      "sha256": "a452a850c538e253c336e4f90297d6f5acad645d40976c05ac89100d6d00fa4f"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/remote-feature-ci/artifacts/stability-failure-original/trace-actual-inputs-and-starter-samples.json": {
+      "bytes": 6393,
+      "sha256": "59327ab7f044548b476513a6228beb32073bd9e938b5ab99e96be28989187f2a"
+    },
+    "/workspace/scratch/neon-harbor/docs/qa/final-asset-freeze/remote-feature-ci/logs/job-111532676124-original.log": {
+      "bytes": 179823,
+      "sha256": "8bcaf7c68791687ab10533c915af304e30f14b47431f6d6004176b26c299e484"
+    },
+    "/tmp/neon-ci-stability-D-0330-source-check.json": {
+      "bytes": 2172,
+      "sha256": "7b83792bc940e3b7ebf1e6878480be576a74b08245fa0919b5b6ffd340bdc307"
+    },
+    "/tmp/neon-ci-stability-local-geometry-proof.json": {
+      "bytes": 2793,
+      "sha256": "cf9bf9a176ac9ea56565aa32263e9b8a1205c26371c417b9fb70db1808bb894c"
+    },
+    "/tmp/neon-ci-stability-call-122-decoded.json": {
+      "bytes": 498,
+      "sha256": "300fb8a6d48206a1ced36c0c1bb3c87edbc0ba7e56f865ad805a61cd4ff9a99f"
+    },
+    "/tmp/neon-ci-stability-call-126-decoded.json": {
+      "bytes": 5671,
+      "sha256": "92261c242b5e5552c28d62f751bad239c15d90848843ab47cfed563ef29cdfdc"
+    },
+    "/workspace/scratch/neon-harbor/assets/city/chunks/4_5.json": {
+      "bytes": 211293,
+      "sha256": "4af877f8dc0ad1d3ad905fa08c455f20a2879a066ebb8b7bc1e1c26e0907596f"
+    },
+    "/workspace/scratch/neon-harbor/tests/e2e/stability.spec.js": {
+      "bytes": 18111,
+      "sha256": "ef6dbcc77a06010f8e030b65c84174c5725968a242b56bf1a8f5e65b6f37b875"
+    },
+    "/tmp/neon-stability-trigger-handle-candidate.spec.js": {
+      "bytes": 18473,
+      "sha256": "aab83338d2e6e3e27689ff981e4136fb138f7327cdb36d2b9d6bde95a7ca4a8f"
+    },
+    "/tmp/neon-stability-trigger-handle-candidate.patch": {
+      "bytes": 2521,
+      "sha256": "80b3e2e4e68cba8794db21a0437d70cf94270b7706f11a2aa721cc7f9bba56a2"
+    },
+    "/tmp/neon-stability-trigger-handle-candidate-check.json": {
+      "bytes": 614,
+      "sha256": "92630702409a883f4abac6b786ca20d4e780f952927f7b43d8b2c1cc5ec0afa2"
+    },
+    "/tmp/neon-ci-stability-first-failure-and-trigger-method-review.md": {
+      "bytes": 9424,
+      "sha256": "40027c510d907cb6ad25b4526df63455a5fe2d742a1cf959021b03dfdea29ac0"
+    }
+  }
+}

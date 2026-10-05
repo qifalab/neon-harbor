@@ -1,0 +1,16 @@
+{
+  "actualTime": "2026-10-04T22:59:44.964834+00:00",
+  "patchSha256": "38c70ca185081eee2d330163a04c5b05a8f8ad7374b964b4d7bf5a29b94d3044",
+  "before": {
+    "src/resident-core-assets.js": "b71e0c21501c834e3c9b9dc62fcd93b26554cef4b2de9360da4f14cf47e99eff",
+    "src/main.js": "b3d1844ce72248248eab4ab816c3a890fa016c422d1668e82208062593f35f22"
+  },
+  "after": {
+    "src/resident-core-assets.js": "536c33cf4d33c2237ac5a86c8850c68007a8944ab2ff17af89e09da6559a9f01",
+    "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+    "tests/resident-review-probes.test.js": "94d29e25fe44b2d886066a1e2b3b2923881f001a6387aefeaa82dee1e5904ca1"
+  },
+  "scope": "only explicit read-only __NEON__ owner/actual-hand review + lifecycle release counters; normal nested snapshot excludes expanded actor review",
+  "ROOTChanged": false,
+  "browserOrGpuExecuted": false
+}
