@@ -1,0 +1,11 @@
+# Crisp bread adoption, 2026-10-05
+
+This independent candidate starts at exact committed CROWN `91cdbc67728cce9c5813bb9c515fc033a3a07090`. It adopts only the sealed 19-file, 1,433,382-byte original bread V3 payload. The prior CROWN source/build/bundle and the original partial AEC High bakery failures are preserved. Producer preparation failures remain under `original-candidate-development-failures`; they were never relabelled as passes.
+
+The original `npm test` ran once: 378 passed, zero failed/skipped/cancelled; actual Node duration 225754.162526 ms. The original `npm run build` ran once and produced 206 assets with null revision and raw build SHA `6acbaae2fd803671b312890c058be973a8afb9c3f9c7bb7d0ad869bf383b7917`. Exactly six bread runtime resources changed and 200 remain identical to CROWN91c. All 387 production/test/build-source paths stayed identical before/after these commands and metadata refresh. No test or cap was changed.
+
+The sealed producer CPU proof records 108494 frontage triangles and 102 draws within the unchanged 110000/102 caps, 36 colliders/fixtures, other five stores/all far proxies identity, fixed old loaf bounds, authored deterministic textures and CPU ownership disposal. This adopter verifies literal payload and 368 outside-payload source hashes against CROWN91c; it does not rerun those geometric CPU cases. CPU dispose calls and texture byte estimates are not native GPU/VRAM measurements.
+
+The current native bundle has exactly 164 inventoried files. Its baseline 156-object dictionary, original 24 cases, functional collectors, inputs, plans, seals, physics and capture budgets remain unchanged. Only current authored source/resource provenance, the explicit B source amendment and the outer inventory are refreshed. The old B geometry/camera/path tables and every original amendment remain historical. The strict copied sealer uses the actual six-resource delta, complete 206 source/dist dictionaries and complete 164-file bundle inventory; dry and apply have zero blockers.
+
+No native/GPU run, staging, commit, release or publication is performed here. V3 High art and native performance acceptance remain pending actual new-source photographs and review. The Crown GPU worktree and previous NEXT worktree are not written. The only dependency symlink is ignored from the exact proposed review/stage list.

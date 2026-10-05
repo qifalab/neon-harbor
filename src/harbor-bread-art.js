@@ -4,9 +4,9 @@ export const BREAD_CRUST_MAPS=Object.freeze([
  ['map','bread-crust-albedo.png'],['bumpMap','bread-crust-height.png'],['roughnessMap','bread-crust-roughness.png'],
 ].map(([channel,file])=>Object.freeze({channel,file})));
 export function createBakedCrustMaterials(THREE,{loadTexture,native=typeof document!=='undefined'}={}){
- const crust=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,bumpScale:.0008});
+ const crust=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,bumpScale:.0011});
  crust.name='Morning Tin · original toasted crust';
- const crumb=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:.94,metalness:0,bumpScale:.00036});
+ const crumb=new THREE.MeshStandardMaterial({color:'#ffffff',vertexColors:true,roughness:1,metalness:0,bumpScale:.00065});
  crumb.name='Morning Tin · integral exposed score crumb';
  for(const m of [crust,crumb])m.userData.harborArt=true;
  const textures=new Set(),loaded=new Map(),errors=[],closedImages=new Set();let disposed=false,lateDecodedImages=0;
@@ -17,13 +17,13 @@ export function createBakedCrustMaterials(THREE,{loadTexture,native=typeof docum
    const image=t.image||t.source?.data;
    if(disposed){if(typeof image?.close==='function'&&!closedImages.has(image)){closedImages.add(image);image.close();lateDecodedImages++;}return;}
    const width=image?.naturalWidth||image?.width,height=image?.naturalHeight||image?.height;
-   if(width!==256||height!==256){errors.push(`${file}: expected original 256×256 source`);return;}
+   if(width!==512||height!==512){errors.push(`${file}: expected original 512×512 crust / crumb atlas`);return;}
    loaded.set(channel,{file,width,height,decoderObject:image?.constructor?.name||null});
   },()=>{if(!disposed)errors.push(`${file}: failed to load original crust map`);});
   texture.name=`Morning Tin original ${channel}`;texture.colorSpace=channel==='map'?THREE.SRGBColorSpace:THREE.NoColorSpace;
   texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.anisotropy=4;
   crust[channel]=texture;textures.add(texture);
-  if(channel==='bumpMap')crumb.bumpMap=texture;
+  crumb[channel]=texture;
  }
  return{crust,crumb,textures:[...textures],snapshot(){return{status:disposed?'disposed':errors.length?'failed':loaded.size===3?'ready':native||loadTexture?'loading':'cpu-source-only',expectedMaps:3,loadedMaps:loaded.size,pending:!disposed&&(native||!!loadTexture)&&loaded.size+errors.length<3,images:[...loaded.values()],errors:[...errors],lateDecodedImages,textureCount:textures.size,ownedTextures:[...textures].map(t=>({uuid:t.uuid,channel:t.name,imageDecoder:(t.image||t.source?.data)?.constructor?.name||null})),closedImages:closedImages.size};},dispose(){if(disposed)return;disposed=true;const images=new Set();for(const t of textures){t.dispose();const image=t.image||t.source?.data;if(image?.close)images.add(image);}for(const image of images)if(!closedImages.has(image)){closedImages.add(image);image.close();}crust.dispose();crumb.dispose();}};
 }
