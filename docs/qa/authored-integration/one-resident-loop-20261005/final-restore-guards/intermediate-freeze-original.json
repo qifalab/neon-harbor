@@ -1,0 +1,66 @@
+{
+  "baseCommit": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "baseCandidateDirectory": "/tmp/neon-harbor-one-resident-loop",
+  "baseCandidateReceiptSHA256": "0e4372670fd9d95b2515f29566acf489ef8701fba9935baae1772ec03690d7fd",
+  "followupDirectory": "/tmp/neon-harbor-one-resident-loop-payroll-guard-2026-10-05",
+  "sourceFrozen": true,
+  "declaredFiles": [
+    {
+      "path": "src/harbor-resident-loop.js",
+      "bytes": 28526,
+      "sha256": "2d0d787e5f23def070babb53799eab80ccfc77b13c55b30fdbebf888dd767c03",
+      "previousSha256": "d0baac8347245c50d6694ccac447f43ee67c5b7672d578e5dba9d2d1a31b5317"
+    },
+    {
+      "path": "tests/harbor-resident-loop.test.js",
+      "bytes": 17649,
+      "sha256": "01f5682c029facc5b5742fcf6f75799932f5ba0578d426e0931e20ef4272e7c2",
+      "previousSha256": "be4a825585d25788cef3fd1817a7ecde262058aca14d17083638919f28310284"
+    }
+  ],
+  "patch": {
+    "path": "patches/resident-payroll-restore-guard.patch",
+    "bytes": 9145,
+    "sha256": "380c755d1bef799ddbc6b7621fef2ff5923c912d35f047b5aabdb500f104024d"
+  },
+  "evidence": [
+    {
+      "path": "evidence/unpatched-reproducer.txt",
+      "bytes": 1052,
+      "sha256": "1b526e7a7cc8771afd285f3e57f23881a5a609ca0eb15dbd548dcbb79284247b"
+    },
+    {
+      "path": "evidence/patched-targeted-tests.txt",
+      "bytes": 3329,
+      "sha256": "4fffad7812c781596085a31f81f8ae16074a29dcb509da32de4357a1457ddf71"
+    }
+  ],
+  "reproducer": {
+    "command": "timeout 35s node --test --test-name-pattern='retained payroll rejects' tests/harbor-resident-loop.test.js",
+    "source": "exact previous frozen loop source plus new rejecting test",
+    "exitCode": 1,
+    "actualRestoreResult": true,
+    "expectedRestoreResult": false
+  },
+  "tests": {
+    "command": "timeout 40s node --test tests/harbor-resident-loop.test.js tests/harbor-life.test.js",
+    "exitCode": 0,
+    "passed": 29,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 13118.74988
+  },
+  "retentionBoundary": "Exact receipt required for active/recent eight jobs. Only valid completed job cycles older than the retained completed-job ring may lack receipts in the 96-row transaction ring.",
+  "originalCandidateUnchanged": true,
+  "rootMutated": false,
+  "browserRun": false,
+  "gpuRun": false,
+  "buildRun": false,
+  "nativeAcceptance": "NOT_RUN",
+  "documentation": {
+    "path": "README-followup.md",
+    "bytes": 1748,
+    "sha256": "b5568a8c1da1ea7abeda6f4f31ef8621c87ca747e80b6e0d420dd80acc445d26"
+  }
+}

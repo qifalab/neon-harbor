@@ -1,0 +1,82 @@
+--- a/tools/native-review/methods/transport/native-transport-high.mjs
++++ b/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -127,9 +127,9 @@
+ 
+ async function captureCase(kind) {
+   const folder = resolve(output, kind); await mkdir(folder);
+-  const started = Date.now(), budget = kind === 'ferry' ? 900000 : 600000, deadline = started + budget;
++  const started = Date.now(), budget = kind === 'ferry' ? 900000 : kind === 'tram' ? 2400000 : 600000, deadline = started + budget;
+   const record = { kind, status: 'RUNNING', budget, startedAt: new Date(started).toISOString(), mode: args.mode,
+-    toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [] };
++    toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [], aimPhases: [], berthWaits: [], progressDiagnosticFailures: [] };
+   const keep = (error, stage) => { if (!record.firstError) record.firstError = err(error, stage); else record.secondaryErrors.push(err(error, stage)); };
+   const remaining = cap => { const ms = Math.min(cap, deadline - Date.now()); assert.ok(ms > 0, 'fixed case wall deadline'); return ms; };
+   const events = [], responseJobs = []; let context, page, video, activePointer = null;
+@@ -158,10 +158,40 @@
+     const p={x:box.x+box.width*.86,y:box.y+box.height*.30,orbitYaw:s.camera.yaw};
+     await page.mouse.move(p.x,p.y);await page.mouse.down();activePointer=p;return p;
+   }
++  const progressOf = (s,id=null) => {
++    const t=transit(s),v=id?vehicle(s,id):null;
++    return {ready:s.ready,started:s.started,paused:s.paused,simulationTime:s.simulationTime,timing:s.timing,teleportRevision:s.teleportRevision,
++      position:s.position,camera:s.camera,stationID:t.stationId,ridingVehicleId:t.ridingVehicleId,passengerLocal:t.passengerLocal,passengerDeck:t.passengerDeck,
++      vehicle:v?Object.fromEntries(['id','x','y','z','yaw','stopId','doorsOpen','remaining','nextStopId','secondsToArrival','serviceTime','delay','held','trafficState','speed'].map(k=>[k,v[k]])):null};
++  };
++  async function observePhaseProgress(phase,when,id=null,phaseDeadline=null,primary=null) {
++    const cap=Math.min(10000,deadline-Date.now(),phaseDeadline==null?Infinity:phaseDeadline-Date.now());
++    if(cap<=0){phase.progress.push({when,status:'SKIPPED_DEADLINE',at:new Date().toISOString()});return;}
++    if(primary&&activePointer){phase.progress.push({when,status:'SKIPPED_POINTER_RELEASE_UNCONFIRMED',at:new Date().toISOString()});return;}
++    try {
++      const observed=await bounded(()=>page.evaluate(id=>{
++        const s=window.__NEON__.snapshot(),t=s.city.sample.transit,v=id?t.vehicles.find(v=>v.id===id):null;
++        return {ready:s.ready,started:s.started,paused:s.paused,simulationTime:s.simulationTime,timing:s.timing,teleportRevision:s.teleportRevision,
++          position:s.position,camera:s.camera,stationID:t.stationId,ridingVehicleId:t.ridingVehicleId,passengerLocal:t.passengerLocal,passengerDeck:t.passengerDeck,
++          vehicle:v?Object.fromEntries(['id','x','y','z','yaw','stopId','doorsOpen','remaining','nextStopId','secondsToArrival','serviceTime','delay','held','trafficState','speed'].map(k=>[k,v[k]])):null};
++      },id),cap,`${phase.type} ${when} progress diagnostic`);
++      phase.progress.push({when,status:'OBSERVED',at:new Date().toISOString(),observed});
++    }catch(error){const diagnostic=err(error,`${phase.type} ${when} progress diagnostic`);phase.diagnosticErrors.push(diagnostic);record.secondaryErrors.push(diagnostic);if(!primary)record.progressDiagnosticFailures.push(diagnostic);}
++  }
+   async function aim(p,yaw,pitch=.15) {
+-    const s=await read();p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
+-    await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
+-    await page.waitForFunction(({yaw,pitch})=>{const c=window.__NEON__.snapshot().camera;return Math.abs(Math.atan2(Math.sin(c.yaw-yaw),Math.cos(c.yaw-yaw)))<.025&&Math.abs(c.pitch-pitch)<.003;},{yaw,pitch},{polling:'raf',timeout:remaining(15000)});
++    const phaseDeadline=Date.now()+remaining(60000),phase={type:'aim',target:{yaw,pitch},budgetMs:60000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.aimPhases.push(phase);
++    try {
++      await bounded(async()=>{
++        const s=await read();phase.progress.push({when:'before-input',status:'OBSERVED',at:new Date().toISOString(),observed:progressOf(s)});
++        p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
++        await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
++        const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite aim phase/whole deadline');
++        await page.waitForFunction(({yaw,pitch})=>{const c=window.__NEON__.snapshot().camera;return Math.abs(Math.atan2(Math.sin(c.yaw-yaw),Math.cos(c.yaw-yaw)))<.025&&Math.abs(c.pitch-pitch)<.003;},{yaw,pitch},{polling:'raf',timeout:cap});
++        assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
++      },Math.max(1,Math.min(phaseDeadline-Date.now(),deadline-Date.now())),'finite aim phase');
++      phase.status='SATISFIED';
++    }catch(error){phase.firstError=err(error,'aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',null,null,error);throw error;}
++    finally{phase.finishedAt=new Date().toISOString();}
+   }
+   async function releasePointer(primary) {
+     if (!activePointer) return;
+@@ -213,7 +243,14 @@
+     finally {record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,firstError:first?err(first,'local movement'):null});}
+   }
+   async function waitBerth(id, stopId=null) {
+-    await page.waitForFunction(({id,stopId})=>{const t=window.__NEON__.snapshot().city.sample.transit,v=t.vehicles.find(v=>v.id===id);return v?.stopId&&(!stopId||v.stopId===stopId)&&v.doorsOpen&&v.remaining>2;},{id,stopId},{polling:'raf',timeout:remaining(180000)});
++    const phaseDeadline=Date.now()+remaining(600000),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:600000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.berthWaits.push(phase);
++    await observePhaseProgress(phase,'before-wait',id,phaseDeadline);
++    try {
++      const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite berth phase/whole deadline');
++      await page.waitForFunction(({id,stopId})=>{const t=window.__NEON__.snapshot().city.sample.transit,v=t.vehicles.find(v=>v.id===id);return v?.stopId&&(!stopId||v.stopId===stopId)&&v.doorsOpen&&v.remaining>2;},{id,stopId},{polling:'raf',timeout:cap});
++      assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite berth phase/whole deadline');phase.status='SATISFIED';
++    }catch(error){phase.firstError=err(error,'scheduled berth');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',id,null,error);throw error;}
++    finally{phase.finishedAt=new Date().toISOString();}
+   }
+   function observedResources(state,id,near) {
+     const b=bridge(state); if(args.mode==='baseline'){assert.ok(!b||!b.fleet?.some(v=>v.authored));return {bridge:b||null,actor:null,pool:null};}
+@@ -292,6 +329,7 @@
+     for(const attempt of record.photoAttempts)if(attempt.screenshotCompleted&&!attempt.imageSha256)try{attempt.imageSha256=sha(await readFile(resolve(folder,attempt.imageFile)));}catch(error){record.secondaryErrors.push(err(error,`partial photo ${attempt.stage} hash`));}
+     record.videoPath=null;
+     if(video)try{record.videoPath=await bounded(()=>video.path(),3000,'video.path');const bytes=await readFile(record.videoPath);record.video={path:record.videoPath,bytes:bytes.length,sha256:sha(bytes)};}catch(error){keep(error,'video finalization');}
++    if(record.progressDiagnosticFailures.length&&!record.firstError)keep(new Error('required phase progress diagnostic failed'),'phase-progress-diagnostics');
+     if(record.diagnostics.length&&!record.firstError)keep(new Error('host evidence writes failed'),'diagnostics');
+     record.status=record.firstError?'FAILED':'PASSED';
+     for(const [file,value]of [['motion.json',{toolSha256,manifestSha256:sha(bundleBytes),motion:record.motion,firstError:record.firstError,secondaryErrors:record.secondaryErrors}],['case.json',record]])try{await writeFile(resolve(folder,file),JSON.stringify(value,null,2)+'\n');}catch(error){keep(error,`write ${file}`);record.status='FAILED';console.error(JSON.stringify({kind,firstError:record.firstError,secondaryErrors:record.secondaryErrors}));}

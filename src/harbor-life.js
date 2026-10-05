@@ -3,9 +3,10 @@ import { SpatialIndex, circleOBB, VEHICLE_SHAPE, moveVehicle, moveCircle } from 
 import { createInteriorLayout } from './metropolis-interiors.js';
 import { intersectionSignal } from './traffic.js';
 import { harborRoutePose } from './harbor-transit.js';
+import { HarborResidentLoop, RESIDENT_LOOP } from './harbor-resident-loop.js';
 
 export const HARBOR_LIFE_SCHEMA = 'neon-harbor/daily-life';
-export const HARBOR_LIFE_VERSION = 1;
+export const HARBOR_LIFE_VERSION = 2;
 export const HARBOR_LIFE_STEP = .1;
 export { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
 const HOME_IDS = ['south-077', 'south-078', 'south-079', 'south-080', 'south-081', 'south-082', 'south-083', 'south-084', 'south-093', 'south-083', 'south-084', 'south-080'];
@@ -22,7 +23,8 @@ const near = (a, b, radius = 3.6) => a && Number.isFinite(a.x) && Number.isFinit
  * schedules, stock, wages or cargo. All money transfers debit an actual account;
  * initial food is finite and every consumed portion remains in the audit. */
 export class HarborLife {
-  constructor({ buildings = [], colliders = [], transport = null, seed = 749213, hour = 18, secondsPerHour = 35, save = null } = {}) {
+  constructor({ buildings = [], colliders = [], transport = null, seed = 749213, hour = 18, secondsPerHour = 35, save = null,
+    residentLoop = !!transport } = {}) {
     this.buildings = buildings; this.transport = transport;
     this.seed = (Number.isSafeInteger(seed) ? seed : 749213) >>> 0;
     this.secondsPerHour = Number.isFinite(secondsPerHour) && secondsPerHour > 0 ? secondsPerHour : 35;
@@ -80,7 +82,10 @@ export class HarborLife {
     });
     this.initialMoney = this.totalMoney;
     this.initialGoods = this.totalGoods;
-    this._orders(); for (const agent of this.agents) this._chooseGoal(agent);
+    this._orders();
+    this.residentLoop = residentLoop && transport
+      ? new HarborResidentLoop(this, createHarborLifeNavigation(colliders, { radius: RESIDENT_LOOP.radius })) : null;
+    for (const agent of this.agents) this._chooseGoal(agent);
     this._freshSave = this.snapshot();
     this.restored = save ? this.restore(save) : false;
   }
@@ -228,6 +233,7 @@ export class HarborLife {
     return { kind: 'home', id: agent.home.buildingId, anchor: agent.home.anchor };
   }
   _chooseGoal(agent) {
+    if (this.residentLoop?.owns(agent)) return;
     const target = this._desired(agent);
     if (agent.goal?.kind === target.kind && agent.goal.id === target.id && agent.phase !== 'route-blocked') return;
     if (agent.transit) return; // A passenger must finish a real ride before rerouting.
@@ -261,6 +267,7 @@ export class HarborLife {
     if (path && !path.length) this._arrive(agent);
   }
   _arrive(agent) {
+    if (this.residentLoop?.owns(agent)) { this.residentLoop.arrive(agent); return; }
     agent.path = []; agent.pathIndex = 0; agent.crossingId = null;
     if (agent.transit?.phase === 'boarding') {
       this.transport.confirmCitizen?.(agent.id); agent.transit.phase = 'riding'; agent.phase = 'riding'; agent.activity = '乘坐港湾电车'; this.statistics.boarded++; this.revision++; return;
@@ -373,6 +380,7 @@ export class HarborLife {
     agent.goal = null; this._chooseGoal(agent);
   }
   _wage(agent) {
+    if (this.residentLoop?.owns(agent)) return;
     const slot = Math.floor(this.absoluteHour);
     if (agent.lastWageSlot >= slot || !this._inShift(agent) || distance(agent, agent.work.anchor) > .4) return;
     const employer = agent.work.employer === this.supply.id ? this.supply : this.shops.find(s => s.id === agent.work.employer);
@@ -394,6 +402,7 @@ export class HarborLife {
     while (this.accumulator + 1e-9 >= HARBOR_LIFE_STEP) {
       this.accumulator = Math.max(0, this.accumulator - HARBOR_LIFE_STEP); this.ticks++;
       for (const agent of this.agents) {
+        if (this.residentLoop?.owns(agent)) { this.residentLoop.updateTick(vehicles); continue; }
         if (agent.transit && ['waiting', 'riding', 'boarding', 'alighting'].includes(agent.transit.phase)) { this._transit(agent, HARBOR_LIFE_STEP); continue; }
         if (['walking', 'entering-home', 'leaving-home'].includes(agent.phase)) this._walk(agent, HARBOR_LIFE_STEP, vehicles);
         if (agent.phase === 'working') this._wage(agent);
@@ -441,7 +450,8 @@ export class HarborLife {
     return gap;
   }
   trafficYieldAt(car) { return Number.isFinite(this.trafficStopDistanceAt(car)); }
-  summary() { return { schema: HARBOR_LIFE_SCHEMA, version: 1, seed: this.seed, hour: this.hour, day: this.day, residents: this.agents.length,
+  summary() { return { schema: HARBOR_LIFE_SCHEMA, version: HARBOR_LIFE_VERSION, seed: this.seed, hour: this.hour, day: this.day, residents: this.agents.length,
+    residentDiary: this.residentLoop?.publicStatus() || null,
     activeDelivery: this.activeDelivery, availableJobs: this.availableJobs, shops: this.shopStatuses, statistics: { ...this.statistics },
     totalMoney: this.totalMoney, initialMoney: this.initialMoney, cashPaidToPlayer: this.player.earnedCash, cashPaidByPlayer: this.player.spentCash, playerInventory: { ...this.player.inventory }, totalGoods: this.totalGoods, initialGoods: this.initialGoods, consumedByProduct: { ...this.consumedByProduct },
     phases: Object.fromEntries([...new Set(this.agents.map(a => a.phase))].map(p => [p, this.agents.filter(a => a.phase === p).length])) }; }
@@ -453,7 +463,7 @@ export class HarborLife {
       shops: this.shops.map(({ id, money, stock, sold, received, paidWages }) => ({ id, money, stock, sold, received, paidWages })),
       agents: this.agents.map(({ id, money, purchased, lastWageSlot, x, y, z, yaw, phase, activity, goal, path, pathIndex, insideBuildingId, floorId, roomId, crossingId, transit, cargoJobId, blockedFor, gait, visits }) =>
         ({ id, money, purchased, lastWageSlot, x, y, z, yaw, phase, activity, goal, path, pathIndex, insideBuildingId, floorId, roomId, crossingId, transit, cargoJobId, blockedFor, gait, visits })),
-      jobs: this.jobs, transactions: this.transactions });
+      jobs: this.jobs, transactions: this.transactions, residentLoop: this.residentLoop?.snapshot() || null });
   }
   reset({ hour = this._freshSave.startHour } = {}) {
     for (const a of this.agents) this.transport?.releaseCitizen?.(a.id);
@@ -470,6 +480,11 @@ export class HarborLife {
       // Version 1 exports made before player retail retain their untouched
       // inventory and have no imported payment; existing daily life resumes.
       if (s?.player && s.player.spentCash === undefined) { s.player.spentCash = 0; s.player.inventory = Object.fromEntries(PRODUCTS.map(p => [p, 0])); s.player.purchaseRequests = []; if (s.statistics) s.statistics.playerPurchases = 0; }
+      if (s?.version === 1) {
+        if (this.residentLoop && !this.residentLoop.migrateLegacy(s)) return false;
+        else if (!this.residentLoop) s.residentLoop = null;
+        s.version = HARBOR_LIFE_VERSION;
+      }
       if (!s || s.schema !== HARBOR_LIFE_SCHEMA || s.version !== HARBOR_LIFE_VERSION || s.seed !== this.seed || s.secondsPerHour !== this.secondsPerHour || !Number.isFinite(s.startHour) || s.startHour < 0 || s.startHour >= 24 || (s.externalHour != null && (!Number.isFinite(s.externalHour) || s.externalHour < 0 || s.externalHour >= 24))) return false;
       if (!integer(s.ticks, 1e10) || !Number.isFinite(s.accumulator) || s.accumulator < 0 || s.accumulator >= HARBOR_LIFE_STEP + 1e-8 || !integer(s.serial) || !integer(s.orderSerial) || !integer(s.revision)) return false;
       if (s.initialMoney !== this.initialMoney || s.initialGoods !== this.initialGoods || !integer(s.player?.earnedCash) || !integer(s.player?.spentCash) || PRODUCTS.some(p => !integer(s.player?.inventory?.[p], 100)) || !integer(s.player?.completed)) return false;
@@ -488,14 +503,17 @@ export class HarborLife {
       if (!Array.isArray(s.player.purchaseRequests) || s.player.purchaseRequests.length > 300 || new Set(s.player.purchaseRequests.map(r => r.id)).size !== s.player.purchaseRequests.length || new Set(s.player.purchaseRequests.map(r => r.transactionId)).size !== s.player.purchaseRequests.length || s.player.purchaseRequests.some(r =>
         typeof r.id !== 'string' || !/^[a-zA-Z0-9:_-]{1,80}$/.test(r.id) || !/^harbor-tx-\d+$/.test(r.transactionId) || Number(r.transactionId.slice(10)) < 1 || Number(r.transactionId.slice(10)) > s.serial || !this.shops.some(shop => shop.id === r.shopId && shop.product === r.product && shop.price === r.price))) return false;
       if (s.player.purchaseRequests.reduce((n, r) => n + r.price, 0) !== s.player.spentCash || PRODUCTS.some(p => s.player.purchaseRequests.filter(r => r.product === p).length !== s.player.inventory[p])) return false;
+      const selected = s.agents.find(agent => this.residentLoop?.owns(agent));
+      if (this.residentLoop ? !this.residentLoop.validate(s.residentLoop, selected, s) : s.residentLoop != null) return false;
       const stateDay = Math.floor((s.startHour + s.ticks * HARBOR_LIFE_STEP / this.secondsPerHour) / 24);
       for (const [i, state] of s.agents.entries()) {
         const authored = this.agents[i];
+        const loopResident = this.residentLoop?.owns(authored);
         if (PRODUCTS.some(p => state.purchased[p] > stateDay)) return false;
-        if (state.insideBuildingId && (state.insideBuildingId !== authored.home.buildingId || state.floorId !== 'lobby' || state.roomId !== this._homePath(authored).roomId || !['resting', 'entering-home', 'leaving-home'].includes(state.phase))) return false;
-        if (!state.insideBuildingId && !['riding', 'boarding', 'alighting'].includes(state.phase) && !this.navigation.clear(state)) return false;
-        if (state.phase === 'working' && distance(state, authored.work.anchor) > .4) return false;
-        if (state.goal) {
+        if (!loopResident && state.insideBuildingId && (state.insideBuildingId !== authored.home.buildingId || state.floorId !== 'lobby' || state.roomId !== this._homePath(authored).roomId || !['resting', 'entering-home', 'leaving-home'].includes(state.phase))) return false;
+        if (!loopResident && !state.insideBuildingId && !['riding', 'boarding', 'alighting'].includes(state.phase) && !this.navigation.clear(state)) return false;
+        if (!loopResident && state.phase === 'working' && distance(state, authored.work.anchor) > .4) return false;
+        if (state.goal && !loopResident) {
           const g = state.goal;
           if (!g.anchor || ![g.anchor.x, g.anchor.y, g.anchor.z].every(Number.isFinite)) return false;
           if (g.kind === 'home' && (g.id !== authored.home.buildingId || distance(g.anchor, authored.home.anchor) > .01)) return false;
@@ -525,6 +543,7 @@ export class HarborLife {
       if (!Array.isArray(s.transactions) || s.transactions.length > 96 || new Set(s.transactions.map(t => t.id)).size !== s.transactions.length || s.transactions.some(t => !/^harbor-tx-\d+$/.test(t.id) || !integer(t.tick) || !integer(t.amount))) return false;
       Object.assign(this, { startHour: s.startHour, externalHour: s.externalHour ?? null, ticks: s.ticks, accumulator: s.accumulator, revision: s.revision, serial: s.serial, orderSerial: s.orderSerial, player: s.player, statistics: s.statistics, consumedByProduct: s.consumedByProduct, jobs: s.jobs, transactions: s.transactions });
       Object.assign(this.supply, s.supply); s.shops.forEach((a, i) => Object.assign(this.shops[i], a)); s.agents.forEach((a, i) => Object.assign(this.agents[i], a));
+      this.residentLoop?.restoreValidated(s.residentLoop);
       // An external fleet restore must rehydrate tickets before the next tick.
       // If that service cannot restore them, a saved passenger resumes on the
       // actual origin platform rather than retaining an orphan vehicle token.
@@ -543,9 +562,9 @@ export function createHarborLife(options) { return new HarborLife(options); }
 /** Collision-checked alley and pavement graph for the actual old-quarter
  * blocks. Road edges exist only at explicit crossing lanes, which are exported
  * for the renderer and traffic controller to share. */
-export function createHarborLifeNavigation(colliders = []) {
+export function createHarborLifeNavigation(colliders = [], { radius = .43 } = {}) {
   const index = new SpatialIndex(colliders.filter(c => c.physics !== false && c.minY < 1.9 && c.maxY > .25));
-  const radius = .43, nodes = [], lookup = new Map(), crossings = [], crossingMap = new Map(), cache = new Map();
+  const nodes = [], lookup = new Map(), crossings = [], crossingMap = new Map(), cache = new Map();
   const vertical = [94, 146, 174, 226, 254];
   const horizontal = [-214, -174, -146, -94, -66, -14, 14, 66, 94, 146, 174, 226];
   const roads = [-160, -80, 0, 80, 160, 240];

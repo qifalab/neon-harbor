@@ -1,0 +1,118 @@
+{
+  "jobId": 111566878095,
+  "name": "Build and gameplay tests (occupied-city)",
+  "bucket": "required",
+  "conclusion": "success",
+  "downloadedAt": "2026-10-05T00:48:55.339Z",
+  "raw": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878095-original.log",
+    "bytes": 197337,
+    "sha256": "964af808d23d24c460721d396172c652a432640987c3a549b15662edfd733bc4"
+  },
+  "rules": {
+    "tests": 342,
+    "passed": 342,
+    "failed": 0,
+    "uniqueTestCountNotMultiplied": true
+  },
+  "errorLines": [],
+  "actualJobSteps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-05T00:19:11Z",
+      "completed_at": "2026-10-05T00:19:12Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-05T00:19:12Z",
+      "completed_at": "2026-10-05T00:19:45Z"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-05T00:19:45Z",
+      "completed_at": "2026-10-05T00:19:47Z"
+    },
+    {
+      "name": "Run npm ci",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-05T00:19:47Z",
+      "completed_at": "2026-10-05T00:19:47Z"
+    },
+    {
+      "name": "Run npm test",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-05T00:19:47Z",
+      "completed_at": "2026-10-05T00:23:41Z"
+    },
+    {
+      "name": "Run npm run build",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-05T00:23:41Z",
+      "completed_at": "2026-10-05T00:23:42Z"
+    },
+    {
+      "name": "Run npx playwright install --with-deps chromium",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-10-05T00:23:42Z",
+      "completed_at": "2026-10-05T00:24:05Z"
+    },
+    {
+      "name": "Run npx playwright test tests/e2e/occupied-city.spec.js --fully-parallel --shard=1/1",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-05T00:24:05Z",
+      "completed_at": "2026-10-05T00:48:12Z"
+    },
+    {
+      "name": "Retain browser verification evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-10-05T00:48:12Z",
+      "completed_at": "2026-10-05T00:48:14Z"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17,
+      "started_at": "2026-10-05T00:48:14Z",
+      "completed_at": "2026-10-05T00:48:14Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 18,
+      "started_at": "2026-10-05T00:48:14Z",
+      "completed_at": "2026-10-05T00:48:14Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 19,
+      "started_at": "2026-10-05T00:48:14Z",
+      "completed_at": "2026-10-05T00:48:14Z"
+    }
+  ],
+  "captureIsManualArtApproval": false
+}

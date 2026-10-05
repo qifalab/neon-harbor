@@ -1,0 +1,113 @@
+{
+  "baseCommit": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "candidateDirectory": "/tmp/neon-harbor-one-resident-loop",
+  "sourceFrozen": true,
+  "declaredFiles": [
+    {
+      "path": "src/harbor-life.js",
+      "bytes": 54897,
+      "sha256": "bcc290a78efce8246c09ba61e26382c2734c82f64f8df32f684e38a6c239a21c",
+      "baseSha256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+      "adoption": "source_or_test"
+    },
+    {
+      "path": "src/harbor-resident-loop.js",
+      "bytes": 26511,
+      "sha256": "d0baac8347245c50d6694ccac447f43ee67c5b7672d578e5dba9d2d1a31b5317",
+      "baseSha256": null,
+      "adoption": "source_or_test"
+    },
+    {
+      "path": "src/harbor-resident-diary-ui.js",
+      "bytes": 2341,
+      "sha256": "9ef2ce2fcac3f2f3b5adf9ee0f1979cb70ffad6967c26d3a4eb07829158843b2",
+      "baseSha256": null,
+      "adoption": "source_or_test"
+    },
+    {
+      "path": "src/harbor-life-renderer.js",
+      "bytes": 12095,
+      "sha256": "f753caff6ebcb452834923631cae35fd3971a5a1bb76b877d321168ec4f815e9",
+      "baseSha256": "65dfd60514cf044b82470bb418656e6504109e34525a46f489da100e0a3de13c",
+      "adoption": "source_or_test"
+    },
+    {
+      "path": "tests/harbor-resident-loop.test.js",
+      "bytes": 14595,
+      "sha256": "be4a825585d25788cef3fd1817a7ecde262058aca14d17083638919f28310284",
+      "baseSha256": null,
+      "adoption": "source_or_test"
+    },
+    {
+      "path": "tests/harbor-life-traffic.test.js",
+      "bytes": 10969,
+      "sha256": "7a90709ed9cd4ea72d1b10536b9cbc92215b07c74f7e79ce95263643206e06a7",
+      "baseSha256": "8d57687827a80fe7c2014937d870872983a9fe57b828af082f9a70f03c3f077a",
+      "adoption": "source_or_test"
+    },
+    {
+      "path": "tools/observe-resident-loop.mjs",
+      "bytes": 4494,
+      "sha256": "c4ebb704d7de4ab94fead1da2b6ad309e82b67e264cdb9282de0aa8894c1ff85",
+      "baseSha256": null,
+      "adoption": "optional_tool_or_proposal"
+    },
+    {
+      "path": "patches/resident-diary-ui.patch",
+      "bytes": 1088,
+      "sha256": "8f10419be5565dc2b10425b80acdded0949d8a03d17919c9cf51b730b68ae38e",
+      "baseSha256": null,
+      "adoption": "optional_tool_or_proposal"
+    },
+    {
+      "path": "README-one-resident-loop.md",
+      "bytes": 4393,
+      "sha256": "0f4e77a71326cd17ada371cfc3e24d292e9290c7446c656140f4442f34a88952",
+      "baseSha256": null,
+      "adoption": "optional_tool_or_proposal"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/selected-tests.txt",
+      "bytes": 3031,
+      "sha256": "e6ad404d93f6aa397195e5f2efea5d88f8438ae6c8478641245d88b6c5135cdd"
+    },
+    {
+      "path": "evidence/initial-35s-cpu-observation.json",
+      "bytes": 2455,
+      "sha256": "b66e34d7b48e0a4c3aada8dfcb08233ce68235d8b0d3f4c2c5d3bd2b97ccf7b2"
+    },
+    {
+      "path": "evidence/120s-clock-public-16.5-cpu-observation.json",
+      "bytes": 69195,
+      "sha256": "c8416e643b86405d52861472871fb6c460250ccc8d3080eacc418bee2f085031"
+    }
+  ],
+  "tests": {
+    "command": "timeout 60s node --test tests/harbor-resident-loop.test.js tests/harbor-life.test.js",
+    "passed": 26,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 11255.907488,
+    "exitCode": 0
+  },
+  "cpuObservation": {
+    "status": "COMPLETED",
+    "simulationSeconds": 991.9,
+    "selectedSecondsPerHour": 120,
+    "publicShopHour": 16.5,
+    "workValidTicks": 700,
+    "wages": 6,
+    "purchases": 1,
+    "totalMoney": 2972,
+    "totalGoods": 300
+  },
+  "rootMutated": false,
+  "browserRun": false,
+  "gpuRun": false,
+  "buildRun": false,
+  "nativeAcceptance": "NOT_RUN",
+  "uiPatchCheck": "git apply --check patches/resident-diary-ui.patch exited 0; proposal not applied to copied source"
+}

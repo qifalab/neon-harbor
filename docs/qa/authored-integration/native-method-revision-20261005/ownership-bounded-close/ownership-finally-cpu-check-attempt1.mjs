@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import vm from 'node:vm';
+import {createHash} from 'node:crypto';
+const path='/tmp/neon-native-ownership-close-candidate-20261005/payload/tools/native-review/methods/transport-owner/native-transport-ownership-extra.mjs';
+const source=await readFile(path,'utf8');
+const helper=source.slice(source.indexOf('function classifyOwnedBrowserClose('),source.indexOf('async function event(stage,data={})'));
+const body=source.slice(source.indexOf('  const cleanupStarted=Date.now(),cleanupDeadline='),source.indexOf('  record.closedAt=new Date().toISOString();'));
+async function run({name,contextMs=4000,staticMs=10,ownerMs=30001,ownerExit=null,ownerSignal='SIGKILL',wholeMs=1200000,priorError=null,staticReject=false,ownerReject=false,live=false}){
+ let now=0;const child={pid:7001,exitCode:null,signalCode:null};const browserProcess={process:child};const record={firstError:priorError,secondaryErrors:[],cleanup:[],callerOwnedForceInvoked:false,hardDeadlineReached:false};
+ const calls=[];const owned={pid:7001,child,browserProcess,identity:{pid:7001,startTicks:'90000'}};
+ const keep=(e,stage)=>{const row={stage,message:e.message};if(!record.firstError)record.firstError=row;else record.secondaryErrors.push(row);record.status='FAILED';};
+ const context={close:async()=>{calls.push('context.close');now+=contextMs;}};
+ const serverClose=async()=>{calls.push('server.close');now+=staticMs;if(staticReject)throw new Error('static API rejected');};
+ const browser={close:async()=>{calls.push('browser.close');now+=ownerMs;if(ownerReject)throw new Error('owner API rejected');if(!live){child.exitCode=ownerExit;child.signalCode=ownerSignal;}}};
+ const bounded=async(operation,cap,label)=>{const began=now;if(cap<=0)throw new Error('zero cap');const r=await operation();if(now-began>cap)throw new Error(label+' exceeded '+cap+' ms');return r;};
+ const ctx={assert,Number,Boolean,Date:{now:()=>now},Math,record,owned,context,browser,deadline:wholeMs,keep,bounded,errorRow:(e,stage)=>({stage,message:e.message}),beginOwnServerClose:serverClose,interruptOwnServer:()=>calls.push('interruptOwnServer'),event:async()=>{},ownedBrowserIdentity:async()=>live?owned.identity:null,forceOwnedExit:async(cap,reason)=>{record.callerOwnedForceInvoked=true;calls.push('forceOwnedExit');if(cap<20){keep(new Error('owned kill cap consumed'),'owned forced exit');return;}now+=20;child.signalCode='SIGKILL';record.cleanup.push({operation:'owned forced exit',reason,confirmed:true});}};
+ vm.createContext(ctx);vm.runInContext(helper,ctx);await vm.runInContext('(async()=>{'+body+'})()',ctx);
+ return {name,calls,firstError:record.firstError,secondaryErrors:record.secondaryErrors,ownerClose:record.ownedBrowserClose,cleanup:record.cleanup,childExit:record.actualChildExit};
+}
+const rows=[];
+let r=await run({name:'provider30s fallback fits35 after context/static inside30'});assert.equal(r.firstError,null);assert.deepEqual(r.calls,['context.close','server.close','browser.close']);assert.equal(r.ownerClose.boundedCloseAccepted,true);assert.equal(r.ownerClose.forcedExit,true);assert.equal(r.ownerClose.graceful,false);assert.equal(r.cleanup[2].actualCapMs,35000);rows.push(r);
+r=await run({name:'normal official close',ownerMs:20,ownerExit:0,ownerSignal:null});assert.equal(r.firstError,null);assert.equal(r.ownerClose.graceful,true);rows.push(r);
+r=await run({name:'game error keeps precedence',priorError:{stage:'gameplay',message:'original game failure'}});assert.equal(r.firstError.stage,'gameplay');rows.push(r);
+r=await run({name:'nonzero owner exit remains failure',ownerMs:20,ownerExit:9,ownerSignal:null});assert.equal(r.firstError.stage,'browser.close');rows.push(r);
+r=await run({name:'unexpected owner signal remains failure',ownerMs:20,ownerExit:null,ownerSignal:'SIGTERM'});assert.equal(r.firstError.stage,'browser.close');rows.push(r);
+r=await run({name:'unclosed live owner remains failure',ownerMs:20,live:true});assert.equal(r.firstError.stage,'browser.close');rows.push(r);
+r=await run({name:'API rejection remains failure',ownerMs:20,ownerReject:true});assert.equal(r.firstError.stage,'browser.close');rows.push(r);
+r=await run({name:'owner outer35 timeout remains failure',ownerMs:35001});assert.equal(r.firstError.stage,'browser.close');rows.push(r);
+r=await run({name:'static original30 cap remains failure',staticMs:30001});assert.equal(r.firstError.stage,'server.close');rows.push(r);
+r=await run({name:'static rejection remains failure',staticReject:true});assert.equal(r.firstError.stage,'server.close');rows.push(r);
+r=await run({name:'unchanged whole cap bounds owner API',wholeMs:24000});assert.equal(r.firstError.stage,'browser.close');assert.ok(r.cleanup[2].actualCapMs<35000);rows.push(r);
+const receipt={status:'PASSED',scope:'11 actual pure-CPU shim cases execute candidate finally block/classifier with virtual API durations and identity readbacks; no browser/native/kernel pass inferred',sourceSHA256:createHash('sha256').update(source).digest('hex'),rows};
+await writeFile('/tmp/neon-native-ownership-close-candidate-20261005/cpu-finally-receipt.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({status:receipt.status,cases:rows.length,sourceSHA256:receipt.sourceSHA256}));

@@ -1,0 +1,463 @@
+{
+  "client": 2,
+  "contextOptions": {
+    "version": 8,
+    "type": "context-options",
+    "origin": "library",
+    "browserName": "chromium",
+    "playwrightVersion": "1.62.1",
+    "options": {
+      "noDefaultViewport": false,
+      "viewport": {
+        "width": 640,
+        "height": 400
+      },
+      "ignoreHTTPSErrors": false,
+      "javaScriptEnabled": true,
+      "bypassCSP": false,
+      "locale": "en-US",
+      "offline": false,
+      "isMobile": false,
+      "hasTouch": false,
+      "colorScheme": "light",
+      "acceptDownloads": "accept",
+      "baseURL": "http://127.0.0.1:5180",
+      "serviceWorkers": "allow",
+      "selectorEngines": [],
+      "testIdAttributeName": "data-testid"
+    },
+    "platform": "linux",
+    "wallTime": 1791159799433,
+    "monotonicTime": 187745.639,
+    "sdkLanguage": "javascript",
+    "testIdAttributeName": "data-testid",
+    "contextId": "browser-context@fe515a1976b782fe1aa01aadd0f1a8e2"
+  },
+  "calls": [
+    {
+      "callId": "call@240",
+      "startTime": 187790.915,
+      "endTime": 187833.067,
+      "durationMs": 42.15200000000186,
+      "method": "newPage",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@244",
+      "startTime": 187836.356,
+      "endTime": 187837.61,
+      "durationMs": 1.253999999986263,
+      "method": "newCDPSession",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@304",
+      "startTime": 209648.746,
+      "endTime": 209650.407,
+      "durationMs": 1.6609999999927823,
+      "method": "addInitScript",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@306",
+      "startTime": 209654.705,
+      "endTime": 212428.549,
+      "durationMs": 2773.844000000012,
+      "method": "goto",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@308",
+      "startTime": 212461.247,
+      "endTime": 218392.99,
+      "durationMs": 5931.742999999988,
+      "method": "expect",
+      "selector": "#start",
+      "expression": "to.be.enabled",
+      "error": null
+    },
+    {
+      "callId": "call@310",
+      "startTime": 218483.642,
+      "endTime": 218519.429,
+      "durationMs": 35.787000000011176,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@312",
+      "startTime": 218534.833,
+      "endTime": 218587.742,
+      "durationMs": 52.9089999999851,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@314",
+      "startTime": 218606.01,
+      "endTime": 218609.307,
+      "durationMs": 3.2969999999913853,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@316",
+      "startTime": 218614.822,
+      "endTime": 218617.45,
+      "durationMs": 2.628000000026077,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@318",
+      "startTime": 218623.585,
+      "endTime": 218627.97,
+      "durationMs": 4.385000000009313,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@320",
+      "startTime": 218631.061,
+      "endTime": 218643.784,
+      "durationMs": 12.723000000027241,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@322",
+      "startTime": 218646.685,
+      "endTime": 218656.969,
+      "durationMs": 10.284000000014203,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@324",
+      "startTime": 218663.071,
+      "endTime": 218671.4,
+      "durationMs": 8.328999999997905,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@326",
+      "startTime": 218678.268,
+      "endTime": 218684.126,
+      "durationMs": 5.857999999978347,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@328",
+      "startTime": 218688.788,
+      "endTime": 218699.215,
+      "durationMs": 10.426999999996042,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@330",
+      "startTime": 218706.552,
+      "endTime": 218711.612,
+      "durationMs": 5.059999999997672,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@332",
+      "startTime": 218715.503,
+      "endTime": 218721.358,
+      "durationMs": 5.855000000010477,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@334",
+      "startTime": 218726.842,
+      "endTime": 218811.968,
+      "durationMs": 85.12599999998929,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@336",
+      "startTime": 218829.01,
+      "endTime": 218881.573,
+      "durationMs": 52.562999999994645,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@338",
+      "startTime": 218899.89,
+      "endTime": 218954.951,
+      "durationMs": 55.06099999998696,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@340",
+      "startTime": 218970.971,
+      "endTime": 218978.92,
+      "durationMs": 7.949000000022352,
+      "method": "expect",
+      "selector": "#welcome-multiplayer",
+      "expression": "to.be.focused",
+      "error": null
+    },
+    {
+      "callId": "call@342",
+      "startTime": 218990.125,
+      "endTime": 223360.901,
+      "durationMs": 4370.776000000013,
+      "method": "expect",
+      "selector": "#welcome-multiplayer",
+      "expression": "to.be.in.viewport",
+      "error": null
+    },
+    {
+      "callId": "call@344",
+      "startTime": 223365.041,
+      "endTime": 227106.106,
+      "durationMs": 3741.0650000000023,
+      "method": "click",
+      "selector": "#welcome-multiplayer",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@346",
+      "startTime": 227124.314,
+      "endTime": 227154.694,
+      "durationMs": 30.379999999975553,
+      "method": "fill",
+      "selector": "#room-name",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@348",
+      "startTime": 227165.894,
+      "endTime": 227181.102,
+      "durationMs": 15.208000000013271,
+      "method": "fill",
+      "selector": "#room-code",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@350",
+      "startTime": 227191.706,
+      "endTime": 229819.027,
+      "durationMs": 2627.3209999999963,
+      "method": "click",
+      "selector": "#room-join",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@352",
+      "startTime": 229837.231,
+      "endTime": 230747.061,
+      "durationMs": 909.8299999999872,
+      "method": "expect",
+      "selector": "#welcome",
+      "expression": "to.be.hidden",
+      "error": null
+    },
+    {
+      "callId": "call@354",
+      "startTime": 230755.602,
+      "endTime": 230775.895,
+      "durationMs": 20.29299999997602,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot().multiplayer.status",
+      "error": null
+    },
+    {
+      "callId": "call@356",
+      "startTime": 230786.627,
+      "endTime": 252778.19,
+      "durationMs": 21991.562999999995,
+      "method": "click",
+      "selector": "#multiplayer",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@372",
+      "startTime": 262948.595,
+      "endTime": 262965.717,
+      "durationMs": 17.12200000003213,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "({\n        visitorId,\n        position,\n        scene\n      }) => {\n        const peer = window.__NEON__.snapshot().multiplayer.players.find(player => player.id === visitorId);\n        return peer?.scene === scene ? Math.hypot(peer.x - position.x, peer.y - position.y, peer.z - position.z) : Infinity;\n      }",
+      "error": null
+    },
+    {
+      "callId": "call@386",
+      "startTime": 279641.387,
+      "endTime": 279647.873,
+      "durationMs": 6.486000000033528,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "({\n        visitorId,\n        position,\n        scene\n      }) => {\n        const peer = window.__NEON__.snapshot().multiplayer.players.find(player => player.id === visitorId);\n        return peer?.scene === scene ? Math.hypot(peer.x - position.x, peer.y - position.y, peer.z - position.z) : Infinity;\n      }",
+      "error": null
+    },
+    {
+      "callId": "call@396",
+      "startTime": 285609.909,
+      "endTime": 285623.97,
+      "durationMs": 14.060999999986961,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "({\n        visitorId,\n        position,\n        scene\n      }) => {\n        const peer = window.__NEON__.snapshot().multiplayer.players.find(player => player.id === visitorId);\n        return peer?.scene === scene ? Math.hypot(peer.x - position.x, peer.y - position.y, peer.z - position.z) : Infinity;\n      }",
+      "error": null
+    },
+    {
+      "callId": "call@426",
+      "startTime": 515126.997,
+      "endTime": 515145.235,
+      "durationMs": 18.238000000012107,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => {\n  const state = window.__NEON__?.snapshot();\n  if (!state) return {\n    ready: false\n  };\n  const starter = state.cars.find(car => car.id === 'starter');\n  return {\n    position: state.position,\n    simulationTime: state.simulationTime,\n    teleportRevision: state.teleportRevision,\n    inCar: state.inCar,\n    speed: state.speed,\n    starter,\n    starterDistance: starter ? Math.hypot(starter.x - state.position.x, starter.z - state.position.z) : null,\n    multiplayer: state.multiplayer,\n    interior: state.city.interior,\n    timing: state.timing,\n    renderer: state.renderer\n  };\n}",
+      "error": null
+    }
+  ],
+  "snapshotStates": [
+    {
+      "callId": "call@426",
+      "startTime": 515126.997,
+      "endTime": 515145.235,
+      "state": {
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 174,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 0.24999999999999997,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": {
+          "wallDt": 0.016599999999976717,
+          "dt": 0.016599999999976717,
+          "steps": 0,
+          "alpha": 0,
+          "simulationDelta": 0,
+          "droppedSeconds": 0,
+          "droppedTotal": 20.7492
+        },
+        "renderer": {
+          "calls": 760,
+          "triangles": 591082,
+          "memory": {
+            "geometries": 315,
+            "textures": 73
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 54.2,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 0,
+            "targetFloorId": null,
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": null,
+          "totalFloors": 0
+        }
+      }
+    }
+  ],
+  "networkStatePostCount": 2639,
+  "networkResponseBodiesMissing": 0,
+  "non200StateResponses": [],
+  "rideStatePostCount": 0,
+  "rideUniqueHeightCount": 0,
+  "rideStartSend": null,
+  "rideFinalSend": null,
+  "rideOutboundHeightMonotonicNonDecreasing": true,
+  "rideObserverResponseHeightRange": null,
+  "inWaitScreencastCount": 99,
+  "inWaitScreencastGapSeconds": {
+    "min": 0.2048289999999688,
+    "median": 0.49926099999996953,
+    "max": 9.25515399999998,
+    "mean": 1.7999042551020406
+  },
+  "screencastNotEquivalentToRenderOrSimulationFrames": true
+}

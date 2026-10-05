@@ -25,15 +25,15 @@
   },
   "physicsSource": "original unchanged runtime layout supplied by caller",
   "nativeValidated": false,
-  "totalGlbBytes": 11482076,
+  "totalGlbBytes": 11558572,
   "assets": [
     {
       "file": "serein-d11-lod0.glb",
       "path": "models/serein-d11-lod0.glb",
       "tier": 0,
-      "sha256": "d353e32dfb4899c0bf06d9263187e3f0a8208604450a24d365c2f1998ef6a3d4",
-      "bytes": 8240500,
-      "triangles": 119044,
+      "sha256": "818f3d4cfd73f33422e22d2acc13cedf2b3781b1b84012b91dc1e8c0773f04f9",
+      "bytes": 8283296,
+      "triangles": 119892,
       "materialCount": 14,
       "primitiveCount": 42,
       "externalUris": 0
@@ -42,9 +42,9 @@
       "file": "serein-d11-lod1.glb",
       "path": "models/serein-d11-lod1.glb",
       "tier": 1,
-      "sha256": "e8a1f07cb99c23385687a71c3e1a38524b27890c7557e770196bb0f27a17709c",
-      "bytes": 2668124,
-      "triangles": 24992,
+      "sha256": "94b3b1ff29117d24edd6ffb6aad9b2da75b2e301aee36080ba6b61e4532e2a81",
+      "bytes": 2695460,
+      "triangles": 25504,
       "materialCount": 14,
       "primitiveCount": 38,
       "externalUris": 0
@@ -53,23 +53,23 @@
       "file": "serein-d11-lod2.glb",
       "path": "models/serein-d11-lod2.glb",
       "tier": 2,
-      "sha256": "b3ae63d13526376b9edf3210bc62f45c6851690558f97bce2fb89e01e6c491ab",
-      "bytes": 573452,
-      "triangles": 6948,
+      "sha256": "33019edb6c90de4130e975dc5c7a30b10bd59dcd0b4dd4008f29eb7aff6f4190",
+      "bytes": 579816,
+      "triangles": 7068,
       "materialCount": 10,
       "primitiveCount": 30,
       "externalUris": 0
     }
   ],
   "editableSource": {
-    "path": "/tmp/neon-authored-bus-candidate/source/serein-d11-master.blend",
-    "bytes": 2065049,
-    "sha256": "262fcb9f7bcd5e15b52b3594279c858539ca537e856286e9fe011a2ab1af8749"
+    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/bus/source/serein-d11-master.blend",
+    "bytes": 2084691,
+    "sha256": "68d21ec1f9f39831cb33c646e1263f5b1be41a529d1f12b9acaffe95c144dd6d"
   },
   "designSource": {
-    "path": "/tmp/neon-authored-bus-candidate/source/author_bus.py",
-    "bytes": 27689,
-    "sha256": "ff7268f39212b41b9e8cf33a5f243063cbbfeec9256e24f9936d675632daa049"
+    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/bus/source/author_bus.py",
+    "bytes": 28796,
+    "sha256": "44f02b717077afd5c9bbde4826dccfe612560da9bf438a9a966a8e06a7b02972"
   },
   "binding": {
     "path": "/tmp/neon-authored-bus-candidate/binding/authored-bus-candidate.mjs",
@@ -77,9 +77,9 @@
     "sha256": "6123fee5f3504479bddc879f41eb731d53c7088ae4ed02370c85746c36b37dfe"
   },
   "cpuProof": {
-    "path": "/tmp/neon-authored-bus-candidate/review/cpu-asset-check.json",
+    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/bus/review/cpu-asset-check.json",
     "bytes": 25603,
-    "sha256": "9fa46b07534b08e5a06812059f5c1560642add860d6dcd53d43d2da44b29f72e"
+    "sha256": "6e4d73a78b1467809f8e5eda97b174d33fceaa36d4b21b7e431b6016224f7010"
   },
   "sourceProvenance": {
     "path": "/tmp/neon-authored-bus-candidate/review/source-provenance.json",
@@ -90,5 +90,32 @@
     "originalArt": "CC0-1.0",
     "codeAndRuntimeReference": "MIT",
     "glyphs": "DejaVu / Bitstream license in source/DejaVu-font-copyright.txt"
+  },
+  "upperEnclosureAmendment": {
+    "status": "CPU_GEOMETRY_CHECKED_NATIVE_ART_REVIEW_PENDING",
+    "revision": "upper-enclosure-2026-10-05",
+    "originalManifest": {
+      "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/history/ef92-before-enclosure/art-source/transport/bus/asset-manifest.json",
+      "bytes": 2834,
+      "sha256": "05409836cda27a9375f6788388663ab18c3b06ca1da19a9406a892a2d117e885"
+    },
+    "originalEditableSource": {
+      "path": "/tmp/neon-authored-bus-candidate/source/serein-d11-master.blend",
+      "bytes": 2065049,
+      "sha256": "262fcb9f7bcd5e15b52b3594279c858539ca537e856286e9fe011a2ab1af8749"
+    },
+    "originalDesignSource": {
+      "path": "/tmp/neon-authored-bus-candidate/source/author_bus.py",
+      "bytes": 27689,
+      "sha256": "ff7268f39212b41b9e8cf33a5f243063cbbfeec9256e24f9936d675632daa049"
+    },
+    "originalCpuProof": {
+      "path": "/tmp/neon-authored-bus-candidate/review/cpu-asset-check.json",
+      "bytes": 25603,
+      "sha256": "9fa46b07534b08e5a06812059f5c1560642add860d6dcd53d43d2da44b29f72e"
+    },
+    "scope": "Only original curved upper-deck side/end spandrels and 8 far-corner-return triangles; all original materials, textures, canonical layout/door/wheel/hook/physics unchanged",
+    "nativeValidated": false,
+    "originalSourceProvenanceRemainsHistorical": true
   }
 }

@@ -191,6 +191,10 @@ for tier in range(3):
    ranges=intervals if y0<2.28 else [(-5.28,5.28)]
    for a,b in ranges:
     solid_grid(f'{label}-{side}',lambda u,v:(side*side_x(y0+(y1-y0)*u,a+(b-a)*v),y0+(y1-y0)*u,a+(b-a)*v),4,max(3,int((b-a)*[3,1.4,.65][tier])),mat,root,.057,(side,0,0))
+  # Continuous upper-deck spandrel closes the .49 m gap below the real
+  # recessed glazing. It follows the original compound side surface, overlaps
+  # the waist/sill slightly, and stays outside the unchanged cabin clearance.
+  solid_grid(f'upper-deck-side-spandrel-{side}',lambda u,v:(side*side_x(2.49+.528*u,-5.28+10.56*v),2.49+.528*u,-5.28+10.56*v),2,[22,12,8][tier],'paint',root,.057,(side,0,0))
   # Authentic recessed double-wall glazing. Frames do not bridge either lower portal.
   for deck in LAYOUT['decks']:
    y0=deck['y']+.60;y1=deck['y']+1.60
@@ -211,10 +215,21 @@ for tier in range(3):
      for yy in(y0-.025,y1+.025):prism('window-gasket',(framex,yy,(za+zb)/2),(.055,.038,zb-za+.07),.012,'dark',root,steps=steps)
   # Original livery as a controlled smooth ribbon, no copied real operator mark.
   grid(f'copper-sweep-{side}',lambda u,v:(side*(side_x(2.365+.035*math.sin((v-.2)*math.pi),-5.18+10.36*v)+.001),2.365+u*.025+.035*math.sin((v-.2)*math.pi),-5.18+10.36*v),2,segments,'livery',root)
+ # Far surfaces omit thickness by design; explicit corner returns keep only
+ # the new upper enclosure watertight where side and end section rails meet.
+ if tier==2:
+  for side in(-1,1):
+   for end in(-1,1):
+    def corner(u,v):
+     y=2.49+.528*v;a=(side*side_x(y,end*5.28),y,end*5.28);b=(side*1.235,y,front_z(side*1.235,y,end))
+     return tuple((1-u)*x+u*z for x,z in zip(a,b))
+    grid(f'upper-deck-far-corner-return-{side}-{end}',corner,1,1,'paint',root)
  # Wrapped front/rear fascias. Glazing is curved independently from the painted lower nose.
  for end in(-1,1):
   for y0,y1,mat,label in[(.18,1.025,'paint','sculpted-nose'),(2.08,2.53,'pearl','continuous-front-belt'),(4.01,4.30,'paint','roof-return')]:
    solid_grid(f'{label}-{end}',lambda u,v:(-1.235+2.47*u,y0+(y1-y0)*v,front_z(-1.235+2.47*u,y0+(y1-y0)*v,end)),[24,8,6][tier],[8,3,2][tier],mat,root,.065,(0,0,end))
+  # The same upper enclosure wraps both ends up to the existing windshield.
+  solid_grid(f'upper-deck-end-spandrel-{end}',lambda u,v:(-1.235+2.47*u,2.51+.518*v,front_z(-1.235+2.47*u,2.51+.518*v,end)),[12,8,6][tier],2,'paint',root,.065,(0,0,end))
   for dy in(.44,2.40):
    y0=dy+.61;y1=dy+1.62
    solid_grid(f'compound-windshield-{end}-{dy}',lambda u,v:(-1.085+2.17*u,y0+(y1-y0)*v,front_z(-1.085+2.17*u,y0+(y1-y0)*v,end)-end*.036),[24,8,5][tier],[16,4,3][tier],'glass',root,.017,(0,0,end))

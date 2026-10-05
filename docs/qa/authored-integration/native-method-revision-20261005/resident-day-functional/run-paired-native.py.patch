@@ -1,0 +1,21 @@
+--- a/tools/native-review/run-paired-native.py
++++ b/tools/native-review/run-paired-native.py
+@@ -388,6 +388,9 @@
+         if case['family'] == 'continuous-tour':
+             summary['artAcceptance'] = 'NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY'
+             summary['qualityScope'] = 'Low 512x320 public setting; authored continuous functional route only'
++        if case['id'] == 'resident-loop':
++            summary['artAcceptance'] = 'NOT_APPLICABLE_LOW_FUNCTIONAL_ONLY'
++            summary['qualityScope'] = 'Low512x320 fixed workshop observer; actual natural resident day/public wage save exports; no High art acceptance'
+         seal = read_json(bundle/'bundle-manifest.json')
+         for name, pin in seal['files'].items():
+             if digest(bundle/name) != pin['sha256']:
+@@ -518,7 +521,7 @@
+                 raise ValueError('Frozen source/served bytes changed during native case')
+             checkpoint()
+         completed = all(v['collectorComplete'] for v in summary['variants'])
+-        summary['status'] = ('FUNCTIONAL_TOUR_COMPLETE' if case['family']=='continuous-tour' else 'CAPTURE_COMPLETE_ART_REVIEW_PENDING') if completed else 'FAILED'
++        summary['status'] = ('FUNCTIONAL_TOUR_COMPLETE' if case['family']=='continuous-tour' else 'FUNCTIONAL_RESIDENT_DAY_COMPLETE' if case['id']=='resident-loop' else 'CAPTURE_COMPLETE_ART_REVIEW_PENDING') if completed else 'FAILED'
+         apply_cancellation('final-success-decision')
+     except BaseException as error:
+         failure = {'stage':'paired-executor','type':type(error).__name__,'message':str(error)}

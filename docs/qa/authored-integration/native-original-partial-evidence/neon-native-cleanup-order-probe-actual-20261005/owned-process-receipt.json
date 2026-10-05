@@ -1,0 +1,179 @@
+{
+  "status": "CLOSED",
+  "firstError": null,
+  "exitCode": 0,
+  "elapsedSeconds": 1.2154727300003287,
+  "wholeBudgetSeconds": 120,
+  "ownedClosureConfirmed": true,
+  "liveOwnedProcesses": [],
+  "events": [
+    {
+      "event": "root-bound-before-poll",
+      "identity": {
+        "pid": 101032,
+        "state": "R",
+        "ppid": 101029,
+        "pgid": 101032,
+        "session": 101032,
+        "startTicks": "4449840"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101044,
+        "state": "S",
+        "ppid": 101032,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449874"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101046,
+        "state": "S",
+        "ppid": 101044,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449875"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101047,
+        "state": "S",
+        "ppid": 101044,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449875"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101063,
+        "state": "S",
+        "ppid": 101046,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449878"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101065,
+        "state": "S",
+        "ppid": 101044,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449878"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101089,
+        "state": "S",
+        "ppid": 101047,
+        "pgid": 101044,
+        "session": 101044,
+        "startTicks": "4449884"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101099,
+        "state": "R",
+        "ppid": 101032,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449916"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101101,
+        "state": "S",
+        "ppid": 101099,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449917"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101102,
+        "state": "S",
+        "ppid": 101099,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449918"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101117,
+        "state": "S",
+        "ppid": 101101,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449919"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101119,
+        "state": "S",
+        "ppid": 101099,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449920"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 101146,
+        "state": "R",
+        "ppid": 101102,
+        "pgid": 101099,
+        "session": 101099,
+        "startTicks": "4449922"
+      },
+      "pidfdBound": true
+    }
+  ],
+  "methodFiles": [
+    {
+      "path": "/tmp/neon-native-cleanup-order-probe.mjs",
+      "bytes": 6655,
+      "sha256": "87de44720d4a7b69896be0bab1731054c19b4a541bc63a3d52f10711a1902c87"
+    },
+    {
+      "path": "/tmp/neon-native-cleanup-order-probe-owned.py",
+      "bytes": 3970,
+      "sha256": "0330e8f3fbc6ca603065f4fdbb1a9f8ab16e67f31fcc3f27b54a39c8fbd3ce3f"
+    }
+  ]
+}

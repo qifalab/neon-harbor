@@ -1,0 +1,1465 @@
+{
+  "client": 1,
+  "contextOptions": {
+    "version": 8,
+    "type": "context-options",
+    "origin": "library",
+    "browserName": "chromium",
+    "playwrightVersion": "1.62.1",
+    "options": {
+      "noDefaultViewport": false,
+      "viewport": {
+        "width": 640,
+        "height": 400
+      },
+      "ignoreHTTPSErrors": false,
+      "javaScriptEnabled": true,
+      "bypassCSP": false,
+      "locale": "en-US",
+      "offline": false,
+      "isMobile": false,
+      "hasTouch": false,
+      "colorScheme": "light",
+      "acceptDownloads": "accept",
+      "baseURL": "http://127.0.0.1:5180",
+      "serviceWorkers": "allow",
+      "selectorEngines": [],
+      "testIdAttributeName": "data-testid"
+    },
+    "platform": "linux",
+    "wallTime": 1791159799432,
+    "monotonicTime": 187745.183,
+    "sdkLanguage": "javascript",
+    "testIdAttributeName": "data-testid",
+    "contextId": "browser-context@daa72b430103ef872240f051d99caa07"
+  },
+  "calls": [
+    {
+      "callId": "call@238",
+      "startTime": 187752.332,
+      "endTime": 187788.479,
+      "durationMs": 36.146999999997206,
+      "method": "newPage",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@248",
+      "startTime": 187841.82,
+      "endTime": 187843.167,
+      "durationMs": 1.3469999999797437,
+      "method": "addInitScript",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@250",
+      "startTime": 187844.913,
+      "endTime": 189442.616,
+      "durationMs": 1597.7030000000086,
+      "method": "goto",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@252",
+      "startTime": 189454.525,
+      "endTime": 193087.422,
+      "durationMs": 3632.896999999997,
+      "method": "expect",
+      "selector": "#start",
+      "expression": "to.be.enabled",
+      "error": null
+    },
+    {
+      "callId": "call@254",
+      "startTime": 193187.387,
+      "endTime": 193197.241,
+      "durationMs": 9.854000000021188,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@256",
+      "startTime": 193205.301,
+      "endTime": 193216.852,
+      "durationMs": 11.551000000006752,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@258",
+      "startTime": 193226.817,
+      "endTime": 193230.032,
+      "durationMs": 3.2149999999965075,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@260",
+      "startTime": 193238.795,
+      "endTime": 193245.013,
+      "durationMs": 6.217999999993481,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@262",
+      "startTime": 193247.864,
+      "endTime": 193254.064,
+      "durationMs": 6.2000000000116415,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@264",
+      "startTime": 193264.207,
+      "endTime": 193270.973,
+      "durationMs": 6.76600000000326,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@266",
+      "startTime": 193282.25,
+      "endTime": 193287.812,
+      "durationMs": 5.562000000005355,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@268",
+      "startTime": 193292.788,
+      "endTime": 193297.429,
+      "durationMs": 4.64100000000326,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@270",
+      "startTime": 193304.969,
+      "endTime": 193313.702,
+      "durationMs": 8.732999999978347,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@272",
+      "startTime": 193316.182,
+      "endTime": 193326.022,
+      "durationMs": 9.839999999996508,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@274",
+      "startTime": 193332.185,
+      "endTime": 193340.209,
+      "durationMs": 8.02400000000489,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@276",
+      "startTime": 193344.802,
+      "endTime": 193357.037,
+      "durationMs": 12.235000000015134,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@278",
+      "startTime": 193362.893,
+      "endTime": 193369.307,
+      "durationMs": 6.4139999999897555,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@280",
+      "startTime": 193381.413,
+      "endTime": 193402.806,
+      "durationMs": 21.393000000010943,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@282",
+      "startTime": 193408.539,
+      "endTime": 193417.407,
+      "durationMs": 8.868000000016764,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => document.activeElement?.id",
+      "error": null
+    },
+    {
+      "callId": "call@284",
+      "startTime": 193424.042,
+      "endTime": 193434.03,
+      "durationMs": 9.988000000012107,
+      "method": "expect",
+      "selector": "#welcome-multiplayer",
+      "expression": "to.be.focused",
+      "error": null
+    },
+    {
+      "callId": "call@286",
+      "startTime": 193444.847,
+      "endTime": 193504.148,
+      "durationMs": 59.30099999997765,
+      "method": "expect",
+      "selector": "#welcome-multiplayer",
+      "expression": "to.be.in.viewport",
+      "error": null
+    },
+    {
+      "callId": "call@288",
+      "startTime": 193513.949,
+      "endTime": 193673.124,
+      "durationMs": 159.17500000001746,
+      "method": "click",
+      "selector": "#welcome-multiplayer",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@290",
+      "startTime": 193703.229,
+      "endTime": 193716.345,
+      "durationMs": 13.11600000000908,
+      "method": "fill",
+      "selector": "#room-name",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@292",
+      "startTime": 193719.752,
+      "endTime": 193732.765,
+      "durationMs": 13.013000000006286,
+      "method": "fill",
+      "selector": "#room-code",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@294",
+      "startTime": 193739.094,
+      "endTime": 193847.241,
+      "durationMs": 108.1469999999972,
+      "method": "click",
+      "selector": "#room-join",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@296",
+      "startTime": 193855.85,
+      "endTime": 194711.843,
+      "durationMs": 855.9929999999877,
+      "method": "expect",
+      "selector": "#welcome",
+      "expression": "to.be.hidden",
+      "error": null
+    },
+    {
+      "callId": "call@298",
+      "startTime": 194725.561,
+      "endTime": 194754.876,
+      "durationMs": 29.31500000000233,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot().multiplayer.status",
+      "error": null
+    },
+    {
+      "callId": "call@300",
+      "startTime": 194784.362,
+      "endTime": 195280.405,
+      "durationMs": 496.0430000000051,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot()",
+      "error": null
+    },
+    {
+      "callId": "call@302",
+      "startTime": 195553.899,
+      "endTime": 209644.834,
+      "durationMs": 14090.934999999998,
+      "method": "click",
+      "selector": "#multiplayer",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@358",
+      "startTime": 252783.553,
+      "endTime": 253201.623,
+      "durationMs": 418.0699999999779,
+      "method": "click",
+      "selector": "#resume",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@360",
+      "startTime": 253215.256,
+      "endTime": 258097.948,
+      "durationMs": 4882.69200000001,
+      "method": "click",
+      "selector": "#explore-city",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@362",
+      "startTime": 258333.695,
+      "endTime": 258402.979,
+      "durationMs": 69.2839999999851,
+      "method": "expect",
+      "selector": "#atlas-results",
+      "expression": "to.be.visible",
+      "error": null
+    },
+    {
+      "callId": "call@364",
+      "startTime": 258450.715,
+      "endTime": 259813.176,
+      "durationMs": 1362.4610000000102,
+      "method": "click",
+      "selector": "[data-visit-building=\"east-037\"]",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@366",
+      "startTime": 259835.097,
+      "endTime": 259858.935,
+      "durationMs": 23.837999999988824,
+      "method": "expect",
+      "selector": "#panel",
+      "expression": "to.be.visible",
+      "error": null
+    },
+    {
+      "callId": "call@368",
+      "startTime": 259890.491,
+      "endTime": 259927.119,
+      "durationMs": 36.62799999999697,
+      "method": "expect",
+      "selector": "#interaction",
+      "expression": "to.have.text",
+      "error": null
+    },
+    {
+      "callId": "call@370",
+      "startTime": 259950.324,
+      "endTime": 260652.853,
+      "durationMs": 702.5290000000095,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot()",
+      "error": null
+    },
+    {
+      "callId": "call@374",
+      "startTime": 262980.951,
+      "endTime": 267092.018,
+      "durationMs": 4111.066999999981,
+      "method": "click",
+      "selector": "#explore-city",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@376",
+      "startTime": 267450.944,
+      "endTime": 267550.644,
+      "durationMs": 99.69999999995343,
+      "method": "expect",
+      "selector": "#atlas-results",
+      "expression": "to.be.visible",
+      "error": null
+    },
+    {
+      "callId": "call@378",
+      "startTime": 267602.581,
+      "endTime": 276318.346,
+      "durationMs": 8715.765000000014,
+      "method": "click",
+      "selector": "[data-visit-building=\"east-012\"]",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@380",
+      "startTime": 276355.625,
+      "endTime": 276432.082,
+      "durationMs": 76.45699999999488,
+      "method": "expect",
+      "selector": "#panel",
+      "expression": "to.be.visible",
+      "error": null
+    },
+    {
+      "callId": "call@382",
+      "startTime": 276465.103,
+      "endTime": 276504.154,
+      "durationMs": 39.05099999997765,
+      "method": "expect",
+      "selector": "#interaction",
+      "expression": "to.have.text",
+      "error": null
+    },
+    {
+      "callId": "call@384",
+      "startTime": 276535.834,
+      "endTime": 277333.343,
+      "durationMs": 797.50900000002,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot()",
+      "error": null
+    },
+    {
+      "callId": "call@388",
+      "startTime": 279651.548,
+      "endTime": 279926.666,
+      "durationMs": 275.11800000001676,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@390",
+      "startTime": 279959.162,
+      "endTime": 280868.95,
+      "durationMs": 909.7880000000005,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot()",
+      "error": null
+    },
+    {
+      "callId": "call@392",
+      "startTime": 281347.453,
+      "endTime": 282203.754,
+      "durationMs": 856.3010000000359,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot()",
+      "error": null
+    },
+    {
+      "callId": "call@394",
+      "startTime": 282594.362,
+      "endTime": 282680.336,
+      "durationMs": 85.97399999998743,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => {\n  const state = window.__NEON__?.snapshot();\n  if (!state) return {\n    ready: false\n  };\n  const starter = state.cars.find(car => car.id === 'starter');\n  return {\n    position: state.position,\n    simulationTime: state.simulationTime,\n    teleportRevision: state.teleportRevision,\n    inCar: state.inCar,\n    speed: state.speed,\n    starter,\n    starterDistance: starter ? Math.hypot(starter.x - state.position.x, starter.z - state.position.z) : null,\n    multiplayer: state.multiplayer,\n    interior: state.city.interior,\n    timing: state.timing,\n    renderer: state.renderer\n  };\n}",
+      "error": null
+    },
+    {
+      "callId": "call@398",
+      "startTime": 285638.78,
+      "endTime": 286611.98,
+      "durationMs": 973.1999999999534,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => window.__NEON__.snapshot()",
+      "error": null
+    },
+    {
+      "callId": "call@400",
+      "startTime": 287080.848,
+      "endTime": 287110.623,
+      "durationMs": 29.775000000023283,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => {\n  const s = window.__NEON__.snapshot();\n  return {\n    position: s.position,\n    yaw: s.camera?.yaw,\n    simulationTime: s.simulationTime,\n    teleportRevision: s.teleportRevision,\n    floorId: s.city.interior.floorId,\n    stationId: s.city.transit.stationId\n  };\n}",
+      "error": null
+    },
+    {
+      "callId": "call@402",
+      "startTime": 287133.938,
+      "endTime": 287156.173,
+      "durationMs": 22.23499999998603,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => {\n  const s = window.__NEON__.snapshot();\n  return {\n    position: s.position,\n    yaw: s.camera?.yaw,\n    simulationTime: s.simulationTime,\n    teleportRevision: s.teleportRevision,\n    floorId: s.city.interior.floorId,\n    stationId: s.city.transit.stationId\n  };\n}",
+      "error": null
+    },
+    {
+      "callId": "call@404",
+      "startTime": 287175.547,
+      "endTime": 287196.674,
+      "durationMs": 21.12699999997858,
+      "method": "keyboardDown",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@406",
+      "startTime": 287211.585,
+      "endTime": 287229.413,
+      "durationMs": 17.82799999997951,
+      "method": "keyboardDown",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@408",
+      "startTime": 287245.273,
+      "endTime": 331299.392,
+      "durationMs": 44054.119000000006,
+      "method": "waitForFunction",
+      "selector": null,
+      "expression": "({\n          axis,\n          target,\n          positive\n        }) => {\n          const value = window.__NEON__.snapshot().position[axis];\n          return positive ? value >= target - 2.2 : value <= target + 2.2;\n        }",
+      "error": null
+    },
+    {
+      "callId": "call@410",
+      "startTime": 331325.413,
+      "endTime": 331350.846,
+      "durationMs": 25.433000000019092,
+      "method": "keyboardUp",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@412",
+      "startTime": 331383.845,
+      "endTime": 331416.582,
+      "durationMs": 32.73700000002282,
+      "method": "keyboardUp",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@414",
+      "startTime": 331443.967,
+      "endTime": 331461.546,
+      "durationMs": 17.5789999999688,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => {\n  const s = window.__NEON__.snapshot();\n  return {\n    position: s.position,\n    yaw: s.camera?.yaw,\n    simulationTime: s.simulationTime,\n    teleportRevision: s.teleportRevision,\n    floorId: s.city.interior.floorId,\n    stationId: s.city.transit.stationId\n  };\n}",
+      "error": null
+    },
+    {
+      "callId": "call@416",
+      "startTime": 331485.961,
+      "endTime": 331538.974,
+      "durationMs": 53.01299999997718,
+      "method": "keyboardPress",
+      "selector": null,
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@418",
+      "startTime": 331555.992,
+      "endTime": 331565.637,
+      "durationMs": 9.644999999960419,
+      "method": "expect",
+      "selector": "[data-floor-id]",
+      "expression": "to.have.count",
+      "error": null
+    },
+    {
+      "callId": "call@420",
+      "startTime": 331578.75,
+      "endTime": 334887.958,
+      "durationMs": 3309.207999999984,
+      "method": "click",
+      "selector": "[data-floor-id=\"level-78\"]",
+      "expression": null,
+      "error": null
+    },
+    {
+      "callId": "call@422",
+      "startTime": 334907.422,
+      "endTime": 514920.141,
+      "durationMs": 180012.71899999998,
+      "method": "waitForFunction",
+      "selector": null,
+      "expression": "() => !window.__NEON__.snapshot().city.interior.moving",
+      "error": {
+        "message": "Timeout 180000ms exceeded.",
+        "stack": "TimeoutError: Timeout 180000ms exceeded.\n    at _ProgressController.run (/home/runner/work/neon-harbor/neon-harbor/node_modules/playwright-core/lib/coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (/home/runner/work/neon-harbor/neon-harbor/node_modules/playwright-core/lib/coreBundle.js:18775:44)",
+        "name": "TimeoutError"
+      }
+    },
+    {
+      "callId": "call@424",
+      "startTime": 514935.86,
+      "endTime": 515048.525,
+      "durationMs": 112.66500000003725,
+      "method": "evaluateExpression",
+      "selector": null,
+      "expression": "() => {\n  const state = window.__NEON__?.snapshot();\n  if (!state) return {\n    ready: false\n  };\n  const starter = state.cars.find(car => car.id === 'starter');\n  return {\n    position: state.position,\n    simulationTime: state.simulationTime,\n    teleportRevision: state.teleportRevision,\n    inCar: state.inCar,\n    speed: state.speed,\n    starter,\n    starterDistance: starter ? Math.hypot(starter.x - state.position.x, starter.z - state.position.z) : null,\n    multiplayer: state.multiplayer,\n    interior: state.city.interior,\n    timing: state.timing,\n    renderer: state.renderer\n  };\n}",
+      "error": null
+    }
+  ],
+  "snapshotStates": [
+    {
+      "callId": "call@300",
+      "startTime": 194784.362,
+      "endTime": 195280.405,
+      "state": {
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 174,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 0,
+        "paused": false,
+        "started": true,
+        "settings": {
+          "quality": "low",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 16.5,
+          "sensitivity": 1,
+          "firstPerson": false,
+          "touch": false
+        },
+        "timing": {
+          "wallDt": 0.016600000000000364,
+          "dt": 0.016600000000000364,
+          "steps": 0,
+          "alpha": 0,
+          "simulationDelta": 0,
+          "droppedSeconds": 0,
+          "droppedTotal": 0
+        },
+        "renderer": {
+          "calls": 185,
+          "triangles": 341736,
+          "memory": {
+            "geometries": 106,
+            "textures": 13
+          },
+          "programs": 23,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 11.3,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 0,
+            "targetFloorId": null,
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": null,
+          "totalFloors": 0
+        }
+      }
+    },
+    {
+      "callId": "call@370",
+      "startTime": 259950.324,
+      "endTime": 260652.853,
+      "state": {
+        "position": {
+          "x": 1525,
+          "y": 3.75,
+          "z": -340.49,
+          "yaw": -3.141592653589793
+        },
+        "simulationTime": 0.8333333333333343,
+        "paused": false,
+        "started": true,
+        "settings": {
+          "quality": "low",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 18.254285714285686,
+          "sensitivity": 1,
+          "firstPerson": false,
+          "touch": false
+        },
+        "timing": {
+          "wallDt": 0.01669999999999709,
+          "dt": 0.01669999999999709,
+          "steps": 0,
+          "alpha": 0.004000000000086157,
+          "simulationDelta": 0,
+          "droppedSeconds": 0,
+          "droppedTotal": 17.7827
+        },
+        "renderer": {
+          "calls": 756,
+          "triangles": 562466,
+          "memory": {
+            "geometries": 320,
+            "textures": 73
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 16.6,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 0,
+            "targetFloorId": null,
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": null,
+          "totalFloors": 0
+        }
+      }
+    },
+    {
+      "callId": "call@384",
+      "startTime": 276535.834,
+      "endTime": 277333.343,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 3.75,
+          "z": -151.81,
+          "yaw": -3.141592653589793
+        },
+        "simulationTime": 1.3333333333333335,
+        "paused": false,
+        "started": true,
+        "settings": {
+          "quality": "low",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 18.485714285714245,
+          "sensitivity": 1,
+          "firstPerson": false,
+          "touch": false
+        },
+        "timing": {
+          "wallDt": 1.816699999999997,
+          "dt": 0.25,
+          "steps": 0,
+          "alpha": 0,
+          "simulationDelta": 0,
+          "droppedSeconds": 0,
+          "droppedTotal": 21.949199999999998
+        },
+        "renderer": {
+          "calls": 107,
+          "triangles": 201799,
+          "memory": {
+            "geometries": 319,
+            "textures": 72
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 14.5,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 0,
+            "targetFloorId": null,
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": null,
+          "totalFloors": 0
+        }
+      }
+    },
+    {
+      "callId": "call@390",
+      "startTime": 279959.162,
+      "endTime": 280868.95,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.5833333333333326,
+        "paused": false,
+        "started": true,
+        "settings": {
+          "quality": "low",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 18.80857142857137,
+          "sensitivity": 1,
+          "firstPerson": false,
+          "touch": false
+        },
+        "timing": {
+          "wallDt": 0.2665999999999913,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 0.01659999999999129,
+          "droppedTotal": 21.965799999999987
+        },
+        "renderer": {
+          "calls": 168,
+          "triangles": 290782,
+          "memory": {
+            "geometries": 318,
+            "textures": 71
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 6.4,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 4.035,
+            "targetFloorId": "lobby",
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 4.035,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    },
+    {
+      "callId": "call@392",
+      "startTime": 281347.453,
+      "endTime": 282203.754,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.5833333333333326,
+        "paused": false,
+        "started": true,
+        "settings": {
+          "quality": "low",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 18.80857142857137,
+          "sensitivity": 1,
+          "firstPerson": false,
+          "touch": false
+        },
+        "timing": {
+          "wallDt": 0.2665999999999913,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 0.01659999999999129,
+          "droppedTotal": 21.965799999999987
+        },
+        "renderer": {
+          "calls": 168,
+          "triangles": 290782,
+          "memory": {
+            "geometries": 318,
+            "textures": 71
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 6.4,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 4.035,
+            "targetFloorId": "lobby",
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 4.035,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    },
+    {
+      "callId": "call@394",
+      "startTime": 282594.362,
+      "endTime": 282680.336,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.5833333333333326,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": {
+          "wallDt": 0.2665999999999913,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 0.01659999999999129,
+          "droppedTotal": 21.965799999999987
+        },
+        "renderer": {
+          "calls": 168,
+          "triangles": 290782,
+          "memory": {
+            "geometries": 318,
+            "textures": 71
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 6.4,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 4.035,
+            "targetFloorId": "lobby",
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 4.035,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    },
+    {
+      "callId": "call@398",
+      "startTime": 285638.78,
+      "endTime": 286611.98,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.8333333333333317,
+        "paused": false,
+        "started": true,
+        "settings": {
+          "quality": "low",
+          "volume": 0,
+          "dayCycle": false,
+          "hour": 18.974285714285646,
+          "sensitivity": 1,
+          "firstPerson": false,
+          "touch": false
+        },
+        "timing": {
+          "wallDt": 0.4166999999999971,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 0.16669999999999707,
+          "droppedTotal": 22.132499999999986
+        },
+        "renderer": {
+          "calls": 375,
+          "triangles": 358328,
+          "memory": {
+            "geometries": 324,
+            "textures": 105
+          },
+          "programs": 44,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 13.6,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 4.035,
+            "targetFloorId": "lobby",
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 4.035,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    },
+    {
+      "callId": "call@400",
+      "startTime": 287080.848,
+      "endTime": 287110.623,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.8333333333333317,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": null,
+        "renderer": null,
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": null,
+          "elevator": null,
+          "cabin": null,
+          "totalFloors": null
+        }
+      }
+    },
+    {
+      "callId": "call@402",
+      "startTime": 287133.938,
+      "endTime": 287156.173,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.8333333333333317,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": null,
+        "renderer": null,
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": null,
+          "elevator": null,
+          "cabin": null,
+          "totalFloors": null
+        }
+      }
+    },
+    {
+      "callId": "call@414",
+      "startTime": 331443.967,
+      "endTime": 331461.546,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -216.79000000000315,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 6.583333333333315,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": null,
+        "renderer": null,
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": null,
+          "elevator": null,
+          "cabin": null,
+          "totalFloors": null
+        }
+      }
+    },
+    {
+      "callId": "call@424",
+      "startTime": 514935.86,
+      "endTime": 515048.525,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 262.87309285381997,
+          "z": -216.79000000000315,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 33.7833333333327,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": {
+          "wallDt": 6.733099999999976,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0.006000000003839601,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 6.483099999999976,
+          "droppedTotal": 214.28999999999988
+        },
+        "renderer": {
+          "calls": 31,
+          "triangles": 6764,
+          "memory": {
+            "geometries": 324,
+            "textures": 108
+          },
+          "programs": 44,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 3.1,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": true,
+          "elevator": {
+            "phase": "moving",
+            "y": 263.0503662956879,
+            "targetFloorId": "level-78",
+            "elapsed": 26.499999999999776,
+            "duration": 37.172222222222224,
+            "doorOpen": 0,
+            "anchor": {
+              "x": 1192,
+              "z": -216.79000000000315
+            }
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 263.0503662956879,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    }
+  ],
+  "networkStatePostCount": 2941,
+  "networkResponseBodiesMissing": 0,
+  "non200StateResponses": [],
+  "rideStatePostCount": 1779,
+  "rideUniqueHeightCount": 108,
+  "rideStartSend": {
+    "time": 331639.827,
+    "startedDateTime": "2026-10-05T00:25:43.325Z",
+    "pose": {
+      "x": 1192,
+      "y": 4.035,
+      "z": -216.79000000000315,
+      "yaw": 3.141592653589793
+    },
+    "scene": "interior:east-012:lobby",
+    "revision": 4,
+    "status": 200,
+    "resourceSha1": "0c3f6d073dc29205a92f0123e6b3e624f369de58.json",
+    "requestDurationMs": 39.949
+  },
+  "rideFinalSend": {
+    "time": 514850.106,
+    "startedDateTime": "2026-10-05T00:28:46.535Z",
+    "pose": {
+      "x": 1192,
+      "y": 263.0503662956879,
+      "z": -216.79000000000315,
+      "yaw": 3.141592653589793
+    },
+    "scene": "interior:east-012:lobby",
+    "revision": 5,
+    "status": 200,
+    "resourceSha1": "8870073b966f2fadb23d86fe6b986c8614073e47.json",
+    "requestDurationMs": 21.231
+  },
+  "rideOutboundHeightMonotonicNonDecreasing": true,
+  "rideObserverResponseHeightRange": null,
+  "inWaitScreencastCount": 93,
+  "inWaitScreencastGapSeconds": {
+    "min": 0.27536599999997996,
+    "median": 0.5028609999999754,
+    "max": 7.743656000000017,
+    "mean": 1.9348733804347822
+  },
+  "screencastNotEquivalentToRenderOrSimulationFrames": true
+}

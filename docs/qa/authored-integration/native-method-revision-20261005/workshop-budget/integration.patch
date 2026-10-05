@@ -1,0 +1,11 @@
+--- a/tools/native-review/methods/harbor/plans.mjs
++++ b/tools/native-review/methods/harbor/plans.mjs
+@@ -44,7 +44,7 @@
+  photo('living-re-entry',130.3,rear,homeGround,{x:126.3,y:homeGround+.92,z:rear},'south-079-lobby-0'),
+  ...point(133,114.34924771878869),{kind:'exit',label:'second-normal-exit'},
+  {kind:'release',channel:'home',floorId:'lobby',label:'re-entry-owner-released-on-second-exit'}]};
+-const workshop={id:'workshop',address:'south-086',englishName:'Old Quarter 86',budgetMinutes:25,
++const workshop={id:'workshop',address:'south-086',englishName:'Old Quarter 86',budgetMinutes:65,
+  scope:'Existing workshop and archive rooms, whole-room and assembly/retrieval photographs, normal exit, physical re-entry and owner release. Existing independent vice close method is not duplicated.',
+  steps:[{kind:'enter'},...point(200,-115),walk('x',197.6),
+  photo('workshop-whole',197.6,-115,.215,{x:186.9,y:1.38,z:-115},'south-086-lobby-0'),

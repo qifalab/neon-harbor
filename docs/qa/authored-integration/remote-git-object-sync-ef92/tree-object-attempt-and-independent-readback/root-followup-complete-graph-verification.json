@@ -1,0 +1,25 @@
+{
+  "status": "FOLLOWUP_READONLY_ROOT_RECURSIVE_EXACT",
+  "checkedAt": "2026-10-05T00:19:41.863692+00:00",
+  "rootTree": "e4f9f3be49c222242592d64ad2f33104154725d3",
+  "remoteGraphEntries": 3437,
+  "localGraphEntries": 3437,
+  "allPathModeTypeSHAMatch": true,
+  "truncated": false,
+  "originalUploaderTerminalStatus": "FAILED_TREE_OBJECTS_ONLY",
+  "originalFirstFailure": {
+    "type": "RuntimeError",
+    "message": "Final root GET failed",
+    "at": "2026-10-05T00:17:17.796378+00:00"
+  },
+  "originalFailureNotRewritten": true,
+  "treeObjectSources": {
+    "exact subtree of confirmed remote parent": 215,
+    "created exact immediate children": 150,
+    "already exists exact GET": 1
+  },
+  "objectWritesThisTask": "150 exact directory tree POSTs only; no commits/blobs/refs/local source/index writes",
+  "readabilityCause": "Not established; later documented recursive GET succeeds; no attribution to cache/ref change made",
+  "successfulHttpStatusProvenance": "Original POST receipt http200 inferred from gh exit0; exact success wire code not captured. Followup recursive GET200 comes from actual response header.",
+  "uploaderSourceSha256": "d579ac6b13a793bb12ef908688612ace0f856bdd3fbea7621cae663c78a5fd20"
+}

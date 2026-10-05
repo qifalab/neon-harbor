@@ -1,0 +1,48 @@
+--- a/tools/native-review/methods/transport/native-transport-high.mjs
++++ b/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -169,8 +169,27 @@
+     catch (error) { if (primary) record.secondaryErrors.push(err(error,'mouse.up')); else throw error; }
+   }
+   async function groundAxis(axis,target) {
+-    const initial=await read(), localDeadline=Date.now()+remaining(120000),samples=[];let current=initial,first=null;
++    const initial=await read(), localDeadline=Date.now()+remaining(120000),samples=[];let current=initial,first=null,coarse=null,precisionStart=initial.position[axis],simulationBudgetSeconds=null;
++    const localRemaining=()=>{const ms=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(ms>0,'original shared ground waypoint deadline');return ms;};
+     try {
++      // The ferry's public entrance is 24 real metres from its board point.
++      // One ordinary cardinal hold reaches the same route's precision region;
++      // both phases consume the original shared 120-second local deadline.
++      if(kind==='ferry'&&Math.abs(target-current.position[axis])>3.2) {
++        const sign=Math.sign(target-current.position[axis]),yaw=current.camera.yaw;
++        const choices=[{key:'w',x:Math.sin(yaw),z:Math.cos(yaw)},{key:'s',x:-Math.sin(yaw),z:-Math.cos(yaw)},{key:'d',x:-Math.cos(yaw),z:Math.sin(yaw)},{key:'a',x:Math.cos(yaw),z:-Math.sin(yaw)}].sort((a,b)=>sign*(b[axis]-a[axis]));
++        assert.ok(Math.abs(choices[0][axis])>.995,'cardinal real walking');
++        const key=choices[0].key,before=current.position[axis],coarseTarget=target-sign*2.2;let cycleError=null;
++        coarse={stage:'coarse',before,coarseTarget,key,precision:false,minimumProgress:.15,inputs:[],guardBaseline:{simulationTime:current.simulationTime,meaning:'before-action observation; conservative input timing baseline'}};
++        try { coarse.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(({axis,before,sign,coarseTarget})=>{const value=window.__NEON__.snapshot().position[axis];return sign*(value-before)>.15&&sign*(value-coarseTarget)>=0;},{axis,before,sign,coarseTarget},{polling:'raf',timeout:localRemaining()}); }
++        catch(error){cycleError=error;coarse.firstError=err(error,'ground coarse movement');}
++        finally {try{await page.keyboard.up(key);coarse.inputs.push({action:'up',key,confirmed:true});}catch(error){coarse.inputs.push({action:'up',key,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`ground coarse keyup ${key}`));}}
++        // An unconfirmed release goes straight to original case cleanup.
++        if(cycleError)throw cycleError;
++        current=await read();assert.equal(current.teleportRevision,initial.teleportRevision);coarse.after=current.position;coarse.afterSimulationTime=current.simulationTime;
++        assert.ok(Date.now()<localDeadline,'coarse release/observation stays inside the original local deadline');
++      }
++      precisionStart=current.position[axis];
+       for(let n=0;Math.abs(current.position[axis]-target)>=.06&&n<1800;n++) {
+         assert.ok(Date.now()<localDeadline);const sign=Math.sign(target-current.position[axis]),gap=Math.abs(target-current.position[axis]);
+         const yaw=current.camera.yaw,choices=[{key:'w',x:Math.sin(yaw),z:Math.cos(yaw)},{key:'s',x:-Math.sin(yaw),z:-Math.cos(yaw)},{key:'d',x:-Math.cos(yaw),z:Math.sin(yaw)},{key:'a',x:Math.cos(yaw),z:-Math.sin(yaw)}].sort((a,b)=>sign*(b[axis]-a[axis]));
+@@ -182,8 +201,15 @@
+         samples.push(cycle);if(cycleError)throw cycleError;current=await read();assert.equal(current.teleportRevision,initial.teleportRevision);cycle.after=current.position;
+       }
+       assert.ok(Math.abs(current.position[axis]-target)<.06);
++      if(kind==='ferry') {
++        assert.ok(Date.now()<localDeadline,'all ground phases retain the original shared local deadline');
++        simulationBudgetSeconds=Math.abs(precisionStart-initial.position[axis])/5.6+Math.abs(target-precisionStart)/.8+5;
++        assert.ok(current.simulationTime-initial.simulationTime<simulationBudgetSeconds,'actual ground route stalled beyond its finite physical movement budget');
++      }
+     } catch(error){first=error;throw error;}
+-    finally {record.motion.push({stage:`ground-${axis}`,target,localBudget:120000,maxIterations:1800,samples,firstError:first?err(first,'ground movement'):null});}
++    finally {record.motion.push({stage:`ground-${axis}`,target,localBudget:120000,maxIterations:1800,coarse,precisionStart,simulationBudgetSeconds,
++      initialPosition:initial.position,lastObservedPosition:current.position,initialSimulationTime:initial.simulationTime,lastObservedSimulationTime:current.simulationTime,
++      samples,firstError:first?err(first,'ground movement'):null});}
+   }
+   function radiusGuard(state, layout) {
+     const p=transit(state).passengerLocal;assert.ok(p);const radius=layout.passengerRadius;

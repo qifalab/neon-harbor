@@ -1,0 +1,306 @@
+{
+  "status": "READONLY_ORIGINAL_MP_FAILURE_DIAGNOSIS",
+  "sourceCommit": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "noBrowserGpuTestsBuildOrRootMutations": true,
+  "inputs": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/artifacts/multiplayer-11319935663/extracted/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/independent-client-progress.json",
+      "bytes": 598627,
+      "sha256": "c21f82016e69f1c3b26f4fca9beb881f605b7f24c33b1ca0c0a60fd7182518ac"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/artifacts/multiplayer-11319935663/extracted/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/independent-client-1-trace.zip",
+      "bytes": 7136333,
+      "sha256": "4dea7279aeaa350f0b0eb22f021e158f1019a26a6bd63bc02c05bd15c4e068a4"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/artifacts/multiplayer-11319935663/extracted/rooms-two-browsers-synchro-b0447--the-former-320-metre-limit/independent-client-2-trace.zip",
+      "bytes": 6033708,
+      "sha256": "2ebd4516cf4cf78619d2bacfea0b880fd0ae462f2f6a909d90c71bed36bf7aa0"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/tests/e2e/helpers/occupied.js",
+      "bytes": 5321,
+      "sha256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/tests/multiplayer-browser/rooms.spec.js",
+      "bytes": 15604,
+      "sha256": "c3e382b6a86b2b0130a138e936817f35f5dc802c8ee586ffa7834433f89ad20f"
+    }
+  ],
+  "waitMs": 180012.71899999998,
+  "requestedFloorId": "level-78",
+  "actualTargetHeight": 327.785,
+  "lobbyHeight": 4.035,
+  "observedFinalElevator": {
+    "phase": "moving",
+    "y": 263.0503662956879,
+    "targetFloorId": "level-78",
+    "elapsed": 26.499999999999776,
+    "duration": 37.172222222222224,
+    "doorOpen": 0,
+    "anchor": {
+      "x": 1192,
+      "z": -216.79000000000315
+    }
+  },
+  "observedFinalTiming": {
+    "wallDt": 6.733099999999976,
+    "dt": 0.25,
+    "steps": 15,
+    "alpha": 0.006000000003839601,
+    "simulationDelta": 0.25,
+    "droppedSeconds": 6.483099999999976,
+    "droppedTotal": 214.28999999999988
+  },
+  "observedFinalSimulationTime": 33.7833333333327,
+  "originalProgressPhases": [
+    {
+      "label": "east-bay lobby before actual corridor walk",
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 4.035,
+          "z": -167.65,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 1.5833333333333326,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": {
+          "wallDt": 0.2665999999999913,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 0.01659999999999129,
+          "droppedTotal": 21.965799999999987
+        },
+        "renderer": {
+          "calls": 168,
+          "triangles": 290782,
+          "memory": {
+            "geometries": 318,
+            "textures": 71
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 6.4,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 4.035,
+            "targetFloorId": "lobby",
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 4.035,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    }
+  ],
+  "originalProgressFinal": [
+    {
+      "client": 0,
+      "state": {
+        "position": {
+          "x": 1192,
+          "y": 262.87309285381997,
+          "z": -216.79000000000315,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 33.7833333333327,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": {
+          "wallDt": 6.733099999999976,
+          "dt": 0.25,
+          "steps": 15,
+          "alpha": 0.006000000003839601,
+          "simulationDelta": 0.25,
+          "droppedSeconds": 6.483099999999976,
+          "droppedTotal": 214.28999999999988
+        },
+        "renderer": {
+          "calls": 31,
+          "triangles": 6764,
+          "memory": {
+            "geometries": 324,
+            "textures": 108
+          },
+          "programs": 44,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 3.1,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": "east-012",
+          "floorId": "lobby",
+          "moving": true,
+          "elevator": {
+            "phase": "moving",
+            "y": 263.0503662956879,
+            "targetFloorId": "level-78",
+            "elapsed": 26.499999999999776,
+            "duration": 37.172222222222224,
+            "doorOpen": 0,
+            "anchor": {
+              "x": 1192,
+              "z": -216.79000000000315
+            }
+          },
+          "cabin": {
+            "x": 1192,
+            "z": -217.45000000000002,
+            "y": 263.0503662956879,
+            "width": 4.4,
+            "depth": 4.6,
+            "doorZ": -215.15
+          },
+          "totalFloors": 89
+        }
+      }
+    },
+    {
+      "client": 1,
+      "state": {
+        "position": {
+          "x": 8,
+          "y": 0,
+          "z": 174,
+          "yaw": 3.141592653589793
+        },
+        "simulationTime": 0.24999999999999997,
+        "paused": null,
+        "started": null,
+        "settings": null,
+        "timing": {
+          "wallDt": 0.016599999999976717,
+          "dt": 0.016599999999976717,
+          "steps": 0,
+          "alpha": 0,
+          "simulationDelta": 0,
+          "droppedSeconds": 0,
+          "droppedTotal": 20.7492
+        },
+        "renderer": {
+          "calls": 760,
+          "triangles": 591082,
+          "memory": {
+            "geometries": 315,
+            "textures": 73
+          },
+          "programs": 45,
+          "contextLost": false,
+          "shadow": {
+            "enabled": false,
+            "type": 2,
+            "sunCastShadow": true,
+            "mapResident": false,
+            "mapSize": [
+              2048,
+              2048
+            ]
+          },
+          "contactOcclusion": {
+            "enabled": false,
+            "supported": true,
+            "quality": "low",
+            "technique": "depth-reconstructed short-range SSAO",
+            "sceneSize": [
+              512,
+              320
+            ],
+            "occlusionSize": null,
+            "samples": 0,
+            "passes": 1,
+            "cpuSubmitMs": 54.2,
+            "fallback": null
+          }
+        },
+        "interior": {
+          "buildingId": null,
+          "floorId": null,
+          "moving": false,
+          "elevator": {
+            "phase": "idle",
+            "y": 0,
+            "targetFloorId": null,
+            "elapsed": 0,
+            "duration": 0,
+            "doorOpen": 1
+          },
+          "cabin": null,
+          "totalFloors": 0
+        }
+      }
+    }
+  ],
+  "projectedTotalSecondsAtObservedMeanMotionRate": 263.3770997696039,
+  "projectionIsNotPredictedPassGuarantee": true,
+  "firstCause": "Original180000ms wall wait expires while the physical elevator is still advancing; main simulation drops wall time above0.25/frame. Renderer/trace/CPU attribution is not measured by this artifact.",
+  "recommendation": "Only this MP chooseStorey call may use arrivalTimeout300000; helper default180000, whole900000, physical route, precise arrival and remote bounds remain unchanged; no retry. Preserve real original failure and finite failure diagnostics."
+}

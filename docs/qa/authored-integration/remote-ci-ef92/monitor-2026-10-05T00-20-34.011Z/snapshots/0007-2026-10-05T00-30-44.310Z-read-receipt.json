@@ -1,0 +1,112 @@
+{
+  "observedAt": "2026-10-05T00:30:45.845Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T00%3A30%3A44.310Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T00%3A30%3A44.310Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T00%3A30%3A44.310Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0007-2026-10-05T00-30-44.310Z-run-original.json",
+      "bytes": 12816,
+      "sha256": "50b5f936a54b392af9ce05697fe61074a227e9f9954492131278f8fb8e2db0a1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0007-2026-10-05T00-30-44.310Z-jobs-attempt1-original.json",
+      "bytes": 67555,
+      "sha256": "e498b24014c8e2adf5758feeb641f7b2a1f5626834dacf337dedb1a181770901"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0007-2026-10-05T00-30-44.310Z-artifacts-original.json",
+      "bytes": 5106,
+      "sha256": "61cc30e1470a415b9dc019205371fc7bae3734563f81680fcea26abfb7174e60"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 6,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 5,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 0,
+      "failure": 0,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 17,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "FIRST_JOB_FAILURE_OBSERVED",
+      "jobId": 111566877625,
+      "name": "Multiplayer rooms in two browsers",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:30:45.845Z",
+      "failedSteps": [
+        {
+          "name": "Run npx playwright test --config=playwright.multiplayer.config.js",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877625"
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11319935663,
+      "name": "multiplayer-browser-test-results",
+      "bytes": 17698478,
+      "digest": "sha256:ce1d7bb4a814d2c3f6f91839727098f353d6089d4615911e4317d39d2485d305",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11319850952,
+      "name": "browser-test-results-harbor-realism",
+      "bytes": 4406521,
+      "digest": "sha256:538bcbe58cf0e4f1dadfc1df415566f24e58c7231dfe2a8f4df762fd1eb300d1",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11319493212,
+      "name": "browser-test-results-harbor-sample-1",
+      "bytes": 2185357,
+      "digest": "sha256:eee5b65919d84cdabcaa92d4f0e878254ed5f2fff6fb892189e5b5b9931a8dec",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11319458270,
+      "name": "browser-test-results-living-city",
+      "bytes": 1657985,
+      "digest": "sha256:0421ea177b0499f20a11b92fe46a974941818a8b6fbae8d9bde37196c046a222",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11318944588,
+      "name": "browser-test-results-metropolis-1",
+      "bytes": 883072,
+      "digest": "sha256:8edbfb43467d971323379e2f24cd1f9fb11e0b3ad858564f5cbfd8342af4af98",
+      "expired": false
+    }
+  ]
+}

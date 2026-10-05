@@ -98,7 +98,9 @@ export function createHarborLifeRenderer(THREE, scene, life, { groundHeightAt = 
     const viewer = view.viewerPosition || view.position || view, interior = view.interior?.buildingId || view.buildingId || null;
     if (!Number.isFinite(viewer.x) || !Number.isFinite(viewer.z)) return;
     lastInterior = interior;
-    const visible = life.agents.filter(a => interior ? a.insideBuildingId === interior && (!view.interior?.floorId || a.floorId === view.interior.floorId) : !a.insideBuildingId);
+    const visible = life.agents.filter(a => interior ? a.insideBuildingId === interior &&
+      (!view.interior?.floorId || a.floorId === view.interior.floorId) &&
+      (!life.residentLoop?.owns(a) || a.roomId === (view.interior?.currentRoomId || null)) : !a.insideBuildingId);
     const ranked = visible.map(a => ({ agent: a, distance: Math.hypot(a.x - viewer.x, (a.y || 0) - (viewer.y || 0), a.z - viewer.z) })).sort((a, b) => a.distance - b.distance || a.agent.index - b.agent.index);
     const near = ranked.filter(item => item.distance <= (models.has(item.agent.id) ? 145 : 125)).slice(0, 12), active = new Set(near.map(item => item.agent.id));
     for (const id of [...models.keys()]) if (!active.has(id)) release(id);
@@ -109,6 +111,11 @@ export function createHarborLifeRenderer(THREE, scene, life, { groundHeightAt = 
       joints.leftKnee.rotation.x = Math.max(0, swing) * .9; joints.rightKnee.rotation.x = Math.max(0, -swing) * .9;
       joints.leftArm.rotation.x = -swing * .65; joints.rightArm.rotation.x = swing * .65;
       joints.leftElbow.rotation.x = a.cargoJobId ? -1 : -.12; joints.rightElbow.rotation.x = a.phase === 'working' ? -.5 : -.12;
+      if (life.residentLoop?.owns(a) && life.residentLoop.state.stage === 'working') {
+        const motion = Math.sin((life.residentLoop.state.activeJob?.validTicks || 0) * .38);
+        joints.leftArm.rotation.x = -.48; joints.leftElbow.rotation.x = -.72;
+        joints.rightArm.rotation.x = -.78 + motion * .09; joints.rightElbow.rotation.x = -.8 + motion * .16;
+      }
       model.position.set(a.x, Number.isFinite(a.y) ? a.y : groundHeightAt(a.x, a.z), a.z); model.rotation.y = a.yaw;
       model.userData.harborCargo.visible = !!a.cargoJobId;
       model.userData.setDetail(distance < (model.userData.residentCoreActive?.() ? 21 : 18) ? 0 : distance < 52 ? 1 : 2);

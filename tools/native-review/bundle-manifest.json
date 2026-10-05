@@ -1,18 +1,26 @@
 {
-  "status": "SOURCE_ONLY_PREPARED_NOT_EXECUTED",
+  "status": "CURRENT_SOURCE_METHOD_INVENTORY_NATIVE_REVALIDATION_PENDING",
   "rootPrivateRefsUntouched": true,
   "files": {
     "README.md": {
-      "bytes": 6048,
-      "sha256": "657b66bb32846d434252b68b1858400f06ef71c76fe17fe4ff5d36596ddaa975"
+      "bytes": 10355,
+      "sha256": "b5316b8736890ecccbbf6fe2f1aa0068a6e4e5ba2d2345aa95a103fc72b4ca6d"
+    },
+    "__pycache__/run-paired-native.cpython-312.pyc": {
+      "bytes": 45925,
+      "sha256": "eab3656bf17141eda31a74177a69e42a2eead02a028c82090a778345a48fdb80"
     },
     "cases.json": {
-      "bytes": 5634,
-      "sha256": "5b7e49a3e9485f8471f2511554bec630d9dbce6bc3363accedcc737cba3bdeb5"
+      "bytes": 8932,
+      "sha256": "195c2feccd7df356fb314d63c074e8340ca40e3fc6342c64bccc7b84727b1c34"
     },
     "curated-original-provenance.json": {
       "bytes": 16726,
       "sha256": "5bfa0b0d2b816735471295651d2ae6957202ad23e78b8158e3d61ad565370cea"
+    },
+    "expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json": {
+      "bytes": 20512,
+      "sha256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4"
     },
     "expected-build-provenance/authored-build-info-original.json": {
       "bytes": 20302,
@@ -23,8 +31,8 @@
       "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
     },
     "expected-runtime-dictionaries.json": {
-      "bytes": 38182,
-      "sha256": "40b6a39e13d9b1370dbb3dc48aee7f91f83191809a603124fea7db33b488bde8"
+      "bytes": 39048,
+      "sha256": "a137b0b64cdc534f5826091a90a6454348587ad3ed5390bf8f31b083db04ee2c"
     },
     "methods/continuous-tour-original/tests/e2e/helpers/occupied.js": {
       "bytes": 5321,
@@ -43,8 +51,8 @@
       "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
     },
     "methods/harbor/capture-authored-harbor-native.mjs": {
-      "bytes": 31770,
-      "sha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b"
+      "bytes": 37885,
+      "sha256": "806f83e31713250e01379567c82b7b8c13781103bc92eab6663ada3d6c42d15e"
     },
     "methods/harbor/evidence/captured-buildings.json": {
       "bytes": 14628,
@@ -54,17 +62,25 @@
       "bytes": 37158,
       "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
     },
+    "methods/harbor/evidence/frontage-wide-static-proof.json": {
+      "bytes": 34688,
+      "sha256": "0d9469efd05bcef2583c7e745a6290720929f051293c615f7d943923f73ee465"
+    },
     "methods/harbor/expectations.mjs": {
       "bytes": 2016,
-      "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1"
+      "sha256": "bbfa361068edd9402c0134e1f7a4c51eac700aad6a59eb32f33c0e93af482e82"
+    },
+    "methods/harbor/frontage-wide-plans.mjs": {
+      "bytes": 5690,
+      "sha256": "d3f8c5410d96ab1565084b00c6e4861960443c3e8ae8e6a47a85b7d9182f12b2"
     },
     "methods/harbor/input.mjs": {
       "bytes": 7087,
       "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
     },
     "methods/harbor/plans.mjs": {
-      "bytes": 6751,
-      "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95"
+      "bytes": 6752,
+      "sha256": "5129f5e505da5e0237edfa17c36cb694795696cedb6a9787bdf0673cf3ec85bc"
     },
     "methods/harbor/provenance/README.md": {
       "bytes": 7381,
@@ -96,7 +112,11 @@
     },
     "methods/resident/SEALED_SHA256.json": {
       "bytes": 486,
-      "sha256": "6256c9e98cb815d11e6c4efc0662a6cf7a78dddf6b77efe5e4ac2e1813e6b10c"
+      "sha256": "bd919991070ba2664d0a660d914d0d0a489357bbc44ad4ba36a3e0b4d9f5521e"
+    },
+    "methods/resident/docs/CURRENT_METHOD_AMENDMENT.json": {
+      "bytes": 550,
+      "sha256": "430b294b44ed32fde56cbba267f3a72d2a8dbb2114f421d87e87c019adff2f57"
     },
     "methods/resident/docs/METHOD_SHA256.json": {
       "bytes": 404,
@@ -114,13 +134,21 @@
       "bytes": 7491,
       "sha256": "72621c972147294446ad53b4b36e77401b8dd003f23ff0c68d6bc59ec5c5345d"
     },
+    "methods/resident/provenance/SEALED_SHA256-original-ef92.json": {
+      "bytes": 486,
+      "sha256": "6256c9e98cb815d11e6c4efc0662a6cf7a78dddf6b77efe5e4ac2e1813e6b10c"
+    },
     "methods/resident/tools/capture-resident-native.mjs": {
-      "bytes": 21571,
-      "sha256": "e537a4c7cc79018168c5d06511071d44f218dc2028f510385f244b247f69fa13"
+      "bytes": 27364,
+      "sha256": "dcb844186de3b1b9b1a294a52a9ee2117fa08e55bdb56633a3faf00e010e130b"
     },
     "methods/resident-extra/SEALED_SHA256.json": {
-      "bytes": 384,
-      "sha256": "309d5b028810b883cedce978c633c74399ec4f789c749266bf4f1b4895dc8a41"
+      "bytes": 616,
+      "sha256": "b6ea36043b3cbc080a49b13eb48b701a1094976f8dd8415602b59276df0b6cff"
+    },
+    "methods/resident-extra/docs/CURRENT_METHOD_AMENDMENT.json": {
+      "bytes": 776,
+      "sha256": "510ee8730e2e92296546cade9bfa68475e25a4ca972eea3cce6cef1eebc7acb7"
     },
     "methods/resident-extra/docs/METHOD_PROVENANCE.json": {
       "bytes": 1813,
@@ -130,13 +158,25 @@
       "bytes": 6308,
       "sha256": "23cea2f4e0701c2ba6971000349f921ecadb116be1a03b8c518c160949bc7156"
     },
+    "methods/resident-extra/docs/RESIDENT_DAY_FUNCTIONAL_AMENDMENT.json": {
+      "bytes": 2137,
+      "sha256": "39ea3d56afc02ace23db494b361ae642e669fcec032993349cf18005d984fac6"
+    },
     "methods/resident-extra/package.json": {
       "bytes": 33,
       "sha256": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428"
     },
+    "methods/resident-extra/provenance/SEALED_SHA256-original-ef92.json": {
+      "bytes": 384,
+      "sha256": "309d5b028810b883cedce978c633c74399ec4f789c749266bf4f1b4895dc8a41"
+    },
     "methods/resident-extra/tools/capture-resident-extra.mjs": {
-      "bytes": 31184,
-      "sha256": "1d5e1b813531d13488d06c85cd4442b50f48396c9717ae2867e1caf7cd9027f1"
+      "bytes": 52095,
+      "sha256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5"
+    },
+    "methods/resident-extra/tools/resident-loop-functional-guards.mjs": {
+      "bytes": 6012,
+      "sha256": "7b88081258339c184901f871dd7d40b2c71ee47655531f7cbec9cd5768997b3f"
     },
     "methods/scenic/README.md": {
       "bytes": 5506,
@@ -147,8 +187,8 @@
       "sha256": "1182926abbe85f29a5ea7c2f2f6c13b9136e3b4189fe1a69734bcec2457573ee"
     },
     "methods/scenic/capture-scenic-east.mjs": {
-      "bytes": 28466,
-      "sha256": "01f830e99ddb2a32f467d8e5313c9d7717bd77158d14e6b85200657b389d393b"
+      "bytes": 32756,
+      "sha256": "f5565f4bc3b0e626f29603c55e664576a06c275fcaaab72421de8c0637fbc7ac"
     },
     "methods/scenic/input.mjs": {
       "bytes": 7087,
@@ -199,16 +239,16 @@
       "sha256": "317523aa0fa8b6c3842ec05e4486e26f596aaa3d7cf7f06e91961368216e3f73"
     },
     "methods/transport/method-manifest.json": {
-      "bytes": 10508,
-      "sha256": "31b4d6e3e5d5a75efbd60001e51c5f951384c140d778bc929e5913eb399c12db"
+      "bytes": 14442,
+      "sha256": "42679942a3ec5e33f1aa7f7450b819095468ac0869c20d12f6b5e1a4d677b99c"
     },
     "methods/transport/native-transport-high.mjs": {
-      "bytes": 39643,
-      "sha256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3"
+      "bytes": 47346,
+      "sha256": "576660cea3c7835675cbde0618420d22129d8ff74b630e8dc693fbd8f9a59598"
     },
     "methods/transport/runtime-resources.json": {
-      "bytes": 2792,
-      "sha256": "67a7fab4f2271a60931f2b72e0398fbd9f12f34a287bc4feb146b8e8baa454a8"
+      "bytes": 3799,
+      "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc"
     },
     "methods/transport-owner/API-SOURCE-REVIEW.md": {
       "bytes": 3776,
@@ -235,23 +275,23 @@
       "sha256": "fc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3"
     },
     "methods/transport-owner/method-manifest.json": {
-      "bytes": 6394,
-      "sha256": "a8ef22e05061ca574500fc73325fbde00498fe6b4e5a8043403034846814143f"
+      "bytes": 7968,
+      "sha256": "3f02043e1f8fb539ca4d66a8fd0ed00061eb589b95ea05d9b3f58e72210a655b"
     },
     "methods/transport-owner/native-transport-ownership-extra.mjs": {
-      "bytes": 38409,
-      "sha256": "e5fc7e1534929908c961038689d8b6ca76f351d55cdd31ab16148b4abec5a34d"
+      "bytes": 42916,
+      "sha256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2"
     },
     "methods/transport-owner/runtime-resources.json": {
-      "bytes": 2792,
-      "sha256": "67a7fab4f2271a60931f2b72e0398fbd9f12f34a287bc4feb146b8e8baa454a8"
+      "bytes": 3805,
+      "sha256": "3fd2dbc5c0de92835dec31e248797a47a85dc64625e8464d56a94804d66ecacb"
     },
     "run-paired-native.py": {
-      "bytes": 33908,
-      "sha256": "a6a42de4497d35e29aedbdc13ecf597c5a1aa057fd0f5cf47e91be46596e306e"
+      "bytes": 34250,
+      "sha256": "8adf9a6b67d27de65c8c5b08e7c33ab59662fdf9656d841899e1a26b1dabd1ff"
     }
   },
-  "nativeWorkflowSha256": "d143b006d4d4c370d439b721a23d0172e34b639b8f603e0afac7243045f022c0",
+  "nativeWorkflowSha256": "d123cdbffee84c86e4ea35a4770fac09c1d32e92ed1dee24c8c583e0468853b5",
   "ciWorkflowSha256": "fcd203f94d6c77481ee36dfe5a31c1ae7160eba73e5756725e6b89d4c5926347",
   "unchangedPagesSha256": "cd09551e40a576172cf21c42871c10245056c94fa99d7be115f21c2efdc11fcb",
   "processAdapter": {
@@ -276,5 +316,160 @@
     "browser": false,
     "gpu": false,
     "remote": false
+  },
+  "currentRuntimeProvenance": {
+    "authoredAssetCount": 192,
+    "baselineAssetCount": 156,
+    "currentLocalBuildInfoPath": "expected-build-provenance/authored-build-info-current-20261005-5397744602bf.json",
+    "currentLocalBuildInfoSHA256": "5397744602bff47edbcf7a8c0a04f85d946d8c3fee272ee218c0ac81e54747e4",
+    "historicalBaselineAndAuthoredOriginalFilesUnchanged": true,
+    "nativeCaptureAndArtApproval": "PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW",
+    "refreshChangedRuntimeSource": false
+  },
+  "activeCases": {
+    "home": {
+      "activeBudgetSeconds": 6600,
+      "historicalBudgetSeconds": 1920,
+      "jobTimeoutMinutes": 260,
+      "paired": true
+    },
+    "workshop": {
+      "activeBudgetSeconds": 3900,
+      "historicalBudgetSeconds": 1500,
+      "jobTimeoutMinutes": 160,
+      "paired": true
+    },
+    "south-090": {
+      "activeBudgetSeconds": 1440,
+      "historicalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    "south-091": {
+      "activeBudgetSeconds": 1800,
+      "historicalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 95,
+      "paired": true
+    },
+    "south-092": {
+      "activeBudgetSeconds": 1440,
+      "historicalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    "south-094": {
+      "activeBudgetSeconds": 1440,
+      "historicalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    "south-095": {
+      "activeBudgetSeconds": 1800,
+      "historicalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 95,
+      "paired": true
+    },
+    "south-096": {
+      "activeBudgetSeconds": 1440,
+      "historicalBudgetSeconds": 720,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    "resident-core": {
+      "activeBudgetSeconds": 1080,
+      "historicalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 85,
+      "paired": true
+    },
+    "bus": {
+      "activeBudgetSeconds": 600,
+      "historicalBudgetSeconds": 600,
+      "jobTimeoutMinutes": 75,
+      "paired": true
+    },
+    "tram": {
+      "activeBudgetSeconds": 2400,
+      "historicalBudgetSeconds": 600,
+      "jobTimeoutMinutes": 110,
+      "paired": true
+    },
+    "ferry": {
+      "activeBudgetSeconds": 900,
+      "historicalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    "waterfront-day": {
+      "activeBudgetSeconds": 900,
+      "historicalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    "waterfront-night": {
+      "activeBudgetSeconds": 900,
+      "historicalBudgetSeconds": 900,
+      "jobTimeoutMinutes": 80,
+      "paired": true
+    },
+    "east-interior": {
+      "activeBudgetSeconds": 3600,
+      "historicalBudgetSeconds": 3600,
+      "jobTimeoutMinutes": 180,
+      "paired": true
+    },
+    "north-book": {
+      "activeBudgetSeconds": 1080,
+      "historicalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    "north-phone": {
+      "activeBudgetSeconds": 1080,
+      "historicalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    "north-cup-owner": {
+      "activeBudgetSeconds": 1080,
+      "historicalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    "south-parcel": {
+      "activeBudgetSeconds": 2700,
+      "historicalBudgetSeconds": 1080,
+      "jobTimeoutMinutes": 75,
+      "paired": false
+    },
+    "ownership-bus": {
+      "activeBudgetSeconds": 1200,
+      "historicalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "paired": false
+    },
+    "ownership-tram": {
+      "activeBudgetSeconds": 1200,
+      "historicalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "paired": false
+    },
+    "ownership-ferry": {
+      "activeBudgetSeconds": 1200,
+      "historicalBudgetSeconds": 1200,
+      "jobTimeoutMinutes": 80,
+      "paired": false
+    },
+    "continuous-tour": {
+      "activeBudgetSeconds": 14400,
+      "historicalBudgetSeconds": 14400,
+      "jobTimeoutMinutes": 300,
+      "paired": false
+    },
+    "resident-loop": {
+      "activeBudgetSeconds": 10800,
+      "historicalBudgetSeconds": 10800,
+      "jobTimeoutMinutes": 210,
+      "paired": false
+    }
   }
 }

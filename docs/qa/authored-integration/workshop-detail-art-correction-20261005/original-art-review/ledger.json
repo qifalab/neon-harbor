@@ -1,0 +1,1509 @@
+{
+  "reviewScope": "12 original ef92 PNGs and companion poses/metadata, read-only image review. No runtime mutation, test, build, browser, GPU or network calls. Current ROOT resident/frontage changes are not covered.",
+  "reviewedAtUtc": "2026-10-05",
+  "cases": [
+    {
+      "case": "workshop-11320513014",
+      "pairStatusOriginal": "FAILED",
+      "artAcceptanceOriginal": "PENDING_HUMAN_NATIVE_REVIEW",
+      "pairSummaryPath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/pair-summary.json",
+      "pairSummarySha256": "b06b62af06bcc44f46e43abac16194dc6a057f11f953d7ab48b9213a103452f6",
+      "modes": {
+        "baseline": {
+          "metadataSha256": "2527b5bc42fe910a672f12869e067ac48e8415a6c7146899a9f204dd5c086f37",
+          "status": "failed",
+          "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+          "buildAssetCount": 156,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "errors": [],
+          "primaryError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "pinnedChromium": "151.0.7922.34"
+        },
+        "authored": {
+          "metadataSha256": "82ca6a2549a9954d0edbb1d74311eee0603a5b272c89247b1480d90bf7be266b",
+          "status": "failed",
+          "buildRevision": "ef92c25980f1da12b508971170b72b9dd6230059",
+          "buildAssetCount": 190,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "errors": [],
+          "primaryError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "pinnedChromium": "151.0.7922.34"
+        }
+      }
+    },
+    {
+      "case": "waterfront-day-11320737055",
+      "pairStatusOriginal": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "artAcceptanceOriginal": "PENDING_HUMAN_NATIVE_REVIEW",
+      "pairSummaryPath": "/tmp/neon-native-ef92-waterfront-day-11320737055/extracted/pair-summary.json",
+      "pairSummarySha256": "8ad84e1c02cb56bc838a6e8a8013f2a6d58c63096ee93f34a02ebb2313b1644f",
+      "modes": {
+        "baseline": {
+          "metadataSha256": "103f8293649edc67fc029a39c8c03b65d46d126ea1019914a966f1cd6071b2bf",
+          "status": "capture-complete-art-review-pending",
+          "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+          "buildAssetCount": 156,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "errors": [],
+          "primaryError": null,
+          "pinnedChromium": "151.0.7922.34"
+        },
+        "authored": {
+          "metadataSha256": "35d17c77416d182e60adb036280b36a87f224b920bc9f1d2e87669100db113e0",
+          "status": "capture-complete-art-review-pending",
+          "buildRevision": "ef92c25980f1da12b508971170b72b9dd6230059",
+          "buildAssetCount": 190,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "errors": [],
+          "primaryError": null,
+          "pinnedChromium": "151.0.7922.34"
+        }
+      }
+    },
+    {
+      "case": "waterfront-night-11320182444",
+      "pairStatusOriginal": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+      "artAcceptanceOriginal": "PENDING_HUMAN_NATIVE_REVIEW",
+      "pairSummaryPath": "/tmp/neon-native-ef92-waterfront-night-11320182444/extracted/pair-summary.json",
+      "pairSummarySha256": "a89b40df000d9d51144825c95bc5f1c4907323371d48402e48d063e19ac29269",
+      "modes": {
+        "baseline": {
+          "metadataSha256": "d2f44da108502d71582f97aea94e8e1714a2360ea1a0b6449214c003a1f1c7a8",
+          "status": "capture-complete-art-review-pending",
+          "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+          "buildAssetCount": 156,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "errors": [],
+          "primaryError": null,
+          "pinnedChromium": "151.0.7922.34"
+        },
+        "authored": {
+          "metadataSha256": "3b73ad25571a320ea02d045ee9ab687f84c14d649abdcb6a11ad2ea9d7a15409",
+          "status": "capture-complete-art-review-pending",
+          "buildRevision": "ef92c25980f1da12b508971170b72b9dd6230059",
+          "buildAssetCount": 190,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "errors": [],
+          "primaryError": null,
+          "pinnedChromium": "151.0.7922.34"
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "case": "workshop-11320513014",
+      "mode": "baseline",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-archive-whole-high.png",
+      "sha256": "d48f0de0b7e141a154f35fae4fb97cc8d61d7e84f966dd938d938e3d62b59d83",
+      "bytes": 687407,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-archive-whole-pose.json",
+      "poseSha256": "073964ed04c74d4ba7705910f8cf998dd800a4775a5e8c0cb847de6477a095d8",
+      "beforePosition": {
+        "x": 196.7066182786866,
+        "y": 0.215,
+        "z": -106.1261471394351,
+        "yaw": 3.1415923484140125
+      },
+      "afterPosition": {
+        "x": 196.7066182786866,
+        "y": 0.215,
+        "z": -106.1261471394351,
+        "yaw": 3.1415923484140125
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 196.7066182786866,
+          "y": 1.8350000000000002,
+          "z": -106.1261471394351
+        },
+        "target": {
+          "x": 186.70661827868912,
+          "y": 1.4281370851931794,
+          "z": -106.12615423552398
+        },
+        "focus": {
+          "x": 196.7066182786866,
+          "y": 1.8350000000000002,
+          "z": -106.1261471394351
+        },
+        "yaw": 4.7123882707758025,
+        "pitch": 0.19069752502441406,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 196.7066182786866,
+          "y": 1.8350000000000002,
+          "z": -106.1261471394351
+        },
+        "target": {
+          "x": 186.70661827868668,
+          "y": 1.4281370851931794,
+          "z": -106.12614837125125
+        },
+        "focus": {
+          "x": 196.7066182786866,
+          "y": 1.8350000000000002,
+          "z": -106.1261471394351
+        },
+        "yaw": 4.712388857203075,
+        "pitch": 0.19069752502441406,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 46.54999999999864,
+      "afterSimSeconds": 50.04999999999844,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-1",
+        "currentRoomName": "货运档案室 102"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "baseline",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-assembly-close-high.png",
+      "sha256": "6b2f6c3190aecd05ae7df8479dfc271f29648ed4cf80225187632e714ec28855",
+      "bytes": 789457,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-assembly-close-pose.json",
+      "poseSha256": "6cbb77e59d4c87be8366332b5dcc7208bf3c6b3fb9c5c4fed0ad938be6d366fa",
+      "beforePosition": {
+        "x": 188.19999912282918,
+        "y": 0.215,
+        "z": -111.93948307351623,
+        "yaw": -3.0517578121259254e-07
+      },
+      "afterPosition": {
+        "x": 188.19999912282918,
+        "y": 0.215,
+        "z": -111.93948307351623,
+        "yaw": -3.0517578121259254e-07
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 188.19999912282918,
+          "y": 1.8350000000000002,
+          "z": -111.93948307351623
+        },
+        "target": {
+          "x": 178.3799336211465,
+          "y": 0.07871901884182675,
+          "z": -110.05101450277911
+        },
+        "focus": {
+          "x": 188.19999912282918,
+          "y": 1.8350000000000002,
+          "z": -111.93948307351623
+        },
+        "yaw": 4.902376721895196,
+        "pitch": 0.3265437469482422,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 188.19999912282918,
+          "y": 1.8350000000000002,
+          "z": -111.93948307351623
+        },
+        "target": {
+          "x": 178.37993463833035,
+          "y": 0.07871901884182675,
+          "z": -110.05100921341527
+        },
+        "focus": {
+          "x": 188.19999912282918,
+          "y": 1.8350000000000002,
+          "z": -111.93948307351623
+        },
+        "yaw": 4.902377260523387,
+        "pitch": 0.3265437469482422,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 21.900000000000038,
+      "afterSimSeconds": 25.63333333333316,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-0",
+        "currentRoomName": "港口修缮工坊 101"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "baseline",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-retrieval-close-high.png",
+      "sha256": "0a41fba288e086b23c5ae81d376c36e224f66fdc95439a2ed79e905784a74ac6",
+      "bytes": 811158,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-retrieval-close-pose.json",
+      "poseSha256": "f38a94e01065bd5edba13bba3bf484c598f36355343b3328ad2adab3f69f84bc",
+      "beforePosition": {
+        "x": 189.3066176587716,
+        "y": 0.215,
+        "z": -103.96580041253328,
+        "yaw": -3.051757803244141e-07
+      },
+      "afterPosition": {
+        "x": 189.3066176587716,
+        "y": 0.215,
+        "z": -103.96580041253328,
+        "yaw": -3.051757803244141e-07
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 189.3066176587716,
+          "y": 1.8350000000000002,
+          "z": -103.96580041253328
+        },
+        "target": {
+          "x": 179.3066176587734,
+          "y": -1.7150000980478473,
+          "z": -103.9658064494524
+        },
+        "focus": {
+          "x": 189.3066176587716,
+          "y": 1.8350000000000002,
+          "z": -103.96580041253328
+        },
+        "yaw": 4.712388376692778,
+        "pitch": 0.512914077758789,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 189.3066176587716,
+          "y": 1.8350000000000002,
+          "z": -103.96580041253328
+        },
+        "target": {
+          "x": 179.30661765877167,
+          "y": -1.7150000980478473,
+          "z": -103.96580164434943
+        },
+        "focus": {
+          "x": 189.3066176587716,
+          "y": 1.8350000000000002,
+          "z": -103.96580041253328
+        },
+        "yaw": 4.712388857203075,
+        "pitch": 0.512914077758789,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 58.98333333333127,
+      "afterSimSeconds": 62.23333333333108,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-1",
+        "currentRoomName": "货运档案室 102"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "baseline",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-workshop-whole-high.png",
+      "sha256": "ff21f0263b7e39c35356df771ddf43a2a3babf0346c578a1a269c5bed3b82a10",
+      "bytes": 665988,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/baseline/workshop-workshop-whole-pose.json",
+      "poseSha256": "2ef88dcd72b19d30c3ba5d79d6473393863d2d1dd782a5683ecacb7cf929182c",
+      "beforePosition": {
+        "x": 197.60000000000218,
+        "y": 0.215,
+        "z": -115.10000000000021,
+        "yaw": -1.5707963267948968
+      },
+      "afterPosition": {
+        "x": 197.60000000000218,
+        "y": 0.215,
+        "z": -115.10000000000021,
+        "yaw": -1.5707963267948968
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.10000000000021
+        },
+        "target": {
+          "x": 187.60000000000235,
+          "y": 1.4097664722321699,
+          "z": -115.10000188107657
+        },
+        "focus": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.10000000000021
+        },
+        "yaw": 4.712388792277054,
+        "pitch": 0.19253617858886718,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.10000000000021
+        },
+        "target": {
+          "x": 187.60000000000227,
+          "y": 1.4097664722321699,
+          "z": -115.10000123181636
+        },
+        "focus": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.10000000000021
+        },
+        "yaw": 4.7123888572030745,
+        "pitch": 0.19253617858886718,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 9.700000000000061,
+      "afterSimSeconds": 13.000000000000226,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-0",
+        "currentRoomName": "港口修缮工坊 101"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "authored",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-archive-whole-high.png",
+      "sha256": "22a29b1ecf9ffa82796053f338e31feb0e691a4a75a7ed93944cb1fc941d4a63",
+      "bytes": 718483,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-archive-whole-pose.json",
+      "poseSha256": "86ffc0956bdb54295473ad94260a1bf1a3a6569184d56db8ff3c3c7ea34a2cfc",
+      "beforePosition": {
+        "x": 196.6132848440568,
+        "y": 0.215,
+        "z": -105.96638135090248,
+        "yaw": 3.1415923484140125
+      },
+      "afterPosition": {
+        "x": 196.6132848440568,
+        "y": 0.215,
+        "z": -105.96638135090248,
+        "yaw": 3.1415923484140125
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 196.6132848440568,
+          "y": 1.8350000000000002,
+          "z": -105.96638135090248
+        },
+        "target": {
+          "x": 186.61328484405863,
+          "y": 1.4281370851931794,
+          "z": -105.9663873878216
+        },
+        "focus": {
+          "x": 196.6132848440568,
+          "y": 1.8350000000000002,
+          "z": -105.96638135090248
+        },
+        "yaw": 4.712388376692778,
+        "pitch": 0.19069752502441406,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 196.6132848440568,
+          "y": 1.8350000000000002,
+          "z": -105.96638135090248
+        },
+        "target": {
+          "x": 186.6132848440569,
+          "y": 1.4281370851931794,
+          "z": -105.96638258271862
+        },
+        "focus": {
+          "x": 196.6132848440568,
+          "y": 1.8350000000000002,
+          "z": -105.96638135090248
+        },
+        "yaw": 4.712388857203075,
+        "pitch": 0.19069752502441406,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 43.533333333332145,
+      "afterSimSeconds": 47.01666666666528,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-1",
+        "currentRoomName": "货运档案室 102"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "authored",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-assembly-close-high.png",
+      "sha256": "d06d6d6411eb8f8a8f2bbd75920f0ed982c354ceb70420a8fc8c5299fa1388d9",
+      "bytes": 799547,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-assembly-close-pose.json",
+      "poseSha256": "82b6d170c2b5f056c046b467e9fa00addbcd18e2169810708fa688f8a6f28448",
+      "beforePosition": {
+        "x": 188.19999904972065,
+        "y": 0.215,
+        "z": -111.87305058983347,
+        "yaw": -3.0517578121259254e-07
+      },
+      "afterPosition": {
+        "x": 188.19999904972065,
+        "y": 0.215,
+        "z": -111.87305058983347,
+        "yaw": -3.0517578121259254e-07
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 188.19999904972065,
+          "y": 1.8350000000000002,
+          "z": -111.87305058983347
+        },
+        "target": {
+          "x": 178.37993456214468,
+          "y": 0.07871901884182675,
+          "z": -109.98457674573353
+        },
+        "focus": {
+          "x": 188.19999904972065,
+          "y": 1.8350000000000002,
+          "z": -111.87305058983347
+        },
+        "yaw": 4.902377258893965,
+        "pitch": 0.3265437469482422,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 188.19999904972065,
+          "y": 1.8350000000000002,
+          "z": -111.87305058983347
+        },
+        "target": {
+          "x": 178.37993456522182,
+          "y": 0.07871901884182675,
+          "z": -109.98457672973251
+        },
+        "focus": {
+          "x": 188.19999904972065,
+          "y": 1.8350000000000002,
+          "z": -111.87305058983347
+        },
+        "yaw": 4.902377260523387,
+        "pitch": 0.3265437469482422,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 23.383333333333287,
+      "afterSimSeconds": 26.866666666666422,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-0",
+        "currentRoomName": "港口修缮工坊 101"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "authored",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-retrieval-close-high.png",
+      "sha256": "c013d2f0877f1bbd2a579f5c0f441947731a16a5cd5c5e3678b3185d92e2d0c9",
+      "bytes": 915632,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-retrieval-close-pose.json",
+      "poseSha256": "d335f4d98d49c644bd10551f469043f544e45cd5eeb9b7e49063e822016d2de7",
+      "beforePosition": {
+        "x": 189.4132842599799,
+        "y": 0.215,
+        "z": -103.96609958233698,
+        "yaw": -3.051757803244141e-07
+      },
+      "afterPosition": {
+        "x": 189.4132842599799,
+        "y": 0.215,
+        "z": -103.96609958233698,
+        "yaw": -3.051757803244141e-07
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 189.4132842599799,
+          "y": 1.8350000000000002,
+          "z": -103.96609958233698
+        },
+        "target": {
+          "x": 179.41328425998,
+          "y": -1.7150000980478473,
+          "z": -103.96610110646864
+        },
+        "focus": {
+          "x": 189.4132842599799,
+          "y": 1.8350000000000002,
+          "z": -103.96609958233698
+        },
+        "yaw": 4.712388827971524,
+        "pitch": 0.512914077758789,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 189.4132842599799,
+          "y": 1.8350000000000002,
+          "z": -103.96609958233698
+        },
+        "target": {
+          "x": 179.41328425997997,
+          "y": -1.7150000980478473,
+          "z": -103.96610081415312
+        },
+        "focus": {
+          "x": 189.4132842599799,
+          "y": 1.8350000000000002,
+          "z": -103.96609958233698
+        },
+        "yaw": 4.712388857203075,
+        "pitch": 0.512914077758789,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 56.19999999999809,
+      "afterSimSeconds": 59.5999999999979,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-1",
+        "currentRoomName": "货运档案室 102"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "workshop-11320513014",
+      "mode": "authored",
+      "path": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-workshop-whole-high.png",
+      "sha256": "9ce36dab66e3c5a07f81cd275c28ebf4f715bfe80b85f2ddea1f555d1bfc31e2",
+      "bytes": 685372,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-workshop-11320513014/extracted/native/authored/workshop-workshop-whole-pose.json",
+      "poseSha256": "382fc323b32948b6ce5ff1a61f5f233cf731ec175c965ba4deeacaf072cf9c84",
+      "beforePosition": {
+        "x": 197.60000000000218,
+        "y": 0.215,
+        "z": -115.07333333333362,
+        "yaw": -1.5707963267948968
+      },
+      "afterPosition": {
+        "x": 197.60000000000218,
+        "y": 0.215,
+        "z": -115.07333333333362,
+        "yaw": -1.5707963267948968
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.07333333333362
+        },
+        "target": {
+          "x": 187.600000000004,
+          "y": 1.4097664722321699,
+          "z": -115.07333937025182
+        },
+        "focus": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.07333333333362
+        },
+        "yaw": 4.7123883766928705,
+        "pitch": 0.19253617858886718,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.07333333333362
+        },
+        "target": {
+          "x": 187.60000000000227,
+          "y": 1.4097664722321699,
+          "z": -115.07333456514978
+        },
+        "focus": {
+          "x": 197.60000000000218,
+          "y": 1.8350000000000002,
+          "z": -115.07333333333362
+        },
+        "yaw": 4.7123888572030745,
+        "pitch": 0.19253617858886718,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 10.133333333333416,
+      "afterSimSeconds": 13.883333333333603,
+      "interior": {
+        "buildingId": "south-086",
+        "floorId": "lobby",
+        "currentRoomId": "south-086-lobby-0",
+        "currentRoomName": "港口修缮工坊 101"
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "waterfront-day-11320737055",
+      "mode": "baseline",
+      "path": "/tmp/neon-native-ef92-waterfront-day-11320737055/extracted/native/baseline/waterfront-day-high.png",
+      "sha256": "5ca7ff8d0395643bf8293dcad9d268f2f3684d79ddad62e7874d7910370ae289",
+      "bytes": 635843,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-waterfront-day-11320737055/extracted/native/baseline/waterfront-day-pose.json",
+      "poseSha256": "d52c1b2fdcc8558d5cee78258828745a63fb8fc0f469955f82b3b358fea5d21f",
+      "beforePosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "afterPosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 1.0000000000000013,
+      "afterSimSeconds": 5.449999999999986,
+      "interior": {
+        "buildingId": null,
+        "floorId": null,
+        "currentRoomId": null,
+        "currentRoomName": null
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "waterfront-day-11320737055",
+      "mode": "authored",
+      "path": "/tmp/neon-native-ef92-waterfront-day-11320737055/extracted/native/authored/waterfront-day-high.png",
+      "sha256": "34557320ff03630233c7e8e67b80f6e20f3078a7c5f25237ee2307b00accb586",
+      "bytes": 635868,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-waterfront-day-11320737055/extracted/native/authored/waterfront-day-pose.json",
+      "poseSha256": "0530d885600463e5abef2fb77965dfe7adae782b8ff578d69a7416973a068d25",
+      "beforePosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "afterPosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 16.5,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 1.2500000000000004,
+      "afterSimSeconds": 5.116666666666654,
+      "interior": {
+        "buildingId": null,
+        "floorId": null,
+        "currentRoomId": null,
+        "currentRoomName": null
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "waterfront-night-11320182444",
+      "mode": "baseline",
+      "path": "/tmp/neon-native-ef92-waterfront-night-11320182444/extracted/native/baseline/waterfront-night-high.png",
+      "sha256": "629033d3d2c758b789004fb99d83bd79f1820fe7818a1cbd1f1bcfabf2a8c7e8",
+      "bytes": 514804,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-waterfront-night-11320182444/extracted/native/baseline/waterfront-night-pose.json",
+      "poseSha256": "9ee92cebb0e49877732066d7443bf36888fd1be64f8e2b1144f9d753cb3cd449",
+      "beforePosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "afterPosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 22,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 22,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 1.0000000000000013,
+      "afterSimSeconds": 5.18333333333332,
+      "interior": {
+        "buildingId": null,
+        "floorId": null,
+        "currentRoomId": null,
+        "currentRoomName": null
+      },
+      "viewedOriginalViaViewImage": true
+    },
+    {
+      "case": "waterfront-night-11320182444",
+      "mode": "authored",
+      "path": "/tmp/neon-native-ef92-waterfront-night-11320182444/extracted/native/authored/waterfront-night-high.png",
+      "sha256": "f0d310b2d049cbef667396e2d5af9d65ccf71371b8c353e0583af4da3410d9d0",
+      "bytes": 514800,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "posePath": "/tmp/neon-native-ef92-waterfront-night-11320182444/extracted/native/authored/waterfront-night-pose.json",
+      "poseSha256": "42da807768d661ce600d459a88c78ebef83043692323ce601d99ed907a270335",
+      "beforePosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "afterPosition": {
+        "x": 285.5,
+        "y": 0.18,
+        "z": 42,
+        "yaw": 1.5707963267948966
+      },
+      "beforeCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "afterCamera": {
+        "position": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "target": {
+          "x": 295.5,
+          "y": 3.884598998460995,
+          "z": 42
+        },
+        "focus": {
+          "x": 285.5,
+          "y": 1.8,
+          "z": 42
+        },
+        "yaw": 1.5707963267948966,
+        "pitch": -0.06,
+        "fov": 65,
+        "boomLength": 0,
+        "desiredBoomLength": 0,
+        "obstructed": false,
+        "overheadFallback": false,
+        "colliderId": null,
+        "clearanceRadius": 0.45
+      },
+      "beforeSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 22,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "afterSettings": {
+        "quality": "high",
+        "volume": 0,
+        "dayCycle": false,
+        "hour": 22,
+        "sensitivity": 1,
+        "firstPerson": true,
+        "touch": false
+      },
+      "beforeSimSeconds": 1.2500000000000004,
+      "afterSimSeconds": 4.966666666666654,
+      "interior": {
+        "buildingId": null,
+        "floorId": null,
+        "currentRoomId": null,
+        "currentRoomName": null
+      },
+      "viewedOriginalViaViewImage": true
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "workshop-11320513014",
+      "photo": "workshop-archive-whole-high.png",
+      "beforePositionDeltaAuthoredMinusBaseline": {
+        "x": -0.09333343462978405,
+        "y": 0.0,
+        "z": 0.15976578853262424
+      },
+      "beforePositionDistance": 0.18503036833245343,
+      "beforeYawDelta": 1.0591697563455682e-07,
+      "beforePitchDelta": 0.0,
+      "beforeFovDelta": 0,
+      "settingsExactEqual": true,
+      "beforeSimulationSecondsDelta": -3.016666666666495,
+      "changedRgbPixelCount": 666607,
+      "pixelCount": 1024000,
+      "meanAbsoluteRgbDifferenceOn0To255": [
+        4.3196494140625,
+        4.57653125,
+        4.4857822265625
+      ],
+      "pixelComparisonUse": "Descriptive only: moving environment/simulation time and small camera shifts preclude attributing every changed pixel to an art change."
+    },
+    {
+      "case": "workshop-11320513014",
+      "photo": "workshop-assembly-close-high.png",
+      "beforePositionDeltaAuthoredMinusBaseline": {
+        "x": -7.310853789022076e-08,
+        "y": 0.0,
+        "z": 0.06643248368276033
+      },
+      "beforePositionDistance": 0.06643248368280057,
+      "beforeYawDelta": 5.369987690073685e-07,
+      "beforePitchDelta": 0.0,
+      "beforeFovDelta": 0,
+      "settingsExactEqual": true,
+      "beforeSimulationSecondsDelta": 1.483333333333249,
+      "changedRgbPixelCount": 717725,
+      "pixelCount": 1024000,
+      "meanAbsoluteRgbDifferenceOn0To255": [
+        12.4539931640625,
+        13.2110244140625,
+        13.11934765625
+      ],
+      "pixelComparisonUse": "Descriptive only: moving environment/simulation time and small camera shifts preclude attributing every changed pixel to an art change."
+    },
+    {
+      "case": "workshop-11320513014",
+      "photo": "workshop-retrieval-close-high.png",
+      "beforePositionDeltaAuthoredMinusBaseline": {
+        "x": 0.10666660120830329,
+        "y": 0.0,
+        "z": -0.00029916980369648627
+      },
+      "beforePositionDistance": 0.10666702075103932,
+      "beforeYawDelta": 4.512787459276524e-07,
+      "beforePitchDelta": 0.0,
+      "beforeFovDelta": 0,
+      "settingsExactEqual": true,
+      "beforeSimulationSecondsDelta": -2.783333333333175,
+      "changedRgbPixelCount": 788749,
+      "pixelCount": 1024000,
+      "meanAbsoluteRgbDifferenceOn0To255": [
+        16.1417099609375,
+        18.1495048828125,
+        17.1060341796875
+      ],
+      "pixelComparisonUse": "Descriptive only: moving environment/simulation time and small camera shifts preclude attributing every changed pixel to an art change."
+    },
+    {
+      "case": "workshop-11320513014",
+      "photo": "workshop-workshop-whole-high.png",
+      "beforePositionDeltaAuthoredMinusBaseline": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.02666666666658557
+      },
+      "beforePositionDistance": 0.02666666666658557,
+      "beforeYawDelta": -4.155841839548202e-07,
+      "beforePitchDelta": 0.0,
+      "beforeFovDelta": 0,
+      "settingsExactEqual": true,
+      "beforeSimulationSecondsDelta": 0.4333333333333549,
+      "changedRgbPixelCount": 568583,
+      "pixelCount": 1024000,
+      "meanAbsoluteRgbDifferenceOn0To255": [
+        3.4563427734375,
+        3.16254296875,
+        3.175720703125
+      ],
+      "pixelComparisonUse": "Descriptive only: moving environment/simulation time and small camera shifts preclude attributing every changed pixel to an art change."
+    },
+    {
+      "case": "waterfront-day-11320737055",
+      "photo": "waterfront-day-high.png",
+      "beforePositionDeltaAuthoredMinusBaseline": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0
+      },
+      "beforePositionDistance": 0.0,
+      "beforeYawDelta": 0.0,
+      "beforePitchDelta": 0.0,
+      "beforeFovDelta": 0,
+      "settingsExactEqual": true,
+      "beforeSimulationSecondsDelta": 0.2499999999999991,
+      "changedRgbPixelCount": 10815,
+      "pixelCount": 1024000,
+      "meanAbsoluteRgbDifferenceOn0To255": [
+        0.0047099609375,
+        0.0041787109375,
+        0.004236328125
+      ],
+      "pixelComparisonUse": "Descriptive only: moving environment/simulation time and small camera shifts preclude attributing every changed pixel to an art change."
+    },
+    {
+      "case": "waterfront-night-11320182444",
+      "photo": "waterfront-night-high.png",
+      "beforePositionDeltaAuthoredMinusBaseline": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0
+      },
+      "beforePositionDistance": 0.0,
+      "beforeYawDelta": 0.0,
+      "beforePitchDelta": 0.0,
+      "beforeFovDelta": 0,
+      "settingsExactEqual": true,
+      "beforeSimulationSecondsDelta": 0.2499999999999991,
+      "changedRgbPixelCount": 7623,
+      "pixelCount": 1024000,
+      "meanAbsoluteRgbDifferenceOn0To255": [
+        0.0014423828125,
+        0.0027548828125,
+        0.004634765625
+      ],
+      "pixelComparisonUse": "Descriptive only: moving environment/simulation time and small camera shifts preclude attributing every changed pixel to an art change."
+    }
+  ]
+}

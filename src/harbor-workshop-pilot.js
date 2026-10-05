@@ -1,4 +1,4 @@
-import { AUTHORED_WORKSHOP_MODELS, extendAuthoredWorkshopPlan } from './harbor-workshop-authored.js';
+import { AUTHORED_WORKSHOP_MODELS, extendAuthoredWorkshopPlan, createAuthoredWorkshopDetails } from './harbor-workshop-authored.js';
 /** Authored workshop: real CC0 assets and original fittings at one room pair.
  * Collision and furnishing metadata keep world metres, and loaders are local.
  * This module never changes programmes, residents, vehicles or structural routes.
@@ -112,7 +112,9 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
   let disposed = false, wanted = false, generation = 0, controller = null, pending = null;
   let status = plan ? 'fallback' : 'inapplicable', releasedAssets = 0;
   let lodTier = 2, nearestViewDistance = Infinity;
+  let detailOwner = null;
   const applyLod = () => {
+    if(detailOwner)detailOwner.group.visible=status==='ready'&&lodTier<2;
     if(!plan?.authored){for(const asset of loaded)asset.scene.visible=true;if(fallbackGroup)fallbackGroup.visible=status!=='ready';return;}
     for (const asset of loaded) {
       const fittings = asset.scene.userData.workshopAssetId === 'workshop-fittings';
@@ -158,6 +160,7 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
   };
   function unload() {
     generation++; controller?.abort(); controller = null;
+    detailOwner?.dispose(); detailOwner=null;
     for (const asset of loaded.splice(0)) release(asset);
     cachedBounds = []; cachedResources = []; cachedSkeletons = [];
     if (fallbackGroup) fallbackGroup.visible = true;
@@ -225,9 +228,11 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
           visibleSourceMeshes:item.summary.meshes*(plan.placements[index].instances?.length||1),
           visibleSourceTriangles:item.summary.triangles*(plan.placements[index].instances?.length||1) }));
         cachedSkeletons = [...new Set(resources.flatMap(item => [...item.skeletons]))];
+        if(plan.authored){detailOwner=createAuthoredWorkshopDetails(THREE,plan);group.add(detailOwner.group);}
         loaded.push(...assets); status = 'ready'; applyLod();
         audit('ready');
       } catch (error) {
+        detailOwner?.dispose();detailOwner=null;
         for (const asset of assets) release(asset);
         status = 'failed'; errors.push(String(error.message));
         applyLod();
@@ -255,6 +260,7 @@ export function createHarborWorkshopPilot(THREE, { building, floor, layout, fall
     return { enabled, status, wanted, assetCount: loaded.length, pending: status === 'loading', releasedAssets,
       fallbackVisible: fallbackGroup?.visible ?? null,
       authored: !!plan?.authored, lodTier, nearestViewDistance,
+      details: detailOwner ? {...detailOwner.summary} : null,
       bounds: cachedBounds.map(box => ({ id: box.id, min: [...box.min], max: [...box.max] })),
       resources: cachedResources.map(resource => ({ ...resource, images: resource.images.map(image => ({ ...image })) })),
       boneTextureCount: cachedSkeletons.filter(skeleton => skeleton.boneTexture).length,

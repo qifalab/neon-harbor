@@ -1,0 +1,142 @@
+{
+  "status": "PASSED",
+  "scope": "27 actual pure-CPU functional guard checks against original CPU-source observation and explicitly derived test fixtures; no native gameplay run or public download inferred",
+  "methodSHA256": "983bb99e65cc4ad6d8223dd11dad3f2381354081452fe629c60a0e672bc2cff5",
+  "rows": [
+    {
+      "name": "actual CPU991.9sim original source final state passes exact full-day guard",
+      "expectedFailure": false,
+      "passed": true
+    },
+    {
+      "name": "aged-out final wage ledger is correctly unavailable",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "retained original wage1 matches actual job receipt",
+      "expectedFailure": false,
+      "passed": true
+    },
+    {
+      "name": "wage1 wrong source account rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "wage1 paid before valid elapsed work rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "retained original wage2 matches actual job receipt",
+      "expectedFailure": false,
+      "passed": true
+    },
+    {
+      "name": "wage2 wrong source account rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "wage2 paid before valid elapsed work rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "unpaid work rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "insufficient work rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "no purchase rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "wrong home room rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "tram stops reversed rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "duplicate purchase rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "money invented rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "goods invented rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "completed observed state guard passes",
+      "expectedFailure": false,
+      "passed": true
+    },
+    {
+      "name": "real bounded work pose/model visibility guard passes",
+      "expectedFailure": false,
+      "passed": true
+    },
+    {
+      "name": "invisible actual work actor rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "not at actual workbench rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "furniture intersection rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "extra observer navigation rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "actual shared tram ticket and bounded physical seat association",
+      "expectedFailure": false,
+      "passed": true
+    },
+    {
+      "name": "wrong actual shared vehicle rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "missing actual rider ticket rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "outside real moving seat bound rejected",
+      "expectedFailure": true,
+      "passed": true
+    },
+    {
+      "name": "wrong renderer logical model rejected",
+      "expectedFailure": true,
+      "passed": true
+    }
+  ]
+}

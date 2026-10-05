@@ -1,0 +1,56 @@
+{
+  "observedAt": "2026-10-05T00:34:57.036Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T00%3A34%3A55.493Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T00%3A34%3A55.493Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T00%3A34%3A55.493Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0011-2026-10-05T00-34-55.493Z-run-original.json",
+      "bytes": 12816,
+      "sha256": "50b5f936a54b392af9ce05697fe61074a227e9f9954492131278f8fb8e2db0a1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0011-2026-10-05T00-34-55.493Z-jobs-attempt1-original.json",
+      "bytes": 67880,
+      "sha256": "d73d6be8f1071870f8965ead2d4123f6ffb1b227fcda54ad8dc3586dbf2b03b0"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0011-2026-10-05T00-34-55.493Z-artifacts-original.json",
+      "bytes": 5831,
+      "sha256": "84ab46be340436ce9fb05e33c66b211ec65f09e16a19fb73d345f5ca0663da07"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 7,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 4,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 0,
+      "failure": 0,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 17,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": []
+}

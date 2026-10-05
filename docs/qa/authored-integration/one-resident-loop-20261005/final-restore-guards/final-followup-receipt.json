@@ -1,0 +1,89 @@
+{
+  "baseCommit": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "candidateDirectory": "/tmp/neon-harbor-one-resident-loop-restore-final-2026-10-05",
+  "sourceFrozen": true,
+  "originalFreeze": {
+    "path": "/tmp/neon-harbor-one-resident-loop/candidate-receipt.json",
+    "bytes": 3717,
+    "sha256": "0e4372670fd9d95b2515f29566acf489ef8701fba9935baae1772ec03690d7fd"
+  },
+  "intermediateFreeze": {
+    "path": "/tmp/neon-harbor-one-resident-loop-payroll-guard-2026-10-05/followup-receipt.json",
+    "bytes": 2491,
+    "sha256": "16cfd1cbdbb047ce50e36b3c5c8857ab03a124997e0a916e558a405b64b59f15"
+  },
+  "declaredFiles": [
+    {
+      "path": "src/harbor-resident-loop.js",
+      "bytes": 29643,
+      "sha256": "a9abe02b3914761c42475c2e1576ecfacfa8cd5e4c84752138cacb48e4fd7d8a",
+      "originalFreezeSHA256": "d0baac8347245c50d6694ccac447f43ee67c5b7672d578e5dba9d2d1a31b5317",
+      "intermediateFreezeSHA256": "2d0d787e5f23def070babb53799eab80ccfc77b13c55b30fdbebf888dd767c03"
+    },
+    {
+      "path": "tests/harbor-resident-loop.test.js",
+      "bytes": 19182,
+      "sha256": "8562efdd0ab64df5f9042669e1c2be96f15fb42ed2590c9b7691d5ce1ef38204",
+      "originalFreezeSHA256": "be4a825585d25788cef3fd1817a7ecde262058aca14d17083638919f28310284",
+      "intermediateFreezeSHA256": "01f5682c029facc5b5742fcf6f75799932f5ba0578d426e0931e20ef4272e7c2"
+    }
+  ],
+  "patches": [
+    {
+      "path": "patches/resident-restore-all-guards.patch",
+      "bytes": 13401,
+      "sha256": "147bd7beb2ba726ca7be1c750de56f33db12903889fdbba8a20ecf55df38c7fe"
+    },
+    {
+      "path": "patches/resident-restore-stage-only.patch",
+      "bytes": 5390,
+      "sha256": "27aed2a9ff9eb0d528bdf05b62392287d777d81df8247662d9ec9394d3bdc982"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/previous-freeze-stage-reproducer.txt",
+      "bytes": 1025,
+      "sha256": "42e4e7f24e0c211d7a43e0c8d5c8bd7433a35591821f8a7c785be762ebc48ff6"
+    },
+    {
+      "path": "evidence/final-targeted-tests.txt",
+      "bytes": 3424,
+      "sha256": "eb0ae9a85f0bbbb625f97ec52830b4ff2f6c5e76f4009565eb002bbea0efe165"
+    }
+  ],
+  "stageReproducer": {
+    "command": "timeout 30s node --test --test-name-pattern='premature shopping' tests/harbor-resident-loop.test.js",
+    "source": "exact sealed intermediate loop source with new rejecting test",
+    "exitCode": 1,
+    "actualRestoreResult": true,
+    "expectedRestoreResult": false
+  },
+  "tests": {
+    "command": "timeout 40s node --test tests/harbor-resident-loop.test.js tests/harbor-life.test.js",
+    "exitCode": 0,
+    "passed": 30,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 13147.457473
+  },
+  "fixedBlocks": [
+    "retained wage transaction must own active/recent job receipt; legitimate older completed-job ring retention remains supported",
+    "explicit v2 selected transit field; v1 missing-field normalization",
+    "postwork funded700tick/paid2 stage consistency; current-cycle purchase before home return; actual shopping pose/phase; source-generated blocked destination context"
+  ],
+  "originalFreezeUnchanged": true,
+  "intermediateFreezeUnchanged": true,
+  "rootMutated": false,
+  "browserRun": false,
+  "gpuRun": false,
+  "buildRun": false,
+  "nativeAcceptance": "NOT_RUN",
+  "previousCPUObservationRerun": false,
+  "documentation": {
+    "path": "README-final-followup.md",
+    "bytes": 1688,
+    "sha256": "77711d744b020b0f6314b3e222d9295fdc43cec49df00fb6389c7e06b8c3d51d"
+  }
+}

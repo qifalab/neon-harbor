@@ -1,0 +1,57 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -33,7 +33,8 @@
+   selectedCase: { name:options.case, ...selectedCase },
+   routePolicy: 'Independent public Atlas for the named address; one pre-planned pavement approach from actual read-only starting NPC coordinates, no chase or endpoint retry. South uses shipped harbor supply UI.',
+   actionObservation: { minimumWallSeconds:45, actualSimulationSeconds:'recorded separately', movement:'one 4 m x leg out and back, then input released; no menus or pause in this segment' },
+-  budgets: { totalWallSeconds: 1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120 },
++  budgets: { totalWallSeconds: options.case==='south-parcel'?2700:1080, legWallSeconds: 180, readyWallSeconds: 180, assetWallSeconds: 120,
++    ...(options.case==='south-parcel'?{naturalStartupSimulationSeconds:75,naturalStartupWallSeconds:1200,naturalSouthParcelWallSeconds:360}:{}) },
+   ownerCase: options.case==='north-cup-owner' ? 'One jade-bank frontage; public High → Low → High, then first-person hide + physical far walk and real cooldown/return' : null,
+   limits: ['Each separate case records its actual visible target only. Hidden book/phone/cup references are not visible action coverage; all 240 residents are not accepted.',
+     'NPCs keep original journeys. A target leaving the planned viewpoint or parcel not appearing in the bounded window is recorded as a first failure, with no correction/relaunch/retry.',
+@@ -266,14 +267,38 @@
+   const supply=start.buildings.find(b=>b.id==='south-089');assert.ok(supply);
+   // This short segment lies inside the real door-to-counter clearSegment chosen by HarborLife.
+   await walk('x',start.position.x+Math.sign(supply.entrance.x-start.position.x)*2.4);await event('physical-counter-viewpoint');
+-  const began=Date.now();let found;
+-  while(Date.now()-began<360000){
++  // Autonomous orders deliberately wait75 simulation seconds before reservation.
++  // SwiftShader wall time is recorded separately; never alter the real world clock.
++  const lifeSource=await readFile(resolve(root,'src/harbor-life.js'),'utf8');
++  assert.ok(lifeSource.includes('this.time - j.createdTick * HARBOR_LIFE_STEP >= 75'),'served autonomous order grace-period contract');
++  const actualOrders=start.sampleLife.availableJobs;assert.ok(actualOrders.length>0,'real funded supply orders required');
++  assert.ok(actualOrders.every(j=>Number.isSafeInteger(j.createdTick)&&j.createdTick>=0));
++  const eligibleSimulationTime=Math.min(...actualOrders.map(j=>j.createdTick*.1+plan.budgets.naturalStartupSimulationSeconds));
++  const startupBegan=Date.now();let found,last;
++  const observeParcel=async(phase,began)=>{
+     const s=await read();validate(s);assert.equal(s.teleportRevision,start.teleportRevision);
+-    metadata.observations.push({at:new Date().toISOString(),phase:'natural-supply-watch',wallSeconds:(Date.now()-began)/1000,state:s});
++    metadata.observations.push({at:new Date().toISOString(),phase,wallSeconds:(Date.now()-began)/1000,state:s});
+     found=s.residentAssets.review?.actors.find(a=>a.coreVisible&&distance(a.worldPosition,s.position)<=3.5&&a.props.some(p=>p.name==='Actual delivery cargo'&&p.effectivelyVisible&&p.source==='explicit-original-cargo'));
+-    if(found)break;await persist();await new Promise(ok=>setTimeout(ok,1500));
+-  }
+-  assert.ok(found,'actual South parcel did not appear within 360 wall seconds; no forced pickup or retry');
++    last=s;await persist();return s;
++  };
++  while(Date.now()-startupBegan<plan.budgets.naturalStartupWallSeconds*1000){
++    const s=await observeParcel('natural-order-startup',startupBegan);
++    if(found||s.simulationTime>=eligibleSimulationTime)break;
++    await new Promise(ok=>setTimeout(ok,1500));
++  }
++  metadata.coverage.naturalStartup={sourceSHA256:sha(lifeSource),sourceContract:'real order createdTick*.1+75 simulation seconds',
++    actualOrderIds:actualOrders.map(j=>j.id),actualCreatedTicks:actualOrders.map(j=>j.createdTick),eligibleSimulationTime,
++    initialSimulationTime:start.simulationTime,endSimulationTime:last?.simulationTime,wallSeconds:(Date.now()-startupBegan)/1000,
++    maximumWallSeconds:plan.budgets.naturalStartupWallSeconds,worldClockWritten:false};await persist();
++  assert.ok(last&&(found||last.simulationTime>=eligibleSimulationTime),'natural75sim order startup exceeded1200 wall seconds; no forced pickup or retry');
++  const began=Date.now();
++  while(!found&&Date.now()-began<plan.budgets.naturalSouthParcelWallSeconds*1000){
++    await observeParcel('natural-supply-watch',began);
++    if(found)break;await new Promise(ok=>setTimeout(ok,1500));
++  }
++  metadata.coverage.naturalParcelWatch={wallSeconds:(Date.now()-began)/1000,maximumWallSeconds:360,
++    simulationTime:last?.simulationTime,originalVisibilityRadius:3.5,originalRequiredProp:'Actual delivery cargo'};
++  await persist();assert.ok(found,'actual South parcel did not appear within360 wall seconds after real75sim startup; no forced pickup or retry');
+   const prop=actualProp(found,'Actual delivery cargo');assert.equal(prop.hand,'left');await aimAt({...found.worldPosition,y:found.worldPosition.y});
+   metadata.coverage.actualSouthParcel={id:found.id,role:found.role,prop,hands:found.hands,logical:(await read()).sampleLife.agents.find(a=>a.id===found.id),
+     jobId:{available:false,reason:'Public summary does not expose agent cargoJobId; original visible cargo source binds only an actual cargoJobId'}};

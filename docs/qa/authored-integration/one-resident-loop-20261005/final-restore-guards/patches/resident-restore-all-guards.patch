@@ -1,0 +1,181 @@
+--- a/src/harbor-resident-loop.js
++++ b/src/harbor-resident-loop.js
+@@ -265,9 +265,11 @@
+   migrateLegacy(save) {
+     const state = this._freshState(), agent = save.agents.find(agent => this.owns(agent));
+     if (!agent) return false;
++    if (!Object.hasOwn(agent, 'transit')) agent.transit = null;
+     this._prepareHome(agent, state); this._setContext(agent, state); save.residentLoop = state; return true;
+   }
+   validate(state, agent, save) {
++    if (!Object.hasOwn(agent, 'transit') || agent.transit !== null && (typeof agent.transit !== 'object' || Array.isArray(agent.transit))) return false;
+     if (!state || state.version !== RESIDENT_LOOP.version || state.residentId !== RESIDENT_LOOP.residentId ||
+       state.clock?.startHour !== RESIDENT_LOOP.startHour || state.clock?.secondsPerHour !== RESIDENT_LOOP.secondsPerHour ||
+       !stages.has(state.stage) || !integer(state.ticks) || state.ticks > save.ticks || !integer(state.cycle) ||
+@@ -290,7 +292,7 @@
+         receipt.validTicks >= receipt.period * 350 && integer(receipt.paidTick, state.ticks) &&
+         job.startedTick !== null && receipt.paidTick >= job.startedTick + receipt.period * 350 &&
+         receipt.validTicks <= receipt.paidTick - job.startedTick &&
+-        /^harbor-tx-\d+$/.test(receipt.transactionId) && Number(receipt.transactionId.slice(10)) <= save.serial);
++        /^harbor-tx-[1-9]\d*$/.test(receipt.transactionId) && integer(Number(receipt.transactionId.slice(10)), save.serial));
+     if ((state.cycle > state.completedCycles) !== !!state.activeJob || state.activeJob &&
+       (!validJob(state.activeJob) || state.activeJob.id !== `harbor-work:${agent.id}:${state.cycle}`) ||
+       state.completedJobs.some((job, index) => !validJob(job) || job.paidPeriods !== 2 ||
+@@ -301,13 +303,50 @@
+       state.totalWages !== state.completedCycles * 6 + (state.activeJob?.paidAmount || 0) ||
+       state.totalValidWorkTicks !== state.completedCycles * 700 + (state.activeJob?.validTicks || 0) ||
+       state.purchases !== state.completedCycles + (state.cycle > state.completedCycles && state.purchaseCycle === state.cycle ? 1 : 0)) return false;
+-    const receipts = [...state.completedJobs, ...(state.activeJob ? [state.activeJob] : [])].flatMap(job => job.receipts);
+-    if (new Set(receipts.map(receipt => receipt.transactionId)).size !== receipts.length) return false;
+-    for (const job of [...state.completedJobs, ...(state.activeJob ? [state.activeJob] : [])]) for (const receipt of job.receipts) {
++    const routeStage = state.stage === 'route-blocked' ? state.waitingReason : state.stage;
++    if (state.stage === 'route-blocked' && (!['initial-home', 'to-home', 'to-work', 'to-shop', 'to-origin', 'to-return-stop'].includes(routeStage) ||
++      agent.phase !== 'route-blocked')) return false;
++    if (['initial-home', 'legacy-transit'].includes(routeStage) && state.cycle !== 0 ||
++      state.stage === 'resting-home' && state.activeJob) return false;
++    const returningHome = routeStage === 'to-home' || routeStage === 'entering-home' && state.cycle > state.completedCycles;
++    const afterWork = returningHome || ['leaving-work', 'to-return-stop', 'return-tram', 'to-shop', 'shopping'].includes(routeStage);
++    if (afterWork && (!state.activeJob || state.activeJob.validTicks !== RESIDENT_LOOP.periodTicks * RESIDENT_LOOP.workPeriods ||
++      state.activeJob.paidPeriods !== RESIDENT_LOOP.workPeriods)) return false;
++    if (returningHome && state.purchaseCycle !== state.cycle) return false;
++    if (state.stage === 'shopping' && (agent.phase !== 'shopping' || gap(agent, this.shop.anchor) > .05)) return false;
++    const jobs = [...state.completedJobs, ...(state.activeJob ? [state.activeJob] : [])];
++    const receipts = jobs.flatMap(job => job.receipts);
++    if (!Array.isArray(save.transactions) || new Set(receipts.map(receipt => receipt.transactionId)).size !== receipts.length) return false;
++    const matchesReceipt = (tx, job, receipt) => tx.type === 'resident-work-wage' && tx.agentId === agent.id &&
++      tx.from === this.agent.work.employer && tx.to === agent.id && tx.amount === receipt.amount &&
++      tx.jobId === job.id && tx.period === receipt.period && tx.validTicks === receipt.validTicks && tx.workClockTick === receipt.paidTick;
++    for (const job of jobs) for (const receipt of job.receipts) {
+       const tx = save.transactions.find(tx => tx.id === receipt.transactionId);
+-      if (tx && (tx.type !== 'resident-work-wage' || tx.agentId !== agent.id || tx.from !== this.agent.work.employer ||
+-        tx.to !== agent.id || tx.amount !== receipt.amount || tx.jobId !== job.id || tx.period !== receipt.period ||
+-        tx.validTicks !== receipt.validTicks || tx.workClockTick !== receipt.paidTick)) return false;
++      if (tx && !matchesReceipt(tx, job, receipt)) return false;
++    }
++    // A paid ledger row must still be owned by the active/recent job receipt.
++    // Otherwise erasing diary bookkeeping could repay a period already funded.
++    const retainedPeriods = new Set();
++    for (const tx of save.transactions.filter(tx => tx.type === 'resident-work-wage')) {
++      const jobCycle = typeof tx.jobId === 'string' && /^harbor-work:harbor-resident-07:[1-9]\d*$/.test(tx.jobId)
++        ? Number(tx.jobId.split(':').at(-1)) : NaN;
++      if (!/^harbor-tx-[1-9]\d*$/.test(tx.id) || !integer(Number(tx.id.slice(10)), save.serial) ||
++        tx.agentId !== agent.id || tx.from !== this.agent.work.employer || tx.to !== agent.id || tx.amount !== RESIDENT_LOOP.wage ||
++        !integer(jobCycle, state.cycle) || jobCycle < 1 || !integer(tx.period, RESIDENT_LOOP.workPeriods) || tx.period < 1 ||
++        !integer(tx.validTicks, RESIDENT_LOOP.periodTicks * RESIDENT_LOOP.workPeriods) || tx.validTicks < tx.period * RESIDENT_LOOP.periodTicks ||
++        !integer(tx.workClockTick, state.ticks) || tx.validTicks > tx.workClockTick) return false;
++      const periodKey = `${tx.jobId}:${tx.period}`;
++      if (retainedPeriods.has(periodKey)) return false;
++      retainedPeriods.add(periodKey);
++      const job = jobs.find(job => job.id === tx.jobId);
++      if (!job) {
++        // The 96-row ledger may outlive the eight completed-job history ring.
++        // Only already completed cycles older than that ring may lack receipts.
++        if (jobCycle > state.completedCycles - state.completedJobs.length) return false;
++        continue;
++      }
++      const receipt = job.receipts.find(receipt => receipt.transactionId === tx.id);
++      if (!receipt || !matchesReceipt(tx, job, receipt)) return false;
+     }
+     for (const event of state.events.filter(event => event.type === 'paid-work')) {
+       const job = [...state.completedJobs, ...(state.activeJob ? [state.activeJob] : [])].find(job => job.id === event.jobId);
+@@ -334,8 +373,8 @@
+     if (state.stage === 'resting-home' && (agent.phase !== 'resting' || agent.insideBuildingId !== this.home.building.id ||
+       agent.roomId !== this.home.room.id || gap(agent, this.home.anchor) > .05)) return false;
+     if (agent.transit) {
+-      const outbound = ['to-origin', 'outbound-tram'].includes(state.stage);
+-      const returning = ['to-return-stop', 'return-tram'].includes(state.stage);
++      const outbound = ['to-origin', 'outbound-tram'].includes(routeStage);
++      const returning = ['to-return-stop', 'return-tram'].includes(routeStage);
+       if (!outbound && !returning && state.stage !== 'legacy-transit') return false;
+       if (outbound || returning) {
+         if (agent.transit.originStopId !== (outbound ? RESIDENT_LOOP.fromStopId : RESIDENT_LOOP.toStopId) ||
+@@ -346,7 +385,7 @@
+         if (!ticket || ticket.vehicleId !== agent.transit.ticket?.vehicleId ||
+           ticket.fromStopId !== agent.transit.originStopId || ticket.toStopId !== agent.transit.destinationStopId) return false;
+       }
+-    } else if (['to-origin', 'outbound-tram', 'to-return-stop', 'return-tram', 'legacy-transit'].includes(state.stage)) return false;
++    } else if (['to-origin', 'outbound-tram', 'to-return-stop', 'return-tram', 'legacy-transit'].includes(routeStage)) return false;
+     if (agent.path.some(pose => context ? Math.abs(pose.y - context.floor.y) > .1 || !context.clear(pose)
+       : !agent.transit && !this.navigation.clear(pose))) return false;
+     if (!agent.transit || agent.transit.phase === 'approach') {
+--- a/tests/harbor-resident-loop.test.js
++++ b/tests/harbor-resident-loop.test.js
+@@ -179,6 +179,78 @@
+   assert.equal(copy.loop.state.totalWages, 0); balanced(copy.life);
+ });
+ 
++test('retained payroll rejects erased payment bookkeeping without changing accounts', () => {
++  const f = onJob(); for (let tick = 0; tick < 350; tick++) step(f);
++  const saved = f.life.snapshot(), bad = structuredClone(saved), job = bad.residentLoop.activeJob;
++  assert.equal(job.paidPeriods, 1); assert.equal(job.validTicks, 350);
++  assert.equal(bad.transactions.filter(tx => tx.type === 'resident-work-wage' && tx.agentId === RESIDENT_LOOP.residentId).length, 1);
++  job.paidPeriods = 0; job.paidAmount = 0; job.receipts = [];
++  bad.residentLoop.totalWages = 0;
++  bad.residentLoop.events = bad.residentLoop.events.filter(event => event.type !== 'paid-work');
++  assert.equal(f.life.restore(bad), false, 'retained real paid transaction prevents replay after diary erasure');
++  assert.deepEqual(f.life.snapshot(), saved, 'rejected restore is atomic for cash, stock, cargo and diary');
++  step(f); assert.equal(f.loop.state.totalWages, 3); assert.equal(f.loop.state.activeJob.paidPeriods, 1);
++  balanced(f.life);
++});
++
++test('retained payroll requires its exact owned receipt and positive transaction sequence', () => {
++  const f = onJob(); for (let tick = 0; tick < 350; tick++) step(f);
++  const saved = f.life.snapshot();
++  for (const change of [
++    (s, tx) => tx.jobId = 'harbor-work:harbor-resident-07:2',
++    (s, tx) => tx.period = 2,
++    (s, tx) => tx.validTicks = 351,
++    (s, tx) => tx.workClockTick -= 1,
++    (s, tx) => tx.to = 'harbor-resident-08',
++    (s, tx) => { tx.id = 'harbor-tx-0'; s.residentLoop.activeJob.receipts[0].transactionId = tx.id;
++      s.residentLoop.events.find(event => event.type === 'paid-work').transactionId = tx.id; },
++  ]) {
++    const bad = structuredClone(saved), tx = bad.transactions.find(tx => tx.type === 'resident-work-wage' && tx.agentId === RESIDENT_LOOP.residentId);
++    change(bad, tx); assert.equal(f.life.restore(bad), false);
++    assert.deepEqual(f.life.snapshot(), saved);
++  }
++  resumed(f);
++});
++
++test('missing indoor transit field cannot retain a live passenger ticket during restore', () => {
++  const indoors = onJob(), indoorSave = indoors.life.snapshot();
++  assert.equal(indoorSave.agents[6].transit, null);
++  const riding = fixture(); until(riding, () => riding.loop.agent.transit?.phase === 'riding');
++  const before = riding.life.snapshot(), ticket = riding.transport.citizenPassengers.get(RESIDENT_LOOP.residentId);
++  assert.ok(ticket); const bad = structuredClone(indoorSave); delete bad.agents[6].transit;
++  assert.equal(riding.life.restore(bad), false);
++  assert.deepEqual(riding.life.snapshot(), before);
++  assert.deepEqual(riding.transport.citizenPassengers.get(RESIDENT_LOOP.residentId), ticket);
++  balanced(riding.life);
++  const legacy = fixture({ residentLoop: false }), legacySave = legacy.life.snapshot();
++  legacySave.version = 1; delete legacySave.residentLoop; delete legacySave.agents[6].transit;
++  const migrated = fixture({ save: legacySave, fleet: legacy.transport.exportState() });
++  assert.equal(migrated.life.restored, true); assert.equal(migrated.loop.agent.transit, null);
++});
++
++test('premature shopping and home-return saves cannot skip actual funded work', () => {
++  const f = onJob(), saved = f.life.snapshot();
++  assert.equal(saved.residentLoop.activeJob.validTicks, 0);
++  for (const stage of ['shopping', 'to-shop', 'to-home', 'entering-home', 'route-blocked']) {
++    const bad = structuredClone(saved), agent = bad.agents[6];
++    bad.residentLoop.stage = stage;
++    bad.residentLoop.waitingReason = stage === 'route-blocked' ? 'to-shop' : null;
++    agent.phase = stage === 'shopping' ? 'shopping' : stage === 'entering-home' ? 'entering-home' : stage === 'route-blocked' ? 'route-blocked' : 'walking';
++    Object.assign(agent, stage === 'entering-home' ? f.loop.home.anchor : stage === 'to-home' ? f.loop.home.building.entrance : f.loop.shop.anchor);
++    agent.path = []; agent.pathIndex = 0; agent.crossingId = null; agent.transit = null;
++    f.loop._setContext(agent, bad.residentLoop);
++    assert.equal(f.life.restore(bad), false, stage + ' requires the genuinely completed paid work');
++    assert.deepEqual(f.life.snapshot(), saved);
++  }
++  until(f, () => f.loop.state.stage === 'shopping');
++  const paidSave = f.life.snapshot();
++  assert.equal(paidSave.residentLoop.activeJob.paidPeriods, 2);
++  const unpaidReturn = structuredClone(paidSave); unpaidReturn.residentLoop.stage = 'to-home';
++  unpaidReturn.agents[6].phase = 'walking';
++  assert.equal(f.life.restore(unpaidReturn), false, 'home return requires the current cycle purchase');
++  assert.deepEqual(f.life.snapshot(), paidSave); resumed(f);
++});
++
+ test('invalid payroll, interior ownership and clock saves are rejected atomically', () => {
+   const f = onJob(); for (let tick = 0; tick < 350; tick++) step(f);
+   const saved = f.life.snapshot();

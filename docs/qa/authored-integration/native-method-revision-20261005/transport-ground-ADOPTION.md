@@ -1,0 +1,11 @@
+# Source-backed exterior target-height method amendment
+
+Only two files in payload are intended for adoption: methods/transport/native-transport-high.mjs and its active method-manifest.json. The capture code has exactly one changed line: exterior outLocal.y uses `(kind==='ferry'?stop.board.y:0)-(stop.berth.y||0)`. This fixes a nominal-coordinate fixture error after walking closer to the vehicle: board.y is the height of a different point. It does not read actual body.y back into the expected value.
+
+Fixed source support is bus world149.725/123.74 at0m, tram250.15/103.45 at0m, ferry220/-304 at1.3m. All±.06 target rectangles plus the real.65 outdoor radius stay inside the same support layers (margins.015/.140/.090m). Source and archived original failure correlation are copied unchanged. These source-derived values are not new native captures.
+
+Original localXZ.06, height.15, eyeXZ.06, eye+1.62±.025, yaw.025, pitch.15±.003, physical boarding/stairs/alighting, High1280×800,16.5/FOV65, all action budgets and case totals remain byte-identical. Ownership-extra e5fc does not use this closer exterior outLocal fixture or board.y: it stays at the actual public stop and faces the vehicle. No ownership source change is needed; its historical base-fc22 copy remains unchanged.
+
+Tool SHA becomes98394a30745d179c84856b113707bf5c9d560cc62a541c42c9bd282068249ad1 (39662B), from originalfc22ab7bd1e37b7ba2842f2a7a0fea79631e92e10e93b6227de98184f56480d3. Active method-manifest SHA is c2f5e2b3961fa62f4e1bd36ba1392eefc1fec75f005e68cd1115fb20034dc1e1; its self-pin was independently checked. Node syntax check actually exited0. No GPU, game module, tests, build or native method ran during preparation. Original bus baseline/authored failure and zero-photo result remain failed; future method results are pending.
+
+After all method candidates are merged, recompute current tools/native-review/bundle-manifest.json pins for BOTH the code and method-manifest plus any other adopted changes. bundle-manifest-two-file-candidate.json is a reviewable ef92 two-file-only candidate; it becomes stale if bounded owner close, six-shop wide methods, README or other package files are adopted too. Do not rewrite original sealed historical inventories/ledgers as if they covered this new source; add current amendment provenance. No ROOT/source runtime/index/ref was changed here.

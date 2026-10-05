@@ -1,0 +1,149 @@
+{
+  "status": "PASSED",
+  "scope": "8 actual pure-CPU shim cases execute candidate natural startup/watch code with virtual actual-source guard/readback timelines; no native/game/art pass inferred",
+  "sourceSHA256": "83fb4141e4362ea9d6420b46a00e137395c6ecfa89346e4e45ae7fa3ea32c4cc",
+  "originalLifeSHA256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+  "rows": [
+    {
+      "name": "original observed rate waits natural75sim then finds real prop at95sim",
+      "error": null,
+      "virtualWallSeconds": 1231.5,
+      "startup": {
+        "sourceSHA256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+        "sourceContract": "real order createdTick*.1+75 simulation seconds",
+        "actualOrderIds": [
+          "order1",
+          "order2"
+        ],
+        "actualCreatedTicks": [
+          0,
+          0
+        ],
+        "eligibleSimulationTime": 75,
+        "initialSimulationTime": 1.6,
+        "endSimulationTime": 75.029742932911,
+        "wallSeconds": 963,
+        "maximumWallSeconds": 1200,
+        "worldClockWritten": false
+      },
+      "watch": {
+        "wallSeconds": 268.5,
+        "maximumWallSeconds": 360,
+        "simulationTime": 95.10350822626049,
+        "originalVisibilityRadius": 3.5,
+        "originalRequiredProp": "Actual delivery cargo"
+      },
+      "observations": 823
+    },
+    {
+      "name": "normal faster actual simulation",
+      "error": null,
+      "virtualWallSeconds": 87,
+      "startup": {
+        "sourceSHA256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+        "sourceContract": "real order createdTick*.1+75 simulation seconds",
+        "actualOrderIds": [
+          "order1",
+          "order2"
+        ],
+        "actualCreatedTicks": [
+          0,
+          0
+        ],
+        "eligibleSimulationTime": 75,
+        "initialSimulationTime": 1.6,
+        "endSimulationTime": 75.03333333329999,
+        "wallSeconds": 72,
+        "maximumWallSeconds": 1200,
+        "worldClockWritten": false
+      },
+      "watch": {
+        "wallSeconds": 15,
+        "maximumWallSeconds": 360,
+        "simulationTime": 90.03333333329999,
+        "originalVisibilityRadius": 3.5,
+        "originalRequiredProp": "Actual delivery cargo"
+      },
+      "observations": 60
+    },
+    {
+      "name": "startup finite1200wall exhausted",
+      "error": "natural75sim order startup exceeded1200 wall seconds; no forced pickup or retry",
+      "virtualWallSeconds": 1200,
+      "startup": {
+        "sourceSHA256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+        "sourceContract": "real order createdTick*.1+75 simulation seconds",
+        "actualOrderIds": [
+          "order1",
+          "order2"
+        ],
+        "actualCreatedTicks": [
+          0,
+          0
+        ],
+        "eligibleSimulationTime": 75,
+        "initialSimulationTime": 1.6,
+        "endSimulationTime": 42.9833333333,
+        "wallSeconds": 1200,
+        "maximumWallSeconds": 1200,
+        "worldClockWritten": false
+      },
+      "observations": 800
+    },
+    {
+      "name": "parcel still unavailable after eligible original360watch",
+      "error": "actual South parcel did not appear within360 wall seconds after real75sim startup; no forced pickup or retry",
+      "virtualWallSeconds": 1323,
+      "startup": {
+        "sourceSHA256": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+        "sourceContract": "real order createdTick*.1+75 simulation seconds",
+        "actualOrderIds": [
+          "order1",
+          "order2"
+        ],
+        "actualCreatedTicks": [
+          0,
+          0
+        ],
+        "eligibleSimulationTime": 75,
+        "initialSimulationTime": 1.6,
+        "endSimulationTime": 75.029742932911,
+        "wallSeconds": 963,
+        "maximumWallSeconds": 1200,
+        "worldClockWritten": false
+      },
+      "watch": {
+        "wallSeconds": 360,
+        "maximumWallSeconds": 360,
+        "simulationTime": 101.83214463743909,
+        "originalVisibilityRadius": 3.5,
+        "originalRequiredProp": "Actual delivery cargo"
+      },
+      "observations": 883
+    },
+    {
+      "name": "unreviewed source contract rejected",
+      "error": "served autonomous order grace-period contract",
+      "virtualWallSeconds": 0,
+      "observations": 0
+    },
+    {
+      "name": "invalid actual order age rejected",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(actualOrders.every(j=>Number.isSafeInteger(j.createdTick)&&j.createdTick>=0))\n",
+      "virtualWallSeconds": 0,
+      "observations": 0
+    },
+    {
+      "name": "teleport during natural observation rejected",
+      "error": "Expected values to be strictly equal:\n\n3 !== 2\n",
+      "virtualWallSeconds": 0,
+      "observations": 0
+    },
+    {
+      "name": "actual snapshot failure remains first failure",
+      "error": "actual read-only snapshot failure",
+      "virtualWallSeconds": 0,
+      "observations": 0
+    }
+  ]
+}

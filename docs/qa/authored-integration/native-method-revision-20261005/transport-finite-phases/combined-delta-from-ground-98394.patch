@@ -1,0 +1,140 @@
+--- a/tools/native-review/methods/transport/native-transport-high.mjs
++++ b/tools/native-review/methods/transport/native-transport-high.mjs
+@@ -127,9 +127,9 @@
+ 
+ async function captureCase(kind) {
+   const folder = resolve(output, kind); await mkdir(folder);
+-  const started = Date.now(), budget = kind === 'ferry' ? 900000 : 600000, deadline = started + budget;
++  const started = Date.now(), budget = kind === 'ferry' ? 900000 : kind === 'tram' ? 2400000 : 600000, deadline = started + budget;
+   const record = { kind, status: 'RUNNING', budget, startedAt: new Date(started).toISOString(), mode: args.mode,
+-    toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [] };
++    toolSha256, manifestSha256: sha(bundleBytes), photos: [], photoAttempts: [], motion: [], events: [], cleanup: [], firstError: null, secondaryErrors: [], diagnostics: [], resourceResponses: [], aimPhases: [], berthWaits: [], progressDiagnosticFailures: [] };
+   const keep = (error, stage) => { if (!record.firstError) record.firstError = err(error, stage); else record.secondaryErrors.push(err(error, stage)); };
+   const remaining = cap => { const ms = Math.min(cap, deadline - Date.now()); assert.ok(ms > 0, 'fixed case wall deadline'); return ms; };
+   const events = [], responseJobs = []; let context, page, video, activePointer = null;
+@@ -158,10 +158,42 @@
+     const p={x:box.x+box.width*.86,y:box.y+box.height*.30,orbitYaw:s.camera.yaw};
+     await page.mouse.move(p.x,p.y);await page.mouse.down();activePointer=p;return p;
+   }
++  const progressOf = (s,id=null) => {
++    const t=transit(s),v=id?vehicle(s,id):null;
++    return {ready:s.ready,started:s.started,paused:s.paused,simulationTime:s.simulationTime,timing:s.timing,teleportRevision:s.teleportRevision,
++      position:s.position,camera:s.camera,stationID:t.stationId,ridingVehicleId:t.ridingVehicleId,passengerLocal:t.passengerLocal,passengerDeck:t.passengerDeck,
++      vehicle:v?Object.fromEntries(['id','x','y','z','yaw','stopId','doorsOpen','remaining','nextStopId','secondsToArrival','serviceTime','delay','held','trafficState','speed'].map(k=>[k,v[k]])):null,
++          fleet:id?null:t.vehicles.map(v=>Object.fromEntries(['id','kind','stopId','doorsOpen','remaining','nextStopId','secondsToArrival','serviceTime','delay','held','trafficState','speed'].map(k=>[k,v[k]])))};
++  };
++  async function observePhaseProgress(phase,when,id=null,phaseDeadline=null,primary=null) {
++    const cap=Math.min(10000,deadline-Date.now(),phaseDeadline==null?Infinity:phaseDeadline-Date.now());
++    if(cap<=0){phase.progress.push({when,status:'SKIPPED_DEADLINE',at:new Date().toISOString()});return;}
++    if(primary&&activePointer){phase.progress.push({when,status:'SKIPPED_POINTER_RELEASE_UNCONFIRMED',at:new Date().toISOString()});return;}
++    try {
++      const observed=await bounded(()=>page.evaluate(id=>{
++        const s=window.__NEON__.snapshot(),t=s.city.sample.transit,v=id?t.vehicles.find(v=>v.id===id):t.vehicles.find(v=>v.id===t.ridingVehicleId);
++        return {ready:s.ready,started:s.started,paused:s.paused,simulationTime:s.simulationTime,timing:s.timing,teleportRevision:s.teleportRevision,
++          position:s.position,camera:s.camera,stationID:t.stationId,ridingVehicleId:t.ridingVehicleId,passengerLocal:t.passengerLocal,passengerDeck:t.passengerDeck,
++          vehicle:v?Object.fromEntries(['id','x','y','z','yaw','stopId','doorsOpen','remaining','nextStopId','secondsToArrival','serviceTime','delay','held','trafficState','speed'].map(k=>[k,v[k]])):null,
++          fleet:id?null:t.vehicles.map(v=>Object.fromEntries(['id','kind','stopId','doorsOpen','remaining','nextStopId','secondsToArrival','serviceTime','delay','held','trafficState','speed'].map(k=>[k,v[k]])))};
++      },id),cap,`${phase.type} ${when} progress diagnostic`);
++      phase.progress.push({when,status:'OBSERVED',at:new Date().toISOString(),observed});
++    }catch(error){const diagnostic=err(error,`${phase.type} ${when} progress diagnostic`);phase.diagnosticErrors.push(diagnostic);record.secondaryErrors.push(diagnostic);if(!primary)record.progressDiagnosticFailures.push(diagnostic);}
++  }
+   async function aim(p,yaw,pitch=.15) {
+-    const s=await read();p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
+-    await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
+-    await page.waitForFunction(({yaw,pitch})=>{const c=window.__NEON__.snapshot().camera;return Math.abs(Math.atan2(Math.sin(c.yaw-yaw),Math.cos(c.yaw-yaw)))<.025&&Math.abs(c.pitch-pitch)<.003;},{yaw,pitch},{polling:'raf',timeout:remaining(15000)});
++    const phaseDeadline=Date.now()+remaining(60000),phase={type:'aim',target:{yaw,pitch},budgetMs:60000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.aimPhases.push(phase);
++    try {
++      await bounded(async()=>{
++        const s=await read();phase.progress.push({when:'before-input',status:'OBSERVED',at:new Date().toISOString(),observed:progressOf(s)});
++        p.x-=angle(yaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
++        await page.mouse.move(p.x,p.y);p.orbitYaw=yaw;
++        const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite aim phase/whole deadline');
++        await page.waitForFunction(({yaw,pitch})=>{const c=window.__NEON__.snapshot().camera;return Math.abs(Math.atan2(Math.sin(c.yaw-yaw),Math.cos(c.yaw-yaw)))<.025&&Math.abs(c.pitch-pitch)<.003;},{yaw,pitch},{polling:'raf',timeout:cap});
++        assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite aim phase/whole deadline');
++      },Math.max(1,Math.min(phaseDeadline-Date.now(),deadline-Date.now())),'finite aim phase');
++      phase.status='SATISFIED';
++    }catch(error){phase.firstError=err(error,'aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',null,null,error);throw error;}
++    finally{phase.finishedAt=new Date().toISOString();}
+   }
+   async function releasePointer(primary) {
+     if (!activePointer) return;
+@@ -169,8 +201,27 @@
+     catch (error) { if (primary) record.secondaryErrors.push(err(error,'mouse.up')); else throw error; }
+   }
+   async function groundAxis(axis,target) {
+-    const initial=await read(), localDeadline=Date.now()+remaining(120000),samples=[];let current=initial,first=null;
+-    try {
++    const initial=await read(), localDeadline=Date.now()+remaining(120000),samples=[];let current=initial,first=null,coarse=null,precisionStart=initial.position[axis],simulationBudgetSeconds=null;
++    const localRemaining=()=>{const ms=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(ms>0,'original shared ground waypoint deadline');return ms;};
++    try {
++      // The ferry's public entrance is 24 real metres from its board point.
++      // One ordinary cardinal hold reaches the same route's precision region;
++      // both phases consume the original shared 120-second local deadline.
++      if(kind==='ferry'&&Math.abs(target-current.position[axis])>3.2) {
++        const sign=Math.sign(target-current.position[axis]),yaw=current.camera.yaw;
++        const choices=[{key:'w',x:Math.sin(yaw),z:Math.cos(yaw)},{key:'s',x:-Math.sin(yaw),z:-Math.cos(yaw)},{key:'d',x:-Math.cos(yaw),z:Math.sin(yaw)},{key:'a',x:Math.cos(yaw),z:-Math.sin(yaw)}].sort((a,b)=>sign*(b[axis]-a[axis]));
++        assert.ok(Math.abs(choices[0][axis])>.995,'cardinal real walking');
++        const key=choices[0].key,before=current.position[axis],coarseTarget=target-sign*2.2;let cycleError=null;
++        coarse={stage:'coarse',before,coarseTarget,key,precision:false,minimumProgress:.15,inputs:[],guardBaseline:{simulationTime:current.simulationTime,meaning:'before-action observation; conservative input timing baseline'}};
++        try { coarse.inputs.push({action:'down',key});await page.keyboard.down(key);await page.waitForFunction(({axis,before,sign,coarseTarget})=>{const value=window.__NEON__.snapshot().position[axis];return sign*(value-before)>.15&&sign*(value-coarseTarget)>=0;},{axis,before,sign,coarseTarget},{polling:'raf',timeout:localRemaining()}); }
++        catch(error){cycleError=error;coarse.firstError=err(error,'ground coarse movement');}
++        finally {try{await page.keyboard.up(key);coarse.inputs.push({action:'up',key,confirmed:true});}catch(error){coarse.inputs.push({action:'up',key,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`ground coarse keyup ${key}`));}}
++        // An unconfirmed release goes straight to original case cleanup.
++        if(cycleError)throw cycleError;
++        current=await read();assert.equal(current.teleportRevision,initial.teleportRevision);coarse.after=current.position;coarse.afterSimulationTime=current.simulationTime;
++        assert.ok(Date.now()<localDeadline,'coarse release/observation stays inside the original local deadline');
++      }
++      precisionStart=current.position[axis];
+       for(let n=0;Math.abs(current.position[axis]-target)>=.06&&n<1800;n++) {
+         assert.ok(Date.now()<localDeadline);const sign=Math.sign(target-current.position[axis]),gap=Math.abs(target-current.position[axis]);
+         const yaw=current.camera.yaw,choices=[{key:'w',x:Math.sin(yaw),z:Math.cos(yaw)},{key:'s',x:-Math.sin(yaw),z:-Math.cos(yaw)},{key:'d',x:-Math.cos(yaw),z:Math.sin(yaw)},{key:'a',x:Math.cos(yaw),z:-Math.sin(yaw)}].sort((a,b)=>sign*(b[axis]-a[axis]));
+@@ -182,8 +233,15 @@
+         samples.push(cycle);if(cycleError)throw cycleError;current=await read();assert.equal(current.teleportRevision,initial.teleportRevision);cycle.after=current.position;
+       }
+       assert.ok(Math.abs(current.position[axis]-target)<.06);
++      if(kind==='ferry') {
++        assert.ok(Date.now()<localDeadline,'all ground phases retain the original shared local deadline');
++        simulationBudgetSeconds=Math.abs(precisionStart-initial.position[axis])/5.6+Math.abs(target-precisionStart)/.8+5;
++        assert.ok(current.simulationTime-initial.simulationTime<simulationBudgetSeconds,'actual ground route stalled beyond its finite physical movement budget');
++      }
+     } catch(error){first=error;throw error;}
+-    finally {record.motion.push({stage:`ground-${axis}`,target,localBudget:120000,maxIterations:1800,samples,firstError:first?err(first,'ground movement'):null});}
++    finally {record.motion.push({stage:`ground-${axis}`,target,localBudget:120000,maxIterations:1800,coarse,precisionStart,simulationBudgetSeconds,
++      initialPosition:initial.position,lastObservedPosition:current.position,initialSimulationTime:initial.simulationTime,lastObservedSimulationTime:current.simulationTime,
++      samples,firstError:first?err(first,'ground movement'):null});}
+   }
+   function radiusGuard(state, layout) {
+     const p=transit(state).passengerLocal;assert.ok(p);const radius=layout.passengerRadius;
+@@ -213,7 +271,14 @@
+     finally {record.motion.push({stage,target,precision,localBudget:150000,maxIterations:1800,initialLocal:transit(initial).passengerLocal,lastObservedLocal:transit(current).passengerLocal,samples,firstError:first?err(first,'local movement'):null});}
+   }
+   async function waitBerth(id, stopId=null) {
+-    await page.waitForFunction(({id,stopId})=>{const t=window.__NEON__.snapshot().city.sample.transit,v=t.vehicles.find(v=>v.id===id);return v?.stopId&&(!stopId||v.stopId===stopId)&&v.doorsOpen&&v.remaining>2;},{id,stopId},{polling:'raf',timeout:remaining(180000)});
++    const phaseDeadline=Date.now()+remaining(600000),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:600000,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};record.berthWaits.push(phase);
++    await observePhaseProgress(phase,'before-wait',id,phaseDeadline);
++    try {
++      const cap=Math.min(phaseDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'finite berth phase/whole deadline');
++      await page.waitForFunction(({id,stopId})=>{const t=window.__NEON__.snapshot().city.sample.transit,v=id?t.vehicles.find(v=>v.id===id):t.vehicles.find(v=>v.stopId===stopId&&v.doorsOpen&&v.remaining>2);return v?.stopId&&(!stopId||v.stopId===stopId)&&v.doorsOpen&&v.remaining>2;},{id,stopId},{polling:'raf',timeout:cap});
++      assert.ok(Date.now()<phaseDeadline&&Date.now()<deadline,'finite berth phase/whole deadline');phase.status='SATISFIED';
++    }catch(error){phase.firstError=err(error,'scheduled berth');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',id,null,error);throw error;}
++    finally{phase.finishedAt=new Date().toISOString();}
+   }
+   function observedResources(state,id,near) {
+     const b=bridge(state); if(args.mode==='baseline'){assert.ok(!b||!b.fleet?.some(v=>v.authored));return {bridge:b||null,actor:null,pool:null};}
+@@ -267,7 +332,7 @@
+       const {layout,spec}=canonical[kind],door=layout.doors.find(d=>d.id===stop.doorId),outerGap=kind==='ferry'?2.0:1.0,outLocal={x:door.side*(spec.halfWidth+outerGap),y:(kind==='ferry'?stop.board.y:0)-(stop.berth.y||0),z:door.z},outWorld=worldOf(outLocal,stop.berth);
+       if(kind==='ferry')assert.ok(distance(outWorld,stop.board)<.001,'ferry exterior photo remains on actual public pier board point');record.exteriorMethod={outerGap,outLocal,outWorld,outdoorRadius:.65};
+       assert.ok(outerGap>=.65+.20+.06,'unchanged outdoor radius .65 plus margin and endpoint allowance');p=await pointer();await aim(p,0);await groundAxis('x',outWorld.x);await groundAxis('z',outWorld.z);
+-      await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.vehicles.some(v=>v.stopId===id&&v.doorsOpen&&v.remaining>2),stop.id,{polling:'raf',timeout:remaining(180000)});const boardingState=await read(),boardingVehicle=transit(boardingState).vehicles.find(v=>v.stopId===stop.id&&v.doorsOpen);assert.ok(boardingVehicle);
++      await waitBerth(null,stop.id);const boardingState=await read(),boardingVehicle=transit(boardingState).vehicles.find(v=>v.stopId===stop.id&&v.doorsOpen);assert.ok(boardingVehicle);
+       await photo('exterior',boardingVehicle.id,outLocal,door.side<0?Math.PI/2:-Math.PI/2,-door.side*Math.PI/2,p);await releasePointer(null);const beforeE=await read(),open=vehicle(beforeE,boardingVehicle.id);assert.equal(open.stopId,stop.id);assert.ok(open.doorsOpen&&open.remaining>.6);assert.ok(distance(beforeE.position,stop.board)<2.6);const boardingDeadline=Date.now()+remaining(30000);await page.keyboard.press('e');await page.waitForFunction(id=>window.__NEON__.snapshot().city.sample.transit.ridingVehicleId===id,boardingVehicle.id,{timeout:Math.max(1,boardingDeadline-Date.now())});await renderedCameraReady('boarding-E-current-rendered-camera',boardingDeadline);
+       const boarded=await read(),id=transit(boarded).ridingVehicleId,revision=boarded.teleportRevision,stair=layout.stairs[0];assert.equal(transit(boarded).passengerDeck,'lower');record.boarded=boarded;
+       const upperRoute=[{x:0,z:door.z,y:stair.fromY},{x:0,z:stair.bottom.z,y:stair.fromY},stair.bottom,{x:stair.x,z:(stair.startZ+stair.endZ)/2,y:(stair.fromY+stair.toY)/2},stair.top,{x:0,z:stair.top.z,y:stair.toY}];
+@@ -292,6 +357,7 @@
+     for(const attempt of record.photoAttempts)if(attempt.screenshotCompleted&&!attempt.imageSha256)try{attempt.imageSha256=sha(await readFile(resolve(folder,attempt.imageFile)));}catch(error){record.secondaryErrors.push(err(error,`partial photo ${attempt.stage} hash`));}
+     record.videoPath=null;
+     if(video)try{record.videoPath=await bounded(()=>video.path(),3000,'video.path');const bytes=await readFile(record.videoPath);record.video={path:record.videoPath,bytes:bytes.length,sha256:sha(bytes)};}catch(error){keep(error,'video finalization');}
++    if(record.progressDiagnosticFailures.length&&!record.firstError)keep(new Error('required phase progress diagnostic failed'),'phase-progress-diagnostics');
+     if(record.diagnostics.length&&!record.firstError)keep(new Error('host evidence writes failed'),'diagnostics');
+     record.status=record.firstError?'FAILED':'PASSED';
+     for(const [file,value]of [['motion.json',{toolSha256,manifestSha256:sha(bundleBytes),motion:record.motion,firstError:record.firstError,secondaryErrors:record.secondaryErrors}],['case.json',record]])try{await writeFile(resolve(folder,file),JSON.stringify(value,null,2)+'\n');}catch(error){keep(error,`write ${file}`);record.status='FAILED';console.error(JSON.stringify({kind,firstError:record.firstError,secondaryErrors:record.secondaryErrors}));}

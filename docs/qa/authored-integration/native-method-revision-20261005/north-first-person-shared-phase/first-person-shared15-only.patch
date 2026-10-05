@@ -1,0 +1,42 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -118,9 +118,36 @@
+   },{yaw,pitch},{polling:'raf',timeout:15000}); checkErrors();
+ };
+ const firstPerson = async enabled => {
+-  if ((await read()).settings.firstPerson !== enabled) await page.keyboard.press('v');
+-  await page.waitForFunction(enabled => window.__NEON__.snapshot().settings.firstPerson === enabled,enabled,{timeout:15000});
+-  await page.locator('#game').focus();
++  const phaseDeadline=Math.min(Date.now()+15000,totalDeadlineAt || Infinity);
++  const phaseRemaining=()=>{const ms=phaseDeadline-Date.now();assert.ok(ms>0,'original first-person 15-second phase deadline');return ms;};
++  const phaseStep=async(operation,label)=>{const ms=phaseRemaining();let timer;try {
++    const value=await Promise.race([Promise.resolve().then(operation),new Promise((_,bad)=>{timer=setTimeout(()=>bad(new Error(`Original first-person phase deadline during ${label}`)),ms);})]);
++    phaseRemaining();return value;
++  } finally {clearTimeout(timer);}};
++  const finiteCamera=state=>{const camera=state.camera,point=p=>p&&['x','y','z'].every(k=>Number.isFinite(p[k]));
++    return !!camera&&point(camera.position)&&point(camera.target)&&point(camera.focus)&&
++      [camera.yaw,camera.pitch,camera.fov].every(Number.isFinite)&&(!enabled||camera.fov===65);};
++  await phaseStep(()=>page.locator('#game').focus({timeout:phaseRemaining()}),'public game focus');
++  let state=await phaseStep(()=>read(),'initial read-only setting/camera');
++  const toggled=state.settings.firstPerson!==enabled;
++  if(toggled)await phaseStep(()=>page.keyboard.press('v'),'single public V');
++  // The shipped view button reflects the same setting without building a full
++  // world/asset diagnostic on every animation frame. This is only a UI gate;
++  // exact snapshot settings and the current rendered camera remain mandatory.
++  await phaseStep(()=>page.waitForFunction(enabled=>document.getElementById('view-toggle')?.getAttribute('aria-pressed')===String(enabled),enabled,
++    {polling:100,timeout:phaseRemaining()}),'public view aria-pressed');
++  if(!toggled&&state.settings.firstPerson===enabled&&finiteCamera(state)) {
++    validate(state,{firstPerson:enabled});phaseRemaining();return state;
++  }
++  state=await phaseStep(()=>read(),'post-transition read-only setting/camera');
++  validate(state,{firstPerson:enabled});
++  if(!finiteCamera(state)) {
++    await phaseStep(()=>page.waitForFunction(enabled=>{const s=window.__NEON__.snapshot(),c=s.camera,point=p=>p&&['x','y','z'].every(k=>Number.isFinite(p[k]));
++      return s.settings.firstPerson===enabled&&c&&point(c.position)&&point(c.target)&&point(c.focus)&&
++        [c.yaw,c.pitch,c.fov].every(Number.isFinite)&&(!enabled||c.fov===65);},enabled,{polling:100,timeout:phaseRemaining()}),'current finite rendered camera');
++    state=await phaseStep(()=>read(),'exact post-gate read-only snapshot');
++  }
++  validate(state,{firstPerson:enabled});assert.ok(finiteCamera(state),'current finite rendered camera');phaseRemaining();return state;
+ };
+ const walk = async (axis,target) => {
+   await face(Math.PI); const before=await read(); validate(before);

@@ -28,7 +28,7 @@ export async function enterAddress(page, id) {
   await expect.poll(async () => (await snapshot(page)).city.interior.buildingId).toBe(id);
 }
 
-export async function chooseStorey(page, id, { walkingTimeout = 60000 } = {}) {
+export async function chooseStorey(page, id, { walkingTimeout = 60000, arrivalTimeout = 180000 } = {}) {
   const before = await snapshot(page);
   if (before.city.interior.floorId === id) return before.city.interior;
   await walkAxis(page, 'x', before.city.interior.cabin.x, { timeout: walkingTimeout });
@@ -36,8 +36,24 @@ export async function chooseStorey(page, id, { walkingTimeout = 60000 } = {}) {
   await page.keyboard.press('e');
   await expect(page.locator('[data-floor-id]')).toHaveCount(before.city.interior.totalFloors);
   await page.locator(`[data-floor-id="${id}"]`).click();
-  await page.waitForFunction(() => !window.__NEON__.snapshot().city.interior.moving, null,
-    { polling: 'raf', timeout: 180000 });
+  const rideStarted = Date.now();
+  try {
+    await page.waitForFunction(() => !window.__NEON__.snapshot().city.interior.moving, null,
+      { polling: 'raf', timeout: arrivalTimeout });
+  } catch (error) {
+    // Read progress after the original failure. A diagnostic failure must not
+    // replace the timeout or turn an unfinished physical ride into a pass.
+    try {
+      const failed = await snapshot(page);
+      error.message += `\nElevator arrival diagnostics: ${JSON.stringify({ targetFloorId: id,
+        wallMilliseconds: Date.now() - rideStarted, position: failed.position,
+        simulationTime: failed.simulationTime, timing: failed.timing,
+        elevator: failed.city.interior.elevator, moving: failed.city.interior.moving })}`;
+    } catch (diagnosticError) {
+      error.message += `\nSecondary elevator diagnostic error: ${diagnosticError.message}`;
+    }
+    throw error;
+  }
   const arrived = await snapshot(page);
   expect(arrived.city.interior.floorId).toBe(id);
   expect(arrived.city.interior.activeFloors).toBe(3);

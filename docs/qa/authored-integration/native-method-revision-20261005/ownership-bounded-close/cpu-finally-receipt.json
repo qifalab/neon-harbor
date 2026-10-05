@@ -1,0 +1,867 @@
+{
+  "status": "PASSED",
+  "scope": "11 actual pure-CPU shim cases execute candidate finally block/classifier with virtual API durations and identity readbacks; no browser/native/kernel pass inferred",
+  "sourceSHA256": "b64e798f68c2bc79e7f1bd6c278c1de19d85c13c0c33110ad0b0957acca5b6f2",
+  "rows": [
+    {
+      "name": "provider30s fallback fits35 after context/static inside30",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close"
+      ],
+      "firstError": null,
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30001,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 30001,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "normal official close",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close"
+      ],
+      "firstError": null,
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 20,
+        "exitCode": 0,
+        "signalCode": null,
+        "forcedExit": false,
+        "graceful": true,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 20,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": 0,
+        "signalCode": null
+      }
+    },
+    {
+      "name": "game error keeps precedence",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close"
+      ],
+      "firstError": {
+        "stage": "gameplay",
+        "message": "original game failure"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30001,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 30001,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "nonzero owner exit remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close",
+        "forceOwnedExit"
+      ],
+      "firstError": {
+        "stage": "browser.close",
+        "message": "resolved supported API must close the exact owned child within35/whole cap"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 20,
+        "exitCode": 9,
+        "signalCode": null,
+        "forcedExit": false,
+        "graceful": false,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": false,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": false,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 20,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "message": "resolved supported API must close the exact owned child within35/whole cap"
+          }
+        },
+        {
+          "operation": "owned forced exit",
+          "reason": "unconfirmed owned child after closure",
+          "confirmed": true
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": 9,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "unexpected owner signal remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close",
+        "forceOwnedExit"
+      ],
+      "firstError": {
+        "stage": "browser.close",
+        "message": "resolved supported API must close the exact owned child within35/whole cap"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 20,
+        "exitCode": null,
+        "signalCode": "SIGTERM",
+        "forcedExit": false,
+        "graceful": false,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": false,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": false,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 20,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "message": "resolved supported API must close the exact owned child within35/whole cap"
+          }
+        },
+        {
+          "operation": "owned forced exit",
+          "reason": "unconfirmed owned child after closure",
+          "confirmed": true
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "unclosed live owner remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close",
+        "forceOwnedExit"
+      ],
+      "firstError": {
+        "stage": "browser.close",
+        "message": "resolved supported API must close the exact owned child within35/whole cap"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 20,
+        "exitCode": null,
+        "signalCode": null,
+        "forcedExit": false,
+        "graceful": false,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": false,
+        "exitModeEligible": false,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": false,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 20,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "message": "resolved supported API must close the exact owned child within35/whole cap"
+          }
+        },
+        {
+          "operation": "owned forced exit",
+          "reason": "unconfirmed owned child after closure",
+          "confirmed": true
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "API rejection remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close",
+        "forceOwnedExit"
+      ],
+      "firstError": {
+        "stage": "browser.close",
+        "message": "owner API rejected"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "apiCloseResolved": false,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": null,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": true,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": false,
+        "exactOwnedClosureConfirmed": false,
+        "exitModeEligible": true,
+        "withinOuterCap": false,
+        "boundedCloseAccepted": false
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 20,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "message": "owner API rejected"
+          }
+        },
+        {
+          "operation": "owned forced exit",
+          "reason": "unconfirmed owned child after closure",
+          "confirmed": true
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "owner outer35 timeout remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close",
+        "forceOwnedExit"
+      ],
+      "firstError": {
+        "stage": "browser.close",
+        "message": "resolved supported API must close the exact owned child within35/whole cap"
+      },
+      "secondaryErrors": [
+        {
+          "stage": "owned forced exit",
+          "message": "owned kill cap consumed"
+        }
+      ],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 35001,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": false,
+        "boundedCloseAccepted": false,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 35001,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "message": "resolved supported API must close the exact owned child within35/whole cap"
+          }
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "static original30 cap remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "interruptOwnServer",
+        "browser.close"
+      ],
+      "firstError": {
+        "stage": "server.close",
+        "message": "shared owned context/static cleanup30/total remaining"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30001,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": -4001,
+          "elapsedMs": 30001,
+          "confirmed": false,
+          "error": {
+            "stage": "server.close",
+            "message": "shared owned context/static cleanup30/total remaining"
+          }
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 30001,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "static rejection remains failure",
+      "calls": [
+        "context.close",
+        "server.close",
+        "interruptOwnServer",
+        "browser.close"
+      ],
+      "firstError": {
+        "stage": "server.close",
+        "message": "static API rejected"
+      },
+      "secondaryErrors": [],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30001,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "supported-API-close-resolved-SIGKILL-provider-fallback-consistent",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": false,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": true,
+        "boundedCloseAccepted": true,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 30000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 25990,
+          "elapsedMs": 10,
+          "confirmed": false,
+          "error": {
+            "stage": "server.close",
+            "message": "static API rejected"
+          }
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 35000,
+          "elapsedMs": 30001,
+          "confirmed": true,
+          "error": null
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    },
+    {
+      "name": "unchanged whole cap bounds owner API",
+      "calls": [
+        "context.close",
+        "server.close",
+        "browser.close",
+        "forceOwnedExit"
+      ],
+      "firstError": {
+        "stage": "browser.close",
+        "message": "resolved supported API must close the exact owned child within35/whole cap"
+      },
+      "secondaryErrors": [
+        {
+          "stage": "owned forced exit",
+          "message": "owned kill cap consumed"
+        }
+      ],
+      "ownerClose": {
+        "before": {
+          "pid": 7001,
+          "startTicks": "90000"
+        },
+        "current": null,
+        "apiCloseResolved": true,
+        "outerCapMs": 35000,
+        "providerDefaultInnerCloseMs": 30000,
+        "apiCloseElapsedMs": 30001,
+        "exitCode": null,
+        "signalCode": "SIGKILL",
+        "forcedExit": true,
+        "graceful": false,
+        "forceAttribution": "none-or-not-eligible",
+        "providerInternalBranchIndependentlyObserved": false,
+        "callerForceInvoked": false,
+        "hardDeadlineReached": true,
+        "identityReadConfirmed": true,
+        "exactOwnedClosureConfirmed": true,
+        "exitModeEligible": true,
+        "withinOuterCap": false,
+        "boundedCloseAccepted": false,
+        "api": "supported in-process browser.close → pinned browserProcess.close"
+      },
+      "cleanup": [
+        {
+          "operation": "context.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 24000,
+          "elapsedMs": 4000,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "server.close",
+          "sharedBudgetMs": 30000,
+          "outerCapMs": null,
+          "actualCapMs": 19990,
+          "elapsedMs": 10,
+          "confirmed": true,
+          "error": null
+        },
+        {
+          "operation": "browser.close",
+          "sharedBudgetMs": null,
+          "outerCapMs": 35000,
+          "actualCapMs": 19990,
+          "elapsedMs": 30001,
+          "confirmed": false,
+          "error": {
+            "stage": "browser.close",
+            "message": "resolved supported API must close the exact owned child within35/whole cap"
+          }
+        }
+      ],
+      "childExit": {
+        "pid": 7001,
+        "confirmed": true,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+--- a/tools/native-review/methods/scenic/capture-scenic-east.mjs
++++ b/tools/native-review/methods/scenic/capture-scenic-east.mjs
+@@ -37,7 +37,7 @@
+ const record = { status: 'running', artAcceptance: 'PENDING_HUMAN_NATIVE_REVIEW', case: options.case, mode: options.mode,
+   startedAt: new Date().toISOString(), projectRoot, servedRoot: root, methodRoot, runnerPid: process.pid,
+   hour, viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, fov: 65, wholeCaseBudgetMinutes: caseMinutes,
+-  phaseLimitsMs: { normal: 180000, renderedCamera: 60000, inputHold: 120000, pointerLook: 30000, elevator: 900000, cleanup: 30000 },
++  phaseLimitsMs: { normal: 180000, renderedCamera: 60000, inputHold: options.case === 'east-interior' ? 180000 : 120000, pointerLook: options.case === 'east-interior' ? 60000 : 30000, elevator: 900000, cleanup: 30000 },
+   geometry: { playerRadius: .65, endpointTolerance: .15, bothAxisCheckRadius: .65 + Math.hypot(.15, .15) },
+   inputs: [], events: [], captures: [], plans: [], errors: [], teardownEvents: [], cleanup: [], secondaryErrors: [],
+   published: false,
+@@ -296,7 +296,7 @@
+   page.on('response', response => { if (response.status() >= 400) record.errors.push({ kind: 'http', status: response.status(), url: response.url() }); });
+   page.on('requestfailed', request => { const item = { kind: 'requestfailed', url: request.url(), failure: request.failure() };
+     (closing && item.failure?.errorText === 'net::ERR_ABORTED' ? record.teardownEvents : record.errors).push(item); });
+-  input = createInput(page, { remaining, record, persist }); await boot();
++  input = createInput(page, { remaining: options.case === 'east-interior' ? cap => remaining(cap === 120000 ? record.phaseLimitsMs.inputHold : cap === 30000 ? record.phaseLimitsMs.pointerLook : cap) : remaining, record, persist }); await boot();
+   if (options.case === 'east-interior') await east(); else await capture(options.case, { publicViewpoint: 'harbor-start', independentSetup: true });
+   if (options.reference) {
+     const reference = JSON.parse(await readFile(resolve(options.reference))); record.reference = { path: resolve(options.reference), sha256: sha(await readFile(resolve(options.reference))) };

@@ -1,0 +1,306 @@
+{
+  "schema": "neon-mp-static-readonly-review-v1",
+  "createdUTC": "2026-10-05T00:37:02.180484+00:00",
+  "base": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "head": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "scope": "Read-only git/source inspection; source hashes only; no trace/progress parsed, no source/ref/index mutation, no browser/GPU/tests/build/API",
+  "actualTestPath": "tests/multiplayer-browser/rooms.spec.js",
+  "requestedMissingPath": "tests/e2e/multiplayer.spec.js",
+  "checks": {
+    "headActual": "ef92c25980f1da12b508971170b72b9dd6230059",
+    "allSelectedWorktreeEqualsHead": true,
+    "selectFloorBytesEqual": true,
+    "interiorUpdateBytesEqualAfterRemovingOnlyAddedHomeOwnerLoop": true,
+    "mainFrameClockPhysicsAndLocalStateSendPrefixBytesEqual": true
+  },
+  "liftSourceArithmetic": {
+    "building": "east-012",
+    "sourceShell": "pearl-spire",
+    "height": 386,
+    "baseY": 4,
+    "floors": 89,
+    "selectedFloor": "level-78",
+    "selectedY": 327.785,
+    "lobbyY": 4.035,
+    "travelDurationSimulationSeconds": 37.172222222222224,
+    "closingSeconds": 0.7,
+    "openingSeconds": 0.7,
+    "rideTotalSimulationSeconds": 38.57222222222222,
+    "minimumPositiveFrameAdvancesAtCap": 155,
+    "minimumMeanSimulationWallRatioOver180Seconds": 0.21429012345679013,
+    "calculationOnly": "Literal source arithmetic; no project import, test, browser or simulation executed"
+  },
+  "files": [
+    {
+      "path": "tests/multiplayer-browser/rooms.spec.js",
+      "baseBlob": "9ead443dbba3a8b93283676870a39d23397a8596",
+      "headBlob": "9ead443dbba3a8b93283676870a39d23397a8596",
+      "baseSHA256": "c3e382b6a86b2b0130a138e936817f35f5dc802c8ee586ffa7834433f89ad20f",
+      "headSHA256": "c3e382b6a86b2b0130a138e936817f35f5dc802c8ee586ffa7834433f89ad20f",
+      "size": 15604,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "tests/e2e/helpers/occupied.js",
+      "baseBlob": "f44d46c5314119395e391a7cc29ecf7d91795767",
+      "headBlob": "f44d46c5314119395e391a7cc29ecf7d91795767",
+      "baseSHA256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1",
+      "headSHA256": "3b4efc83b7a2f0762fd242f8eed005df3be86d52d91a8203fd30eb68309e8cd1",
+      "size": 5321,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "tests/e2e/helpers/walking.js",
+      "baseBlob": "ccdf889724c92e480d14dbf10e4359fc72d8a2dd",
+      "headBlob": "ccdf889724c92e480d14dbf10e4359fc72d8a2dd",
+      "baseSHA256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969",
+      "headSHA256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969",
+      "size": 7277,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "playwright.multiplayer.config.js",
+      "baseBlob": "5d7c94cae3ec025e71f7fefbbde6dbb59a70e45c",
+      "headBlob": "5d7c94cae3ec025e71f7fefbbde6dbb59a70e45c",
+      "baseSHA256": "34743509481cf1adfbed0ed3704a9365cba1e6c5d1286dd02f533e3c72161b47",
+      "headSHA256": "34743509481cf1adfbed0ed3704a9365cba1e6c5d1286dd02f533e3c72161b47",
+      "size": 671,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/frame-clock.js",
+      "baseBlob": "1572bfae7a6425206b76badb2bcf2e018f78ded6",
+      "headBlob": "1572bfae7a6425206b76badb2bcf2e018f78ded6",
+      "baseSHA256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "headSHA256": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+      "size": 1492,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/simulation.js",
+      "baseBlob": "d33f6fe50020c6507bae7d2ef697726d47bce21c",
+      "headBlob": "d33f6fe50020c6507bae7d2ef697726d47bce21c",
+      "baseSHA256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "headSHA256": "63926a22863cb975cb4d7ea73c66ed12097b2a6d216d915a074dca256f513705",
+      "size": 32947,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/presentation.js",
+      "baseBlob": "583de6d1f7efa546e06d0bd6238da78bba7c60dc",
+      "headBlob": "583de6d1f7efa546e06d0bd6238da78bba7c60dc",
+      "baseSHA256": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+      "headSHA256": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+      "size": 4910,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/camera.js",
+      "baseBlob": "319ba4461dc89b40fb3c8872ab4838fccc757957",
+      "headBlob": "319ba4461dc89b40fb3c8872ab4838fccc757957",
+      "baseSHA256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+      "headSHA256": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3",
+      "size": 10656,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/multiplayer.js",
+      "baseBlob": "1c822a7f99beba4824e57d83edf227c21a72b09a",
+      "headBlob": "1c822a7f99beba4824e57d83edf227c21a72b09a",
+      "baseSHA256": "aa260c8ab351100b5ec8e12a395b1e7e4f8061b7b03b0a9ea0675550df6b5bc0",
+      "headSHA256": "aa260c8ab351100b5ec8e12a395b1e7e4f8061b7b03b0a9ea0675550df6b5bc0",
+      "size": 4509,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/multiplayer-protocol.js",
+      "baseBlob": "90f44993bbbcac91a4fe4cfd3d94148686e51a8b",
+      "headBlob": "90f44993bbbcac91a4fe4cfd3d94148686e51a8b",
+      "baseSHA256": "0ae36169ad355c4595efaf718515084ae192e319ee9d75e53545e41906b55319",
+      "headSHA256": "0ae36169ad355c4595efaf718515084ae192e319ee9d75e53545e41906b55319",
+      "size": 1471,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "tools/multiplayer-server.mjs",
+      "baseBlob": "5f3f870f92dac80093c82de4be4d4411f430ac80",
+      "headBlob": "5f3f870f92dac80093c82de4be4d4411f430ac80",
+      "baseSHA256": "2a0db9c5f8ddef730063d18b6dbef7e5c10d01e86fbcee8c972c49ce32354388",
+      "headSHA256": "2a0db9c5f8ddef730063d18b6dbef7e5c10d01e86fbcee8c972c49ce32354388",
+      "size": 10745,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/main.js",
+      "baseBlob": "232c43ab71e5201bf700bf7676116020d064b0df",
+      "headBlob": "5a0e19873565ffe903e95700a12283450ec1e475",
+      "baseSHA256": "9545b649258539de64d3a4c1a847c7be452468746a3d8a5e971008e66398aa5d",
+      "headSHA256": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+      "size": 54440,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/city-exploration.js",
+      "baseBlob": "ac4d724d1c7e54e44e7237cd51dd67fe4eba3134",
+      "headBlob": "824e684e15b3e7b3b0aa113cab5e6e76c98fbad0",
+      "baseSHA256": "4bcee64c1fd0141a62ce7ca09f5511b6f648ea518e44f0201a622f6b83ffa28f",
+      "headSHA256": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+      "size": 22323,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/metropolis-interiors.js",
+      "baseBlob": "a3aec8a63b28403a660ed17fcdcfb66c4f111a95",
+      "headBlob": "853143ced5f651c7ccfc1e25234296192e9243b4",
+      "baseSHA256": "6eaa1f76be34c795b76bda6f95c7c04cabc78a80867159aa9a8a122dd9b33573",
+      "headSHA256": "2e820311a2e646aad659176789ac9f2fca1257e47d25d73dc33f6aea24d9b6dc",
+      "size": 111695,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/compact-interiors.js",
+      "baseBlob": "1c713879105c45b92f9d4f1d0304f5b93e625ca8",
+      "headBlob": "1c713879105c45b92f9d4f1d0304f5b93e625ca8",
+      "baseSHA256": "9df0250b3b5382db775b7d69aca35e07da9ee6d0c8adaff1b7f81ef1c4dce92c",
+      "headSHA256": "9df0250b3b5382db775b7d69aca35e07da9ee6d0c8adaff1b7f81ef1c4dce92c",
+      "size": 23527,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/expansion-programmes.js",
+      "baseBlob": "67ae3c39410fb2c0c86d65eddfd72b31144488eb",
+      "headBlob": "67ae3c39410fb2c0c86d65eddfd72b31144488eb",
+      "baseSHA256": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+      "headSHA256": "cf25de5738681f7f743fe3a57a399bb11bf3b05356fc88a1d1adab1b075e1a8a",
+      "size": 5673,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-skyline.js",
+      "baseBlob": "e6633cd6ac910e9e08009c781dddaca0a4b1c9bf",
+      "headBlob": "e6633cd6ac910e9e08009c781dddaca0a4b1c9bf",
+      "baseSHA256": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
+      "headSHA256": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
+      "size": 36635,
+      "delta": "unchanged",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/metropolis-people.js",
+      "baseBlob": "4326456a9e7598c4507877eb2c076764b61358d1",
+      "headBlob": "c0be4f51dd5525d51d4c10d88f8c640ea1250cc5",
+      "baseSHA256": "7d6c230b99215105605b22c7c323ff037a538facf9b726c265fc7bf2027df06e",
+      "headSHA256": "6e4dbf3b39de25c5939da373b4e2b3554bf54698572f2fde7cf96e795dc7c52e",
+      "size": 29162,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/citizen-appearance.js",
+      "baseBlob": "a0155b885f4384b0d1742ffbefbdc237066eaeb9",
+      "headBlob": "911c5c8380405d1d9706c28b1981c0d3a5ae9aed",
+      "baseSHA256": "3fe24776d2e6732a9753cf7a2a6e576b1f8daae9ce41aa42570e174046744a06",
+      "headSHA256": "13be59279bb752e1bd2518de3aa40e5af8913659401035691175e06c9e0ead6b",
+      "size": 4921,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-life-renderer.js",
+      "baseBlob": "c4943add92550b477dd14aa3f841a64baf1aaba6",
+      "headBlob": "2fb862753a78a833f714e3bf6dfc80a795f1fea2",
+      "baseSHA256": "e059f53588e47124f62500067d4c954dddb9d9d1203734da894c40c894433390",
+      "headSHA256": "65dfd60514cf044b82470bb418656e6504109e34525a46f489da100e0a3de13c",
+      "size": 11620,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/resident-core-assets.js",
+      "baseBlob": null,
+      "headBlob": "a041e8570c884e07857a2017b27e348ee9a86eef",
+      "baseSHA256": null,
+      "headSHA256": "e0405daf9f082f1af5f09f18bea1f72c89b979befa5f3e92ffcc3f48aa431640",
+      "size": 25581,
+      "delta": "added",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-transit-renderer.js",
+      "baseBlob": "6d4b8c8774f025cf0cc457b65733ccc9031698dd",
+      "headBlob": "0922f7708ea5b59cad3bcc96c1266ce9a0c94e1f",
+      "baseSHA256": "4e5788540b754b1309614eb544a18a1d62cf5808c1cabd491befd81b81d67cf9",
+      "headSHA256": "5fb7ade1a232883759576c706b30a96d665b3ed4a0a425a92c6eba6f5bcc9422",
+      "size": 12313,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-authored-transport.js",
+      "baseBlob": null,
+      "headBlob": "e76efa6c2af977bf9ff08a5ecfb50e940d1987d2",
+      "baseSHA256": null,
+      "headSHA256": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
+      "size": 25400,
+      "delta": "added",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-workshop-pilot.js",
+      "baseBlob": "3cdd6f5b1df08684668fae38ed94f1ea59a93dfd",
+      "headBlob": "c6b1eedc59066fd5e062c6eb35f2060bc9edecdb",
+      "baseSHA256": "0e46506ba9b84dba07a244c0912e0b463a5d44c3e2ea813a3d1cb6141613d6b7",
+      "headSHA256": "a6d3d59f5ab3a3b349a2c2efdeb55c14542865251adf7c7a2684882a3a860c28",
+      "size": 17410,
+      "delta": "modified",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-workshop-authored.js",
+      "baseBlob": null,
+      "headBlob": "6f27ccd324595082dea9a05e57368180af6ca080",
+      "baseSHA256": null,
+      "headSHA256": "dc05326a6a31f0b1d040f89e0533fff96a10ed3c969c18f8d0ab05656c5daf3b",
+      "size": 5513,
+      "delta": "added",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-home-authored.js",
+      "baseBlob": null,
+      "headBlob": "dde8e2948de25f2dd45262f759cd4450c79c876f",
+      "baseSHA256": null,
+      "headSHA256": "d227f261dea4a57c3fc5736761dc3dc149735048cf5dd5633505b21bfe857edc",
+      "size": 5646,
+      "delta": "added",
+      "worktreeEqualsHead": true
+    },
+    {
+      "path": "src/harbor-home-assets.js",
+      "baseBlob": null,
+      "headBlob": "736846aaba9f0ff393f8a28ec6a2d9d353e81fe1",
+      "baseSHA256": null,
+      "headSHA256": "c67b48be36a5765349d199fbab25bc5c898644259d4501c2a0de07a1ba767159",
+      "size": 11775,
+      "delta": "added",
+      "worktreeEqualsHead": true
+    }
+  ],
+  "traceStatus": "Parent independently parses both original client traces and independent-client-progress; this report intentionally makes no claim about their actual timing or cause."
+}

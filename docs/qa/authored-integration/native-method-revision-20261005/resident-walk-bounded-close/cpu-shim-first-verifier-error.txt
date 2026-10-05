@@ -1,0 +1,1 @@
+Actual first shim exit 1: assert !calls.slice(lastUp+1).includes(read) at walkCase line10. Verifier used lastIndexOf(up:z) for a coarse phase which intentionally has no Z key, so it included the pre-input read. Candidate method unchanged; fixed verifier to use the last attempted up of any key.

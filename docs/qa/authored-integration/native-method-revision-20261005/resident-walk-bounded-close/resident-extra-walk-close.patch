@@ -1,0 +1,149 @@
+--- a/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
++++ b/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs
+@@ -73,7 +73,31 @@
+ const requireProject = createRequire(resolve(projectRoot,'package.json'));
+ const { chromium } = requireProject('@playwright/test');
+ let browser, context, page, server, stopDeadline, rejectApplicationError;
+-let ownedBrowserProcess, totalDeadlineAt, cleanupDeadlineAt, ownedKillStarted = false;
++let ownedBrowserProcess, ownedBrowserIdentityBefore, totalDeadlineAt, cleanupDeadlineAt, ownedKillStarted = false;
++async function ownedBrowserIdentity(pid) {
++ try {
++  const text=await readFile(`/proc/${pid}/stat`,'utf8'),fields=text.slice(text.lastIndexOf(')')+2).trim().split(/\s+/);
++  return {pid,state:fields[0],ppid:Number(fields[1]),startTicks:fields[19]};
++ } catch(error) {if(error.code==='ENOENT')return null;throw error;}
++}
++function classifyOwnedBrowserClose({before,current,apiClose,exitCode,signalCode,callerForceInvoked,hardDeadlineReached}) {
++ const knownIdentity=Number.isInteger(before?.pid)&&before.pid>0&&typeof before?.startTicks==='string'&&/^\d+$/.test(before.startTicks);
++ const exactIdentityStillPresent=Boolean(current&&current.pid===before?.pid&&current.startTicks===before?.startTicks);
++ const observedExit=exitCode!==null&&exitCode!==undefined||signalCode!==null&&signalCode!==undefined;
++ const identityReadConfirmed=current!==undefined;
++ const exactOwnedClosureConfirmed=knownIdentity&&identityReadConfirmed&&!exactIdentityStillPresent&&observedExit;
++ const apiCloseResolved=apiClose?.status==='closed',forcedExit=signalCode==='SIGKILL';
++ const exitModeEligible=exitCode===0&&!signalCode||exitCode===null&&signalCode==='SIGKILL';
++ const withinOuterCap=Number.isFinite(apiClose?.elapsedMs)&&Number.isFinite(apiClose?.timeoutMs)&&apiClose.elapsedMs<=apiClose.timeoutMs;
++ return {before,current,apiCloseResolved,outerCapMs:35000,providerDefaultInnerCloseMs:30000,
++  apiCloseElapsedMs:apiClose?.elapsedMs??null,exitCode,signalCode,forcedExit,
++  graceful:apiCloseResolved&&exactOwnedClosureConfirmed&&exitCode===0&&!signalCode,
++  forceAttribution:forcedExit&&apiCloseResolved&&!callerForceInvoked&&!hardDeadlineReached?'supported-API-close-resolved-SIGKILL-provider-fallback-consistent':'none-or-not-eligible',
++  providerInternalBranchIndependentlyObserved:false,callerForceInvoked:Boolean(callerForceInvoked),
++  hardDeadlineReached:Boolean(hardDeadlineReached),identityReadConfirmed,exactOwnedClosureConfirmed,exitModeEligible,withinOuterCap,
++  boundedCloseAccepted:apiCloseResolved&&exactOwnedClosureConfirmed&&exitModeEligible&&withinOuterCap&&!callerForceInvoked&&!hardDeadlineReached};
++}
++
+ const recordError = detail => { const record = { at: new Date().toISOString(), ...detail }; metadata.errors.push(record);
+   metadata.firstFailure ||= record; rejectApplicationError?.(new Error(`Application error: ${JSON.stringify(record)}`)); };
+ const checkErrors = () => { assert.equal(metadata.errors.length,0,`first application error: ${JSON.stringify(metadata.firstFailure)}`); };
+@@ -151,19 +175,38 @@
+   validate(state,{firstPerson:enabled});assert.ok(finiteCamera(state),'current finite rendered camera');phaseRemaining();return state;
+ };
+ const walk = async (axis,target) => {
+-  await face(Math.PI); const before=await read(); validate(before);
++  const legDeadline=Math.min(totalDeadlineAt||Infinity,Date.now()+plan.budgets.legWallSeconds*1000);
++  const legRemaining=()=>{const ms=legDeadline-Date.now();assert.ok(ms>0,'original fixed physical leg deadline');return ms;};
++  await face(Math.PI); const before=await read(); validate(before);legRemaining();
+   const sign=Math.sign(target-before.position[axis]); if (Math.abs(target-before.position[axis]) < .7) return before;
+   const yaw=before.camera.yaw, candidates=[{key:'w',x:Math.sin(yaw),z:Math.cos(yaw)},
+     {key:'s',x:-Math.sin(yaw),z:-Math.cos(yaw)}, {key:'d',x:-Math.cos(yaw),z:Math.sin(yaw)}, {key:'a',x:Math.cos(yaw),z:-Math.sin(yaw)}];
+   const choice=candidates.sort((a,b)=>sign*(b[axis]-a[axis]))[0]; assert.ok(sign*choice[axis]>.995);
+-  // One continuous hold per fixed leg, one key-up. No endpoint retries or correction loops.
+-  await page.keyboard.down(choice.key);
+-  try { await page.waitForFunction(({axis,target,sign}) => {
+-    const s=window.__NEON__.snapshot(); if(s.paused) throw new Error('Paused during physical walk');
+-    return sign*(s.position[axis]-target)>=-.35;
+-  },{axis,target,sign},{polling:'raf',timeout:plan.budgets.legWallSeconds*1000}); }
+-  finally { await page.keyboard.up(choice.key); }
+-  const after=await event('physical-walk',{axis,target,key:choice.key,before:before.position});
++  const phases=[];
++  async function hold(stage,endpoint,precision) {
++    let first=null;const row={stage,endpoint,precision,key:choice.key,inputs:[]};phases.push(row);
++    try {
++      if(precision){row.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}
++      row.inputs.push({action:'down',key:choice.key});await page.keyboard.down(choice.key);
++      await page.waitForFunction(({axis,endpoint,sign})=>{const s=window.__NEON__.snapshot();if(s.paused)throw new Error('Paused during physical walk');return sign*(s.position[axis]-endpoint)>=0;},{axis,endpoint,sign},{polling:'raf',timeout:legRemaining()});
++    } catch(error){first=error;row.firstError={name:error.name,message:error.message};}
++    finally {
++      for(const key of [choice.key,...(precision?['z']:[])])try{await page.keyboard.up(key);row.inputs.push({action:'up',key,confirmed:true});}
++      catch(error){row.inputs.push({action:'up',key,confirmed:false,error:{name:error.name,message:error.message}});if(!first)first=error;else (metadata.secondaryMovementErrors ||= []).push({name:error.name,message:error.message});}
++    }
++    if(first)throw first; // No read/RPC or second hold after unconfirmed key-up.
++    legRemaining();
++  }
++  // One planned coarse hold, then one slow fine hold: no chase, retry or correction loop.
++  if(Math.abs(target-before.position[axis])>3.2) {
++    await hold('coarse',target-sign*3.2,false);
++    const coarse=await read();validate(coarse);legRemaining();
++    assert.equal(coarse.teleportRevision,before.teleportRevision,'physical movement cannot teleport');
++    assert.ok(sign*(target-coarse.position[axis])>0,'coarse phase must leave the planned precision region ahead');
++    phases[0].after=coarse.position;
++  }
++  await hold('fine',target-sign*.3,true);
++  const after=await event('physical-walk',{axis,target,key:choice.key,before:before.position,phases});legRemaining();
+   assert.equal(after.teleportRevision,before.teleportRevision,'physical movement cannot teleport');
+   assert.ok(Math.abs(after.position[axis]-target)<.75,'one-hold leg endpoint tolerance');
+   assert.ok(after.simulationTime-before.simulationTime < Math.abs(target-before.position[axis])/5.6+4,'walk must not stall');
+@@ -339,6 +382,8 @@
+   ownedBrowserProcess=browser._connection?.toImpl?.(browser)?.options?.browserProcess;
+   assert.ok(ownedBrowserProcess?.process?.pid && typeof ownedBrowserProcess.kill === 'function',
+     'pinned launcher must expose the owned browser process for bounded cleanup');
++  ownedBrowserIdentityBefore=await ownedBrowserIdentity(ownedBrowserProcess.process.pid);
++  assert.ok(ownedBrowserIdentityBefore&&ownedBrowserIdentityBefore.ppid===process.pid,'exact launched owner PID/startTicks');
+   metadata.cleanup={budgetSeconds:30,ownedBrowserPID:ownedBrowserProcess.process.pid,steps:[],hardStop:false};
+   metadata.browser={version:browser.version(),executable:'Playwright Chromium',node:process.version,backend:'SwiftShader WebGL'};
+   assert.equal(browser.version(),plan.browserVersion); context=await browser.newContext({viewport:plan.viewport,deviceScaleFactor:1,
+@@ -369,22 +414,33 @@
+   try { Promise.resolve(ownedBrowserProcess.kill()).catch(error=>recordError({type:'owned-browser-kill',message:error.message})); }
+   catch(error) { recordError({type:'owned-browser-kill',message:error.message}); }
+ }
+-async function boundedOwnedStep(kind,operation,maximumMs=Infinity) {
+-  let timer;
+-  const remaining=Math.min(maximumMs,beginCleanup()-Date.now());
++async function boundedOwnedStep(kind,operation,maximumMs=Infinity,ownerClose=false) {
++  let timer;const started=Date.now();
++  const remaining=ownerClose?Math.min(35000,totalDeadlineAt-Date.now()):Math.min(maximumMs,beginCleanup()-Date.now());
+   try {
+     assert.ok(remaining>0,`Owned cleanup deadline reached before ${kind}`);
+-    const result=await Promise.race([Promise.resolve().then(operation),new Promise((_,bad)=>{
+-      timer=setTimeout(()=>bad(new Error(`Owned cleanup deadline while ${kind}`)),remaining);
+-    })]);
++    const result=await Promise.race([Promise.resolve().then(async()=>{
++      const result=await operation();
++      if(ownerClose){
++        const child=ownedBrowserProcess.process;
++        assert.equal(child.pid,ownedBrowserIdentityBefore.pid,'exact captured launched owner');
++        const current=await ownedBrowserIdentity(child.pid);
++        metadata.ownedBrowserClose=classifyOwnedBrowserClose({before:ownedBrowserIdentityBefore,current,apiClose:{status:'closed',timeoutMs:remaining,elapsedMs:Date.now()-started},exitCode:child.exitCode,signalCode:child.signalCode,callerForceInvoked:ownedKillStarted,hardDeadlineReached:Date.now()>=totalDeadlineAt});
++        metadata.ownedBrowserClose.api='supported in-process browser.close → pinned browserProcess.close';
++        assert.ok(metadata.ownedBrowserClose.boundedCloseAccepted,'resolved supported owner API must close exact child within35/whole cap');
++      }
++      return result;
++    }),new Promise((_,bad)=>{timer=setTimeout(()=>bad(new Error(`Owned cleanup deadline while ${kind}`)),remaining);})]);
+     metadata.cleanup ||= {budgetSeconds:30,steps:[]};
+-    metadata.cleanup.steps.push({kind,status:'closed',at:new Date().toISOString()});return result;
++    metadata.cleanup.steps.push({kind,status:'closed',at:new Date().toISOString(),actualCapMs:remaining,outerCapMs:ownerClose?35000:null,elapsedMs:Date.now()-started});return result;
+   } catch(error) {
+     recordError({type:kind,message:error.message});
+     metadata.status='first-failure-preserved';process.exitCode=1;
+     stopOwnedBrowser(`${kind}: ${error.message}`);server?.closeAllConnections?.();
++    if(ownerClose&&!metadata.ownedBrowserClose)metadata.ownedBrowserClose=classifyOwnedBrowserClose({before:ownedBrowserIdentityBefore,current:undefined,apiClose:{status:'rejected-or-timed-out',timeoutMs:remaining,elapsedMs:Date.now()-started},exitCode:ownedBrowserProcess?.process.exitCode,signalCode:ownedBrowserProcess?.process.signalCode,callerForceInvoked:ownedKillStarted,hardDeadlineReached:Date.now()>=totalDeadlineAt});
+   } finally {clearTimeout(timer);}
+ }
++
+ try {
+   totalDeadlineAt=Date.now()+plan.budgets.totalWallSeconds*1000;
+   const totalTimeout=new Promise((_,bad)=>{stopDeadline=setTimeout(()=>{
+@@ -400,8 +456,11 @@
+   // Both deadlines remain live during video/context/browser/server closure.
+   beginCleanup();
+   if(context)await boundedOwnedStep('context-close',()=>context.close());
+-  if(browser)await boundedOwnedStep('browser-close',()=>browser.close());
+   if(server)await boundedOwnedStep('server-close',()=>new Promise((ok,bad)=>server.close(error=>error?bad(error):ok())));
+-  if(Date.now()>=cleanupDeadlineAt){stopOwnedBrowser('30-second owned cleanup limit');server?.closeAllConnections?.();}
+-  metadata.closedAt=new Date().toISOString();await persist();clearTimeout(stopDeadline);
+-}
++  if(browser)await boundedOwnedStep('browser-close',()=>browser.close(),35000,true);
++  if(ownedBrowserProcess&&ownedBrowserProcess.process.exitCode===null&&ownedBrowserProcess.process.signalCode===null){recordError({type:'owned-closure',message:'actual owned child remains alive'});stopOwnedBrowser('unconfirmed owned closure');server?.closeAllConnections?.();}
++  if(metadata.firstFailure||Date.now()>=totalDeadlineAt){metadata.status='first-failure-preserved';process.exitCode=1;}
++  metadata.closedAt=new Date().toISOString();await persist();
++  if(metadata.firstFailure||Date.now()>=totalDeadlineAt){metadata.status='first-failure-preserved';process.exitCode=1;await persist();}
++  clearTimeout(stopDeadline);
++}

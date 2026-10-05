@@ -1,0 +1,36 @@
+{
+  "status": "SEALED_SOURCE_ONLY_V2_FULL_OUTDOOR_GEOMETRY",
+  "files": {
+    "calculate_geometry.py": {
+      "bytes": 30183,
+      "sha256": "d43f44f751fba2ffc98657715e35bb94ada43548eb827cac141ac9b9215d4723"
+    },
+    "geometry.json": {
+      "bytes": 231673,
+      "sha256": "93c30fb38f716a26f3080a8a25359f05c92b94c43b8fc7fb88b1ff26f8f6228f"
+    },
+    "summary.json": {
+      "bytes": 2433,
+      "sha256": "64d7481ad3da1804c420250cc487d3c63a5d6ae6c7fe7d603d7e82a1407b4953"
+    },
+    "calculation-output.json": {
+      "bytes": 2433,
+      "sha256": "64d7481ad3da1804c420250cc487d3c63a5d6ae6c7fe7d603d7e82a1407b4953"
+    },
+    "review.md": {
+      "bytes": 11200,
+      "sha256": "84a1404fc134d1157aa12811a45319ddb6a3be66f5072cca25ab0d19c9503cea"
+    }
+  },
+  "sourceExecution": "Independent JSON/Git-read and elementary geometry only, no product source execution",
+  "rootOriginalCandidateWrites": false,
+  "browserGpuTestBuildNetworkUsed": false,
+  "allRevisedOutdoorModelledStaticAndAuthoredGroundClear": true,
+  "originalNonclearCases": [
+    "south-092",
+    "south-096"
+  ],
+  "baselineHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+  "authoredHead": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "scope": "Outdoor source geometry only. Native/interior/traffic/time/framing/art remain unproved."
+}

@@ -1,0 +1,65 @@
+{
+  "observedAt": "2026-10-05T01:27:54.295Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T01%3A27%3A52.241Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T01%3A27%3A52.241Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T01%3A27%3A52.241Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0062-2026-10-05T01-27-52.241Z-run-original.json",
+      "bytes": 12821,
+      "sha256": "0c6177f1774516355c0ea2df250524356cfa36fdec9d6aa821292c5eec22a796"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0062-2026-10-05T01-27-52.241Z-jobs-attempt1-original.json",
+      "bytes": 110032,
+      "sha256": "e1ca7f7bf3c576bdfbfd7708608a27b21f50c7e5cf62cccdeb2c0dfd25ae959d"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0062-2026-10-05T01-27-52.241Z-artifacts-original.json",
+      "bytes": 24143,
+      "sha256": "c5b5fcc321c1c4ca0a2b95fe1f226f9beef69d29d9d95764b5ecaffd03e3140c"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 11,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 3,
+      "failure": 17,
+      "skipped": 0,
+      "inProgress": 3,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11320594919,
+      "name": "native-evidence-east-interior-37247048989-1",
+      "bytes": 11393689,
+      "digest": "sha256:698aefe9bbab1f7b3460d13cb5f2097ef76acf10d292112c569e13298048b312",
+      "expired": false
+    }
+  ]
+}

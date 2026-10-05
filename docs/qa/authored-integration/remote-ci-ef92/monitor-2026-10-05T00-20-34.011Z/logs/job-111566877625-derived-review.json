@@ -1,0 +1,113 @@
+{
+  "jobId": 111566877625,
+  "name": "Multiplayer rooms in two browsers",
+  "bucket": "required",
+  "conclusion": "failure",
+  "downloadedAt": "2026-10-05T00:30:47.358Z",
+  "raw": {
+    "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877625-original.log",
+    "bytes": 48004,
+    "sha256": "84655ce5f274f65680a943a215b3bd6ad37812916a4f26e3af063807eaf5859d"
+  },
+  "rules": {
+    "tests": null,
+    "passed": null,
+    "failed": null,
+    "uniqueTestCountNotMultiplied": true
+  },
+  "errorLines": [
+    "2026-10-05T00:29:03.1788961Z     TimeoutError: page.waitForFunction: Timeout 180000ms exceeded.",
+    "2026-10-05T00:29:03.2029765Z ##[error]Process completed with exit code 1."
+  ],
+  "actualJobSteps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-05T00:19:10Z",
+      "completed_at": "2026-10-05T00:19:12Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-05T00:19:12Z",
+      "completed_at": "2026-10-05T00:19:46Z"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-05T00:19:46Z",
+      "completed_at": "2026-10-05T00:19:47Z"
+    },
+    {
+      "name": "Run npm ci",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-05T00:19:47Z",
+      "completed_at": "2026-10-05T00:19:48Z"
+    },
+    {
+      "name": "Run npm run build",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-05T00:19:48Z",
+      "completed_at": "2026-10-05T00:19:49Z"
+    },
+    {
+      "name": "Run npx playwright install --with-deps chromium",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-05T00:19:49Z",
+      "completed_at": "2026-10-05T00:20:11Z"
+    },
+    {
+      "name": "Run npx playwright test --config=playwright.multiplayer.config.js",
+      "status": "completed",
+      "conclusion": "failure",
+      "number": 7,
+      "started_at": "2026-10-05T00:20:11Z",
+      "completed_at": "2026-10-05T00:29:03Z"
+    },
+    {
+      "name": "Retain multiplayer verification evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-05T00:29:03Z",
+      "completed_at": "2026-10-05T00:29:05Z"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 15,
+      "started_at": "2026-10-05T00:29:05Z",
+      "completed_at": "2026-10-05T00:29:05Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 16,
+      "started_at": "2026-10-05T00:29:05Z",
+      "completed_at": "2026-10-05T00:29:05Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17,
+      "started_at": "2026-10-05T00:29:05Z",
+      "completed_at": "2026-10-05T00:29:05Z"
+    }
+  ],
+  "captureIsManualArtApproval": false
+}

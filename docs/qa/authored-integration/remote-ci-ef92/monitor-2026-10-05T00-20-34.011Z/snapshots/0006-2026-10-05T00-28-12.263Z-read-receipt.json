@@ -1,0 +1,73 @@
+{
+  "observedAt": "2026-10-05T00:28:13.887Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T00%3A28%3A12.263Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T00%3A28%3A12.263Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T00%3A28%3A12.263Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0006-2026-10-05T00-28-12.263Z-run-original.json",
+      "bytes": 12816,
+      "sha256": "50b5f936a54b392af9ce05697fe61074a227e9f9954492131278f8fb8e2db0a1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0006-2026-10-05T00-28-12.263Z-jobs-attempt1-original.json",
+      "bytes": 65930,
+      "sha256": "ee3a8a4b8081621a5d4f4f368087dbd3c847c2de28c8aa03b6daae38d13af133"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0006-2026-10-05T00-28-12.263Z-artifacts-original.json",
+      "bytes": 1473,
+      "sha256": "45fb557ec1ed4b4df950dda9691874416f42c409cb124e143d5d6132e4934b58"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 2,
+      "failure": 0,
+      "skipped": 0,
+      "inProgress": 10,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 0,
+      "failure": 0,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 17,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11319915472,
+      "name": "browser-test-results-stability",
+      "bytes": 18116289,
+      "digest": "sha256:efb5a4f4d18fda17c48b0c41e51b5f1c931e7ec56bae3a4521f1fb6334aac96c",
+      "expired": false
+    },
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11318639973,
+      "name": "browser-test-results-game",
+      "bytes": 1675012,
+      "digest": "sha256:81f1f4309e4ff9e54a48249c06cde001bdddec1aab38c790fba5a3c97f5fd89c",
+      "expired": false
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "observedAt": "2026-10-05T00:41:04.066Z",
+  "source": "GitHub connector original decoded UTF-8 GET bodies; unique ignored read-only query avoids client URL cache alias",
+  "endpoints": [
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989?per_page=100&monitor_observed_at=2026-10-05T00%3A41%3A02.335Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/attempts/1/jobs?per_page=100&monitor_observed_at=2026-10-05T00%3A41%3A02.335Z",
+    "https://api.github.com/repos/qifalab/neon-harbor/actions/runs/37247048989/artifacts?per_page=100&monitor_observed_at=2026-10-05T00%3A41%3A02.335Z"
+  ],
+  "files": [
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0017-2026-10-05T00-41-02.335Z-run-original.json",
+      "bytes": 12816,
+      "sha256": "50b5f936a54b392af9ce05697fe61074a227e9f9954492131278f8fb8e2db0a1"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0017-2026-10-05T00-41-02.335Z-jobs-attempt1-original.json",
+      "bytes": 73186,
+      "sha256": "f0945e1147cfc46bcca6a8482a69b191e437665962568e056545efebf945990c"
+    },
+    {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/snapshots/0017-2026-10-05T00-41-02.335Z-artifacts-original.json",
+      "bytes": 8751,
+      "sha256": "4ea879c71f2ec85efc0f134ce1432b26a178ffe9964d134104e4f7a353017a98"
+    }
+  ],
+  "tally": {
+    "required": {
+      "total": 12,
+      "success": 9,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 2,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 0,
+      "failure": 2,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 15,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "news": [
+    {
+      "type": "ARTIFACT_READY_FOR_ROOT_DOWNLOAD",
+      "id": 11319803449,
+      "name": "browser-test-results-harbor-sample-2",
+      "bytes": 2492258,
+      "digest": "sha256:6ce6dfd982b78ea84a07b9b89f09525530e2fd2543de7d3337f0bfa4347ba5bd",
+      "expired": false
+    }
+  ]
+}

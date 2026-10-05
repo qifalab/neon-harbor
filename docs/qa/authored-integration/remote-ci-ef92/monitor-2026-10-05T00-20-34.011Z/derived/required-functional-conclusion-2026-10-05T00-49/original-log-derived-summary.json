@@ -1,0 +1,758 @@
+{
+  "runId": 37247048989,
+  "attempt": 1,
+  "headSha": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "monitorSequence": 26,
+  "scope": "derived only from saved completed original functional logs; native artwork remains separate",
+  "ruleExecutionsNotUniqueRuleCount": 3762,
+  "orderedRuleSetsAllIdentical": true,
+  "ruleIdentityHashes": [
+    [
+      111566877854,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566877977,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878095,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878105,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878121,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878127,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878128,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878132,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878149,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878194,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ],
+    [
+      111566878252,
+      "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f"
+    ]
+  ],
+  "uniqueRuleCountWhenSetsIdentical": 342,
+  "distinctBrowserScenarios": 29,
+  "distinctPassedBrowserScenarios": 28,
+  "distinctFailedBrowserScenarios": 1,
+  "jobs": [
+    {
+      "jobId": 111566877625,
+      "name": "Multiplayer rooms in two browsers",
+      "conclusion": "failure",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877625-original.log",
+        "bytes": 48004,
+        "sha256": "84655ce5f274f65680a943a215b3bd6ad37812916a4f26e3af063807eaf5859d"
+      },
+      "rules": {
+        "counts": {},
+        "numberedPassed": 0,
+        "orderedIdentitySha256": null,
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/multiplayer-browser/rooms.spec.js:81:1 › two independent browsers share a room, rendered walking peers, chat and disconnect",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/multiplayer-browser/rooms.spec.js:122:1 › two browsers synchronize expanded east-bay addresses and elevator floors beyond the former 320 metre limit",
+          "status": "failed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  1 failed",
+        "  1 passed (8.8m)"
+      ],
+      "reportedErrorLines": [
+        "    TimeoutError: page.waitForFunction: Timeout 180000ms exceeded.",
+        "##[error]Process completed with exit code 1."
+      ]
+    },
+    {
+      "jobId": 111566877854,
+      "name": "Build and gameplay tests (metropolis-1)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877854-original.log",
+        "bytes": 192017,
+        "sha256": "6ea454a707f956cfd57e00143276c8bde9a4f0db79e4509361e2abf958331b24"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/metropolis.spec.js:62:1 › city atlas exposes all three shores and fetches and evicts real north-shore detail",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/metropolis.spec.js:113:3 › tide-museum: walk through the lobby, ride the elevator, return to the street",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (4.9m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566877977,
+      "name": "Build and gameplay tests (harbor-sample-1)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877977-original.log",
+        "bytes": 196473,
+        "sha256": "ed7a6328e563c49ea6778acd0a5022d5910049d5efae58fa381d6c8e087e1dc2"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/harbor-sample.spec.js:330:3 › bus: public boarding, physical upper-deck stairs, travel and lower-door alighting",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/harbor-sample.spec.js:330:3 › tram: public boarding, physical upper-deck stairs, travel and lower-door alighting",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (7.6m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878095,
+      "name": "Build and gameplay tests (occupied-city)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878095-original.log",
+        "bytes": 197337,
+        "sha256": "964af808d23d24c460721d396172c652a432640987c3a549b15662edfd733bc4"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/occupied-city.spec.js:11:1 › all storeys are selectable and a visitor walks an upper stair flight without accumulating floors or sign textures",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/occupied-city.spec.js:54:1 › the rendered resident enters a real workplace and stays there during working hours",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (24.1m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878105,
+      "name": "Build and gameplay tests (harbor-sample-2)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878105-original.log",
+        "bytes": 193887,
+        "sha256": "3adda3fd48366d672dcc28d6edadaa39f4a10c0a024e7873d5c3182c6ba703f2"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/harbor-sample.spec.js:330:3 › ferry: public boarding, physical upper-deck stairs, travel and lower-door alighting",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/harbor-sample.spec.js:411:1 › funded cargo and a real purchase persist across reload, with physical delivery and the actual High shop room",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (17.6m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878121,
+      "name": "Build and gameplay tests (game)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878121-original.log",
+        "bytes": 190544,
+        "sha256": "4332f6886f96fbdcfc7d3837dc9ccef05bef6fe15e22983737c0853d23f0cc1a"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/game.spec.js:52:1 › real keyboard gameplay, menus and wanted level",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/game.spec.js:86:1 › settings and export persist after reload while active pursuit resets",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/game.spec.js:110:1 › import, invalid input and confirmed reset preserve valid progress",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/game.spec.js:132:1 › mobile touch controls move the player and fit the landscape viewport",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  4 passed (4.2m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878127,
+      "name": "Build and gameplay tests (metropolis-2)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878127-original.log",
+        "bytes": 192140,
+        "sha256": "ab2e9427a50f1baa0a6f5dc281aa5dd0c042d6e78f86bd56535271ebd58fc573"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/metropolis.spec.js:113:3 › apex-tower: ride to a high floor and travel back to the street",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/metropolis.spec.js:113:3 › camellia-court: walk through the lobby, ride the elevator, return to the street",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (6.9m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878128,
+      "name": "Build and gameplay tests (city-materials)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878128-original.log",
+        "bytes": 192477,
+        "sha256": "68d33dacca761061f5c940ec432570e483e195b28a29872239633fd15a900ded"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/city-materials.spec.js:113:1 › a northern home renders its furnished bedroom in High and survives quality changes at the same pose",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/city-materials.spec.js:137:1 › an old-quarter visitor walks the compact stairs and a room doorway, rides down and exits",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/city-materials.spec.js:194:1 › an eastern visitor enters an enclosed office, rides to the observation terrace and reloads safely",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  3 passed (17.1m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878132,
+      "name": "Build and gameplay tests (metropolis-3)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878132-original.log",
+        "bytes": 192194,
+        "sha256": "83c9c5a3d02bb9dbabd1445346d4d188a3199e2ee51840a1f3777cacbbe7cca5"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/metropolis.spec.js:173:3 › metro: wait, board, travel and alight using public controls",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/metropolis.spec.js:173:3 › ferry: wait, board, travel and alight using public controls",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (12.1m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878149,
+      "name": "Build and gameplay tests (harbor-realism)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878149-original.log",
+        "bytes": 192396,
+        "sha256": "12c8388e722158d593b555c7285fbecd59abd4b3741f4a0b0ea9650bb244a2e7"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/harbor-realism.spec.js:39:1 › the primary start reaches a walkable harbor panorama in default high quality, with day and night views",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/harbor-realism.spec.js:89:1 › a visitor walks both physical stair flights into a furnished third-floor workshop and returns to the street",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (5.7m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878194,
+      "name": "Build and gameplay tests (stability)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878194-original.log",
+        "bytes": 190763,
+        "sha256": "a82312cfef4148bd54af60b2a729790c2d5ed596576dd002c248ff3cf5fb2fb2"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/stability.spec.js:144:1 › driving and steering share one render pose; pause/resume and exit remain stable",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/stability.spec.js:182:1 › a fast steering approach stops the full car body outside the generated buildings",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/stability.spec.js:259:1 › orbiting beside a real façade retracts the camera and walking cannot enter it",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/stability.spec.js:296:1 › driving streams real city resources and evicts distant detail within the cache limit",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  4 passed (4.7m)"
+      ],
+      "reportedErrorLines": []
+    },
+    {
+      "jobId": 111566878252,
+      "name": "Build and gameplay tests (living-city)",
+      "conclusion": "success",
+      "rawLog": {
+        "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878252-original.log",
+        "bytes": 191914,
+        "sha256": "ab29add903fb016e0943191acc90d7d5f6e6c6357dc1b5dafabd64a7738a12e0"
+      },
+      "rules": {
+        "counts": {
+          "tests": 342,
+          "pass": 342,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "numberedPassed": 342,
+        "orderedIdentitySha256": "ab50b1299dc8f1329825dc4f549f5d522923e8e80bd646aaa1eddf51961c620f",
+        "numberedPassedContinuous": true
+      },
+      "scenarios": [
+        {
+          "identity": "tests/e2e/living-city.spec.js:102:1 › a resident rides to a furnished bedroom, walks through its doorway, and returns to the street",
+          "status": "passed"
+        },
+        {
+          "identity": "tests/e2e/living-city.spec.js:146:1 › default high quality loads crafted materials and exposes walk-in viewing and real infrastructure entrances",
+          "status": "passed"
+        }
+      ],
+      "playwrightSummaryLines": [
+        "  2 passed (5.3m)"
+      ],
+      "reportedErrorLines": []
+    }
+  ],
+  "firstFailuresPreservedByMonitor": [
+    {
+      "jobId": 111566877625,
+      "name": "Multiplayer rooms in two browsers",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:30:45.845Z",
+      "failedSteps": [
+        {
+          "name": "Run npx playwright test --config=playwright.multiplayer.config.js",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877625",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877625-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:29:03.1788961Z     TimeoutError: page.waitForFunction: Timeout 180000ms exceeded."
+    },
+    {
+      "jobId": 111566877909,
+      "name": "Optional native and route evidence / Native High (south-094)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:36:47.345Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877909",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877909-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:35:47.7283145Z {\"case\": \"south-094\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566878019,
+      "name": "Optional native and route evidence / Native High (south-090)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:36:47.345Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566878019",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566878019-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:35:50.6481999Z {\"case\": \"south-090\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877986,
+      "name": "Optional native and route evidence / Native High (south-092)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:44:46.244Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877986",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877986-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:44:24.6244516Z {\"case\": \"south-092\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    },
+    {
+      "jobId": 111566877992,
+      "name": "Optional native and route evidence / Native High (south-091)",
+      "conclusion": "failure",
+      "firstObservedAt": "2026-10-05T00:44:46.244Z",
+      "failedSteps": [
+        {
+          "name": "Prepare CPU builds, then capture owned browsers in sequence",
+          "number": 7,
+          "conclusion": "failure"
+        }
+      ],
+      "htmlUrl": "https://github.com/qifalab/neon-harbor/actions/runs/37247048989/job/111566877992",
+      "originalLog": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ef92/monitor-2026-10-05T00-20-34.011Z/logs/job-111566877992-original.log",
+      "firstErrorExcerpt": "2026-10-05T00:44:21.2054979Z {\"case\": \"south-091\", \"status\": \"FAILED\", \"artAcceptance\": \"PENDING_HUMAN_NATIVE_REVIEW\"}"
+    }
+  ],
+  "nativeAcceptance": "PENDING_HUMAN_NATIVE_REVIEW; capture/collector outcome never implies manual artwork acceptance",
+  "sourceMutation": false,
+  "execution": "no tests/build/browser/GPU/API/git/ref",
+  "actualObservedRun": {
+    "status": "queued",
+    "conclusion": null,
+    "updatedAt": "2026-10-05T00:19:06Z"
+  },
+  "actualObservedJobTallies": {
+    "required": {
+      "total": 12,
+      "success": 11,
+      "failure": 1,
+      "skipped": 0,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    },
+    "native": {
+      "total": 23,
+      "success": 0,
+      "failure": 4,
+      "skipped": 0,
+      "inProgress": 6,
+      "queued": 13,
+      "cancelled": 0
+    },
+    "pr-only": {
+      "total": 2,
+      "success": 0,
+      "failure": 0,
+      "skipped": 2,
+      "inProgress": 0,
+      "queued": 0,
+      "cancelled": 0
+    }
+  },
+  "lastPollAt": "2026-10-05T00:48:53.791Z",
+  "allRequiredJobsCompleted": true,
+  "overallAcceptance": "HAS_RECORDED_FAILURES_NOT_FINAL",
+  "artifactsListedOnlyNotDownloadedByMonitor": [
+    {
+      "id": 11320760092,
+      "name": "browser-test-results-occupied-city",
+      "bytes": 747081,
+      "digest": "sha256:1ea212540159d4a0f4d767924d185e82eabb0bd5cdfb337fd52939421565b1ab",
+      "expired": false
+    },
+    {
+      "id": 11320095013,
+      "name": "browser-test-results-metropolis-2",
+      "bytes": 755053,
+      "digest": "sha256:fca53fdb5ba99f3807eef3545dc26218938116d377460705f35185401118476e",
+      "expired": false
+    },
+    {
+      "id": 11320017098,
+      "name": "native-evidence-south-092-37247048989-1",
+      "bytes": 4114719,
+      "digest": "sha256:46b5ee9bfd3ffaab50030fae669340fbab5121200829e765d27ca14c40ba90b7",
+      "expired": false
+    },
+    {
+      "id": 11319935663,
+      "name": "multiplayer-browser-test-results",
+      "bytes": 17698478,
+      "digest": "sha256:ce1d7bb4a814d2c3f6f91839727098f353d6089d4615911e4317d39d2485d305",
+      "expired": false
+    },
+    {
+      "id": 11319915472,
+      "name": "browser-test-results-stability",
+      "bytes": 18116289,
+      "digest": "sha256:efb5a4f4d18fda17c48b0c41e51b5f1c931e7ec56bae3a4521f1fb6334aac96c",
+      "expired": false
+    },
+    {
+      "id": 11319850952,
+      "name": "browser-test-results-harbor-realism",
+      "bytes": 4406521,
+      "digest": "sha256:538bcbe58cf0e4f1dadfc1df415566f24e58c7231dfe2a8f4df762fd1eb300d1",
+      "expired": false
+    },
+    {
+      "id": 11319803449,
+      "name": "browser-test-results-harbor-sample-2",
+      "bytes": 2492258,
+      "digest": "sha256:6ce6dfd982b78ea84a07b9b89f09525530e2fd2543de7d3337f0bfa4347ba5bd",
+      "expired": false
+    },
+    {
+      "id": 11319753983,
+      "name": "native-evidence-south-091-37247048989-1",
+      "bytes": 4768031,
+      "digest": "sha256:8c636a3176e55aada3a78225a52fab51eb4204d8dd1497f06fc157585e4be689",
+      "expired": false
+    },
+    {
+      "id": 11319668498,
+      "name": "browser-test-results-metropolis-3",
+      "bytes": 1146005,
+      "digest": "sha256:26769d098be7774c29999627d000662512aabce1dc7b9668952c160ef7a2e3a3",
+      "expired": false
+    },
+    {
+      "id": 11319503714,
+      "name": "native-evidence-south-094-37247048989-1",
+      "bytes": 4058515,
+      "digest": "sha256:bbac9fcf1985a4c6337aae699552ce7c483ce2d78ea7763ceb61151d7d264146",
+      "expired": false
+    },
+    {
+      "id": 11319493212,
+      "name": "browser-test-results-harbor-sample-1",
+      "bytes": 2185357,
+      "digest": "sha256:eee5b65919d84cdabcaa92d4f0e878254ed5f2fff6fb892189e5b5b9931a8dec",
+      "expired": false
+    },
+    {
+      "id": 11319484516,
+      "name": "browser-test-results-city-materials",
+      "bytes": 3011045,
+      "digest": "sha256:e0809668e298f55e72bc4ce0d1b02eced24bdceadaacf2ee4457ba74e36d5516",
+      "expired": false
+    },
+    {
+      "id": 11319458270,
+      "name": "browser-test-results-living-city",
+      "bytes": 1657985,
+      "digest": "sha256:0421ea177b0499f20a11b92fe46a974941818a8b6fbae8d9bde37196c046a222",
+      "expired": false
+    },
+    {
+      "id": 11319079695,
+      "name": "native-evidence-south-090-37247048989-1",
+      "bytes": 4038045,
+      "digest": "sha256:e2b79d8c79a787625a152a7922d98554798c12dc7cecfc6fbbf301ab87f2d615",
+      "expired": false
+    },
+    {
+      "id": 11318944588,
+      "name": "browser-test-results-metropolis-1",
+      "bytes": 883072,
+      "digest": "sha256:8edbfb43467d971323379e2f24cd1f9fb11e0b3ad858564f5cbfd8342af4af98",
+      "expired": false
+    },
+    {
+      "id": 11318639973,
+      "name": "browser-test-results-game",
+      "bytes": 1675012,
+      "digest": "sha256:81f1f4309e4ff9e54a48249c06cde001bdddec1aab38c790fba5a3c97f5fd89c",
+      "expired": false
+    }
+  ]
+}

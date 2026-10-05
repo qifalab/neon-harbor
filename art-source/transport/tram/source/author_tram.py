@@ -50,10 +50,24 @@ for tier in range(3):
    # The lower transom has real portal cutouts; upper transom is continuous.
    for a,b in ranges:solid_grid('transom-trim',lambda u,v:(side*side_width(y1+.02+.10*u,a+(b-a)*v),y1+.02+.10*u,a+(b-a)*v),2,max(3,int((b-a)*3)),'paint',root,.025,(side,0,0))
   for y0,y1,mat in[(2.29,2.57,'pearl'),(4.045,4.30,'paint')]:solid_grid('carriage-waist',lambda u,v:(side*side_width(y0+(y1-y0)*u,-4.25+8.5*v),y0+(y1-y0)*u,-4.25+8.5*v),3,long,mat,root,.055,(side,0,0))
+  # A continuous curved upper saloon spandrel joins the waist to the
+  # existing y=3.04 window sill without changing the cabin or lower portals.
+  solid_grid('upper-saloon-side-spandrel',lambda u,v:(side*side_width(2.55+.508*u,-4.25+8.5*v),2.55+.508*u,-4.25+8.5*v),3,long,'paint',root,.055,(side,0,0))
   grid('tram-original-bronze-stripe',lambda u,v:(side*(side_width(2.37,-4.22+8.44*v)+.001),2.365+.028*u,-4.22+8.44*v),1,long,'livery',root)
+ # The far LOD keeps outer-only skins. Four narrow original-section
+ # corner returns close the new saloon band without changing any old part.
+ if tier==2:
+  for side in(-1,1):
+   for end in(-1,1):
+    def corner(u,v):
+     y=2.55+.508*v;a=(side*side_width(y,end*4.25),y,end*4.25);b=(side*1.09,y,end_surface(side*1.09,y,end))
+     return tuple((1-u)*x+u*z for x,z in zip(a,b))
+    grid('upper-saloon-far-corner-return',corner,1,1,'paint',root)
  for end in(-1,1):
   for y0,y1,mat in[(.25,1.09,'paint'),(2.08,2.57,'pearl'),(4.035,4.33,'paint')]:
    solid_grid('rounded-carriage-end',lambda u,v:(-1.09+2.18*u,y0+(y1-y0)*v,end_surface(-1.09+2.18*u,y0+(y1-y0)*v,end)),[18,9,4][tier],5,mat,root,.052,(0,0,end))
+  # Close the matching end-band gap below the original curved windshield.
+  solid_grid('upper-saloon-end-spandrel',lambda u,v:(-1.09+2.18*u,2.55+.538*v,end_surface(-1.09+2.18*u,2.55+.538*v,end)),[18,9,4][tier],4,'paint',root,.052,(0,0,end))
   for deck in LAYOUT['decks']:
    y0,y1=deck['y']+.67,deck['y']+1.60
    solid_grid('wraparound-tram-windshield',lambda u,v:(-.98+1.96*u,y0+(y1-y0)*v,end_surface(-.98+1.96*u,y0+(y1-y0)*v,end)-end*.028),[18,8,4][tier],[10,4,2][tier],'glass',root,.015,(0,0,end))

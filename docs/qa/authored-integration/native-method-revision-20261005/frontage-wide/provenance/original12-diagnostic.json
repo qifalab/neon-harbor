@@ -1,0 +1,5447 @@
+{
+  "schema": "native-original12-frontage-timing-v1",
+  "scope": "Read-only original metadata/pose/source and arithmetic; no trace invented, no browser/GPU/tests/build/project import, no source/ref/ROOT/archive mutation.",
+  "runs": [
+    {
+      "case": "south-091",
+      "mode": "baseline",
+      "status": "failed",
+      "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+      "startedAt": "2026-10-05T00:20:20.388Z",
+      "wholeCaseBudgetMinutes": 12,
+      "activeStep": {
+        "index": 7,
+        "kind": "walk",
+        "axis": "z",
+        "target": 118.67839586455375
+      },
+      "hardDeadlineReached": true,
+      "primaryError": {
+        "name": "Error",
+        "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+        "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+      },
+      "finalizationErrors": [
+        "Owned cleanup failed",
+        "Whole case deadline reached",
+        "Playable capture route incomplete"
+      ],
+      "finalizationCompletedAt": "2026-10-05T00:32:20.422Z",
+      "finishedBeforeDeadline": false,
+      "gitHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "gitHeadAfter": null,
+      "buildInfoSha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+      "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "methodHashes": {
+        "capture-authored-harbor-native.mjs": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+        "input.mjs": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+        "plans.mjs": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+        "expectations.mjs": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+        "server.mjs": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "render-readiness.mjs": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+        "evidence/captured-buildings.json": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+        "evidence/common-pose-proof.json": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+      },
+      "browser": {
+        "version": "151.0.7922.34",
+        "executablePath": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+        "ownedPid": 3430,
+        "launchMethod": "official launchServer/connect with owned-process hard deadline",
+        "launchArgs": [
+          "--enable-webgl",
+          "--use-angle=swiftshader",
+          "--enable-unsafe-swiftshader"
+        ]
+      },
+      "browserProcessAfterFinalization": {
+        "pid": 3430,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      },
+      "originalMetadata": {
+        "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/metadata.json",
+        "bytes": 119758,
+        "sha256": "0f5c20bdcc9fa03aa62c9b8da716958ffe47e27e73f9398d8b1371b1bcbf1b6d"
+      },
+      "inputs": [
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294368,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:21:43.048Z",
+          "finishedAt": "2026-10-05T00:21:55.526Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 0,
+          "offsetStartSeconds": 82.66,
+          "wallSeconds": 12.478,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 213,
+                "y": 1.8,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 1.0000000000000013,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 1.7499999999999987,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.7499999999999973
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 117.67839586455375,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:23:02.125Z",
+          "finishedAt": "2026-10-05T00:23:22.808Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.25,
+          "inputIndex": 1,
+          "offsetStartSeconds": 161.737,
+          "wallSeconds": 20.683,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 4.7499999999999885,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 107.69172919788693
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 5.999999999999984,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:23:05.283Z",
+              "finishedAt": "2026-10-05T00:23:21.968Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 16.685,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 4.7499999999999885,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 117.6783958645536,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 5.999999999999984,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.2499999999999956
+            }
+          ],
+          "simulationDelta": 1.2499999999999956
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880708,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:23:24.804Z",
+          "finishedAt": "2026-10-05T00:23:31.449Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 2,
+          "offsetStartSeconds": 184.416,
+          "wallSeconds": 6.645,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 107.69172919788693
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 5.999999999999984,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 107.6783958645536
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.499999999999982,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.4999999999999982
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 118.67839586455375,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:25:04.579Z",
+          "finishedAt": "2026-10-05T00:25:28.313Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.250000000000195,
+          "inputIndex": 3,
+          "offsetStartSeconds": 284.191,
+          "wallSeconds": 23.734,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 107.6783958645536
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 9.250000000000039,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 108.66506253122041
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 10.750000000000114,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:25:07.763Z",
+              "finishedAt": "2026-10-05T00:25:27.218Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 19.455,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 117.6783958645536,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 9.250000000000039,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 10.750000000000114,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.5000000000000746
+            }
+          ],
+          "simulationDelta": 1.5000000000000746
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "x",
+          "target": 225.6443515154533,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:25:28.317Z",
+          "finishedAt": "2026-10-05T00:27:10.584Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 8.805439394316588,
+          "inputIndex": 4,
+          "offsetStartSeconds": 307.929,
+          "wallSeconds": 102.267,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 108.66506253122041
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 10.750000000000114,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.66666666666538,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 225.66666666666538,
+                "y": 0.9176472114121682,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 225.66666666666538,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 14.850000000000318,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "d",
+              "precision": false,
+              "startedAt": "2026-10-05T00:25:31.204Z",
+              "finishedAt": "2026-10-05T00:26:34.881Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 63.677,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 10.750000000000114,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.000000000000226,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.250000000000112
+            },
+            {
+              "kind": "precision-approach",
+              "key": "d",
+              "precision": true,
+              "startedAt": "2026-10-05T00:26:35.848Z",
+              "finishedAt": "2026-10-05T00:27:09.619Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 33.771,
+              "before": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.000000000000226,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.6799999999987,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 14.850000000000318,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.850000000000092
+            }
+          ],
+          "simulationDelta": 4.100000000000204
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 107,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:27:10.590Z",
+          "finishedAt": "2026-10-05T00:28:41.385Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 9.097994830692144,
+          "inputIndex": 5,
+          "offsetStartSeconds": 410.202,
+          "wallSeconds": 90.795,
+          "before": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.66666666666538,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 225.66666666666538,
+                "y": 0.9176472114121682,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 225.66666666666538,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 14.850000000000318,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 106.90506253122007,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "target": {
+                "x": 225.6799999999987,
+                "y": 0.9176472114121682,
+                "z": 96.90506253122007
+              },
+              "focus": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 19.31666666666685,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "w",
+              "precision": false,
+              "startedAt": "2026-10-05T00:27:13.498Z",
+              "finishedAt": "2026-10-05T00:27:43.544Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 30.046,
+              "before": {
+                "position": {
+                  "x": 225.6799999999987,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 14.850000000000318,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.6799999999987,
+                  "y": 0.18,
+                  "z": 108.87839586455371,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 16.60000000000034,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.7500000000000213
+            },
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:27:44.658Z",
+              "finishedAt": "2026-10-05T00:28:40.387Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 55.729,
+              "before": {
+                "position": {
+                  "x": 225.6799999999987,
+                  "y": 0.18,
+                  "z": 108.87839586455371,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 16.60000000000034,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.6799999999987,
+                  "y": 0.18,
+                  "z": 106.90506253122007,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 19.31666666666685,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.7166666666665122
+            }
+          ],
+          "simulationDelta": 4.466666666666534
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:28:43.214Z",
+          "finishedAt": "2026-10-05T00:29:01.772Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 6,
+          "offsetStartSeconds": 502.826,
+          "wallSeconds": 18.558,
+          "before": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 106.90506253122007,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "target": {
+                "x": 225.6799999999987,
+                "y": 0.9176472114121682,
+                "z": 96.90506253122007
+              },
+              "focus": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 19.566666666666837,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 106.90506253122007,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "target": {
+                "x": 215.68000018812987,
+                "y": 1.7152543103133877,
+                "z": 106.90312278289859
+              },
+              "focus": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "yaw": -1.57099030162826,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 20.316666666666794,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.7499999999999574
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 118.67839586455375,
+          "yaw": null,
+          "pitch": null,
+          "status": "failed",
+          "startedAt": "2026-10-05T00:30:37.401Z",
+          "finishedAt": "2026-10-05T00:32:20.414Z",
+          "remainingMsAtStart": 82201,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 7,
+          "offsetStartSeconds": 617.013,
+          "wallSeconds": 103.013,
+          "before": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 106.90506253122007,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "target": {
+                "x": 225.6780645348745,
+                "y": 1.7152543103133877,
+                "z": 96.90506271852134
+              },
+              "focus": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "yaw": -3.141399107076165,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 24.799999999999873,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": null,
+            "camera": null,
+            "simulationTime": null,
+            "teleportRevision": null
+          },
+          "firstError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "secondaryErrors": [
+            {
+              "stage": "final-keyup-w",
+              "name": "Error",
+              "message": "keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-a",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-s",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-d",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-z",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "leg-after-snapshot",
+              "name": "Error",
+              "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+            }
+          ],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "s",
+              "precision": false,
+              "startedAt": "2026-10-05T00:30:59.097Z",
+              "finishedAt": "2026-10-05T00:31:54.584Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 55.487,
+              "before": {
+                "position": {
+                  "x": 225.6799999999987,
+                  "y": 0.18,
+                  "z": 106.90506253122007,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 24.799999999999873,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.68028262143173,
+                  "y": 0.18,
+                  "z": 116.7050625049367,
+                  "yaw": -3.051728291066853e-07
+                },
+                "simulationTime": 26.549999999999773,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.7499999999999005
+            },
+            {
+              "kind": "precision-approach",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:31:55.429Z",
+              "finishedAt": "2026-10-05T00:32:20.413Z",
+              "status": "failed",
+              "firstError": {
+                "name": "Error",
+                "message": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                "stack": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+              },
+              "wallSeconds": 24.984,
+              "before": {
+                "position": {
+                  "x": 225.68028262143173,
+                  "y": 0.18,
+                  "z": 116.7050625049367,
+                  "yaw": -3.051728291066853e-07
+                },
+                "simulationTime": 26.549999999999773,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": null,
+                "simulationTime": null,
+                "teleportRevision": null
+              },
+              "secondaryErrors": [
+                {
+                  "stage": "keyup-s",
+                  "message": "keyboard.up: page.waitForFunction: Browser closed"
+                },
+                {
+                  "stage": "keyup-z",
+                  "message": "keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+                },
+                {
+                  "stage": "hold-after-snapshot",
+                  "message": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:30:38.402Z",
+          "finishedAt": "2026-10-05T00:30:57.180Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 8,
+          "offsetStartSeconds": 618.014,
+          "wallSeconds": 18.778,
+          "before": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 106.90506253122007,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "target": {
+                "x": 215.67999999999878,
+                "y": 1.7152543103133877,
+                "z": 106.90506129940391
+              },
+              "focus": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "yaw": -1.570796449976512,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 23.79999999999993,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.6799999999987,
+              "y": 0.18,
+              "z": 106.90506253122007,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "target": {
+                "x": 225.6780645348745,
+                "y": 1.7152543103133877,
+                "z": 96.90506271852134
+              },
+              "focus": {
+                "x": 225.6799999999987,
+                "y": 1.8,
+                "z": 106.90506253122007
+              },
+              "yaw": -3.141399107076165,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 24.799999999999873,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.9999999999999432
+        }
+      ],
+      "photographs": [
+        {
+          "label": "south-frontage",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/south-091-south-frontage-high.png",
+            "bytes": 533434,
+            "sha256": "69c5c06955ddbd6b6d61b411e30d0c97f8fcd869ee5033f53c4bbabd0588c9ba"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/south-091-south-frontage-pose.json",
+            "bytes": 17320,
+            "sha256": "7d26c8f0e80438d3a4d7068d8fc8702a9e5ad46ff9db604969b73e4d7218aa19"
+          },
+          "beforeSimulationTime": 2.249999999999997,
+          "afterSimulationTime": 4.7499999999999885,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 118.67839586455375,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 118.67839586455375,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1209,
+            "triangles": 924226,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 13.6,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:21:55.526Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:23:02.125Z",
+          "processingGapSeconds": 66.599
+        },
+        {
+          "label": "actual-public-door",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/south-091-actual-public-door-high.png",
+            "bytes": 443122,
+            "sha256": "f600d2befaccf5aa12e3f57f3b837117fdf71a174b7b2536cff1f11bfec1cc64"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/south-091-actual-public-door-pose.json",
+            "bytes": 17162,
+            "sha256": "f817f028e89b49809966c2410d610f802e4f68dcf79f9d2c30bde7de8bc4b0ae"
+          },
+          "beforeSimulationTime": 6.9999999999999805,
+          "afterSimulationTime": 9.250000000000039,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 117.6783958645536,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 117.6783958645536,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1223,
+            "triangles": 960816,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 18.8,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:23:31.449Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:25:04.579Z",
+          "processingGapSeconds": 93.13
+        },
+        {
+          "label": "east-display-face-close",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/south-091-east-display-face-close-high.png",
+            "bytes": 527069,
+            "sha256": "c4735afefc649bd48eba427d980096ddcb911ab2fb38cca9d6c6a5df61bf8aa4"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/baseline/south-091-east-display-face-close-pose.json",
+            "bytes": 17159,
+            "sha256": "25d6f1e8d897c62363d5497b54430b05c994983c623064d9314e6b80801ed723"
+          },
+          "beforeSimulationTime": 20.8000000000001,
+          "afterSimulationTime": 23.79999999999993,
+          "beforePosition": {
+            "x": 225.6799999999987,
+            "y": 0.18,
+            "z": 106.90506253122007,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 225.6799999999987,
+            "y": 0.18,
+            "z": 106.90506253122007,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1228,
+            "triangles": 982300,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 15.4,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:29:01.772Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:30:37.401Z",
+          "processingGapSeconds": 95.629
+        }
+      ],
+      "events": [
+        {
+          "kind": "single-independent-public-Atlas-setup",
+          "at": "2026-10-05T00:21:40.022Z",
+          "state": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "simulationTime": 1.0000000000000013,
+            "teleportRevision": 2
+          }
+        }
+      ],
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "browser",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "owned-browser-process",
+          "status": "failed",
+          "timeoutMs": 1,
+          "error": "owned-browser-process cleanup deadline"
+        },
+        {
+          "label": "static-server",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        }
+      ],
+      "missingFinalMovementState": true
+    },
+    {
+      "case": "south-091",
+      "mode": "authored",
+      "status": "failed",
+      "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+      "startedAt": "2026-10-05T00:32:20.829Z",
+      "wholeCaseBudgetMinutes": 12,
+      "activeStep": {
+        "index": 7,
+        "kind": "walk",
+        "axis": "z",
+        "target": 118.67839586455375
+      },
+      "hardDeadlineReached": true,
+      "primaryError": {
+        "name": "Error",
+        "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed",
+        "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+      },
+      "finalizationErrors": [
+        "Owned cleanup failed",
+        "Whole case deadline reached",
+        "Playable capture route incomplete"
+      ],
+      "finalizationCompletedAt": "2026-10-05T00:44:20.867Z",
+      "finishedBeforeDeadline": false,
+      "gitHead": "ef92c25980f1da12b508971170b72b9dd6230059",
+      "gitHeadAfter": null,
+      "buildInfoSha256": "95087f264b7f52bb9d3cad03aefe2801aeb840806c1f63656c6e2b7036d4295e",
+      "buildRevision": "ef92c25980f1da12b508971170b72b9dd6230059",
+      "methodHashes": {
+        "capture-authored-harbor-native.mjs": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+        "input.mjs": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+        "plans.mjs": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+        "expectations.mjs": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+        "server.mjs": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "render-readiness.mjs": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+        "evidence/captured-buildings.json": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+        "evidence/common-pose-proof.json": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+      },
+      "browser": {
+        "version": "151.0.7922.34",
+        "executablePath": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+        "ownedPid": 3673,
+        "launchMethod": "official launchServer/connect with owned-process hard deadline",
+        "launchArgs": [
+          "--enable-webgl",
+          "--use-angle=swiftshader",
+          "--enable-unsafe-swiftshader"
+        ]
+      },
+      "browserProcessAfterFinalization": {
+        "pid": 3673,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      },
+      "originalMetadata": {
+        "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/metadata.json",
+        "bytes": 126783,
+        "sha256": "594409134027d2dc695dfb716ee16d7523dc83867ad4ee6969c271c82db95967"
+      },
+      "inputs": [
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294368,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:33:48.039Z",
+          "finishedAt": "2026-10-05T00:34:04.185Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 0,
+          "offsetStartSeconds": 87.21,
+          "wallSeconds": 16.146,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 213,
+                "y": 1.8,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 1.2500000000000004,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 2.249999999999997,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.9999999999999964
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 117.67839586455375,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:35:23.266Z",
+          "finishedAt": "2026-10-05T00:35:48.678Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.25,
+          "inputIndex": 1,
+          "offsetStartSeconds": 182.437,
+          "wallSeconds": 25.412,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 5.249999999999987,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 107.69172919788693
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.749999999999981,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:35:26.604Z",
+              "finishedAt": "2026-10-05T00:35:47.667Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 21.063,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 5.249999999999987,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 117.6783958645536,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 6.749999999999981,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.4999999999999947
+            }
+          ],
+          "simulationDelta": 1.4999999999999947
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880708,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:35:51.002Z",
+          "finishedAt": "2026-10-05T00:35:58.172Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 2,
+          "offsetStartSeconds": 210.173,
+          "wallSeconds": 7.17,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 107.69172919788693
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.69172919788693
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.749999999999981,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 107.6783958645536
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 7.24999999999998,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.4999999999999982
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 118.67839586455375,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:37:33.432Z",
+          "finishedAt": "2026-10-05T00:38:00.120Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.250000000000195,
+          "inputIndex": 3,
+          "offsetStartSeconds": 312.603,
+          "wallSeconds": 26.688,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 117.6783958645536,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 107.6783958645536
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 117.6783958645536
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 10.000000000000076,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 108.66506253122041
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 11.500000000000151,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:37:36.627Z",
+              "finishedAt": "2026-10-05T00:37:58.857Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 22.23,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 117.6783958645536,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 10.000000000000076,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 11.500000000000151,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.5000000000000746
+            }
+          ],
+          "simulationDelta": 1.5000000000000746
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "x",
+          "target": 225.6443515154533,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:38:00.124Z",
+          "finishedAt": "2026-10-05T00:39:46.977Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 8.805439394316588,
+          "inputIndex": 4,
+          "offsetStartSeconds": 339.295,
+          "wallSeconds": 106.853,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 108.66506253122041
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 118.66506253122041
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 11.500000000000151,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.59991999999875,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 225.59991999999875,
+                "y": 0.9176472114121682,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 225.59991999999875,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 15.733333333333695,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "d",
+              "precision": false,
+              "startedAt": "2026-10-05T00:38:03.391Z",
+              "finishedAt": "2026-10-05T00:39:15.675Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 72.284,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 11.500000000000151,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.983333333333608,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.483333333333457
+            },
+            {
+              "kind": "precision-approach",
+              "key": "d",
+              "precision": true,
+              "startedAt": "2026-10-05T00:39:16.795Z",
+              "finishedAt": "2026-10-05T00:39:45.979Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 29.184,
+              "before": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.983333333333608,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 15.733333333333695,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.750000000000087
+            }
+          ],
+          "simulationDelta": 4.233333333333544
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 107,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:39:46.981Z",
+          "finishedAt": "2026-10-05T00:40:51.050Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 7.597994830692139,
+          "inputIndex": 5,
+          "offsetStartSeconds": 446.152,
+          "wallSeconds": 64.069,
+          "before": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.59991999999875,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "target": {
+                "x": 225.59991999999875,
+                "y": 0.9176472114121682,
+                "z": 108.67839586455375
+              },
+              "focus": {
+                "x": 225.59991999999875,
+                "y": 1.8,
+                "z": 118.67839586455375
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 15.733333333333695,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 106.87839586455361,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87831586455358
+              },
+              "target": {
+                "x": 225.59999999999877,
+                "y": 0.9176472114121682,
+                "z": 96.87831586455358
+              },
+              "focus": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87831586455358
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 18.983333333333537,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "w",
+              "precision": false,
+              "startedAt": "2026-10-05T00:39:50.082Z",
+              "finishedAt": "2026-10-05T00:40:26.036Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 35.954,
+              "before": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 118.67839586455375,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 15.733333333333695,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 107.4783958645537,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 17.733333333333608,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.999999999999913
+            },
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:40:26.966Z",
+              "finishedAt": "2026-10-05T00:40:44.263Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 17.297,
+              "before": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 107.4783958645537,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 17.733333333333608,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 106.67839586455358,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 18.73333333333355,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 0.9999999999999432
+            },
+            {
+              "kind": "explicit-endpoint-correction-1",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:40:45.357Z",
+              "finishedAt": "2026-10-05T00:40:49.894Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 4.537,
+              "before": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 106.67839586455358,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 18.73333333333355,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 106.87839586455361,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 18.983333333333537,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 0.2499999999999858
+            }
+          ],
+          "simulationDelta": 3.249999999999842
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:40:53.054Z",
+          "finishedAt": "2026-10-05T00:41:06.002Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 6,
+          "offsetStartSeconds": 512.225,
+          "wallSeconds": 12.948,
+          "before": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 106.87839586455361,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87831586455358
+              },
+              "target": {
+                "x": 225.59999999999877,
+                "y": 0.9176472114121682,
+                "z": 96.87831586455358
+              },
+              "focus": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87831586455358
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 18.983333333333537,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 106.87839586455361,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "target": {
+                "x": 215.60000000047648,
+                "y": 1.7152543103133877,
+                "z": 106.87829811968307
+              },
+              "focus": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "yaw": -1.5708061012819508,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 19.98333333333348,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.9999999999999432
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 118.67839586455375,
+          "yaw": null,
+          "pitch": null,
+          "status": "failed",
+          "startedAt": "2026-10-05T00:43:09.776Z",
+          "finishedAt": "2026-10-05T00:44:20.860Z",
+          "remainingMsAtStart": 54648,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 7,
+          "offsetStartSeconds": 648.947,
+          "wallSeconds": 71.084,
+          "before": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 106.87839586455361,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "target": {
+                "x": 225.59806453487457,
+                "y": 1.7152543103133877,
+                "z": 96.87839605185488
+              },
+              "focus": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "yaw": -3.141399107076165,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 24.983333333333196,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": null,
+            "camera": null,
+            "simulationTime": null,
+            "teleportRevision": null
+          },
+          "firstError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "secondaryErrors": [
+            {
+              "stage": "final-keyup-w",
+              "name": "Error",
+              "message": "keyboard.up: page.evaluate: Browser closed"
+            },
+            {
+              "stage": "final-keyup-a",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: page.evaluate: Browser closed"
+            },
+            {
+              "stage": "final-keyup-s",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed"
+            },
+            {
+              "stage": "final-keyup-d",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed"
+            },
+            {
+              "stage": "final-keyup-z",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed"
+            },
+            {
+              "stage": "leg-after-snapshot",
+              "name": "Error",
+              "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: Browser closed"
+            }
+          ],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "s",
+              "precision": false,
+              "startedAt": "2026-10-05T00:43:27.203Z",
+              "finishedAt": "2026-10-05T00:44:20.858Z",
+              "status": "failed",
+              "firstError": {
+                "name": "Error",
+                "message": "page.evaluate: Browser closed",
+                "stack": "page.evaluate: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:68:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+              },
+              "wallSeconds": 53.655,
+              "before": {
+                "position": {
+                  "x": 225.59999999999877,
+                  "y": 0.18,
+                  "z": 106.87839586455361,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 24.983333333333196,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": null,
+                "simulationTime": null,
+                "teleportRevision": null
+              },
+              "secondaryErrors": [
+                {
+                  "stage": "hold-after-snapshot",
+                  "message": "page.evaluate: Browser closed"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:43:10.793Z",
+          "finishedAt": "2026-10-05T00:43:25.005Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 8,
+          "offsetStartSeconds": 649.964,
+          "wallSeconds": 14.212,
+          "before": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 106.87839586455361,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "target": {
+                "x": 215.59999999999886,
+                "y": 1.7152543103133877,
+                "z": 106.87839463273745
+              },
+              "focus": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "yaw": -1.570796449976512,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 23.983333333333253,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.59999999999877,
+              "y": 0.18,
+              "z": 106.87839586455361,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "target": {
+                "x": 225.59806453487457,
+                "y": 1.7152543103133877,
+                "z": 96.87839605185488
+              },
+              "focus": {
+                "x": 225.59999999999877,
+                "y": 1.8,
+                "z": 106.87839586455361
+              },
+              "yaw": -3.141399107076165,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 24.983333333333196,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.9999999999999432
+        }
+      ],
+      "photographs": [
+        {
+          "label": "south-frontage",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/south-091-south-frontage-high.png",
+            "bytes": 535909,
+            "sha256": "4d58d011e6ec35185ea8753d7de50fd7e35eee6ebd2c0c3e53ac997c62567053"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/south-091-south-frontage-pose.json",
+            "bytes": 19598,
+            "sha256": "c5ba8a631da64869335d7e2ca9dc345c0fe15d4bb96be6de1d7f0e32af0d3438"
+          },
+          "beforeSimulationTime": 2.749999999999995,
+          "afterSimulationTime": 5.249999999999987,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 118.67839586455375,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 118.67839586455375,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1206,
+            "triangles": 953102,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 20.4,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:34:04.185Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:35:23.266Z",
+          "processingGapSeconds": 79.081
+        },
+        {
+          "label": "actual-public-door",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/south-091-actual-public-door-high.png",
+            "bytes": 441384,
+            "sha256": "3df1b5ed3f7e8f7eb08f5d8d54eb7739cb103c1b9ff8fc97c34c85fbcfa21203"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/south-091-actual-public-door-pose.json",
+            "bytes": 19442,
+            "sha256": "9e4085489d4cf58b3ae635bf3e030a6dc458f111a218b6bb3e8d70d40354f81c"
+          },
+          "beforeSimulationTime": 7.749999999999978,
+          "afterSimulationTime": 10.000000000000076,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 117.6783958645536,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 117.6783958645536,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1196,
+            "triangles": 1057228,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 14.8,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:35:58.172Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:37:33.432Z",
+          "processingGapSeconds": 95.26
+        },
+        {
+          "label": "east-display-face-close",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/south-091-east-display-face-close-high.png",
+            "bytes": 587856,
+            "sha256": "a44663a86e23c1410bc9e0f06ddc998e7759e7e6acb89f40ff9f017e15a4ab50"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-091-11319753983/extracted/native/authored/south-091-east-display-face-close-pose.json",
+            "bytes": 19456,
+            "sha256": "08dbececb030206dc661748de294358e115d4dadc3e84b77af03eff9e3d15bd3"
+          },
+          "beforeSimulationTime": 20.733333333333437,
+          "afterSimulationTime": 23.983333333333253,
+          "beforePosition": {
+            "x": 225.59999999999877,
+            "y": 0.18,
+            "z": 106.87839586455361,
+            "yaw": 1.2246467991473532e-16
+          },
+          "afterPosition": {
+            "x": 225.59999999999877,
+            "y": 0.18,
+            "z": 106.87839586455361,
+            "yaw": 1.2246467991473532e-16
+          },
+          "beforeRenderer": {
+            "calls": 1214,
+            "triangles": 1075592,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 24.1,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:41:06.002Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:43:09.776Z",
+          "processingGapSeconds": 123.774
+        }
+      ],
+      "events": [
+        {
+          "kind": "single-independent-public-Atlas-setup",
+          "at": "2026-10-05T00:33:44.833Z",
+          "state": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 118.67839586455375,
+              "yaw": -3.141592653589793
+            },
+            "simulationTime": 1.2500000000000004,
+            "teleportRevision": 2
+          }
+        }
+      ],
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "browser",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "owned-browser-process",
+          "status": "failed",
+          "timeoutMs": 1,
+          "error": "owned-browser-process cleanup deadline"
+        },
+        {
+          "label": "static-server",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        }
+      ],
+      "missingFinalMovementState": true
+    },
+    {
+      "case": "south-092",
+      "mode": "baseline",
+      "status": "failed",
+      "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+      "startedAt": "2026-10-05T00:20:23.467Z",
+      "wholeCaseBudgetMinutes": 12,
+      "activeStep": {
+        "index": 7,
+        "kind": "walk",
+        "axis": "z",
+        "target": 145.11998675437644
+      },
+      "hardDeadlineReached": true,
+      "primaryError": {
+        "name": "Error",
+        "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed",
+        "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+      },
+      "finalizationErrors": [
+        "Owned cleanup failed",
+        "Whole case deadline reached",
+        "Playable capture route incomplete"
+      ],
+      "finalizationCompletedAt": "2026-10-05T00:32:23.503Z",
+      "finishedBeforeDeadline": false,
+      "gitHead": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "gitHeadAfter": null,
+      "buildInfoSha256": "4e10135a76da95817365493cfc834d6ed757999f6cba98ae4c3344429a5971c4",
+      "buildRevision": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+      "methodHashes": {
+        "capture-authored-harbor-native.mjs": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+        "input.mjs": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+        "plans.mjs": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+        "expectations.mjs": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+        "server.mjs": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "render-readiness.mjs": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+        "evidence/captured-buildings.json": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+        "evidence/common-pose-proof.json": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+      },
+      "browser": {
+        "version": "151.0.7922.34",
+        "executablePath": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+        "ownedPid": 3425,
+        "launchMethod": "official launchServer/connect with owned-process hard deadline",
+        "launchArgs": [
+          "--enable-webgl",
+          "--use-angle=swiftshader",
+          "--enable-unsafe-swiftshader"
+        ]
+      },
+      "browserProcessAfterFinalization": {
+        "pid": 3425,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      },
+      "originalMetadata": {
+        "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/metadata.json",
+        "bytes": 116042,
+        "sha256": "de2800dfb3b569a50ec10d45576804992f1061c9eb3b8431ee08f077825a6ac8"
+      },
+      "inputs": [
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294363,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:22:03.120Z",
+          "finishedAt": "2026-10-05T00:22:05.061Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 0,
+          "offsetStartSeconds": 99.653,
+          "wallSeconds": 1.941,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "target": {
+                "x": 213,
+                "y": 1.8,
+                "z": 135.11998675437644
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 1.4999999999999996,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 135.11998675437644
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 1.9999999999999978,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.4999999999999982
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 144.11998675437644,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:23:23.056Z",
+          "finishedAt": "2026-10-05T00:23:48.455Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.25,
+          "inputIndex": 1,
+          "offsetStartSeconds": 179.589,
+          "wallSeconds": 25.399,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 135.11998675437644
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 5.249999999999987,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 134.13332008771067
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.749999999999981,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:23:26.206Z",
+              "finishedAt": "2026-10-05T00:23:47.236Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 21.03,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 5.249999999999987,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 144.11998675437735,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 6.749999999999981,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.4999999999999947
+            }
+          ],
+          "simulationDelta": 1.4999999999999947
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880613,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:23:50.491Z",
+          "finishedAt": "2026-10-05T00:24:04.117Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 2,
+          "offsetStartSeconds": 207.024,
+          "wallSeconds": 13.626,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 134.13332008771067
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.749999999999981,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 134.11998675437735
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 7.24999999999998,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.4999999999999982
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 145.11998675437644,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:25:42.369Z",
+          "finishedAt": "2026-10-05T00:26:04.535Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.249999999998863,
+          "inputIndex": 3,
+          "offsetStartSeconds": 318.902,
+          "wallSeconds": 22.166,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 134.11998675437735
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 10.250000000000089,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 135.10665342104312
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 11.500000000000151,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:25:45.066Z",
+              "finishedAt": "2026-10-05T00:26:03.466Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 18.4,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 144.11998675437735,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 10.250000000000089,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 11.500000000000151,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.2500000000000622
+            }
+          ],
+          "simulationDelta": 1.2500000000000622
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "x",
+          "target": 225.8373617986217,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:26:04.539Z",
+          "finishedAt": "2026-10-05T00:28:07.164Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 9.046702248277095,
+          "inputIndex": 4,
+          "offsetStartSeconds": 341.072,
+          "wallSeconds": 122.625,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 135.10665342104312
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 11.500000000000151,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 144.74960060537225,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.81204239874597,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "target": {
+                "x": 225.81204239874597,
+                "y": 0.9176472114121682,
+                "z": 134.74960060537225
+              },
+              "focus": {
+                "x": 225.81204239874597,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 16.000000000000373,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "d",
+              "precision": false,
+              "startedAt": "2026-10-05T00:26:07.352Z",
+              "finishedAt": "2026-10-05T00:27:02.958Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 55.606,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 11.500000000000151,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.50000000000025,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.0000000000000995
+            },
+            {
+              "kind": "precision-approach",
+              "key": "d",
+              "precision": true,
+              "startedAt": "2026-10-05T00:27:03.953Z",
+              "finishedAt": "2026-10-05T00:28:06.073Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 62.12,
+              "before": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.50000000000025,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.8253757320793,
+                  "y": 0.18,
+                  "z": 144.74960060537225,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 16.000000000000373,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.5000000000001226
+            }
+          ],
+          "simulationDelta": 4.500000000000222
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 133,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:28:07.170Z",
+          "finishedAt": "2026-10-05T00:29:35.353Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 9.387000756715272,
+          "inputIndex": 5,
+          "offsetStartSeconds": 463.703,
+          "wallSeconds": 88.183,
+          "before": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 144.74960060537225,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.81204239874597,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "target": {
+                "x": 225.81204239874597,
+                "y": 0.9176472114121682,
+                "z": 134.74960060537225
+              },
+              "focus": {
+                "x": 225.81204239874597,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 16.000000000000373,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 132.93626727204088,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "target": {
+                "x": 225.8253757320793,
+                "y": 0.9176472114121682,
+                "z": 122.93626727204088
+              },
+              "focus": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 20.71666666666677,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "w",
+              "precision": false,
+              "startedAt": "2026-10-05T00:28:10.029Z",
+              "finishedAt": "2026-10-05T00:28:32.321Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 22.292,
+              "before": {
+                "position": {
+                  "x": 225.8253757320793,
+                  "y": 0.18,
+                  "z": 144.74960060537225,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 16.000000000000373,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.8253757320793,
+                  "y": 0.18,
+                  "z": 135.13626727203888,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 17.716666666666942,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.716666666666569
+            },
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:28:33.272Z",
+              "finishedAt": "2026-10-05T00:29:34.464Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 61.192,
+              "before": {
+                "position": {
+                  "x": 225.8253757320793,
+                  "y": 0.18,
+                  "z": 135.13626727203888,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 17.716666666666942,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.8253757320793,
+                  "y": 0.18,
+                  "z": 132.93626727204088,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 20.466666666666786,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.7499999999998437
+            }
+          ],
+          "simulationDelta": 4.7166666666663986
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:29:37.301Z",
+          "finishedAt": "2026-10-05T00:29:55.489Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 6,
+          "offsetStartSeconds": 553.834,
+          "wallSeconds": 18.188,
+          "before": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 132.93626727204088,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "target": {
+                "x": 225.8253757320793,
+                "y": 0.9176472114121682,
+                "z": 122.93626727204088
+              },
+              "focus": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 20.71666666666677,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 132.93626727204088,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "target": {
+                "x": 215.82537592021046,
+                "y": 1.7152543103133877,
+                "z": 132.93432752371942
+              },
+              "focus": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "yaw": -1.57099030162826,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 21.716666666666715,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.9999999999999432
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 145.11998675437644,
+          "yaw": null,
+          "pitch": null,
+          "status": "failed",
+          "startedAt": "2026-10-05T00:31:50.905Z",
+          "finishedAt": "2026-10-05T00:32:23.497Z",
+          "remainingMsAtStart": 11656,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 7,
+          "offsetStartSeconds": 687.438,
+          "wallSeconds": 32.592,
+          "before": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 132.93626727204088,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "target": {
+                "x": 225.8234402669551,
+                "y": 1.7152543103133877,
+                "z": 122.93626745934215
+              },
+              "focus": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "yaw": -3.141399107076165,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 26.71666666666643,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": null,
+            "camera": null,
+            "simulationTime": null,
+            "teleportRevision": null
+          },
+          "firstError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "secondaryErrors": [
+            {
+              "stage": "final-keyup-w",
+              "name": "Error",
+              "message": "keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-a",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-s",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-d",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "final-keyup-z",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+            },
+            {
+              "stage": "leg-after-snapshot",
+              "name": "Error",
+              "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+            }
+          ],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "s",
+              "precision": false,
+              "startedAt": "2026-10-05T00:32:12.808Z",
+              "finishedAt": "2026-10-05T00:32:23.496Z",
+              "status": "failed",
+              "firstError": {
+                "name": "Error",
+                "message": "page.evaluate: keyboard.up: page.waitForFunction: Browser closed",
+                "stack": "page.evaluate: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:68:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+              },
+              "wallSeconds": 10.688,
+              "before": {
+                "position": {
+                  "x": 225.8253757320793,
+                  "y": 0.18,
+                  "z": 132.93626727204088,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 26.71666666666643,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": null,
+                "simulationTime": null,
+                "teleportRevision": null
+              },
+              "secondaryErrors": [
+                {
+                  "stage": "keyup-s",
+                  "message": "keyboard.up: page.waitForFunction: Browser closed"
+                },
+                {
+                  "stage": "hold-after-snapshot",
+                  "message": "page.evaluate: keyboard.up: page.waitForFunction: Browser closed"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:31:51.917Z",
+          "finishedAt": "2026-10-05T00:32:10.771Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 8,
+          "offsetStartSeconds": 688.45,
+          "wallSeconds": 18.854,
+          "before": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 132.93626727204088,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "target": {
+                "x": 215.82537573207938,
+                "y": 1.7152543103133877,
+                "z": 132.93626604022472
+              },
+              "focus": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "yaw": -1.570796449976512,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 25.966666666666473,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.8253757320793,
+              "y": 0.18,
+              "z": 132.93626727204088,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "target": {
+                "x": 225.8234402669551,
+                "y": 1.7152543103133877,
+                "z": 122.93626745934215
+              },
+              "focus": {
+                "x": 225.8253757320793,
+                "y": 1.8,
+                "z": 132.93626727204088
+              },
+              "yaw": -3.141399107076165,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 26.71666666666643,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.7499999999999574
+        }
+      ],
+      "photographs": [
+        {
+          "label": "south-frontage",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/south-092-south-frontage-high.png",
+            "bytes": 513153,
+            "sha256": "8a5edc2e2d731bde5b0f2d1fef59f16e80886ebf9b9b786cabcd6434fdf4b710"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/south-092-south-frontage-pose.json",
+            "bytes": 17297,
+            "sha256": "2f8ce8442fc8508b8d4e0a18f4235cb046ed674f76a28fe2b1a6e037686be6b2"
+          },
+          "beforeSimulationTime": 2.499999999999996,
+          "afterSimulationTime": 5.249999999999987,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 145.11998675437644,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 145.11998675437644,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1344,
+            "triangles": 816204,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 17.1,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:22:05.061Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:23:23.056Z",
+          "processingGapSeconds": 77.995
+        },
+        {
+          "label": "actual-public-door",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/south-092-actual-public-door-high.png",
+            "bytes": 437704,
+            "sha256": "7323b26040e38f97f0874bdfef7e0c0cd277c22e81c17f1a60818e687169f5e8"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/south-092-actual-public-door-pose.json",
+            "bytes": 17152,
+            "sha256": "d351d7f39b339ec7423bedab75dd0a32aecbc7c3c6f62269d04b024025910660"
+          },
+          "beforeSimulationTime": 7.749999999999978,
+          "afterSimulationTime": 10.250000000000089,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 144.11998675437735,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 144.11998675437735,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1337,
+            "triangles": 814148,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 19.9,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:24:04.117Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:25:42.369Z",
+          "processingGapSeconds": 98.252
+        },
+        {
+          "label": "east-display-face-close",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/south-092-east-display-face-close-high.png",
+            "bytes": 540141,
+            "sha256": "f4433a33f3ea1fe6412478d7fbb4a6d8863616a139fbc7ac10d79ea0b211428b"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/baseline/south-092-east-display-face-close-pose.json",
+            "bytes": 17208,
+            "sha256": "135a5b861d50d18d0c6314e277c292409c34e2d95b22c2bc491b7c54e9cd1928"
+          },
+          "beforeSimulationTime": 22.466666666666672,
+          "afterSimulationTime": 25.716666666666487,
+          "beforePosition": {
+            "x": 225.8253757320793,
+            "y": 0.18,
+            "z": 132.93626727204088,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 225.8253757320793,
+            "y": 0.18,
+            "z": 132.93626727204088,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1231,
+            "triangles": 935254,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 26.3,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:29:55.489Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:31:50.905Z",
+          "processingGapSeconds": 115.416
+        }
+      ],
+      "events": [
+        {
+          "kind": "single-independent-public-Atlas-setup",
+          "at": "2026-10-05T00:21:55.330Z",
+          "state": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "simulationTime": 1.0000000000000013,
+            "teleportRevision": 2
+          }
+        }
+      ],
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "browser",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "owned-browser-process",
+          "status": "failed",
+          "timeoutMs": 1,
+          "error": "owned-browser-process cleanup deadline"
+        },
+        {
+          "label": "static-server",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        }
+      ],
+      "missingFinalMovementState": true
+    },
+    {
+      "case": "south-092",
+      "mode": "authored",
+      "status": "failed",
+      "artAcceptance": "PENDING_HUMAN_NATIVE_REVIEW",
+      "startedAt": "2026-10-05T00:32:24.028Z",
+      "wholeCaseBudgetMinutes": 12,
+      "activeStep": {
+        "index": 6,
+        "kind": "photo",
+        "label": "east-display-face-close",
+        "position": {
+          "x": 225.8373617986217,
+          "y": 0.18,
+          "z": 133
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 223.4773617986217,
+          "y": 1.78,
+          "z": 133
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 225.8373617986217,
+          "y": 1.8,
+          "z": 133
+        },
+        "camera": {
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.360084744241203
+      },
+      "hardDeadlineReached": true,
+      "primaryError": {
+        "name": "TimeoutError",
+        "message": "page.screenshot: Timeout 98472ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+        "stack": "page.screenshot: Timeout 98472ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n\n    at capture (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:178:59)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:269:31"
+      },
+      "finalizationErrors": [
+        "Owned cleanup failed",
+        "Whole case deadline reached",
+        "Playable capture route incomplete"
+      ],
+      "finalizationCompletedAt": "2026-10-05T00:44:24.085Z",
+      "finishedBeforeDeadline": false,
+      "gitHead": "ef92c25980f1da12b508971170b72b9dd6230059",
+      "gitHeadAfter": null,
+      "buildInfoSha256": "95087f264b7f52bb9d3cad03aefe2801aeb840806c1f63656c6e2b7036d4295e",
+      "buildRevision": "ef92c25980f1da12b508971170b72b9dd6230059",
+      "methodHashes": {
+        "capture-authored-harbor-native.mjs": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b",
+        "input.mjs": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227",
+        "plans.mjs": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95",
+        "expectations.mjs": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1",
+        "server.mjs": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388",
+        "render-readiness.mjs": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700",
+        "evidence/captured-buildings.json": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3",
+        "evidence/common-pose-proof.json": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+      },
+      "browser": {
+        "version": "151.0.7922.34",
+        "executablePath": "/home/runner/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+        "ownedPid": 3659,
+        "launchMethod": "official launchServer/connect with owned-process hard deadline",
+        "launchArgs": [
+          "--enable-webgl",
+          "--use-angle=swiftshader",
+          "--enable-unsafe-swiftshader"
+        ]
+      },
+      "browserProcessAfterFinalization": {
+        "pid": 3659,
+        "exitCode": null,
+        "signalCode": "SIGKILL"
+      },
+      "originalMetadata": {
+        "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/authored/metadata.json",
+        "bytes": 116554,
+        "sha256": "fb145d5a5efeae7e96c4da0cfed629585b54264c2d65dfbe6ed30e3034de382d"
+      },
+      "inputs": [
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294363,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:34:07.592Z",
+          "finishedAt": "2026-10-05T00:34:10.250Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 0,
+          "offsetStartSeconds": 103.564,
+          "wallSeconds": 2.658,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "target": {
+                "x": 213,
+                "y": 1.8,
+                "z": 135.11998675437644
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 1.4999999999999996,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 135.11998675437644
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 2.249999999999997,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.7499999999999973
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 144.11998675437644,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:35:38.414Z",
+          "finishedAt": "2026-10-05T00:36:16.369Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.25,
+          "inputIndex": 1,
+          "offsetStartSeconds": 194.386,
+          "wallSeconds": 37.955,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 135.11998675437644
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.11998675437644
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 5.499999999999986,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 134.13332008771067
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.9999999999999805,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:35:41.761Z",
+              "finishedAt": "2026-10-05T00:36:15.354Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 33.593,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 5.749999999999985,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 144.11998675437735,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 6.9999999999999805,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.2499999999999956
+            }
+          ],
+          "simulationDelta": 1.4999999999999947
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880613,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:36:18.492Z",
+          "finishedAt": "2026-10-05T00:36:26.171Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 2,
+          "offsetStartSeconds": 234.464,
+          "wallSeconds": 7.679,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "target": {
+                "x": 213,
+                "y": 1.7152543103133875,
+                "z": 134.13332008771067
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.13332008771067
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.15847467041015625,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 6.9999999999999805,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 134.11998675437735
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 7.24999999999998,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 0.2499999999999991
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 145.11998675437644,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:38:01.810Z",
+          "finishedAt": "2026-10-05T00:38:37.765Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 6.249999999998863,
+          "inputIndex": 3,
+          "offsetStartSeconds": 337.782,
+          "wallSeconds": 35.955,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 144.11998675437735,
+              "yaw": -3.141592653589793
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 134.11998675437735
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 144.11998675437735
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 10.250000000000089,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 135.10665342104312
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 11.750000000000163,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:38:05.257Z",
+              "finishedAt": "2026-10-05T00:38:36.387Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 31.13,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 144.11998675437735,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 10.250000000000089,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 11.750000000000163,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.5000000000000746
+            }
+          ],
+          "simulationDelta": 1.5000000000000746
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "x",
+          "target": 225.8373617986217,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:38:37.769Z",
+          "finishedAt": "2026-10-05T00:40:43.608Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 9.046702248277095,
+          "inputIndex": 4,
+          "offsetStartSeconds": 373.741,
+          "wallSeconds": 125.839,
+          "before": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "target": {
+                "x": 213,
+                "y": 0.9176472114121682,
+                "z": 135.10665342104312
+              },
+              "focus": {
+                "x": 213,
+                "y": 1.8,
+                "z": 145.10665342104312
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 11.750000000000163,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.98537573207915,
+              "y": 0.18,
+              "z": 144.74960060537225,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.97204239874583,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "target": {
+                "x": 225.97204239874583,
+                "y": 0.9176472114121682,
+                "z": 134.74960060537225
+              },
+              "focus": {
+                "x": 225.97204239874583,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 16.450000000000347,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "d",
+              "precision": false,
+              "startedAt": "2026-10-05T00:38:40.909Z",
+              "finishedAt": "2026-10-05T00:39:44.805Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 63.896,
+              "before": {
+                "position": {
+                  "x": 213,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 11.750000000000163,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.750000000000263,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.0000000000000995
+            },
+            {
+              "kind": "precision-approach",
+              "key": "d",
+              "precision": true,
+              "startedAt": "2026-10-05T00:39:46.087Z",
+              "finishedAt": "2026-10-05T00:40:42.619Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 56.532,
+              "before": {
+                "position": {
+                  "x": 224.20000000000005,
+                  "y": 0.18,
+                  "z": 145.11998675437644,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 13.750000000000263,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 144.74960060537225,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 16.450000000000347,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 2.7000000000000846
+            }
+          ],
+          "simulationDelta": 4.700000000000184
+        },
+        {
+          "kind": "real-WASD-leg",
+          "axis": "z",
+          "target": 133,
+          "yaw": null,
+          "pitch": null,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:40:43.615Z",
+          "finishedAt": "2026-10-05T00:42:02.982Z",
+          "remainingMsAtStart": 180000,
+          "simulationBudgetSeconds": 7.687000756715266,
+          "inputIndex": 5,
+          "offsetStartSeconds": 499.587,
+          "wallSeconds": 79.367,
+          "before": {
+            "position": {
+              "x": 225.98537573207915,
+              "y": 0.18,
+              "z": 144.74960060537225,
+              "yaw": 1.5707963267948968
+            },
+            "camera": {
+              "position": {
+                "x": 225.97204239874583,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "target": {
+                "x": 225.97204239874583,
+                "y": 0.9176472114121682,
+                "z": 134.74960060537225
+              },
+              "focus": {
+                "x": 225.97204239874583,
+                "y": 1.8,
+                "z": 144.74960060537225
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 16.450000000000347,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.98537573207915,
+              "y": 0.18,
+              "z": 132.94960060537275,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.98537573207915,
+                "y": 1.8,
+                "z": 132.93626727203943
+              },
+              "target": {
+                "x": 225.98537573207915,
+                "y": 0.9176472114121682,
+                "z": 122.93626727203943
+              },
+              "focus": {
+                "x": 225.98537573207915,
+                "y": 1.8,
+                "z": 132.93626727203943
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 19.95000000000015,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [
+            {
+              "kind": "coarse",
+              "key": "w",
+              "precision": false,
+              "startedAt": "2026-10-05T00:40:46.644Z",
+              "finishedAt": "2026-10-05T00:41:23.816Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 37.172,
+              "before": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 144.74960060537225,
+                  "yaw": 1.5707963267948968
+                },
+                "simulationTime": 16.450000000000347,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 133.5496006053722,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 18.450000000000234,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 1.9999999999998863
+            },
+            {
+              "kind": "precision-approach",
+              "key": "w",
+              "precision": true,
+              "startedAt": "2026-10-05T00:41:25.062Z",
+              "finishedAt": "2026-10-05T00:41:43.740Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 18.678,
+              "before": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 133.5496006053722,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 18.70000000000022,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 132.74960060537293,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 19.700000000000163,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 0.9999999999999432
+            },
+            {
+              "kind": "explicit-endpoint-correction-1",
+              "key": "s",
+              "precision": true,
+              "startedAt": "2026-10-05T00:41:44.761Z",
+              "finishedAt": "2026-10-05T00:42:01.961Z",
+              "status": "completed",
+              "firstError": null,
+              "wallSeconds": 17.2,
+              "before": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 132.74960060537293,
+                  "yaw": -3.141592653589793
+                },
+                "simulationTime": 19.700000000000163,
+                "teleportRevision": 2
+              },
+              "after": {
+                "position": {
+                  "x": 225.98537573207915,
+                  "y": 0.18,
+                  "z": 132.94960060537275,
+                  "yaw": 1.2246467991473532e-16
+                },
+                "simulationTime": 19.95000000000015,
+                "teleportRevision": 2
+              },
+              "secondaryErrors": [],
+              "simulationDelta": 0.2499999999999858
+            }
+          ],
+          "simulationDelta": 3.499999999999801
+        },
+        {
+          "kind": "real-pointer-look",
+          "axis": null,
+          "target": null,
+          "yaw": -1.5707963267948966,
+          "pitch": 0.15847467771294363,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:42:05.295Z",
+          "finishedAt": "2026-10-05T00:42:31.780Z",
+          "remainingMsAtStart": null,
+          "simulationBudgetSeconds": null,
+          "inputIndex": 6,
+          "offsetStartSeconds": 581.267,
+          "wallSeconds": 26.485,
+          "before": {
+            "position": {
+              "x": 225.98537573207915,
+              "y": 0.18,
+              "z": 132.94960060537275,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.98537573207915,
+                "y": 1.8,
+                "z": 132.93626727203943
+              },
+              "target": {
+                "x": 225.98537573207915,
+                "y": 0.9176472114121682,
+                "z": 122.93626727203943
+              },
+              "focus": {
+                "x": 225.98537573207915,
+                "y": 1.8,
+                "z": 132.93626727203943
+              },
+              "yaw": -3.141592653589793,
+              "pitch": 0.2383501739501953,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 19.95000000000015,
+            "teleportRevision": 2
+          },
+          "after": {
+            "position": {
+              "x": 225.98537573207915,
+              "y": 0.18,
+              "z": 132.94960060537275,
+              "yaw": 1.2246467991473532e-16
+            },
+            "camera": {
+              "position": {
+                "x": 225.98537573207915,
+                "y": 1.8,
+                "z": 132.94960060537275
+              },
+              "target": {
+                "x": 215.98537573255686,
+                "y": 1.7152543103133877,
+                "z": 132.9495028605022
+              },
+              "focus": {
+                "x": 225.98537573207915,
+                "y": 1.8,
+                "z": 132.94960060537275
+              },
+              "yaw": -1.5708061012819508,
+              "pitch": 0.15847467041015623,
+              "fov": 65,
+              "boomLength": 0,
+              "desiredBoomLength": 0,
+              "obstructed": false,
+              "overheadFallback": false,
+              "colliderId": null,
+              "clearanceRadius": 0.45
+            },
+            "simulationTime": 21.70000000000005,
+            "teleportRevision": 2
+          },
+          "firstError": null,
+          "secondaryErrors": [],
+          "holds": [],
+          "simulationDelta": 1.7499999999999005
+        }
+      ],
+      "photographs": [
+        {
+          "label": "south-frontage",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/authored/south-092-south-frontage-high.png",
+            "bytes": 516183,
+            "sha256": "6859e05833569bbb98dded8eff82231fe4239bfeceb011cdb9a57f4e505534c8"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/authored/south-092-south-frontage-pose.json",
+            "bytes": 19426,
+            "sha256": "251869e0530d9237cb5185cb9e5c568a2054208a8ce17b7e29195d6a2290004d"
+          },
+          "beforeSimulationTime": 2.9999999999999942,
+          "afterSimulationTime": 5.499999999999986,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 145.11998675437644,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 145.11998675437644,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1338,
+            "triangles": 880724,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 22.4,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:34:10.250Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:35:38.414Z",
+          "processingGapSeconds": 88.164
+        },
+        {
+          "label": "actual-public-door",
+          "png": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/authored/south-092-actual-public-door-high.png",
+            "bytes": 440626,
+            "sha256": "c1a44e804d4c5836bd445cd1a5d1e8535eb1dede14afb4b2897e390a772ded3d"
+          },
+          "pose": {
+            "path": "/tmp/neon-native-ef92-south-092-11320017098/extracted/native/authored/south-092-actual-public-door-pose.json",
+            "bytes": 19430,
+            "sha256": "eb17a51d7a2d965cd9b7d274321a8eaadf736a0d343240e76c4cfdcba6f97af7"
+          },
+          "beforeSimulationTime": 7.749999999999978,
+          "afterSimulationTime": 10.000000000000076,
+          "beforePosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 144.11998675437735,
+            "yaw": -3.141592653589793
+          },
+          "afterPosition": {
+            "x": 213,
+            "y": 0.18,
+            "z": 144.11998675437735,
+            "yaw": -3.141592653589793
+          },
+          "beforeRenderer": {
+            "calls": 1331,
+            "triangles": 878668,
+            "contextLost": false,
+            "shadow": {
+              "enabled": true,
+              "type": 1,
+              "sunCastShadow": true,
+              "mapResident": true,
+              "mapSize": [
+                2048,
+                2048
+              ]
+            },
+            "contactOcclusion": {
+              "enabled": true,
+              "supported": true,
+              "quality": "high",
+              "technique": "depth-reconstructed short-range SSAO",
+              "sceneSize": [
+                1280,
+                800
+              ],
+              "occlusionSize": [
+                640,
+                400
+              ],
+              "samples": 4,
+              "passes": 3,
+              "cpuSubmitMs": 23.8,
+              "fallback": null
+            }
+          },
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          },
+          "captureCallTimestamps": "Not recorded; do not invent exact screenshot start/end from filenames.",
+          "afterLookProcessingLowerBoundAt": "2026-10-05T00:36:26.171Z",
+          "followingWalkUpperBoundAt": "2026-10-05T00:38:01.810Z",
+          "processingGapSeconds": 95.639
+        }
+      ],
+      "events": [
+        {
+          "kind": "single-independent-public-Atlas-setup",
+          "at": "2026-10-05T00:33:55.211Z",
+          "state": {
+            "position": {
+              "x": 213,
+              "y": 0.18,
+              "z": 145.11998675437644,
+              "yaw": -3.141592653589793
+            },
+            "simulationTime": 1.0000000000000013,
+            "teleportRevision": 2
+          }
+        }
+      ],
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "browser",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        },
+        {
+          "label": "owned-browser-process",
+          "status": "failed",
+          "timeoutMs": 1,
+          "error": "owned-browser-process cleanup deadline"
+        },
+        {
+          "label": "static-server",
+          "status": "closed",
+          "timeoutMs": 1,
+          "error": null
+        }
+      ],
+      "missingFinalMovementState": false
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/preparation/method-bundle-original/methods/harbor/capture-authored-harbor-native.mjs",
+      "bytes": 31770,
+      "sha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b"
+    },
+    {
+      "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/preparation/method-bundle-original/methods/harbor/input.mjs",
+      "bytes": 7087,
+      "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+    },
+    {
+      "path": "/tmp/neon-native-ef92-south-094-11319503714/extracted/preparation/method-bundle-original/methods/harbor/plans.mjs",
+      "bytes": 6751,
+      "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95"
+    }
+  ],
+  "sourceFacts": {
+    "wholeCaseMinutes": 12,
+    "deadlineStarts": "Before runtime/source fingerprints, browser launch and public setup, not after arrival.",
+    "phaseDefaultMs": 180000,
+    "actualHoldMs": 120000,
+    "axisToleranceMetres": 0.15,
+    "correctionHoldsMaximum": 2,
+    "originalMovementGuard": "abs(coarseDistance)/5.6 + abs(precisionDistance)/.8 +5; unchanged",
+    "photoSourceSteps": "Full snapshot, material readiness, real mouse camera, toast/stream readiness, 2 RAF, before snapshot+GL, screenshot, after snapshot, pose write/hash metadata; screenshot timeout is min180000,remaining whole deadline.",
+    "wholeHardTimer": "Kills actual owned BrowserServer and closes server connections at720s; original FAIL remains."
+  },
+  "sourcePoleGeometry": {
+    "playerRadius": 0.65,
+    "lampCenter": {
+      "x": 225.5,
+      "z": 145.5
+    },
+    "lampHalfExtents": {
+      "x": 0.1,
+      "z": 0.1
+    },
+    "sourceReferences": [
+      "src/world.js:446-447 block200/120 lamp225.5/145.5",
+      "src/world-config.js:13 radius.65",
+      "src/collision.js:313-329 tangential contact/axis correction"
+    ],
+    "fixedXChecks": [
+      {
+        "mode": "baseline",
+        "actualXBeforeOriginalReturn": 225.8253757320793,
+        "nominalReturnTargetZ": 145.11998675437644,
+        "fixedXCircleBoundaryMaximumZ": 144.79032321727843,
+        "fixedXTargetError": 0.3296635370980141,
+        "targetTolerance": 0.15,
+        "minimumXAtTargetZOutsidePole": 226.18659405236957,
+        "additionalPositiveXNeededAtTargetZ": 0.361218320290277,
+        "qualification": "Fixed-X cardinal tube only. Actual contact solver can change X and Z and retain tangential motion; no proof that the player can never slide around within the original method."
+      },
+      {
+        "mode": "authored",
+        "actualXBeforeOriginalReturn": 225.98537573207915,
+        "nominalReturnTargetZ": 145.11998675437644,
+        "fixedXCircleBoundaryMaximumZ": 144.87656371436015,
+        "fixedXTargetError": 0.243423040016296,
+        "targetTolerance": 0.15,
+        "minimumXAtTargetZOutsidePole": 226.18659405236957,
+        "additionalPositiveXNeededAtTargetZ": 0.20121832029042253,
+        "qualification": "Fixed-X cardinal tube only. Actual contact solver can change X and Z and retain tangential motion; no proof that the player can never slide around within the original method."
+      }
+    ],
+    "staticCausality": "Original south092 nominal X/return-Z path overlaps lamp; actual X-leg cross-axis shift-.37038614900419 in both modes aligns with this obstacle. Original return interruption is still actual whole-timer; contact during final return is not independently recorded."
+  },
+  "budgetProposalOnly": {
+    "decisionOwner": "ROOT",
+    "currentCandidateWholeMinutes": 12,
+    "originalFAILPreserved": true,
+    "proposedOriginalFrontageOnlyMinutes": 18,
+    "proposedWideAndApprovedDetourMinutes": 24,
+    "status": "SOURCE-ONLY PROPOSAL; NOT IMPLEMENTED/EXECUTED/VALIDATED",
+    "basis": "Original091 shows real motion and passed simulation guards through620+s, completed3photos; return leg started withthe recorded82.201s (baseline) and separately recorded authored remaining budget of remaining whole budget and baseline coarse moved9.8m in55.487s before precision was killed. Existing original094 functional tail after photos ~80–82s. Remaining return-X/Z and new wide round-trip/additional photo require explicit additional bounded time; screenshots alone take66–115s after real look.",
+    "limitations": [
+      "No proposal promises completion; last failed hold has no final snapshot.",
+      "Original092 has a real nonclear nominal lamp path; correct route must be geometrically reviewed first, not solved by budget-only extension.",
+      "Authored092 screenshot timed out at98472ms because only that much whole budget remained; no image/after pose for that capture. Continuous frame progress during that pending screenshot is not proven.",
+      "Changing a whole budget is a separate concrete reviewed source delta requiring ROOT selection; local120hold/180phase/.15/max2/sim guard remain fixed.",
+      "24min is a bounded proposed admission budget for added geometry, not an empirical upper bound or hidden retry."
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "status": "CLOSED",
+  "firstError": null,
+  "exitCode": 0,
+  "elapsedSeconds": 56.617588298002374,
+  "wholeBudgetSeconds": 165,
+  "ownedClosureConfirmed": true,
+  "liveOwnedProcesses": [],
+  "events": [
+    {
+      "event": "root-bound-before-poll",
+      "identity": {
+        "pid": 106253,
+        "state": "R",
+        "ppid": 106250,
+        "pgid": 106253,
+        "session": 106253,
+        "startTicks": "4668657"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106265,
+        "state": "R",
+        "ppid": 106253,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4668692"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106267,
+        "state": "S",
+        "ppid": 106265,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4668694"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106268,
+        "state": "S",
+        "ppid": 106265,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4668694"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106283,
+        "state": "R",
+        "ppid": 106267,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4668696"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106291,
+        "state": "S",
+        "ppid": 106265,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4668696"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106310,
+        "state": "R",
+        "ppid": 106268,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4668703"
+      },
+      "pidfdBound": true
+    },
+    {
+      "event": "owned-descendant-bound",
+      "identity": {
+        "pid": 106439,
+        "state": "S",
+        "ppid": 106265,
+        "pgid": 106265,
+        "session": 106265,
+        "startTicks": "4672094"
+      },
+      "pidfdBound": true
+    }
+  ],
+  "methodFiles": [
+    {
+      "path": "/tmp/neon-public-resident-diary-ui-probe-20261005.mjs",
+      "bytes": 5932,
+      "sha256": "eec71910555ffc614709dbd2ea3d89709585dc3fb2c8a69f630c126d1440b85d"
+    },
+    {
+      "path": "/tmp/neon-public-resident-diary-ui-owned-20261005.py",
+      "bytes": 3996,
+      "sha256": "618d04722d05c3370410450893934b6719f42b75be1545bd863188bfdfe920e2"
+    }
+  ]
+}

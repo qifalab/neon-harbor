@@ -1,0 +1,29 @@
+{
+  "kind": "prepared-source CPU observation transcribed from the original tool stdout",
+  "rootSource": "ef92c25980f1da12b508971170b72b9dd6230059",
+  "sourceSealAtInitialRun": null,
+  "scope": "experimental selected resident schedule at 35 simulation seconds per hour; no browser, native image or game acceptance",
+  "residentId": "harbor-resident-07",
+  "startHour": 6.5,
+  "secondsPerHour": 35,
+  "publicShopHour": 7,
+  "ticksToComplete": 7959,
+  "simulationSeconds": 795.9,
+  "returnedAbsoluteHour": 29.240000000000002,
+  "totalMoney": { "before": 2972, "after": 2972 },
+  "totalGoods": { "before": 300, "after": 300 },
+  "snapshotRestore": true,
+  "events": [
+    { "sequence": 1, "tick": 175, "hour": 7, "type": "depart-home", "cycle": 1, "buildingId": "south-083" },
+    { "sequence": 2, "tick": 1875, "hour": 11.857142857142858, "type": "tram-boarded", "vehicleId": "harbor-tram-1", "originStopId": "harbor-tram-lantern", "destinationStopId": "harbor-tram-workshop" },
+    { "sequence": 3, "tick": 2227, "hour": 12.862857142857143, "type": "tram-alighted", "vehicleId": "harbor-tram-1", "stopId": "harbor-tram-workshop" },
+    { "sequence": 4, "tick": 3189, "hour": 15.611428571428572, "type": "started-work", "jobId": "harbor-work:harbor-resident-07:1", "roomId": "south-086-lobby-0" },
+    { "sequence": 5, "tick": 3539, "hour": 16.611428571428572, "type": "paid-work", "transactionId": "harbor-tx-81", "period": 1, "amount": 3 },
+    { "sequence": 6, "tick": 3889, "hour": 17.611428571428572, "type": "paid-work", "transactionId": "harbor-tx-86", "period": 2, "amount": 3 },
+    { "sequence": 7, "tick": 3889, "hour": 17.611428571428572, "type": "finished-work", "jobId": "harbor-work:harbor-resident-07:1", "validTicks": 700, "paidAmount": 6 },
+    { "sequence": 8, "tick": 5026, "hour": 20.86, "type": "tram-boarded", "vehicleId": "harbor-tram-2", "originStopId": "harbor-tram-workshop", "destinationStopId": "harbor-tram-lantern" },
+    { "sequence": 9, "tick": 6357, "hour": 24.662857142857145, "type": "tram-alighted", "vehicleId": "harbor-tram-2", "stopId": "harbor-tram-lantern" },
+    { "sequence": 10, "tick": 7146, "hour": 26.917142857142856, "type": "purchased-food", "transactionId": "harbor-tx-125", "shopId": "harbor-produce", "product": "produce", "amount": 6 },
+    { "sequence": 11, "tick": 7959, "hour": 29.240000000000002, "type": "returned-home", "cycle": 1, "buildingId": "south-083", "roomId": "south-083-lobby-1" }
+  ]
+}

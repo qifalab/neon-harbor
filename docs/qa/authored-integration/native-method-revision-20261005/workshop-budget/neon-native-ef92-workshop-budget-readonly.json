@@ -1,0 +1,1848 @@
+{
+  "scope": "Only original saved metadata/method hashes/photo byte pins and arithmetic; no decoder/game construction/tests/build/browser/GPU/API/ROOT/index/ref mutations",
+  "originalArtifact": {
+    "id": 11320513014,
+    "bytes": 8588375,
+    "sha256": "76f9e01f2e7e42a6d077caf29a148e5ba0aa565840dd9b9df7811e7743d0d5d2"
+  },
+  "originalMethodPins": [
+    {
+      "path": "capture-authored-harbor-native.mjs",
+      "bytes": 31770,
+      "sha256": "20c51a6207ae9ef2d21709a386e37cdd851a59521265ea0be332645a3edbf52b"
+    },
+    {
+      "path": "input.mjs",
+      "bytes": 7087,
+      "sha256": "125d10ec7883812a1031ebbcad389993f92e24f1276a7c6b65397457f72df227"
+    },
+    {
+      "path": "plans.mjs",
+      "bytes": 6751,
+      "sha256": "609dcdd5ffa45168be7c0579ec5e23b7cf7da0d14abad1d8f83b473e50e8cf95"
+    },
+    {
+      "path": "expectations.mjs",
+      "bytes": 2016,
+      "sha256": "5570187ff44740a84028e4182216b0179b9bc1a30787deef0dafae526c853ce1"
+    },
+    {
+      "path": "server.mjs",
+      "bytes": 4529,
+      "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
+    },
+    {
+      "path": "render-readiness.mjs",
+      "bytes": 1091,
+      "sha256": "28e0be9b51799355b71b1375457dc6b0b65586c52337cb1332077b667c079700"
+    },
+    {
+      "path": "evidence/captured-buildings.json",
+      "bytes": 14628,
+      "sha256": "f2f39e459de0e4d6f07f42d4a73a21e5b4ade92b8042459e4e183ee969e1abd3"
+    },
+    {
+      "path": "evidence/common-pose-proof.json",
+      "bytes": 37158,
+      "sha256": "38a499862bf61052fb715aa833927b4a0805e544291b64e5a28951dc8ee73a57"
+    }
+  ],
+  "modes": {
+    "baseline": {
+      "metadataPin": {
+        "path": "native/baseline/metadata.json",
+        "bytes": 231318,
+        "sha256": "2527b5bc42fe910a672f12869e067ac48e8415a6c7146899a9f204dd5c086f37"
+      },
+      "status": "failed",
+      "startedAt": "2026-10-05T00:20:22.265Z",
+      "finalizationCompletedAt": "2026-10-05T00:45:22.346Z",
+      "originalWholeMinutes": 25,
+      "hardDeadlineReached": true,
+      "activeStep": {
+        "index": 17,
+        "kind": "walk",
+        "axis": "z",
+        "target": -106
+      },
+      "originalPrimary": {
+        "name": "Error",
+        "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+        "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+      },
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T00:45:22.344Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:45:22.344Z"
+        },
+        {
+          "label": "browser",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T00:45:22.344Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:45:22.345Z"
+        },
+        {
+          "label": "owned-browser-process",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T00:45:22.345Z",
+          "status": "failed",
+          "error": {
+            "name": "Error",
+            "message": "owned-browser-process cleanup deadline",
+            "stack": "Error: owned-browser-process cleanup deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:294:113)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          },
+          "finishedAt": "2026-10-05T00:45:22.345Z"
+        },
+        {
+          "label": "static-server",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T00:45:22.345Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T00:45:22.346Z"
+        }
+      ],
+      "planSteps": 34,
+      "planKinds": {
+        "enter": 2,
+        "walk": 22,
+        "photo": 5,
+        "exit": 2,
+        "release": 2,
+        "ready": 1
+      },
+      "completedWalks": 12,
+      "lastSuccessfulSimulationTime": 57.48333333333135,
+      "inputLegs": [
+        {
+          "inputIndex": 0,
+          "axis": "x",
+          "target": 200,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:21:34.594Z",
+          "finishedAt": "2026-10-05T00:21:37.105Z",
+          "wallSeconds": 2.511,
+          "actualBeforePosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -100.1,
+            "yaw": 3.141592653589793
+          },
+          "actualAfterPosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -100.1,
+            "yaw": 3.141592653589793
+          },
+          "simulationDelta": 0.0,
+          "simulationWallRatio": 0.0,
+          "actualDistance": 0,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 1,
+          "axis": "z",
+          "target": -115,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:21:37.108Z",
+          "finishedAt": "2026-10-05T00:22:43.793Z",
+          "wallSeconds": 66.685,
+          "actualBeforePosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -100.1,
+            "yaw": 3.141592653589793
+          },
+          "actualAfterPosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -115.10000000000021,
+            "yaw": 3.141592653589793
+          },
+          "simulationDelta": 3.9999999999999876,
+          "simulationWallRatio": 0.05998350453625234,
+          "actualDistance": 15.000000000000213,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:21:39.467Z",
+              "finishedAt": "2026-10-05T00:22:09.261Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:22:10.259Z",
+              "finishedAt": "2026-10-05T00:22:42.341Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 2,
+          "axis": "x",
+          "target": 197.6,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:22:43.801Z",
+          "finishedAt": "2026-10-05T00:23:59.162Z",
+          "wallSeconds": 75.361,
+          "actualBeforePosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -115.10000000000021,
+            "yaw": 3.141592653589793
+          },
+          "actualAfterPosition": {
+            "x": 197.60000000000218,
+            "y": 0.215,
+            "z": -115.10000000000021,
+            "yaw": -1.5707963267948968
+          },
+          "simulationDelta": 2.999999999999991,
+          "simulationWallRatio": 0.03980838895449889,
+          "actualDistance": 2.399999999997817,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:22:46.963Z",
+              "finishedAt": "2026-10-05T00:23:58.054Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 4,
+          "axis": "x",
+          "target": 188.3,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:25:58.356Z",
+          "finishedAt": "2026-10-05T00:27:15.976Z",
+          "wallSeconds": 77.62,
+          "actualBeforePosition": {
+            "x": 197.60000000000218,
+            "y": 0.215,
+            "z": -115.10000000000021,
+            "yaw": -1.5707963267948968
+          },
+          "actualAfterPosition": {
+            "x": 188.2000000871875,
+            "y": 0.215,
+            "z": -115.09948307351672,
+            "yaw": -1.5707966319706779
+          },
+          "simulationDelta": 2.7500000000000604,
+          "simulationWallRatio": 0.035429013140943835,
+          "actualDistance": 9.399999912814678,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:26:11.797Z",
+              "finishedAt": "2026-10-05T00:26:35.445Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:26:36.871Z",
+              "finishedAt": "2026-10-05T00:27:14.788Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 6,
+          "axis": "z",
+          "target": -112,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:27:15.984Z",
+          "finishedAt": "2026-10-05T00:28:35.891Z",
+          "wallSeconds": 79.907,
+          "actualBeforePosition": {
+            "x": 188.2000000871875,
+            "y": 0.215,
+            "z": -115.09948307351672,
+            "yaw": -1.5707966319706779
+          },
+          "actualAfterPosition": {
+            "x": 188.19999912282918,
+            "y": 0.215,
+            "z": -111.93948307351623,
+            "yaw": -3.0517578121259254e-07
+          },
+          "simulationDelta": 3.9499999999997755,
+          "simulationWallRatio": 0.04943246524083967,
+          "actualDistance": 3.160000000000494,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:27:18.903Z",
+              "finishedAt": "2026-10-05T00:28:35.029Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 8,
+          "axis": "z",
+          "target": -115,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:30:27.160Z",
+          "finishedAt": "2026-10-05T00:32:00.686Z",
+          "wallSeconds": 93.526,
+          "actualBeforePosition": {
+            "x": 188.19999912282918,
+            "y": 0.215,
+            "z": -111.93948307351623,
+            "yaw": -3.0517578121259254e-07
+          },
+          "actualAfterPosition": {
+            "x": 188.19995430163624,
+            "y": 0.215,
+            "z": -114.93948306879706,
+            "yaw": 3.1415923484140125
+          },
+          "simulationDelta": 3.749999999999787,
+          "simulationWallRatio": 0.04009580223680888,
+          "actualDistance": 2.999999995280831,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:30:44.197Z",
+              "finishedAt": "2026-10-05T00:31:59.799Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 10,
+          "axis": "x",
+          "target": 200,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:32:00.691Z",
+          "finishedAt": "2026-10-05T00:33:51.789Z",
+          "wallSeconds": 111.098,
+          "actualBeforePosition": {
+            "x": 188.19995430163624,
+            "y": 0.215,
+            "z": -114.93948306879706,
+            "yaw": 3.1415923484140125
+          },
+          "actualAfterPosition": {
+            "x": 200.10662096830094,
+            "y": 0.215,
+            "z": -114.93947943517122,
+            "yaw": -1.5707966319706774
+          },
+          "simulationDelta": 5.233333333333039,
+          "simulationWallRatio": 0.047105558455895154,
+          "actualDistance": 11.906666666664705,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:32:03.765Z",
+              "finishedAt": "2026-10-05T00:32:37.317Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:32:38.243Z",
+              "finishedAt": "2026-10-05T00:33:43.488Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "explicit-endpoint-correction-1",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:33:44.351Z",
+              "finishedAt": "2026-10-05T00:33:50.760Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 11,
+          "axis": "z",
+          "target": -104.5,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:33:51.796Z",
+          "finishedAt": "2026-10-05T00:35:18.773Z",
+          "wallSeconds": 86.977,
+          "actualBeforePosition": {
+            "x": 200.10662096830094,
+            "y": 0.215,
+            "z": -114.93947943517122,
+            "yaw": -1.5707966319706774
+          },
+          "actualAfterPosition": {
+            "x": 200.10661779854013,
+            "y": 0.215,
+            "z": -104.55281276850421,
+            "yaw": -3.0517578076850333e-07
+          },
+          "simulationDelta": 4.233333333333093,
+          "simulationWallRatio": 0.04867187110768471,
+          "actualDistance": 10.386666666667011,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:33:55.078Z",
+              "finishedAt": "2026-10-05T00:34:18.091Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:34:19.145Z",
+              "finishedAt": "2026-10-05T00:35:17.513Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 12,
+          "axis": "x",
+          "target": 196.7,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:35:18.779Z",
+          "finishedAt": "2026-10-05T00:36:31.148Z",
+          "wallSeconds": 72.369,
+          "actualBeforePosition": {
+            "x": 200.10661779854013,
+            "y": 0.215,
+            "z": -104.55281276850421,
+            "yaw": -3.0517578076850333e-07
+          },
+          "actualAfterPosition": {
+            "x": 196.70661779854194,
+            "y": 0.215,
+            "z": -104.55281380610153,
+            "yaw": -1.5707966319706774
+          },
+          "simulationDelta": 2.7499999999998437,
+          "simulationWallRatio": 0.03799969600242982,
+          "actualDistance": 3.3999999999981867,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:35:21.814Z",
+              "finishedAt": "2026-10-05T00:35:24.159Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:35:25.330Z",
+              "finishedAt": "2026-10-05T00:36:30.086Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 13,
+          "axis": "z",
+          "target": -106,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:36:31.158Z",
+          "finishedAt": "2026-10-05T00:37:21.068Z",
+          "wallSeconds": 49.91,
+          "actualBeforePosition": {
+            "x": 196.70661779854194,
+            "y": 0.215,
+            "z": -104.55281380610153,
+            "yaw": -1.5707966319706774
+          },
+          "actualAfterPosition": {
+            "x": 196.7066182786866,
+            "y": 0.215,
+            "z": -106.1261471394351,
+            "yaw": 3.1415923484140125
+          },
+          "simulationDelta": 2.4666666666665265,
+          "simulationWallRatio": 0.049422293461561344,
+          "actualDistance": 1.5733333333335793,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:36:34.481Z",
+              "finishedAt": "2026-10-05T00:37:19.999Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 15,
+          "axis": "x",
+          "target": 189.4,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:39:44.363Z",
+          "finishedAt": "2026-10-05T00:40:51.517Z",
+          "wallSeconds": 67.154,
+          "actualBeforePosition": {
+            "x": 196.7066182786866,
+            "y": 0.215,
+            "z": -106.1261471394351,
+            "yaw": 3.1415923484140125
+          },
+          "actualAfterPosition": {
+            "x": 189.30661831795322,
+            "y": 0.215,
+            "z": -106.12580041253362,
+            "yaw": -1.570796631970677
+          },
+          "simulationDelta": 3.2499999999998153,
+          "simulationWallRatio": 0.048396223605441456,
+          "actualDistance": 7.399999960733368,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:39:57.805Z",
+              "finishedAt": "2026-10-05T00:40:10.273Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:40:11.587Z",
+              "finishedAt": "2026-10-05T00:40:50.316Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 17,
+          "axis": "z",
+          "target": -104,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:40:51.525Z",
+          "finishedAt": "2026-10-05T00:42:22.452Z",
+          "wallSeconds": 90.927,
+          "actualBeforePosition": {
+            "x": 189.30661831795322,
+            "y": 0.215,
+            "z": -106.12580041253362,
+            "yaw": -1.570796631970677
+          },
+          "actualAfterPosition": {
+            "x": 189.3066176587716,
+            "y": 0.215,
+            "z": -103.96580041253328,
+            "yaw": -3.051757803244141e-07
+          },
+          "simulationDelta": 3.199999999999818,
+          "simulationWallRatio": 0.035193066965805736,
+          "actualDistance": 2.1600000000003376,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:40:54.821Z",
+              "finishedAt": "2026-10-05T00:42:21.605Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 19,
+          "axis": "z",
+          "target": -106,
+          "status": "failed",
+          "startedAt": "2026-10-05T00:44:25.595Z",
+          "finishedAt": "2026-10-05T00:45:22.327Z",
+          "wallSeconds": 56.732,
+          "actualBeforePosition": {
+            "x": 189.3066176587716,
+            "y": 0.215,
+            "z": -103.96580041253328,
+            "yaw": -3.051757803244141e-07
+          },
+          "actualAfterPosition": null,
+          "simulationDelta": null,
+          "simulationWallRatio": null,
+          "actualDistance": null,
+          "remainingMsAtStart": 44272,
+          "firstError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "failed",
+              "startedAt": "2026-10-05T00:44:38.988Z",
+              "finishedAt": "2026-10-05T00:45:22.325Z",
+              "firstError": {
+                "name": "Error",
+                "message": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                "stack": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+              },
+              "secondaryErrors": [
+                {
+                  "stage": "keyup-w",
+                  "name": "Error",
+                  "message": "keyboard.up: page.waitForFunction: Browser closed",
+                  "stack": "keyboard.up: page.waitForFunction: Browser closed\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:55:84)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+                },
+                {
+                  "stage": "keyup-z",
+                  "name": "Error",
+                  "message": "keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                  "stack": "keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:55:84)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+                },
+                {
+                  "stage": "hold-after-snapshot",
+                  "name": "Error",
+                  "message": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                  "stack": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+                }
+              ]
+            }
+          ],
+          "secondaryErrors": [
+            {
+              "stage": "final-keyup-w",
+              "name": "Error",
+              "message": "keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-a",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-s",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-d",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-z",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "leg-after-snapshot",
+              "name": "Error",
+              "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            }
+          ]
+        }
+      ],
+      "captures": [
+        {
+          "label": "workshop-whole",
+          "file": "workshop-workshop-whole-high.png",
+          "sha256": "ff21f0263b7e39c35356df771ddf43a2a3babf0346c578a1a269c5bed3b82a10",
+          "poseFile": "workshop-workshop-whole-pose.json",
+          "poseSha256": "2ef88dcd72b19d30c3ba5d79d6473393863d2d1dd782a5683ecacb7cf929182c",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        },
+        {
+          "label": "assembly-close",
+          "file": "workshop-assembly-close-high.png",
+          "sha256": "6b2f6c3190aecd05ae7df8479dfc271f29648ed4cf80225187632e714ec28855",
+          "poseFile": "workshop-assembly-close-pose.json",
+          "poseSha256": "6cbb77e59d4c87be8366332b5dcc7208bf3c6b3fb9c5c4fed0ad938be6d366fa",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        },
+        {
+          "label": "archive-whole",
+          "file": "workshop-archive-whole-high.png",
+          "sha256": "d48f0de0b7e141a154f35fae4fb97cc8d61d7e84f966dd938d938e3d62b59d83",
+          "poseFile": "workshop-archive-whole-pose.json",
+          "poseSha256": "073964ed04c74d4ba7705910f8cf998dd800a4775a5e8c0cb847de6477a095d8",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        },
+        {
+          "label": "retrieval-close",
+          "file": "workshop-retrieval-close-high.png",
+          "sha256": "0a41fba288e086b23c5ae81d376c36e224f66fdc95439a2ed79e905784a74ac6",
+          "poseFile": "workshop-retrieval-close-pose.json",
+          "poseSha256": "f38a94e01065bd5edba13bba3bf484c598f36355343b3328ad2adab3f69f84bc",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        }
+      ],
+      "capturePins": [
+        {
+          "path": "native/baseline/workshop-workshop-whole-high.png",
+          "bytes": 665988,
+          "sha256": "ff21f0263b7e39c35356df771ddf43a2a3babf0346c578a1a269c5bed3b82a10"
+        },
+        {
+          "path": "native/baseline/workshop-workshop-whole-pose.json",
+          "bytes": 46253,
+          "sha256": "2ef88dcd72b19d30c3ba5d79d6473393863d2d1dd782a5683ecacb7cf929182c"
+        },
+        {
+          "path": "native/baseline/workshop-assembly-close-high.png",
+          "bytes": 789457,
+          "sha256": "6b2f6c3190aecd05ae7df8479dfc271f29648ed4cf80225187632e714ec28855"
+        },
+        {
+          "path": "native/baseline/workshop-assembly-close-pose.json",
+          "bytes": 46213,
+          "sha256": "6cbb77e59d4c87be8366332b5dcc7208bf3c6b3fb9c5c4fed0ad938be6d366fa"
+        },
+        {
+          "path": "native/baseline/workshop-archive-whole-high.png",
+          "bytes": 687407,
+          "sha256": "d48f0de0b7e141a154f35fae4fb97cc8d61d7e84f966dd938d938e3d62b59d83"
+        },
+        {
+          "path": "native/baseline/workshop-archive-whole-pose.json",
+          "bytes": 46230,
+          "sha256": "073964ed04c74d4ba7705910f8cf998dd800a4775a5e8c0cb847de6477a095d8"
+        },
+        {
+          "path": "native/baseline/workshop-retrieval-close-high.png",
+          "bytes": 811158,
+          "sha256": "0a41fba288e086b23c5ae81d376c36e224f66fdc95439a2ed79e905784a74ac6"
+        },
+        {
+          "path": "native/baseline/workshop-retrieval-close-pose.json",
+          "bytes": 46192,
+          "sha256": "f38a94e01065bd5edba13bba3bf484c598f36355343b3328ad2adab3f69f84bc"
+        }
+      ],
+      "photoContainingInterLegBlocks": [
+        {
+          "label": "workshop-whole",
+          "precedingInputIndex": 2,
+          "nextInputIndex": 4,
+          "startAfterCompletedWalk": "2026-10-05T00:23:59.162Z",
+          "nextWalkStartedAt": "2026-10-05T00:25:58.356Z",
+          "wallSeconds": 119.194,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        },
+        {
+          "label": "assembly-close",
+          "precedingInputIndex": 6,
+          "nextInputIndex": 8,
+          "startAfterCompletedWalk": "2026-10-05T00:28:35.891Z",
+          "nextWalkStartedAt": "2026-10-05T00:30:27.160Z",
+          "wallSeconds": 111.269,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        },
+        {
+          "label": "archive-whole",
+          "precedingInputIndex": 13,
+          "nextInputIndex": 15,
+          "startAfterCompletedWalk": "2026-10-05T00:37:21.068Z",
+          "nextWalkStartedAt": "2026-10-05T00:39:44.363Z",
+          "wallSeconds": 143.295,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        },
+        {
+          "label": "retrieval-close",
+          "precedingInputIndex": 17,
+          "nextInputIndex": 19,
+          "startAfterCompletedWalk": "2026-10-05T00:42:22.452Z",
+          "nextWalkStartedAt": "2026-10-05T00:44:25.595Z",
+          "wallSeconds": 123.143,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        }
+      ],
+      "remainingLegs": [
+        {
+          "stepIndex": 17,
+          "axis": "z",
+          "target": -106,
+          "nominalStraightDistance": 2.0341995874667163,
+          "sourceProtocolNominalHeldSimulationSeconds": 2.5427494843333953
+        },
+        {
+          "stepIndex": 18,
+          "axis": "x",
+          "target": 196.7,
+          "nominalStraightDistance": 7.393382341228403,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.6773897037907863
+        },
+        {
+          "stepIndex": 19,
+          "axis": "z",
+          "target": -104.5,
+          "nominalStraightDistance": 1.5,
+          "sourceProtocolNominalHeldSimulationSeconds": 1.875
+        },
+        {
+          "stepIndex": 20,
+          "axis": "x",
+          "target": 200,
+          "nominalStraightDistance": 3.3000000000000114,
+          "sourceProtocolNominalHeldSimulationSeconds": 2.9464285714285734
+        },
+        {
+          "stepIndex": 21,
+          "axis": "z",
+          "target": -100.1,
+          "nominalStraightDistance": 4.400000000000006,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.1428571428571437
+        },
+        {
+          "stepIndex": 25,
+          "axis": "x",
+          "target": 200,
+          "nominalStraightDistance": 0,
+          "sourceProtocolNominalHeldSimulationSeconds": 0.0
+        },
+        {
+          "stepIndex": 26,
+          "axis": "z",
+          "target": -115,
+          "nominalStraightDistance": 14.900000000000006,
+          "sourceProtocolNominalHeldSimulationSeconds": 5.017857142857144
+        },
+        {
+          "stepIndex": 27,
+          "axis": "x",
+          "target": 197.6,
+          "nominalStraightDistance": 2.4000000000000057,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.000000000000007
+        },
+        {
+          "stepIndex": 30,
+          "axis": "x",
+          "target": 200,
+          "nominalStraightDistance": 2.4000000000000057,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.000000000000007
+        },
+        {
+          "stepIndex": 31,
+          "axis": "z",
+          "target": -100.1,
+          "nominalStraightDistance": 14.900000000000006,
+          "sourceProtocolNominalHeldSimulationSeconds": 5.017857142857144
+        }
+      ],
+      "remainingMetres": 53.22758192869516,
+      "remainingHeldSimulationSeconds": 30.2201391881242,
+      "remainingPhotoCount": 1
+    },
+    "authored": {
+      "metadataPin": {
+        "path": "native/authored/metadata.json",
+        "bytes": 347524,
+        "sha256": "82ca6a2549a9954d0edbb1d74311eee0603a5b272c89247b1480d90bf7be266b"
+      },
+      "status": "failed",
+      "startedAt": "2026-10-05T00:45:22.988Z",
+      "finalizationCompletedAt": "2026-10-05T01:10:23.038Z",
+      "originalWholeMinutes": 25,
+      "hardDeadlineReached": true,
+      "activeStep": {
+        "index": 17,
+        "kind": "walk",
+        "axis": "z",
+        "target": -106
+      },
+      "originalPrimary": {
+        "name": "Error",
+        "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+        "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+      },
+      "cleanup": [
+        {
+          "label": "browser-context",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T01:10:23.037Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:10:23.037Z"
+        },
+        {
+          "label": "browser",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T01:10:23.037Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:10:23.037Z"
+        },
+        {
+          "label": "owned-browser-process",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T01:10:23.037Z",
+          "status": "failed",
+          "error": {
+            "name": "Error",
+            "message": "owned-browser-process cleanup deadline",
+            "stack": "Error: owned-browser-process cleanup deadline\n    at Timeout._onTimeout (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:294:113)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+          },
+          "finishedAt": "2026-10-05T01:10:23.038Z"
+        },
+        {
+          "label": "static-server",
+          "timeoutMs": 1,
+          "startedAt": "2026-10-05T01:10:23.038Z",
+          "status": "closed",
+          "finishedAt": "2026-10-05T01:10:23.038Z"
+        }
+      ],
+      "planSteps": 34,
+      "planKinds": {
+        "enter": 2,
+        "walk": 22,
+        "photo": 5,
+        "exit": 2,
+        "release": 2,
+        "ready": 1
+      },
+      "completedWalks": 12,
+      "lastSuccessfulSimulationTime": 54.21666666666487,
+      "inputLegs": [
+        {
+          "inputIndex": 0,
+          "axis": "x",
+          "target": 200,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:46:41.902Z",
+          "finishedAt": "2026-10-05T00:46:44.954Z",
+          "wallSeconds": 3.052,
+          "actualBeforePosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -100.1,
+            "yaw": 3.141592653589793
+          },
+          "actualAfterPosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -100.1,
+            "yaw": 3.141592653589793
+          },
+          "simulationDelta": 0.0,
+          "simulationWallRatio": 0.0,
+          "actualDistance": 0,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 1,
+          "axis": "z",
+          "target": -115,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:46:44.966Z",
+          "finishedAt": "2026-10-05T00:48:11.156Z",
+          "wallSeconds": 86.19,
+          "actualBeforePosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -100.1,
+            "yaw": 3.141592653589793
+          },
+          "actualAfterPosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -115.07333333333362,
+            "yaw": 3.141592653589793
+          },
+          "simulationDelta": 4.316666666666652,
+          "simulationWallRatio": 0.050083149630660774,
+          "actualDistance": 14.973333333333628,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:46:47.996Z",
+              "finishedAt": "2026-10-05T00:47:13.372Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:47:14.509Z",
+              "finishedAt": "2026-10-05T00:48:09.988Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 2,
+          "axis": "x",
+          "target": 197.6,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:48:11.167Z",
+          "finishedAt": "2026-10-05T00:49:17.144Z",
+          "wallSeconds": 65.977,
+          "actualBeforePosition": {
+            "x": 200,
+            "y": 0.215,
+            "z": -115.07333333333362,
+            "yaw": 3.141592653589793
+          },
+          "actualAfterPosition": {
+            "x": 197.60000000000218,
+            "y": 0.215,
+            "z": -115.07333333333362,
+            "yaw": -1.5707963267948968
+          },
+          "simulationDelta": 3.000000000000023,
+          "simulationWallRatio": 0.045470391196932615,
+          "actualDistance": 2.399999999997817,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:48:14.774Z",
+              "finishedAt": "2026-10-05T00:49:15.981Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 4,
+          "axis": "x",
+          "target": 188.3,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:51:22.138Z",
+          "finishedAt": "2026-10-05T00:52:43.201Z",
+          "wallSeconds": 81.063,
+          "actualBeforePosition": {
+            "x": 197.60000000000218,
+            "y": 0.215,
+            "z": -115.07333333333362,
+            "yaw": -1.5707963267948968
+          },
+          "actualAfterPosition": {
+            "x": 188.20000002628603,
+            "y": 0.215,
+            "z": -115.07305058983397,
+            "yaw": -1.5707966319706779
+          },
+          "simulationDelta": 2.749999999999961,
+          "simulationWallRatio": 0.03392423177035097,
+          "actualDistance": 9.399999973716149,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:51:39.227Z",
+              "finishedAt": "2026-10-05T00:52:03.749Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:52:04.668Z",
+              "finishedAt": "2026-10-05T00:52:41.974Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 6,
+          "axis": "z",
+          "target": -112,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:52:43.212Z",
+          "finishedAt": "2026-10-05T00:54:11.113Z",
+          "wallSeconds": 87.901,
+          "actualBeforePosition": {
+            "x": 188.20000002628603,
+            "y": 0.215,
+            "z": -115.07305058983397,
+            "yaw": -1.5707966319706779
+          },
+          "actualAfterPosition": {
+            "x": 188.19999904972065,
+            "y": 0.215,
+            "z": -111.87305058983347,
+            "yaw": -3.0517578121259254e-07
+          },
+          "simulationDelta": 3.9999999999997726,
+          "simulationWallRatio": 0.045505739411380676,
+          "actualDistance": 3.2000000000005002,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:52:46.300Z",
+              "finishedAt": "2026-10-05T00:54:10.204Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 8,
+          "axis": "z",
+          "target": -115,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:56:24.994Z",
+          "finishedAt": "2026-10-05T00:58:06.992Z",
+          "wallSeconds": 101.998,
+          "actualBeforePosition": {
+            "x": 188.19999904972065,
+            "y": 0.215,
+            "z": -111.87305058983347,
+            "yaw": -3.0517578121259254e-07
+          },
+          "actualAfterPosition": {
+            "x": 188.19995428578935,
+            "y": 0.215,
+            "z": -115.059717251781,
+            "yaw": 3.1415923484140125
+          },
+          "simulationDelta": 4.233333333333096,
+          "simulationWallRatio": 0.04150408177937897,
+          "actualDistance": 3.186666661947527,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:56:42.061Z",
+              "finishedAt": "2026-10-05T00:58:05.636Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 10,
+          "axis": "x",
+          "target": 200,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:58:07.001Z",
+          "finishedAt": "2026-10-05T00:59:41.420Z",
+          "wallSeconds": 94.419,
+          "actualBeforePosition": {
+            "x": 188.19995428578935,
+            "y": 0.215,
+            "z": -115.059717251781,
+            "yaw": 3.1415923484140125
+          },
+          "actualAfterPosition": {
+            "x": 200.01328761912072,
+            "y": 0.215,
+            "z": -115.05971364663823,
+            "yaw": 1.570796021619116
+          },
+          "simulationDelta": 4.466666666666413,
+          "simulationWallRatio": 0.04730686267241141,
+          "actualDistance": 11.813333333331371,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:58:09.911Z",
+              "finishedAt": "2026-10-05T00:58:43.580Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:58:44.836Z",
+              "finishedAt": "2026-10-05T00:59:40.491Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 11,
+          "axis": "z",
+          "target": -104.5,
+          "status": "completed",
+          "startedAt": "2026-10-05T00:59:41.429Z",
+          "finishedAt": "2026-10-05T01:00:36.662Z",
+          "wallSeconds": 55.233,
+          "actualBeforePosition": {
+            "x": 200.01328761912072,
+            "y": 0.215,
+            "z": -115.05971364663823,
+            "yaw": 1.570796021619116
+          },
+          "actualAfterPosition": {
+            "x": 200.01328441680892,
+            "y": 0.215,
+            "z": -104.56638031330473,
+            "yaw": -3.0517578076850333e-07
+          },
+          "simulationDelta": 2.7166666666665122,
+          "simulationWallRatio": 0.049185571427706486,
+          "actualDistance": 10.493333333333496,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T00:59:44.729Z",
+              "finishedAt": "2026-10-05T01:00:13.326Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:00:14.264Z",
+              "finishedAt": "2026-10-05T01:00:35.613Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 12,
+          "axis": "x",
+          "target": 196.7,
+          "status": "completed",
+          "startedAt": "2026-10-05T01:00:36.670Z",
+          "finishedAt": "2026-10-05T01:01:05.467Z",
+          "wallSeconds": 28.797,
+          "actualBeforePosition": {
+            "x": 200.01328441680892,
+            "y": 0.215,
+            "z": -104.56638031330473,
+            "yaw": -3.0517578076850333e-07
+          },
+          "actualAfterPosition": {
+            "x": 196.61328441680945,
+            "y": 0.215,
+            "z": -104.56638135090226,
+            "yaw": -1.5707966319706774
+          },
+          "simulationDelta": 1.249999999999929,
+          "simulationWallRatio": 0.04340729937145984,
+          "actualDistance": 3.3999999999994657,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:00:40.293Z",
+              "finishedAt": "2026-10-05T01:00:46.022Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:00:46.905Z",
+              "finishedAt": "2026-10-05T01:01:04.210Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 13,
+          "axis": "z",
+          "target": -106,
+          "status": "completed",
+          "startedAt": "2026-10-05T01:01:05.476Z",
+          "finishedAt": "2026-10-05T01:01:48.168Z",
+          "wallSeconds": 42.692,
+          "actualBeforePosition": {
+            "x": 196.61328441680945,
+            "y": 0.215,
+            "z": -104.56638135090226,
+            "yaw": -1.5707966319706774
+          },
+          "actualAfterPosition": {
+            "x": 196.6132848440568,
+            "y": 0.215,
+            "z": -105.96638135090248,
+            "yaw": 3.1415923484140125
+          },
+          "simulationDelta": 1.7499999999999005,
+          "simulationWallRatio": 0.040991286423683604,
+          "actualDistance": 1.4000000000002188,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:01:08.823Z",
+              "finishedAt": "2026-10-05T01:01:47.114Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 15,
+          "axis": "x",
+          "target": 189.4,
+          "status": "completed",
+          "startedAt": "2026-10-05T01:04:03.349Z",
+          "finishedAt": "2026-10-05T01:05:20.292Z",
+          "wallSeconds": 76.943,
+          "actualBeforePosition": {
+            "x": 196.6132848440568,
+            "y": 0.215,
+            "z": -105.96638135090248,
+            "yaw": 3.1415923484140125
+          },
+          "actualAfterPosition": {
+            "x": 189.41328487033326,
+            "y": 0.215,
+            "z": -105.96609958233729,
+            "yaw": -1.570796631970677
+          },
+          "simulationDelta": 3.199999999999818,
+          "simulationWallRatio": 0.04158922838984467,
+          "actualDistance": 7.19999997372355,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "coarse",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:04:17.227Z",
+              "finishedAt": "2026-10-05T01:04:27.712Z",
+              "firstError": null,
+              "secondaryErrors": []
+            },
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:04:28.818Z",
+              "finishedAt": "2026-10-05T01:05:18.727Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 17,
+          "axis": "z",
+          "target": -104,
+          "status": "completed",
+          "startedAt": "2026-10-05T01:05:20.328Z",
+          "finishedAt": "2026-10-05T01:06:41.862Z",
+          "wallSeconds": 81.534,
+          "actualBeforePosition": {
+            "x": 189.41328487033326,
+            "y": 0.215,
+            "z": -105.96609958233729,
+            "yaw": -1.570796631970677
+          },
+          "actualAfterPosition": {
+            "x": 189.4132842599799,
+            "y": 0.215,
+            "z": -103.96609958233698,
+            "yaw": -3.051757803244141e-07
+          },
+          "simulationDelta": 2.499999999999858,
+          "simulationWallRatio": 0.030662055093578847,
+          "actualDistance": 2.0000000000003126,
+          "remainingMsAtStart": 180000,
+          "firstError": null,
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "completed",
+              "startedAt": "2026-10-05T01:05:24.400Z",
+              "finishedAt": "2026-10-05T01:06:40.726Z",
+              "firstError": null,
+              "secondaryErrors": []
+            }
+          ],
+          "secondaryErrors": []
+        },
+        {
+          "inputIndex": 19,
+          "axis": "z",
+          "target": -106,
+          "status": "failed",
+          "startedAt": "2026-10-05T01:09:18.362Z",
+          "finishedAt": "2026-10-05T01:10:23.024Z",
+          "wallSeconds": 64.662,
+          "actualBeforePosition": {
+            "x": 189.4132842599799,
+            "y": 0.215,
+            "z": -103.96609958233698,
+            "yaw": -3.051757803244141e-07
+          },
+          "actualAfterPosition": null,
+          "simulationDelta": null,
+          "simulationWallRatio": null,
+          "actualDistance": null,
+          "remainingMsAtStart": 46814,
+          "firstError": {
+            "name": "Error",
+            "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+            "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+          },
+          "holds": [
+            {
+              "kind": "precision-approach",
+              "status": "failed",
+              "startedAt": "2026-10-05T01:09:37.193Z",
+              "finishedAt": "2026-10-05T01:10:23.023Z",
+              "firstError": {
+                "name": "Error",
+                "message": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                "stack": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+              },
+              "secondaryErrors": [
+                {
+                  "stage": "keyup-w",
+                  "name": "Error",
+                  "message": "keyboard.up: page.waitForFunction: Browser closed",
+                  "stack": "keyboard.up: page.waitForFunction: Browser closed\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:55:84)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+                },
+                {
+                  "stage": "keyup-z",
+                  "name": "Error",
+                  "message": "keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                  "stack": "keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:55:84)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+                },
+                {
+                  "stage": "hold-after-snapshot",
+                  "name": "Error",
+                  "message": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+                  "stack": "page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at hold (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:56:23)\n    at async Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:74:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+                }
+              ]
+            }
+          ],
+          "secondaryErrors": [
+            {
+              "stage": "final-keyup-w",
+              "name": "Error",
+              "message": "keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-a",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-s",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-d",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "final-keyup-z",
+              "name": "Error",
+              "message": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:89:66)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            },
+            {
+              "stage": "leg-after-snapshot",
+              "name": "Error",
+              "message": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed",
+              "stack": "page.evaluate: keyboard.up: keyboard.up: keyboard.up: keyboard.up: keyboard.up: page.evaluate: keyboard.up: keyboard.up: page.waitForFunction: Browser closed\n    at snapshot (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:2:34)\n    at Object.walk (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/input.mjs:90:38)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/harbor/capture-authored-harbor-native.mjs:268:25"
+            }
+          ]
+        }
+      ],
+      "captures": [
+        {
+          "label": "workshop-whole",
+          "file": "workshop-workshop-whole-high.png",
+          "sha256": "9ce36dab66e3c5a07f81cd275c28ebf4f715bfe80b85f2ddea1f555d1bfc31e2",
+          "poseFile": "workshop-workshop-whole-pose.json",
+          "poseSha256": "382fc323b32948b6ce5ff1a61f5f233cf731ec175c965ba4deeacaf072cf9c84",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        },
+        {
+          "label": "assembly-close",
+          "file": "workshop-assembly-close-high.png",
+          "sha256": "d06d6d6411eb8f8a8f2bbd75920f0ed982c354ceb70420a8fc8c5299fa1388d9",
+          "poseFile": "workshop-assembly-close-pose.json",
+          "poseSha256": "82b6d170c2b5f056c046b467e9fa00addbcd18e2169810708fa688f8a6f28448",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        },
+        {
+          "label": "archive-whole",
+          "file": "workshop-archive-whole-high.png",
+          "sha256": "22a29b1ecf9ffa82796053f338e31feb0e691a4a75a7ed93944cb1fc941d4a63",
+          "poseFile": "workshop-archive-whole-pose.json",
+          "poseSha256": "86ffc0956bdb54295473ad94260a1bf1a3a6569184d56db8ff3c3c7ea34a2cfc",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        },
+        {
+          "label": "retrieval-close",
+          "file": "workshop-retrieval-close-high.png",
+          "sha256": "c013d2f0877f1bbd2a579f5c0f441947731a16a5cd5c5e3678b3185d92e2d0c9",
+          "poseFile": "workshop-retrieval-close-pose.json",
+          "poseSha256": "d335f4d98d49c644bd10551f469043f544e45cd5eeb9b7e49063e822016d2de7",
+          "originalPixels": [
+            1280,
+            800
+          ],
+          "gl": {
+            "width": 1280,
+            "height": 800,
+            "contextLost": false,
+            "errorAtCheckpoint": 0,
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+          }
+        }
+      ],
+      "capturePins": [
+        {
+          "path": "native/authored/workshop-workshop-whole-high.png",
+          "bytes": 685372,
+          "sha256": "9ce36dab66e3c5a07f81cd275c28ebf4f715bfe80b85f2ddea1f555d1bfc31e2"
+        },
+        {
+          "path": "native/authored/workshop-workshop-whole-pose.json",
+          "bytes": 102019,
+          "sha256": "382fc323b32948b6ce5ff1a61f5f233cf731ec175c965ba4deeacaf072cf9c84"
+        },
+        {
+          "path": "native/authored/workshop-assembly-close-high.png",
+          "bytes": 799547,
+          "sha256": "d06d6d6411eb8f8a8f2bbd75920f0ed982c354ceb70420a8fc8c5299fa1388d9"
+        },
+        {
+          "path": "native/authored/workshop-assembly-close-pose.json",
+          "bytes": 101979,
+          "sha256": "82b6d170c2b5f056c046b467e9fa00addbcd18e2169810708fa688f8a6f28448"
+        },
+        {
+          "path": "native/authored/workshop-archive-whole-high.png",
+          "bytes": 718483,
+          "sha256": "22a29b1ecf9ffa82796053f338e31feb0e691a4a75a7ed93944cb1fc941d4a63"
+        },
+        {
+          "path": "native/authored/workshop-archive-whole-pose.json",
+          "bytes": 102000,
+          "sha256": "86ffc0956bdb54295473ad94260a1bf1a3a6569184d56db8ff3c3c7ea34a2cfc"
+        },
+        {
+          "path": "native/authored/workshop-retrieval-close-high.png",
+          "bytes": 915632,
+          "sha256": "c013d2f0877f1bbd2a579f5c0f441947731a16a5cd5c5e3678b3185d92e2d0c9"
+        },
+        {
+          "path": "native/authored/workshop-retrieval-close-pose.json",
+          "bytes": 101954,
+          "sha256": "d335f4d98d49c644bd10551f469043f544e45cd5eeb9b7e49063e822016d2de7"
+        }
+      ],
+      "photoContainingInterLegBlocks": [
+        {
+          "label": "workshop-whole",
+          "precedingInputIndex": 2,
+          "nextInputIndex": 4,
+          "startAfterCompletedWalk": "2026-10-05T00:49:17.144Z",
+          "nextWalkStartedAt": "2026-10-05T00:51:22.138Z",
+          "wallSeconds": 124.994,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        },
+        {
+          "label": "assembly-close",
+          "precedingInputIndex": 6,
+          "nextInputIndex": 8,
+          "startAfterCompletedWalk": "2026-10-05T00:54:11.113Z",
+          "nextWalkStartedAt": "2026-10-05T00:56:24.994Z",
+          "wallSeconds": 133.881,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        },
+        {
+          "label": "archive-whole",
+          "precedingInputIndex": 13,
+          "nextInputIndex": 15,
+          "startAfterCompletedWalk": "2026-10-05T01:01:48.168Z",
+          "nextWalkStartedAt": "2026-10-05T01:04:03.349Z",
+          "wallSeconds": 135.181,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        },
+        {
+          "label": "retrieval-close",
+          "precedingInputIndex": 17,
+          "nextInputIndex": 19,
+          "startAfterCompletedWalk": "2026-10-05T01:06:41.862Z",
+          "nextWalkStartedAt": "2026-10-05T01:09:18.362Z",
+          "wallSeconds": 156.5,
+          "scope": "Inter-leg block containing actual photo, pointer/readiness/protocol; not direct screenshot timing"
+        }
+      ],
+      "remainingLegs": [
+        {
+          "stepIndex": 17,
+          "axis": "z",
+          "target": -106,
+          "nominalStraightDistance": 2.0339004176630198,
+          "sourceProtocolNominalHeldSimulationSeconds": 2.5423755220787747
+        },
+        {
+          "stepIndex": 18,
+          "axis": "x",
+          "target": 196.7,
+          "nominalStraightDistance": 7.2867157400200995,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.6583420964321607
+        },
+        {
+          "stepIndex": 19,
+          "axis": "z",
+          "target": -104.5,
+          "nominalStraightDistance": 1.5,
+          "sourceProtocolNominalHeldSimulationSeconds": 1.875
+        },
+        {
+          "stepIndex": 20,
+          "axis": "x",
+          "target": 200,
+          "nominalStraightDistance": 3.3000000000000114,
+          "sourceProtocolNominalHeldSimulationSeconds": 2.9464285714285734
+        },
+        {
+          "stepIndex": 21,
+          "axis": "z",
+          "target": -100.1,
+          "nominalStraightDistance": 4.400000000000006,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.1428571428571437
+        },
+        {
+          "stepIndex": 25,
+          "axis": "x",
+          "target": 200,
+          "nominalStraightDistance": 0,
+          "sourceProtocolNominalHeldSimulationSeconds": 0.0
+        },
+        {
+          "stepIndex": 26,
+          "axis": "z",
+          "target": -115,
+          "nominalStraightDistance": 14.900000000000006,
+          "sourceProtocolNominalHeldSimulationSeconds": 5.017857142857144
+        },
+        {
+          "stepIndex": 27,
+          "axis": "x",
+          "target": 197.6,
+          "nominalStraightDistance": 2.4000000000000057,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.000000000000007
+        },
+        {
+          "stepIndex": 30,
+          "axis": "x",
+          "target": 200,
+          "nominalStraightDistance": 2.4000000000000057,
+          "sourceProtocolNominalHeldSimulationSeconds": 3.000000000000007
+        },
+        {
+          "stepIndex": 31,
+          "axis": "z",
+          "target": -100.1,
+          "nominalStraightDistance": 14.900000000000006,
+          "sourceProtocolNominalHeldSimulationSeconds": 5.017857142857144
+        }
+      ],
+      "remainingMetres": 53.12061615768316,
+      "remainingHeldSimulationSeconds": 30.200717618510954,
+      "remainingPhotoCount": 1
+    }
+  },
+  "budgetEstimateNotGuarantee": {
+    "startPoint": "Each actual failed leg before snapshot; no post-deadline snapshot is invented",
+    "remainingLegCount": 10,
+    "remainingPhotoCount": 1,
+    "maximumRemainingHeldSimulationSeconds": 30.2201391881242,
+    "lowestObservedSimulationWallRatioOfSuccessfulLegsOver1mAcrossBothModes": 0.030662055093578847,
+    "estimatedRemainingMovementSeconds": 985.5875314258635,
+    "maximumObservedPhotoContainingBlockSeconds": 156.5,
+    "allowanceRPCSecondsPerRemainingLeg": 20,
+    "allowanceRemainingEOwnerCleanupSeconds": 300,
+    "nominalWholeMinutes": 52.36812552376439,
+    "marginFactor": 1.2,
+    "marginWholeMinutes": 62.84175062851727,
+    "recommendedFiniteWholeMinutesPerWorkshopMode": 65,
+    "suggestedFuturePairedWorkshopJobMinutes": 160,
+    "otherCaseBudgetsAndAllLocalGuardsUnchanged": true,
+    "finiteLocalFailuresRemainPossible": true,
+    "notHardwarePerformanceMeasurement": true
+  },
+  "originalFailuresPreserved": true,
+  "noFutureNativePassPredicted": true,
+  "noArtAcceptancePredicted": true
+}

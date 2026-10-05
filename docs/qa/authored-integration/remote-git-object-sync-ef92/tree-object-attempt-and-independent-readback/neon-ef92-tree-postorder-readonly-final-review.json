@@ -1,0 +1,109 @@
+{
+  "status": "READONLY_REVIEW_NO_STRUCTURAL_OR_ALGORITHM_BLOCKER_REMOTE_FINAL_GET_FAILED",
+  "createdUTC": "2026-10-05T00:19:24.366958+00:00",
+  "localMetadata": {
+    "status": "READONLY_GIT_METADATA_REVIEW",
+    "createdUTC": "2026-10-05T00:15:51.229585+00:00",
+    "repo": "/workspace/scratch/neon-harbor",
+    "commit": "ef92c25980f1da12b508971170b72b9dd6230059",
+    "rootTree": "e4f9f3be49c222242592d64ad2f33104154725d3",
+    "actualParent": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+    "parentRootTree": "a840a79aa7c1013917122b36f13ba6997aefd24c",
+    "objectFormat": "sha1",
+    "validationErrors": [],
+    "rootImmediateChildren": 23,
+    "uniqueTreesIncludingRoot": 366,
+    "treePathOccurrencesExcludingRoot": 433,
+    "reusedParentUniqueTreeCount": 215,
+    "newUniqueTreeCountNotInParent": 151,
+    "parentUniqueTreeCount": 226,
+    "leafPathCount": 3004,
+    "uniqueBlobCount": 1895,
+    "uniqueNewBlobNotInParentCount": 823,
+    "modesAcrossUniqueNewTreeEntries": [
+      {
+        "mode": "040000",
+        "type": "tree",
+        "count": 387
+      },
+      {
+        "mode": "100644",
+        "type": "blob",
+        "count": 2499
+      }
+    ],
+    "method": "Only git show commit metadata and git ls-tree -z, no blob contents. Reconstructed SHA1 from mode/name/NUL/rawSHA tree metadata in memory, no git hash-object/write/ref/index/source/API mutation.",
+    "maxImmediateChildren": 214,
+    "sharedSubtreeSHAAtMultiplePathCount": 25,
+    "summaryChecks": {
+      "allTreeMetadataSHA1Match": true,
+      "modeTypeValid": true,
+      "immediateUTF8Basenames": true,
+      "duplicateBasenameCount": 0,
+      "gitByteOrderWithDirectorySlash": true
+    }
+  },
+  "uploaderSourcePath": "/tmp/neon-create-git-trees-postorder.py",
+  "uploaderSourceSha256": "d579ac6b13a793bb12ef908688612ace0f856bdd3fbea7621cae663c78a5fd20",
+  "independentStaticReviewer": "/root/release_packaging_review/feature_ci_pulse/docs_claims_readonly; no blocking mustfix",
+  "actualArchiveValidation": {
+    "graphTrees366AllEqualIndependentMetadata": true,
+    "actualPOSTRequests150AllExactImmediateChildrenNoBaseTree": true,
+    "remoteParentActualOriginalJSONMatchesLocalParentTree": true,
+    "proofSourceCounts": {
+      "exact subtree of confirmed remote parent": 215,
+      "created exact immediate children": 150,
+      "already exists exact GET": 1
+    }
+  },
+  "observedFinalStatus": {
+    "status": "FAILED_TREE_OBJECTS_ONLY",
+    "confirmedCount": 366,
+    "rootPost": {
+      "exitCode": 0,
+      "returnedSHA": "e4f9f3be49c222242592d64ad2f33104154725d3",
+      "completedAt": "2026-10-05T00:17:17.464385+00:00",
+      "originalResponseSHA256": "6c1755a037bad54dd0bd29710b40a7c3bc8047dd9bdbeb3d879e9adc4d15279d"
+    },
+    "rootFinalGet": {
+      "exitCode": 1,
+      "actualHTTP": 404,
+      "message": "Not Found",
+      "completedAt": "2026-10-05T00:17:17.796187+00:00",
+      "originalResponseSHA256": "8c177a38af7c68d455e9554231def022cc2bcf62c1d3dab3626aaf5c319a5e04"
+    },
+    "refsChanged": false,
+    "firstFailure": {
+      "type": "RuntimeError",
+      "message": "Final root GET failed",
+      "at": "2026-10-05T00:17:17.796378+00:00"
+    }
+  },
+  "codeEvidence": {
+    "modeTypeSHAImmediateChildrenNoDuplicates": "44-55",
+    "rootSHAAndRemoteChildrenComparison": "57-62",
+    "actualRemoteParentCommitTreeBindAndExactSHAReuse": "67-85",
+    "GETBeforePOSTNoBaseTreeAndBoundedGatewayObjectRecheck": "88-107",
+    "allChildTreesConfirmedBeforeParentWave": "111-127",
+    "finalRootGETAndLocalHEADRetained": "128-135"
+  },
+  "notes": [
+    "POST payload must include complete immediate children including unchanged ones; no base_tree means replacement tree, not patch. Current payload does.",
+    "Git uses byte basename ordering with a virtual slash for directories. Local ls-tree canonical order and raw treeSHA all independently verified. verify_remote sorts both sides for set-style equality; returnedSHA binds actual Git object order.",
+    "215 parent subtrees reused by exact hash after actual remote parentcommit/tree GET; no ancestry-by-filename shortcut.",
+    "Failed sibling wave can still create content-addressed tree objects; no commit/ref/blob writes occur. Resume must verify exactGET rather than assume archive-confirmed object visibility.",
+    "Success receipt http200 is inferred from gh exit0 without response headers; do not call it actual POST wire status201/200.",
+    "Root POST exact SHA followed by immediate actual404 GET is unresolved remote visibility evidence; no cause/flaky/cache inference. Preserve FAILED receipt; any authorized futureGET should be separately archived.",
+    "Script failure before terminal evidence-files generation may leave raw files plusFAILED state, not a completefinal ledger."
+  ],
+  "reviewerActions": {
+    "gitMetadataReadOnly": true,
+    "blobContentsRead": false,
+    "authenticationFilesOrValuesRead": false,
+    "APIOrNetworkCalls": false,
+    "scriptExecution": false,
+    "ROOTIndexSourceRefsWritten": false,
+    "browserGpuBuildTests": false,
+    "onlyReportsWrittenUnderTmp": true
+  }
+}
