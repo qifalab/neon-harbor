@@ -1,0 +1,28 @@
+{
+  "status": "READY_CPU_VERIFIED_ONLY_NOT_NATIVE_PASS",
+  "sourceParentForAdoption": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "expectedOriginalTestSHA256": "9f0dd470f17cfa8ec5b84e1079b64429de976fc06caaa501662e11e454ce5476",
+  "payload": [
+    {
+      "path": "tests/e2e/harbor-sample.spec.js",
+      "candidatePath": "/workspace/neon-candidates/required-ferry-compact-snapshot-candidate-20261005/payload/tests/e2e/harbor-sample.spec.js",
+      "bytes": 33729,
+      "sha256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f"
+    }
+  ],
+  "changeScope": {
+    "scenarioOnly": "bus/tram/ferry public boarding, upper stairs, travel and lower-door alighting",
+    "snapshotReadCallSites": 10,
+    "executableGaitInputCameraCaptureHighHelpersChanged": false,
+    "wholeFerrySeconds": 900,
+    "allLocalAndPollBudgetsAndAssertions": "exact original bytes",
+    "otherTests": "exact original bytes",
+    "productionRuntimeChange": false,
+    "snapshotProjection": "position/simulationTime/teleportRevision/full city.sample.transit/city.interior.buildingId"
+  },
+  "originalFailureArchive": "/workspace/neon-evidence/8b6-required-ferry-original-fail-11331208345",
+  "originalFailureSummarySHA256": "ef79b71dd6e781e7082b22a026d745694eb291e73a05674153502cfaa1172b25",
+  "CPUReceiptSHA256": "09d27cd576b1cf9df72bfbb608ed9ef5f194a2bd32e6c57b4480e421d4a0e41a",
+  "GPUExecuted": false,
+  "nativeAcceptance": null
+}
