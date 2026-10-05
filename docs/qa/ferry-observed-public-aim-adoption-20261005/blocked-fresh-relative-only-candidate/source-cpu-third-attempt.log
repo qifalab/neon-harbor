@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(l.error?.message.includes('fixture'),l.error?.message)
+
+    at file:///workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/verify-actual-ferry-relative-aim-source-cpu.mjs:42:201 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

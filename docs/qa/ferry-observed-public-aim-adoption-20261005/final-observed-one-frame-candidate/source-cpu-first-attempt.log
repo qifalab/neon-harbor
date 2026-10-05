@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ {
++   message: 'original local/whole deadline',
++   name: 'Error'
++ }
+- null
+
+    at file:///workspace/neon-candidates/ferry-observed-one-frame-public-aim-candidate-20261005/verify-actual-ferry-relative-aim-source-cpu.mjs:41:314 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: { name: 'Error', message: 'original local/whole deadline' },
+  expected: null,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

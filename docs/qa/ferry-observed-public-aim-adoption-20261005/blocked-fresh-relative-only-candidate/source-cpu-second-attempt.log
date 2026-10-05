@@ -1,0 +1,24 @@
+{"name":"baseline-actual-lower5-fixed15","error":{"name":"TypeError","message":"Date is not a constructor"},"stats":{"frames":0,"mouseCount":0,"fullReads":1,"compactReads":1,"keysUp":0,"waitCount":0,"wallFrameMs":1000,"substeps":15},"final":{"x":0.011263501760720046,"y":1.3,"z":-7.182127565489389,"yaw":3.0607316470432435},"aims":[]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ {
++   message: 'Date is not a constructor',
++   name: 'TypeError'
++ }
+- null
+
+    at file:///workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/verify-actual-ferry-relative-aim-source-cpu.mjs:36:539 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: { name: 'TypeError', message: 'Date is not a constructor' },
+  expected: null,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

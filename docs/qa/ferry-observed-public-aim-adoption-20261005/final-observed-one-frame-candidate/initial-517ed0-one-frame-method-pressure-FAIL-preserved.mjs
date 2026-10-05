@@ -241,19 +241,18 @@ async function captureCase(kind) {
   }
   // The next mouse target uses only the two already observed control
   // frames. Prediction never satisfies a movement or camera assertion.
-  function ferryObservedOneFrameMouseTarget(previous,current,desired) {
-    const v=vehicle(current,transit(current).ridingVehicleId),dt=current.timing?.dt;
+  function ferryObservedOneFrameMouseTarget(previous,current,desired,offset,target) {
+    const p=transit(current).passengerLocal,v=vehicle(current,transit(current).ridingVehicleId),dt=current.timing?.dt;
     if(!previous)return {mouseYaw:desired,advance:0,compensation:0,basis:'unknown-first-sample-no-anticipation'};
-    const oldV=vehicle(previous,transit(previous).ridingVehicleId),elapsed=current.simulationTime-previous.simulationTime;
-    if(!oldV||oldV.id!==v.id||current.teleportRevision!==previous.teleportRevision||!Number.isFinite(elapsed)||elapsed<=0||elapsed>.250001||!Number.isFinite(dt)||dt<=0||dt>.250001)
+    const oldP=transit(previous).passengerLocal,oldV=vehicle(previous,transit(previous).ridingVehicleId),elapsed=current.simulationTime-previous.simulationTime;
+    if(!oldP||!oldV||oldV.id!==v.id||current.teleportRevision!==previous.teleportRevision||!Number.isFinite(elapsed)||elapsed<=0||elapsed>.250001||!Number.isFinite(dt)||dt<=0||dt>.250001||distance(p,oldP)>.000001)
       return {mouseYaw:desired,advance:0,compensation:0,basis:'unavailable-discontinuous-control-sample-no-anticipation'};
-    const observedDelta=angle(v.yaw-oldV.yaw);
-    if(!Number.isFinite(observedDelta)||Math.abs(observedDelta)>.125)return {mouseYaw:desired,advance:0,compensation:0,basis:'nonfinite-or-large-observed-yaw-jump-no-anticipation'};
-    const limit=Math.min(Math.abs(observedDelta),.125),advance=Math.max(-limit,Math.min(limit,observedDelta*Math.min(1,dt/elapsed))),weight=-Math.expm1(-12*dt),forecast=desired+advance,
+    const oldDesired=oldV.yaw+Math.atan2(target.x-oldP.x,target.z-oldP.z)-offset,observedDelta=angle(desired-oldDesired),limit=Math.min(Math.abs(observedDelta),.125),
+      advance=Math.max(-limit,Math.min(limit,observedDelta*Math.min(1,dt/elapsed))),weight=-Math.expm1(-12*dt),forecast=desired+advance,
       correction=angle(forecast-current.camera.yaw)*(1/weight-1),compensation=Math.max(-limit,Math.min(limit,correction));
     if(!Number.isFinite(advance)||!Number.isFinite(compensation)||!(weight>0))return {mouseYaw:desired,advance:0,compensation:0,basis:'nonfinite-source-response-no-anticipation'};
     return {mouseYaw:forecast+compensation,advance,compensation,observedDelta,observedSimulationDelta:elapsed,actualFrameDt:dt,dampingWeight:weight,
-      basis:'two-observed-contiguous-same-vessel-frames-one-frame-bounded-public-mouse'};
+      basis:'two-observed-contiguous-stationary-body-frames-one-frame-bounded-public-mouse'};
   }
   async function aimFerryCabin(p,target,key,{revision,vehicleId,layout,localDeadline}) {
     const pitch=.15,offset={w:0,s:Math.PI,a:Math.PI/2,d:-Math.PI/2}[key],phaseDeadline=Math.min(Date.now()+remaining(60000),localDeadline),
@@ -262,13 +261,13 @@ async function captureCase(kind) {
     try {
       let matched=null;
       await bounded(async()=>{
-        let s=await page.evaluate(ferryCabinControlSnapshot),previousControlFrame=p.ferryMatchedControlFrame||null;checked(s);
+        let s=await page.evaluate(ferryCabinControlSnapshot),previousControlFrame=null;checked(s);
         while(!matched) {
           const cap=Math.min(phaseDeadline-Date.now(),localDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original finite Ferry aim/local/whole deadline');
           const before=transit(s).passengerLocal,localHeading=Math.atan2(target.x-before.x,target.z-before.z),desired=vehicle(s,vehicleId).yaw+localHeading-offset;
           phase.progress.push({when:'fresh-relative-before-public-input',status:'OBSERVED',at:new Date().toISOString(),desired,localHeading,observed:progressOf(s,vehicleId)});
           if(Number.isFinite(s.camera?.yaw)&&Number.isFinite(s.camera?.pitch)&&Math.abs(angle(s.camera.yaw-desired))<.025&&Math.abs(s.camera.pitch-pitch)<.003){phase.satisfiedBy='same-fresh-frame-original-relative-camera-predicate';matched=s;break;}
-          const mouseTarget=ferryObservedOneFrameMouseTarget(previousControlFrame,s,desired);
+          const mouseTarget=ferryObservedOneFrameMouseTarget(previousControlFrame,s,desired,offset,target);
           phase.progress.push({when:'bounded-observed-public-mouse-target',status:'PUBLIC_INPUT_ONLY_NOT_ACCEPTANCE',at:new Date().toISOString(),...mouseTarget,actualCurrentDesired:desired});
           previousControlFrame=s;
           p.x-=angle(mouseTarget.mouseYaw-p.orbitYaw)/(.005*s.settings.sensitivity);p.y+=(pitch-s.camera.pitch)/(.003*s.settings.sensitivity);
@@ -283,7 +282,7 @@ async function captureCase(kind) {
           else assert.equal(observed.status,'PUBLIC_RELATIVE_REAIM_REQUIRED','wrong camera requires public reaim before any movement');
         }
       },Math.max(1,Math.min(phaseDeadline-Date.now(),localDeadline-Date.now(),deadline-Date.now())),'finite Ferry relative aim phase');
-      phase.status='SATISFIED';p.ferryMatchedControlFrame=matched;return matched;
+      phase.status='SATISFIED';return matched;
     }catch(error){phase.firstError=err(error,'Ferry relative cabin aim');phase.status='FAILED';await releasePointer(error);await observePhaseProgress(phase,'timeout',vehicleId,null,error);throw error;}
     finally{phase.finishedAt=new Date().toISOString();}
   }

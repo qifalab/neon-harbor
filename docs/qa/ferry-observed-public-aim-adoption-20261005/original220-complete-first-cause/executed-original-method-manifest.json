@@ -1,9 +1,9 @@
 {
-  "status": "EXPLICIT_FERRY_OBSERVED_ONE_FRAME_PUBLIC_MOUSE_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
+  "status": "EXPLICIT_FINITE_FERRY_PUBLIC_AXIS_PROTOCOL_CPU_READY_NATIVE_HIGH_REQUIRED",
   "tool": {
     "path": "native-transport-high.mjs",
-    "bytes": 66912,
-    "sha256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50"
+    "bytes": 56756,
+    "sha256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f"
   },
   "canonical": {
     "path": "/tmp/neon-transport-native-high-camera-cleanup-postseal-2026-10-04/canonical-layouts.json",
@@ -28,7 +28,7 @@
   },
   "resources": {
     "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/payload/tools/native-review/methods/transport/runtime-resources.json",
-    "sha256": "1edfe55e622a4ef1e33e6bf5c8afbf53a378af184ce8725829f18216407eeea6"
+    "sha256": "dc696d1a4b905d6d5720b1c83ea02ebea2b0d2d2ed2f3e81178011c373b01ecc"
   },
   "sourcePins": {
     "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
@@ -88,7 +88,7 @@
   "authoredSourcePins": {
     "src/harbor-authored-transport.js": "3a56a0c5c701c6bf6ac0e1c52871e3c8d23b7d45be474c057e46582ac6db21ac",
     "src/harbor-authored-transit-snapshot.js": "ad658d129d4b5de7eae93eaae1540c6db1a892a0df75b7e528cb26a09493ab6e",
-    "src/harbor-authored-transport-assets.js": "c944cab0b90097d524c9de8a2b22e4242d306a524d2e1ee8c237699b7567b713"
+    "src/harbor-authored-transport-assets.js": "aa9e0935e803460d4ceaa6a11457de7ba944804920192356b207813428a1b848"
   },
   "observabilitySeal": {
     "README.md": {
@@ -352,32 +352,5 @@
     "sha256": "36827f18a712a5154a1c0772a09de1d52a64894bcc852565a29b6d21534b9d77",
     "status": "EXPLICIT_FINITE_FERRY_PUBLIC_AXIS_PROTOCOL_CPU_READY_NATIVE_HIGH_REQUIRED",
     "nativeExecuted": false
-  },
-  "busTramImmediateBoardedLowerPhotoAmendment": {
-    "path": "tools/native-review/runtime-amendments/bus-tram-immediate-boarded-lower-photo-20261005/active-source-amendment.json",
-    "bytes": 5172,
-    "sha256": "fd71101fe398b0a77fc3c452bf6599101eb51aca393e67046f373aff57cc7a2d",
-    "status": "EXPLICIT_LOWER_PHOTO_PHASE_AMENDMENT_CPU_READY_NEW_PAIRED_HIGH_NATIVE_REQUIRED",
-    "nativeExecuted": false,
-    "originalLowerWorldPhaseChangedExplicitly": true,
-    "originalLocalPoseCameraHighAndUpperSafetyUnchanged": true
-  },
-  "tramSeamCurrentResourceAndClientSHAAmendment": {
-    "path": "runtime-amendments/combined-transit-art-final-20261005/combined-source-amendment.json",
-    "sha256": "f69b8054f02c6091e89fab8b4d473c7bbf1aee58cfbb1eb574fda00e7201f292",
-    "actualAssetModuleSHA256": "c944cab0b90097d524c9de8a2b22e4242d306a524d2e1ee8c237699b7567b713",
-    "historicalUpperEnclosureAmendmentRetainedVerbatim": true,
-    "toolCodeChangedByThisMetadataRefresh": false,
-    "nativePending": true
-  },
-  "ferryObservedOneFramePublicAimAmendment": {
-    "path": "tools/native-review/runtime-amendments/ferry-observed-one-frame-public-aim-20261005/active-source-amendment.json",
-    "bytes": 6985,
-    "sha256": "f8a5c247704d5b62a7876076dc8861a2055cdb8552a49d8932a4effebbf66071",
-    "status": "EXPLICIT_FERRY_OBSERVED_ONE_FRAME_PUBLIC_MOUSE_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
-    "nativeExecuted": false,
-    "runtimeSourceChanged": false,
-    "previousActualToolSHA256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94",
-    "actualCurrentPredicateNeverForecasted": true
   }
 }

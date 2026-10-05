@@ -1,0 +1,120 @@
+{
+  "status": "EXPLICIT_FERRY_OBSERVED_ONE_FRAME_PUBLIC_MOUSE_CPU_READY_NEW_PAIRED_HIGH_REQUIRED",
+  "preparedOnly": true,
+  "nativeExecuted": false,
+  "GPUExecuted": false,
+  "nativePassed": false,
+  "parentActualSourceHEAD": "15c692eae329b8eaa8d5aba9ada4149e6b5bec79",
+  "parentActualRawBuild": {
+    "path": "/workspace/neon-candidates/harbor-combined-transit-art-final-20261005/dist/build-info.json",
+    "bytes": 22347,
+    "sha256": "a29cd13a867bbddd4dd5578f19c296a9fd899beb5fb3c77e00051587c13a1076"
+  },
+  "parentRuntimeCount": 208,
+  "parentMethodSHA256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94",
+  "parentManifestSHA256": "c569db21bb594bc5a7ddf6c91876c3a26ccb19a73d4c41cf57082fa6f1809cec",
+  "newMethodSHA256": "8a3a5f2578a2c90f2a21287c61210b4fbf9ae6fe1dc5d043b630a12957ef6d50",
+  "newMethodBytes": 66912,
+  "scope": "Only Ferry cabin aim through public page.mouse.move. Bus/Tram, general aim, all photo guards, canonical routes, body/physics/clock/service/quality/pier/upper-open-E/final-exit and cleanup unchanged.",
+  "executedSourceChangeCount": 3,
+  "sourceReversal": {
+    "path": "/workspace/neon-candidates/ferry-observed-one-frame-public-aim-candidate-20261005/EXACT_SOURCE_REVERSAL.json",
+    "bytes": 10442,
+    "sha256": "f1dcda05daa3bbe00d11fe50ee2a3a76ed700940a90b0f882eabd3fd28baabab"
+  },
+  "controlPolicy": {
+    "freshInput": "Read actual compact snapshot; derive current vehicle yaw + atan2(originaltarget-currentactualpassenger) - originalkeyoffset.",
+    "history": "Only protocol pointer owns last genuinely matched readonly control frame. No game state writes. Across cycles body may move; estimation uses only observed vehicle yaw, while target heading always uses fresh actual body.",
+    "oneFrameAnticipation": "Two actually observed same-vessel/same-revision frames, strictly positive simulation delta at most.250001 and actual frame dt at most.250001. Angle wrap. Advance magnitude cannot exceed observed yaw delta and.125rad.",
+    "unknownDiscontinuousOrJump": "No anticipation for first sample, zero/nonfinite/too-large elapsed or dt, different vehicle/revision, nonfinite or abs wrapped observed yaw delta>.125.",
+    "cameraResponse": "Actual unmodified ChaseCamera first-person weight1-exp(-12*actualdt) informs public mouse target only. Its extra compensation magnitude bounded by min(abs(observedYawDelta),.125). Maximum combined anticipation plus compensation is.25rad, not.125.",
+    "acceptance": "Only readonly current actual camera-current actual vessel yaw-current actual passenger goal heading satisfies original.025yaw/.003pitch. Forecast/mouseTarget never substitutes for acceptance.",
+    "waiter": "requestedYaw remains actual current desired at input, never anticipated mouse target. Reaim returns a compact current snapshot for another public mouse correction; it never authorizes movement.",
+    "movementGuard": "Exactly original cabinHeldObservation; wrong direction immediately returns reaim on the same observation, no grace physical frame. Movement key release confirmed before handle and final diagnostic RPC.",
+    "returnedFrame": "Original walk before/v/dx/dz/desired and guard baseline are recomputed/reused from the same matched actual readonly frame."
+  },
+  "limits": {
+    "aimMs": 60000,
+    "originalOtherLocalMs": 150000,
+    "previousDeclaredFerryLongCentreHallMs": 300000,
+    "wholeMs": 2400000,
+    "maxIterations": 1800,
+    "endpointXZ": 0.06,
+    "endpointY": 0.15,
+    "yawTolerance": 0.025,
+    "pitchTolerance": 0.003,
+    "bodyRadius": 0.3,
+    "normalGait": 2.25,
+    "slowGait": 0.3,
+    "gameMaxDt": 0.25,
+    "gameFixedStep": 0.016666666666666666,
+    "berthAndAllCaseBudgetsUnchanged": true
+  },
+  "cpu": {
+    "necessaryChecks": 21,
+    "receipt": {
+      "path": "/workspace/neon-candidates/ferry-observed-one-frame-public-aim-candidate-20261005/ACTUAL_SOURCE_FERRY_RELATIVE_AIM_CPU_RECEIPT.json",
+      "bytes": 6481121,
+      "sha256": "228aea916f52cc71bfebccbcd202fb4a64e9c2ff29668b8688d8079c6cf36632"
+    },
+    "actualSourceMainPointerAndKeyboardAndChaseCameraUsed": true,
+    "actualFerryOriginalBothLower5SeedsMax025Fixed15AndExtraRelease": true,
+    "all12CanonicalFerryUpDownSourceRoutes": true,
+    "authoredInitialAndN6Observed7666Pressure": [
+      {
+        "fixture": "observed-one-frame-original-authored-lower5-explicit7666-pressure",
+        "classification": "CPU_SOURCE_PRESSURE_SUCCESS_NOT_NATIVE_TIMING_PREDICTION",
+        "explicitWallFrameMs": 7666.4,
+        "sourceFrames": 16,
+        "mouseInputs": 6,
+        "elapsedCPUWallMs": 123172.39999999997,
+        "originalLocalLimitMs": 150000,
+        "horizontalGap": 0.009969774073890634,
+        "heightGap": 0,
+        "failure": null
+      },
+      {
+        "fixture": "actual-authored-zero-move-slow-n6-observed-one-frame-explicit7666-wall",
+        "classification": "ACTUAL_RECORDED_N6_SEED_SOURCE_CPU_ONLY_NOT_NATIVE_TIMING_PREDICTION",
+        "explicitWallFrameMs": 7666.4,
+        "sourceFrames": 12,
+        "mouseInputs": 6,
+        "elapsedCPUWallMs": 92386.79999999999,
+        "originalLocalLimitMs": 150000,
+        "horizontalGap": 0.0101318160150336,
+        "heightGap": 0,
+        "failure": null
+      }
+    ],
+    "busTramLiteral24LegIdentity": {
+      "path": "/workspace/neon-candidates/ferry-observed-one-frame-public-aim-candidate-20261005/BUS_TRAM_LITERAL_PUBLIC_ACTION_AND_MOTION_CPU_RECEIPT.json",
+      "bytes": 304868,
+      "sha256": "a793bb7106a9ae6680ac8d1555823382fd332443f9ed6bf34c63624ad5827382"
+    },
+    "finalReleasedFailureDiagnosticRPCRejectionNotSeparatelyInjected": true,
+    "syntheticWallFramesNotNativeTimingPrediction": true
+  },
+  "preservedNegativeEvidence": {
+    "actual220WholeAndFirstErrorSeal": {
+      "path": "/workspace/neon-candidates/current220-ferry-high-first-failure-original-deep-readonly-review-20261005/SEAL.json",
+      "bytes": 1011,
+      "sha256": "fa7129c50bc6c72b0efb3fa582e3cb9a4e199cc9740e653b83894be66fef8a5d"
+    },
+    "noAnticipation240055PressureBLOCKED": {
+      "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/SEAL.json",
+      "bytes": 3850,
+      "sha256": "0b750fcae7beb9940c39b630dca9c09e7e90987cdb1940019eda140866837f36"
+    },
+    "noAnticipationBlocker": {
+      "path": "/workspace/neon-candidates/ferry-fresh-relative-public-aim-candidate-20261005/KNOWN_SOURCE_PRESSURE_BLOCKER_AND_TEMPORAL_FINDINGS.json",
+      "bytes": 10389,
+      "sha256": "a676acbd32fc10d72c7185d6bc15f0ee20171a00b6fbbb5d3d3ff62ca87a0813"
+    },
+    "initial517ed0NoHistoryAcrossCycles150PressureFailed": "initial-517ed0-one-frame-method-pressure-FAIL-preserved.mjs and source-cpu-first-attempt.log/source-cpu-second-attempt.log remain unchanged; it is not adopted.",
+    "originalNativeFAILNotReclassified": true,
+    "latestNativeStillRequired": true
+  },
+  "runtimeSourceChanged": false,
+  "gameClockOrWorldOrCameraSetterUsed": false,
+  "sourceWriteOrBuildOrGPUExecuted": false
+}
