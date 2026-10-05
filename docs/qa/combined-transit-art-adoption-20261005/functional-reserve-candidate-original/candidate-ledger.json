@@ -1,0 +1,72 @@
+{
+  "status": "FINAL_TEST_ONLY_FINITE_RESERVE_CANDIDATE_NOT_ADOPTED_OR_TESTED",
+  "createdAtUTC": "2026-10-05T10:41:27.468844+00:00",
+  "basisHead": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "basisRuntimeResourceCount": 208,
+  "basisCommittedBuildRawSHA256": "a28bd1c4b89dc231588f7fb358d37fa69e84061738809f09701308fa4127732a",
+  "candidateEditedRepoFiles": [
+    "tests/e2e/harbor-sample.spec.js"
+  ],
+  "payloadManifest": {
+    "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/payload-manifest.json",
+    "bytes": 539,
+    "sha256": "bb9ebb0c6bfb0063b6dd2afab4bfcb2c24945f81874b8da32809e030db452e44"
+  },
+  "editableRecipe": {
+    "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/editable-recipe.json",
+    "bytes": 1105,
+    "sha256": "e160b2183c15b84d334f9627c0fa2e483f4058acd14032c8e91ceab8358a0b91"
+  },
+  "proof": {
+    "path": "/workspace/neon-candidates/ferry-functional-finite-final-verification-reserve-candidate-20261005/evidence/exact-source-reversal-and-syntax-proof.json",
+    "bytes": 2420,
+    "sha256": "94a27e351d1304fa5f2ddbfaf6e0926c0283f3ef014daf73e2b2674885233584"
+  },
+  "diagnosisExpertReceipt": {
+    "path": "/workspace/neon-candidates/current220-ferry-functional-first-failure-readonly-diagnosis-20261005/FINAL_READONLY_EXPERT_RECEIPT.json",
+    "bytes": 3287,
+    "sha256": "f86b2f4be5a66f6d797bdb7d786da9ef0f4ad9dcd6d5a4396e31201cc50702f5"
+  },
+  "diagnosisSeal": {
+    "path": "/workspace/neon-candidates/current220-ferry-functional-first-failure-readonly-diagnosis-20261005/SEAL.json",
+    "bytes": 2348,
+    "sha256": "40dab9895cf8baf70ac404444b9ee1240f390ad05029ec50d1d11f5445e6a5f7"
+  },
+  "independentOriginalTraceReviewReceipt": {
+    "path": "/workspace/neon-candidates/current220-ferry-first-failure-independent-readonly-reader-20261005/receipt.json",
+    "bytes": 18600,
+    "sha256": "13bdea047c511718ccf245c5f4d2fbea2dc3223ecf3f17e60c96c23563736177"
+  },
+  "independentOriginalTraceReviewSeal": {
+    "path": "/workspace/neon-candidates/current220-ferry-first-failure-independent-readonly-reader-20261005/SEAL.json",
+    "bytes": 472,
+    "sha256": "6983909dc5b48b82a17c417ae7c260e0acc031a8df6349b30044123baec87820"
+  },
+  "methodAmendment": {
+    "oldFerryWholeTestMs": 900000,
+    "newFerryWholeTestMs": 1080000,
+    "finiteAddedReserveMs": 180000,
+    "truthfulCommentChanged": true,
+    "allOtherExecutableBytesExact": true,
+    "allNonTestProductionFilesUnchangedByCandidate": true,
+    "wholeBudgetUnchangedClaimAllowed": false,
+    "newActualCurrentFull12AndMultiplayerVerificationRequired": true,
+    "originalRunId": 37293335056,
+    "originalJobId": 111708683046,
+    "originalResult": "FAILED"
+  },
+  "scope": {
+    "gameChange": false,
+    "nativeProtocolChange": false,
+    "testExecution": false,
+    "build": false,
+    "GPU": false,
+    "network": false,
+    "sourceWorktreeEdited": false,
+    "V7Edited": false,
+    "newCurrentPASS": false,
+    "performanceProof": false,
+    "AAA": false,
+    "releaseReady": false
+  }
+}

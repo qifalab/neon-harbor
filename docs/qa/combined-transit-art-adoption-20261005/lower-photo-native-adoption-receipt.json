@@ -1,0 +1,50 @@
+{
+  "status": "LITERAL_THREE_NATIVE_LOWER_PHOTO_PAYLOADS_ADOPTED_NATIVE_PENDING",
+  "atUTC": "2026-10-05T10:52:52.979619+00:00",
+  "parentCommit": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "rootActualReviewAuthorized": true,
+  "rootAuthorization": "ROOT reviewed all14 sealed files, five-edit exact reversal to ce3, old target identities and26 scoped CPU receipts; authorized literal three-payload adoption only.",
+  "candidateSeal": {
+    "path": "/workspace/neon-candidates/transport-bus-tram-immediate-boarded-lower-photo-candidate-20261005/SEAL.json",
+    "sha256": "c934e053ed0934e17b33df4d636455698ad98d968f91bfae4d37f578d3a1eea2"
+  },
+  "payloadManifest": {
+    "path": "/workspace/neon-candidates/transport-bus-tram-immediate-boarded-lower-photo-candidate-20261005/PAYLOAD_MANIFEST.json",
+    "sha256": "31087fa87df1bf95dbfd598013d80e53df974536f3066672d519e5e9f04d24cf"
+  },
+  "literalTargetFiles": {
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "bytes": 21862,
+      "sha256": "272720ede2bf0f14c3d24e6cf9c86e712d730ad8e5b4be52af3d4bf234f067c1",
+      "beforeSHA256": "6dcee5818971ebb9c70c035b2cbbfe94ea2479f13d3c4b5c92088f0c4cb2995d"
+    },
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "bytes": 57789,
+      "sha256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94",
+      "beforeSHA256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f"
+    },
+    "tools/native-review/runtime-amendments/bus-tram-immediate-boarded-lower-photo-20261005/active-source-amendment.json": {
+      "bytes": 5172,
+      "sha256": "fd71101fe398b0a77fc3c452bf6599101eb51aca393e67046f373aff57cc7a2d",
+      "beforeSHA256": null
+    }
+  },
+  "originalCandidateInventoryCount": 14,
+  "originalCandidateFilesIncludingSealArchived": 15,
+  "actualSourceDeltaFrom220": {
+    "tests/e2e/harbor-sample.spec.js": {
+      "before": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f",
+      "after": "8fb39ca9c6de152db7dc24612d4f8335db74cd05e2d6e989931f4c3d2df5a99c"
+    }
+  },
+  "all208RuntimeResourcesLiteral220": true,
+  "old213NativeFilesUnchangedExceptTwoLiteralMethodPayloads": true,
+  "upperActualOpenAndERefusalPreserved": true,
+  "FerryAllBehaviorPreserved": true,
+  "whole2400AndOriginalDestinationPreserved": true,
+  "buildOrTestsExecuted": false,
+  "GPUOrNetworkExecuted": false,
+  "oldNativePassInherited": false,
+  "newNativePass": false,
+  "remainingCandidate": "Actual Tram export remains pending ROOT FINAL review; one null build after all3 approvals."
+}

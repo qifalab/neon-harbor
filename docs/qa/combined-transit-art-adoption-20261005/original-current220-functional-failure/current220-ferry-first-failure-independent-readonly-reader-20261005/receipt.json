@@ -1,0 +1,527 @@
+{
+  "status": "SEALED_INDEPENDENT_READ_ONLY_FIRST_FAILURE_REVIEW",
+  "reviewedAtUTC": "2026-10-05T10:38:37.302139+00:00",
+  "reviewer": "/root/authored_sample_art_acceptance/actual986_v6_publication_reader",
+  "run": {
+    "actualSourceHead": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+    "runId": 37293335056,
+    "jobId": 111708683046,
+    "artifactId": 11338797741,
+    "originalResult": "FAILED"
+  },
+  "inputs": {
+    "originalArtifact": {
+      "path": "/workspace/neon-evidence/current220-harbor-sample2-original-failure-11338797741/original.zip",
+      "bytes": 53254837,
+      "sha256": "06fba4567d0dc030b042254247479c9b260d2c7363f440d469fc162a1d69c7d3"
+    },
+    "originalTerminalJobLog": {
+      "path": "/workspace/scratch/neon-harbor/docs/qa/authored-integration/remote-ci-ferry-long-corridor-220/monitor-2026-10-05T09-58-49Z/logs/job-111708683046-original.log",
+      "bytes": 227536,
+      "sha256": "7293b1337f18f0bf1ba1fd4eb2421a9d5963130c14c339bfbe01789d9358803a"
+    },
+    "parentOriginalTraceProof": {
+      "path": "/workspace/neon-candidates/current220-ferry-functional-first-failure-readonly-diagnosis-20261005/original-trace-first-cause-proof.json",
+      "bytes": 2478996,
+      "sha256": "c948b3e7662c8abec54ec47eabb00c7b8fbe448e4023c8879b5d4b4ce0cbdebd"
+    },
+    "actualExecutedTestSource": {
+      "path": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/tests/e2e/harbor-sample.spec.js",
+      "bytes": 33729,
+      "sha256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f"
+    },
+    "actualAlightingSource": {
+      "path": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/src/harbor-transit.js",
+      "bytes": 38246,
+      "sha256": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e"
+    },
+    "walkingHelper": {
+      "path": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/tests/e2e/helpers/walking.js",
+      "bytes": 7277,
+      "sha256": "12e30e93076aea7339e31befdc5e6155e64869a2f3d763d92298f6b302960969"
+    },
+    "playwrightConfig": {
+      "path": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/playwright.config.js",
+      "bytes": 1154,
+      "sha256": "c36c32b6c238944690757af80c33968b9ed3f246717e9cc5b02854481abe259e"
+    }
+  },
+  "nestedInputs": {
+    "trace": {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/trace.zip",
+      "bytes": 25609260,
+      "sha256": "7c25265c223d055228134d2db3040c829cabb9447ea887bdf45f9f87d9a25caa"
+    },
+    "testTrace": {
+      "member": "test.trace",
+      "bytes": 1419824,
+      "sha256": "a4670da0ca42474acbaa1c66bd6c35896d2ff11f0d82a1f70e72ad3c971246ac"
+    },
+    "libraryTrace": {
+      "member": "0-trace.trace",
+      "bytes": 12134926,
+      "sha256": "38e73d3a81c6ac91d17bfb61568dcde347b5267c613f238c601f81862ae699e5"
+    },
+    "embeddedExecutedSource": {
+      "member": "resources/src@27bbc15740cda4074d80180c6d8ee429a14bfb04.txt",
+      "bytes": 33729,
+      "sha256": "48bacdf2e79dc4eaacf0e474362c60bdfdc33863706d57759bc53ce0bc38518f",
+      "byteExactToActualSource": true
+    }
+  },
+  "firstCause": {
+    "conclusion": "The whole-test 900000ms budget was exhausted before the final riding=false poll issued its first browser evaluation.",
+    "finalArrival": {
+      "before": {
+        "type": "before",
+        "callId": "pw:api@2309",
+        "stepId": "pw:api@2309",
+        "startTime": 901614.75,
+        "class": "Test",
+        "method": "pw:api",
+        "title": "Wait for function",
+        "params": {
+          "polling": "raf",
+          "timeout": "180000",
+          "pollingInterval": "undefined",
+          "expression": "({\n      id,\n      from\n    }) => {\n      const v = window.__NEON__.snapshot().city.sample.transit.vehicles.find(v => v.id === id);\n      return v.stopId && v.stopId !== from && v.doorsOpen && v.remaining > 2;\n    }",
+          "isFunction": "true",
+          "arg": "Object"
+        },
+        "stack": [
+          {
+            "file": "/home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js",
+            "line": 390,
+            "column": 16
+          }
+        ]
+      },
+      "after": {
+        "type": "after",
+        "callId": "pw:api@2309",
+        "endTime": 901657.315,
+        "annotations": []
+      },
+      "elapsedMilliseconds": 42.565
+    },
+    "finalEApi": {
+      "before": {
+        "type": "before",
+        "callId": "pw:api@2314",
+        "stepId": "pw:api@2314",
+        "startTime": 901723.566,
+        "class": "Test",
+        "method": "pw:api",
+        "title": "Press \"e\"",
+        "params": {
+          "key": "e"
+        },
+        "stack": [
+          {
+            "file": "/home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js",
+            "line": 398,
+            "column": 25
+          }
+        ]
+      },
+      "after": {
+        "type": "after",
+        "callId": "pw:api@2314",
+        "endTime": 901745.909,
+        "annotations": []
+      },
+      "elapsedMilliseconds": 22.343
+    },
+    "finalELibrary": {
+      "before": {
+        "type": "before",
+        "callId": "call@3734",
+        "startTime": 901723.874,
+        "class": "Page",
+        "method": "keyboardPress",
+        "params": {
+          "key": "e"
+        },
+        "stepId": "pw:api@2314",
+        "pageId": "page@eca26b4ab16f00c696b3d6c29580d894"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@3734",
+        "endTime": 901743.02,
+        "afterSnapshot": "after@call@3734"
+      },
+      "elapsedMilliseconds": 19.146
+    },
+    "finalPoll": {
+      "before": {
+        "type": "before",
+        "callId": "expect@2315",
+        "stepId": "expect@2315",
+        "startTime": 901748.003,
+        "class": "Test",
+        "method": "expect",
+        "title": "Expect \"poll toBe\"",
+        "params": {},
+        "stack": [
+          {
+            "file": "/home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js",
+            "line": 399,
+            "column": 89
+          }
+        ]
+      },
+      "after": {
+        "type": "after",
+        "callId": "expect@2315",
+        "endTime": 901749.749,
+        "annotations": [],
+        "error": {
+          "name": "",
+          "message": "Error: Test timeout of 900000ms exceeded",
+          "stack": "Error: Test timeout of 900000ms exceeded\n    at /home/runner/work/neon-harbor/neon-harbor/tests/e2e/harbor-sample.spec.js:399:89"
+        }
+      },
+      "elapsedMilliseconds": 1.746
+    },
+    "browserEvaluationOrWaitRPCBetweenFinalEAndAfterHooks": [],
+    "checkedLibraryInterval": {
+      "start": 901743.02,
+      "endExclusive": 901751.131
+    }
+  },
+  "postEOriginalDOM": {
+    "snapshotName": "after@call@3734",
+    "timestamp": 901745.482,
+    "wallTime": 1791195395581,
+    "viewport": {
+      "width": 512,
+      "height": 320
+    },
+    "exactObservedStrings": [
+      "已到达 河口北码头。",
+      "ON FOOT",
+      "登船 · 03 · 河口渡轮（15 秒）"
+    ],
+    "sha256OfCanonicalOriginalSnapshot": "972b5fda035cfc21682df87047f52337065d2e539124c2823892e55f94c68585"
+  },
+  "sourceBoundAlightingInference": {
+    "source": "/workspace/neon-candidates/harbor-ferry-long-corridor-verification-final-20261005/src/harbor-transit.js",
+    "lines": [
+      255,
+      256
+    ],
+    "uniqueExactArrivalMessageOccurrencesInFile": 1,
+    "snippet": "      this.ridingVehicleId = null; this.passenger = null; this.passengerJump = 0; this.jumpVelocity = 0; this.version++;\n      return { handled: true, transition: { id: 'street', position: { ...stop.board, yaw: stop.berth.yaw + Math.PI / 2 }, groundY: stop.board.y }, message: `已到达 ${stop.name}。` };",
+    "inference": "The unique exact arrival-message branch clears ridingVehicleId and passenger before returning the street transition. The post-E DOM is consistent with that alighting branch.",
+    "finalRidingFalsePollActuallySampled": false
+  },
+  "allTwelveWaypoints": [
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-upper-0-2-cabin-evidence.jsonl",
+      "bytes": 87267,
+      "sha256": "7c07cfa69ad31b63134df31779fee942951fb8c8076ab75a4cea278de5b18815",
+      "stage": "upper",
+      "waypoint": 0,
+      "wallMilliseconds": 22493,
+      "inputCycles": 14,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": -0.017499999999995578,
+        "y": 1.3,
+        "z": -7.2,
+        "yaw": 1.5707963267948966
+      },
+      "endSimulationTime": 11.066666666666796
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-upper-1-3-cabin-evidence.jsonl",
+      "bytes": 211783,
+      "sha256": "83a4584e4c41eaa947eccb7afc3ba26d5879f677c51ad09896ac5f25288a261c",
+      "stage": "upper",
+      "waypoint": 1,
+      "wallMilliseconds": 73752,
+      "inputCycles": 33,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": -0.007363398775392524,
+        "y": 1.3,
+        "z": 5.580591286930191,
+        "yaw": 0.02591517303318369
+      },
+      "endSimulationTime": 24.73333333333321
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-upper-2-4-cabin-evidence.jsonl",
+      "bytes": 122077,
+      "sha256": "bea420449881db5b61449abf1539889dbfce2e0b852c976faa9462db063fc475",
+      "stage": "upper",
+      "waypoint": 2,
+      "wallMilliseconds": 80957,
+      "inputCycles": 17,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 1.7811455225071722,
+        "y": 1.3,
+        "z": 5.570490644659983,
+        "yaw": 1.9031317178797476
+      },
+      "endSimulationTime": 35.983333333332574
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-upper-3-5-cabin-evidence.jsonl",
+      "bytes": 108547,
+      "sha256": "d80fcdc90dedba732c5c0d1e41126ad4552a26602b40a46d1e925b7bb6b1ea2c",
+      "stage": "upper",
+      "waypoint": 3,
+      "wallMilliseconds": 63728,
+      "inputCycles": 16,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 1.7800286402496073,
+        "y": 2.493886936924905,
+        "z": 3.100494091612247,
+        "yaw": -3.1397918287860302
+      },
+      "endSimulationTime": 45.716666666665354
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-upper-4-6-cabin-evidence.jsonl",
+      "bytes": 105020,
+      "sha256": "b403b27d70c91289d7f199a8170237cb1171f51ca7843c1d46fe44fc002c353c",
+      "stage": "upper",
+      "waypoint": 4,
+      "wallMilliseconds": 88331,
+      "inputCycles": 16,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 1.7799854434256794,
+        "y": 3.7,
+        "z": 0.6254949670289989,
+        "yaw": 3.141209564208986
+      },
+      "endSimulationTime": 54.21666666666487
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-upper-5-7-cabin-evidence.jsonl",
+      "bytes": 72898,
+      "sha256": "711bbb36f907764244f4943fb34234e3a957ce926e39491a1f9db4482e2ee04f",
+      "stage": "upper",
+      "waypoint": 5,
+      "wallMilliseconds": 17982,
+      "inputCycles": 11,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 5.490486265313701e-05,
+        "y": 3.7,
+        "z": 0.6098758168426894,
+        "yaw": -1.5848299097321592
+      },
+      "endSimulationTime": 57.64999999999801
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-0-9-cabin-evidence.jsonl",
+      "bytes": 129830,
+      "sha256": "d120dba7a8132b397114eadec0c42f35c82bd8f809368e4a70f504edae20bd0a",
+      "stage": "lower",
+      "waypoint": 0,
+      "wallMilliseconds": 80286,
+      "inputCycles": 18,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 1.7757175281359974,
+        "y": 3.7,
+        "z": 0.6209878332576103,
+        "yaw": 1.702879549262345
+      },
+      "endSimulationTime": 73.94999999999709
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-1-10-cabin-evidence.jsonl",
+      "bytes": 118051,
+      "sha256": "b8f670e740d8c4573207c57b5acbe8405e3c3e019ff36e0f3d8432f1c40eb7f5",
+      "stage": "lower",
+      "waypoint": 1,
+      "wallMilliseconds": 54857,
+      "inputCycles": 17,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 1.7799850026878743,
+        "y": 2.500271512442853,
+        "z": 3.08953390363977,
+        "yaw": 0.014930802349857086
+      },
+      "endSimulationTime": 84.43333333332983
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-2-11-cabin-evidence.jsonl",
+      "bytes": 105279,
+      "sha256": "5a8839fe87daa88be116ea404305617c0bac276584b5adf8483d6622caeec61b",
+      "stage": "lower",
+      "waypoint": 2,
+      "wallMilliseconds": 42068,
+      "inputCycles": 16,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 1.780058541841334,
+        "y": 1.3,
+        "z": 5.55953388248473,
+        "yaw": 6.028180030458893e-06
+      },
+      "endSimulationTime": 92.91666666666268
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-3-12-cabin-evidence.jsonl",
+      "bytes": 59159,
+      "sha256": "95216ab50e61658132df036e9b166cf284ef441017812fbe7099ddb73badd98a",
+      "stage": "lower",
+      "waypoint": 3,
+      "wallMilliseconds": 15697,
+      "inputCycles": 9,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": -0.014909939430575978,
+        "y": 1.3,
+        "z": 5.57011979245262,
+        "yaw": -1.5621855377211358
+      },
+      "endSimulationTime": 96.14999999999583
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-4-13-cabin-evidence.jsonl",
+      "bytes": 213527,
+      "sha256": "46a3114d181401103d6ee97b83fffc9fe4d3f5dbc7fdb731de17226e20b22a7a",
+      "stage": "lower",
+      "waypoint": 4,
+      "wallMilliseconds": 114061,
+      "inputCycles": 32,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": 0.02167263263951283,
+        "y": 1.3,
+        "z": -7.164338418711233,
+        "yaw": -2.754579609083294
+      },
+      "endSimulationTime": 111.61666666666162
+    },
+    {
+      "member": "test-results/harbor-sample-ferry-public-11d08-el-and-lower-door-alighting/ferry-lower-5-14-cabin-evidence.jsonl",
+      "bytes": 131951,
+      "sha256": "86280159ba37cd4d863d722e15d71314311e40ec8258d28b67475e4e440897f1",
+      "stage": "lower",
+      "waypoint": 5,
+      "wallMilliseconds": 120702,
+      "inputCycles": 19,
+      "status": "movement-complete",
+      "firstError": null,
+      "diagnosticErrors": [],
+      "finalLocal": {
+        "x": -2.6753357732283614,
+        "y": 1.3,
+        "z": -7.200356335875018,
+        "yaw": -1.5590399041090373
+      },
+      "endSimulationTime": 123.86666666666092
+    }
+  ],
+  "waypointTotals": {
+    "journals": 12,
+    "upper": 6,
+    "lower": 6,
+    "wallMilliseconds": 774914,
+    "inputCycles": 218,
+    "allMovementComplete": true
+  },
+  "originalLibraryWallDurations": {
+    "evaluateExpression": {
+      "calls": 254,
+      "wallMilliseconds": 4699.502
+    },
+    "mouseMove": {
+      "calls": 110,
+      "wallMilliseconds": 214191.347
+    },
+    "waitForFunction": {
+      "calls": 340,
+      "wallMilliseconds": 581045.26
+    },
+    "jsonValue": {
+      "calls": 218,
+      "wallMilliseconds": 290.689
+    }
+  },
+  "costInterpretation": "These are recorded wall durations of API calls. They do not establish GPU/CPU hardware causation, inner snapshot CPU time, or a serialization hang; RAF waits include waiting for actual movement/rendered progress.",
+  "sourceReview": {
+    "retryEnabled": false,
+    "directGamePositionClockStorageWritesFoundInReviewedTestPath": false,
+    "compactSnapshotsStillConstructFullSnapshot": true,
+    "compactEffect": "Selecting fields reduces returned RPC payload while retaining full __NEON__.snapshot construction.",
+    "reviewedSnapshotScope": "main snapshot entry, world snapshot wrapper, resident core review; unrelated delegated snapshot internals were not exhaustively reviewed."
+  },
+  "acceptanceBoundary": {
+    "originalRunRemainsFailed": true,
+    "finalRidingFalseSamplingExecuted": false,
+    "finalOutsideCoordinateAssertionsExecuted": false,
+    "finalInteriorAndErrorsAssertionsExecuted": false,
+    "finalPhysicalRouteAttachmentCompleted": false,
+    "newRunPassInherited": false,
+    "nativeHighFullCaseAcceptance": false,
+    "releaseReady": false,
+    "AAAClaim": false,
+    "gameRegressionProven": false,
+    "hardwareCauseProven": false
+  },
+  "authorizedNextTestOnlyChange": {
+    "appliedOrVerifiedByThisReceipt": false,
+    "file": "tests/e2e/harbor-sample.spec.js",
+    "oldExactLine": "    if (kind === 'ferry') test.setTimeout(900000);",
+    "newExactLine": "    if (kind === 'ferry') test.setTimeout(1080000);",
+    "rationale": "A finite 180000ms whole-test extension, equal to the existing final arrival cap, leaves closing time after the measured completed physical route. A fresh CI result is required.",
+    "requiredPreservation": [
+      "all other tests",
+      "real input actions",
+      "precision .002",
+      "walkLocal 150000ms",
+      "arrival 180000ms",
+      "expect 20000ms",
+      "High capture",
+      "coordinates",
+      "all assertions"
+    ],
+    "notAProofOfFuturePass": true
+  },
+  "executionScope": {
+    "readOnlyClosedEvidence": true,
+    "network": false,
+    "GPU": false,
+    "tests": false,
+    "collector": false,
+    "build": false,
+    "sourceEdits": false,
+    "V7Changed": false,
+    "archiveExtraction": false,
+    "newExternalReceiptAndSealOnly": true
+  }
+}

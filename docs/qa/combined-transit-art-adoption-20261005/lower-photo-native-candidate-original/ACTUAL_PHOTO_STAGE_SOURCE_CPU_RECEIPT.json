@@ -1,0 +1,920 @@
+{
+  "status": "EXPLICIT_BUS_TRAM_IMMEDIATE_BOARDED_LOWER_PHOTO_CPU_READY_NEW_PAIRED_NATIVE_REQUIRED",
+  "testCount": 26,
+  "rows": [
+    {
+      "name": "bus-immediate-lower-docked",
+      "status": "CPU_STAGE_GUARD_PASS_NATIVE_HIGH_PENDING",
+      "actualSourceVehicle": {
+        "x": 152,
+        "y": 0,
+        "z": 120,
+        "yaw": 0,
+        "stopId": "harbor-bus-courtyard",
+        "doorsOpen": true,
+        "remaining": 11,
+        "nextStopId": "harbor-bus-courtyard",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/lower.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/lower-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-lower",
+          "payload": {
+            "vehicleId": "harbor-bus-1",
+            "stationID": "harbor-bus-courtyard",
+            "body": {
+              "x": 0,
+              "y": 0.44,
+              "z": 3.74,
+              "yaw": 0
+            },
+            "eye": {
+              "x": 0,
+              "y": 2.06,
+              "z": 3.739999999999995
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "bus-immediate-lower-moving",
+      "status": "CPU_STAGE_GUARD_PASS_NATIVE_HIGH_PENDING",
+      "actualSourceVehicle": {
+        "x": 152,
+        "y": 0,
+        "z": 120,
+        "yaw": 0,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 4.231753846153731,
+        "nextStopId": "harbor-bus-market",
+        "secondsToArrival": 11.96717269333979,
+        "speed": 0
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/lower.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/lower-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-lower",
+          "payload": {
+            "vehicleId": "harbor-bus-1",
+            "stationID": null,
+            "body": {
+              "x": 0,
+              "y": 0.44,
+              "z": 3.74,
+              "yaw": 0
+            },
+            "eye": {
+              "x": 0,
+              "y": 2.06,
+              "z": 3.739999999999995
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "tram-immediate-lower-docked",
+      "status": "CPU_STAGE_GUARD_PASS_NATIVE_HIGH_PENDING",
+      "actualSourceVehicle": {
+        "x": 248,
+        "y": 0,
+        "z": 100,
+        "yaw": 3.141592653589793,
+        "stopId": "harbor-tram-lantern",
+        "doorsOpen": true,
+        "remaining": 12,
+        "nextStopId": "harbor-tram-lantern",
+        "secondsToArrival": 0,
+        "speed": 0
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/lower.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/lower-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-lower",
+          "payload": {
+            "vehicleId": "harbor-tram-1",
+            "stationID": "harbor-tram-lantern",
+            "body": {
+              "x": 0,
+              "y": 0.44,
+              "z": -3.45,
+              "yaw": 0
+            },
+            "eye": {
+              "x": -4.2250314570583723e-16,
+              "y": 2.06,
+              "z": -3.450000000000003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "tram-immediate-lower-moving",
+      "status": "CPU_STAGE_GUARD_PASS_NATIVE_HIGH_PENDING",
+      "actualSourceVehicle": {
+        "x": 248,
+        "y": 0,
+        "z": 100,
+        "yaw": 3.141592653589793,
+        "stopId": null,
+        "doorsOpen": false,
+        "remaining": 18.31666666666648,
+        "nextStopId": "harbor-tram-workshop",
+        "secondsToArrival": 18.316666666666478,
+        "speed": 0
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/lower.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/lower-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-lower",
+          "payload": {
+            "vehicleId": "harbor-tram-1",
+            "stationID": null,
+            "body": {
+              "x": 0,
+              "y": 0.44,
+              "z": -3.45,
+              "yaw": 0
+            },
+            "eye": {
+              "x": -4.2250314570583723e-16,
+              "y": 2.06,
+              "z": -3.450000000000003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "bus-not-boarded",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "lower photo remains on the same actual boarded vehicle"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-wrong-vehicle",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "lower photo remains on the same actual boarded vehicle"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-upper-deck",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "lower photo uses the original lower deck\n\n'upper' !== 'lower'\n"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-wrong-kind",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "actual finite current matching vehicle"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-wrong-quality",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "Expected values to be strictly equal:\n\n'low' !== 'high'\n"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-wrong-eye",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Math.abs(eye.y-body.y-1.62)<.025)\n"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-wrong-body",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "original full passenger radius stays inside shell"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "bus-upper-closed",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "photo captures actual open berth"
+      },
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-bus-1"
+        }
+      ]
+    },
+    {
+      "name": "tram-not-boarded",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "lower photo remains on the same actual boarded vehicle"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-wrong-vehicle",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "lower photo remains on the same actual boarded vehicle"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-upper-deck",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "lower photo uses the original lower deck\n\n'upper' !== 'lower'\n"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-wrong-kind",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "actual finite current matching vehicle"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-wrong-quality",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "Expected values to be strictly equal:\n\n'low' !== 'high'\n"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-wrong-eye",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "The expression evaluated to a falsy value:\n\n  assert.ok(Math.abs(eye.y-body.y-1.62)<.025)\n"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-wrong-body",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "original full passenger radius stays inside shell"
+      },
+      "operations": [
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        }
+      ]
+    },
+    {
+      "name": "tram-upper-closed",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": {
+        "name": "AssertionError",
+        "message": "photo captures actual open berth"
+      },
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-tram-1"
+        }
+      ]
+    },
+    {
+      "name": "bus-upper-open-full-sequence-literal-identity",
+      "status": "CPU_CONTEXT_EQUIVALENCE_NOT_NATIVE",
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-bus-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 0
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/upper.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/upper-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-upper",
+          "payload": {
+            "vehicleId": "harbor-bus-1",
+            "stationID": "harbor-bus-courtyard",
+            "body": {
+              "x": 0,
+              "y": 2.4,
+              "z": -0.95,
+              "yaw": 0
+            },
+            "eye": {
+              "x": 0,
+              "y": 4.02,
+              "z": -0.9500000000000028
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "tram-upper-open-full-sequence-literal-identity",
+      "status": "CPU_CONTEXT_EQUIVALENCE_NOT_NATIVE",
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-tram-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 3.141592653589793
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/upper.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/upper-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-upper",
+          "payload": {
+            "vehicleId": "harbor-tram-1",
+            "stationID": "harbor-tram-lantern",
+            "body": {
+              "x": 0,
+              "y": 2.4,
+              "z": 0.44,
+              "yaw": 0
+            },
+            "eye": {
+              "x": 5.388445916248326e-17,
+              "y": 4.02,
+              "z": 0.4399999999999977
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ferry-exterior-full-photo-sequence-byte-identity",
+      "status": "CPU_CONTEXT_EQUIVALENCE_NOT_NATIVE",
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-ferry-1"
+        },
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-ferry-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 1.5707963267948966
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/exterior.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/exterior-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-exterior",
+          "payload": {
+            "vehicleId": "harbor-ferry-1",
+            "stationID": null,
+            "body": {
+              "x": -4.699999999999989,
+              "y": 1.3,
+              "z": -7.199999999999989
+            },
+            "eye": {
+              "x": -4.699999999999989,
+              "y": 2.92,
+              "z": -7.199999999999989
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ferry-lower-full-photo-sequence-byte-identity",
+      "status": "CPU_CONTEXT_EQUIVALENCE_NOT_NATIVE",
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-ferry-1"
+        },
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-ferry-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 1.5707963267948966
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/lower.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/lower-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-lower",
+          "payload": {
+            "vehicleId": "harbor-ferry-1",
+            "stationID": "harbor-ferry-south",
+            "body": {
+              "x": 0,
+              "y": 1.3,
+              "z": -7.2,
+              "yaw": 0
+            },
+            "eye": {
+              "x": -4.4087284769304647e-16,
+              "y": 2.92,
+              "z": -7.199999999999989
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ferry-upper-full-photo-sequence-byte-identity",
+      "status": "CPU_CONTEXT_EQUIVALENCE_NOT_NATIVE",
+      "operations": [
+        {
+          "action": "wait-actual-berth",
+          "id": "harbor-ferry-1"
+        },
+        {
+          "action": "original-resource-validation",
+          "id": "harbor-ferry-1"
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "original-public-aim",
+          "yaw": 1.5707963267948966
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "native-screenshot-not-executed-CPU-mock",
+          "path": "/cpu-only/upper.png",
+          "timeout": 90000
+        },
+        {
+          "action": "readonly-snapshot"
+        },
+        {
+          "action": "cpu-host-proof-write",
+          "path": "/cpu-only/upper-pose.json"
+        },
+        {
+          "action": "original-event",
+          "stage": "photo-upper",
+          "payload": {
+            "vehicleId": "harbor-ferry-1",
+            "stationID": "harbor-ferry-south",
+            "body": {
+              "x": 0,
+              "y": 3.7,
+              "z": 0.6100000000000001,
+              "yaw": 0
+            },
+            "eye": {
+              "x": 3.735172737399511e-17,
+              "y": 5.32,
+              "z": 0.6100000000000136
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ferry-lower-still-original-berth-required",
+      "status": "CPU_NEGATIVE_GUARD_ONLY",
+      "error": "photo captures actual open berth"
+    }
+  ],
+  "oldToolSHA256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f",
+  "newToolSHA256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94",
+  "fullSourceReversal": true,
+  "allWalkingBerthResourcesFunctionsLiteral": true,
+  "canonicalRoutesAllPublicKeysUpperOpenEAndFinalFixedToLiteral": true,
+  "FerryPhotoAllThreeFullExecutedSequenceBytesEqual": true,
+  "originalSourceGaitsLiteral": true,
+  "unchangedWholeMs": 2400000,
+  "unchangedLocalMs": 150000,
+  "sourceHEAD": "220312885a7b1a7a987790aa4f9d1d38b294be90",
+  "sourceHashes": {
+    "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+    "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f"
+  },
+  "nativePass": false,
+  "browserExecuted": false,
+  "GPUExecuted": false,
+  "scope": "Only lower photo Bus/Tram no extra scheduled berth wait, original current local/body/eye/High/aim/resource predicates preserved; upper and final actual-open E safety unchanged. CPU source transit fixture + mock screenshot supplies no new native pixels or wall-time estimate."
+}

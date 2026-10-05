@@ -1,0 +1,32 @@
+{
+  "parentMethodSHA256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f",
+  "candidateMethodSHA256": "2e9c11fbc4fc959e4074fa45effd7f17b5cea8d391436095586e43a46fe2ca94",
+  "edits": [
+    {
+      "before": "  function photoPose(state,id,target,relativeYaw,bodyYaw) {",
+      "after": "  function photoPose(state,id,target,relativeYaw,bodyYaw,immediateBoardedLower=false) {"
+    },
+    {
+      "before": "const v=vehicle(state,id);assert.ok(v?.stopId&&v.doorsOpen,'photo captures actual open berth');",
+      "after": "const v=vehicle(state,id);\n    if(immediateBoardedLower) {\n      assert.ok(kind==='bus'||kind==='tram','immediate lower phase is only Bus/Tram');\n      assert.ok(transit(state).riding&&transit(state).ridingVehicleId===id,'lower photo remains on the same actual boarded vehicle');\n      assert.equal(transit(state).passengerDeck,'lower','lower photo uses the original lower deck');\n      assert.ok(v&&v.kind===kind&&['x','y','z','yaw','serviceTime','speed'].every(k=>Number.isFinite(v[k])),'actual finite current matching vehicle');\n      assert.equal(v.doorsOpen,!!v.stopId,'actual dock/travel door phase is consistent');\n      assert.equal(transit(state).phase,v.stopId?'docked':'moving','actual dock or travel phase, without a berth wait');\n    }else assert.ok(v?.stopId&&v.doorsOpen,'photo captures actual open berth');"
+    },
+    {
+      "before": "    try {\n      await waitBerth(id);await validateResources(id);const aligned=await read();await aim(p,vehicle(aligned,id).yaw+relativeYaw);",
+      "after": "    const immediateBoardedLower=stage==='lower'&&(kind==='bus'||kind==='tram');\n    if(immediateBoardedLower)attempt.phaseAmendment='same-boarded-lower-local-pose-current-dock-or-travel-no-extra-berth-wait';\n    try {\n      if(!immediateBoardedLower)await waitBerth(id);await validateResources(id);const aligned=await read();await aim(p,vehicle(aligned,id).yaw+relativeYaw);"
+    },
+    {
+      "before": "photoPose(before,id,target,relativeYaw,bodyYaw);",
+      "after": "photoPose(before,id,target,relativeYaw,bodyYaw,immediateBoardedLower);"
+    },
+    {
+      "before": "photoPose(after,id,target,relativeYaw,bodyYaw);",
+      "after": "photoPose(after,id,target,relativeYaw,bodyYaw,immediateBoardedLower);"
+    }
+  ],
+  "originalRestored": true,
+  "note": "CPU verifier will require complete source reversal, not a tools whitelist.",
+  "reverseRestoresCompleteParentSourceSHA256": "ce3fed236f6f91f9d7bb56479ee961bce19bdee89544efe39d67b6fe01b2ea2f",
+  "scope": "Five exact substitutions solely photoPose/BusTram lower photo wait choice. Any other method byte change rejects complete reversal. No generalized tools/source whitelist.",
+  "newPhysicsOrInputs": false,
+  "newSourceOrClockWrites": false
+}

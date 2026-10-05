@@ -33,7 +33,7 @@
       "file": "vesper-t9-lod0.glb",
       "path": "models/vesper-t9-lod0.glb",
       "tier": 0,
-      "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca",
+      "sha256": "c92fff2e59645d22bf31ffda121098fff621979c135f9ee65e8087ef534f4560",
       "bytes": 5982272,
       "triangles": 77744,
       "materialCount": 15,
@@ -44,7 +44,7 @@
       "file": "vesper-t9-lod1.glb",
       "path": "models/vesper-t9-lod1.glb",
       "tier": 1,
-      "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d",
+      "sha256": "7e482d79badc3ad0cf39b94127c130b0651891d009af496885ff8dcc0409bf8d",
       "bytes": 2833376,
       "triangles": 23892,
       "materialCount": 14,
@@ -55,7 +55,7 @@
       "file": "vesper-t9-lod2.glb",
       "path": "models/vesper-t9-lod2.glb",
       "tier": 2,
-      "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5",
+      "sha256": "35fce1bb92e11a87c471cb67f48f87d9ffb2e9b04cf35fa172f0e1e78ea68cf4",
       "bytes": 899816,
       "triangles": 7972,
       "materialCount": 11,
@@ -64,19 +64,19 @@
     }
   ],
   "editableSource": {
-    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/source/vesper-t9-master.blend",
-    "bytes": 1993587,
-    "sha256": "d2b47a649635907d9cccb5c685bcb88cfd9e940658a2c99e4fa76bdbd2831fca"
+    "path": "art-source/transport/tram/source/vesper-t9-master.blend",
+    "bytes": 1989113,
+    "sha256": "c40f614510e44885207855e824e187c05e40259e76b8cdf25d677c3afb2fbf99"
   },
   "designSource": {
-    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/source/author_tram.py",
+    "path": "art-source/transport/tram/source/author_tram.py",
     "bytes": 7418,
-    "sha256": "638433ecaa5c4c06a48007484b82922ed1340d9aed3f3e2a2f87380becfa8513"
+    "sha256": "c56bc8bfd34f5e8d16c89e04798325da822788f74b7c6b61d22e8893955e2a20"
   },
   "cpuProof": {
-    "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/review/cpu-asset-check.json",
+    "path": "art-source/transport/tram/review/seam-correction-cpu-asset-check-20261005.json",
     "bytes": 25712,
-    "sha256": "94538a465b56b3c6f84a7eafd6e198b3fb4b8ee168a730c8f1b3207aa2ec7729"
+    "sha256": "f68f8634b0c9b067232331404b86f4d87622cec72699a0f9a20fd149634f2ae0"
   },
   "sourceProvenance": {
     "path": "/tmp/neon-authored-tram-candidate/review/source-provenance.json",
@@ -115,5 +115,48 @@
     "scope": "Only original curved upper-deck side/end spandrels and 8 far-corner-return triangles; all original materials, textures, canonical layout/door/wheel/hook/physics unchanged",
     "nativeValidated": false,
     "originalSourceProvenanceRemainsHistorical": true
+  },
+  "waistSpandrelSeamAmendment": {
+    "revision": "waist-spandrel-seam-2026-10-05",
+    "status": "ACTUAL_CPU_EXPORTED_SAMPLED_OVERLAP_REMOVED_NATIVE_REVIEW_PENDING",
+    "scope": "Raise only original opaque brown upper side/end/corner spandrel lower edge 2.55m to 2.57m to meet unchanged pearl waist; preserve original side upper3.058m/end upper3.088m, thickness, box bounds, layout, hooks, collision, materials, textures, licence and controls.",
+    "originalSourceHead": "9cf1c8613765addfb8592e0c4f9de14ce46210f9",
+    "originalManifest": {
+      "path": "art-source/transport/tram/review/seam-correction-original-asset-manifest-20261005.json",
+      "bytes": 4269,
+      "sha256": "432466501ba1cadb1a2093ad46414dc6b4c127722fb0d673b93fa26f3fa05f32"
+    },
+    "originalEditableSource": {
+      "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/source/vesper-t9-master.blend",
+      "bytes": 1993587,
+      "sha256": "d2b47a649635907d9cccb5c685bcb88cfd9e940658a2c99e4fa76bdbd2831fca"
+    },
+    "originalDesignSource": {
+      "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/source/author_tram.py",
+      "bytes": 7418,
+      "sha256": "638433ecaa5c4c06a48007484b82922ed1340d9aed3f3e2a2f87380becfa8513"
+    },
+    "originalCpuProof": {
+      "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/review/cpu-asset-check.json",
+      "bytes": 25712,
+      "sha256": "94538a465b56b3c6f84a7eafd6e198b3fb4b8ee168a730c8f1b3207aa2ec7729"
+    },
+    "provenance": {
+      "path": "art-source/transport/tram/review/waist-spandrel-seam-correction-20261005.json",
+      "bytes": 16949,
+      "sha256": "b8880e0a161b8c5dfbcd1b218f91cf96c24825bbb26e7c423ffc535feeacf478"
+    },
+    "exportTangentHygiene": {
+      "path": "art-source/transport/tram/review/seam-correction-export-tangent-hygiene-20261005.json",
+      "bytes": 2035,
+      "sha256": "bffc7e768fd6ae8b741f25852375e4857d57ad926e8c765d24e878e66726560d"
+    },
+    "authoringStats": {
+      "path": "art-source/transport/tram/review/seam-correction-authoring-stats-20261005.json",
+      "bytes": 13466,
+      "sha256": "d622195f7a94b035271e71dbe92233531d400ffaef7c50bd7d1676daffe6eece"
+    },
+    "nativeValidated": false,
+    "originalSourceProvenanceAndUpperEnclosureAmendmentRemainHistorical": true
   }
 }

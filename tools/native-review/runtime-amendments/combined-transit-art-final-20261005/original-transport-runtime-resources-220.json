@@ -1,0 +1,87 @@
+{
+  "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/transport-asset-integration-files.json",
+  "sourceSha256": "d9b4495e90345a3c680a4d01678ca418572b474b9c35b471210228d3365ea521",
+  "files": [
+    {
+      "kind": "bus",
+      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/bus/models/serein-d11-lod0.glb",
+      "target": "assets/harbor/transport/bus/serein-d11-lod0.glb",
+      "bytes": 8283296,
+      "sha256": "818f3d4cfd73f33422e22d2acc13cedf2b3781b1b84012b91dc1e8c0773f04f9"
+    },
+    {
+      "kind": "bus",
+      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/bus/models/serein-d11-lod1.glb",
+      "target": "assets/harbor/transport/bus/serein-d11-lod1.glb",
+      "bytes": 2695460,
+      "sha256": "94b3b1ff29117d24edd6ffb6aad9b2da75b2e301aee36080ba6b61e4532e2a81"
+    },
+    {
+      "kind": "bus",
+      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/bus/models/serein-d11-lod2.glb",
+      "target": "assets/harbor/transport/bus/serein-d11-lod2.glb",
+      "bytes": 579816,
+      "sha256": "33019edb6c90de4130e975dc5c7a30b10bd59dcd0b4dd4008f29eb7aff6f4190"
+    },
+    {
+      "kind": "tram",
+      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/models/vesper-t9-lod0.glb",
+      "target": "assets/harbor/transport/tram/vesper-t9-lod0.glb",
+      "bytes": 5982272,
+      "sha256": "9335aa25c8e9a8e5ea53208aaf698128b9a39a5d9c38f18def63e5b42c19b6ca"
+    },
+    {
+      "kind": "tram",
+      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/models/vesper-t9-lod1.glb",
+      "target": "assets/harbor/transport/tram/vesper-t9-lod1.glb",
+      "bytes": 2833376,
+      "sha256": "3d1a57fa47becc782b335b8b9ba8a999dd07aed13932946313861110fcc3bd5d"
+    },
+    {
+      "kind": "tram",
+      "source": "/tmp/neon-transport-upper-enclosure-candidate-20261005/art-source/transport/tram/models/vesper-t9-lod2.glb",
+      "target": "assets/harbor/transport/tram/vesper-t9-lod2.glb",
+      "bytes": 899816,
+      "sha256": "e723698445019b08819d134bbe828ae0429943a0c403cb2151eeeb3da146e7b5"
+    },
+    {
+      "kind": "ferry",
+      "source": "/tmp/neon-authored-ferry-candidate/models/lacuna-f26-lod0.glb",
+      "target": "assets/harbor/transport/ferry/lacuna-f26-lod0.glb",
+      "bytes": 7791044,
+      "sha256": "64e0db1bc9e8bf4412c184d3f33b24a0cfe73175ef5669f9cdaf26491ca2bd3c"
+    },
+    {
+      "kind": "ferry",
+      "source": "/tmp/neon-authored-ferry-candidate/models/lacuna-f26-lod1.glb",
+      "target": "assets/harbor/transport/ferry/lacuna-f26-lod1.glb",
+      "bytes": 2926468,
+      "sha256": "2ec39552082f70228790d830e8b3195ae5462b6a69c98bf359c1754a35180dc7"
+    },
+    {
+      "kind": "ferry",
+      "source": "/tmp/neon-authored-ferry-candidate/models/lacuna-f26-lod2.glb",
+      "target": "assets/harbor/transport/ferry/lacuna-f26-lod2.glb",
+      "bytes": 942524,
+      "sha256": "37cdbda1263dc5e9aee75f31ffda194d3a1c4d7bc369397861790093774c029c"
+    }
+  ],
+  "upperEnclosureAmendment": {
+    "status": "EXACT_ASSET_PIN_AMENDMENT_NATIVE_UNRUN",
+    "originalResources": {
+      "path": "/tmp/neon-transport-upper-enclosure-candidate-20261005/history/native-before-enclosure/transport/runtime-resources.json",
+      "bytes": 2792,
+      "sha256": "67a7fab4f2271a60931f2b72e0398fbd9f12f34a287bc4feb146b8e8baa454a8"
+    },
+    "originalIntegrationSource": {
+      "path": "/tmp/neon-authored-transport-runtime-candidate/integration-files.json",
+      "sha256": "83da35ec120a263ba542c0dbb273c0979eafbd111893506648e1a04aed78928f"
+    },
+    "changedKinds": [
+      "bus",
+      "tram"
+    ],
+    "ferryRecordsUnchanged": true,
+    "noMethodCodeChanges": true
+  }
+}

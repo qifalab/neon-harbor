@@ -1,0 +1,39 @@
+--- parent220-ce3/native-transport-high.mjs
++++ candidate-immediate-boarded-lower/native-transport-high.mjs
+@@ -377,8 +377,16 @@
+   async function validateResources(id) {
+     await page.waitForFunction(({mode,path,id})=>{const s=window.__NEON__.snapshot(),b=path.split('.').reduce((v,k)=>v?.[k],s);if(mode==='baseline')return !b||!b.fleet?.some(v=>v.authored);const actor=b?.fleet?.find(v=>v.id===id),pool=b?.pools?.find(p=>p.generation===actor?.poolGeneration);return !!actor?.authored&&!actor.failed&&actor.visibleLod===0&&!!pool?.loaded&&pool.settled&&!pool.failed&&!b.disposed;},{mode:args.mode,path:bridgePath,id},{polling:'raf',timeout:remaining(30000)});
+   }
+-  function photoPose(state,id,target,relativeYaw,bodyYaw) {
+-    healthy(state);if(transit(state).riding)radiusGuard(state,canonical[kind].layout);const v=vehicle(state,id);assert.ok(v?.stopId&&v.doorsOpen,'photo captures actual open berth');
++  function photoPose(state,id,target,relativeYaw,bodyYaw,immediateBoardedLower=false) {
++    healthy(state);if(transit(state).riding)radiusGuard(state,canonical[kind].layout);const v=vehicle(state,id);
++    if(immediateBoardedLower) {
++      assert.ok(kind==='bus'||kind==='tram','immediate lower phase is only Bus/Tram');
++      assert.ok(transit(state).riding&&transit(state).ridingVehicleId===id,'lower photo remains on the same actual boarded vehicle');
++      assert.equal(transit(state).passengerDeck,'lower','lower photo uses the original lower deck');
++      assert.ok(v&&v.kind===kind&&['x','y','z','yaw','serviceTime','speed'].every(k=>Number.isFinite(v[k])),'actual finite current matching vehicle');
++      assert.equal(v.doorsOpen,!!v.stopId,'actual dock/travel door phase is consistent');
++      assert.equal(transit(state).phase,v.stopId?'docked':'moving','actual dock or travel phase, without a berth wait');
++    }else assert.ok(v?.stopId&&v.doorsOpen,'photo captures actual open berth');
+     const body=transit(state).riding?transit(state).passengerLocal:localOf(state.position,v),eye=localOf(state.camera.position,v);
+     assert.ok(distance(body,target)<.06,'same declared local photo body point');assert.ok(Math.abs(body.y-target.y)<.15);
+     assert.ok(Math.abs(angle(state.camera.yaw-v.yaw-relativeYaw))<.025);assert.ok(Math.abs(state.camera.pitch-.15)<.003);assert.ok(distance(eye,body)<.06);assert.ok(Math.abs(eye.y-body.y-1.62)<.025);
+@@ -386,11 +394,13 @@
+   }
+   async function photo(stage,id,target,relativeYaw,bodyYaw,p) {
+     const attempt={stage,target,relativeYaw,bodyYawReferenceOnly:bodyYaw,vehicleId:id,mode:args.mode,status:'RUNNING',toolSha256,manifestSha256:sha(bundleBytes)};record.photoAttempts.push(attempt);
+-    try {
+-      await waitBerth(id);await validateResources(id);const aligned=await read();await aim(p,vehicle(aligned,id).yaw+relativeYaw);
+-      const before=await read();attempt.before=before;const proofBefore=photoPose(before,id,target,relativeYaw,bodyYaw);attempt.proofBefore=proofBefore;
++    const immediateBoardedLower=stage==='lower'&&(kind==='bus'||kind==='tram');
++    if(immediateBoardedLower)attempt.phaseAmendment='same-boarded-lower-local-pose-current-dock-or-travel-no-extra-berth-wait';
++    try {
++      if(!immediateBoardedLower)await waitBerth(id);await validateResources(id);const aligned=await read();await aim(p,vehicle(aligned,id).yaw+relativeYaw);
++      const before=await read();attempt.before=before;const proofBefore=photoPose(before,id,target,relativeYaw,bodyYaw,immediateBoardedLower);attempt.proofBefore=proofBefore;
+       const path=resolve(folder,`${stage}.png`);attempt.imageFile=`${stage}.png`;await page.screenshot({path,timeout:remaining(90000)});attempt.screenshotCompleted=true;
+-      const after=await read();attempt.after=after;const proofAfter=photoPose(after,id,target,relativeYaw,bodyYaw);attempt.proofAfter=proofAfter;
++      const after=await read();attempt.after=after;const proofAfter=photoPose(after,id,target,relativeYaw,bodyYaw,immediateBoardedLower);attempt.proofAfter=proofAfter;
+       if(args.mode==='authored'){assert.equal(proofAfter.resources.actor.instanceGeneration,proofBefore.resources.actor.instanceGeneration);assert.equal(proofAfter.resources.actor.poolGeneration,proofBefore.resources.actor.poolGeneration);}
+       const pose={stage,target,relativeYaw,bodyYawReferenceOnly:bodyYaw,bodyYawAsserted:false,actualBodyLocal:proofBefore.body,actualEyeLocal:proofBefore.eye,stationID:transit(before).stationId,vehicleId:id,actualBerth:{...proofBefore.vehicle},before,after,proofBefore,proofAfter,mode:args.mode,worldPositionEqualityAcrossRunsNotAsserted:true,imageSha256:sha(await readFile(path)),toolSha256,manifestSha256:sha(bundleBytes)};
+       await writeFile(resolve(folder,`${stage}-pose.json`),JSON.stringify(pose,null,2)+'\n');attempt.status='PASSED';attempt.imageSha256=pose.imageSha256;record.photos.push({stage,file:`${stage}.png`,imageSha256:pose.imageSha256,poseFile:`${stage}-pose.json`});await event(`photo-${stage}`,{vehicleId:id,stationID:pose.stationID,body:proofBefore.body,eye:proofBefore.eye,poolGeneration:proofBefore.resources.actor?.poolGeneration,instanceGeneration:proofBefore.resources.actor?.instanceGeneration});
