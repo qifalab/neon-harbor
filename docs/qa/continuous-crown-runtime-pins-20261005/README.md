@@ -1,0 +1,13 @@
+Final metadata refresh only, following the separately sealed continuous-crown CPU adoption. Production sources, tests and original38-file QA remain unchanged. No build, test, browser, GPU, stage or commit was executed by this metadata phase.
+
+Current authored dictionary contains actual206assets from nullrevision builda8c05e366a39f1330e3f1036add0cebb9b1b49df2f72070394815c5e4b60f8c1. Exactly5tree resources changed vsactualAEC206:src/harbor-sample-trees.js,assets/harbor/vegetation/asset-manifest.json and3GLBs.201 remain identical,0add/remove. The actual filename is asset-manifest.json. The baseline156 object is preserved in full.
+
+The full native bundle is now154files:original130 plus24explicit raw provenance/source-amendment files. Every actual file size/hash is covered exactly, without caches/vendor copies/symlinks. All functional method code, inputs,resources,canonical layouts,cases and capture budgets remain literal parent bytes. The transportcfcf method is unchanged and all its selected transport resources/source pins still match.
+
+Original128/130 provenance,previousnull951/AEC070033 builds,original dictionary/wide proof and every old amendment or FAIL remain historical and unchanged. The new Bwide proof adds an authored AA tree graphics identity guard and explicit source-only amendment; original physical source keys,case tables and prior fields remain unchanged. The metadata sealer did not rerun Bgeometry,4178collider or16camera tolerance cases. Corrected actual bus/tram height reference and old3.8m limitation stay separate immutable receipts.
+
+The new strict sealer is a separate copy of the prior reviewed strict206 script. Its old7-add9-change guard is replaced by actualAEC206-to-A8 exact5changes/201same/0addremove and an explicit154file inventory; all workflow/case/budget/method validation remains. Dry/apply had0blockers and changed only the global manifest at that sealing stage. Current descriptor/source-proof edits were separately guarded and archived before sealing.
+
+Active method syntax,South094/096 static plan compilation and24case selector ran without a browser,server,renderer,world,build or capture. Static plans and local dirty-worktree selector are not remote CI or native case acceptance.
+
+The previous CPU adoption passed378 unchanged rules and one actual206build; its raw outputs/first receipts remain in the original38file QA,not rewritten by this phase. Current tree art and performance remain pending; original AEC1728artFAIL remains failed. Separate standalone QUAY/Night method amendments are outside this24case bundle and must pin their own actual source/method/capture records.

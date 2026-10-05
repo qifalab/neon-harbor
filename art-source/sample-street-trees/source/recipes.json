@@ -161,5 +161,50 @@
     ],
     "thicknessMetres": 0.0016,
     "design": "Three-dimensional overlapping branch-following inner and mid-crown clusters; original terminal blades retained. No alpha planes or sphere crown."
+  },
+  "foliageEnvelope": {
+    "min": [
+      -3.85,
+      0.3,
+      -4.2
+    ],
+    "max": [
+      4.5,
+      12,
+      4.2
+    ]
+  },
+  "continuousCrown": {
+    "version": 3,
+    "retainedLeafPrefix": 1728,
+    "additionalLeaves": 1728,
+    "totalLeaves": 3456,
+    "independentSeedSalt": 2246822519,
+    "clusterCount": 54,
+    "leavesPerCluster": 32,
+    "clusterKinds": {
+      "adjacentBranchBridges": 12,
+      "innerCrown": 12,
+      "lateralShoulderLayers": 24,
+      "upperCentralCrown": 6
+    },
+    "leafLengthRangeMetres": [
+      0.29,
+      0.43
+    ],
+    "leafWidthRangeMetres": [
+      0.13,
+      0.21
+    ],
+    "thicknessMetres": 0.0016,
+    "newLeafPitchRangeRadians": [
+      -1.35,
+      1.35
+    ],
+    "newLeafRollRangeRadians": [
+      -1.45,
+      1.45
+    ],
+    "design": "Irregular filled overlapping small clusters connecting crown centre, neighbouring primary branches and wider lateral Z shoulders. No envelope shell or enlarged leaves. Original bark and previous leaf prefix unchanged."
   }
 }

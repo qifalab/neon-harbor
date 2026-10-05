@@ -1,0 +1,208 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "mode": "authored",
+  "plan": {
+    "id": "south-094",
+    "address": "south-094",
+    "englishName": "Old Quarter 94",
+    "budgetMinutes": 24,
+    "scope": "One shop south public entrance, actual E entry/exit/re-entry. Display geometry is photographed separately from the public entrance. This does not approve its shared interior art. One additional publicly walked wide public-door frontage view and exact return to the original door route. The oblique cases are not a straight-on display-facade view.",
+    "steps": [
+      {
+        "kind": "photo",
+        "label": "south-frontage",
+        "position": {
+          "x": 187,
+          "y": 0.18,
+          "z": 224.75940199801698
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 187,
+          "y": 1.78,
+          "z": 222.39940199801697
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 187,
+          "y": 1.8,
+          "z": 224.75940199801698
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.15847467771294363,
+          "fov": 65
+        },
+        "nominalEyeDistance": 2.360084744241203
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 223.75940199801698
+      },
+      {
+        "kind": "photo",
+        "label": "actual-public-door",
+        "position": {
+          "x": 187,
+          "y": 0.18,
+          "z": 223.75940199801698
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 187,
+          "y": 1.68,
+          "z": 222.39940199801697
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 187,
+          "y": 1.8,
+          "z": 223.75940199801698
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.23835018926880613,
+          "fov": 65
+        },
+        "nominalEyeDistance": 1.3652838532700946
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 231.39940199801697
+      },
+      {
+        "kind": "photo",
+        "label": "public-door-frontage-wide",
+        "position": {
+          "x": 187,
+          "y": 0,
+          "z": 231.39940199801697
+        },
+        "axisTolerance": 0.15,
+        "target": {
+          "x": 187,
+          "y": 2.2800000000000002,
+          "z": 222.39940199801697
+        },
+        "roomId": null,
+        "nominalEye": {
+          "x": 187,
+          "y": 1.62,
+          "z": 231.39940199801697
+        },
+        "camera": {
+          "yaw": 3.141592653589793,
+          "pitch": 0.07660077869784895,
+          "fov": 65
+        },
+        "nominalEyeDistance": 9.024167551635994
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 223.75940199801698
+      },
+      {
+        "kind": "look",
+        "label": "wide-return-original-door-look",
+        "yaw": 3.141592653589793,
+        "pitch": 0.23835018926880613
+      },
+      {
+        "kind": "door",
+        "label": "apparent-south-door-and-actual-public-prompt"
+      },
+      {
+        "kind": "enter"
+      },
+      {
+        "kind": "walk",
+        "axis": "x",
+        "target": 187
+      },
+      {
+        "kind": "walk",
+        "axis": "z",
+        "target": 220.159401998017
+      },
+      {
+        "kind": "event",
+        "label": "real-target-building-interior"
+      },
+      {
+        "kind": "exit",
+        "label": "first-normal-exit"
+      },
+      {
+        "kind": "frontage",
+        "label": "shell-restored-after-exit"
+      },
+      {
+        "kind": "enter",
+        "label": "physical-re-entry"
+      },
+      {
+        "kind": "exit",
+        "label": "second-normal-exit"
+      },
+      {
+        "kind": "frontage",
+        "label": "shell-restored-after-re-entry"
+      }
+    ],
+    "knownBaselineIssue": null,
+    "originalWholeCaseBudgetMinutes": 12,
+    "wideExtension": {
+      "schema": "public-frontage-wide-v1",
+      "originalStepCount": 13,
+      "originalPhotoLabels": [
+        "south-frontage",
+        "actual-public-door"
+      ],
+      "insertedBeforeOriginalStep": 3,
+      "addedSteps": 4,
+      "addedPhotos": 1,
+      "bodyRadiusForStaticProof": 0.65,
+      "axisTolerance": 0.15,
+      "publicDoorPlaneDistanceMetres": 9,
+      "actualHorizontalDoorPointDistanceMetres": 9,
+      "view": "south-facing public-door front",
+      "publicDoor": {
+        "x": 187,
+        "y": 0.18,
+        "z": 222.39940199801697,
+        "yaw": 0
+      },
+      "originalDoorStation": {
+        "x": 187,
+        "y": 0.18,
+        "z": 223.75940199801698
+      },
+      "wideStanding": {
+        "x": 187,
+        "y": 0,
+        "z": 231.39940199801697
+      },
+      "restoreLook": {
+        "kind": "look",
+        "label": "wide-return-original-door-look",
+        "yaw": 3.141592653589793,
+        "pitch": 0.23835018926880613
+      },
+      "budgets": {
+        "wholeCaseMinutes": 24,
+        "originalWholeCaseMinutes": 12,
+        "reason": "Finite preparation cap from original wall evidence plus new real distance/photo processing. No validated completion upper bound.",
+        "perPhaseDefaultMs": 180000,
+        "perHoldMs": 120000,
+        "maximumCorrectionHolds": 2,
+        "localInputHelperUnchanged": true
+      }
+    }
+  },
+  "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+  "unavailableBaselineOwner": false,
+  "planPhotographsIdenticalAcrossModes": true
+}

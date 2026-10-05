@@ -16,6 +16,18 @@
       3.4
     ]
   },
+  "foliageEnvelope": {
+    "min": [
+      -3.85,
+      0.3,
+      -4.2
+    ],
+    "max": [
+      4.5,
+      12,
+      4.2
+    ]
+  },
   "crownDensity": {
     "version": 2,
     "originalLeavesPreserved": 576,
@@ -50,17 +62,50 @@
     "thicknessMetres": 0.0016,
     "design": "Three-dimensional overlapping branch-following inner and mid-crown clusters; original terminal blades retained. No alpha planes or sphere crown."
   },
+  "continuousCrown": {
+    "version": 3,
+    "retainedLeafPrefix": 1728,
+    "additionalLeaves": 1728,
+    "totalLeaves": 3456,
+    "independentSeedSalt": 2246822519,
+    "clusterCount": 54,
+    "leavesPerCluster": 32,
+    "clusterKinds": {
+      "adjacentBranchBridges": 12,
+      "innerCrown": 12,
+      "lateralShoulderLayers": 24,
+      "upperCentralCrown": 6
+    },
+    "leafLengthRangeMetres": [
+      0.29,
+      0.43
+    ],
+    "leafWidthRangeMetres": [
+      0.13,
+      0.21
+    ],
+    "thicknessMetres": 0.0016,
+    "newLeafPitchRangeRadians": [
+      -1.35,
+      1.35
+    ],
+    "newLeafRollRangeRadians": [
+      -1.45,
+      1.45
+    ],
+    "design": "Irregular filled overlapping small clusters connecting crown centre, neighbouring primary branches and wider lateral Z shoulders. No envelope shell or enlarged leaves. Original bark and previous leaf prefix unchanged."
+  },
   "assets": [
     {
       "id": "quay-banyan-a",
       "file": "quay-banyan-a.glb",
-      "bytes": 3193516,
-      "sha256": "2cbde57d8510997cc21c41604bb561dad9258c3544c1a3beebe9d1783b97a23c",
-      "triangles": 22768,
+      "bytes": 5931424,
+      "sha256": "f71838f95dbf92ab3f3d0830c6367b97a4c39f21e2a2fb7d8e2b68554df98aca",
+      "triangles": 43504,
       "meshes": 2,
-      "leafCount": 1728,
+      "leafCount": 3456,
       "barkTriangles": 2032,
-      "leafTriangles": 20736,
+      "leafTriangles": 41472,
       "bounds": {
         "bark": {
           "min": [
@@ -76,14 +121,14 @@
         },
         "leaves": {
           "min": [
-            -3.2630279064178467,
+            -3.300302267074585,
             5.695289134979248,
-            -2.8599963188171387
+            -3.6931045055389404
           ],
           "max": [
             4.268263816833496,
             11.769681930541992,
-            2.2857513427734375
+            3.80644154548645
           ]
         }
       }
@@ -91,13 +136,13 @@
     {
       "id": "quay-banyan-b",
       "file": "quay-banyan-b.glb",
-      "bytes": 3193516,
-      "sha256": "e61ddea8ad0c97b136d37800211e72f481f0118743e0329fe058502dce026281",
-      "triangles": 22768,
+      "bytes": 5931424,
+      "sha256": "f294ca8121e0af21d448adc2e0c33a42cee1a222b48482d4080796e7fde551ac",
+      "triangles": 43504,
       "meshes": 2,
-      "leafCount": 1728,
+      "leafCount": 3456,
       "barkTriangles": 2032,
-      "leafTriangles": 20736,
+      "leafTriangles": 41472,
       "bounds": {
         "bark": {
           "min": [
@@ -115,12 +160,12 @@
           "min": [
             -3.3070712089538574,
             5.707276344299316,
-            -2.7664825916290283
+            -3.8919875621795654
           ],
           "max": [
             4.221989154815674,
             11.806548118591309,
-            2.5727620124816895
+            3.6966025829315186
           ]
         }
       }
@@ -128,13 +173,13 @@
     {
       "id": "quay-banyan-c",
       "file": "quay-banyan-c.glb",
-      "bytes": 3193520,
-      "sha256": "c559b15c63a70b4c8ab0387facef866e45b9d31077c7ffee64b1807dba94c7dc",
-      "triangles": 22768,
+      "bytes": 5931424,
+      "sha256": "788e545da4a95a61c273ba922e409445dcf89df9e6f871348fc3af3d26c70352",
+      "triangles": 43504,
       "meshes": 2,
-      "leafCount": 1728,
+      "leafCount": 3456,
       "barkTriangles": 2032,
-      "leafTriangles": 20736,
+      "leafTriangles": 41472,
       "bounds": {
         "bark": {
           "min": [
@@ -150,14 +195,14 @@
         },
         "leaves": {
           "min": [
-            -3.2181525230407715,
+            -3.346381425857544,
             5.700746059417725,
-            -2.7929341793060303
+            -3.8465018272399902
           ],
           "max": [
             4.31735372543335,
-            11.780953407287598,
-            2.5605263710021973
+            11.797210693359375,
+            3.784684419631958
           ]
         }
       }
@@ -171,8 +216,8 @@
     },
     {
       "path": "art-source/sample-street-trees/source/author-trees.mjs",
-      "bytes": 11604,
-      "sha256": "7cdb3d76f110e310a8c9e2afffdcfb026085a79b4771175c7c2ec34d9553d977"
+      "bytes": 15868,
+      "sha256": "123db6681f55c21aba8ff698de6f372caf778f2964a7939c5cd20fcc1e0e2cb4"
     },
     {
       "path": "art-source/sample-street-trees/source/make-original-tree-textures.py",
@@ -196,10 +241,10 @@
     },
     {
       "path": "art-source/sample-street-trees/source/recipes.json",
-      "bytes": 2557,
-      "sha256": "3982d45c6b8c753602b47eae4aeaaa1b9a3767f82cccbf22b662d9d17250b1f0"
+      "bytes": 3581,
+      "sha256": "826d9bb016b654545a90a90c21af9d197166f83c5af5f899d527ef8537d3ac97"
     }
   ],
   "runtimeOwner": "src/harbor-sample-trees.js",
-  "physicalDetail": "1728 closed actual folded leaf blades per variant with 1.6mm thickness; original 576 leaves and all bark attributes byte-preserved. Independently seeded 1152 additions fill branch-following inner and mid-crown 3D clusters; 72 actual-triangle parent containment checks retain original bark. No alpha planes or sphere crown props."
+  "physicalDetail": "3456 closed actual folded leaf blades per variant with 1.6mm thickness; previous 1728 leaves and all bark attributes byte-preserved. Final independent 1728 additions connect crown centre, adjacent branch spans and broad Z shoulders in 54 filled 3D clusters. Old bark envelope is unchanged; expanded foliage-only envelope is declared explicitly. No alpha planes, enlarged leaf cards or crown sphere meshes."
 }

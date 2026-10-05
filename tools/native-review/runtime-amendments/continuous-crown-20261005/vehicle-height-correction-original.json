@@ -1,0 +1,112 @@
+{
+  "status": "ACTUAL_SOURCE_VEHICLE_HEIGHT_REFERENCE_CORRECTION",
+  "originalProof": {
+    "path": "/workspace/neon-candidates/tree-continuous-crown-readonly-review-20261005/continuous-crown-whole-camera-minus600-proof.json",
+    "sha256": "d87b574bde649ebbb37159b87eb6dbc35e5bff66a61742a9c0aa98977b7fe3f3",
+    "originalBytesPreserved": true
+  },
+  "priorMistake": "The old lowestLeafClearanceOver3_8MetreDoubleDeckBus field used a generic3.8m reference, not the actual bus specification. It must not be cited as actual bus headroom.",
+  "actualSpecs": {
+    "source": "/tmp/neon-harbor-street-refinement-candidate-20261005/src/harbor-vehicle-models.js",
+    "sha256": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+    "bus": {
+      "name": "Tide double-decker",
+      "width": 2.55,
+      "length": 11,
+      "height": 4.4,
+      "minY": 0,
+      "maxY": 4.4,
+      "halfWidth": 1.275,
+      "halfLength": 5.5,
+      "passengerRadius": 0.22,
+      "clearAisleWidth": 0.66,
+      "routeCode": "12",
+      "floors": [
+        0.44,
+        2.4
+      ],
+      "color": "#356b68",
+      "accent": "#d7c28c"
+    },
+    "tram": {
+      "name": "Lantern street tram",
+      "width": 2.3,
+      "length": 9,
+      "height": 4.7,
+      "minY": 0,
+      "maxY": 4.7,
+      "halfWidth": 1.15,
+      "halfLength": 4.5,
+      "passengerRadius": 0.22,
+      "clearAisleWidth": 0.62,
+      "routeCode": "08",
+      "floors": [
+        0.44,
+        2.4
+      ],
+      "color": "#ad684b",
+      "accent": "#e6d9b7"
+    }
+  },
+  "correctedSourceGeometryReferenceClearance": [
+    {
+      "site": "sample-quay-tree-0",
+      "lowestLeafY": 5.695289134979248,
+      "assumedFlatRoadGroundY": 0,
+      "busTopY": 4.4,
+      "tramTopY": 4.7,
+      "foliageGapAboveBusMetres": 1.2952891349792477,
+      "foliageGapAboveTramMetres": 0.9952891349792479
+    },
+    {
+      "site": "sample-quay-tree-1",
+      "lowestLeafY": 5.707276344299316,
+      "assumedFlatRoadGroundY": 0,
+      "busTopY": 4.4,
+      "tramTopY": 4.7,
+      "foliageGapAboveBusMetres": 1.307276344299316,
+      "foliageGapAboveTramMetres": 1.0072763442993162
+    },
+    {
+      "site": "sample-quay-tree-2",
+      "lowestLeafY": 5.700746059417725,
+      "assumedFlatRoadGroundY": 0,
+      "busTopY": 4.4,
+      "tramTopY": 4.7,
+      "foliageGapAboveBusMetres": 1.3007460594177243,
+      "foliageGapAboveTramMetres": 1.0007460594177244
+    },
+    {
+      "site": "sample-quay-tree-3",
+      "lowestLeafY": 5.695289134979248,
+      "assumedFlatRoadGroundY": 0,
+      "busTopY": 4.4,
+      "tramTopY": 4.7,
+      "foliageGapAboveBusMetres": 1.2952891349792477,
+      "foliageGapAboveTramMetres": 0.9952891349792479
+    },
+    {
+      "site": "sample-quay-tree-4",
+      "lowestLeafY": 5.707276344299316,
+      "assumedFlatRoadGroundY": 0,
+      "busTopY": 4.4,
+      "tramTopY": 4.7,
+      "foliageGapAboveBusMetres": 1.307276344299316,
+      "foliageGapAboveTramMetres": 1.0072763442993162
+    },
+    {
+      "site": "sample-quay-tree-5",
+      "lowestLeafY": 5.700746059417725,
+      "assumedFlatRoadGroundY": 0,
+      "busTopY": 4.4,
+      "tramTopY": 4.7,
+      "foliageGapAboveBusMetres": 1.3007460594177243,
+      "foliageGapAboveTramMetres": 1.0007460594177244
+    }
+  ],
+  "limits": [
+    "Reference uses actual model height and flat road groundY0 only. No dynamic vehicle trajectory, crossing, traffic or elevated-route clearance is verified by this calculation.",
+    "Exhaustive4178 source physical OBB-vs-foliage AABB SAT and FOV results in original proof are unaffected."
+  ],
+  "nativeExecuted": false
+}

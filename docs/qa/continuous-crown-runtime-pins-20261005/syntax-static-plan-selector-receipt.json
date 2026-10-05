@@ -1,0 +1,73 @@
+{
+  "status": "ACTIVE_METHOD_SYNTAX_AND_STATIC_B_PLANS_AND24_SELECTOR_PASS_NATIVE_NOT_EXECUTED",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "tools/native-review/methods/harbor/capture-authored-harbor-native.mjs"
+      ],
+      "exitCode": 0,
+      "sourceSHA256": "ab9f32867939b2c8dc41a30b9c4dd64e0d73c5cc3da71ff2ff35b29f801d919e"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "tools/native-review/methods/transport/native-transport-high.mjs"
+      ],
+      "exitCode": 0,
+      "sourceSHA256": "cfcf276b71a3a124c190c1cb180fd567ccc03b6e053c67bb65db3de6fe01d79b"
+    },
+    {
+      "command": [
+        "node",
+        "tools/native-review/methods/harbor/capture-authored-harbor-native.mjs",
+        "--mode",
+        "authored",
+        "--case",
+        "south-094",
+        "--plan-only",
+        "yes"
+      ],
+      "exitCode": 0,
+      "planSHA256": "87afc0d147a00c466cc5ccca18cfec7eb2b1fec60356e09bacf501a9a5db8ba7",
+      "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+      "outputPath": "/workspace/neon-candidates/continuous-crown-runtime-pin-refresh-20261005/south-094-static-plan-original.json"
+    },
+    {
+      "command": [
+        "node",
+        "tools/native-review/methods/harbor/capture-authored-harbor-native.mjs",
+        "--mode",
+        "authored",
+        "--case",
+        "south-096",
+        "--plan-only",
+        "yes"
+      ],
+      "exitCode": 0,
+      "planSHA256": "da6b719486a8b2eb258007420500ba4e9c34144da083a98c5485ecfdc638d093",
+      "scope": "Static plan compilation only. No browser launched, server started, renderer instantiated, city constructed or build invoked.",
+      "outputPath": "/workspace/neon-candidates/continuous-crown-runtime-pin-refresh-20261005/south-096-static-plan-original.json"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/native-review/select-native-cases.py",
+        "--source-root",
+        "/workspace/neon-candidates/harbor-continuous-crown-final-20261005",
+        "--output",
+        "/workspace/neon-candidates/continuous-crown-runtime-pin-refresh-20261005/actual-local-selector24-receipt.json",
+        "--github-output",
+        "/workspace/neon-candidates/continuous-crown-runtime-pin-refresh-20261005/actual-local-selector24-github-output.txt"
+      ],
+      "exitCode": 0,
+      "selectedCases": 24,
+      "captureExecuted": false,
+      "localDirtyWorktreeSelectorOnlyNotRemoteCI": true
+    }
+  ],
+  "noBrowserServerRendererBuildTestOrCaptureStarted": true,
+  "staticPlansAreNotGeometryOrNativeReruns": true
+}

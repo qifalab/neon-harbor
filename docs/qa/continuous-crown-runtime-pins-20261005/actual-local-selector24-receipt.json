@@ -1,0 +1,168 @@
+{
+  "schema": "neon-harbor/native-selection/v1",
+  "status": "VALIDATED_SELECTION_NOT_CAPTURE_ACCEPTANCE",
+  "captureExecuted": false,
+  "retry": false,
+  "firstError": null,
+  "rawSelection": "all",
+  "authoredDispatchSha": "3aa100daf7cd497b0c6f167c4c8b5f86233fbc62",
+  "runId": null,
+  "runAttempt": null,
+  "actualCheckoutSha": "3aa100daf7cd497b0c6f167c4c8b5f86233fbc62",
+  "selectedCaseIds": [
+    "continuous-tour",
+    "resident-loop",
+    "east-interior",
+    "home",
+    "workshop",
+    "resident-core",
+    "south-090",
+    "south-091",
+    "south-092",
+    "south-094",
+    "south-095",
+    "south-096",
+    "bus",
+    "tram",
+    "ferry",
+    "waterfront-day",
+    "waterfront-night",
+    "north-book",
+    "north-phone",
+    "north-cup-owner",
+    "south-parcel",
+    "ownership-bus",
+    "ownership-tram",
+    "ownership-ferry"
+  ],
+  "selectedCount": 24,
+  "defaultCaseCount": 24,
+  "defaultMatrixUnchanged": true,
+  "matrix": {
+    "include": [
+      {
+        "id": "continuous-tour",
+        "job_timeout_minutes": 300,
+        "evidence_label": "Low functional tour"
+      },
+      {
+        "id": "resident-loop",
+        "job_timeout_minutes": 210,
+        "evidence_label": "Low functional resident day"
+      },
+      {
+        "id": "east-interior",
+        "job_timeout_minutes": 180,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "home",
+        "job_timeout_minutes": 260,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "workshop",
+        "job_timeout_minutes": 160,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "resident-core",
+        "job_timeout_minutes": 85,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-090",
+        "job_timeout_minutes": 75,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-091",
+        "job_timeout_minutes": 95,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-092",
+        "job_timeout_minutes": 95,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-094",
+        "job_timeout_minutes": 75,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-095",
+        "job_timeout_minutes": 95,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-096",
+        "job_timeout_minutes": 75,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "bus",
+        "job_timeout_minutes": 110,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "tram",
+        "job_timeout_minutes": 110,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "ferry",
+        "job_timeout_minutes": 80,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "waterfront-day",
+        "job_timeout_minutes": 80,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "waterfront-night",
+        "job_timeout_minutes": 80,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "north-book",
+        "job_timeout_minutes": 75,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "north-phone",
+        "job_timeout_minutes": 75,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "north-cup-owner",
+        "job_timeout_minutes": 75,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "south-parcel",
+        "job_timeout_minutes": 95,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "ownership-bus",
+        "job_timeout_minutes": 80,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "ownership-tram",
+        "job_timeout_minutes": 80,
+        "evidence_label": "Native High"
+      },
+      {
+        "id": "ownership-ferry",
+        "job_timeout_minutes": 80,
+        "evidence_label": "Native High"
+      }
+    ]
+  },
+  "caseFileSHA256": "c6276962c153440eb004cce67b36038b49e6315795879933280ab143b01b1a78",
+  "matrixFileSHA256": "841038866a544e7d5a0dc987f76ba7a778b2979de30c07d1dd79eead27c295fb",
+  "selectorSHA256": "704de6a6c504f670b414ea2809ac969764fca2feb9b436f0b5015bd73f0e389d"
+}

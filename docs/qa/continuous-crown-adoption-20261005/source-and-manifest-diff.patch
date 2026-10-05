@@ -1,0 +1,338 @@
+diff --git a/art-source/sample-street-trees/source/author-trees.mjs b/art-source/sample-street-trees/source/author-trees.mjs
+index 0cf19cc..56398e1 100644
+--- a/art-source/sample-street-trees/source/author-trees.mjs
++++ b/art-source/sample-street-trees/source/author-trees.mjs
+@@ -1,13 +1,16 @@
+ /** Editable original metric tree source, CC0-1.0. No external mesh/image inputs.
+  * Each variant has a tapered curved trunk, real branches/twigs and the original 576 folded,
+  * closed thin blades plus 1,152 independently seeded inner/mid-crown blades.
+- * Original bark and original leaf attribute bytes remain unchanged; no crown spheres. */
++ * Original bark and original 1728 leaf attribute bytes remain unchanged.
++ * Another 1728 blades connect inner crown, neighbouring branches and lateral shoulders. */
+ import fs from 'node:fs/promises';import crypto from 'node:crypto';import * as T from '../../../vendor/three/three.module.js';
+ const base=new URL('./',import.meta.url),out=new URL('../../../assets/harbor/vegetation/',import.meta.url);const spec=JSON.parse(await fs.readFile(new URL('recipes.json',base),'utf8'));
+ const rngFor=seed=>()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+ const merge=gs=>{const p=[],n=[],u=[],c=[];for(const g0 of gs){const g=g0.index?g0.toNonIndexed():g0;for(const v of g.attributes.position.array)p.push(v);for(const v of g.attributes.normal.array)n.push(v);for(const v of g.attributes.uv?.array||new Float32Array(g.attributes.position.count*2))u.push(v);for(const v of g.attributes.color?.array||new Float32Array(g.attributes.position.count*3).fill(1))c.push(v);g.dispose();if(g!==g0)g0.dispose();}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('normal',new T.Float32BufferAttribute(n,3));g.setAttribute('uv',new T.Float32BufferAttribute(u,2));g.setAttribute('color',new T.Float32BufferAttribute(c,3));g.computeBoundingBox();return g;};
+ function limb(points,radius,segments=10,radial=6){const curve=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p))),frames=curve.computeFrenetFrames(segments,false),p=[],u=[],ix=[];for(let j=0;j<=segments;j++){const at=curve.getPoint(j/segments),r=radius*(1-.87*j/segments);for(let i=0;i<=radial;i++){const a=i/radial*Math.PI*2,v=at.clone().addScaledVector(frames.normals[j],Math.cos(a)*r).addScaledVector(frames.binormals[j],Math.sin(a)*r);p.push(...v.toArray());u.push(i/radial,j/segments*curve.getLength()/.6);if(j<segments&&i<radial){const k=j*(radial+1)+i;ix.push(k,k+1,k+radial+1,k+1,k+radial+2,k+radial+1);}}}for(const[end,sign]of[[0,-1],[segments,1]]){const centre=p.length/3;p.push(...curve.getPoint(end/segments).toArray());u.push(.5,.5);for(let i=0;i<radial;i++){const a=end*(radial+1)+i;ix.push(centre,...(sign<0?[a+1,a]:[a,a+1]));}}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(u,2));g.setIndex(ix);g.computeVertexNormals();return g;}
+ function leaf(pos,random){const len=.29+random()*.14,w=.13+random()*.08,th=.0016;const p=[],u=[],ix=[],colors=[],yaw=random()*Math.PI*2,pitch=(random()-.5)*1.5,roll=(random()-.5)*1.2,o=new T.Object3D();o.position.copy(pos);o.rotation.set(pitch,yaw,roll);o.updateMatrix();const shape=[[0,0,-len/2],[-w/2,-.014,-len*.08],[0,.023,len/2],[w/2,-.014,-len*.08]],tone=new T.Color().setRGB(.10+random()*.05,.21+random()*.07,.105+random()*.055);for(let face=0;face<2;face++)for(let i=0;i<4;i++){const v=new T.Vector3(...shape[i]);v.y+=face?-th:0;v.applyMatrix4(o.matrix);p.push(...v.toArray());u.push(i===1?0:i===3?1:.5,i===0?0:i===2?1:.43);const shade=(face?.78:1)*(.91+random()*.09);colors.push(tone.r*shade,tone.g*shade,tone.b*shade);}ix.push(0,1,2,0,2,3,4,6,5,4,7,6);for(let i=0;i<4;i++){const j=(i+1)%4;ix.push(i,i+4,j,j,i+4,j+4);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(u,2));g.setAttribute('color',new T.Float32BufferAttribute(colors,3));g.setIndex(ix);g.computeVertexNormals();return g;}
++// New blades retain metric shape / size / thickness, with naturally varied steeper tilts.
++function crownLeaf(pos,random){const len=.29+random()*.14,w=.13+random()*.08,th=.0016;const p=[],u=[],ix=[],colors=[],yaw=random()*Math.PI*2,pitch=(random()-.5)*2.7,roll=(random()-.5)*2.9,o=new T.Object3D();o.position.copy(pos);o.rotation.set(pitch,yaw,roll);o.updateMatrix();const shape=[[0,0,-len/2],[-w/2,-.014,-len*.08],[0,.023,len/2],[w/2,-.014,-len*.08]],tone=new T.Color().setRGB(.10+random()*.05,.21+random()*.07,.105+random()*.055);for(let face=0;face<2;face++)for(let i=0;i<4;i++){const v=new T.Vector3(...shape[i]);v.y+=face?-th:0;v.applyMatrix4(o.matrix);p.push(...v.toArray());u.push(i===1?0:i===3?1:.5,i===0?0:i===2?1:.43);const shade=(face?.78:1)*(.91+random()*.09);colors.push(tone.r*shade,tone.g*shade,tone.b*shade);}ix.push(0,1,2,0,2,3,4,6,5,4,7,6);for(let i=0;i<4;i++){const j=(i+1)%4;ix.push(i,i+4,j,j,i+4,j+4);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(u,2));g.setAttribute('color',new T.Float32BufferAttribute(colors,3));g.setIndex(ix);g.computeVertexNormals();return g;}
+ function create(v){const rand=rngFor(v.seed),bark=[],leaves=[],bend=v.bend;const trunk=[[0,.33,0],[.04,2.2,.05],[-.05,4.1,.08],[bend,6.6,-.12],[bend+.2,8.7,.10]];const trunkCurve=new T.CatmullRomCurve3(trunk.map(p=>new T.Vector3(...p)));bark.push(limb(trunk,.28,16,10));for(let k=0;k<v.branches.length;k++){const end=new T.Vector3(...v.branches[k]),start=trunkCurve.getPoint(.54+k*.059),mid=start.clone().lerp(end,.53);mid.y-=.38;bark.push(limb([start.toArray(),mid.toArray(),end.toArray()],.105-k*.009,10,6));const branchCurve=new T.CatmullRomCurve3([start,mid,end]);for(let fan=0;fan<3;fan++){const at=branchCurve.getPoint(.63+fan*.14),twig=end.clone().add(new T.Vector3((rand()-.5)*.64,-.10+rand()*.34,(rand()-.5)*.62));bark.push(limb([at.toArray(),at.clone().lerp(twig,.50).toArray(),twig.toArray()],.018,4,5));for(let n=0;n<32;n++){const theta=n*2.399963+fan*1.4,spread=Math.sqrt((n+.5)/32),loc=twig.clone().add(new T.Vector3(Math.cos(theta)*spread*.46,(rand()-.5)*.29,Math.sin(theta)*spread*.48));loc.x=Math.max(-3.10,Math.min(4.12,loc.x));loc.z=Math.max(-3.07,Math.min(3.07,loc.z));loc.y=Math.max(4.30,Math.min(11.68,loc.y));leaves.push(leaf(loc,rand));}}}
+ // Append only after every original bark/twig/leaf is authored. This separate RNG
+ // cannot change later original twigs or any of the first 576 leaf attribute bytes.
+@@ -34,14 +37,50 @@ for(let k=0;k<v.branches.length;k++){
+   }
+  }
+ }
++// Final continuous-crown layer is authored after the entire immutable 1728-blade prefix.
++const denseRand=rngFor((v.seed^spec.continuousCrown.independentSeedSalt)>>>0),clusters=[];
++const branches=v.branches.map((q,k)=>{const end=new T.Vector3(...q),start=trunkCurve.getPoint(.54+k*.059),mid=start.clone().lerp(end,.53);mid.y-=.38;return new T.CatmullRomCurve3([start,mid,end]);});
++const order=v.branches.map((q,i)=>({i,angle:Math.atan2(q[2],q[0])})).sort((a,b)=>a.angle-b.angle).map(q=>q.i);
++// Adjacent branch bridges populate previously empty sky holes rather than branch tips.
++for(let k=0;k<order.length;k++)for(const t of[.64,.86]){
++ const a=branches[order[k]].getPoint(t),b=branches[order[(k+1)%order.length]].getPoint(t),c=a.clone().lerp(b,.50);
++ c.y=Math.max(8.15,c.y+.12);clusters.push({kind:'adjacent-branch-bridge',centre:c,radii:[.78,.57,.80]});
++}
++// Inner crown overlaps bridges and the high trunk, preserving open lower branch lines.
++for(let k=0;k<branches.length;k++)for(const t of[.69,.92]){
++ const c=branches[k].getPoint(t);c.x*=.46;c.z*=.46;c.y=Math.max(8.35,c.y+.17);
++ clusters.push({kind:'inner-crown',centre:c,radii:[.78,.57,.80]});
++}
++// Lateral shoulders are broad in Z for both sides of the street tree. Three
++// staggered layers taper toward the top and vary in X, without a shell surface.
++for(const sign of[-1,1])for(const x of[-2.4,-.85,.90,2.6])for(let layer=0;layer<3;layer++){
++ const z=sign*([2.94,3.12,2.58][layer]-.12*Math.abs(x)),y=[8.75,9.50,10.33][layer]-.08*Math.abs(x);
++ const c=new T.Vector3(x+(denseRand()-.5)*.22,y+(denseRand()-.5)*.20,z+(denseRand()-.5)*.16);
++ clusters.push({kind:'lateral-shoulder-layer',centre:c,radii:[.78,.54,.74]});
++}
++for(let k=0;k<6;k++){
++ const angle=k*2.399963229728653,c=new T.Vector3(.18+Math.cos(angle)*.94,10.78+(k%3)*.19,Math.sin(angle)*1.05);
++ clusters.push({kind:'upper-central-crown',centre:c,radii:[.74,.57,.76]});
++}
++if(clusters.length!==spec.continuousCrown.clusterCount)throw Error('Unexpected continuous crown cluster count');
++for(let ci=0;ci<clusters.length;ci++){
++ const cl=clusters[ci];
++ for(let n=0;n<spec.continuousCrown.leavesPerCluster;n++){
++  // Irrregular filled ellipsoid, not a radial disc or skin around a sphere.
++  const zUnit=1-2*(n+.5)/spec.continuousCrown.leavesPerCluster,radial=Math.sqrt(1-zUnit*zUnit),azimuth=n*2.399963229728653+ci*.731;
++  const fill=.35+.65*Math.cbrt(denseRand()),loc=cl.centre.clone().add(new T.Vector3(Math.cos(azimuth)*radial*cl.radii[0]*fill,zUnit*cl.radii[1]*fill,Math.sin(azimuth)*radial*cl.radii[2]*fill));
++  loc.x=Math.max(-3.59,Math.min(4.20,loc.x));loc.z=Math.max(-3.95,Math.min(3.95,loc.z));loc.y=Math.max(7.95,Math.min(11.68,loc.y));
++  leaves.push(crownLeaf(loc,denseRand));
++ }
++}
+ return{bark:merge(bark),leaves:merge(leaves),leafCount:leaves.length};}
+ const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+-async function glb(id,geometry){const bins=[],views=[],accessors=[];let length=0;const append=b=>{b=Buffer.from(b);const i=views.length;views.push({buffer:0,byteOffset:length,byteLength:b.length});bins.push(b);length+=b.length;const pad=(4-length%4)%4;if(pad){bins.push(Buffer.alloc(pad));length+=pad;}return i;};const materials=[{name:'Original ridged bark',pbrMetallicRoughness:{baseColorTexture:{index:0},metallicRoughnessTexture:{index:1},metallicFactor:0,roughnessFactor:1}},{name:'Original folded leaf blades',pbrMetallicRoughness:{baseColorFactor:[1,1,1,1],metallicRoughnessTexture:{index:2},metallicFactor:0,roughnessFactor:1}}];const meshes=[];for(const[name,g]of Object.entries(geometry)){if(!g?.isBufferGeometry)continue;const attrs={};for(const[key,semantic]of[['position','POSITION'],['normal','NORMAL'],['uv','TEXCOORD_0'],['color','COLOR_0']]){const a=g.attributes[key];if(!a)continue;const ac={bufferView:append(Buffer.from(a.array.buffer,a.array.byteOffset,a.array.byteLength)),componentType:5126,count:a.count,type:a.itemSize===2?'VEC2':'VEC3'};if(key==='position'){ac.min=g.boundingBox.min.toArray();ac.max=g.boundingBox.max.toArray();}attrs[semantic]=accessors.length;accessors.push(ac);}meshes.push({name,primitives:[{attributes:attrs,material:name==='bark'?0:1,mode:4}]});}const images=[];for(const file of['original-bark-albedo.png','original-bark-roughness.png','original-leaf-roughness.png'])images.push({bufferView:append(await fs.readFile(new URL(file,base))),mimeType:'image/png',name:file});const json={asset:{version:'2.0',generator:'Neon Harbor original editable tree source / CC0-1.0'},scene:0,scenes:[{nodes:[0,1]}],nodes:meshes.map((m,i)=>({name:m.name,mesh:i})),meshes,materials,buffers:[{byteLength:length}],bufferViews:views,accessors,images,textures:images.map((_,i)=>({source:i,sampler:0})),samplers:[{magFilter:9729,minFilter:9987,wrapS:10497,wrapT:10497}],extras:{license:'CC0-1.0',creator:spec.creator,variant:id,units:'metres',closedLeafBlades:true,crownDensity:spec.crownDensity}};let j=Buffer.from(JSON.stringify(json));j=Buffer.concat([j,Buffer.alloc((4-j.length%4)%4,32)]);const bin=Buffer.concat(bins),head=Buffer.alloc(20),bh=Buffer.alloc(8);head.writeUInt32LE(0x46546c67);head.writeUInt32LE(2,4);head.writeUInt32LE(28+j.length+bin.length,8);head.writeUInt32LE(j.length,12);head.writeUInt32LE(0x4e4f534a,16);bh.writeUInt32LE(bin.length);bh.writeUInt32LE(0x004e4942,4);return Buffer.concat([head,j,bh,bin]);}
+-await fs.mkdir(out,{recursive:true});const assets=[];for(const v of spec.variants){const geometry=create(v);for(const g of[geometry.bark,geometry.leaves]){if(!g.boundingBox.min.toArray().every((n,i)=>n>=spec.oldEnvelope.min[i]-1e-6)||!g.boundingBox.max.toArray().every((n,i)=>n<=spec.oldEnvelope.max[i]+1e-6))throw Error('Old envelope exceeded '+v.id+' '+JSON.stringify({min:g.boundingBox.min.toArray(),max:g.boundingBox.max.toArray()}));for(const a of Object.values(g.attributes))for(const n of a.array)if(!Number.isFinite(n))throw Error('Nonfinite authored geometry');}const triangles=(geometry.bark.attributes.position.count+geometry.leaves.attributes.position.count)/3;if(triangles>25000)throw Error('Tree triangle cap exceeded');const bytes=await glb(v.id,geometry);await fs.writeFile(new URL(v.id+'.glb',out),bytes);assets.push({id:v.id,file:v.id+'.glb',bytes:bytes.length,sha256:sha(bytes),triangles,meshes:2,leafCount:geometry.leafCount,barkTriangles:geometry.bark.attributes.position.count/3,leafTriangles:geometry.leaves.attributes.position.count/3,bounds:{bark:{min:geometry.bark.boundingBox.min.toArray(),max:geometry.bark.boundingBox.max.toArray()},leaves:{min:geometry.leaves.boundingBox.min.toArray(),max:geometry.leaves.boundingBox.max.toArray()}}});geometry.bark.dispose();geometry.leaves.dispose();}const manifest={schema:'original-six-near-street-trees-v1',license:'CC0-1.0',creator:spec.creator,source:'art-source/sample-street-trees/source/author-trees.mjs',editableRecipe:'art-source/sample-street-trees/source/recipes.json',oldEnvelope:spec.oldEnvelope,crownDensity:spec.crownDensity,assets};manifest.editableSourceFiles=[];
++async function glb(id,geometry){const bins=[],views=[],accessors=[];let length=0;const append=b=>{b=Buffer.from(b);const i=views.length;views.push({buffer:0,byteOffset:length,byteLength:b.length});bins.push(b);length+=b.length;const pad=(4-length%4)%4;if(pad){bins.push(Buffer.alloc(pad));length+=pad;}return i;};const materials=[{name:'Original ridged bark',pbrMetallicRoughness:{baseColorTexture:{index:0},metallicRoughnessTexture:{index:1},metallicFactor:0,roughnessFactor:1}},{name:'Original folded leaf blades',pbrMetallicRoughness:{baseColorFactor:[1,1,1,1],metallicRoughnessTexture:{index:2},metallicFactor:0,roughnessFactor:1}}];const meshes=[];for(const[name,g]of Object.entries(geometry)){if(!g?.isBufferGeometry)continue;const attrs={};for(const[key,semantic]of[['position','POSITION'],['normal','NORMAL'],['uv','TEXCOORD_0'],['color','COLOR_0']]){const a=g.attributes[key];if(!a)continue;const ac={bufferView:append(Buffer.from(a.array.buffer,a.array.byteOffset,a.array.byteLength)),componentType:5126,count:a.count,type:a.itemSize===2?'VEC2':'VEC3'};if(key==='position'){ac.min=g.boundingBox.min.toArray();ac.max=g.boundingBox.max.toArray();}attrs[semantic]=accessors.length;accessors.push(ac);}meshes.push({name,primitives:[{attributes:attrs,material:name==='bark'?0:1,mode:4}]});}const images=[];for(const file of['original-bark-albedo.png','original-bark-roughness.png','original-leaf-roughness.png'])images.push({bufferView:append(await fs.readFile(new URL(file,base))),mimeType:'image/png',name:file});const json={asset:{version:'2.0',generator:'Neon Harbor original editable tree source / CC0-1.0'},scene:0,scenes:[{nodes:[0,1]}],nodes:meshes.map((m,i)=>({name:m.name,mesh:i})),meshes,materials,buffers:[{byteLength:length}],bufferViews:views,accessors,images,textures:images.map((_,i)=>({source:i,sampler:0})),samplers:[{magFilter:9729,minFilter:9987,wrapS:10497,wrapT:10497}],extras:{license:'CC0-1.0',creator:spec.creator,variant:id,units:'metres',closedLeafBlades:true,crownDensity:spec.crownDensity,continuousCrown:spec.continuousCrown,foliageEnvelope:spec.foliageEnvelope}};let j=Buffer.from(JSON.stringify(json));j=Buffer.concat([j,Buffer.alloc((4-j.length%4)%4,32)]);const bin=Buffer.concat(bins),head=Buffer.alloc(20),bh=Buffer.alloc(8);head.writeUInt32LE(0x46546c67);head.writeUInt32LE(2,4);head.writeUInt32LE(28+j.length+bin.length,8);head.writeUInt32LE(j.length,12);head.writeUInt32LE(0x4e4f534a,16);bh.writeUInt32LE(bin.length);bh.writeUInt32LE(0x004e4942,4);return Buffer.concat([head,j,bh,bin]);}
++await fs.mkdir(out,{recursive:true});const assets=[];for(const v of spec.variants){const geometry=create(v);for(const g of[geometry.bark,geometry.leaves]){const envelope=g===geometry.bark?spec.oldEnvelope:spec.foliageEnvelope;if(!g.boundingBox.min.toArray().every((n,i)=>n>=envelope.min[i]-1e-6)||!g.boundingBox.max.toArray().every((n,i)=>n<=envelope.max[i]+1e-6))throw Error('Explicit bark/foliage envelope exceeded '+v.id+' '+JSON.stringify({min:g.boundingBox.min.toArray(),max:g.boundingBox.max.toArray()}));for(const a of Object.values(g.attributes))for(const n of a.array)if(!Number.isFinite(n))throw Error('Nonfinite authored geometry');}const triangles=(geometry.bark.attributes.position.count+geometry.leaves.attributes.position.count)/3;if(triangles>45000)throw Error('Tree triangle cap exceeded');const bytes=await glb(v.id,geometry);await fs.writeFile(new URL(v.id+'.glb',out),bytes);assets.push({id:v.id,file:v.id+'.glb',bytes:bytes.length,sha256:sha(bytes),triangles,meshes:2,leafCount:geometry.leafCount,barkTriangles:geometry.bark.attributes.position.count/3,leafTriangles:geometry.leaves.attributes.position.count/3,bounds:{bark:{min:geometry.bark.boundingBox.min.toArray(),max:geometry.bark.boundingBox.max.toArray()},leaves:{min:geometry.leaves.boundingBox.min.toArray(),max:geometry.leaves.boundingBox.max.toArray()}}});geometry.bark.dispose();geometry.leaves.dispose();}const manifest={schema:'original-six-near-street-trees-v1',license:'CC0-1.0',creator:spec.creator,source:'art-source/sample-street-trees/source/author-trees.mjs',editableRecipe:'art-source/sample-street-trees/source/recipes.json',oldEnvelope:spec.oldEnvelope,foliageEnvelope:spec.foliageEnvelope,crownDensity:spec.crownDensity,continuousCrown:spec.continuousCrown,assets};manifest.editableSourceFiles=[];
+ for(const relative of ['../LICENSE.txt','author-trees.mjs','make-original-tree-textures.py','original-bark-albedo.png','original-bark-roughness.png','original-leaf-roughness.png','recipes.json']){
+  const bytes=await fs.readFile(new URL(relative,base));
+  manifest.editableSourceFiles.push({path:'art-source/sample-street-trees/'+(relative==='../LICENSE.txt'?'LICENSE.txt':'source/'+relative),bytes:bytes.length,sha256:sha(bytes)});
+ }
+ manifest.runtimeOwner='src/harbor-sample-trees.js';
+-manifest.physicalDetail='1728 closed actual folded leaf blades per variant with 1.6mm thickness; original 576 leaves and all bark attributes byte-preserved. Independently seeded 1152 additions fill branch-following inner and mid-crown 3D clusters; 72 actual-triangle parent containment checks retain original bark. No alpha planes or sphere crown props.';
++manifest.physicalDetail='3456 closed actual folded leaf blades per variant with 1.6mm thickness; previous 1728 leaves and all bark attributes byte-preserved. Final independent 1728 additions connect crown centre, adjacent branch spans and broad Z shoulders in 54 filled 3D clusters. Old bark envelope is unchanged; expanded foliage-only envelope is declared explicitly. No alpha planes, enlarged leaf cards or crown sphere meshes.';
+ await fs.writeFile(new URL('asset-manifest.json',out),JSON.stringify(manifest,null,2)+'\n');console.log(JSON.stringify(manifest,null,2));
+diff --git a/art-source/sample-street-trees/source/recipes.json b/art-source/sample-street-trees/source/recipes.json
+index 05549ee..62e7776 100644
+--- a/art-source/sample-street-trees/source/recipes.json
++++ b/art-source/sample-street-trees/source/recipes.json
+@@ -161,5 +161,50 @@
+     ],
+     "thicknessMetres": 0.0016,
+     "design": "Three-dimensional overlapping branch-following inner and mid-crown clusters; original terminal blades retained. No alpha planes or sphere crown."
++  },
++  "foliageEnvelope": {
++    "min": [
++      -3.85,
++      0.3,
++      -4.2
++    ],
++    "max": [
++      4.5,
++      12,
++      4.2
++    ]
++  },
++  "continuousCrown": {
++    "version": 3,
++    "retainedLeafPrefix": 1728,
++    "additionalLeaves": 1728,
++    "totalLeaves": 3456,
++    "independentSeedSalt": 2246822519,
++    "clusterCount": 54,
++    "leavesPerCluster": 32,
++    "clusterKinds": {
++      "adjacentBranchBridges": 12,
++      "innerCrown": 12,
++      "lateralShoulderLayers": 24,
++      "upperCentralCrown": 6
++    },
++    "leafLengthRangeMetres": [
++      0.29,
++      0.43
++    ],
++    "leafWidthRangeMetres": [
++      0.13,
++      0.21
++    ],
++    "thicknessMetres": 0.0016,
++    "newLeafPitchRangeRadians": [
++      -1.35,
++      1.35
++    ],
++    "newLeafRollRangeRadians": [
++      -1.45,
++      1.45
++    ],
++    "design": "Irregular filled overlapping small clusters connecting crown centre, neighbouring primary branches and wider lateral Z shoulders. No envelope shell or enlarged leaves. Original bark and previous leaf prefix unchanged."
+   }
+ }
+diff --git a/assets/harbor/vegetation/asset-manifest.json b/assets/harbor/vegetation/asset-manifest.json
+index 1602e05..8089e62 100644
+--- a/assets/harbor/vegetation/asset-manifest.json
++++ b/assets/harbor/vegetation/asset-manifest.json
+@@ -16,6 +16,18 @@
+       3.4
+     ]
+   },
++  "foliageEnvelope": {
++    "min": [
++      -3.85,
++      0.3,
++      -4.2
++    ],
++    "max": [
++      4.5,
++      12,
++      4.2
++    ]
++  },
+   "crownDensity": {
+     "version": 2,
+     "originalLeavesPreserved": 576,
+@@ -50,17 +62,50 @@
+     "thicknessMetres": 0.0016,
+     "design": "Three-dimensional overlapping branch-following inner and mid-crown clusters; original terminal blades retained. No alpha planes or sphere crown."
+   },
++  "continuousCrown": {
++    "version": 3,
++    "retainedLeafPrefix": 1728,
++    "additionalLeaves": 1728,
++    "totalLeaves": 3456,
++    "independentSeedSalt": 2246822519,
++    "clusterCount": 54,
++    "leavesPerCluster": 32,
++    "clusterKinds": {
++      "adjacentBranchBridges": 12,
++      "innerCrown": 12,
++      "lateralShoulderLayers": 24,
++      "upperCentralCrown": 6
++    },
++    "leafLengthRangeMetres": [
++      0.29,
++      0.43
++    ],
++    "leafWidthRangeMetres": [
++      0.13,
++      0.21
++    ],
++    "thicknessMetres": 0.0016,
++    "newLeafPitchRangeRadians": [
++      -1.35,
++      1.35
++    ],
++    "newLeafRollRangeRadians": [
++      -1.45,
++      1.45
++    ],
++    "design": "Irregular filled overlapping small clusters connecting crown centre, neighbouring primary branches and wider lateral Z shoulders. No envelope shell or enlarged leaves. Original bark and previous leaf prefix unchanged."
++  },
+   "assets": [
+     {
+       "id": "quay-banyan-a",
+       "file": "quay-banyan-a.glb",
+-      "bytes": 3193516,
+-      "sha256": "2cbde57d8510997cc21c41604bb561dad9258c3544c1a3beebe9d1783b97a23c",
+-      "triangles": 22768,
++      "bytes": 5931424,
++      "sha256": "f71838f95dbf92ab3f3d0830c6367b97a4c39f21e2a2fb7d8e2b68554df98aca",
++      "triangles": 43504,
+       "meshes": 2,
+-      "leafCount": 1728,
++      "leafCount": 3456,
+       "barkTriangles": 2032,
+-      "leafTriangles": 20736,
++      "leafTriangles": 41472,
+       "bounds": {
+         "bark": {
+           "min": [
+@@ -76,14 +121,14 @@
+         },
+         "leaves": {
+           "min": [
+-            -3.2630279064178467,
++            -3.300302267074585,
+             5.695289134979248,
+-            -2.8599963188171387
++            -3.6931045055389404
+           ],
+           "max": [
+             4.268263816833496,
+             11.769681930541992,
+-            2.2857513427734375
++            3.80644154548645
+           ]
+         }
+       }
+@@ -91,13 +136,13 @@
+     {
+       "id": "quay-banyan-b",
+       "file": "quay-banyan-b.glb",
+-      "bytes": 3193516,
+-      "sha256": "e61ddea8ad0c97b136d37800211e72f481f0118743e0329fe058502dce026281",
+-      "triangles": 22768,
++      "bytes": 5931424,
++      "sha256": "f294ca8121e0af21d448adc2e0c33a42cee1a222b48482d4080796e7fde551ac",
++      "triangles": 43504,
+       "meshes": 2,
+-      "leafCount": 1728,
++      "leafCount": 3456,
+       "barkTriangles": 2032,
+-      "leafTriangles": 20736,
++      "leafTriangles": 41472,
+       "bounds": {
+         "bark": {
+           "min": [
+@@ -115,12 +160,12 @@
+           "min": [
+             -3.3070712089538574,
+             5.707276344299316,
+-            -2.7664825916290283
++            -3.8919875621795654
+           ],
+           "max": [
+             4.221989154815674,
+             11.806548118591309,
+-            2.5727620124816895
++            3.6966025829315186
+           ]
+         }
+       }
+@@ -128,13 +173,13 @@
+     {
+       "id": "quay-banyan-c",
+       "file": "quay-banyan-c.glb",
+-      "bytes": 3193520,
+-      "sha256": "c559b15c63a70b4c8ab0387facef866e45b9d31077c7ffee64b1807dba94c7dc",
+-      "triangles": 22768,
++      "bytes": 5931424,
++      "sha256": "788e545da4a95a61c273ba922e409445dcf89df9e6f871348fc3af3d26c70352",
++      "triangles": 43504,
+       "meshes": 2,
+-      "leafCount": 1728,
++      "leafCount": 3456,
+       "barkTriangles": 2032,
+-      "leafTriangles": 20736,
++      "leafTriangles": 41472,
+       "bounds": {
+         "bark": {
+           "min": [
+@@ -150,14 +195,14 @@
+         },
+         "leaves": {
+           "min": [
+-            -3.2181525230407715,
++            -3.346381425857544,
+             5.700746059417725,
+-            -2.7929341793060303
++            -3.8465018272399902
+           ],
+           "max": [
+             4.31735372543335,
+-            11.780953407287598,
+-            2.5605263710021973
++            11.797210693359375,
++            3.784684419631958
+           ]
+         }
+       }
+@@ -171,8 +216,8 @@
+     },
+     {
+       "path": "art-source/sample-street-trees/source/author-trees.mjs",
+-      "bytes": 11604,
+-      "sha256": "7cdb3d76f110e310a8c9e2afffdcfb026085a79b4771175c7c2ec34d9553d977"
++      "bytes": 15868,
++      "sha256": "123db6681f55c21aba8ff698de6f372caf778f2964a7939c5cd20fcc1e0e2cb4"
+     },
+     {
+       "path": "art-source/sample-street-trees/source/make-original-tree-textures.py",
+@@ -196,10 +241,10 @@
+     },
+     {
+       "path": "art-source/sample-street-trees/source/recipes.json",
+-      "bytes": 2557,
+-      "sha256": "3982d45c6b8c753602b47eae4aeaaa1b9a3767f82cccbf22b662d9d17250b1f0"
++      "bytes": 3581,
++      "sha256": "826d9bb016b654545a90a90c21af9d197166f83c5af5f899d527ef8537d3ac97"
+     }
+   ],
+   "runtimeOwner": "src/harbor-sample-trees.js",
+-  "physicalDetail": "1728 closed actual folded leaf blades per variant with 1.6mm thickness; original 576 leaves and all bark attributes byte-preserved. Independently seeded 1152 additions fill branch-following inner and mid-crown 3D clusters; 72 actual-triangle parent containment checks retain original bark. No alpha planes or sphere crown props."
++  "physicalDetail": "3456 closed actual folded leaf blades per variant with 1.6mm thickness; previous 1728 leaves and all bark attributes byte-preserved. Final independent 1728 additions connect crown centre, adjacent branch spans and broad Z shoulders in 54 filled 3D clusters. Old bark envelope is unchanged; expanded foliage-only envelope is declared explicitly. No alpha planes, enlarged leaf cards or crown sphere meshes."
+ }
+diff --git a/src/harbor-sample-trees.js b/src/harbor-sample-trees.js
+index 39bb09b..325bf07 100644
+--- a/src/harbor-sample-trees.js
++++ b/src/harbor-sample-trees.js
+@@ -5,7 +5,7 @@ export const SAMPLE_TREE_SITES=Object.freeze([
+  ['harbor-market',-457,-445,2],['harbor-market',-343,-445,0],
+  ['ferry-house',-297,-445,1],['ferry-house',-183,-445,2],
+ ].map(([buildingId,x,z,variant],i)=>Object.freeze({id:`sample-quay-tree-${i}`,buildingId,x,z,variant})));
+-export const SAMPLE_TREE_LIMITS=Object.freeze({near:80,far:100,maxDrawCalls:6,maxTriangles:150000,maxTreeTriangles:25000});
++export const SAMPLE_TREE_LIMITS=Object.freeze({near:80,far:100,maxDrawCalls:6,maxTriangles:270000,maxTreeTriangles:45000});
+ const FILES=['quay-banyan-a.glb','quay-banyan-b.glb','quay-banyan-c.glb'];
+ async function loadOriginalTree(variant,signal){const{GLTFLoader}=await import('../vendor/three/addons/loaders/GLTFLoader.js');const response=await fetch(new URL(`../assets/harbor/vegetation/${FILES[variant]}`,import.meta.url),{signal});if(!response.ok)throw Error(`Sample tree: HTTP ${response.status}`);return new GLTFLoader().parseAsync(await response.arrayBuffer(),'');}
+ function disposeTemplate(template){const gs=new Set(),ms=new Set(),ts=new Set();template?.traverse(o=>{if(!o.isMesh)return;gs.add(o.geometry);for(const m of(Array.isArray(o.material)?o.material:[o.material])){ms.add(m);for(const v of Object.values(m))if(v?.isTexture)ts.add(v);}});for(const t of ts){t.dispose();t.source?.data?.close?.();}for(const g of gs)g.dispose();for(const m of ms)m.dispose();}
