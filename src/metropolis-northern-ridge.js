@@ -1,4 +1,4 @@
-import {createWesternMountainBatch} from './metropolis-western-ridge.js';
+import {createWesternMountainBatch,ownWesternRidgeGeometry} from './metropolis-western-ridge.js';
 import {applySurfaceFinish} from './surface-finish.js';
 
 /** Original decorative northern backdrop. It never supplies ground/collision,
@@ -36,7 +36,7 @@ export function createNorthernHarborRidgeBatch(THREE,batch,sourceGeometry,source
  const mesh=createWesternMountainBatch(THREE,batch,sourceGeometry,sourceMaterial),old=mesh.geometry,west=[mesh.userData.westernRidge.westernRange],westVertices=west[0].firstVertex+west[0].vertices,westIndices=mesh.userData.westernRidge.westernTriangles*3,r=NORTHERN_RIDGE_RECIPE;
  const nx=r.xSegments,nz=r.zSegments,grid=(nx+1)*(nz+1),edgeVertices=2*(nx+1)+2*(nz-1),northVertices=grid+edgeVertices+1,count=westVertices+northVertices;
  const positions=new Float32Array(count*3),normals=new Float32Array(count*3),colors=new Float32Array(count*3),surface=new Float32Array(count*2),uv=new Float32Array(count*2),mask=new Float32Array(count),indices=[];
- for(const [key,array]of[['position',positions],['normal',normals],['color',colors],['mountainSurface',surface]])array.set(old.attributes[key].array.subarray(0,westVertices*old.attributes[key].itemSize));
+ for(const [key,array]of[['position',positions],['normal',normals],['color',colors]])array.set(old.attributes[key].array.subarray(0,westVertices*old.attributes[key].itemSize));
  for(let i=0;i<westIndices;i++)indices.push(old.index.getX(i));
  const heights=new Float64Array(grid);let high=0;for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const k=j*(nx+1)+i,x=r.minX+(r.maxX-r.minX)*i/nx,z=r.minZ+(r.maxZ-r.minZ)*j/nz;heights[k]=relief(x,z);high=Math.max(high,heights[k]);}
  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const local=j*(nx+1)+i,k=westVertices+local,x=r.minX+(r.maxX-r.minX)*i/nx,z=r.minZ+(r.maxZ-r.minZ)*j/nz;positions.set([x,r.minY+1+heights[local]/high*(r.maxY-r.minY-1),z],k*3);uv.set([x/r.textureTileMetres,z/r.textureTileMetres],k*2);mask[k]=1;surface.set([.90,1],k*2);}
@@ -50,8 +50,8 @@ export function createNorthernHarborRidgeBatch(THREE,batch,sourceGeometry,source
  for(let k=westVertices;k<count;k++){const x=positions[k*3],y=positions[k*3+1],z=positions[k*3+2],slope=1-Math.abs(normals[k*3+1]),h=(y-r.minY)/(r.maxY-r.minY),rockMix=clamp((slope-.20)*1.6+smooth((h-.66)/.34)*.42),soilMix=clamp(.10+.21*Math.sin(x*.038+z*.064)**2+.35*(1-smooth(h/.18)));c.copy(grass).lerp(soil,soilMix).lerp(rock,rockMix);c.multiplyScalar(.98+.035*Math.sin(x*.065-z*.027));c.toArray(colors,k*3);}
  geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));geometry.setAttribute('mountainSurface',new THREE.BufferAttribute(surface,2));geometry.setAttribute('northernUV',new THREE.BufferAttribute(uv,2));geometry.setAttribute('northernMask',new THREE.BufferAttribute(mask,1));geometry.computeBoundingBox();geometry.computeBoundingSphere();
  const northernTriangles=(indices.length-westIndices)/3,preparedBytes=geometry.index.array.byteLength+Object.values(geometry.attributes).reduce((n,a)=>n+a.array.byteLength,0);if(northernTriangles>r.maxNorthernTriangles||preparedBytes>r.maxPreparedBytes){geometry.dispose();mesh.material.dispose();old.dispose();throw Error('Northern ridge geometry budget exceeded');}
- const westernGeometry=new THREE.BufferGeometry();
- for(const name of ['position','normal','color','mountainSurface']){const a=old.attributes[name];westernGeometry.setAttribute(name,new THREE.BufferAttribute(a.array.slice(0,westVertices*a.itemSize),a.itemSize));}
+ const westernGeometry=ownWesternRidgeGeometry(new THREE.BufferGeometry());
+ for(const name of ['position','normal','color','uv']){const a=old.attributes[name];westernGeometry.setAttribute(name,new THREE.BufferAttribute(a.array.slice(0,westVertices*a.itemSize),a.itemSize));}
  westernGeometry.setIndex(Array.from(old.index.array.slice(0,westIndices)));westernGeometry.computeBoundingBox();westernGeometry.computeBoundingSphere();
  const northGeometry=new THREE.BufferGeometry();northGeometry.setAttribute('position',new THREE.BufferAttribute(positions.slice(westVertices*3),3));northGeometry.setAttribute('normal',new THREE.BufferAttribute(normals.slice(westVertices*3),3));northGeometry.setAttribute('color',new THREE.BufferAttribute(colors.slice(westVertices*3),3));northGeometry.setAttribute('uv',new THREE.BufferAttribute(uv.slice(westVertices*2),2));northGeometry.setIndex(indices.slice(westIndices).map(i=>i-westVertices));northGeometry.computeBoundingBox();northGeometry.computeBoundingSphere();
  const maps=createOriginalNorthernMaps(THREE),resources=createNorthMaterial(THREE,maps),northMesh=new THREE.Mesh(northGeometry,resources.material);northMesh.receiveShadow=true;northMesh.userData.decorativeNorthernRidge=true;northMesh.userData.noShadow=false;

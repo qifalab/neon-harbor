@@ -1,0 +1,552 @@
+{
+  "reviewType": "READ_ONLY_ACTUAL_ORIGINAL_IMAGE_COMPONENT_ART_REVIEW_DAYLIGHT",
+  "reviewedAtUtc": "2026-10-05T07:54:12Z",
+  "actualSourceHead": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "actualRuntimeAssetCount": 207,
+  "actualBuildInfoSha256": "3efed9961a04efbb051b3dc0785f8f15bda9e3c4e60834c3aca585e38260c9c0",
+  "newOriginalImagesViewed": 2,
+  "originalDayReferenceImagesCompared": 4,
+  "referenceScope": "Previously independently viewed immutable8b andCROWN original1280x800 images were compared against the new originals; their SHA records are pinned here.",
+  "editedCroppedOrRegeneratedImages": false,
+  "newCpuProjection": false,
+  "newNativeRunByReviewer": false,
+  "verdict": {
+    "targetedOriginalVisibleRepeatedConeChainReplacementAccepted": true,
+    "visibleCoherentAsymmetricRidgeAndSaddlesAccepted": true,
+    "previousTreeComponentVisiblyAndByteIdenticallyPreserved": true,
+    "noObviousNewHoleBlackFrameOrLargeDirtyAoEdgeInTheseTwoOriginals": true,
+    "polishedPhotorealMountainSurfaceAccepted": false,
+    "allCityCamerasOrWholeHarbourArtAccepted": false,
+    "aaaGtaOrCyberpunkEquivalent": false
+  },
+  "visibleImprovement": [
+    "Unlike8b source, the actual original west-facing pictures now visibly replace the repeated separate conical peak chain with a continuous asymmetric ridge, unequal shoulder masses and connecting saddles. This is native pixel evidence of a visible remedy, not a resource-count/projection claim.",
+    "The whole-tree view shows a broad connected ridge behind the actual retained tree canopy; the terrain does not reproduce the old three same-shape pointed hills and isolated right pointed mountain.",
+    "Local stone paving, tree foliage and visible street/building context remain present, without an obvious new hole, black frame or dominant dirty contact-occlusion halo in these two originals."
+  ],
+  "remainingVisibleArtLimits": [
+    "The mountain surface remains broad smooth grey-green shading with very simplified rock, soil and vegetation distribution. It can still read as soft clay or a smooth sculpted prop at this scale, so refined natural-landscape surface quality is not accepted.",
+    "A few wide ledge-like bands and rounded summit masses remain simplified. More believable rock breaks, terrain-scale relief and restrained material transitions would improve the background beyond this targeted cone replacement.",
+    "The surrounding repeated facades, simplified elevated transport structure, distant NPC variety and overall city composition are outside the mountain remedy acceptance.",
+    "A static two-view record does not prove flicker absence, motion behaviour, all scene angles, real hardware FPS or VRAM."
+  ],
+  "cameraComparisons": [
+    {
+      "poseFile": "05-west-ridge-original-camera-pose.json",
+      "newActualEyeDistance": 9.974787486523129,
+      "gl": {
+        "width": 1280,
+        "height": 800,
+        "contextLost": false,
+        "errorAtCheckpoint": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "afterContactOcclusion": {
+        "enabled": true,
+        "supported": true,
+        "quality": "high",
+        "technique": "depth-reconstructed short-range SSAO",
+        "sceneSize": [
+          1280,
+          800
+        ],
+        "occlusionSize": [
+          640,
+          400
+        ],
+        "samples": 4,
+        "passes": 3,
+        "cpuSubmitMs": 28.6,
+        "fallback": null
+      },
+      "comparisons": [
+        {
+          "oldRoot": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native",
+          "actualCameraPlanFieldsIdentical": {
+            "kind": true,
+            "label": true,
+            "position": true,
+            "target": true,
+            "axisTolerance": true,
+            "hud": true,
+            "camera": true
+          },
+          "phases": [
+            {
+              "phase": "before",
+              "positionDeltaNewMinusOld": {
+                "x": -0.08000000000049567,
+                "y": 0,
+                "z": -0.07999999999992724
+              },
+              "standingPositionDistanceMeters": 0.11313708499014666,
+              "yawDeltaRadiansWrapped": -0.0006543862047161397,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -568.3066666666676,
+                "y": 0,
+                "z": -438.17333333333926,
+                "yaw": -1.5707963267948968
+              },
+              "oldPosition": {
+                "x": -568.2266666666671,
+                "y": 0,
+                "z": -438.09333333333933,
+                "yaw": -1.5707963267948968
+              },
+              "settingsIdentical": true
+            },
+            {
+              "phase": "after",
+              "positionDeltaNewMinusOld": {
+                "x": -0.08000000000049567,
+                "y": 0,
+                "z": -0.07999999999992724
+              },
+              "standingPositionDistanceMeters": 0.11313708499014666,
+              "yawDeltaRadiansWrapped": 0.0,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -568.3066666666676,
+                "y": 0,
+                "z": -438.17333333333926,
+                "yaw": -1.5707963267948968
+              },
+              "oldPosition": {
+                "x": -568.2266666666671,
+                "y": 0,
+                "z": -438.09333333333933,
+                "yaw": -1.5707963267948968
+              },
+              "settingsIdentical": true
+            }
+          ]
+        },
+        {
+          "oldRoot": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native",
+          "actualCameraPlanFieldsIdentical": {
+            "kind": true,
+            "label": true,
+            "position": true,
+            "target": true,
+            "axisTolerance": true,
+            "hud": true,
+            "camera": true
+          },
+          "phases": [
+            {
+              "phase": "before",
+              "positionDeltaNewMinusOld": {
+                "x": -0.09333333333347582,
+                "y": 0,
+                "z": 0.026666666666642413
+              },
+              "standingPositionDistanceMeters": 0.09706813185720392,
+              "yawDeltaRadiansWrapped": 0.00033290483124126524,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -568.3066666666676,
+                "y": 0,
+                "z": -438.17333333333926,
+                "yaw": -1.5707963267948968
+              },
+              "oldPosition": {
+                "x": -568.2133333333342,
+                "y": 0,
+                "z": -438.2000000000059,
+                "yaw": -1.5707963267948968
+              },
+              "settingsIdentical": true
+            },
+            {
+              "phase": "after",
+              "positionDeltaNewMinusOld": {
+                "x": -0.09333333333347582,
+                "y": 0,
+                "z": 0.026666666666642413
+              },
+              "standingPositionDistanceMeters": 0.09706813185720392,
+              "yawDeltaRadiansWrapped": 0.0,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -568.3066666666676,
+                "y": 0,
+                "z": -438.17333333333926,
+                "yaw": -1.5707963267948968
+              },
+              "oldPosition": {
+                "x": -568.2133333333342,
+                "y": 0,
+                "z": -438.2000000000059,
+                "yaw": -1.5707963267948968
+              },
+              "settingsIdentical": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poseFile": "06-near-quay-tree-whole-pose.json",
+      "newActualEyeDistance": 17.911348189975556,
+      "gl": {
+        "width": 1280,
+        "height": 800,
+        "contextLost": false,
+        "errorAtCheckpoint": 0,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "afterContactOcclusion": {
+        "enabled": true,
+        "supported": true,
+        "quality": "high",
+        "technique": "depth-reconstructed short-range SSAO",
+        "sceneSize": [
+          1280,
+          800
+        ],
+        "occlusionSize": [
+          640,
+          400
+        ],
+        "samples": 4,
+        "passes": 3,
+        "cpuSubmitMs": 4.4,
+        "fallback": null
+      },
+      "comparisons": [
+        {
+          "oldRoot": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native",
+          "actualCameraPlanFieldsIdentical": {
+            "kind": true,
+            "label": true,
+            "position": true,
+            "target": true,
+            "axisTolerance": true,
+            "hud": true,
+            "camera": true
+          },
+          "phases": [
+            {
+              "phase": "before",
+              "positionDeltaNewMinusOld": {
+                "x": 0.013336137075384613,
+                "y": 0,
+                "z": 0.04000002846152029
+              },
+              "standingPositionDistanceMeters": 0.04216461584096173,
+              "yawDeltaRadiansWrapped": 0.00042386749726208706,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -599.9333327997103,
+                "y": 0,
+                "z": -440.8666763183731,
+                "yaw": -1.5707966319706783
+              },
+              "oldPosition": {
+                "x": -599.9466689367857,
+                "y": 0,
+                "z": -440.9066763468346,
+                "yaw": -1.5707966319706783
+              },
+              "settingsIdentical": true
+            },
+            {
+              "phase": "after",
+              "positionDeltaNewMinusOld": {
+                "x": 0.013336137075384613,
+                "y": 0,
+                "z": 0.04000002846152029
+              },
+              "standingPositionDistanceMeters": 0.04216461584096173,
+              "yawDeltaRadiansWrapped": 0.0,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -599.9333327997103,
+                "y": 0,
+                "z": -440.8666763183731,
+                "yaw": -1.5707966319706783
+              },
+              "oldPosition": {
+                "x": -599.9466689367857,
+                "y": 0,
+                "z": -440.9066763468346,
+                "yaw": -1.5707966319706783
+              },
+              "settingsIdentical": true
+            }
+          ]
+        },
+        {
+          "oldRoot": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native",
+          "actualCameraPlanFieldsIdentical": {
+            "kind": true,
+            "label": true,
+            "position": true,
+            "target": true,
+            "axisTolerance": true,
+            "hud": true,
+            "camera": true
+          },
+          "phases": [
+            {
+              "phase": "before",
+              "positionDeltaNewMinusOld": {
+                "x": 0.10499985822070812,
+                "y": 0,
+                "z": -0.10666660615146384
+              },
+              "standingPositionDistanceMeters": 0.14967543250059548,
+              "yawDeltaRadiansWrapped": 0.00014177997448072688,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -599.9333327997103,
+                "y": 0,
+                "z": -440.8666763183731,
+                "yaw": -1.5707966319706783
+              },
+              "oldPosition": {
+                "x": -600.038332657931,
+                "y": 0,
+                "z": -440.76000971222163,
+                "yaw": 1.570796021619115
+              },
+              "settingsIdentical": true
+            },
+            {
+              "phase": "after",
+              "positionDeltaNewMinusOld": {
+                "x": 0.10499985822070812,
+                "y": 0,
+                "z": -0.10666660615146384
+              },
+              "standingPositionDistanceMeters": 0.14967543250059548,
+              "yawDeltaRadiansWrapped": 0.0,
+              "pitchDeltaRadians": 0.0,
+              "fovDelta": 0,
+              "newPosition": {
+                "x": -599.9333327997103,
+                "y": 0,
+                "z": -440.8666763183731,
+                "yaw": -1.5707966319706783
+              },
+              "oldPosition": {
+                "x": -600.038332657931,
+                "y": 0,
+                "z": -440.76000971222163,
+                "yaw": 1.570796021619115
+              },
+              "settingsIdentical": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "comparisonLimits": [
+    "New05 standing difference from8b0.11313708499m and fromCROWN0.097068131857m.",
+    "New06 standing difference from8b0.042164615841m and fromCROWN0.149675432501m.",
+    "Each view obeys the original per-axis0.15m plan tolerance; actual after-camera yaw/pitch/FOV are identical to both old records. This does not imply pixel-identical positions, naturalNPC placements or full scene pixels.",
+    "All actual day records are High, fixed16.5,dayCyclefalse,first-personFOV65,1280x800.",
+    "No all-six site far/Low lifecycle rerun is claimed by this two-view component session. CROWN lifecycle remains a separate source-bound record, with the five relevant tree source/asset hashes identical.",
+    "The separate night79042 run was still active and was not read here. Night has no matching historical native comparison.",
+    "Prior8b north-outside-frustum failure remains correct and unchanged. The new visibleWest remedy does not rewrite that historical source result."
+  ],
+  "treeComponentByteIdentityWithCrown": {
+    "src/harbor-sample-trees.js": "aa3d42dde0f3f47cdcab72b1d6a34545fd2f463b3c20e3dfcbc7c01393bcea9f",
+    "assets/harbor/vegetation/asset-manifest.json": "b196413d207c641a6faa61142e7c427143ced95c8dd3c823e03e78ed67b16518",
+    "assets/harbor/vegetation/quay-banyan-a.glb": "f71838f95dbf92ab3f3d0830c6367b97a4c39f21e2a2fb7d8e2b68554df98aca",
+    "assets/harbor/vegetation/quay-banyan-b.glb": "f294ca8121e0af21d448adc2e0c33a42cee1a222b48482d4080796e7fde551ac",
+    "assets/harbor/vegetation/quay-banyan-c.glb": "788e545da4a95a61c273ba922e409445dcf89df9e6f871348fc3af3d26c70352"
+  },
+  "nativeEvidence": {
+    "summaryStatus": "CAPTURE_COMPLETE_ART_REVIEW_PENDING",
+    "metadataStatus": "capture-complete-art-review-pending",
+    "sourceFreezeBeforeAfterEqual": true,
+    "primaryError": null,
+    "errors": [],
+    "finalizationErrors": [],
+    "finishedBeforeDeadline": true,
+    "executorExitCode": 0,
+    "ownedClosureConfirmed": true,
+    "remainingOwnedProcesses": [],
+    "portClosure": {
+      "port": 5240,
+      "connectErrno": 111,
+      "confirmedRefused": true
+    },
+    "actualOwnedBrowserClose": {
+      "before": {
+        "pid": 192787,
+        "state": "S",
+        "ppid": 192761,
+        "startTicks": "6977524"
+      },
+      "current": null,
+      "apiCloseResolved": true,
+      "outerCapMs": 35000,
+      "providerDefaultInnerCloseMs": 30000,
+      "apiCloseElapsedMs": 18580,
+      "exitCode": 0,
+      "signalCode": null,
+      "forcedExit": false,
+      "graceful": true,
+      "forceAttribution": "none-or-not-eligible",
+      "providerInternalBranchIndependentlyObserved": false,
+      "callerForceInvoked": false,
+      "hardDeadlineReached": false,
+      "identityReadConfirmed": true,
+      "exactOwnedClosureConfirmed": true,
+      "exitModeEligible": true,
+      "withinOuterCap": true,
+      "boundedCloseAccepted": true
+    },
+    "closeInterpretation": "The original metadata records actual graceful browserexit0, signalnull, no forcedexit,18580ms. This is read from actual metadata, not inferred from local-summary null browserClose."
+  },
+  "sourceMaterialAssets": {
+    "src/metropolis-western-ridge.js": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208",
+    "src/metropolis-northern-ridge.js": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0",
+    "src/metropolis-world.js": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b",
+    "src/contact-occlusion.js": "9ff0fca4d9a6567a1a5c27be52123bf8eb15916db5f6348eda156b0421aa67e8",
+    "src/surface-finish.js": "784ddc4464fa2ab631c3e0eb9c8f794c70537a6bad9f8f32e82f7bfa05d70cf0"
+  },
+  "inputs": [
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
+      "bytes": 1091558,
+      "sha256": "dd3b951fb137b2803b46f5f2616e4c441e12e951dd55f1f699d149c5def7aa5e"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/05-west-ridge-original-camera-pose.json",
+      "bytes": 38539,
+      "sha256": "58e67309d308e5153d11a7a7ffc33578de76d1f11fb442ff2895ff3054f318c6"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/06-near-quay-tree-whole-high.png",
+      "bytes": 914528,
+      "sha256": "09a574ac77de18bf4df2d3e4fd14c6a1dd5c265090215617616c3107d273d219"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/06-near-quay-tree-whole-pose.json",
+      "bytes": 38638,
+      "sha256": "d4a25a098af7179e4c6da16735a721b26dae6bce9a0c6e176f67b2bae8094314"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/build-info.json",
+      "bytes": 22242,
+      "sha256": "3efed9961a04efbb051b3dc0785f8f15bda9e3c4e60834c3aca585e38260c9c0"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/native/metadata.json",
+      "bytes": 4074160,
+      "sha256": "d1cd210d3118f59d83ef9bf240c701242e943b27c5f5eaec04c4f6fddc84a88f"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
+      "bytes": 1084707,
+      "sha256": "d9fbd29603ec525c1dfe4ea214db5febf64cf2758fffa056a4a648d99371d5c3"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/05-west-ridge-original-camera-pose.json",
+      "bytes": 38645,
+      "sha256": "d40fa2ba8b7822074839b1d3c84c858b1bd04f4ae9e902296b8c8d8504c7e548"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/06-near-quay-tree-whole-high.png",
+      "bytes": 921252,
+      "sha256": "e5099cff724f2ea417aa164a64e0640827f5e44cbbb9581cadd92908809037dd"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/06-near-quay-tree-whole-pose.json",
+      "bytes": 38690,
+      "sha256": "86bd1806181f093aaf9d40a59f717324d5e1540793debffbd8dd202342c59ada"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/build-info.json",
+      "bytes": 22242,
+      "sha256": "d4a3281c321fbe833add6130fdb2eefded49b943f7270846399339dbccc1b7bd"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-north-crisp-8b6a577-committed-owned-20261005/native/metadata.json",
+      "bytes": 4075557,
+      "sha256": "b47cc27a7680dc6f2be3790f95035ae11dac6c9a753de19fdd5c7ded566c27db"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/05-west-ridge-original-camera-high.png",
+      "bytes": 1093207,
+      "sha256": "4b29cb2af3cf2ac7accca0687fc27e960347442c1ba3cb0d73c28635de84f63f"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/05-west-ridge-original-camera-pose.json",
+      "bytes": 38523,
+      "sha256": "d3d3b294d12f05624d09702b1fd7b6ec1e0b9371e7f46bcb3e86f5430fa85fe0"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/06-near-quay-tree-whole-high.png",
+      "bytes": 908096,
+      "sha256": "38d9e7a34add1ddb1f344dea1c092431b553bb85443c4a6b83b1086f30f89f58"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/06-near-quay-tree-whole-pose.json",
+      "bytes": 38515,
+      "sha256": "58781c74d10a3808613504dcf4983cb61854d5a286ff622844f82ba1ec0ebf52"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/07-near-quay-tree-bark-and-branches-high.png",
+      "bytes": 960788,
+      "sha256": "5d27808240c6e9ef6918718fb5c008b9d70d6c3d1f04fd63922bad6e21412356"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/07-near-quay-tree-bark-and-branches-pose.json",
+      "bytes": 39731,
+      "sha256": "8547a596d5cfaae50f09a4337d1a29f7415cfeb5e37381267a568bee084af12d"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/build-info.json",
+      "bytes": 22134,
+      "sha256": "da96f662b9c3181079df9db875b73f30b1f6ab8ce07aec4885ef584d0ba12b92"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-close-quay-crown-91cdbc6-committed-owned-20261005/native/metadata.json",
+      "bytes": 4439463,
+      "sha256": "bf27c952aa56881e82bf6a2975ef6c9a842c548d8cf449b946e7e5b373c08ad8"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/local-summary.json",
+      "bytes": 207030,
+      "sha256": "92ac8b5f13cf2c23ee367f0a3d8d11e628acc4dd07912cac46da1c998cc3c13a"
+    },
+    {
+      "path": "/workspace/neon-evidence/street-day-visible-west-b80eace-committed-owned-20261005/logs/native-authored.owned-process-receipt.json",
+      "bytes": 4020,
+      "sha256": "3dfd183e0b6f79690dd76dafdcdc1af03db7991f4b95d8a0c2fe07716a365c89"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/north-day-8b6a577-review.json",
+      "bytes": 22803,
+      "sha256": "e4cde780d8d176616269e9daf612f2a43897a84be8e3de2c6d57fad4b7000f05"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/north-day-8b6a577-review-seal.json",
+      "bytes": 1257,
+      "sha256": "fb4b5330e0636ebc60797eaa47535365e556292d4e617e0835b403539b50301c"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/quay-crown-review.json",
+      "bytes": 48681,
+      "sha256": "3e49f2b6fb8d7f56e3b28ecd518a19d2b347a7afa960659395205399e8e0c81e"
+    },
+    {
+      "path": "/workspace/neon-candidates/final-near-shop-art-review-20261005/quay-crown-review-seal.json",
+      "bytes": 754,
+      "sha256": "bfb13a30d88028541fc5b826654021721683831e23c014486e77d250ddb34bfa"
+    }
+  ]
+}

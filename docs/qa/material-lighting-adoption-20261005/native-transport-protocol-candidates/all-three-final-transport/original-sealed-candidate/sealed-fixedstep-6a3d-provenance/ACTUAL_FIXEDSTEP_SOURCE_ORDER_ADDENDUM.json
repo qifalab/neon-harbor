@@ -1,0 +1,21 @@
+{
+  "status": "CPU_SOURCE_ORDER_ADDENDUM_NO_NATIVE_ACCEPTANCE",
+  "sealedCandidateParent": "/workspace/neon-candidates/bus-tram-ordinary-far-public-input-candidate-20261005/SEAL.json",
+  "parentSealSHA256": "e3777802f6e7fe7ac5e269b66282e861ebe87ccfdcc9c2b8bf70ca3d0c6f3d69",
+  "sourceHashes": {
+    "src/main.js": "2852753ed2887b57be6bf7a7d169a7c004b4db47ff2f9c5139e5da61c5dee91f",
+    "src/frame-clock.js": "ca3976293645533c97cb712390697418db142cd75c38ec4658beafdf5752d5d8",
+    "src/presentation.js": "0af2e395374213e8ba40df54eca1b48ec48397d555cc293972e0a7d6769aa2cf",
+    "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+    "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
+    "src/harbor-vehicle-models.js": "dc9ca6189a64bd4a51c278297574681b9e3b986a4a7e30785cd8729a65236ac9",
+    "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0"
+  },
+  "actualFrame": "main.frame calls fixed60Hz world.step up to15 times from MAX_FRAME_TIME=.25; city-exploration.step calls sampleTransit.update before sampleTransit.stepPlayer",
+  "newCPU": "Imported actual service update then stepPlayer each1/60, 15 substeps per isolated CPU visible frame, actual inputState onceperframe; full13 original endpoint/radius/deadline/release tests also pass",
+  "distinction": "Sealed original CPU receipt tests a conservative .25 service integration step and fixtures, not literal main.frame aggregation. This independent addendum additionally verifies real15fixedsubstep order; no protocol/source/guard bytes amended.",
+  "newCPUReceiptSHA256": "4a3a1e18935022e6c86662c4a3b28fa8e34ed3c45be4287139c5983988b7d7b1",
+  "testCount": 13,
+  "nativeExecuted": false,
+  "allPriorFailuresRemainFailed": true
+}

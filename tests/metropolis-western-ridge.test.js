@@ -49,35 +49,33 @@ test('northern backdrop replaces twelve cones with a bounded continuous surface 
  } finally{world.dispose();}
 });
 
-test('western connected ridge has slope, soil and rock bands with the existing mineral response', () => {
+test('western connected ridge uses metre-scaled UVs and owned standard dry-mineral normal/roughness maps', () => {
   const { world, mountain } = setup();
   try {
-    const colors = mountain.geometry.getAttribute('color'), surface = mountain.geometry.getAttribute('mountainSurface');
-    const cutoff = colors.count;
-    const roughnesses = Array.from({ length: cutoff }, (_, i) => surface.getX(i));
-    assert.ok(Math.max(...roughnesses) - Math.min(...roughnesses) > .06);
-    for (let i = 0; i < cutoff; i++) { assert.equal(surface.getY(i), 1); assert.ok(surface.getX(i) >= .85 && surface.getX(i) <= .99); }
-    const shader = { vertexShader: THREE.ShaderLib.standard.vertexShader, fragmentShader: THREE.ShaderLib.standard.fragmentShader };
-    mountain.material.onBeforeCompile(shader);
-    assert.ok(shader.vertexShader.includes('attribute vec2 mountainSurface;'));
-    assert.ok(shader.fragmentShader.includes('roughnessFactor = vMountainSurface.x;'));
-    assert.ok(shader.fragmentShader.includes('roughnessFactor = clamp(roughnessFactor + vMountainSurface.y *'));
-    assert.ok(shader.fragmentShader.includes('diffuseColor.rgb *= 1.0 + vMountainSurface.y *'));
-    assert.ok(shader.fragmentShader.includes('float nhRelief = vMountainSurface.y * nhDetail *'));
-    assert.ok(shader.fragmentShader.includes('nhSurfaceBand'));
-    assert.equal(mountain.material.map, null);
+    const g=mountain.geometry,uv=g.attributes.uv,m=mountain.material,r=WESTERN_RIDGE_RECIPE.surface;
+    assert.equal(g.attributes.mountainSurface,undefined,'obsolete custom-shader attribute is replaced, not retained as a false material contract');
+    assert.equal(uv.count,g.attributes.position.count);
+    for(let i=0;i<g.index.count;i+=3){const a=g.index.getX(i),b=g.index.getX(i+1),c=g.index.getX(i+2);const area=(uv.getX(b)-uv.getX(a))*(uv.getY(c)-uv.getY(a))-(uv.getY(b)-uv.getY(a))*(uv.getX(c)-uv.getX(a));assert.ok(Math.abs(area)>1e-8,'top/skirt/bottom UV triangles have nonzero area');}
+    const p=g.attributes.position;for(let k=0;k<(WESTERN_RIDGE_RECIPE.xSegments+1)*(WESTERN_RIDGE_RECIPE.zSegments+1);k++){assert.ok(Math.abs(uv.getX(k)-p.getX(k)/r.textureTileMetres)<1e-5);assert.ok(Math.abs(uv.getY(k)-p.getZ(k)/r.textureTileMetres)<1e-5);}
+    assert.equal(m.isMeshStandardMaterial,true);assert.equal(m.normalMapType,THREE.TangentSpaceNormalMap);assert.equal(m.roughness,1);assert.equal(m.metalness,0);assert.equal(m.map,null);
+    for(const t of [m.normalMap,m.roughnessMap]){assert.ok(t.isDataTexture);assert.equal(t.image.width,128);assert.equal(t.image.height,128);assert.equal(t.colorSpace,THREE.NoColorSpace);assert.equal(t.wrapS,THREE.RepeatWrapping);assert.equal(t.wrapT,THREE.RepeatWrapping);assert.equal(t.generateMipmaps,true);assert.equal(t.minFilter,THREE.LinearMipmapLinearFilter);assert.equal(t.magFilter,THREE.LinearFilter);}
+    const green=Array.from(m.roughnessMap.image.data).filter((_,i)=>i%4===1);assert.ok(Math.min(...green)>=.80*255-1);assert.ok(Math.max(...green)<=.98*255+1);assert.ok(Math.max(...green)-Math.min(...green)>20,'actual standard green channel varies across fractured mineral sheets');
+    const normal=m.normalMap.image.data;let tilted=0;for(let i=0;i<normal.length;i+=4){const x=normal[i]/255*2-1,y=normal[i+1]/255*2-1,z=normal[i+2]/255*2-1;assert.ok(Math.abs(Math.hypot(x,y,z)-1)<.012);if(Math.hypot(x,y)>.08)tilted++;}assert.ok(tilted>1000,'physical height gradients encode real tangent normal variation');
+    const shader={vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};m.onBeforeCompile(shader);assert.equal(shader.vertexShader,THREE.ShaderLib.standard.vertexShader);assert.equal(shader.fragmentShader,THREE.ShaderLib.standard.fragmentShader);assert.ok(THREE.ShaderChunk.roughnessmap_fragment.includes('texelRoughness.g'),'standard shader reads green; no custom hook overwrites it');
+    assert.equal(m.userData.westernMineralSurface.addedResidentCpuAndGpuTheoreticalBytes,305832);assert.ok(305832<=r.maxAddedResidentBytes);assert.equal(mountain.userData.westernRidge.producerTypedArrayBytes,283472);
   } finally { world.dispose(); }
 });
 
 test('permanent mountain ownership survives interior/quality switches and disposes geometry/material once', () => {
   const { world, mountain } = setup();
-  let geometries = 0, materials = 0;
+  let geometries = 0, materials = 0, normalMaps=0, roughMaps=0;
+  mountain.material.normalMap.addEventListener('dispose',()=>normalMaps++);mountain.material.roughnessMap.addEventListener('dispose',()=>roughMaps++);
   mountain.geometry.addEventListener('dispose', () => geometries++); mountain.material.addEventListener('dispose', () => materials++);
   world.setInteriorBuilding(world.buildings[0].id); assert.equal(mountain.visible, true);
   world.setInteriorBuilding(null); assert.equal(mountain.visible, true);
   world.setQuality('low'); assert.equal(mountain.castShadow, false); assert.equal(mountain.visible, true);
   world.setQuality('high'); assert.equal(mountain.castShadow, true); assert.equal(mountain.receiveShadow, true);
-  world.dispose(); assert.equal(geometries, 1); assert.equal(materials, 1);
+  world.dispose(); mountain.geometry.dispose();mountain.material.dispose();assert.equal(geometries, 1); assert.equal(materials, 1);assert.equal(normalMaps,1);assert.equal(roughMaps,1);
 });
 
 test('changed source batches are rejected rather than rewriting another cone or terrain family', () => {

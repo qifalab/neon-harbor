@@ -1,0 +1,112 @@
+{
+  "status": "ACTUAL_MATERIAL_AND_NIGHT_LIGHTING_SOURCE_METADATA_NATIVE_ART_PENDING",
+  "parentCommit": "ef4112bed4624c9c969b5b5f3746ccbfb64817aa",
+  "actualBuildInfoPath": "expected-build-provenance/authored-build-info-material-night-lighting-final-idle-20261005-c6b72d9e690f.json",
+  "actualBuildInfoSHA256": "c6b72d9e690fea559643cbe7da74523618a1812fd3484dd1091833cc95ed98a2",
+  "actualResourceCount": 208,
+  "exactRuntimeDeltaFromEf411": {
+    "added": {
+      "src/harbor-street-lighting.js": "0ef22adffc549c346da9746d786222f18098058b99fb86e3bfc2aba2795f5cd4"
+    },
+    "changed": {
+      "src/city-exploration.js": {
+        "before": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+        "after": "0286096f15732b65c14956e1bad495ff721acc6a4b563fa0c5733d170d0a1f4b"
+      },
+      "src/metropolis-northern-ridge.js": {
+        "before": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0",
+        "after": "fb4e04bf7d0f23bc24aea6a4e1ddeaaf276cf4fec0203b0433c725a0e6a3dd68"
+      },
+      "src/metropolis-western-ridge.js": {
+        "before": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208",
+        "after": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78"
+      },
+      "src/metropolis-world.js": {
+        "before": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b",
+        "after": "f1492146c023a068666d1a445c7a019c39b5685a717139337fda70cb26864ec5"
+      }
+    },
+    "removed": [],
+    "unchangedCount": 203
+  },
+  "sourceHashesBefore": {
+    "src/metropolis-world.js": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b",
+    "src/metropolis-western-ridge.js": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208",
+    "src/metropolis-northern-ridge.js": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0",
+    "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+    "src/harbor-street-lighting.js": null,
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "3f0fd65efbb8259a4fca77a09ad0ea2d80190ed9084ac831bc6c277800411c55"
+  },
+  "sourceHashesAfter": {
+    "src/metropolis-world.js": "f1492146c023a068666d1a445c7a019c39b5685a717139337fda70cb26864ec5",
+    "src/metropolis-western-ridge.js": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78",
+    "src/metropolis-northern-ridge.js": "fb4e04bf7d0f23bc24aea6a4e1ddeaaf276cf4fec0203b0433c725a0e6a3dd68",
+    "src/city-exploration.js": "0286096f15732b65c14956e1bad495ff721acc6a4b563fa0c5733d170d0a1f4b",
+    "src/harbor-street-lighting.js": "0ef22adffc549c346da9746d786222f18098058b99fb86e3bfc2aba2795f5cd4",
+    "src/harbor-district.js": "b479d1ea802e3679782915805caca21a3ae6c12e362d87cd76685dc4b8759f06",
+    "src/harbor-frontage-profiles.js": "3f0fd65efbb8259a4fca77a09ad0ea2d80190ed9084ac831bc6c277800411c55"
+  },
+  "actualLiteralPayloadBridges": [
+    {
+      "path": "runtime-amendments/material-night-lighting-final-idle-20261005/actual-west-mineral-payload-adoption-receipt.json",
+      "sha256": "fc83f57d5284e27d1352583f59e4ea678d025a44cfb6cd1ec863064f5262fdf3"
+    },
+    {
+      "path": "runtime-amendments/material-night-lighting-final-idle-20261005/actual-night-lighting-payload-adoption-receipt.json",
+      "sha256": "d8e6ad600d489e536b3fcb1502f8113581ee08ca0d045c4a6663c1c221146cc5"
+    }
+  ],
+  "actualIdleShaderAdditivePayloadBridge": {
+    "path": "runtime-amendments/material-night-lighting-final-idle-20261005/actual-idle-shader-payload-adoption-receipt.json",
+    "sha256": "66b5bc30d5e50aaf3085d8c7bc29bec222ee79683afa0166e1dce3ee15bba193",
+    "targetedReceiptSHA256": "8f09e5380bfa0dcf9f4a89caa3fd700db22db3eef0090f8f5ec15132600e0ca2",
+    "scope": "Original fixture positions and intensity functions retained; day/inside/vehicle shader-visible0, night fixed4/2 cap, Low0. CPU source evidence only."
+  },
+  "originalProducerCPUReceipts": [
+    {
+      "path": "runtime-amendments/material-night-lighting-final-idle-20261005/original-west-mineral-independent-cpu-receipt.json",
+      "sha256": "d632a1b7ad54af12385c295c58cb3ccc5f41bb70c4af5dcfdd2e43837b893701",
+      "scope": "Original actual producer geometry/north/4178 physics identity and map lifecycle checks; maps actual128pair,305832 theoreticalCPU+GPU bytes excludes driver/V8 overhead and actualVRAM."
+    },
+    {
+      "path": "runtime-amendments/material-night-lighting-final-idle-20261005/original-night-lighting-cpu-identity-receipt.json",
+      "sha256": "4f0c0e68fe8b7bb3a5aee10e997d6d1ee08932701721afd4829cb3d6f5aad23c",
+      "scope": "Original producer17 independent CPU cases, full physics/city identity,100 physical fixture sources and4/2/0 pointlight caps. New decorative fixtures/source module/readonly snapshot field are explicit, not hidden as two ridge-source changes alone."
+    }
+  ],
+  "originalFullProofsInQA": [
+    {
+      "path": "docs/qa/material-lighting-adoption-20261005/original-west-mineral-candidate-proof/evidence/independent-cpu/actual-independent-proof.json",
+      "sha256": "3a551701aaaaec8c89259c83b616c5c930fbf4c93c4749cac520264c47ffc581"
+    },
+    {
+      "path": "docs/qa/material-lighting-adoption-20261005/original-lighting-candidate-proof/cpu-identity-proof.json",
+      "sha256": "0c5d6fc496c4e6e556614c2783684b8e876fdbbd3b1389b892fc68d5e794a818"
+    }
+  ],
+  "baseline156EntireObjectUnchanged": true,
+  "originalWidePhysicalCasesPreparedHeadsAndHistoricalAmendmentsUnchanged": true,
+  "allOtherNativeMethodsInputsPlansSealsCasesAndBudgetsUnchanged": true,
+  "explicitFinalTransportProtocolPayloadFiles": {
+    "tools/native-review/methods/transport/ALL_THREE_PUBLIC_LONGITUDINAL_AND_FINITE_FERRY_BERTH_AMENDMENT-20261005.json": {
+      "sha256": "88b69f0e6842a12811662ae2d3e120384a7d1791be4b14a4a4fca71e4ac2547f",
+      "bytes": 6751
+    },
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "sha256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c",
+      "bytes": 20868
+    },
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "sha256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+      "bytes": 56319
+    }
+  },
+  "explicitFinalTransportProtocolReceiptSHA256": "2f23b2e80818099557af273dd77809977775e4429b2125369b76297d92ef08f0",
+  "producerCPUOrPhysicalWideCasesReexecutedByAdopterOrSealer": false,
+  "globalExposureAndDefaultHighUnchanged": true,
+  "compactTest48bacdfUnchanged": true,
+  "actualRendererGpuOrVRAMMeasuredBySealer": false,
+  "nativeArtAccepted": false,
+  "sourceScope": "Explicit combined source/CPU bridge for mineral palette/material response and physical outdoor light sources. All unchanged resources preserved by full actual source/dist dictionary. Old case geometry/path/camera tables are retained with original history; no pixel/visual acceptance is inherited from before captures."
+}

@@ -1,0 +1,18 @@
+{
+  "status": "waiting-for-frozen-source-notification",
+  "scope": "readonly independent CPU review; no GPU, commits, network or candidate mutations",
+  "dependencies": [
+    "frozen candidate source paths and SHA-256 ledger",
+    "actual baseline directory",
+    "actual day-camera metadata",
+    "owner creation/disposal exports"
+  ],
+  "focusedChecks": [
+    "Compare decoded West position/normal/index/AABB and North full attribute/material-map identity to the actual baseline; compare actual collider arrays and source hashes.",
+    "Decode actual normal and roughness bytes, assert RGBA length/channel distributions; verify material roughness scalar and Three green-channel multiplication plus map color spaces.",
+    "Count full mip-chain bytes and UV bytes from actual typed arrays; compare triangle UV area, seam topology and any legitimate top degeneracies to baseline shape.",
+    "Run actual isolated owner creation and two disposal calls; instrument per-identity map/material dispose counts and verify no North disposal or shared-owner release.",
+    "Seal the independent rerunnable checks, raw CPU output, resource hashes and receipt; keep rendering/material judgement explicitly pending."
+  ],
+  "unexecuted": true
+}

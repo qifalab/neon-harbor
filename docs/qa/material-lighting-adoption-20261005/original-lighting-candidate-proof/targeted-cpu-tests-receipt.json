@@ -1,0 +1,30 @@
+{
+  "command": "node --test tests/harbor-street-lighting.test.js tests/metropolis-world.test.js",
+  "workdir": "/workspace/neon-candidates/harbor-night-fixture-lighting-candidate-20261005",
+  "exitCode": 0,
+  "tests": 13,
+  "newMeaningfulTests": 3,
+  "unchangedOriginalTests": 10,
+  "pass": 13,
+  "fail": 0,
+  "stderrBytes": 0,
+  "files": [
+    {
+      "path": "evidence/targeted-cpu-tests.stdout.txt",
+      "bytes": 1453,
+      "sha256": "763b27e984b5c2efbbde3fa51a3ed5524a631bdf67b17184a4abd13e7db4312c"
+    },
+    {
+      "path": "evidence/targeted-cpu-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceSHA256": {
+    "src/harbor-street-lighting.js": "83878d797ede3eaef86617613a5e8f819457fd2348be3953f7586b589515bfc4",
+    "src/metropolis-world.js": "f1492146c023a068666d1a445c7a019c39b5685a717139337fda70cb26864ec5",
+    "src/city-exploration.js": "0286096f15732b65c14956e1bad495ff721acc6a4b563fa0c5733d170d0a1f4b",
+    "tests/harbor-street-lighting.test.js": "70e3877ef000f450d1f9332803be38e460e46c03a5303041b2bfa1aaee1b66d6"
+  },
+  "boundary": "CPU only, no visual or GPU acceptance inferred; combined child will run root full suite/build."
+}

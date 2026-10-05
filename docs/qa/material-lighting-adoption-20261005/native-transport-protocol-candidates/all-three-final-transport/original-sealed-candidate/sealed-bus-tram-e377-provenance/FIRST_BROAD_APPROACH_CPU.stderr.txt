@@ -1,0 +1,28 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: upper-2
++ actual - expected
+
++ {
++   message: 'original full passenger radius stays inside shell',
++   name: 'AssertionError'
++ }
+- null
+
+    at leg (file:///workspace/neon-candidates/bus-tram-ordinary-far-public-input-candidate-20261005/verify-ordinary-source-cpu.mjs:18:360)
+    at async Object.full (file:///workspace/neon-candidates/bus-tram-ordinary-far-public-input-candidate-20261005/verify-ordinary-source-cpu.mjs:19:137)
+    at async file:///workspace/neon-candidates/bus-tram-ordinary-far-public-input-candidate-20261005/verify-ordinary-source-cpu.mjs:22:219 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    name: 'AssertionError',
+    message: 'original full passenger radius stays inside shell'
+  },
+  expected: null,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

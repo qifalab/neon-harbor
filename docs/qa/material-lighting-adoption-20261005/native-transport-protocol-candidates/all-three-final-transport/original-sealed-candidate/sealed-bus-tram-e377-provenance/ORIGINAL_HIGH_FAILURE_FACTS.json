@@ -1,0 +1,2957 @@
+{
+  "status": "ALL_ORIGINAL_HIGH_FAILURES_PRESERVED",
+  "artifacts": [
+    {
+      "kind": "bus",
+      "artifactID": 11332299667,
+      "archivePath": "/workspace/neon-evidence/8b6-bus-high-original-fail-11332299667/original.zip",
+      "bytes": 475819853,
+      "sha256": "e46d01101d8be171622c3169c140f5a3a6f10fc0b5f1045ef8ec79b55a389555",
+      "downloadReceiptPath": "/workspace/neon-evidence/8b6-bus-high-original-fail-11332299667/fresh-attempt1.receipt.json",
+      "downloadReceiptSHA256": "476fceb6391b6a9acfa2ab7c90b3beaddc57dfae58bfc46987bc57578f183203",
+      "variants": [
+        {
+          "role": "baseline",
+          "status": "FAILED",
+          "actualSourceGit": {
+            "head": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+            "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+          },
+          "toolSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+          "firstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 1ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 1ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:304:26)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:404:54\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "runSecondaryErrors": [],
+          "runtimeErrors": [],
+          "elapsedMs": 1787362,
+          "photos": [
+            {
+              "stage": "exterior",
+              "file": "exterior.png",
+              "imageSha256": "2ed901612f663a43c3cb2a8ac5cf38f99a0bfd0fcbd54f38cb3449d80aa54e40",
+              "poseFile": "exterior-pose.json"
+            },
+            {
+              "stage": "lower",
+              "file": "lower.png",
+              "imageSha256": "1f394734f20243d9e587f864263bc6c123909e611b7121a2827434e62f7e4d21",
+              "poseFile": "lower-pose.json"
+            },
+            {
+              "stage": "upper",
+              "file": "upper.png",
+              "imageSha256": "49c8dd051f51600f3eedfa4ebd33f11837a1c312c7d6854f4328a8e6c1419b11",
+              "poseFile": "upper-pose.json"
+            }
+          ],
+          "firstFailedLocalLeg": {
+            "stage": "lower-2",
+            "precision": true,
+            "target": {
+              "x": -0.77,
+              "y": 0.44,
+              "z": 3.07
+            },
+            "initialLocal": {
+              "x": -0.7690032488378671,
+              "y": 1.4121206006602742,
+              "z": 1.0727839234185346,
+              "yaw": 0.12164227458165788
+            },
+            "lastObservedLocal": {
+              "x": -0.7694580930055837,
+              "y": 0.44,
+              "z": 2.947782539510756,
+              "yaw": -0.0004985703507851547
+            },
+            "localBudget": 150000,
+            "cycleCount": 4,
+            "lastCycle": {
+              "n": 3,
+              "before": {
+                "x": -0.7694580930055837,
+                "y": 0.44,
+                "z": 2.947782539510756,
+                "yaw": -0.0004985703507851547
+              },
+              "key": "w",
+              "slow": true,
+              "desired": 3.1371587254014965,
+              "inputs": [
+                {
+                  "action": "down",
+                  "key": "w"
+                },
+                {
+                  "action": "up",
+                  "key": "w",
+                  "confirmed": true
+                }
+              ],
+              "waits": [],
+              "releaseConfirmed": true,
+              "guardBaseline": {
+                "simulationTime": 86.49999999999638,
+                "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+              },
+              "slowModifierAlreadyHeld": true,
+              "firstError": {
+                "stage": "movement",
+                "name": "TimeoutError",
+                "message": "page.waitForFunction: Timeout 1ms exceeded.",
+                "stack": "page.waitForFunction: Timeout 1ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:304:26)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:404:54\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+              }
+            }
+          },
+          "berthWaits": [
+            {
+              "status": "SATISFIED",
+              "vehicleId": null,
+              "requiredStopId": "harbor-bus-courtyard",
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:15:06.810Z",
+              "finishedAt": "2026-10-05T07:15:06.823Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:15:06.820Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 5.249999999999987,
+                    "timing": {
+                      "wallDt": 3.999800000000003,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 3.749800000000003,
+                      "droppedTotal": 77.21340000000001
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 149.72499999999818,
+                      "y": 0,
+                      "z": 123.74,
+                      "yaw": 1.5707963267948966
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 149.71166666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "target": {
+                        "x": 149.71166666666485,
+                        "y": 1.62,
+                        "z": 133.74
+                      },
+                      "focus": {
+                        "x": 149.71166666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "yaw": 0,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-bus-courtyard",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": null,
+                    "fleet": [
+                      {
+                        "id": "harbor-bus-1",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-courtyard",
+                        "doorsOpen": true,
+                        "remaining": 5.75,
+                        "nextStopId": "harbor-bus-courtyard",
+                        "secondsToArrival": 0,
+                        "serviceTime": 5.249999999999987,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-bus-2",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-workshop",
+                        "doorsOpen": true,
+                        "remaining": 5.750000000000313,
+                        "nextStopId": "harbor-bus-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 86.33819154052567,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-1",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-lantern",
+                        "doorsOpen": true,
+                        "remaining": 6.750000000000014,
+                        "nextStopId": "harbor-tram-lantern",
+                        "secondsToArrival": 0,
+                        "serviceTime": 5.249999999999987,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-2",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-workshop",
+                        "doorsOpen": true,
+                        "remaining": 6.750000000000298,
+                        "nextStopId": "harbor-tram-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 35.56666666666637,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-ferry-1",
+                        "kind": "ferry",
+                        "stopId": "harbor-ferry-south",
+                        "doorsOpen": true,
+                        "remaining": 10.750000000000014,
+                        "nextStopId": "harbor-ferry-south",
+                        "secondsToArrival": 0,
+                        "serviceTime": 5.249999999999987,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-bus-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:15:07.624Z",
+              "finishedAt": "2026-10-05T07:15:07.634Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:15:07.631Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 5.249999999999987,
+                    "timing": {
+                      "wallDt": 3.999800000000003,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 3.749800000000003,
+                      "droppedTotal": 77.21340000000001
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 149.72499999999818,
+                      "y": 0,
+                      "z": 123.74,
+                      "yaw": 1.5707963267948966
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 149.71166666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "target": {
+                        "x": 149.71166666666485,
+                        "y": 1.62,
+                        "z": 133.74
+                      },
+                      "focus": {
+                        "x": 149.71166666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "yaw": 0,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-bus-courtyard",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": {
+                      "id": "harbor-bus-1",
+                      "x": 152,
+                      "y": 0,
+                      "z": 120,
+                      "yaw": 0,
+                      "stopId": "harbor-bus-courtyard",
+                      "doorsOpen": true,
+                      "remaining": 5.75,
+                      "nextStopId": "harbor-bus-courtyard",
+                      "secondsToArrival": 0,
+                      "serviceTime": 5.249999999999987,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "signal",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-bus-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:17:17.556Z",
+              "finishedAt": "2026-10-05T07:23:41.510Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:17:17.561Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 9.750000000000064,
+                    "timing": {
+                      "wallDt": 6.5662999999999885,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 6.3162999999999885,
+                      "droppedTotal": 195.40840000000003
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 151.975,
+                      "y": 0.44,
+                      "z": 123.74,
+                      "yaw": 1.5707963267948966
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 151.975,
+                        "y": 2.06,
+                        "z": 123.74
+                      },
+                      "target": {
+                        "x": 151.975,
+                        "y": 2.06,
+                        "z": 133.74
+                      },
+                      "focus": {
+                        "x": 151.975,
+                        "y": 2.06,
+                        "z": 123.74
+                      },
+                      "yaw": 0,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-bus-courtyard",
+                    "ridingVehicleId": "harbor-bus-1",
+                    "passengerLocal": {
+                      "x": -0.024999999999999627,
+                      "y": 0.44,
+                      "z": 3.74,
+                      "yaw": 1.5707963267948966
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-bus-1",
+                      "x": 152,
+                      "y": 0,
+                      "z": 120,
+                      "yaw": 0,
+                      "stopId": "harbor-bus-courtyard",
+                      "doorsOpen": true,
+                      "remaining": 1.2499999999999432,
+                      "nextStopId": "harbor-bus-courtyard",
+                      "secondsToArrival": 0,
+                      "serviceTime": 9.750000000000064,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-bus-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:32:07.691Z",
+              "finishedAt": "2026-10-05T07:35:54.496Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:32:07.695Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 52.99999999999827,
+                    "timing": {
+                      "wallDt": 4.733100000000094,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 4.483100000000094,
+                      "droppedTotal": 1041.4229000000003
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 241.26506451078995,
+                      "y": 2.4,
+                      "z": 167.04330791144778,
+                      "yaw": 3.533260556636014
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 241.26506451078995,
+                        "y": 4.02,
+                        "z": 167.04330791144778
+                      },
+                      "target": {
+                        "x": 250.47089076063625,
+                        "y": 4.02,
+                        "z": 163.13782931623808
+                      },
+                      "focus": {
+                        "x": 241.26506451078995,
+                        "y": 4.02,
+                        "z": 167.04330791144778
+                      },
+                      "yaw": 1.9720229670189289,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": null,
+                    "ridingVehicleId": "harbor-bus-1",
+                    "passengerLocal": {
+                      "x": -0.018154185991476644,
+                      "y": 2.4,
+                      "z": -0.933930641819997,
+                      "yaw": 1.5101667078813736
+                    },
+                    "passengerDeck": "upper",
+                    "vehicle": {
+                      "id": "harbor-bus-1",
+                      "x": 242.0971501337194,
+                      "y": 0,
+                      "z": 166.61882053317436,
+                      "yaw": 2.0230938487546406,
+                      "stopId": null,
+                      "doorsOpen": false,
+                      "remaining": 0.025747674878466853,
+                      "nextStopId": "harbor-bus-lantern",
+                      "secondsToArrival": 13.773321498459211,
+                      "serviceTime": 39.40717773437446,
+                      "delay": 13.592822265625037,
+                      "held": null,
+                      "trafficState": "cruise",
+                      "speed": 5.999999999995096
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            }
+          ],
+          "cleanup": [
+            {
+              "label": "browser.close",
+              "limit": 30000,
+              "startedAt": "2026-10-05T07:43:02.502Z",
+              "elapsedMs": 28313,
+              "confirmed": true,
+              "error": null
+            },
+            {
+              "label": "server.close",
+              "limit": 10000,
+              "startedAt": "2026-10-05T07:43:30.815Z",
+              "elapsedMs": 0,
+              "confirmed": true,
+              "error": null
+            }
+          ],
+          "servedSourceHashesExactBeforeAfter": true,
+          "originalFiles": [
+            {
+              "path": "/workspace/neon-evidence/8b6-bus-high-original-fail-11332299667/extracted/native/baseline/run.json",
+              "bytes": 35694878,
+              "sha256": "3842a32e4bf59752cacc24d941ff0202db06cced5a5d04c998280460849264e1"
+            },
+            {
+              "path": "/workspace/neon-evidence/8b6-bus-high-original-fail-11332299667/extracted/native/baseline/bus/case.json",
+              "bytes": 31993205,
+              "sha256": "a51e525e934f9742a228ca1d134592bd397efb83cee448067b39bdc7991406c1"
+            }
+          ]
+        },
+        {
+          "role": "authored",
+          "status": "FAILED",
+          "actualSourceGit": {
+            "head": "8b6a577529ade0a45aadc499db3181d165043a9d",
+            "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+          },
+          "toolSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+          "firstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 8521ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 8521ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:304:26)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:404:54\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "runSecondaryErrors": [],
+          "runtimeErrors": [],
+          "elapsedMs": 1787599,
+          "photos": [
+            {
+              "stage": "exterior",
+              "file": "exterior.png",
+              "imageSha256": "e700bfa7641f105153bcde2c330215b7d48c21072baf84727e4b7c25e2e30c8a",
+              "poseFile": "exterior-pose.json"
+            },
+            {
+              "stage": "lower",
+              "file": "lower.png",
+              "imageSha256": "f3183c6eaf7a1f1669e84091b9a88bacc647b7123c162caa3a0785b4b9256066",
+              "poseFile": "lower-pose.json"
+            },
+            {
+              "stage": "upper",
+              "file": "upper.png",
+              "imageSha256": "088f7f6a6e97c0a1c92a453994f930236704748ed212a36cae03c5c49c8c53f5",
+              "poseFile": "upper-pose.json"
+            }
+          ],
+          "firstFailedLocalLeg": {
+            "stage": "lower-2",
+            "precision": true,
+            "target": {
+              "x": -0.77,
+              "y": 0.44,
+              "z": 3.07
+            },
+            "initialLocal": {
+              "x": -0.7691921746883312,
+              "y": 1.4113267310024609,
+              "z": 1.0740719364347828,
+              "yaw": 0.08536658615110415
+            },
+            "lastObservedLocal": {
+              "x": -0.7696131472612389,
+              "y": 0.44,
+              "z": 2.9490712339402547,
+              "yaw": -0.0004042805325474852
+            },
+            "localBudget": 150000,
+            "cycleCount": 4,
+            "lastCycle": {
+              "n": 3,
+              "before": {
+                "x": -0.7696131472612389,
+                "y": 0.44,
+                "z": 2.9490712339402547,
+                "yaw": -0.0004042805325474852
+              },
+              "key": "w",
+              "slow": true,
+              "desired": 3.1383936511379287,
+              "inputs": [
+                {
+                  "action": "down",
+                  "key": "w"
+                },
+                {
+                  "action": "up",
+                  "key": "w",
+                  "confirmed": true
+                }
+              ],
+              "waits": [],
+              "releaseConfirmed": true,
+              "guardBaseline": {
+                "simulationTime": 86.61666666666304,
+                "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+              },
+              "slowModifierAlreadyHeld": true,
+              "firstError": {
+                "stage": "movement",
+                "name": "TimeoutError",
+                "message": "page.waitForFunction: Timeout 8521ms exceeded.",
+                "stack": "page.waitForFunction: Timeout 8521ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:304:26)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:404:54\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+              }
+            }
+          },
+          "berthWaits": [
+            {
+              "status": "SATISFIED",
+              "vehicleId": null,
+              "requiredStopId": "harbor-bus-courtyard",
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:45:54.125Z",
+              "finishedAt": "2026-10-05T07:45:54.143Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:45:54.137Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 6.6999999999999815,
+                    "timing": {
+                      "wallDt": 3.3665999999999765,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0.00600000000035239,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 3.1165999999999765,
+                      "droppedTotal": 103.64559999999997
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 149.72499999999818,
+                      "y": 0,
+                      "z": 123.74,
+                      "yaw": 1.5707963267948966
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 149.71174666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "target": {
+                        "x": 149.71174666666485,
+                        "y": 1.62,
+                        "z": 133.74
+                      },
+                      "focus": {
+                        "x": 149.71174666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "yaw": 0,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-bus-courtyard",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": null,
+                    "fleet": [
+                      {
+                        "id": "harbor-bus-1",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-courtyard",
+                        "doorsOpen": true,
+                        "remaining": 4.300000000000011,
+                        "nextStopId": "harbor-bus-courtyard",
+                        "secondsToArrival": 0,
+                        "serviceTime": 6.6999999999999815,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-bus-2",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-workshop",
+                        "doorsOpen": true,
+                        "remaining": 4.300000000000381,
+                        "nextStopId": "harbor-bus-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 87.78819154052559,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-1",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-lantern",
+                        "doorsOpen": true,
+                        "remaining": 5.300000000000026,
+                        "nextStopId": "harbor-tram-lantern",
+                        "secondsToArrival": 0,
+                        "serviceTime": 6.6999999999999815,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-2",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-workshop",
+                        "doorsOpen": true,
+                        "remaining": 5.300000000000367,
+                        "nextStopId": "harbor-tram-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 37.01666666666629,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-ferry-1",
+                        "kind": "ferry",
+                        "stopId": "harbor-ferry-south",
+                        "doorsOpen": true,
+                        "remaining": 9.300000000000011,
+                        "nextStopId": "harbor-ferry-south",
+                        "secondsToArrival": 0,
+                        "serviceTime": 6.6999999999999815,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-bus-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:45:55.036Z",
+              "finishedAt": "2026-10-05T07:45:55.048Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:45:55.044Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 6.6999999999999815,
+                    "timing": {
+                      "wallDt": 3.3665999999999765,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0.00600000000035239,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 3.1165999999999765,
+                      "droppedTotal": 103.64559999999997
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 149.72499999999818,
+                      "y": 0,
+                      "z": 123.74,
+                      "yaw": 1.5707963267948966
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 149.71174666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "target": {
+                        "x": 149.71174666666485,
+                        "y": 1.62,
+                        "z": 133.74
+                      },
+                      "focus": {
+                        "x": 149.71174666666485,
+                        "y": 1.62,
+                        "z": 123.74
+                      },
+                      "yaw": 0,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-bus-courtyard",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": {
+                      "id": "harbor-bus-1",
+                      "x": 152,
+                      "y": 0,
+                      "z": 120,
+                      "yaw": 0,
+                      "stopId": "harbor-bus-courtyard",
+                      "doorsOpen": true,
+                      "remaining": 4.300000000000011,
+                      "nextStopId": "harbor-bus-courtyard",
+                      "secondsToArrival": 0,
+                      "serviceTime": 6.6999999999999815,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "signal",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-bus-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:48:00.871Z",
+              "finishedAt": "2026-10-05T07:53:46.317Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:48:00.876Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 11.450000000000149,
+                    "timing": {
+                      "wallDt": 8.049699999999982,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 7.799699999999982,
+                      "droppedTotal": 210.25769999999991
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 151.97568135073496,
+                      "y": 0.44,
+                      "z": 124.03384153121038,
+                      "yaw": 1.5707963267948966
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 151.97568135073496,
+                        "y": 2.06,
+                        "z": 124.03384153121038
+                      },
+                      "target": {
+                        "x": 151.97568135073496,
+                        "y": 2.06,
+                        "z": 134.03384153121038
+                      },
+                      "focus": {
+                        "x": 151.97568135073496,
+                        "y": 2.06,
+                        "z": 124.03384153121038
+                      },
+                      "yaw": 0,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": null,
+                    "ridingVehicleId": "harbor-bus-1",
+                    "passengerLocal": {
+                      "x": -0.025000000498718446,
+                      "y": 0.44,
+                      "z": 3.7400088063780954,
+                      "yaw": 1.570614147859536
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-bus-1",
+                      "x": 152,
+                      "y": 0,
+                      "z": 120.29382823242273,
+                      "yaw": 0.00018217893536070964,
+                      "stopId": null,
+                      "doorsOpen": false,
+                      "remaining": 3.9847099822214265,
+                      "nextStopId": "harbor-bus-market",
+                      "secondsToArrival": 11.720128829407486,
+                      "serviceTime": 11.247043863932419,
+                      "delay": 0.2029561360677084,
+                      "held": null,
+                      "trafficState": "cruise",
+                      "speed": 1.2589107893626306
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-bus-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T08:02:20.677Z",
+              "finishedAt": "2026-10-05T08:06:08.362Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T08:02:20.693Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 52.69999999999829,
+                    "timing": {
+                      "wallDt": 4.899800000000047,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 4.649800000000047,
+                      "droppedTotal": 1027.5067000000006
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 239.56700757069956,
+                      "y": 2.4,
+                      "z": 167.556467878342,
+                      "yaw": 3.4119819537866425
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 239.56700757069956,
+                        "y": 4.02,
+                        "z": 167.556467878342
+                      },
+                      "target": {
+                        "x": 249.18751722562976,
+                        "y": 4.02,
+                        "z": 164.82776965768903
+                      },
+                      "focus": {
+                        "x": 239.56700757069956,
+                        "y": 4.02,
+                        "z": 167.556467878342
+                      },
+                      "yaw": 1.8471711267806497,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": null,
+                    "ridingVehicleId": "harbor-bus-1",
+                    "passengerLocal": {
+                      "x": -0.018301085868779144,
+                      "y": 2.4,
+                      "z": -0.938599295363453,
+                      "yaw": 1.5356458567973177
+                    },
+                    "passengerDeck": "upper",
+                    "vehicle": {
+                      "id": "harbor-bus-1",
+                      "x": 240.45663026809527,
+                      "y": 0,
+                      "z": 167.25667624523808,
+                      "yaw": 1.876336096989325,
+                      "stopId": null,
+                      "doorsOpen": false,
+                      "remaining": 0.04366601231205891,
+                      "nextStopId": "harbor-bus-lantern",
+                      "secondsToArrival": 14.06701148055555,
+                      "serviceTime": 39.11348775227811,
+                      "delay": 13.58651224772139,
+                      "held": null,
+                      "trafficState": "cruise",
+                      "speed": 5.516235351557802
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            }
+          ],
+          "cleanup": [
+            {
+              "label": "browser.close",
+              "limit": 30000,
+              "startedAt": "2026-10-05T08:13:21.628Z",
+              "elapsedMs": 27148,
+              "confirmed": true,
+              "error": null
+            },
+            {
+              "label": "server.close",
+              "limit": 10000,
+              "startedAt": "2026-10-05T08:13:48.776Z",
+              "elapsedMs": 0,
+              "confirmed": true,
+              "error": null
+            }
+          ],
+          "servedSourceHashesExactBeforeAfter": true,
+          "originalFiles": [
+            {
+              "path": "/workspace/neon-evidence/8b6-bus-high-original-fail-11332299667/extracted/native/authored/run.json",
+              "bytes": 42760348,
+              "sha256": "04aa36d2905ac8cc07c32e0f8f822c6675db7a4b4f9b7cc862ca4698bbc240d2"
+            },
+            {
+              "path": "/workspace/neon-evidence/8b6-bus-high-original-fail-11332299667/extracted/native/authored/bus/case.json",
+              "bytes": 38496068,
+              "sha256": "56b647bb3cfe229c9b683bc74a86145f9b0de0ec6eeb67da72bc42f71b970eed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "tram",
+      "artifactID": 11331992420,
+      "archivePath": "/workspace/neon-evidence/8b6-tram-high-original-fail-11331992420/original.zip",
+      "bytes": 312752215,
+      "sha256": "f4541f2414780f2a4599a3c6e8fcff9d07ea14abbda1e6ff102aa9cd8bbc0d0f",
+      "downloadReceiptPath": "/workspace/neon-evidence/8b6-tram-high-original-fail-11331992420/fresh-attempt1.receipt.json",
+      "downloadReceiptSHA256": "c325421c8e916cda9807c361d98c857dc18b57e38dd7d171a2f2526b4c9ec524",
+      "variants": [
+        {
+          "role": "baseline",
+          "status": "FAILED",
+          "actualSourceGit": {
+            "head": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+            "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+          },
+          "toolSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+          "firstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 149119ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 149119ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:303:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "runSecondaryErrors": [],
+          "runtimeErrors": [],
+          "elapsedMs": 1474580,
+          "photos": [
+            {
+              "stage": "exterior",
+              "file": "exterior.png",
+              "imageSha256": "b3f8d7e2aac832bae711776c1e5c0278cd88f4dc38c742466b04bedd8e86106d",
+              "poseFile": "exterior-pose.json"
+            },
+            {
+              "stage": "lower",
+              "file": "lower.png",
+              "imageSha256": "502e14d376904a1ae26da0fa9e79145dc6fef703a9db2cec89052998a96bda72",
+              "poseFile": "lower-pose.json"
+            }
+          ],
+          "firstFailedLocalLeg": {
+            "stage": "upper-3",
+            "precision": true,
+            "target": {
+              "x": -0.69,
+              "z": -1.54,
+              "y": 1.42
+            },
+            "initialLocal": {
+              "x": -0.6759749162835202,
+              "y": 0.44,
+              "z": -3.5213717408138105,
+              "yaw": -1.5692704478892927
+            },
+            "lastObservedLocal": {
+              "x": -0.6759749162835202,
+              "y": 0.44,
+              "z": -3.5213717408138105,
+              "yaw": -1.5692704478892927
+            },
+            "localBudget": 150000,
+            "cycleCount": 1,
+            "lastCycle": {
+              "n": 0,
+              "before": {
+                "x": -0.6759749162835202,
+                "y": 0.44,
+                "z": -3.5213717408138105,
+                "yaw": -1.5692704478892927
+              },
+              "key": "w",
+              "slow": true,
+              "desired": 3.134514300147342,
+              "inputs": [
+                {
+                  "action": "down",
+                  "key": "z",
+                  "scope": "precision-local-leg"
+                },
+                {
+                  "action": "down",
+                  "key": "w"
+                },
+                {
+                  "action": "up",
+                  "key": "w",
+                  "confirmed": true
+                }
+              ],
+              "waits": [],
+              "releaseConfirmed": true,
+              "guardBaseline": {
+                "simulationTime": 52.28333333333165,
+                "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+              },
+              "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+              "firstError": {
+                "stage": "movement",
+                "name": "TimeoutError",
+                "message": "page.waitForFunction: Timeout 149119ms exceeded.",
+                "stack": "page.waitForFunction: Timeout 149119ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:303:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+              }
+            }
+          },
+          "berthWaits": [
+            {
+              "status": "SATISFIED",
+              "vehicleId": null,
+              "requiredStopId": "harbor-tram-lantern",
+              "budgetMs": 1200000,
+              "startedAt": "2026-10-05T07:15:16.671Z",
+              "finishedAt": "2026-10-05T07:15:16.679Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:15:16.676Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 6.249999999999983,
+                    "timing": {
+                      "wallDt": 1.400100000000006,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 1.150100000000006,
+                      "droppedTotal": 80.14670000000001
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 250.15000000000182,
+                      "y": 0,
+                      "z": 103.44999998615124,
+                      "yaw": -1.5707963401143834
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 250.15000000000182,
+                        "y": 1.62,
+                        "z": 103.44999998615124
+                      },
+                      "target": {
+                        "x": 250.14999986680695,
+                        "y": 1.62,
+                        "z": 113.44999998615124
+                      },
+                      "focus": {
+                        "x": 250.15000000000182,
+                        "y": 1.62,
+                        "z": 103.44999998615124
+                      },
+                      "yaw": -1.331948685366342e-08,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-tram-lantern",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": null,
+                    "fleet": [
+                      {
+                        "id": "harbor-bus-1",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-courtyard",
+                        "doorsOpen": true,
+                        "remaining": 4.750000000000028,
+                        "nextStopId": "harbor-bus-courtyard",
+                        "secondsToArrival": 0,
+                        "serviceTime": 6.249999999999983,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-bus-2",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-workshop",
+                        "doorsOpen": true,
+                        "remaining": 4.7500000000003695,
+                        "nextStopId": "harbor-bus-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 87.33819154052561,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-1",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-lantern",
+                        "doorsOpen": true,
+                        "remaining": 5.750000000000014,
+                        "nextStopId": "harbor-tram-lantern",
+                        "secondsToArrival": 0,
+                        "serviceTime": 6.249999999999983,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-2",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-workshop",
+                        "doorsOpen": true,
+                        "remaining": 5.750000000000355,
+                        "nextStopId": "harbor-tram-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 36.566666666666315,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-ferry-1",
+                        "kind": "ferry",
+                        "stopId": "harbor-ferry-south",
+                        "doorsOpen": true,
+                        "remaining": 9.750000000000014,
+                        "nextStopId": "harbor-ferry-south",
+                        "secondsToArrival": 0,
+                        "serviceTime": 6.249999999999983,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-tram-1",
+              "requiredStopId": null,
+              "budgetMs": 1200000,
+              "startedAt": "2026-10-05T07:15:17.394Z",
+              "finishedAt": "2026-10-05T07:15:17.413Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:15:17.406Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 6.249999999999983,
+                    "timing": {
+                      "wallDt": 1.400100000000006,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 1.150100000000006,
+                      "droppedTotal": 80.14670000000001
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 250.15000000000182,
+                      "y": 0,
+                      "z": 103.44999998615124,
+                      "yaw": -1.5707963401143834
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 250.15000000000182,
+                        "y": 1.62,
+                        "z": 103.44999998615124
+                      },
+                      "target": {
+                        "x": 250.14999986680695,
+                        "y": 1.62,
+                        "z": 113.44999998615124
+                      },
+                      "focus": {
+                        "x": 250.15000000000182,
+                        "y": 1.62,
+                        "z": 103.44999998615124
+                      },
+                      "yaw": -1.331948685366342e-08,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-tram-lantern",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": {
+                      "id": "harbor-tram-1",
+                      "x": 248,
+                      "y": 0,
+                      "z": 100,
+                      "yaw": 3.141592653589793,
+                      "stopId": "harbor-tram-lantern",
+                      "doorsOpen": true,
+                      "remaining": 5.750000000000014,
+                      "nextStopId": "harbor-tram-lantern",
+                      "secondsToArrival": 0,
+                      "serviceTime": 6.249999999999983,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-tram-1",
+              "requiredStopId": null,
+              "budgetMs": 1200000,
+              "startedAt": "2026-10-05T07:17:29.108Z",
+              "finishedAt": "2026-10-05T07:32:47.731Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:17:29.112Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 11.033333333333461,
+                    "timing": {
+                      "wallDt": 7.3162999999999885,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0.003999999999649839,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 7.0662999999999885,
+                      "droppedTotal": 198.07500000000002
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 248.025,
+                      "y": 0.44,
+                      "z": 103.45,
+                      "yaw": 4.71238898038469
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 248.025,
+                        "y": 2.06,
+                        "z": 103.45
+                      },
+                      "target": {
+                        "x": 248.025,
+                        "y": 2.06,
+                        "z": 93.45
+                      },
+                      "focus": {
+                        "x": 248.025,
+                        "y": 2.06,
+                        "z": 103.45
+                      },
+                      "yaw": 3.141592653589793,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-tram-lantern",
+                    "ridingVehicleId": "harbor-tram-1",
+                    "passengerLocal": {
+                      "x": -0.024999999999999627,
+                      "y": 0.44,
+                      "z": -3.45,
+                      "yaw": 1.5707963267948966
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-tram-1",
+                      "x": 248,
+                      "y": 0,
+                      "z": 100,
+                      "yaw": 3.141592653589793,
+                      "stopId": "harbor-tram-lantern",
+                      "doorsOpen": true,
+                      "remaining": 0.9666666666665407,
+                      "nextStopId": "harbor-tram-lantern",
+                      "secondsToArrival": 0,
+                      "serviceTime": 11.033333333333461,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            }
+          ],
+          "cleanup": [
+            {
+              "label": "browser.close",
+              "limit": 30000,
+              "startedAt": "2026-10-05T07:37:59.026Z",
+              "elapsedMs": 25814,
+              "confirmed": true,
+              "error": null
+            },
+            {
+              "label": "server.close",
+              "limit": 10000,
+              "startedAt": "2026-10-05T07:38:24.840Z",
+              "elapsedMs": 0,
+              "confirmed": true,
+              "error": null
+            }
+          ],
+          "servedSourceHashesExactBeforeAfter": true,
+          "originalFiles": [
+            {
+              "path": "/workspace/neon-evidence/8b6-tram-high-original-fail-11331992420/extracted/native/baseline/run.json",
+              "bytes": 19790242,
+              "sha256": "246abd2739c402fccc289b9a8d493e19e426e80b9693f6541c94462b1186bd8b"
+            },
+            {
+              "path": "/workspace/neon-evidence/8b6-tram-high-original-fail-11331992420/extracted/native/baseline/tram/case.json",
+              "bytes": 17699433,
+              "sha256": "86b134469c5acd492ae91fe556e3a3acafe4ef638a0b14f614d57137ba8ae5bb"
+            }
+          ]
+        },
+        {
+          "role": "authored",
+          "status": "FAILED",
+          "actualSourceGit": {
+            "head": "8b6a577529ade0a45aadc499db3181d165043a9d",
+            "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+          },
+          "toolSHA256": "0f07c334bd81cbc95a71ea271192df32d8c1d800b98976478e25772cd6c92636",
+          "firstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 149170ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 149170ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:303:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "runSecondaryErrors": [],
+          "runtimeErrors": [],
+          "elapsedMs": 1507917,
+          "photos": [
+            {
+              "stage": "exterior",
+              "file": "exterior.png",
+              "imageSha256": "9fdb8f809ad5325deb47af947928ef125d7341a92d9fe3099ec7e6f84cfbd7e5",
+              "poseFile": "exterior-pose.json"
+            },
+            {
+              "stage": "lower",
+              "file": "lower.png",
+              "imageSha256": "965fe849892ccc6d73910cefddb3398a5852625e24bc4c0162071eb91b58d544",
+              "poseFile": "lower-pose.json"
+            }
+          ],
+          "firstFailedLocalLeg": {
+            "stage": "upper-3",
+            "precision": true,
+            "target": {
+              "x": -0.69,
+              "z": -1.54,
+              "y": 1.42
+            },
+            "initialLocal": {
+              "x": -0.6759749162835202,
+              "y": 0.44,
+              "z": -3.5213717408138105,
+              "yaw": -1.5692704478892927
+            },
+            "lastObservedLocal": {
+              "x": -0.6759749162835202,
+              "y": 0.44,
+              "z": -3.5213717408138105,
+              "yaw": -1.5692704478892927
+            },
+            "localBudget": 150000,
+            "cycleCount": 1,
+            "lastCycle": {
+              "n": 0,
+              "before": {
+                "x": -0.6759749162835202,
+                "y": 0.44,
+                "z": -3.5213717408138105,
+                "yaw": -1.5692704478892927
+              },
+              "key": "w",
+              "slow": true,
+              "desired": 3.134514300147342,
+              "inputs": [
+                {
+                  "action": "down",
+                  "key": "z",
+                  "scope": "precision-local-leg"
+                },
+                {
+                  "action": "down",
+                  "key": "w"
+                },
+                {
+                  "action": "up",
+                  "key": "w",
+                  "confirmed": true
+                }
+              ],
+              "waits": [],
+              "releaseConfirmed": true,
+              "guardBaseline": {
+                "simulationTime": 51.99999999999833,
+                "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+              },
+              "publicHeldControl": "ordinary slow key through actual RAF observations, then original near correction",
+              "firstError": {
+                "stage": "movement",
+                "name": "TimeoutError",
+                "message": "page.waitForFunction: Timeout 149170ms exceeded.",
+                "stack": "page.waitForFunction: Timeout 149170ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:303:32)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+              }
+            }
+          },
+          "berthWaits": [
+            {
+              "status": "SATISFIED",
+              "vehicleId": null,
+              "requiredStopId": "harbor-tram-lantern",
+              "budgetMs": 1200000,
+              "startedAt": "2026-10-05T07:40:20.921Z",
+              "finishedAt": "2026-10-05T07:40:20.936Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:40:20.931Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 5.499999999999986,
+                    "timing": {
+                      "wallDt": 2.2997999999999883,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 2.0497999999999883,
+                      "droppedTotal": 78.0966
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 250.15000000000182,
+                      "y": 0,
+                      "z": 103.45000023963594,
+                      "yaw": -1.5707963090707884
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 250.16333333333515,
+                        "y": 1.62,
+                        "z": 103.45000023939961
+                      },
+                      "target": {
+                        "x": 250.16333351057622,
+                        "y": 1.62,
+                        "z": 113.45000023939961
+                      },
+                      "focus": {
+                        "x": 250.16333333333515,
+                        "y": 1.62,
+                        "z": 103.45000023939961
+                      },
+                      "yaw": 1.7724108308321543e-08,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-tram-lantern",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": null,
+                    "fleet": [
+                      {
+                        "id": "harbor-bus-1",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-courtyard",
+                        "doorsOpen": true,
+                        "remaining": 5.5,
+                        "nextStopId": "harbor-bus-courtyard",
+                        "secondsToArrival": 0,
+                        "serviceTime": 5.499999999999986,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-bus-2",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-workshop",
+                        "doorsOpen": true,
+                        "remaining": 5.500000000000313,
+                        "nextStopId": "harbor-bus-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 86.58819154052566,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-1",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-lantern",
+                        "doorsOpen": true,
+                        "remaining": 6.500000000000014,
+                        "nextStopId": "harbor-tram-lantern",
+                        "secondsToArrival": 0,
+                        "serviceTime": 5.499999999999986,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-2",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-workshop",
+                        "doorsOpen": true,
+                        "remaining": 6.500000000000298,
+                        "nextStopId": "harbor-tram-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 35.81666666666636,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-ferry-1",
+                        "kind": "ferry",
+                        "stopId": "harbor-ferry-south",
+                        "doorsOpen": true,
+                        "remaining": 10.500000000000014,
+                        "nextStopId": "harbor-ferry-south",
+                        "secondsToArrival": 0,
+                        "serviceTime": 5.499999999999986,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-tram-1",
+              "requiredStopId": null,
+              "budgetMs": 1200000,
+              "startedAt": "2026-10-05T07:40:21.670Z",
+              "finishedAt": "2026-10-05T07:40:21.925Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:40:21.919Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 5.749999999999985,
+                    "timing": {
+                      "wallDt": 2.5999000000000088,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 2.3499000000000088,
+                      "droppedTotal": 80.4465
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 250.15000000000182,
+                      "y": 0,
+                      "z": 103.45000023963594,
+                      "yaw": -1.5707963090707884
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 250.15000000000182,
+                        "y": 1.62,
+                        "z": 103.45000023963594
+                      },
+                      "target": {
+                        "x": 250.1500001772429,
+                        "y": 1.62,
+                        "z": 113.45000023963594
+                      },
+                      "focus": {
+                        "x": 250.15000000000182,
+                        "y": 1.62,
+                        "z": 103.45000023963594
+                      },
+                      "yaw": 1.7724108308321328e-08,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-tram-lantern",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": {
+                      "id": "harbor-tram-1",
+                      "x": 248,
+                      "y": 0,
+                      "z": 100,
+                      "yaw": 3.141592653589793,
+                      "stopId": "harbor-tram-lantern",
+                      "doorsOpen": true,
+                      "remaining": 6.250000000000014,
+                      "nextStopId": "harbor-tram-lantern",
+                      "secondsToArrival": 0,
+                      "serviceTime": 5.749999999999985,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-tram-1",
+              "requiredStopId": null,
+              "budgetMs": 1200000,
+              "startedAt": "2026-10-05T07:42:39.421Z",
+              "finishedAt": "2026-10-05T07:58:25.535Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:42:39.426Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 11.000000000000126,
+                    "timing": {
+                      "wallDt": 7.083,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 6.833,
+                      "droppedTotal": 203.45809999999997
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 248.025,
+                      "y": 0.44,
+                      "z": 103.45,
+                      "yaw": 4.71238898038469
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 248.025,
+                        "y": 2.06,
+                        "z": 103.45
+                      },
+                      "target": {
+                        "x": 248.025,
+                        "y": 2.06,
+                        "z": 93.45
+                      },
+                      "focus": {
+                        "x": 248.025,
+                        "y": 2.06,
+                        "z": 103.45
+                      },
+                      "yaw": 3.141592653589793,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-tram-lantern",
+                    "ridingVehicleId": "harbor-tram-1",
+                    "passengerLocal": {
+                      "x": -0.024999999999999627,
+                      "y": 0.44,
+                      "z": -3.45,
+                      "yaw": 1.5707963267948966
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-tram-1",
+                      "x": 248,
+                      "y": 0,
+                      "z": 100,
+                      "yaw": 3.141592653589793,
+                      "stopId": "harbor-tram-lantern",
+                      "doorsOpen": true,
+                      "remaining": 0.9999999999998721,
+                      "nextStopId": "harbor-tram-lantern",
+                      "secondsToArrival": 0,
+                      "serviceTime": 11.000000000000126,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            }
+          ],
+          "cleanup": [
+            {
+              "label": "browser.close",
+              "limit": 30000,
+              "startedAt": "2026-10-05T08:03:34.872Z",
+              "elapsedMs": 28292,
+              "confirmed": true,
+              "error": null
+            },
+            {
+              "label": "server.close",
+              "limit": 10000,
+              "startedAt": "2026-10-05T08:04:03.164Z",
+              "elapsedMs": 1,
+              "confirmed": true,
+              "error": null
+            }
+          ],
+          "servedSourceHashesExactBeforeAfter": true,
+          "originalFiles": [
+            {
+              "path": "/workspace/neon-evidence/8b6-tram-high-original-fail-11331992420/extracted/native/authored/run.json",
+              "bytes": 23389287,
+              "sha256": "f6da5fa49552bb8558e495c8327abb9b05772a52c0272aae9553eace5a1215a5"
+            },
+            {
+              "path": "/workspace/neon-evidence/8b6-tram-high-original-fail-11331992420/extracted/native/authored/tram/case.json",
+              "bytes": 21012877,
+              "sha256": "3ddf627aadf0af6a5227814c8b3090e8149c9e945a30ac0bda67234c399cb0e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "ferry",
+      "artifactID": 11332109451,
+      "archivePath": "/workspace/neon-evidence/b80-ferry-high-original-fail-11332109451/original.zip",
+      "bytes": 217899155,
+      "sha256": "99ac41259ad270cc9d5b671855fc16b90eae52483d726d63a67bb12aeecee4d1",
+      "downloadReceiptPath": "/workspace/neon-evidence/b80-ferry-high-original-fail-11332109451/fresh-attempt1.receipt.json",
+      "downloadReceiptSHA256": "93fb95bcca4b5d2edaf4af60c8e92b4f9b56300c1288a1e7b2a06ec591c9960c",
+      "variants": [
+        {
+          "role": "baseline",
+          "status": "FAILED",
+          "actualSourceGit": {
+            "head": "7a90f7934b7c9d1af5c4494bf08c4ec337c373e4",
+            "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+          },
+          "toolSHA256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308",
+          "firstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 312ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 312ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:304:26)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "runSecondaryErrors": [
+            {
+              "stage": "browser.close",
+              "name": "Error",
+              "message": "browser.close exceeded 30000 ms",
+              "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+            }
+          ],
+          "runtimeErrors": [],
+          "elapsedMs": 1060380,
+          "photos": [
+            {
+              "stage": "exterior",
+              "file": "exterior.png",
+              "imageSha256": "40aed8900528a9110345df161ab27ed1e7f845a4b4b35d68d770364fe20bf121",
+              "poseFile": "exterior-pose.json"
+            },
+            {
+              "stage": "lower",
+              "file": "lower.png",
+              "imageSha256": "016efa27ad01d4dfb948852812edd4d43f1e292a0b905e8d10468f8f40b21cac",
+              "poseFile": "lower-pose.json"
+            }
+          ],
+          "firstFailedLocalLeg": {
+            "stage": "upper-1",
+            "precision": false,
+            "target": {
+              "x": 0,
+              "z": 5.57,
+              "y": 1.3
+            },
+            "initialLocal": {
+              "x": -0.03750003583225689,
+              "y": 1.3,
+              "z": -7.199904537143265,
+              "yaw": 1.5695770025210827
+            },
+            "lastObservedLocal": {
+              "x": -0.0374978185631799,
+              "y": 1.3,
+              "z": 1.8000954628564423,
+              "yaw": 2.463632307048158e-07
+            },
+            "localBudget": 150000,
+            "cycleCount": 17,
+            "lastCycle": {
+              "n": 16,
+              "before": {
+                "x": -0.0374978185631799,
+                "y": 1.3,
+                "z": 1.8000954628564423,
+                "yaw": 2.463632307048158e-07
+              },
+              "key": "w",
+              "slow": false,
+              "desired": -1.560850031962293,
+              "inputs": [
+                {
+                  "action": "down",
+                  "key": "w"
+                },
+                {
+                  "action": "up",
+                  "key": "w",
+                  "confirmed": true
+                }
+              ],
+              "waits": [],
+              "releaseConfirmed": true,
+              "guardBaseline": {
+                "simulationTime": 48.49999999999853,
+                "meaning": "before-action snapshot; conservative held-input guard baseline, not exact input-event start"
+              },
+              "firstError": {
+                "stage": "movement",
+                "name": "TimeoutError",
+                "message": "page.waitForFunction: Timeout 312ms exceeded.",
+                "stack": "page.waitForFunction: Timeout 312ms exceeded.\n    at walkLocal (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:304:26)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:56\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+              }
+            }
+          },
+          "berthWaits": [
+            {
+              "status": "SATISFIED",
+              "vehicleId": null,
+              "requiredStopId": "harbor-ferry-south",
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:49:14.959Z",
+              "finishedAt": "2026-10-05T07:49:14.976Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:49:14.971Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 8.500000000000002,
+                    "timing": {
+                      "wallDt": 2.5497999999999883,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 2.2997999999999883,
+                      "droppedTotal": 112.1285
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 219.9885208526645,
+                      "y": 1.3,
+                      "z": -303.9999574432454,
+                      "yaw": -3.1415924072265624
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "target": {
+                        "x": 219.9885233162968,
+                        "y": 2.92,
+                        "z": -293.9999574432457
+                      },
+                      "focus": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "yaw": 2.463632307048158e-07,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-ferry-south",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": null,
+                    "fleet": [
+                      {
+                        "id": "harbor-bus-1",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-courtyard",
+                        "doorsOpen": true,
+                        "remaining": 2.5,
+                        "nextStopId": "harbor-bus-courtyard",
+                        "secondsToArrival": 0,
+                        "serviceTime": 8.500000000000002,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-bus-2",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-workshop",
+                        "doorsOpen": true,
+                        "remaining": 2.500000000000483,
+                        "nextStopId": "harbor-bus-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 89.58819154052549,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-1",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-lantern",
+                        "doorsOpen": true,
+                        "remaining": 3.499999999999986,
+                        "nextStopId": "harbor-tram-lantern",
+                        "secondsToArrival": 0,
+                        "serviceTime": 8.500000000000002,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-2",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-workshop",
+                        "doorsOpen": true,
+                        "remaining": 3.500000000000469,
+                        "nextStopId": "harbor-tram-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 38.81666666666619,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-ferry-1",
+                        "kind": "ferry",
+                        "stopId": "harbor-ferry-south",
+                        "doorsOpen": true,
+                        "remaining": 7.5,
+                        "nextStopId": "harbor-ferry-south",
+                        "secondsToArrival": 0,
+                        "serviceTime": 8.500000000000002,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-ferry-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:49:15.830Z",
+              "finishedAt": "2026-10-05T07:49:15.839Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:49:15.835Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 8.500000000000002,
+                    "timing": {
+                      "wallDt": 2.5497999999999883,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 2.2997999999999883,
+                      "droppedTotal": 112.1285
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 219.9885208526645,
+                      "y": 1.3,
+                      "z": -303.9999574432454,
+                      "yaw": -3.1415924072265624
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "target": {
+                        "x": 219.9885233162968,
+                        "y": 2.92,
+                        "z": -293.9999574432457
+                      },
+                      "focus": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "yaw": 2.463632307048158e-07,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-ferry-south",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": {
+                      "id": "harbor-ferry-1",
+                      "x": 227.2,
+                      "y": 0,
+                      "z": -309.5,
+                      "yaw": 1.5707963267948966,
+                      "stopId": "harbor-ferry-south",
+                      "doorsOpen": true,
+                      "remaining": 7.5,
+                      "nextStopId": "harbor-ferry-south",
+                      "secondsToArrival": 0,
+                      "serviceTime": 8.500000000000002,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-ferry-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T07:52:27.395Z",
+              "finishedAt": "2026-10-05T08:00:46.619Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T07:52:27.400Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 16.75000000000033,
+                    "timing": {
+                      "wallDt": 6.883100000000035,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 6.633100000000035,
+                      "droppedTotal": 281.35480000000007
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 221.41639801727442,
+                      "y": 1.3,
+                      "z": -309.45372097584846,
+                      "yaw": 3.141592653589793
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 221.41639801727442,
+                        "y": 2.92,
+                        "z": -309.45372097584846
+                      },
+                      "target": {
+                        "x": 231.41639801727442,
+                        "y": 2.92,
+                        "z": -309.45372097584846
+                      },
+                      "focus": {
+                        "x": 221.41639801727442,
+                        "y": 2.92,
+                        "z": -309.45372097584846
+                      },
+                      "yaw": 1.5707963267948966,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": null,
+                    "ridingVehicleId": "harbor-ferry-1",
+                    "passengerLocal": {
+                      "x": -0.03750003583225689,
+                      "y": 1.3,
+                      "z": -7.199904537143265,
+                      "yaw": 1.5695770025210827
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-ferry-1",
+                      "x": 228.6162514774906,
+                      "y": 0,
+                      "z": -309.5,
+                      "yaw": 1.5720156510687104,
+                      "stopId": null,
+                      "doorsOpen": false,
+                      "remaining": 3.5090782684107253,
+                      "nextStopId": "harbor-ferry-north",
+                      "secondsToArrival": 23.879336738976605,
+                      "serviceTime": 16.75000000000033,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "cruise",
+                      "speed": 3.643134474427825
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            }
+          ],
+          "cleanup": [
+            {
+              "label": "browser.close",
+              "limit": 30000,
+              "startedAt": "2026-10-05T08:04:25.246Z",
+              "elapsedMs": 30011,
+              "confirmed": false,
+              "error": {
+                "stage": "browser.close",
+                "name": "Error",
+                "message": "browser.close exceeded 30000 ms",
+                "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+              }
+            },
+            {
+              "label": "owned launch force-kill after browser.close failure",
+              "pid": 3433,
+              "limit": 5000,
+              "elapsedMs": 44,
+              "confirmed": true,
+              "error": null,
+              "scope": "captured actual launch only; no process search or global kill"
+            },
+            {
+              "label": "server.close",
+              "limit": 10000,
+              "startedAt": "2026-10-05T08:04:55.301Z",
+              "elapsedMs": 1,
+              "confirmed": true,
+              "error": null
+            }
+          ],
+          "servedSourceHashesExactBeforeAfter": true,
+          "originalFiles": [
+            {
+              "path": "/workspace/neon-evidence/b80-ferry-high-original-fail-11332109451/extracted/native/baseline/run.json",
+              "bytes": 15690471,
+              "sha256": "aed48f07324dbaae4565cb4c1c1234100ed4753119a6d54a6facd3f5975235bd"
+            },
+            {
+              "path": "/workspace/neon-evidence/b80-ferry-high-original-fail-11332109451/extracted/native/baseline/ferry/case.json",
+              "bytes": 13998618,
+              "sha256": "e33b138fb5bc959dfabd7e4d33429f96147393edc1e49155d625ce770a342e78"
+            }
+          ]
+        },
+        {
+          "role": "authored",
+          "status": "FAILED",
+          "actualSourceGit": {
+            "head": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+            "method": "read-only git -C actual sourceRoot rev-parse --verify HEAD"
+          },
+          "toolSHA256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308",
+          "firstError": {
+            "stage": "case",
+            "name": "TimeoutError",
+            "message": "page.waitForFunction: Timeout 599995ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 599995ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:338:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:368:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+          },
+          "runSecondaryErrors": [
+            {
+              "stage": "browser.close",
+              "name": "Error",
+              "message": "browser.close exceeded 30000 ms",
+              "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+            }
+          ],
+          "runtimeErrors": [],
+          "elapsedMs": 928283,
+          "photos": [
+            {
+              "stage": "exterior",
+              "file": "exterior.png",
+              "imageSha256": "c4369b86ae818e0559bd7f7713fa8a9ebfbc4c360cb3cceb49dff0337d205245",
+              "poseFile": "exterior-pose.json"
+            }
+          ],
+          "firstFailedLocalLeg": null,
+          "berthWaits": [
+            {
+              "status": "SATISFIED",
+              "vehicleId": null,
+              "requiredStopId": "harbor-ferry-south",
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T08:07:34.987Z",
+              "finishedAt": "2026-10-05T08:07:34.997Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T08:07:34.994Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 8.500000000000002,
+                    "timing": {
+                      "wallDt": 2.9663999999999944,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 2.7163999999999944,
+                      "droppedTotal": 118.77809999999995
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 219.9885208526645,
+                      "y": 1.3,
+                      "z": -303.9999574432454,
+                      "yaw": -3.1415924072265624
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "target": {
+                        "x": 219.9885233162968,
+                        "y": 2.92,
+                        "z": -293.9999574432457
+                      },
+                      "focus": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "yaw": 2.463632307048158e-07,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-ferry-south",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": null,
+                    "fleet": [
+                      {
+                        "id": "harbor-bus-1",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-courtyard",
+                        "doorsOpen": true,
+                        "remaining": 2.5,
+                        "nextStopId": "harbor-bus-courtyard",
+                        "secondsToArrival": 0,
+                        "serviceTime": 8.500000000000002,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-bus-2",
+                        "kind": "bus",
+                        "stopId": "harbor-bus-workshop",
+                        "doorsOpen": true,
+                        "remaining": 2.500000000000483,
+                        "nextStopId": "harbor-bus-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 89.58819154052549,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-1",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-lantern",
+                        "doorsOpen": true,
+                        "remaining": 3.499999999999986,
+                        "nextStopId": "harbor-tram-lantern",
+                        "secondsToArrival": 0,
+                        "serviceTime": 8.500000000000002,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-tram-2",
+                        "kind": "tram",
+                        "stopId": "harbor-tram-workshop",
+                        "doorsOpen": true,
+                        "remaining": 3.500000000000469,
+                        "nextStopId": "harbor-tram-workshop",
+                        "secondsToArrival": 0,
+                        "serviceTime": 38.81666666666619,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "signal",
+                        "speed": 0
+                      },
+                      {
+                        "id": "harbor-ferry-1",
+                        "kind": "ferry",
+                        "stopId": "harbor-ferry-south",
+                        "doorsOpen": true,
+                        "remaining": 7.5,
+                        "nextStopId": "harbor-ferry-south",
+                        "secondsToArrival": 0,
+                        "serviceTime": 8.500000000000002,
+                        "delay": 0,
+                        "held": null,
+                        "trafficState": "dwell",
+                        "speed": 0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "status": "SATISFIED",
+              "vehicleId": "harbor-ferry-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T08:07:35.830Z",
+              "finishedAt": "2026-10-05T08:07:35.842Z",
+              "firstError": null,
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T08:07:35.838Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 8.500000000000002,
+                    "timing": {
+                      "wallDt": 2.9663999999999944,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 2.7163999999999944,
+                      "droppedTotal": 118.77809999999995
+                    },
+                    "teleportRevision": 2,
+                    "position": {
+                      "x": 219.9885208526645,
+                      "y": 1.3,
+                      "z": -303.9999574432454,
+                      "yaw": -3.1415924072265624
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "target": {
+                        "x": 219.9885233162968,
+                        "y": 2.92,
+                        "z": -293.9999574432457
+                      },
+                      "focus": {
+                        "x": 219.9885208526645,
+                        "y": 2.92,
+                        "z": -303.9999574432454
+                      },
+                      "yaw": 2.463632307048158e-07,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-ferry-south",
+                    "ridingVehicleId": null,
+                    "passengerLocal": null,
+                    "passengerDeck": null,
+                    "vehicle": {
+                      "id": "harbor-ferry-1",
+                      "x": 227.2,
+                      "y": 0,
+                      "z": -309.5,
+                      "yaw": 1.5707963267948966,
+                      "stopId": "harbor-ferry-south",
+                      "doorsOpen": true,
+                      "remaining": 7.5,
+                      "nextStopId": "harbor-ferry-south",
+                      "secondsToArrival": 0,
+                      "serviceTime": 8.500000000000002,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            },
+            {
+              "status": "FAILED",
+              "vehicleId": "harbor-ferry-1",
+              "requiredStopId": null,
+              "budgetMs": 600000,
+              "startedAt": "2026-10-05T08:10:21.160Z",
+              "finishedAt": "2026-10-05T08:20:21.178Z",
+              "firstError": {
+                "stage": "scheduled berth",
+                "name": "TimeoutError",
+                "message": "page.waitForFunction: Timeout 599995ms exceeded.",
+                "stack": "page.waitForFunction: Timeout 599995ms exceeded.\n    at waitBerth (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:338:18)\n    at async photo (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:368:7)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:400:152\n    at async bounded (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:16)\n    at async captureCase (/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:378:5)\n    at async file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:110:20"
+              },
+              "progress": [
+                {
+                  "when": "before-wait",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T08:10:21.165Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 15.950000000000372,
+                    "timing": {
+                      "wallDt": 8.033,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 7.7829999999999995,
+                      "droppedTotal": 274.18839999999994
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 220,
+                      "y": 1.3,
+                      "z": -309.4625,
+                      "yaw": 3.141592653589793
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 220,
+                        "y": 2.92,
+                        "z": -309.4625
+                      },
+                      "target": {
+                        "x": 230,
+                        "y": 2.92,
+                        "z": -309.4625
+                      },
+                      "focus": {
+                        "x": 220,
+                        "y": 2.92,
+                        "z": -309.4625
+                      },
+                      "yaw": 1.5707963267948966,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": "harbor-ferry-south",
+                    "ridingVehicleId": "harbor-ferry-1",
+                    "passengerLocal": {
+                      "x": -0.03749999999999558,
+                      "y": 1.3,
+                      "z": -7.2,
+                      "yaw": 1.5707963267948966
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-ferry-1",
+                      "x": 227.2,
+                      "y": 0,
+                      "z": -309.5,
+                      "yaw": 1.5707963267948966,
+                      "stopId": "harbor-ferry-south",
+                      "doorsOpen": true,
+                      "remaining": 0.049999999999627676,
+                      "nextStopId": "harbor-ferry-south",
+                      "secondsToArrival": 0,
+                      "serviceTime": 15.950000000000372,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "dwell",
+                      "speed": 0
+                    },
+                    "fleet": null
+                  }
+                },
+                {
+                  "when": "timeout",
+                  "status": "OBSERVED",
+                  "at": "2026-10-05T08:20:21.178Z",
+                  "observed": {
+                    "ready": true,
+                    "started": true,
+                    "paused": false,
+                    "simulationTime": 39.683333333332364,
+                    "timing": {
+                      "wallDt": 1.4832000000000698,
+                      "dt": 0.25,
+                      "steps": 15,
+                      "alpha": 0.003999999994410697,
+                      "simulationDelta": 0.25,
+                      "droppedSeconds": 1.2332000000000698,
+                      "droppedTotal": 849.7144000000002
+                    },
+                    "teleportRevision": 3,
+                    "position": {
+                      "x": 221.652812829808,
+                      "y": 1.3,
+                      "z": -375.0308382060464,
+                      "yaw": -0.0009252470628580145
+                    },
+                    "camera": {
+                      "position": {
+                        "x": 221.652812829808,
+                        "y": 2.92,
+                        "z": -375.0308382060464
+                      },
+                      "target": {
+                        "x": 231.652812829808,
+                        "y": 2.92,
+                        "z": -375.0308382060464
+                      },
+                      "focus": {
+                        "x": 221.652812829808,
+                        "y": 2.92,
+                        "z": -375.0308382060464
+                      },
+                      "yaw": 1.5707963267948966,
+                      "pitch": 0.15,
+                      "fov": 65,
+                      "boomLength": 0,
+                      "desiredBoomLength": 0,
+                      "obstructed": false,
+                      "overheadFallback": false,
+                      "colliderId": null,
+                      "clearanceRadius": 0.45
+                    },
+                    "stationID": null,
+                    "ridingVehicleId": "harbor-ferry-1",
+                    "passengerLocal": {
+                      "x": -0.03749999999999558,
+                      "y": 1.3,
+                      "z": -7.2,
+                      "yaw": 1.5707963267948966
+                    },
+                    "passengerDeck": "lower",
+                    "vehicle": {
+                      "id": "harbor-ferry-1",
+                      "x": 214.4527812149435,
+                      "y": 0,
+                      "z": -375,
+                      "yaw": -1.5717215738577546,
+                      "stopId": null,
+                      "doorsOpen": false,
+                      "remaining": 0.9460034056445679,
+                      "nextStopId": "harbor-ferry-north",
+                      "secondsToArrival": 0.946003405644575,
+                      "serviceTime": 39.683333333332364,
+                      "delay": 0,
+                      "held": null,
+                      "trafficState": "cruise",
+                      "speed": 3.445618041790226
+                    },
+                    "fleet": null
+                  }
+                }
+              ]
+            }
+          ],
+          "cleanup": [
+            {
+              "label": "browser.close",
+              "limit": 30000,
+              "startedAt": "2026-10-05T08:20:25.356Z",
+              "elapsedMs": 30005,
+              "confirmed": false,
+              "error": {
+                "stage": "browser.close",
+                "name": "Error",
+                "message": "browser.close exceeded 30000 ms",
+                "stack": "Error: browser.close exceeded 30000 ms\n    at Timeout.<anonymous> (file:///home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/transport/native-transport-high.mjs:84:131)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)"
+              }
+            },
+            {
+              "label": "owned launch force-kill after browser.close failure",
+              "pid": 3715,
+              "limit": 5000,
+              "elapsedMs": 42,
+              "confirmed": true,
+              "error": null,
+              "scope": "captured actual launch only; no process search or global kill"
+            },
+            {
+              "label": "server.close",
+              "limit": 10000,
+              "startedAt": "2026-10-05T08:20:55.403Z",
+              "elapsedMs": 1,
+              "confirmed": true,
+              "error": null
+            }
+          ],
+          "servedSourceHashesExactBeforeAfter": true,
+          "originalFiles": [
+            {
+              "path": "/workspace/neon-evidence/b80-ferry-high-original-fail-11332109451/extracted/native/authored/run.json",
+              "bytes": 10607869,
+              "sha256": "f9dd8a5a51489f27032bd5aa41df5c1565d5800244bd402e11266b45975969e0"
+            },
+            {
+              "path": "/workspace/neon-evidence/b80-ferry-high-original-fail-11332109451/extracted/native/authored/ferry/case.json",
+              "bytes": 9475510,
+              "sha256": "38bd61946e523c297ad5e4083bc937df2df407bb17b3904de96f3f1875ae5db7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": "Original timeout has no after-failed-action numeric pose unless original phase timeout observation exists; a saved lastObservedLocal is never attributed to post-keyup. Partial photos do not constitute full High journey PASS. CPU source reachability is not native timing or acceptance."
+}

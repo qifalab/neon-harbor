@@ -1,0 +1,127 @@
+{
+  "status": "CPU_READY_NATIVE_ART_UNREVIEWED",
+  "baselineCommit": "ef4112bed4624c9c969b5b5f3746ccbfb64817aa",
+  "authorship": "Original authored procedural fixtures and renderer code under project MIT; no external art, textures, font, generation service, or network assets introduced.",
+  "sourceBoundary": {
+    "runtimeFiles": [
+      "src/harbor-street-lighting.js",
+      "src/metropolis-world.js",
+      "src/city-exploration.js"
+    ],
+    "testFiles": [
+      "tests/harbor-street-lighting.test.js"
+    ],
+    "preserved": "All original runtime files except world/city remain literal, including western/northern ridge (this is a lighting-only candidate); the final child may independently merge the sealed mineral surface payload. Existing authored chunks and all scene geometry remain exact; only a separate owned fixture/light group is added.",
+    "publicDiagnostics": "city.snapshot().streetLighting is a read-only snapshot reached through existing __NEON__.snapshot().city; it reports four pool slots/resources/quality/night factor. No new gameplay controls or player mutations."
+  },
+  "physicalSources": {
+    "sourceCount": 100,
+    "existingStreetHeads": 96,
+    "museumCanopy": {
+      "actualVisibleStripCentre": [
+        -560,
+        5.94,
+        -455.4
+      ],
+      "stripSize": [
+        12,
+        0.08,
+        0.5
+      ],
+      "emitters": [
+        [
+          -564.5,
+          5.86,
+          -455.4
+        ],
+        [
+          -555.5,
+          5.86,
+          -455.4
+        ]
+      ],
+      "intensityCandelaEach": 220,
+      "rangeMetres": 24
+    },
+    "newTreeMountedDownlights": [
+      {
+        "site": "sample-quay-tree-0",
+        "clampPosition": [
+          -617,
+          3.65,
+          -445
+        ],
+        "headPosition": [
+          -615.55,
+          3.5,
+          -445
+        ],
+        "secondOriginalStandingXZDistanceMetres": 16.107218878502845
+      },
+      {
+        "site": "sample-quay-tree-1",
+        "clampPosition": [
+          -503,
+          3.65,
+          -445
+        ],
+        "headPosition": [
+          -504.45,
+          3.5,
+          -445
+        ]
+      }
+    ],
+    "treeSourceIntensityCandelaEach": 240,
+    "treeSourceRangeMetres": 24,
+    "originalStreetHeadIntensityCandelaEach": 110,
+    "originalStreetHeadRangeMetres": 22,
+    "placement": "Clamp, inward arm, raised diagonal brace and metal housing are attached to each existing tree trunk above head height. No pole, floor, collision, support or tree geometry is introduced or altered. All new solid geometry minY exceeds3.15m. Source positions stay fixed at actual emitters and never follow the viewer."
+  },
+  "pool": {
+    "high": 4,
+    "balanced": 2,
+    "low": 0,
+    "constructedPointLightObjects": 4,
+    "qualitySceneCountOnly": true,
+    "castShadow": false,
+    "decay": 2,
+    "smoothNightFactor": "1 at night, smooth dawn5.8–7/dusk17.8–19; no global exposure/atmosphere changes",
+    "selection": "Fixed arrays/loops, source-bound40m selection and24–40m distance fade, 10% retained source advantage. Reshuffle preserves source ownership where possible. No per-frame arrays, objects, sort or scene light-count changes.",
+    "disabled": "Indoor building, car, subway/station isolated collision context, transit riding, unresident source chunk and daytime all set light intensity0; Low removes all scene pool lights.",
+    "disposal": "North-world owner removes pool and both instance resources, shared geometry and two owned materials; idempotent module disposal verified."
+  },
+  "geometryBudget": {
+    "newInstancedMeshes": 2,
+    "boxGeometry": 1,
+    "metalInstances": 8,
+    "lensInstances": 2,
+    "maxDrawCalls": 2,
+    "maxTriangles": 120,
+    "newMaterials": 2,
+    "newTextures": 0,
+    "typedGeometryBytes": 840,
+    "instanceMatrixBytes": 640,
+    "theoreticalCpuPlusGpuBufferBytes": 2960,
+    "bufferEstimateExcludes": "Object overhead, material uniforms/renderer programs; exact GPU cost must be measured in final native preview.",
+    "actualMinimumNewSolidYMetres": 3.180422268807888
+  },
+  "cpuValidation": "Three meaningful new actual-THREE tests plus10 original metropolis-world tests; all13 pass. Independent real-city proof compares all4178colliders,220buildings/entrances,complete infrastructure metadata,72 explicitly labeled ground support samples,six original trees,all original geometry and complete chunk exports,original public5leg route body.65 sampling and moveCircle. Native light/art success is not inferred from CPU geometry.",
+  "originalNightEvidence": {
+    "status": "BEFORE_QUALITY_DEFECT_NOT_PASS",
+    "sourceCommit": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+    "diagnosisSHA256": "56a851dba04cde171f3fe92ce0b3a36a50e8b7dd221b43e4bdddbfd715ec3edf",
+    "images": [
+      {
+        "path": "/workspace/neon-evidence/street-night-visible-west-b80eace-committed-owned-20261005/native/01-west-ridge-quay-night-high.png",
+        "sha256": "207151ef810a6732ea8ae5b7801acb96cd8d6616866d2cc9b6a16caa5f227377"
+      },
+      {
+        "path": "/workspace/neon-evidence/street-night-visible-west-b80eace-committed-owned-20261005/native/02-near-quay-tree0-night-high.png",
+        "sha256": "c973a38aef5eb922f526979b8dd3729bda249ae44f4ce08bb72e79aed4bb2148"
+      }
+    ]
+  },
+  "nativeAcceptancePending": "ROOT sole GPU queue must capture both original public21:00/High/1280×800/FOV65/body.65 poses at final combined source, plus close face/pavement and dusk/day checks. Inspect warm illumination/texture readability, clipping/overexposure, cross-wall spill, actual draw/memory/light counts and performance. No old pixel PASS or screenshot processing is carried forward.",
+  "executionBoundary": "No stage/commit/HEAD/remote/network/GPU/fullnpm/build/root README publication performed by this candidate."
+}

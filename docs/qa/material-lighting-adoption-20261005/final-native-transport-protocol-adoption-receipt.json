@@ -1,0 +1,68 @@
+{
+  "status": "ACTUAL_SEALED_FINAL_NATIVE_TRANSPORT_PROTOCOL_ADOPTED_CPU_ONLY",
+  "atUTC": "2026-10-05T08:41:46.871926+00:00",
+  "candidate": "/workspace/neon-candidates/all-three-transport-public-longitudinal-and-ferry-berth-candidate-20261005",
+  "candidateManifestSHA256": "c6a9e1e7b34d9d07b714c26d61411107cb90d8e45dd2cfcdcd91398da3d1697c",
+  "candidateSealSHA256": "7ec0096e9940cc81417a6ce6be2e79589524cb904f517316567b05e4fdb69719",
+  "originalSealedCandidateFileCount": 50,
+  "actualAdoptedPayloadFiles": {
+    "tools/native-review/methods/transport/ALL_THREE_PUBLIC_LONGITUDINAL_AND_FINITE_FERRY_BERTH_AMENDMENT-20261005.json": {
+      "sha256": "88b69f0e6842a12811662ae2d3e120384a7d1791be4b14a4a4fca71e4ac2547f",
+      "bytes": 6751
+    },
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "sha256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c",
+      "bytes": 20868
+    },
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "sha256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+      "bytes": 56319
+    }
+  },
+  "originalTargetRows": {
+    "tools/native-review/methods/transport/ALL_THREE_PUBLIC_LONGITUDINAL_AND_FINITE_FERRY_BERTH_AMENDMENT-20261005.json": null,
+    "tools/native-review/methods/transport/method-manifest.json": {
+      "bytes": 20559,
+      "sha256": "6c55d70a5248c28291c9f4941caa83ca3c43e537e026d7ad53217c453b6b0914"
+    },
+    "tools/native-review/methods/transport/native-transport-high.mjs": {
+      "bytes": 53778,
+      "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308"
+    }
+  },
+  "syntaxCommand": [
+    "node",
+    "--check",
+    "tools/native-review/methods/transport/native-transport-high.mjs"
+  ],
+  "syntaxExitCode": 0,
+  "syntaxStdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "syntaxStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "productionSourceCount": 401,
+  "all401ProductionSourceUnchanged": true,
+  "actualNull208BuildInfoSHA256": "c6b72d9e690fea559643cbe7da74523618a1812fd3484dd1091833cc95ed98a2",
+  "fullRulesRepeated": false,
+  "buildRepeated": false,
+  "gpuExecuted": false,
+  "nativeAcceptance": false,
+  "originalNativeFailuresPreserved": true,
+  "literalAdoptionReceiptSHA256": "d0b9c2e1deef868997b9f09f5ce1b2af38cd13c4b3b2d1dea6a330b793cb45ee",
+  "allThreeProtocolScope": "BUS/TRAM precision far approaches and Ferry nonprecision far approaches use ordinary public W gait only on verified safe longitudinal legs; tail/lateral retain slow public keys. Only Ferry scheduled berth600→1200finite; wholeFerry2400/local150/.06/.15/gait/physics/time/cases/matrix remain actual authorized literals.",
+  "archivedOriginalCPUAndHistory": [
+    {
+      "path": "docs/qa/material-lighting-adoption-20261005/native-transport-protocol-candidates/all-three-final-transport/original-sealed-candidate/ordinary-source-cpu-receipt.json",
+      "sha256": "4178c0d8d60ad4a03776d0730abe391cb920b8aae52f7c121c08b3fbf7992c85",
+      "bytes": 1691571
+    },
+    {
+      "path": "docs/qa/material-lighting-adoption-20261005/native-transport-protocol-candidates/all-three-final-transport/original-sealed-candidate/sealed-bus-tram-e377-provenance/SEAL.json",
+      "sha256": "e3777802f6e7fe7ac5e269b66282e861ebe87ccfdcc9c2b8bf70ca3d0c6f3d69",
+      "bytes": 4635
+    },
+    {
+      "path": "docs/qa/material-lighting-adoption-20261005/native-transport-protocol-candidates/all-three-final-transport/original-sealed-candidate/sealed-fixedstep-6a3d-provenance/SEAL.json",
+      "sha256": "6a3d13fa87616904be20be7c4483f82c5a2968df5e05d32335739dd520a0ffb5",
+      "bytes": 891
+    }
+  ]
+}

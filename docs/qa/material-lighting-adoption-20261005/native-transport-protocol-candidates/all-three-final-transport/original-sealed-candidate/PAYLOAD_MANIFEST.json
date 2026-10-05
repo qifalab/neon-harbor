@@ -1,0 +1,31 @@
+{
+  "status": "SEALED_SELECTIVE_THREE_PAYLOAD_CPU_READY_NATIVE_UNEXECUTED",
+  "sourceParent": "b80eace6b3cf62eea3589c6dda40ed16251b480c",
+  "files": [
+    {
+      "path": "tools/native-review/methods/transport/ALL_THREE_PUBLIC_LONGITUDINAL_AND_FINITE_FERRY_BERTH_AMENDMENT-20261005.json",
+      "bytes": 6751,
+      "sha256": "88b69f0e6842a12811662ae2d3e120384a7d1791be4b14a4a4fca71e4ac2547f",
+      "previous": null
+    },
+    {
+      "path": "tools/native-review/methods/transport/method-manifest.json",
+      "bytes": 20868,
+      "sha256": "4f8a782ffff5e24830d3b816d735c777a584b7fbf727806a6a238d816dba837c",
+      "previous": {
+        "bytes": 20559,
+        "sha256": "6c55d70a5248c28291c9f4941caa83ca3c43e537e026d7ad53217c453b6b0914"
+      }
+    },
+    {
+      "path": "tools/native-review/methods/transport/native-transport-high.mjs",
+      "bytes": 56319,
+      "sha256": "e449e2ab2f981caf77a290bc4318e7419c4db05f4ff5f177b715a35f9be20fe4",
+      "previous": {
+        "bytes": 53778,
+        "sha256": "a308a7c3d7d49107e805b70a0a795147dbe0fa87ceaace19f048ee5e0c11e308"
+      }
+    }
+  ],
+  "adoption": "NEW child only; exact3 literalpayload and archive all nonpayload+priorseals; no runtime/cases/matrix/selector/workflow changes. Original fail reports and preparationnegativehistory remain failed."
+}

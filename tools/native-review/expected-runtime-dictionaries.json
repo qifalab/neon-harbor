@@ -310,7 +310,7 @@
       "src/citizen-journeys.js": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a",
       "src/citizen-life.js": "59bfdeaf9aa783dee276a5a8c40f1b90166a15ba835895a3b17023fac7f448da",
       "src/citizen-navigation.js": "7ae2e7d47fdaf10355d81641f8e338745234cb2cfd30c7c2d1fcfc8ef267f9ed",
-      "src/city-exploration.js": "1e333c6ab083c9116f6b19ac68a12abbdbb0cc647f8ca60955a2414d617653da",
+      "src/city-exploration.js": "0286096f15732b65c14956e1bad495ff721acc6a4b563fa0c5733d170d0a1f4b",
       "src/city-guide.js": "3dd5f765838d46a392d5016819afae780376a1c606102f8b89b019c0c0608a9b",
       "src/city-streaming.js": "f4d6e7df86781280a24363c9de451abdc7d1dd47b4e753645c4ff2ad876609c3",
       "src/collision.js": "3602f251b36d9109a60373e0a84fd2c13d688ed5bab72eeb29dfc7dc9e28d3a0",
@@ -338,6 +338,7 @@
       "src/harbor-sample-ui.js": "735fe1d556649cdf42e4b71ce3686e7e5e1bc79ada4a84724b1be766e216fb3c",
       "src/harbor-shop-defs.js": "f6bbf2c0d4da08aaf7b241c53efc92fe9bf324eec46c4168376c86fbe71fb63d",
       "src/harbor-skyline.js": "40ae85fbcb20f62096c1c3ecdfd5bcc19e555cd3229076b16aec3d5b3784c7a7",
+      "src/harbor-street-lighting.js": "0ef22adffc549c346da9746d786222f18098058b99fb86e3bfc2aba2795f5cd4",
       "src/harbor-terrain.js": "c1a9c48857a1abe51be8f86c462615d9af5bd6bcf9b46580e98d23ff22132e49",
       "src/harbor-transit-renderer.js": "5fb7ade1a232883759576c706b30a96d665b3ed4a0a425a92c6eba6f5bcc9422",
       "src/harbor-transit.js": "4738402f5653a142f545e6791f040b3b3fdb1a2b1a30300743568b45adf59e4e",
@@ -351,12 +352,12 @@
       "src/metropolis-infrastructure.js": "89ae5bb176b6a40ad3132a3df46ef9fe0547e3e2be73d4ed82b59ac47b7f35f2",
       "src/metropolis-interiors.js": "2e820311a2e646aad659176789ac9f2fca1257e47d25d73dc33f6aea24d9b6dc",
       "src/metropolis-materials.js": "2963e82ed9c904dd65c427b80de93f260b3a38101f4b3b316ff1e01d7fb1e075",
-      "src/metropolis-northern-ridge.js": "763a75d5ae28b9553381185f6040bec6233acdfed5602e8bede639ec012b8de0",
+      "src/metropolis-northern-ridge.js": "fb4e04bf7d0f23bc24aea6a4e1ddeaaf276cf4fec0203b0433c725a0e6a3dd68",
       "src/metropolis-people.js": "6e4dbf3b39de25c5939da373b4e2b3554bf54698572f2fde7cf96e795dc7c52e",
       "src/metropolis-room-designs.js": "adc33a9c57af6a38a461686d210099346aeebfef41b20cac9f0616cfbf5c32c6",
       "src/metropolis-transit.js": "ca316720b79de2a15dfeaf41fb3109589612733b886d1566d91049d383fc8a1e",
-      "src/metropolis-western-ridge.js": "d3642799fb7222505f51d9c5eadc1ab7b8c3f0abd8aef0b9400be51de6a2e208",
-      "src/metropolis-world.js": "99ade20a6e5a648ff6939518485839ee640281f851275d59b867313534e8f69b",
+      "src/metropolis-western-ridge.js": "9075441fd8dac9f7b656eecc9828ac6a460417db8c10c671243022ac42b5ae78",
+      "src/metropolis-world.js": "f1492146c023a068666d1a445c7a019c39b5685a717139337fda70cb26864ec5",
       "src/models.js": "cfc0a55d46a864acb9b8ca0206b7b841c1f6d6747bbda144dab60a24f96480db",
       "src/multiplayer-protocol.js": "0ae36169ad355c4595efaf718515084ae192e319ee9d75e53545e41906b55319",
       "src/multiplayer-ui.js": "27fb0552eb84e332ae689e75d14b884a7e6f62142b6629bada758a646c84f27f",
@@ -388,14 +389,14 @@
     },
     "actualCommittedBuildRevision": "REQUIRE_ACTUAL_DISPATCH_HEAD_FROM_GIT_AND_BUILD",
     "currentBuildInfo": {
-      "path": "expected-build-provenance/authored-build-info-visible-western-ridge-20261005-874d306d0e71.json",
-      "sha256": "874d306d0e71a2761e9d238923571a4abca75e8da5cf65680a9130f0815744c0",
-      "bytes": 22204,
+      "path": "expected-build-provenance/authored-build-info-material-night-lighting-final-idle-20261005-c6b72d9e690f.json",
+      "sha256": "c6b72d9e690fea559643cbe7da74523618a1812fd3484dd1091833cc95ed98a2",
+      "bytes": 22309,
       "version": "0.8.0",
-      "assetCount": 207,
+      "assetCount": 208,
       "revision": null,
-      "scope": "Actual visible-western ridge build after original full rules once. Exactly two decorative source resources changed; all other resources match committed northern8b. All old builds and art failures preserved.",
-      "note": "Actual null revision provenance only. New-source High image capture/art review remains pending; running8b functional evidence does not imply new decorative pixel acceptance."
+      "scope": "Actual final idle mineral-surface and physical-fixture lighting build after final full rules once; original first381/5d604 build remains historical. Four changed runtime sources and one new lighting module; complete remaining dictionary is exact committedef411.",
+      "note": "Source/CPU evidence only; current new-source High day/night art/render/performance acceptance requires real final capture. Original before images and all native failures remain historical."
     }
   }
 }

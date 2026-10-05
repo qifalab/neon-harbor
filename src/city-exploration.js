@@ -252,6 +252,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     update(dt, time, view) {
       currentHour = time * 24;
       south.update(dt, time, { ...view, trafficTime: sampleTransit.time }); north.update(view?.position || south.spawn, view?.velocity || {x:0,z:0}, dt);
+      north.updateStreetLighting(view?.position || south.spawn,view?.viewerPosition,currentHour,dt,!inside()&&!simulation?.inCar&&!transit.collisionContext()&&!sampleTransit.riding);
       north.updateWater(dt,time*24);harbor.update(view?.position || south.spawn,dt,time);
       infrastructure.update(view?.position || south.spawn, dt);
       entryMarkers.update(view?.position || south.spawn);
@@ -271,7 +272,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     },
     setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); harbor.setQuality(value); sampleDistrict.setQuality(value); lifeRenderer.setQuality(value); people.setQuality(value); },
     snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), sample: { transit: sampleTransit.snapshot(), life: { ...harborLife.summary(), agents: harborLife.agents.map(a => ({ id: a.id, name: a.name, role: a.role, phase: a.phase, activity: a.activity, x: a.x, y: a.y, z: a.z, insideBuildingId: a.insideBuildingId, floorId: a.floorId, transit: a.transit })) }, district: sampleDistrict.snapshot(), renderer: lifeRenderer.snapshot() }, infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings, exterior: { southInteriorId: south.interiorBuildingId, harborInteriorId: harbor.snapshot().interiorBuildingId }, streaming: north.streamingStats,
-      renderVisibility: { outdoor: root.visible, transit: transit.root.visible } }; },
+      renderVisibility: { outdoor: root.visible, transit: transit.root.visible }, streetLighting: north.streetLightingStats }; },
   };
 }
 

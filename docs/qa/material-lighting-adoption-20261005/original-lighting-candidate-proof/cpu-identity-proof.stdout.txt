@@ -1,0 +1,81 @@
+{
+  "status": "CPU_IDENTITY_PROOF_PASS_GPU_AND_RUNTIME_UNREVIEWED",
+  "output": "/workspace/neon-candidates/harbor-night-fixture-lighting-candidate-20261005/evidence/cpu-identity-proof.json",
+  "checks": [
+    {
+      "name": "streaming-high: all 4178 serialized colliders exact",
+      "pass": true
+    },
+    {
+      "name": "streaming-high: all 220 complete entry building snapshots exact",
+      "pass": true
+    },
+    {
+      "name": "streaming-high: actual complete infrastructure support metadata exact",
+      "pass": true
+    },
+    {
+      "name": "streaming-high: original six-tree state exact",
+      "pass": true
+    },
+    {
+      "name": "full-detail-high: all 4178 serialized colliders exact",
+      "pass": true
+    },
+    {
+      "name": "full-detail-high: all 220 complete entry building snapshots exact",
+      "pass": true
+    },
+    {
+      "name": "full-detail-high: actual complete infrastructure support metadata exact",
+      "pass": true
+    },
+    {
+      "name": "full-detail-high: original six-tree state exact",
+      "pass": true
+    },
+    {
+      "name": "complete original north and south detail batch exports exact",
+      "pass": true
+    },
+    {
+      "name": "streaming-high: every original tree/pole/other shape exact",
+      "pass": true
+    },
+    {
+      "name": "full-detail-high: every original tree/pole/other shape exact",
+      "pass": true
+    },
+    {
+      "name": "72 explicit ground support grid samples exact",
+      "pass": true
+    },
+    {
+      "name": "two original stands have exact .65 body clearance and no real collision API contacts",
+      "pass": true
+    },
+    {
+      "name": "complete original route static .1m sampling and actual moveCircle exact and clear",
+      "pass": true
+    },
+    {
+      "name": "new elevated fixture geometry: 2 meshes / 10 instances / 120 triangles, all bounds above 3m",
+      "pass": true
+    },
+    {
+      "name": "actual lighting diagnostic: 100 sources and 4 High shadowless slots, new field kept separate from original physics identity",
+      "pass": true
+    },
+    {
+      "name": "no fetch or network attempted",
+      "pass": true
+    }
+  ],
+  "colliders": 4178,
+  "buildings": 220,
+  "networkAttemptCount": 0,
+  "addedShapeObjects": {
+    "streaming-high": 2,
+    "full-detail-high": 2
+  }
+}

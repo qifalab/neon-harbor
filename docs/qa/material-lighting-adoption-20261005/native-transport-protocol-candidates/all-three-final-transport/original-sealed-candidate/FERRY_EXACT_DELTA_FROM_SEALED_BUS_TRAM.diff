@@ -1,0 +1,40 @@
+--- sealed-e377-bus-tram
++++ all-three-ferry-hall-berth
+@@ -283,7 +283,7 @@
+     const held=a.heldBefore+Math.max(0,s.simulationTime-a.baseSimulationTime),metres=a.metresBefore+a.geometricMetres,gap=Math.hypot(a.target.x-p.x,a.target.z-p.z);
+     a.observations.push({local:{x:p.x,y:p.y,z:p.z},simulationTime:s.simulationTime,revision:s.teleportRevision,heldSeconds:held,geometricMetres:metres,horizontalGap:gap});
+     if(!(held<metres/.3+3))return finish('stall-failure','original real held-input stall guard');
+-    if(gap<=(a.ordinaryApproach?.7:.3))return finish('public-near-endpoint-correction');
++    if(gap<=(a.ferryLongitudinalHold?1.2:a.ordinaryApproach?.7:.3))return finish('public-near-endpoint-correction');
+     const angle=n=>Math.atan2(Math.sin(n),Math.cos(n));
+     if(!Number.isFinite(s.camera?.yaw)||Math.abs(angle(s.camera.yaw-(v.yaw+a.localHeading-a.offset)))>=.025)return finish('public-direction-reaim');
+     return false;
+@@ -300,11 +300,13 @@
+         // Source max .25s step at 2.25m/s is .5625m, below twice the .7m handoff.
+         const ordinaryApproach=precision&&(kind==='bus'||kind==='tram')&&!precisionModifier.downAttempted&&Math.abs(dx)<.06&&Math.abs(dz)>.7;
+         const slow=ordinaryApproach?false:precision||distance(target,before)<1.2;
++        // Ferry long centre-hall input retains the original ordinary/near1.2 gait.
++        const ferryLongitudinalHold=kind==='ferry'&&!precision&&Math.abs(dx)<.06&&Math.abs(dz)>1.2;
+         const cycle={n,before,key,slow,desired,inputs:[],waits:[],releaseConfirmed:true};let cycleError=null,guardBeforeAction=null,heldProbe=null;
+-        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);if(precision&&distance(target,before)>.3&&(kind==='bus'||kind==='tram'||kind==='ferry')){
+-          cycle.publicHeldControl=ordinaryApproach?'ordinary public gait to .7m, then original slow near correction':'ordinary slow key through actual RAF observations, then original near correction';
++        try {guardBeforeAction=reusedFrame||await read();cycle.guardBaseline={simulationTime:guardBeforeAction.simulationTime,meaning:'before-action snapshot; conservative held-input guard baseline, not exact input-event start'};if(slow){if(precision){if(!precisionModifier.downAttempted){precisionModifier.downAttempted=true;precisionModifier.inputs.push({action:'down',key:'z'});cycle.inputs.push({action:'down',key:'z',scope:'precision-local-leg'});await page.keyboard.down('z');precisionModifier.downConfirmed=true;}else cycle.slowModifierAlreadyHeld=true;}else{cycle.inputs.push({action:'down',key:'z'});await page.keyboard.down('z');}}cycle.inputs.push({action:'down',key});await page.keyboard.down(key);if((precision&&distance(target,before)>.3&&(kind==='bus'||kind==='tram'||kind==='ferry'))||ferryLongitudinalHold){
++          cycle.publicHeldControl=ferryLongitudinalHold?'original ordinary public Ferry centre-hall gait to1.2m, then original slow near correction':ordinaryApproach?'ordinary public gait to .7m, then original slow near correction':'ordinary slow key through actual RAF observations, then original near correction';
+           const cap=Math.min(localDeadline-Date.now(),deadline-Date.now());assert.ok(cap>0,'original finite local/whole movement deadline');
+-          heldProbe=await page.waitForFunction(cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[],...(ordinaryApproach?{ordinaryApproach:true}:{})},{polling:'raf',timeout:cap});
++          heldProbe=await page.waitForFunction(cabinHeldObservation,{revision,vehicleId:transit(guardBeforeAction).ridingVehicleId,layout,target,localHeading:Math.atan2(dx,dz),offset,localDeadline,wholeDeadline:deadline,baseSimulationTime:guardBeforeAction.simulationTime,heldBefore:held,metresBefore:metres,geometricMetres:0,lastLocal:{...transit(guardBeforeAction).passengerLocal},observations:[],...(ordinaryApproach?{ordinaryApproach:true}:{}),...(ferryLongitudinalHold?{ferryLongitudinalHold:true}:{})},{polling:'raf',timeout:cap});
+         }else await page.waitForFunction(before=>{const p=window.__NEON__.snapshot().city.sample.transit.passengerLocal;return p&&Math.hypot(p.x-before.x,p.z-before.z)>.009;},before,{polling:'raf',timeout:Math.max(1,localDeadline-Date.now())});}
+         catch(error){cycleError=error;cycle.firstError=err(error,'movement');}
+         finally {for(const k of [key,...(slow&&!precision?['z']:[])]){try{await page.keyboard.up(k);cycle.inputs.push({action:'up',key:k,confirmed:true});}catch(error){cycle.releaseConfirmed=false;allMovementReleased=false;cycle.inputs.push({action:'up',key:k,confirmed:false,error:err(error,'keyup')});if(!cycleError)cycleError=error;else record.secondaryErrors.push(err(error,`cabin keyup ${k}`));}}}
+@@ -347,9 +349,10 @@
+     }
+   }
+   async function waitBerth(id, stopId=null) {
+-    const berthBudgetMs=kind==='tram'?1200000:600000;
++    const berthBudgetMs=kind==='tram'||kind==='ferry'?1200000:600000;
+     const phaseDeadline=Date.now()+remaining(berthBudgetMs),phase={type:'berth',vehicleId:id,requiredStopId:stopId,budgetMs:berthBudgetMs,startedAt:new Date().toISOString(),status:'RUNNING',progress:[],diagnosticErrors:[],firstError:null};
+     if(kind==='tram'){phase.originalBudgetMs=600000;phase.budgetAmendment='finite-tram-normal-service-observed-wall-rate';}
++    if(kind==='ferry'){phase.originalBudgetMs=600000;phase.budgetAmendment='explicit-finite-ferry-original600-failure-observed-service-progress';}
+     record.berthWaits.push(phase);
+     await observePhaseProgress(phase,'before-wait',id,phaseDeadline);
+     try {
