@@ -1,0 +1,27 @@
+{
+  "status": "READ_ONLY_STATIC_REVIEW_COMPLETED_NO_OPEN_SPECIFIC_MUSTFIX",
+  "toolSha256": "e5fc7e1534929908c961038689d8b6ca76f351d55cdd31ab16148b4abec5a34d",
+  "reviewer": "/root/release_packaging_review/feature_ci_pulse/docs_claims_readonly",
+  "closedFindings": [
+    "serverlistenerclose starts even if sharedcleanup wait budget exhausted; ownconnections fallback",
+    "native async first/secondary errors retained through closure",
+    "deadline/errors rechecked after evidenceIO; late-failure invalidatesearlier status and exit1",
+    "actual casefile hash requires writefulfilled and actualreadback; attemptedhash separate"
+  ],
+  "verifiedFields": [
+    "actualpublicvehiclekind/pose/doorsOpen",
+    "presentation.elapsed",
+    "shadow/contactOcclusion/samples/passes",
+    "currentfirstpersoncamera/fov65",
+    "source-derived counts explicitlynotindependentdisposehooks"
+  ],
+  "execution": {
+    "syntax": false,
+    "nodeImport": false,
+    "mock": false,
+    "tests": false,
+    "build": false,
+    "browser": false,
+    "gpu": false
+  }
+}

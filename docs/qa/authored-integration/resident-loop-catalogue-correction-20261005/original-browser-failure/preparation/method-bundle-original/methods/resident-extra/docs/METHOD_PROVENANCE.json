@@ -1,0 +1,30 @@
+{
+  "status": "source-only preparation; native not executed",
+  "methodSha256": "1d5e1b813531d13488d06c85cd4442b50f48396c9717ae2867e1caf7cd9027f1",
+  "basedOnCoreV2Sha256": "e537a4c7cc79018168c5d06511071d44f218dc2028f510385f244b247f69fa13",
+  "original7bbSha256": "7bb711b7e18c9b9c40e00604c3f27878e20b7ecccc870fa9387da4f8190052c6",
+  "sourceInspected": {
+    "src/resident-core-assets.js": "e0405daf9f082f1af5f09f18bea1f72c89b979befa5f3e92ffcc3f48aa431640",
+    "src/citizen-appearance.js": "13be59279bb752e1bd2518de3aa40e5af8913659401035691175e06c9e0ead6b",
+    "src/citizen-life.js": "59bfdeaf9aa783dee276a5a8c40f1b90166a15ba835895a3b17023fac7f448da",
+    "src/citizen-journeys.js": "027e226f94432dc8d1cf5e320d35b0dfbdd2221917cf92f583e656dfacca064a",
+    "src/metropolis-people.js": "6e4dbf3b39de25c5939da373b4e2b3554bf54698572f2fde7cf96e795dc7c52e",
+    "src/metropolis-catalog.js": "658f3f53027908c4aba7357b26ca959c9e646bbb5ddd5c47180a39e2a2ad90ea",
+    "src/harbor-life.js": "034cb5b4b1851071507c30c0cd36a250f0e8252c394ac28df6627de18b0acc5d",
+    "src/harbor-life-renderer.js": "65dfd60514cf044b82470bb418656e6504109e34525a46f489da100e0a3de13c",
+    "src/harbor-sample-ui.js": "5b4d55197c6c21165c5a8773cfe14ce15bf232e4b96b45d2534c5794417152fc",
+    "src/main.js": "62fbe87b5f474a8c6b11337a1c3ca03b718052aced7fbe75febab84736761850",
+    "src/camera.js": "4e37561767aef08ab0d129d05f3a878732649357cd193ad3d269c3ea331deed3"
+  },
+  "verification": "node --check only; no tests/browser/GPU/build/full world construction",
+  "budgets": {
+    "totalWallSeconds": 1080,
+    "legSeconds": 180,
+    "readinessSeconds": 180,
+    "farCooldownWallSeconds": 240,
+    "actualFarCooldownSimulationSeconds": 13,
+    "naturalSouthParcelWallSeconds": 360,
+    "motionMinimumWallSeconds": 45,
+    "ownedCleanupSeconds": 30
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "argv": [
+    "node",
+    "/home/runner/work/neon-harbor/neon-harbor/source/authored/tools/native-review/methods/resident-extra/tools/capture-resident-extra.mjs",
+    "--mode",
+    "authored",
+    "--project-root",
+    "/home/runner/work/neon-harbor/neon-harbor/source/authored",
+    "--git-root",
+    "/home/runner/work/neon-harbor/neon-harbor/source/authored",
+    "--root",
+    "/home/runner/work/neon-harbor/neon-harbor/source/authored/dist",
+    "--output",
+    "/home/runner/work/neon-harbor/neon-harbor/native-evidence/resident-loop/native/authored",
+    "--port",
+    "5240",
+    "--case",
+    "resident-loop"
+  ],
+  "cwd": "/home/runner/work/neon-harbor/neon-harbor/source/authored",
+  "startedAt": "2026-10-05T02:10:10.867256+00:00",
+  "timeoutSeconds": 10920,
+  "outerWatchdogOnly": true,
+  "originalPlayableBudgetUnchanged": true,
+  "signals": [],
+  "ownedRunnerPid": 3434,
+  "launchRootIdentity": {
+    "pid": 3434,
+    "state": "R",
+    "ppid": 2704,
+    "pgid": 3434,
+    "session": 3434,
+    "startTicks": 30817,
+    "firstObservedAt": "2026-10-05T02:10:10.883617+00:00",
+    "lastObservedAt": "2026-10-05T02:10:10.883633+00:00",
+    "lastState": "R",
+    "pidfdBound": true,
+    "launchRoot": true
+  },
+  "launchRootBoundBeforeAnyPollWait": true,
+  "exitCode": 1,
+  "reportedBrowserProcessChecks": [
+    {
+      "pid": 3457,
+      "actualProcState": null,
+      "recordedPidAbsentOrZombie": true,
+      "observedIdentity": null
+    }
+  ],
+  "ownedProcesses": [
+    {
+      "pid": 3434,
+      "state": "R",
+      "ppid": 2704,
+      "pgid": 3434,
+      "session": 3434,
+      "startTicks": 30817,
+      "firstObservedAt": "2026-10-05T02:10:10.883617+00:00",
+      "lastObservedAt": "2026-10-05T02:12:23.051060+00:00",
+      "lastState": "Z",
+      "pidfdBound": true,
+      "launchRoot": true
+    },
+    {
+      "pid": 3446,
+      "state": "R",
+      "ppid": 3434,
+      "pgid": 3434,
+      "session": 3434,
+      "startTicks": 30821,
+      "firstObservedAt": "2026-10-05T02:10:11.149295+00:00",
+      "pidfdBound": true,
+      "lastState": "R",
+      "lastObservedAt": "2026-10-05T02:10:11.932097+00:00"
+    },
+    {
+      "pid": 3457,
+      "state": "R",
+      "ppid": 3434,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 30981,
+      "firstObservedAt": "2026-10-05T02:10:12.725730+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:22.793353+00:00"
+    },
+    {
+      "pid": 3459,
+      "state": "S",
+      "ppid": 3457,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 30984,
+      "firstObservedAt": "2026-10-05T02:10:12.744335+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:22.793378+00:00"
+    },
+    {
+      "pid": 3460,
+      "state": "S",
+      "ppid": 3457,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 30984,
+      "firstObservedAt": "2026-10-05T02:10:12.760585+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:22.793382+00:00"
+    },
+    {
+      "pid": 3477,
+      "state": "R",
+      "ppid": 3459,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 30986,
+      "firstObservedAt": "2026-10-05T02:10:12.772319+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:22.793395+00:00"
+    },
+    {
+      "pid": 3490,
+      "state": "S",
+      "ppid": 3457,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 31001,
+      "firstObservedAt": "2026-10-05T02:10:13.052652+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:22.793373+00:00"
+    },
+    {
+      "pid": 3503,
+      "state": "R",
+      "ppid": 3460,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 31006,
+      "firstObservedAt": "2026-10-05T02:10:13.070112+00:00",
+      "pidfdBound": true,
+      "lastState": "Z",
+      "lastObservedAt": "2026-10-05T02:12:22.793391+00:00"
+    },
+    {
+      "pid": 3509,
+      "state": "S",
+      "ppid": 3434,
+      "pgid": 3509,
+      "session": 3509,
+      "startTicks": 31008,
+      "firstObservedAt": "2026-10-05T02:10:13.100034+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:13.515800+00:00"
+    },
+    {
+      "pid": 3550,
+      "state": "S",
+      "ppid": 3457,
+      "pgid": 3457,
+      "session": 3457,
+      "startTicks": 32313,
+      "firstObservedAt": "2026-10-05T02:10:26.107633+00:00",
+      "pidfdBound": true,
+      "lastState": "S",
+      "lastObservedAt": "2026-10-05T02:12:22.793399+00:00"
+    }
+  ],
+  "remainingOwnedProcesses": [],
+  "ownedClosureConfirmed": true,
+  "portClosure": {
+    "port": 5240,
+    "connectErrno": 111,
+    "confirmedRefused": true
+  },
+  "finishedAt": "2026-10-05T02:12:23.079487+00:00"
+}
