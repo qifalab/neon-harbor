@@ -34,7 +34,7 @@ export class HarborLife {
     this.clock = { version: 1, epochTick: 0, absoluteHour: this.startHour };
     this.ticks = 0; this.accumulator = 0; this.revision = 0; this.serial = 0; this.orderSerial = 0;
     this.transactions = []; this.jobs = []; this.player = { earnedCash: 0, spentCash: 0, inventory: Object.fromEntries(PRODUCTS.map(p => [p, 0])), purchaseRequests: [], activeJobId: null, completed: 0 };
-    this.externalHour = null; this.consumedByProduct = Object.fromEntries(PRODUCTS.map(p => [p, 0]));
+    this.externalHour = null; this.roomAuthority = false; this.consumedByProduct = Object.fromEntries(PRODUCTS.map(p => [p, 0]));
     this.statistics = { purchases: 0, playerPurchases: 0, missedPurchases: 0, wages: 0, deliveries: 0, consumed: 0, boarded: 0, alighted: 0 };
     const building = id => {
       const found = buildings.find(b => b.id === id);
@@ -112,6 +112,7 @@ export class HarborLife {
   }
   _transfer(from, to, amount) { if (!integer(amount) || from.money < amount) return false; from.money -= amount; to.money += amount; return true; }
   _orders() {
+    if (this.roomAuthority) return;
     for (const shop of this.shops) {
       if (shop.stock > 4 || this.jobs.some(j => j.shopId === shop.id && ['available', 'picked-up'].includes(j.status))) continue;
       // There is no promised reward when the shop cannot fund it or the depot
@@ -129,6 +130,7 @@ export class HarborLife {
   }
   _canPickup(job) { const shop = this.shops.find(s => s.id === job.shopId); return job.status === 'available' && this.supply.stock[job.product] >= job.quantity && shop.money >= job.wholesale + job.reward; }
   _pickup(job, carrier) {
+    if (this.roomAuthority) return false;
     if (!this._canPickup(job) || job.carrierId && job.carrierId !== (carrier.id || 'player')) return false;
     if (carrier !== this.player && this.roleRoutines?.participates(carrier) && !this.roleRoutines.claim(this.supply.id, carrier.id)) return false;
     const shop = this.shops.find(s => s.id === job.shopId);
@@ -141,6 +143,7 @@ export class HarborLife {
     return true;
   }
   _deliver(job, carrier) {
+    if (this.roomAuthority) return false;
     if (job.status !== 'picked-up' || job.carrierId !== (carrier.id || 'player')) return false;
     if (carrier !== this.player && this.roleRoutines?.participates(carrier) && !this.roleRoutines.claim(job.shopId, carrier.id)) return false;
     const shop = this.shops.find(s => s.id === job.shopId), reward = job.escrow;
@@ -171,6 +174,7 @@ export class HarborLife {
   /** The game owns cash. This accounts for its actual incoming payment and
    * returns the one debit for the caller to apply, without creating a wallet. */
   buyPlayer(shopId, position, { cash, requestId } = {}) {
+    if (this.roomAuthority) return { handled: true, success: false, cashDelta: 0, reason: 'room-authority', message: '房间服务正在处理共享账本。' };
     const shop = this.shops.find(s => s.id === shopId);
     const fail = (reason, message) => ({ handled: true, success: false, cashDelta: 0, reason, message });
     if (!shop || position?.insideBuildingId || !near(position, shop.anchor)) return fail('not-at-shop', '请到实际柜台购买。');
@@ -394,6 +398,7 @@ export class HarborLife {
     }
   }
   _purchase(agent) {
+    if (this.roomAuthority) return;
     const shop = this.shops.find(s => s.id === agent.goal.id);
     if (!near(agent, shop.anchor)) return;
     if (agent.purchased[shop.product] === this.day) { agent.goal = null; this._chooseGoal(agent); return; }
@@ -407,6 +412,7 @@ export class HarborLife {
     agent.goal = null; this._chooseGoal(agent);
   }
   _wage(agent) {
+    if (this.roomAuthority) return;
     if (this.residentLoop?.owns(agent) || this.roleRoutines?.owns(agent)) return;
     const slot = Math.floor(this.absoluteHour);
     if (agent.lastWageSlot >= slot || !this._inShift(agent) || distance(agent, agent.work.anchor) > .4) return;
@@ -429,6 +435,7 @@ export class HarborLife {
       this.accumulator = Math.max(0, this.accumulator - HARBOR_LIFE_STEP); this.ticks++;
       this.roleRoutines?.pruneQueues();
       for (const agent of this.agents) {
+        if (this.roomAuthority && (this.residentLoop?.owns(agent) || this.roleRoutines?.owns(agent))) continue;
         if (this.residentLoop?.owns(agent)) { this.residentLoop.updateTick(vehicles); continue; }
         if (this.roleRoutines?.owns(agent)) { this.roleRoutines.updateTick(agent, vehicles); continue; }
         if (agent.transit && ['waiting', 'riding', 'boarding', 'alighting'].includes(agent.transit.phase)) { this._transit(agent, HARBOR_LIFE_STEP); continue; }
@@ -445,6 +452,26 @@ export class HarborLife {
     if (Math.abs(this.accumulator) < 1e-9) this.accumulator = 0;
   }
   getCollisionBodies(position, radius = 12) { return this.agents.filter(a => !a.insideBuildingId && a.phase !== 'riding' && distance(a, position) < radius).map(a => ({ id: a.id, x: a.x, z: a.z, y: a.y, groundY: a.y, radius: .43 })); }
+  setRoomAuthority(enabled = true) { this.roomAuthority = Boolean(enabled); return this.roomAuthority; }
+  /** Apply the finite shared ledger without accepting peer-authored resident
+   * routes or positions. This is used by the room client after each SSE frame. */
+  applyRoomEconomy(state) {
+    if (!state || state.schema !== 'neon-harbor/room-economy' || state.version !== 1) return false;
+    if (state.supply?.id !== this.supply.id || !Array.isArray(state.shops) || state.shops.length !== this.shops.length || !Array.isArray(state.jobs)) return false;
+    Object.assign(this.supply, copy(state.supply));
+    for (const shop of this.shops) { const next = state.shops.find(candidate => candidate.id === shop.id); if (!next) return false; Object.assign(shop, copy(next)); }
+    this.jobs = copy(state.jobs);
+    if (state.player) {
+      this.player.earnedCash = Number.isSafeInteger(state.player.earnedCash) ? state.player.earnedCash : this.player.earnedCash;
+      this.player.spentCash = Number.isSafeInteger(state.player.spentCash) ? state.player.spentCash : this.player.spentCash;
+      this.player.inventory = { ...this.player.inventory, ...copy(state.player.inventory || {}) };
+      this.player.activeJobId = state.player.activeJobId || null;
+    }
+    if (Number.isFinite(state.hour)) this.externalHour = wrap(state.hour, 24);
+    if (Array.isArray(state.transactions)) this.transactions = copy(state.transactions);
+    this.revision = Math.max(this.revision, Number.isSafeInteger(state.revision) ? state.revision : this.revision);
+    return true;
+  }
   trafficStopDistanceAt(car) {
     if (Math.abs(car.y || 0) > 2) return Infinity;
     let gap = Infinity;

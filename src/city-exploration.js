@@ -100,15 +100,24 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     const npc = people.getPrompt?.(simulation.player);
     return typeof npc === 'string' ? { kind: 'person', label: npc } : npc;
   }
-  function interact() {
+  function interact(options = {}) {
     if (simulation.inCar) return { handled: false };
     let result;
+    const authority = options?.economy;
+    const applyAuthority = value => {
+      if (!value) return false;
+      harborLife.applyRoomEconomy(value.economy || value);
+      const wallet = (value.economy || value).player?.cash;
+      if (Number.isSafeInteger(wallet)) simulation.cash = wallet;
+      if (value.result) { result = value.result; return true; }
+      return false;
+    };
     if (inside()) { result = interiors.interact(person()); if (!result.handled) result = people.interact?.(simulation.player); }
     else if (sampleTransit.getPrompt(person())) result = sampleTransit.interact(person());
-    else if (harborLife.getPrompt(person())?.kind === 'harbor-delivery') result = harborLife.interact(person(), { cash: simulation.cash });
+    else if (harborLife.getPrompt(person())?.kind === 'harbor-delivery') result = applyAuthority(authority) ? result : harborLife.interact(person(), { cash: simulation.cash });
     else if (transit.getPrompt(person())) result = transit.interact(person());
     else if (interiors.getPrompt(person())) result = interiors.interact(person());
-    else if (harborLife.getPrompt(person())) result = harborLife.interact(person(), { cash: simulation.cash });
+    else if (harborLife.getPrompt(person())) result = applyAuthority(authority) ? result : harborLife.interact(person(), { cash: simulation.cash });
     else result = people.interact?.(simulation.player);
     if (!result) return { handled: false };
     if (typeof result === 'string') result = { handled: true, message: result };
@@ -117,6 +126,12 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     message(result); syncContext(); applyTransition(result.transition);
     return result;
   }
+  function syncEconomy(state) {
+    const accepted = harborLife.applyRoomEconomy(state);
+    if (accepted && Number.isSafeInteger(state?.player?.cash)) simulation && (simulation.cash = state.player.cash);
+    return accepted;
+  }
+  function setEconomyAuthority(enabled) { return harborLife.setRoomAuthority(enabled); }
   function selectFloor(id) {
     const result = interiors.selectFloor(id);
     if (!result) return false;
@@ -271,6 +286,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       return enclosed;
     },
     setQuality(value) { south.setQuality(value); north.setQuality(value); infrastructure.setQuality(value); harbor.setQuality(value); sampleDistrict.setQuality(value); lifeRenderer.setQuality(value); people.setQuality(value); },
+    syncEconomy, setEconomyAuthority,
     snapshot() { return { interior: interiors.snapshot(), transit: transit.snapshot(), sample: { transit: sampleTransit.snapshot(), life: { ...harborLife.summary(), agents: harborLife.agents.map(a => ({ id: a.id, name: a.name, role: a.role, phase: a.phase, activity: a.activity, x: a.x, y: a.y, z: a.z, insideBuildingId: a.insideBuildingId, floorId: a.floorId, transit: a.transit })) }, district: sampleDistrict.snapshot(), renderer: lifeRenderer.snapshot() }, infrastructure: infrastructure.metadata, harbor: harbor.snapshot(), people: people.snapshot(), buildings, exterior: { southInteriorId: south.interiorBuildingId, harborInteriorId: harbor.snapshot().interiorBuildingId }, streaming: north.streamingStats,
       renderVisibility: { outdoor: root.visible, transit: transit.root.visible }, streetLighting: north.streetLightingStats }; },
   };

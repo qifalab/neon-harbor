@@ -7,6 +7,7 @@ import { GameSimulation } from '../src/simulation.js';
 import { infrastructureGroundHeightAt } from '../src/metropolis-infrastructure.js';
 import { harborTerrainGroundHeightAt } from '../src/harbor-terrain.js';
 import { northernVehicles } from '../src/traffic.js';
+import { MultiplayerEconomy } from '../src/multiplayer-economy.js';
 import { ROOM_PROTOCOL, ROOM_WORLD, MAX_PLAYERS, cleanRoomCode, cleanName, cleanPose } from '../src/multiplayer-protocol.js';
 const code=()=>randomBytes(4).toString('hex').slice(0,6).toUpperCase();
 // Preserve reachable raised roads before the eastern terrain fallback. A
@@ -25,7 +26,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
   function newRoom(roomCode){
     const sim=new GameSimulation({bounds:1800,groundHeightAt:multiplayerGroundHeightAt});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
     Object.assign(sim.player,{x:1400,z:1400});
-    const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0};rooms.set(roomCode,room);return room;
+    const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0,economy:new MultiplayerEconomy()};rooms.set(roomCode,room);return room;
   }
   function remove(session){
     const room=session.room;if(session.carId)release(session);session.stream?.end();sessions.delete(session.token);room.players.delete(session.id);
@@ -37,9 +38,9 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
     if(car){car.speed=0;car.vx=0;car.vz=0;car.traffic=false;}
     session.room.owners.delete(session.carId);session.room.sim.networkControlled.delete(session.carId);session.carId=null;
   }
-  function snapshot(room){return {protocol:ROOM_PROTOCOL,world:ROOM_WORLD,code:room.code,seq:++room.seq,time:room.sim.elapsed,
+  function snapshot(room,viewer=null,{advance=true}={}){if(advance)room.seq++;room.economy.setHour((16.5+room.sim.elapsed/35)%24);return {protocol:ROOM_PROTOCOL,world:ROOM_WORLD,code:room.code,seq:room.seq,time:room.sim.elapsed,
     players:[...room.players.values()].map(s=>({id:s.id,name:s.name,...s.pose,scene:s.scene,carId:s.carId})),
-    cars:room.sim.cars.filter(c=>c.health>0).map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,pitch:c.pitch||0,roll:c.roll||0,owner:room.owners.get(c.id)||null,traffic:!!c.traffic,waypoint:c.waypoint})),chat:room.chat};}
+    cars:room.sim.cars.filter(c=>c.health>0).map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,pitch:c.pitch||0,roll:c.roll||0,owner:room.owners.get(c.id)||null,traffic:!!c.traffic,waypoint:c.waypoint})),chat:room.chat,economy:room.economy.snapshot(viewer?.id || room.players.keys().next().value || 'anonymous')};}
   server.on('request',async(req,res)=>{
     const url=new URL(req.url,'http://localhost');
     if(!url.pathname.startsWith('/api/'))return staticHandler(req,res);
@@ -69,16 +70,18 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
         const pose=cleanPose(input.pose)||{x:8,y:0,z:174,yaw:Math.PI};
         const session={id:randomUUID(),token:randomBytes(32).toString('hex'),name:cleanName(input.name),pose,scene:'outdoor',room,carId:null,lastSeen:now(),lastState:0,stream:null};
         sessions.set(session.token,session);room.players.set(session.id,session);
-        return reply(res,200,{id:session.id,token:session.token,...snapshot(room)});
+        return reply(res,200,{id:session.id,token:session.token,...snapshot(room,session)});
       }
       const token=req.method==='GET'?url.searchParams.get('token'):req.headers.authorization?.replace(/^Bearer /,'');
       const session=sessions.get(token);if(!session)return reply(res,401,{error:'SESSION_EXPIRED'});
       if(url.pathname==='/api/events'&&req.method==='GET'){
         session.stream?.end();session.stream=res;session.closedAt=null;session.lastSeen=now();
         res.writeHead(200,{'Content-Type':'text/event-stream','Cache-Control':'no-cache, no-transform',Connection:'keep-alive','X-Accel-Buffering':'no'});
-        res.write(`retry: 1000\ndata: ${JSON.stringify(snapshot(session.room))}\n\n`);
+        res.write(`retry: 1000\ndata: ${JSON.stringify(snapshot(session.room,session))}\n\n`);
         req.on('close',()=>{if(session.stream===res){session.stream=null;session.closedAt=now();}});return;
       }
+      if(url.pathname==='/api/economy'&&req.method==='GET')
+        return reply(res,200,{ok:true,economy:session.room.economy.snapshot(session.id)});
       if(req.method!=='POST')return reply(res,405,{error:'METHOD_NOT_ALLOWED'});
       const input=await body(req);session.lastSeen=now();
       if(url.pathname==='/api/state'){
@@ -97,6 +100,10 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
           else {const speed=Math.max(-12,Math.min(45,Number.isFinite(input.speed)?input.speed:0));Object.assign(car,pose,{speed,vx:Math.sin(pose.yaw)*speed,vz:Math.cos(pose.yaw)*speed});}
         }
         return reply(res,200,{ok:true});
+      }
+      if(url.pathname==='/api/economy'&&req.method==='POST'){
+        const result=session.room.economy.action(session.id,{...input,scene:session.scene,position:session.pose});
+        return reply(res,result.success?200:409,{ok:result.success,error:result.success?undefined:result.reason,result,economy:session.room.economy.snapshot(session.id)});
       }
       if(url.pathname==='/api/claim'){
         const car=session.room.sim.cars.find(car=>car.id===input.carId),owner=session.room.owners.get(input.carId);
@@ -120,7 +127,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
   const timer=setInterval(()=>{
     for(const room of rooms.values()){
       room.sim.update(1/30);
-      if(ticks%3===0){const packet=`data: ${JSON.stringify(snapshot(room))}\n\n`;for(const s of room.players.values())if(s.stream&&!s.stream.writableEnded){if(s.stream.writableLength>256000){s.stream.destroy();continue;}s.stream.write(packet);}}
+      if(ticks%3===0){room.seq++;for(const s of room.players.values())if(s.stream&&!s.stream.writableEnded){if(s.stream.writableLength>256000){s.stream.destroy();continue;}s.stream.write(`data: ${JSON.stringify(snapshot(room,s,{advance:false}))}\n\n`);}}
     }
     for(const s of sessions.values())if((!s.stream&&now()-s.lastSeen>20000)||(s.closedAt&&now()-s.closedAt>2500))remove(s);
     if(ticks++%900===0)for(const [ip,rate] of joinRates)if(now()-rate.start>60000)joinRates.delete(ip);

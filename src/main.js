@@ -37,7 +37,7 @@ let prepareRevision=0,worldPreparing=false,lastStreamFailures=0,startupPhase='gr
 const cameraRig=new ChaseCamera();
 const peerMeshes=new Map();
 let roomRevision=0,roomInteracting=false;
-const multiplayer=new MultiplayerClient({onStatus:status=>{if(sim){if(status==='offline'&&scene)updatePeers(0);sim.networkControlled=status==='offline'?null:new Set(world.vehicles.map(c=>c.id).filter(id=>id!==sim.inCar));}if($('multiplayer'))$('multiplayer').textContent=status==='offline'?'多人':status==='connected'?'房间 '+(multiplayer.session?.code||''):'重连中';},onSnapshot:()=>{refreshMultiplayerMenu(multiplayer);if(scene&&sim)updatePeers(0);}});
+const multiplayer=new MultiplayerClient({onStatus:status=>{if(sim){if(status==='offline'&&scene){world?.setEconomyAuthority?.(false);updatePeers(0);}sim.networkControlled=status==='offline'?null:new Set(world.vehicles.map(c=>c.id).filter(id=>id!==sim.inCar));}if($('multiplayer'))$('multiplayer').textContent=status==='offline'?'多人':status==='connected'?'房间 '+(multiplayer.session?.code||''):'重连中';},onSnapshot:snapshot=>{world?.syncEconomy?.(snapshot.economy);refreshMultiplayerMenu(multiplayer);if(scene&&sim)updatePeers(0);}});
 const carMeshes=new Map(),keys=new Set(),touchHeld=new Set(),walkers=[],audio=new CityAudio();
 const sunTarget=new THREE.Object3D(),sunOffset=new THREE.Vector3(),sunRight=new THREE.Vector3(),sunUp=new THREE.Vector3(),worldUp=new THREE.Vector3(0,1,0);
 const panel=$('panel'),mapCanvas=$('minimap'),mapContext=mapCanvas.getContext('2d');
@@ -100,7 +100,23 @@ function toggleView(){
 async function action(name){
   if(!started||paused)return;
   if(name==='view')toggleView();
-  if(name==='interact'){const result=world.interact();if(result.elevator)openPanel('elevator');if(result.transition){resetPresentation();updateHUD();}if(!result.handled){if(multiplayer.session){if(roomInteracting)return;roomInteracting=true;try{if(sim.inCar){if(sim.interact()){resetPresentation();await multiplayer.release();}}else if(sim.nearestCar){const carId=sim.nearestCar.id;await multiplayer.claim(carId);if(sim.nearestCar?.id===carId&&sim.interact())resetPresentation();else await multiplayer.release();}}catch(error){toast(error.message,'warning');}finally{roomInteracting=false;}}else if(sim.interact())resetPresentation();}}if(name==='fire'&&!world.isInside&&!world.riding)sim.fire();if(name==='reload')reload();drainMessages();
+  if(name==='interact'){
+    let authority=null;
+    if(multiplayer.session&&!sim.inCar){
+      const prompt=world.getPrompt?.();
+      if(prompt?.kind==='harbor-shop'||prompt?.kind==='harbor-delivery'){
+        try{
+          const delivery=prompt.kind==='harbor-delivery';
+          const active=world.sample?.life?.activeDelivery;
+          authority=await multiplayer.economy({type:delivery?(active?'delivery-complete':'delivery-accept'):'purchase',shopId:prompt.shopId,jobId:prompt.jobId,requestId:delivery?undefined:`room-buy-${Date.now()}-${Math.random().toString(36).slice(2)}`});
+        }catch(error){toast(error.message,'warning');return;}
+      }
+    }
+    const result=world.interact(authority?{economy:authority}:{});
+    if(result.elevator)openPanel('elevator');if(result.transition){resetPresentation();updateHUD();}
+    if(!result.handled){if(multiplayer.session){if(roomInteracting)return;roomInteracting=true;try{if(sim.inCar){if(sim.interact()){resetPresentation();await multiplayer.release();}}else if(sim.nearestCar){const carId=sim.nearestCar.id;await multiplayer.claim(carId);if(sim.nearestCar?.id===carId&&sim.interact())resetPresentation();else await multiplayer.release();}}catch(error){toast(error.message,'warning');}finally{roomInteracting=false;}}else if(sim.interact())resetPresentation();}
+  }
+  if(name==='fire'&&!world.isInside&&!world.riding)sim.fire();if(name==='reload')reload();drainMessages();
 }
 
 /** Interface only translates input. All mission/physics state lives in simulation.js. */
@@ -165,7 +181,7 @@ function renderPanel(){
   document.querySelectorAll('[data-tab]').forEach(n=>n.classList.toggle('active',n.dataset.tab===activeTab));
   const content=$('panel-content');
   if(activeTab==='multiplayer'){
-    renderMultiplayerMenu(content,multiplayer,{refresh:()=>refreshMultiplayerMenu(multiplayer),join:async options=>{if(sim.inCar&&!sim.interact())throw new Error('请先停车并下车，再加入房间。');await multiplayer.join({...options,pose:{x:sim.player.x,y:sim.player.groundY+sim.player.y,z:sim.player.z,yaw:sim.player.yaw}});roomRevision=sim.teleportRevision;if(!started)await enterCity();renderPanel();closePanel();toast('已加入房间 '+multiplayer.session.code+'，把房间码发给朋友即可。');},leave:async()=>{await multiplayer.leave();if(sim.activeVehicle){sim.activeVehicle.traffic=false;sim.activeVehicle.speed=0;sim.activeVehicle.vx=0;sim.activeVehicle.vz=0;sim.interact();}sim.networkControlled=null;renderPanel();resetPresentation();toast('已离开房间，继续单人探索。');}});
+    renderMultiplayerMenu(content,multiplayer,{refresh:()=>refreshMultiplayerMenu(multiplayer),join:async options=>{if(sim.inCar&&!sim.interact())throw new Error('请先停车并下车，再加入房间。');await multiplayer.join({...options,pose:{x:sim.player.x,y:sim.player.groundY+sim.player.y,z:sim.player.z,yaw:sim.player.yaw}});world.setEconomyAuthority?.(true);world.syncEconomy?.(multiplayer.snapshot?.economy);roomRevision=sim.teleportRevision;if(!started)await enterCity();renderPanel();closePanel();toast('已加入房间 '+multiplayer.session.code+'，共享库存、购物和配送由房间服务处理。');},leave:async()=>{await multiplayer.leave();world.setEconomyAuthority?.(false);if(sim.activeVehicle){sim.activeVehicle.traffic=false;sim.activeVehicle.speed=0;sim.activeVehicle.vx=0;sim.activeVehicle.vz=0;sim.interact();}sim.networkControlled=null;renderPanel();resetPresentation();toast('已离开房间，继续单人探索。');}});
   }else if(activeTab==='explore'){
     renderCityGuide(content,world,async(destination)=>{const buttons=[...content.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);try{if(!started)await enterCity();paused=true;cleanInput();if(await world.travelTo(destination)){if(destination.kind==='metro')cameraPitch=.4;else if(destination.kind==='viewpoint')cameraPitch=-.06;else cameraPitch=settings.firstPerson?.15:.28;resetPresentation();closePanel();updateHUD();}}catch(error){console.error(error);toast('目的地暂时不可用，请稍后重试。','warning');}finally{buttons.forEach(b=>b.disabled=false);}drainMessages();});
   }else if(activeTab==='elevator'){

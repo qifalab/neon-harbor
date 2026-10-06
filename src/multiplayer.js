@@ -1,5 +1,5 @@
 import { ROOM_PROTOCOL, ROOM_WORLD, PeerSnapshots } from './multiplayer-protocol.js';
-const messages={WORLD_MISMATCH:'游戏和房间版本不同，请刷新后重试。',ROOM_NOT_FOUND:'没有找到这个房间，请核对房间码。',ROOM_FULL:'房间已满，请换一个房间。',VEHICLE_TAKEN:'这辆车已有其他玩家驾驶。',VEHICLE_TOO_FAR:'请靠近停稳的车辆。',RATE_LIMIT:'操作太快，请稍后再试。',ORIGIN_DENIED:'这个房间服务尚未允许当前游戏网址连接。',SESSION_EXPIRED:'连接已结束，请重新加入房间。'};
+const messages={WORLD_MISMATCH:'游戏和房间版本不同，请刷新后重试。',ROOM_NOT_FOUND:'没有找到这个房间，请核对房间码。',ROOM_FULL:'房间已满，请换一个房间。',VEHICLE_TAKEN:'这辆车已有其他玩家驾驶。',VEHICLE_TOO_FAR:'请靠近停稳的车辆。',RATE_LIMIT:'操作太快，请稍后再试。',ORIGIN_DENIED:'这个房间服务尚未允许当前游戏网址连接。',SESSION_EXPIRED:'连接已结束，请重新加入房间。',INSUFFICIENT_CASH:'房间钱包余额不足。',OUT_OF_STOCK:'这件商品已售罄。',ACTIVE_DELIVERY:'请先完成手上的配送。',UNAVAILABLE:'这张配送单已经被领取。',ALREADY_PURCHASED:'这一笔购买已经处理。',NOT_OUTDOOR:'请在街区柜台或货栈处理房间经济。'};
 export class MultiplayerClient{
   constructor({onStatus=()=>{},onSnapshot=()=>{}}={}){this.onStatus=onStatus;this.onSnapshot=onSnapshot;this.peers=new PeerSnapshots();this.status='offline';this.epoch=0;}
   get connected(){return this.status==='connected';}
@@ -78,6 +78,11 @@ export class MultiplayerClient{
   }
   async release(){return this.request('release',{});}
   async chat(text){return this.request('chat',{text});}
+  async economy(action){
+    const result=await this.request('economy',action);
+    if(result.economy)this.receive({...this.snapshot,economy:result.economy});
+    return result;
+  }
   async leave(){
     ++this.epoch;clearInterval(this.timer);clearTimeout(this.failureTimer);this.failureTimer=null;this.source?.close();this.source=null;
     const session=this.session;this.session=null;this.snapshot=null;this.pendingState=null;this.nextTravelTime=0;this.stateRequest=null;this.sending=false;this.peers=new PeerSnapshots();this.setStatus('offline');

@@ -53,3 +53,32 @@ test('room capacity is enforced and peer interpolation follows shortest angles w
   assert.equal(frames.sample(150)[0].x,1);assert.ok(Math.abs(frames.sample(150)[0].yaw)>3);
   frames.push({players:[{id:'a',x:200,y:20,z:0,yaw:0,scene:'interior:x'}]},200);assert.equal(frames.sample(210)[0].x,200);
 });
+
+test('room economy owns a finite shop ledger, idempotent purchase, and shared delivery stock', async t => {
+  const { post } = await fixture(t);
+  const shopPose = { x: 225.3, y: 0, z: 187, yaw: 0 };
+  const a = await post('join', { ...world, name: 'buyer', pose: shopPose });
+  const b = await post('join', { ...world, name: 'observer', code: a.code, pose: shopPose });
+  assert.equal(a.economy.schema, 'neon-harbor/room-economy');
+  const shop = a.economy.shops.find(candidate => candidate.id === 'harbor-produce');
+  assert.equal(shop.stock, 4);
+  const purchase = await post('economy', { type: 'purchase', shopId: shop.id, requestId: 'test-purchase-1' }, a.token);
+  assert.equal(purchase.status, 200); assert.equal(purchase.result.success, true);
+  assert.equal(purchase.economy.player.cash, 1194); assert.equal(purchase.economy.shops.find(candidate => candidate.id === shop.id).stock, 3);
+  const duplicate = await post('economy', { type: 'purchase', shopId: shop.id, requestId: 'test-purchase-1' }, a.token);
+  assert.equal(duplicate.status, 409); assert.equal(duplicate.error, 'already-purchased');
+  const observer = await post('economy', {}, b.token);
+  assert.equal(observer.economy.shops.find(candidate => candidate.id === shop.id).stock, 3);
+  const order = purchase.economy.jobs.find(candidate => candidate.shopId === shop.id && candidate.status === 'available');
+  assert.ok(order, 'purchase creates a funded finite delivery order');
+  assert.equal((await post('state', { pose: { x: 193.5, y: 0, z: 120.2, yaw: 0 }, travel: true }, a.token)).status, 200);
+  const pickup = await post('economy', { type: 'delivery-accept', jobId: order.id }, a.token);
+  assert.equal(pickup.status, 200); assert.equal(pickup.result.success, true);
+  await new Promise(resolve => setTimeout(resolve, 1050));
+  assert.equal((await post('state', { pose: shopPose, travel: true }, a.token)).status, 200);
+  const delivery = await post('economy', { type: 'delivery-complete' }, a.token);
+  assert.equal(delivery.status, 200); assert.equal(delivery.result.cashDelta, 12); assert.equal(delivery.economy.player.cash, 1206);
+  const shared = await post('economy', {}, b.token);
+  assert.equal(shared.economy.shops.find(candidate => candidate.id === shop.id).stock, 11);
+  assert.equal(shared.economy.jobs.find(candidate => candidate.id === order.id).status, 'delivered');
+});
