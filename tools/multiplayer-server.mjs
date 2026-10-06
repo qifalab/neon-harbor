@@ -80,8 +80,10 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
         res.write(`retry: 1000\ndata: ${JSON.stringify(snapshot(session.room,session))}\n\n`);
         req.on('close',()=>{if(session.stream===res){session.stream=null;session.closedAt=now();}});return;
       }
-      if(url.pathname==='/api/economy'&&req.method==='GET')
+      if(url.pathname==='/api/economy'&&req.method==='GET'){
+        session.room.economy.setHour((16.5+session.room.sim.elapsed/35)%24);
         return reply(res,200,{ok:true,economy:session.room.economy.snapshot(session.id)});
+      }
       if(req.method!=='POST')return reply(res,405,{error:'METHOD_NOT_ALLOWED'});
       const input=await body(req);session.lastSeen=now();
       if(url.pathname==='/api/state'){
@@ -102,6 +104,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
         return reply(res,200,{ok:true});
       }
       if(url.pathname==='/api/economy'&&req.method==='POST'){
+        session.room.economy.setHour((16.5+session.room.sim.elapsed/35)%24);
         const result=session.room.economy.action(session.id,{...input,scene:session.scene,position:session.pose});
         return reply(res,result.success?200:409,{ok:result.success,error:result.success?undefined:result.reason,result,economy:session.room.economy.snapshot(session.id)});
       }
