@@ -52,7 +52,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
       res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');
     }
     if(req.method==='OPTIONS'){res.writeHead(204,{'Access-Control-Allow-Methods':'GET, POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Authorization','Access-Control-Max-Age':'600'});return res.end();}
-    if(url.pathname==='/api/health'&&req.method==='GET')return reply(res,200,{ok:true,protocol:ROOM_PROTOCOL,world:ROOM_WORLD,maxPlayers:MAX_PLAYERS});
+    if(url.pathname==='/api/health'&&req.method==='GET')return reply(res,200,{ok:true,protocol:ROOM_PROTOCOL,world:ROOM_WORLD,economy:'neon-harbor/room-economy',maxPlayers:MAX_PLAYERS});
     try{
       if(url.pathname==='/api/join'&&req.method==='POST'){
         const input=await body(req);
