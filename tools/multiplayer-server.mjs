@@ -29,7 +29,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
     const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0,economy:new MultiplayerEconomy()};rooms.set(roomCode,room);return room;
   }
   function remove(session){
-    const room=session.room;if(session.carId)release(session);session.stream?.end();sessions.delete(session.token);room.players.delete(session.id);
+    const room=session.room;if(session.carId)release(session);session.stream?.end();sessions.delete(session.token);room.players.delete(session.id);room.economy.leave(session.id);
     if(!room.players.size)rooms.delete(room.code);
   }
   function release(session){
