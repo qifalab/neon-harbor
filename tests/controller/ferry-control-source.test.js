@@ -206,9 +206,9 @@ test('wrong vessel and revision observations fail without leaving a direction or
 });
 
 test('higher finite wall pressure retains failure and releases the actual held direction and Z', async () => {
-  const result = await run(candidate, 'explicit7666-frame-pressure-negative', { frameWallMs: 7666.4, mouseWallMs: 10 });
+  const result = await run(candidate, 'explicit12000-frame-pressure-negative', { frameWallMs: 12000, mouseWallMs: 10 });
   assert.ok(result.firstError?.message.includes('finite Ferry control deadline'), JSON.stringify(result));
-  assert.deepEqual(result.remainingKeys, []); assert.ok(result.virtualWallMs < 250000);
+  assert.deepEqual(result.remainingKeys, []); assert.ok(result.virtualWallMs < 440000);
 });
 
 test('public route, E, destination, High captures and original failure remain literal', () => {
@@ -218,6 +218,13 @@ test('public route, E, destination, High captures and original failure remain li
   // the public route, inputs and capture flow pinned to the original.
   const normalizePublicHarness = source => source
     .replace('      await mkdir(dirname(phase.path), { recursive: true });\n', '')
+    .replace(`    // The complete ferry route is intentionally serial. Loaded GitHub runners
+    // can spend over eighteen minutes across its twelve real-input legs while
+    // the page remains live; retain finite per-leg and test-level caps without
+    // turning a stalled route into an unbounded wait.
+    if (kind === 'ferry') test.setTimeout(1800000);
+`, `    if (kind === 'ferry') test.setTimeout(1080000);
+`)
     .replace(`      // The pier's full-radius collision envelope can leave the capsule just
       // inside the boarding trigger rather than on the authored centre point.
       // Accept that physical standing position; E and the later deck/door

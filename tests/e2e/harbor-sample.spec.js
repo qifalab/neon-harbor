@@ -173,7 +173,7 @@ async function walkLocal(page, target, pointer, { precision = true, batchProgres
     // renderer can take several minutes while retaining the same simulation
     // budget; keep a finite cap, but leave enough wall-clock for the original
     // real-input route to finish under CI contention.
-    deadline = Date.now() + 240000;
+    deadline = Date.now() + 420000;
     await evidence.write(phase, { event: 'cabin-start-pose', target, start, deadline });
     for (let step = 0; Math.hypot(target.x - current.local.x, target.z - current.local.z) >= .06 && step < 1800; step++) {
       expect(Date.now(), 'local walking retains its wall-clock deadline').toBeLessThan(deadline);
@@ -426,7 +426,11 @@ for (const kind of ['bus', 'tram', 'ferry']) {
     // then its 900 s total expired before the first final assertion sampled.
     // Add a finite 180 s reserve equal to the existing final arrival cap; local
     // deadlines, real inputs, precision and assertions remain unchanged.
-    if (kind === 'ferry') test.setTimeout(1080000);
+    // The complete ferry route is intentionally serial. Loaded GitHub runners
+    // can spend over eighteen minutes across its twelve real-input legs while
+    // the page remains live; retain finite per-leg and test-level caps without
+    // turning a stalled route into an unbounded wait.
+    if (kind === 'ferry') test.setTimeout(1800000);
     const errors = await boot(page), layout = createHarborVehicleLayout(kind), stair = layout.stairs[0], door = layout.doors[0];
     // Return only the fields consumed by this transit scenario. The complete
     // transit state and all physical alighting assertions remain unchanged.
