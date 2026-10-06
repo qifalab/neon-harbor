@@ -37,7 +37,7 @@ let prepareRevision=0,worldPreparing=false,lastStreamFailures=0,startupPhase='gr
 const cameraRig=new ChaseCamera();
 const peerMeshes=new Map();
 let roomRevision=0,roomInteracting=false;
-const multiplayer=new MultiplayerClient({onStatus:status=>{if(sim){if(status==='offline'&&scene){world?.setEconomyAuthority?.(false);updatePeers(0);}sim.networkControlled=status==='offline'?null:new Set(world.vehicles.map(c=>c.id).filter(id=>id!==sim.inCar));}if($('multiplayer'))$('multiplayer').textContent=status==='offline'?'多人':status==='connected'?'房间 '+(multiplayer.session?.code||''):'重连中';},onSnapshot:snapshot=>{world?.syncEconomy?.(snapshot.economy);refreshMultiplayerMenu(multiplayer);if(scene&&sim)updatePeers(0);}});
+const multiplayer=new MultiplayerClient({onStatus:status=>{if(sim){if(status==='offline'&&scene){world?.setEconomyAuthority?.(false);updatePeers(0);}sim.networkControlled=status==='offline'?null:new Set(world.vehicles.map(c=>c.id).filter(id=>id!==sim.inCar));}if($('multiplayer'))$('multiplayer').textContent=status==='offline'?'多人':status==='connected'?'房间 '+(multiplayer.session?.code||''):'重连中';},onSnapshot:snapshot=>{if(world?.economyAuthority)world.syncEconomy?.(snapshot.economy);refreshMultiplayerMenu(multiplayer);if(scene&&sim)updatePeers(0);}});
 const carMeshes=new Map(),keys=new Set(),touchHeld=new Set(),walkers=[],audio=new CityAudio();
 const sunTarget=new THREE.Object3D(),sunOffset=new THREE.Vector3(),sunRight=new THREE.Vector3(),sunUp=new THREE.Vector3(),worldUp=new THREE.Vector3(0,1,0);
 const panel=$('panel'),mapCanvas=$('minimap'),mapContext=mapCanvas.getContext('2d');

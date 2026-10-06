@@ -237,7 +237,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       simulation.trafficStopDistanceAt = car => Math.min(people.journeys.trafficStopDistanceAt(car), harborLife.trafficStopDistanceAt(car), sampleTransit.trafficStopDistanceAt(car));
       syncContext(true);
     },
-    get activeContext() { return context; }, get isInside() { return inside(); },
+    get activeContext() { return context; }, get isInside() { return inside(); }, get economyAuthority() { return harborLife.roomAuthority; },
     get riding() { return sampleTransit.passengerPose || transit.passengerPose; },
     getPrompt, interact, selectFloor, applyTransition, travelTo, safeSave, step,
     prepare: p => prepare(p), retry: p => prepare(p, true),

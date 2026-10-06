@@ -34,7 +34,7 @@ export class HarborLife {
     this.clock = { version: 1, epochTick: 0, absoluteHour: this.startHour };
     this.ticks = 0; this.accumulator = 0; this.revision = 0; this.serial = 0; this.orderSerial = 0;
     this.transactions = []; this.jobs = []; this.player = { earnedCash: 0, spentCash: 0, inventory: Object.fromEntries(PRODUCTS.map(p => [p, 0])), purchaseRequests: [], activeJobId: null, completed: 0 };
-    this.externalHour = null; this.roomAuthority = false; this.consumedByProduct = Object.fromEntries(PRODUCTS.map(p => [p, 0]));
+    this.externalHour = null; this.roomAuthority = false; this._roomLocalSnapshot = null; this.consumedByProduct = Object.fromEntries(PRODUCTS.map(p => [p, 0]));
     this.statistics = { purchases: 0, playerPurchases: 0, missedPurchases: 0, wages: 0, deliveries: 0, consumed: 0, boarded: 0, alighted: 0 };
     const building = id => {
       const found = buildings.find(b => b.id === id);
@@ -452,7 +452,15 @@ export class HarborLife {
     if (Math.abs(this.accumulator) < 1e-9) this.accumulator = 0;
   }
   getCollisionBodies(position, radius = 12) { return this.agents.filter(a => !a.insideBuildingId && a.phase !== 'riding' && distance(a, position) < radius).map(a => ({ id: a.id, x: a.x, z: a.z, y: a.y, groundY: a.y, radius: .43 })); }
-  setRoomAuthority(enabled = true) { this.roomAuthority = Boolean(enabled); return this.roomAuthority; }
+  setRoomAuthority(enabled = true) {
+    enabled = Boolean(enabled);
+    if (enabled === this.roomAuthority) return enabled;
+    if (enabled) { this._roomLocalSnapshot = this.snapshot(); this.roomAuthority = true; return true; }
+    this.roomAuthority = false;
+    const restore = this._roomLocalSnapshot; this._roomLocalSnapshot = null;
+    if (restore) this.restore(restore);
+    return false;
+  }
   /** Apply the finite shared ledger without accepting peer-authored resident
    * routes or positions. This is used by the room client after each SSE frame. */
   applyRoomEconomy(state) {
