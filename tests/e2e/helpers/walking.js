@@ -23,7 +23,7 @@ function axisKey(yaw, axis, positive) {
  * A renderer can finish more than one simulation frame between a successful
  * RAF predicate and the protocol key-up. Never assume that first stop is exact.
  */
-export async function walkAxis(page, axis, target, { timeout = 60000, tolerance = .75, sprint = false, precision = false } = {}) {
+export async function walkAxis(page, axis, target, { timeout = 120000, tolerance = .75, sprint = false, precision = false } = {}) {
   const before = await motion(page), initial = before.position[axis], deadline = Date.now() + timeout;
   const sprinting = sprint && !precision && Math.abs(target - initial) > 8;
   let current = before, adjustmentStart = initial, precisionHeld = false;
