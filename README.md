@@ -1,6 +1,6 @@
 # 霓港 · Neon Harbor
 
-本仓库当前以 `codex/harbor-v08-world-sample-arrival-integration-20261005` 保存 **v0.8 港湾样板开发预览**。该分支已完成采集协议修正、214 项运行资源绑定和公开单机体验；合入 `main` 后会经过完整 CI 与 Pages 实际加载核验再上线。完整港湾的原生美术、连续生活路线和真实硬件性能仍按验收表推进，不能把规则数量或局部截图当作商业 3A 完成。交接背景见[2026-10-05交接](docs/HANDOFF_2026-10-05.md)。
+本仓库当前以 `main` 和 `codex/harbor-v08-world-sample-arrival-integration-20261005` 保存 **v0.8 港湾样板开发预览**。该版本已完成采集协议修正、214 项运行资源绑定和公开单机体验；Pages 会在完整 CI 与实际加载核验通过后更新站点。完整港湾的原生美术、连续生活路线和真实硬件性能仍按验收表推进，不能把规则数量或局部截图当作商业 3A 完成。交接背景见[2026-10-05交接](docs/HANDOFF_2026-10-05.md)。
 
 [在线试玩单机版](https://neon-harbor.qifalab.cd.mba) · [开源仓库与下载](https://github.com/qifalab/neon-harbor) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
 
