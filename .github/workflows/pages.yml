@@ -1,7 +1,11 @@
 name: GitHub Pages
 
 on:
-  # Publish the selected revision only after the full verification pipeline.
+  # Publish main only after the full verification pipeline. Keep manual dispatch
+  # for a pinned ref when a release needs an explicit review.
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:

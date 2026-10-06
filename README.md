@@ -1,18 +1,18 @@
 # 霓港 · Neon Harbor
 
-本轮按用户要求停止新增制作、GPU采集和流程修复，以独立分支`codex/harbor-v08-world-sample-arrival-integration-20261005`保存包括未完成工作；实际交接commit以该分支`git rev-parse HEAD`及GitHub分支指针为准，收尾结果由最终回复给出。不合入main、不打发布tag、不部署Pages，v0.8未上线，公开仍v0.7。完整港湾／AAA未完成；native expected runtime字典仍旧208项而实际构建214项，归档脚本含旧绝对路径，须接手后更新／重绑，不能直接当ready运行。 接手主入口：[2026-10-05交接](docs/HANDOFF_2026-10-05.md)。
+本仓库当前以 `codex/harbor-v08-world-sample-arrival-integration-20261005` 保存 **v0.8 港湾样板开发预览**。该分支已完成采集协议修正、214 项运行资源绑定和公开单机体验；合入 `main` 后会经过完整 CI 与 Pages 实际加载核验再上线。完整港湾的原生美术、连续生活路线和真实硬件性能仍按验收表推进，不能把规则数量或局部截图当作商业 3A 完成。交接背景见[2026-10-05交接](docs/HANDOFF_2026-10-05.md)。
 
-[在线试玩单机版](https://neon-harbor.qifalab.cd.mba) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
+[在线试玩单机版](https://neon-harbor.qifalab.cd.mba) · [开源仓库与下载](https://github.com/qifalab/neon-harbor) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
 
 一款可直接在浏览器运行的原创 3D 海滨城市游戏。步行探索街区、驾驶车辆，穿过跨海桥，乘地铁与渡轮，走进三岸的房间、连续楼梯、电梯与观景空间。
 
-记录日期：2026-10-05，收尾事实截至 2026-10-05 15:27 UTC。**v0.8 是尚未发布的开发预览；完整高品质港湾样板继续在制，公开试玩仍为 v0.7。** 实际线上版本以 [`build-info.json`](https://neon-harbor.qifalab.cd.mba/build-info.json) 和部署记录为准。
+记录日期：2026-10-06。**v0.8 是可游玩的开发预览；Pages 仅承载单机客户端，开源仓库保留本地与内网多人服务。** 实际线上版本以 [`build-info.json`](https://neon-harbor.qifalab.cd.mba/build-info.json) 和部署记录为准。
 
 用户选择先完成完整港湾样板：高品质街景、双层巴士、小轮、街轨车及居民日常，再逐区扩展具有香港式密度、坡地、海湾与外岛气质的原创城市。所有游戏地名、站名和商号使用原创名称。GTA 与《赛博朋克 2077》是视觉与制作标杆；当前未达到它们或商业 3A 的制作质量，建筑数量和规则通过不会关闭美术门槛。
 
-本次整合预览实际通过 **429/429 项 CPU 规则**与静态构建，构建为 **0.8.0 / revision:null / 214 项运行资源**。新的完整图形 CI、三型车船 High 通行、双浏览器多人回归、连续路线与线上核验仍待完成。Office V3.1 的两组工作位和 South Spot 的低墙灯光 / 小轮局部形体已获有限原图接受；整间办公室、整幅南岸夜景及完整港湾美术均未通过。历史 199 的功能与三组 paired High 原失败保留，详见 [QA](docs/QA_V08.md)。
+本次整合预览实际通过 **429/429 项 CPU 规则**、三型车船浏览器通行、双浏览器多人回归和静态构建，运行资源为 **0.8.0 / 214 项**。Pages 工作流还会在发布提交上重跑完整 CI 与线上 smoke。Office V3.1 的两组工作位和 South Spot 的低墙灯光 / 小轮局部形体已获有限原图接受；整间办公室、整幅南岸夜景及完整港湾美术均未通过。历史 199 的功能与三组 paired High 原失败保留，详见 [QA](docs/QA_V08.md)。
 
-south-085货栈立面增量（`src/harbor-arrival-warehouse.js`）完成12项定向CPU与3项独立几何检查，未获原生美术接受。街景baseline213实际采集exit1：真实E进入south-085／(200,.215,-180.1)／224碰撞体／174家具已成功，collector误要求普通大厅global outdoor=false导致180秒等待超时。完整E进出和两張计划照片未完成；保留日志与失败元数据，不保证失败PNG，也不把进楼判为失败。本轮不修collector或重跑。
+south-085货栈立面增量（`src/harbor-arrival-warehouse.js`）完成12项定向CPU与3项独立几何检查，未获原生美术接受。修正后的方法已实际完成普通大厅 E 进入、外壳恢复、E 退出和两张同条件前后画面采集；原先把大厅误判为 `renderVisibility.outdoor=false` 的失败仍保留。采集结果只证明协议和运行状态，完整街景像素、动作、硬件性能与 AAA 美术仍待人工验收。
 
 ## v0.8 的变化
 
@@ -26,7 +26,7 @@ south-085货栈立面增量（`src/harbor-arrival-warehouse.js`）完成12项定
 
 Motion before／candidate原生High均实际exit0；20张原PNG只有限接受本地0.8米/秒慢走的较短步幅与柔和停姿。它们是两张英雄图＋八张稀疏RAF帧各一组，不是连续视频；完整人物动作、接触连续性／脚滑、正常速度、楼梯、工作／持物及真实硬件仍未验收。原图各自绑定199/208 baseline与motion-only null/209候选，不能冒充最新214整图原生验收。 Ferry50分钟整场／130分钟CI是预算，原40分钟失败保留。
 
-港湾样板之外仍主要使用程序生成资产与共享布局。全城生活、完整动作库、动态画面稳定性与真实设备性能未完成；阶段成果若先上线，应明确称为“v0.8 开发预览 / 港湾样板制作基线”。完整方向见 [世界计划](docs/WORLD_SIMULATOR_PLAN.md)，范围见 [验收表](docs/HARBOR_SAMPLE_ACCEPTANCE.md)，实际证据见 [QA](docs/QA_V08.md)。
+港湾样板之外仍主要使用程序生成资产与共享布局。全城生活、完整动作库、动态画面稳定性与真实设备性能未完成；当前上线内容明确称为“v0.8 开发预览 / 港湾样板制作基线”。完整方向见 [世界计划](docs/WORLD_SIMULATOR_PLAN.md)，范围见 [验收表](docs/HARBOR_SAMPLE_ACCEPTANCE.md)，实际证据见 [QA](docs/QA_V08.md)。
 
 ### 港湾生活入口与路线
 
@@ -153,7 +153,7 @@ npm run preview
 
 构建结果在 `dist/`。把整个目录交给 Nginx 或任意静态托管即可，无需长期运行 Node.js。页面和模块使用相对路径，可部署到域名根目录或项目子路径。
 
-仓库已公开开源。单机试玩通过 GitHub Pages 发布，发布源为 **GitHub Actions**。在 Actions 中手动运行 **GitHub Pages** 工作流，即可在规则测试、构建与浏览器验收通过后发布 `dist/`。每次手动发布对应选中的分支版本；普通提交只运行 CI。
+仓库已公开开源。单机试玩通过 GitHub Pages 发布，发布源为 **GitHub Actions**。`main` 的推送会进入 **GitHub Pages** 工作流，在规则测试、构建与浏览器验收通过后发布 `dist/`；也可以在 Actions 中手动选择分支运行以审查固定版本。Pages 只承载静态单机客户端，完整多人服务仍在开源仓库中运行。
 
 发布后会再次访问实际 Pages 地址，核对发布提交、浏览器加载资源的 SHA-256、WebGL 初始化和菜单交互。截图与报告保存在该次发布的 `live-deployment-smoke` 产物中；`build-info.json` 记录版本、提交及构建文件摘要。
 
@@ -189,7 +189,7 @@ GitHub Pages 承载静态客户端。仓库提供独立的多人房间服务，�
 
 本轮验证范围、实际结果、截图和设备限制见 [v0.8 验收记录](docs/QA_V08.md)。历史基线另见 [v0.6](docs/QA_V06.md)、[v0.3](docs/QA_V03.md) 和 [v0.2](docs/QA_V02.md) 验收记录；历史通过数量不代表当前源码通过。
 
-本地整合实际通过429/429 CPU规则与0.8.0 / revision:null / 214运行资源构建。可比源码目录另实际415项，范围为历史409输入加六个新客户端模块，非全仓库 / 全测试计数。Office / South组件有限接受、三职业CPU通过、Motion两侧实际exit0、20原PNG慢走短步／停姿有限接受；完整动作、三型完整High、新整图图形CI、完整生活路线与真实设备均待验收。Ferry50分钟 / CI130分钟是新预算，原40分钟失败保留。原199远程完整轮与三个paired High仍FAIL，详情和SHA收据见QA。
+本地整合实际通过429/429 CPU规则与0.8.0 / 214运行资源构建。可比源码目录另实际415项，范围为历史409输入加六个新客户端模块，非全仓库 / 全测试计数。Office / South组件有限接受、三职业CPU通过、Motion两侧实际exit0、20原PNG慢走短步／停姿有限接受；完整动作、三型完整High、新整图图形CI、完整生活路线与真实设备均待验收。Ferry50分钟 / CI130分钟是新预算，原40分钟失败保留。原199远程完整轮与三个paired High仍FAIL，详情和SHA收据见QA。
 
 运行规则测试与构建不需要下载依赖：
 
