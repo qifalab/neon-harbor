@@ -461,6 +461,7 @@ export class HarborLife {
     if (restore) this.restore(restore);
     return false;
   }
+  persistentSnapshot() { return this.roomAuthority && this._roomLocalSnapshot ? copy(this._roomLocalSnapshot) : this.snapshot(); }
   /** Apply the finite shared ledger without accepting peer-authored resident
    * routes or positions. This is used by the room client after each SSE frame. */
   applyRoomEconomy(state) {

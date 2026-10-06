@@ -197,7 +197,10 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   }
   function safeSave() {
     const save = simulation.exportSave();
-    save.harborLife = harborLife.snapshot(); save.harborTransit = sampleTransit.exportState();
+    // A room server owns its temporary shared ledger. Persist the local
+    // single-player baseline so a tab crash or reload during multiplayer does
+    // not turn room-order IDs into an invalid offline save.
+    save.harborLife = harborLife.persistentSnapshot(); save.harborTransit = sampleTransit.exportState();
     const building = buildings.find(b => b.id === interiors.state?.buildingId);
     if (building) save.player = { x: building.entrance.x, z: building.entrance.z, yaw: building.entrance.yaw };
     const state = transit.snapshot();
