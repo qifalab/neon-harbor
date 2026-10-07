@@ -138,6 +138,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     enabled = Boolean(enabled);
     if (enabled === harborLife.roomAuthority) return enabled;
     if (enabled) roomLocalCash = Number.isSafeInteger(simulation?.cash) ? simulation.cash : null;
+    if (simulation) simulation.roomWalletAuthority = enabled;
     const result = harborLife.setRoomAuthority(enabled);
     if (!enabled) {
       // Room snapshots expose a separate authoritative wallet. Restore the

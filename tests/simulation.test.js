@@ -35,6 +35,18 @@ test('fresh saves have bounded values; corrupt and incompatible saves recover sa
   assert.equal(JSON.parse(serializeProgress(loaded)).version, 1);
 });
 
+test('room wallet authority blocks single-player cash mutations', () => {
+  const game = isolated();
+  game.roomWalletAuthority = true;
+  assert.equal(game.startMission(MISSION_DEFS[0].id), false);
+  game.player.health = 50; game.cars[0].health = 50;
+  assert.equal(game.repair(), false);
+  const cash = game.cash;
+  game.player.health = 0;
+  game.update(1 / 60, {});
+  assert.equal(game.cash, cash, 'room recovery cannot debit the shared wallet');
+});
+
 test('walking respects camera orientation, bounds and solid buildings', () => {
   const game = isolated({ colliders: [{ x: 8, z: 166, hx: 10, hz: 1 }] });
   tick(game, 3, { forward: 1, cameraYaw: Math.PI });

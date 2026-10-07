@@ -283,6 +283,11 @@ test('room v2 economy applies resident accounts and finite consumption while pre
     'malformed shop rows are rejected without throwing');
   assert.equal(life.applyRoomEconomy({ ...state, residents: [null, ...state.residents.slice(1)] }), false,
     'malformed resident rows are rejected without throwing');
+  const tamperedShop = { ...state, shops: state.shops.map((shop, index) => index ? shop : { ...shop, name: '伪造店铺' }) };
+  assert.equal(life.applyRoomEconomy(tamperedShop), true, 'ledger fields apply while authored shop identity remains local');
+  assert.equal(life.shops[0].name, '潮叶果铺');
+  assert.equal(life.applyRoomEconomy({ ...state, shops: state.shops.map((shop, index) => index ? shop : { ...shop, product: 'tea' }) }), false,
+    'shop product tampering is rejected');
   assert.deepEqual(life.consumedByProduct, ledger.consumed, 'rejected versions leave the applied ledger unchanged');
   life.setRoomAuthority(false);
   assert.equal(life.agents[0].money, 50 + (life.seed + 0 * 17) % 31, 'leaving restores the local ledger snapshot');

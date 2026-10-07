@@ -552,6 +552,10 @@ export class GameSimulation {
   }
 
   startMission(id) {
+    if (this.roomWalletAuthority) {
+      this._message('多人房间暂不开放城市委托，请先离开房间。', 'warning');
+      return false;
+    }
     const def = MISSION_DEFS.find(item => item.id === id);
     if (!def) return false;
     if (this.mission) { this._message('请先完成或放弃当前任务', 'warning'); return false; }
@@ -621,6 +625,10 @@ export class GameSimulation {
   }
 
   repair() {
+    if (this.roomWalletAuthority) {
+      this._message('多人房间暂不开放维修，请先离开房间。', 'warning');
+      return false;
+    }
     const car = this.activeVehicle || this.nearestCar;
     if (this.wanted) { this._message('追捕中无法维修，请先解除警戒', 'warning'); return false; }
     if ((!car || car.health >= 100) && this.player.health >= 100) { this._message('状态完好，无需维修'); return false; }
@@ -641,7 +649,7 @@ export class GameSimulation {
       this._groundCar(car);
       car.health = safe ? 100 : 0; car.speed = 0; car.vx = 0; car.vz = 0;
     }
-    const cost = Math.min(200, this.cash);
+    const cost = this.roomWalletAuthority ? 0 : Math.min(200, this.cash);
     this.cash -= cost;
     const safeSpawn = this._safePosition(SPAWN, false);
     if (!safeSpawn) throw new Error('The world has no safe recovery spawn.');

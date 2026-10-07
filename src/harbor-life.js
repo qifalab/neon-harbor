@@ -493,10 +493,17 @@ export class HarborLife {
     if (state.consumed && !PRODUCTS.every(product => integer(state.consumed[product], 100))) return false;
     const consumed = state.consumed ? copy(state.consumed)
       : Object.fromEntries(PRODUCTS.map(product => [product, this.consumedByProduct[product]]));
+    const jobs = copy(state.jobs);
+    if (state.version >= 2 && jobs.some(job => !job || !/^room-order-\d+$/.test(job.id) || !this.shops.some(shop =>
+      shop.id === job.shopId && shop.product === job.product && job.wholesale === job.quantity * shop.wholesale) ||
+      !integer(job.quantity, 8) || !job.quantity || job.reward !== 12 || !integer(job.escrow, 12) ||
+      !['available', 'picked-up', 'delivered'].includes(job.status) || job.escrow !== (job.status === 'picked-up' ? 12 : 0) ||
+      (job.carrierId !== null && typeof job.carrierId !== 'string'))) return false;
     // Commit only after all shape and range checks pass, so a malformed SSE
     // frame cannot leave a half-applied local ledger.
-    Object.assign(this.supply, supply); for (const { shop, next } of shops) Object.assign(shop, next);
-    this.jobs = copy(state.jobs);
+    this.supply.money = supply.money; for (const product of PRODUCTS) this.supply.stock[product] = supply.stock[product];
+    for (const { shop, next } of shops) for (const field of ['money', 'stock', 'sold', 'received']) shop[field] = next[field];
+    this.jobs = jobs;
     this.consumedByProduct = consumed;
     if (residents.length) for (const { agent, next } of residents) {
       // Keep each locally simulated pose/path. Only the server-owned account
