@@ -12,7 +12,7 @@
 
 当前候选实际通过 **432/432 项 CPU 规则**、三型车船浏览器通行、双浏览器多人回归、居民经济守恒 / 重启持久化和静态构建，build-info.assets 为 **0.8.0 / 215 项清单条目**。Pages Run 19（提交 `a58f47b5a671780a982841f7f3fe65d81eb8a0d5`）的完整 CI、部署和线上 smoke 已成功。Office V3.1 的两组工作位和 South Spot 的低墙灯光 / 小轮局部形体已获有限原图接受；整间办公室、整幅南岸夜景及完整港湾美术均未通过。历史 199 的功能与三组 paired High 原失败保留，详见 [QA](docs/QA_V08.md)。
 
-south-085货栈立面增量（`src/harbor-arrival-warehouse.js`）完成12项定向CPU与3项独立几何检查，未获原生美术接受。修正后的方法已实际完成普通大厅 E 进入、外壳恢复、E 退出和两张同条件前后画面采集；原先把大厅误判为 `renderVisibility.outdoor=false` 的失败仍保留。采集结果只证明协议和运行状态，完整街景像素、动作、硬件性能与 AAA 美术仍待人工验收。
+south-085货栈立面增量（`src/harbor-arrival-warehouse.js`）完成12项定向CPU与3项独立几何检查，未获原生美术接受。修正后的方法已在临时当前方法上完成普通大厅 E 进入、外壳恢复和 E 退出；精确 Chromium 151.0.7922.34 目前只有 before 基线，成对 candidate 图来自祖先提交的 Chromium 151.0.7922.173，当前 HEAD 尚无新的成对原生图。原先把大厅误判为 `renderVisibility.outdoor=false` 的失败仍保留。采集结果只证明协议和运行状态，完整街景像素、动作、硬件性能与 AAA 美术仍待人工验收。
 
 ## v0.8 的变化
 
