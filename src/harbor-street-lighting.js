@@ -52,8 +52,10 @@ export function createHarborStreetLighting(THREE, parent, { buildings, isResiden
   Object.freeze(sources);
   const southFixtures = createSouthQuayFixtureOwner(THREE, root);
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const metal = new THREE.MeshStandardMaterial({ color: '#435451', roughness: .72, metalness: .48 });
-  const lens = new THREE.MeshStandardMaterial({ color: '#e8dcc0', roughness: .52, metalness: 0,
+  // Brushed, oxidised housings keep a readable highlight without adding a
+  // physical-material shader to these always-resident instanced fixtures.
+  const metal = new THREE.MeshStandardMaterial({ color: '#435451', roughness: .56, metalness: .72, envMapIntensity: .62 });
+  const lens = new THREE.MeshStandardMaterial({ color: '#e8dcc0', roughness: .32, metalness: 0, envMapIntensity: .38,
     emissive: '#ffd7a3', emissiveIntensity: .06 });
   const dummy = new THREE.Object3D(), meshes = [];
   for (const [parts, material, name] of [[metalParts, metal, 'Tree downlight clamps and brackets'], [lenses, lens, 'Tree downlight recessed lenses']]) {

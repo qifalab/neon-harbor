@@ -68,8 +68,8 @@ export function createSouthQuayFixtureOwner(THREE, parent) {
     }
     const root = new THREE.Group(); root.name = 'Owned south quay attached luminaires';
     root.userData.ownerId = SOUTH_QUAY_FIXTURE_OWNER.id; root.userData.generation = ++generations;
-    const metal = new THREE.MeshStandardMaterial({ color: '#435451', roughness: .72, metalness: .48 });
-    const glass = new THREE.MeshStandardMaterial({ color: '#e8dcc0', roughness: .52, metalness: 0,
+    const metal = new THREE.MeshStandardMaterial({ color: '#435451', roughness: .56, metalness: .72, envMapIntensity: .62 });
+    const glass = new THREE.MeshStandardMaterial({ color: '#e8dcc0', roughness: .32, metalness: 0, envMapIntensity: .38,
       emissive: '#ffd7a3', emissiveIntensity: .06 });
     const solids = new THREE.Mesh(geometry(THREE, metalPositions), metal);
     const lenses = new THREE.Mesh(geometry(THREE, lensPositions), glass);

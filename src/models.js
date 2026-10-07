@@ -110,7 +110,10 @@ function buildCar(THREE, type, detail = 0) {
   const metal = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#a4adb3', roughness: .32, metalness: .88 }), 'metal');
   const leather = applySurfaceFinish(new THREE.MeshStandardMaterial({ color: '#242e32', roughness: .69 }), 'leather');
   const glass = new THREE.MeshPhysicalMaterial({ color: '#819fa9', metalness: 0.08, roughness: 0.12,
-    transparent: true, opacity: 0.67, depthWrite: false, clearcoat: 1, envMapIntensity: 1.1, side: THREE.DoubleSide });
+    transparent: true, opacity: 0.67, depthWrite: false, clearcoat: 1, envMapIntensity: 1.2,
+    // A thin dielectric pane gives the cabin a controlled sky reflection while
+    // preserving the existing transparent draw path and vehicle footprint.
+    ior: 1.47, thickness: .025, attenuationColor: '#8aaeb8', attenuationDistance: 3, side: THREE.DoubleSide });
   const frontLight = new THREE.MeshStandardMaterial({ color: '#e4f2f5', emissive: '#c6e1ec', emissiveIntensity: 1.1, roughness: 0.23 });
   const rearLight = new THREE.MeshStandardMaterial({ color: '#8e202a', emissive: '#c83036', emissiveIntensity: 0.7, roughness: 0.25 });
   const heightOffset = type === 'sport' ? 0 : type === 'van' ? 0.11 : 0.055;

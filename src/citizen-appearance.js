@@ -43,7 +43,8 @@ function getLibrary(THREE) {
   const palette = new Map();
   const material = (color, metal = 0) => {
     const key = color + metal;
-    if (!palette.has(key)) palette.set(key, new THREE.MeshStandardMaterial({ color, roughness: metal ? .43 : .86, metalness: metal }));
+    if (!palette.has(key)) palette.set(key, new THREE.MeshStandardMaterial({ color, roughness: metal ? .43 : .86,
+      metalness: metal, envMapIntensity: metal ? .52 : .30 }));
     return palette.get(key);
   };
   const mesh = (parent, geometry, color, x, y, z, metal = 0) => {

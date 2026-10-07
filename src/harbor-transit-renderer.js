@@ -10,7 +10,10 @@ export function createHarborTransitSystem(THREE, scene, options = {}) {
   const fleet = new Map(), resources = new Set(), labels = [], pendingStatic = [], staticBatches = [], staticParts = new Map();
   const palette = {};
   for (const [key, color] of Object.entries({ steel: '#7e8985', cream: '#e8debf', wood: '#ac936c', rail: '#9da69e', wire: '#74634e', bus: '#356b68', tram: '#ad684b', ferry: '#405b56', dark: '#2e4243' })) {
-    palette[key] = new THREE.MeshStandardMaterial({ color, roughness: key === 'rail' ? .4 : .78, metalness: key === 'rail' || key === 'steel' ? .65 : .08 }); resources.add(palette[key]);
+    const metal = key === 'rail' || key === 'steel';
+    palette[key] = new THREE.MeshStandardMaterial({ color,
+      roughness: key === 'rail' ? .32 : metal ? .46 : key === 'wood' ? .84 : .78,
+      metalness: metal ? .76 : .08, envMapIntensity: metal ? .68 : .30 }); resources.add(palette[key]);
   }
   const boxGeometry = new THREE.BoxGeometry(1, 1, 1); resources.add(boxGeometry);
   function box(name, material, x, y, z, width, height, depth, yaw = 0, zone = 'street') {

@@ -149,8 +149,13 @@ export function createHarborTowerGeometry(THREE, tower) {
 
 const facadePalettes = ['#527888', '#668391', '#4e6979', '#a59c8e', '#929d91', '#9e8c73'];
 function facadeMaterial(THREE, palette, nightUniform) {
-  const material = new THREE.MeshStandardMaterial({ color: facadePalettes[palette], roughness: palette < 3 ? .27 : .77,
-    metalness: palette < 3 ? .08 : .025, emissive: '#ffd3a1', emissiveIntensity: 0 });
+  // Office glazing is a dielectric surface with a restrained reflection. The
+  // old .27 roughness/.08 metalness pair made the whole tower read as painted
+  // plastic when the sky probe was present. These values change only the
+  // lighting response; tower geometry, facade shader and collision stay intact.
+  const material = new THREE.MeshStandardMaterial({ color: facadePalettes[palette], roughness: palette < 3 ? .36 : .77,
+    metalness: palette < 3 ? .045 : .025, envMapIntensity: palette < 3 ? .92 : .55,
+    emissive: '#ffd3a1', emissiveIntensity: 0 });
   material.userData.harborFacade = true;
   material.onBeforeCompile = shader => {
     shader.uniforms.harborNight = nightUniform;
@@ -254,8 +259,14 @@ export function createHarborSkyline(THREE, scene, { quality = 'high' } = {}) {
   const colors = { stone: '#a9a99c', dark: '#374449', metal: '#647373', brass: '#a39670', wood: '#8e7860',
     leaves: '#445d4b', glass: '#5f777d', light: '#d9c8a7', mountain: '#536960', crownWarm: '#b5afa0', crownCool: '#a3b2b9' };
   for (const [key, color] of Object.entries(colors)) {
-    solidMaterials[key] = new THREE.MeshStandardMaterial({ color, roughness: ['glass', 'metal', 'brass'].includes(key) ? .42 : .87,
-      metalness: ['metal', 'brass'].includes(key) ? .5 : key === 'glass' ? .26 : .015 });
+    const reflective = ['glass', 'metal', 'brass'].includes(key);
+    solidMaterials[key] = new THREE.MeshStandardMaterial({ color,
+      // Keep the opaque skyline panes cheap to render while giving them a
+      // neutral dielectric reflection. Metallic teal glass was the source of
+      // the toy-like blocks in long waterfront views.
+      roughness: key === 'glass' ? .22 : reflective ? .42 : .87,
+      metalness: ['metal', 'brass'].includes(key) ? .5 : key === 'glass' ? .055 : .015,
+      envMapIntensity: key === 'glass' ? 1.12 : key === 'metal' ? .78 : key === 'brass' ? .68 : .35 });
     materials.add(solidMaterials[key]);
     if (['stone', 'wood'].includes(key)) applyWorldSurfaceFinish(solidMaterials[key], 'mineral');
     if (['metal', 'brass'].includes(key)) applyWorldSurfaceFinish(solidMaterials[key], 'metal');
