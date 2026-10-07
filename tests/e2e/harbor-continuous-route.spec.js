@@ -83,7 +83,10 @@ async function rideTo(page, fromId, toId, { boardTolerance = .75, timeout = 3000
     const s = await snapshot(page);
     return Math.hypot(s.position.x - from.board.x, s.position.z - from.board.z);
   }, { timeout: 30000 }).toBeLessThan(1.25);
-  await waitForVehicle(page, fromId);
+  // On SwiftShader the simulation advances below real time; use the same
+  // route budget for the real vehicle's next arrival instead of a fixed
+  // wall-clock cutoff that can expire mid-timetable.
+  await waitForVehicle(page, fromId, timeout);
   const before = await transitState(page);
   await page.keyboard.press('e');
   await expect.poll(async () => (await transitState(page)).riding).toBe(true);
