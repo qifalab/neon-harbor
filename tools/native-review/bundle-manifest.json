@@ -3,8 +3,8 @@
   "rootPrivateRefsUntouched": true,
   "files": {
     "README.md": {
-      "bytes": 14942,
-      "sha256": "68dca9b6aa54a3a7decd2e889269282a9f7d7ca41f50b2f398ca442e2f1bc464"
+      "bytes": 15079,
+      "sha256": "425c523e32c123da9e93e1e47aa3d29bcea74bb64bc7081d20ecd4eadd7b937a"
     },
     "cases.json": {
       "bytes": 12836,
@@ -75,8 +75,8 @@
       "sha256": "502af982ac2999fb28c395388d7d97acdf6165df803f62b3069f95cafa2dcbb3"
     },
     "expected-runtime-dictionaries.json": {
-      "bytes": 41400,
-      "sha256": "da299b109760807ab6c66bc284d698532224556c4a664fd9bc5f9fc27bbcdf28"
+      "bytes": 41523,
+      "sha256": "99e77e02e355918b529b5505472333fccecd08414df00e9042c75f26b8c8d8e5"
     },
     "methods/continuous-tour-original/provenance/SAVE_SCHEMA_AMENDMENT-20261005.json": {
       "bytes": 2705,
@@ -943,8 +943,8 @@
       "sha256": "a4d2fdfe3bc49c0f825fb541fa0c27cf164ced73aeafffd2c76090081b64924d"
     },
     "pending/streetarrival-south085-20261005/METHOD-SEAL.json": {
-      "bytes": 2655,
-      "sha256": "860046bd84434b800ef483a7e0b731f5fa90d8b2fa55efbb0663d2e835e97ff3"
+      "bytes": 2656,
+      "sha256": "ea7532af1dbea5364df55c0a74c49622a22a2bb8c41b647b625593f81f039cd2"
     },
     "pending/streetarrival-south085-20261005/NOT_READY.md": {
       "bytes": 1147,
@@ -1003,12 +1003,16 @@
       "sha256": "7cab11ba7366dcc6b39a8be794031747a1342b37ad9f73825a4bcca85007e388"
     },
     "pending/streetarrival-south085-20261005/source-runtime-bindings.json": {
-      "bytes": 2235691,
-      "sha256": "b1fc73ca3bd36b33d4edabee218a6bb43b1b2f4e26a5e485aa6c9e0fa5c6fdc0"
+      "bytes": 2236024,
+      "sha256": "88e194232e9204406874024a75bb4edb7dc68ae111f87eba830b35fef18f08be"
     },
     "pending/streetarrival-south085-20261005/streetarrival-plan.json": {
       "bytes": 953,
       "sha256": "430ca7eda4ab779152cbf160cbc604081c8b5a9dec91109199657823611a94e6"
+    },
+    "expected-build-provenance/authored-build-info-current-79e8c26-20261007-91bf10714a50.json": {
+      "bytes": 23074,
+      "sha256": "91bf10714a507a16f13471a38a27bce29d1c74e4e1461fc81152cb9c145d83d4"
     }
   },
   "nativeWorkflowSha256": "c50cdc8dd0b6622430ada81d6ee59b6f3d73063c99199d278627cb6fe9237720",
@@ -1038,10 +1042,10 @@
     "remote": false
   },
   "currentRuntimeProvenance": {
-    "authoredAssetCount": 214,
+    "authoredAssetCount": 215,
     "baselineAssetCount": 156,
-    "currentLocalBuildInfoPath": "expected-build-provenance/authored-build-info-arrival-integration-20261005.json",
-    "currentLocalBuildInfoSHA256": "9ad4ebc8a0956c1ff43dd5f01c2ea9382453d924be953df8de0addcaeff04591",
+    "currentLocalBuildInfoPath": "expected-build-provenance/authored-build-info-current-79e8c26-20261007-91bf10714a50.json",
+    "currentLocalBuildInfoSHA256": "91bf10714a507a16f13471a38a27bce29d1c74e4e1461fc81152cb9c145d83d4",
     "historicalBaselineAndAuthoredOriginalFilesUnchanged": true,
     "nativeCaptureAndArtApproval": "PENDING_ACTUAL_NEW_RUN_AND_HUMAN_REVIEW",
     "refreshChangedRuntimeSource": false
@@ -1585,10 +1589,10 @@
     "methodRoot": "pending/streetarrival-south085-20261005",
     "entryPredicate": "south-085 interior owner and ground-floor state are required; ordinary lobby retains renderVisibility.outdoor=true",
     "exitPredicate": "south-085 exterior shell owner clears and renderVisibility.outdoor=true",
-    "runtimeAssetCount": 214,
+    "runtimeAssetCount": 215,
     "originalFailureRetained": "The pre-fix capture and failure record remain under the original-preparation archive and are not relabelled.",
-    "methodSealSHA256": "860046bd84434b800ef483a7e0b731f5fa90d8b2fa55efbb0663d2e835e97ff3",
-    "bindingSHA256": "b1fc73ca3bd36b33d4edabee218a6bb43b1b2f4e26a5e485aa6c9e0fa5c6fdc0",
+    "methodSealSHA256": "ea7532af1dbea5364df55c0a74c49622a22a2bb8c41b647b625593f81f039cd2",
+    "bindingSHA256": "88e194232e9204406874024a75bb4edb7dc68ae111f87eba830b35fef18f08be",
     "candidateBound": true
   }
 }
