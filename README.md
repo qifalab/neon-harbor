@@ -1,16 +1,16 @@
 # 霓港 · Neon Harbor
 
-本仓库当前以 `main` 和 `codex/harbor-v08-world-sample-arrival-integration-20261005` 保存 **v0.8 港湾样板开发预览**。该版本已完成采集协议修正、215 项 build-info.assets 清单条目绑定和公开单机体验；Pages Run 19 已通过完整 CI、部署和实际加载核验，线上站点为可玩的单机开发预览。完整港湾的原生美术、连续生活路线和真实硬件性能仍按验收表推进，不能把规则数量或局部截图当作商业 3A 完成。交接背景见[2026-10-05交接](docs/HANDOFF_2026-10-05.md)。
+本仓库当前以 `main` 和 `codex/harbor-v08-world-sample-arrival-integration-20261005` 保存 **v0.8 港湾样板开发预览**。该版本已完成采集协议修正、215 项 build-info.assets 清单条目绑定、房间 v2 账本同步和公开单机体验；最新提交正在执行 Pages 完整 CI、部署和实际加载核验，线上站点仍以已成功 smoke 的提交为准。完整港湾的原生美术、连续生活路线和真实硬件性能仍按验收表推进，不能把规则数量或局部截图当作商业 3A 完成。交接背景见[2026-10-05交接](docs/HANDOFF_2026-10-05.md)。
 
 [在线试玩单机版](https://neon-harbor.qifalab.cd.mba) · [开源仓库与下载](https://github.com/qifalab/neon-harbor) · [发布与测试记录](https://github.com/qifalab/neon-harbor/actions/workflows/pages.yml)
 
 一款可直接在浏览器运行的原创 3D 海滨城市游戏。步行探索街区、驾驶车辆，穿过跨海桥，乘地铁与渡轮，走进三岸的房间、连续楼梯、电梯与观景空间。
 
-记录日期：2026-10-06。**v0.8 是可游玩的开发预览；Pages 仅承载单机客户端，开源仓库保留本地与内网多人服务。** 实际线上版本以 [`build-info.json`](https://neon-harbor.qifalab.cd.mba/build-info.json) 和部署记录为准。
+记录日期：2026-10-07。**v0.8 是可游玩的开发预览；Pages 仅承载单机客户端，开源仓库保留本地与内网多人服务。** 实际线上版本以 [`build-info.json`](https://neon-harbor.qifalab.cd.mba/build-info.json) 和部署记录为准。
 
 用户选择先完成完整港湾样板：高品质街景、双层巴士、小轮、街轨车及居民日常，再逐区扩展具有香港式密度、坡地、海湾与外岛气质的原创城市。所有游戏地名、站名和商号使用原创名称。GTA 与《赛博朋克 2077》是视觉与制作标杆；当前未达到它们或商业 3A 的制作质量，建筑数量和规则通过不会关闭美术门槛。
 
-当前候选实际通过 **432/432 项 CPU 规则**、三型车船浏览器通行、双浏览器多人回归、居民经济守恒 / 重启持久化和静态构建，build-info.assets 为 **0.8.0 / 215 项清单条目**。Pages Run 19（提交 `a58f47b5a671780a982841f7f3fe65d81eb8a0d5`）的完整 CI、部署和线上 smoke 已成功。Office V3.1 的两组工作位和 South Spot 的低墙灯光 / 小轮局部形体已获有限原图接受；整间办公室、整幅南岸夜景及完整港湾美术均未通过。历史 199 的功能与三组 paired High 原失败保留，详见 [QA](docs/QA_V08.md)。
+当前候选实际通过 **434/434 项 CPU 规则**、三型车船浏览器通行、双浏览器多人回归、房间 v2 服务端居民账本守恒 / 重启持久化和静态构建，build-info.assets 为 **0.8.0 / 215 项清单条目**。最新 Pages 流程会以提交 `c8fe29a05e143b4a2f2bac2129008266fcad7dc8` 验证；上一成功线上 smoke 仍是 3946d65。Office V3.1 的两组工作位和 South Spot 的低墙灯光 / 小轮局部形体已获有限原图接受；整间办公室、整幅南岸夜景及完整港湾美术均未通过。历史 199 的功能与三组 paired High 原失败保留，详见 [QA](docs/QA_V08.md)。
 
 south-085货栈立面增量（`src/harbor-arrival-warehouse.js`）完成12项定向CPU与3项独立几何检查，未获原生美术接受。修正后的方法已在临时当前方法上完成普通大厅 E 进入、外壳恢复和 E 退出；精确 Chromium 151.0.7922.34 目前只有 before 基线，成对 candidate 图来自祖先提交的 Chromium 151.0.7922.173，当前 HEAD 尚无新的成对原生图。原先把大厅误判为 `renderVisibility.outdoor=false` 的失败仍保留。采集结果只证明协议和运行状态，完整街景像素、动作、硬件性能与 AAA 美术仍待人工验收。
 
