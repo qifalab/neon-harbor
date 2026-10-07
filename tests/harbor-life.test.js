@@ -290,6 +290,7 @@ test('leaving room authority restores the local simulation wallet', () => {
   const localCash = sim.cash;
   assert.equal(city.setEconomyAuthority(true), true);
   sim.cash = localCash - 6;
+  assert.equal(city.safeSave().cash, localCash, 'autosave keeps the local wallet while room authority is active');
   assert.equal(city.setEconomyAuthority(false), false);
   assert.equal(sim.cash, localCash, 'shared room purchase cannot leak into the local wallet');
 });
