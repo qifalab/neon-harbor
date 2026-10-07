@@ -63,11 +63,11 @@ test('room capacity is enforced and peer interpolation follows shortest angles w
 test('multiplayer client keeps the latest economy revision when SSE and POST frames reorder', () => {
   const snapshots = [], client = new MultiplayerClient({ onSnapshot: snapshot => snapshots.push(snapshot) });
   client.receive({ players: [{ id: 'peer', x: 1, y: 0, z: 0, yaw: 0 }], economy: { revision: 4, player: { cash: 1200 } } });
-  client.receive({ players: [{ id: 'peer', x: 2, y: 0, z: 0, yaw: 0 }], economy: { revision: 3, player: { cash: 1194 } } });
-  assert.equal(client.snapshot.players[0].x, 2, 'newer movement data is still delivered');
+  assert.equal(client.receive({ players: [{ id: 'peer', x: 2, y: 0, z: 0, yaw: 0 }], economy: { revision: 3, player: { cash: 1194 } } }), false);
+  assert.equal(client.snapshot.players[0].x, 1, 'an older full frame is rejected');
   assert.equal(client.snapshot.economy.revision, 4, 'a stale economy frame cannot roll back the ledger');
   assert.equal(client.snapshot.economy.player.cash, 1200);
-  assert.equal(snapshots.at(-1).economy.revision, 4, 'city sync receives the retained authoritative revision');
+  assert.equal(snapshots.length, 1, 'city sync is not called for a stale frame');
   client.receive({ players: [{ id: 'peer', x: 3, y: 0, z: 0, yaw: 0 }], economy: { revision: 5, player: { cash: 1194 } } });
   assert.equal(client.snapshot.economy.revision, 5);
 });

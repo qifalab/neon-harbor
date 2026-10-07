@@ -31,11 +31,9 @@ export class MultiplayerClient{
   receive(snapshot){
     const currentEconomy=this.snapshot?.economy, incomingEconomy=snapshot?.economy;
     const currentRevision=currentEconomy?.revision, incomingRevision=incomingEconomy?.revision;
-    let next=snapshot;
-    if (currentEconomy && (!incomingEconomy || Number.isSafeInteger(currentRevision) && (!Number.isSafeInteger(incomingRevision) || incomingRevision < currentRevision))) {
-      next={...snapshot,economy:currentEconomy};
-    }
-    this.snapshot=next;this.peers.push(next,performance.now());this.onSnapshot(next);
+    if (currentEconomy && Number.isSafeInteger(currentRevision) &&
+      (!Number.isSafeInteger(incomingRevision) || incomingRevision < currentRevision)) return false;
+    this.snapshot=snapshot;this.peers.push(snapshot,performance.now());this.onSnapshot(snapshot);return true;
   }
   async sendState(){
     if(!this.session||!this.pendingState)return;
