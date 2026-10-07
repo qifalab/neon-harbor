@@ -194,12 +194,17 @@ test('continuous harbor day keeps real home, three transports, shop, workshop, o
     await info.attach('harbor-continuous-route', { path: journalPath, contentType: 'application/jsonl' });
     return;
   }
-  await walkStreet(page, [{ x: 258 }, { z: 172.5 }, { x: 226 }, { z: 201 }, { x: 213 }]);
+  // The bus stop's signed pole sits on the exact x=252.275 landing line.
+  // Step around that authored street fixture before taking the northbound
+  // lane; a straight x hold would correctly collide with the pole forever.
+  await walkStreet(page, [{ z: 52 }, { x: 258 }, { z: 172.5 }, { x: 226 }, { z: 201 }, { x: 213 }]);
   const shop = await enterBuildingRoom(page, 'south-095', 'produce');
   await journal('produce-room');
   await exitBuildingRoom(page, shop.building, shop.room);
 
-  await walkStreet(page, [{ x: 226 }, { z: 172.5 }, { x: 258 }, { z: 103.45 }, { x: 252.15 }]);
+  // The tram stop's signed pole occupies the direct x=252.15 approach at
+  // z≈104.13. Move below the pole, cross its x line, then return to the board.
+  await walkStreet(page, [{ x: 226 }, { z: 172.5 }, { x: 258 }, { z: 100 }, { x: 252.15 }, { z: 103.45 }]);
   await rideTo(page, 'harbor-tram-lantern', 'harbor-tram-quay');
   await journal('tram-alighted');
   await walkStreet(page, [{ x: 258 }, { z: -95.5 }, { x: 200 }]);
