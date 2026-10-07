@@ -42,7 +42,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   root.add(south.root, north.root, infrastructure.root, harbor.root, crossings.root, sampleTransit.root, sampleDistrict.root, lifeRenderer.root);
   const sample = { transit: sampleTransit, district: sampleDistrict, life: harborLife, lifeRenderer };
   const entryMarkers = createExpansionEntrances(THREE, root, buildings.filter(b => b.shellId));
-  let simulation = null, context = null, contextVersion = null, outdoorCars = null, elevatorAnchor = null;
+  let simulation = null, context = null, contextVersion = null, outdoorCars = null, elevatorAnchor = null, roomLocalCash = null;
 
   const person = () => ({ ...simulation.player, y: simulation.player.groundY + simulation.player.y });
   const inside = () => !!interiors.state?.buildingId;
@@ -134,7 +134,20 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     if (accepted && Number.isSafeInteger(state?.player?.cash)) simulation && (simulation.cash = state.player.cash);
     return accepted;
   }
-  function setEconomyAuthority(enabled) { return harborLife.setRoomAuthority(enabled); }
+  function setEconomyAuthority(enabled) {
+    enabled = Boolean(enabled);
+    if (enabled === harborLife.roomAuthority) return enabled;
+    if (enabled) roomLocalCash = Number.isSafeInteger(simulation?.cash) ? simulation.cash : null;
+    const result = harborLife.setRoomAuthority(enabled);
+    if (!enabled) {
+      // Room snapshots expose a separate authoritative wallet. Restore the
+      // local game wallet together with HarborLife when leaving the room;
+      // otherwise a shared purchase or delivery would leak into single-player.
+      if (roomLocalCash !== null && simulation) simulation.cash = roomLocalCash;
+      roomLocalCash = null;
+    }
+    return result;
+  }
   function selectFloor(id) {
     const result = interiors.selectFloor(id);
     if (!result) return false;

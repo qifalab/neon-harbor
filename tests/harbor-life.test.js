@@ -283,3 +283,13 @@ test('room v2 economy applies resident accounts and finite consumption while pre
   life.setRoomAuthority(false);
   assert.equal(life.agents[0].money, 50 + (life.seed + 0 * 17) % 31, 'leaving restores the local ledger snapshot');
 });
+
+test('leaving room authority restores the local simulation wallet', () => {
+  const sim = new GameSimulation({ colliders: city.colliders, bounds: city.bounds, groundHeightAt: city.groundHeightAt });
+  city.bind(sim, { hour: 16.5 });
+  const localCash = sim.cash;
+  assert.equal(city.setEconomyAuthority(true), true);
+  sim.cash = localCash - 6;
+  assert.equal(city.setEconomyAuthority(false), false);
+  assert.equal(sim.cash, localCash, 'shared room purchase cannot leak into the local wallet');
+});
