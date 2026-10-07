@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "styles": [
+    {
+      "id": "harbor-residential",
+      "label": "Harbor residential",
+      "buildingKinds": ["residential", "shophouse"],
+      "palette": ["plaster-warm", "paint-faded", "tile-ochre"],
+      "materials": ["plaster", "tile", "painted-metal"],
+      "facadeDetails": ["awning", "laundry", "window-planter"],
+      "lighting": "warm-window"
+    },
+    {
+      "id": "quay-workshop",
+      "label": "Quay workshop",
+      "buildingKinds": ["workshop", "warehouse", "industrial"],
+      "palette": ["concrete-salt", "oxide-red", "signal-blue"],
+      "materials": ["concrete", "corrugated-metal", "rubber"],
+      "facadeDetails": ["loading-bay", "roller-door", "safety-rail"],
+      "lighting": "cool-task"
+    },
+    {
+      "id": "civic-art-deco",
+      "label": "Civic art deco",
+      "buildingKinds": ["civic", "office", "hotel"],
+      "palette": ["stone-pale", "brass", "glass-smoke"],
+      "materials": ["stone", "brass", "glass"],
+      "facadeDetails": ["vertical-fins", "canopy", "plaque"],
+      "lighting": "evening-gold"
+    }
+  ],
+  "socialModels": [
+    {
+      "id": "everyday-commuter",
+      "label": "Everyday commuter",
+      "roles": ["resident", "commuter", "worker"],
+      "traits": ["punctual", "observant", "brief"],
+      "goals": ["reach-work", "buy-necessities", "return-home"],
+      "conversationTopics": ["weather", "transit", "opening-hours"],
+      "cadenceSeconds": 45
+    },
+    {
+      "id": "shopkeeper-host",
+      "label": "Shopkeeper host",
+      "roles": ["shopkeeper", "vendor", "barista"],
+      "traits": ["welcoming", "practical", "inventory-aware"],
+      "goals": ["serve-customer", "restock", "close-shop"],
+      "conversationTopics": ["stock", "neighborhood", "delivery"],
+      "cadenceSeconds": 60
+    },
+    {
+      "id": "maker-collaborator",
+      "label": "Maker collaborator",
+      "roles": ["craftsperson", "worker", "courier"],
+      "traits": ["hands-on", "focused", "helpful"],
+      "goals": ["finish-task", "deliver-order", "share-tip"],
+      "conversationTopics": ["materials", "routes", "weather"],
+      "cadenceSeconds": 50
+    }
+  ]
+}

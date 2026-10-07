@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neon-harbor.qifalab.cd.mba/schema/llm-scene-config-v1.json",
+  "title": "Neon Harbor local scene configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "styles", "socialModels"],
+  "properties": {
+    "version": { "const": 1 },
+    "styles": {
+      "type": "array", "minItems": 1, "maxItems": 64,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "label", "buildingKinds", "palette", "materials", "facadeDetails", "lighting"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,47}$" },
+          "label": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "buildingKinds": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "palette": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "materials": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "facadeDetails": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "lighting": { "type": "string", "minLength": 1, "maxLength": 60 }
+        }
+      }
+    },
+    "socialModels": {
+      "type": "array", "minItems": 1, "maxItems": 64,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "label", "roles", "traits", "goals", "conversationTopics", "cadenceSeconds"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,47}$" },
+          "label": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "roles": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "traits": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "goals": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "conversationTopics": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 60 } },
+          "cadenceSeconds": { "type": "number", "minimum": 5, "maximum": 3600 }
+        }
+      }
+    }
+  }
+}

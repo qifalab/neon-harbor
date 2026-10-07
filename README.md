@@ -144,6 +144,8 @@ npm start
 npm start -- --host 0.0.0.0 --port 5173
 ```
 
+本地版还提供可选的 LLM 场景与居民社交提案层：默认关闭网络请求，Pages 不会连接模型；本地运行时可通过 `window.__NEON__.llm` 配置 Ollama 或 OpenAI-compatible endpoint、建筑风格和社交预设。输出经过 schema 校验，失败时回退确定性规则。完整配置与安全边界见 [本地 LLM 场景说明](docs/LOCAL_LLM_SCENE.md)。
+
 ## 构建与部署
 
 ```sh
