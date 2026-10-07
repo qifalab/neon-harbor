@@ -108,18 +108,18 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       if (!value) return false;
       const economy = value.economy || value;
       if (Number.isSafeInteger(economy.revision) && economy.revision < roomEconomyRevision) {
-        if (value.result) result = value.result;
+        if (value.result) { result = value.result; roomWallet = simulation?.cash ?? 0; }
         return Boolean(value.result);
       }
       const accepted = harborLife.applyRoomEconomy(economy);
       if (!accepted) {
-        if (value.result) result = value.result;
+        if (value.result) { result = value.result; roomWallet = simulation?.cash ?? 0; }
         return Boolean(value.result);
       }
       if (Number.isSafeInteger(economy.revision)) roomEconomyRevision = Math.max(roomEconomyRevision, economy.revision);
       const wallet = economy.player?.cash;
       if (Number.isSafeInteger(wallet)) { simulation.cash = wallet; roomWallet = wallet; }
-      if (value.result) { result = value.result; return true; }
+      if (value.result) { result = value.result; roomWallet ??= simulation?.cash ?? 0; return true; }
       return false;
     };
     if (inside()) { result = interiors.interact(person()); if (!result.handled) result = people.interact?.(simulation.player); }
