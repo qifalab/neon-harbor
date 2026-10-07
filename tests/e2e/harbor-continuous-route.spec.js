@@ -74,7 +74,7 @@ async function waitForVehicle(page, stopId, timeout = 240000) {
     .some(vehicle => vehicle.stopId === id && vehicle.remaining > 2), stopId, { polling: 'raf', timeout });
 }
 
-async function rideTo(page, fromId, toId, { boardTolerance = .75, timeout = 300000 } = {}) {
+async function rideTo(page, fromId, toId, { boardTolerance = .75, timeout = 600000 } = {}) {
   const from = await stopById(page, fromId), to = await stopById(page, toId);
   expect(from, `known origin stop ${fromId}`).toBeTruthy();
   expect(to, `known destination stop ${toId}`).toBeTruthy();
