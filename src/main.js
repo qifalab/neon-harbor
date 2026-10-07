@@ -50,7 +50,7 @@ const llmApi=Object.freeze({
   request:input=>llmScene.request(input),
   exportConfig:()=>llmScene.exportConfig(),
 });
-const carMeshes=new Map(),keys=new Set(),touchHeld=new Set(),walkers=[],audio=new CityAudio();
+const carMeshes=new Map(),keys=new Set(),touchHeld=new Set(),walkers=[],walkerRouteMetrics=[],audio=new CityAudio();
 const sunTarget=new THREE.Object3D(),sunOffset=new THREE.Vector3(),sunRight=new THREE.Vector3(),sunUp=new THREE.Vector3(),worldUp=new THREE.Vector3(0,1,0);
 const panel=$('panel'),mapCanvas=$('minimap'),mapContext=mapCanvas.getContext('2d');
 let mapBackground;
@@ -323,7 +323,10 @@ function updatePeers(dt){
     if(peer.id===multiplayer.session?.id)continue;
     alive.add(peer.id);let model=peerMeshes.get(peer.id);
     if(!model){model=createCharacter(THREE,{style:peerMeshes.size%8,role:['commuter','worker','shopkeeper'][peerMeshes.size%3],quality:settings.quality,assetLibrary:residentAssets,presentationId:'peer:'+peer.id});scene.add(model);peerMeshes.set(peer.id,model);}
-    const previous=model.position.clone(),moving=model.userData.peerPose&&previous.distanceTo(new THREE.Vector3(peer.x,peer.y,peer.z))>.002;
+    // Compare the cached transform directly; cloning two Vector3 instances for
+    // every remote peer on every frame created avoidable GC pressure in rooms.
+    const dx=model.position.x-peer.x, dy=model.position.y-peer.y, dz=model.position.z-peer.z;
+    const moving=model.userData.peerPose&&Math.hypot(dx,dy,dz)>.002;
     model.position.set(peer.x,peer.y,peer.z);model.rotation.y=peer.yaw;model.userData.peerPose=true;
     model.visible=peer.scene===roomScene()&&!peer.carId&&Math.hypot(peer.x-sim.position.x,peer.z-sim.position.z)<600;
     animateCharacter(model,performance.now()/100,.5*(moving?1:0));
@@ -339,8 +342,9 @@ function updateVisuals(dt){
   animateCharacter(character,renderFrame.elapsed*(moving.sprint?15:10),walkAmount,moving.sprint);
   for(const [i,walker] of walkers.entries()){
     walker.visible=!world.isInside&&!world.transit.collisionContext();const route=world.walkerRoutes[i];
-    const lengths=route.map((point,j)=>Math.hypot(route[(j+1)%route.length].x-point.x,route[(j+1)%route.length].z-point.z));
-    let travel=(sceneTime*(1.1+i%3*.18)+i*37)%lengths.reduce((a,b)=>a+b,0),segment=0;
+    const metrics=walkerRouteMetrics[i];
+    const lengths=metrics?.lengths||[];
+    let travel=(sceneTime*(1.1+i%3*.18)+i*37)%(metrics?.total||1),segment=0;
     while(travel>lengths[segment]){travel-=lengths[segment];segment++;}
     const from=route[segment],to=route[(segment+1)%route.length],ratio=travel/lengths[segment];
     const wx=from.x+(to.x-from.x)*ratio,wz=from.z+(to.z-from.z)*ratio;
@@ -448,6 +452,12 @@ try{
   atmosphere.setBuildings?.(world.buildings);
   character=createCharacter(THREE,{role:'commuter',quality:settings.quality,assetLibrary:residentAssets,firstPerson:settings.firstPerson,nearPriority:1,presentationId:'local-player'});scene.add(character);
   for(let i=0;i<9;i++){const walker=createCharacter(THREE,{style:i%8,role:['commuter','worker','shopkeeper'][i%3],quality:settings.quality,assetLibrary:residentAssets,presentationId:'walker:'+i});walker.scale.setScalar(.94+(i%3)*.04);scene.add(walker);walkers.push(walker);}
+  // These routes are authored once. Keep their segment lengths out of the
+  // animation loop, which otherwise allocates one array per walker every frame.
+  for(const route of world.walkerRoutes){
+    const lengths=route.map((point,index)=>Math.hypot(route[(index+1)%route.length].x-point.x,route[(index+1)%route.length].z-point.z));
+    walkerRouteMetrics.push({ lengths, total:lengths.reduce((sum,length)=>sum+length,0) });
+  }
   marker=new THREE.Group();markerRing=new THREE.Mesh(new THREE.TorusGeometry(5,.12,6,48),new THREE.MeshBasicMaterial({color:'#e4ff9d'}));markerRing.rotation.x=Math.PI/2;marker.add(markerRing);const diamond=new THREE.Mesh(new THREE.OctahedronGeometry(.8),new THREE.MeshBasicMaterial({color:'#d5ff9a'}));diamond.position.y=4;marker.add(diamond);const beam=new THREE.Mesh(new THREE.CylinderGeometry(.15,.15,18,8),new THREE.MeshBasicMaterial({color:'#dcffa5',transparent:true,opacity:.38,depthWrite:false}));beam.position.y=9;marker.add(beam);scene.add(marker);
   tracer=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]),new THREE.LineBasicMaterial({color:'#ffeab1',transparent:true,opacity:.8}));tracer.visible=false;scene.add(tracer);
   mapBackground=buildMap();applyQuality();updateVisuals(0);updateCamera(0);updateModelDetail();lighting(0);residentAssets.updatePresentation(camera,0);world.updateRenderVisibility(camera);contactOcclusion.render(scene,camera);

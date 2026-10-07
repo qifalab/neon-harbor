@@ -246,6 +246,10 @@ export function createNearResident(THREE, options = {}) {
     fallback.add(anchor); fallback.userData[name] = anchor; handAnchors[side] = anchor;
   }
   const inverseRoot = new THREE.Matrix4(), matrix = new THREE.Matrix4(), offset = new THREE.Matrix4();
+  // Reuse these two points for the per-frame LOD distance check. A browser can
+  // have a dozen resident actors, so allocating vectors in every updateLOD
+  // call quickly becomes visible as garbage-collection hitching.
+  const lodCameraPosition = new THREE.Vector3(), lodActorPosition = new THREE.Vector3();
   fallback.userData.residentCore = { status: 'unrequested', style: styleId, source: 'MakeHuman core CC0',
     role, prototype: `Licensed ${role} core wardrobe`, triangles: RESIDENT_CORE_ROLES[role].triangles, materials: 4, bones: 71 };
   const canRequest = () => quality !== 'low' && fallback.visible && !firstPerson && !dead && !disposed;
@@ -255,13 +259,17 @@ export function createNearResident(THREE, options = {}) {
     for (const side of ['left', 'right']) {
       const joint = fallback.userData[`${side}Elbow`], anchor = handAnchors[side];
       if (!joint || !anchor) continue;
+      // Moving a child to the stable hand anchor mutates joint.children, so
+      // retain the snapshot here. This path runs only while an attachment is
+      // being synchronized; correctness matters more than avoiding this rare
+      // transition allocation.
       if (active) for (const child of [...joint.children]) {
         if (baselineChildren[side].has(child)) continue;
         child.updateMatrix(); offset.makeTranslation(0, -.27, .02).invert();
         matrix.copy(offset).multiply(child.matrix); anchor.add(child); matrix.decompose(child.position, child.quaternion, child.scale);
         legacyProps.set(child, { joint, side });
       }
-      if (!active) for (const [child, record] of [...legacyProps]) {
+      if (!active) for (const [child, record] of legacyProps) {
         if (record.side !== side) continue;
         child.updateMatrix(); offset.makeTranslation(0, -.27, .02);
         matrix.copy(offset).multiply(child.matrix); record.joint.add(child); matrix.decompose(child.position, child.quaternion, child.scale);
@@ -342,8 +350,8 @@ export function createNearResident(THREE, options = {}) {
   fallback.userData.updateLOD = camera => {
     if (disposed) return;
     originalLOD?.(camera); fallback.updateWorldMatrix(true, false);
-    const distance = new THREE.Vector3().setFromMatrixPosition(camera.matrixWorld)
-      .distanceTo(new THREE.Vector3().setFromMatrixPosition(fallback.matrixWorld));
+    const distance = lodCameraPosition.setFromMatrixPosition(camera.matrixWorld)
+      .distanceTo(lodActorPosition.setFromMatrixPosition(fallback.matrixWorld));
     fallback.userData.setDetail(distance < (instance ? 21 : 18) ? 0 : distance < 52 ? 1 : 2);
   };
   fallback.userData.disposeInstance = () => {
