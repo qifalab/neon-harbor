@@ -8,7 +8,7 @@ import { GameSimulation } from '../src/simulation.js';
 import { infrastructureGroundHeightAt } from '../src/metropolis-infrastructure.js';
 import { harborTerrainGroundHeightAt } from '../src/harbor-terrain.js';
 import { northernVehicles } from '../src/traffic.js';
-import { MultiplayerEconomy } from '../src/multiplayer-economy.js';
+import { MultiplayerEconomy, ROOM_ECONOMY_SECONDS_PER_HOUR } from '../src/multiplayer-economy.js';
 import { ROOM_PROTOCOL, ROOM_WORLD, MAX_PLAYERS, cleanRoomCode, cleanName, cleanPose } from '../src/multiplayer-protocol.js';
 const code=()=>randomBytes(4).toString('hex').slice(0,6).toUpperCase();
 // Preserve reachable raised roads before the eastern terrain fallback. A
@@ -33,7 +33,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
     const sim=new GameSimulation({bounds:1800,groundHeightAt:multiplayerGroundHeightAt});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
     Object.assign(sim.player,{x:1400,z:1400});
     const economy=new MultiplayerEconomy({state:savedState});
-    if (economy.absoluteHour > 16.5) sim.elapsed=(economy.absoluteHour-16.5)*35;
+    if (economy.absoluteHour > 16.5) sim.elapsed=(economy.absoluteHour-16.5)*ROOM_ECONOMY_SECONDS_PER_HOUR;
     const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0,economy};rooms.set(roomCode,room);return room;
   }
   function remove(session){

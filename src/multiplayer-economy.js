@@ -2,6 +2,7 @@ import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
 
 export const ROOM_ECONOMY_SCHEMA = 'neon-harbor/room-economy';
 export const ROOM_ECONOMY_VERSION = 2;
+export const ROOM_ECONOMY_SECONDS_PER_HOUR = 35;
 const PRODUCTS = ['produce', 'tea', 'meal'];
 const copy = value => JSON.parse(JSON.stringify(value));
 const integer = (value, max = 1e9) => Number.isSafeInteger(value) && value >= 0 && value <= max;
@@ -87,7 +88,7 @@ export class MultiplayerEconomy {
   }
   advance(seconds = 0) {
     if (!Number.isFinite(seconds) || seconds <= 0) return;
-    const next = this.absoluteHour + seconds / 35;
+    const next = this.absoluteHour + seconds / ROOM_ECONOMY_SECONDS_PER_HOUR;
     while (Math.floor(next) > this.lastResidentWageSlot) {
       this.lastResidentWageSlot++;
       for (const resident of this.residents) this._residentWage(resident);
@@ -99,13 +100,13 @@ export class MultiplayerEconomy {
     }
     this.absoluteHour = next; this.hour = ((next % 24) + 24) % 24;
   }
-  setWorldTime(seconds = 0) { if (Number.isFinite(seconds) && seconds >= 0) { const target = 16.5 + seconds / 35; this.advance(Math.max(0, (target - this.absoluteHour) * 35)); } }
+  setWorldTime(seconds = 0) { if (Number.isFinite(seconds) && seconds >= 0) { const target = 16.5 + seconds / ROOM_ECONOMY_SECONDS_PER_HOUR; this.advance(Math.max(0, (target - this.absoluteHour) * ROOM_ECONOMY_SECONDS_PER_HOUR)); } }
   setHour(hour) {
     if (!Number.isFinite(hour)) return;
     const next = ((hour % 24) + 24) % 24;
     let target = Math.floor(this.absoluteHour / 24) * 24 + next;
     if (target < this.absoluteHour) target += 24;
-    this.advance((target - this.absoluteHour) * 35);
+    this.advance((target - this.absoluteHour) * ROOM_ECONOMY_SECONDS_PER_HOUR);
   }
   exportState() { return { schema: ROOM_ECONOMY_SCHEMA, version: ROOM_ECONOMY_VERSION, hour: this.hour, absoluteHour: this.absoluteHour, revision: this.revision, serial: this.serial, orderSerial: this.orderSerial, supply: copy(this.supply), shops: copy(this.shops), consumed: copy(this.consumed), jobs: copy(this.jobs), transactions: copy(this.transactions), residents: copy(this.residents), lastResidentWageSlot: this.lastResidentWageSlot, lastResidentPurchaseDay: this.lastResidentPurchaseDay }; }
   restore(state) {

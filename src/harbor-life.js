@@ -6,6 +6,7 @@ import { harborRoutePose } from './harbor-transit.js';
 import { HarborResidentLoop, RESIDENT_LOOP } from './harbor-resident-loop.js';
 import { HARBOR_SECONDS_PER_HOUR, calendarHour, validCalendar } from './harbor-world-clock.js';
 import { HarborRoleRoutines } from './harbor-role-routines.js';
+import { ROOM_ECONOMY_SECONDS_PER_HOUR } from './multiplayer-economy.js';
 
 export const HARBOR_LIFE_SCHEMA = 'neon-harbor/daily-life';
 export const HARBOR_LIFE_VERSION = 3;
@@ -30,6 +31,7 @@ export class HarborLife {
     this.buildings = buildings; this.transport = transport;
     this.seed = (Number.isSafeInteger(seed) ? seed : 749213) >>> 0;
     this.secondsPerHour = Number.isFinite(secondsPerHour) && secondsPerHour > 0 ? secondsPerHour : HARBOR_SECONDS_PER_HOUR;
+    this.roomSecondsPerHour = null;
     this.startHour = Number.isFinite(hour) ? wrap(hour, 24) : 18;
     this.clock = { version: 1, epochTick: 0, absoluteHour: this.startHour };
     this.ticks = 0; this.accumulator = 0; this.revision = 0; this.serial = 0; this.orderSerial = 0;
@@ -94,7 +96,10 @@ export class HarborLife {
     this.restored = save ? this.restore(save) : false;
   }
   get time() { return this.ticks * HARBOR_LIFE_STEP; }
-  get absoluteHour() { return calendarHour(this.clock, this.ticks, this.secondsPerHour); }
+  get calendarSecondsPerHour() {
+    return this.roomAuthority && Number.isFinite(this.roomSecondsPerHour) ? this.roomSecondsPerHour : this.secondsPerHour;
+  }
+  get absoluteHour() { return calendarHour(this.clock, this.ticks, this.calendarSecondsPerHour); }
   get hour() { return wrap(this.absoluteHour, 24); }
   get day() { return Math.floor(this.absoluteHour / 24); }
   get totalMoney() { return this.supply.money + this.shops.reduce((n, s) => n + s.money, 0) + this.agents.reduce((n, a) => n + a.money, 0) + this.player.earnedCash - this.player.spentCash + this.jobs.reduce((n, j) => n + (j.escrow || 0), 0); }
@@ -457,6 +462,7 @@ export class HarborLife {
     if (enabled === this.roomAuthority) return enabled;
     if (enabled) { this._roomLocalSnapshot = this.snapshot(); this.roomAuthority = true; return true; }
     this.roomAuthority = false;
+    this.roomSecondsPerHour = null;
     const restore = this._roomLocalSnapshot; this._roomLocalSnapshot = null;
     if (restore) this.restore(restore);
     return false;
@@ -513,6 +519,14 @@ export class HarborLife {
       // and aggregate receipts cross the room boundary.
       agent.money = next.money; agent.roomWages = next.wages; agent.roomPurchases = next.purchases;
     }
+    if (residents.length) {
+      const wagesByShop = new Map(this.shops.map(shop => [shop.id, 0]));
+      for (const { agent, next } of residents) {
+        const employerId = typeof next.employer === 'string' ? next.employer : agent.work.employer;
+        if (wagesByShop.has(employerId)) wagesByShop.set(employerId, wagesByShop.get(employerId) + next.wages * 3);
+      }
+      for (const shop of this.shops) shop.paidWages = wagesByShop.get(shop.id);
+    }
     if (player) {
       this.player.earnedCash = player.earnedCash; this.player.spentCash = player.spentCash;
       this.player.inventory = player.inventory; this.player.activeJobId = player.activeJobId;
@@ -538,6 +552,7 @@ export class HarborLife {
       this.clock.absoluteHour = Math.floor(this.clock.absoluteHour / 24) * 24 + wrap(state.hour, 24);
       this.clock.epochTick = this.ticks;
     }
+    if (this.roomAuthority) this.roomSecondsPerHour = ROOM_ECONOMY_SECONDS_PER_HOUR;
     if (Array.isArray(state.transactions)) this.transactions = copy(state.transactions);
     this.revision = Math.max(this.revision, Number.isSafeInteger(state.revision) ? state.revision : this.revision);
     return true;

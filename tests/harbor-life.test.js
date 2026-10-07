@@ -275,6 +275,11 @@ test('room v2 economy applies resident accounts and finite consumption while pre
     'room ledger does not accept peer resident routes or positions');
   assert.deepEqual(life.consumedByProduct, ledger.consumed);
   assert.equal(life.statistics.wages, ledger.residents.reduce((sum, resident) => sum + resident.wages, 0));
+  for (const shop of life.shops) {
+    const paid = ledger.residents.filter(resident => resident.employer === shop.id)
+      .reduce((sum, resident) => sum + resident.wages * 3, 0);
+    assert.equal(shop.paidWages, paid, `${shop.id} reflects its server-authoritative payroll`);
+  }
   assert.equal(life.hour, state.hour);
   assert.equal(life.applyRoomEconomy({ ...state, version: 99 }), false);
   assert.equal(life.applyRoomEconomy({ ...state, consumed: { ...state.consumed, produce: 101 } }), false,
@@ -293,6 +298,22 @@ test('room v2 economy applies resident accounts and finite consumption while pre
   assert.deepEqual(life.consumedByProduct, ledger.consumed, 'rejected versions leave the applied ledger unchanged');
   life.setRoomAuthority(false);
   assert.equal(life.agents[0].money, 50 + (life.seed + 0 * 17) % 31, 'leaving restores the local ledger snapshot');
+});
+
+test('room authority rebases the local clock to the server rate and restores the 120-second local calendar', () => {
+  const life = fixture({ secondsPerHour: 120 }), ledger = new MultiplayerEconomy();
+  ledger.advance(35 * 20);
+  life.setRoomAuthority(true);
+  assert.equal(life.applyRoomEconomy(ledger.snapshot('room-player')), true);
+  assert.equal(life.calendarSecondsPerHour, 35);
+  const syncedHour = life.absoluteHour;
+  life.update(35);
+  assert.ok(Math.abs(life.absoluteHour - (syncedHour + 1)) < 1e-8, 'a disconnected client advances at the room rate');
+  life.setRoomAuthority(false);
+  assert.equal(life.calendarSecondsPerHour, 120);
+  const localHour = life.absoluteHour;
+  life.update(120);
+  assert.ok(Math.abs(life.absoluteHour - (localHour + 1)) < 1e-8, 'leaving the room restores the single-player rate');
 });
 
 test('leaving room authority restores the local simulation wallet', () => {

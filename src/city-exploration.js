@@ -42,7 +42,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   root.add(south.root, north.root, infrastructure.root, harbor.root, crossings.root, sampleTransit.root, sampleDistrict.root, lifeRenderer.root);
   const sample = { transit: sampleTransit, district: sampleDistrict, life: harborLife, lifeRenderer };
   const entryMarkers = createExpansionEntrances(THREE, root, buildings.filter(b => b.shellId));
-  let simulation = null, context = null, contextVersion = null, outdoorCars = null, elevatorAnchor = null, roomLocalCash = null;
+  let simulation = null, context = null, contextVersion = null, outdoorCars = null, elevatorAnchor = null, roomLocalCash = null, roomEconomyRevision = -1;
 
   const person = () => ({ ...simulation.player, y: simulation.player.groundY + simulation.player.y });
   const inside = () => !!interiors.state?.buildingId;
@@ -106,8 +106,18 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     const authority = options?.economy;
     const applyAuthority = value => {
       if (!value) return false;
-      harborLife.applyRoomEconomy(value.economy || value);
-      const wallet = (value.economy || value).player?.cash;
+      const economy = value.economy || value;
+      if (Number.isSafeInteger(economy.revision) && economy.revision < roomEconomyRevision) {
+        if (value.result) result = value.result;
+        return Boolean(value.result);
+      }
+      const accepted = harborLife.applyRoomEconomy(economy);
+      if (!accepted) {
+        if (value.result) result = value.result;
+        return Boolean(value.result);
+      }
+      if (Number.isSafeInteger(economy.revision)) roomEconomyRevision = Math.max(roomEconomyRevision, economy.revision);
+      const wallet = economy.player?.cash;
       if (Number.isSafeInteger(wallet)) { simulation.cash = wallet; roomWallet = wallet; }
       if (value.result) { result = value.result; return true; }
       return false;
@@ -130,14 +140,19 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     return result;
   }
   function syncEconomy(state) {
+    if (Number.isSafeInteger(state?.revision) && state.revision < roomEconomyRevision) return false;
     const accepted = harborLife.applyRoomEconomy(state);
-    if (accepted && Number.isSafeInteger(state?.player?.cash)) simulation && (simulation.cash = state.player.cash);
+    if (accepted) {
+      if (Number.isSafeInteger(state?.revision)) roomEconomyRevision = Math.max(roomEconomyRevision, state.revision);
+      if (Number.isSafeInteger(state?.player?.cash)) simulation && (simulation.cash = state.player.cash);
+    }
     return accepted;
   }
   function setEconomyAuthority(enabled) {
     enabled = Boolean(enabled);
     if (enabled === harborLife.roomAuthority) return enabled;
     if (enabled) roomLocalCash = Number.isSafeInteger(simulation?.cash) ? simulation.cash : null;
+    if (enabled) roomEconomyRevision = -1;
     if (simulation) simulation.roomWalletAuthority = enabled;
     const result = harborLife.setRoomAuthority(enabled);
     if (!enabled) {
@@ -146,6 +161,7 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
       // otherwise a shared purchase or delivery would leak into single-player.
       if (roomLocalCash !== null && simulation) simulation.cash = roomLocalCash;
       roomLocalCash = null;
+      roomEconomyRevision = -1;
     }
     return result;
   }

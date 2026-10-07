@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createMultiplayerServer } from '../tools/multiplayer-server.mjs';
 import { ROOM_PROTOCOL, ROOM_WORLD, PeerSnapshots } from '../src/multiplayer-protocol.js';
+import { MultiplayerClient } from '../src/multiplayer.js';
 import { MultiplayerEconomy } from '../src/multiplayer-economy.js';
 const world={protocol:ROOM_PROTOCOL,world:ROOM_WORLD};
 async function fixture(t, options={}){
@@ -57,6 +58,18 @@ test('room capacity is enforced and peer interpolation follows shortest angles w
   const frames=new PeerSnapshots();frames.push({players:[{id:'a',x:0,y:0,z:0,yaw:3.1,scene:'outdoor'}]},0);frames.push({players:[{id:'a',x:2,y:0,z:0,yaw:-3.1,scene:'outdoor'}]},100);
   assert.equal(frames.sample(150)[0].x,1);assert.ok(Math.abs(frames.sample(150)[0].yaw)>3);
   frames.push({players:[{id:'a',x:200,y:20,z:0,yaw:0,scene:'interior:x'}]},200);assert.equal(frames.sample(210)[0].x,200);
+});
+
+test('multiplayer client keeps the latest economy revision when SSE and POST frames reorder', () => {
+  const snapshots = [], client = new MultiplayerClient({ onSnapshot: snapshot => snapshots.push(snapshot) });
+  client.receive({ players: [{ id: 'peer', x: 1, y: 0, z: 0, yaw: 0 }], economy: { revision: 4, player: { cash: 1200 } } });
+  client.receive({ players: [{ id: 'peer', x: 2, y: 0, z: 0, yaw: 0 }], economy: { revision: 3, player: { cash: 1194 } } });
+  assert.equal(client.snapshot.players[0].x, 2, 'newer movement data is still delivered');
+  assert.equal(client.snapshot.economy.revision, 4, 'a stale economy frame cannot roll back the ledger');
+  assert.equal(client.snapshot.economy.player.cash, 1200);
+  assert.equal(snapshots.at(-1).economy.revision, 4, 'city sync receives the retained authoritative revision');
+  client.receive({ players: [{ id: 'peer', x: 3, y: 0, z: 0, yaw: 0 }], economy: { revision: 5, player: { cash: 1194 } } });
+  assert.equal(client.snapshot.economy.revision, 5);
 });
 
 test('room economy owns a finite shop ledger, idempotent purchase, and shared delivery stock', async t => {
