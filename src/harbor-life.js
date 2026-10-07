@@ -477,7 +477,7 @@ export class HarborLife {
     });
     if (shops.some(value => !value) || !integer(supply.money) || PRODUCTS.some(product => !integer(supply.stock?.[product]))) return false;
     const residents = Array.isArray(state.residents) ? this.agents.map(agent => {
-      const next = state.residents.find(candidate => candidate.id === agent.id);
+      const next = state.residents.find(candidate => candidate && candidate.id === agent.id);
       if (!next || !integer(next.money) || !integer(next.wages) || !integer(next.purchases)) return null;
       return { agent, next };
     }) : [];
