@@ -471,7 +471,7 @@ export class HarborLife {
     if (!state || state.schema !== 'neon-harbor/room-economy' || ![1, 2].includes(state.version)) return false;
     if (state.supply?.id !== this.supply.id || !Array.isArray(state.shops) || state.shops.length !== this.shops.length || !Array.isArray(state.jobs)) return false;
     const supply = copy(state.supply), shops = this.shops.map(shop => {
-      const next = state.shops.find(candidate => candidate.id === shop.id);
+      const next = state.shops.find(candidate => candidate && candidate.id === shop.id);
       if (!next || !integer(next.money) || !integer(next.stock) || !integer(next.sold) || !integer(next.received)) return null;
       return { shop, next: copy(next) };
     });

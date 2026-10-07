@@ -279,6 +279,8 @@ test('room v2 economy applies resident accounts and finite consumption while pre
   assert.equal(life.applyRoomEconomy({ ...state, version: 99 }), false);
   assert.equal(life.applyRoomEconomy({ ...state, consumed: { ...state.consumed, produce: 101 } }), false,
     'out-of-range consumed units are rejected');
+  assert.equal(life.applyRoomEconomy({ ...state, shops: [null, ...state.shops.slice(1)] }), false,
+    'malformed shop rows are rejected without throwing');
   assert.deepEqual(life.consumedByProduct, ledger.consumed, 'rejected versions leave the applied ledger unchanged');
   life.setRoomAuthority(false);
   assert.equal(life.agents[0].money, 50 + (life.seed + 0 * 17) % 31, 'leaving restores the local ledger snapshot');
