@@ -102,13 +102,13 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
   }
   function interact(options = {}) {
     if (simulation.inCar) return { handled: false };
-    let result;
+    let result, roomWallet = null;
     const authority = options?.economy;
     const applyAuthority = value => {
       if (!value) return false;
       harborLife.applyRoomEconomy(value.economy || value);
       const wallet = (value.economy || value).player?.cash;
-      if (Number.isSafeInteger(wallet)) simulation.cash = wallet;
+      if (Number.isSafeInteger(wallet)) { simulation.cash = wallet; roomWallet = wallet; }
       if (value.result) { result = value.result; return true; }
       return false;
     };
@@ -122,7 +122,10 @@ export function createCityExploration(THREE, scene, { quality = 'high', streamin
     if (!result) return { handled: false };
     if (typeof result === 'string') result = { handled: true, message: result };
     if(result.type==='conversation')result.handled=true;
-    if (Number.isFinite(result.cashDelta) && result.cashDelta) { simulation.cash += result.cashDelta; simulation.saveRevision++; }
+    // The room response already contains the post-transaction wallet. Applying
+    // its cashDelta again would charge purchases twice (or pay deliveries
+    // twice); local interactions still use the returned delta path.
+    if (Number.isFinite(result.cashDelta) && result.cashDelta && roomWallet === null) { simulation.cash += result.cashDelta; simulation.saveRevision++; }
     message(result); syncContext(); applyTransition(result.transition);
     return result;
   }

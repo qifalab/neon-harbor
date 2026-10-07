@@ -465,18 +465,69 @@ export class HarborLife {
   /** Apply the finite shared ledger without accepting peer-authored resident
    * routes or positions. This is used by the room client after each SSE frame. */
   applyRoomEconomy(state) {
-    if (!state || state.schema !== 'neon-harbor/room-economy' || state.version !== 1) return false;
+    // v2 is the live room protocol. Keep v1 readable for a client joining an
+    // older room, but only apply the bounded ledger fields below; resident
+    // routes, poses and goals are always retained from this client.
+    if (!state || state.schema !== 'neon-harbor/room-economy' || ![1, 2].includes(state.version)) return false;
     if (state.supply?.id !== this.supply.id || !Array.isArray(state.shops) || state.shops.length !== this.shops.length || !Array.isArray(state.jobs)) return false;
-    Object.assign(this.supply, copy(state.supply));
-    for (const shop of this.shops) { const next = state.shops.find(candidate => candidate.id === shop.id); if (!next) return false; Object.assign(shop, copy(next)); }
+    const supply = copy(state.supply), shops = this.shops.map(shop => {
+      const next = state.shops.find(candidate => candidate.id === shop.id);
+      if (!next || !integer(next.money) || !integer(next.stock) || !integer(next.sold) || !integer(next.received)) return null;
+      return { shop, next: copy(next) };
+    });
+    if (shops.some(value => !value) || !integer(supply.money) || PRODUCTS.some(product => !integer(supply.stock?.[product]))) return false;
+    const residents = Array.isArray(state.residents) ? this.agents.map(agent => {
+      const next = state.residents.find(candidate => candidate.id === agent.id);
+      if (!next || !integer(next.money) || !integer(next.wages) || !integer(next.purchases)) return null;
+      return { agent, next };
+    }) : [];
+    if (state.version >= 2 && (residents.length !== this.agents.length || residents.some(value => !value))) return false;
+    const player = state.player && {
+      earnedCash: integer(state.player.earnedCash) ? state.player.earnedCash : null,
+      spentCash: integer(state.player.spentCash) ? state.player.spentCash : null,
+      inventory: PRODUCTS.every(product => integer(state.player.inventory?.[product], 100)) ? copy(state.player.inventory) : null,
+      activeJobId: state.player.activeJobId == null || typeof state.player.activeJobId === 'string' ? state.player.activeJobId || null : null,
+      requests: Array.isArray(state.player.requests) ? copy(state.player.requests) : null,
+    };
+    if (state.player && (!player || player.earnedCash === null || player.spentCash === null || !player.inventory)) return false;
+    if (state.consumed && !PRODUCTS.every(product => integer(state.consumed[product], 100))) return false;
+    const consumed = state.consumed ? copy(state.consumed)
+      : Object.fromEntries(PRODUCTS.map(product => [product, this.consumedByProduct[product]]));
+    // Commit only after all shape and range checks pass, so a malformed SSE
+    // frame cannot leave a half-applied local ledger.
+    Object.assign(this.supply, supply); for (const { shop, next } of shops) Object.assign(shop, next);
     this.jobs = copy(state.jobs);
-    if (state.player) {
-      this.player.earnedCash = Number.isSafeInteger(state.player.earnedCash) ? state.player.earnedCash : this.player.earnedCash;
-      this.player.spentCash = Number.isSafeInteger(state.player.spentCash) ? state.player.spentCash : this.player.spentCash;
-      this.player.inventory = { ...this.player.inventory, ...copy(state.player.inventory || {}) };
-      this.player.activeJobId = state.player.activeJobId || null;
+    this.consumedByProduct = consumed;
+    if (residents.length) for (const { agent, next } of residents) {
+      // Keep each locally simulated pose/path. Only the server-owned account
+      // and aggregate receipts cross the room boundary.
+      agent.money = next.money; agent.roomWages = next.wages; agent.roomPurchases = next.purchases;
     }
-    if (Number.isFinite(state.hour)) this.externalHour = wrap(state.hour, 24);
+    if (player) {
+      this.player.earnedCash = player.earnedCash; this.player.spentCash = player.spentCash;
+      this.player.inventory = player.inventory; this.player.activeJobId = player.activeJobId;
+      // Room deliveries currently pay a fixed $12 escrow reward, so this
+      // count mirrors the room wallet while authority is enabled. The local
+      // snapshot retained by setRoomAuthority() restores the original count
+      // when the client leaves the room.
+      this.player.completed = Math.floor(player.earnedCash / 12);
+      if (player.requests) this.player.purchaseRequests = player.requests;
+    }
+    const residentWages = residents.reduce((sum, value) => sum + (value?.next.wages || 0), 0);
+    const residentPurchases = residents.reduce((sum, value) => sum + (value?.next.purchases || 0), 0);
+    const playerPurchases = player?.requests?.length ?? this.statistics.playerPurchases;
+    this.statistics.wages = residentWages;
+    this.statistics.playerPurchases = playerPurchases;
+    this.statistics.purchases = residentPurchases + playerPurchases;
+    this.statistics.consumed = PRODUCTS.reduce((sum, product) => sum + this.consumedByProduct[product], 0);
+    this.statistics.deliveries = this.jobs.filter(job => job.status === 'delivered').length;
+    if (Number.isFinite(state.absoluteHour)) {
+      this.clock.absoluteHour = state.absoluteHour;
+      this.clock.epochTick = this.ticks;
+    } else if (Number.isFinite(state.hour)) {
+      this.clock.absoluteHour = Math.floor(this.clock.absoluteHour / 24) * 24 + wrap(state.hour, 24);
+      this.clock.epochTick = this.ticks;
+    }
     if (Array.isArray(state.transactions)) this.transactions = copy(state.transactions);
     this.revision = Math.max(this.revision, Number.isSafeInteger(state.revision) ? state.revision : this.revision);
     return true;

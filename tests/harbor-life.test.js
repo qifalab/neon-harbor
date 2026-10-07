@@ -9,6 +9,7 @@ import { createInteriorLayout } from '../src/metropolis-interiors.js';
 import { circleOBB } from '../src/collision.js';
 import { GameSimulation } from '../src/simulation.js';
 import { intersectionSignal } from '../src/traffic.js';
+import { MultiplayerEconomy } from '../src/multiplayer-economy.js';
 
 const city = createCityExploration(THREE, new THREE.Scene(), { streaming: false });
 const fixture = (options = {}) => createHarborLife({ buildings: city.buildings, colliders: city.colliders, hour: 6, secondsPerHour: 35, residentLoop: false, ...options });
@@ -258,4 +259,27 @@ test('integrated E retail changes the sole game wallet and a saved inventory res
   city.bind(resumedSim, { save, hour: 16.5 });
   assert.equal(resumedSim.cash, cash - shop.price); assert.equal(city.sample.life.player.inventory.tea, 1);
   assert.equal(city.sample.life.player.spentCash, shop.price); assertBalanced(city.sample.life);
+});
+
+test('room v2 economy applies resident accounts and finite consumption while preserving local presentation poses', () => {
+  const life = fixture(), ledger = new MultiplayerEconomy();
+  const pose = { x: life.agents[0].x, y: life.agents[0].y, z: life.agents[0].z, phase: life.agents[0].phase };
+  ledger.advance(35 * 20);
+  const state = ledger.snapshot('room-player');
+  life.setRoomAuthority(true);
+  assert.equal(life.applyRoomEconomy(state), true, 'live room economy version is accepted');
+  assert.equal(life.agents[0].money, ledger.residents[0].money);
+  assert.equal(life.agents[0].roomWages, ledger.residents[0].wages);
+  assert.equal(life.agents[0].roomPurchases, ledger.residents[0].purchases);
+  assert.deepEqual({ x: life.agents[0].x, y: life.agents[0].y, z: life.agents[0].z, phase: life.agents[0].phase }, pose,
+    'room ledger does not accept peer resident routes or positions');
+  assert.deepEqual(life.consumedByProduct, ledger.consumed);
+  assert.equal(life.statistics.wages, ledger.residents.reduce((sum, resident) => sum + resident.wages, 0));
+  assert.equal(life.hour, state.hour);
+  assert.equal(life.applyRoomEconomy({ ...state, version: 99 }), false);
+  assert.equal(life.applyRoomEconomy({ ...state, consumed: { ...state.consumed, produce: 101 } }), false,
+    'out-of-range consumed units are rejected');
+  assert.deepEqual(life.consumedByProduct, ledger.consumed, 'rejected versions leave the applied ledger unchanged');
+  life.setRoomAuthority(false);
+  assert.equal(life.agents[0].money, 50 + (life.seed + 0 * 17) % 31, 'leaving restores the local ledger snapshot');
 });
