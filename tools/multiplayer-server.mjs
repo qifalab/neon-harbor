@@ -1,7 +1,8 @@
 /** Eight-player exploration rooms. SSE downlink + bounded JSON uplink, no dependencies. */
 import { randomBytes, randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { resolve } from 'node:path';
+import { resolve, dirname } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createStaticServer } from './server.mjs';
 import { GameSimulation } from '../src/simulation.js';
 import { infrastructureGroundHeightAt } from '../src/metropolis-infrastructure.js';
@@ -20,13 +21,20 @@ async function body(req){
   let size=0,text='';for await(const chunk of req){size+=chunk.length;if(size>4096)throw new Error('BODY_TOO_LARGE');text+=chunk;}
   return JSON.parse(text);
 }
-export async function createMultiplayerServer({root=fileURLToPath(new URL('../dist',import.meta.url)),origins=[],maxRooms=32,now=()=>Date.now()}={}){
+export async function createMultiplayerServer({root=fileURLToPath(new URL('../dist',import.meta.url)),origins=[],maxRooms=32,now=()=>Date.now(),economyFile=process.env.NEON_ECONOMY_FILE||null}={}){
   const server=await createStaticServer({root}),staticHandler=server.listeners('request')[0];server.removeAllListeners('request');
   const rooms=new Map(),sessions=new Map(),joinRates=new Map();
-  function newRoom(roomCode){
+  const savedEconomies = economyFile && existsSync(economyFile) ? (()=>{ try { return JSON.parse(readFileSync(economyFile, 'utf8')); } catch { return {}; } })() : {};
+  let persistTimer = null;
+  function flushPersistence() { if (!economyFile) return; try { mkdirSync(dirname(economyFile), { recursive: true }); writeFileSync(economyFile, JSON.stringify(savedEconomies)); } catch {} }
+  function persist() { if (!economyFile || persistTimer) return; persistTimer = setTimeout(() => { persistTimer = null; flushPersistence(); }, 50); persistTimer.unref?.(); }
+  function persistRoom(room) { if (!economyFile) return; savedEconomies[room.code] = room.economy.exportState(); persist(); }
+  function newRoom(roomCode, savedState=savedEconomies[roomCode]){
     const sim=new GameSimulation({bounds:1800,groundHeightAt:multiplayerGroundHeightAt});sim.cars.push(...northernVehicles());sim.networkControlled=new Set();
     Object.assign(sim.player,{x:1400,z:1400});
-    const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0,economy:new MultiplayerEconomy()};rooms.set(roomCode,room);return room;
+    const economy=new MultiplayerEconomy({state:savedState});
+    if (economy.absoluteHour > 16.5) sim.elapsed=(economy.absoluteHour-16.5)*35;
+    const room={code:roomCode,sim,players:new Map(),owners:new Map(),chat:[],seq:0,economy};rooms.set(roomCode,room);return room;
   }
   function remove(session){
     const room=session.room;if(session.carId)release(session);session.stream?.end();sessions.delete(session.token);room.players.delete(session.id);room.economy.leave(session.id);
@@ -38,7 +46,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
     if(car){car.speed=0;car.vx=0;car.vz=0;car.traffic=false;}
     session.room.owners.delete(session.carId);session.room.sim.networkControlled.delete(session.carId);session.carId=null;
   }
-  function snapshot(room,viewer=null,{advance=true}={}){if(advance)room.seq++;room.economy.setHour((16.5+room.sim.elapsed/35)%24);return {protocol:ROOM_PROTOCOL,world:ROOM_WORLD,code:room.code,seq:room.seq,time:room.sim.elapsed,
+  function snapshot(room,viewer=null,{advance=true}={}){if(advance)room.seq++;const beforeEconomyRevision=room.economy.revision;room.economy.setWorldTime(room.sim.elapsed);if(room.economy.revision!==beforeEconomyRevision)persistRoom(room);return {protocol:ROOM_PROTOCOL,world:ROOM_WORLD,code:room.code,seq:room.seq,time:room.sim.elapsed,
     players:[...room.players.values()].map(s=>({id:s.id,name:s.name,...s.pose,scene:s.scene,carId:s.carId})),
     cars:room.sim.cars.filter(c=>c.health>0).map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,pitch:c.pitch||0,roll:c.roll||0,owner:room.owners.get(c.id)||null,traffic:!!c.traffic,waypoint:c.waypoint})),chat:room.chat,economy:room.economy.snapshot(viewer?.id || room.players.keys().next().value || 'anonymous')};}
   server.on('request',async(req,res)=>{
@@ -64,7 +72,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
         if(!roomCode)return reply(res,400,{error:'INVALID_ROOM'});
         // A mistyped join must not silently create a separate empty room.
         let room=rooms.get(roomCode);
-        if(input.code&&!room)return reply(res,404,{error:'ROOM_NOT_FOUND'});
+        if(input.code&&!room && !savedEconomies[roomCode])return reply(res,404,{error:'ROOM_NOT_FOUND'});
         if(!room){if(rooms.size>=maxRooms)return reply(res,503,{error:'SERVER_FULL'});while(rooms.has(roomCode))roomCode=code();room=newRoom(roomCode);}
         if(room.players.size>=MAX_PLAYERS)return reply(res,409,{error:'ROOM_FULL'});
         const pose=cleanPose(input.pose)||{x:8,y:0,z:174,yaw:Math.PI};
@@ -81,7 +89,7 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
         req.on('close',()=>{if(session.stream===res){session.stream=null;session.closedAt=now();}});return;
       }
       if(url.pathname==='/api/economy'&&req.method==='GET'){
-        session.room.economy.setHour((16.5+session.room.sim.elapsed/35)%24);
+        session.room.economy.setWorldTime(session.room.sim.elapsed); persistRoom(session.room);
         return reply(res,200,{ok:true,economy:session.room.economy.snapshot(session.id)});
       }
       if(req.method!=='POST')return reply(res,405,{error:'METHOD_NOT_ALLOWED'});
@@ -104,9 +112,9 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
         return reply(res,200,{ok:true});
       }
       if(url.pathname==='/api/economy'&&req.method==='POST'){
-        session.room.economy.setHour((16.5+session.room.sim.elapsed/35)%24);
+        session.room.economy.setWorldTime(session.room.sim.elapsed);
         const result=session.room.economy.action(session.id,{...input,scene:session.scene,position:session.pose});
-        return reply(res,result.success?200:409,{ok:result.success,error:result.success?undefined:result.reason,result,economy:session.room.economy.snapshot(session.id)});
+        persistRoom(session.room); return reply(res,result.success?200:409,{ok:result.success,error:result.success?undefined:result.reason,result,economy:session.room.economy.snapshot(session.id)});
       }
       if(url.pathname==='/api/claim'){
         const car=session.room.sim.cars.find(car=>car.id===input.carId),owner=session.room.owners.get(input.carId);
@@ -130,17 +138,18 @@ export async function createMultiplayerServer({root=fileURLToPath(new URL('../di
   const timer=setInterval(()=>{
     for(const room of rooms.values()){
       room.sim.update(1/30);
+      const beforeEconomyRevision=room.economy.revision; room.economy.setWorldTime(room.sim.elapsed); if (room.economy.revision!==beforeEconomyRevision) persistRoom(room);
       if(ticks%3===0){room.seq++;for(const s of room.players.values())if(s.stream&&!s.stream.writableEnded){if(s.stream.writableLength>256000){s.stream.destroy();continue;}s.stream.write(`data: ${JSON.stringify(snapshot(room,s,{advance:false}))}\n\n`);}}
     }
     for(const s of sessions.values())if((!s.stream&&now()-s.lastSeen>20000)||(s.closedAt&&now()-s.closedAt>2500))remove(s);
     if(ticks++%900===0)for(const [ip,rate] of joinRates)if(now()-rate.start>60000)joinRates.delete(ip);
   },1000/30);timer.unref();
   server.on('close',()=>clearInterval(timer));
-  server.stopRooms=()=>{clearInterval(timer);for(const s of [...sessions.values()])remove(s);};
+  server.stopRooms=()=>{clearInterval(timer);for(const room of rooms.values())persistRoom(room);for(const s of [...sessions.values()])remove(s);if(persistTimer){clearTimeout(persistTimer);persistTimer=null;}flushPersistence();};
   return server;
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
-  const server=await createMultiplayerServer({root:resolve(process.env.NEON_ROOT||'dist'),origins:(process.env.NEON_ALLOWED_ORIGINS||'').split(',').filter(Boolean)});
+  const server=await createMultiplayerServer({root:resolve(process.env.NEON_ROOT||'dist'),origins:(process.env.NEON_ALLOWED_ORIGINS||'').split(',').filter(Boolean),economyFile:process.env.NEON_ECONOMY_FILE||resolve('data/neon-harbor-room-economy.json')});
   const port=Number(process.env.PORT||5180);server.listen(port,process.env.HOST||'127.0.0.1',()=>console.log(`Neon Harbor rooms: http://${process.env.HOST||'127.0.0.1'}:${port}`));
   for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{server.stopRooms();server.close();});
 }

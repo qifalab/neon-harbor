@@ -51,7 +51,7 @@ jobs:
     if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.native_only == true) }}
     name: Build and gameplay tests (${{ matrix.id }})
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: ${{ matrix.id == 'harbor-sample-2' && 60 || 45 }}
     strategy:
       fail-fast: false
       matrix:

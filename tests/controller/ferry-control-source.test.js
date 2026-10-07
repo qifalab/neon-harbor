@@ -218,13 +218,9 @@ test('public route, E, destination, High captures and original failure remain li
   // the public route, inputs and capture flow pinned to the original.
   const normalizePublicHarness = source => source
     .replace('      await mkdir(dirname(phase.path), { recursive: true });\n', '')
-    .replace(`    // The complete ferry route is intentionally serial. Loaded GitHub runners
-    // can spend over eighteen minutes across its twelve real-input legs while
-    // the page remains live; retain finite per-leg and test-level caps without
-    // turning a stalled route into an unbounded wait.
-    if (kind === 'ferry') test.setTimeout(1800000);
-`, `    if (kind === 'ferry') test.setTimeout(1080000);
-`)
+    .replace(/    \/\/ The complete ferry route is intentionally serial\.[\s\S]*?    if \(kind === 'ferry'\) test\.setTimeout\(2400000\);\n/, `    if (kind === 'ferry') test.setTimeout(1080000);\n`)
+    .replace(/    \/\/ Run 20 completed every cabin waypoint while the vessel was returning[\s\S]*?    const arrivalTimeout = kind === 'ferry' \? 900000 : 180000;\n/, '')
+    .replace("    }, { id: vehicleId, from: stop.id }, { polling: 'raf', timeout: arrivalTimeout });", "    }, { id: vehicleId, from: stop.id }, { polling: 'raf', timeout: 180000 });")
     .replace(`      // The pier's full-radius collision envelope can leave the capsule just
       // inside the boarding trigger rather than on the authored centre point.
       // Accept that physical standing position; E and the later deck/door

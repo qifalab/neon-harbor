@@ -1,7 +1,7 @@
 import { HARBOR_SHOP_DEFS } from './harbor-shop-defs.js';
 
 export const ROOM_ECONOMY_SCHEMA = 'neon-harbor/room-economy';
-export const ROOM_ECONOMY_VERSION = 1;
+export const ROOM_ECONOMY_VERSION = 2;
 const PRODUCTS = ['produce', 'tea', 'meal'];
 const copy = value => JSON.parse(JSON.stringify(value));
 const integer = (value, max = 1e9) => Number.isSafeInteger(value) && value >= 0 && value <= max;
@@ -20,18 +20,27 @@ const nearAnchor = (position, anchor, radius = 8) => position && Number.isFinite
 
 /**
  * The small room ledger deliberately owns only state that can be shared over
- * the existing JSON/SSE protocol. Resident movement and wages remain a
- * presentation simulation on each client; shops, finite stock, deliveries,
- * player wallets and inventories are single-writer room state here.
+ * the existing JSON/SSE protocol. Resident movement remains a presentation
+ * simulation on each client; the room service owns wages, purchases, shops,
+ * finite stock, deliveries, player wallets and inventories as single-writer
+ * room state here.
  */
 export class MultiplayerEconomy {
-  constructor({ hour = 16.5, playerCash = 1200 } = {}) {
+  constructor({ hour = 16.5, playerCash = 1200, state = null } = {}) {
     this.hour = Number.isFinite(hour) ? ((hour % 24) + 24) % 24 : 16.5;
     this.revision = 0; this.serial = 0; this.orderSerial = 0;
     this.supply = { id: 'harbor-supply', money: 900, stock: Object.fromEntries(PRODUCTS.map(product => [product, 96])) };
     this.shops = HARBOR_SHOP_DEFS.map(def => ({ ...def, money: 260, stock: 4, sold: 0, received: 0 }));
+    this.consumed = Object.fromEntries(PRODUCTS.map(product => [product, 0]));
     this.jobs = []; this.transactions = []; this.players = new Map();
     this.playerCash = integer(playerCash, 9999999) ? playerCash : 1200;
+    this.absoluteHour = this.hour; this.lastResidentWageSlot = Math.floor(this.absoluteHour); this.lastResidentPurchaseDay = Math.floor(this.absoluteHour / 24) - 1;
+    this.residents = Array.from({ length: 20 }, (_, index) => {
+      const id = `harbor-resident-${String(index + 1).padStart(2, '0')}`;
+      const shop = index < 6 ? this.shops[Math.floor(index / 2)] : null;
+      return { id, name: `港湾居民${String(index + 1).padStart(2, '0')}`, employer: shop?.id || this.supply.id, money: 50 + (749213 + index * 17) % 31, purchased: 0, wages: 0, purchases: 0 };
+    });
+    if (state) this.restore(state);
   }
   _record(type, fields = {}) {
     const transaction = { id: `room-tx-${++this.serial}`, type, revision: ++this.revision, hour: this.hour, ...fields };
@@ -63,13 +72,58 @@ export class MultiplayerEconomy {
       this.jobs = this.jobs.filter(job => !remove.has(job.id));
     }
   }
-  setHour(hour) { if (Number.isFinite(hour)) this.hour = ((hour % 24) + 24) % 24; }
+  _residentWage(resident) {
+    const employer = resident.employer === this.supply.id ? this.supply : this.shops.find(shop => shop.id === resident.employer);
+    if (!employer || employer.money < 3) return false;
+    employer.money -= 3; resident.money += 3; resident.wages++; this._record('resident-wage', { residentId: resident.id, from: employer.id, to: resident.id, amount: 3, slot: this.lastResidentWageSlot }); return true;
+  }
+  _residentPurchase(resident) {
+    const shop = this.shops[(resident.wages + Number(resident.id.slice(-2))) % this.shops.length];
+    if (!shop || !shop.stock || resident.money < shop.price) return false;
+    resident.money -= shop.price; shop.money += shop.price; shop.stock--; shop.sold++; resident.purchases++;
+    this.consumed[shop.product]++;
+    this._record('resident-purchase', { residentId: resident.id, shopId: shop.id, amount: shop.price, product: shop.product, day: Math.floor(this.absoluteHour / 24) });
+    return true;
+  }
+  advance(seconds = 0) {
+    if (!Number.isFinite(seconds) || seconds <= 0) return;
+    const next = this.absoluteHour + seconds / 35;
+    while (Math.floor(next) > this.lastResidentWageSlot) {
+      this.lastResidentWageSlot++;
+      for (const resident of this.residents) this._residentWage(resident);
+      if (this.lastResidentWageSlot % 24 === 12 && this.lastResidentPurchaseDay < Math.floor(this.lastResidentWageSlot / 24)) {
+        this.lastResidentPurchaseDay = Math.floor(this.lastResidentWageSlot / 24);
+        for (const resident of this.residents) this._residentPurchase(resident);
+        this._orders();
+      }
+    }
+    this.absoluteHour = next; this.hour = ((next % 24) + 24) % 24;
+  }
+  setWorldTime(seconds = 0) { if (Number.isFinite(seconds) && seconds >= 0) { const target = 16.5 + seconds / 35; this.advance(Math.max(0, (target - this.absoluteHour) * 35)); } }
+  setHour(hour) {
+    if (!Number.isFinite(hour)) return;
+    const next = ((hour % 24) + 24) % 24;
+    let target = Math.floor(this.absoluteHour / 24) * 24 + next;
+    if (target < this.absoluteHour) target += 24;
+    this.advance((target - this.absoluteHour) * 35);
+  }
+  exportState() { return { schema: ROOM_ECONOMY_SCHEMA, version: ROOM_ECONOMY_VERSION, hour: this.hour, absoluteHour: this.absoluteHour, revision: this.revision, serial: this.serial, orderSerial: this.orderSerial, supply: copy(this.supply), shops: copy(this.shops), consumed: copy(this.consumed), jobs: copy(this.jobs), transactions: copy(this.transactions), residents: copy(this.residents), lastResidentWageSlot: this.lastResidentWageSlot, lastResidentPurchaseDay: this.lastResidentPurchaseDay }; }
+  restore(state) {
+    if (!state || state.schema !== ROOM_ECONOMY_SCHEMA || ![1, ROOM_ECONOMY_VERSION].includes(state.version)) return false;
+    if (!state.supply || !Array.isArray(state.shops) || state.shops.length !== this.shops.length || !Array.isArray(state.jobs)) return false;
+    Object.assign(this.supply, copy(state.supply)); for (const product of PRODUCTS) if (!integer(this.supply.stock?.[product])) return false;
+    for (const shop of this.shops) { const next = state.shops.find(candidate => candidate.id === shop.id); if (!next) return false; Object.assign(shop, copy(next)); if (!integer(shop.stock) || !integer(shop.money)) return false; }
+    if (state.consumed && PRODUCTS.every(product => integer(state.consumed[product]))) this.consumed = Object.fromEntries(PRODUCTS.map(product => [product, state.consumed[product]]));
+    this.jobs = copy(state.jobs); this.transactions = Array.isArray(state.transactions) ? copy(state.transactions).slice(-96) : [];
+    if (Array.isArray(state.residents) && state.residents.length === this.residents.length) for (const resident of this.residents) { const next = state.residents.find(candidate => candidate.id === resident.id); if (next && integer(next.money) && integer(next.wages) && integer(next.purchases)) Object.assign(resident, next); }
+    this.hour = Number.isFinite(state.hour) ? state.hour : this.hour; this.absoluteHour = Number.isFinite(state.absoluteHour) ? state.absoluteHour : this.hour; this.revision = integer(state.revision) ? state.revision : this.revision; this.serial = integer(state.serial) ? state.serial : this.serial; this.orderSerial = integer(state.orderSerial) ? state.orderSerial : this.orderSerial; this.lastResidentWageSlot = integer(state.lastResidentWageSlot) ? state.lastResidentWageSlot : Math.floor(this.absoluteHour); this.lastResidentPurchaseDay = Number.isInteger(state.lastResidentPurchaseDay) ? state.lastResidentPurchaseDay : -1; return true;
+  }
   join(playerId) { this._player(playerId); return this.snapshot(playerId); }
   leave(playerId) { this.players.delete(playerId); }
   snapshot(playerId) {
     const player = this._player(playerId);
-    return { schema: ROOM_ECONOMY_SCHEMA, version: ROOM_ECONOMY_VERSION, revision: this.revision, hour: this.hour,
-      supply: copy(this.supply), shops: copy(this.shops), jobs: copy(this.jobs),
+    return { schema: ROOM_ECONOMY_SCHEMA, version: ROOM_ECONOMY_VERSION, revision: this.revision, hour: this.hour, absoluteHour: this.absoluteHour,
+      supply: copy(this.supply), shops: copy(this.shops), consumed: copy(this.consumed), jobs: copy(this.jobs), residents: copy(this.residents),
       transactions: copy(this.transactions), player: copy(player), players: [...this.players.keys()] };
   }
   _result(success, reason, message, extra = {}) { return { handled: true, success, reason, message, cashDelta: 0, ...extra }; }

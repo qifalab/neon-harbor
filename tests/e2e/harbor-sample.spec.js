@@ -430,7 +430,7 @@ for (const kind of ['bus', 'tram', 'ferry']) {
     // can spend over eighteen minutes across its twelve real-input legs while
     // the page remains live; retain finite per-leg and test-level caps without
     // turning a stalled route into an unbounded wait.
-    if (kind === 'ferry') test.setTimeout(1800000);
+    if (kind === 'ferry') test.setTimeout(2400000);
     const errors = await boot(page), layout = createHarborVehicleLayout(kind), stair = layout.stairs[0], door = layout.doors[0];
     // Return only the fields consumed by this transit scenario. The complete
     // transit state and all physical alighting assertions remain unchanged.
@@ -490,10 +490,15 @@ for (const kind of ['bus', 'tram', 'ferry']) {
       }
     });
     expect((await transitSnapshot()).city.sample.transit.passengerDeck).toBe('lower');
+    // Run 20 completed every cabin waypoint while the vessel was returning
+    // south. At ~2 seconds per rendered frame, the capped simulation clock
+    // needs more than 180 wall seconds to dwell south and reach the north
+    // again. Keep the real next-stop predicate and a finite 15-minute cap.
+    const arrivalTimeout = kind === 'ferry' ? 900000 : 180000;
     await page.waitForFunction(({ id, from }) => {
       const v = window.__NEON__.snapshot().city.sample.transit.vehicles.find(v => v.id === id);
       return v.stopId && v.stopId !== from && v.doorsOpen && v.remaining > 2;
-    }, { id: vehicleId, from: stop.id }, { polling: 'raf', timeout: 180000 });
+    }, { id: vehicleId, from: stop.id }, { polling: 'raf', timeout: arrivalTimeout });
     const arrival = await transitSnapshot(), destination = arrival.city.sample.transit.stops.find(s => s.id === arrival.city.sample.transit.currentStopId);
     expect(arrival.simulationTime).toBeGreaterThan(boarded.simulationTime);
     expect(arrival.teleportRevision).toBe(revision);

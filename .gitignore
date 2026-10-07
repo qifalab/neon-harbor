@@ -24,3 +24,6 @@ city-materials-playwright-report/
 
 # Keep unedited QA videos locally; publish them as versioned Release attachments.
 docs/qa/**/*.webm
+
+# Multiplayer room state is runtime data, never a source artifact.
+data/neon-harbor-room-economy.json

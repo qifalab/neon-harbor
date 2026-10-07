@@ -1,15 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { createMultiplayerServer } from '../tools/multiplayer-server.mjs';
 import { ROOM_PROTOCOL, ROOM_WORLD, PeerSnapshots } from '../src/multiplayer-protocol.js';
+import { MultiplayerEconomy } from '../src/multiplayer-economy.js';
 const world={protocol:ROOM_PROTOCOL,world:ROOM_WORLD};
-async function fixture(t){
-  const server=await createMultiplayerServer({root:new URL('..',import.meta.url).pathname});
+async function fixture(t, options={}){
+  const server=await createMultiplayerServer({root:new URL('..',import.meta.url).pathname, ...options});
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
-  t.after(()=>{server.stopRooms();server.closeAllConnections();server.close();});
+  let stopped=false; const stop=()=>{if(stopped)return;stopped=true;server.stopRooms();server.closeAllConnections();server.close();};
+  t.after(stop);
   const base=`http://127.0.0.1:${server.address().port}`;
   async function post(path,data={},token){const res=await fetch(`${base}/api/${path}`,{method:'POST',headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify(data)});return {status:res.status,...await res.json()};}
-  return {post,base};
+  return {post,base,stop};
 }
 test('real room service joins two clients, streams movement/chat, isolates rooms and rejects invalid packets',async t=>{
   const {post,base}=await fixture(t);
@@ -81,4 +86,46 @@ test('room economy owns a finite shop ledger, idempotent purchase, and shared de
   const shared = await post('economy', {}, b.token);
   assert.equal(shared.economy.shops.find(candidate => candidate.id === shop.id).stock, 11);
   assert.equal(shared.economy.jobs.find(candidate => candidate.id === order.id).status, 'delivered');
+});
+
+test('room resident wages and purchases are authoritative and product units remain conserved', () => {
+  const ledger = new MultiplayerEconomy();
+  const initial = Object.fromEntries(['produce', 'tea', 'meal'].map(product => [product,
+    ledger.supply.stock[product] + ledger.shops.filter(shop => shop.product === product).reduce((sum, shop) => sum + shop.stock, 0)]));
+  ledger.advance(35 * 20);
+  assert.equal(ledger.residents.length, 20);
+  assert.ok(ledger.residents.every(resident => resident.wages > 0), 'every authored resident received a room-authoritative wage');
+  assert.ok(ledger.residents.some(resident => resident.purchases > 0), 'residents exercise a shared shop ledger');
+  assert.ok(ledger.transactions.some(transaction => transaction.type === 'resident-wage'));
+  assert.ok(ledger.transactions.some(transaction => transaction.type === 'resident-purchase'));
+  for (const product of Object.keys(initial)) {
+    const remaining = ledger.supply.stock[product] + ledger.shops.filter(shop => shop.product === product).reduce((sum, shop) => sum + shop.stock, 0);
+    assert.equal(remaining + ledger.consumed[product], initial[product], `${product} units are conserved`);
+  }
+  const restored = new MultiplayerEconomy({ state: ledger.exportState() });
+  assert.deepEqual(restored.residents, ledger.residents, 'resident balances survive a room restart');
+  assert.deepEqual(restored.consumed, ledger.consumed, 'consumed product ledger survives a room restart');
+});
+
+test('two clients observe a persisted room economy after the service restarts', async t => {
+  const directory = await mkdtemp(join(tmpdir(), 'neon-harbor-economy-'));
+  const economyFile = join(directory, 'rooms.json');
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const first = await fixture(t, { economyFile });
+  const pose = { x: 225.3, y: 0, z: 187, yaw: 0 };
+  const buyer = await first.post('join', { ...world, name: 'buyer', pose });
+  const observer = await first.post('join', { ...world, name: 'observer', code: buyer.code, pose });
+  const purchase = await first.post('economy', { type: 'purchase', shopId: 'harbor-produce', requestId: 'restart-purchase-1' }, buyer.token);
+  assert.equal(purchase.status, 200);
+  const live = await first.post('economy', {}, observer.token);
+  assert.equal(live.economy.shops.find(shop => shop.id === 'harbor-produce').stock, 3);
+  first.stop();
+  const onDisk = JSON.parse(await readFile(economyFile, 'utf8'));
+  assert.equal(onDisk[buyer.code].shops.find(shop => shop.id === 'harbor-produce').stock, 3);
+
+  const second = await fixture(t, { economyFile });
+  const restored = await second.post('join', { ...world, code: buyer.code, name: 'reconnected', pose });
+  assert.equal(restored.status, 200);
+  assert.equal(restored.economy.shops.find(shop => shop.id === 'harbor-produce').stock, 3);
+  assert.equal(restored.economy.consumed.produce, 0, 'player purchase stock is persisted without being marked as resident consumption');
 });
