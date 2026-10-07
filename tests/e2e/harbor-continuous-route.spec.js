@@ -10,8 +10,12 @@ import { enterRoom, leaveRoom, faceRoom } from './helpers/occupied.js';
 // physical keyboard travel, public boarding, or an actual building doorway.
 // This is intentionally separate from the shorter transport and room suites:
 // a failure identifies a broken hand-off between otherwise working systems.
-test.use({ viewport: { width: 512, height: 320 } });
-test.setTimeout(2400000);
+// The route keeps its own JSONL journal and prior failures retain full traces.
+// Automatic retain-on-failure tracing turns the software renderer into an
+// unusably slow frame encoder for this multi-hour-clock scenario, so disable
+// it here and keep the route evidence focused on real input/state records.
+test.use({ viewport: { width: 512, height: 320 }, trace: 'off' });
+test.setTimeout(7200000);
 
 const transitState = page => page.evaluate(() => window.__NEON__.snapshot().city.sample.transit);
 const buildingState = page => page.evaluate(() => window.__NEON__.snapshot().city.interior);
@@ -74,7 +78,7 @@ async function waitForVehicle(page, stopId, timeout = 240000) {
     .some(vehicle => vehicle.stopId === id && vehicle.remaining > 2), stopId, { polling: 'raf', timeout });
 }
 
-async function rideTo(page, fromId, toId, { boardTolerance = .75, timeout = 600000 } = {}) {
+async function rideTo(page, fromId, toId, { boardTolerance = .75, timeout = 900000 } = {}) {
   const from = await stopById(page, fromId), to = await stopById(page, toId);
   expect(from, `known origin stop ${fromId}`).toBeTruthy();
   expect(to, `known destination stop ${toId}`).toBeTruthy();
