@@ -2,7 +2,7 @@
 
 Preparation only. ROOT exclusively authorizes GPU execution. No capture, art acceptance, hardware result, elevator pass or publication is claimed here.
 
-The before is this checkout's actual committed integration build: version0.8.0, revision `151323fc7e03fd56763bc662d7492414e7c09042`, 214 runtime assets, build-info SHA `62be1c1e08f161a03294b617f6e7d5fe1129c28c9e42836c509f671235440233`. All 864 currently materialized source/QA files are frozen separately from dist and dependencies; skipped logical QA history is not materialized or claimed. The candidate remains unbound until its actual build and the before's actual owned closure.
+The before is the archived 151323f integration build used for comparison: version0.8.0, revision `151323fc7e03fd56763bc662d7492414e7c09042`, 214 runtime assets, build-info SHA `9ad4ebc8a0956c1ff43dd5f01c2ea9382453d924be953df8de0addcaeff04591`. The current candidate is bound to the committed c68 build: revision `c68ba8cca74ead3bb8a6fa10a0f7f3ae70b84cb9`, 215 runtime assets, build-info SHA `6d8babeaa0b437fc15b4212341b54de38048f8daa40cc6c3767101e099736312`. All source/runtime hashes and the owned browser closure are recorded in the run metadata; historical 151/214 evidence remains preserved separately.
 
 The minimum public case uses High1280×800, DPR1, hour16.5/dayCycle=false through public settings, first person/FOV65, one public Atlas south-085 setup. Normal E enters the real ground floor (`y=.215`), checks its building/floor/collider count, the south owner and actual outdoor-root visibility, then normal E exits to `(200,.18,-174.9)`. There is no write to game state, world time, storage, position or seed.
 
