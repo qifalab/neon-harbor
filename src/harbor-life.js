@@ -472,7 +472,8 @@ export class HarborLife {
     if (state.supply?.id !== this.supply.id || !Array.isArray(state.shops) || state.shops.length !== this.shops.length || !Array.isArray(state.jobs)) return false;
     const supply = copy(state.supply), shops = this.shops.map(shop => {
       const next = state.shops.find(candidate => candidate && candidate.id === shop.id);
-      if (!next || !integer(next.money) || !integer(next.stock) || !integer(next.sold) || !integer(next.received)) return null;
+      if (!next || next.id !== shop.id || (next.product !== undefined && next.product !== shop.product) ||
+        !integer(next.money) || !integer(next.stock) || !integer(next.sold) || !integer(next.received)) return null;
       return { shop, next: copy(next) };
     });
     if (shops.some(value => !value) || !integer(supply.money) || PRODUCTS.some(product => !integer(supply.stock?.[product]))) return false;
