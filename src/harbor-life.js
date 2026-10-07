@@ -491,8 +491,10 @@ export class HarborLife {
       requests: Array.isArray(state.player.requests) ? copy(state.player.requests) : null,
     };
     if (state.player && (!player || player.earnedCash === null || player.spentCash === null || !player.inventory)) return false;
-    if (state.consumed && !PRODUCTS.every(product => integer(state.consumed[product], 100))) return false;
-    const consumed = state.consumed ? copy(state.consumed)
+    const hasConsumed = Object.prototype.hasOwnProperty.call(state, 'consumed');
+    if (hasConsumed && (!state.consumed || typeof state.consumed !== 'object' || Array.isArray(state.consumed) ||
+      !PRODUCTS.every(product => integer(state.consumed[product], 100)))) return false;
+    const consumed = hasConsumed ? copy(state.consumed)
       : Object.fromEntries(PRODUCTS.map(product => [product, this.consumedByProduct[product]]));
     const jobs = copy(state.jobs);
     if (state.version >= 2 && jobs.some(job => !job || !/^room-order-\d+$/.test(job.id) || !this.shops.some(shop =>

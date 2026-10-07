@@ -279,6 +279,8 @@ test('room v2 economy applies resident accounts and finite consumption while pre
   assert.equal(life.applyRoomEconomy({ ...state, version: 99 }), false);
   assert.equal(life.applyRoomEconomy({ ...state, consumed: { ...state.consumed, produce: 101 } }), false,
     'out-of-range consumed units are rejected');
+  assert.equal(life.applyRoomEconomy({ ...state, consumed: null }), false,
+    'an explicitly malformed consumed ledger is rejected');
   assert.equal(life.applyRoomEconomy({ ...state, shops: [null, ...state.shops.slice(1)] }), false,
     'malformed shop rows are rejected without throwing');
   assert.equal(life.applyRoomEconomy({ ...state, residents: [null, ...state.residents.slice(1)] }), false,
