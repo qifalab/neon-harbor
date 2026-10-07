@@ -117,7 +117,15 @@ try {
     if (message.type() === 'error') report.errors.push(`Console error: ${message.text()}`);
   });
   page.on('requestfailed', request => {
-    report.errors.push(`Request failed: ${request.url()} (${request.failure()?.errorText})`);
+    const errorText = request.failure()?.errorText ?? '';
+    const requestURL = new URL(request.url());
+    // District streaming cancels an in-flight chunk when the camera's
+    // residency window advances. Chromium reports that normal cancellation as
+    // ERR_ABORTED; it is not a failed asset and must not make the release
+    // smoke test fail. Keep every other aborted/network request visible.
+    const expectedStreamAbort = errorText === 'net::ERR_ABORTED'
+      && requestURL.pathname.includes('/assets/city/chunks/');
+    if (!expectedStreamAbort) report.errors.push(`Request failed: ${request.url()} (${errorText})`);
   });
   page.on('response', response => {
     const item = { url: response.url(), status: response.status() };
