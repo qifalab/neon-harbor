@@ -19,6 +19,7 @@ import { SpatialIndex, vehicleContacts, circleContacts, CHARACTER_RADIUS } from 
 import { getRoomDesign } from './metropolis-room-designs.js';
 import { renderHarborSampleMenu } from './harbor-sample-ui.js';
 import { createSceneDirector, DEFAULT_SCENE_CONFIG } from './llm-scene-adapter.js';
+import { inspectGraphics, GraphicsUnavailableError, graphicsFailureCopy, graphicsDiagnosticText, createRendererWithFallback } from './graphics-capability.js';
 
 const $=id=>document.getElementById(id), clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const SAVE_KEY='neon-harbor.progress.v1', SETTINGS_KEY='neon-harbor.settings.v1';
@@ -35,6 +36,7 @@ let cameraYaw=Math.PI,cameraOrbitYaw=Math.PI,cameraPitch=.28,cameraDragAge=99,dr
 let presentation,renderFrame,renderCollisionIndex,cameraCollisionIndex;
 let menuFocus={x:283,y:.18,z:42};
 let prepareRevision=0,worldPreparing=false,lastStreamFailures=0,startupPhase='graphics',bootCompleted=false;
+let graphicsCapability=null,rendererProfile=null;
 const cameraRig=new ChaseCamera();
 const peerMeshes=new Map();
 let roomRevision=0,roomInteracting=false;
@@ -440,8 +442,31 @@ function rendererReviewState(){
       mapSize:[sun.shadow.mapSize.x,sun.shadow.mapSize.y]},
     contactOcclusion:contactOcclusion.snapshot()};
 }
+
+function escapeHtml(value){
+  return String(value??'').replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[character]));
+}
+
+function renderStartupFailure(error){
+  const capability=graphicsCapability||inspectGraphics($('game'));
+  const setupFailure=capability?.webgl2&&!error?.capability;
+  const copy=graphicsFailureCopy(setupFailure?{...capability,mode:'renderer-failure'}:capability,error);
+  const diagnostic=graphicsDiagnosticText(capability,error);
+  console.error('Neon Harbor failed to initialize:',error,capability);
+  $('loading').innerHTML=`<div class="fatal" data-startup-state="graphics-error"><span class="brand-mark">NH</span><h2>${escapeHtml(copy.title)}</h2><p>${escapeHtml(copy.body)}</p><p>${escapeHtml(copy.action)}</p><details class="graphics-diagnostics"><summary>查看图形诊断</summary><pre>${escapeHtml(diagnostic)}</pre><button id="copy-graphics-diagnostics" class="secondary-button" type="button">复制诊断信息</button></details><div class="fatal-actions"><button class="primary-button" type="button" onclick="location.reload()">重新尝试 <span>→</span></button><a class="secondary-button" href="https://get.webgl.org/webgl2/" target="_blank" rel="noreferrer">检查 WebGL 2</a></div><p class="fatal-note">如果你是在应用内嵌预览中打开，请复制地址到浏览器标签页；Neon Harbor 的完整 3D 版本保留 WebGL 2 高画质路径。</p></div>`;
+  $('copy-graphics-diagnostics')?.addEventListener('click',async event=>{
+    const button=event.currentTarget;
+    try{await navigator.clipboard.writeText(diagnostic);button.textContent='已复制';}
+    catch{button.textContent='复制失败，请手动选择';}
+  });
+}
+
 try{
-  renderer=new THREE.WebGLRenderer({canvas:$('game'),antialias:true,powerPreference:'high-performance'});renderer.setSize(innerWidth,innerHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  // Probe and construct on the same final canvas. The selected context is
+  // passed into Three so the fallback profile is not lost to a second probe.
+  graphicsCapability=inspectGraphics($('game'));
+  if(!graphicsCapability.webgl2)throw new GraphicsUnavailableError(graphicsCapability);
+  ({renderer,profile:rendererProfile}=createRendererWithFallback(THREE.WebGLRenderer,$('game'),graphicsCapability));renderer.setSize(innerWidth,innerHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   scene=new THREE.Scene();scene.background=new THREE.Color('#c0b8ca');scene.fog=new THREE.FogExp2('#b9b3c1',.0016);camera=new THREE.PerspectiveCamera(55,innerWidth/innerHeight,.15,3200);camera.position.set(240,135,345);
   hemi=new THREE.HemisphereLight('#d0e1ff','#67525d',1.5);scene.add(hemi);sun=new THREE.DirectionalLight('#ffd3a0',1.4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-90;sun.shadow.camera.right=90;sun.shadow.camera.top=90;sun.shadow.camera.bottom=-90;sun.shadow.camera.far=400;sun.shadow.normalBias=.12;scene.add(sunTarget);sun.target=sunTarget;scene.add(sun);
   atmosphere=createAtmosphere(THREE,renderer,scene);
@@ -476,4 +501,10 @@ try{
   window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();applyQuality();});
   $('game').addEventListener('webglcontextlost',event=>{event.preventDefault();paused=true;save();toast('图形上下文中断，进度已保存。请刷新页面恢复。','warning');});
   requestAnimationFrame(frame);
-}catch(error){console.error('Neon Harbor failed to initialize:',error);$('loading').innerHTML=`<div class="fatal"><span class="brand-mark">NH</span><h2>${startupPhase==='graphics'?'暂时无法启动三维画面':'城市资源暂时无法加载'}</h2><p>${startupPhase==='graphics'?'霓港需要支持 WebGL 2 的浏览器。请开启硬件加速，或尝试新版 Chrome、Edge、Firefox、Safari。':'请检查网络连接后重试。已保存的游戏进度不会因此丢失。'}</p><p>若在解压目录中直接打开，请先运行 <code>npm start</code> 再访问本地地址。</p><button class="primary-button" onclick="location.reload()">重新尝试 →</button></div>`;}
+}catch(error){
+  if(startupPhase==='graphics')renderStartupFailure(error);
+  else{
+    console.error('Neon Harbor failed to initialize:',error);
+    $('loading').innerHTML=`<div class="fatal" data-startup-state="asset-error"><span class="brand-mark">NH</span><h2>城市资源暂时无法加载</h2><p>图形上下文已经启动，但附近街区的资源没有完成加载。请检查网络连接后重试，已保存的游戏进度不会因此丢失。</p><p>若在解压目录中直接打开，请先运行 <code>npm start</code> 再访问本地地址。</p><button class="primary-button" type="button" onclick="location.reload()">重新尝试 <span>→</span></button></div>`;
+  }
+}
