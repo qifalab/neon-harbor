@@ -34,7 +34,8 @@ function contextDetails(context) {
 
 function readContext(canvas, kind, profile = PROFILES[0]) {
   try {
-    return { context: canvas?.getContext?.(kind, { ...CONTEXT_ATTRIBUTES, ...profile }) || null, error: null };
+    const { label: _label, ...attributes } = profile;
+    return { context: canvas?.getContext?.(kind, { ...CONTEXT_ATTRIBUTES, ...attributes }) || null, error: null };
   } catch (error) {
     return { context: null, error: error instanceof Error ? error.message : String(error) };
   }

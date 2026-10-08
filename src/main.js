@@ -435,6 +435,7 @@ function frame(time){
 // neither drains the GL error queue nor changes renderer/game/storage state.
 function rendererReviewState(){
   return {calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,
+    graphicsProfile:rendererProfile,
     memory:{...renderer.info.memory},programs:renderer.info.programs?.length??null,
     contextLost:renderer.getContext().isContextLost(),
     shadow:{enabled:renderer.shadowMap.enabled,type:renderer.shadowMap.type,
