@@ -5,7 +5,11 @@ const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&a
 export function renderHarborSampleMenu(container, city, onTravel) {
   const { transit, life } = city.sample;
   const daily = life.summary(), travel = transit.snapshot(), home = city.buildings.find(b => b.id === 'south-093');
+  const ambience = daily.ambience;
   container.innerHTML = `<section class="harbor-route"><span class="eyebrow">A DAY BY THE QUAY</span><h3>在港湾过一天。</h3><p>从街坊住宅走到市集，搭双层巴士，沿楼梯到上层看街景。街头电车连接工坊与南堤，小轮跨越海峡。站台停靠时按 E 上下客，车内用 WASD 行走，按住 Z 慢走。</p><div class="route-steps"><button data-sample-home>从街坊住宅开始 ↗</button><button data-sample-supply>去货栈看看 ↗</button></div></section><section class="transit-directory"><h3>下一班，去哪里？</h3><p class="panel-intro">沿道路前往站牌，或从这里定位站点。下车须返回下层车门；行驶中可以走动。步行、驾驶和室内探索期间，班次继续运行。</p><div class="stop-grid" id="sample-stops"></div></section><section class="transit-directory"><h3>街坊小店</h3><p class="panel-intro">居民会工作、买东西和回家。货物由货栈配送，柜台显示当前库存；重新进入街区保留进货与消费记录。</p><div class="stop-grid" id="sample-shops"></div></section><section class="harbor-route"><span class="eyebrow">NEIGHBORHOOD DELIVERY</span><h3>${daily.activeDelivery ? '把手里的货送过去。' : '顺路帮小店补货。'}</h3><p id="sample-delivery"></p><p class="panel-intro">街区里的茶室、面家、印房、果铺、烘焙店与陶作小馆均有对应的楼内空间，可以从城市导览寻找门口。</p></section>`;
+  const bulletin = document.createElement('section'); bulletin.className = 'harbor-route ambience-card';
+  bulletin.innerHTML = `<span class="eyebrow">LIVE STREET BULLETIN · ${escape(ambience?.phase || '街区')}</span><h3>${escape(ambience?.headline || '街区正在运转')}</h3><p>${escape(ambience?.detail || '沿着街道走走，看看居民和交通如何把城市连起来。')}</p>`;
+  container.firstElementChild?.after(bulletin);
   container.querySelector('[data-sample-home]').addEventListener('click', () => onTravel(home));
   container.querySelector('[data-sample-supply]').addEventListener('click', () => onTravel({ ...life.supply, entrance: life.supply.anchor, walkable: true }));
   const grid = container.querySelector('#sample-stops');

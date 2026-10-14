@@ -282,7 +282,7 @@ function drawMap(canvas,full=false){
   c.save();c.translate(px(p.x),pz(p.z));c.rotate(-p.yaw);c.fillStyle='#d4ffa3';c.strokeStyle='#112a2e';c.lineWidth=2;c.beginPath();c.moveTo(0,9);c.lineTo(-6,-6);c.lineTo(0,-3);c.lineTo(6,-6);c.closePath();c.stroke();c.fill();c.restore();
 }
 function updateHUD(){
-  const pos=sim.position,car=sim.activeVehicle,m=sim.mission,worldHour=world.sample.life.hour,hour=Math.floor(worldHour),minute=Math.floor((worldHour-hour)*60);
+  const pos=sim.position,car=sim.activeVehicle,m=sim.mission,lifeSummary=world.sample.life,worldHour=lifeSummary.hour,hour=Math.floor(worldHour),minute=Math.floor((worldHour-hour)*60);
   const streaming=world.streamingStats;
   if(streaming){
     const failures=Array.isArray(streaming.failed)?streaming.failed.length:Number(streaming.failed)||0;
@@ -292,7 +292,8 @@ function updateHUD(){
   $('district').textContent=world.districtAt(pos.x,pos.z);$('clock').textContent=`${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')} · 晴`;$('map-location').textContent=world.districtAt(pos.x,pos.z);
   $('money').textContent='$ '+sim.cash.toLocaleString();$('wanted').textContent='★'.repeat(sim.wanted)+'☆'.repeat(5-sim.wanted);$('wanted').classList.toggle('hot',sim.wanted>0);$('wanted').setAttribute('aria-label',`追捕等级 ${sim.wanted}`);
   $('health-fill').style.width=sim.player.health+'%';$('stamina-fill').style.width=sim.player.stamina+'%';$('speed').textContent=String(Math.round(sim.speed*3.6)).padStart(2,'0');$('speed-fill').style.width=clamp(sim.speed/43*100,0,100)+'%';$('mode-label').textContent=car?'DRIVING / '+(car.type==='sport'?'SPORT':'STREET'):'ON FOOT';$('vehicle-name').textContent=car?`${car.police?'巡逻车':car.type==='sport'?'海风 GT':'城市轿车'} · ${Math.round(car.health)}%`:'城市漫游者';$('ammo').textContent=sim.reloadRemaining?'装填中…':`${sim.ammo} / ∞`;
-  $('mission-label').textContent=m?'正在进行':sim.wanted?'追捕中':'自由探索';$('mission-title').textContent=m?m.title:sim.wanted?'甩开身后的追捕。':'这座城市，等你出发。';$('mission-objective').textContent=m?m.objective:sim.wanted?`离开警车视线并保持距离。脱离进度 ${Math.round(sim.escapeProgress*100)}%。`:'M 查看全城地图，城市导览可寻找建筑与站点。跨海桥通往北岸六区。';$('mission-time').textContent=m?`${Math.ceil(m.remaining)}s`:'';$('mission-distance').textContent=m?.phase==='escape'?`${Math.round(sim.escapeProgress*100)}%`:m?.target?`${Math.round(Math.hypot(m.target.x-pos.x,m.target.z-pos.z))} m`:'TAB';
+  const ambience=lifeSummary.ambience;
+  $('mission-label').textContent=m?'正在进行':sim.wanted?'追捕中':ambience?.phase||'自由探索';$('mission-title').textContent=m?m.title:sim.wanted?'甩开身后的追捕。':ambience?.headline||'这座城市，等你出发。';$('mission-objective').textContent=m?m.objective:sim.wanted?`离开警车视线并保持距离。脱离进度 ${Math.round(sim.escapeProgress*100)}%。`:ambience?.detail||'M 查看全城地图，城市导览可寻找建筑与站点。跨海桥通往北岸六区。';$('mission-time').textContent=m?`${Math.ceil(m.remaining)}s`:'';$('mission-distance').textContent=m?.phase==='escape'?`${Math.round(sim.escapeProgress*100)}%`:m?.target?`${Math.round(Math.hypot(m.target.x-pos.x,m.target.z-pos.z))} m`:'TAB';
   const interior=world.interiors.snapshot(),transport=world.transit.snapshot(),sampleTransport=world.sample.transit.snapshot(),delivery=world.sample.life.activeDelivery;
   $('hud').classList.toggle('indoor',!!interior.buildingId);$('hud').classList.toggle('walking',!car&&!m&&!sim.wanted);
   $('view-toggle').disabled=!!car||!!world.riding;$('view-toggle').textContent=settings.firstPerson?'跟随视角':'步行视角';$('view-toggle').setAttribute('aria-pressed',String(settings.firstPerson));

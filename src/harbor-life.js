@@ -7,6 +7,7 @@ import { HarborResidentLoop, RESIDENT_LOOP } from './harbor-resident-loop.js';
 import { HARBOR_SECONDS_PER_HOUR, calendarHour, validCalendar } from './harbor-world-clock.js';
 import { HarborRoleRoutines } from './harbor-role-routines.js';
 import { ROOM_ECONOMY_SECONDS_PER_HOUR } from './multiplayer-economy.js';
+import { harborAmbience } from './harbor-ambience.js';
 
 export const HARBOR_LIFE_SCHEMA = 'neon-harbor/daily-life';
 export const HARBOR_LIFE_VERSION = 3;
@@ -104,6 +105,7 @@ export class HarborLife {
   get day() { return Math.floor(this.absoluteHour / 24); }
   get totalMoney() { return this.supply.money + this.shops.reduce((n, s) => n + s.money, 0) + this.agents.reduce((n, a) => n + a.money, 0) + this.player.earnedCash - this.player.spentCash + this.jobs.reduce((n, j) => n + (j.escrow || 0), 0); }
   get totalGoods() { return PRODUCTS.reduce((n, p) => n + this.supply.stock[p], 0) + this.shops.reduce((n, s) => n + s.stock, 0) + this.jobs.reduce((n, j) => n + (j.status === 'picked-up' ? j.quantity : 0), 0) + this.statistics.consumed + PRODUCTS.reduce((n, p) => n + this.player.inventory[p], 0); }
+  get ambience() { return harborAmbience({ hour: this.hour, agents: this.agents, shops: this.shopStatuses, transit: this.transport || {} }); }
   get availableJobs() { return this.jobs.filter(j => j.status === 'available' && !j.carrierId && this._canPickup(j)).map(j => this._jobView(j)); }
   get activeDelivery() { const job = this.jobs.find(j => j.id === this.player.activeJobId); return job ? this._jobView(job) : null; }
   get shopStatuses() { return this.shops.map(s => ({ ...copy(s), open: this.hour >= 6 && this.hour < 21,
@@ -597,6 +599,7 @@ export class HarborLife {
     residentRoutines: this.roleRoutines?.publicStatus() || null,
     activeDelivery: this.activeDelivery, availableJobs: this.availableJobs, shops: this.shopStatuses, statistics: { ...this.statistics },
     totalMoney: this.totalMoney, initialMoney: this.initialMoney, cashPaidToPlayer: this.player.earnedCash, cashPaidByPlayer: this.player.spentCash, playerInventory: { ...this.player.inventory }, totalGoods: this.totalGoods, initialGoods: this.initialGoods, consumedByProduct: { ...this.consumedByProduct },
+    ambience: this.ambience,
     phases: Object.fromEntries([...new Set(this.agents.map(a => a.phase))].map(p => [p, this.agents.filter(a => a.phase === p).length])) }; }
   snapshot() {
     return copy({ schema: HARBOR_LIFE_SCHEMA, version: HARBOR_LIFE_VERSION, seed: this.seed, secondsPerHour: this.secondsPerHour, startHour: this.startHour, clock: this.clock,
