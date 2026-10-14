@@ -36,4 +36,10 @@ async function fingerprint(directory, prefix = '') {
 await fingerprint(output);
 const { version } = JSON.parse(await readFile(resolve(projectRoot, 'package.json'), 'utf8'));
 await writeFile(resolve(output, 'build-info.json'), JSON.stringify({ version, revision: process.env.GITHUB_SHA || null, assets }, null, 2) + '\n');
+// Keep the shipped payload bounded. This runs after the exact bytes copied to
+// dist are known, so a new asset cannot bypass the gate by being omitted from
+// a source-only estimate.
+process.env.NEON_BUDGET_TARGET = 'dist';
+await import('./check-performance-budget.mjs?dist');
+delete process.env.NEON_BUDGET_TARGET;
 console.log(`Built static game at ${output}`);

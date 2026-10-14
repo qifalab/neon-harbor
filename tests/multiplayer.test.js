@@ -120,6 +120,22 @@ test('room resident wages and purchases are authoritative and product units rema
   assert.deepEqual(restored.consumed, ledger.consumed, 'consumed product ledger survives a room restart');
 });
 
+test('invalid economy restore is transactional and cannot leave a half-applied ledger', () => {
+  const ledger = new MultiplayerEconomy();
+  ledger.advance(35 * 3);
+  const before = ledger.exportState();
+  const corrupt = structuredClone(before);
+  corrupt.supply.stock.produce = 0;
+  corrupt.shops[0].money = -1;
+  assert.equal(ledger.restore(corrupt), false);
+  assert.deepEqual(ledger.exportState(), before);
+
+  const malformedCounter = structuredClone(before);
+  malformedCounter.consumed.produce = 'stale';
+  assert.equal(ledger.restore(malformedCounter), false);
+  assert.deepEqual(ledger.exportState(), before);
+});
+
 test('two clients observe a persisted room economy after the service restarts', async t => {
   const directory = await mkdtemp(join(tmpdir(), 'neon-harbor-economy-'));
   const economyFile = join(directory, 'rooms.json');

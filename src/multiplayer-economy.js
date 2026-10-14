@@ -110,14 +110,70 @@ export class MultiplayerEconomy {
   }
   exportState() { return { schema: ROOM_ECONOMY_SCHEMA, version: ROOM_ECONOMY_VERSION, hour: this.hour, absoluteHour: this.absoluteHour, revision: this.revision, serial: this.serial, orderSerial: this.orderSerial, supply: copy(this.supply), shops: copy(this.shops), consumed: copy(this.consumed), jobs: copy(this.jobs), transactions: copy(this.transactions), residents: copy(this.residents), lastResidentWageSlot: this.lastResidentWageSlot, lastResidentPurchaseDay: this.lastResidentPurchaseDay }; }
   restore(state) {
+    // Validate the complete candidate before touching the live ledger. A
+    // partially applied restore would let a corrupt room file mix old and new
+    // stock, balances, or orders until the next restart.
     if (!state || state.schema !== ROOM_ECONOMY_SCHEMA || ![1, ROOM_ECONOMY_VERSION].includes(state.version)) return false;
     if (!state.supply || !Array.isArray(state.shops) || state.shops.length !== this.shops.length || !Array.isArray(state.jobs)) return false;
-    Object.assign(this.supply, copy(state.supply)); for (const product of PRODUCTS) if (!integer(this.supply.stock?.[product])) return false;
-    for (const shop of this.shops) { const next = state.shops.find(candidate => candidate.id === shop.id); if (!next) return false; Object.assign(shop, copy(next)); if (!integer(shop.stock) || !integer(shop.money)) return false; }
-    if (state.consumed && PRODUCTS.every(product => integer(state.consumed[product]))) this.consumed = Object.fromEntries(PRODUCTS.map(product => [product, state.consumed[product]]));
-    this.jobs = copy(state.jobs); this.transactions = Array.isArray(state.transactions) ? copy(state.transactions).slice(-96) : [];
-    if (Array.isArray(state.residents) && state.residents.length === this.residents.length) for (const resident of this.residents) { const next = state.residents.find(candidate => candidate.id === resident.id); if (next && integer(next.money) && integer(next.wages) && integer(next.purchases)) Object.assign(resident, next); }
-    this.hour = Number.isFinite(state.hour) ? state.hour : this.hour; this.absoluteHour = Number.isFinite(state.absoluteHour) ? state.absoluteHour : this.hour; this.revision = integer(state.revision) ? state.revision : this.revision; this.serial = integer(state.serial) ? state.serial : this.serial; this.orderSerial = integer(state.orderSerial) ? state.orderSerial : this.orderSerial; this.lastResidentWageSlot = integer(state.lastResidentWageSlot) ? state.lastResidentWageSlot : Math.floor(this.absoluteHour); this.lastResidentPurchaseDay = Number.isInteger(state.lastResidentPurchaseDay) ? state.lastResidentPurchaseDay : -1; return true;
+    const supply = copy(state.supply);
+    if (supply.id !== this.supply.id || !integer(supply.money) || PRODUCTS.some(product => !integer(supply.stock?.[product]))) return false;
+    const knownProducts = new Set(PRODUCTS), knownShops = new Map(this.shops.map(shop => [shop.id, shop]));
+    const shops = [], shopIds = new Set();
+    for (const candidate of state.shops) {
+      if (!candidate || shopIds.has(candidate.id) || !knownShops.has(candidate.id) || !knownProducts.has(candidate.product)) return false;
+      if (![candidate.money, candidate.stock, candidate.sold, candidate.received].every(value => integer(value))) return false;
+      shopIds.add(candidate.id); shops.push(copy(candidate));
+    }
+    if (shopIds.size !== this.shops.length) return false;
+    const jobs = copy(state.jobs), jobIds = new Set(), activeCarriers = new Set();
+    for (const job of jobs) {
+      if (!job || typeof job.id !== 'string' || !/^room-order-[1-9][0-9]{0,8}$/.test(job.id) || jobIds.has(job.id)) return false;
+      if (!knownShops.has(job.shopId) || !knownProducts.has(job.product) || !['available', 'picked-up', 'delivered'].includes(job.status)) return false;
+      if (![job.quantity, job.wholesale, job.reward, job.escrow].every(value => integer(value, 1e6)) || job.quantity < 1) return false;
+      if (job.status === 'available' && (job.carrierId !== null || job.escrow !== 0)) return false;
+      if (job.status === 'delivered' && (job.carrierId === null || job.escrow !== 0)) return false;
+      if (job.status === 'picked-up') {
+        if (typeof job.carrierId !== 'string' || !job.carrierId || activeCarriers.has(job.carrierId) || job.escrow <= 0) return false;
+        activeCarriers.add(job.carrierId);
+      }
+      jobIds.add(job.id);
+    }
+    // v1 ledgers may not have recorded resident consumption yet. Once a v2
+    // file carries the field, a malformed value must reject the whole file
+    // rather than silently retaining a stale in-memory counter.
+    const hasConsumed = state.consumed !== undefined;
+    if (hasConsumed && (!state.consumed || PRODUCTS.some(product => !integer(state.consumed[product])))) return false;
+    const consumed = hasConsumed
+      ? Object.fromEntries(PRODUCTS.map(product => [product, state.consumed[product]])) : copy(this.consumed);
+    const transactions = Array.isArray(state.transactions) ? copy(state.transactions).slice(-96) : [];
+    if (transactions.some(transaction => !transaction || typeof transaction.id !== 'string' || !Number.isSafeInteger(transaction.revision))) return false;
+    const residents = copy(this.residents);
+    if (Array.isArray(state.residents)) {
+      if (state.residents.length !== residents.length) return false;
+      const residentById = new Map(state.residents.map(resident => [resident?.id, resident]));
+      for (const resident of residents) {
+        const next = residentById.get(resident.id);
+        if (!next || ![next.money, next.wages, next.purchases].every(value => integer(value, 1e7))) return false;
+        Object.assign(resident, { money: next.money, wages: next.wages, purchases: next.purchases });
+      }
+    }
+    const absoluteHour = Number.isFinite(state.absoluteHour) && state.absoluteHour >= 0 ? state.absoluteHour : this.absoluteHour;
+    const hour = Number.isFinite(state.hour) ? ((state.hour % 24) + 24) % 24 : ((absoluteHour % 24) + 24) % 24;
+    const revision = integer(state.revision), serial = integer(state.serial), orderSerial = integer(state.orderSerial);
+    if (state.revision !== undefined && !revision || state.serial !== undefined && !serial || state.orderSerial !== undefined && !orderSerial) return false;
+    const wageSlot = state.lastResidentWageSlot === undefined ? Math.floor(absoluteHour) : state.lastResidentWageSlot;
+    const purchaseDay = state.lastResidentPurchaseDay === undefined ? -1 : state.lastResidentPurchaseDay;
+    if (!Number.isSafeInteger(wageSlot) || wageSlot < 0 || !Number.isSafeInteger(purchaseDay)) return false;
+
+    Object.assign(this.supply, supply);
+    this.shops.splice(0, this.shops.length, ...shops);
+    this.consumed = consumed; this.jobs = jobs; this.transactions = transactions; this.residents = residents;
+    this.hour = hour; this.absoluteHour = absoluteHour;
+    this.revision = state.revision !== undefined ? state.revision : this.revision;
+    this.serial = state.serial !== undefined ? state.serial : this.serial;
+    this.orderSerial = state.orderSerial !== undefined ? state.orderSerial : this.orderSerial;
+    this.lastResidentWageSlot = wageSlot; this.lastResidentPurchaseDay = purchaseDay;
+    return true;
   }
   join(playerId) { this._player(playerId); return this.snapshot(playerId); }
   leave(playerId) { this.players.delete(playerId); }

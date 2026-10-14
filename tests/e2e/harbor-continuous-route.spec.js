@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { appendFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { createHarborVehicleLayout } from '../../src/harbor-vehicle-models.js';
+import { validateContinuousRouteJournal } from '../../src/harbor-route-contract.js';
 import { snapshot, walkAxis } from './helpers/walking.js';
 import { enterRoom, leaveRoom, faceRoom } from './helpers/occupied.js';
 
@@ -163,12 +164,14 @@ async function saveAndReload(page) {
 test('continuous harbor day keeps real home, three transports, shop, workshop, opposite interior and return state', async ({ page }, info) => {
   const journalPath = info.outputPath('harbor-continuous-route.jsonl');
   await mkdir(dirname(journalPath), { recursive: true });
+  const journalRecords = [];
   const journal = async stage => {
     const state = await snapshot(page);
     const record = { stage, position: state.position, time: state.simulationTime, teleportRevision: state.teleportRevision,
       interior: { buildingId: state.city.interior.buildingId, roomId: state.city.interior.currentRoomId },
       transit: { riding: state.city.sample.transit.riding, vehicleId: state.city.sample.transit.ridingVehicleId,
         currentStopId: state.city.sample.transit.currentStopId }, positionWrites: false, clockWrites: false };
+    journalRecords.push(record);
     await appendFile(journalPath, `${JSON.stringify(record)}\n`);
     console.log(JSON.stringify(record));
   };
@@ -198,6 +201,7 @@ test('continuous harbor day keeps real home, three transports, shop, workshop, o
   await rideTo(page, 'harbor-bus-market', 'harbor-bus-lantern');
   await journal('bus-alighted');
   if (process.env.NEON_ROUTE_STOP === 'bus') {
+    expect(validateContinuousRouteJournal(journalRecords, { allowPrefix: true })).toMatchObject({ valid: true, complete: false });
     await info.attach('harbor-continuous-route', { path: journalPath, contentType: 'application/jsonl' });
     return;
   }
@@ -252,6 +256,7 @@ test('continuous harbor day keeps real home, three transports, shop, workshop, o
   // the safe saved pose and progress rather than counters across reload.
   expect(evidence.saved.cash).toBe(evidence.restored.cash);
   await journal('safe-save-restored');
+  expect(validateContinuousRouteJournal(journalRecords)).toMatchObject({ valid: true, complete: true });
   expect(errors).toEqual([]);
 
   const record = { initial: initial.position, home: home.entrance, bus: { from: 'harbor-bus-market', to: 'harbor-bus-lantern' },

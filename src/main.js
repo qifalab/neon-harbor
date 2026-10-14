@@ -20,6 +20,7 @@ import { getRoomDesign } from './metropolis-room-designs.js';
 import { renderHarborSampleMenu } from './harbor-sample-ui.js';
 import { createSceneDirector, DEFAULT_SCENE_CONFIG } from './llm-scene-adapter.js';
 import { inspectGraphics, GraphicsUnavailableError, graphicsFailureCopy, graphicsDiagnosticText, createRendererWithFallback } from './graphics-capability.js';
+import { FrameTelemetry } from './runtime-telemetry.js';
 
 const $=id=>document.getElementById(id), clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const SAVE_KEY='neon-harbor.progress.v1', SETTINGS_KEY='neon-harbor.settings.v1';
@@ -31,6 +32,7 @@ const residentViewerPosition=new THREE.Vector3();
 let renderer,scene,camera,world,sim,character,sun,hemi,marker,markerRing,tracer,atmosphere,contactOcclusion;
 let started=false,activeTab='jobs',paused=false,sceneTime=0,hudElapsed=0,saveElapsed=0,lastRevision=-1,lastShot=-1;
 const frameClock=new FixedStepClock(FIXED_STEP);
+const frameTelemetry=new FrameTelemetry();
 let frameTiming={wallDt:0,dt:0,steps:0,alpha:0,simulationDelta:0,droppedSeconds:0,droppedTotal:0};
 let cameraYaw=Math.PI,cameraOrbitYaw=Math.PI,cameraPitch=.28,cameraDragAge=99,drag=null,frameCount=0,fps=60,fpsClock=0;
 let presentation,renderFrame,renderCollisionIndex,cameraCollisionIndex;
@@ -409,6 +411,7 @@ function lighting(dt){
 function frame(time){
   requestAnimationFrame(frame);const active=started&&!paused&&!document.hidden;
   frameTiming=frameClock.advance(time,active);const {wallDt,dt,steps,alpha}=frameTiming;
+  frameTelemetry.record(frameTiming);
   if(document.hidden){frameClock.suspend();return;}
   // A paused menu has a static backdrop. Avoid redrawing the whole city while
   // another browser tab is starting; room IO continues independently.
@@ -497,7 +500,7 @@ try{
       renderedSubject:model?{x:model.position.x,y:model.position.y,z:model.position.z,yaw:model.rotation.y}:null};
   };
   // Read-only diagnostics help automated QA verify real input and renderer state.
-  Object.defineProperty(window,'__NEON__',{value:Object.freeze({llm:llmApi,snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},residentAssets:residentAssets.snapshot({includeReview:true}),fps:Math.round(fps),timing:{...frameTiming},renderer:rendererReviewState()})})});
+  Object.defineProperty(window,'__NEON__',{value:Object.freeze({llm:llmApi,snapshot:()=>({ready:true,started,paused,multiplayer:{status:multiplayer.status,code:multiplayer.session?.code||null,id:multiplayer.session?.id||null,players:multiplayer.snapshot?.players||[],meshes:[...peerMeshes].map(([id,model])=>({id,x:model.position.x,y:model.position.y,z:model.position.z,visible:model.visible}))},position:{x:sim.position.x,y:renderFrame.subject.y,z:sim.position.z,yaw:sim.position.yaw},inCar:sim.inCar,health:sim.player.health,cash:sim.cash,wanted:sim.wanted,ammo:sim.ammo,mission:sim.mission?JSON.parse(JSON.stringify(sim.mission)):null,completed:[...sim.completed],speed:sim.speed,simulationTime:sim.elapsed,teleportRevision:sim.teleportRevision||0,presentation:presentationSnapshot(),camera:cameraRig.snapshot(),streaming:world.streamingStats?{...world.streamingStats,preparing:worldPreparing}:null,cars:sim.cars.map(c=>({id:c.id,x:c.x,y:c.y||0,z:c.z,yaw:c.yaw,speed:c.speed,health:c.health,police:!!c.police})),city:world.snapshot(),settings:{...settings},residentAssets:residentAssets.snapshot({includeReview:true}),fps:Math.round(fps),timing:{...frameTiming},performance:frameTelemetry.snapshot(),renderer:rendererReviewState()})})});
   window.addEventListener('pagehide',event=>{multiplayer.leave();if(!event.persisted){contactOcclusion.dispose();world?.sample?.lifeRenderer?.dispose();world?.people?.dispose();character?.userData.disposeInstance?.();for(const actor of [...walkers,...peerMeshes.values()])actor.userData.disposeInstance?.();residentAssets?.dispose();}});
   window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();applyQuality();});
   $('game').addEventListener('webglcontextlost',event=>{event.preventDefault();paused=true;save();toast('图形上下文中断，进度已保存。请刷新页面恢复。','warning');});

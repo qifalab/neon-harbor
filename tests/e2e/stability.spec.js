@@ -65,7 +65,8 @@ async function record(page, { seconds = 0, frames = 0, untilVehicleDamaged = nul
       const s = window.__NEON__.snapshot();
       samples.push({ time: s.simulationTime, position: s.position, speed: s.speed,
         inCar: s.inCar, cars: s.cars, presentation: s.presentation, camera: s.camera,
-        streaming: s.streaming, timing: s.timing, fps: s.fps, renderer: s.renderer });
+        streaming: s.streaming, timing: s.timing, fps: s.fps, renderer: s.renderer,
+        performance: s.performance });
       if ((untilVehicleDamaged && s.cars.some(car => car.id === untilVehicleDamaged && car.health < 100)) ||
           (frames && samples.length >= frames) || (seconds && s.simulationTime - start >= seconds)) {
         clearTimeout(deadline); resolve(samples);
@@ -138,7 +139,8 @@ function assertPresentation(samples) {
     minimumObservedFPS: Math.min(...samples.map(s => s.fps)),
     maximumObservedFPS: Math.max(...samples.map(s => s.fps)),
     maximumDrawCalls: Math.max(...samples.map(s => s.renderer.calls)),
-    maximumTriangles: Math.max(...samples.map(s => s.renderer.triangles)) };
+    maximumTriangles: Math.max(...samples.map(s => s.renderer.triangles)),
+    performance: samples.at(-1).performance };
 }
 
 test('driving and steering share one render pose; pause/resume and exit remain stable', async ({ page }, testInfo) => {
@@ -152,6 +154,8 @@ test('driving and steering share one render pose; pause/resume and exit remain s
   expect(Math.abs(angleDifference(left.at(-1).position.yaw, left[0].position.yaw))).toBeGreaterThan(.35);
   expect(Math.abs(angleDifference(right.at(-1).position.yaw, right[0].position.yaw))).toBeGreaterThan(.2);
   const metrics = assertPresentation([...left, ...right]);
+  expect(metrics.performance.samples).toBeGreaterThan(8);
+  expect(metrics.performance.p95FrameMs).toBeGreaterThan(0);
   await page.screenshot({ path: 'test-results/screenshots/06-stable-driving.png' });
   await travel(page, ['Space'], s => s.speed < .04);
   await page.keyboard.press('Escape');
