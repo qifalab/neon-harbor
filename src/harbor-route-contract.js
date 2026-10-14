@@ -12,6 +12,24 @@ export const CONTINUOUS_ROUTE_STAGES = Object.freeze([
   'safe-save-restored',
 ]);
 
+// These are the state hand-offs that make the journal a city journey rather
+// than an ordered list of arbitrary screenshots.  The browser route records
+// the same fields at each milestone, so a passing route must also prove that
+// it is in the expected room or has actually reached the expected stop.
+const STAGE_STATE = Object.freeze({
+  'home-lobby': { buildingId: 'south-093' },
+  'home-departure': { buildingId: null },
+  'bus-alighted': { buildingId: null, stopId: 'harbor-bus-lantern' },
+  'produce-room': { buildingId: 'south-095', room: true },
+  'tram-alighted': { buildingId: null, stopId: 'harbor-tram-quay' },
+  'workshop-room': { buildingId: 'south-086', room: true },
+  'ferry-north-alighted': { buildingId: null, stopId: 'harbor-ferry-north' },
+  'opposite-room': { buildingId: 'sail-club', room: true },
+  'ferry-south-alighted': { buildingId: null, stopId: 'harbor-ferry-south' },
+  'returned-home-lobby': { buildingId: 'south-093' },
+  'safe-save-restored': { buildingId: null },
+});
+
 const finite = value => Number.isFinite(value);
 
 /**
@@ -47,6 +65,16 @@ export function validateContinuousRouteJournal(records, { allowPrefix = false } 
     }
     if (record.positionWrites !== false || record.clockWrites !== false) {
       return { valid: false, reason: 'test-write-detected', index };
+    }
+    const expectedState = STAGE_STATE[expectedStage], actualBuilding = record.interior?.buildingId ?? null;
+    if (actualBuilding !== expectedState.buildingId) {
+      return { valid: false, reason: 'unexpected-building-state', index, expected: expectedState.buildingId, actual: actualBuilding };
+    }
+    if (expectedState.room && !record.interior?.roomId) {
+      return { valid: false, reason: 'room-milestone-missing', index };
+    }
+    if (expectedState.stopId && record.transit?.currentStopId !== expectedState.stopId) {
+      return { valid: false, reason: 'transport-milestone-missing', index, expected: expectedState.stopId, actual: record.transit?.currentStopId ?? null };
     }
     if (record.time < previousTime) {
       return { valid: false, reason: 'simulation-time-rewound', index };
