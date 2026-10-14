@@ -51,7 +51,7 @@ jobs:
     if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.native_only == true) }}
     name: Build and gameplay tests (${{ matrix.id }})
     runs-on: ubuntu-latest
-    timeout-minutes: ${{ matrix.id == 'harbor-sample-2' && 60 || 45 }}
+    timeout-minutes: ${{ matrix.id == 'harbor-continuous-route' && 150 || (matrix.id == 'harbor-sample-2' && 60 || 45) }}
     strategy:
       fail-fast: false
       matrix:
@@ -67,6 +67,11 @@ jobs:
           - { id: harbor-sample-1, suite: harbor-sample, shard: '1/2' }
           - { id: harbor-sample-2, suite: harbor-sample, shard: '2/2' }
           - { id: occupied-city, suite: occupied-city, shard: '1/1' }
+          # Full player-facing route is a release gate. It must complete the
+          # physical home -> bus -> shop -> tram -> workshop -> ferry ->
+          # opposite interior -> return -> save/reload journey before Pages
+          # can publish this revision.
+          - { id: harbor-continuous-route, suite: harbor-continuous-route, shard: '1/1' }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
